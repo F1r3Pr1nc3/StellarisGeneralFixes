@@ -1,0 +1,37 @@
+# Portrait sprite configurations allows to have conditional alternate visual effects for a portrait sprite.
+# When trigger is passed, the portrait sprite is drawn with corresponding effect and masking texture.
+# The trigger is estimated with leader, pop or species event scope
+# (when called with species event scope, the 'from' subscope can contain a country species related to, when it is applicable)
+# A portrait sprite defined in '.gfx' file that needs the ability to switch to alternate sprite configurations must contain
+# 'alternate_configurations' list of the keys of such configurations, like:
+# portraitType = {
+#	...
+#	alternate_configurations = {
+#		holographic,
+#		some_other_sprite_effect_configuration,
+#		...
+#	}
+holographic = {
+	trigger = {
+		OR = {
+			AND = {
+				OR = {
+					is_scope_type = leader
+					is_scope_type = pop
+				}
+				exists = species # Vfix log
+				species = { has_virtual_species_trait = yes }
+			}
+			AND = {
+				is_scope_type = species
+				OR = { # Vfix
+					has_species_flag = holographic_appearance
+					has_virtual_species_trait = yes
+				}
+			}
+		}
+	}
+
+	masking_texture = "gfx/interface/leaders/portrait_mask_fade.dds"
+	effectFile = "gfx/FX/buttonstate_rendertarget_hologram.shader"
+}

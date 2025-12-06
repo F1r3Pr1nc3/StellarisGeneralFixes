@@ -1,0 +1,3676 @@
+############################################
+#                                          #
+#  Leader Lottery Machine (400YY)          #
+#  And Associated Leaders (4XX00)          #
+#  And Associated Events  (4XXZ0)          #
+#  Written by:                             #
+#  Scripty Person                          #
+#  Sneaky Person                           #
+#  Writy Person                            #
+#                                 	       #
+############################################
+
+namespace = paragon
+# Randomizing chance to get an ethic leader, with a grace factor that increase odds everytime it fails to give ethic leader to the player.
+country_event = {
+	id = paragon.40000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_paragon_dlc = yes
+		NOR = {
+			is_ai = yes
+			is_homicidal = yes
+		}
+		has_technology = tech_xeno_linguistics
+		NOT = { has_country_flag = leader_recruited_recently }
+	}
+
+	immediate = {
+		random_list = {
+			1 = {
+				modifier = {
+					add = 2
+					any_owned_starbase = { has_starbase_building = recruitment_office }
+				}
+				country_event = {
+					id = paragon.40001
+					days = 1
+					random = 360
+				}
+			}
+			0 = { modifier = { add = value:ethic_leader_lower_chance } }
+		}
+	}
+}
+
+# ADDING MORE ETHIC LEADERS #
+# Put a 0 chance option for random_list, with added modifier of value ethic_leader_randomizer - remember to attach correct LEADER_ID to the value
+# Add ethic_leader_hire_event into the random option - remember to attach correct LEADER_ID and issue a unique EVENT_ID
+# Create an country event with corresponding EVENT_ID from the random_list - it's the message that will show up, if this leader is chosen from the lottery machine
+# Create a follow up diplomacy event, with the hired leader for some more story about this leader (and to showcase his portrait)
+# ethic leader lottery machine
+country_event = {
+	id = paragon.40001
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = { # Chosing leaders to put them into the lottery machine, based on ethics
+		random_list = { # Putting leaders inside the lottery machine, and taking out those who are already hired
+			0 = { # xenophile 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|xenophile|LEADER_ID|xenophile_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = xenophile_leader_1
+					EVENT_ID = paragon.40100
+				}
+			}
+			0 = { # xenophile 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|xenophile|LEADER_ID|xenophile_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = xenophile_leader_2
+					EVENT_ID = paragon.40200
+				}
+			}
+			0 = { # militarist 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|militarist|LEADER_ID|militarist_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = militarist_leader_1
+					EVENT_ID = paragon.40300
+				}
+			}
+			0 = { # militarist 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|militarist|LEADER_ID|militarist_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = militarist_leader_2
+					EVENT_ID = paragon.40400
+				}
+			}
+			0 = { # xenophobe 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|xenophobe|LEADER_ID|xenophobe_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = xenophobe_leader_1
+					EVENT_ID = paragon.40500
+				}
+			}
+			0 = { # xenophobe 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|xenophobe|LEADER_ID|xenophobe_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = xenophobe_leader_2
+					EVENT_ID = paragon.40600
+				}
+			}
+			0 = { # egalitarian 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|egalitarian|LEADER_ID|egalitarian_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = egalitarian_leader_1
+					EVENT_ID = paragon.40700
+				}
+			}
+			0 = { # egalitarian 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|egalitarian|LEADER_ID|egalitarian_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = egalitarian_leader_2
+					EVENT_ID = paragon.40800
+				}
+			}
+			0 = { # materialist 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|materialist|LEADER_ID|materialist_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = materialist_leader_1
+					EVENT_ID = paragon.40900
+				}
+			}
+			0 = { # materialist 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|materialist|LEADER_ID|materialist_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = materialist_leader_2
+					EVENT_ID = paragon.41000
+				}
+			}
+			0 = { # pacifist 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|pacifist|LEADER_ID|pacifist_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = pacifist_leader_1
+					EVENT_ID = paragon.41100
+				}
+			}
+			0 = { # pacifist 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|pacifist|LEADER_ID|pacifist_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = pacifist_leader_2
+					EVENT_ID = paragon.41200
+				}
+			}
+			0 = { # authoritarian 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|authoritarian|LEADER_ID|authoritarian_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = authoritarian_leader_1
+					EVENT_ID = paragon.41300
+				}
+			}
+			0 = { # authoritarian 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|authoritarian|LEADER_ID|authoritarian_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = authoritarian_leader_2
+					EVENT_ID = paragon.41400
+				}
+			}
+			0 = { # spiritualist 1
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|spiritualist|LEADER_ID|spiritualist_leader_1|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = spiritualist_leader_1
+					EVENT_ID = paragon.41500
+				}
+			}
+			0 = { # spiritualist 2
+				modifier = {
+					add = value:ethic_leader_randomizer|ETHIC|spiritualist|LEADER_ID|spiritualist_leader_2|
+				}
+				ethic_leader_hire_event = {
+					LEADER_ID = spiritualist_leader_2
+					EVENT_ID = paragon.41600
+				}
+			}
+		}
+	}
+}
+
+####
+# Diplomatic window events, for ethic leaders immersion stories and showcasing them before hire
+####
+# xenophile 1
+country_event = {
+	id = paragon.40100
+	title = "paragon.40100.name"
+	desc = "paragon.40100.desc"
+	show_sound = par_portrait_12
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_lysator"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine # Species class, for animation purposes, example: MAM4
+			LEADER_PORTRAIT = par_renown_12 # xenophile_leader_gen # Leader portrait
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_xenophile1
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = xenophile
+			DESC = xenophile1
+			CATCH_PHRASE = xenophile1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_admiral consume_selection = yes }
+			add_trait = { trait = leader_trait_guerilla_tactics consume_selection = yes }
+			add_trait = { trait = leader_trait_slipshod consume_selection = yes }
+			add_trait = { trait = leader_trait_trickster consume_selection = yes }
+			add_trait = { trait = leader_trait_corsair consume_selection = yes }
+			set_age = 33
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = xenophile_leader_1 # Put this leader back into the pool, so player could still get him
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_xenophile_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.40100.a
+		response_text = paragon.40100.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40100.b
+		response_text = paragon.40100.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40100.c
+		response_text = paragon.40100.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40100.d
+		response_text = paragon.40100.d.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40100.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_xenophile1 }
+		}
+		create_fleet = {
+			name = "LYSANDER_FLEET_NAME"
+			effect = {
+				set_owner = prev
+				create_ship = {
+					design = NAME_Reaver
+					graphical_culture = "pirate_01"
+					name = NAME_First_Pillager
+					prefix = no
+				}
+				create_ship = {
+					design = NAME_Dagger
+					graphical_culture = "reptilian_01"
+					name = NAME_Second_Pillager
+					prefix = no
+				}
+				create_ship = {
+					design = NAME_Dagger
+					graphical_culture = "reptilian_01"
+					name = NAME_Third_Pillager
+					prefix = no
+				}
+				set_location = {
+					target = prev.capital_scope
+					distance = 10
+					angle = random
+				}
+				assign_leader = event_target:renowned_xenophile1
+				set_fleet_stance = passive
+			}
+		}
+	}
+}
+
+# xenophile 2 Nona
+country_event = {
+	id = paragon.40200
+	title = "paragon.40200.name"
+	desc = "paragon.40200.desc"
+	show_sound = par_portrait_11
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_nona"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_11 # xenophile_leader_sci
+			CLASS = scientist
+			TIER = leader_tier_renowned
+			NAME = NAME_xenophile2
+			LEVEL = 4
+			GENDER = female
+			IMMORTAL = no
+			ETHIC = xenophile
+			DESC = xenophile2
+			CATCH_PHRASE = xenophile2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_scientist_explorer consume_selection = yes }
+			add_trait = { trait = leader_trait_adventurous_spirit_2 consume_selection = yes }
+			add_trait = { trait = leader_trait_excessive consume_selection = yes }
+			add_trait = { trait = leader_trait_xeno_cataloger consume_selection = yes }
+			add_trait = { trait = leader_trait_prospector_2 consume_selection = yes }
+			set_age = 32
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = xenophile_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_xenophile_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.40200.a
+		response_text = paragon.40200.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40200.b
+		response_text = paragon.40200.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40200.c
+		response_text = paragon.40200.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40200.hire_custom_tooltip
+		if = {
+			limit = { has_ancrel = yes }
+			add_resource = { minor_artifacts = 10 }
+		}
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_xenophile2 }
+		}
+	}
+}
+
+# militarist 1
+country_event = {
+	id = paragon.40300
+	title = "paragon.40300.name"
+	desc = "paragon.40300.desc"
+	show_sound = par_portrait_01
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	notification_event_icon = "GFX_message_leader_recruitment_vyctor"
+	event_window_type = leader_recruit
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_01 # militarist_leader_adm
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_militarist1
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = militarist
+			DESC = militarist1
+			CATCH_PHRASE = militarist1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_councilor consume_selection = yes }
+			add_trait = { trait = leader_trait_military_overseer consume_selection = yes }
+			add_trait = { trait = leader_trait_melancholic consume_selection = yes }
+			add_trait = { trait = leader_trait_fleet_organizer consume_selection = yes }
+			add_trait = { trait = leader_trait_artillerist consume_selection = yes }
+			set_age = 45
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = militarist_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_militarist_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.40300.a
+		response_text = paragon.40300.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40300.b
+		response_text = paragon.40300.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40300.c
+		response_text = paragon.40300.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40300.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_militarist1 }
+		}
+	}
+}
+
+# militarist 2
+country_event = {
+	id = paragon.40400
+	title = "paragon.40400.name"
+	desc = "paragon.40400.desc"
+	show_sound = par_portrait_02
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	notification_event_icon = "GFX_message_leader_recruitment_giazumon"
+	event_window_type = leader_recruit
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_02 # militarist_leader_gen
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_militarist2
+			LEVEL = 4
+			GENDER = female
+			IMMORTAL = no
+			ETHIC = militarist
+			DESC = militarist2
+			CATCH_PHRASE = militarist2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_general consume_selection = yes }
+			add_trait = { trait = leader_trait_tzrynn_tithe consume_selection = yes }
+			add_trait = { trait = leader_trait_disorganized consume_selection = yes }
+			add_trait = { trait = leader_trait_butcher consume_selection = yes }
+			add_trait = { trait = leader_trait_interrogator consume_selection = yes }
+			set_age = 28
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = militarist_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_militarist_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.40400.a
+		response_text = paragon.40400.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40400.b
+		response_text = paragon.40400.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40400.c
+		response_text = paragon.40400.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40400.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_militarist2 }
+		}
+	}
+}
+
+# xenophobe 1
+country_event = {
+	id = paragon.40500
+	title = "paragon.40500.name"
+	desc = "paragon.40500.desc"
+	show_sound = par_portrait_04
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	notification_event_icon = "GFX_message_leader_recruitment_shuladun"
+	event_window_type = leader_recruit
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_04 # xenophobe_leader_gov
+			CLASS = official
+			TIER = leader_tier_renowned
+			NAME = NAME_xenophobe1
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = xenophobe
+			DESC = xenophobe1
+			CATCH_PHRASE = xenophobe1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_official_governor consume_selection = yes }
+			add_trait = { trait = leader_trait_galvanizer consume_selection = yes }
+			add_trait = { trait = leader_trait_polluter consume_selection = yes }
+			add_trait = { trait = leader_trait_forge_focus consume_selection = yes }
+			add_trait = { trait = leader_trait_distribution_lines consume_selection = yes }
+			set_age = 40
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = xenophobe_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_xenophobe_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.40500.a
+		response_text = paragon.40500.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40500.b
+		response_text = paragon.40500.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40500.c
+		response_text = paragon.40500.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40500.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_xenophobe1 }
+		}
+	}
+}
+
+# xenophobe 2
+country_event = {
+	id = paragon.40600
+	title = "paragon.40600.name"
+	desc = "paragon.40600.desc"
+	show_sound = par_portrait_03
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	notification_event_icon = "GFX_message_leader_recruitment_aturion"
+	event_window_type = leader_recruit
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_03 # xenophobe_leader_gen
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_xenophobe2
+			LEVEL = 4
+			GENDER = indeterminable
+			IMMORTAL = yes
+			ETHIC = xenophobe
+			DESC = xenophobe2
+			CATCH_PHRASE = xenophobe2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_councilor consume_selection = yes }
+			add_trait = { trait = leader_trait_aturion_organizer consume_selection = yes }
+			add_trait = { trait = leader_trait_intolerant consume_selection = yes }
+			add_trait = { trait = trait_ruler_logistic_understanding consume_selection = yes }
+			add_trait = { trait = trait_ruler_recruiter consume_selection = yes }
+			add_trait = { trait = leader_trait_synthetic }
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = xenophobe_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_xenophobe_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.40600.a
+		response_text = paragon.40600.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40600.b
+		response_text = paragon.40600.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40600.c
+		response_text = paragon.40600.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40600.d
+		response_text = paragon.40600.d.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40600.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_xenophobe2 }
+		}
+	}
+}
+
+# egalitarian 1
+country_event = {
+	id = paragon.40700
+	title = "paragon.40700.name"
+	desc = "paragon.40700.desc"
+	show_sound = par_portrait_06
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_jynn"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_06 # egalitarian_leader_gen
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_egalitarian1
+			LEVEL = 4
+			GENDER = indeterminable
+			IMMORTAL = no
+			ETHIC = egalitarian
+			DESC = egalitarian1
+			CATCH_PHRASE = egalitarian1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_general consume_selection = yes }
+			add_trait = { trait = leader_trait_supreme_warrior consume_selection = yes }
+			add_trait = { trait = leader_trait_reclusive consume_selection = yes }
+			add_trait = { trait = leader_trait_guardian consume_selection = yes }
+			add_trait = { trait = leader_trait_heavy_hitter consume_selection = yes }
+			add_trait = { trait = leader_trait_cyborg }
+			set_age = 30
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = egalitarian_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_egalitarian_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.40700.a
+		response_text = paragon.40700.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40700.b
+		response_text = paragon.40700.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40700.c
+		response_text = paragon.40700.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40700.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_egalitarian1 }
+		}
+	}
+}
+
+# egalitarian 2
+country_event = {
+	id = paragon.40800
+	title = "paragon.40800.name"
+	desc = "paragon.40800.desc"
+	show_sound = par_portrait_05
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_zosira"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_05 # egalitarian_leader_sci
+			CLASS = scientist
+			TIER = leader_tier_renowned
+			NAME = NAME_egalitarian2
+			LEVEL = 4
+			GENDER = female
+			IMMORTAL = no
+			ETHIC = egalitarian
+			DESC = egalitarian2
+			CATCH_PHRASE = egalitarian2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_scientist_councilor consume_selection = yes }
+			add_trait = {
+				trait = leader_trait_knowledge_for_the_masses
+				consume_selection = yes
+			}
+			add_trait = { trait = leader_trait_gullible consume_selection = yes }
+			add_trait = { trait = leader_trait_spark_of_genius consume_selection = yes }
+			add_trait = { trait = leader_trait_gorky consume_selection = yes }
+			set_age = 22
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = egalitarian_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_egalitarian_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.40800.a
+		response_text = paragon.40800.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40800.b
+		response_text = paragon.40800.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40800.c
+		response_text = paragon.40800.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40800.d
+		response_text = paragon.40800.d.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40800.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_egalitarian2 }
+		}
+	}
+}
+
+# materialist 1
+country_event = {
+	id = paragon.40900
+	title = "paragon.40900.name"
+	desc = "paragon.40900.desc"
+	show_sound = par_portrait_08
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_xondar"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_08 # materialist_leader_adm
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_materialist1
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = yes
+			ETHIC = materialist
+			DESC = materialist1
+			CATCH_PHRASE = materialist1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_admiral consume_selection = yes }
+			add_trait = { trait = leader_trait_destiny_engineer consume_selection = yes }
+			add_trait = { trait = leader_trait_micromanager consume_selection = yes }
+			add_trait = {
+				trait = leader_trait_rocketry_specialization
+				consume_selection = yes
+			}
+			add_trait = { trait = leader_trait_scout consume_selection = yes }
+			add_trait = { trait = leader_trait_synthetic }
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = materialist_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_materialist_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.40900.a
+		response_text = paragon.40900.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40900.b
+		response_text = paragon.40900.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40900.c
+		response_text = paragon.40900.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.40900.d
+		response_text = paragon.40900.d.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.40900.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_materialist1 }
+		}
+	}
+}
+
+# materialist 2
+country_event = {
+	id = paragon.41000
+	title = "paragon.41000.name"
+	desc = "paragon.41000.desc"
+	show_sound = par_portrait_07
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_borin"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_07 # materialist_leader_sci
+			CLASS = scientist
+			TIER = leader_tier_renowned
+			NAME = NAME_materialist2
+			LEVEL = 5
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = materialist
+			DESC = materialist2
+			CATCH_PHRASE = materialist2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_scientist_councilor consume_selection = yes }
+			add_trait = { trait = leader_trait_brilliant_shipwright consume_selection = yes }
+			add_trait = { trait = leader_trait_substance_abuser consume_selection = yes }
+			add_trait = { trait = leader_trait_salvager consume_selection = yes }
+			add_trait = { trait = leader_trait_master_salvager consume_selection = yes }
+			add_trait = { trait = leader_trait_expertise_materials consume_selection = yes }
+			set_age = 40
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = materialist_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_materialist_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.41000.a
+		response_text = paragon.41000.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41000.b
+		response_text = paragon.41000.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41000.c
+		response_text = paragon.41000.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41000.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_materialist2 }
+		}
+	}
+}
+
+# pacifist 1
+country_event = {
+	id = paragon.41100
+	title = "paragon.41100.name"
+	desc = "paragon.41100.desc"
+	show_sound = par_portrait_09
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_ulddagr"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_09 # pacifist_leader_adm
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_pacifist1
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = pacifist
+			DESC = pacifist1
+			CATCH_PHRASE = pacifist1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_councilor consume_selection = yes }
+			add_trait = { trait = leader_trait_peacekeeper consume_selection = yes }
+			add_trait = { trait = leader_trait_lethargic consume_selection = yes }
+			add_trait = { trait = leader_trait_resilient consume_selection = yes }
+			add_trait = { trait = leader_trait_martinet consume_selection = yes }
+			set_age = 65
+			save_event_target_as = par_renown_09
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = pacifist_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_pacifist_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.41100.a
+		response_text = paragon.41100.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41100.b
+		response_text = paragon.41100.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41100.c
+		response_text = paragon.41100.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41100.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_pacifist1 }
+		}
+	}
+}
+
+# pacifist 2
+country_event = {
+	id = paragon.41200
+	title = "paragon.41200.name"
+	desc = "paragon.41200.desc"
+	show_sound = par_portrait_10
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_vas"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_10 # pacifist_leader_gov
+			CLASS = official
+			TIER = leader_tier_renowned
+			NAME = NAME_pacifist2
+			LEVEL = 4
+			GENDER = female
+			IMMORTAL = no
+			ETHIC = pacifist
+			DESC = pacifist2
+			CATCH_PHRASE = pacifist2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = {
+				trait = subclass_official_diplomacy_councilor
+				consume_selection = yes
+			}
+			add_trait = { trait = leader_trait_master_diplomat consume_selection = yes }
+			add_trait = { trait = leader_trait_lavish_lifestyle consume_selection = yes }
+			add_trait = { trait = trait_ruler_deep_connections consume_selection = yes }
+			add_trait = { trait = leader_trait_courtroom_training consume_selection = yes }
+			set_age = 30
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = pacifist_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_pacifist_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.41200.a
+		response_text = paragon.41200.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41200.b
+		response_text = paragon.41200.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41200.c
+		response_text = paragon.41200.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41200.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_pacifist2 }
+		}
+	}
+}
+
+# authoritarian 1
+country_event = {
+	id = paragon.41300
+	title = "paragon.41300.name"
+	desc = "paragon.41300.desc"
+	show_sound = par_portrait_14
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_kaisha"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_14 # authoritarian_leader_gen
+			CLASS = official
+			TIER = leader_tier_renowned
+			NAME = NAME_authoritarian1
+			LEVEL = 4
+			GENDER = female
+			IMMORTAL = no
+			ETHIC = authoritarian
+			DESC = authoritarian1
+			CATCH_PHRASE = authoritarian1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = {
+				trait = subclass_official_diplomacy_councilor
+				consume_selection = yes
+			}
+			add_trait = { trait = leader_trait_spymaster consume_selection = yes }
+			add_trait = { trait = leader_trait_tyrannical consume_selection = yes }
+			add_trait = { trait = leader_trait_spycraft consume_selection = yes }
+			add_trait = { trait = trait_ruler_eye_for_talent consume_selection = yes }
+			set_age = 36
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = authoritarian_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_authoritarian_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.41300.a
+		response_text = paragon.41300.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41300.b
+		response_text = paragon.41300.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41300.c
+		response_text = paragon.41300.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41300.d
+		response_text = paragon.41300.d.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41300.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_authoritarian1 }
+		}
+	}
+}
+
+# authoritarian 2
+country_event = {
+	id = paragon.41400
+	title = "paragon.41400.name"
+	desc = "paragon.41400.desc"
+	show_sound = par_portrait_13
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	notification_event_icon = "GFX_message_leader_recruitment_qlaminder"
+	event_window_type = leader_recruit
+	auto_opens = no
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_13 # authoritarian_leader_gov
+			CLASS = commander
+			TIER = leader_tier_renowned
+			NAME = NAME_authoritarian2
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = authoritarian
+			DESC = authoritarian2
+			CATCH_PHRASE = authoritarian2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_commander_governor consume_selection = yes }
+			add_trait = { trait = leader_trait_arbiter consume_selection = yes }
+			add_trait = { trait = leader_trait_sadistic consume_selection = yes }
+			add_trait = { trait = leader_trait_iron_fist_2 consume_selection = yes }
+			add_trait = { trait = leader_trait_private_mines_2 consume_selection = yes }
+			set_age = 39
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = authoritarian_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_authoritarian_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.41400.a
+		response_text = paragon.41400.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41400.b
+		response_text = paragon.41400.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41400.c
+		response_text = paragon.41400.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41400.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_authoritarian2 }
+		}
+	}
+}
+
+# spiritualist 1
+country_event = {
+	id = paragon.41500
+	title = "paragon.41500.name"
+	desc = "paragon.41500.desc"
+	show_sound = par_portrait_15
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_ulastar"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_15 # spiritualist_leader_gov
+			CLASS = official
+			TIER = leader_tier_renowned
+			NAME = NAME_spiritualist1
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = spiritualist
+			DESC = spiritualist1
+			CATCH_PHRASE = spiritualist1_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_official_economy_councilor consume_selection = yes }
+			add_trait = { trait = leader_trait_shroud_preacher consume_selection = yes }
+			add_trait = { trait = leader_trait_irenic consume_selection = yes }
+			add_trait = { trait = leader_trait_cultural_focus consume_selection = yes }
+			add_trait = { trait = leader_trait_reformer consume_selection = yes }
+			add_trait = { trait = leader_trait_psionic }
+			set_age = 48
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = spiritualist_leader_1
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_spiritualist_leader_1
+		}
+	}
+
+	option = {
+		name = paragon.41500.a
+		response_text = paragon.41500.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41500.b
+		response_text = paragon.41500.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41500.c
+		response_text = paragon.41500.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41500.d
+		response_text = paragon.41500.d.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41500.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_spiritualist1 }
+		}
+	}
+}
+
+# spiritualist 2
+country_event = {
+	id = paragon.41600
+	title = "paragon.41600.name"
+	desc = "paragon.41600.desc"
+	show_sound = par_portrait_16
+	is_triggered_only = yes
+	picture = GFX_leader_recruitment_bg_renowned
+	auto_opens = no
+	event_window_type = leader_recruit
+	notification_event_icon = "GFX_message_leader_recruitment_nasuz"
+
+	immediate = {
+		ethic_leader_creator = {
+			SPECIES_CLASS = random_non_machine
+			LEADER_PORTRAIT = par_renown_16 # spiritualist_leader_sci
+			CLASS = scientist
+			TIER = leader_tier_renowned
+			NAME = NAME_spiritualist2
+			LEVEL = 4
+			GENDER = male
+			IMMORTAL = no
+			ETHIC = spiritualist
+			DESC = spiritualist2
+			CATCH_PHRASE = spiritualist2_catch_phrase
+		}
+		last_created_leader = {
+			add_trait = { trait = subclass_scientist_scholar consume_selection = yes }
+			add_trait = { trait = leader_trait_midas_touch consume_selection = yes }
+			add_trait = { trait = leader_trait_opinionated consume_selection = yes }
+			add_trait = { trait = leader_trait_archaeologist_2 consume_selection = yes }
+			add_trait = {
+				trait = leader_trait_academic_dig_site_expert
+				consume_selection = yes
+			}
+			add_trait = { trait = leader_trait_resilient consume_selection = yes }
+			set_age = 80
+		}
+	}
+
+	picture_event_data = {
+		portrait = event_target:ethic_leader
+		room = ethic_spaceship_room
+	}
+
+	option = {
+		name = DISMISS
+		tag = dismiss_leader
+		hidden_effect = {
+			remove_global_flag = spiritualist_leader_2
+			ethic_leader_kill_effect = yes
+			set_country_flag = dismissed_spiritualist_leader_2
+		}
+	}
+
+	option = {
+		name = paragon.41600.a
+		response_text = paragon.41600.a.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41600.b
+		response_text = paragon.41600.b.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = paragon.41600.c
+		response_text = paragon.41600.c.response
+		is_dialog_only = yes
+	}
+
+	option = {
+		name = HIRE
+		tag = hire_leader
+		custom_tooltip = paragon.41600.hire_custom_tooltip
+		hidden_effect = {
+			ethic_leader_hire_effect = { GLOBAL_EVENT_TARGET = renowned_spiritualist2 }
+		}
+	}
+}
+
+###### Renowned leader events ######
+# Fires from on_decade_pulse_country
+country_event = {
+	id = paragon.41234
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_paragon_dlc = yes
+	}
+
+	immediate = {
+		random_owned_leader = {
+			limit = { is_leader_tier = leader_tier_renowned }
+			switch = {
+				trigger = has_leader_flag
+				renowned_xenophile1 = { # Lysator Syng
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40110
+								days = 1
+								random = 1800
+							}
+						} # The Treasure of Zteg-Mayr
+						10 = {
+							leader_event = {
+								id = paragon.40120
+								days = 1
+								random = 1800
+							}
+						} # Safe Haven
+						80 = {  }
+					}
+				}
+				renowned_xenophile2 = { # Nona
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40210
+								days = 1
+								random = 1800
+							}
+						} # Lost Tribute
+						10 = {
+							leader_event = {
+								id = paragon.40220
+								days = 1
+								random = 1800
+							}
+						} # A Blorg Comes Calling
+						80 = {  }
+					}
+				}
+				renowned_militarist1 = { # Baron Vyctor Jariden
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40310
+								days = 1
+								random = 1800
+							}
+						} # Free of His Burdens
+						10 = {
+							leader_event = {
+								id = paragon.40320
+								days = 1
+								random = 1800
+							}
+						} # Outspoken Expansionist
+						80 = {  }
+					}
+				}
+				renowned_militarist2 = { # Gia'Zumon
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40410
+								days = 1
+								random = 1800
+							}
+						} # Drawn by Bloodshed
+						10 = {
+							leader_event = {
+								id = paragon.40420
+								days = 1
+								random = 1800
+							}
+						} # Blood and Sand
+						80 = {  }
+					}
+				}
+				renowned_xenophobe1 = { # Factorator Shuladun
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40510
+								days = 1
+								random = 1800
+							}
+						} # Optimization Proposal
+						10 = {
+							leader_event = {
+								id = paragon.40520
+								days = 1
+								random = 1800
+							}
+						} # Promising Experiments?
+						80 = {  }
+					}
+				}
+				renowned_xenophobe2 = { # Aturion
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40610
+								days = 1
+								random = 1800
+							}
+						} # Population Control Program
+						10 = {
+							leader_event = {
+								id = paragon.40620
+								days = 1
+								random = 1800
+							}
+						} # Criminal Reformation Program
+						80 = {  }
+					}
+				}
+				renowned_egalitarian1 = { # Jynn
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40710
+								days = 1
+								random = 1800
+							}
+						} # A Skilled Apprentice
+						10 = {
+							leader_event = {
+								id = paragon.40720
+								days = 1
+								random = 1800
+							}
+						} # Numinous Support
+						80 = {  }
+					}
+				}
+				renowned_egalitarian2 = { # Zosira K'Tun
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.40810
+								days = 1
+								random = 1800
+							}
+						} # Science is Magic
+						10 = {
+							leader_event = {
+								id = paragon.40820
+								days = 1
+								random = 1800
+							}
+						} # Adopted Alien Pet
+						80 = {  }
+					}
+				}
+				renowned_materialist1 = { # Xondar
+					random_list = {
+						10 = {
+							modifier = {
+								factor = 0
+								root = { is_synthetic_empire = yes is_individual_machine = no }
+							}
+							leader_event = {
+								id = paragon.40910
+								days = 1
+								random = 1800
+							}
+						} # Xondar 2.0
+						10 = {
+							leader_event = {
+								id = paragon.40920
+								days = 1
+								random = 1800
+							}
+						} # Valuable Alloys
+						80 = {  }
+					}
+				}
+				renowned_materialist2 = { # Borin
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41010
+								days = 1
+								random = 1800
+							}
+						} # I Was Born in the Year of ...
+						10 = {
+							leader_event = {
+								id = paragon.41020
+								days = 1
+								random = 1800
+							}
+						} # Say Hello to Beryllia
+						80 = {  }
+					}
+				}
+				renowned_pacifist1 = { # Judge Uld Dagr
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41110
+								days = 1
+								random = 1800
+							}
+						} # Criminals Exposed
+						10 = {
+							leader_event = {
+								id = paragon.41120
+								days = 1
+								random = 1800
+							}
+						} # On the Nature of Crime
+						80 = {  }
+					}
+				}
+				renowned_pacifist2 = { # Vas the Gilded
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41210
+								days = 1
+								random = 1800
+							}
+						} # Peace and Prosperity
+						10 = {
+							leader_event = {
+								id = paragon.41220
+								days = 1
+								random = 1800
+							}
+						} # In Our Time of Need
+						80 = {  }
+					}
+				}
+				renowned_authoritarian1 = { # Kai-Sha
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41310
+								days = 1
+								random = 1800
+							}
+						} # Gathered Intel
+						10 = {
+							leader_event = {
+								id = paragon.41320
+								days = 1
+								random = 1800
+							}
+						} # Expanded Contact Network
+						80 = {  }
+					}
+				}
+				renowned_authoritarian2 = { # Q'la-Minder
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41410
+								days = 1
+								random = 1800
+							}
+						} # Vanity Palace
+						10 = {
+							leader_event = {
+								id = paragon.41420
+								days = 1
+								random = 1800
+							}
+						} # The Embezzler
+						80 = {  }
+					}
+				}
+				renowned_spiritualist1 = { # Ulastar
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41510
+								days = 1
+								random = 1800
+							}
+						} # The Great Prophecy
+						10 = {
+							leader_event = {
+								id = paragon.41520
+								days = 1
+								random = 1800
+							}
+						} # Heeding the Call
+						80 = {  }
+					}
+				}
+				renowned_spiritualist2 = { # Nasuz Demetor
+					random_list = {
+						10 = {
+							leader_event = {
+								id = paragon.41610
+								days = 1
+								random = 1800
+							}
+						} # Relics of an Ancient Past
+						10 = {
+							leader_event = {
+								id = paragon.41620
+								days = 1
+								random = 1800
+							}
+						} # Voices in the Void
+						80 = {  }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Lysator Syng / xenophile1
+# The Treasure of Zteg-Mayr
+leader_event = {
+	id = paragon.40110
+	title = paragon.40110.name
+	desc = paragon.40110.desc
+	picture = GFX_evt_star_chart
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		exists = owner
+	}
+
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40110.a
+		owner = {
+			random_planet_within_border = {
+				limit = {
+					NOR = {
+						is_star = yes
+						is_capital = yes
+						is_planet_class = pc_astral_scar
+					}
+				}
+				enable_special_project = {
+					name = "LYSATOR_PIRATE_TREASURE"
+					location = this
+					owner = root.owner
+				}
+			}
+		}
+	}
+}
+
+ship_event = {
+	id = paragon.40111
+	title = paragon.40111.name
+	desc = paragon.40111.desc
+	picture = GFX_evt_ship_offloading_cargo
+	show_sound = event_default
+	is_triggered_only = yes
+	location = root
+
+	trigger = {
+		exists = owner
+	}
+
+	option = {
+		name = paragon.40111.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier3materialreward
+				min = @tier3materialmin
+				max = @tier3materialmax
+			}
+			add_monthly_resource_mult = {
+				resource = rare_crystals
+				value = @tier2materialreward
+				min = @tier2materialmin
+				max = @tier2materialmax
+			}
+			add_monthly_resource_mult = {
+				resource = exotic_gases
+				value = @tier2materialreward
+				min = @tier2materialmin
+				max = @tier2materialmax
+			}
+			add_monthly_resource_mult = {
+				resource = volatile_motes
+				value = @tier2materialreward
+				min = @tier2materialmin
+				max = @tier2materialmax
+			}
+		}
+		if = {
+			limit = { has_ancrel = yes }
+			owner = {
+				add_resource = { minor_artifacts = 100 }
+			}
+		}
+	}
+}
+
+# Lysator Syng / xenophile1
+# Safe Haven
+leader_event = {
+	id = paragon.40120
+	title = paragon.40120.name
+	desc = paragon.40120.desc
+	picture = GFX_evt_busy_spaceport
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = owner
+		owner = { exists = capital_scope }
+	}
+
+	immediate = {
+		create_random_species = yes
+		last_created_species = { save_event_target_as = random_species_1 }
+		create_random_species = yes
+		last_created_species = { save_event_target_as = random_species_2 }
+		create_random_species = yes
+		last_created_species = { save_event_target_as = random_species_3 }
+		create_random_species = yes
+		last_created_species = { save_event_target_as = random_species_4 }
+	}
+
+	option = {
+		name = paragon.40120.a
+		owner.capital_scope = {
+			# TODO [AA]: [AUG-50297] Modifiers should apply to the pop group
+			create_pop_group = {
+				species = event_target:random_species_1
+				effect = {
+					add_modifier = { modifier = pop_outcast_happy years = 10 }
+				}
+			}
+			create_pop_group = {
+				species = event_target:random_species_2
+				effect = {
+					add_modifier = { modifier = pop_outcast_unhappy years = 10 }
+				}
+			}
+			create_pop_group = {
+				species = event_target:random_species_3
+				effect = {
+					add_modifier = { modifier = pop_outcast_crime years = 10 }
+				}
+			}
+			create_pop_group = { species = event_target:random_species_4 }
+		}
+	}
+
+	option = {
+		name = paragon.40120.b
+		add_trait = { trait = leader_trait_stubborn_2 }
+	}
+}
+
+# Nona / xenophile2
+# Lost Tribute
+leader_event = {
+	id = paragon.40210
+	title = paragon.40210.name
+	desc = paragon.40210.desc
+	picture = GFX_evt_cargoship_caravan
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40210.a
+		owner = {
+			random_system_within_border = {
+				random_system_planet = {
+					limit = {
+						is_star = no
+						is_capital = no
+					}
+					enable_special_project = {
+						name = "NONA_LOST_CONVOY"
+						location = this
+						owner = root.owner
+					}
+				}
+			}
+		}
+	}
+}
+
+ship_event = {
+	id = paragon.40211
+	title = paragon.40211.name
+	desc = paragon.40211.desc
+	picture = GFX_evt_ship_offloading_cargo
+	show_sound = event_default
+	is_triggered_only = yes
+	location = root
+
+	trigger = {
+		exists = owner
+	}
+
+	option = {
+		name = paragon.40211.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = minerals
+				value = @tier3materialreward
+				min = @tier3materialmin
+				max = @tier3materialmax
+			}
+			add_monthly_resource_mult = {
+				resource = consumer_goods
+				value = @tier2materialreward
+				min = @tier2materialmin
+				max = @tier2materialmax
+			}
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier2materialreward
+				min = @tier2materialmin
+				max = @tier2materialmax
+			}
+		}
+	}
+}
+
+# Nona / xenophile2
+# A Blorg Comes Calling
+leader_event = {
+	id = paragon.40220
+	title = paragon.40220.name
+	desc = paragon.40220.desc
+
+	inline_script = {
+		script = events/biogenesis_event_art
+		OWNER = owner
+		REGULAR_PICTURE = GFX_evt_ship_in_orbit
+		BIOSHIP_PICTURE = GFX_evt_bio_ships_orbiting
+	}
+
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40220.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = minerals
+				value = @tier3materialreward
+				min = @tier3materialmin
+				max = @tier3materialmax
+			}
+			hidden_effect = {
+				create_species = {
+					name = "PRESCRIPTED_species_name_blorg"
+					plural = "PRESCRIPTED_species_plural_blorg"
+					adjective = "PRESCRIPTED_species_adjective_blorg"
+					class = FUN
+					portrait = fun12
+					gender = indeterminable
+					traits = {
+						ideal_planet_class = capital_scope
+						trait = "trait_repugnant"
+						trait = "trait_solitary"
+						trait = "trait_venerable"
+						trait = "trait_nomadic"
+					}
+				}
+				create_leader = {
+					species = last_created_species
+					name = "NONA_BLORG_EX_HUSBAND_NAME"
+					custom_description = "NONA_BLORG_EX_HUSBAND_DESC"
+					class = official
+					set_age = 42
+					skill = 3
+					randomize_traits = yes
+					background_ethic = ethic_xenophile
+					effect = { save_event_target_as = keram_the_blorg }
+				}
+				event_target:keram_the_blorg = {
+					add_trait = {
+						trait = leader_trait_mining_focus
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_substance_abuser
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_melancholic
+						show_message = no
+						consume_selection = yes
+					}
+					set_owner = prev
+				}
+				hire_event_leader_message = { LEADER = keram_the_blorg }
+			}
+		}
+		custom_tooltip = paragon.40220.a.custom_tooltip
+	}
+
+	option = {
+		name = paragon.40220.b
+	}
+}
+
+# Baron Vyctor Jariden / militarist1
+# Free of His Burdens
+leader_event = {
+	id = paragon.40310
+	title = paragon.40310.name
+	desc = paragon.40310.desc
+	picture = GFX_evt_atmospheric_flight
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40310.a
+		this = { remove_all_negative_traits = yes add_experience = 5000 }
+	}
+}
+
+# Baron Vyctor Jariden / militarist1
+# Outspoken Expansionist
+leader_event = {
+	id = paragon.40320
+	title = paragon.40320.name
+	desc = paragon.40320.desc
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40320.a
+		owner = {
+			add_modifier = { modifier = vyctor_aggressive_expansion_plan years = 10 }
+		}
+	}
+
+	option = {
+		name = paragon.40320.b
+		owner = {
+			add_modifier = { modifier = vyctor_improved_fleet_logistics years = 10 }
+		}
+	}
+}
+
+# Gia'Zumon / militarist2
+# Drawn by Bloods
+leader_event = {
+	id = paragon.40410
+	title = paragon.40410.name
+	desc = paragon.40410.desc
+	picture = GFX_evt_diplomatic_visit
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40410.a
+		owner = {
+			hidden_effect = {
+				create_species = {
+					name = "PRESCRIPTED_species_name_tzynn"
+					plural = "PRESCRIPTED_species_plural_tzynn"
+					adjective = "PRESCRIPTED_species_adjective_tzynn"
+					class = REP
+					portrait = rep9
+					gender = male
+					traits = {
+						ideal_planet_class = capital_scope
+						trait = "trait_strong"
+						trait = "trait_resilient"
+						trait = "trait_rapid_breeders"
+						trait = "trait_decadent"
+						trait = "trait_quarrelsome"
+					}
+				}
+				create_leader = {
+					species = last_created_species
+					name = "GIA_ZUMON_GREAT_WARRIOR_NAME"
+					custom_description = "GIA_ZUMON_GREAT_WARRIOR_DESC"
+					CLASS = commander
+					set_age = 55
+					skill = 5
+					randomize_traits = yes
+					background_ethic = "ethic_militarist"
+					effect = { save_event_target_as = hask_guttra }
+				}
+				event_target:hask_guttra = {
+					add_trait = {
+						trait = subclass_commander_admiral
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_aggressive
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_demolisher_2
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_tyrannical
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_reckless
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_stubborn
+						show_message = no
+						consume_selection = yes
+					}
+					set_owner = prev
+				}
+				hire_event_leader_message = { LEADER = hask_guttra }
+			}
+		}
+		custom_tooltip = paragon.40410.a.custom_tooltip
+	}
+
+	option = {
+		name = paragon.40410.b
+		owner = {
+			add_modifier = {
+				modifier = gia_zumon_taught_warfare_by_great_warrior
+				years = 10
+			}
+		}
+	}
+}
+
+# Gia'Zumon / militarist2
+# Blood and Sand
+leader_event = {
+	id = paragon.40420
+	title = paragon.40420.name
+	desc = paragon.40420.desc
+	picture = GFX_evt_gladiators
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	immediate = {
+		owner = {
+			if = {
+				limit = {
+					any_owned_planet = { planet_crime > 0 }
+				}
+				random_owned_planet = {
+					limit = { planet_crime > 0 }
+					save_event_target_as = coliseum_planet
+				}
+			}
+			else = {
+				random_owned_planet = { save_event_target_as = coliseum_planet }
+			}
+		}
+	}
+
+	option = {
+		name = paragon.40420.a
+		owner = {
+			if = {
+				limit = { exists = event_target:coliseum_planet }
+				event_target:coliseum_planet = {
+					add_modifier = { modifier = gia_zumon_arena years = 50 }
+					add_modifier = { modifier = gia_zumon_arena_opened years = 10 }
+					if = {
+						limit = {
+							any_owned_pop_group = { is_pop_category = criminal }
+						}
+						every_owned_pop_group = {
+							limit = { is_pop_category = criminal }
+							kill_single_pop = yes
+						}
+					}
+					else = {
+						weighted_random_owned_pop_group = { kill_single_pop = yes }
+					}
+				}
+			}
+		}
+		add_experience = 5000
+	}
+
+	option = {
+		name = paragon.40420.b
+	}
+}
+
+# Factorator Shuladun / xenophobe1
+# Optimization Proposal
+leader_event = {
+	id = paragon.40510
+	title = paragon.40510.name
+	desc = paragon.40510.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = planet }
+			planet = { save_event_target_as = planet_governed }
+		}
+		else = {
+			owner.capital_scope = { save_event_target_as = planet_governed }
+		}
+	}
+
+	option = {
+		name = paragon.40510.a
+		event_target:planet_governed = {
+			add_modifier = { modifier = factorator_industrial_network }
+		}
+	}
+
+	option = {
+		name = paragon.40510.b
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+		}
+	}
+}
+
+# Factorator Shuladun / xenophobe1
+# Promising Experiments?
+leader_event = {
+	id = paragon.40520
+	title = paragon.40520.name
+	desc = paragon.40520.desc
+	picture = GFX_evt_bribery
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = planet }
+			planet = { save_event_target_as = planet_governed }
+		}
+		else = {
+			owner.capital_scope = { save_event_target_as = planet_governed }
+		}
+	}
+
+	option = {
+		name = paragon.40520.a
+		event_target:planet_governed = {
+			random_owned_pop_group = { kill_single_pop = yes }
+			add_modifier = { modifier = factorator_inhumane_work_experiments years = 5 }
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+	}
+
+	option = {
+		name = paragon.40520.b
+		event_target:planet_governed = {
+			add_modifier = {
+				modifier = factorator_inhumane_work_experiments_stopped
+				years = 10
+			}
+		}
+	}
+}
+
+# Aturion / xenophobe2
+# Population Control Program
+leader_event = {
+	id = paragon.40610
+	title = paragon.40610.name
+	desc = paragon.40610.desc
+	picture = GFX_evt_financial_instruments
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40610.a
+		owner = {
+			add_modifier = { modifier = aturion_population_reform years = 10 }
+		}
+	}
+
+	option = {
+		name = paragon.40610.b
+	}
+}
+
+# Aturion / xenophobe2
+# Criminal Reformation Program
+leader_event = {
+	id = paragon.40620
+	title = paragon.40620.name
+	desc = paragon.40620.desc
+
+	inline_script = {
+		script = events/biogenesis_event_art
+		OWNER = owner
+		REGULAR_PICTURE = GFX_evt_space_hangar
+		BIOSHIP_PICTURE = GFX_evt_bioship_hangar
+	}
+
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40620.a
+		owner = {
+			add_modifier = {
+				modifier = aturion_forced_rehabilitation_programs
+				years = 20
+			}
+			every_owned_planet = {
+				limit = { planet_crime > 0 }
+				every_owned_pop_group = {
+					limit = { is_pop_category = criminal }
+					random = { chance = 17 kill_single_pop = yes }
+				}
+				switch = {
+					trigger = has_modifier
+					criminal_underworld = { remove_modifier = criminal_underworld }
+					criminal_underworld_experimenters = {
+						remove_modifier = criminal_underworld_experimenters
+					}
+					gang_wars = { remove_modifier = gang_wars }
+					gang_wars_experimenters = { remove_modifier = gang_wars_experimenters }
+					center_of_drug_trade = { remove_modifier = center_of_drug_trade }
+					center_of_drug_trade_experimenters = {
+						remove_modifier = center_of_drug_trade_experimenters
+					}
+					mob_rule = { remove_modifier = mob_rule }
+					mob_rule_experimenters = { remove_modifier = mob_rule_experimenters }
+					crime_wave = { remove_modifier = crime_wave }
+					cartel_war = { remove_modifier = cartel_war }
+					corrupt_administration = { remove_modifier = corrupt_administration }
+					crime_lord_deal = { remove_modifier = crime_lord_deal }
+					crime_lord_deal_broken = { remove_modifier = crime_lord_deal_broken }
+					criminal_gambling = { remove_modifier = criminal_gambling }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = paragon.40620.b
+		owner = {
+			add_modifier = { modifier = aturion_criminal_reformation_programs years = 20 }
+		}
+	}
+}
+
+# Jynn / egalitarian1
+# A Skilled Apprentice
+leader_event = {
+	id = paragon.40710
+	title = paragon.40710.name
+	desc = paragon.40710.desc
+	picture = GFX_evt_derelict_interior
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40710.a
+		owner = {
+			hidden_effect = {
+				create_species = {
+					name = random
+					class = HUM
+					portrait = humanoid_03
+					gender = random
+					traits = random
+					traits = { ideal_planet_class = capital_scope }
+				}
+				create_leader = {
+					species = last_created_species
+					name = random
+					custom_description = "JYNN_APPRENTICE_DESC"
+					class = commander
+					set_age = 19
+					skill = 3
+					randomize_traits = yes
+					background_ethic = "ethic_egalitarian"
+					effect = { save_event_target_as = jynn_apprentice }
+				}
+				event_target:jynn_apprentice = {
+					add_trait = {
+						trait = leader_trait_supreme_warrior
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_warden
+						show_message = no
+						consume_selection = yes
+					}
+					set_owner = prev
+				}
+				hire_event_leader_message = { LEADER = jynn_apprentice }
+			}
+		}
+		custom_tooltip = paragon.40710.a.custom_tooltip
+	}
+
+	option = {
+		name = paragon.40710.b
+		owner = {
+			add_modifier = { modifier = jynn_recruited_army_officers years = 40 }
+		}
+	}
+}
+
+# Jynn / egalitarian1
+# Numinous Support
+leader_event = {
+	id = paragon.40720
+	title = paragon.40720.name
+	desc = paragon.40720.desc
+	picture = GFX_evt_cargoship_caravan
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40720.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier4materialreward
+				min = @tier4materialmin
+				max = @tier4materialmax
+			}
+		}
+	}
+}
+
+# Zosira K'Tun / egalitarian2
+# Science is Magic
+leader_event = {
+	id = paragon.40810
+	title = paragon.40810.name
+	desc = paragon.40810.desc
+	picture = GFX_evt_physics_research
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40810.a
+		owner = {
+			locked_random_list = {
+				30 = {
+					add_monthly_resource_mult = {
+						resource = physics_research
+						value = @tier2researchreward
+						min = @tier2researchmin
+						max = @tier2researchmax
+					}
+				}
+				40 = {
+					add_monthly_resource_mult = {
+						resource = physics_research
+						value = @tier3researchreward
+						min = @tier3researchmin
+						max = @tier3researchmax
+					}
+				}
+				20 = {
+					add_monthly_resource_mult = {
+						resource = physics_research
+						value = @tier4researchreward
+						min = @tier4researchmin
+						max = @tier4researchmax
+					}
+				}
+				10 = {
+					if = {
+						limit = {
+							has_utopia = yes
+							NOR = {
+								has_technology = tech_science_nexus
+								is_researching_technology = tech_science_nexus
+								has_tech_option = tech_science_nexus
+							}
+						}
+						add_research_option = tech_science_nexus
+						add_tech_progress = { tech = tech_science_nexus progress = 0.05 }
+					}
+					else = {
+						add_monthly_resource_mult = {
+							resource = physics_research
+							value = @tier5researchreward
+							min = @tier5researchmin
+							max = @tier5researchmax
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Zosira K'Tun / egalitarian2
+# Adopted Alien Pet
+leader_event = {
+	id = paragon.40820
+	title = paragon.40820.name
+	desc = paragon.40820.desc
+	picture = GFX_evt_animal_wildlife
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		NOT = { has_trait = leader_trait_emotional_support_pet }
+	}
+
+	option = {
+		name = paragon.40820.a
+		remove_all_negative_traits = yes
+		add_trait = { trait = leader_trait_emotional_support_pet }
+	}
+}
+
+# Xondar / materialist1
+# Xondar 2.0
+leader_event = {
+	id = paragon.40910
+	title = paragon.40910.name
+	desc = paragon.40910.desc
+	picture = GFX_evt_circuitry_modification
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.40910.a
+		owner = {
+			if = {
+				limit = { has_country_flag = synthetic_empire }
+				add_monthly_resource_mult = {
+					resource = unity
+					value = @tier5unityreward
+					min = @tier5unitymin
+					max = @tier5unitymax
+				}
+			}
+			else_if = {
+				limit = { has_technology = tech_synthetic_leaders }
+				add_monthly_resource_mult = {
+					resource = engineering_research
+					value = @tier5researchreward
+					min = @tier5researchmin
+					max = @tier5researchmax
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_technology = tech_sapient_ai
+						has_technology = tech_droid_workers
+					}
+					add_research_option = tech_synthetic_leaders
+				}
+				else = {
+					switch = {
+						trigger = has_technology
+						tech_sapient_ai = {
+							add_monthly_resource_mult = {
+								resource = engineering_research
+								value = @tier3researchreward
+								min = @tier3researchmin
+								max = @tier3researchmax
+							}
+						}
+						tech_self_aware_logic = { add_research_option = tech_sapient_ai }
+						tech_administrative_ai = { add_research_option = tech_self_aware_logic }
+						tech_basic_science_lab_1 = { add_research_option = tech_administrative_ai }
+						tech_basic_science_lab_2 = { add_research_option = tech_administrative_ai }
+						tech_basic_science_lab_3 = { add_research_option = tech_administrative_ai }
+					}
+					switch = {
+						trigger = has_technology
+						tech_droid_workers = {
+							add_monthly_resource_mult = {
+								resource = engineering_research
+								value = @tier3researchreward
+								min = @tier3researchmin
+								max = @tier3researchmax
+							}
+						}
+						tech_robotic_workers = { add_research_option = tech_droid_workers }
+						tech_powered_exoskeletons = { add_research_option = tech_robotic_workers }
+						tech_colonial_centralization = { add_research_option = tech_powered_exoskeletons }
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = paragon.40910.b
+		if = {
+			limit = {
+				NOT = { has_trait = leader_trait_maniacal_3 }
+			}
+			add_trait = { trait = leader_trait_maniacal_3 }
+		}
+	}
+}
+
+# Xondar / materialist1
+# Valuable Alloys
+leader_event = {
+	id = paragon.40920
+	title = paragon.40920.name
+	desc = paragon.40920.desc
+	picture = GFX_evt_cold_barren
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = owner
+		owner.capital_scope.solar_system = {
+			any_system_planet = {
+				OR = {
+					is_planet_class = pc_barren
+					is_planet_class = pc_barren_cold
+				}
+			}
+		}
+	}
+
+	option = {
+		name = paragon.40920.a
+		owner.capital_scope.solar_system = {
+			random_system_planet = {
+				limit = {
+					OR = {
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+					}
+				}
+				save_event_target_as = xondar_alloy_planet
+				enable_special_project = {
+					name = "XONDAR_VALUABLE_ALLOYS"
+					location = this
+					owner = root.owner
+				}
+			}
+		}
+	}
+}
+
+ship_event = {
+	id = paragon.40921
+	title = paragon.40921.name
+	desc = paragon.40921.desc
+	picture = GFX_evt_mining_operations
+	show_sound = event_default
+	is_triggered_only = yes
+	location = event_target:xondar_alloy_planet
+
+	trigger = {
+		exists = owner
+		owner = { exists = event_target:xondar_alloy_planet }
+	}
+
+	option = {
+		name = paragon.40921.a
+		owner = {
+			event_target:xondar_alloy_planet = { add_deposit = d_alloys_4 }
+		}
+	}
+}
+
+# Borin / materialist2
+# I Was Born in the Year of ...
+leader_event = {
+	id = paragon.41010
+	title = paragon.41010.name
+	desc = paragon.41010.desc
+	picture = GFX_evt_intelligence_report
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41010.a
+		owner = {
+			locked_random_list = {
+				30 = {
+					add_monthly_resource_mult = {
+						resource = engineering_research
+						value = @tier2researchreward
+						min = @tier2researchmin
+						max = @tier2researchmax
+					}
+				}
+				40 = {
+					add_monthly_resource_mult = {
+						resource = engineering_research
+						value = @tier3researchreward
+						min = @tier3researchmin
+						max = @tier3researchmax
+					}
+				}
+				20 = {
+					add_monthly_resource_mult = {
+						resource = engineering_research
+						value = @tier4researchreward
+						min = @tier4researchmin
+						max = @tier4researchmax
+					}
+				}
+				10 = {
+					if = {
+						limit = {
+							has_utopia = yes
+							NOR = {
+								has_technology = tech_mega_engineering
+								is_researching_technology = tech_mega_engineering
+								has_tech_option = tech_mega_engineering
+							}
+						}
+						add_research_option = tech_mega_engineering
+						add_tech_progress = { tech = tech_mega_engineering progress = 0.05 }
+					}
+					else = {
+						add_monthly_resource_mult = {
+							resource = engineering_research
+							value = @tier5researchreward
+							min = @tier5researchmin
+							max = @tier5researchmax
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Borin / materialist2
+# Say Hello to Beryllia
+leader_event = {
+	id = paragon.41020
+	title = paragon.41020.name
+	desc = paragon.41020.desc
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41020.a
+		owner = {
+			hidden_effect = {
+				create_species = {
+					name = random
+					class = MACHINE
+					namelist = AI
+					portrait = sd_rep_robot
+					gender = indeterminable
+					traits = random
+					traits = { trait = trait_robot_repurposed_hardware }
+				}
+				create_leader = {
+					species = last_created_species
+					name = "BORIN_ROBOT_COMPANION_NAME"
+					custom_description = "BORIN_ROBOT_COMPANION_DESC"
+					CLASS = commander
+					immortal = yes
+					set_age = 4
+					skill = 3
+					randomize_traits = yes
+					background_ethic = "ethic_materialist"
+					effect = { save_event_target_as = beryllia change_background_job = none }
+				}
+				event_target:beryllia = {
+					add_trait = {
+						trait = leader_trait_juryrigger
+						show_message = no
+						consume_selection = yes
+					}
+					add_trait = {
+						trait = leader_trait_engineer
+						show_message = no
+						consume_selection = yes
+					}
+					set_owner = prev
+				}
+				hire_event_leader_message = { LEADER = beryllia }
+			}
+		}
+		custom_tooltip = paragon.41020.a.custom_tooltip
+	}
+
+	option = {
+		name = paragon.41020.b
+		owner = {
+			add_modifier = { modifier = borin_administrator_beryllia }
+		}
+	}
+}
+
+# Judge Uld Dagr / pacifist1
+# Criminals Exposed
+leader_event = {
+	id = paragon.41110
+	title = paragon.41110.name
+	desc = paragon.41110.desc
+	picture = GFX_evt_metropolis
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41110.a
+		owner = {
+			add_modifier = { modifier = judge_improved_crime_fighting_laws }
+		}
+	}
+}
+
+# Judge Uld Dagr / pacifist1
+# On the Nature of Crime
+leader_event = {
+	id = paragon.41120
+	title = paragon.41120.name
+	desc = paragon.41120.desc
+	picture = GFX_evt_city_planet
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41120.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+			add_monthly_resource_mult = {
+				resource = influence
+				value = @tier3influencereward
+				min = @tier3influencemin
+				max = @tier3influencemax
+			}
+		}
+	}
+}
+
+# Vas the Gilded / pacifist2
+# Peace and Prosperity
+leader_event = {
+	id = paragon.41210
+	title = paragon.41210.name
+	desc = paragon.41210.desc
+	picture = GFX_evt_synth_organic_relations
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41210.a
+		owner = {
+			add_modifier = { modifier = vas_population_united }
+		}
+	}
+}
+
+# Vas the Gilded / pacifist2
+# In Our Time of Need
+leader_event = {
+	id = paragon.41220
+	title = paragon.41220.name
+	desc = paragon.41220.desc
+	picture = GFX_evt_unity_symbol
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41220.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+			add_monthly_resource_mult = {
+				resource = influence
+				value = @tier3unityreward
+				min = @tier3unitymin
+				value = @tier3influencereward
+				min = @tier3influencemin
+				max = @tier3influencemax
+			}
+		}
+	}
+}
+
+# Kai-Sha / authoritarian1
+# Gathered Intel
+leader_event = {
+	id = paragon.41310
+	title = paragon.41310.name
+	desc = paragon.41310.desc
+	picture = GFX_evt_intelligence_report
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = owner
+		owner = { num_communications > 0 }
+	}
+
+	option = {
+		name = paragon.41310.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier3unityreward
+				min = @tier3unitymin
+				max = @tier3unitymax
+			}
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+			custom_tooltip = paragon.41310.a.custom_tooltip
+			hidden_effect = {
+				random_list = {
+					25 = {
+						every_country = {
+							limit = { has_communications = prev }
+							add_opinion_modifier = {
+								who = prev
+								modifier = opinion_has_sensitive_information_about_us
+							}
+						}
+					}
+					75 = {  }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = paragon.41310.b
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier5unityreward
+				min = @tier5unitymin
+				max = @tier5unitymax
+			}
+		}
+	}
+}
+
+# Kai-Sha / authoritarian1
+# Expanded Contact Network
+leader_event = {
+	id = paragon.41320
+	title = paragon.41320.name
+	desc = paragon.41320.desc
+	picture = GFX_evt_ship_travel
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = owner
+		any_playable_country = {
+			NOT = { is_same_value = prev }
+			has_communications = root.owner
+		}
+	}
+
+	option = {
+		name = paragon.41320.a
+		if = {
+			limit = { has_trait = leader_trait_shadow_broker }
+			add_trait = { trait = leader_trait_shadow_broker_2 }
+		}
+		else_if = {
+			limit = { has_trait = leader_trait_shadow_broker_2 }
+			custom_tooltip = paragon.41320.a.intel.custom_tooltip
+			hidden_effect = {
+				owner = {
+					every_playable_country = {
+						limit = {
+							NOT = { is_same_empire = root.owner }
+							has_communications = root.owner
+						}
+						root.owner = {
+							add_intel = { who = prev amount = @paragon_41320_a_intel_amt }
+						}
+					}
+				}
+			}
+		}
+		else = {
+			add_trait = { trait = leader_trait_shadow_broker }
+		}
+	}
+}
+
+# Q'la-Minder / authoritarian2
+# Vanity Palace
+leader_event = {
+	id = paragon.41410
+	title = paragon.41410.name
+	desc = paragon.41410.desc
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = planet
+	}
+
+	immediate = {
+		planet = { save_event_target_as = planet_governed } # Used in desc
+	}
+
+	option = {
+		name = paragon.41410.a
+		planet = {
+			add_modifier = { modifier = qla_minder_vanity_palace }
+		}
+	}
+}
+
+# Q'la-Minder / authoritarian2
+# The Embezzler
+leader_event = {
+	id = paragon.41420
+	title = paragon.41420.name
+	desc = paragon.41420.desc
+	picture = GFX_evt_ship_offloading_cargo
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41420.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = energy
+				value = @tier5materialreward
+				min = @tier5materialmin
+				max = @tier5materialmax
+			}
+			if = {
+				limit = { has_ancrel = yes }
+				add_resource = { minor_artifacts = 50 }
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_trait = leader_trait_embezzler }
+			}
+			add_trait = { trait = leader_trait_embezzler }
+		}
+	}
+}
+
+# Ulastar / spiritualist1
+# The Great Prophecy
+leader_event = {
+	id = paragon.41510
+	title = paragon.41510.name
+	desc = paragon.41510.desc
+	picture = GFX_evt_clocks
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = planet
+		planet = { pop_amount <= 6000 }
+	}
+
+	option = {
+		name = paragon.41510.a
+		owner = {
+			add_modifier = { modifier = ulastar_prophesied_greater_destiny }
+		}
+	}
+}
+
+# Ulastar / spiritualist1
+# Heeding the Call
+leader_event = {
+	id = paragon.41520
+	title = paragon.41520.name
+	desc = paragon.41520.desc
+	picture = GFX_evt_fleet_good
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		exists = planet
+	}
+
+	immediate = {
+		planet = { save_event_target_as = planet_governed } # Used in desc
+	}
+
+	option = {
+		name = paragon.41520.a
+		custom_tooltip = paragon.41520.a.custom_tooltip
+		hidden_effect = {
+			while = {
+				count = 3
+				planet = {
+					create_species = {
+						name = random
+						class = random_non_machine
+						portrait = random
+						traits = random
+						effect = {
+							change_species_characteristics = { add_trait = trait_psionic }
+						}
+					}
+					create_pop_group = {
+						species = last_created_species
+						ethos = { ethic = ethic_spiritualist }
+						size = 100
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = paragon.41520.b
+		trigger = { is_xenophobe = yes }
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier5unityreward
+				min = @tier5unitymin
+				max = @tier5unitymax
+			}
+		}
+	}
+}
+
+# Nasuz Demetor / spiritualist2
+# Relics of an Ancient Past
+leader_event = {
+	id = paragon.41610
+	title = paragon.41610.name
+	desc = paragon.41610.desc
+	picture = GFX_evt_star_chart
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	option = {
+		name = paragon.41610.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier5researchreward
+				min = @tier5researchmin
+				max = @tier5researchmax
+			}
+			if = {
+				limit = { has_ancrel = yes }
+				add_resource = { minor_artifacts = 200 }
+			}
+		}
+	}
+}
+
+# Nasuz Demetor / spiritualist2
+# Voices in the Void
+leader_event = {
+	id = paragon.41620
+	title = paragon.41620.name
+	desc = paragon.41620.desc
+	picture = GFX_evt_mysterious_signal
+	show_sound = event_default
+	is_triggered_only = yes
+	fire_only_once = yes
+	event_window_type = leader_story
+	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
+	picture_event_data = {
+		portrait = root
+	}
+
+	trigger = {
+		NOT = { has_global_flag = site_ice_trauma_found }
+		owner = {
+			any_planet_within_border = {
+				OR = {
+					is_planet_class = pc_frozen
+					is_cold = yes # inhabitable planets
+				}
+				NOR = {
+					exists = archaeological_site
+					has_planet_flag = suppress_archaeological_sites
+				}
+			}
+		}
+	}
+
+	immediate = {
+		owner = {
+			random_planet_within_border = {
+				limit = {
+					OR = {
+						is_planet_class = pc_frozen
+						is_cold = yes # inhabitable planets
+					}
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
+				}
+				save_event_target_as = nasuz_arcsite_planet # Used in option tooltip
+			}
+		}
+	}
+
+	option = {
+		name = paragon.41620.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+			custom_tooltip = paragon.41620.a.custom_tooltip
+			hidden_effect = {
+				event_target:nasuz_arcsite_planet = {
+					create_archaeological_site = site_ice_trauma
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,189 @@
+#my_casus_belli = {
+#	potential = { ... }		# trigger to make some CBs invalid for certain types of countries; this = attacker (CB owner); default: { always = yes }
+#	is_valid = { ... }		# trigger, evaluated daily to check if CB should be created or destroyed automatically, does not affect CBs granted via script;
+#								# this = attacker (CB owner), from = defender (target country); default: { always = yes }
+#	destroy_if = { ... }	# trigger, evaluated daily to destroy CBs that have been granted via script ahead of expiration date;
+#								# this = attacker (CB owner), from = defender (target country); default: { always = no }
+#	show_notification = no/yes	# optional (default = yes), flag to control whether this CB will generate a notification (to avoid duplicate
+#								# notification when a claim CB is generated)
+#}
+
+cb_galatron = {
+	show_in_diplomacy = yes
+	show_notification = yes
+	potential = {
+		has_global_flag = galatron_activated_first_time
+		is_country_type = default
+		NOR = {
+			is_fallen_empire_berserk_machine = yes
+			is_homicidal = yes
+			has_valid_civic = civic_machine_assimilator
+		}
+	}
+	is_valid = {
+		from = {
+			OR = {
+				has_modifier = galatron_modifier
+				has_relic = r_galatron
+			}
+			has_closed_borders = prev
+		}
+		NOR = {
+			has_total_war_cb = yes
+			is_overlord_to = from
+			from = { is_overlord_to = root }
+		}
+	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 100
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -25 }
+	}
+}
+
+cb_megacorp_subjugate = {
+	show_in_diplomacy = yes
+	show_notification = no
+	potential = {
+		is_country_type = default
+		is_megacorp = yes
+		is_subject = no
+	}
+	is_valid = {
+		NOR = {
+			is_overlord_to = from
+			from = { is_subject = yes }
+		}
+		relative_power = {
+			who = from
+			category = all
+			value > equivalent
+		}
+	}
+	destroy_if = {
+		relative_power = {
+			who = from
+			category = all
+			value < superior
+		}
+	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 200
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -50 }
+	}
+}
+
+cb_hostile_takeover = {
+	show_in_diplomacy = yes
+	show_notification = yes
+	potential = {
+		is_country_type = default
+		is_megacorp = yes
+		NOT = { has_valid_civic = civic_criminal_heritage }
+	}
+	is_valid = {
+		from = { is_megacorp = yes }
+		NOR = {
+			is_in_federation_with = from
+			from = { is_overlord_to = root }
+		}
+		any_country = {
+			OR = {
+				has_commercial_pact = root
+				is_in_federation_with = root
+			}
+			any_owned_planet = {
+				has_branch_office = from
+			}
+		}
+	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 100
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -25 }
+	}
+}
+
+cb_expel_corp = {
+	show_in_diplomacy = yes
+	show_notification = yes
+	potential = {
+		is_country_type = default
+		from = { is_megacorp = yes }
+		is_megacorp = no
+	}
+	is_valid = {
+		NOR = {
+			has_commercial_pact = from
+			is_in_federation_with = from
+		}
+		NOR = {
+			from = { is_overlord_to = root }
+			root = { is_overlord_to = from }
+		}
+		NAND = { # Vfix
+			is_subject = yes
+			from = { is_subject = yes }
+			from.overlord = { is_same_empire = root.overlord }
+		}
+		any_owned_planet = {
+			has_branch_office = from
+		}
+	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 100
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -25 }
+	}
+}
+
+cb_steal_galatron = {
+	show_in_diplomacy = yes
+	show_notification = yes
+	potential = {
+		is_country_type = default
+		has_global_flag = galatron_activated_first_time
+		is_gestalt = no
+		has_policy_flag = unrestricted_wars
+	}
+	is_valid = {
+		from = {
+			OR = {
+				has_modifier = galatron_modifier
+				has_relic = r_galatron
+			}
+			NOT = { has_closed_borders = prev }
+		}
+		NOR = {
+			has_total_war_cb = yes
+			is_overlord_to = from
+			from = { is_overlord_to = root }
+		}
+	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 100
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -25 }
+	}
+}

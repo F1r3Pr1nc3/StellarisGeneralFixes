@@ -1,0 +1,426 @@
+# Patch events to resolve ongoing issues in save games.
+# Can also resolve issues if the patched file gets overwritten.
+namespace = general_patch_active
+# Temp fix workaround (on_single_player_save_game_load)
+event = {
+	id = general_patch_active.99
+	hide_window = yes
+	is_triggered_only = yes
+	# fire_only_once = yes
+	trigger = {
+		years_passed > 20
+	}
+
+	immediate = {
+		random_playable_country = {
+			limit = { is_ai = no }
+			# Fix Shroud engaging for non DLC players, just hack, reason unknown
+			# https://forum.paradoxplaza.com/forum/threads/stellaris-nothing-happens-when-i-try-to-contact-the-shroud-in-the-diplomacy-screen-4-0-21-bb43.1854038/
+			if = {
+				limit = { has_shroud_dlc = no }
+				if = {
+					limit = { has_country_flag = shroud_diplomacy_engaged }
+					remove_country_flag = shroud_diplomacy_engaged
+				}
+				if = {	# Just backward compat. from 4.0 to 4.1
+					limit = {
+						count_country = {
+							count = 0
+							limit = {
+								is_country_type = shroud
+								has_country_flag = shroud_country_flag
+							}
+						}
+					}
+					random_country = {
+						limit = {
+							is_country_type = shroud
+							NOR = {
+								has_country_flag = shroud_country_flag
+								has_country_flag = animator_of_clay_country_flag
+							}
+						}
+						set_country_flag = shroud_country_flag
+					}
+				}
+			}
+			if = {
+				limit = {
+					should_use_increased_treasure_trove_drops = yes
+					has_event_chain = "treasure_hunters_origin_story_chain"
+					OR = {
+						has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
+						has_point_of_interest = { poi = black_needle_base_system_poi }
+						has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
+					}
+				}
+				# weights = { base = 1 modifier = { add = 99 is_ai = no } }
+				if = {	# Fix Vanilla Survey Treasure Hunter Shattered world grand_archive.8051
+					limit = {
+						has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
+						any_system = {
+							has_star_flag = hidden_treasure_system
+							is_point_of_interest = {
+								id = treasure_hunters_explore_system_poi.1
+								event_chain = treasure_hunters_origin_story_chain
+								owner = prev
+							}
+							OR = {
+								NOR = {
+									has_owner = yes
+									exists = starbase
+								}
+								space_owner = { is_same_empire = prevprevprev }
+							}
+							any_system_planet = {
+								has_planet_flag = shattered_ytterite_world
+								is_surveyed = { who = prev status = yes }
+							}
+						}
+					}
+					random_system = {
+						limit = {
+							has_star_flag = hidden_treasure_system
+							is_point_of_interest = {
+								id = treasure_hunters_explore_system_poi.1
+								event_chain = treasure_hunters_origin_story_chain
+								owner = prev
+							}
+							any_system_planet = {
+								has_planet_flag = shattered_ytterite_world
+								is_surveyed = { who = prev status = yes }
+							}
+						}
+						prev = {
+							country_event = {
+								id = grand_archive.8052
+								scopes = { from = prev }
+							}
+						}
+					}
+				}
+				else_if = {	# Fix Vanilla Survey Treasure Hunter Black Needle Base grand_archive.8101
+					limit = {
+						has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
+						any_system = {
+							has_star_flag = hidden_treasure_system
+							is_point_of_interest = {
+								id = black_needle_base_system_poi
+								event_chain = treasure_hunters_origin_story_chain
+								owner = prev
+							}
+							OR = {
+								NOR = {
+									has_owner = yes
+									exists = starbase
+								}
+								space_owner = { is_same_empire = prevprevprev }
+							}
+							any_system_planet = {
+								has_deposit = d_black_needle_base
+								is_surveyed = { who = prev status = yes }
+							}
+						}
+					}
+					random_system = {
+						limit = {
+							has_star_flag = hidden_treasure_system
+							is_point_of_interest = {
+								id = black_needle_base_system_poi
+								event_chain = treasure_hunters_origin_story_chain
+								owner = prev
+							}
+							any_system_planet = {
+								has_deposit = d_black_needle_base
+								is_surveyed = { who = prev status = yes }
+							}
+						}
+						prev = {
+							country_event = {
+								id = grand_archive.8102
+								scopes = { from = prev }
+							}
+						}
+					}
+				}
+				else_if = {	# Fix Vanilla Survey Treasure Hunter Smeegibb shelter grand_archive.8201
+					limit = {
+						has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
+						any_system = {
+							has_star_flag = hidden_treasure_system
+							is_point_of_interest = {
+								id = smeegibb_shelter_system_poi.1
+								event_chain = treasure_hunters_origin_story_chain
+								owner = prev
+							}
+							OR = {
+								NOR = {
+									has_owner = yes
+									exists = starbase
+								}
+								space_owner = { is_same_empire = prevprevprev }
+							}
+							any_system_planet = {
+								has_planet_flag = smeegibb_shelter
+								is_surveyed = { who = prev status = yes }
+							}
+						}
+					}
+					random_system = {
+						limit = {
+							has_star_flag = hidden_treasure_system
+							is_point_of_interest = {
+								id = smeegibb_shelter_system_poi.1
+								event_chain = treasure_hunters_origin_story_chain
+								owner = prev
+							}
+							any_system_planet = {
+								has_planet_flag = smeegibb_shelter
+								is_surveyed = { who = prev status = yes }
+							}
+						}
+						prev = {
+							country_event = {
+								id = grand_archive.8202
+								scopes = { from = prev }
+							}
+						}
+					}
+				}
+			}
+			else_if = {	# Fix vanilla treasure hunter __STR_1__
+				limit = {
+					should_use_increased_treasure_trove_drops = yes
+					OR = {
+						has_country_flag = black_needle_base_ransacked
+						has_country_flag = black_needle_base_stolen_tech
+						# has_country_flag = smeegibb_arc_site_spawned
+					}
+					NOT = {
+						has_point_of_interest = { poi = black_needle_base_system_poi }
+					}
+					any_system_within_border = {
+						has_star_flag = hidden_treasure_system
+						any_system_planet = {
+							OR = {
+								has_planet_flag = planet_defended_forbid_colonization
+								has_planet_flag = can_have_scripted_bombardment
+							}
+							has_deposit = d_black_needle_base
+						}
+					}
+				}
+				random_planet_within_border = {
+					limit = {
+						has_deposit = d_black_needle_base
+						has_planet_flag = planet_defended_forbid_colonization
+					}
+					remove_deposit = d_black_needle_base
+					remove_planet_flag = planet_defended_forbid_colonization
+					set_planet_flag = black_needle_base_destroyed
+					if = {
+						limit = {
+							NOT = { has_deposit = d_abandoned_black_needle_base }
+						}
+						add_deposit = d_abandoned_black_needle_base
+					}
+				}
+			}
+		}
+		# Ascension Trait Fix
+		# This is just a workaround fix once, the real cause is somewhere else
+		every_playable_country = {
+			limit = { has_ascension_path = yes }
+			if = { # Synth trait
+				limit = {
+					is_synthetic_empire = yes
+					has_synthetic_ascension = yes
+				}
+				# Add Virtual Leader Trait: compare cybernetics.5046
+				if = {
+					limit = {
+						OR = {
+							has_tradition = tr_virtuality_1
+							has_tradition = tr_virtuality_adopt
+							has_country_flag = synth_virtual
+						}
+					}
+					# Leader
+					every_owned_leader = {
+						limit = {
+							species = { is_robotic = yes has_virtual_species_trait = yes }
+							NOT = { has_trait = leader_trait_virtual }
+						}
+						add_trait = { trait = leader_trait_virtual show_message = no }
+					}
+					# Species
+					every_owned_leader = {
+						limit = {
+							species = { has_virtual_species_trait = no is_robotic = yes }
+							has_trait = leader_trait_virtual
+							is_leader_tier = leader_tier_default
+							is_gestalt_node = no
+						}
+						prev = {
+							random_owned_species = {
+								limit = {
+									is_same_species = prevprev
+									is_robotic = yes
+									has_virtual_species_trait = yes
+								}
+								prevprev = { change_species = prev }
+							}
+						}
+					}
+				}
+				else = {
+					machine_synthetic_leader_effect = yes
+				}
+			}
+			else_if = { # Psychic trait
+				limit = { has_finished_psionic_tradition = yes }
+				# Leader
+				every_owned_leader = {
+					limit = {
+						species = { is_psionic_species = yes }
+						has_psionic_leader_trait = no
+					}
+					add_trait = { trait = leader_trait_psionic show_message = no }
+				}
+				# Species
+				every_owned_leader = {
+					limit = {
+						species = { is_psionic_species = no }
+						has_trait = leader_trait_psionic
+						is_leader_tier = leader_tier_default
+						is_gestalt_node = no
+					}
+					prev = {
+						random_owned_species = {
+							limit = {
+								is_same_species = prevprev
+								is_psionic_species = yes
+							}
+							prevprev = { change_species = prev }
+						}
+					}
+				}
+			}
+			else_if = { # Cyborg
+				limit = {
+					OR = {
+						has_cybernetic_ascension = yes
+						has_active_tradition = tr_cybernetics_integrated_anatomy
+						has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
+					}
+				}
+				# Leader
+				every_owned_leader = {
+					limit = {
+						species = { has_trait = trait_cybernetic }
+						NOT = { has_trait = leader_trait_cyborg }
+					}
+					add_trait = { trait = leader_trait_cyborg show_message = no }
+				}
+				# Limited Cyborg trait
+				every_owned_leader = {
+					limit = {
+						species = { has_trait = trait_limited_cybernetic }
+						NOT = { has_trait = leader_trait_limited_cyborg }
+					}
+					add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+				}
+				# Species
+				every_owned_leader = {
+					limit = {
+						NOT = {
+							species = { has_trait = trait_cybernetic }
+						}
+						has_trait = leader_trait_cyborg
+						is_leader_tier = leader_tier_default
+					}
+					prev = {
+						random_owned_species = {
+							limit = {
+								is_same_species = prevprev
+								has_trait = trait_cybernetic
+							}
+							prevprev = { change_species = prev }
+						}
+					}
+				}
+				# Species limited
+				every_owned_leader = {
+					limit = {
+						NOT = {
+							species = { has_trait = trait_limited_cybernetic }
+						}
+						has_trait = leader_trait_limited_cyborg
+						is_leader_tier = leader_tier_default
+					}
+					if = {
+						limit = {
+							species = { has_trait = trait_cybernetic }
+						}
+						remove_trait = leader_trait_limited_cyborg
+						add_trait = { trait = leader_trait_cyborg show_message = no }
+					}
+					else = {
+						prev = {
+							random_owned_species = {
+								limit = {
+									is_same_species = prevprev
+									has_trait = trait_limited_cybernetic
+								}
+								prevprev = { change_species = prev }
+							}
+						}
+					}
+				}
+			}
+			else = { # Erudite trait
+				# Leader
+				every_owned_leader = {
+					limit = {
+						species = { has_trait = trait_erudite }
+						NOT = { has_trait = leader_trait_erudite }
+					}
+					add_trait = { trait = leader_trait_erudite show_message = no }
+				}
+				# Species
+				every_owned_leader = {
+					limit = {
+						NOT = {
+							species = { has_trait = trait_erudite }
+						}
+						has_trait = leader_trait_erudite
+						is_leader_tier = leader_tier_default
+						is_gestalt_node = no
+					}
+					prev = {
+						random_owned_species = {
+							limit = {
+								is_same_species = prevprev
+								has_trait = trait_erudite
+							}
+							prevprev = { change_species = prev }
+						}
+					}
+				}
+			}
+		}
+		# Voidworms and Tiyanki and Cutholoids
+		# Compare Ariphaos
+		# TODO move to country scope event_target:cutholoids_country
+		event_target:global_event_country = {
+			switch = {
+				trigger = galaxy_size
+				tiny	= { set_variable = { which = alive_cutholoids value = 1 } set_variable = { which = general_patch_systems_critters value = 1 } } # 200 stars
+				small	= { set_variable = { which = alive_cutholoids value = 2 } set_variable = { which = general_patch_systems_critters value = 2 } } # 400 stars
+				medium	= { set_variable = { which = alive_cutholoids value = 3 } set_variable = { which = general_patch_systems_critters value = 4 } } # 600 stars
+				large	= { set_variable = { which = alive_cutholoids value = 4 } set_variable = { which = general_patch_systems_critters value = 6 } } # 800 stars
+				huge	= { set_variable = { which = alive_cutholoids value = 5 } set_variable = { which = general_patch_systems_critters value = 8 } } # 1000 stars
+			}
+		}
+	}
+}

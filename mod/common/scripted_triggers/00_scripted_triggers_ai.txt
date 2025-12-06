@@ -1,0 +1,409 @@
+
+buildings_build_building = {
+	planet_devastation < 10
+	planet = {
+		has_current_purge = no
+	}
+	OR = {
+		has_modifier = planet_population_control
+		has_modifier = planet_population_control_gestalt
+		has_modifier = planet_robot_assembly_control
+		has_modifier = planet_growth_discouraged
+		free_district_slots = 0
+	}
+	NAND = {
+		has_owner = yes
+		owner = { is_lithoid_devouring_swarm = yes }
+		is_lithoid_devouring_swarm_consumption_world = yes
+	}
+}
+
+country_uses_food = {
+	OR = {
+		if = {
+			limit = {
+				# Check if we have an uninitialized economy, then return true to be safe because we don't know
+				resource_expenses_compare = {
+					resource = food
+					value = 0
+				}
+				resource_expenses_compare = {
+					resource = minerals
+					value = 0
+				}
+				resource_expenses_compare = {
+					resource = energy
+					value = 0
+				}
+			}
+		}
+		else = {
+			resource_expenses_compare = {
+				resource = food
+				value > 0
+			}
+		}
+		country_uses_bio_ships = yes
+	}
+}
+
+country_uses_consumer_goods = {
+	if = {
+		limit = {
+			# Check if we have an uninitialized economy, then return true to be safe because we don't know
+			resource_expenses_compare = {
+				resource = food
+				value = 0
+			}
+			resource_expenses_compare = {
+				resource = minerals
+				value = 0
+			}
+			resource_expenses_compare = {
+				resource = energy
+				value = 0
+			}
+		}
+		# Vfix by v.kihot: initialize on start
+		is_hive_empire = no
+		OR = {
+			is_machine_empire = no
+			has_valid_civic = civic_machine_obsessional_directive
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+	else = {
+		OR = {
+			has_valid_civic = civic_machine_obsessional_directive
+			has_valid_civic = civic_machine_servitor
+			resource_expenses_compare = {
+				resource = consumer_goods
+				value > 0
+			}
+		}
+	}
+}
+
+buildings_difficulty = {
+	is_difficulty > 2
+	years_passed > 20
+	has_resource = { type = energy amount > 1000 }
+	has_resource = { type = minerals amount > 2000 }
+}
+
+buildings_stop_pop = {
+	NOT = { has_planet_flag = ignore_ai_building_limitations }
+	has_owner = yes
+	owner = { is_ai = yes }
+	free_housing < -400
+	free_district_slots = 0
+}
+
+districts_good_energy = {
+	planet = {
+		OR = {
+			has_modifier = hazardous_weather
+			has_modifier = divine_algorithm
+			has_modifier = energy_relic
+			has_modifier = gas_rich_planet_fo_realz
+			has_planet_flag = buildings_good_energy
+		}
+	}
+}
+
+districts_good_minerals = {
+	planet = {
+		NOT = { has_modifier = pm_wenkwort_custodian } # Vfix Ariphaos
+		OR = {
+			has_modifier = extensive_moon_system
+			has_modifier = carbon_world
+			has_modifier = mineral_rich
+			has_modifier = ultra_rich
+			has_modifier = asteroid_belt
+			has_modifier = minerals_relic
+			has_planet_flag = buildings_good_minerals
+		}
+	}
+}
+
+districts_good_food = {
+	planet = {
+		OR = {
+			has_modifier = lush_planet
+			has_planet_flag = buildings_good_food
+			# Vfix Ariphaos
+			has_modifier = paradise_planet
+			has_modifier = ancient_harvesters
+			has_modifier = eat_the_titans
+		}
+	}
+}
+
+jobs_work_minerals_goods = {
+	has_owner = yes
+	owner = {
+		is_ai = yes
+		has_monthly_income = {
+			resource = minerals
+			value < 50
+		}
+		OR = {
+			AND = {
+				has_resource = {
+					type = minerals
+					amount < 5000
+				}
+				has_resource = {
+					type = consumer_goods
+					amount > 1500
+				}
+			}
+			AND = {
+				has_resource = {
+					type = minerals
+					amount < 3000
+				}
+				has_resource = {
+					type = consumer_goods
+					amount > 750
+				}
+			}
+			AND = {
+				has_resource = {
+					type = minerals
+					amount < 501
+				}
+				has_resource = {
+					type = consumer_goods
+					amount > 500
+				}
+			}
+		}
+	}
+} # If true makes the AI really value mining jobs and stops organics from working factory jobs.
+
+buildings_has_motes = {
+	has_owner = yes
+	OR = {
+		owner = {
+			has_monthly_income = {
+				resource = volatile_motes
+				value >= 3
+			}
+		}
+		AND = {
+			free_building_slots > 1
+			owner = {
+				has_monthly_income = {
+					resource = volatile_motes
+					value > 0
+				}
+			}
+		}
+	}
+} # Used in the buildings file to determine if the country has the needed Strategic Resource.
+
+buildings_has_crystals = {
+	has_owner = yes
+	OR = {
+		owner = {
+			has_monthly_income = {
+				resource = rare_crystals
+				value >= 3
+			}
+		}
+		AND = {
+			free_building_slots > 1
+			owner = {
+				has_monthly_income = {
+					resource = rare_crystals
+					value > 0
+				}
+			}
+		}
+	}
+} # Used in the buildings file to determine if the country has the needed Strategic Resource.
+
+buildings_has_exotic_gases = {
+	has_owner = yes
+	OR = {
+		owner = {
+			has_monthly_income = {
+				resource = exotic_gases
+				value >= 3
+			}
+		}
+		AND = {
+			free_building_slots > 1
+			owner = {
+				has_monthly_income = {
+					resource = exotic_gases
+					value > 0
+				}
+			}
+		}
+	}
+} # Used in the buildings file to determine if the country has the needed Strategic Resource.
+
+has_farming_designation = {
+	OR = {
+		has_designation = col_farming
+		has_designation = col_ring_farming
+		has_designation = col_habitat_farming
+		has_designation = col_habitat_gestalt_farming
+	}
+}
+
+has_fortress_designation = {
+	OR = {
+		has_designation = col_fortress
+		has_designation = col_habitat_fortress
+	}
+}
+
+has_factory_designation = {
+	OR = {
+		has_designation = col_capital_factory
+		has_designation = col_factory
+		has_designation = col_mac_factory
+		has_designation = col_ecu_factory
+		has_designation = col_habitat_factory
+	}
+}
+
+has_foundry_designation = {
+	OR = {
+		has_designation = col_capital_foundry
+		has_designation = col_foundry
+		has_designation = col_ecu_foundry
+		has_designation = col_habitat_foundry
+		has_designation = col_mac_foundry
+		has_designation = col_hiv_foundry
+	}
+}
+
+has_generator_designation = {
+	OR = {
+		has_designation = col_generator
+		has_designation = col_habitat_energy
+		has_designation = col_ring_generator
+	}
+}
+
+has_industrial_designation = {
+	OR = {
+		has_designation = col_industrial
+		has_designation = col_habitat_industrial
+		has_designation = col_ecu_industrial
+	}
+}
+
+has_mining_designation = {
+	OR = {
+		has_designation = col_habitat_mining
+		has_designation = col_mining
+	}
+}
+
+has_research_designation = {
+	OR = {
+		has_designation = col_research
+		has_designation = col_ring_research
+		has_designation = col_habitat_research
+		has_designation = col_ecu_research
+	}
+}
+
+has_unity_designation = {
+	OR = {
+		has_designation = col_bureau
+		has_designation = col_habitat_bureau
+		has_designation = col_bureau_machine
+		has_designation = col_trophy_machine
+		has_designation = col_habitat_bureau_machine
+		has_designation = col_bureau_hive
+		has_designation = col_habitat_bureau_hive
+		has_designation = col_bureau_spiritualist
+		has_designation = col_habitat_bureau_spiritualist
+	}
+}
+
+has_rural_designation = {
+	OR = {
+		has_designation = col_capital_extraction
+		has_designation = col_hiv
+	}
+}
+
+has_trade_designation = {
+	OR = {
+		has_designation = col_capital_trade
+		has_designation = col_city
+		has_designation = col_habitat_trade
+		has_designation = col_ring_trade
+		has_designation = col_ecu_mix
+	}
+}
+
+meets_basic_energy_threshold = {
+	OR = {
+		has_monthly_income = { resource = energy value > @economic_plan_energy_target }
+		resource_stockpile_compare = {
+			resource = energy
+			value > @economic_plan_stockpile_threshold
+		}
+	}
+}
+
+meets_basic_minerals_threshold = {
+	OR = {
+		has_monthly_income = { resource = minerals value > @economic_plan_mineral_target }
+		resource_stockpile_compare = {
+			resource = minerals
+			value > @economic_plan_stockpile_threshold
+		}
+	}
+}
+
+meets_basic_food_threshold = {
+	OR = {
+		country_uses_food = no
+		has_monthly_income = { resource = food value > @economic_plan_food_target }
+		resource_stockpile_compare = {
+			resource = food
+			value > @economic_plan_stockpile_threshold
+		}
+	}
+}
+
+meets_basic_alloys_threshold = {
+	OR = {
+		has_monthly_income = { resource = alloys value > @economic_plan_alloy_target }
+		resource_stockpile_compare = {
+			resource = alloys
+			value > @economic_plan_stockpile_threshold
+		}
+	}
+}
+
+meets_basic_consumer_goods_threshold = {
+	OR = {
+		country_uses_consumer_goods = no
+		has_monthly_income = { resource = consumer_goods value > @economic_plan_consumer_goods_target }
+		resource_stockpile_compare = {
+			resource = consumer_goods
+			value > @economic_plan_stockpile_threshold
+		}
+	}
+}
+
+meets_basic_research_threshold = {
+	has_monthly_income = { resource = physics_research value > @economic_plan_research_target }
+	has_monthly_income = { resource = society_research value > @economic_plan_research_target }
+	has_monthly_income = { resource = engineering_research value > @economic_plan_research_target }
+}
+
+meets_basic_resource_thresholds = {
+	meets_basic_energy_threshold = yes
+	meets_basic_minerals_threshold = yes
+}

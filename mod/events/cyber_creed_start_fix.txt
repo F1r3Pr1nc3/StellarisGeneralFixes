@@ -1,0 +1,88 @@
+
+#
+# Created by FirePrince
+# Yes, normally it's not a good idea to add new events in vanilla namesapce, but we imitate vanilla. :P
+#
+namespace = machine_age
+# on_single_player_save_game_load
+# Vfix leader trait just for spiritualists
+event = {
+	id = machine_age.2151
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		every_playable_country = {
+			limit = { has_origin = origin_cybernetic_creed }
+			country_event = { id = machine_age.2152 days = 3 }
+		}
+	}
+}
+
+# Vfix leader trait just for spiritualists
+country_event = {
+	id = machine_age.2152
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_cybernetic_creed
+	}
+
+	immediate = {
+		# Remove
+		every_owned_leader = {
+			limit = {
+				NOR = {
+					has_ethic = ethic_spiritualist
+					is_ruler = yes
+				}
+				has_trait = leader_trait_ritualistic_implants_cyborg
+			}
+			remove_trait = leader_trait_ritualistic_implants_cyborg
+		}
+		every_pool_leader = {
+			limit = {
+				NOT = { has_ethic = ethic_spiritualist }
+				has_trait = leader_trait_ritualistic_implants_cyborg
+			}
+			remove_trait = leader_trait_ritualistic_implants_cyborg
+		}
+		# Add
+		every_owned_leader = {
+			limit = {
+				OR = {
+					has_ethic = ethic_spiritualist
+					is_ruler = yes
+				}
+				NOT = { has_trait = leader_trait_ritualistic_implants_cyborg }
+			}
+			add_trait = { trait = leader_trait_ritualistic_implants_cyborg show_message = no }
+			prev = {
+				random_owned_species = {
+					limit = {
+						is_same_species = prevprev.species
+						has_cybernetic_creed_trait = yes
+					}
+					save_event_target_as = cybercreed_species
+				}
+			}
+			if = {
+				limit = {
+					exists = event_target:cybercreed_species
+					species = { has_cybernetic_creed_trait = no }
+				}
+				change_species = event_target:cybercreed_species
+				update_leader_after_modification = yes
+			}
+		}
+		every_pool_leader = {
+			limit = {
+				has_ethic = ethic_spiritualist
+				NOT = { has_trait = leader_trait_ritualistic_implants_cyborg }
+			}
+			add_trait = { trait = leader_trait_ritualistic_implants_cyborg show_message = no }
+		}
+	}
+}

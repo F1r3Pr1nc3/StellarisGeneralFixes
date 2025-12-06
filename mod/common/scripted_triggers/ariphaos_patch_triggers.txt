@@ -1,0 +1,240 @@
+
+# Vanilla difficulty scaling for guardians is a rather big jump from cadet to ensign (~70%), then smaller buffs after.
+# This isn't quite enough to properly scale for crisis and FEs, but is better than nothing.
+
+# These values are used by the Curators to tell you how powerful they think your fleet is, and some similar checks for
+# how confident the AI should be with its fleet.
+
+ariphaos_patch_fleet_titanic = {
+	OR = {
+		AND = {
+			fleet_power > 120000
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 192000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 216000
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 240000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 264000
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 288000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_fleet_enormous = {
+	OR = {
+		AND = {
+			fleet_power > 80000
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 128000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 144000
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 160000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 176000
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 192000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_fleet_massive = {
+	OR = {
+		AND = {
+			fleet_power > 40000
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 64000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 72000
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 80000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 88000
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 96000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_fleet_huge = {
+	OR = {
+		AND = {
+			fleet_power > 20000
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 32000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 36000
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 40000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 44000
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 48000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_fleet_large = {
+	OR = {
+		AND = {
+			fleet_power > 10000
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 16000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 18000
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 20000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 22000
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 24000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_fleet_modest = {
+	OR = {
+		AND = {
+			fleet_power > 5000
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 8000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 9000
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 10000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 11000
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 12000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_fleet_small = {
+	OR = {
+		AND = {
+			fleet_power > 2500
+			is_difficulty < 2
+		}
+		AND = {
+			fleet_power > 4000
+			is_difficulty = 2
+		}
+		AND = {
+			fleet_power > 4500
+			is_difficulty = 3
+		}
+		AND = {
+			fleet_power > 5000
+			is_difficulty = 4
+		}
+		AND = {
+			fleet_power > 5500
+			is_difficulty = 5
+		}
+		AND = {
+			fleet_power > 6000
+			is_difficulty = 6
+		}
+	}
+}
+
+ariphaos_patch_planet_class_prod = {
+	OR = {
+		is_planet_class = pc_gaia
+		is_planet_class = pc_hive
+		is_planet_class = pc_machine
+	}
+}
+
+# Check if the AI should consider winding down its science production.
+ariphaos_patch_finished_tech = {
+	AND = {
+		# Physics
+		has_technology = tech_jump_drive_1
+		has_technology = tech_shield_hardeners_2
+		has_technology = tech_gateway_construction
+		# Society
+		has_technology = tech_ascension_theory
+		has_technology = tech_doctrine_fleet_size_5
+		# Engineering
+		has_technology = tech_titan_hull_2
+		has_technology = tech_armor_hardeners_2
+		has_technology = tech_battleship_hull_2
+	}
+}
+
+# Same for traditions. Somewhat more aggressive.
+ariphaos_patch_finished_traditions = {
+	num_tradition_categories >= @TRADITION_CATEGORIES_MAX
+}
+

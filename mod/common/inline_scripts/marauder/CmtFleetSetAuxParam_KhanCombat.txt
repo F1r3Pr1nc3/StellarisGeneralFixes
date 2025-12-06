@@ -1,0 +1,54 @@
+#	this = fleet
+#	prev = owner country
+#	prevprev = location for spawning fleet
+if = {
+	limit = {
+		exists = event_target:attacked_system
+	}
+	set_location = {
+		target = event_target:attacked_system.star
+		distance = 45
+		angle = random
+	}
+}
+else_if = {
+	limit = {
+		prevprev = {
+			is_scope_type = country
+			exists = capital_scope
+		}
+	}
+	set_location = prevprev.capital_scope
+	set_event_locked = yes
+	save_event_target_as = hired_merc_fleet
+}
+else_if = {
+	limit = {
+		exists = prevprev.starbase
+		prev = {
+			OR = {
+				is_country_type = dormant_marauders
+				is_country_type = awakened_marauders
+			}
+		}
+	}
+	if = {
+		limit = {
+			prevprev.starbase = {
+				NOR = {
+					is_owned_by = prevprev
+					owner = {
+						OR = {
+							is_country_type = awakened_marauders
+							is_country_type = dormant_marauders
+						}
+					}
+				}
+			}
+		}
+		# log = "marauder_rally_point not owned by Khan!?"
+		# Can only make a Starbase a Home Base if we or an ally own it.
+		prevprev.starbase = { set_owner = prevprev }
+	}
+	set_home_base = prevprev.starbase # Maybe works only after fleet creation?
+}

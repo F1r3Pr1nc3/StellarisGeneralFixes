@@ -1,0 +1,841 @@
+# Includes the Ember Cruiser, Ember Battleship and Entropy Conduit
+
+# Ember ship sections aren't included because they use the regular cruiser & battleship sections
+# Unique look will be done via VFX
+
+@flowmap_speed = 0.12
+@flowmap_intensity =  0.21
+
+### CRUISER
+
+entity = {
+	name = "infernal_01_ember_cruiser_mid_effect_entity"
+	pdxmesh = "infernal_ember_cruiser_mid_effect_mesh"
+	scale = 1
+
+	game_data = {
+		shader_type = VFX
+		bloom_factor			= 1.0
+		uv_animation_speed 		= 0.600001 #for some reason this needs to be distinct from the other pieces, otherwise it moves very slow
+		uv_animation_direction 	= { .2 1.0 }
+	}
+}
+
+entity = {
+	name = "infernal_01_ember_cruiser_stern_effect_entity"
+	pdxmesh = "infernal_ember_cruiser_stern_effect_mesh"
+	scale = 1
+
+	game_data = {
+		shader_type = VFX
+		bloom_factor			= 1.0
+		uv_animation_speed 		= 0.599999  #for some reason this needs to be distinct from the other pieces, otherwise it moves very slow
+		uv_animation_direction 	= { .2 1.0 }
+	}
+}
+
+entity = {
+	name = "ember_cruiser_entity"
+	pdxmesh = "infernal_01_cruiser_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_blend_time = 4
+		start_event = { trigger_once = yes sound = { soundeffect = "tox_ship_cruiser_idle" } }
+		start_event = { node = "part2" particle = "infernal_ember_cruiser_idle_effect" keep_particle = yes trigger_once = yes }
+	}
+	state = { name = "moving" animation = "idle" animation_blend_time = 2
+		event = { trigger_once = yes sound = { soundeffect = "tox_ship_cruiser_move" } }
+		start_event = { node = "part2" particle = "infernal_ember_cruiser_move_effect" keep_particle = yes trigger_once = yes }
+	}
+	state = { name = "death" animation = "death" animation_blend_time = 0.0 chance = 1 looping = no
+		event = { time = 3.4 node = "part1_locator" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 3.4 node = "part1_locator" particle = "ship_explosion_air_vent_particle" }
+		event = { time = 3.4 node = "part1_locator" particle = "ship_burn_particle" }
+		event = { time = 8.0 node = "part2_back_locator" particle = "ship_explosion_air_vent_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 3.4 node = "part2_front_locator" particle = "ship_explosion_air_vent_particle" }
+		event = { time = 8.0 node = "part2_back_locator" particle = "ship_burn_particle" }
+		event = { time = 3.4 node = "part2_front_locator" particle = "ship_burn_particle" }
+		event = { time = 8.0 node = "part3_locator" particle = "ship_burn_particle" }
+		event = { time = 8.0 node = "part3_locator" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 8.0 node = "part3_locator" particle = "ship_explosion_air_vent_particle" }
+		event = { time = 10.3 node = "explosion_locator6" particle = "small_player_ship_explosion_particle" sound = { soundeffect = ship_destroyed } }
+		event = { time = 19.73 node = "part2" particle = "small_player_ship_explosion_particle" sound = { soundeffect = ship_explosion_large } }
+		event = { time = 19.73 node = "explosion_locator3" particle = "small_player_ship_explosion_particle" }
+	}
+
+	state = { name = "death" animation = "death2" animation_blend_time = 0.0 chance = 1 looping = no
+		event = { time = 5.16 node = "part1_locator" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 5.16 node = "part1_locator" particle = "ship_explosion_air_vent_particle" }
+		event = { time = 5.16 node = "part1_locator" particle = "ship_burn_particle" }
+		event = { time = 5.16 node = "part2_front_locator" particle = "ship_explosion_air_vent_particle" }
+		event = { time = 5.16 node = "part2_front_locator" particle = "ship_burn_particle" }
+		event = { time = 11.9 node = "part2_back_locator" particle = "ship_explosion_air_vent_particle" }
+		event = { time = 11.9 node = "part2_back_locator" particle = "ship_burn_particle" }
+		event = { time = 11.9 node = "part2_back_locator" particle = "ship_explosion_particle" }
+		event = { time = 11.9 node = "part3_explosion_locator" particle = "small_player_ship_explosion_particle" sound = { soundeffect = ship_destroyed } }
+		event = { time = 18.0 node = "part2" particle = "small_player_ship_explosion_particle" sound = { soundeffect = ship_explosion_large } }
+		event = { time = 18.0 node = "part1" particle = "small_player_ship_explosion_particle" }
+	}
+
+	state = { name = "death" animation = "death3" animation_blend_time = 0.0 chance = 1 looping = no
+		event = { time = 1.7 node = "explosion_locator1" particle = "ship_burn_particle" }
+		event = { time = 1.7 node = "explosion_locator1" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 2.16 node = "explosion_locator2" particle = "ship_burn_particle" }
+		event = { time = 2.16 node = "explosion_locator2" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 3.9 node = "explosion_locator3" particle = "ship_burn_particle" }
+		event = { time = 3.9 node = "explosion_locator3" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 7.5 node = "explosion_locator4" particle = "ship_burn_particle" }
+		event = { time = 7.5 node = "explosion_locator4" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 4.9 node = "explosion_locator5" particle = "ship_burn_particle" }
+		event = { time = 4.9 node = "explosion_locator5" particle = "ship_explosion_particle" sound = { soundeffect = "ship_explosion"} }
+		event = { time = 17.5 node = "part2" particle = "small_player_ship_explosion_particle" sound = { soundeffect = ship_destroyed } }
+	}
+
+	scale = 1.0
+
+	game_data = {
+		size = 15.0
+		emissive_recolor_crunch = 3.0
+
+		uv_animation_speed 		= 0.12
+		uv_animation_direction 	= { 0.21 0.0 }
+	}
+
+	attach = { "part2"		= "infernal_01_ember_cruiser_mid_effect_entity" }
+	attach = { "part3"		= "infernal_01_ember_cruiser_stern_effect_entity" }
+
+	cull_radius = 10
+}
+
+### BATTLESHIP
+
+entity = {
+	name = "infernal_01_ember_battleship_bow_effect_entity"
+	pdxmesh = "infernal_ember_battleship_bow_effect_mesh"
+	scale = 1
+
+	game_data = {
+		shader_type = VFX
+		bloom_factor			= 1.0
+		uv_animation_speed 		= 0.6
+		uv_animation_direction 	= { .2 1.0 }
+	}
+}
+
+entity = {
+	name = "infernal_01_ember_battleship_mid_effect_entity"
+	pdxmesh = "infernal_ember_battleship_mid_effect_mesh"
+	scale = 1
+
+	game_data = {
+		shader_type = VFX
+		bloom_factor			= 1.0
+		uv_animation_speed 		= 0.600001 #for some reason this needs to be distinct from the other pieces, otherwise it moves very slow
+		uv_animation_direction 	= { .2 1.0 }
+	}
+}
+
+entity = {
+	name = "infernal_01_ember_battleship_stern_effect_entity"
+	pdxmesh = "infernal_ember_battleship_stern_effect_mesh"
+	scale = 1
+
+	game_data = {
+		shader_type = VFX
+		bloom_factor			= 1.0
+		uv_animation_speed 		= 0.599999  #for some reason this needs to be distinct from the other pieces, otherwise it moves very slow
+		uv_animation_direction 	= { .2 1.0 }
+	}
+}
+
+entity = {
+	name = "ember_battleship_entity"
+	pdxmesh = "infernal_01_battleship_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle"	animation = "idle" animation_blend_time = 4.0
+		start_event = { trigger_once = yes sound = { soundeffect = "aqu_ship_battleship_idle" } }
+		start_event = { node = "part2" particle = "infernal_ember_battleship_idle_effect" keep_particle = yes trigger_once = yes }
+	}
+	state = { name = "moving"	animation = "idle" animation_blend_time = 4.0
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_battleship_move" } }
+		start_event = { node = "part2" particle = "infernal_ember_battleship_move_effect" keep_particle = yes trigger_once = yes }
+	}
+	state = { name = "death" animation = "death" animation_blend_time = 0.0 chance = 1 looping = no
+		event = { time = 0.26 node = "explosion_locator_01" particle = "infernal_01_ship_local_burn_10_effect" }
+		event = { time = 0.26 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 5.26 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" }
+
+		event = { time = 4.26 node = "explosion_locator_02" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 11.63 node = "explosion_locator_03" particle = "infernal_01_ship_local_burn_10_effect"  }
+		event = { time = 11 node = "explosion_locator_03" particle = "infernal_01_ship_burn_long_effect" }
+
+		event = { time = 8.26 node = "explosion_locator_04" particle = "infernal_01_ship_local_burn_10_effect" }
+		event = { time = 8.26 node = "explosion_locator_04" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 12.26 node = "explosion_locator_04" particle = "infernal_01_ship_burn_short_effect" }
+
+		event = { time = 4.3 node = "explosion_locator_07" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 15.1 node = "part2" particle = "infernal_01_ship_explosion_130_effect" }
+		event = { time = 15.4 node = "part2" sound = { soundeffect = ship_destroyed} }
+	}
+	state = { name = "death" animation = "death2" animation_blend_time = 0.0 chance = 1 looping = no
+		event = { time = 2.56 node = "explosion_locator_01" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 7.00 node = "explosion_locator_03" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 0 node = "explosion_locator_05" particle = "infernal_01_ship_local_burn_10_effect" }
+		event = { time = 0 node = "explosion_locator_05" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 4.5 node = "explosion_locator_05" particle = "infernal_01_ship_burn_long_effect" }
+
+		event = { time = 5.3 node = "explosion_locator_06" particle = "infernal_01_ship_local_burn_10_effect" }
+		event = { time = 5.3 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 9.3 node = "explosion_locator_06" particle = "infernal_01_ship_burn_short_effect" }
+
+		event = { time = 3.3 node = "explosion_locator_08" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 7.45 node = "explosion_locator_02" particle = "infernal_01_ship_explosion_30_effect" }
+		event = { time = 7.45 node = "explosion_locator_04" particle = "infernal_01_ship_explosion_30_effect"}
+		event = { time = 7.75 node = "part2" sound = { soundeffect = ship_destroyed} }
+
+		event = { time = 11.5 node = "part1" particle = "infernal_01_ship_explosion_80_effect"}
+		event = { time = 11.5 node = "part2" particle = "infernal_01_ship_explosion_80_effect"}
+		event = { time = 11.5 node = "explosion_locator_01" particle = "infernal_01_ship_explosion_80_effect"}
+		event = { time = 11.8 node = "part2" sound = { soundeffect = ship_destroyed} }
+	}
+	state = { name = "death" animation = "death3" animation_blend_time = 0.0 chance = 1 looping = no
+		event = { time = 13 node = "explosion_locator_01" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 1.7 node = "explosion_locator_02" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 0 node = "explosion_locator_06" particle = "infernal_01_ship_local_burn_10_effect" }
+		event = { time = 0.26 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 4.26 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 8.26 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 12.26 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 16.26 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 20.26 node = "explosion_locator_06" particle = "infernal_01_ship_burn_short_effect" }
+
+		event = { time = 17.2 node = "explosion_locator_07" particle = "infernal_01_ship_local_burn_10_effect" }
+		event = { time = 17.26 node = "explosion_locator_07" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 21.26 node = "explosion_locator_07" particle = "infernal_01_ship_burn_short_effect" }
+
+		event = { time = 15.3 node = "explosion_locator_08" particle = "infernal_01_ship_local_burn_05_effect" }
+
+		event = { time = 23.45 node = "part2" particle = "infernal_01_ship_explosion_130_effect"}
+		event = { time = 23.75 node = "part2" sound = { soundeffect = ship_destroyed} }
+	}
+
+	scale = 1.0
+
+	game_data = {
+		size = 22.0
+		emissive_recolor_crunch = 5.0
+
+		uv_animation_speed 	= 0.12
+		uv_animation_direction 	= { 0.21 0.0 }
+	}
+
+	attach = { "part1"		= "infernal_01_ember_battleship_bow_effect_entity" }
+	attach = { "part2"		= "infernal_01_ember_battleship_mid_effect_entity" }
+	attach = { "part3"		= "infernal_01_ember_battleship_stern_effect_entity" }
+}
+
+### CONDUIT
+
+entity = {
+	name = "infernal_01_entropy_conduit_frame_entity"
+	pdxmesh = "infernal_01_entropy_conduit_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" }
+	state = { name = "moving" animation = "moving" }
+	state = { name = "working_start" animation = "working_start" }
+	state = { name = "working_looping" animation = "working_looping" }
+	state = { name = "working_end" animation = "working_end" }
+	state = { name = "death" animation = "death" looping = no
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working_start" = 0
+				"working_looping" = 0
+				"working_end" = 100
+			}
+		}
+
+		event = { time = 0.10 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 1.00 node = "explosion_locator_02" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 1.40 node = "explosion_locator_03" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 2.30 node = "explosion_locator_04" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 3.70 node = "explosion_locator_05" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 4.30 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 4.80 node = "explosion_locator_07" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 5.00 node = "explosion_locator_08" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+
+		event = { time = 5.8 node = "root" particle = "infernal_01_ship_explosion_210_effect" }
+		event = { time = 6.0 node = "root" sound = { soundeffect = ship_destroyed} }
+	}
+	state = { name = "death" animation = "death2" looping = no
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working_start" = 100
+				"working_looping" = 100
+				"working_end" = 0
+			}
+		}
+
+		event = { time = 0.20 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 2.50 node = "explosion_locator_02" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 2.80 node = "explosion_locator_03" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 3.60 node = "explosion_locator_04" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 3.80 node = "explosion_locator_05" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 4.00 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 5.50 node = "explosion_locator_07" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 6.00 node = "explosion_locator_08" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+
+		event = { time = 6.5 node = "root" particle = "infernal_01_ship_explosion_210_effect" }
+		event = { time = 6.6 node = "root" sound = { soundeffect = ship_destroyed} }
+	}
+
+	game_data = {
+		uv_animation_speed 		= 0.35
+
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { 0.35 0.0 }
+
+		size = 25
+		emissive_recolor_crunch = 5.0
+	}
+}
+
+entity = {
+	name = "entropy_conduit_ship_entity"
+		pdxmesh = "infernal_01_entropy_conduit_ship_mesh"
+
+		default_state = "idle"
+		state = { name = "idle"		animation = "idle"		looping = yes		animation_blend_time = 3
+
+			start_event = { trigger_once = yes sound = { soundeffect = aqu_ship_science_ship_move } }
+
+			event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+
+
+		}
+
+		state = { name = "moving" 		animation = "moving"	looping = yes		animation_blend_time = 3
+
+			event = { trigger_once = yes sound = { soundeffect = aqu_ship_science_ship_move } }
+
+			event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		}
+
+		state = { name = "working_start" 		animation = "working_start"	looping = no	animation_blend_time = 3 	next_state = working_looping
+
+			event = { trigger_once = yes sound = { soundeffect = aqu_ship_science_ship_move } }
+
+			event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+
+		}
+
+		state = { name = "working_looping" 		animation = "working_looping"	looping = yes	animation_blend_time = 3	next_state = working_end
+
+			event = { trigger_once = yes sound = { soundeffect = aqu_ship_science_ship_move } }
+
+			event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+
+		}
+
+		state = { name = "working_end" 		animation = "working_end"	looping = no	animation_blend_time = 3	next_state = idle
+
+			event = { trigger_once = yes sound = { soundeffect = aqu_ship_science_ship_move } }
+
+			event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+			event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+
+		}
+
+		#If idle or moving
+		state = { name = "death" animation = "death"		looping = no 	state_time = 6
+
+			chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working_start" = 0
+				"working_looping" = 0
+				"working_end" = 100
+				}
+			}
+
+		event = { time = 0.10 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 1.00 node = "explosion_locator_02" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 1.40 node = "explosion_locator_03" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 2.30 node = "explosion_locator_04" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 3.70 node = "explosion_locator_05" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 4.30 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 4.80 node = "explosion_locator_07" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 5.00 node = "explosion_locator_08" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+
+		event = { time = 5.8 node = "root" particle = "infernal_01_ship_explosion_210_effect" }
+		event = { time = 6.0 node = "root" sound = { soundeffect = ship_destroyed} }
+
+		}
+
+		#If working
+		state = { name = "death" animation = "death2"		looping = no 	state_time = 6.6
+
+			chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working_start" = 100
+				"working_looping" = 100
+				"working_end" = 0
+				}
+			}
+
+		event = { time = 0.20 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 2.50 node = "explosion_locator_02" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 2.80 node = "explosion_locator_03" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 3.60 node = "explosion_locator_04" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 3.80 node = "explosion_locator_05" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 4.00 node = "explosion_locator_06" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 5.50 node = "explosion_locator_07" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+		event = { time = 6.00 node = "explosion_locator_08" particle = "infernal_01_ship_burn_long_effect" keep_particle = no}
+
+		event = { time = 6.5 node = "root" particle = "infernal_01_ship_explosion_210_effect" }
+		event = { time = 6.6 node = "root" sound = { soundeffect = ship_destroyed} }
+
+		}
+
+
+		game_data = {
+		size = 15
+		emissive_recolor_crunch = 5.0
+
+		uv_animation_speed 		= 0.35
+		uv_animation_direction 	= { 0.35 0.0 }
+		}
+
+}
+
+### CONDUIT STATION
+
+entity = {
+	name = "entropy_conduit_station_entity"
+	pdxmesh = "infernal_01_entropy_conduit_ship_mesh"
+	default_state = "working_looping"
+	state = { name = "working_looping" 		animation = "working_looping"	looping = yes	animation_blend_time = 5	next_state = working_end
+		event = { trigger_once = yes sound = { soundeffect = aqu_ship_science_ship_move } }
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" trigger_once = yes keep_particle = yes }
+	}
+}
+
+### GALACTIC CRUCIBLE
+
+#this could be used as an example for how to attach VFX to the crucible..
+#locators could be used on the different stages of the crucible to vary the VFX a bit
+#a couple of variation examples are different amounts of spirals/droplets and different locations for the droplets
+entity = {
+
+	name = "infernal_galactic_crucible_VFX_example_entity"
+	pdxmesh = "dyson_sphere_frame_mesh"
+	scale = 0.40
+	locator = { name = "DropletLocator0"	position = { 11.7 0.3 -25 }}
+	locator = { name = "DropletLocator1"	position = { 14.9 0.31 -21.39 }}
+	locator = { name = "DropletLocator2"	position = { 27.89 1.1 -1.6 }}
+	locator = { name = "DropletLocator3"	position = { 25.79 1.1 -7.9 }}
+	locator = { name = "DropletLocator4"	position = { 26.859 1.1 7.57 }}
+	locator = { name = "DropletLocator5"	position = { -24.195 0.81 -10.8 }}
+	locator = { name = "DropletLocator6"	position = { -13.5 0.4 -23.288 }}
+	locator = { name = "DropletLocator7"	position = { -20.3 0.62 -16.09 }}
+	locator = { name = "DropletLocator8"	position = { -27.03 1.14 -5.5 }}
+	locator = { name = "DropletLocator9"	position = { -11.62 0.43 -25.08 }}
+	locator = { name = "DropletLocator10" position = { -13.18 1.1 25.93 }}
+	locator = { name = "DropletLocator11" position = { -27.43 1.07 4.13 }}
+	locator = { name = "DropletLocator12" position = { -22.77 0.985 17.144 }}
+	locator = { name = "DropletLocator13" position = { 13.11 1.1 25.94 }}
+	locator = { name = "DropletLocator14" position = { 22.281 .999 17.862 }}
+	locator = { name = "BeamLocator" position = { 0 -0.9 0 }}
+	locator = { name = spiral_2 position = { 0 -0.9 0 } rotation = { 0 0 180}}
+	locator = { name = spiral_3 position = { 0 -0.9 0 } rotation = { 0 0 90}}
+	locator = { name = spiral_4 position = { 0 -0.9 0 } rotation = { 0 0 270}}
+	locator = { name = spiral_5 position = { 0 -0.9 0 } rotation = { 0 0 45}}
+	locator = { name = spiral_6 position = { 0 -0.9 0 } rotation = { 0 0 135}}
+	locator = { name = spiral_7 position = { 0 -0.9 0 } rotation = { 0 0 225}}
+	locator = { name = spiral_8 position = { 0 -0.9 0 } rotation = { 0 0 315}}
+	locator = { name = spiral_9 position = { 0 -0.9 0 } rotation = { 0 0 22.5}}
+	locator = { name = spiral_10 position = { 0 -0.9 0 } rotation = { 0 0 112.5}}
+	locator = { name = spiral_11 position = { 0 -0.9 0 } rotation = { 0 0 202.5}}
+	locator = { name = spiral_12 position = { 0 -0.9 0 } rotation = { 0 0 292.5}}
+	locator = { name = spiral_13 position = { 0 -0.9 0 } rotation = { 0 0 67.5}}
+	locator = { name = spiral_14 position = { 0 -0.9 0 } rotation = { 0 0 157.5}}
+	locator = { name = spiral_15 position = { 0 -0.9 0 } rotation = { 0 0 247.5}}
+	locator = { name = spiral_16 position = { 0 -0.9 0 } rotation = { 0 0 337.5}}
+	locator = { name = WhirlPoolLocator position = {0 -0.9 12}}
+
+	default_state = "idle"
+	state = { name = "idle" state_time = 10
+		event = { time = 0 node = "DropletLocator0" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator1" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator2" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator3" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator4" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator5" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator6" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator7" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator8" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator9" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator10" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator11" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator12" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator13" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator14" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "BeamLocator" particle = "infernal_galactic_crucible_energy_beam_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "WhirlPoolLocator" particle = "infernal_subspace_tunnel_star_whirlpool_020_effect" trigger_once = yes keep_particle = yes }
+	}
+
+	attach = { "BeamLocator" 	= "infernal_galactic_crucible_energy_beam_spiral_entity" }
+	attach = { "spiral_2"		= "infernal_galactic_crucible_energy_beam_spiral_entity_2" }
+	attach = { "spiral_3"		= "infernal_galactic_crucible_energy_beam_spiral_entity_3" }
+	attach = { "spiral_4"		= "infernal_galactic_crucible_energy_beam_spiral_entity_4" }
+	attach = { "spiral_5"		= "infernal_galactic_crucible_energy_beam_spiral_entity_5" }
+	attach = { "spiral_6"		= "infernal_galactic_crucible_energy_beam_spiral_entity_6" }
+	attach = { "spiral_7"		= "infernal_galactic_crucible_energy_beam_spiral_entity_7" }
+	attach = { "spiral_8"		= "infernal_galactic_crucible_energy_beam_spiral_entity_8" }
+	attach = { "spiral_9"		= "infernal_galactic_crucible_energy_beam_spiral_entity_9" }
+	attach = { "spiral_10"		= "infernal_galactic_crucible_energy_beam_spiral_entity_10" }
+	attach = { "spiral_11"		= "infernal_galactic_crucible_energy_beam_spiral_entity_11" }
+	attach = { "spiral_12"		= "infernal_galactic_crucible_energy_beam_spiral_entity_12" }
+	attach = { "spiral_13"		= "infernal_galactic_crucible_energy_beam_spiral_entity_13" }
+	attach = { "spiral_14"		= "infernal_galactic_crucible_energy_beam_spiral_entity_14" }
+	attach = { "spiral_15"		= "infernal_galactic_crucible_energy_beam_spiral_entity_15" }
+	attach = { "spiral_16"		= "infernal_galactic_crucible_energy_beam_spiral_entity_16" }
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0651654654
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_2"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.9095436249
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_3"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.936520321
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_4"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.979764532196
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_5"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.95984915
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_6"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0326965
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_7"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0525692569
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_8"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0714581458
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_9"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.146046704670
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_10"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0157807
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_11"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.99145712457
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_12"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.9645678467
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_13"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.91134613
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_14"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0635683568
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_15"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -1.0997645675
+		uv_animation_direction	= { 0.5 0 }
+	}
+}
+
+entity = {
+	name = "infernal_galactic_crucible_energy_beam_spiral_entity_16"
+	pdxmesh = "infernal_galactic_crucible_spiral_mesh"
+
+	scale = 0.065
+	game_data = {
+		bloom_factor			= 0.5
+		uv_animation_speed 		= -0.9224574572
+		uv_animation_direction	= { 0.5 0 }
+	}
+}

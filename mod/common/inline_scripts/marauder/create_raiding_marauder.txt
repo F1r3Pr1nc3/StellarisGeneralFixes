@@ -1,0 +1,121 @@
+# Needs marauder_target country (normally = this)
+# From = Hired marauder_employer
+# fromfrom = current_marauder_diplomacy = raiding_marauder
+
+event_target:raiding_marauder = {
+	get_marauder_raid_source = yes
+	set_country_flag = raid_ongoing
+	owner_species = { save_event_target_as = marauder_species }
+}
+create_country = {
+	name = event_target:raiding_marauder
+	type = marauder_raiders
+	species = event_target:marauder_species
+	flag = event_target:raiding_marauder
+	effect = {
+		save_event_target_as = marauder_raiding_country
+		set_faction_hostility = { target = event_target:raiding_marauder set_friendly = yes }
+		make_moderately_hostile = yes
+		set_country_flag = raid_ongoing
+	}
+}
+event_target:marauder_raiding_country = {
+	every_country = {
+		limit = { has_communications = event_target:raiding_marauder }
+		establish_communications_no_message = prev
+	}
+	create_marauder_merc_admiral = yes
+	event_target:raiding_marauder = {
+		set_country_flag = parent_of@prev
+		establish_communications_no_message = prev
+		switch = { trigger = has_country_flag
+			marauder_1 = { prev = { set_country_flag = marauder_1 } }
+			marauder_2 = { prev = { set_country_flag = marauder_2 } }
+			marauder_3 = { prev = { set_country_flag = marauder_3 } }
+		}
+		set_faction_hostility = { target = prev set_friendly = yes } # maybe double
+		create_fleet = {
+			name = "NAME_Raiding_Fleet"
+			effect = {
+				set_owner = prev # For ship names
+				create_marauder_raiders = yes # Needs prev for script vars
+				set_location = event_target:raid_source
+				set_fleet_stance = aggressive
+				set_fleet_bombardment_stance = indiscriminate
+				set_aggro_range_measure_from = self
+				set_aggro_range = 150
+				set_event_locked = yes
+			}
+		}
+		set_variable = { which = raidcost value = 1 } # TODO check scope
+		country_event = { id = marauder.28 scopes = { from = event_target:marauder_target } days = 30 } # Access validation
+	}
+	set_faction_hostility = { target = event_target:marauder_target set_hostile = yes } # Has full effect only after 1 day
+	last_created_fleet = {
+		set_owner = prev # Real owner
+		closest_system = {
+			min_steps = 1
+			max_steps = 40
+			use_bypasses = yes
+			limit = {
+				has_owner = yes
+				is_owned_by = event_target:marauder_target
+				any_system_colony = {
+					has_owner = yes
+					is_owned_by = event_target:marauder_target
+					is_planet_eligible_for_treasure_planet = yes
+					sapient_pop_amount > 200
+				}
+				prev = { can_access_system = prev } # performance-intensive trigger!
+			}
+			random_system_colony = {
+				limit = { # has_owner = yes
+					is_owned_by = event_target:marauder_target
+					is_planet_eligible_for_treasure_planet = yes
+					sapient_pop_amount > 200
+				}
+				save_event_target_as = raid_planet
+			}
+		}
+		set_event_locked = no
+		assign_leader = last_created_leader
+		if = {
+			limit = { exists = event_target:raid_planet can_access_system = event_target:raid_planet.solar_system }
+			auto_move_to_planet = {
+				target = event_target:raid_planet
+				clear_auto_move_on_arrival = no
+				arrival_effect = marauder_path_attack
+			}
+			export_trigger_value_to_variable = {
+				trigger = distance
+				parameters = {
+					source = event_target:raid_planet.solar_system
+					type = hyperlane
+					bypass_empire = prev
+					min_jumps = 1
+					max_jumps = 40
+				}
+				variable = raid_distance
+			}
+		}
+		else = {
+			fleet_event = { id = marauder.29 scopes = { from = event_target:marauder_target } }
+		}
+	}
+}
+
+event_target:marauder_target = {
+	set_country_flag = raid_target_of@event_target:raiding_marauder
+	set_country_flag = under_marauder_attack
+	set_relation_flag = {
+		who = event_target:raiding_marauder
+		flag = current_hired_target
+	}
+	if = {
+		limit = { has_communications = event_target:raiding_marauder }
+		country_event = { id = marauder.120 days = 1 random = 30 }
+	}
+	else = {
+		country_event = { id = marauder.123 days = 1 random = 30 }
+	}
+}

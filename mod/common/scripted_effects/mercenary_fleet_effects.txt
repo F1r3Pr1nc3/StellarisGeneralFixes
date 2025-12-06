@@ -1,0 +1,192 @@
+##########################################################################
+# Mercenary Scripted Effects for Pirate Waves: Marauders
+#
+# Modified by ScepraX & FirePrince
+##########################################################################
+#############################
+# Marauder Mercenary Fleets #
+#############################
+# Marauder Mercenary Admiral
+# create_marauder_merc_admiral = {
+# 	create_leader = {
+# 		class = commander
+# 		species = event_target:marauder_species
+# 		name = random
+# 		event_leader = yes
+# 		skill = 3
+# 		leader_age_min = 25
+# 		leader_age_max = 45
+# 		traits = {
+# 			0 = leader_trait_mercenary_warrior
+# 		}
+# 		effect = { set_leader_flag = marauder_merc_leader }
+# 	}
+# }
+# Prev = owner
+# Armada of the Voidborn
+create_armada_of_the_voidborn = {
+	set_fleet_flag = armada_of_the_voidborn
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 16
+		LANCER = 8
+		CHAMPION = 6
+	}
+}
+
+# Star Rider Flotilla
+create_star_rider_flotilla = {
+	set_fleet_flag = star_rider_flotilla
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 12
+		LANCER = 6
+		CHAMPION = 4
+	}
+}
+
+# First Storm Wing
+create_first_storm_wing = {
+	set_fleet_flag = first_storm_wing
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 8
+		LANCER = 4
+		CHAMPION = 2
+	}
+}
+
+# Dwamak Bashers
+create_dwamak_bashers = {
+	set_fleet_flag = dwamak_bashers
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 16
+		LANCER = 8
+		CHAMPION = 6
+	}
+}
+
+# Unhinged Screamer Flotilla
+create_unhinged_screamer_flotilla = {
+	set_fleet_flag = unhinged_screamer_flotilla
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 12
+		LANCER = 6
+		CHAMPION = 4
+	}
+}
+
+# Frenzied Volunteer Squadron
+create_frenzied_volunteer_squadron = {
+	set_fleet_flag = frenzied_volunteer_squadron
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 8
+		LANCER = 4
+		CHAMPION = 2
+	}
+}
+
+# Her Chosen Champions
+create_her_chosen_champions = {
+	set_fleet_flag = her_chosen_champions
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 16
+		LANCER = 8
+		CHAMPION = 6
+	}
+}
+
+# Order of Eternal Night
+create_order_of_eternal_night = {
+	set_fleet_flag = order_of_eternal_night
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 12
+		LANCER = 6
+		CHAMPION = 4
+	}
+}
+
+# Twilight Congregation
+create_twilight_congregation = {
+	set_fleet_flag = twilight_congregation
+	create_dyn_marauder_fleet = {
+		OUTRIDER = 8
+		LANCER = 4
+		CHAMPION = 2
+	}
+}
+
+####################
+# Marauder Raiders #
+####################
+# prev = owner country
+# scope = fleet
+create_marauder_raiders = {
+	set_fleet_flag = raiding_fleet
+	# set_fleet_flag = hired_raiding_fleet # Not used by vanilla?
+	if = {
+		limit = {
+			years_passed > 80
+		}
+		set_fleet_flag = marauder_raider_fleet_4
+		create_dyn_marauder_fleet = {
+			OUTRIDER = 24
+			LANCER = 14
+			CHAMPION = 4
+		}
+	}
+	else_if = {
+		limit = {
+			years_passed > 59
+		}
+		set_fleet_flag = marauder_raider_fleet_3
+		create_dyn_marauder_fleet = {
+			OUTRIDER = 18
+			LANCER = 10
+			CHAMPION = 3
+		}
+	}
+	else_if = {
+		limit = {
+			years_passed > 39
+		}
+		set_fleet_flag = marauder_raider_fleet_2
+		create_dyn_marauder_fleet = {
+			OUTRIDER = 12
+			LANCER = 6
+			CHAMPION = 2
+		}
+	}
+	else = {
+		set_fleet_flag = marauder_raider_fleet_1
+		create_dyn_marauder_fleet = {
+			OUTRIDER = 6
+			LANCER = 4
+			CHAMPION = 1
+		}
+	}
+}
+
+#############################
+# Remove loaning fleet flag #
+#############################
+# This = country
+remove_loaning_fleet_flag = {
+	# Failsafe to catch if fleets are no longer on loan
+	if = {
+		limit = {
+			count_controlled_fleet = {
+				count = 0
+				limit = {
+					OR = {
+						is_leased = yes
+						AND = {
+							exists = controller
+							controller = {
+								is_same_empire = root
+							}
+						}
+					}
+				}
+			}
+		}
+		remove_country_flag = loaning_fleet
+	}
+}

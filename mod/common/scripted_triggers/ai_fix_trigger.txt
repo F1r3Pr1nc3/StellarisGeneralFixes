@@ -1,0 +1,184 @@
+has_unbild_megastructure = {
+	any_system_within_border = {
+		OR = {
+			has_megastructure = spy_orb_1
+			has_megastructure = spy_orb_2
+			has_megastructure = spy_orb_3
+			has_megastructure = think_tank_1
+			has_megastructure = think_tank_2
+			has_megastructure = think_tank_3
+			has_megastructure = dyson_sphere_1
+			has_megastructure = dyson_sphere_2
+			has_megastructure = dyson_sphere_3
+			has_megastructure = dyson_sphere_4
+			has_megastructure = ring_world_2_intermediate
+			has_megastructure = dyson_sphere_ruined
+			has_megastructure = spy_orb_ruined
+			has_megastructure = think_tank_ruined
+			has_megastructure = ring_world_ruined
+			has_megastructure = matter_decompressor_1
+			has_megastructure = matter_decompressor_2
+			has_megastructure = matter_decompressor_3
+			has_megastructure = matter_decompressor_ruined
+			has_megastructure = strategic_coordination_center_1
+			has_megastructure = strategic_coordination_center_2
+			has_megastructure = strategic_coordination_center_ruined
+			has_megastructure = mega_art_installation_1
+			has_megastructure = mega_art_installation_2
+			has_megastructure = mega_art_installation_ruined
+			has_megastructure = mega_art_installation_restored
+			has_megastructure = interstellar_assembly_1
+			has_megastructure = interstellar_assembly_2
+			has_megastructure = interstellar_assembly_3
+			has_megastructure = interstellar_assembly_ruined
+			has_megastructure = mega_shipyard_1
+			has_megastructure = mega_shipyard_2
+			has_megastructure = mega_shipyard_ruined
+			has_megastructure = crisis_sphere_0
+			has_megastructure = crisis_sphere_1
+			has_megastructure = crisis_sphere_2
+			has_megastructure = crisis_sphere_3
+			has_megastructure = quantum_catapult_0
+			has_megastructure = quantum_catapult_1
+			has_megastructure = quantum_catapult_2
+			has_megastructure = quantum_catapult_ruined
+			has_megastructure = quantum_catapult_ruined_slingshot
+		}
+	}
+}
+
+# energy = 10000 * 1.2 (weight = 0.9)
+want_energy_for_terraforming = {
+	has_ascension_worlds = yes
+	any_planet_within_border = {
+		OR = {
+			is_colony = yes
+			is_colonizable = yes
+		}
+		is_artificial = no
+		NOR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			is_planet_class = pc_gaia
+			is_planet_class = pc_relic
+		}
+	}
+}
+
+# energy = 6000 * 2 (weight = 0.5)
+want_energy_for_gateway = {
+	has_technology = tech_gateway_activation
+	any_owned_megastructure = {
+		OR = {
+			is_megastructure_type = gateway_0
+			is_megastructure_type = gateway_ruined
+		}
+	}
+}
+
+has_ascension_worlds = {
+	OR = {
+		has_ascension_perk = ap_hive_worlds # hive
+		has_ascension_perk = ap_machine_worlds # robot
+		has_ascension_perk = ap_world_shaper # gaia
+	}
+}
+
+country_uses_mineral_ships = {
+	OR = {
+		uses_fauna_ship_sizes = yes
+		AND = {
+			has_ascension_perk = ap_become_the_crisis
+			has_crisis_level = crisis_level_2
+		}
+	}
+}
+
+can_build_megastructure_ai_fix = {
+	OR = {
+		AND = {
+			has_technology = tech_dyson_sphere
+			count_owned_megastructure = { count = 0
+				limit = {
+					OR = {
+						is_megastructure_type = dyson_sphere_5
+						is_megastructure_type = dyson_sphere_restored
+					}
+				}
+			}
+		}
+		AND = {
+			has_technology = tech_mega_engineering
+			count_owned_megastructure = { count = 0
+				limit = {
+					OR = {
+						is_megastructure_type = matter_decompressor_4
+						is_megastructure_type = matter_decompressor_restored
+					}
+				}
+			}
+		}
+		AND = {
+			has_technology = tech_mega_shipyard
+			count_owned_megastructure = { count = 0
+				limit = {
+					OR = {
+						is_megastructure_type = mega_shipyard_3
+						is_megastructure_type = mega_shipyard_restored
+					}
+				}
+			}
+		}
+		AND = {
+			has_technology = tech_ring_world
+			any_owned_megastructure = {
+				is_megastructure_type = ring_world_1
+				is_megastructure_type = ring_world_2
+				is_megastructure_type = ring_world_2_intermediate
+				is_megastructure_type = ring_world_3_intermediate
+				is_megastructure_type = ring_world_ruined
+			}
+		}
+	}
+}
+
+can_build_arcology = {
+	has_ascension_perk = ap_arcology_project
+	any_owned_planet = {
+		is_colony = yes
+		is_artificial = no
+		free_district_slots < 1
+		num_uncleared_blockers < 1
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_relic
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			has_modifier = pm_wenkwort_custodian
+			has_designation = col_nanotech_world
+		}
+	}
+	count_owned_planet = {
+		count < 2
+		limit = {
+			OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			}
+		}
+	}
+}
+
+need_alloys_trade = {
+	has_deficits = yes
+	has_resource = { type = alloys amount > 1000 }
+	has_resource = { type = trade amount < 100 }
+}
+
+need_energy_trade = {
+	has_deficits = yes
+	has_resource = { type = energy amount > 3000 }
+	has_resource = { type = trade amount < 100 }
+}

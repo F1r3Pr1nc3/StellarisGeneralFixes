@@ -1,0 +1,589 @@
+#################################################
+#												#
+# Machine Age DLC Cyberization Situation Events	#
+# Fixed Cyberization by FirePrince 08/02/2025	#
+#												#
+#################################################
+
+namespace = cyber
+
+### CYBERIZATION SITUATION START ###
+# Fix: Replaced all vanilla cyberize effects with assimilation effects, except cyberize_pops_effect, because of redundancy and suboptimality.
+# Fired by: situation on_monthly and event
+# Event to cyberize pops except Spiritualists
+situation_event = {
+	id = cyber.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_situation_flag = cyberization_ongoing
+		NOT = { has_situation_flag = hive_cyberization_ongoing_limited }
+		owner = {
+			num_buildings = {
+				type = building_augmentation_center
+				disabled = no
+				value > 0
+			}
+			# check_variable_arithmetic = {
+			# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|
+			# 	value > 0
+			# }
+		}
+	}
+
+	immediate = {
+		owner = {
+			weighted_random_owned_pop_group = {
+				limit = {
+					is_same_species = owner_species
+					NOR = {
+						pop_group_has_ethic = ethic_spiritualist
+						pop_group_has_trait = trait_cybernetic
+						pop_group_has_trait = trait_limited_cybernetic
+					}
+				}
+				create_cyber_species_effect = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						exists = event_target:cyberspecies_current
+						AND = {
+							exists = event_target:cyberspecies@species
+							is_same_species = event_target:cyberspecies@species
+						}
+						any_owned_species = {
+							is_same_species = prev.owner_species
+							exists = event_target:cyberspecies@this
+							is_same_species = event_target:cyberspecies@this
+						}
+					}
+				}
+				cyberize_pops_effect = yes
+				# cyberize_leaders_effect = yes
+				# cyberize_colony_ships_effect = yes
+				# cyberize_armies_effect = yes
+				assimilate_leaders = {
+					SOURCE = event_target:changing_species
+					TARGET = event_target:cyberspecies_current
+				}
+				assimilate_colony_ships = {
+					SOURCE = event_target:changing_species
+					TARGET = event_target:cyberspecies_current
+				}
+				assimilate_armies = {
+					SOURCE = event_target:changing_species
+					TARGET = event_target:cyberspecies_current
+				}
+			}
+		}
+		# Check if there are any pops left to cyberize, otherwise remove the cyberization flag to unpause the situation.
+		if = {
+			limit = {
+				owner = {
+					count_owned_pop_group = {
+						count = 0
+						limit = {
+							is_same_species = owner_species
+							NOR = {
+								pop_group_has_ethic = ethic_spiritualist
+								pop_group_has_trait = trait_cybernetic
+								pop_group_has_trait = trait_limited_cybernetic
+							}
+						}
+					}
+				}
+			}
+			remove_situation_flag = cyberization_ongoing
+			if = {
+				limit = {
+					NOT = { has_situation_flag = cyberization_final }
+				}
+				if = {
+					limit = {
+						owner = { is_hive_empire = yes }
+					}
+					set_situation_flag = cyber_2005_stage_3_fire
+				}
+				else = {
+					set_situation_flag = cyber_305_fire
+				}
+			}
+		}
+	}
+}
+
+# Fired by: situation on_monthly and event
+# Event to minimally cyberize spiritualist pops
+situation_event = {
+	id = cyber.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_situation_flag = cyberization_ongoing_limited
+		owner = {
+			num_buildings = {
+				type = building_augmentation_center
+				disabled = no
+				value > 0
+			}
+			# check_variable_arithmetic = {
+			# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|
+			# 	value > 0
+			# }
+		}
+	}
+
+	immediate = {
+		owner = {
+			weighted_random_owned_pop_group = {
+				limit = {
+					is_same_species = owner_species
+					OR = {
+						planet_owner = {
+							is_hive_empire = yes # Vanilla Fix!?
+						}
+						pop_group_has_ethic = ethic_spiritualist
+					}
+					NOR = {
+						pop_group_has_trait = trait_cybernetic
+						pop_group_has_trait = trait_limited_cybernetic
+					}
+				}
+				create_cyber_species_effect = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						exists = event_target:cyberspecies_current
+						AND = {
+							exists = event_target:cyberspecies@species
+							is_same_species = event_target:cyberspecies@species
+						}
+						any_owned_species = {
+							is_same_species = prev.owner_species
+							exists = event_target:cyberspecies@this
+							is_same_species = event_target:cyberspecies@this
+						}
+					}
+				}
+				# Partly cyberized variant - (no global target needed, as it is the same target species)
+				# if = {
+				# 	# Already exists one?
+				# 	limit = {
+				# 		NOT = {
+				# 			prev = {
+				# 				has_situation_flag = cyberization_final
+				# 			}
+				# 		}
+				# 		exists = event_target:changing_species
+				# 		any_owned_pop_group = {
+				# 			is_same_species = event_target:changing_species
+				# 			pop_group_has_trait = trait_limited_cybernetic
+				# 		}
+				# 	}
+				# 	weighted_random_owned_pop_group = {
+				# 		limit = {
+				# 			is_same_species = event_target:changing_species
+				# 			pop_group_has_trait = trait_limited_cybernetic
+				# 		}
+				# 		species = {
+				# 			save_event_target_as = cyberspecies_current
+				# 		}
+				# 	}
+				# }
+				if = {
+					limit = { is_hive_empire = yes }
+					cyberize_pops_effect = { LIMITED = yes }
+					# cyberspecies gets automatically limited
+					assimilate_leaders = {
+						SOURCE = event_target:changing_species
+						TARGET = event_target:cyberspecies_current
+					}
+				}
+				else = {
+					cyberize_pops_effect = { SPIRITUALIST = yes LIMITED = yes }
+					# cyberspecies gets automatically limited
+					cyberize_leaders_limited_effect = yes
+				}
+			}
+			# Check if there are any pops left to cyberize, otherwise remove the cyberization flag to unpause the situation.
+			if = {
+				limit = {
+					count_owned_pop_group = {
+						count = 0
+						limit = {
+							is_same_species = owner_species
+							OR = {
+								planet_owner = { is_hive_empire = yes }
+								pop_group_has_ethic = ethic_spiritualist
+							}
+							NOR = {
+								pop_group_has_trait = trait_cybernetic
+								pop_group_has_trait = trait_limited_cybernetic
+							}
+						}
+					}
+				}
+				root = { remove_situation_flag = cyberization_ongoing_limited }
+			}
+		}
+	}
+}
+
+# Fired by: situation on_monthly and event
+# Event to force cyberize spiritualist pops
+situation_event = {
+	id = cyber.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_situation_flag = cyberization_ongoing_forced
+		owner = {
+			num_buildings = {
+				type = building_augmentation_center
+				disabled = no
+				value > 0
+			}
+			# check_variable_arithmetic = {
+			# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|
+			# 	value > 0
+			# }
+		}
+	}
+
+	immediate = {
+		owner = {
+			weighted_random_owned_pop_group = {
+				limit = {
+					is_same_species = owner_species
+					pop_group_has_ethic = ethic_spiritualist
+					NOR = {
+						pop_group_has_trait = trait_cybernetic
+						pop_group_has_trait = trait_limited_cybernetic
+					}
+				}
+				create_cyber_species_effect = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						exists = event_target:cyberspecies_current
+						AND = {
+							exists = event_target:cyberspecies@species
+							is_same_species = event_target:cyberspecies@species
+						}
+						any_owned_species = {
+							is_same_species = prev.owner_species
+							exists = event_target:cyberspecies@this
+							is_same_species = event_target:cyberspecies@this
+						}
+					}
+				}
+				cyberize_pops_effect = { SPIRITUALIST = yes }
+				# cyberize_leaders_effect = yes
+				# cyberize_colony_ships_effect = yes
+				# cyberize_armies_effect = yes
+				assimilate_leaders = {
+					SOURCE = event_target:changing_species
+					TARGET = event_target:cyberspecies_current
+				}
+				assimilate_colony_ships = {
+					SOURCE = event_target:changing_species
+					TARGET = event_target:cyberspecies_current
+				}
+				assimilate_armies = {
+					SOURCE = event_target:changing_species
+					TARGET = event_target:cyberspecies_current
+				}
+			}
+			# Check if there are any pops left to cyberize, otherwise remove the cyberization flag to unpause the situation.
+			if = {
+				limit = {
+					count_owned_pop_group = {
+						count = 0
+						limit = {
+							is_same_species = owner_species
+							pop_group_has_ethic = ethic_spiritualist
+							NOR = {
+								pop_group_has_trait = trait_cybernetic
+								pop_group_has_trait = trait_limited_cybernetic
+							}
+						}
+					}
+				}
+				root = { remove_situation_flag = cyberization_ongoing_forced }
+			}
+		}
+	}
+}
+
+# Fired by: situation on_monthly
+# Hive Cyberization - Event to minimally cyberize some non-cyborg pops
+situation_event = {
+	id = cyber.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_situation_flag = hive_cyberization_ongoing_limited
+		owner = {
+			num_buildings = {
+				type = building_augmentation_center
+				disabled = no
+				value > 0
+			}
+			# check_variable_arithmetic = {
+			# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|
+			# 	value > 0
+			# }
+		}
+	}
+
+	immediate = {
+		owner = {
+			weighted_random_owned_pop_group = {
+				limit = {
+					is_same_species = owner_species
+					NOR = {
+						pop_group_has_trait = trait_cybernetic
+						pop_group_has_trait = trait_limited_cybernetic
+						# has_pop_group_flag = cyber_hive_defective_pop removed in v4.0
+					}
+				}
+				create_cyber_species_effect = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						exists = event_target:cyberspecies_current
+						AND = {
+							exists = event_target:cyberspecies@species
+							is_same_species = event_target:cyberspecies@species
+						}
+						any_owned_species = {
+							is_same_species = prev.owner_species
+							exists = event_target:cyberspecies@this
+							is_same_species = event_target:cyberspecies@this
+						}
+					}
+				}
+				# Partly cyberized variant - (no global target needed, as it is the same target species)
+				# if = {
+				# 	# Already exists one?
+				# 	limit = {
+				# 		exists = event_target:changing_species
+				# 		any_owned_pop_group = {
+				# 			is_same_species = event_target:changing_species
+				# 			pop_group_has_trait = trait_limited_cybernetic
+				# 		}
+				# 	}
+				# 	weighted_random_owned_pop_group = {
+				# 		limit = {
+				# 			is_same_species = event_target:changing_species
+				# 			pop_group_has_trait = trait_limited_cybernetic
+				# 		}
+				# 		species = {
+				# 			save_event_target_as = cyberspecies_current
+				# 		}
+				# 	}
+				# }
+				cyberize_pops_effect = { LIMITED = yes }
+			}
+			# Check if there are any pops left to cyberize, otherwise remove the cyberization flag to unpause the situation.
+			if = {
+				limit = {
+					count_owned_pop_group = {
+						count = 0
+						limit = {
+							is_same_species = owner_species
+							NOR = {
+								pop_group_has_trait = trait_cybernetic
+								pop_group_has_trait = trait_limited_cybernetic
+							}
+						}
+					}
+				}
+				root = {
+					remove_situation_flag = hive_cyberization_ongoing_limited
+					set_situation_flag = cyberization_ongoing
+				}
+			}
+		}
+	}
+}
+
+### CYBERIZATION SITUATION END ###
+# Following 2 events are added by FirePrince
+# Yes, normally it's not a good idea to add new events in vanilla namesapce, but we imitate vanilla. :P
+# Temp save fix (delayed)
+country_event = {
+	id = cyber.18
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		has_country_flag = augmentation_center_needed
+		any_owned_planet = {
+			is_colony = yes
+			is_occupied_flag = no
+			has_building = yes
+			has_active_building = building_augmentation_center
+		}
+	}
+
+	immediate = {
+		remove_country_flag = augmentation_center_needed
+	}
+}
+
+# Temp save fix
+# TODO: Cause unknown
+event = {
+	id = cyber.19
+	hide_window = yes
+	is_triggered_only = yes
+	# fire_only_once = yes
+	trigger = {
+		any_playable_country = {
+			has_tradition = tr_cybernetics_adopt			# Situation Fired by: tr_cybernetics_adopt
+			has_country_flag = augmentation_center_available
+			has_country_flag = augmentation_center_needed
+			OR = {
+				has_country_flag = situation_cyberization_complete
+				has_country_flag = cybernetics_traditions_unlocked
+				AND = {
+					is_hive_empire = no
+					country_has_situation = { SITUATION = situation_cyberization }
+				}
+				AND = {
+					is_hive_empire = yes
+					country_has_situation = { SITUATION = situation_cyberization_hive }
+				}
+			}
+			# any_owned_planet = {
+			# 	is_colony = yes
+			# 	is_occupied_flag = no
+			# 	has_building = yes
+			# 	has_active_building = building_augmentation_center
+			# }
+		}
+	}
+
+	immediate = {
+		random_playable_country = {
+			limit = {
+				has_tradition = tr_cybernetics_adopt
+				has_country_flag = augmentation_center_available
+				has_country_flag = augmentation_center_needed
+				OR = {
+					has_country_flag = situation_cyberization_complete
+					has_country_flag = cybernetics_traditions_unlocked
+					AND = {
+						is_hive_empire = no
+						country_has_situation = { SITUATION = situation_cyberization }
+					}
+					AND = {
+						is_hive_empire = yes
+						country_has_situation = { SITUATION = situation_cyberization_hive }
+					}
+				}
+			}
+			weights = {
+				base = 1
+				modifier = { add = 99 is_ai = no }
+			}
+			country_event = { id = cyber.18 days = 3 }
+		}
+	}
+}
+
+# Fired by: on_added_to_leader_pool
+# A leader is added to the leader pool, available for recruitment
+# scope: country, from: leader
+country_event = {
+	id = cyber.22
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_policy_flag = cyberization_standards_limited
+		from = {
+			NOT = { leader_class = envoy }
+			is_spiritualist = yes
+			has_trait = leader_trait_cyborg
+			is_same_species = root.owner_species
+		}
+	}
+
+	immediate = {
+		from = {
+			remove_trait = leader_trait_cyborg
+			add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+			modify_species = {
+				# Vfix
+				remove_trait = trait_cybernetic
+				add_trait = trait_limited_cybernetic
+				add_traits_at_start_of_list = yes
+				effect = {
+					prev = { change_leader_portrait = prev }
+				}
+			}
+		}
+	}
+}
+
+# Fired by: tr_cybernetics_assimilator_finish
+country_event = {
+	id = cyber.2015
+	title = cyber.2015.name
+	desc = cyber.2015.desc
+	picture = GFX_evt_hive_cyberization
+	show_sound = event_the_flesh_is_weak
+	is_triggered_only = yes
+
+	option = {
+		name = cyber.2015.a
+		set_country_flag = driven_memory_aggregator
+		custom_tooltip = cyber.2015.a.tt
+		hidden_effect = {
+			advanced_authority_refresh = yes
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = cyber.2015.b
+		set_country_flag = driven_neural_chorus
+		custom_tooltip = cyber.2015.b.tt
+		hidden_effect = {
+			advanced_authority_refresh = yes
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = cyber.2015.c
+		custom_tooltip = cyber.2015.c.tt
+		trigger = { is_ai = no }
+	}
+
+	after = {
+		ruler = {
+			add_trait = { trait = leader_trait_cyborg }
+			modify_species = {
+				# Vfix
+				add_trait = trait_cybernetic
+				add_traits_at_start_of_list = yes
+				effect = {
+					prev = { change_leader_portrait = prev }
+				}
+			}
+		}
+	}
+}
+

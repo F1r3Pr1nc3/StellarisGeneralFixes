@@ -1,0 +1,72 @@
+triggered_pop_group_modifier = {
+	potential = {
+		has_psionic_species_trait = yes
+	}
+	key = mod_psionic_pop_bonus_workforce_mult
+	pop_bonus_workforce_mult = 1
+	mult = planet.modifier:psionic_pop_bonus_workforce_mult
+}
+triggered_pop_group_modifier = {
+	potential = {
+		OR = {
+			is_pop_category = complex_drone
+			is_specialist_category = yes
+		}
+		has_psionic_species_trait = yes
+	}
+	key = mod_psionic_specialist_pop_bonus_workforce_mult
+	pop_bonus_workforce_mult = 1.0
+	mult = modifier:psionic_specialist_pop_bonus_workforce_mult
+}
+
+triggered_pop_group_modifier = {
+	potential = {
+		OR = {
+			has_trait = trait_cybernetic
+			has_trait = trait_limited_cybernetic
+			has_trait = trait_unplugged_cybernetic_positives_3
+			has_trait = trait_unplugged_cybernetic_positives_2
+			has_trait = trait_unplugged_cybernetic_positives_1
+		}
+	}
+	key = mod_cyborg_pop_bonus_workforce_mult
+	pop_bonus_workforce_mult = 1
+	mult = planet.modifier:cyborg_pop_bonus_workforce_mult
+}
+
+triggered_pop_group_modifier = {
+	potential = {
+		is_robotic_species = no
+	}
+	key = mod_organic_pop_bonus_workforce_mult
+	pop_bonus_workforce_mult = 1
+	mult = planet.modifier:organic_pop_bonus_workforce_mult
+}
+
+triggered_pop_group_modifier = {
+	potential = {
+		is_robotic_species = yes
+	}
+	key = mod_robotic_pop_bonus_workforce_mult
+	pop_bonus_workforce_mult = 1
+	mult = planet.modifier:robotic_pop_bonus_workforce_mult
+}
+
+triggered_pop_group_modifier = {
+	potential = {
+		exists = owner # Vfix
+		is_enslaved = yes
+	}
+	key = mod_pop_slave_bonus_workforce_mult
+	pop_bonus_workforce_mult = 1
+	mult = planet.modifier:pop_slave_bonus_workforce_mult
+}
+
+triggered_planet_modifier = {
+	potential = {
+		has_trait = trait_unbreakable_resolve
+	}
+	key = trait_unbreakable_resolve
+	# Special trait: One pop adds +0.2 stability, up to +15 per planet
+	planet_stability_add_with_limit = @unbreakable_resolve_stability
+}

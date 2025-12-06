@@ -1,0 +1,27 @@
+# Active fixes for general_active_fix_patch_saves
+on_single_player_save_game_load = {
+	events = {
+		# ariphaos_patch.1 # Event for version tracking.
+		# ariphaos_patch.10001 # Game and galaxy evaluation
+		# ariphaos_patch.459 # Troop counts
+		khan.300
+		general_patch_active.99
+	}
+}
+
+# A planet has been colonized.
+# Scope = Planet
+# on_colonized = {
+# 	events = {
+
+# 	}
+# }
+# This = owner of ship 1 (destroyed)
+# From = owner of ship 2 (combatant)
+# FromFrom = ship 1
+# FromFromFrom = ship 2
+on_ship_destroyed_victim = {
+	events = {
+		khan.525
+	}
+}

@@ -1,0 +1,3091 @@
+###########################
+# Utopia On-Action Events #
+###########################
+@covenant_rank_1 = 20
+@covenant_rank_2 = 50
+@covenant_rank_3 = 90
+@covenant_rank_4 = 150
+
+namespace = utopia
+
+### Withdrawal added when Unblissed
+pop_group_event = {
+	id = utopia.91
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		former_living_standard_type = living_standard_chemical_bliss
+		last_changed_species_rights_type = living_standard
+		NOT = {
+			has_living_standard = { country = owner type = living_standard_chemical_bliss }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_modifier = withdrawal_symptoms }
+			remove_modifier = withdrawal_symptoms
+		}
+		add_modifier = { modifier = withdrawal_symptoms years = 5 }
+	}
+}
+
+# Hive Mind ruler gets Hive Mind trait to make them immortal
+country_event = {
+	id = utopia.6000
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		is_hive_empire = yes
+		from = { is_ruler = yes }
+	}
+
+	immediate = {
+		from = {
+			add_trait = { trait = leader_trait_ruler_hive_mind show_message = no }
+		}
+	}
+}
+
+# Hive Mind stops purging and sets rights for integrated species
+country_event = {
+	id = utopia.6001
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_hive_empire = yes
+		from = { has_trait = trait_hive_mind }
+	}
+
+	immediate = {
+		from = { # Modified species
+			if = {
+				limit = {
+					NOT = {
+						has_citizenship_type = { type = citizenship_full country = root }
+					}
+				}
+				set_citizenship_type = {
+					country = root
+					type = citizenship_full
+					cooldown = yes
+				}
+			}
+		}
+	}
+}
+
+# Purity government: purging pops yields unity
+planet_event = {
+	id = utopia.180
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = { has_valid_civic = civic_fanatic_purifiers }
+		exists = fromfrom # crisis.202 can remove the last pop
+		fromfrom = {
+			NOR = {
+				is_robot_pop_group = yes
+				is_same_species = owner_species
+			}
+		}
+		is_controlled_by = from
+	}
+
+	immediate = {
+		while = {
+			count = value:per_100_local_pop_amount
+			from = {
+				add_monthly_resource_mult = {
+					resource = unity
+					value = 1.5
+					min = 5
+					max = 100
+				}
+			}
+		}
+	}
+}
+
+# Purity government: purging pops yields unity
+planet_event = {
+	id = utopia.181
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = { has_valid_civic = civic_hive_devouring_swarm }
+		exists = fromfrom # crisis.202 can remove the last pop
+		fromfrom = {
+			NOR = {
+				is_robot_pop_group = yes
+				is_same_species = owner_species
+			}
+		}
+		is_controlled_by = from
+	}
+
+	immediate = {
+		while = {
+			count = value:per_100_local_pop_amount
+			from = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = 1
+					min = 1
+					max = 100
+				}
+			}
+		}
+		if = {
+			limit = {
+				owner = { is_wilderness_empire = yes }
+			}
+			set_variable = { which = biomass_amount value = local_pop_amount }
+			multiply_variable = { which = biomass_amount value = 0.1 }
+			create_pop_group = { species = owner_species size = biomass_amount }
+		}
+	}
+}
+
+### Withdrawal removed when Blissed
+pop_group_event = {
+	id = utopia.90
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_living_standard = { country = owner type = living_standard_chemical_bliss }
+	}
+
+	immediate = {
+		if = {
+			limit = { has_modifier = withdrawal_symptoms }
+			remove_modifier = withdrawal_symptoms
+		}
+	}
+}
+
+### ASCENSION PERKS
+# Engineered Evolution
+country_event = {
+	id = utopia.2700
+	title = "utopia.2700.name"
+	desc = "utopia.2700.desc"
+	picture = GFX_evt_genetic_modification
+	show_sound = event_engineered_evolution
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				any_planet_within_border = {
+					has_planet_flag = fotd_seperatist_planet@root
+					owner = { has_country_flag = fotd_seperatist_country@root }
+				}
+			}
+			country_event = {
+				id = origin.6115
+				days = 5
+				random = 2
+			}
+		}
+	}
+
+	option = {
+		name = EXCELLENT
+	}
+}
+
+# Evolutionary Mastery
+country_event = {
+	id = utopia.2703
+	title = "utopia.2703.name"
+	desc = "utopia.2703.desc"
+	picture = GFX_evt_genetic_modification
+	show_sound = event_evolution_mastery
+	is_triggered_only = yes
+
+	immediate = {
+		country_event = { id = timeline.80 }
+		if = {
+			limit = {
+				any_planet_within_border = {
+					has_planet_flag = fotd_seperatist_planet@root
+					owner = { has_country_flag = fotd_seperatist_country@root }
+				}
+			}
+			country_event = {
+				id = origin.6120
+				days = 5
+				random = 2
+			}
+		}
+	}
+
+	option = {
+		name = EXCELLENT
+		trigger = {
+			OR = {
+				is_hive_empire = no
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+		}
+	}
+	option = {
+		name = EXCELLENT
+		trigger = {
+			is_hive_empire = yes
+			NOT = { has_valid_civic = civic_hive_devouring_swarm }
+		}
+	}
+}
+
+country_event = {
+	id = utopia.2500
+	title = utopia.2500.name
+
+	desc = {
+		trigger = {
+			NOT = { has_origin = origin_unplugged }
+		}
+		text = utopia.2500.desc
+	}
+	desc = {
+		trigger = { has_origin = origin_unplugged }
+		text = utopia.2500.desc.unplugged
+	}
+
+	picture = GFX_evt_cybernetics
+	show_sound = event_laboratory_sound
+	trackable = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "utopia.2500.a"
+		hidden_effect = {
+			save_event_target_as = flesh_weak_owner
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = "FLESH_IS_WEAK_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_machine_age_dlc = yes
+				has_origin = origin_unplugged
+			}
+			set_country_flag = augmentation_center_available
+			custom_tooltip = "utopia.2500.unplugged.tt"
+		}
+	}
+}
+
+# A Cybernetic Revolution
+country_event = {
+	id = utopia.2501
+	title = "utopia.2501.name"
+	desc = "utopia.2501.desc"
+	picture = GFX_evt_cybernetics
+	show_sound = event_the_flesh_is_weak
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				any_owned_pop_group = { is_exact_same_species = root }
+			}
+			weighted_random_owned_pop_group = {
+				limit = { is_exact_same_species = root }
+				create_cybernetic_species_mod = yes
+				species = { save_event_target_as = new_main_species }
+			}
+		}
+		else = {
+			weighted_random_owned_pop_group = {
+				limit = { is_same_species = root }
+				create_cybernetic_species_mod = yes
+				species = { save_event_target_as = new_main_species }
+			}
+		}
+		change_dominant_species = { species = event_target:new_main_species }
+		if = {
+			limit = { is_hive_empire = no }
+			while = {
+				limit = {
+					any_owned_pop_group = {
+						is_sapient = yes
+						species = {
+							NOR = {
+								has_trait = trait_cybernetic
+								is_robotic = yes
+								has_trait = trait_hive_mind
+							}
+						}
+					}
+				}
+				weighted_random_owned_pop_group = {
+					limit = {
+						is_sapient = yes
+						species = {
+							NOR = {
+								has_trait = trait_cybernetic
+								is_robotic = yes
+								has_trait = trait_hive_mind
+							}
+						}
+					}
+					create_cybernetic_species_mod = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { is_hive_empire = yes }
+			while = {
+				limit = {
+					any_owned_pop_group = {
+						is_sapient = yes
+						species = {
+							has_trait = trait_hive_mind
+							NOR = {
+								has_trait = trait_cybernetic
+								is_robotic = yes
+							}
+						}
+					}
+				}
+				weighted_random_owned_pop_group = {
+					limit = {
+						is_sapient = yes
+						species = {
+							has_trait = trait_hive_mind
+							NOR = {
+								has_trait = trait_cybernetic
+								is_robotic = yes
+							}
+						}
+					}
+					create_cybernetic_species_mod = yes
+				}
+			}
+		}
+		while = {
+			limit = {
+				any_owned_leader = {
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
+					}
+				}
+			}
+			random_owned_leader = {
+				limit = {
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
+					}
+				}
+				root.capital_scope = { # workaround to prevent main species from accidentally flipping
+					create_pop_group = {
+						species = prev
+						effect = { save_event_target_as = last_created_pop_group }
+					}
+					event_target:last_created_pop_group = {
+						create_cybernetic_species_mod = yes
+						kill_all_pop = yes
+					}
+				}
+			}
+		}
+		while = {
+			limit = {
+				any_pool_leader = {
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
+					}
+				}
+			}
+			random_pool_leader = {
+				limit = {
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
+					}
+				}
+				root.capital_scope = { # workaround to prevent main species from accidentally flipping
+					create_pop_group = {
+						species = prev
+						effect = { save_event_target_as = last_created_pop_group }
+					}
+					event_target:last_created_pop_group = {
+						create_cybernetic_species_mod = yes
+						kill_all_pop = yes
+					}
+				}
+			}
+		}
+		while = {
+			limit = {
+				any_owned_army = {
+					exists = species
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
+					}
+				}
+			}
+			random_owned_army = {
+				limit = {
+					exists = species
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
+					}
+				}
+				root.capital_scope = { # workaround to prevent main species from accidentally flipping
+					create_pop_group = {
+						species = prev.species
+						effect = { save_event_target_as = last_created_pop_group }
+					}
+					event_target:last_created_pop_group = {
+						create_cybernetic_species_mod = yes
+						kill_all_pop = yes
+					}
+				}
+			}
+		}
+		every_controlled_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				species = {
+					NOR = {
+						has_trait = trait_cybernetic
+						is_robotic = yes
+					}
+				}
+			}
+			root.capital_scope = { # workaround to prevent main species from accidentally flipping
+				create_pop_group = {
+					species = prev
+					effect = { save_event_target_as = last_created_pop_group }
+				}
+				event_target:last_created_pop_group = {
+					create_cybernetic_species_mod = yes
+					kill_all_pop = yes
+				}
+			}
+		}
+		every_owned_leader = {
+			limit = {
+				species = { has_trait = trait_cybernetic }
+				is_leader_tier = leader_tier_default
+				NOT = { has_trait = leader_trait_cyborg }
+			}
+			add_trait = { trait = leader_trait_cyborg show_message = no }
+		}
+		create_message = {
+			type = MESSAGE_ALL_GAINED_TRAIT
+			localization = MESSAGE_ALL_GAINED_TRAIT_DESC
+			days = @toast_message_days
+			variable = {
+				type = key
+				value = leader_trait_cyborg
+				localization = TRAIT
+			}
+			variable = { key = TRAIT_KEY value = leader_trait_cyborg }
+			variable = { key = "border" value = "GFX_invisible" }
+		}
+		every_pool_leader = {
+			limit = {
+				species = { has_trait = trait_cybernetic }
+				NOT = { has_trait = leader_trait_cyborg }
+			}
+			add_trait = { trait = leader_trait_cyborg show_message = no }
+		}
+		observer_event = { id = observer.55 }
+		every_playable_country = {
+			limit = {
+				NOR = {
+					is_ai = yes
+					is_same_empire = root
+				}
+				has_communications = root
+				root = { is_primitive = no }
+			}
+			country_event = { id = utopia.2505 days = 5 }
+		}
+		if = {
+			limit = {
+				any_planet_within_border = {
+					has_planet_flag = fotd_seperatist_planet@root
+					owner = { has_country_flag = fotd_seperatist_country@root }
+				}
+			}
+			country_event = {
+				id = origin.6095
+				days = 5
+				random = 2
+			}
+		}
+		update_node_portraits_if_gestalt_effect = yes
+	}
+
+	option = {
+		name = "utopia.2501.a"
+	}
+}
+
+# Notification for Other Nations
+country_event = {
+	id = utopia.2505
+	title = "utopia.2505.name"
+
+	desc = {
+		text = utopia.2505.1.desc
+		trigger = { is_spiritualist = no }
+	}
+	desc = {
+		text = utopia.2505.2.desc
+		trigger = {
+			is_spiritualist = yes
+			NOT = {
+				from = { has_origin = origin_unplugged }
+			}
+		}
+	}
+	desc = {
+		text = utopia.2505.2.desc.unplugged
+		trigger = {
+			is_spiritualist = yes
+			from = { has_origin = origin_unplugged }
+		}
+	}
+
+	picture = GFX_evt_cybernetics
+	show_sound = event_the_flesh_is_weak
+	is_triggered_only = yes
+
+	option = {
+		name = "DISCONCERTING"
+		trigger = { is_spiritualist = no }
+	}
+	option = {
+		name = "utopia.2505.b"
+		trigger = { is_spiritualist = yes }
+	}
+}
+
+# Handle leader traits and species after species modification
+# This = Country
+# From = Species ( Post Modification )
+# FromFrom = Species ( Original )
+# Prev = Planet
+country_event = {
+	id = utopia.2508
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		fromfrom = { save_event_target_as = old_species }
+		every_envoy = {
+			limit = { # Vfix
+				OR = {
+					is_exact_same_species = from
+					is_exact_same_species = event_target:old_species
+				}
+			}
+			if = {
+				limit = { # Vfix
+					is_exact_same_species = event_target:old_species
+				}
+				change_species = from
+			}
+			update_leader_after_modification = yes
+		}
+		every_owned_leader = {
+			limit = { # Vfix
+				OR = {
+					is_exact_same_species = from
+					is_exact_same_species = event_target:old_species
+				}
+			}
+			if = {
+				limit = { # Vfix
+					is_exact_same_species = event_target:old_species
+				}
+				change_species = from
+			}
+			update_leader_after_modification = yes
+		}
+		every_pool_leader = { # Vfix
+			limit = {
+				OR = {
+					is_exact_same_species = from
+					is_exact_same_species = event_target:old_species
+				}
+			}
+			if = {
+				limit = { # Vfix
+					is_exact_same_species = event_target:old_species
+				}
+				change_species = from
+			}
+			update_leader_after_modification = yes
+		}
+	}
+}
+
+# New Leaders Get Erudite Trait
+country_event = {
+	id = utopia.2509
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			NOT = { leader_class = envoy }
+			species = {
+				has_trait = trait_erudite
+				NOR = {
+					has_psionic_species_trait = yes
+					has_trait = trait_cybernetic
+				}
+			}
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = { trait = leader_trait_erudite show_message = no }
+		}
+	}
+}
+
+# New Leaders Get Cyborg Trait
+# If Leader Firewall has been applied, they also get that
+country_event = {
+	id = utopia.2510
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			NOT = { leader_class = envoy }
+			species = {
+				OR = {
+					has_trait = trait_cybernetic
+					has_trait = trait_limited_cybernetic
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_policy_flag = cyberization_standards_limited
+				from = {
+					species = { has_trait = trait_limited_cybernetic }
+					is_spiritualist = yes # fanatic technically possible
+				}
+			}
+			from = {
+				add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+			}
+		}
+		else = {
+			from = {
+				add_trait = { trait = leader_trait_cyborg show_message = no }
+			}
+			if = {
+				limit = { has_country_flag = firewall_built }
+				from = {
+					add_trait = { trait = leader_trait_firewalled show_message = no }
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_machine_empire = yes
+				has_country_flag = driven_neural_chorus
+			}
+			from = { add_skill_without_trait_selection = 1 }
+		}
+	}
+}
+
+# Synthetic Evolution
+country_event = {
+	id = utopia.2550
+	title = "utopia.2550.name"
+	desc = "utopia.2550.desc"
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_laboratory_sound
+	trackable = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "utopia.2550.a"
+		hidden_effect = {
+			save_event_target_as = synth_evo_owner
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = "SYNTHETIC_EVOLUTION_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+
+# The Synthetic Age
+country_event = {
+	id = utopia.2551
+	title = "utopia.2551.name"
+	desc = "utopia.2551.desc"
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_synthetic_evolution
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = synthetic_empire
+		luminary_speech_effect = yes
+		if = {
+			limit = { has_policy_flag = robots_outlawed }
+			set_policy = {
+				policy = robot_pop_policy
+				option = robot_pops_allowed
+				cooldown = yes
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_policy_flag = ai_servitude
+					has_policy_flag = ai_outlawed
+				}
+			}
+			set_policy = {
+				policy = artificial_intelligence_policy
+				option = ai_full_rights
+				cooldown = yes
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					is_active_resolution = "resolution_divinity_silence_the_soulless"
+					is_active_resolution = "resolution_divinity_a_defined_purpose"
+				}
+			}
+			owner = {
+				set_timed_country_flag = {
+					flag = resolution_breached_synthetic_evolution
+					years = 10
+				}
+			}
+		}
+		give_technology = { tech = tech_bio_reactor message = no }
+		create_synth_species_effect = yes
+		every_owned_pop_group = {
+			limit = {
+				is_being_purged = no
+				species = { is_robotic = no is_livestock = no }
+			}
+			change_species = event_target:current_synthspecies # Vfix
+		}
+		every_controlled_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				species = { is_robotic = no is_livestock = no }
+			}
+			change_species = event_target:current_synthspecies # Vfix
+		}
+		# Vfix merge
+		every_owned_army = {
+			limit = {
+				exists = species
+				species = { is_robotic = no is_livestock = no }
+				OR = {
+					army_type = assault_army
+					army_type = defense_army
+				}
+				NAND = {
+					exists = planet
+					planet = { has_ground_combat = yes }
+				}
+			}
+			modify_army = {
+				name = random
+				species = event_target:current_synthspecies # Vfix
+			}
+		}
+		every_owned_leader = {
+			limit = {
+				OR = {
+					species = { is_robotic = no is_livestock = no }
+					has_trait = leader_trait_synthetic
+				}
+				is_leader_tier = leader_tier_default
+			}
+			change_species = event_target:current_synthspecies # Vfix
+			change_leader_portrait = species
+		}
+		every_pool_leader = {
+			limit = {
+				OR = {
+					species = { is_robotic = no is_livestock = no }
+					has_trait = leader_trait_synthetic
+				}
+			}
+			change_species = event_target:current_synthspecies # Vfix
+			change_leader_portrait = species
+		}
+		every_envoy = {
+			limit = {
+				species = { is_robotic = no is_livestock = no }
+			}
+			change_species = event_target:current_synthspecies # Vfix
+			change_leader_portrait = species
+		}
+		change_dominant_species = { species = event_target:current_synthspecies }
+		machine_synthetic_leader_effect = yes # Vfix
+		create_message = {
+			type = MESSAGE_ALL_GAINED_TRAIT
+			localization = MESSAGE_ALL_GAINED_TRAIT_DESC
+			days = @toast_message_days
+			variable = {
+				type = key
+				value = leader_trait_synthetic
+				localization = TRAIT
+			}
+			variable = { key = TRAIT_KEY value = leader_trait_synthetic }
+			variable = { key = "border" value = "GFX_invisible" }
+		}
+		observer_event = { id = observer.4 }
+		every_playable_country = {
+			limit = {
+				NOR = {
+					is_ai = yes
+					is_same_empire = root
+				}
+				has_communications = root
+			}
+			country_event = { id = utopia.2555 days = 5 }
+			country_event = { id = utopia.2556 days = 10 }
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_fallen_empire_spiritualist = yes
+					has_communications = root
+					NOT = { is_same_empire = root }
+				}
+			}
+			random_country = {
+				limit = {
+					is_fallen_empire_spiritualist = yes
+					has_communications = root
+					NOT = { is_same_value = root }
+				}
+				country_event = { id = utopia.2557 days = 15 }
+			}
+		}
+		else = {
+			random_playable_country = {
+				limit = {
+					is_fanatic_spiritualist = yes
+					has_communications = root
+					NOT = { is_same_value = root }
+				}
+				country_event = { id = utopia.2557 days = 15 }
+			}
+		}
+		if = {
+			limit = {
+				any_planet_within_border = {
+					has_planet_flag = fotd_seperatist_planet@root
+					owner = { has_country_flag = fotd_seperatist_country@root }
+				}
+			}
+			country_event = {
+				id = origin.6100
+				days = 5
+				random = 2
+			}
+		}
+	}
+
+	option = {
+		trigger = { is_homicidal = no }
+		name = "utopia.2551.a"
+	}
+	option = {
+		trigger = { is_homicidal = yes }
+		name = "utopia.2551.a"
+	}
+}
+
+# Notification for Other Nations
+country_event = {
+	id = utopia.2555
+	title = "utopia.2550.name"
+
+	desc = {
+		text = utopia.2555.1.desc
+		trigger = { is_spiritualist = no }
+	}
+	desc = {
+		text = utopia.2555.2.desc
+		trigger = { is_spiritualist = yes }
+	}
+
+	picture = GFX_evt_cybernetics
+	show_sound = event_synthetic_evolution
+	is_triggered_only = yes
+
+	option = {
+		name = "utopia.2555.a"
+		trigger = { is_spiritualist = no }
+	}
+	option = {
+		name = "utopia.2555.b"
+		trigger = { is_spiritualist = yes }
+	}
+}
+
+# Diplomatic Announcement
+country_event = {
+	id = utopia.2556
+	title = TRANSMISSION
+	desc = "utopia.2556.desc"
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = from
+		room = from.ruler
+	}
+
+	option = {
+		name = utopia.2556.a
+		trigger = {
+			is_materialist = yes
+			NOT = { is_at_war_with = from }
+		}
+	}
+	option = {
+		name = utopia.2556.b
+		trigger = {
+			is_spiritualist = yes
+			NOT = { is_at_war_with = from }
+		}
+	}
+	option = {
+		name = utopia.2556.c
+		trigger = { is_at_war_with = from }
+	}
+	option = {
+		name = utopia.2556.d
+		trigger = {
+			NOR = {
+				is_at_war_with = from
+				is_materialist = yes
+				is_spiritualist = yes
+			}
+		}
+	}
+}
+
+# Diplomatic Response (HIDDEN)
+country_event = {
+	id = utopia.2557
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from = {
+			country_event = { id = utopia.2558 }
+		}
+	}
+}
+
+# Diplomatic Response
+country_event = {
+	id = utopia.2558
+	title = TRANSMISSION
+	desc = "utopia.2558.desc"
+	diplomatic = yes
+	is_triggered_only = yes
+
+	picture_event_data = {
+		portrait = from
+		room = from.ruler
+	}
+
+	option = {
+		name = utopia.2558.a
+	}
+}
+
+# New Leaders Get Synthetic Trait (Should also work on "normal" Synthetics)
+country_event = {
+	id = utopia.2560
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { from = { leader_class = envoy } }
+		OR = {
+			from = {
+				species = {
+					has_trait = trait_mechanical
+					NOT = { has_trait = trait_shroud_forged }
+				}
+			}
+			AND = {
+				from = {
+					species = { has_trait = trait_machine_unit }
+					is_gestalt_node = no
+				}
+				has_tradition = tr_synthetics_finish
+			}
+			AND = {
+				from = {
+					species = { has_trait = trait_machine_unit }
+					is_gestalt_node = no
+				}
+				has_tradition = tr_modularity_finish
+			}
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = { trait = leader_trait_synthetic show_message = no }
+		}
+	}
+}
+
+# Mind over Matter
+country_event = {
+	id = utopia.2600
+	title = utopia.2600.name
+
+	desc = {
+		trigger = {
+			NOT = { has_origin = origin_unplugged }
+		}
+		text = utopia.2600.desc
+	}
+	desc = {
+		trigger = { has_origin = origin_unplugged }
+		text = utopia.2600.desc.unplugged
+	}
+
+	picture = GFX_evt_psionics
+	show_sound = event_mind_over_matter
+	is_triggered_only = yes
+
+	trigger = {
+		is_psionic = yes
+	}
+
+	immediate = {
+		mind_over_matter_immediate = yes
+	}
+
+	option = {
+		name = "utopia.2600.a"
+		trigger = {
+			NOT = { has_origin = origin_shroudwalker_apprentice }
+		}
+		tooltip = { add_latent_psionic_trait = yes }
+	}
+	option = {
+		name = "utopia.2600.a"
+		trigger = { has_origin = origin_shroudwalker_apprentice }
+	}
+}
+
+# New Leaders Get Psionic (Latent Psionic)
+country_event = {
+	id = utopia.2601
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			NOR = {
+				leader_class = envoy
+				is_gestalt_node = yes
+			}
+			species = { is_latent_psionic_species = yes }
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = { trait = leader_trait_psionic show_message = no }
+		}
+	}
+}
+
+# Notification for other empires
+country_event = {
+	id = utopia.2602
+	title = "utopia.2602.name"
+
+	desc = {
+		trigger = {
+			if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = yes is_gestalt = yes }
+				}
+				text = utopia.2602.1.desc.machine_gestalt
+			}
+			else_if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = yes is_gestalt = no }
+				}
+				text = utopia.2602.1.desc.machine_non_gestalt
+			}
+			else_if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = no is_gestalt = yes }
+				}
+				text = utopia.2602.1.desc.organic_gestalt
+			}
+			else_if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = no is_gestalt = no }
+				}
+				text = utopia.2602.1.desc.organic_non_gestalt
+			}
+			if = {
+				limit = {
+					OR = {
+						any_owned_pop_group = { is_same_species = from }
+						any_owned_leader = { is_same_species = from }
+					}
+				}
+				text = newline
+				text = utopia.2602.2.desc
+			}
+		}
+	}
+
+	picture = {
+		trigger = {
+			has_shroud_dlc = yes
+			from = { is_hive_empire = yes }
+		}
+		picture = GFX_evt_shroud_psionic_hive_mind
+	}
+	picture = {
+		trigger = {
+			has_shroud_dlc = yes
+			from = { is_robot_empire = yes }
+		}
+		picture = GFX_evt_machine_sapience
+	}
+	picture = {
+		trigger = {
+			OR = {
+				has_shroud_dlc = no
+				from = { is_hive_empire = no is_robot_empire = no }
+			}
+		}
+		picture = GFX_evt_psionics
+	}
+
+	show_sound = event_laboratory_sound
+	location = from.capital_scope
+	is_triggered_only = yes
+
+	option = {
+		name = {
+			trigger = {
+				if = {
+					limit = {
+						is_robot_empire = no
+						is_gestalt = no
+					}
+					text = utopia.2602.a.organic_non_gestalt
+				}
+				else_if = {
+					limit = {
+						is_robot_empire = yes
+						is_gestalt = yes
+					}
+					text = utopia.2602.a.machine_gestalt
+				}
+				else = {
+					text = utopia.2602.a.hive_or_machine_non_gestalt
+				}
+			}
+		}
+		trigger = {
+			species = { is_psionic_species = no }
+			NOR = {
+				is_materialist = yes
+				is_at_war_with = from
+			}
+		}
+	}
+	option = {
+		name = "utopia.2602.b"
+		trigger = {
+			is_materialist = yes
+			species = { is_psionic_species = no }
+			NOT = { is_at_war_with = from }
+		}
+	}
+	option = {
+		name = "utopia.2602.c"
+		trigger = {
+			is_at_war_with = from
+			species = { is_psionic_species = no }
+		}
+	}
+	option = {
+		name = {
+			trigger = {
+				if = {
+					limit = { is_robot_empire = yes }
+					text = utopia.2602.d.machine
+				}
+				else = {
+					text = utopia.2602.d.organic
+				}
+			}
+		}
+		trigger = {
+			species = { is_psionic_species = yes }
+		}
+	}
+}
+
+# Psychic Identified
+country_event = {
+	id = utopia.2605
+	hide_window = yes
+
+	trigger = {
+		owner_species = { is_latent_psionic_species = yes }
+		if = {
+			limit = {
+				has_shroud_dlc = yes
+				is_gestalt = yes
+			}
+			ruler = {
+				is_same_species = owner_species
+				NOR = {
+					has_trait = leader_trait_psionic
+					has_trait = leader_trait_chosen
+				}
+			}
+		}
+		else = {
+			any_owned_leader = {
+				is_same_species = owner_species
+				NOR = {
+					has_trait = leader_trait_psionic
+					has_trait = leader_trait_chosen
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 220
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				is_robot_empire = no
+				is_gestalt = no
+			}
+			country_event = { id = utopia.2606 }
+		}
+		else_if = {
+			limit = {
+				is_robot_empire = yes
+				is_gestalt = no
+			}
+			country_event = { id = utopia.2607 }
+		}
+		else = {
+			country_event = { id = utopia.2608 }
+		}
+	}
+}
+
+# Psychic Identified (Organic non-gestalt version)
+country_event = {
+	id = utopia.2606
+	title = utopia.2605.name.organic_non_gestalt
+	desc = utopia.2605.desc.organic_non_gestalt
+	picture = GFX_evt_psionics
+	show_sound = event_psionic
+	is_triggered_only = yes
+
+	immediate = {
+		random_owned_leader = {
+			limit = {
+				is_same_species = owner_species
+				NOR = {
+					has_trait = leader_trait_psionic
+					has_trait = leader_trait_chosen
+				}
+			}
+			save_event_target_as = psionic_leader
+		}
+	}
+
+	option = {
+		name = "utopia.2605.a"
+		event_target:psionic_leader = {
+			add_trait = { trait = leader_trait_psionic }
+		}
+	}
+}
+
+# Psychic Identified (Machine non-gestalt version)
+country_event = {
+	id = utopia.2607
+	title = utopia.2605.name.machine_non_gestalt
+	desc = utopia.2605.desc.machine_non_gestalt
+
+	picture = {
+		trigger = { has_shroud_dlc = yes }
+		picture = GFX_evt_machine_sapience
+	}
+	picture = {
+		trigger = { has_shroud_dlc = no }
+		picture = GFX_evt_psionics
+	}
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = { has_shroud_dlc = no }
+		sound = event_psionic
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_owned_leader = {
+			limit = {
+				is_same_species = owner_species
+				NOR = {
+					has_trait = leader_trait_psionic
+					has_trait = leader_trait_chosen
+				}
+			}
+			save_event_target_as = psionic_leader
+		}
+	}
+
+	option = {
+		name = "utopia.2605.a"
+		event_target:psionic_leader = {
+			add_trait = { trait = leader_trait_psionic }
+		}
+	}
+}
+
+# Psychic Identified (Gestalt version)
+country_event = {
+	id = utopia.2608
+	title = utopia.2605.name.gestalt
+	desc = utopia.2605.desc.gestalt
+
+	picture = {
+		trigger = { has_shroud_dlc = yes is_hive_empire = yes }
+		picture = GFX_evt_shroud_psionic_hive_mind
+	}
+	picture = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		picture = GFX_evt_machine_sapience
+	}
+	picture = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				OR = {
+					is_hive_empire = yes
+					is_robot_empire = yes
+				}
+			}
+		}
+		picture = GFX_evt_psionics
+	}
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		ruler = { save_event_target_as = psionic_leader }
+	}
+
+	option = {
+		name = "utopia.2605.a"
+		event_target:psionic_leader = {
+			add_trait = { trait = leader_trait_psionic }
+		}
+	}
+}
+
+# Transcendence
+country_event = {
+	id = utopia.2650
+	title = "utopia.2650.name"
+	desc = "utopia.2650.desc"
+	picture = GFX_evt_psionics
+	show_sound = event_the_great_awakening
+	is_triggered_only = yes
+
+	trigger = {
+		has_tradition = tr_psionics_psionic_assimilation
+	}
+
+	immediate = {
+		turn_main_species_to_psionic = yes
+	}
+
+	option = {
+		name = "utopia.2650.a"
+		hidden_effect = {
+			update_every_leader_from_psionic_countries = yes
+			refresh_portraits = character
+		}
+	}
+}
+
+# New Leaders Get Psionic Trait
+country_event = {
+	id = utopia.2651
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		from = {
+			NOR = {
+				leader_class = envoy
+				is_gestalt_node = yes
+			}
+			species = { is_psionic_species = yes }
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = { trait = leader_trait_psionic show_message = no }
+		}
+	}
+}
+
+# Notification for other empires
+country_event = {
+	id = utopia.2652
+	title = "utopia.2652.name"
+
+	desc = {
+		trigger = {
+			if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = yes is_gestalt = yes }
+				}
+				text = utopia.2652.desc.machine_gestalt
+			}
+			else_if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = yes is_gestalt = no }
+				}
+				text = utopia.2652.desc.machine_non_gestalt
+			}
+			else_if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = no is_gestalt = yes }
+				}
+				text = utopia.2652.desc.organic_gestalt
+			}
+			else_if = {
+				limit = {
+					exists = from
+					from = { is_robot_empire = no is_gestalt = no }
+				}
+				text = utopia.2652.desc.organic_non_gestalt
+			}
+		}
+	}
+
+	picture = {
+		trigger = {
+			has_shroud_dlc = yes
+			from = { is_hive_empire = yes }
+		}
+		picture = GFX_evt_shroud_psionic_hive_mind
+	}
+	picture = {
+		trigger = {
+			has_shroud_dlc = yes
+			from = { is_robot_empire = yes }
+		}
+		picture = GFX_evt_machine_sapience
+	}
+	picture = {
+		trigger = {
+			OR = {
+				has_shroud_dlc = no
+				from = { is_hive_empire = no is_robot_empire = no }
+			}
+		}
+		picture = GFX_evt_psionics
+	}
+
+	show_sound = event_the_great_awakening
+	is_triggered_only = yes
+
+	option = {
+		name = {
+			trigger = {
+				if = {
+					limit = {
+						is_robot_empire = no
+						is_gestalt = no
+					}
+					text = AMAZING
+				}
+				else = {
+					text = REMARKABLE
+				}
+			}
+		}
+		trigger = {
+			NOR = {
+				is_materialist = yes
+				is_at_war_with = from
+				species = { is_psionic_species = yes }
+			}
+		}
+	}
+	option = {
+		name = "utopia.2652.b"
+		trigger = {
+			OR = {
+				is_materialist = yes
+				AND = {
+					has_shroud_dlc = yes
+					is_gestalt = yes
+				}
+			}
+			NOR = {
+				is_at_war_with = from
+				species = { is_psionic_species = yes }
+			}
+		}
+	}
+	option = {
+		name = {
+			trigger = {
+				if = {
+					limit = { is_robot_empire = no }
+					text = utopia.2652.c.organic
+				}
+				else = {
+					text = utopia.2652.c.machine
+				}
+			}
+		}
+		trigger = {
+			is_at_war_with = from
+			species = { is_psionic_species = no }
+		}
+	}
+	option = {
+		name = {
+			trigger = {
+				if = {
+					limit = { is_robot_empire = no }
+					text = utopia.2652.d.organic
+				}
+				else = {
+					text = utopia.2652.d.machine
+				}
+			}
+		}
+		trigger = {
+			species = { is_psionic_species = yes }
+		}
+	}
+}
+
+# The Shroud
+country_event = {
+	id = utopia.2655
+	title = "utopia.2655.name"
+	desc = "utopia.2655.desc"
+	picture = GFX_evt_psionics
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_tradition = tr_psionics_breach_shroud
+	}
+
+	option = {
+		name = "utopia.2655.a"
+		hidden_effect = {
+			save_event_target_as = breach_shroud_owner
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = "BREACHING_SHROUD_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+
+# The Seance
+country_event = {
+	id = utopia.2656
+	title = "utopia.2656.name"
+	desc = "utopia.2656.desc"
+	picture = GFX_evt_psionics
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = shroud
+				has_country_flag = shroud_country_flag
+			}
+			save_event_target_as = the_shroud
+		}
+	}
+
+	option = {
+		name = "utopia.2656.a"
+		establish_communications_no_message = event_target:the_shroud
+		hidden_effect = {
+			set_country_flag = shroud_intro
+			country_event = { id = utopia.3000 }
+		}
+	}
+}
+
+# A Covenant
+country_event = {
+	id = utopia.2657
+	title = "utopia.2657.name"
+	desc = "utopia.2657.desc"
+	picture = GFX_evt_shroudwalker_enclave
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_country_flag = form_covenant_flag }
+	}
+
+	immediate = {
+		set_country_flag = form_covenant_flag
+	}
+
+	option = {
+		name = "utopia.2657.a"
+		custom_tooltip = utopia.2657.a.tt
+		hidden_effect = {
+			save_event_target_as = form_covenant_owner
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = "FORM_COVENANT_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+	option = {
+		name = "utopia.2657.b"
+		hidden_effect = {
+			country_event = { id = utopia.2659 days = 180 }
+			remove_country_flag = form_covenant_flag
+		}
+		ai_chance = { factor = 20 }
+	}
+	option = {
+		name = "utopia.2657.c"
+		hidden_effect = {
+			country_event = { id = utopia.2659 days = 360 }
+			remove_country_flag = form_covenant_flag
+		}
+	}
+}
+
+# A Confirmation
+country_event = {
+	id = utopia.2658
+	title = "utopia.2658.name"
+	desc = "utopia.2658.desc"
+	picture = GFX_evt_shroudwalker_enclave
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	option = { # Confirm Composer of Strands
+		name = "utopia.2658.a"
+		trigger = { has_modifier = covenant_composer_of_strands_0 }
+		custom_tooltip = composer_covenant_chain_begin
+		hidden_effect = {
+			begin_event_chain = { event_chain = "composer_covenant_chain" target = this }
+			set_country_flag = composer_covenant_confirmed
+			set_variable = { which = composer_covenant_rank value = 1 }
+		}
+	}
+	option = { # Confirm Eater of Worlds
+		name = "utopia.2658.a"
+		trigger = { has_modifier = covenant_eater_of_worlds_0 }
+		custom_tooltip = eater_covenant_chain_begin
+		hidden_effect = {
+			begin_event_chain = { event_chain = "eater_covenant_chain" target = this }
+			set_country_flag = eater_covenant_confirmed
+			country_event = { id = utopia.2660 }
+			random_owned_planet = { # OM NOM NOM NOM
+				limit = {
+					is_capital = no
+					any_owned_pop_group = { is_sapient = yes is_robot_pop_group = no }
+				}
+				random_owned_pop_group = {
+					limit = {
+						is_sapient = yes
+						is_robot_pop_group = no
+					}
+					kill_single_pop = yes
+				}
+			}
+			set_variable = { which = eater_covenant_rank value = 1 }
+		}
+	}
+	option = { # Confirm Instrument of Desire
+		name = "utopia.2658.a"
+		trigger = { has_modifier = covenant_instrument_of_desire_0 }
+		custom_tooltip = instrument_covenant_chain_begin
+		hidden_effect = {
+			begin_event_chain = { event_chain = "instrument_covenant_chain" target = this }
+			set_country_flag = instrument_covenant_confirmed
+			set_variable = { which = instrument_covenant_rank value = 1 }
+		}
+	}
+	option = { # Confirm Whisperers in the Void
+		name = "utopia.2658.a"
+		trigger = { has_modifier = covenant_whisperers_in_the_void_0 }
+		custom_tooltip = whisperers_covenant_chain_begin
+		hidden_effect = {
+			begin_event_chain = { event_chain = "whisperers_covenant_chain" target = this }
+			set_country_flag = whisperers_covenant_confirmed
+			set_variable = { which = whisperers_covenant_rank value = 1 }
+		}
+	}
+	option = {
+		name = "utopia.2658.b"
+		hidden_effect = {
+			remove_country_flag = form_covenant_flag
+			remove_modifier = covenant_composer_of_strands_0
+			remove_modifier = covenant_eater_of_worlds_0
+			remove_modifier = covenant_instrument_of_desire_0
+			remove_modifier = covenant_whisperers_in_the_void_0
+			remove_modifier = covenant_whisperers_in_the_void_0_fircon
+		}
+	}
+}
+
+# Venturing with no Patron
+country_event = {
+	id = utopia.2659
+	title = "utopia.2659.name"
+	desc = "utopia.2659.desc"
+	picture = GFX_evt_shrouded_planet
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = shroud
+				has_country_flag = shroud_country_flag # Vfix
+			}
+			save_event_target_as = the_shroud
+		}
+	}
+
+	option = {
+		name = "utopia.2659.a"
+		hidden_effect = {
+			country_event = { id = utopia.3002 }
+		}
+	}
+}
+
+# Eater of Worlds add Upkeep at peace
+country_event = {
+	id = utopia.2660
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_at_war = no
+		OR = {
+			has_modifier = covenant_eater_of_worlds_0
+			has_modifier = covenant_eater_of_worlds
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_modifier = covenant_eater_of_worlds_0 }
+			add_modifier = { modifier = covenant_eater_of_worlds_debuff_0 days = -1 }
+		}
+		else = {
+			add_modifier = { modifier = covenant_eater_of_worlds_debuff days = -1 }
+		}
+	}
+}
+
+# Eater of Worlds remove Upkeep at war
+country_event = {
+	id = utopia.2661
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_at_war = yes
+		OR = {
+			has_modifier = covenant_eater_of_worlds_debuff_0
+			has_modifier = covenant_eater_of_worlds_debuff
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_modifier = covenant_eater_of_worlds_debuff_0 }
+			remove_modifier = covenant_eater_of_worlds_debuff_0
+		}
+		else_if = {
+			limit = { has_modifier = covenant_eater_of_worlds_debuff }
+			remove_modifier = covenant_eater_of_worlds_debuff
+		}
+	}
+}
+
+# Monthly Covenant Rank Increase
+country_event = {
+	id = utopia.2665
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_country_flag = composer_covenant_confirmed
+			has_country_flag = eater_covenant_confirmed
+			has_country_flag = instrument_covenant_confirmed
+			has_country_flag = whisperers_covenant_confirmed
+		}
+		OR = {
+			check_variable = { which = composer_covenant_rank value < 90 }
+			check_variable = { which = eater_covenant_rank value < 90 }
+			check_variable = { which = instrument_covenant_rank value < 90 }
+			check_variable = { which = whisperers_covenant_rank value < 90 }
+		}
+	}
+
+	immediate = {
+		if = { # Composer modifiers
+			limit = {
+				check_variable = { which = composer_covenant_rank value > 0 }
+			}
+			change_variable = { which = composer_covenant_rank value = 0.03 }
+			if = { # Civics liked
+				limit = {
+					OR = {
+						has_civic = civic_environmentalist
+						is_catalytic_empire = yes
+						has_civic = civic_idyllic_bloom
+						has_toxic_baths = yes
+					}
+				}
+				change_variable = { which = composer_covenant_rank value = 0.04 }
+			}
+			if = { # Civics disliked
+				limit = {
+					is_relentless_industrialist_empire = yes
+					check_variable = { which = composer_covenant_rank value < 2 }
+				}
+				change_variable = { which = composer_covenant_rank value = -0.02 }
+			}
+			if = { # Ethics liked
+				limit = { has_ethic = ethic_xenophile }
+				change_variable = { which = composer_covenant_rank value = 0.03 }
+			}
+			else_if = {
+				limit = { is_fanatic_xenophile = yes }
+				change_variable = { which = composer_covenant_rank value = 0.07 }
+			}
+			if = { # Ethics disliked
+				limit = {
+					has_ethic = ethic_xenophobe
+					check_variable = { which = composer_covenant_rank value < 2 }
+				}
+				change_variable = { which = composer_covenant_rank value = -0.02 }
+			}
+			else_if = {
+				limit = {
+					is_fanatic_xenophobe = yes
+					check_variable = { which = composer_covenant_rank value < 2 }
+				}
+				change_variable = { which = composer_covenant_rank value = -0.05 }
+			}
+			if = { # Tradition liked
+				limit = { has_tradition = tr_adaptability_finish }
+				change_variable = { which = composer_covenant_rank value = 0.06 }
+			}
+			if = { # Acension Perks liked
+				limit = {
+					OR = {
+						has_ascension_perk = ap_consecrated_worlds
+						has_ascension_perk = ap_xeno_compatibility
+					}
+				}
+				change_variable = { which = composer_covenant_rank value = 0.04 }
+			}
+			if = { # Other things liked
+				limit = {
+					OR = {
+						num_buildings = { type = building_medical_1 value = 0 }
+						num_buildings = { type = building_medical_2 value = 0 }
+						num_buildings = { type = building_medical_3 value = 0 }
+					}
+				}
+				change_variable = { which = composer_covenant_rank value = 0.11 }
+			}
+		}
+		else_if = { # Eater modifiers
+			limit = {
+				check_variable = { which = eater_covenant_rank value > 0 }
+			}
+			change_variable = { which = eater_covenant_rank value = 0.03 }
+			if = { # Civics liked
+				limit = {
+					OR = {
+						has_civic = civic_citizen_service
+						has_civic = civic_fanatic_purifiers
+						has_civic = civic_distinguished_admiralty
+						has_civic = civic_naval_contractors
+						has_civic = civic_barbaric_despoilers
+						has_civic = civic_private_military_companies
+					}
+				}
+				change_variable = { which = eater_covenant_rank value = 0.04 }
+			}
+			if = { # Civics disliked
+				limit = {
+					OR = {
+						has_civic = civic_inwards_perfection
+						has_civic = civic_agrarian_idyll
+					}
+					check_variable = { which = eater_covenant_rank value < 2 }
+				}
+				change_variable = { which = eater_covenant_rank value = -0.02 }
+			}
+			if = { # Ethics liked
+				limit = { has_ethic = ethic_militarist }
+				change_variable = { which = eater_covenant_rank value = 0.03 }
+			}
+			else_if = {
+				limit = { is_fanatic_militarist = yes }
+				change_variable = { which = eater_covenant_rank value = 0.07 }
+			}
+			if = { # Ethics disliked
+				limit = {
+					has_ethic = ethic_pacifist
+					check_variable = { which = eater_covenant_rank value < 2 }
+				}
+				change_variable = { which = eater_covenant_rank value = -0.02 }
+			}
+			else_if = {
+				limit = {
+					is_fanatic_pacifist = yes
+					check_variable = { which = eater_covenant_rank value < 2 }
+				}
+				change_variable = { which = eater_covenant_rank value = -0.05 }
+			}
+			if = { # Tradition liked
+				limit = { has_tradition = tr_supremacy_finish }
+				change_variable = { which = eater_covenant_rank value = 0.06 }
+			}
+			if = { # Acension Perks liked
+				limit = {
+					OR = {
+						has_ascension_perk = ap_galactic_force_projection
+						has_ascension_perk = ap_interstellar_dominion
+					}
+				}
+				change_variable = { which = eater_covenant_rank value = 0.04 }
+			}
+			if = { # Other things liked
+				limit = { is_at_war = yes }
+				change_variable = { which = eater_covenant_rank value = 0.11 }
+			}
+		}
+		else_if = { # Instrument modifiers
+			limit = {
+				check_variable = { which = instrument_covenant_rank value > 0 }
+			}
+			change_variable = { which = instrument_covenant_rank value = 0.03 }
+			if = { # Civics liked
+				limit = {
+					OR = {
+						has_civic = civic_aristocratic_elite
+						has_civic = civic_feudal_realm
+						has_civic = civic_slaver_guilds
+						has_civic = civic_pleasure_seekers
+						has_toxic_baths = yes
+						has_civic = civic_indentured_assets
+						has_civic = civic_corporate_hedonism
+					}
+				}
+				change_variable = { which = instrument_covenant_rank value = 0.04 }
+			}
+			if = { # Civics disliked
+				limit = {
+					has_civic = civic_shared_burden
+					check_variable = { which = instrument_covenant_rank value < 2 }
+				}
+				change_variable = { which = instrument_covenant_rank value = -0.02 }
+			}
+			if = { # Ethics liked
+				limit = { has_ethic = ethic_authoritarian }
+				change_variable = { which = instrument_covenant_rank value = 0.03 }
+			}
+			else_if = {
+				limit = { is_fanatic_authoritarian = yes }
+				change_variable = { which = instrument_covenant_rank value = 0.07 }
+			}
+			if = { # Ethics disliked
+				limit = {
+					has_ethic = ethic_egalitarian
+					check_variable = { which = instrument_covenant_rank value < 2 }
+				}
+				change_variable = { which = instrument_covenant_rank value = -0.02 }
+			}
+			else_if = {
+				limit = {
+					is_fanatic_egalitarian = yes
+					check_variable = { which = instrument_covenant_rank value < 2 }
+				}
+				change_variable = { which = instrument_covenant_rank value = -0.05 }
+			}
+			if = { # Tradition liked
+				limit = { has_tradition = tr_domination_finish }
+				change_variable = { which = instrument_covenant_rank value = 0.06 }
+			}
+			if = { # Acension Perks liked
+				limit = {
+					OR = {
+						has_ascension_perk = ap_shared_destiny
+						has_ascension_perk = ap_imperial_prerogative
+					}
+				}
+				change_variable = { which = instrument_covenant_rank value = 0.04 }
+			}
+			if = { # Other things liked
+				limit = {
+					OR = {
+						is_at_war = no
+						ruler = {
+							has_trait_tier1or2 = { TRAIT = leader_trait_substance_abuser }
+						}
+						any_owned_planet = { is_colony = yes has_designation = col_resort }
+					}
+				}
+				change_variable = { which = instrument_covenant_rank value = 0.11 }
+			}
+		}
+		else_if = { # Whisperers modifiers
+			limit = {
+				check_variable = { which = whisperers_covenant_rank value > 0 }
+			}
+			change_variable = { which = whisperers_covenant_rank value = 0.03 }
+			if = { # Civics liked
+				limit = {
+					OR = {
+						has_civic = civic_cutthroat_politics
+						has_civic = civic_technocracy
+						is_scavenger = yes
+						has_civic = civic_criminal_heritage
+						has_toxic_baths = yes
+						has_civic = civic_shadow_council
+					}
+				}
+				change_variable = { which = whisperers_covenant_rank value = 0.04 }
+			}
+			if = { # Civics disliked
+				limit = {
+					has_civic = civic_inwards_perfection
+					check_variable = { which = whisperers_covenant_rank value < 2 }
+				}
+				change_variable = { which = whisperers_covenant_rank value = -0.02 }
+			}
+			if = { # Ethics liked
+				limit = { has_ethic = ethic_materialist }
+				change_variable = { which = whisperers_covenant_rank value = 0.03 }
+			}
+			else_if = {
+				limit = { is_fanatic_materialist = yes }
+				change_variable = { which = whisperers_covenant_rank value = 0.07 }
+			}
+			if = { # Ethics disliked
+				limit = {
+					has_ethic = ethic_spiritualist
+					check_variable = { which = whisperers_covenant_rank value < 2 }
+				}
+				change_variable = { which = whisperers_covenant_rank value = -0.02 }
+			}
+			else_if = {
+				limit = {
+					is_fanatic_spiritualist = yes
+					check_variable = { which = whisperers_covenant_rank value < 2 }
+				}
+				change_variable = { which = whisperers_covenant_rank value = -0.05 }
+			}
+			if = { # Tradition liked
+				limit = {
+					OR = {
+						has_tradition = tr_subterfuge_finish
+						has_tradition = tr_discovery_finish
+					}
+				}
+				change_variable = { which = whisperers_covenant_rank value = 0.06 }
+			}
+			if = { # Acension Perks liked
+				limit = {
+					OR = {
+						has_ascension_perk = ap_enigmatic_engineering
+						has_ascension_perk = ap_technological_ascendancy
+					}
+				}
+				change_variable = { which = whisperers_covenant_rank value = 0.04 }
+			}
+			if = { # Other things liked
+				limit = {
+					any_envoy = {
+						has_envoy_task = { task = spy_network }
+					}
+				}
+				change_variable = { which = whisperers_covenant_rank value = 0.11 }
+			}
+		}
+	}
+}
+
+# Covenant Rank 1 check
+country_event = {
+	id = utopia.2670
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			has_country_flag = composer_covenant_rank_1
+			has_country_flag = eater_covenant_rank_1
+			has_country_flag = instrument_covenant_rank_1
+			has_country_flag = whisperers_covenant_rank_1
+		}
+		OR = {
+			has_country_flag = composer_covenant_confirmed
+			has_country_flag = eater_covenant_confirmed
+			has_country_flag = instrument_covenant_confirmed
+			has_country_flag = whisperers_covenant_confirmed
+		}
+		OR = {
+			check_variable = { which = composer_covenant_rank value > @covenant_rank_1 }
+			check_variable = { which = eater_covenant_rank value > @covenant_rank_1 }
+			check_variable = { which = instrument_covenant_rank value > @covenant_rank_1 }
+			check_variable = { which = whisperers_covenant_rank value > @covenant_rank_1 }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { which = composer_covenant_rank value > @covenant_rank_1 }
+			}
+			set_country_flag = composer_covenant_rank_1
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = eater_covenant_rank value > @covenant_rank_1 }
+			}
+			set_country_flag = eater_covenant_rank_1
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = instrument_covenant_rank value > @covenant_rank_1 }
+			}
+			set_country_flag = instrument_covenant_rank_1
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = whisperers_covenant_rank value > @covenant_rank_1 }
+			}
+			set_country_flag = whisperers_covenant_rank_1
+		}
+	}
+
+	after = {
+		country_event = { id = utopia.2671 days = 3 }
+	}
+}
+
+# Covenant level 1
+country_event = {
+	id = utopia.2671
+	title = "utopia.2671.name"
+	desc = "utopia.2671.desc"
+	picture = GFX_evt_shroudwalker_enclave
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	option = { # Composer of Strands
+		name = "utopia.2671.a"
+		custom_tooltip = "utopia.2671.a.tt"
+		trigger = { has_country_flag = composer_covenant_rank_1 }
+	}
+	option = { # Eater of Worlds
+		name = "utopia.2671.b"
+		custom_tooltip = "utopia.2671.b.tt"
+		trigger = { has_country_flag = eater_covenant_rank_1 }
+	}
+	option = { # Instrument of Desire
+		name = "utopia.2671.c"
+		custom_tooltip = "utopia.2671.c.tt"
+		trigger = { has_country_flag = instrument_covenant_rank_1 }
+	}
+	option = { # Whisperers in the Void
+		name = "utopia.2671.d"
+		custom_tooltip = "utopia.2671.d.tt"
+		trigger = { has_country_flag = whisperers_covenant_rank_1 }
+	}
+}
+
+# Covenant Rank 2 check
+country_event = {
+	id = utopia.2675
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			has_country_flag = composer_covenant_rank_2
+			has_country_flag = eater_covenant_rank_2
+			has_country_flag = instrument_covenant_rank_2
+			has_country_flag = whisperers_covenant_rank_2
+		}
+		OR = {
+			has_country_flag = composer_covenant_confirmed
+			has_country_flag = eater_covenant_confirmed
+			has_country_flag = instrument_covenant_confirmed
+			has_country_flag = whisperers_covenant_confirmed
+		}
+		OR = {
+			check_variable = { which = composer_covenant_rank value > @covenant_rank_2 }
+			check_variable = { which = eater_covenant_rank value > @covenant_rank_2 }
+			check_variable = { which = instrument_covenant_rank value > @covenant_rank_2 }
+			check_variable = { which = whisperers_covenant_rank value > @covenant_rank_2 }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { which = composer_covenant_rank value > @covenant_rank_2 }
+			}
+			set_country_flag = composer_covenant_rank_2
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = eater_covenant_rank value > @covenant_rank_2 }
+			}
+			set_country_flag = eater_covenant_rank_2
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = instrument_covenant_rank value > @covenant_rank_2 }
+			}
+			set_country_flag = instrument_covenant_rank_2
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = whisperers_covenant_rank value > @covenant_rank_2 }
+			}
+			set_country_flag = whisperers_covenant_rank_2
+		}
+	}
+
+	after = {
+		country_event = { id = utopia.2676 days = 3 }
+	}
+}
+
+# Covenant level 2
+country_event = {
+	id = utopia.2676
+	title = "utopia.2676.name"
+	desc = "utopia.2676.desc"
+	picture = GFX_evt_shroudwalker_enclave
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	option = { # Composer of Strands
+		name = "utopia.2676.a"
+		trigger = { has_country_flag = composer_covenant_rank_2 }
+		add_modifier = { modifier = covenant_composer_of_strands days = -1 }
+		hidden_effect = {
+			remove_modifier = covenant_composer_of_strands_0
+		}
+	}
+	option = { # Eater of Worlds
+		name = "utopia.2676.b"
+		trigger = { has_country_flag = eater_covenant_rank_2 }
+		add_modifier = { modifier = covenant_eater_of_worlds days = -1 }
+		hidden_effect = {
+			remove_modifier = covenant_eater_of_worlds_0
+		}
+	}
+	option = { # Instrument of Desire
+		name = "utopia.2676.c"
+		trigger = { has_country_flag = instrument_covenant_rank_2 }
+		add_modifier = { modifier = covenant_instrument_of_desire days = -1 }
+		hidden_effect = {
+			remove_modifier = covenant_instrument_of_desire_0
+		}
+	}
+	option = { # Whisperers in the Void
+		name = "utopia.2676.d"
+		trigger = { has_country_flag = whisperers_covenant_rank_2 }
+		add_modifier = { modifier = covenant_whisperers_in_the_void days = -1 }
+		if = {
+			limit = { has_first_contact_dlc = yes }
+			add_modifier = {
+				modifier = covenant_whisperers_in_the_void_fircon
+				days = -1
+			}
+		}
+		hidden_effect = {
+			remove_modifier = covenant_whisperers_in_the_void_0
+			remove_modifier = covenant_whisperers_in_the_void_0_fircon
+		}
+	}
+}
+
+# Chosen One check for Shroud DLC
+country_event = {
+	id = utopia.2679
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_shroud_dlc = yes
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = covenant_end_of_the_cycle }
+			}
+			if = {
+				limit = {
+					count_owned_leader = {
+						count > 1
+						limit = { suitable_for_chosen_covenant = yes }
+					}
+				}
+				country_event = { id = utopia.2681 }
+			}
+			else = {
+				country_event = { id = utopia.2679 days = 30 }
+			}
+		}
+	}
+}
+
+# Covenant Rank 3 check
+country_event = {
+	id = utopia.2680
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			has_shroud_dlc = yes
+			has_country_flag = composer_covenant_rank_3
+			has_country_flag = eater_covenant_rank_3
+			has_country_flag = instrument_covenant_rank_3
+			has_country_flag = whisperers_covenant_rank_3
+		}
+		OR = {
+			has_country_flag = composer_covenant_confirmed
+			has_country_flag = eater_covenant_confirmed
+			has_country_flag = instrument_covenant_confirmed
+			has_country_flag = whisperers_covenant_confirmed
+		}
+		OR = {
+			check_variable = { which = composer_covenant_rank value > @covenant_rank_3 }
+			check_variable = { which = eater_covenant_rank value > @covenant_rank_3 }
+			check_variable = { which = instrument_covenant_rank value > @covenant_rank_3 }
+			check_variable = { which = whisperers_covenant_rank value > @covenant_rank_3 }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { which = composer_covenant_rank value > @covenant_rank_3 }
+			}
+			set_country_flag = composer_covenant_rank_3
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = eater_covenant_rank value > @covenant_rank_3 }
+			}
+			set_country_flag = eater_covenant_rank_3
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = instrument_covenant_rank value > @covenant_rank_3 }
+			}
+			set_country_flag = instrument_covenant_rank_3
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = whisperers_covenant_rank value > @covenant_rank_3 }
+			}
+			set_country_flag = whisperers_covenant_rank_3
+		}
+	}
+
+	after = {
+		country_event = { id = utopia.2681 days = 3 }
+	}
+}
+
+# Covenant level 3 - Chosen One
+country_event = {
+	id = utopia.2681
+	title = "utopia.2681.name"
+	desc = "utopia.2681.desc"
+	picture = GFX_evt_shroudwalker_enclave
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = { # Vfix opt: better here than in steady leader loop scope (suitable_for_chosen_covenant)
+			has_country_flag = composer_covenant_rank_3
+			has_country_flag = eater_covenant_rank_3
+			has_country_flag = instrument_covenant_rank_3
+			has_country_flag = cradle_covenant_rank_3 # FIXME never set?
+			has_country_flag = whisperers_covenant_rank_3
+			has_country_flag = forging_our_own_path
+		}
+	}
+
+	immediate = {
+		# First leader option.
+		random_owned_leader = {
+			limit = { suitable_for_chosen = yes }
+			weights = {
+				base = 1
+				modifier = { add = 100 is_ruler = yes } # If Ruler's class fits, pick it.
+			}
+			save_event_target_as = leader_1
+			root = {
+				# Second leader option.
+				random_owned_leader = {
+					limit = {
+						NOT = { is_same_value = prevprev }
+						suitable_for_chosen = yes
+					}
+					save_event_target_as = leader_2
+					root = {
+						# Third leader option.
+						# If Chosen One exists, pick it.
+						if = {
+							limit = {
+								any_owned_leader = {
+									has_trait = leader_trait_chosen
+									NOR = {
+										is_same_value = event_target:leader_1
+										is_same_value = event_target:leader_2
+										has_chosen_covenant_trait_non_ruler = yes
+									}
+								}
+							}
+							random_owned_leader = {
+								limit = {
+									has_trait = leader_trait_chosen
+									NOR = {
+										is_same_value = event_target:leader_1
+										is_same_value = event_target:leader_2
+										has_chosen_covenant_trait_non_ruler = yes
+									}
+								}
+								save_event_target_as = leader_3
+							}
+						}
+						# Else, do regular pick.
+						else = {
+							random_owned_leader = {
+								limit = {
+									NOR = {
+										is_same_value = event_target:leader_1
+										is_same_value = event_target:leader_2
+									}
+									suitable_for_chosen = yes
+								}
+								save_event_target_as = leader_3
+							}
+						}
+					}
+				}
+			}
+		}
+		# Forth leader option.
+		random_owned_leader = {
+			limit = {
+				suitable_for_chosen = yes
+				# Vfix
+				NAND = {
+					exists = event_target:leader_1
+					is_same_value = event_target:leader_1
+				}
+				NAND = {
+					exists = event_target:leader_2
+					is_same_value = event_target:leader_2
+				}
+				NAND = {
+					exists = event_target:leader_3
+					is_same_value = event_target:leader_3
+				}
+				OR = {
+					AND = {
+						owner = { has_country_flag = composer_covenant_rank_3 }
+						leader_class = scientist
+					}
+					AND = {
+						owner = { has_country_flag = eater_covenant_rank_3 }
+						leader_class = commander
+					}
+					AND = {
+						owner = { has_country_flag = instrument_covenant_rank_3 }
+						leader_class = official
+					}
+					AND = {
+						owner = { has_country_flag = cradle_covenant_rank_3 }
+						leader_class = official
+					}
+					AND = {
+						owner = { has_country_flag = whisperers_covenant_rank_3 }
+						leader_class = scientist
+					}
+				}
+			}
+			save_event_target_as = leader_4
+		}
+	}
+
+	option = { # Ruler 1
+		name = utopia.2681.a
+		hidden_effect = {
+			event_target:leader_1 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+	option = { # Ruler 2
+		name = utopia.2681.b
+		trigger = { exists = event_target:leader_2 }
+		hidden_effect = {
+			event_target:leader_2 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+	option = { # Ruler 3
+		name = utopia.2681.c
+		trigger = { exists = event_target:leader_3 }
+		hidden_effect = {
+			event_target:leader_3 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+	option = { # Ruler 4
+		name = utopia.2681.d
+		trigger = { exists = event_target:leader_4 }
+		hidden_effect = {
+			event_target:leader_4 = { save_event_target_as = chosen_leader }
+			country_event = { id = utopia.2682 }
+		}
+	}
+}
+
+country_event = {
+	id = utopia.2682
+	title = "utopia.2682.name"
+
+	desc = {
+		trigger = {
+			if = {
+				limit = { has_country_flag = forging_our_own_path }
+				text = utopia.2682.desc.shroudshaper_champion
+			}
+			else = {
+				text = utopia.2682.desc.patron_champion
+			}
+			if = {
+				limit = { exists = event_target:previous_chosen_leader }
+				text = newline
+				text = utopia.2682.desc.previous_chosen_killed
+			}
+			if = {
+				limit = { exists = event_target:chosen_leader_lost_patron }
+				text = newline
+				text = utopia.2682.desc.previous_chosen_lost_patron
+			}
+		}
+	}
+
+	picture = GFX_evt_chosen_leader
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_owned_leader = {
+			limit = {
+				NOT = { is_same_value = event_target:chosen_leader }
+				has_patron_chosen_one_leader_trait = yes
+				has_chosen_one_leader_trait = yes
+			}
+			save_event_target_as = chosen_leader_lost_patron
+		}
+		random_owned_leader = {
+			limit = {
+				NOR = {
+					exists = event_target:chosen_leader_lost_patron
+					is_same_value = event_target:chosen_leader
+					has_chosen_one_leader_trait = yes
+				}
+				has_patron_chosen_one_leader_trait = yes
+			}
+			save_event_target_as = previous_chosen_leader
+			exile_leader_as = previous_chosen_leader
+		}
+	}
+
+	option = {
+		name = "utopia.2682.a"
+		default_hide_option = yes
+		event_target:chosen_leader = {
+			remove_all_negative_traits = yes
+			if = {
+				limit = { has_trait = leader_trait_psionic }
+				remove_trait = leader_trait_psionic
+			}
+			# Remove chosen traits from previous covenant if newly chosen leader was already chosen
+			# Vfix opt: actually this traits are already excluded by selection, so its nearly impossible two appear here (even one should be a very exception)
+			# So if there should be really the impossiblitiy of more than one of them, than it is a bug somewhere else or it is just as it is.
+			switch = {
+				trigger = has_trait
+				leader_trait_composer_chosen = { remove_trait = leader_trait_composer_chosen }
+				leader_trait_eater_chosen = { remove_trait = leader_trait_eater_chosen }
+				leader_trait_instrument_chosen = { remove_trait = leader_trait_instrument_chosen }
+				leader_trait_cradle_chosen = { remove_trait = leader_trait_cradle_chosen }
+				leader_trait_whisperers_chosen = { remove_trait = leader_trait_whisperers_chosen }
+				# Vfix Ariphaos: Material augments are not going to stand up to this.
+				leader_trait_cyborg = { remove_trait = leader_trait_cyborg }
+				leader_trait_limited_cyborg = { remove_trait = leader_trait_limited_cyborg }
+			}
+			root = { # Vfix opt
+				switch = {
+					trigger = has_country_flag
+					composer_covenant_rank_3 = {
+						prev = {
+							add_trait = { trait = leader_trait_composer_chosen }
+						}
+					}
+					eater_covenant_rank_3 = {
+						prev = {
+							add_trait = { trait = leader_trait_eater_chosen }
+						}
+					}
+					instrument_covenant_rank_3 = {
+						prev = {
+							add_trait = { trait = leader_trait_instrument_chosen }
+						}
+					}
+					cradle_covenant_rank_3 = {
+						prev = {
+							add_trait = { trait = leader_trait_cradle_chosen }
+						}
+					}
+					whisperers_covenant_rank_3 = {
+						prev = {
+							add_trait = { trait = leader_trait_whisperers_chosen }
+						}
+					}
+				}
+			}
+			# Forging our own path.
+			if = {
+				limit = {
+					root = { has_country_flag = forging_our_own_path }
+				}
+				add_trait = { trait = leader_trait_shroudshaper }
+			}
+			modify_species = { # Vfix sync trait(s)
+				remove_trait = trait_psionic
+				remove_trait = trait_cybernetic
+				remove_trait = trait_limited_cybernetic
+				effect = {
+					prev = { change_leader_portrait = prev }
+				}
+			}
+		}
+		if = {
+			limit = { exists = event_target:previous_chosen_leader }
+			event_target:previous_chosen_leader = {
+				kill_leader = { show_notification = yes }
+			}
+		}
+		if = {
+			limit = { exists = event_target:chosen_leader_lost_patron }
+			event_target:chosen_leader_lost_patron = {
+				if = {
+					limit = { has_trait = leader_trait_composer_chosen }
+					remove_trait = leader_trait_composer_chosen
+				}
+				if = {
+					limit = { has_trait = leader_trait_instrument_chosen }
+					remove_trait = leader_trait_instrument_chosen
+				}
+				if = {
+					limit = { has_trait = leader_trait_eater_chosen }
+					remove_trait = leader_trait_eater_chosen
+				}
+				if = {
+					limit = { has_trait = leader_trait_cradle_chosen }
+					remove_trait = leader_trait_cradle_chosen
+				}
+				if = {
+					limit = { has_trait = leader_trait_whisperers_chosen }
+					remove_trait = leader_trait_whisperers_chosen
+				}
+				# Vfix: absolute degrade should not be intended!?
+				add_trait = { trait = leader_trait_psionic show_message = no }
+				modify_species = { # Vfix sync trait
+					add_trait = trait_psionic
+					effect = {
+						prev = { change_leader_portrait = prev }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Covenant Rank 4 check
+country_event = {
+	id = utopia.2685
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			has_country_flag = composer_covenant_rank_4
+			has_country_flag = eater_covenant_rank_4
+			has_country_flag = instrument_covenant_rank_4
+			has_country_flag = whisperers_covenant_rank_4
+		}
+		OR = {
+			has_country_flag = composer_covenant_confirmed
+			has_country_flag = eater_covenant_confirmed
+			has_country_flag = instrument_covenant_confirmed
+			has_country_flag = whisperers_covenant_confirmed
+		}
+		OR = {
+			check_variable = { which = composer_covenant_rank value > @covenant_rank_4 }
+			check_variable = { which = eater_covenant_rank value > @covenant_rank_4 }
+			check_variable = { which = instrument_covenant_rank value > @covenant_rank_4 }
+			check_variable = { which = whisperers_covenant_rank value > @covenant_rank_4 }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { which = composer_covenant_rank value > @covenant_rank_4 }
+			}
+			set_country_flag = composer_covenant_rank_4
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = eater_covenant_rank value > @covenant_rank_4 }
+			}
+			set_country_flag = eater_covenant_rank_4
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = instrument_covenant_rank value > @covenant_rank_4 }
+			}
+			set_country_flag = instrument_covenant_rank_4
+		}
+		else_if = {
+			limit = {
+				check_variable = { which = whisperers_covenant_rank value > @covenant_rank_4 }
+			}
+			set_country_flag = whisperers_covenant_rank_4
+		}
+	}
+
+	after = {
+		country_event = { id = utopia.2686 days = 3 }
+	}
+}
+
+# Covenant level 4
+country_event = {
+	id = utopia.2686
+	title = "utopia.2686.name"
+	desc = "utopia.2686.desc"
+	picture = GFX_evt_shroudwalker_enclave
+
+	show_sound = {
+		trigger = { has_shroud_dlc = yes is_robot_empire = yes }
+		sound = event_psionic_robot
+	}
+	show_sound = {
+		trigger = {
+			NAND = {
+				has_shroud_dlc = yes
+				is_robot_empire = yes
+			}
+		}
+		sound = event_psionic
+	}
+
+	trackable = yes
+	is_triggered_only = yes
+
+	option = { # Composer of Strands
+		name = "utopia.2686.a"
+		trigger = { has_country_flag = composer_covenant_rank_4 }
+		give_technology = { tech = tech_covenant_composer message = yes }
+	}
+	option = { # Eater of Worlds
+		name = "utopia.2686.b"
+		trigger = { has_country_flag = eater_covenant_rank_4 }
+		give_technology = { tech = tech_covenant_eater message = yes }
+	}
+	option = { # Instrument of Desire
+		name = "utopia.2686.c"
+		trigger = { has_country_flag = instrument_covenant_rank_4 }
+		give_technology = { tech = tech_covenant_instrument message = yes }
+	}
+	option = { # Whisperers in the Void
+		name = "utopia.2686.d"
+		trigger = { has_country_flag = whisperers_covenant_rank_4 }
+		give_technology = { tech = tech_covenant_whisperers message = yes }
+	}
+}
+

@@ -1,0 +1,29 @@
+
+namespace = base_fix
+# AI Shroud Enter
+event = {
+	id = base_fix.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				is_ai = yes
+				is_country_type_with_subjects = yes
+				OR = {
+					has_country_flag = breached_shroud
+					has_country_flag = shroud_fallen_empire
+				}
+				resource_stockpile_compare = { resource = energy value >= 1000 }
+				NOR = {
+					has_country_flag = shroud_diplomacy_engaged
+					has_modifier = shroud_cooldown
+					has_modifier = shroud_precog_cooldown
+				}
+			}
+			add_resource = { energy = -1000 }
+			country_event = { id = utopia.3002 days = 10 }
+		}
+	}
+}

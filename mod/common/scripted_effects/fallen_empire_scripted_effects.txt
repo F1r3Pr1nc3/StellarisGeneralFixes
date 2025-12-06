@@ -1,0 +1,2566 @@
+fallen_empire_humiliate_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+			add_modifier = { modifier = humiliated_cosmogenesis years = 10 }
+			if = {
+				limit = {
+					event_target:fallen_empire_humiliator = {
+						has_country_flag = fallen_empire_1
+					}
+				}
+				set_policy = {
+					policy = research_restriction_policy
+					option = research_restriction_dangerous_forbidden
+					cooldown = yes
+				}
+			}
+		}
+		else = {
+			add_modifier = { modifier = humiliated years = 10 }
+		}
+
+		if = {
+			limit = { has_policy_flag = diplo_stance_supremacist }
+			set_policy = {
+				policy = diplomatic_stance
+				option = diplo_stance_belligerent
+				cooldown = yes
+			}
+		}
+		end_rivalry = event_target:fallen_empire_humiliator
+		save_event_target_as = fallen_empire_humiliated
+		event_target:fallen_empire_humiliator = {
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_insult }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_demand }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_task }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_failed_fallen_empire_task }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_majorly_failed_fallen_empire_task }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_request }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_spurned_fallen_empire_gift }
+			if = {
+				limit = {
+					has_origin = origin_fallen_empire_hive
+				}
+				event_target:fallen_empire_hive_war = {
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_insult }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_demand }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_failed_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_majorly_failed_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_request }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_spurned_fallen_empire_gift }
+				}
+				event_target:fallen_empire_hive_growth = {
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_insult }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_demand }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_failed_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_majorly_failed_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_request }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_spurned_fallen_empire_gift }
+				}
+				event_target:fallen_empire_hive_control = {
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_insult }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_demand }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_failed_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_majorly_failed_fallen_empire_task }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_request }
+					remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_spurned_fallen_empire_gift }
+				}
+			}
+		}
+
+		event_target:fallen_empire_humiliator = {
+			every_system_within_border = {
+				limit = {
+					event_target:fallen_empire_humiliated = {
+						OR = {
+							has_claim = prev
+							any_subject = { has_claim = prevprev }
+						}
+					}
+				}
+				event_target:fallen_empire_humiliated = {
+					if = {
+						limit = { has_claim = prev }
+						prev = { remove_claims = { who = event_target:fallen_empire_humiliated } }
+					}
+					every_subject = {
+						limit = { has_claim = prevprev }
+						prevprev = { remove_claims = { who = this } }
+					}
+				}
+			}
+		}
+	}
+}
+
+fallen_empire_stop_atrocities_effect = {
+	hidden_effect = {
+		set_policy = {
+			policy = slavery
+			option = slavery_not_allowed
+			cooldown = yes
+		}
+		set_policy = {
+			policy = purge
+			option = purge_not_allowed
+			cooldown = yes
+		}
+		every_subject = {
+			set_policy = {
+				policy = slavery
+				option = slavery_not_allowed
+				cooldown = yes
+			}
+			set_policy = {
+				policy = purge
+				option = purge_not_allowed
+				cooldown = yes
+			}
+		}
+	}
+}
+
+payback_stop_atrocities_effect = {
+	hidden_effect = {
+		set_policy = {
+			policy = slavery
+			option = slavery_not_allowed
+			cooldown = yes
+		}
+		set_policy = {
+			policy = purge
+			option = purge_not_allowed
+			cooldown = yes
+		}
+		set_policy = {
+			policy = interference
+			option = interference_not_allowed
+			cooldown = yes
+		}
+		every_subject = {
+			set_policy = {
+				policy = slavery
+				option = slavery_not_allowed
+				cooldown = yes
+			}
+			set_policy = {
+				policy = purge
+				option = purge_not_allowed
+				cooldown = yes
+			}
+			set_policy = {
+				policy = interference
+				option = interference_not_allowed
+				cooldown = yes
+			}
+		}
+	}
+}
+
+fallen_empire_stop_ai_effect = {
+	hidden_effect = {
+		set_policy = {
+			policy = artificial_intelligence_policy
+			option = ai_outlawed
+			cooldown = yes
+		}
+	}
+}
+
+fallen_empire_cleanse_holy_worlds_effect = {
+	every_owned_planet = {
+		limit = {
+			has_modifier = "holy_planet"
+		}
+		destroy_colony = yes
+	}
+}
+
+fallen_empire_cleanse_border_worlds_effect = {
+	every_owned_planet = {
+		limit = {
+			is_capital = no
+			solar_system = {
+				has_hyperlane_to = event_target:fallen_empire_humiliator
+			}
+		}
+		destroy_colony = yes
+	}
+	every_controlled_fleet = {
+		limit = {
+			is_ship_class = shipclass_starbase
+			solar_system = {
+				has_hyperlane_to = event_target:fallen_empire_humiliator
+			}
+		}
+		destroy_fleet = this
+	}
+	every_subject = {
+		every_owned_planet = {
+			limit = {
+				is_capital = no
+				solar_system = {
+					has_hyperlane_to = event_target:fallen_empire_humiliator
+				}
+			}
+			destroy_colony = yes
+		}
+		every_controlled_fleet = {
+			limit = {
+				is_ship_class = shipclass_starbase
+				solar_system = {
+					has_hyperlane_to = event_target:fallen_empire_humiliator
+				}
+			}
+			destroy_fleet = this
+		}
+	}
+}
+
+create_fe_home_citadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+
+		module = "shipyard"
+		module = "shipyard"
+		module = "shipyard"
+		module = "hangar_bay"
+		module = "gun_battery"
+		module = "gun_battery"
+
+		building = "target_uplink_computer"
+		building = "defense_grid"
+		building = "colossus_yards"
+		building = "titan_yards"
+
+		effect = {
+			while = {
+				count = 10
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+
+create_fe_citadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+
+		module = "shipyard"
+		module = "anchorage"
+		module = "anchorage"
+		module = "hangar_bay"
+		module = "gun_battery"
+		module = "gun_battery"
+
+		building = "crew_quarters"
+		building = "command_center"
+		building = "target_uplink_computer"
+		building = "dark_matter_listening_post"
+
+		effect = {
+			while = {
+				count = 4
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+create_hive_fe_citadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+		owner = event_target:fallen_empire_hive_$FRAGMENT$
+
+		module = "shipyard"
+		module = "anchorage"
+		module = "anchorage"
+		module = "hangar_bay"
+		module = "gun_battery"
+		module = "gun_battery"
+
+		building = "growth_chamber"
+		building = "command_center"
+		building = "target_uplink_computer"
+		building = "dark_matter_listening_post"
+
+		effect = {
+			while = {
+				count = 4
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+
+create_fe_dsc = {
+	create_starbase = {
+		owner = $OWNER$
+		size = starbase_deep_space_citadel_3
+		design = $DESIGN$
+		building = crew_quarters
+		building = dark_matter_listening_post
+		building = target_uplink_computer
+		building = defense_grid
+		effect = {
+			while = {
+				count = 12
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+
+create_fe_outpost = {
+	create_starbase = {
+		size = "starbase_outpost"
+		effect = {
+			while = {
+				count = 2
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+
+create_broken_fe_outpost = {
+	create_ambient_object = {
+		type = broken_holy_world_outpost
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = prev
+			distance = 10
+		}
+		save_event_target_as = broken_outpost
+	}
+	#create_ambient_object = {
+	#	type = large_debris_object
+	#}
+	#last_created_ambient_object = {
+	#	set_location = {
+	#		target = event_target:broken_outpost
+	#		distance = 0
+	#	}
+	#}
+	create_ambient_object = {
+		type = small_debris_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 1
+			angle = 0
+		}
+	}
+	create_ambient_object = {
+		type = small_debris_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 1
+			angle = 90
+		}
+	}
+	create_ambient_object = {
+		type = small_debris_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 1
+			angle = 180
+		}
+	}
+	create_ambient_object = {
+		type = small_debris_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 1
+			angle = 270
+		}
+	}
+	create_ambient_object = {
+		type = medium_debris_02_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 3
+			angle = 5
+		}
+	}
+	create_ambient_object = {
+		type = medium_debris_02_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 9
+			angle = 120
+		}
+	}
+	create_ambient_object = {
+		type = medium_debris_01_object
+	}
+	last_created_ambient_object = {
+		set_location = {
+			target = event_target:broken_outpost
+			distance = 6
+			angle = 240
+		}
+	}
+}
+
+create_fe_servant_species = {
+	create_species = {
+		name = random
+		class = random_non_machine
+		portrait = random
+		traits = random
+		traits = {
+			ideal_planet_class = root
+			trait = "trait_nerve_stapled"
+			trait = "trait_strong"
+			trait = "trait_charismatic"
+		}
+		effect = {
+			if = {
+				limit = {
+					is_archetype = LITHOID
+				}
+				change_species_characteristics = {
+					add_trait = "trait_lithoid"
+				}
+			}
+			else = {
+				change_species_characteristics = {
+					add_trait = "trait_organic"
+				}
+			}
+		}
+	}
+}
+
+create_fe_servant_robots = {
+	create_species = {
+		name = "NAME_Synthetic"
+		plural = "NAME_Synthetic_plural"
+		class = ROBOT
+		namelist = this
+		portrait = "default_robot"
+		traits = {
+			trait = "trait_mechanical"
+			trait = "trait_robot_luxurious"
+			trait = "trait_robot_domestic_protocols"
+		}
+
+		effect = {
+			set_synth_or_robot_portrait_effect = yes
+		}
+	}
+
+	set_built_species = last_created_species
+}
+
+create_fe_fringe_colony = {
+	set_planet_flag = fallen_empire_world
+	clear_blockers = yes
+	prevent_anomaly = yes
+	set_owner = root
+	add_building = building_ancient_palace
+	add_building = building_fe_dome
+	while = {
+		count = 5
+		add_district = {
+			district_type = district_city
+			ignore_cap = yes
+		}
+	}
+	create_pop_group = {
+		size = 800
+		species = owner_species
+	}
+	create_pop_group = {
+		size = 800
+		species = event_target:fe_servants
+	}
+}
+
+create_fe_spiritualist_fringe_colony = {
+	set_planet_flag = fallen_empire_world
+	clear_blockers = yes
+	prevent_anomaly = yes
+	set_owner = root
+	add_building = building_ancient_palace
+	add_building = building_fe_dome
+	while = {
+		count = 3
+		add_district_and_planet_size_if_needed_effect = {
+			district = district_city
+		}
+	}
+	while = {
+		count = 2
+		add_district_and_planet_size_if_needed_effect = {
+			district = district_generator
+		}
+	}
+	while = {
+		count = 2
+		add_district_and_planet_size_if_needed_effect = {
+			district = district_mining
+		}
+	}
+	while = {
+		count = 2
+		add_district_and_planet_size_if_needed_effect = {
+			district = district_farming
+		}
+	}
+	create_pop_group = {
+		size = 2000
+		species = owner_species
+	}
+}
+
+awaken_fallen_machine_empire = {
+	every_country = {
+		limit = {
+			is_country_type = fallen_empire
+			is_machine_empire = yes
+		}
+
+		country_event = { id = fallen_machine_empire.1 days = 30 random = 30 }
+	}
+}
+
+# Vfix patch: Revised by Duxatious
+awaken_guardians_of_the_galaxy = {
+	random_list = {
+		60 = {
+			# Awaken one
+			modifier = {
+				factor = 0
+				exists = root
+				root = {
+					last_increased_tech = tech_cosmogenesis_thesis
+				}
+			}
+			# awaken_guardians_of_the_galaxy_one_random
+			random_country = {
+				limit = {
+					NOT = {
+						has_country_flag = awakening_not_allowed
+					}
+					is_country_type = fallen_empire
+					OR = {
+						is_fanatic_materialist = yes
+						is_fanatic_xenophile = yes
+						has_country_flag = fallen_empire_hive_war
+					}
+					fleet_power > 60000
+				}
+				set_country_flag = guardians_of_the_galaxy
+				set_timed_country_flag = {
+					flag = timed_guardians_of_the_galaxy
+					years = 5
+				}
+				set_timed_country_flag = {
+					flag = timed_guardians_of_the_galaxy_2
+					years = 10
+				}
+			}
+		}
+		0 = {
+			modifier = {
+				# Materialists are supposed to have 1/100 chance of awakening every time you research Infinity Thesis. This chance should not be modified.
+				add = 99999
+				exists = root
+				root = {
+					last_increased_tech = tech_cosmogenesis_thesis
+				}
+			}
+			# awaken_guardians_of_the_galaxy_one_random_materialist
+			random_country = {
+				limit = {
+					NOT = {
+						has_country_flag = awakening_not_allowed
+					}
+					is_country_type = fallen_empire
+					is_fanatic_materialist = yes
+					fleet_power > 60000
+				}
+				set_country_flag = guardians_of_the_galaxy
+				set_timed_country_flag = {
+					flag = timed_guardians_of_the_galaxy
+					years = 5
+				}
+				set_timed_country_flag = {
+					flag = timed_guardians_of_the_galaxy_2
+					years = 10
+				}
+			}
+		}
+		15 = {
+			# Awaken all three! NOTE: in vanilla this doesn't target three — it targets War, all Xenophiles, and all Materialists! Originally there were only one Xenophile and one Materialist. Cosmogenesis can change this.
+			modifier = {
+				factor = 0
+				exists = root
+				root = {
+					last_increased_tech = tech_cosmogenesis_thesis
+				}
+			}
+			# awaken_guardians_of_the_galaxy_all
+			every_country = {
+				limit = {
+					NOT = {
+						has_country_flag = awakening_not_allowed
+					}
+					is_country_type = fallen_empire
+					OR = {
+						is_fanatic_materialist = yes
+						is_fanatic_xenophile = yes
+						has_country_flag = fallen_empire_hive_war
+					}
+					fleet_power > 60000
+				}
+				set_country_flag = guardians_of_the_galaxy
+				set_country_flag = guardians_of_the_galaxy_twin
+				set_timed_country_flag = {
+					flag = timed_guardians_of_the_galaxy
+					years = 5
+				}
+				set_timed_country_flag = {
+					flag = timed_guardians_of_the_galaxy_2
+					years = 10
+				}
+			}
+		}
+		25 = {
+			# No awakening, modified to not happen if Cetana, does not affect Infinity Thesis.
+			modifier = {
+				factor = 0
+				OR = {
+					any_country = {
+						is_synth_queen_country_type = yes
+					}
+					AND = {
+						exists = root
+						root = {
+							last_increased_tech = tech_cosmogenesis_thesis
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+create_fallen_empire_platform = {
+	if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Sigma"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Platform"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_materialist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Cloaker"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_spiritualist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Faith"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophobe = yes
+					is_fanatic_militarist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Devastator"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophile = yes
+					is_fanatic_pacifist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Watcher"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Platform"
+			graphical_culture = owner
+		}
+	}
+}
+
+create_fallen_empire_colossus = {
+	if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Omega"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_materialist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Enforcer"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_spiritualist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Cleanser"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophobe = yes
+					is_fanatic_militarist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Reaper"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophile = yes
+					is_fanatic_pacifist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Adjuster"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Colossus"
+			graphical_culture = owner
+		}
+	}
+}
+
+create_fallen_empire_titan = {
+	if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Alpha"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_materialist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Savant"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_spiritualist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Eternal"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophobe = yes
+					is_fanatic_militarist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Imperium"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophile = yes
+					is_fanatic_pacifist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Keeper"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		# Fragmented nodes don't have Stingers
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				OR = {
+					has_country_flag = fallen_empire_hive_war
+					has_country_flag = fallen_empire_hive_growth
+					has_country_flag = fallen_empire_hive_control
+				}
+			}
+		}
+		while = {
+			count = 2
+			create_fallen_empire_large_ship = yes
+		}
+	}
+	if = {
+		# Unified nodes have Stingers
+		limit = {
+			owner = {
+				OR = {
+					AND = {
+						is_country_type = awakened_fallen_empire
+						OR = {
+							has_country_flag = fallen_empire_hive_war
+							has_country_flag = fallen_empire_hive_growth
+							has_country_flag = fallen_empire_hive_control
+						}
+					}
+					AND = {
+						country_uses_bio_ships = yes
+						has_country_flag = cosmogenesis_fe_empire
+					}
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Large_Stinger"
+			graphical_culture = owner
+		}
+	}
+}
+
+create_fallen_empire_large_ship = {
+	if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Beta"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_materialist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Scholar"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_spiritualist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Avatar"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophobe = yes
+					is_fanatic_militarist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Supremacy"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_xenophile = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Custodian"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				has_country_flag = fallen_empire_hive_war
+			}
+		}
+		while = {
+			count = 8
+			create_ship = {
+				name = random
+				design = "NAME_HIVE_FE_Large_Mauler_Swarm"
+				graphical_culture = owner
+			}
+		}
+		while = {
+			count = 2
+			create_ship = {
+				name = random
+				design = "NAME_HIVE_FE_Large_Mauler_Picket"
+				graphical_culture = owner
+			}
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				has_country_flag = fallen_empire_hive_growth
+			}
+		}
+		while = {
+			count = 2
+			create_ship = {
+				name = random
+				design = "NAME_HIVE_FE_Large_Harbinger"
+				graphical_culture = owner
+			}
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				has_country_flag = fallen_empire_hive_control
+			}
+		}
+		while = {
+			count = 4
+			create_ship = {
+				name = random
+				design = "NAME_HIVE_FE_Large_Weaver_Control"
+				graphical_culture = owner
+			}
+		}
+	}
+	if = {
+		# Unified nodes have access to ships from all nodes
+		limit = {
+			owner = {
+				OR = {
+					AND = {
+						is_country_type = awakened_fallen_empire
+						OR = {
+							has_country_flag = fallen_empire_hive_war
+							has_country_flag = fallen_empire_hive_growth
+							has_country_flag = fallen_empire_hive_control
+						}
+					}
+					AND = {
+						country_uses_bio_ships = yes
+						has_country_flag = cosmogenesis_fe_empire
+					}
+				}
+			}
+		}
+		random_list = {
+			10 = {
+				# War
+				while = {
+					count = 8
+					create_ship = {
+						name = random
+						design = "NAME_HIVE_FE_Large_Mauler_Swarm"
+						graphical_culture = owner
+					}
+				}
+				while = {
+					count = 2
+					create_ship = {
+						name = random
+						design = "NAME_HIVE_FE_Large_Mauler_Picket"
+						graphical_culture = owner
+					}
+				}
+				modifier = {
+					factor = 2
+					has_country_flag = fallen_empire_hive_war
+				}
+			}
+			10 = {
+				# Growth
+				while = {
+					count = 2
+					create_ship = {
+						name = random
+						design = "NAME_HIVE_FE_Large_Harbinger"
+						graphical_culture = owner
+					}
+				}
+				modifier = {
+					factor = 2
+					has_country_flag = fallen_empire_hive_growth
+				}
+			}
+			10 = {
+				# Control
+				while = {
+					count = 4
+					create_ship = {
+						name = random
+						design = "NAME_HIVE_FE_Large_Weaver_Control"
+						graphical_culture = owner
+					}
+				}
+				modifier = {
+					factor = 2
+					has_country_flag = fallen_empire_hive_control
+				}
+			}
+		}
+	}
+}
+
+create_fallen_empire_small_ship = {
+	if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Gamma"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_materialist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Sage"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_spiritualist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Zealot"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					is_fanatic_xenophobe = yes
+					is_fanatic_militarist = yes
+				}
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Glory"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_xenophile = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Overseer"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				has_country_flag = fallen_empire_hive_war
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Small_Weaver_War"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				has_country_flag = fallen_empire_hive_growth
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Small_Weaver_Growth"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				is_country_type = fallen_empire
+				has_country_flag = fallen_empire_hive_control
+			}
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Small_Weaver_Control"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		# Unified nodes have access to ships from all nodes
+		limit = {
+			owner = {
+				OR = {
+					AND = {
+						is_country_type = awakened_fallen_empire
+						OR = {
+							has_country_flag = fallen_empire_hive_war
+							has_country_flag = fallen_empire_hive_growth
+							has_country_flag = fallen_empire_hive_control
+						}
+					}
+					AND = {
+						country_uses_bio_ships = yes
+						has_country_flag = cosmogenesis_fe_empire
+					}
+				}
+			}
+		}
+		random_list = {
+			10 = {
+				# War
+				create_ship = {
+					name = random
+					design = "NAME_HIVE_FE_Small_Weaver_War"
+					graphical_culture = owner
+				}
+				modifier = {
+					factor = 2
+					has_country_flag = fallen_empire_hive_war
+				}
+			}
+			10 = {
+				# Growth
+				create_ship = {
+					name = random
+					design = "NAME_HIVE_FE_Small_Weaver_Growth"
+					graphical_culture = owner
+				}
+				modifier = {
+					factor = 2
+					has_country_flag = fallen_empire_hive_growth
+				}
+			}
+			10 = {
+				# Control
+				create_ship = {
+					name = random
+					design = "NAME_HIVE_FE_Small_Weaver_Control"
+					graphical_culture = owner
+				}
+				modifier = {
+					factor = 2
+					has_country_flag = fallen_empire_hive_control
+				}
+			}
+		}
+	}
+}
+
+create_fallen_empire_construction_ship = {
+	if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Theta"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_materialist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Librarian"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_spiritualist = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Penitent"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_xenophobe = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Servitor"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_fanatic_xenophile = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_Builder"
+			graphical_culture = owner
+		}
+	}
+	if = {
+		limit = {
+			owner = { is_hive_empire = yes }
+		}
+		create_ship = {
+			name = random
+			design = "NAME_HIVE_FE_Construction"
+			graphical_culture = owner
+		}
+	}
+}
+
+create_fallen_empire_reinforcements = {
+	random_list = {
+		75 = {
+			create_fallen_empire_reinforcement_fleet = yes
+		}
+		25 = {
+			create_fallen_empire_titan_fleet = yes
+		}
+	}
+}
+
+create_fallen_empire_reinforcement_fleet = {
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			while = {
+				count = 4
+				create_fallen_empire_large_ship = yes
+			}
+			while = {
+				count = 8
+				create_fallen_empire_small_ship = yes
+			}
+			random_list = {
+				25 = {
+					set_location = {
+						target = prev
+						distance = 30
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 45
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 60
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 75
+						angle = random
+					}
+				}
+			}
+		}
+	}
+}
+
+create_fallen_empire_fleet = {
+	owner = {
+		create_leader = {
+			class = commander
+			species = owner_species
+			name = random
+			leader_age_min = 25
+			leader_age_max = 45
+			effect = {
+				add_trait = {
+					trait = subclass_commander_admiral
+				}
+				add_skill = 9
+			}
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			while = {
+				count = 8
+				create_fallen_empire_large_ship = yes
+			}
+			while = {
+				count = 18
+				create_fallen_empire_small_ship = yes
+			}
+			random_list = {
+				25 = {
+					set_location = {
+						target = prev
+						distance = 30
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 45
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 60
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 75
+						angle = random
+					}
+				}
+			}
+		}
+	}
+	last_created_fleet = { assign_leader = last_created_leader }
+}
+
+create_fallen_empire_titan_fleet = {
+	owner = {
+		create_leader = {
+			class = commander
+			species = owner_species
+			name = random
+			leader_age_min = 25
+			leader_age_max = 45
+		}
+	}
+	last_created_leader = {
+		add_trait = {
+			trait = subclass_commander_admiral
+		}
+		add_skill = 9
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_titan = yes
+			set_location = {
+				target = prev
+				distance = 20
+				angle = random
+			}
+		}
+	}
+	last_created_fleet = { assign_leader = last_created_leader }
+}
+
+create_fallen_empire_starting_navy = {
+	create_fallen_empire_fleet = yes
+	create_fallen_empire_fleet = yes
+	random = {
+		chance = 33
+		create_fallen_empire_fleet = yes
+	}
+	if = {
+		limit = {
+			has_apocalypse_dlc = yes
+		}
+		random = {
+			chance = 10
+			create_fleet = {
+				effect = {
+					set_owner = prev.owner
+					create_fallen_empire_colossus = yes
+					set_location = {
+						target = prev
+						distance = 30
+						angle = random
+					}
+				}
+			}
+		}
+	}
+	random = {
+		chance = 25
+		create_fallen_empire_titan_fleet = yes
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_construction_ship = yes
+			set_location = {
+				target = prev
+				distance = 60
+				angle = random
+			}
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_construction_ship = yes
+			set_location = {
+				target = prev
+				distance = 80
+				angle = random
+			}
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_construction_ship = yes
+			set_location = {
+				target = prev
+				distance = 100
+				angle = random
+			}
+		}
+	}
+}
+
+add_awakened_fallen_empire_fleet = {
+	country_event = { id = fallen_empires.13 }
+	if = {
+		limit = {
+			any_playable_country = {
+				OR = {
+					fleet_power > 120000
+					AND = {
+						has_federation = yes
+						federation = {
+							fleet_power > 150000
+						}
+					}
+					AND = {
+						fleet_power > 75000
+						any_country = {
+							has_defensive_pact = prev
+							fleet_power > 75000
+						}
+					}
+				}
+			}
+		}
+		country_event = { id = fallen_empires.13 }
+	}
+	if = {
+		limit = {
+			any_playable_country = {
+				OR = {
+					fleet_power > 200000
+					AND = {
+						has_federation = yes
+						federation = {
+							fleet_power > 200000
+						}
+					}
+					AND = {
+						fleet_power > 120000
+						any_country = {
+							has_defensive_pact = prev
+							fleet_power > 120000
+						}
+					}
+				}
+			}
+		}
+		country_event = { id = fallen_empires.13 }
+	}
+}
+
+add_awakened_fallen_empire_resources = {
+	# Changing country type resets resources, so give them full stores
+	add_resource = {
+		minerals = 50000
+		energy = 50000
+		food = 10000
+		influence = 1000
+		alloys = 20000
+		consumer_goods = 20000
+		alloys = 20000
+	}
+	add_resource = {
+		exotic_gases = 10000
+		volatile_motes = 10000
+		rare_crystals = 10000
+		sr_dark_matter = 10000
+	}
+	if = {
+		limit = { is_fallen_empire_spiritualist = yes }
+		add_resource = { sr_zro = 10000 }
+	}
+}
+
+# this = country joining league; prev = federation leader
+add_non_aligned_league_opinions = {
+	add_opinion_modifier = { who = prev modifier = opinion_non_aligned_league }
+	prev = { add_opinion_modifier = { who = prev modifier = opinion_non_aligned_league } }
+	every_country = {
+		limit = {
+			is_in_federation_with = prevprev
+			NOT = { is_same_value = prev }
+			NOT = {
+				has_opinion_modifier = {
+					who = prev
+					modifier = opinion_non_aligned_league
+				}
+			}
+		}
+		add_opinion_modifier = { who = prev modifier = opinion_non_aligned_league }
+		prev = { add_opinion_modifier = { who = prev modifier = opinion_non_aligned_league } }
+	}
+	every_country = {
+		limit = {
+			is_country_type = awakened_fallen_empire
+			OR = { # Vfix Ariphaos
+				has_country_flag = sleepers_awake_ancient_rival
+				has_country_flag = sleepers_awake_first_sleeper
+			}
+		}
+		add_opinion_modifier = { who = prev modifier = opinion_non_aligned_league_fe }
+		prev = { add_opinion_modifier = { who = prev modifier = opinion_non_aligned_league_fe } }
+	}
+}
+
+#scope = scion
+create_scion_wormhole_link = {
+	capital_scope = {
+		solar_system = { save_event_target_as = home_system }
+	}
+	event_target:scion_master = {
+		random_system_within_border = { save_event_target_as = fe_target_system }
+	}
+	event_target:home_system = {
+		event_target:fe_target_system = {
+			prev = { # done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
+				spawn_natural_wormhole = {
+					bypass_type = wormhole
+					random_pos = no
+					orbit_angle = 360
+				}
+			}
+			spawn_natural_wormhole = {
+				bypass_type = wormhole
+				random_pos = no
+				orbit_angle = 270
+			}
+			link_wormholes = prev
+		}
+	}
+	set_country_flag = encountered_first_wormhole
+	add_seen_bypass_type = wormhole
+}
+
+give_fe_tech = {
+	if = {
+		limit = {
+			NOT = { has_technology = tech_mine_living_metal }
+		}
+		give_technology = { tech = tech_mine_living_metal }
+		break = yes
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_mine_dark_matter }
+		}
+		give_technology = { tech = tech_mine_dark_matter }
+		break = yes
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_ship_armor_5 }
+		}
+		give_technology = { tech = tech_ship_armor_5 }
+		break = yes
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_antimatter_power }
+		}
+		give_technology = { tech = tech_antimatter_power }
+		break = yes
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_zero_point_power }
+		}
+		give_technology = { tech = tech_zero_point_power }
+		break = yes
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_climate_restoration }
+		}
+		give_technology = { tech = tech_climate_restoration }
+		break = yes
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_nutrient_replication }
+		}
+		give_technology = { tech = tech_nutrient_replication }
+		break = yes
+	}
+	give_technology = { tech = tech_repeatable_improved_tile_energy_output }
+}
+
+create_hive_fe_fragment_war = {
+	create_country = {
+		name = random
+		type = fallen_empire
+		ignore_initial_colony_error = yes
+		authority = auth_hive_mind
+		civics = {
+			civic = civic_fragmented_command
+			civic = civic_hyper_aggressive_drones
+		}
+		species = event_target:hive_fe_species
+		ethos = {
+			ethic = ethic_gestalt_consciousness
+		}
+		graphical_culture = biogenesis_01_fallen_empire
+		flag = {
+			icon = {
+				category = "special"
+				file = "hive_fe_flag_1.dds"
+			}
+			background = {
+				category = "backgrounds"
+				file = "flag_BG_39.dds"
+			}
+			colors = {
+				"light_orange"
+				"dark_orange"
+				"black"
+				"null"
+			}
+		}
+		origin = "origin_fallen_empire_hive"
+		effect = {
+			set_country_flag = fallen_empire_hive_war
+			save_global_event_target_as = fallen_empire_hive_war
+			add_resource = {
+				minerals = 10000
+				energy = 10000
+				food = 1000
+				influence = 500
+			}
+			if = {
+				limit = { has_apocalypse_dlc = yes }
+				give_technology = {
+					tech = tech_colossus
+					message = no
+				}
+			}
+			add_ascension_perk = ap_hive_worlds
+			# must initialize global designs here
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_War"
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_Growth"
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_Control"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Mauler_Swarm"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Mauler_Picket"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Weaver_Control"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Harbinger"
+			add_global_ship_design = "NAME_HIVE_FE_Construction"
+			add_global_ship_design = "NAME_HIVE_FE_Colony"
+			add_global_ship_design = "NAME_HIVE_FE_Colossus"
+			add_global_ship_design = "NAME_HIVE_FE_Platform"
+			add_global_ship_design = "NAME_HIVE_FE_Starbase"
+			add_global_ship_design = "NAME_HIVE_Citadel_1"
+			add_global_ship_design = "NAME_HIVE_Citadel_2"
+			add_global_ship_design = "NAME_HIVE_Citadel_3"
+			ruler = {
+				add_skill = 9
+			}
+			set_variable = { # The Variable which will be used to figure out which fragment is the most influential
+				which = hive_fe_influence
+				value = 1
+			}
+			ordered_country = {
+				limit = { has_origin = origin_fallen_empire_hive }
+				position = 0
+				order_by = hive_fe_influence
+				save_global_event_target_as = strongest_fragment
+			}
+		}
+	}
+}
+
+create_hive_fe_fragment_growth = {
+	create_country = {
+		name = random
+		type = fallen_empire
+		ignore_initial_colony_error = yes
+		authority = auth_hive_mind
+		civics = {
+			civic = civic_fragmented_command
+			civic = civic_unstable_drones
+		}
+		species = event_target:hive_fe_species
+		ethos = {
+			ethic = ethic_gestalt_consciousness
+		}
+		graphical_culture = biogenesis_01_fallen_empire
+		flag = {
+			icon = {
+				category = "special"
+				file = "hive_fe_flag_3.dds"
+			}
+			background = {
+				category = "backgrounds"
+				file = "flag_BG_39.dds"
+			}
+			colors = {
+				"light_orange"
+				"dark_orange"
+				"black"
+				"null"
+			}
+		}
+		origin = "origin_fallen_empire_hive"
+		effect = {
+			set_country_flag = fallen_empire_hive_growth
+			save_global_event_target_as = fallen_empire_hive_growth
+			add_resource = {
+				minerals = 10000
+				energy = 10000
+				food = 1000
+				influence = 500
+			}
+			if = {
+				limit = { has_apocalypse_dlc = yes }
+				give_technology = {
+					tech = tech_colossus
+					message = no
+				}
+			}
+			add_ascension_perk = ap_hive_worlds
+			# must initialize global designs here
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_War"
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_Growth"
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_Control"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Mauler_Swarm"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Mauler_Picket"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Weaver_Control"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Harbinger"
+			add_global_ship_design = "NAME_HIVE_FE_Construction"
+			add_global_ship_design = "NAME_HIVE_FE_Colony"
+			add_global_ship_design = "NAME_HIVE_FE_Colossus"
+			add_global_ship_design = "NAME_HIVE_FE_Platform"
+			add_global_ship_design = "NAME_HIVE_FE_Starbase"
+			add_global_ship_design = "NAME_HIVE_Citadel_1"
+			add_global_ship_design = "NAME_HIVE_Citadel_2"
+			add_global_ship_design = "NAME_HIVE_Citadel_3"
+			ruler = {
+				add_skill = 9
+			}
+			set_variable = { # The Variable which will be used to figure out which fragment is the most influential
+				which = hive_fe_influence
+				value = 1
+			}
+			ordered_country = {
+				limit = { has_origin = origin_fallen_empire_hive }
+				position = 0
+				order_by = hive_fe_influence
+				save_global_event_target_as = strongest_fragment
+			}
+		}
+	}
+}
+
+create_hive_fe_fragment_control = {
+	create_country = {
+		name = random
+		type = fallen_empire
+		ignore_initial_colony_error = yes
+		authority = auth_hive_mind
+		civics = {
+			civic = civic_fragmented_command
+			civic = civic_stunted_drones
+		}
+		species = event_target:hive_fe_species
+		ethos = {
+			ethic = ethic_gestalt_consciousness
+		}
+		graphical_culture = biogenesis_01_fallen_empire
+		flag = {
+			icon = {
+				category = "special"
+				file = "hive_fe_flag_2.dds"
+			}
+			background = {
+				category = "backgrounds"
+				file = "flag_BG_39.dds"
+			}
+			colors = {
+				"light_orange"
+				"dark_orange"
+				"black"
+				"null"
+			}
+		}
+		origin = "origin_fallen_empire_hive"
+		effect = {
+			set_country_flag = fallen_empire_hive_control
+			save_global_event_target_as = fallen_empire_hive_control
+			add_resource = {
+				minerals = 10000
+				energy = 10000
+				food = 1000
+				influence = 500
+			}
+			if = {
+				limit = { has_apocalypse_dlc = yes }
+				give_technology = {
+					tech = tech_colossus
+					message = no
+				}
+			}
+			add_ascension_perk = ap_hive_worlds
+			# must initialize global designs here
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_War"
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_Growth"
+			add_global_ship_design = "NAME_HIVE_FE_Small_Weaver_Control"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Mauler_Swarm"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Mauler_Picket"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Weaver_Control"
+			add_global_ship_design = "NAME_HIVE_FE_Large_Harbinger"
+			add_global_ship_design = "NAME_HIVE_FE_Construction"
+			add_global_ship_design = "NAME_HIVE_FE_Colony"
+			add_global_ship_design = "NAME_HIVE_FE_Colossus"
+			add_global_ship_design = "NAME_HIVE_FE_Platform"
+			add_global_ship_design = "NAME_HIVE_FE_Starbase"
+			add_global_ship_design = "NAME_HIVE_Citadel_1"
+			add_global_ship_design = "NAME_HIVE_Citadel_2"
+			add_global_ship_design = "NAME_HIVE_Citadel_3"
+			ruler = {
+				add_skill = 9
+			}
+			set_variable = { # The Variable which will be used to figure out which fragment is the most influential
+				which = hive_fe_influence
+				value = 1
+			}
+			ordered_country = {
+				limit = { has_origin = origin_fallen_empire_hive }
+				position = 0
+				order_by = hive_fe_influence
+				save_global_event_target_as = strongest_fragment
+			}
+		}
+	}
+}
+
+create_random_fe_fragment = {
+	random_list = {
+		1 = { # War
+			modifier = {
+				factor = 0
+				exists = event_target:fallen_empire_hive_war
+			}
+			create_hive_fe_fragment_war = yes
+		}
+		1 = { # Growth
+			modifier = {
+				factor = 0
+				exists = event_target:fallen_empire_hive_growth
+			}
+			create_hive_fe_fragment_growth = yes
+		}
+		1 = { # Control
+			modifier = {
+				factor = 0
+				exists = event_target:fallen_empire_hive_control
+			}
+			create_hive_fe_fragment_control = yes
+		}
+	}
+	last_created_country = {
+		create_hive_fe_federation = yes
+	}
+}
+
+create_hive_fe_federation = {
+	# Form federation if it doesn't exist yet
+	random_country = {
+		limit = {
+			has_country_flag = first_hive_fe_fragment
+		}
+		if = {
+			limit = {
+				has_federation = no
+			}
+			prev = {
+				join_alliance = {
+					who = prev
+					name = NAME_FE_Federation
+					override_requirements = yes
+				}
+			}
+			set_federation_leader = this
+			federation = {
+				set_federation_flag = hive_fe_federation
+				add_cohesion = 1000
+				add_federation_experience = 420000
+			}
+		}
+
+		# Join existing federation
+		else = {
+			prev = {
+				join_alliance = { who = prev override_requirements = yes }
+			}
+		}
+	}
+}
+
+awaken_strongest_fe_fragment = {
+	event_target:strongest_fragment = {
+		country_event = { id = fallen_empires_awakening.10 }
+		save_event_Target_as = first_awakener
+	}
+}
+
+increase_fe_influence = {
+	change_variable = {
+		which = hive_fe_influence
+		value = 1
+	}
+	if = {
+		limit = {
+			has_country_flag = fallen_empire_hive_growth
+		}
+		random_planet_within_border = {
+			limit = {
+				is_terraforming_candidate = yes
+			}
+			start_terraform_process = pc_hive
+		}
+	}
+	ordered_country = {
+		limit = { has_origin = origin_fallen_empire_hive }
+		position = 0
+		order_by = hive_fe_influence
+		save_global_event_target_as = strongest_fragment
+	}
+}
+
+decrease_fe_influence = {
+	change_variable = {
+		which = hive_fe_influence
+		value = -1
+	}
+	ordered_country = {
+		limit = { has_origin = origin_fallen_empire_hive }
+		position = 0
+		order_by = hive_fe_influence
+		save_global_event_target_as = strongest_fragment
+	}
+}
+
+# Generaterates a new species as well as a certain amount of pops on specified planet, if a trait is specified they will also gain it.
+generate_new_species_and_pop = {
+	hidden_effect = {
+		create_species = {
+			name = random
+			class = random_non_machine
+			portrait = random
+			traits = random
+			homeworld = $TARGET$
+			effect = {
+				save_event_target_as = new_pop_species
+			}
+		}
+		$TARGET$ = {
+			while = {
+				count = $AMOUNT$
+				create_pop_group = {
+					species = event_target:new_pop_species
+				}
+			}
+		}
+		if = {
+			limit = {
+				$TARGET$.owner = { is_hive_empire = yes }
+			}
+			modify_species = {
+				species = event_target:new_pop_species
+				add_trait = trait_hive_mind
+				effect = {
+					save_event_target_as = new_pop_species
+				}
+			}
+		}
+	}
+	[[TRAIT]
+	modify_species = {
+		species = event_target:new_pop_species
+		add_trait = $TRAIT$
+		effect = {
+			save_event_target_as = new_pop_species
+		}
+	}
+	]
+	[[CITIZEN_COUNTRY]
+	event_target:new_pop_species = {
+		set_citizenship_type = {
+			country = $CITIZEN_COUNTRY$
+			type = citizenship_full
+		}
+	}
+	]
+}
+
+generate_boring_species_choices = {
+	random_list = {
+		0 = {
+			modifier = {
+				add = 30
+				event_target:boring_species = {
+					any_trait_available_for_species = {
+						trait_has_all_tags = { humanoid }
+						NOT = { trait_has_any_tag = { special } }
+					}
+					NOT = { is_species_class = HUM }
+				}
+				NOT = { has_country_flag = boring_humanoid_choice }
+			}
+			set_country_flag = boring_humanoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				event_target:boring_species = {
+					any_trait_available_for_species = {
+						trait_has_all_tags = { mammalian }
+						NOT = { trait_has_any_tag = { special } }
+					}
+					NOT = { is_species_class = MAM }
+				}
+				NOT = { has_country_flag = boring_mammalian_choice }
+			}
+			set_country_flag = boring_mammalian_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { reptilian }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_reptilian_choice }
+			}
+			set_country_flag = boring_reptilian_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { avian }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_avian_choice }
+			}
+			set_country_flag = boring_avian_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { arthropoid }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_arthropoid_choice }
+			}
+			set_country_flag = boring_arthropoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { molluscoid }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_molluscoid_choice }
+			}
+			set_country_flag = boring_molluscoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { fungoid }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_fungoid_choice }
+			}
+			set_country_flag = boring_fungoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { plantoid }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_plantoid_choice }
+			}
+			set_country_flag = boring_plantoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { lithoid }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_lithoid_choice }
+			}
+			set_country_flag = boring_lithoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				event_target:boring_species = {
+					any_trait_available_for_species = {
+						trait_has_all_tags = { necroid }
+						NOT = { trait_has_any_tag = { special } }
+					}
+					NOT = { is_species_class = NECROID }
+				}
+				NOT = { has_country_flag = boring_necroid_choice }
+			}
+			set_country_flag = boring_necroid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				event_target:boring_species = {
+					any_trait_available_for_species = {
+						trait_has_all_tags = { aquatic }
+						NOT = { trait_has_any_tag = { special } }
+					}
+					NOT = { is_species_class = AQUATIC }
+				}
+				NOT = { has_country_flag = boring_aquatic_choice }
+			}
+			set_country_flag = boring_aquatic_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				event_target:boring_species = {
+					any_trait_available_for_species = {
+						trait_has_all_tags = { toxoid }
+						NOT = { trait_has_any_tag = { special } }
+					}
+					NOT = { is_species_class = TOX }
+				}
+				NOT = { has_country_flag = boring_toxoid_choice }
+			}
+			set_country_flag = boring_toxoid_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				event_target:boring_species = {
+					any_trait_available_for_species = {
+						trait_has_all_tags = { infernal }
+						NOT = { trait_has_any_tag = { special } }
+					}
+					NOT = { is_species_class = INF }
+				}
+				NOT = { has_country_flag = boring_infernal_choice }
+			}
+			set_country_flag = boring_infernal_choice
+		}
+		0 = {
+			modifier = {
+				add = 30
+				any_trait_available_for_species = {
+					trait_has_all_tags = { psionic }
+					NOT = { trait_has_any_tag = { special } }
+				}
+				NOT = { has_country_flag = boring_psionic_choice }
+			}
+			set_country_flag = boring_psionic_choice
+		}
+	}
+}
+
+grant_random_fe_building = {
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = micro_forge_can_build
+			}
+			grant_fe_building = { BUILDING = micro_forge }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = affluence_emporium_can_build
+					is_hive_empire = yes
+				}
+			}
+			grant_fe_building = { BUILDING = affluence_emporium }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = nourishment_complex_can_build
+					country_uses_food = no
+				}
+			}
+			grant_fe_building = { BUILDING = nourishment_complex }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = dimensional_replicator_can_build
+			}
+			grant_fe_building = { BUILDING = dimensional_replicator }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = class_3_singularity_can_build
+			}
+			grant_fe_building = { BUILDING = class_3_singularity }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = fe_sky_dome_can_build
+			}
+			grant_fe_building = { BUILDING = fe_sky_dome }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = fe_fortress_can_build
+			}
+			grant_fe_building = { BUILDING = fe_fortress }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = fe_administration_1_can_build
+					is_gestalt = yes
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+			}
+			grant_fe_building = { BUILDING = fe_administration_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = fe_administration_hive_1_can_build
+					is_hive_empire = no
+				}
+			}
+			grant_fe_building = { BUILDING = fe_administration_hive_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = fe_administration_machine_1_can_build
+					is_machine_empire = no
+				}
+			}
+			grant_fe_building = { BUILDING = fe_administration_machine_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = fe_assembly_1_can_build
+					has_policy_flag = robots_outlawed
+					is_hive_empire = yes
+				}
+			}
+			grant_fe_building = { BUILDING = fe_assembly_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				NOR = {
+					NOT = { has_country_flag = fe_clinic_1_can_build }
+					is_regular_empire = yes
+					is_hive_empire = yes
+				}
+			}
+			grant_fe_building = { BUILDING = fe_clinic_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = fe_security_1_can_build
+			}
+			grant_fe_building = { BUILDING = fe_security_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = fe_market_1_can_build
+					is_gestalt = yes
+				}
+			}
+			grant_fe_building = { BUILDING = fe_market_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = fe_silo_1_can_build
+			}
+			grant_fe_building = { BUILDING = fe_silo_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = fe_entertainment_1_can_build
+					is_gestalt = yes
+				}
+			}
+			grant_fe_building = { BUILDING = fe_entertainment_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = fe_lab_1_can_build
+			}
+			grant_fe_building = { BUILDING = fe_lab_1 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_country_flag = fe_mine_1_can_build
+			}
+			grant_fe_building = { BUILDING = fe_mine_1 }
+		}
+	}
+}
+
+grant_fe_building = {
+	change_variable = { which = $BUILDING$_build_count value = 1 }
+	change_variable = { which = $BUILDING$_upgrade_count value = 1 }
+	set_country_flag = $BUILDING$_can_build
+	set_timed_country_flag = { flag = recently_got_$BUILDING$ days = 10 }
+	create_message = {
+		type = FALLEN_EMPIRE_BUILDING_GAINED
+		localization = MESSAGE_FALLEN_EMPIRE_BUILDING_GAINED
+		days = 30
+	}
+}
+
+create_mad_hive_fe_task_message = {
+	create_message = {
+		type = MESSAGE_FAIL_HIVE_FE_TASK
+		localization = MESSAGE_FAIL_HIVE_FE_TASK
+		days = 30
+		variable = {
+			type = name
+			localization = FALLEN_EMPIRE
+			scope = $FALLEN_EMPIRE$
+		}
+	}
+	$FALLEN_EMPIRE$ = { add_opinion_modifier = { who = prev modifier = opinion_failed_fallen_empire_task } }
+}
+
+create_happy_hive_fe_task_message = {
+	create_message = {
+		type = MESSAGE_PASS_HIVE_FE_TASK
+		localization = MESSAGE_PASS_HIVE_FE_TASK
+		days = 30
+		variable = {
+			type = name
+			localization = FALLEN_EMPIRE
+			scope = $FALLEN_EMPIRE$
+		}
+	}
+	$FALLEN_EMPIRE$ = {
+		add_opinion_modifier = { who = prev modifier = opinion_completed_fallen_empire_task }
+		increase_fe_influence = yes
+	}
+}
+
+generate_ae_entertainment_reward = {
+	from = {
+		if = {
+			limit = {
+				country_uses_bio_ships = no
+			}
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+				mult = event_target:entertainment_war.trigger:attacker_war_exhaustion
+			}
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = @tier5materialreward
+				min = @tier5materialmin
+				max = @tier5materialmax
+				mult = event_target:entertainment_war.trigger:attacker_war_exhaustion
+			}
+		}
+		else = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+				mult = event_target:entertainment_war.trigger:attacker_war_exhaustion
+			}
+			add_monthly_resource_mult = {
+				resource = food
+				value = @tier5materialreward
+				min = @tier5materialmin
+				max = @tier5materialmax
+				mult = event_target:entertainment_war.trigger:attacker_war_exhaustion
+				mult = @alloy_to_food_cost_ratio
+			}
+		}
+	}
+}

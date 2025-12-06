@@ -1,0 +1,167 @@
+#####################################################
+#####################################################
+#####											#####
+#####	Crisis Manager							#####
+#####											#####
+#####	Scripted Triggers for Mid-Game Crisis	#####
+#####											#####
+#####################################################
+#####################################################
+
+##############
+###- Khan -###
+##############
+
+### Global Conditions
+
+CmtTriggerKhanAwakingMultipleCheck = {
+	optimize_memory
+	event_target:global_event_country = {
+		check_variable = { which = CmtVarKhanMultiple value != 1 }
+		NOT = { has_global_flag = marauder_crisis_started }
+		any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+	}
+}
+
+### Country Conditions
+## Scope = country
+CmtTriggerHasPotentialKhanAwaking = {
+	optimize_memory
+	OR = {
+		AND = { # CmtTriggerIsSleepingMarauder
+			is_country_type = dormant_marauders
+			OR = {
+				NOT = { has_country_flag = restored_marauders_flag }
+				# Fallback (Last Sleeping Marauder)
+				count_country = { count = 0
+					limit = {
+						is_country_type = dormant_marauders
+						NOT = { has_country_flag = restored_marauders_flag }
+					}
+				}
+			}
+		}
+		AND = { is_pirate_country = yes has_country_flag = restored_marauders_flag }
+		AND = {
+			has_origin = origin_khan_successor
+			is_at_war = no
+			OR = { has_country_flag = new_khanate_flag has_country_flag = diadochi }
+			# NOT = { has_country_flag = restored_marauders_flag }
+			count_country = { count = 0 limit = { is_country_type = dormant_marauders } }
+		}
+	}
+	OR = {	# Human player hack
+		AND = { is_ai = no has_country_flag = new_khanate_flag }
+		AND = {
+			has_country_flag = marauder_1
+			count_system_within_border = { count > 0 } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag'
+			any_system_within_border = {
+				has_star_flag = marauder_system
+				OR = {
+					has_star_flag = marauder_capital_1
+					any_neighbor_system = { has_owner = no has_star_flag = marauder_capital_1 }
+				}
+			}
+		}
+		AND = {
+			has_country_flag = marauder_2
+			count_system_within_border = { count > 0 } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag
+			any_system_within_border = {
+				has_star_flag = marauder_system
+				OR = {
+					has_star_flag = marauder_capital_2
+					any_neighbor_system = { has_owner = no has_star_flag = marauder_capital_2 }
+				}
+			}
+		}
+		AND = {
+			has_country_flag = marauder_3
+			count_system_within_border = { count > 0 } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag
+			any_system_within_border = {
+				has_star_flag = marauder_system
+				OR = {
+					has_star_flag = marauder_capital_3
+					any_neighbor_system = { has_owner = no has_star_flag = marauder_capital_3 }
+				}
+			}
+		}
+	}
+}
+
+CmtTriggerMarauderCapitalSystem = {
+	optimize_memory
+	OR = {
+		has_star_flag = marauder_capital_1
+		has_star_flag = marauder_capital_2
+		has_star_flag = marauder_capital_3
+	}
+}
+
+### Mercenaries
+
+CmtTriggerHiredMarauderFleet1 = {
+	optimize_memory
+	OR = {
+		has_fleet_flag = armada_of_the_voidborn
+		has_fleet_flag = star_rider_flotilla
+		has_fleet_flag = first_storm_wing
+	}
+}
+
+CmtTriggerHiredMarauderFleet2 = {
+	optimize_memory
+	OR = {
+		has_fleet_flag = dwamak_bashers
+		has_fleet_flag = unhinged_screamer_flotilla
+		has_fleet_flag = frenzied_volunteer_squadron
+	}
+}
+
+CmtTriggerHiredMarauderFleet3 = {
+	optimize_memory
+	OR = {
+		has_fleet_flag = her_chosen_champions
+		has_fleet_flag = order_of_eternal_night
+		has_fleet_flag = twilight_congregation
+	}
+}
+
+CmtTriggerCountryHiringMarauder1 = {
+	optimize_memory
+	OR = {
+		any_controlled_fleet = { CmtTriggerHiredMarauderFleet1 = yes }
+		any_owned_leader = { has_leader_flag = hired_merc_leader_1 }
+	}
+}
+
+CmtTriggerCountryHiringMarauder2 = {
+	optimize_memory
+	OR = {
+		any_controlled_fleet = { CmtTriggerHiredMarauderFleet2 = yes }
+		any_owned_leader = { has_leader_flag = hired_merc_leader_2 }
+	}
+}
+
+CmtTriggerCountryHiringMarauder3 = {
+	optimize_memory
+	OR = {
+		any_controlled_fleet = { CmtTriggerHiredMarauderFleet3 = yes }
+		any_owned_leader = { has_leader_flag = hired_merc_leader_3 }
+	}
+}
+
+#######################
+###- L-Gate Common -###
+#######################
+
+CmtTriggerIsClosedLgate = {
+	optimize_memory
+	is_megastructure_type = lgate_base
+	NOT = { has_megastructure_flag = lgate_activated }
+}
+
+CmtTriggerIsOpenedLgate = {
+	optimize_memory
+	is_megastructure_type = lgate_base
+	has_megastructure_flag = lgate_activated
+}

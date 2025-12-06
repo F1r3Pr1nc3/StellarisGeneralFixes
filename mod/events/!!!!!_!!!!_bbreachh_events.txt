@@ -1,0 +1,100 @@
+# Vfix by Dr. Addiction
+namespace = rresolutionn
+
+planet_event = {
+	id = rresolutionn.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+
+	trigger = {
+		has_owner = yes
+		owner = { is_crisis_faction = no has_been_declared_crisis = no }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					has_orbital_bombardment_stance = armageddon
+					has_orbital_bombardment_stance = indiscriminate
+				}
+				OR = {
+					is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+					is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+					is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+				}
+			}
+			from = {
+				set_timed_country_flag = { flag = bbreach_bombardment_stancee years = 10 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = rresolutionn.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+			is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+		}
+		OR = {
+			has_crisis_stage_1 = yes
+			has_crisis_stage_2 = yes
+			has_crisis_stage_3 = yes
+			has_crisis_stage_4 = yes
+			any_playable_country = { has_country_flag = declared_crisis }
+		}
+	}
+
+	immediate = {
+		every_galcom_member = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = declared_crisis }
+				}
+				add_modifier = { modifier = sship_build_speed_mult_crisiss }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = rresolutionn.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+			is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+			has_crisis_stage_1 = yes
+			has_crisis_stage_2 = yes
+			has_crisis_stage_3 = yes
+			has_crisis_stage_4 = yes
+			any_playable_country = { has_country_flag = declared_crisis }
+		}
+	}
+
+	immediate = {
+		every_galcom_member = { remove_modifier = sship_build_speed_mult_crisiss }
+	}
+}
+
+country_event = {
+	id = rresolutionn.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_modifier = sship_build_speed_mult_crisiss
+	}
+}
+

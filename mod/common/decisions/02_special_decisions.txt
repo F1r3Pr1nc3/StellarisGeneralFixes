@@ -1,0 +1,2812 @@
+##########################################################################
+# Decisions
+##########################################################################
+# decision_prospect = { # Cut as of tradition rebalance
+#	owned_planets_only = yes
+#
+#	enactment_time = 180
+#	resources = {
+#		category = decisions
+#		cost = {
+#			unity = 250
+#			energy = 500
+#		}
+#	}
+#
+#	potential = {
+#		is_artificial = no
+#		NOT = { is_planet_class = pc_machine }
+#		NOT = { is_planet_class = pc_hive }
+#		NOT = { is_planet_class = pc_city }
+#		owner = {
+#			has_active_tradition = tr_adaptability_finish
+#		}
+#		NOT = { has_planet_flag = planet_prospected }
+#	}
+#
+#	effect = {
+#		custom_tooltip = decision_prospect_effects_short
+#		hidden_effect = {
+#			set_planet_flag = planet_prospected
+#			add_random_non_blocker_deposit = yes
+#			create_message = {
+#				type = MESSAGE_TYPE_PLANET_PROSPECTED
+#				localization = MESSAGE_PLANET_PROSPECTED
+#				days = 30
+#				target = this
+#				variable = {
+#					type = name
+#					localization = PLANET
+#					scope = this
+#				}
+#				variable = {
+#					type = name
+#					localization = DEPOSIT
+#					scope = last_added_deposit
+#				}
+#			}
+#		}
+#	}
+#
+#	ai_weight = {
+#		weight = 1
+#		modifier = {
+#			factor = 0
+#			pop_amount < 2000
+#		}
+#	}
+# }
+# decision_geologist_prospect = {
+# 	owned_planets_only = yes
+# 	enactment_time = 180
+# 	resources = {
+# 		category = decisions
+# 		cost = {
+# 			energy = 250
+# 		}
+# 	}
+# 	potential = {
+# 		is_artificial = no
+# 		NOT = { is_planet_class = pc_machine }
+# 		NOT = { is_planet_class = pc_hive }
+# 		NOT = { is_planet_class = pc_city }
+# 		planet = {
+# 			exists = leader
+# 			leader = {
+# 				has_trait = "leader_trait_geologist"
+# 			}
+# 		}
+# 		NOT = { has_planet_flag = planet_geologist_prospected }
+# 		NOT = { has_planet_flag = planet_naturalist_prospected }
+# 	}
+# 	effect = {
+# 		custom_tooltip = decision_geologist_prospect_effect
+# 		hidden_effect = {
+# 			random_list = {
+# 				60 = {
+# 					add_deposit_category_effect = "deposit_cat_rare_resource"
+# 					hidden_effect = {
+# 						create_message = {
+# 							type = MESSAGE_TYPE_PLANET_PROSPECTED
+# 							localization = MESSAGE_PLANET_PROSPECTED
+# 							days = 30
+# 							target = this
+# 							variable = {
+# 								type = name
+# 								localization = PLANET
+# 								scope = this
+# 							}
+# 							variable = {
+# 								type = name
+# 								localization = DEPOSIT
+# 								scope = last_added_deposit
+# 							}
+# 						}
+# 					}
+# 				}
+# 				40 = {
+# 				}
+# 			}
+# 			set_planet_flag = planet_geologist_prospected
+# 		}
+# 		custom_tooltip = decision_prospect_effects_short
+# 	}
+# 	ai_weight = {
+# 		weight = 10
+# 	}
+# }
+# Penal Colony
+decision_penal_colony = {
+	owned_planets_only = yes
+	enactment_time = 180
+
+	prerequisites = {
+		"tech_penal_colonies"
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_capital = yes
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_artificial = yes
+			is_planet_class = pc_city
+			owner = {
+				any_owned_planet = { has_modifier = penal_colony }
+			}
+			has_designation = col_nanotech_world
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = penal_colony days = -1 }
+		owner = {
+			if = {
+				limit = {
+					is_twisted_experimenters_empire = yes
+					NOT = { has_modifier = penal_experimental_sentencing }
+				}
+				add_modifier = { modifier = penal_experimental_sentencing days = -1 }
+			}
+		}
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_abolish_penal_colony = {
+	owned_planets_only = yes
+	icon = decision_penal_colony
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 2500
+		}
+	}
+
+	potential = {
+		has_modifier = penal_colony
+	}
+
+	effect = {
+		remove_modifier = penal_colony
+		owner = { try_remove_penal_experimental_mod = yes }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Thrall-World
+decision_slave_colony = {
+	owned_planets_only = yes
+	enactment_time = 180
+
+	prerequisites = {
+		"tech_slave_colonies"
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_capital = yes
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_artificial = yes
+			has_designation = col_nanotech_world
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_slave_colony_must_have_slave
+			any_owned_pop_group = {
+				has_citizenship_type = { type = citizenship_slavery country = owner }
+			}
+		}
+		custom_tooltip = {
+			fail_text = decision_resort_colony_no_districts
+			num_districts = { type = any value < 2 }
+			num_buildings = { type = any value < 2 }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_slave_colony_effects
+		add_modifier = { modifier = slave_colony days = -1 }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_abolish_slave_colony = {
+	owned_planets_only = yes
+	icon = decision_slave_colony
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 2500
+		}
+	}
+
+	potential = {
+		has_modifier = slave_colony
+	}
+
+	effect = {
+		remove_modifier = slave_colony
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 20
+	}
+}
+
+# Resort Colony
+decision_resort_colony = {
+	owned_planets_only = yes
+	enactment_time = 180
+
+	prerequisites = {
+		"tech_resort_colonies"
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_capital = yes
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			is_planet_class = pc_city
+			AND = {
+				is_planet_class = pc_nuked
+				NOT = {
+					owner = {
+						OR = {
+							is_memorialist_empire = yes
+							has_trait = trait_survivor
+							has_trait = trait_pc_nuked_preference
+							has_trait = trait_plantoid_radiotrophic
+						}
+					}
+				}
+			}
+			AND = {
+				is_planet_class = pc_relic
+				owner = { is_memorialist_empire = no }
+			}
+		}
+		owner = { is_regular_empire = yes }
+		NOR = {
+			is_artificial = yes
+			has_designation = col_nanotech_world
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_resort_colony_no_districts
+			num_districts = { type = district_farming value < 1 }
+			num_districts = { type = district_mining value < 1 }
+			num_districts = { type = district_generator value < 1 }
+			# Volcanic Worlds
+			num_districts = { type = district_geothermal value < 1 }
+			num_districts = { type = district_melting value < 1 }
+			num_districts = { type = district_polytechnic value < 1 }
+		}
+		custom_tooltip = {
+			fail_text = decision_resort_colony_only_one
+			NOT = {
+				owner = {
+					any_owned_planet = { has_modifier = resort_colony }
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = decision_cant_be_building_anything
+			has_building_construction = no
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = resort_colony days = -1 }
+		hidden_effect = {
+			remove_building = building_colony_shelter
+			remove_building = building_capital
+			remove_building = building_major_capital
+			remove_building = building_system_capital
+			add_building = building_resort_capital
+			# Summer Vacation achievement
+			if = {
+				limit = { is_planet_class = pc_volcanic }
+				owner = { set_country_flag = INF_A_volcanic_resort }
+			}
+		}
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_abolish_resort_colony = {
+	owned_planets_only = yes
+	icon = decision_resort_colony
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 2500
+		}
+	}
+
+	potential = {
+		has_modifier = resort_colony
+	}
+
+	effect = {
+		remove_modifier = resort_colony
+		hidden_effect = {
+			remove_building = building_resort_capital
+			add_building = building_colony_shelter
+		}
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Crucible Colony
+decision_gestation_colony = {
+	owned_planets_only = yes
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_capital = yes
+			is_artificial = yes
+		}
+		owner = { has_tradition = tr_cybernetics_assimilator_gestation }
+		NOR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			has_modifier = gestation_colony
+		}
+	}
+
+	allow = {
+		planet_size >= 15
+		custom_tooltip = {
+			fail_text = decision_gestation_colony_only_one
+			NOT = {
+				owner = {
+					any_owned_planet = { has_modifier = gestation_colony }
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = gestation_colony days = -1 }
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_abolish_gestation_colony = {
+	owned_planets_only = yes
+	icon = decision_gestation_colony
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 2500
+		}
+	}
+
+	potential = {
+		has_modifier = gestation_colony
+	}
+
+	effect = {
+		remove_modifier = gestation_colony
+		hidden_effect = {
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Mastery of Nature
+decision_mastery_of_nature = {
+	owned_planets_only = yes
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 100
+			energy = 2000
+		}
+	}
+
+	potential = {
+		is_artificial = no
+		owner = { has_ascension_perk = ap_mastery_of_nature }
+		NOR = {
+			has_modifier = mastery_of_nature
+			has_designation = col_nanotech_world
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = mastery_of_nature days = -1 }
+	}
+
+	ai_weight = {
+		weight = 5
+		modifier = {
+			factor = 0
+			free_district_slots > 0
+			pop_amount < 5000 # carrying capacity bonus always good at that stage
+		}
+	}
+}
+
+# Consecrate World
+decision_consecrated_worlds = {
+	resources = {
+		category = decisions
+		cost = {
+			unity = 500
+		}
+	}
+
+	potential = {
+		exists = from
+		from = { has_ascension_perk = ap_consecrated_worlds }
+		exists = space_owner
+		space_owner = { is_same_empire = from }
+		NOR = {
+			is_star = yes
+			is_astral_scar = yes
+			is_artificial = yes
+			has_planet_flag = consecrated@from
+			has_modifier = consecrated_quality_1
+			has_modifier = consecrated_quality_2
+			has_modifier = consecrated_quality_3
+			has_modifier = consecrated_quality_4
+			has_designation = col_nanotech_world
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			from = {
+				check_variable = { which = num_consecrated_worlds value < 3 }
+			}
+			fail_text = consecrated_worlds_too_many
+		}
+		custom_tooltip = {
+			NOT = { exists = owner }
+			fail_text = consecrated_worlds_planet_owned
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_consecrated_worlds_effects_custom
+		# determine quality tier, set variable
+		hidden_effect = {
+			set_planet_flag = consecrated@from
+			from = {
+				if = {
+					limit = {
+						check_variable = { which = num_consecrated_worlds value < 1 }
+					}
+					set_variable = { which = num_consecrated_worlds value = 0 }
+				}
+				change_variable = { which = num_consecrated_worlds value = 1 }
+				if = {
+					limit = {
+						check_variable = { which = consecrated_variable value < 1 }
+					}
+					set_variable = { which = consecrated_variable value = 0 }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_planet_flag = holy_world_1
+						has_planet_flag = holy_world_2
+						has_planet_flag = holy_world_3
+						has_planet_flag = holy_world_4
+					}
+					any_country = { has_country_flag = fallen_empire_2 }
+				}
+				random_country = {
+					limit = { has_country_flag = fallen_empire_2 }
+					add_opinion_modifier = { who = from modifier = opinion_worships_our_holy_world }
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						is_planet_class = pc_asteroid
+						is_planet_class = pc_nuked
+						is_planet_class = pc_gas_giant
+						is_planet_class = pc_shielded
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+						is_planet_class = pc_ai
+						is_urban_planet = yes
+					}
+				}
+				custom_tooltip = consecrated_worlds_unsuitable
+				random_list = {
+					80 = {
+						modifier = {
+							factor = 10
+							OR = {
+								is_planet_class = pc_hive
+								is_planet_class = pc_machine
+								is_planet_class = pc_ai
+								is_urban_planet = yes
+							}
+						}
+						add_modifier = { modifier = consecrated_quality_1 days = -1 }
+						from = {
+							change_variable = { which = consecrated_variable value = 1 }
+						}
+					}
+					20 = {
+						add_modifier = { modifier = consecrated_quality_2 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_1_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 2 }
+						}
+					}
+					0 = {
+						add_modifier = { modifier = consecrated_quality_3 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_2_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 3 }
+						}
+					}
+					0 = {
+						add_modifier = { modifier = consecrated_quality_4 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_3_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 4 }
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { uninhabitable_regular_planet = yes }
+				custom_tooltip = consecrated_worlds_unsuitable
+				random_list = {
+					10 = {
+						add_modifier = { modifier = consecrated_quality_1 days = -1 }
+						from = {
+							change_variable = { which = consecrated_variable value = 1 }
+						}
+					}
+					70 = {
+						add_modifier = { modifier = consecrated_quality_2 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_1_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 2 }
+						}
+					}
+					20 = {
+						modifier = {
+							add = 20
+							root.space_owner = { has_origin = origin_toxic_knights }
+							is_planet_class = pc_toxic
+						}
+						add_modifier = { modifier = consecrated_quality_3 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_2_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 3 }
+						}
+					}
+					0 = {
+						modifier = {
+							add = 20
+							root.space_owner = { has_origin = origin_toxic_knights }
+							is_planet_class = pc_toxic
+						}
+						add_modifier = { modifier = consecrated_quality_4 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_3_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 4 }
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					habitable_planet = yes
+					NOT = { is_planet_class = pc_gaia }
+				}
+				custom_tooltip = consecrated_worlds_suitable
+				random_list = {
+					0 = {
+						add_modifier = { modifier = consecrated_quality_1 days = -1 }
+						from = {
+							change_variable = { which = consecrated_variable value = 1 }
+						}
+					}
+					50 = {
+						add_modifier = { modifier = consecrated_quality_2 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_1_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 2 }
+						}
+					}
+					40 = {
+						add_modifier = { modifier = consecrated_quality_3 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_2_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 3 }
+						}
+					}
+					10 = {
+						add_modifier = { modifier = consecrated_quality_4 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_3_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 4 }
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { is_planet_class = pc_gaia }
+				custom_tooltip = consecrated_worlds_perfect
+				random_list = {
+					0 = {
+						add_modifier = { modifier = consecrated_quality_1 days = -1 }
+						from = {
+							change_variable = { which = consecrated_variable value = 1 }
+						}
+					}
+					0 = {
+						add_modifier = { modifier = consecrated_quality_2 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_1_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 2 }
+						}
+					}
+					0 = {
+						add_modifier = { modifier = consecrated_quality_3 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_2_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 3 }
+						}
+					}
+					100 = {
+						add_modifier = { modifier = consecrated_quality_4 days = -1 }
+						create_ambient_object = {
+							type = consecrated_planet_stage_3_object
+							location = this
+							use_3d_location = yes
+							entity_scale_to_size = yes
+						}
+						from = {
+							change_variable = { which = consecrated_variable value = 4 }
+						}
+					}
+				}
+			}
+			# fallback
+			else = {
+				add_modifier = { modifier = consecrated_quality_1 days = -1 }
+				from = {
+					change_variable = { which = consecrated_variable value = 1 }
+				}
+			}
+			# recalculate modifier
+			from = {
+				recalculate_consecrated_world_modifier = yes
+				country_event = { id = shroud.10850 } # Patron Objective Counter: po_consecrate_planet
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 10
+			habitable_planet = yes
+			NOT = {
+				space_owner = {
+					any_owned_species = {
+						prevprev = {
+							habitability = { who = prev value > 0.35 }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Revoke Consecration
+decision_unconsecrated_worlds = {
+	resources = {
+		category = decisions
+		cost = {
+			unity = 500
+		}
+	}
+
+	potential = {
+		exists = from
+		from = { has_ascension_perk = ap_consecrated_worlds }
+		has_planet_flag = consecrated@from
+	}
+
+	allow = {
+		OR = {
+			has_modifier = consecrated_quality_1
+			has_modifier = consecrated_quality_2
+			has_modifier = consecrated_quality_3
+			has_modifier = consecrated_quality_4
+		}
+	}
+
+	effect = {
+		hidden_effect = {
+			from = {
+				change_variable = { which = num_consecrated_worlds value = -1 }
+			}
+			remove_planet_flag = consecrated@from
+			custom_tooltip = unconsecrated_world_tooltip
+			switch = {
+				trigger = has_modifier
+				consecrated_quality_4 = {
+					remove_modifier = consecrated_quality_4
+					solar_system = {
+						random_system_ambient_object = {
+							limit = { is_ambient_object_type = consecrated_planet_stage_3_object }
+							destroy_ambient_object = this
+						}
+					}
+					from = {
+						change_variable = { which = consecrated_variable value = -4 }
+					}
+				}
+				consecrated_quality_3 = {
+					remove_modifier = consecrated_quality_3
+					solar_system = {
+						random_system_ambient_object = {
+							limit = { is_ambient_object_type = consecrated_planet_stage_2_object }
+							destroy_ambient_object = this
+						}
+					}
+					from = {
+						change_variable = { which = consecrated_variable value = -3 }
+					}
+				}
+				consecrated_quality_2 = {
+					remove_modifier = consecrated_quality_2
+					solar_system = {
+						random_system_ambient_object = {
+							limit = { is_ambient_object_type = consecrated_planet_stage_1_object }
+							destroy_ambient_object = this
+						}
+					}
+					from = {
+						change_variable = { which = consecrated_variable value = -2 }
+					}
+				}
+				consecrated_quality_1 = {
+					remove_modifier = consecrated_quality_1
+					from = {
+						change_variable = { which = consecrated_variable value = -1 }
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_planet_flag = holy_world_1
+						has_planet_flag = holy_world_2
+						has_planet_flag = holy_world_3
+						has_planet_flag = holy_world_4
+					}
+					any_country = { has_country_flag = fallen_empire_2 }
+				}
+				random_country = {
+					limit = { has_country_flag = fallen_empire_2 }
+					remove_opinion_modifier = { # Currently removes all instances of this modifier, even if several have been added
+						who = from
+						modifier = opinion_worships_our_holy_world
+					}
+				}
+			}
+			from = {
+				recalculate_consecrated_world_modifier = yes
+				custom_tooltip = recalculates_consecrated_modifier
+				country_event = { id = shroud.10855 } # Patron Objective Counter: po_consecrate_planet
+			}
+		}
+	}
+}
+
+# Arcology Project
+decision_arcology_project = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+	enactment_time = 3600
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+			minerals = 20000
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_urban_planet = yes
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			has_modifier = pm_wenkwort_custodian
+			is_artificial = yes
+		}
+		exists = owner
+		owner = { has_ascension_perk = ap_arcology_project }
+		NOT = { has_designation = col_nanotech_world }
+	}
+
+	allow = {
+		if = {
+			limit = { owner = { is_ai = no } }
+			custom_tooltip = {
+				fail_text = decision_arcology_project_requirements
+				free_district_slots < 1
+				num_districts = { type = district_farming value < 1 }
+				num_districts = { type = district_mining value < 1 }
+				num_districts = { type = district_generator value < 1 }
+				# Volcanic Worlds
+				num_districts = { type = district_geothermal value < 1 }
+				num_districts = { type = district_melting value < 1 }
+				num_districts = { type = district_polytechnic value < 1 }
+			}
+			custom_tooltip = {
+				fail_text = legendary_leader_decision_arcology_project
+				NOT = { has_planet_flag = legendary_leader_planet }
+			}
+		}
+		num_uncleared_blockers < 1
+	}
+
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_arcology_project_effects
+		hidden_effect = {
+			# save_deposits = yes
+			# clear_deposits = yes
+			# restore_saved_deposits = yes
+			every_deposit = { # Vfix for modders
+				limit = {
+					NOR = {
+						has_deposit = d_genesis_preserve
+						has_deposit = d_genesis_monument
+						has_deposit = d_nanites_medium
+						has_deposit = d_nanites_small
+						has_deposit = d_nanites_tiny
+						has_deposit = d_living_metal_medium
+						has_deposit = d_living_metal_small
+						has_deposit = d_living_metal_tiny
+						has_deposit = d_virtual_power_medium
+						has_deposit = d_virtual_power_small
+						has_deposit = d_virtual_power_tiny
+						has_deposit_flag = keep_deposit_on_terraform
+					}
+				}
+				remove_deposit = yes
+			}
+			change_pc = pc_city
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
+			}
+			set_planet_entity = { entity = "city_planet_entity" graphical_culture = owner }
+			planet_event = { id = action.68 }
+			if = { # Vfix Ariphaos
+				limit = { has_planet_flag = dportal_event }
+				if = {
+					limit = { owner = { is_gestalt = yes } }
+					add_deposit = d_portal_research_zone_gestalt
+				}
+				else = {
+					add_deposit = d_portal_research_zone
+				}
+			}
+			owner = {
+				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+			}
+			planet_event = { id = mega.200 }
+			if = {
+				limit = {
+					OR = {
+						is_active_resolution = "resolution_ecology_environmental_control_board"
+						is_active_resolution = "resolution_ecology_paradise_initiative"
+					}
+				}
+				owner = {
+					set_timed_country_flag = { flag = resolution_breached_terraformed years = 10 }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 100
+			exists = owner
+			OR = {
+				pop_amount >= 7000
+				is_capital = yes
+			}
+		}
+	}
+}
+
+# Arcology Project (Relic Worlds)
+decision_arcology_project_relic = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+	enactment_time = 3600
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+			minerals = 20000
+		}
+	}
+
+	potential = {
+		is_planet_class = pc_relic
+		is_artificial = no
+		exists = owner
+		owner = {
+			OR = {
+				is_regular_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		num_uncleared_blockers < 1
+		owner = { has_technology = tech_housing_2 }
+	}
+
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_arcology_project_effects
+		hidden_effect = {
+			save_deposits = yes
+			clear_deposits = yes
+			restore_saved_deposits = yes
+			change_pc = pc_city
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
+			}
+			set_planet_entity = { entity = "city_planet_entity" graphical_culture = owner }
+			planet_event = { id = action.68 }
+			add_deposit = d_former_relic_world
+			if = { # Vfix Ariphaos
+				limit = { has_planet_flag = dportal_event }
+				if = {
+					limit = { owner = { is_gestalt = yes } }
+					add_deposit = d_portal_research_zone_gestalt
+				}
+				else = {
+					add_deposit = d_portal_research_zone
+				}
+			}
+			planet_event = { id = mega.201 }
+			while = {
+				count = 4
+				solar_system = {
+					random_system_ambient_object = {
+						limit = { has_ambient_object_flag = relic_world_debris }
+						destroy_ambient_object = this
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						is_active_resolution = "resolution_ecology_environmental_control_board"
+						is_active_resolution = "resolution_ecology_paradise_initiative"
+					}
+				}
+				owner = {
+					set_timed_country_flag = { flag = resolution_breached_terraformed years = 10 }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+		modifier = { # Vfix Ariphaos
+			factor = 0
+			has_building = building_archaeostudies_faculty
+		}
+	}
+}
+
+# Market Candidate Nomination
+decision_market_nomination = {
+	owned_planets_only = yes
+	# instant
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1000
+			influence = 150
+		}
+	}
+
+	potential = {
+		OR = {
+			has_global_flag = ongoing_market_nomination
+			has_global_flag = ongoing_market_relocation_nomination
+		}
+		# from = { has_communications = event_target:50percentcomms } # should include self
+		exists = from
+		from = {
+			has_country_flag = market_nomination_eligible
+			NOT = { has_valid_civic = civic_inwards_perfection }
+			NAND = {
+				is_ai = yes
+				is_fanatic_xenophobe = yes
+			}
+		}
+		NOT = { has_designation = col_nanotech_world }
+	}
+
+	allow = {
+		from = { pop_amount > 2000 }
+		custom_tooltip = {
+			fail_text = already_market_nominated
+			from = {
+				NOT = {
+					any_owned_planet = {
+						OR = {
+							has_modifier = market_nominee_level_1
+							has_modifier = market_nominee_level_2
+							has_modifier = market_nominee_level_3
+							has_modifier = market_nominee_level_4 # boosted once
+							has_modifier = market_nominee_level_5 # boosted twice
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_market_nomination_effects
+		hidden_effect = {
+			from = {
+				set_variable = { which = market_rating value = 0 }
+			}
+			random_list = {
+				9 = {
+					add_modifier = { modifier = market_nominee_level_1 days = -1 }
+					from = {
+						change_variable = { which = market_rating value = 1 }
+					}
+					modifier = {
+						factor = 0.33
+						from = { is_megacorp = yes }
+					}
+					modifier = {
+						factor = 0.5
+						planet_resource_compare = {
+							resource = trade
+							value >= 120
+							type = produces
+						}
+					}
+					modifier = {
+						factor = 0.5
+						planet_resource_compare = {
+							resource = trade
+							value >= 80
+							type = produces
+						}
+					}
+					modifier = {
+						factor = 2
+						planet_resource_compare = {
+							resource = trade
+							value < 50
+							type = produces
+						}
+					}
+					modifier = {
+						factor = 1.5
+						from = { is_gestalt = yes }
+					}
+				}
+				6 = {
+					add_modifier = { modifier = market_nominee_level_2 days = -1 }
+					from = {
+						change_variable = { which = market_rating value = 2 }
+					}
+				}
+				1 = {
+					modifier = { factor = 200 is_planet_class = pc_city }
+					modifier = {
+						factor = 9
+						from = { is_megacorp = yes }
+					}
+					modifier = {
+						factor = 2
+						planet_resource_compare = {
+							resource = trade
+							value >= 120
+							type = produces
+						}
+					}
+					modifier = {
+						factor = 1.5
+						planet_resource_compare = {
+							resource = trade
+							value >= 80
+							type = produces
+						}
+					}
+					modifier = {
+						factor = 0.5
+						planet_resource_compare = {
+							resource = trade
+							value < 50
+							type = produces
+						}
+					}
+					modifier = {
+						factor = 0.5
+						from = { is_gestalt = yes }
+					}
+					add_modifier = { modifier = market_nominee_level_3 days = -1 }
+					from = {
+						change_variable = { which = market_rating value = 3 }
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = { factor = 0 pop_amount < 2000 }
+		modifier = {
+			factor = 1.5
+			from = {
+				resource_stockpile_compare = { resource = energy value > 12000 }
+				resource_stockpile_compare = { resource = influence value > 400 }
+			}
+		}
+		modifier = {
+			factor = 0.8
+			from = { is_xenophobe = yes }
+		}
+		modifier = {
+			factor = 2
+			from = { is_megacorp = yes }
+		}
+		modifier = {
+			factor = 2
+			planet_resource_compare = {
+				resource = trade
+				value >= 120
+				type = produces
+			}
+		}
+		modifier = {
+			factor = 1.5
+			planet_resource_compare = {
+				resource = trade
+				value >= 80
+				type = produces
+			}
+		}
+		modifier = {
+			factor = 0.5
+			planet_resource_compare = {
+				resource = trade
+				value < 50
+				type = produces
+			}
+		}
+	}
+}
+
+decision_boost_market_nomination = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2000
+			influence = 300
+		}
+	}
+
+	potential = {
+		OR = {
+			has_global_flag = ongoing_market_nomination
+			has_global_flag = ongoing_market_relocation_nomination
+		}
+		# from = { has_communications = event_target:50percentcomms } # should include self
+		from = { has_country_flag = market_nomination_eligible }
+		OR = {
+			has_modifier = market_nominee_level_1
+			has_modifier = market_nominee_level_2
+			has_modifier = market_nominee_level_3
+			has_modifier = market_nominee_level_4 # maxed out and boosted once
+			has_modifier = market_nominee_level_5 # maxed out and boosted twice
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = max_boosted
+			NOT = { has_planet_flag = boosted_twice }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_boost_market_nomination_effects
+		hidden_effect = {
+			# boost counter
+			if = {
+				limit = { has_planet_flag = boosted_once }
+				set_planet_flag = boosted_twice
+			}
+			else = {
+				set_planet_flag = boosted_once
+			}
+			# boost rating
+			if = {
+				limit = { has_modifier = market_nominee_level_1 }
+				remove_modifier = market_nominee_level_1
+				add_modifier = { modifier = market_nominee_level_2 days = -1 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_2 }
+				remove_modifier = market_nominee_level_2
+				add_modifier = { modifier = market_nominee_level_3 days = -1 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_3 }
+				remove_modifier = market_nominee_level_3
+				add_modifier = { modifier = market_nominee_level_4 days = -1 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_4 }
+				remove_modifier = market_nominee_level_4
+				add_modifier = { modifier = market_nominee_level_5 days = -1 }
+			}
+			from = {
+				change_variable = { which = market_rating value = 1 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = { factor = 0 pop_amount < 2000 }
+		modifier = {
+			factor = 1.5
+			from = {
+				resource_stockpile_compare = { resource = energy value > 11000 }
+				resource_stockpile_compare = { resource = influence value > 350 }
+			}
+		}
+		modifier = {
+			factor = 0.8
+			from = { is_xenophobe = yes }
+		}
+		modifier = {
+			factor = 2
+			from = { is_megacorp = yes }
+		}
+	}
+}
+
+# Market Candidate Nomination
+decision_revoke_market_nomination = {
+	owned_planets_only = yes
+	# instant
+	resources = {
+		category = decisions
+		cost = {
+			influence = 10
+		}
+	}
+
+	potential = {
+		owner = { is_ai = no } # Vfix Ariphaos
+		OR = {
+			has_global_flag = ongoing_market_nomination
+			has_global_flag = ongoing_market_relocation_nomination
+		}
+		OR = {
+			has_modifier = market_nominee_level_1
+			has_modifier = market_nominee_level_2
+			has_modifier = market_nominee_level_3
+			has_modifier = market_nominee_level_4 # boosted once
+			has_modifier = market_nominee_level_5 # boosted twice
+		}
+		# from = { has_communications = event_target:50percentcomms } # should include self
+		from = { has_country_flag = market_nomination_eligible }
+	}
+
+	effect = {
+		hidden_effect = {
+			if = {
+				limit = { has_modifier = market_nominee_level_1 }
+				remove_modifier = market_nominee_level_1
+				tooltip = { remove_modifier = market_nominee_level_1 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_2 }
+				remove_modifier = market_nominee_level_2
+				tooltip = { remove_modifier = market_nominee_level_2 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_3 }
+				remove_modifier = market_nominee_level_3
+				tooltip = { remove_modifier = market_nominee_level_3 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_4 }
+				remove_modifier = market_nominee_level_4
+				tooltip = { remove_modifier = market_nominee_level_4 }
+			}
+			else_if = {
+				limit = { has_modifier = market_nominee_level_5 }
+				remove_modifier = market_nominee_level_5
+				tooltip = { remove_modifier = market_nominee_level_5 }
+			}
+			from = {
+				set_variable = { which = market_rating value = 0 }
+			}
+		}
+		custom_tooltip = decision_revoke_market_nomination_effect
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Living Planet Study The Sea Decision
+# decision_study_the_sea = {
+# 	resources = {
+# 		category = decisions
+# 		cost = {
+# 			energy = 500
+# 		}
+# 	}
+# 	potential = {
+# 		has_modifier = living_sea
+# 		space_owner = { #from = decision enacter ie country
+# 			has_event_chain = "living_planet_chain"
+# 			NOT = { has_country_flag = completed_living_sea }
+# 		}
+# 	}
+# 	effect = {
+# 		add_modifier = {
+# 			modifier = pm_study_the_sea
+# 			days = -1
+# 		}
+# 		hidden_effect = {
+# 			space_owner = { country_event = { id = distar.191 } }
+# 		}
+# 		custom_tooltip = "decision_study_the_sea.tooltip"
+# 	}
+# }
+# Divine Algorithm
+decision_divine_algorithm = {
+	icon = decision_divine_algorithm
+	owned_planets_only = yes
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 500
+		}
+	}
+
+	potential = {
+		owner = { has_country_flag = divine_algorithm }
+		NOR = {
+			has_modifier = divine_algorithm
+			has_designation = col_nanotech_world
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = divine_algorithm years = 10 }
+	}
+}
+
+# Artisan Troupe Art Monument
+decision_art_monument = {
+	icon = decision_art_monument
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		owner = {
+			has_country_flag = artist_monument_collector
+			OR = {
+				AND = {
+					check_variable = { which = artist_monument_erected value < 1 }
+					check_variable = { which = artist_monument_purchased value = 1 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 2 }
+					check_variable = { which = artist_monument_purchased value = 2 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 3 }
+					check_variable = { which = artist_monument_purchased value = 3 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 4 }
+					check_variable = { which = artist_monument_purchased value = 4 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 5 }
+					check_variable = { which = artist_monument_purchased value = 5 }
+				}
+			}
+		}
+		NOR = {
+			has_modifier = artist_monument_erected
+			has_designation = col_nanotech_world
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = artist_monument_erected }
+		hidden_effect = {
+			owner = {
+				if = {
+					limit = {
+						check_variable = { which = artist_monument_erected value < 1 }
+					}
+					set_variable = { which = artist_monument_erected value = 1 }
+				}
+				else = {
+					change_variable = { which = artist_monument_erected value = 1 }
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Artisan Troupe Art Monument
+decision_demolish_art_monument = {
+	icon = decision_art_monument
+	enactment_time = 15
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		has_modifier = artist_monument_erected
+	}
+
+	effect = {
+		remove_modifier = artist_monument_erected
+		hidden_effect = {
+			owner = {
+				subtract_variable = { which = artist_monument_erected value = 1 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_lithoid_swarm_consume_world = {
+	icon = decision_burning_settlement
+	sound = event_structural_collapse
+	# enactment_time = 360
+	resources = {
+		category = decisions
+	}
+
+	owned_planets_only = yes
+
+	potential = {
+		owner = { is_lithoid_devouring_swarm = yes }
+		can_have_habitable_deposits = yes
+		NOR = {
+			is_capital = yes
+			has_planet_flag = being_devoured
+			has_designation = col_nanotech_world
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_lithoid_swarm_consume_world_effect_desc
+		set_timed_planet_flag = { days = 360 flag = recently_eaten_planet }
+		hidden_effect = {
+			set_planet_flag = colony_event
+			set_planet_flag = being_devoured
+			add_modifier = { modifier = being_devoured_modifier days = -1 }
+			export_trigger_value_to_variable = {
+				trigger = planet_size
+				variable = num_districts_terravore
+			}
+			export_trigger_value_to_variable = {
+				trigger = count_deposits
+				parameters = { type = d_lithoid_devastation }
+				variable = num_lithoid_blockers
+			}
+			if = {
+				limit = { is_variable_set = num_lithoid_blockers }
+				subtract_variable = {
+					which = num_districts_terravore
+					value = num_lithoid_blockers
+				}
+			}
+		}
+		owner = {
+			start_situation = { type = situation_terravore_consume_planet target = root }
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+		# don't wreck worlds you want to keep
+		modifier = {
+			factor = 0
+			is_lithoid_devouring_swarm_consumption_world = no
+		}
+	}
+}
+
+decision_project_cornucopia = {
+	owned_planets_only = yes
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 250
+			energy = 500
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_artificial = yes
+			is_planet_class = pc_machine
+			is_planet_class = pc_hive
+			is_planet_class = pc_city
+		}
+		owner = {
+			is_galactic_community_member = yes
+			is_active_resolution = "resolution_industry_project_cornucopia"
+		}
+		NOR = {
+			has_deposit = d_project_cornucopia
+			has_designation = col_nanotech_world
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_project_cornucopia_effects_short
+		add_deposit = d_project_cornucopia
+		hidden_effect = {
+			create_message = {
+				type = MESSAGE_TYPE_PLANET_PROSPECTED
+				localization = MESSAGE_PLANET_PROSPECTED
+				days = 30
+				target = this
+				variable = {
+					type = name
+					localization = PLANET
+					scope = this
+				}
+				variable = {
+					type = name
+					localization = DEPOSIT
+					scope = last_added_deposit
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = { factor = 0 pop_amount < 2000 }
+	}
+}
+
+# Crystalline Empire decision
+decision_crystalline_refugees = {
+	owned_planets_only = yes
+	icon = decision_deal
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 10
+		}
+	}
+
+	potential = {
+		is_planet_class = pc_habitat
+		exists = owner
+		exists = event_target:central_crystal_empire
+		owner = { has_country_flag = crystalline_refugees_flag }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = crystalline_hostility_trigger_tt
+			NOT = {
+				event_target:central_crystal_empire = { is_hostile = root.owner }
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_crystalling_refugees_effect_tt
+		hidden_effect = {
+			create_pop_group = {
+				size = 500
+				species = event_target:crystalline_empire_species
+			}
+			owner = { remove_country_flag = crystalline_refugees_flag }
+			event_target:central_crystal_empire = {
+				add_opinion_modifier = {
+					who = root.owner
+					modifier = opinion_small_boon_crystal_empire
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_crystalline_architecture = {
+	owned_planets_only = yes
+	icon = decision_deal
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 10
+		}
+	}
+
+	potential = {
+		is_planet_class = pc_habitat
+		exists = owner
+		exists = event_target:central_crystal_empire
+		owner = { has_country_flag = crystalline_architecture_flag }
+		NOT = { has_modifier = crystalline_architecture_mod }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = crystalline_hostility_trigger_tt
+			NOT = {
+				event_target:central_crystal_empire = { is_hostile = root.owner }
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = { modifier = crystalline_architecture_mod days = -1 }
+		hidden_effect = {
+			owner = { remove_country_flag = crystalline_architecture_flag }
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Repair Shattered Ring
+decision_shattered_ring_project = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+	enactment_time = 2700
+
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 7500
+		}
+	}
+
+	potential = {
+		is_planet_class = pc_shattered_ring_habitable
+		exists = owner
+	}
+
+	allow = {
+		num_uncleared_blockers < 1
+		owner = { has_technology = tech_mega_engineering }
+	}
+
+	effect = {
+		# Make ringworld
+		custom_tooltip = decision_shattered_ring_project_effects
+		hidden_effect = {
+			save_deposits = yes
+			clear_deposits = yes
+			restore_saved_deposits = yes
+			change_pc = pc_ringworld_habitable
+			set_planet_entity = {
+				entity = "ringworld_habitable_entity_01_entity"
+				graphical_culture = owner
+			}
+			solar_system = {
+				every_system_planet = {
+					limit = { is_planet_class = pc_ringworld_tech }
+					set_planet_entity = {
+						entity = ringworld_tech_entity_01_entity
+						graphical_culture = root.owner
+					}
+				}
+				every_system_planet = {
+					limit = { is_planet_class = pc_ringworld_seam }
+					set_planet_entity = {
+						entity = ringworld_seam_entity_01_entity
+						graphical_culture = root.owner
+					}
+				}
+			}
+			# Remove Scrap Processing Buildings
+			if = {
+				limit = { has_building = building_mineral_purification_plant }
+				remove_building = building_mineral_purification_plant
+			}
+			if = {
+				limit = { has_building = building_mineral_purification_hub }
+				remove_building = building_mineral_purification_hub
+			}
+			# This removes the extra districts when fixing the ring world.
+			if = {
+				limit = {
+					owner = { is_regular_empire = yes }
+				}
+				shattered_ring_world_conversion_effect = {
+					DISTRICT = district_rw_city
+					VARIABLE = num_housing_districts
+				}
+			}
+			if = {
+				limit = {
+					owner = { is_hive_empire = yes }
+				}
+				shattered_ring_world_conversion_effect = {
+					DISTRICT = district_rw_hive
+					VARIABLE = num_housing_districts
+				}
+			}
+			if = {
+				limit = {
+					owner = { is_machine_empire = yes }
+				}
+				shattered_ring_world_conversion_effect = {
+					DISTRICT = district_rw_nexus
+					VARIABLE = num_housing_districts
+				}
+			}
+			set_planet_size = 10
+			# And set the country flag so you can take Galactic Wonders
+			owner = { set_country_flag = has_built_or_repaired_megastructure }
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+decision_shattered_ring_project_interloper = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+	enactment_time = 3600
+
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 10000
+		}
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_shattered_ring_habitable
+			is_planet_class = pc_ringworld_habitable
+		}
+		solar_system = {
+			any_system_planet = { has_planet_flag = interloper }
+		}
+	}
+
+	allow = {
+		owner = { has_technology = tech_mega_engineering }
+	}
+
+	effect = {
+		# Make ringworld
+		custom_tooltip = decision_shattered_ring_project_interloper_effects
+		hidden_effect = {
+			solar_system = {
+				random_system_planet = {
+					limit = { has_planet_flag = reperable_damage }
+					clear_deposits = yes
+					change_pc = pc_ringworld_habitable
+					if = {
+						limit = { exists = mining_station }
+						mining_station = { delete_fleet = this }
+					}
+					if = {
+						limit = { exists = research_station }
+						research_station = { delete_fleet = this }
+					}
+					set_planet_entity = {
+						entity = "ringworld_habitable_entity_01_entity"
+						graphical_culture = root.owner
+					}
+				}
+				random_system_planet = {
+					limit = { has_planet_flag = interloper }
+					if = {
+						limit = { exists = mining_station }
+						mining_station = { delete_fleet = this }
+					}
+					if = {
+						limit = { exists = research_station }
+						research_station = { delete_fleet = this }
+					}
+					remove_planet = yes
+				}
+				every_system_planet = {
+					limit = { is_planet_class = pc_ringworld_tech_damaged }
+					set_planet_entity = {
+						entity = "ringworld_tech_entity_01_entity"
+						graphical_culture = root.owner
+					}
+				}
+				every_system_planet = {
+					limit = { is_planet_class = pc_ringworld_seam_damaged }
+					change_pc = pc_ringworld_seam
+					set_planet_entity = {
+						entity = "ringworld_seam_entity_01_entity"
+						graphical_culture = root.owner
+					}
+				}
+				random_ambient_object = {
+					limit = { has_ambient_object_flag = interloper_damage }
+					destroy_ambient_object = this
+				}
+			}
+			# And set the country flag so you can take Galactic Wonders
+			owner = { set_country_flag = has_built_or_repaired_megastructure }
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+@expand_planetary_sea_length = 720
+
+decision_expand_planetary_sea = {
+	owned_planets_only = yes
+	icon = decision_arctic_planet
+	enactment_time = @expand_planetary_sea_length
+
+	custom_tooltip = {
+		success_text = requires_max_3_times_ice_dumping
+		check_variable = { which = ice_dumping_happened value < 3 }
+	}
+
+	potential = {
+		is_planet_class = pc_ocean
+		exists = owner
+		owner = { has_ascension_perk = ap_hydrocentric }
+		is_terraforming = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = requires_free_ice_mining_station
+			owner = {
+				any_owned_starbase = {
+					has_starbase_building = ice_mining_station
+					NOT = {
+						solar_system = { has_star_flag = ice_mining_in_progress }
+					}
+				}
+			}
+		}
+		if = {
+			limit = { is_variable_set = ice_dumping_happened }
+			custom_tooltip = {
+				fail_text = requires_max_3_times_fail_simple
+				check_variable = { which = ice_dumping_happened value < 3 }
+			}
+		}
+		else = {
+			custom_tooltip = { text = requires_max_3_times_pass_simple always = yes }
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+			energy = 1000
+		}
+	}
+
+	on_queued = {
+		set_variable = { which = decision_length value = @expand_planetary_sea_length }
+		export_modifier_to_variable = {
+			modifier = planet_decision_enact_speed_mult
+			variable = decision_mult_var
+		}
+		change_variable = { which = decision_mult_var value = 1 }
+		divide_variable = { which = decision_length value = decision_mult_var }
+		change_variable = { # ideally, may as well refer to this in the final effect
+			which = decision_length
+			value = 1
+		}
+		owner = {
+			random_owned_starbase = {
+				limit = {
+					has_starbase_building = ice_mining_station
+					NOT = {
+						solar_system = { has_star_flag = ice_mining_in_progress }
+					}
+				}
+				solar_system = {
+					set_timed_star_flag = { flag = ice_mining_in_progress days = root.decision_length }
+					set_timed_star_flag = { flag = ice_mining@root days = root.decision_length }
+				}
+			}
+		}
+		clear_variable = decision_length
+		clear_variable = decision_mult_var
+	}
+
+	abort_trigger = {
+		NOT = {
+			owner = {
+				any_owned_starbase = { has_starbase_building = ice_mining_station }
+			}
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			random_owned_starbase = {
+				limit = {
+					solar_system = { has_star_flag = ice_mining@root }
+				}
+				solar_system = {
+					remove_star_flag = ice_mining@root
+					remove_star_flag = ice_mining_in_progress
+				}
+			}
+		}
+	}
+
+	abort_effect = {
+		owner = {
+			random_owned_starbase = {
+				limit = {
+					solar_system = { has_star_flag = ice_mining@root }
+				}
+				solar_system = {
+					remove_star_flag = ice_mining@root
+					remove_star_flag = ice_mining_in_progress
+				}
+			}
+		}
+		create_message = {
+			type = ICE_MINING_INTERRUPTED
+			localization = ICE_MINING_INTERRUPTED_DESC
+			days = 20
+			target = root
+		}
+	}
+
+	effect = {
+		change_planet_size = 1
+		custom_tooltip = decision_expand_planetary_sea_tooltip
+		hidden_effect = {
+			ice_mining_depletion_effect = yes
+			if = {
+				limit = { has_planet_flag = temp_ice_mine_exhausted_flag }
+				event_target:mined_system.starbase = {
+					remove_starbase_building = { building = ice_mining_station }
+				}
+				create_message = {
+					type = ICE_MINING_SUCCESS
+					localization = ICE_MINING_SUCCESS_BUT_EXHAUSTED_DESC
+					days = 20
+					target = root
+					variable = {
+						type = name
+						localization = SYSTEM
+						scope = event_target:mined_system
+					}
+				}
+			}
+			else = {
+				create_message = {
+					type = ICE_MINING_SUCCESS
+					localization = ICE_MINING_SUCCESS_DESC
+					days = 20
+					target = root
+					variable = {
+						type = name
+						localization = SYSTEM
+						scope = event_target:mined_system
+					}
+				}
+			}
+			change_variable = { which = ice_dumping_happened value = 1 }
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = { factor = 2 pop_amount > 2500 }
+		modifier = { factor = 3 pop_amount > 5000 }
+		modifier = { factor = 5 is_capital = yes }
+	}
+}
+
+decision_flood_habitat = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+	enactment_time = @expand_planetary_sea_length
+
+	potential = {
+		is_planet_class = pc_habitat
+		exists = owner
+		owner = { has_ascension_perk = ap_hydrocentric }
+		NOT = { has_modifier = flooded_habitat }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = requires_free_ice_mining_station
+			owner = {
+				any_owned_starbase = {
+					has_starbase_building = ice_mining_station
+					NOT = {
+						solar_system = { has_star_flag = ice_mining_in_progress }
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+			energy = 1000
+		}
+	}
+
+	on_queued = {
+		set_variable = { which = decision_length value = @expand_planetary_sea_length }
+		export_modifier_to_variable = {
+			modifier = planet_decision_enact_speed_mult
+			variable = decision_mult_var
+		}
+		change_variable = { which = decision_mult_var value = 1 }
+		divide_variable = { which = decision_length value = decision_mult_var }
+		change_variable = { # ideally, may as well refer to this in the final effect
+			which = decision_length
+			value = 1
+		}
+		owner = {
+			random_owned_starbase = {
+				limit = {
+					has_starbase_building = ice_mining_station
+					NOT = {
+						solar_system = { has_star_flag = ice_mining_in_progress }
+					}
+				}
+				solar_system = {
+					set_timed_star_flag = { flag = ice_mining_in_progress days = root.decision_length }
+					set_timed_star_flag = { flag = ice_mining@root days = root.decision_length }
+				}
+			}
+		}
+		clear_variable = decision_length
+		clear_variable = decision_mult_var
+	}
+
+	abort_trigger = {
+		NOT = {
+			owner = {
+				any_owned_starbase = { has_starbase_building = ice_mining_station }
+			}
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			random_owned_starbase = {
+				limit = {
+					solar_system = { has_star_flag = ice_mining@root }
+				}
+				solar_system = {
+					remove_star_flag = ice_mining@root
+					remove_star_flag = ice_mining_in_progress
+				}
+			}
+		}
+	}
+
+	abort_effect = {
+		owner = {
+			random_owned_starbase = {
+				limit = {
+					solar_system = { has_star_flag = ice_mining@root }
+				}
+				solar_system = {
+					remove_star_flag = ice_mining@root
+					remove_star_flag = ice_mining_in_progress
+				}
+			}
+		}
+		create_message = {
+			type = ICE_MINING_INTERRUPTED
+			localization = ICE_MINING_INTERRUPTED_HABITAT_DESC
+			days = 20
+			target = root
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_flood_habitat_tooltip
+		hidden_effect = {
+			add_modifier = { modifier = flooded_habitat days = -1 }
+			ice_mining_depletion_effect = yes
+			if = {
+				limit = { has_planet_flag = temp_ice_mine_exhausted_flag }
+				event_target:mined_system.starbase = {
+					remove_starbase_building = { building = ice_mining_station }
+				}
+				create_message = {
+					type = ICE_MINING_HABITAT_SUCCESS
+					localization = ICE_MINING_HABITAT_SUCCESS_BUT_EXHAUSTED_DESC
+					days = 20
+					target = root
+					variable = {
+						type = name
+						localization = SYSTEM
+						scope = event_target:mined_system
+					}
+				}
+			}
+			else = {
+				create_message = {
+					type = ICE_MINING_HABITAT_SUCCESS
+					localization = ICE_MINING_HABITAT_SUCCESS_DESC
+					days = 20
+					target = root
+					variable = {
+						type = name
+						localization = SYSTEM
+						scope = event_target:mined_system
+					}
+				}
+			}
+			change_variable = { which = ice_dumping_happened value = 1 }
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_expand_dayside = {
+	owned_planets_only = yes
+	icon = decision_divine_algorithm
+	enactment_time = 3600
+
+	resources = {
+		category = decisions
+		cost = {
+			minerals = 1000
+			energy = 500
+		}
+	}
+
+	potential = {
+		has_planet_flag = tidally_locked_world
+		NOT = { has_deposit = d_dayside_farm }
+	}
+
+	effect = {
+		add_deposit = d_dayside_farm
+		remove_planet_flag = tidally_locked_world
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_introduce_chaos = {
+	owned_planets_only = yes
+	icon = decision_victorious_army
+	enactment_time = 1800
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 500
+		}
+	}
+
+	potential = {
+		has_planet_flag = perfect_organization
+		exists = owner
+		owner = { is_gestalt = no }
+	}
+
+	effect = {
+		remove_modifier = perfect_organization_modifier
+		add_modifier = { modifier = imperfect_organization_modifier }
+		remove_planet_flag = perfect_organization
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+incinerate_the_flagella = {
+	owned_planets_only = yes
+	icon = decision_luxuries
+	enactment_time = 60
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		has_planet_flag = matriarch_horror
+		exists = owner
+		owner = { is_xenophile = no }
+	}
+
+	effect = {
+		remove_modifier = tiyanki_trophy
+		add_modifier = { modifier = burnt_tiyanki_trophy }
+		remove_planet_flag = matriarch_horror
+	}
+
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 0
+			owner = { is_robot_empire = no is_xenophobe = no }
+		}
+	}
+}
+
+# Shroud-Forged
+decision_open_shroud_rift = {
+	owned_planets_only = yes
+	icon = decision_surreal_visions
+	enactment_time = 720
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_zro = 25
+			mult = value:decision_open_shroud_rift_cost_mult
+		}
+	}
+
+	custom_tooltip = {
+		success_text = decision_open_shroud_rift_max_uses
+		count_deposits = {
+			type = d_shroud_rift_deposit
+			count < @max_open_shroud_rift_uses
+		}
+	}
+
+	potential = {
+		exists = owner
+		is_artificial = no
+		owner = {
+			has_origin = origin_shroud_forged
+			NOT = { has_country_flag = finish_shroud_forged_control_flag }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_open_shroud_rift_condition_tt
+			any_deposit = {
+				NOR = {
+					is_blocker = yes
+					has_deposit_category = deposit_cat_rare
+					has_deposit_category = deposit_cat_rare_resource
+					has_deposit_category = deposit_cat_rare_blocker
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = decision_open_shroud_rift_max_uses_fail
+			count_deposits = {
+				type = d_shroud_rift_deposit
+				count < @max_open_shroud_rift_uses
+			}
+		}
+		custom_tooltip = {
+			fail_text = decision_open_shroud_rift_legacy_fail
+			NOT = { has_planet_flag = zroni_legacy_flag }
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { has_deposit = d_shroud_rift_deposit }
+			random_list = {
+				0 = {
+					modifier = { add = value:get_shroud_rift_decision_uses }
+					tooltip = { change_pc = pc_shrouded }
+					hidden_effect = {
+						planet_event = {
+							id = shroud_forged.160
+							scopes = { from = owner }
+						}
+						add_deposit = d_shroud_rift_deposit
+						kill_all_pop = yes
+						remove_all_buildings = yes
+						destroy_colony = yes
+						close_shroud_rift_effect = yes
+						change_pc = pc_shrouded
+					}
+				}
+				10 = {
+					modifier = { subtract = value:get_shroud_rift_decision_uses }
+					decision_shroud_region_effect = yes
+				}
+			}
+		}
+		else = {
+			decision_shroud_region_effect = yes
+		}
+	}
+
+	on_queued = {
+		open_shroud_rift_effect = yes
+	}
+
+	on_unqueued = {
+		close_shroud_rift_effect = yes
+	}
+
+	ai_weight = {
+		weight = 50
+	}
+}
+
+decision_entrap_shroud_entity = {
+	owned_planets_only = yes
+	icon = decision_planet_beam
+	enactment_time = 720
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_zro = 100
+		}
+	}
+
+	potential = {
+		exists = owner
+		is_artificial = no
+		has_planet_flag = zroni_legacy_flag
+		owner = {
+			has_origin = origin_shroud_forged
+			has_country_flag = shroud_forged_traitor
+			NOR = {
+				has_modifier = shroud_forged_trapped_entity
+				has_modifier = shroud_forged_trapped_lesser_entity
+				has_country_flag = entrapping_shroud_entity
+			}
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = missing_zroni_gateways_tt
+			owner = {
+				count_owned_planet = {
+					count >= 3
+					limit = {
+						has_building = building_zroni_equilibrator
+						is_controlled_by = root.owner
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		owner = {
+			random_list = {
+				10 = {
+					custom_tooltip = shroud_invasion_tt
+					hidden_effect = {
+						country_event = { id = shroud_forged.330 }
+					}
+				}
+				10 = { add_modifier = { modifier = shroud_forged_trapped_entity } }
+				55 = { add_modifier = { modifier = shroud_forged_trapped_lesser_entity years = 20 } }
+				25 = {
+					# Nothing
+				}
+			}
+		}
+		hidden_effect = {
+			owner = { remove_country_flag = entrapping_shroud_entity }
+		}
+	}
+
+	on_queued = {
+		owner = { set_country_flag = entrapping_shroud_entity }
+	}
+
+	on_unqueued = {
+		owner = { remove_country_flag = entrapping_shroud_entity }
+	}
+}
+
+decision_activate_dimensional_manipulation_device = {
+	owned_planets_only = yes
+	icon = decision_engineering_research
+
+	resources = {
+		category = decisions
+		cost = {
+			sr_dark_matter = 1000
+		}
+	}
+
+	potential = {
+		has_planet_flag = dimensional_manipulation_device_deactivated
+	}
+
+	effect = {
+		hidden_effect = {
+			remove_planet_flag = dimensional_manipulation_device_deactivated
+		}
+		add_deposit = d_dimensional_manipulation_device
+	}
+
+	# AI will never be able to take this decision
+	# (Other options are fine and don't have Dark Matter shenanagins)
+}
+
+decision_consecrate_habitat_knights = {
+	owned_planets_only = yes
+	enactment_time = 360
+
+	potential = {
+		owner = { has_origin = origin_toxic_knights has_relic = r_toxic_god }
+		uses_district_set = habitat
+		NOR = {
+			has_building = building_order_castle
+			has_building = building_order_keep
+		}
+	}
+
+	allow = {
+		free_building_slots > 0
+		custom_tooltip = {
+			fail_text = requires_another_consecration
+			owner = {
+				check_variable = { which = toxic_castles_available value > 0 }
+			}
+		}
+	}
+
+	on_queued = {
+		owner = {
+			change_variable = { which = toxic_castles_available value = -1 }
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			change_variable = { which = toxic_castles_available value = 1 }
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+		}
+	}
+
+	effect = {
+		add_building = building_order_castle
+		custom_tooltip = decision_consecrate_habitat_knights_effect
+		hidden_effect = {
+			add_zone = {
+				district = district_hab_housing
+				zone = zone_habitat_knights
+				zone_slot = 1
+				replace = yes
+			}
+			add_building = { zone = zone_habitat_knights building = building_order_castle }
+		}
+		set_colony_type = col_habitat_fortress
+	}
+}
+
+decision_expand_preserves = {
+	owned_planets_only = yes
+	icon = decision_animal_wildlife
+	enactment_time = 1800
+
+	resources = {
+		category = decisions
+		cost = {
+			minerals = 500
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_valid_civic = civic_environmentalist }
+		has_deposit = d_big_nature_preserve_blocker
+		free_district_slots > 0
+	}
+
+	effect = {
+		custom_tooltip = decision_expand_preserves_short
+		hidden_effect = {
+			add_deposit = d_big_nature_preserve_blocker
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_reorganize_leviathan_parade = {
+	owned_planets_only = yes
+	icon = decision_expel_population
+
+	potential = {
+		exists = owner
+		owner = { has_country_flag = reorganizing_leviathan_parade }
+		NOT = { has_planet_flag = no_reorganize }
+	}
+
+	effect = {
+		owner = {
+			remove_country_flag = reorganizing_leviathan_parade
+			random_situation = {
+				limit = { current_situation_approach = approach_reorganize }
+				target = { remove_planet_flag = no_reorganize }
+				change_situation_target = root
+				set_situation_locked = no
+				set_situation_approach = approach_encourage
+			}
+		}
+	}
+}
+
+# Decision, part of the Mysterious Ringing Anomaly "infernals.3210"
+decision_planetary_workshift = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		owner = { has_country_flag = planetary_workshift_ready }
+	}
+
+	allow = {
+		NOT = { has_modifier = planetary_workshift_deployed }
+	}
+
+	effect = {
+		hidden_effect = {
+			owner = { remove_country_flag = planetary_workshift_ready }
+		}
+		add_modifier = { modifier = planetary_workshift_deployed days = -1 }
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+

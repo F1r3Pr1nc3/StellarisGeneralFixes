@@ -1,0 +1,408 @@
+@colossus_scale = 30
+
+entity = {
+	name = "aquatic_01_colossus_entity"
+	pdxmesh = "aquatic_01_colossus_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" }
+	state = { name = "moving" animation = "idle" }
+	state = { name = "working" animation = "idle" }
+	state = { name = "death" animation = "closed_death" looping = no
+		event = { time = 11.7 node = "frame_ship" particle = "aquatic_01_ship_explosion_dreadnought" sound = { soundeffect = ship_destroyed } }
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 0
+			}
+		}
+	}
+	state = { name = "death" animation = "opened_death" looping = no
+		event = { time = 11.0 node = "frame_ship" particle = "aquatic_01_ship_explosion_dreadnought" sound = { soundeffect = ship_destroyed } }
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 100
+			}
+		}
+	}
+
+	locator = { name = "part1" position = { -50 0 0 } }
+	locator = { name = "part3" position = { -50 0 0 } }
+
+	game_data = {
+		size = @colossus_scale
+		emissive_recolor_crunch = 5.0
+	}
+
+	#attach = { frame_ship = "aquatic_01_colossus_ship_entity" }
+}
+
+entity = {
+	name = "aquatic_01_colossus_ship_entity"
+	pdxmesh = "aquatic_01_colossus_mesh"
+
+	default_state = "idle"
+	# Actual idle state when being in idle/moving.
+	state = { name = "idle" animation = "idle" looping = no next_state = "idle" animation_blend_time = 5
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 100
+				"working_looping" = 0
+			}
+		}
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_idle" } }
+
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0 node = "large_engine_01" particle = "generic_1_25_exhaust_circle_idle" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "medium_engine_01" particle = "generic_1_25_exhaust_circle_idle" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "medium_engine_02" particle = "generic_1_25_exhaust_circle_idle" keep_particle = yes trigger_once = yes }
+	}
+	# Idle state when going from opened state to idle.
+	state = { name = "idle" animation = "closing" animation_speed = 2 looping = no next_state = "idle"
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 100
+				"working_looping" = 100
+			}
+		}
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_close" stop_on_state_change = yes } }
+
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0 node = "large_engine_01" particle = "generic_1_25_exhaust_circle_idle" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "medium_engine_01" particle = "generic_1_25_exhaust_circle_idle" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "medium_engine_02" particle = "generic_1_25_exhaust_circle_idle" keep_particle = yes trigger_once = yes }
+	}
+	# Actual moving state if going from idle/moving.
+	state = { name = "moving" animation = "idle" looping = yes next_state = "moving"
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 100
+				"working_looping" = 0
+			}
+		}
+		event = { sound = { soundeffect = "aqu_ship_colossus_move" stop_on_state_change = yes } }
+
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0 node = "large_engine_01" particle = "aquatic_01_250_ship_exhaust" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "medium_engine_01" particle = "aquatic_01_150_ship_exhaust" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "medium_engine_02" particle = "aquatic_01_150_ship_exhaust" keep_particle = yes trigger_once = yes }
+
+	}
+	# Moving state if going from open/working, uses closing animation.
+	state = { name = "moving" animation = "closing" animation_speed = 2 looping = no next_state = "moving"
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 0
+				"working_looping" = 100
+			}
+		}
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_close" stop_on_state_change = yes } }
+
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0 node = "large_engine_01" particle = "aquatic_01_250_ship_exhaust" keep_particle = yes trigger_once = yes }
+
+	}
+	# Opened state, going after "kill_planet".
+	state = { name = "working_looping" animation = "open"
+		event = { time = 0	id = "beam_start" }
+
+		#event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_open" stop_on_state_change = yes } }
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_idle" } }
+		#event = { trigger_once = yes sound = { soundeffect = "amb_nemesis_colossus_idle_distortion" } }
+
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+
+		event = { time = 0.0 node = "front_effect" particle = "aquatic_01_colossus_tentacle_front_effect" keep_particle = yes trigger_once = yes }
+
+	#	event = { time = 0.00 node = "effects_tentacles" entity = "aquatic_01_colossus_tentacle_front_entity" erosion_in = 1 erosion_out = 1 life = 14.26}
+
+		event = { time = 1.10 node = "effects_tentacles" entity = "aquatic_01_colossus_tentacle_front_entity" erosion_in = 1 erosion_out = 1 life = 2}
+		event = { time = 5.4 node = "effects_tentacles" entity = "aquatic_01_colossus_tentacle_front_entity" erosion_in = 1 erosion_out = 1 life = 2}
+		event = { time = 9.6 node = "effects_tentacles" entity = "aquatic_01_colossus_tentacle_front_entity" erosion_in = 1 erosion_out = 1 life = 2}
+
+### 13.26
+
+	}
+	# Opening state, goes into "working_looping" state when done.
+	state = { name = "working" animation = "opening" looping = no next_state = "working_looping"
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_open" stop_on_state_change = yes } }
+		event = { trigger_once = yes sound = { soundeffect = "aqu_ship_colossus_idle" stop_on_state_change = yes } }
+
+		event = { time = 1000 id = "beam_start" } #will never fire, but lets the game know that an event with this ID exists
+
+	}
+	# Closed death state.
+	state = { name = "death" animation = "closed_death" looping = no
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 0
+				"working_looping" = 0
+			}
+		}
+		event = { trigger_once = yes sound = { soundeffect = "avian_colossus_death" stop_on_state_change = yes } }
+
+		event = { time = 0.5 node = "explosion_locator_01" particle = "aquatic_01_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 3.3 node = "explosion_locator_02" particle = "aquatic_01_2_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 4.1 node = "explosion_locator_03" particle = "aquatic_01_small_player_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 6.2 node = "explosion_locator_04" particle = "aquatic_01_2_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 7.3 node = "explosion_locator_05" particle = "aquatic_01_2_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 8.0 node = "explosion_locator_06" particle = "aquatic_01_2_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 9.0 node = "explosion_locator_07" particle = "aquatic_01_small_player_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 9.7 node = "explosion_locator_08" particle = "aquatic_01_3_ship_explosion_effect" sound = { soundeffect = "ship_destroyed" } keep_particle = yes trigger_once = yes }
+	}
+	# Opened death state.
+	state = { name = "death" animation = "opened_death" looping = no animation_blend_time = 2
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 100
+				"working_looping" = 100
+			}
+		}
+		event = { trigger_once = yes sound = { soundeffect = "avian_colossus_death" stop_on_state_change = yes } }
+
+		event = { time = 0.3 node = "explosion_locator_01" particle = "aquatic_01_ship_explosion_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 3.6 node = "explosion_locator_02" particle = "aquatic_01_2_ship_explosion_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 4.3 node = "explosion_locator_03" particle = "aquatic_01_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 6.2 node = "explosion_locator_04" particle = "aquatic_01_2_ship_explosion_effect"keep_particle = yes trigger_once = yes }
+		event = { time = 8.6 node = "explosion_locator_05" particle = "aquatic_01_small_player_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 9.2 node = "explosion_locator_06" particle = "aquatic_01_2_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 8.5 node = "explosion_locator_07" particle = "aquatic_01_ship_explosion_effect"  keep_particle = yes trigger_once = yes }
+		event = { time = 10.1 node = "explosion_locator_08" particle = "aquatic_01_ship_explosion_effect" sound = { soundeffect = "ship_destroyed" } keep_particle = yes trigger_once = yes }
+	}
+
+	#locator = { name = "planet_killer_gun_01" position = { 0 0 0 } } # Actual locator in mesh.
+
+	attach = { effects_tentacles = aquatic_01_colossus_tentacle_entity }
+	#attach = { effects_tentacles = aquatic_01_colossus_tentacle_front_entity }
+}
+
+entity = {
+	name = "aquatic_01_colossus_tentacle_entity"
+	pdxmesh = "aquatic_01_colossus_tentacle_mesh"
+
+	default_state = "idle"
+	# Actual idle state when being in idle/moving.
+	state = { name = "idle" animation = "idle" looping = no next_state = "idle" animation_blend_time = 5
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 100
+				"working_looping" = 0
+			}
+		}
+	}
+
+	state = { name = "idle" animation = "closing" animation_speed = 2 looping = no next_state = "idle"
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 100
+				"working_looping" = 100
+			}
+		}
+	}
+
+	# Actual moving state if going from idle/moving.
+	state = { name = "moving" animation = "idle" looping = yes next_state = "moving"
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 100
+				"working_looping" = 0
+			}
+		}
+	}
+
+	# Moving state if going from open/working, uses closing animation.
+	state = { name = "moving" animation = "closing" animation_speed = 2 looping = no next_state = "moving"
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 0
+				"working_looping" = 100
+			}
+		}
+	}
+
+	# Opened state, going after "kill_planet".
+	state = { name = "working_looping" animation = "open"
+
+			event = { time = 0.0 node = "part2" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part6" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part10" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part14" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part18" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part22" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part26" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+			event = { time = 0.0 node = "part30" particle = "aquatic_01_colossus_tentacle_effect" keep_particle = yes trigger_once = yes }
+
+}
+
+	# Opening state, goes into "working_looping" state when done.
+	state = { name = "working" animation = "opening" looping = no next_state = "working_looping" }
+
+		# Closed death state.
+		state = { name = "death" animation = "closed_death" looping = no
+		chance = {
+			if_current_state = {
+				"idle" = 100
+				"moving" = 100
+				"death" = 0
+				"working" = 0
+				"working_looping" = 0
+			}
+		}
+	}
+
+		# Opened death state.
+		state = { name = "death" animation = "opened_death" looping = no animation_blend_time = 2
+		chance = {
+			if_current_state = {
+				"idle" = 0
+				"moving" = 0
+				"death" = 0
+				"working" = 100
+				"working_looping" = 100
+			}
+		}
+	}
+
+			game_data = {
+		bloom_factor			= 1.1
+		uv_animation_speed 		= .25
+		uv_animation_direction 	= { 0.4 0.50 }
+		}
+
+		scale = 1 # Vfix
+	}
+
+entity = {
+	name = "aquatic_01_colossus_tentacle_front_entity"
+	pdxmesh = "aquatic_01_colossus_tentacle_front_mesh"
+
+	#erosion_in = 2
+	#erosion_out = .8
+	scale = 1
+
+	game_data = {
+		bloom_factor = 1.2
+		uv_animation_speed = .4
+		uv_animation_direction = { 0.1 0.40 }
+	}
+
+}
+
+animation = {
+	name = "aquatic_01_colossus_idle_animation"
+	file = "aquatic_01_colossus_idle.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_open_animation"
+	file = "aquatic_01_colossus_open.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_opening_animation"
+	file = "aquatic_01_colossus_opening.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_closing_animation"
+	file = "aquatic_01_colossus_closing.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_closed_death_animation"
+	file = "aquatic_01_colossus_closed_death.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_opened_death_animation"
+	file = "aquatic_01_colossus_opened_death.anim"
+}
+
+animation = {
+	name = "aquatic_01_colossus_frame_idle_animation"
+	file = "aquatic_01_colossus_frame_idle.anim"
+}
+
+animation = {
+	name = "aquatic_01_colossus_frame_closed_death_animation"
+	file = "aquatic_01_colossus_frame_closed_death.anim"
+}
+
+animation = {
+	name = "aquatic_01_colossus_frame_opened_death_animation"
+	file = "aquatic_01_colossus_frame_opened_death.anim"
+}
+
+animation = {
+	name = "aquatic_01_colossus_tentacle_idle_animation"
+	file = "aquatic_01_colossus_tentacle_idle.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_tentacle_open_animation"
+	file = "aquatic_01_colossus_tentacle_open.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_tentacle_opening_animation"
+	file = "aquatic_01_colossus_tentacle_opening.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_tentacle_closing_animation"
+	file = "aquatic_01_colossus_tentacle_closing.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_tentacle_closed_death_animation"
+	file = "aquatic_01_colossus_tentacle_closed_death.anim"
+}
+animation = {
+	name = "aquatic_01_colossus_tentacle_opened_death_animation"
+	file = "aquatic_01_colossus_tentacle_opened_death.anim"
+}
