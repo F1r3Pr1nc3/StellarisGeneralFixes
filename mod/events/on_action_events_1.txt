@@ -4408,14 +4408,12 @@ planet_event = {
 		fromfrom = {
 			is_sapient = yes
 			NOR = {
-				OR = {
-					is_robot_pop_group = yes
-					has_trait = "trait_hive_mind"
-					has_purge_type = { country = from type = purge_necrophage }
-					AND = {
-						has_purge_type = { country = from type = purge_cosmogenesis_lathe_resettle }
-						NOT = { planet = { has_designation = col_cosmogenesis_world } }
-					}
+				is_robot_pop_group = yes
+				has_trait = "trait_hive_mind"
+				has_purge_type = { country = from type = purge_necrophage }
+				AND = {
+					has_purge_type = { country = from type = purge_cosmogenesis_lathe_resettle }
+					NOT = { planet = { has_designation = col_cosmogenesis_world } }
 				}
 				AND = {
 					has_citizenship_type = { country = from type = citizenship_purge }

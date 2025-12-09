@@ -919,11 +919,9 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			OR = {
-				pop_amount <= 0
-				is_artificial = yes
-				has_planet_flag = colony_event
-			}
+			pop_amount <= 0
+			is_artificial = yes
+			has_planet_flag = colony_event
 		}
 		has_moon = yes
 		any_moon = {
@@ -1039,11 +1037,9 @@ planet_event = {
 					has_country_flag = dportal_country
 				}
 			}
-			OR = {
-				pop_amount <= 0
-				is_artificial = yes
-				has_planet_flag = colony_event
-			}
+			pop_amount <= 0
+			is_artificial = yes
+			has_planet_flag = colony_event
 		}
 	}
 
@@ -2221,12 +2217,7 @@ country_event = {
 			flag = {
 				icon = { category = "toxoid" file = "toxoid_03.dds" }
 				background = { category = "backgrounds" file = "flag_BG_24.dds" }
-				colors = {
-					"shadow_purple"
-					"black"
-					"null"
-					"null"
-				}
+				colors = { "shadow_purple" "black" "null" "null" }
 			}
 			type = default
 			effect = {
@@ -2946,19 +2937,17 @@ planet_event = {
 
 	trigger = {
 		NOR = {
-			OR = {
-				owner = { is_ai = yes }
-				has_planet_flag = colony_event
-				is_artificial = yes
-			}
+			owner = { is_ai = yes }
+			has_planet_flag = colony_event
+			is_artificial = yes
 			owner = {
 				OR = {
 					has_country_flag = bluelotus
 					is_wilderness_empire = yes
 				}
 			}
+			pop_amount <= 0
 		}
-		pop_amount > 0
 		any_owned_pop_job = {
 			OR = {
 				has_job_type = miner
@@ -4236,12 +4225,7 @@ planet_event = {
 				flag = {
 					icon = { category = "aquatic" file = "aquatic_04.dds" }
 					background = { category = "backgrounds" file = "00_solid.dds" }
-					colors = {
-						"light_orange"
-						"light_orange"
-						"null"
-						"null"
-					}
+					colors = { "light_orange" "light_orange" "null" "null" }
 				}
 				effect = {
 					establish_communications_no_message = root.owner
@@ -4387,12 +4371,7 @@ planet_event = {
 				flag = {
 					icon = { category = "special" file = "unknown.dds" }
 					background = { category = "aquatic" file = "aquatic_04.dds" }
-					colors = {
-						"light_orange"
-						"light_orange"
-						"null"
-						"null"
-					}
+					colors = { "light_orange" "light_orange" "null" "null" }
 				}
 				effect = {
 					establish_communications_no_message = root.owner
@@ -5850,11 +5829,9 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			OR = {
-				pop_amount <= 0
-				has_planet_flag = colony_event
-				is_artificial = yes
-			}
+			pop_amount <= 0
+			has_planet_flag = colony_event
+			is_artificial = yes
 		}
 	}
 
@@ -7778,10 +7755,8 @@ planet_event = {
 		is_moon = no
 		has_moon = yes
 		NOR = {
-			OR = {
-				is_artificial = yes
-				has_global_flag = dimensional_prison_colony
-			}
+			is_artificial = yes
+			has_global_flag = dimensional_prison_colony
 			owner = { is_wilderness_empire = yes }
 		}
 	}

@@ -2275,10 +2275,8 @@ country_event = {
 
 	trigger = {
 		NOR = {
-			OR = {
-				is_machine_species = yes
-				has_country_flag = shroud_740_triggered
-			}
+			is_machine_species = yes
+			has_country_flag = shroud_740_triggered
 			any_owned_planet = { is_homeworld = yes }
 		}
 	}
@@ -9117,7 +9115,7 @@ country_event = {
 	trigger = {
 		NOR = {
 			has_country_flag = enclave_respawned
-			any_system = { exists = space_owner }
+			any_system = { has_owner = yes }
 		}
 	}
 

@@ -1030,17 +1030,15 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 		NOR = {
-			OR = {
-				has_country_flag = increase_leader_upkeep
-				has_country_flag = first_federation_event
-			}
-			federation = {
-				any_member = {
-					OR = {
-						is_galactic_emperor = yes
-						has_country_flag = empire_rebel
-						has_country_flag = empire_loyalist
-					}
+			has_country_flag = increase_leader_upkeep
+			has_country_flag = first_federation_event
+		}
+		federation = {
+			any_member = {
+				NOR = {
+					is_galactic_emperor = yes
+					has_country_flag = empire_rebel
+					has_country_flag = empire_loyalist
 				}
 			}
 		}

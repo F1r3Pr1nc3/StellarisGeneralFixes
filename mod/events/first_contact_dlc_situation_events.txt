@@ -1051,11 +1051,9 @@ situation_event = {
 			has_country_flag = early_space_age
 			NOR = {
 				capital_scope = { is_artificial = yes }
-				OR = {
-					has_origin = origin_mechanists
-					has_country_flag = had_pre_ftl_uprising
-					has_country_flag = unplugged_pre_ftl_empire_flag
-				}
+				has_origin = origin_mechanists
+				has_country_flag = had_pre_ftl_uprising
+				has_country_flag = unplugged_pre_ftl_empire_flag
 			}
 		}
 	}
@@ -2517,11 +2515,9 @@ country_event = {
 
 	trigger = {
 		NOR = {
-			OR = {
-				has_country_flag = preftl_2000_fired
-				has_country_flag = had_observation_situation
-			}
-			AND = {
+			has_country_flag = preftl_2000_fired
+			has_country_flag = had_observation_situation
+			AND = { # Vfix
 				exists = from.owner
 				from.owner = { current_awareness_level = full }
 			}

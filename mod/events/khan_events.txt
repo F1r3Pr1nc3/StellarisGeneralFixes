@@ -105,10 +105,8 @@ system_event = {
 		if = {
 			limit = {
 				NOR = {
-					OR = {
-						has_star_flag = marauder_starbase_destroyed
-						has_star_flag = starbase_destroyed
-					}
+					has_star_flag = marauder_starbase_destroyed
+					has_star_flag = starbase_destroyed
 					AND = {
 						exists = starbase
 						starbase = { has_starbase_size > starbase_starfortress }
@@ -1360,12 +1358,7 @@ country_event = {
 				flag = {
 					icon = { category = "pirate" file = "flag_pirate_11.dds" }
 					background = { category = "backgrounds" file = "00_solid.dds" }
-					colors = {
-						"red"
-						"red"
-						"null"
-						"null"
-					}
+					colors = { "red" "red" "null" "null" }
 				}
 				species = root
 				authority = root

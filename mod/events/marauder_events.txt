@@ -861,12 +861,7 @@ country_event = {
 					name_list = random
 					flag = { # icon = { category = "pirate" file = "flag_pirate_13.dds" }
 						background = { category = "backgrounds" file = "00_solid.dds" }
-						colors = {
-							"black"
-							"black"
-							"null"
-							"null"
-						}
+						colors = { "black" "black" "null" "null" }
 					}
 					origin = "origin_void_dwellers"
 					effect = {
@@ -6342,10 +6337,8 @@ event = {
 		any_playable_country = {
 			is_ai = yes
 			NOR = {
-				OR = {
-					is_homicidal = yes
-					is_genocidal_infernal = yes
-				}
+				is_homicidal = yes
+				is_genocidal_infernal = yes
 				any_rival_country = {
 					OR = {
 						has_country_flag = under_marauder_attack
@@ -6372,12 +6365,10 @@ event = {
 			limit = {
 				is_ai = yes
 				NOR = {
-					OR = {
-						is_homicidal = yes
-						is_genocidal_infernal = yes
-						has_ai_personality = honorbound_warriors
-						has_ai_personality = xenophobic_isolationists
-					}
+					is_homicidal = yes
+					is_genocidal_infernal = yes
+					has_ai_personality = honorbound_warriors
+					has_ai_personality = xenophobic_isolationists
 					any_rival_country = {
 						OR = {
 							has_country_flag = under_marauder_attack
@@ -6484,10 +6475,8 @@ event = {
 				is_country_type = dormant_marauders
 				has_communications = prev
 				NOR = {
-					OR = {
-						has_country_flag = raid_ongoing
-						has_country_flag = raid_cooldown
-					}
+					has_country_flag = raid_ongoing
+					has_country_flag = raid_cooldown
 					AND = {
 						has_country_flag = merc_fleet_1_hired
 						has_country_flag = merc_fleet_2_hired
@@ -7111,12 +7100,7 @@ country_event = {
 		change_country_flag = {
 			icon = { category = "pirate" file = "flag_pirate_11.dds" }
 			background = { category = "backgrounds" file = "00_solid.dds" }
-			colors = {
-				"red"
-				"red"
-				"null"
-				"null"
-			}
+			colors = { "red" "red" "null" "null" }
 		}
 		if = {
 			limit = {
@@ -8367,13 +8351,11 @@ country_event = {
 				exists = event_target:great_khan
 				exists = event_target:great_khan.fleet
 			}
-			OR = {
-				has_country_flag = khan_dead_age
-				has_country_flag = khan_dead_poison
-				has_country_flag = khan_dead_disease
-				has_country_flag = khan_dead_assassin
-				has_country_flag = khan_dead_concubine
-			}
+			has_country_flag = khan_dead_age
+			has_country_flag = khan_dead_poison
+			has_country_flag = khan_dead_disease
+			has_country_flag = khan_dead_assassin
+			has_country_flag = khan_dead_concubine
 		}
 	}
 
@@ -12192,12 +12174,7 @@ country_event = {
 			change_country_flag = {
 				icon = { category = "pirate" file = "flag_pirate_5.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"black"
-					"black"
-					"null"
-					"null"
-				}
+				colors = { "black" "black" "null" "null" }
 			}
 			randomize_flag_symbol = "pirate"
 			save_event_target_as = restored_marauders
@@ -12606,18 +12583,16 @@ country_event = {
 								is_pirate_system = yes
 								# is_valid_crystal_splitter_system = yes
 								NOR = {
-									OR = {
-										# has_star_flag = crystal_splitter_starting_system
-										# has_star_flag = crystal_splitter_destination_system
-										# has_star_flag = hostile_system
-										# has_star_flag = guardian
-										has_star_flag = tiyanki_home_system
-										has_star_flag = amoeba_home_system
-										has_star_flag = lcluster
-										has_star_flag = sealed_system
-										has_star_flag = enclave
-										has_star_flag = primitive_system
-									}
+									# has_star_flag = crystal_splitter_starting_system
+									# has_star_flag = crystal_splitter_destination_system
+									# has_star_flag = hostile_system
+									# has_star_flag = guardian
+									has_star_flag = tiyanki_home_system
+									has_star_flag = amoeba_home_system
+									has_star_flag = lcluster
+									has_star_flag = sealed_system
+									has_star_flag = enclave
+									has_star_flag = primitive_system
 									any_system_planet = { is_star = yes }
 								}
 							}

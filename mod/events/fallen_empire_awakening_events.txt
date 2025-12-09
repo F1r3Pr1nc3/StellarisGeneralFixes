@@ -50,12 +50,10 @@ country_event = {
 						any_country = { has_country_flag = guardians_of_the_galaxy }
 						any_country = { is_crisis_faction = yes }
 					}
-					OR = {
-						end_game_years_passed < 0
-						is_machine_empire = yes
-						is_at_war = yes
-						fleet_power <= 60000
-					}
+					end_game_years_passed < 0
+					is_machine_empire = yes
+					is_at_war = yes
+					fleet_power <= 60000
 					# Wake up if regular empire is growing too strong or has started to conquer other fallen empires
 				}
 				any_playable_country = {
@@ -574,12 +572,7 @@ country_event = {
 		change_country_flag = {
 			icon = { category = "special" file = "hive_fe_flag_restored.dds" }
 			background = { category = "backgrounds" file = "flag_BG_39.dds" }
-			colors = {
-				"light_orange"
-				"dark_orange"
-				"black"
-				"null"
-			}
+			colors = { "light_orange" "dark_orange" "black" "null" }
 		}
 		every_country = {
 			limit = { has_ai_personality = fallen_empire_hive_mind }

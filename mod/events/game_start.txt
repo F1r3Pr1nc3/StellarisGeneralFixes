@@ -141,12 +141,7 @@ event = {
 			flag = {
 				icon = { category = "special" file = "the_shroud.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"red"
-					"black"
-					"null"
-					"null"
-				}
+				colors = { "red" "black" "null" "null" }
 			}
 			effect = {
 				set_country_flag = suppress_first_contact_comms
@@ -159,12 +154,7 @@ event = {
 			flag = {
 				icon = { category = "zoological" file = "flag_zoological_5.dds" }
 				background = { category = "backgrounds" file = "flag_BG_12.dds" }
-				colors = {
-					"purple"
-					"black"
-					"null"
-					"null"
-				}
+				colors = { "purple" "black" "null" "null" }
 			}
 			effect = {
 				set_country_flag = suppress_first_contact_comms
@@ -734,12 +724,10 @@ event = {
 				limit = { # Vfix opt
 					colonizable_planet = yes
 					NOR = {
-						OR = {
-							has_owner = yes
-							has_planet_flag = prescripted_ideal
-							has_planet_flag = ratling_planet
-							has_planet_flag = pre_sapients_forbidden
-						}
+						has_owner = yes
+						has_planet_flag = prescripted_ideal
+						has_planet_flag = ratling_planet
+						has_planet_flag = pre_sapients_forbidden
 						AND = {
 							exists = event_target:sol_system_earth
 							is_same_value = event_target:sol_system_earth

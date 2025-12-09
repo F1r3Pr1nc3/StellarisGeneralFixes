@@ -67,12 +67,7 @@ event = {
 							flag = {
 								icon = { category = "special" file = "the_shroud.dds" }
 								background = { category = "backgrounds" file = "00_solid.dds" }
-								colors = {
-									"dark_purple"
-									"black"
-									"null"
-									"null"
-								}
+								colors = { "dark_purple" "black" "null" "null" }
 							}
 						}
 						last_created_country = { save_global_event_target_as = shroud_country }
@@ -435,12 +430,7 @@ country_event = {
 			flag = {
 				icon = { category = "special" file = "unknown.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"dark_grey"
-					"dark_grey"
-					"null"
-					"null"
-				}
+				colors = { "dark_grey" "dark_grey" "null" "null" }
 			}
 			effect = {
 				set_faction_hostility = { target = root set_neutral = yes }
@@ -860,12 +850,7 @@ country_event = {
 				flag = {
 					icon = { category = "pre_ftl" file = "preftl_stone_age.dds" }
 					background = { category = "backgrounds" file = "new_dawn.dds" }
-					colors = {
-						"turquoise"
-						"green"
-						"null"
-						"null"
-					}
+					colors = { "turquoise" "green" "null" "null" }
 				}
 				type = primitive
 				effect = {
@@ -1055,12 +1040,7 @@ country_event = {
 			flag = {
 				icon = { category = "domination" file = "domination_14.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"black"
-					"black"
-					"black"
-					"black"
-				}
+				colors = { "black" "black" "black" "black" }
 			}
 			species = event_target:vol
 			effect = {
@@ -2342,10 +2322,8 @@ ship_event = {
 					max_steps = 20
 					limit = {
 						NOR = {
-							OR = {
-								exists = space_owner
-								has_star_flag = hostile_system
-							}
+							exists = space_owner
+							has_star_flag = hostile_system
 							star = {
 								OR = {
 									is_star_class = sc_black_hole
@@ -3626,12 +3604,7 @@ country_event = {
 				flag = {
 					icon = { category = "domination" file = "domination_1.dds" }
 					background = { category = backgrounds file = "v.dds" }
-					colors = {
-						"teal"
-						"orange"
-						"null"
-						"null"
-					}
+					colors = { "teal" "orange" "null" "null" }
 				}
 				type = default
 				effect = {
@@ -4090,12 +4063,7 @@ country_event = {
 				flag = {
 					icon = { category = "domination" file = "domination_1.dds" }
 					background = { category = backgrounds file = "v.dds" }
-					colors = {
-						"teal"
-						"orange"
-						"null"
-						"null"
-					}
+					colors = { "teal" "orange" "null" "null" }
 				}
 				type = default
 				exclude_day_zero_contact = root # will not establish contact with this country or its federation allies
@@ -4579,12 +4547,7 @@ planet_event = {
 			flag = {
 				icon = { category = spherical file = flag_spherical_4.dds }
 				background = { category = backgrounds file = "00_solid.dds" }
-				colors = {
-					"black"
-					"black"
-					"null"
-					"null"
-				}
+				colors = { "black" "black" "null" "null" }
 			}
 			effect = {
 				save_global_event_target_as = enigmatic_cache_country
@@ -4750,12 +4713,10 @@ country_event = {
 			limit = {
 				any_playable_country = {
 					NOR = {
-						OR = {
-							is_ai = yes
-							is_at_war = yes
-							is_hostile = root
-							root = { is_hostile = prev }
-						}
+						is_ai = yes
+						is_at_war = yes
+						is_hostile = root
+						root = { is_hostile = prev }
 						any_owned_planet = { has_planet_flag = has_been_scanned }
 					}
 				}
@@ -4807,11 +4768,9 @@ country_event = {
 			limit = {
 				any_playable_country = {
 					NOR = {
-						OR = {
-							is_at_war = yes
-							is_hostile = root
-							root = { is_hostile = prev }
-						}
+						is_at_war = yes
+						is_hostile = root
+						root = { is_hostile = prev }
 						any_owned_planet = { has_planet_flag = has_been_scanned }
 					}
 				}
@@ -5040,9 +4999,7 @@ ship_event = {
 					NOR = {
 						is_at_war = yes
 						is_hostile = root.owner
-					}
-					any_owned_planet = {
-						NOR = {
+						any_owned_planet = {
 							has_planet_flag = has_been_scanned
 							solar_system = { is_same_value = event_target:cache_current_location }
 						}
@@ -5174,11 +5131,9 @@ country_event = {
 			limit = {
 				any_playable_country = {
 					NOR = {
-						OR = {
-							is_ai = yes
-							is_at_war = yes
-							is_hostile = root.owner
-						}
+						is_ai = yes
+						is_at_war = yes
+						is_hostile = root.owner
 						any_owned_planet = { has_planet_flag = has_been_scanned }
 					}
 				}
@@ -6449,12 +6404,7 @@ country_event = {
 			flag = {
 				icon = { category = "pirate" file = "flag_pirate_3.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"black"
-					"black"
-					"null"
-					"null"
-				}
+				colors = { "black" "black" "null" "null" }
 			}
 			effect = {
 				set_faction_hostility = { target = root set_hostile = yes }
@@ -7082,12 +7032,7 @@ ship_event = {
 			flag = {
 				icon = { category = "special" file = "unknown.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"blue"
-					"blue"
-					"null"
-					"null"
-				}
+				colors = { "blue" "blue" "null" "null" }
 			}
 			effect = {
 				save_event_target_as = stranded_scientist_country

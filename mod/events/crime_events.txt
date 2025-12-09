@@ -73,22 +73,20 @@ planet_event = {
 			owner = {
 				is_ai = yes	# PATCH|OPT
 			}
-			OR = {
-				pop_amount <= 500
-				num_unemployed <= 500
-				has_planet_flag = criminal_underworld_disappeared # Cooldown
-				has_planet_flag = criminal_underworld_event_up
-				has_planet_flag = shattered_frontier_planet
-				has_modifier = unemployment_benefits
-				has_modifier = activity_program
-				has_modifier = standby_mode
-				has_criminal_underworld_modifier = yes
-				has_drone_deviancy_modifier = yes
-				has_modifier = drone_corruption
-				has_gang_wars_modifier = yes
-				has_center_of_drug_trade_modifier = yes
-				has_mob_rule_modifier = yes
-			}
+			pop_amount <= 500
+			num_unemployed <= 500
+			has_planet_flag = criminal_underworld_disappeared # Cooldown
+			has_planet_flag = criminal_underworld_event_up
+			has_planet_flag = shattered_frontier_planet
+			has_modifier = unemployment_benefits
+			has_modifier = activity_program
+			has_modifier = standby_mode
+			has_criminal_underworld_modifier = yes
+			has_drone_deviancy_modifier = yes
+			has_modifier = drone_corruption
+			has_gang_wars_modifier = yes
+			has_center_of_drug_trade_modifier = yes
+			has_mob_rule_modifier = yes
 		}
 		OR = {
 			AND = {
@@ -770,25 +768,23 @@ planet_event = {
 	}
 
 	trigger = {
-		pop_amount > 0
 		NOR = {
+			pop_amount <= 0
 			owner = {
 				is_ai = yes	# PATCH|OPT
 			}
-			OR = {
-				planet_crime < 30
-				has_planet_flag = criminal_underworld_event_up
-				has_modifier = unemployment_benefits
-				has_modifier = activity_program
-				has_modifier = standby_mode
-				has_criminal_underworld_modifier = yes
-				has_drone_deviancy_modifier = yes
-				has_modifier = drone_corruption
-				has_gang_wars_modifier = yes
-				has_center_of_drug_trade_modifier = yes
-				has_mob_rule_modifier = yes
-				has_planet_flag = criminal_underworld_disappeared
-			}
+			planet_crime < 30
+			has_planet_flag = criminal_underworld_event_up
+			has_modifier = unemployment_benefits
+			has_modifier = activity_program
+			has_modifier = standby_mode
+			has_criminal_underworld_modifier = yes
+			has_drone_deviancy_modifier = yes
+			has_modifier = drone_corruption
+			has_gang_wars_modifier = yes
+			has_center_of_drug_trade_modifier = yes
+			has_mob_rule_modifier = yes
+			has_planet_flag = criminal_underworld_disappeared
 		}
 	}
 	weight_multiplier = {

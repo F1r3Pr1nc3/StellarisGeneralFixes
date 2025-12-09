@@ -168,10 +168,8 @@ country_event = {
 
 	trigger = {
 		NOR = {
-			OR = {
-				has_country_flag = gateway_reactivated
-				has_country_flag = gateway_built
-			}
+			has_country_flag = gateway_reactivated
+			has_country_flag = gateway_built
 			AND = {
 				has_origin = origin_galactic_doorstep
 				NOR = {
@@ -431,22 +429,24 @@ country_event = {
 			set_country_flag = pk_neutron
 		}
 		trigger = {
-			is_pacifist = no
-			# Available to spiritualists if Divine Enforcer is locked out
-			NAND = {
-				is_spiritualist = yes
-				OR = {
-					AND = {
-						has_utopia = no
-						has_shroud_dlc = no
-						has_technology = tech_telepathy
-					}
-					AND = {
-						OR = {
-							has_utopia = yes
-							has_shroud_dlc = yes
+			NOR = {
+				is_pacifist = yes
+				# Available to spiritualists if Divine Enforcer is locked out
+				AND = {
+					is_spiritualist = yes
+					OR = {
+						AND = {
+							has_utopia = no
+							has_shroud_dlc = no
+							has_technology = tech_telepathy
 						}
-						has_psionic_ascension = yes
+						AND = {
+							OR = {
+								has_utopia = yes
+								has_shroud_dlc = yes
+							}
+							has_psionic_ascension = yes
+						}
 					}
 				}
 			}

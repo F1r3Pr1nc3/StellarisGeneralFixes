@@ -879,10 +879,8 @@ situation_event = {
 			owner = { # no mutiny for hiveminds
 				is_gestalt = yes
 			}
-			OR = {
-				has_situation_flag = mutiny
-				current_situation_approach = approach_advance
-			}
+			has_situation_flag = mutiny
+			current_situation_approach = approach_advance
 		}
 	}
 	weight_multiplier = {
@@ -952,10 +950,8 @@ situation_event = {
 			owner = { # no mutiny for hiveminds
 				is_gestalt = yes
 			}
-			OR = {
-				has_situation_flag = mutiny
-				current_situation_approach = approach_retreat
-			}
+			has_situation_flag = mutiny
+			current_situation_approach = approach_retreat
 		}
 	}
 
@@ -3128,10 +3124,8 @@ situation_event = {
 	trigger = {
 		current_situation_approach = approach_no_food
 		NOR = {
-			OR = {
-				has_situation_flag = kaleidoscope_random_events
-				has_situation_flag = kaleidoscope_unnerving_patterns
-			}
+			has_situation_flag = kaleidoscope_random_events
+			has_situation_flag = kaleidoscope_unnerving_patterns
 			owner = { is_machine_empire = yes }
 		}
 	}
@@ -4020,12 +4014,7 @@ situation_event = {
 			flag = {
 				icon = { category = "spherical" file = "flag_spherical_6.dds" }
 				background = { category = "backgrounds" file = "00_solid.dds" }
-				colors = {
-					"light_blue"
-					"light_blue"
-					"null"
-					"null"
-				}
+				colors = { "light_blue" "light_blue" "null" "null" }
 			}
 			effect = {
 				every_playable_country = { establish_communications_no_message = prev }

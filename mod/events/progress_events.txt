@@ -739,10 +739,8 @@ planet_event = {
 
 	trigger = {
 		NOR = {
-			OR = {
-				is_planet_class = pc_habitat
-				from = { is_ship_size = guided_sapience_colonizer }
-			}
+			is_planet_class = pc_habitat
+			from = { is_ship_size = guided_sapience_colonizer }
 			owner = {
 				OR = {
 					has_origin = origin_remnants
@@ -1063,12 +1061,10 @@ country_event = {
 
 	trigger = {
 		NOR = {
-			OR = {
-				is_ai = yes
-				has_country_flag = first_contact_event
-				has_origin = origin_payback
-				has_origin = origin_broken_shackles
-			}
+			is_ai = yes
+			has_country_flag = first_contact_event
+			has_origin = origin_payback
+			has_origin = origin_broken_shackles
 			event_target:contact_empire = {
 				OR = {
 					is_fallen_empire = yes
