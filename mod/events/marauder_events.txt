@@ -282,14 +282,26 @@ country_event = {
 	location = event_target:marauder_system
 	is_triggered_only = yes
 
+	trigger = {
+		exists = from
+		from = { is_scope_valid = yes is_scope_type = country }
+	}
+
 	immediate = {
 		from = { save_event_target_as = encountered_marauder get_marauder_raid_source = yes }
+		run_in_ai_mode = yes # Vfix?
 	}
 
 	option = {
 		name = marauder.1.a
 		hidden_effect = {
-			country_event = { id = marauder.15 scopes = { from = event_target:encountered_marauder } }
+			if = { # Vfix opt
+				limit = {
+					is_ai = no
+					from = { is_country_type = dormant_marauders }
+				}
+				country_event = { id = marauder.15 scopes = { from = fromfrom } }
+			}
 		}
 	}
 }
@@ -1210,7 +1222,7 @@ country_event = {
 
 	trigger = {
 		exists = from
-		from = { is_country_type = dormant_marauders }
+		from = { is_scope_valid = yes is_scope_type = country }
 	}
 
 	immediate = {
@@ -2590,10 +2602,10 @@ country_event = {
 			limit = {
 				NAND = {
 					exists = event_target:raiding_marauder
-					event_target:raiding_marauder = { is_scope_valid = yes }
+					event_target:raiding_marauder = { is_scope_valid = yes is_scope_type = country }
 				}
 				exists = fromfrom
-				fromfrom = { is_scope_valid = yes }
+				fromfrom = { is_scope_valid = yes is_scope_type = country }
 			}
 			fromfrom = { save_event_target_as = raiding_marauder }
 		}
@@ -2601,7 +2613,7 @@ country_event = {
 			limit = {
 				NOT = { exists = event_target:raiding_marauder }
 				exists = event_target:current_marauder_diplomacy
-				event_target:current_marauder_diplomacy = { is_scope_valid = yes }
+				event_target:current_marauder_diplomacy = { is_scope_valid = yes is_scope_type = country }
 			}
 			event_target:current_marauder_diplomacy = { save_event_target_as = raiding_marauder }
 		}
@@ -4083,7 +4095,7 @@ country_event = {
 				}
 				# delete_fleet = { target = this destroy_template = yes }
 				set_owner = event_target:raider_khanate
-				fleet_event = { id = khan.611 days = -1 }
+				fleet_event = { id = khan.611 }
 			}
 			every_owned_leader = {
 				limit = { has_leader_flag = hired_merc_leader_1 }
@@ -4126,7 +4138,7 @@ country_event = {
 				}
 				# delete_fleet = { target = this destroy_template = yes }
 				set_owner = event_target:raider_khanate
-				fleet_event = { id = khan.611 days = -1 }
+				fleet_event = { id = khan.611 }
 			}
 			every_owned_leader = {
 				limit = { has_leader_flag = hired_merc_leader_2 }
@@ -4169,7 +4181,7 @@ country_event = {
 				}
 				# delete_fleet = { target = this destroy_template = yes }
 				set_owner = event_target:raider_khanate
-				fleet_event = { id = khan.611 days = -1 }
+				fleet_event = { id = khan.611 }
 			}
 			every_owned_leader = {
 				limit = { has_leader_flag = hired_merc_leader_3 }
@@ -7121,7 +7133,7 @@ country_event = {
 						marauder_3 = { save_global_event_target_as = marauder_country_3 }
 					}
 				}
-				country_event = { id = marauder.609 days = -1 } # Fully handover
+				country_event = { id = marauder.609 } # Fully handover
 			}
 		}
 		### Rally Point of Fleets 3/3: Backup Code
@@ -8506,7 +8518,7 @@ country_event = {
 			}
 			remove_global_flag = great_khan_dead
 			remove_country_flag = khan_dead_event_fine
-			country_event = { id = khan.306 days = -1 } # Check/Create fallback rally_point
+			country_event = { id = khan.306 } # Check/Create fallback rally_point
 			event_target:marauder_rally_point = { # CmtEffectCreateAdmiralty_Khan2ndFleetSet = yes
 				prev = {
 					create_2nd_khan_fleet = yes
@@ -9298,7 +9310,7 @@ country_event = {
 	}
 
 	immediate = {
-		country_event = { id = khan.306 days = -1 } # Check/Create fallback rally_point
+		country_event = { id = khan.306 } # Check/Create fallback rally_point
 		if = {
 			limit = { exists = event_target:marauder_rally_point }
 			if = {
@@ -9956,7 +9968,7 @@ starbase_event = {
 					system_event = { id = khan.310 days = 2 }
 				}
 				# Friendly to be sure
-				country_event = { id = khan.309 days = -1 }
+				country_event = { id = khan.309 }
 				country_event = { id = khan.309 days = 2 }
 			}
 			else = { # # Change loss by value
@@ -10083,7 +10095,7 @@ planet_event = {
 			}
 			## Complete takeover
 			from = { save_event_target_as = new_khanate }
-			owner = { country_event = { id = marauder.609 days = -1 } } # Fully handover
+			owner = { country_event = { id = marauder.609 } } # Fully handover
 			from = {
 				country_event = {
 					id = marauder.503
@@ -10539,7 +10551,7 @@ country_event = {
 		}
 		custom_tooltip = marauder.551.a.tt
 		hidden_effect = {
-			country_event = { id = khan.559 days = -1 } # Pre-Submit to Khan
+			country_event = { id = khan.559 } # Pre-Submit to Khan
 			set_subject_of = { who = event_target:raider_khanate preset = preset_satrapy }
 		}
 	}
@@ -10567,7 +10579,7 @@ country_event = {
 	# 		tech_unlocked_ratio = { who = from ratio < 0.7 }
 	# 	}
 	# 	response_text = marauder.551.a.response
-	# 	country_event = { id = khan.559 days = -1 } # Pre-Submit to Khan
+	# 	country_event = { id = khan.559 } # Pre-Submit to Khan
 	# 	hidden_effect = {
 	# 		set_subject_of = {
 	# 			who = event_target:raider_khanate
@@ -10781,7 +10793,7 @@ country_event = {
 		hidden_effect = {
 			event_target:raider_khanate = {
 				copy_random_tech_from = { who = prev area = physics }
-				country_event = { id = khan.312 days = -1 } # Create Garrison Dummy Country
+				country_event = { id = khan.312 } # Create Garrison Dummy Country
 			}
 		}
 	}
@@ -11089,18 +11101,19 @@ country_event = {
 		}
 	}
 
-	immediate = { # var = "planets_lost_to_marauder" is increased on .503, .527 and .528
-		country_event = { id = marauder.550 } # Submit to Khan
-		# country_event = { id = khan.559 days = -1 } # Pre-Submit to Khan
-		# event_target:raider_khanate = {
-		# 	if = {
-		# 		limit = { is_hostile = prev }
-		# 		set_faction_hostility = { target = prev set_friendly = yes }
-		# 	}
-		# 	country_event = { id = khan.309 days = 1 } # Friendly to be sure
-		# }
+	immediate = {
+		# var = "planets_lost_to_marauder" is increased on .503, .527 and .528
+		# country_event = { id = marauder.550 } # Submit to Khan
+		country_event = { id = khan.559 } # Pre-Submit to Khan
+		event_target:raider_khanate = {
+			if = {
+				limit = { is_hostile = prev }
+				set_faction_hostility = { target = prev set_friendly = yes }
+			}
+			country_event = { id = khan.309 days = 1 } # Friendly to be sure
+		}
+		run_in_ai_mode = yes # Vfix?
 	}
-
 	after = {
 		set_subject_of = { who = event_target:raider_khanate preset = preset_satrapy }
 	}
@@ -12101,7 +12114,7 @@ country_event = {
 						assign_leader = leader
 					}
 				}
-				fleet_event = { id = khan.611 days = -1 }
+				fleet_event = { id = khan.611 }
 			}
 		} # End restore partial Marauders
 		country_event = { id = marauder.609 days = 1 } # Fully handover
@@ -12516,11 +12529,11 @@ country_event = {
 						assign_leader = leader
 					}
 				}
-				fleet_event = { id = khan.611 days = -1 }
+				fleet_event = { id = khan.611 }
 			}
 			event_target:restored_marauders_2 = {
 				owner_species = { save_event_target_as = marauder_species }
-				country_event = { id = khan.306 days = -1 }
+				country_event = { id = khan.306 }
 				# create_marauder_successor_fleet = yes
 				event_target:second_marauder_system = {
 					prev = { create_marauder_fleet = yes }
@@ -12692,11 +12705,11 @@ country_event = {
 							assign_leader = leader
 						}
 					}
-					fleet_event = { id = khan.611 days = -1 }
+					fleet_event = { id = khan.611 }
 				}
 				event_target:restored_marauders_3 = {
 					owner_species = { save_event_target_as = marauder_species }
-					country_event = { id = khan.306 days = -1 }
+					country_event = { id = khan.306 }
 					# create_marauder_successor_fleet = yes
 					event_target:third_marauder_system = {
 						prev = { create_marauder_fleet = yes }
@@ -13055,7 +13068,7 @@ country_event = {
 					assign_leader = leader
 				}
 			}
-			fleet_event = { id = khan.611 days = -1 }
+			fleet_event = { id = khan.611 }
 		}
 		save_event_target_as = former_owner
 		every_owned_starbase = {
@@ -13118,7 +13131,7 @@ country_event = {
 											assign_leader = leader
 										}
 									}
-									fleet_event = { id = khan.611 days = -1 }
+									fleet_event = { id = khan.611 }
 								}
 							}
 							# destroy_country
@@ -13138,7 +13151,7 @@ country_event = {
 				steal_relic = { target = root relic = all }
 			}
 			owner_species = { save_event_target_as = marauder_species }
-			country_event = { id = khan.306 days = -1 }
+			country_event = { id = khan.306 }
 			# create_marauder_successor_fleet = yes
 			save_event_target_as = new_khanate
 		}
@@ -13398,7 +13411,7 @@ country_event = {
 	}
 
 	after = {
-		country_event = { id = marauder.609 days = -1 } # Fully handover
+		country_event = { id = marauder.609 } # Fully handover
 		# Try workaround for strange fleet behavior
 		event_target:restored_marauders = {
 			every_owned_fleet = {
