@@ -89,6 +89,7 @@ planet_event = {
 			# days = 1
 		}
 	}
+
 	option = {
 		name = PECULIAR
 	}
@@ -162,6 +163,7 @@ planet_event = {
 country_event = {
 	id = distar.5003
 	title = distar.5001.name
+
 	desc = {
 		text = distar.5001.desc.a
 		trigger = {
@@ -191,6 +193,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = distar.5001.a
 		custom_tooltip = distar.5001.a.tooltip
@@ -245,6 +248,7 @@ planet_event = {
 country_event = {
 	id = distar.5005
 	title = distar.5002.name
+
 	desc = {
 		text = distar.5002.desc.a
 		trigger = {
@@ -274,6 +278,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = distar.5002.a
 		custom_tooltip = distar.5001.a.tooltip
@@ -405,6 +410,7 @@ planet_event = {
 country_event = {
 	id = distar.5007
 	title = distar.5003.name
+
 	desc = {
 		text = distar.5003.desc.a
 		trigger = {
@@ -443,6 +449,7 @@ country_event = {
 	immediate = {
 		set_country_flag = encountered_hatchling
 	}
+
 	option = {
 		name = distar.5003.a
 	}
@@ -452,6 +459,7 @@ country_event = {
 country_event = {
 	id = distar.5013
 	title = distar.5013.name
+
 	desc = {
 		text = distar.5013.desc.a
 		trigger = {
@@ -502,6 +510,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = distar.5013.a
 		trigger = {
@@ -598,6 +607,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:hatchling_egg
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 	}
@@ -663,6 +673,7 @@ fleet_event = {
 			country_event = { id = story.8 days = 15 }
 		}
 	}
+
 	option = {
 		name = distar.5011.a
 	}
@@ -705,6 +716,7 @@ country_event = {
 			end_curator_chain = yes
 		}
 	}
+
 	option = {
 		name = distar.5009.a
 		event_target:hatchling_egg = {
@@ -786,6 +798,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = { num_owned_planets > 0 }
@@ -806,6 +819,7 @@ country_event = {
 country_event = {
 	id = distar.5016
 	title = "distar.218.name"
+
 	desc = {
 		trigger = { is_hive_empire = no is_machine_empire = no }
 		text = "distar.5016.desc.regular"
@@ -821,6 +835,7 @@ country_event = {
 
 	location = event_target:hatchling_egg
 	is_triggered_only = yes
+
 	picture = {
 		trigger = { is_machine_empire = no }
 		picture = GFX_evt_necromancy
@@ -831,6 +846,7 @@ country_event = {
 	}
 
 	show_sound = event_space_whale
+
 	option = {
 		name = "it_hungers"
 		create_fleet = {
@@ -864,6 +880,7 @@ country_event = {
 country_event = {
 	id = distar.5012
 	title = distar.5012.name
+
 	desc = {
 		text = distar.5012.desc
 		trigger = { can_harvest_dna = no }
@@ -877,6 +894,7 @@ country_event = {
 	show_sound = event_laboratory_sound
 	location = event_target:hatchling_egg
 	is_triggered_only = yes
+
 	option = {
 		trigger = { can_harvest_dna = no }
 		name = EXCELLENT
@@ -959,6 +977,7 @@ country_event = {
 country_event = {
 	id = distar.9000
 	title = distar.9000.name
+
 	desc = {
 		trigger = { has_country_flag = lcluster_clue_sonic }
 		text = distar.9000.lcluster_clue_sonic
@@ -993,6 +1012,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FORTUITOUS
 		generate_lcluster_clue = yes
@@ -1030,6 +1050,7 @@ country_event = {
 	picture = GFX_evt_binary_stars
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = "distar.10901.a"
 		hidden_effect = {
@@ -1099,6 +1120,7 @@ country_event = {
 	immediate = {
 		observer_event = { id = observer.61 }
 	}
+
 	option = {
 		name = GOOD
 		if = { # You can only research to open it if it has not been opened already
@@ -1124,6 +1146,7 @@ country_event = {
 			solar_system = { save_event_target_as = candidate_gateway_system }
 		}
 	}
+
 	option = {
 		name = "distar.10905.a"
 		event_target:candidate_gateway = {
@@ -1236,6 +1259,7 @@ country_event = {
 	show_sound = event_activating_unknown_technology
 	location = event_target:candidate_gateway
 	is_triggered_only = yes
+
 	option = {
 		name = "distar.10951.a"
 	}
@@ -1254,6 +1278,7 @@ country_event = {
 		# abort_special_project = { type = LCLUSTER_PROJECT }
 		liquidate_clues = yes # get compensation
 	}
+
 	option = {
 		name = "distar.10952.a"
 	}
@@ -1271,6 +1296,7 @@ country_event = {
 	immediate = {
 		liquidate_clues = yes
 	}
+
 	option = {
 		name = "distar.10953.a"
 	}
@@ -1284,6 +1310,7 @@ country_event = {
 	picture = GFX_evt_surreal_visions
 	show_sound = event_alien_signal
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 	}
@@ -1356,6 +1383,7 @@ country_event = {
 	picture = GFX_evt_l-gateway
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
+
 	option = {
 		name = distar.10956.a
 	}
@@ -1709,6 +1737,7 @@ country_event = {
 country_event = {
 	id = distar.13010
 	title = distar.13010.name
+
 	desc = {
 		text = distar.13010.desc.IOpened
 		trigger = { has_country_flag = lcluster_opener }
@@ -1726,6 +1755,7 @@ country_event = {
 		set_country_flag = ldragon_known
 		observer_event = { id = observer.63 }
 	}
+
 	option = {
 		name = distar.13010.a.homicidal
 		exclusive_trigger = { is_homicidal = yes }
@@ -1754,6 +1784,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = distar.13011.a
 	}
@@ -1763,6 +1794,7 @@ country_event = {
 country_event = {
 	id = distar.13020
 	title = distar.13020.name
+
 	desc = {
 		text = distar.13020.desc.LDragonKnown
 		trigger = { has_country_flag = ldragon_known }
@@ -1782,6 +1814,7 @@ country_event = {
 		is_country_type = default
 		from = { is_country_type = ldragon_country }
 	}
+
 	option = {
 		name = distar.13020.a
 		trigger = {
@@ -1851,6 +1884,7 @@ fleet_event = {
 	immediate = {
 		from = { set_star_flag = visited_dragon_point@root.owner }
 	}
+
 	option = {
 		# enable special project
 		name = distar.13030.a
@@ -1893,6 +1927,7 @@ country_event = {
 		event_target:ldrake@fromfrom.solar_system = { set_owner = root }
 		clear_global_event_target = ldrake@fromfrom.solar_system
 	}
+
 	option = {
 		name = INTERESTING
 		fromfrom.solar_system = { custom_tooltip = distar.13035.a.tooltip }
@@ -2029,6 +2064,7 @@ country_event = {
 		set_country_flag = encountered_first_wormhole
 		add_seen_bypass_type = wormhole
 	}
+
 	option = {
 		name = apoc.5.a
 	}
@@ -2037,6 +2073,7 @@ country_event = {
 country_event = {
 	id = distar.13070
 	title = "apoc.1.name"
+
 	desc = {
 		text = apoc.1.desc
 		trigger = {
@@ -2069,6 +2106,7 @@ country_event = {
 		set_country_flag = encountered_first_gateway
 		add_seen_bypass_type = gateway
 	}
+
 	option = {
 		name = INTRIGUING
 	}
@@ -2077,6 +2115,7 @@ country_event = {
 country_event = {
 	id = distar.13080
 	title = "apoc.1.name"
+
 	desc = {
 		text = apoc.3.desc
 		trigger = {
@@ -2110,6 +2149,7 @@ country_event = {
 		from = { save_event_target_as = gateway_system }
 		set_country_flag = encountered_first_lgate
 	}
+
 	option = {
 		name = INTRIGUING
 		start_lcluster_chain = yes

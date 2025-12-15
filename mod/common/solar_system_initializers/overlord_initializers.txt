@@ -9,6 +9,7 @@
 salvager_enclave_init_01 = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { has_overlord_dlc = yes add = @spawn_system_extreme }
@@ -23,7 +24,9 @@ salvager_enclave_init_01 = {
 
 	max_instances = 1
 	spawn_chance = 100 # Guaranteed, assuming usage_odds passes
+
 	flags = { salvager_enclave_system enclave }
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 85
@@ -32,6 +35,7 @@ salvager_enclave_init_01 = {
 		type = rocky_asteroid_belt
 		radius = 195
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -45,6 +49,7 @@ salvager_enclave_init_01 = {
 	}
 
 	change_orbit = 50
+
 	planet = {
 		count = 1
 		class = pc_barren
@@ -56,6 +61,7 @@ salvager_enclave_init_01 = {
 	}
 
 	change_orbit = 40
+
 	planet = {
 		count = 1
 		class = rl_unhabitable_planets
@@ -90,6 +96,7 @@ salvager_enclave_init_01 = {
 	}
 
 	change_orbit = 35
+
 	planet = {
 		count = 2
 		class = pc_asteroid
@@ -100,6 +107,7 @@ salvager_enclave_init_01 = {
 			create_ambient_object = { type = small_debris_object }
 		}
 	}
+
 	init_effect = {
 		if = {
 			limit = { is_inside_nebula = no }
@@ -118,6 +126,7 @@ salvager_enclave_init_01 = {
 salvager_enclave_init_02 = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { has_overlord_dlc = yes add = @spawn_system_extreme }
@@ -138,11 +147,14 @@ salvager_enclave_init_02 = {
 
 	max_instances = 1
 	scaled_spawn_chance = 16 # scales by galaxy size (1000 stars = 10x base)
+
 	flags = { salvager_enclave_system enclave }
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 125
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -156,6 +168,7 @@ salvager_enclave_init_02 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = 1
 		class = rl_unhabitable_planets
@@ -164,6 +177,7 @@ salvager_enclave_init_02 = {
 	}
 
 	change_orbit = 20
+
 	planet = {
 		count = 3
 		class = pc_asteroid
@@ -171,6 +185,7 @@ salvager_enclave_init_02 = {
 	}
 
 	change_orbit = 15
+
 	planet = {
 		count = 1
 		class = pc_barren
@@ -205,6 +220,7 @@ salvager_enclave_init_02 = {
 	}
 
 	change_orbit = 90
+
 	planet = {
 		count = 1
 		class = pc_gas_giant
@@ -233,6 +249,7 @@ salvager_enclave_init_02 = {
 			}
 		}
 	}
+
 	init_effect = {
 	}
 }
@@ -241,6 +258,7 @@ salvager_enclave_init_02 = {
 salvager_enclave_init_03 = {
 	class = "sc_black_hole"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { has_overlord_dlc = yes add = @spawn_system_extreme }
@@ -261,7 +279,9 @@ salvager_enclave_init_03 = {
 
 	max_instances = 1
 	scaled_spawn_chance = 12 # scales by galaxy size (1000 stars = 10x base)
+
 	flags = { salvager_enclave_system enclave }
+
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -302,6 +322,7 @@ salvager_enclave_init_03 = {
 			}
 		}
 	}
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 55
@@ -312,6 +333,7 @@ salvager_enclave_init_03 = {
 	}
 
 	change_orbit = 65
+
 	planet = {
 		class = pc_broken
 		size = 14
@@ -343,6 +365,7 @@ salvager_enclave_init_03 = {
 	}
 
 	change_orbit = 35
+
 	planet = {
 		count = 3
 		class = pc_asteroid
@@ -353,6 +376,7 @@ salvager_enclave_init_03 = {
 	}
 
 	change_orbit = 35
+
 	planet = {
 		class = pc_broken
 		size = 14
@@ -378,6 +402,7 @@ salvager_enclave_init_03 = {
 	}
 
 	change_orbit = 15
+
 	planet = {
 		class = pc_broken
 		size = 14
@@ -397,6 +422,7 @@ salvager_enclave_init_03 = {
 shroudwalker_enclave_init_01 = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { potential_shroudwalker_enclave = yes add = @spawn_system_enclave }
@@ -411,7 +437,9 @@ shroudwalker_enclave_init_01 = {
 
 	max_instances = 1
 	spawn_chance = 100 # Guaranteed, assuming usage_odds passes
+
 	flags = { shroudwalker_enclave_system enclave }
+
 	planet = {
 		count = 1
 		class = star
@@ -434,6 +462,7 @@ shroudwalker_enclave_init_01 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = 1
 		orbit_distance = 100
@@ -472,6 +501,7 @@ shroudwalker_enclave_init_01 = {
 			add_deposit = d_zro_deposit_5
 		}
 	}
+
 	init_effect = {
 		if = {
 			limit = { exists = event_target:shroudwalker_enclave_country }
@@ -491,6 +521,7 @@ shroudwalker_enclave_init_01 = {
 shroudwalker_enclave_init_02 = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { potential_shroudwalker_enclave = yes add = @spawn_system_extreme }
@@ -505,11 +536,14 @@ shroudwalker_enclave_init_02 = {
 
 	max_instances = 1
 	scaled_spawn_chance = 16	# scales by galaxy size (1000 stars = 10x base)
+
 	flags = { shroudwalker_enclave_system enclave }
+
 	asteroid_belt = {
 		type = crystal_asteroid_belt
 		radius = 125
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -520,6 +554,7 @@ shroudwalker_enclave_init_02 = {
 	}
 
 	change_orbit = 30
+
 	planet = {
 		count = 1
 		orbit_distance = 50
@@ -569,6 +604,7 @@ shroudwalker_enclave_init_02 = {
 			add_deposit = d_zro_deposit_5
 		}
 	}
+
 	init_effect = {
 		if = {
 			limit = {
@@ -599,6 +635,7 @@ shroudwalker_enclave_init_02 = {
 shroudwalker_enclave_init_03 = {
 	class = "sc_a"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { potential_shroudwalker_enclave = yes add = @spawn_system_extreme }
@@ -613,7 +650,9 @@ shroudwalker_enclave_init_03 = {
 
 	max_instances = 1
 	scaled_spawn_chance = 12	# scales by galaxy size (1000 stars = 10x base)
+
 	flags = { shroudwalker_enclave_system enclave }
+
 	asteroid_belt = {
 		type = crystal_asteroid_belt
 		radius = 30
@@ -626,6 +665,7 @@ shroudwalker_enclave_init_03 = {
 		type = crystal_asteroid_belt
 		radius = 155
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -636,6 +676,7 @@ shroudwalker_enclave_init_03 = {
 	}
 
 	change_orbit = 70
+
 	planet = {
 		count = 5
 		class = pc_rare_crystal_asteroid
@@ -645,6 +686,7 @@ shroudwalker_enclave_init_03 = {
 	}
 
 	change_orbit = 20
+
 	planet = {
 		class = pc_shrouded
 		orbit_angle = { min = 90 max = 270 }
@@ -692,6 +734,7 @@ shroudwalker_enclave_init_03 = {
 			add_deposit = d_zro_deposit_5
 		}
 	}
+
 	init_effect = {
 		if = {
 			limit = {
@@ -757,6 +800,7 @@ shroudwalker_enclave_init_03 = {
 broken_shroudwalker_init_01 = {
 	class = "sc_trinary_2"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = { potential_shroudwalker_enclave = yes add = @spawn_system_extreme }
@@ -771,7 +815,9 @@ broken_shroudwalker_init_01 = {
 
 	max_instances = 1
 	spawn_chance = 33
+
 	flags = { broken_shroudwalker_enclave }
+
 	planet = {
 		name = "NAME_Mesembria"
 		class = star
@@ -802,6 +848,7 @@ broken_shroudwalker_init_01 = {
 			}
 		}
 	}
+
 	asteroid_belt = {
 		type = crystal_asteroid_belt
 		radius = 20
@@ -822,6 +869,7 @@ broken_shroudwalker_init_01 = {
 		type = crystal_asteroid_belt
 		radius = 65
 	}
+
 	planet = {
 		name = "NAME_Auge"
 		count = 1
@@ -915,7 +963,9 @@ broken_shroudwalker_init_01 = {
 quantum_catapult_init_01 = {
 	class = sc_pulsar
 	usage = misc_system_init
+
 	flags = { ruined_catapult_system }
+
 	usage_odds = {
 		base = @spawn_system_extreme
 		modifier = { factor = 0 has_overlord_dlc = no }
@@ -923,6 +973,7 @@ quantum_catapult_init_01 = {
 
 	max_instances = 1
 	scaled_spawn_chance = 4
+
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -933,6 +984,7 @@ quantum_catapult_init_01 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 1 max = 6 }
 		orbit_distance = 20
@@ -944,6 +996,7 @@ quantum_catapult_init_01 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		spawn_megastructure = {
 			type = "quantum_catapult_ruined"
@@ -989,13 +1042,16 @@ quantum_catapult_init_01 = {
 # Ruined Orbital Ring
 orbital_ring_init_01 = {
 	class = "rl_binary_stars"
+
 	asteroid_belt = {
 		type = icy_asteroid_belt
 		radius = 145
 	}
+
 	flags = { ruined_orbital_ring_system }
 
 	usage = misc_system_init
+
 	usage_odds = {
 		base = @spawn_system_extreme
 		modifier = {
@@ -1016,6 +1072,7 @@ orbital_ring_init_01 = {
 
 	max_instances = 1
 	scaled_spawn_chance = 8	# by galaxy size
+
 	planet = {
 		count = 1
 		class = star
@@ -1064,6 +1121,7 @@ orbital_ring_init_01 = {
 		orbit_distance = 20
 		orbit_angle = { min = 90 max = 270 }
 	}
+
 	init_effect = {
 		spawn_megastructure = {
 			type = "orbital_ring_ruined"
@@ -1098,12 +1156,15 @@ orbital_ring_init_01 = {
 overlord_system_init = {
 	class = "sc_pulsar"
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0 # Spawned via imperial_origin_start_effect in 01_start_of_game_effects.txt
 	}
 
 	max_instances = 1
+
 	flags = { overlord_empire_flag overlord_system_1_flag }
+
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -1366,6 +1427,7 @@ overlord_system_init = {
 		orbit_distance = 25
 		orbit_angle = { min = 40 max = 100 }
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starhold"
@@ -1400,6 +1462,7 @@ overlord_system_init = {
 			orbit_angle = 360		# range of the randomization
 		}
 	}
+
 	neighbor_system = {
 		hyperlane_jumps = { min = 1 max = 3 }
 		initializer = "overlord_system_2_init"
@@ -1449,7 +1512,9 @@ overlord_system_init = {
 # Empire second system
 overlord_system_2_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_system_2_flag }
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 40
@@ -1458,6 +1523,7 @@ overlord_system_2_init = {
 		type = rocky_asteroid_belt
 		radius = 175
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -1582,6 +1648,7 @@ overlord_system_2_init = {
 		orbit_distance = 25
 		orbit_angle = { min = 40 max = 100 }
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starhold"
@@ -1614,11 +1681,14 @@ overlord_system_2_init = {
 # Empire third system
 overlord_system_3_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_system_3_flag }
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 35
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -1629,6 +1699,7 @@ overlord_system_3_init = {
 	}
 
 	change_orbit = 30
+
 	planet = {
 		count = 2
 		class = pc_asteroid
@@ -1727,6 +1798,7 @@ overlord_system_3_init = {
 		orbit_distance = 25
 		orbit_angle = { min = 40 max = 100 }
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starhold"
@@ -1759,7 +1831,9 @@ overlord_system_3_init = {
 # First vassal
 overlord_system_4_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_system_4_flag }
+
 	planet = {
 		count = 1
 		class = star
@@ -1959,6 +2033,7 @@ overlord_system_4_init = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starport"
@@ -1988,7 +2063,9 @@ overlord_system_4_init = {
 # Second vassal
 overlord_system_5_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_system_5_flag }
+
 	planet = {
 		count = 1
 		class = star
@@ -2189,6 +2266,7 @@ overlord_system_5_init = {
 		orbit_distance = 15
 		orbit_angle = { min = 40 max = 100 }
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starport"
@@ -2218,7 +2296,9 @@ overlord_system_5_init = {
 # Third vassal
 overlord_system_6_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_system_6_flag }
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 125
@@ -2227,6 +2307,7 @@ overlord_system_6_init = {
 		type = rocky_asteroid_belt
 		radius = 200
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -2415,6 +2496,7 @@ overlord_system_6_init = {
 		orbit_distance = { min = 1 max = 3 }
 		orbit_angle = { min = 40 max = 100 }
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starport"
@@ -2444,7 +2526,9 @@ overlord_system_6_init = {
 # Fourth vassal
 overlord_system_7_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_system_7_flag }
+
 	planet = {
 		count = 1
 		class = star
@@ -2453,10 +2537,12 @@ overlord_system_7_init = {
 		size = { min = 20 max = 30 }
 		has_ring = no
 	}
+
 	asteroid_belt = {
 		type = icy_asteroid_belt
 		radius = 150
 	}
+
 	planet = {
 		count = { min = 0 max = 2 }
 		orbit_distance = 35
@@ -2471,6 +2557,7 @@ overlord_system_7_init = {
 	}
 
 	change_orbit = 10
+
 	planet = {
 		count = { min = 3 max = 4 }
 		class = pc_asteroid
@@ -2668,6 +2755,7 @@ overlord_system_7_init = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starport"
@@ -2697,7 +2785,9 @@ overlord_system_7_init = {
 # Overlord Colonies
 overlord_system_8_init = {
 	class = "rl_standard_stars"
+
 	flags = { overlord_empire_flag overlord_colony_flag }
+
 	planet = {
 		count = 1
 		class = star
@@ -2706,6 +2796,7 @@ overlord_system_8_init = {
 		size = { min = 20 max = 30 }
 		has_ring = no
 	}
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = { min = 35 max = 55 }
@@ -2725,6 +2816,7 @@ overlord_system_8_init = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = 1
 		orbit_distance = 25
@@ -2799,12 +2891,14 @@ overlord_system_8_init = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 1 max = 3 }
 		orbit_distance = 25
 		class = random_non_colonizable
 		orbit_angle = { min = 90 max = 270 }
 	}
+
 	init_effect = {
 		create_starbase = {
 			size = "starbase_starhold"

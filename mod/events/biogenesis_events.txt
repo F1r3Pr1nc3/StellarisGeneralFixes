@@ -127,6 +127,7 @@ situation_event = {
 situation_event = {
 	id = bio.5
 	title = bio.5.name
+
 	desc = {
 		trigger = {
 			owner = { has_one_genetic_ascension_choice = yes }
@@ -148,6 +149,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.5.a
 		trigger = {
@@ -185,6 +187,7 @@ situation_event = {
 		set_situation_approach = genetic_ascension_approach_mutation
 		owner = { give_mutation_unlocks_effect = yes }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 		custom_tooltip = genomic_facility_needed_tt
@@ -208,6 +211,7 @@ situation_event = {
 situation_event = {
 	id = bio.10
 	title = bio.10.name
+
 	desc = {
 		trigger = {
 			owner = { has_one_genetic_ascension_choice = yes }
@@ -240,6 +244,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = bio.10.a
 		trigger = {
@@ -280,6 +285,7 @@ situation_event = {
 		owner = { give_mutation_unlocks_effect = yes }
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 		owner = {
@@ -299,6 +305,7 @@ situation_event = {
 situation_event = {
 	id = bio.15
 	title = bio.15.name
+
 	desc = {
 		trigger = {
 			owner = { has_one_genetic_ascension_choice = yes }
@@ -323,6 +330,7 @@ situation_event = {
 		remove_situation_flag = cloning_approach_selected
 		remove_situation_flag = mutation_approach_selected
 	}
+
 	option = {
 		name = bio.15.a
 		trigger = {
@@ -363,6 +371,7 @@ situation_event = {
 		owner = { give_mutation_unlocks_effect = yes }
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -372,6 +381,7 @@ situation_event = {
 situation_event = {
 	id = bio.20
 	title = bio.20.name
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_origin = origin_evolutionary_predators } }
@@ -393,6 +403,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.20.a
 		trigger = {
@@ -459,6 +470,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		destroy_situation = this
 		remove_situation_flag = situation_biogenesis_pause
@@ -470,6 +482,7 @@ situation_event = {
 situation_event = {
 	id = bio.25
 	title = bio.25.name
+
 	desc = {
 		trigger = {
 			owner = { has_one_genetic_ascension_choice = yes }
@@ -491,6 +504,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.25.a
 		trigger = {
@@ -533,6 +547,7 @@ situation_event = {
 		owner = { give_mutation_unlocks_effect = yes }
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 		if = {
@@ -548,6 +563,7 @@ situation_event = {
 situation_event = {
 	id = bio.30
 	title = bio.30.name
+
 	desc = {
 		trigger = {
 			owner = { has_one_genetic_ascension_choice = yes }
@@ -580,6 +596,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = bio.30.a
 		trigger = {
@@ -622,6 +639,7 @@ situation_event = {
 		owner = { give_mutation_unlocks_effect = yes }
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 		owner = {
@@ -641,6 +659,7 @@ situation_event = {
 situation_event = {
 	id = bio.35
 	title = bio.35.name
+
 	desc = {
 		trigger = {
 			owner = { has_one_genetic_ascension_choice = yes }
@@ -665,6 +684,7 @@ situation_event = {
 		remove_situation_flag = cloning_approach_selected
 		remove_situation_flag = mutation_approach_selected
 	}
+
 	option = {
 		name = bio.35.a
 		trigger = {
@@ -707,6 +727,7 @@ situation_event = {
 		owner = { give_mutation_unlocks_effect = yes }
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -716,6 +737,7 @@ situation_event = {
 situation_event = {
 	id = bio.40
 	title = bio.40.name
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_origin = origin_evolutionary_predators } }
@@ -737,6 +759,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.40.a
 		trigger = {
@@ -811,6 +834,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		destroy_situation = this
 		remove_situation_flag = situation_biogenesis_pause
@@ -839,6 +863,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_50_fire
 	}
+
 	option = {
 		name = bio.50.a
 		owner = {
@@ -883,6 +908,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -910,6 +936,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_55_fire
 	}
+
 	option = {
 		name = bio.55.a
 		owner = {
@@ -930,6 +957,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -957,6 +985,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_60_fire
 	}
+
 	option = {
 		name = bio.60.a
 		owner = {
@@ -977,6 +1006,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1001,6 +1031,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_65_fire
 	}
+
 	option = {
 		name = bio.65.a
 		owner = {
@@ -1031,6 +1062,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1048,6 +1080,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.66.a
 		owner = {
@@ -1068,6 +1101,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1085,6 +1119,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.67.a
 		owner = {
@@ -1111,6 +1146,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1166,6 +1202,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = bio.70.a
 		event_target:two_for_one_leader = {
@@ -1196,6 +1233,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1227,6 +1265,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_75_fire
 	}
+
 	option = {
 		name = bio.75.a
 		owner = {
@@ -1247,6 +1286,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1274,6 +1314,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_80_fire
 	}
+
 	option = {
 		name = bio.80.a
 		owner = {
@@ -1332,6 +1373,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1359,6 +1401,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_85_fire
 	}
+
 	option = {
 		name = bio.85.a
 		owner = {
@@ -1412,6 +1455,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1429,6 +1473,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.86.a
 		owner = {
@@ -1466,6 +1511,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1493,6 +1539,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_90_fire
 	}
+
 	option = {
 		name = bio.90.a
 		owner = {
@@ -1521,6 +1568,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1548,6 +1596,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_95_fire
 	}
+
 	option = {
 		name = bio.95.a
 		owner = {
@@ -1575,6 +1624,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1617,6 +1667,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_100_fire
 	}
+
 	option = {
 		name = bio.100.a
 		custom_tooltip = bio.100.a.tt
@@ -1739,6 +1790,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1763,6 +1815,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_105_fire
 	}
+
 	option = {
 		name = bio.105.a
 		owner = {
@@ -1806,6 +1859,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1833,6 +1887,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_110_fire
 	}
+
 	option = {
 		name = bio.110.a
 		owner = {
@@ -1853,6 +1908,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1881,6 +1937,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_115_fire
 	}
+
 	option = {
 		name = bio.115.a
 		owner = {
@@ -1928,6 +1985,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -1955,6 +2013,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_120_fire
 	}
+
 	option = {
 		name = bio.120.a
 		owner = {
@@ -1981,6 +2040,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2005,6 +2065,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_125_fire
 	}
+
 	option = {
 		name = bio.125.a
 		owner = {
@@ -2025,6 +2086,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2051,6 +2113,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_130_fire
 	}
+
 	option = {
 		name = bio.130.a
 		owner = {
@@ -2096,6 +2159,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2123,6 +2187,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_135_fire
 	}
+
 	option = {
 		name = bio.135.a
 		owner = {
@@ -2152,6 +2217,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2179,6 +2245,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_140_fire
 	}
+
 	option = {
 		name = bio.140.a
 		owner = {
@@ -2214,6 +2281,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2238,6 +2306,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_145_fire
 	}
+
 	option = {
 		name = bio.145.a
 		owner = {
@@ -2258,6 +2327,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2284,6 +2354,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_150_fire
 	}
+
 	option = {
 		name = bio.150.a
 		owner = {
@@ -2313,6 +2384,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2330,6 +2402,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = situation_biogenesis_pause
 	}
+
 	option = {
 		name = bio.151.a
 		owner = {
@@ -2337,6 +2410,7 @@ situation_event = {
 			add_modifier = { modifier = positively_glowing years = 4 }
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2364,6 +2438,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_155_fire
 	}
+
 	option = {
 		name = bio.155.a
 		owner = {
@@ -2378,6 +2453,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2405,6 +2481,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_160_fire
 	}
+
 	option = {
 		name = bio.160.a
 		owner = {
@@ -2463,6 +2540,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2487,6 +2565,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_165_fire
 	}
+
 	option = {
 		name = bio.165.a
 		owner = {
@@ -2513,6 +2592,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2527,6 +2607,7 @@ country_event = {
 	picture = GFX_evt_genetic_modification
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = bio.170.a
 		owner = {
@@ -2587,6 +2668,7 @@ country_event = {
 	option = {
 		name = bio.170.b
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2676,6 +2758,7 @@ country_event = {
 	picture = GFX_evt_genetic_modification
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = bio.175.a
 		custom_tooltip = bio.175.a.tt
@@ -2696,6 +2779,7 @@ country_event = {
 	option = {
 		name = bio.175.b
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2719,6 +2803,7 @@ country_event = {
 	picture = GFX_evt_genetic_ascension_mutation
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = bio.180.a
 		custom_tooltip = bio.180.a.tt
@@ -2789,6 +2874,7 @@ country_event = {
 	option = {
 		name = bio.180.b
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2812,6 +2898,7 @@ country_event = {
 	picture = GFX_evt_genetic_modification
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = bio.185.a
 		custom_tooltip = bio.185.a.tt
@@ -2835,6 +2922,7 @@ country_event = {
 	picture = GFX_evt_genetic_modification
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = bio.190.a
 		custom_tooltip = bio.190.a.tt
@@ -2864,6 +2952,7 @@ country_event = {
 	picture = GFX_evt_genetic_ascension_mutation
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = bio.195.a
 		owner = {
@@ -2918,6 +3007,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_200_fire
 	}
+
 	option = {
 		name = bio.200.a
 		owner = {
@@ -2939,6 +3029,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -2962,6 +3053,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_210_fire
 	}
+
 	option = {
 		name = bio.210.a
 		owner = {
@@ -2977,6 +3069,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3001,6 +3094,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_215_fire
 	}
+
 	option = {
 		name = bio.215.a
 		owner = {
@@ -3016,6 +3110,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3056,6 +3151,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	option = {
 		name = bio.220.a
 		custom_tooltip = bio.220.a.tt
@@ -3096,6 +3192,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3119,6 +3216,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_225_fire
 	}
+
 	option = {
 		name = bio.225.a
 		owner = {
@@ -3151,6 +3249,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3181,6 +3280,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_230_fire
 	}
+
 	option = {
 		name = bio.230.a
 		owner = {
@@ -3195,6 +3295,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3218,6 +3319,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_235_fire
 	}
+
 	option = {
 		name = bio.235.a
 		custom_tooltip = bio.235.a.tt
@@ -3233,6 +3335,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3260,6 +3363,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_240_fire
 	}
+
 	option = {
 		name = bio.240.a
 		owner = {
@@ -3283,6 +3387,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3310,6 +3415,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_250_fire
 	}
+
 	option = {
 		name = bio.250.a
 		owner = {
@@ -3324,6 +3430,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3350,6 +3457,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_260_fire
 	}
+
 	option = {
 		name = bio.260.a
 		owner = {
@@ -3387,6 +3495,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3410,6 +3519,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_265_fire
 	}
+
 	option = {
 		name = bio.265.a
 		owner = {
@@ -3450,6 +3560,7 @@ situation_event = {
 		ai_chance = { factor = 1 }
 		add_situation_progress = 50
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3473,6 +3584,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_270_fire
 	}
+
 	option = {
 		name = bio.270.a
 		owner = {
@@ -3491,6 +3603,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3514,6 +3627,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_280_fire
 	}
+
 	option = {
 		name = bio.280.a
 		owner = {
@@ -3555,6 +3669,7 @@ situation_event = {
 		custom_tooltip = bio_280_opinion_tt
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3583,6 +3698,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_295_fire
 	}
+
 	option = {
 		name = bio.295.a
 		owner = {
@@ -3604,6 +3720,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3658,6 +3775,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = bio.300.a
 		event_target:genius_geneticist = {
@@ -3690,6 +3808,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3719,6 +3838,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_310_fire
 	}
+
 	option = {
 		name = bio.310.a
 		owner = {
@@ -3749,6 +3869,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3772,6 +3893,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_315_fire
 	}
+
 	option = {
 		name = bio.315.a
 		owner = {
@@ -3786,6 +3908,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3795,6 +3918,7 @@ situation_event = {
 	id = bio.325
 	title = "bio.325.name"
 	desc = "bio.325.desc"
+
 	desc = {
 		text = "bio.325.desc.wilderness"
 		exclusive_trigger = {
@@ -3816,6 +3940,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_325_fire
 	}
+
 	option = {
 		name = bio.325.a
 		owner = {
@@ -3836,6 +3961,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3859,6 +3985,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_330_fire
 	}
+
 	option = {
 		name = bio.330.a
 		owner = {
@@ -3882,6 +4009,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3905,6 +4033,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_335_fire
 	}
+
 	option = {
 		name = bio.335.a
 		owner = {
@@ -3939,6 +4068,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -3965,6 +4095,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_340_fire
 	}
+
 	option = {
 		name = bio.340.a
 		owner = {
@@ -3979,6 +4110,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4002,6 +4134,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_350_fire
 	}
+
 	option = {
 		name = bio.350.a
 		custom_tooltip = bio.350.a.tt
@@ -4033,6 +4166,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4056,6 +4190,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_365_fire
 	}
+
 	option = {
 		name = bio.365.a
 		owner = {
@@ -4070,6 +4205,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4096,6 +4232,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_375_fire
 	}
+
 	option = {
 		name = bio.375.a
 		owner = {
@@ -4129,6 +4266,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4152,6 +4290,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_380_fire
 	}
+
 	option = {
 		name = bio.380.a
 		owner = {
@@ -4166,6 +4305,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4189,6 +4329,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_385_fire
 	}
+
 	option = {
 		name = bio.385.a
 		owner = {
@@ -4204,6 +4345,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4227,6 +4369,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_390_fire
 	}
+
 	option = {
 		name = bio.390.a
 		owner = {
@@ -4241,6 +4384,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4266,6 +4410,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_405_fire
 	}
+
 	option = {
 		name = bio.405.a
 		owner = {
@@ -4297,6 +4442,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4306,6 +4452,7 @@ situation_event = {
 	id = bio.410
 	title = "bio.410.name"
 	desc = "bio.410.desc"
+
 	desc = {
 		text = "bio.410.desc.wilderness"
 		exclusive_trigger = {
@@ -4326,6 +4473,7 @@ situation_event = {
 		set_situation_flag = situation_biogenesis_pause
 		set_situation_flag = biogenesis_410_fire
 	}
+
 	option = {
 		name = bio.410.a
 		owner = {
@@ -4342,6 +4490,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 1 }
 	}
+
 	after = {
 		remove_situation_flag = situation_biogenesis_pause
 	}
@@ -4769,6 +4918,7 @@ espionage_operation_event = {
 	picture = GFX_evt_spy_network
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -4783,6 +4933,7 @@ espionage_operation_event = {
 	picture = GFX_evt_acquire_asset
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 	}
@@ -4797,6 +4948,7 @@ espionage_operation_event = {
 	picture = GFX_evt_hive_mind
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = LAUNCH_OPERATION
 		hidden_effect = {
@@ -4805,6 +4957,7 @@ espionage_operation_event = {
 			}
 		}
 	}
+
 	after = {
 		set_espionage_operation_progress_locked = no
 	}
@@ -4819,6 +4972,7 @@ country_event = {
 	location = from.target.capital_scope
 	show_sound = event_nem_asset_acquired_positive
 	is_triggered_only = yes
+
 	option = {
 		name = bio.815.a
 		custom_tooltip = bio.815.reminder
@@ -4933,6 +5087,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			owner = {
@@ -5162,6 +5317,7 @@ country_event = {
 country_event = {
 	id = bio.825
 	title = "bio.825.name"
+
 	desc = {
 		trigger = {
 			OR = {
@@ -5181,9 +5337,11 @@ country_event = {
 	picture = GFX_evt_vivisection
 	show_sound = event_red_alert
 	is_triggered_only = yes
+
 	option = {
 		name = BATTLESTATIONS
 	}
+
 	after = {
 		remove_country_flag = infiltrated_bodysnatcher_0@from
 		remove_country_flag = infiltrated_bodysnatcher_1@from
@@ -5202,6 +5360,7 @@ espionage_operation_event = {
 	picture = GFX_evt_spy_network
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -5215,6 +5374,7 @@ espionage_operation_event = {
 	picture = GFX_evt_conclave
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 	}
@@ -5228,6 +5388,7 @@ espionage_operation_event = {
 	picture = GFX_evt_conclave
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = LAUNCH_OPERATION
 		hidden_effect = {
@@ -5236,6 +5397,7 @@ espionage_operation_event = {
 			}
 		}
 	}
+
 	after = {
 		set_espionage_operation_progress_locked = no
 	}
@@ -5246,6 +5408,7 @@ espionage_operation_event = {
 country_event = {
 	id = bio.915
 	title = bio.915.name
+
 	desc = {
 		trigger = {
 			check_variable = { which = smuggle_pops_amount value <= 4 }
@@ -5280,6 +5443,7 @@ country_event = {
 		}
 		text = bio.915.desc.cosmogenesis.detected
 	}
+
 	picture = {
 		trigger = {
 			count_owned_planet = {
@@ -5337,6 +5501,7 @@ country_event = {
 			change_variable = { which = smuggle_pops_amount value = 2 }
 		}
 	}
+
 	option = { # regular
 		name = bio.915.a
 		custom_tooltip = bio.915.tt
@@ -5633,6 +5798,7 @@ country_event = {
 		}
 		from = { destroy_espionage_asset_government = yes }
 	}
+
 	after = {
 		hidden_effect = {
 			owner = {
@@ -5694,12 +5860,14 @@ fleet_event = {
 	location = from
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war.capital_scope
 		graphical_culture = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war
 	}
+
 	trigger = {
 		from = { has_star_flag = last_thought_system }
 		is_cloaked = no
@@ -5721,6 +5889,7 @@ fleet_event = {
 	immediate = {
 		owner = { set_country_flag = warned_about_last_thought }
 	}
+
 	option = {
 		name = bio.3000.a # Oh we will leave sorry about that
 		set_mia = mia_return_home
@@ -5745,12 +5914,14 @@ fleet_event = {
 	location = from
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war.capital_scope
 		graphical_culture = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war
 	}
+
 	trigger = {
 		from = { has_star_flag = last_thought_system }
 		is_cloaked = no
@@ -5776,6 +5947,7 @@ fleet_event = {
 	immediate = {
 		owner = { set_country_flag = pending_hive_fe_demand set_timed_country_flag = { flag = recent_entered_last_thought months = 6 } } # Ensuring that multiple fleets don't make the same event fire
 	}
+
 	option = {
 		name = bio.3005.a # Ah that was a bad idea
 		set_mia = mia_return_home
@@ -5857,6 +6029,7 @@ country_event = {
 	desc = bio.3105.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war
@@ -5864,6 +6037,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war.ruler
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -5896,6 +6070,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 		custom_tooltip = bio.3105.a.tooltip
@@ -5909,6 +6084,7 @@ country_event = {
 		name = bio.3105.b
 		custom_tooltip = bio.3105.a.tooltip
 	}
+
 	after = {
 		hidden_effect = {
 			change_variable = { which = war_experimental_count value = 1 }
@@ -5987,6 +6163,7 @@ country_event = {
 	desc = bio.3110.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war
@@ -5994,9 +6171,11 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war.ruler
 	}
+
 	trigger = {
 		exists = event_target:experimental_fleet
 	}
+
 	option = {
 		name = bio.3110.a
 		custom_tooltip = fallen_machine_empire_unhappy_task_tooltip
@@ -6007,6 +6186,7 @@ country_event = {
 			destroy_fleet = event_target:experimental_fleet
 		}
 	}
+
 	abort_trigger = {
 		NOT = { exists = event_target:experimental_fleet } # If you manage to kill it after the event fires we make it go away
 	}
@@ -6038,6 +6218,7 @@ country_event = {
 	desc = bio.3120.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war
@@ -6045,6 +6226,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war.ruler
 	}
+
 	option = {
 		name = DISCONCERTING
 		custom_tooltip = fallen_machine_empire_happy_task_tooltip
@@ -6105,6 +6287,7 @@ country_event = {
 country_event = {
 	id = bio.3130
 	title = bio.3130.name
+
 	desc = {
 		trigger = { has_truce = event_target:unfortunate_country }
 		text = bio.3130.desc.truce
@@ -6118,6 +6301,7 @@ country_event = {
 
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war
@@ -6125,6 +6309,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war.ruler
 	}
+
 	immediate = {
 		random_neighbor_country = {
 			limit = {
@@ -6161,6 +6346,7 @@ country_event = {
 		}
 		set_timed_country_flag = { flag = tasked_with_war days = 6400 }
 	}
+
 	option = {
 		name = bio.3130.a
 	}
@@ -6177,6 +6363,7 @@ country_event = {
 		}
 		name = bio.3130.a.militarist
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -6271,6 +6458,7 @@ country_event = {
 	desc = bio.3150.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_war
 		planet_background = event_target:fallen_empire_hive_war
@@ -6278,6 +6466,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_war
 		room = event_target:fallen_empire_hive_war.ruler
 	}
+
 	option = {
 		name = LUDICROUS
 	}
@@ -6294,6 +6483,7 @@ country_event = {
 		exclusive_trigger = { is_pacifist = yes }
 		name = bio.3150.a.pacifist
 	}
+
 	after = {
 		hidden_effect = {
 			set_timed_country_flag = { flag = tasked_with_peace years = 10 }
@@ -6379,6 +6569,7 @@ country_event = {
 	desc = bio.3205.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_growth
 		planet_background = event_target:fallen_empire_hive_growth
@@ -6386,6 +6577,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_growth
 		room = event_target:fallen_empire_hive_growth.ruler
 	}
+
 	immediate = {
 		if = { # If we have a rival we save that, else we just grab a random country
 			limit = { num_rivals > 1 }
@@ -6428,6 +6620,7 @@ country_event = {
 			save_event_target_as = alternate_planet
 		}
 	}
+
 	option = {
 		trigger = { is_planetscaper_empire = no }
 		allow = {
@@ -6535,6 +6728,7 @@ country_event = {
 planet_event = {
 	id = bio.3210
 	title = bio.3210.name
+
 	desc = {
 		trigger = { has_planet_flag = fe_radio_bugs }
 		text = bio.3210.desc.radio_bugs
@@ -6550,6 +6744,7 @@ planet_event = {
 		text = bio.3210.desc.world_alight
 		show_sound = par_notification_ethics_generic
 	}
+
 	picture = {
 		trigger = { has_planet_flag = fe_radio_bugs }
 		picture = GFX_evt_crimson_crawlers
@@ -6580,6 +6775,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		trigger = { has_planet_flag = fe_radio_bugs }
 		name = bio.3210.radio_bugs.accept
@@ -6728,6 +6924,7 @@ country_event = {
 	desc = bio.3220.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_growth
 		planet_background = event_target:fallen_empire_hive_growth
@@ -6735,6 +6932,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_growth
 		room = event_target:fallen_empire_hive_growth.ruler
 	}
+
 	immediate = {
 		weighted_random_owned_pop_group = {
 			limit = {
@@ -6752,6 +6950,7 @@ country_event = {
 			generate_boring_species_choices = yes
 		}
 	}
+
 	option = {
 		trigger = { has_country_flag = boring_humanoid_choice }
 		name = bio.3220.humanoid
@@ -7051,6 +7250,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = boring_humanoid_choice
@@ -7225,6 +7425,7 @@ country_event = {
 	desc = bio.3230.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_growth
 		planet_background = event_target:fallen_empire_hive_growth
@@ -7232,6 +7433,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_growth
 		room = event_target:fallen_empire_hive_growth.ruler
 	}
+
 	option = {
 		name = bio.3230.a
 		ai_chance = { factor = 100 }
@@ -7333,6 +7535,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		event_target:fallen_empire_hive_growth.species = {
 			remove_species_flag = trait_cave_dweller
@@ -7447,6 +7650,7 @@ country_event = {
 	desc = bio.3305.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7454,6 +7658,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	immediate = {
 		weighted_random_owned_pop_group = {
 			limit = {
@@ -7468,6 +7673,7 @@ country_event = {
 			save_event_target_as = target_pop
 		}
 	}
+
 	option = {
 		name = bio.3305.a
 		ai_chance = { factor = 100 }
@@ -7530,6 +7736,7 @@ country_event = {
 	desc = bio.3310.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:target_leader_fe_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7537,6 +7744,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	option = {
 		name = UNNERVING
 	}
@@ -7552,6 +7760,7 @@ country_event = {
 	desc = bio.3315.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:target_leader_fe_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7559,6 +7768,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	option = {
 		name = bio.3315.a
 		custom_tooltip = bio.3315.tooltip
@@ -7635,6 +7845,7 @@ country_event = {
 	desc = bio.3330.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7642,6 +7853,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = hive_fallen_empire_event_cooldown years = 7 }
 		remove_country_flag = pending_fe_hive_control_galcom_event
@@ -7650,6 +7862,7 @@ country_event = {
 			1 = { set_country_flag = should_pass_resolution }
 		}
 	}
+
 	option = {
 		name = bio.3330.a
 		if = {
@@ -7809,6 +8022,7 @@ country_event = {
 	desc = bio.3350.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7816,6 +8030,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	immediate = {
 		random_system_within_border = { # We are looking to see if we can't find a system that the control fragment finds ugly
 			limit = {
@@ -7852,6 +8067,7 @@ country_event = {
 			save_event_target_as = offending_system
 		}
 	}
+
 	option = {
 		name = bio.3350.a
 		custom_tooltip = bio.3350.tt
@@ -7867,6 +8083,7 @@ country_event = {
 		name = bio.3350.bordergore
 		custom_tooltip = bio.3350.tt
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = bio.3355 days = 360 random = 360 }
@@ -7881,6 +8098,7 @@ country_event = {
 	desc = bio.3355.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7888,12 +8106,14 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	trigger = {
 		event_target:offending_system = {
 			exists = space_owner
 			space_owner = { is_same_empire = root }
 		}
 	}
+
 	option = {
 		name = OOPS
 		custom_tooltip = fallen_empire_unhappy_tooltip
@@ -7919,6 +8139,7 @@ country_event = {
 	desc = bio.3360.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7926,6 +8147,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		custom_tooltip = fallen_empire_happy_tooltip
@@ -7979,6 +8201,7 @@ country_event = {
 country_event = {
 	id = bio.3400
 	title = bio.3400.name
+
 	desc = {
 		trigger = { is_galactic_community_formed = no }
 		text = bio.3400.desc.nogalcom
@@ -7990,6 +8213,7 @@ country_event = {
 
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -7997,6 +8221,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	option = {
 		name = VIEWSCREEN_OFF
 	}
@@ -8008,6 +8233,7 @@ country_event = {
 	desc = bio.3405.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:fallen_empire_hive_control
 		planet_background = event_target:fallen_empire_hive_control
@@ -8015,6 +8241,7 @@ country_event = {
 		city_level = event_target:fallen_empire_hive_control
 		room = event_target:fallen_empire_hive_control.ruler
 	}
+
 	trigger = {
 		from = {
 			has_country_flag = fallen_empire_hive_control
@@ -8022,6 +8249,7 @@ country_event = {
 			is_at_war = no
 		}
 	}
+
 	option = {
 		name = bio.3405.a
 		event_target:fallen_empire_hive_control = {
@@ -8047,6 +8275,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = INCREDIBLE
 		small_artifact_reward = yes
@@ -8059,6 +8288,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -8076,6 +8306,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = UNDERSTOOD
 		small_artifact_reward = yes
@@ -8092,6 +8323,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -8109,6 +8341,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = DISCONCERTING
 		medium_artifact_reward = yes
@@ -8125,6 +8358,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -8142,6 +8376,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = {
 			text = DISTURBING
@@ -8173,6 +8408,7 @@ fleet_event = {
 			establish_communications_no_message = root.owner
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}

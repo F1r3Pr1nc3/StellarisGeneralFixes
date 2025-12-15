@@ -11,6 +11,7 @@ namespace = crisis
 country_event = {
 	id = crisis.6000
 	title = "crisis.6000.name"
+
 	desc = {
 		trigger = {
 			is_gestalt = no
@@ -79,6 +80,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = crisis.6000.a
 		trigger = {
@@ -313,6 +315,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = crisis.6001.a
 		custom_tooltip = crisis.6001.tooltip
@@ -392,6 +395,7 @@ country_event = {
 			country_event = { id = crisis.6010 }
 		}
 	}
+
 	option = {
 		name = crisis.6005.a
 	}
@@ -453,6 +457,7 @@ country_event = {
 			country_event = { id = crisis.6015 }
 		}
 	}
+
 	option = {
 		name = crisis.6006.a
 	}
@@ -487,6 +492,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = crisis.6007.a
 	}
@@ -496,6 +502,7 @@ country_event = {
 country_event = {
 	id = crisis.6010
 	title = "crisis.6010.name"
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -528,6 +535,7 @@ country_event = {
 	picture = GFX_evt_surreal_visions
 	show_sound = event_default
 	is_triggered_only = yes
+
 	after = {
 		if = {
 			limit = {
@@ -539,6 +547,7 @@ country_event = {
 			set_country_flag = crisis_psionic_alert
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -558,6 +567,7 @@ country_event = {
 country_event = {
 	id = crisis.6015
 	title = "crisis.6005.name"
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -582,6 +592,7 @@ country_event = {
 	picture = GFX_evt_space_monster
 	show_sound = event_default
 	is_triggered_only = yes
+
 	after = {
 		if = {
 			limit = {
@@ -590,6 +601,7 @@ country_event = {
 			set_country_flag = crisis_general_alert
 		}
 	}
+
 	option = {
 		name = crisis.6015.a
 	}
@@ -599,6 +611,7 @@ country_event = {
 country_event = {
 	id = crisis.6050
 	title = "crisis.6050.name"
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = "crisis.6050.a.desc"
@@ -625,6 +638,7 @@ country_event = {
 			country_event = { id = timeline.34 } # Milestone Destroyed Galaxy
 		}
 	}
+
 	option = {
 		name = crisis.6050.a
 		custom_tooltip = crisis.6050.a.tooltip
@@ -644,6 +658,7 @@ country_event = {
 	picture = GFX_evt_supernova
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.6051.a
 	}
@@ -799,6 +814,7 @@ country_event = {
 	immediate = {
 		remove_country_flag = building_crisis_sphere
 	}
+
 	option = {
 		name = crisis.6101.a
 		custom_tooltip = crisis.6101.a.tooltip
@@ -809,6 +825,7 @@ country_event = {
 country_event = {
 	id = crisis.6102
 	title = "crisis.6101.name"
+
 	desc = {
 		trigger = {
 			NOT = { has_country_flag = built_crisis_sphere }
@@ -823,6 +840,7 @@ country_event = {
 	picture = GFX_evt_crisis_defeated
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.6102.a
 		trigger = {
@@ -844,6 +862,7 @@ country_event = {
 		}
 		custom_tooltip = aetherophasic_engine_ruined_tt
 	}
+
 	after = {
 		hidden_effect = {
 			clear_variable = crisis_sphere_destroy_reward
@@ -859,6 +878,7 @@ country_event = {
 	picture = GFX_evt_crisis_defeated
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 		trigger = {
@@ -958,6 +978,7 @@ country_event = {
 	trigger = {
 		is_ai = no
 	}
+
 	option = {
 		name = crisis.6151.a
 		trigger = { NOT = { is_same_value = from } }
@@ -1059,6 +1080,7 @@ country_event = {
 country_event = {
 	id = crisis.6161
 	title = "crisis.6161.name"
+
 	desc = {
 		trigger = { NOT = { is_same_value = from } }
 		text = "crisis.6161.a.desc"
@@ -1075,6 +1097,7 @@ country_event = {
 	trigger = {
 		is_ai = no
 	}
+
 	option = {
 		name = crisis.6161.a
 		trigger = { NOT = { is_same_value = from } }
@@ -1112,6 +1135,7 @@ country_event = {
 country_event = {
 	id = crisis.6171
 	title = "crisis.6171.name"
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -1165,6 +1189,7 @@ country_event = {
 	trigger = {
 		is_ai = no
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -1240,6 +1265,7 @@ country_event = {
 	immediate = {
 		set_country_flag = star_eater_alert@event_target:crisis_country
 	}
+
 	option = {
 		name = crisis.6180.a
 	}
@@ -1258,6 +1284,7 @@ country_event = {
 	immediate = {
 		set_country_flag = star_eater_alert@event_target:crisis_country
 	}
+
 	option = {
 		name = crisis.6181.a
 	}
@@ -1276,6 +1303,7 @@ country_event = {
 	immediate = {
 		set_country_flag = star_eater_alert@event_target:crisis_country
 	}
+
 	option = {
 		name = crisis.6182.a
 	}
@@ -1297,6 +1325,7 @@ country_event = {
 			from = { has_megastructure_flag = crisis_sphere_of@root }
 		}
 	}
+
 	abort_trigger = {
 		NAND = {
 			exists = from

@@ -126,6 +126,7 @@ pop_faction_event = {
 pop_faction_event = {
 	id = factions.1
 	title = factions.1.title
+
 	desc = {
 		trigger = {
 			# Intro
@@ -166,6 +167,7 @@ pop_faction_event = {
 	picture = GFX_evt_galactic_senate
 	show_sound = event_factions
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		hidden_effect = {
@@ -310,10 +312,10 @@ planet_event = {
 # Notification event - other empire shifts ethics
 country_event = {
 	id = factions.2000
-	title = factions.2000.title
-	location = event_target:TargetFaction.Owner.capital_scope
-	picture = GFX_evt_alien_propaganda
-	show_sound = event_factions
+	# title = factions.2000.title
+	# location = event_target:TargetFaction.Owner.capital_scope
+	# picture = GFX_evt_alien_propaganda
+	# show_sound = event_factions
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -506,6 +508,7 @@ planet_event = {
 planet_event = {
 	id = factions.3005
 	title = factions.3005.name
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -523,6 +526,7 @@ planet_event = {
 		trigger = { has_planet_flag = frontier_alternatives }
 		text = factions.3005.desc.3
 	}
+
 	picture = {
 		trigger = {
 			NOR = {
@@ -670,6 +674,7 @@ planet_event = {
 			years = 30
 		}
 	}
+
 	after = {
 		remove_planet_flag = frontier_egalitarianism
 		remove_planet_flag = frontier_alternatives
@@ -681,6 +686,7 @@ planet_event = {
 planet_event = {
 	id = factions.3010
 	title = factions.3005.name
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -698,6 +704,7 @@ planet_event = {
 		trigger = { has_planet_flag = frontier_discourse }
 		text = factions.3010.desc.3
 	}
+
 	picture = {
 		trigger = {
 			NOT = { has_planet_flag = frontier_authoritarianism }
@@ -823,6 +830,7 @@ planet_event = {
 			years = 20
 		}
 	}
+
 	after = {
 		remove_planet_flag = frontier_authoritarianism
 		remove_planet_flag = frontier_discourse
@@ -895,6 +903,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = { # Take no action
 		name = manifesti.1.a
 		begin_event_chain = { event_chain = manifesti_chain target = owner }
@@ -1086,6 +1095,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = { # Let them have their fun
 		name = manifesti.5.a
 		if = {
@@ -1228,6 +1238,7 @@ planet_event = {
 planet_event = {
 	id = manifesti.10
 	title = manifesti.10.name
+
 	desc = {
 		trigger = { has_planet_flag = manifesti_militarist_successful }
 		text = manifesti.10.desc_militarist
@@ -1281,6 +1292,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = manifesti.10.a
 		trigger = {
@@ -1394,6 +1406,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = { # Buy their silence
 		name = manifesti.15.a
 		allow = {
@@ -1489,6 +1502,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = { # Let them continue
 		name = manifesti.20.a
 		owner = {
@@ -1526,6 +1540,7 @@ planet_event = {
 
 	immediate = {
 	}
+
 	option = { # It was inevitable
 		name = manifesti.25.a
 		hidden_effect = {
@@ -1555,6 +1570,7 @@ planet_event = {
 			}
 		}
 	}
+
 	after = {
 		owner = {
 			set_timed_country_flag = { flag = manifesti_faction days = 955 } # Matches faction on_create, plus some of the evaluation event delay above
@@ -1607,6 +1623,7 @@ country_event = {
 			set_pop_group_flag = manifesti_bored
 		}
 	}
+
 	option = {
 		name = manifesti.30.a
 		add_modifier = { modifier = manifesti_sweet_dreams_mod years = 8 }

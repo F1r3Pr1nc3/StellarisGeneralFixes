@@ -7,20 +7,25 @@ building_mote_harvesters = {
 	icon = building_mote_harvesting_traps
 	planet_limit = 1
 	category = resource
+
 	building_sets = {
 		generator
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 		has_volatile_motes_deposit = yes
 	}
+
 	prerequisites = {
 		"tech_mine_volatile_motes"
 	}
+
 	planet_modifier = {
 		planet_technician_volatile_motes_produces_add = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -30,6 +35,7 @@ building_mote_harvesters = {
 			energy = 1
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -40,20 +46,25 @@ building_gas_extractors = {
 	icon = building_gas_extractors
 	planet_limit = 1
 	category = resource
+
 	building_sets = {
 		farming
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 		has_exotic_gases_deposit = yes
 	}
+
 	prerequisites = {
 		"tech_mine_exotic_gases"
 	}
+
 	planet_modifier = {
 		planet_farmers_exotic_gases_produces_add = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -63,6 +74,7 @@ building_gas_extractors = {
 			energy = 1
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -72,20 +84,25 @@ building_crystal_mines = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = resource
+
 	building_sets = {
 		mining
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 		has_rare_crystals_deposit = yes
 	}
+
 	prerequisites = {
 		"tech_mine_rare_crystals"
 	}
+
 	planet_modifier = {
 		planet_miners_rare_crystals_produces_add = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -95,6 +112,7 @@ building_crystal_mines = {
 			energy = 1
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -104,12 +122,15 @@ building_betharian_power_plant = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = resource
+
 	building_sets = {
 		betharian
 	}
+
 	potential = {
 		NOT = { has_modifier = resort_colony }
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -125,19 +146,24 @@ building_betharian_power_plant = {
 			energy = 10
 		}
 	}
+
 	inline_script = {
 		script = buildings/on_all_wilderness_buildings_districts
 	}
+
 	planet_modifier = {
 		planet_miners_energy_produces_add = 2
 	}
+
 	inline_script = {
 		script = jobs/miners_add
 		AMOUNT = 400
 	}
+
 	prerequisites = {
 		"tech_mine_betharian"
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -147,12 +173,14 @@ building_xeno_zoo = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = research
+
 	building_sets = {
 		urban
 		research
 		society
 		zoo
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_regular_empire = yes is_guided_sapience_empire = no }
@@ -178,6 +206,7 @@ building_xeno_zoo = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		OR = {
 			AND = {
@@ -212,6 +241,7 @@ building_xeno_zoo = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -221,10 +251,12 @@ building_xeno_zoo = {
 			energy = @b1_upkeep
 		}
 	}
+
 	inline_script = {
 		script = jobs/biologists_add
 		AMOUNT = @building_static_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = { has_owner = yes has_modifier = resort_colony }
 		job_biologist_add = @building_static_jobs
@@ -271,6 +303,7 @@ building_xeno_zoo = {
 		}
 		job_livestock_zoo_beast_lithoid_add = 300
 	}
+
 	triggered_desc = {
 		trigger = {
 			has_owner = yes
@@ -305,9 +338,11 @@ building_xeno_zoo = {
 		}
 		text = job_xeno_zoo_beast_effect_desc
 	}
+
 	prerequisites = {
 		"tech_alien_life_studies"
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}

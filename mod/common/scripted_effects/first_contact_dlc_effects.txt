@@ -367,10 +367,15 @@ generate_slaver_bonus = {
 			tech = tech_power_hub_1
 		}
 	}
-	add_building = building_slave_processing
-	add_building = building_precinct_house
-	add_building = building_medical_2
-
+	add_building_if_not_present = {
+		BUILDING = building_slave_processing
+	}
+	add_building_if_not_present = {
+		BUILDING = building_precinct_house
+	}
+	add_building_if_not_present = {
+		BUILDING = building_medical_2
+	}
 	owner = {
 		add_resource = {
 			minerals = 2400
@@ -620,6 +625,7 @@ spawn_payback_site_habitat = {
 }
 
 ### Fear of the Dark ###
+
 add_fotd_tech = {
 	switch = {
 		trigger = has_country_flag

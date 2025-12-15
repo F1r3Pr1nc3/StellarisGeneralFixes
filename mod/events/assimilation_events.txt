@@ -66,6 +66,11 @@ planet_event = {
 			}
 		}
 	}
+
+	after = {
+		# Vfix: just bad workaround
+		clear_variable = var_local_pop_amount
+	}
 }
 
 # A pop amount has been assembled, try to transfer it to assimilation target if applicable
@@ -126,6 +131,11 @@ planet_event = {
 				apply_post_assimilation_effects = yes
 			}
 		}
+	}
+
+	after = {
+		# Vfix: just bad workaround
+		clear_variable = var_local_pop_amount
 	}
 }
 

@@ -11,9 +11,11 @@ habitat_central_complex = {
 	show_galactic_map_icon = no
 	hide_name = yes
 	show_in_outliner = no
+
 	entity_offset = { x = 7 y = -7 }
 
 	build_time = @central_orbital_build_time
+
 	resources = {
 		category = megastructures_habitat
 		cost = {
@@ -51,6 +53,7 @@ habitat_central_complex = {
 			any_planet_within_border = { is_planet_class = pc_habitat is_colony = no }
 		}
 	}
+
 	possible = {
 		hidden_trigger = { exists = starbase }
 		custom_tooltip = { fail_text = "requires_inside_border" is_inside_border = from }
@@ -89,6 +92,7 @@ habitat_central_complex = {
 			}
 		}
 	}
+
 	placement_rules = {
 		planet_possible = {
 			custom_tooltip = {
@@ -180,6 +184,7 @@ habitat_central_complex = {
 		}
 		modifier = { factor = value:num_orbital_sites }
 	}
+
 	on_build_complete = {
 		fromfrom.planet = { save_event_target_as = target_planet }
 		if = {
@@ -211,7 +216,9 @@ habitat_central_complex_ruined = {
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
 	show_in_outliner = no
+
 	entity_offset = { x = 7 y = -7 }
+
 	potential = {
 		always = no
 	}
@@ -226,9 +233,11 @@ habitat_central_complex_restored = {
 	show_galactic_map_icon = no
 	hide_name = yes
 	show_in_outliner = no
+
 	entity_offset = { x = 7 y = -7 }
 
 	build_time = @central_orbital_build_time
+
 	resources = {
 		category = megastructures_habitat
 		cost = {
@@ -249,15 +258,19 @@ habitat_central_complex_restored = {
 			mult = @halved_alloy_to_food_cost_ratio
 		}
 	}
+
 	upgrade_from = {
 		habitat_central_complex_ruined
 	}
+
 	possible = {
 		from = { has_technology = tech_habitat_1 }
 	}
+
 	on_build_start = {
 		fromfrom = { set_graphical_culture = root.from }
 	}
+
 	on_build_complete = {
 		solar_system = {
 			random_system_planet = {
@@ -314,9 +327,11 @@ habitat_major_orbital = {
 	use_planet_resource = yes
 	hide_name = yes
 	show_in_outliner = no
+
 	entity_offset = { x = -7 y = -7 }
 
 	build_time = 900
+
 	resources = {
 		category = megastructures_habitat
 		upkeep = {
@@ -329,9 +344,11 @@ habitat_major_orbital = {
 	potential = {
 		always = no
 	}
+
 	possible = {
 		always = no
 	}
+
 	placement_rules = {
 	}
 
@@ -340,10 +357,13 @@ habitat_major_orbital = {
 	ai_weight = {
 		factor = 0
 	}
+
 	on_build_start = {
 	}
+
 	on_build_cancel = {
 	}
+
 	on_build_complete = {
 		fromfrom.planet = {
 			set_planet_flag = has_orbital
@@ -365,9 +385,11 @@ habitat_minor_orbital = {
 	use_planet_resource = yes
 	hide_name = yes
 	show_in_outliner = no
+
 	entity_offset = { x = -7 y = -7 }
 
 	build_time = 900
+
 	resources = {
 		category = stations
 		upkeep = {
@@ -380,9 +402,11 @@ habitat_minor_orbital = {
 	potential = {
 		always = no
 	}
+
 	possible = {
 		always = no
 	}
+
 	placement_rules = {
 	}
 
@@ -391,10 +415,13 @@ habitat_minor_orbital = {
 	ai_weight = {
 		factor = 0
 	}
+
 	on_build_start = {
 	}
+
 	on_build_cancel = {
 	}
+
 	on_build_complete = {
 		fromfrom.planet = {
 			set_planet_flag = has_orbital

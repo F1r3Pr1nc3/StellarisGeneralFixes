@@ -42,6 +42,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = leviathans.999.a
 		hidden_effect = {
@@ -69,6 +70,7 @@ country_event = {
 			has_star_flag = guardians_stellarite_system
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 		hidden_effect = {
@@ -124,6 +126,7 @@ country_event = {
 fleet_event = {
 	id = leviathans.1001
 	title = leviathans.1000.name
+
 	desc = {
 		trigger = {
 			solar_system = { has_star_flag = guardians_stellarite_system }
@@ -168,6 +171,7 @@ fleet_event = {
 			establish_communications_no_message = event_target:stellarite_country
 		}
 	}
+
 	option = {
 		name = DISCONCERTING
 	}
@@ -745,6 +749,7 @@ country_event = {
 country_event = {
 	id = leviathans.1016
 	title = leviathans.1000.name
+
 	desc = {
 		text = leviathans.1016.desc
 		trigger = { is_gestalt = no }
@@ -804,6 +809,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = leviathans.1016.a
 		event_target:stellarite_project_object = {
@@ -854,6 +860,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			random_system = {
@@ -868,6 +875,7 @@ country_event = {
 ship_event = {
 	id = leviathans.1017
 	title = leviathans.1000.name
+
 	desc = {
 		text = leviathans.1017.desc
 		trigger = { owner = { is_gestalt = no } }
@@ -895,6 +903,7 @@ ship_event = {
 			save_event_target_as = guardians_stellarite_home_system
 		}
 	}
+
 	option = {
 		name = leviathans.1017.a
 		random_system = {
@@ -937,6 +946,7 @@ ship_event = {
 ship_event = {
 	id = leviathans.1018
 	title = leviathans.1000.name
+
 	desc = {
 		trigger = {
 			hidden:owner = {
@@ -973,6 +983,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		custom_tooltip = leviathans.1018.c.tooltip
@@ -1086,6 +1097,7 @@ planet_event = {
 fleet_event = {
 	id = leviathans.1030
 	title = leviathans.1030.name
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -1126,6 +1138,7 @@ fleet_event = {
 			establish_communications_no_message = event_target:guardian_technosphere_country
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -1283,6 +1296,7 @@ country_event = {
 			country_event = { id = leviathans.1041 }
 		}
 	}
+
 	after = {
 		if = {
 			limit = { has_modifier = infinity_calculations }
@@ -1298,6 +1312,7 @@ country_event = {
 country_event = {
 	id = leviathans.1040
 	title = leviathans.1030.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -1366,6 +1381,7 @@ country_event = {
 			country_event = { id = leviathans.1041 }
 		}
 	}
+
 	after = {
 		if = {
 			limit = { has_modifier = infinity_calculations }
@@ -1376,6 +1392,7 @@ country_event = {
 			remove_modifier = technosphere_praising
 		}
 	}
+
 	option = {
 		name = leviathans.1040.a
 		add_monthly_resource_mult = {
@@ -1467,6 +1484,7 @@ country_event = {
 	show_sound = event_super_explosion
 	location = event_target:technosphere_ship
 	is_triggered_only = yes
+
 	after = {
 		if = {
 			limit = { has_modifier = infinity_calculations }
@@ -1477,6 +1495,7 @@ country_event = {
 			remove_modifier = technosphere_praising
 		}
 	}
+
 	option = {
 		name = TERRIBLE
 		trigger = { is_militarist = no is_materialist = no }
@@ -1529,6 +1548,7 @@ country_event = {
 		}
 		end_event_chain = technosphere_chain
 	}
+
 	option = {
 		name = FASCINATING
 		enable_special_project = {
@@ -1568,6 +1588,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = leviathans.1051.a
 		trigger = { is_gestalt = no }
@@ -1619,6 +1640,7 @@ country_event = {
 country_event = {
 	id = leviathans.1052
 	title = leviathans.1050.name
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = leviathans.1052.desc
@@ -1645,6 +1667,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		add_modifier = { modifier = infinity_calculations_hacked days = -1 }
 		event_target:technosphere_location = {
@@ -1655,6 +1678,7 @@ country_event = {
 			country_event = { id = leviathans.1039 }
 		}
 	}
+
 	option = {
 		name = leviathans.1052.a
 		if = {
@@ -1711,9 +1735,11 @@ country_event = {
 	trigger = {
 		exists = event_target:technosphere_ship
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	option = {
 		name = leviathans.1053.a
 		response_text = leviathans.1053.a.reply
@@ -1737,9 +1763,11 @@ country_event = {
 		exists = event_target:technosphere_ship
 		NOT = { has_country_flag = worm_events_available }
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	option = {
 		name = leviathans.1055.a
 		# default_hide_option = yes
@@ -1760,9 +1788,11 @@ country_event = {
 	trigger = {
 		exists = event_target:technosphere_ship
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	option = {
 		name = leviathans.1056.a
 		response_text = leviathans.1056.a.reply
@@ -1809,15 +1839,18 @@ country_event = {
 	trigger = {
 		exists = event_target:technosphere_ship
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	immediate = {
 		random_system = {
 			limit = { has_star_flag = guardians_technosphere_system }
 			star = { save_event_target_as = technosphere_blackhole }
 		}
 	}
+
 	option = {
 		name = leviathans.1060.a
 		response_text = leviathans.1060.a.reply
@@ -1845,15 +1878,18 @@ country_event = {
 	trigger = {
 		exists = event_target:technosphere_ship
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	immediate = {
 		random_system = {
 			limit = { has_star_flag = guardians_technosphere_system }
 			star = { save_event_target_as = technosphere_blackhole }
 		}
 	}
+
 	option = {
 		name = leviathans.1061.a
 		response_text = leviathans.1061.a.reply
@@ -1923,6 +1959,7 @@ country_event = {
 	trigger = {
 		exists = event_target:technosphere_ship
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
@@ -1942,6 +1979,7 @@ country_event = {
 			star = { save_event_target_as = technosphere_blackhole }
 		}
 	}
+
 	option = {
 		name = leviathans.1062.a
 		hidden_effect = {
@@ -1994,6 +2032,7 @@ country_event = {
 	trigger = {
 		exists = event_target:technosphere_ship
 	}
+
 	option = {
 		name = PECULIAR
 		custom_tooltip = leviathans.1063.a.tooltip
@@ -2058,6 +2097,7 @@ country_event = {
 	immediate = {
 		set_country_flag = pantagruel
 	}
+
 	option = {
 		name = AMAZING
 		custom_tooltip = leviathans.1065.a.tooltip
@@ -2136,6 +2176,7 @@ event = {
 ship_event = {
 	id = leviathans.2010
 	title = "leviathans.2010.name"
+
 	desc = {
 		text = leviathans.2010.desc
 		trigger = { owner = { is_gestalt = no } }
@@ -2159,6 +2200,7 @@ ship_event = {
 			add_modifier = { modifier = germinating_wraith days = -1 }
 		}
 	}
+
 	option = {
 		name = leviathans.2010.a
 		custom_tooltip = leviathans.2010.c
@@ -2284,6 +2326,7 @@ event = {
 country_event = {
 	id = leviathans.2012
 	title = "leviathans.2012.name"
+
 	desc = {
 		text = leviathans.2012.desc
 		trigger = { is_gestalt = no }
@@ -2306,6 +2349,7 @@ country_event = {
 		establish_communications_no_message = event_target:wraith_country
 		set_country_flag = guardians_wraith_encountered
 	}
+
 	option = {
 		name = leviathans.2012.a
 	}
@@ -2330,6 +2374,7 @@ country_event = {
 		establish_communications_no_message = event_target:wraith_country
 		set_country_flag = guardians_wraith_encountered
 	}
+
 	option = {
 		name = leviathans.2013.a
 	}
@@ -2339,6 +2384,7 @@ country_event = {
 country_event = {
 	id = leviathans.2014
 	title = "leviathans.2014.name"
+
 	desc = {
 		text = leviathans.2014.desc
 		trigger = { is_gestalt = no }
@@ -2374,10 +2420,12 @@ country_event = {
 			end_curator_chain = yes
 		}
 	}
+
 	option = {
 		name = leviathans.2014.a
 		add_modifier = { modifier = "spectral_residue_studies" days = -1 }
 	}
+
 	after = {
 		if = {
 			limit = { num_owned_planets > 0 }
@@ -2579,6 +2627,7 @@ country_event = {
 country_event = {
 	id = leviathans.2101
 	title = "leviathans.2101.name"
+
 	desc = {
 		text = "leviathans.2101.desc"
 		trigger = { is_gestalt = no }
@@ -2624,6 +2673,7 @@ country_event = {
 			end_event_chain = "enigmatic_fortress_chain"
 		}
 	}
+
 	option = {
 		name = "leviathans.2101.a"
 		if = {
@@ -2679,6 +2729,7 @@ country_event = {
 			country_event = { id = leviathans.2108 } # End Chain with Reward
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			set_country_flag = disabled_enigmatic_fortress # Added in v4.0
@@ -2707,6 +2758,7 @@ ship_event = {
 	immediate = {
 		from = { save_event_target_as = fortress_system }
 	}
+
 	option = {
 		name = "leviathans.2105.a"
 	}
@@ -2864,6 +2916,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "leviathans.2111.a"
 		custom_tooltip = leviathans.2111.a.tooltip
@@ -2906,6 +2959,7 @@ ship_event = {
 	show_sound = event_ground_battle
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2112.a"
 		custom_tooltip = leviathans.2112.a.tooltip
@@ -2927,6 +2981,7 @@ ship_event = {
 	show_sound = event_laboratory_sound
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2113.a"
 		trigger = {
@@ -2961,6 +3016,7 @@ country_event = {
 	show_sound = event_activating_unknown_technology
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2114.a"
 		hidden_effect = {
@@ -2978,6 +3034,7 @@ country_event = {
 	show_sound = event_airlock
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2115.a"
 		custom_tooltip = leviathans.2112.a.tooltip
@@ -2996,6 +3053,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2131.a"
 		hidden_effect = {
@@ -3031,6 +3089,7 @@ country_event = {
 	show_sound = event_activating_unknown_technology
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2132.a"
 		hidden_effect = {
@@ -3048,6 +3107,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2133.a"
 		custom_tooltip = guardian.fortress.continue
@@ -3067,6 +3127,7 @@ country_event = {
 	location = event_target:disabled_enigmatic_fortress
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2150.a"
 		event_target:disabled_enigmatic_fortress = {
@@ -3161,6 +3222,7 @@ country_event = {
 			delete_fleet = fleet
 		}
 	}
+
 	option = {
 		name = "leviathans.2151.a"
 		add_monthly_resource_mult = {
@@ -3187,6 +3249,7 @@ country_event = {
 		add_tech_progress = { tech = tech_enigmatic_decoder progress = 0.30 }
 		end_event_chain = "enigmatic_fortress_chain"
 	}
+
 	after = {
 		if = {
 			limit = { num_owned_planets > 0 }
@@ -3212,6 +3275,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2152.a"
 		hidden_effect = {
@@ -3241,6 +3305,7 @@ country_event = {
 	show_sound = event_activating_unknown_technology
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2153.a"
 		hidden_effect = {
@@ -3307,6 +3372,7 @@ country_event = {
 			delete_fleet = fleet
 		}
 	}
+
 	option = {
 		name = "leviathans.2154.a"
 		add_monthly_resource_mult = {
@@ -3346,6 +3412,7 @@ country_event = {
 	show_sound = event_activating_unknown_technology
 	location = event_target:disabled_enigmatic_fortress
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.2155.a"
 		hidden_effect = {
@@ -3400,6 +3467,7 @@ country_event = {
 			delete_fleet = fleet
 		}
 	}
+
 	option = {
 		name = "leviathans.2156.a"
 		add_monthly_resource_mult = {
@@ -3483,6 +3551,7 @@ country_event = {
 			delete_fleet = fleet
 		}
 	}
+
 	option = {
 		name = "leviathans.2157.a"
 		custom_tooltip = leviathans.2157.a.tooltip
@@ -3563,6 +3632,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "leviathans.2160.a"
 		hidden_effect = {
@@ -3665,6 +3735,7 @@ country_event = {
 	show_sound = event_activating_unknown_technology
 	location = event_target:horror_system
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.3001.a"
 	}
@@ -3737,6 +3808,7 @@ country_event = {
 	immediate = {
 		set_country_flag = horror_killed
 	}
+
 	option = {
 		name = "leviathans.3003.a"
 		event_target:horror_energy = {
@@ -3747,6 +3819,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -3775,6 +3848,7 @@ ship_event = {
 	title = "PROJECT_COMPLETE"
 	picture = GFX_evt_dimensional_horror
 	show_sound = event_laboratory_sound
+
 	desc = {
 		text = "leviathans.3004a.desc"
 		trigger = {
@@ -3806,6 +3880,7 @@ ship_event = {
 			destroy_ambient_object = this
 		}
 	}
+
 	option = {
 		name = "EXCELLENT"
 		trigger = {
@@ -3865,6 +3940,7 @@ ship_event = {
 ship_event = {
 	id = leviathans.3100
 	title = "leviathans.3100"
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -3899,6 +3975,7 @@ ship_event = {
 		from = { save_event_target_as = dreadnought_system }
 		owner = { set_country_flag = encountered_dreadnought }
 	}
+
 	option = {
 		name = "leviathans.3100.a"
 	}
@@ -3961,6 +4038,7 @@ country_event = {
 	location = event_target:guardians_dreadnought_system
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.3102.a"
 		event_target:disabled_dreadnought_object = {
@@ -3990,6 +4068,7 @@ country_event = {
 		set_country_flag = harvested_dreadnought_parts
 		add_research_option = tech_leviathan_techgenesis
 	}
+
 	after = {
 		if = {
 			limit = { num_owned_planets > 0 }
@@ -4010,6 +4089,7 @@ country_event = {
 ship_event = {
 	id = leviathans.3103
 	title = "leviathans.3103"
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -4034,6 +4114,7 @@ ship_event = {
 			set_country_flag = restored_dreadnought
 		}
 	}
+
 	option = {
 		name = "leviathans.3103.a"
 		# Psi Jump Dreadnought if owner has it
@@ -4411,6 +4492,7 @@ country_event = {
 country_event = {
 	id = leviathans.3201
 	title = "leviathans.3201"
+
 	desc = {
 		trigger = {
 			NOT = { has_valid_civic = civic_void_hive }
@@ -4457,6 +4539,7 @@ country_event = {
 			set_faction_hostility = { target = prev set_hostile = yes }
 		}
 	}
+
 	option = {
 		name = "leviathans.3201.a"
 		hidden_effect = {
@@ -4472,6 +4555,7 @@ country_event = {
 ship_event = {
 	id = leviathans.3202
 	title = "leviathans.3202"
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_valid_civic = civic_void_hive } }
@@ -4504,6 +4588,7 @@ ship_event = {
 	immediate = {
 		from = { save_event_target_as = hiver_system }
 	}
+
 	option = {
 		trigger = {
 			NOT = { owner = { has_valid_civic = civic_void_hive } }
@@ -4606,6 +4691,7 @@ country_event = {
 	location = event_target:hive_system
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = "leviathans.3204.a"
 		event_target:boardable_hive_asteroid = {
@@ -4627,6 +4713,7 @@ ship_event = {
 	show_sound = event_airlock
 	location = event_target:boardable_hive_asteroid
 	is_triggered_only = yes
+
 	option = {
 		name = "EXCELLENT"
 		owner = {
@@ -4671,6 +4758,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 	}

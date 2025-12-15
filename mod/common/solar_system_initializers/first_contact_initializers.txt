@@ -11,13 +11,16 @@
 # MSI Home System
 msi_home_system = {
 	class = "rl_starting_stars"
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 50
 	}
+
 	flags = { empire_home_system MSI_home_system }
 
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -47,9 +50,11 @@ msi_home_system = {
 			factor = 0
 		}
 	}
+
 	init_effect = {
 		generate_home_system_resources = yes
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -60,6 +65,7 @@ msi_home_system = {
 	}
 
 	change_orbit = 50
+
 	planet = {
 		count = { min = 1 max = 3 }
 		class = pc_asteroid
@@ -127,6 +133,7 @@ msi_home_system = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		solar_system = {
 			create_starbase = {
@@ -140,6 +147,7 @@ msi_home_system = {
 			}
 		}
 	}
+
 	neighbor_system = {
 		hyperlane_jumps = { min = 1 max = @jumps }
 		initializer = "slavers_neighbor_t1"
@@ -153,10 +161,13 @@ msi_home_system = {
 # Neighbor Tier 1
 slavers_neighbor_t1 = {
 	class = "rl_standard_stars"
+
 	flags = { neighbor_t1 }
+
 	init_effect = {
 		every_neighbor_system = { set_star_flag = empire_cluster }
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -167,6 +178,7 @@ slavers_neighbor_t1 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 0 max = 2 }
 		orbit_distance = 20
@@ -180,9 +192,11 @@ slavers_neighbor_t1 = {
 		count = { min = 2 max = 5 }
 		orbit_distance = 20
 	}
+
 	init_effect = {
 		create_starbase = { size = starbase_outpost owner = event_target:MSI_country }
 	}
+
 	neighbor_system = {
 		hyperlane_jumps = { min = 1 max = @jumps }
 		initializer = "slavers_neighbor_t2_second_colony"
@@ -192,10 +206,13 @@ slavers_neighbor_t1 = {
 # Neighbor Tier 1 First Colony
 slavers_neighbor_t1_first_colony = {
 	class = "rl_standard_stars"
+
 	flags = { neighbor_t1_first_colony }
+
 	init_effect = {
 		every_neighbor_system = { set_star_flag = empire_cluster }
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -206,6 +223,7 @@ slavers_neighbor_t1_first_colony = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 0 max = 2 }
 		orbit_distance = 20
@@ -241,9 +259,11 @@ slavers_neighbor_t1_first_colony = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		create_starbase = { size = starbase_outpost owner = event_target:MSI_country }
 	}
+
 	neighbor_system = {
 		hyperlane_jumps = { min = 1 max = @jumps }
 		initializer = "neighbor_t2"
@@ -253,10 +273,13 @@ slavers_neighbor_t1_first_colony = {
 # Neighbor Tier 2 Second Colony
 slavers_neighbor_t2_second_colony = {
 	class = "rl_standard_stars"
+
 	flags = { neighbor_t2_second_colony }
+
 	init_effect = {
 		every_neighbor_system = { set_star_flag = empire_cluster }
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -267,6 +290,7 @@ slavers_neighbor_t2_second_colony = {
 	}
 
 	change_orbit = 25
+
 	planet = {
 		count = 2
 		orbit_angle = { min = 90 max = 270 }
@@ -313,6 +337,7 @@ slavers_neighbor_t2_second_colony = {
 		orbit_angle = { min = 90 max = 270 }
 		orbit_distance = 20
 	}
+
 	init_effect = {
 		create_starbase = { size = starbase_outpost owner = event_target:MSI_country }
 	}
@@ -321,10 +346,12 @@ slavers_neighbor_t2_second_colony = {
 # Fear of the Dark
 fear_of_the_dark_system = {
 	class = "sc_a"
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 90
 	}
+
 	init_effect = {
 		every_neighbor_system = {
 			set_star_flag = empire_cluster
@@ -332,9 +359,11 @@ fear_of_the_dark_system = {
 		}
 		generate_home_system_resources = yes
 	}
+
 	flags = { empire_home_system fotd_system }
 
 	usage = origin
+
 	planet = {
 		class = "pc_a_star"
 		orbit_distance = 0
@@ -421,6 +450,7 @@ fear_of_the_dark_system = {
 			add_deposit = d_alloys_5
 		}
 	}
+
 	neighbor_system = {
 		trigger = { num_guaranteed_colonies >= 2 }
 		hyperlane_jumps = { min = 1 max = @jumps }
@@ -435,13 +465,16 @@ fear_of_the_dark_system = {
 
 hunter_of_the_dark_system = {
 	class = "sc_b"
+
 	asteroid_belt = {
 		type = empty_asteroid_belt
 		radius = 147
 	}
+
 	flags = { empire_home_system }
 
 	usage = misc_system_init
+
 	planet = {
 		class = "pc_b_star"
 		orbit_distance = 0
@@ -531,13 +564,16 @@ hunter_of_the_dark_system = {
 # Broken Shackles Parent System
 broken_shackles_parent_system = {
 	class = "rl_starting_stars"
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 50
 	}
+
 	flags = { primitive_system empire_home_system }
 
 	usage = misc_system_init
+
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -552,6 +588,7 @@ broken_shackles_parent_system = {
 			add = @spawn_system_max
 		}
 	}
+
 	planet = {
 		count = 1
 		class = star
@@ -562,12 +599,14 @@ broken_shackles_parent_system = {
 	}
 
 	change_orbit = 20
+
 	planet = {
 		orbit_distance = 20
 		count = { min = 0 max = 3 }
 	}
 
 	change_orbit = 20
+
 	planet = {
 		count = 1
 		orbit_distance = 0
@@ -696,14 +735,17 @@ broken_shackles_parent_system = {
 solarpunk_01 = {
 	name = "NAME_Helito"
 	class = sc_binary_8
+
 	asteroid_belt = {
 		type = empty_asteroid_belt
 		radius = 200
 	}
+
 	flags = { solarpunk_system_01 }
 
 	usage = misc_system_init
 	max_instances = 1
+
 	usage_odds = {
 		base = @spawn_system_common
 		modifier = { factor = 0 has_first_contact_dlc = no }
@@ -711,6 +753,7 @@ solarpunk_01 = {
 	}
 
 	primitive_system = yes # usage odds modified by primitives setup slider
+
 	planet = {
 		name = "NAME_Helito_A"
 		count = 1
@@ -735,9 +778,11 @@ solarpunk_01 = {
 			prevent_anomaly = yes
 		}
 	}
+
 	orbital_line = {
 		orbit_distance_from_parent = 90
 	}
+
 	planet = {
 		name = "NAME_Helito_II"
 		orbit_distance = 85
@@ -746,9 +791,11 @@ solarpunk_01 = {
 		size = 6
 		has_ring = no
 	}
+
 	orbital_line = {
 		orbit_distance_from_parent = 150
 	}
+
 	planet = {
 		name = "NAME_Helito_IV"
 		count = 1
@@ -787,12 +834,15 @@ solarpunk_01 = {
 solarpunk_02 = {
 	class = "rl_trinary_stars"
 	name = "NAME_Dacha"
+
 	flags = { solarpunk_system_02 }
 
 	usage = misc_system_init
+
 	init_effect = {
 		every_system_planet = { prevent_anomaly = yes }
 	}
+
 	planet = {
 		name = "NAME_Dacha_A"
 		count = 1
@@ -872,6 +922,7 @@ solarpunk_02 = {
 	}
 
 	change_orbit = -220
+
 	planet = {
 		name = "NAME_Dacha_I"
 		orbit_distance = 5
@@ -899,10 +950,12 @@ solarpunk_02 = {
 			size = 7
 		}
 	}
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 100
 	}
+
 	planet = {
 		name = "NAME_Dacha_III"
 		orbit_distance = 50

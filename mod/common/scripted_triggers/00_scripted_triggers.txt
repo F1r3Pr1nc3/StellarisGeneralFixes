@@ -19,13 +19,13 @@ print_scope_trigger = {
 	log = "- This: \\[This.GetName]"
 	log = "- Root: \\[Root.GetName]"
 	log = "- Prev: \\[Prev.GetName]"
-	log = "- prevprev: \\[prevprev.GetName]"
-	log = "- prevprevprev: \\[prevprevprev.GetName]"
-	log = "- prevprevprevprev: \\[prevprevprevprev.GetName]"
+	log = "- PrevPrev: \\[PrevPrev.GetName]"
+	log = "- PrevPrevPrev: \\[PrevPrevPrev.GetName]"
+	log = "- PrevPrevPrevPrev: \\[PrevPrevPrevPrev.GetName]"
 	log = "- From: \\[From.GetName]"
-	log = "- fromfrom: \\[fromfrom.GetName]"
-	log = "- fromfromfrom: \\[fromfromfrom.GetName]"
-	log = "- fromfromfromfrom: \\[fromfromfromfrom.GetName]"
+	log = "- FromFrom: \\[FromFrom.GetName]"
+	log = "- FromFromFrom: \\[FromFromFrom.GetName]"
+	log = "- FromFromFromFrom: \\[FromFromFromFrom.GetName]"
 	log = "- Root's Solar System / Star Name: \\[Root.Solar_System.GetName] / [Root.GetStarName]"
 	log = "- Root's Owner's Name: \\[Root.Owner.GetName]"
 	log = "- Root's Owner's Capital's Name: \\[Root.Owner.Capital.GetName]"
@@ -715,6 +715,7 @@ has_encountered_other_species = {
 # 		has_citizenship_type = { type = citizenship_full_machine }
 # 	}
 # }
+
 allows_alien_leaders = {
 	any_owned_species = {
 		NOT = { is_same_species = root }
@@ -1139,6 +1140,11 @@ is_binary_star = {
 		is_star_class = sc_binary_8
 		is_star_class = sc_binary_9
 		is_star_class = sc_binary_10
+		is_star_class = sc_crisis_binary_1
+		is_star_class = sc_crisis_binary_2
+		is_star_class = sc_crisis_binary_5
+		is_star_class = sc_crisis_binary_7_8_9
+		is_star_class = sc_crisis_binary_10
 	}
 }
 
@@ -1256,6 +1262,10 @@ is_trinary_star = {
 		is_star_class = sc_trinary_2
 		is_star_class = sc_trinary_3
 		is_star_class = sc_trinary_4
+		is_star_class = sc_crisis_trinary_1
+		is_star_class = sc_crisis_trinary_2
+		is_star_class = sc_crisis_trinary_3
+		is_star_class = sc_crisis_trinary_4
 	}
 }
 
@@ -2289,6 +2299,7 @@ has_distar = {
 #########################################
 # Planetary body triggers (planet scope)
 #########################################
+
 is_wet = {
 	has_climate = wet
 }
@@ -5320,7 +5331,7 @@ has_zone = {
 has_good_relationships = {
 	any_relation = {
 		is_country_type = default
-		has_communications = root
+		has_communications = ROOT
 		opinion_level = {
 			who = root
 			level >= good

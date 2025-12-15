@@ -309,6 +309,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_cracker
 	}
+
 	option = {
 		name = OK
 		trigger = {
@@ -351,6 +352,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_cracker
 	}
+
 	option = {
 		name = OK
 		trigger = {
@@ -447,6 +449,7 @@ country_event = {
 			link_wormholes = event_target:sol_sys
 		}
 	}
+
 	option = {
 		name = planet_destruction.111.a
 		custom_tooltip = planet_destruction.111.a.tooltip
@@ -618,6 +621,7 @@ planet_event = {
 country_event = {
 	id = planet_destruction.210
 	title = planet_destruction.210.name
+
 	desc = {
 		text = planet_destruction.210.desc
 		trigger = { is_pacifist = no is_egalitarian = no }
@@ -631,6 +635,7 @@ country_event = {
 			}
 		}
 	}
+
 	picture = {
 		trigger = {
 			NOT = { from = { is_planet_class = pc_habitat_shielded } }
@@ -655,6 +660,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_pacifier
 	}
+
 	option = {
 		name = planet_destruction.210.a
 		trigger = { is_pacifist = no is_egalitarian = no }
@@ -885,6 +891,7 @@ planet_event = {
 country_event = {
 	id = planet_destruction.301
 	title = planet_destruction.301.name
+
 	desc = {
 		text = planet_destruction.301.nobots.desc
 		trigger = {
@@ -931,6 +938,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_neutron
 	}
+
 	option = {
 		name = OK
 		trigger = {
@@ -1196,6 +1204,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_godray
 	}
+
 	option = {
 		name = OK
 		from = { custom_tooltip = planet_destruction.401.tooltip }
@@ -1422,6 +1431,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_nanobots
 	}
+
 	option = {
 		name = OK
 		from = { custom_tooltip = planet_destruction.501.tooltip }
@@ -1524,6 +1534,7 @@ country_event = {
 	location = event_target:outraged_FE.capital_scope
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:outraged_FE
 		planet_background = event_target:outraged_FE
@@ -1531,6 +1542,7 @@ country_event = {
 		city_level = event_target:outraged_FE
 		room = event_target:outraged_FE.ruler
 	}
+
 	after = {
 		hidden_effect = {	# wake up FE and make it start a war
 			event_target:outraged_FE = {
@@ -1539,6 +1551,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = planet_destruction.610.spiri
 		trigger = { is_spiritualist = yes }
@@ -1608,6 +1621,7 @@ country_event = {
 	id = planet_destruction.615
 	base = planet_destruction.610
 	option_clear = yes
+
 	option = {
 		name = planet_destruction.615.A
 		name = {
@@ -1917,6 +1931,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_deluge
 	}
+
 	option = {
 		name = EXCELLENT
 		from = { custom_tooltip = planet_destruction.701.tooltip }
@@ -2236,6 +2251,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_toxifier
 	}
+
 	option = {
 		name = OK
 		trigger = {
@@ -2601,6 +2617,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fired_devolving_beam
 	}
+
 	option = {
 		name = OK
 	}
@@ -2610,6 +2627,7 @@ country_event = {
 country_event = {
 	id = planet_destruction.1000
 	title = planet_destruction.1000.name
+
 	desc = {
 		trigger = { is_same_empire = fromfrom.owner }
 		text = planet_destruction.1000.desc.self
@@ -2656,6 +2674,7 @@ country_event = {
 		}
 		text = planet_destruction.1000.desc.neutron
 	}
+
 	picture = {
 		trigger = {
 			from = { is_planet_class = pc_shielded }
@@ -2674,11 +2693,13 @@ country_event = {
 		}
 		picture = GFX_evt_exploding_planet
 	}
+
 	trigger = {
 		from = { has_observation_outpost = yes }
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = planet_destruction.1000.A
 		from = {

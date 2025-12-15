@@ -245,9 +245,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 160
 	}
+
 	immediate = {
 		random_relation = {
 			limit = {
@@ -283,6 +285,7 @@ country_event = {
 	immediate = {
 		from = { save_event_target_as = encountered_marauder get_marauder_raid_source = yes }
 	}
+
 	option = {
 		name = marauder.1.a
 		hidden_effect = {
@@ -528,6 +531,7 @@ country_event = {
 	immediate = {
 		fromfromfromfrom.solar_system = { save_event_target_as = marauder_system }
 	}
+
 	option = {
 		name = marauder.5.a
 	}
@@ -639,6 +643,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -651,6 +656,7 @@ country_event = {
 country_event = {
 	id = marauder.7
 	title = "TRANSMISSION"
+
 	desc = {
 		trigger = {
 			hidden:fromfrom = {
@@ -665,12 +671,14 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:marauder_species
 		room = ethic_spaceship_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -685,9 +693,11 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:attacked_system
 	is_triggered_only = yes
+
 	option = {
 		name = DISCONCERTING
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -750,6 +760,7 @@ planet_event = {
 	show_sound = event_radio_chatter
 	location = event_target:attacked_system
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.10.a
 	}
@@ -988,6 +999,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:marauder_infighting }
@@ -1173,6 +1185,7 @@ country_event = {
 country_event = {
 	id = marauder.15
 	title = "marauder_diplo_header_2"
+
 	desc = {
 		trigger = {
 			from = {
@@ -1187,6 +1200,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:encountered_marauder
 		room = ethic_spaceship_room
@@ -1223,6 +1237,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = marauder.15.a
 	}
@@ -1232,6 +1247,7 @@ country_event = {
 country_event = {
 	id = marauder.19
 	title = "marauder_diplo_header_3"
+
 	desc = {
 		text = "marauder.19.desc_01"
 		exclusive_trigger = {
@@ -1303,6 +1319,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:marauder_species
 		room = ethic_spaceship_room
@@ -1331,6 +1348,7 @@ country_event = {
 	immediate = {
 		from.owner_species = { save_event_target_as = marauder_species }
 	}
+
 	option = {
 		name = "marauder.19.a"
 		exclusive_trigger = { has_civic = civic_hive_devouring_swarm }
@@ -1464,6 +1482,7 @@ country_event = {
 			NOT = { has_modifier = marauder_3_tribute }
 		}
 	}
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -1489,6 +1508,7 @@ country_event = {
 			save_event_target_as = current_marauder_diplomacy
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -1777,6 +1797,7 @@ country_event = {
 			NOT = { has_modifier = marauder_3_tribute }
 		}
 	}
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -1807,6 +1828,7 @@ country_event = {
 		}
 		event_target:current_marauder_diplomacy = { get_marauder_species = yes }
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -1970,6 +1992,7 @@ country_event = {
 country_event = {
 	id = marauder.31
 	title = "marauder_diplo_header"
+
 	desc = {
 		trigger = {
 			hidden:event_target:current_marauder_diplomacy = {
@@ -1984,6 +2007,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -2248,6 +2272,7 @@ country_event = {
 		# 	}
 		# }
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2268,6 +2293,7 @@ country_event = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.31.a
 		trigger = { exists = event_target:raid_target_1 }
@@ -2366,6 +2392,7 @@ country_event = {
 country_event = {
 	id = marauder.32
 	title = "marauder_diplo_header"
+
 	desc = {
 		trigger = {
 			hidden:event_target:current_marauder_diplomacy = {
@@ -2380,6 +2407,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -2418,6 +2446,7 @@ country_event = {
 			set_variable = { which = raidcost value = 1 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -2430,6 +2459,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = marauder.32.a
 		trigger = {
@@ -2591,6 +2621,7 @@ country_event = {
 country_event = {
 	id = marauder.34
 	title = "marauder_diplo_header"
+
 	desc = {
 		trigger = {
 			hidden:event_target:current_marauder_diplomacy = {
@@ -2605,6 +2636,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -2671,6 +2703,7 @@ country_event = {
 		# 	multiply_variable = { which = smallmerccost value = pirates_factor }
 		# }
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -2896,6 +2929,7 @@ country_event = {
 country_event = {
 	id = marauder.35
 	title = "marauder_diplo_header"
+
 	desc = {
 		trigger = {
 			hidden:event_target:current_marauder_diplomacy = {
@@ -2910,6 +2944,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -2946,11 +2981,13 @@ country_event = {
 			owner_species = { save_event_target_as = marauder_species }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.31.e
 		hidden_effect = {
@@ -2973,6 +3010,7 @@ country_event = {
 country_event = {
 	id = marauder.37
 	title = "marauder_diplo_header"
+
 	desc = {
 		trigger = {
 			success_text = {
@@ -3000,6 +3038,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -3069,6 +3108,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3086,6 +3126,7 @@ country_event = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.37.a
 		hidden_effect = {
@@ -3310,6 +3351,7 @@ country_event = {
 country_event = {
 	id = marauder.40
 	title = "marauder_diplo_header"
+
 	desc = {
 		trigger = {
 			hidden:event_target:current_marauder_diplomacy = {
@@ -3324,6 +3366,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:current_marauder_diplomacy
 		room = ethic_spaceship_room
@@ -3361,6 +3404,7 @@ country_event = {
 			event_target:current_marauder_diplomacy = { get_marauder_species = yes }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3545,6 +3589,7 @@ fleet_event = {
 	show_sound = event_radio_chatter
 	location = this
 	is_triggered_only = yes
+
 	option = { # Extend contract 1
 		name = marauder.50.a
 		allow = {
@@ -3862,6 +3907,7 @@ fleet_event = {
 		}
 		assign_leader = event_target:new_leader
 	}
+
 	option = {
 		name = GOOD
 	}
@@ -3985,6 +4031,7 @@ country_event = {
 			remove_country_flag = CmtFlagHiringMarauder3
 		}
 	}
+
 	option = {
 		name = marauder.76.a
 	}
@@ -4133,6 +4180,7 @@ country_event = {
 			remove_country_flag = CmtFlagHiringMarauder3
 		}
 	}
+
 	after = { # Refund of Mercenary Pay 1/2
 		random = {
 			chance = 50
@@ -4146,6 +4194,7 @@ country_event = {
 			clear_variable = merccost
 		}
 	}
+
 	option = {
 		name = marauder.76.a
 	}
@@ -4363,6 +4412,7 @@ country_event = {
 	id = marauder.86
 	title = "marauder_diplo_header_2"
 	desc = marauder.86.a.desc
+
 	picture_event_data = {
 		portrait = event_target:encountered_marauder
 		room = ethic_spaceship_room
@@ -4382,11 +4432,13 @@ country_event = {
 			save_event_target_as = encountered_marauder
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.86.a
 	}
@@ -4397,6 +4449,7 @@ country_event = {
 	id = marauder.87
 	title = "marauder_diplo_header_2"
 	desc = marauder.87.a.desc
+
 	picture_event_data = {
 		portrait = event_target:encountered_marauder
 		room = ethic_spaceship_room
@@ -4416,11 +4469,13 @@ country_event = {
 			save_event_target_as = encountered_marauder
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.86.a
 	}
@@ -4431,6 +4486,7 @@ country_event = {
 	id = marauder.88
 	title = "marauder_diplo_header_2"
 	desc = marauder.88.a.desc
+
 	picture_event_data = {
 		portrait = event_target:encountered_marauder
 		room = ethic_spaceship_room
@@ -4450,11 +4506,13 @@ country_event = {
 			save_event_target_as = encountered_marauder
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.86.a
 	}
@@ -4523,6 +4581,7 @@ event = {
 country_event = {
 	id = marauder.101
 	title = "marauder_diplo_header_4"
+
 	desc = {
 		trigger = {
 			hidden:event_target:raiding_marauder = {
@@ -4537,6 +4596,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:raiding_marauder
 		room = ethic_spaceship_room
@@ -4595,6 +4655,7 @@ country_event = {
 		save_event_target_as = marauder_target
 		inline_script = "marauder/create_raiding_marauder" # Vfix opt
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -4635,6 +4696,7 @@ country_event = {
 	}
 
 	### Marauder 1
+
 	option = { # Offer Energy tribute
 		name = marauder.101.a
 		trigger = {
@@ -4804,6 +4866,7 @@ country_event = {
 country_event = {
 	id = marauder.102
 	title = "marauder_diplo_header_3"
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -4818,6 +4881,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:marauder_species
 		room = ethic_spaceship_room
@@ -4874,6 +4938,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -5364,6 +5429,7 @@ planet_event = {
 	show_sound = event_planetary_riot
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.104.a
 		owner = {
@@ -5554,9 +5620,11 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = marauder.105.a
 	}
+
 	after = {
 		hidden_effect = {
 			owner = { clear_variable = destruction_amount }
@@ -5573,6 +5641,7 @@ planet_event = {
 	show_sound = event_planetary_riot
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.106.a
 		owner = {
@@ -5677,6 +5746,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = marauder.107.a
 		while = {
@@ -5703,6 +5773,7 @@ planet_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			owner = { clear_variable = destruction_amount }
@@ -5719,6 +5790,7 @@ planet_event = {
 	show_sound = event_planetary_riot
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.108.a
 		owner = {
@@ -5858,6 +5930,7 @@ fleet_event = {
 country_event = {
 	id = marauder.111
 	title = "marauder_diplo_header_4"
+
 	desc = {
 		trigger = {
 			hidden:event_target:raid_parent = {
@@ -5872,12 +5945,14 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:raid_parent
 		room = ethic_spaceship_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.111.a
 	}
@@ -5890,6 +5965,7 @@ country_event = {
 country_event = {
 	id = marauder.112
 	title = "marauder_diplo_header_3"
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -5904,6 +5980,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:marauder_species
 		room = ethic_spaceship_room
@@ -5937,6 +6014,7 @@ country_event = {
 		}
 		set_country_flag = marauder_diplomacy_engaged
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -6130,6 +6208,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:retreating_fleet_system
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.114.a
 	}
@@ -6202,6 +6281,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:destroyed_fleet_system
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.116.a
 	}
@@ -6216,6 +6296,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:retreating_fleet_system
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.117.a
 	}
@@ -6240,6 +6321,7 @@ country_event = {
 	picture = GFX_evt_pirate_armada
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -6260,6 +6342,7 @@ country_event = {
 	immediate = {
 		establish_communications_no_message = event_target:raiding_marauder
 	}
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -6272,6 +6355,7 @@ country_event = {
 country_event = {
 	id = marauder.121
 	title = "marauder_diplo_header_4"
+
 	desc = {
 		trigger = {
 			hidden:event_target:raiding_marauder = {
@@ -6286,12 +6370,14 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:raiding_marauder
 		room = ethic_spaceship_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.121.a
 	}
@@ -6306,6 +6392,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:fleet_system
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.122.a
 	}
@@ -6320,6 +6407,7 @@ country_event = {
 	show_sound = event_space_battle
 	location = event_target:destroyed_fleet_system
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.124.a
 	}
@@ -6864,6 +6952,7 @@ country_event = {
 		}
 		CmtTriggerHasPotentialKhanAwaking = yes
 	}
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = { factor = 0.5 mid_game_years_passed > 50 }
@@ -6882,6 +6971,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -6890,7 +6980,10 @@ country_event = {
 					has_global_flag = marauder_crisis_started
 				}
 			}
-			clear_global_event_target = raider_khanate
+			if = {
+				limit = { exists = event_target:raider_khanate }
+				clear_global_event_target = raider_khanate
+			}
 			every_playable_country = {
 				limit = { has_country_flag = rebelling_satrapy }
 				remove_country_flag = rebelling_satrapy
@@ -7085,7 +7178,9 @@ country_event = {
 		}
 		else = {
 			species = {
-				modify_species = { add_trait = trait_conformists }
+				modify_species = {
+					add_trait = trait_conformists
+				}
 			}
 		}
 		### Save old values
@@ -7621,6 +7716,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = { # ## Khan fleet attacks closest hostile system.
 		# Give Khan a kick, prevent strange AI idle/stuck bug.
 		country_event = { id = khan.530 days = 15 }
@@ -7636,6 +7732,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:marauder_rally_point
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.501.a
 		hidden_effect = {
@@ -7650,6 +7747,7 @@ country_event = {
 	title = "greatkhan_diplo_header"
 	desc = "marauder.502.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:great_khan
 		room = khorgis_khan_1_room
@@ -7661,6 +7759,7 @@ country_event = {
 	immediate = {
 		set_global_flag = great_khan_announcement
 	}
+
 	option = {
 		name = marauder.502.a
 		trigger = { is_machine_empire = no }
@@ -8014,21 +8113,47 @@ country_event = {
 					limit = {
 						is_colony = yes
 						NOR = {
+							is_planet_class = pc_cosmogenesis_world
 							is_under_colonization = yes
+							is_artificial = yes
+							uses_habitat_capitals = yes
 							# has_building = building_colony_shelter
 							has_building = building_capital
 							has_building = building_major_capital
 							has_building = building_system_capital
 							has_building = building_imperial_capital
-							# building_hive_major_capital
-							# building_machine_major_capital
 							has_building = building_resort_major_capital
 							has_building = building_slave_major_capital
-							# building_ancient_control_center
-							# building_ancient_palace
+							has_building = building_hive_capital
+							has_building = building_machine_capital
+							has_building = building_resort_capital
+							has_building = building_slave_capital
+							has_building = building_ancient_control_center
+							has_building = building_ancient_palace
+							has_building = building_capital_wilderness
 						}
 					}
-					add_building = building_capital
+					switch = {
+						trigger = has_building
+						building_colony_shelter = { remove_building = building_colony_shelter }
+						building_hive_capital = { remove_building = building_hive_capital }
+						building_machine_capital = { remove_building = building_machine_capital }
+						building_capital_wilderness = { remove_building = building_capital_wilderness }
+						building_major_capital_wilderness = { remove_building = building_major_capital_wilderness }
+						building_hive_major_capital = { remove_building = building_hive_major_capital }
+						building_machine_major_capital = { remove_building = building_machine_major_capital }
+					}
+					if = {
+						limit = { has_modifier = slave_colony }
+						add_building = building_slave_capital
+					}
+					else_if = {
+						limit = { has_modifier = resort_colony }
+						add_building = building_resort_capital
+					}
+					else = {
+						add_building = building_capital
+					}
 				}
 			}
 		}
@@ -8059,6 +8184,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = marauder.504.a
 	}
@@ -8275,6 +8401,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = { # Back to the fold
 		hidden_effect = {
 			every_controlled_fleet = {
@@ -8328,6 +8455,7 @@ country_event = {
 	show_sound = event_ship_explosion
 	is_triggered_only = yes
 	location = event_target:khan_death_system
+
 	option = {
 		name = marauder.506.a
 	}
@@ -8529,6 +8657,7 @@ country_event = {
 country_event = {
 	id = marauder.508
 	title = "greatkhan_diplo_header"
+
 	desc = {
 		trigger = {
 			OR = {
@@ -8554,6 +8683,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:great_khan
 		room = khorgis_khan_1_room
@@ -8561,6 +8691,7 @@ country_event = {
 
 	location = event_target:marauder_rally_point
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.508.a
 	}
@@ -8596,6 +8727,7 @@ country_event = {
 	show_sound = event_airlock
 	is_triggered_only = yes
 	location = event_target:khan_death_system
+
 	option = {
 		name = marauder.510.a
 		custom_tooltip = marauder.122.a
@@ -8853,6 +8985,7 @@ country_event = {
 country_event = {
 	id = marauder.513
 	title = "marauder.510.name"
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -8871,6 +9004,7 @@ country_event = {
 	picture = GFX_evt_space_funeral
 	show_sound = event_life_support_fail
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.510.a
 	}
@@ -9045,6 +9179,7 @@ country_event = {
 	show_sound = event_ground_battle
 	location = event_target:liberated_planet
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.516.a
 		event_target:liberated_planet = { set_owner = root }
@@ -9059,6 +9194,7 @@ country_event = {
 	picture = GFX_evt_victorious_army
 	show_sound = event_ground_battle
 	is_triggered_only = yes
+
 	option = { # Keep planet
 		name = marauder.517.a
 		custom_tooltip = marauder.517.a.tooltip
@@ -9124,6 +9260,7 @@ country_event = {
 	picture = GFX_evt_victorious_army
 	show_sound = event_ground_battle
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.516.a
 		event_target:liberated_planet = { set_owner = root }
@@ -9138,6 +9275,7 @@ country_event = {
 	picture = GFX_evt_ground_combat
 	show_sound = event_ground_battle
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.516.a
 	}
@@ -9581,6 +9719,7 @@ country_event = {
 country_event = {
 	id = marauder.524
 	title = "marauder.524.name"
+
 	desc = {
 		text = marauder.524.a.desc
 		trigger = {
@@ -9601,6 +9740,7 @@ country_event = {
 	picture = GFX_evt_space_funeral
 	show_sound = event_airlock
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.524.a
 		trigger = {
@@ -9768,6 +9908,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:awakened_horde
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.501.a
 		hidden_effect = {
@@ -9971,6 +10112,7 @@ planet_event = {
 country_event = {
 	id = marauder.550
 	title = "greatkhan_diplo_header"
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -10158,6 +10300,7 @@ country_event = {
 		}
 		text = "marauder.550.w.desc"
 	}
+
 	picture_event_data = {
 		portrait = event_target:great_khan
 		room = khorgis_khan_1_room
@@ -10176,6 +10319,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_diplomacy_engaged
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -10358,6 +10502,7 @@ country_event = {
 	id = marauder.551
 	title = "greatkhan_diplo_header"
 	desc = marauder.551.a.desc
+
 	picture_event_data = {
 		portrait = event_target:great_khan
 		room = khorgis_khan_1_room
@@ -10375,11 +10520,13 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_diplomacy_engaged
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.551.a
 		# sound = advisor_clicking_respons_01
@@ -10446,6 +10593,7 @@ country_event = {
 	show_sound = event_conversation
 	location = event_target:capital_planet
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.552.a
 	}
@@ -10624,9 +10772,11 @@ country_event = {
 			add_trust = { who = event_target:raider_khanate amount = 30 }
 		}
 	}
+
 	option = {
 		name = marauder.553.a
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:raider_khanate = {
@@ -10666,6 +10816,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_diplomacy_engaged
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -10882,6 +11033,7 @@ country_event = {
 			value = pathetic
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 6
 		modifier = {
@@ -10936,6 +11088,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = { # var = "planets_lost_to_marauder" is increased on .503, .527 and .528
 		country_event = { id = marauder.550 } # Submit to Khan
 		# country_event = { id = khan.559 days = -1 } # Pre-Submit to Khan
@@ -10947,6 +11100,7 @@ country_event = {
 		# 	country_event = { id = khan.309 days = 1 } # Friendly to be sure
 		# }
 	}
+
 	after = {
 		set_subject_of = { who = event_target:raider_khanate preset = preset_satrapy }
 	}
@@ -11188,6 +11342,7 @@ country_event = {
 		}
 		# clear_global_event_target = marauder_rally_point
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:CmtTargetMarauderRallyPoint1 }
@@ -11711,6 +11866,7 @@ country_event = {
 		# Vfix system survey, omit race condition, establish communications
 		country_event = { id = marauder_borders.2000 days = 5 }
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:raider_khanate }
@@ -11883,7 +12039,10 @@ country_event = {
 				random_system_within_border = {
 					limit = {
 						CmtTriggerMarauderCapitalSystem = yes
-						NOT = { is_same_value = event_target:marauder_capital }
+						NAND = {
+							exists = event_target:marauder_capital
+							is_same_value = event_target:marauder_capital
+						}
 					}
 					save_event_target_as = second_marauder_system
 				}
@@ -11947,6 +12106,7 @@ country_event = {
 		} # End restore partial Marauders
 		country_event = { id = marauder.609 days = 1 } # Fully handover
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:raider_khanate }
@@ -12083,6 +12243,7 @@ country_event = {
 		observer_event = { id = observer.23 }
 		country_event = { id = marauder.609 days = 1 } # Fully handover
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:raider_khanate }
@@ -12279,7 +12440,10 @@ country_event = {
 				random_system_within_border = {
 					limit = {
 						CmtTriggerMarauderCapitalSystem = yes
-						NOT = { is_same_value = event_target:marauder_capital }
+						NAND = {
+							exists = event_target:marauder_capital
+							is_same_value = event_target:marauder_capital
+						}
 					}
 					save_event_target_as = second_marauder_system
 					# set_star_flag = second_marauder_system
@@ -12434,7 +12598,10 @@ country_event = {
 							CmtTriggerMarauderCapitalSystem = yes
 							NOR = {
 								is_same_value = event_target:second_marauder_system
-								is_same_value = event_target:marauder_capital
+								AND = {
+									exists = event_target:marauder_capital
+									is_same_value = event_target:marauder_capital
+								}
 							}
 						}
 						save_event_target_as = third_marauder_system
@@ -13229,6 +13396,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		country_event = { id = marauder.609 days = -1 } # Fully handover
 		# Try workaround for strange fleet behavior
@@ -13287,6 +13455,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.620.a
 	}
@@ -13300,6 +13469,7 @@ country_event = {
 	picture = GFX_evt_smugglers_in_bar
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.630.a
 	}
@@ -13313,6 +13483,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	option = {
 		name = marauder.640.a
 	}
@@ -13347,11 +13518,13 @@ country_event = {
 		}
 		# if = { limit = { has_modifier = "satrapy_of_horde" } remove_modifier = "satrapy_of_horde" }
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.660.a
 		ai_chance = { factor = 100 }
@@ -13383,6 +13556,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_diplomacy_engaged
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
@@ -13429,6 +13603,7 @@ country_event = {
 	id = marauder.665
 	title = "TRANSMISSION"
 	desc = "marauder.665.a.desc"
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
@@ -13453,11 +13628,13 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_diplomacy_engaged
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = marauder_diplomacy_engaged
 		}
 	}
+
 	option = {
 		name = marauder.665.a
 	}
@@ -13487,6 +13664,7 @@ country_event = {
 		}
 		# if = { limit = { has_modifier = "satrapy_of_horde" } remove_modifier = "satrapy_of_horde" }
 	}
+
 	option = {
 		name = marauder.670.a
 	}
@@ -13554,6 +13732,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = marauder.671.a
 	}
@@ -13691,6 +13870,7 @@ planet_event = {
 	immediate = {
 		owner = { set_country_flag = marauder_neighbor_event_1 }
 	}
+
 	option = {
 		name = marauder.701.a
 	}
@@ -13700,6 +13880,7 @@ planet_event = {
 country_event = {
 	id = marauder.702
 	title = "marauder.702.name"
+
 	desc = {
 		trigger = {
 			success_text = {
@@ -13723,6 +13904,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_neighbor_event_2
 	}
+
 	option = {
 		name = EXCELLENT
 		add_modifier = { modifier = "marauder_skirmishing" years = 10 }
@@ -13734,6 +13916,7 @@ country_event = {
 	id = marauder.703
 	title = "marauder.703.name"
 	desc = "marauder.703.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -13752,6 +13935,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_neighbor_event_3
 	}
+
 	option = {
 		name = marauder.703.a
 		trigger = { is_homicidal = no is_genocidal_infernal = no }
@@ -13824,6 +14008,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_neighbor_event_4
 	}
+
 	option = {
 		name = marauder.704.a
 		create_fleet = {
@@ -13864,6 +14049,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_neighbor_event_5
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -13890,6 +14076,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_neighbor_event_6
 	}
+
 	option = {
 		name = marauder.706.a
 		add_resource = { minerals = 400 }
@@ -13913,6 +14100,7 @@ country_event = {
 	immediate = {
 		set_country_flag = marauder_neighbor_event_7
 	}
+
 	option = {
 		name = marauder.707.a
 		add_resource = { energy = 400 }

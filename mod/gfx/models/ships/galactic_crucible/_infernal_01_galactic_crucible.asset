@@ -1,0 +1,437 @@
+# Vfix rotation
+@galactic_crucible_scale = 16
+@galactic_crucible_size = 25
+@flowmap_speed = 0.21
+@flowmap_intensity =  0.3
+
+entity = {
+	name = "infernal_01_galactic_crucible_part_0_entity"
+	pdxmesh = "infernal_01_galactic_crucible_part_0_mesh"
+	scale = @galactic_crucible_scale
+
+	locator = { name = "BeamLocator" position = { 0 -0.9 0.3 }}
+	locator = { name = spiral_2 position = { 0 -0.9 0.3 } rotation = {0 0 180}}
+	locator = { name = spiral_3 position = { 0 -0.9 0.3 } rotation = {0 0 90}}
+	locator = { name = spiral_4 position = { 0 -0.9 0.3 } rotation = {0 0 270}}
+	locator = { name = WhirlPoolLocator position = {0 -0.9 9.4}}
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2
+		start_event = { trigger_once = yes sound = { soundeffect = "dyson_sphere_treble_hum" } }
+		event = { time = 0 node = "BeamLocator" particle = "infernal_galactic_crucible_energy_beam_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "WhirlPoolLocator" particle = "infernal_subspace_tunnel_star_whirlpool_020_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_01" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_02" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_03" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_06" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_07" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_08" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_09" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_10" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_11" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_12" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_13" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_14" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_15" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_16" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_17" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_18" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_19" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_20" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_21" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_30" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_31" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+
+	attach = { "BeamLocator" 	= "infernal_galactic_crucible_energy_beam_spiral_entity" }
+	attach = { "spiral_2"		= "infernal_galactic_crucible_energy_beam_spiral_entity_2" }
+	attach = { "spiral_3"		= "infernal_galactic_crucible_energy_beam_spiral_entity_3" }
+	attach = { "spiral_4"		= "infernal_galactic_crucible_energy_beam_spiral_entity_4" }
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_part_1_entity"
+	pdxmesh = "infernal_01_galactic_crucible_part_1_mesh"
+	scale = @galactic_crucible_scale
+
+	locator = { name = "DropletLocator0"	position = { 11.7 0.3 -25 }}
+	locator = { name = "DropletLocator1"	position = { 14.9 0.31 -21.39 }}
+	locator = { name = "DropletLocator5"	position = { -24.195 0.81 -10.8 }}
+	locator = { name = "DropletLocator6"	position = { -13.5 0.4 -23.288 }}
+	locator = { name = spiral_5 position = { 0 -0.9 0.3 } rotation = {0 0 45}}
+	locator = { name = spiral_6 position = { 0 -0.9 0.3 } rotation = {0 0 135}}
+	locator = { name = spiral_7 position = { 0 -0.9 0.3 } rotation = {0 0 225}}
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2
+		start_event = { trigger_once = yes sound = { soundeffect = "dyson_sphere_treble_hum" } }
+		event = { time = 0 node = "DropletLocator0" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator1" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator5" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator6" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_47" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_48" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_49" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_50" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+
+	attach = { "spiral_5"		= "infernal_galactic_crucible_energy_beam_spiral_entity_5" }
+	attach = { "spiral_6"		= "infernal_galactic_crucible_energy_beam_spiral_entity_6" }
+	attach = { "spiral_7"		= "infernal_galactic_crucible_energy_beam_spiral_entity_7" }
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_part_2_entity"
+	pdxmesh = "infernal_01_galactic_crucible_part_2_mesh"
+	scale = @galactic_crucible_scale
+
+	locator = { name = "DropletLocator2"	position = { 27.89 1.1 -1.6 }}
+	locator = { name = "DropletLocator3"	position = { 25.79 1.1 -7.9 }}
+	locator = { name = "DropletLocator7"	position = { -20.3 0.62 -16.09 }}
+	locator = { name = "DropletLocator8"	position = { -27.03 1.14 -5.5 }}
+	locator = { name = spiral_8 position = { 0 -0.9 0.3 } rotation = {0 0 315}}
+	locator = { name = spiral_9 position = { 0 -0.9 0.3 } rotation = {0 0 22.5}}
+	locator = { name = spiral_10 position = { 0 -0.9 0.3 } rotation = {0 0 112.5}}
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2
+		start_event = { trigger_once = yes sound = { soundeffect = "dyson_sphere_treble_hum" } }
+		event = { time = 0 node = "DropletLocator2" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator3" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator7" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator8" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_51" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_52" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_53" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_54" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+
+	attach = { "spiral_8"		= "infernal_galactic_crucible_energy_beam_spiral_entity_8" }
+	attach = { "spiral_9"		= "infernal_galactic_crucible_energy_beam_spiral_entity_9" }
+	attach = { "spiral_10"		= "infernal_galactic_crucible_energy_beam_spiral_entity_10" }
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_part_3_entity"
+	pdxmesh = "infernal_01_galactic_crucible_part_3_mesh"
+	scale = @galactic_crucible_scale
+
+	locator = { name = "DropletLocator4"	position = { 26.859 1.1 7.57 }}
+	locator = { name = "DropletLocator11" position = { -27.43 1.07 4.13 }}
+	locator = { name = "DropletLocator9"	position = { -11.62 0.43 -25.08 }}
+	locator = { name = "DropletLocator10" position = { -13.18 1.1 25.93 }}
+	locator = { name = spiral_11 position = { 0 -0.9 0.3 } rotation = {0 0 202.5}}
+	locator = { name = spiral_12 position = { 0 -0.9 0.3 } rotation = {0 0 292.5}}
+	locator = { name = spiral_13 position = { 0 -0.9 0.3 } rotation = {0 0 67.5}}
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2
+		start_event = { trigger_once = yes sound = { soundeffect = "dyson_sphere_treble_hum" } }
+		event = { time = 0 node = "DropletLocator4" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator9" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator10" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator11" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_55" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_56" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_57" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_58" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+
+	attach = { "spiral_11"		= "infernal_galactic_crucible_energy_beam_spiral_entity_11" }
+	attach = { "spiral_12"		= "infernal_galactic_crucible_energy_beam_spiral_entity_12" }
+	attach = { "spiral_13"		= "infernal_galactic_crucible_energy_beam_spiral_entity_13" }
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_part_4_entity"
+	pdxmesh = "infernal_01_galactic_crucible_part_4_mesh"
+	scale = @galactic_crucible_scale
+
+	locator = { name = "DropletLocator12" position = { -22.77 0.985 17.144 }}
+	locator = { name = "DropletLocator13" position = { 13.11 1.1 25.94 }}
+	locator = { name = "DropletLocator14" position = { 22.281 .999 17.862 }}
+	locator = { name = spiral_14 position = { 0 -0.9 0.3 } rotation = {0 0 157.5}}
+	locator = { name = spiral_15 position = { 0 -0.9 0.3 } rotation = {0 0 247.5}}
+	locator = { name = spiral_16 position = { 0 -0.9 0.3 } rotation = {0 0 337.5}}
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2
+		start_event = { trigger_once = yes sound = { soundeffect = "dyson_sphere_treble_hum" } }
+		event = { time = 0 node = "DropletLocator12" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator13" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "DropletLocator14" particle = "infernal_galactic_crucible_energy_droplet_effect" trigger_once = yes keep_particle = yes }
+		event = { time = 0 node = "light_locator_04" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_05" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_22" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_23" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_24" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_25" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_26" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_27" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_28" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_29" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_32" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_33" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_34" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_35" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_36" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_37" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_38" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_39" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_40" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_41" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_42" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_43" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_44" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_45" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+		event = { time = 0 node = "light_locator_46" particle = "ship_light_blue_effect" keep_particle = yes trigger_once = yes }
+	}
+
+	attach = { "spiral_14"		= "infernal_galactic_crucible_energy_beam_spiral_entity_14" }
+	attach = { "spiral_15"		= "infernal_galactic_crucible_energy_beam_spiral_entity_15" }
+	attach = { "spiral_16"		= "infernal_galactic_crucible_energy_beam_spiral_entity_16" }
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_phase_01_entity"
+	locator = { name = "root"	position = { 0 	0  0 } }
+
+	attach = { "root" = "infernal_01_galactic_crucible_part_0_entity" }
+
+	scale = 1.0
+	cull_radius = 500
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_phase_02_entity"
+	locator = { name = "root"	position = { 0 	0  0 } }
+
+	attach = { "root" = "infernal_01_galactic_crucible_part_0_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_1_entity" }
+
+	scale = 1.0
+	cull_radius = 500
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_phase_03_entity"
+	locator = { name = "root"	position = { 0 	0  0 } }
+
+	attach = { "root" = "infernal_01_galactic_crucible_part_0_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_1_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_2_entity" }
+
+	scale = 1.0
+	cull_radius = 500
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_phase_04_entity"
+	locator = { name = "root"	position = { 0 	0  0 } }
+
+	attach = { "root" = "infernal_01_galactic_crucible_part_0_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_1_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_2_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_3_entity" }
+
+	scale = 1.0
+	cull_radius = 500
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_phase_05_entity"
+	locator = { name = "root"	position = { 0 	0  0 } }
+
+	attach = { "root" = "infernal_01_galactic_crucible_part_0_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_1_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_2_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_3_entity" }
+	attach = { "root" = "infernal_01_galactic_crucible_part_4_entity" }
+
+
+	scale = 1.0
+	cull_radius = 500
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_destroyed_entity"
+	pdxmesh = "infernal_01_galactic_crucible_destroyed_mesh"
+	scale = @galactic_crucible_scale
+
+	default_state = "idle"
+		state = { name = "idle" state_time = 20 looping = no
+		event = { time = 1.05 node = "explosion_locator_01" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 1.05 node = "explosion_locator_01" sound = { soundeffect = station_explosion_large} }
+		event = { time = 1.05 node = "explosion_locator_01" particle = "infernal_01_ship_burn_long_effect" }
+		event = { time = 1.8 node = "explosion_locator_02" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 1.8 node = "explosion_locator_02" sound = { soundeffect = station_explosion_large} }
+		event = { time = 2.6 node = "explosion_locator_03" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 2.6 node = "explosion_locator_03" sound = { soundeffect = station_explosion_large} }
+		event = { time = 3.4 node = "explosion_locator_04" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 3.4 node = "explosion_locator_04" sound = { soundeffect = station_explosion_large} }
+		event = { time = 4.2 node = "explosion_locator_05" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 4.2 node = "explosion_locator_05" sound = { soundeffect = station_explosion_large} }
+		event = { time = 5.3 node = "explosion_locator_06" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 5.3 node = "explosion_locator_06" sound = { soundeffect = station_explosion_large} }
+		event = { time = 6.4 node = "explosion_locator_07" particle = "infernal_01_ship_explosion_80_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 6.4 node = "explosion_locator_07" sound = { soundeffect = station_explosion_large} }
+		event = { time = 7.6 node = "explosion_locator_08" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 7.6 node = "explosion_locator_08" sound = { soundeffect = station_explosion_large} }
+		event = { time = 8.8 node = "explosion_locator_09" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 8.8 node = "explosion_locator_09" sound = { soundeffect = station_explosion_large} }
+		event = { time = 10.1 node = "explosion_locator_10" particle = "infernal_01_ship_explosion_30_effect" keep_particle = yes trigger_once = yes}
+		event = { time = 10.1 node = "explosion_locator_10" sound = { soundeffect = station_explosion_large} }
+	}
+
+	game_data= {
+		uv_animation_speed 		= @flowmap_speed
+		emissive_recolor_crunch = 5.0
+		#NOTE: Since the ship makes use of a flowmap, this is a special case
+		#where the uv_animation_direction variable is used to determine the flowmap strength
+		#instead of an animation direction.
+		uv_animation_direction 	= { @flowmap_intensity 0.0 }
+
+		size = @galactic_crucible_size
+	}
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_construction_frame_entity"
+	pdxmesh = "molluscoid_01_corvette_frame_mesh"
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2 }
+
+	locator = { name = construction_locator rotation = { 0 180 180 } }
+	attach = { "construction_locator" = "infernal_01_galactic_crucible_construction_entity" }
+}
+
+entity = {
+	name = "infernal_01_galactic_crucible_construction_entity"
+	pdxmesh = "infernal_01_galactic_crucible_part_0_mesh"
+	scale = @galactic_crucible_scale
+
+	default_state = "idle"
+	state = { name = "idle" animation = "idle" animation_speed = 0.2
+		event = { trigger_once = yes sound = { soundeffect = "place_construction" } }
+	}
+
+	game_data = {
+		size = @galactic_crucible_size
+	}
+}
+
+animation = {
+	name = "infernal_01_galactic_crucible_part_0_idle_animation"
+	file = "infernal_01_galactic_crucible_part_0_idle.anim"
+}

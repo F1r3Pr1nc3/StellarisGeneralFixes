@@ -461,6 +461,7 @@ country_event = {
 	show_sound = event_default
 	is_triggered_only = yes
 	location = from
+
 	option = {
 		name = FASCINATING
 		add_tech_option_or_research_effect = {
@@ -469,6 +470,7 @@ country_event = {
 			CATEGORY = engineering_research
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			clear_affected_storm_flag = { SCOPE_TYPE = country }
@@ -855,6 +857,7 @@ planet_event = {
 			save_event_target_as = collided_planets
 		}
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -892,6 +895,7 @@ planet_event = {
 		is_colony = yes
 		owner = { has_event_chain = cs_collided_planet_chain }
 	}
+
 	option = {
 		name = WORRYING
 		owner = {
@@ -932,6 +936,7 @@ planet_event = {
 		add_modifier = { modifier = collided_planet_collapsing days = -1 }
 		planet_event = { id = cstorms.1215 days = @collided_planet_days_before_collapse }
 	}
+
 	option = {
 		name = cstorms.1210.a
 		tooltip = {
@@ -1035,6 +1040,7 @@ planet_event = {
 	event_chain = cs_collided_planet_chain
 	picture = GFX_evt_cosmic_storms_collided_planets
 	location = this
+
 	desc = {
 		trigger = { has_planet_flag = attempting_stabilization }
 		text = cstorms.1225.desc.stabalize
@@ -1056,6 +1062,7 @@ planet_event = {
 		is_colony = yes
 		owner = { has_event_chain = cs_collided_planet_chain }
 	}
+
 	option = {
 		name = EXCELLENT
 		remove_modifier = collided_planet_collapsing
@@ -1081,6 +1088,7 @@ planet_event = {
 		is_colony = yes
 		owner = { has_event_chain = cs_collided_planet_chain }
 	}
+
 	option = {
 		name = EXCELLENT
 		remove_modifier = collided_planet_collapsing
@@ -1113,6 +1121,7 @@ planet_event = {
 		is_colony = yes
 		owner = { has_event_chain = cs_collided_planet_chain }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		destroy_collided_planets = yes
@@ -1144,6 +1153,7 @@ planet_event = {
 	trigger = {
 		is_colony = yes
 	}
+
 	option = {
 		name = UNFORTUNATE
 		destroy_collided_planets = yes
@@ -1167,6 +1177,7 @@ ship_event = {
 	picture = GFX_evt_crimson_crawlers
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = INTRIGUING
 		enable_special_project = {
@@ -1184,6 +1195,7 @@ country_event = {
 	picture = GFX_evt_crimson_crawlers
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.1260.a
 		add_monthly_resource_mult = {
@@ -1263,6 +1275,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1274,6 +1287,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1292,6 +1306,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -1303,6 +1318,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1321,9 +1337,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = UNDERSTOOD
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1342,6 +1360,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.1290.a
 		owner = {
@@ -1378,6 +1397,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1395,6 +1415,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = holdtheline_swear }
@@ -1413,6 +1434,7 @@ fleet_event = {
 		}
 		text = cstorms.1295.desc.c
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -1424,6 +1446,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1438,6 +1461,7 @@ fleet_event = {
 	is_triggered_only = yes
 	show_sound = event_dig_site
 	archaeology = yes
+
 	option = {
 		name = EXCELLENT
 		solar_system = {
@@ -1455,6 +1479,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			owner = {
@@ -1483,6 +1508,7 @@ system_event = {
 		owner = { is_country_type = default is_ai = no }
 		has_cosmic_storms_dlc = yes
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -1533,6 +1559,7 @@ system_event = {
 		owner = { has_country_flag = omen_returns }
 		any_system_planet = { has_research_station = yes }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -1588,6 +1615,7 @@ system_event = {
 			save_event_target_as = stormbound_science
 		}
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -1642,6 +1670,7 @@ system_event = {
 		}
 		owner = { set_country_flag = has_discovered_spirits_of_the_storm }
 	}
+
 	option = {
 		name = INTRIGUING
 	}
@@ -1661,6 +1690,7 @@ ship_event = {
 	immediate = {
 		owner = { remove_country_flag = spirits_of_the_storm }
 	}
+
 	option = {
 		name = cstorms.1320.a
 		hidden_effect = {
@@ -1681,6 +1711,7 @@ country_event = {
 	show_sound = event_mysterious_signal
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	option = {
 		name = cstorms.1321.a
 		owner = {
@@ -1692,6 +1723,7 @@ country_event = {
 		name = cstorms.1321.b
 		owner = { stormbound_final_reward = yes }
 	}
+
 	after = {
 		owner = {
 			end_event_chain = cs_stormbound_chain
@@ -1733,6 +1765,7 @@ ship_event = {
 	desc = cstorms.1500.desc
 	picture = GFX_evt_but_they_are_cute
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.1500.a
 		enable_special_project = {
@@ -1787,6 +1820,7 @@ ship_event = {
 	picture = GFX_evt_but_they_are_cute
 	event_chain = cs_but_they_are_cute_chain
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.1505.a
 		hidden_effect = {
@@ -1809,6 +1843,7 @@ ship_event = {
 	picture = GFX_evt_but_they_are_cute
 	event_chain = cs_but_they_are_cute_chain
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.1510.a
 		if = {
@@ -1866,6 +1901,7 @@ ship_event = {
 			add_trait = { trait = leader_trait_melancholic }
 		}
 	}
+
 	option = {
 		name = cstorms.1515.a
 		hidden_effect = {
@@ -1905,6 +1941,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cstorms.1520.a
 		owner = { end_event_chain = cs_but_they_are_cute_chain }
@@ -1963,6 +2000,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cstorms.1550.a
 		hidden_effect = {
@@ -2002,6 +2040,7 @@ ship_event = {
 	desc = cstorms.1555.desc
 	picture = GFX_evt_the_imitator
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.1555.a
 		owner = {
@@ -2042,6 +2081,7 @@ ship_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:imitator_country = { destroy_country = yes }
@@ -2065,6 +2105,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -2076,6 +2117,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2099,6 +2141,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = WORRYING
 		owner = {
@@ -2110,6 +2153,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2146,6 +2190,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.1410.a
 		owner = {
@@ -2156,6 +2201,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2180,6 +2226,7 @@ fleet_event = {
 			leader = { exile_leader_as = green_skies_hostage }
 		}
 	}
+
 	option = {
 		name = cstorms.1415.a
 		allow = {
@@ -2206,6 +2253,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2219,6 +2267,7 @@ country_event = {
 	picture = GFX_evt_cosmic_storms_green_skies
 	show_sound = event_ship_explosion
 	is_triggered_only = yes
+
 	option = {
 		name = BATTLESTATIONS
 		owner = { create_green_skies_pirates_fleet = yes }
@@ -2260,6 +2309,7 @@ country_event = {
 	immediate = {
 		add_modifier = { modifier = green_skies_outcome_modifier }
 	}
+
 	option = {
 		name = cstorms.1420.a
 		return_leader_from_exile = green_skies_hostage
@@ -2268,6 +2318,7 @@ country_event = {
 		name = cstorms.1420.b
 		kill_exiled_leader = green_skies_hostage
 	}
+
 	after = {
 		clear_global_event_target = green_skies_hostage_owner
 	}
@@ -2285,6 +2336,7 @@ country_event = {
 	immediate = {
 		add_modifier = { modifier = green_skies_outcome_modifier }
 	}
+
 	option = {
 		name = cstorms.1425.a
 		return_leader_from_exile = green_skies_hostage
@@ -2324,6 +2376,7 @@ ship_event = {
 	immediate = {
 		add_modifier = { modifier = green_skies_outcome_modifier }
 	}
+
 	option = {
 		name = AMAZING
 		owner = {
@@ -2415,6 +2468,7 @@ planet_event = {
 		owner = { set_country_flag = triggered_magnetized_planetary_core }
 		add_modifier = { modifier = pm_magnetized_planetary_core }
 	}
+
 	option = {
 		name = FASCINATING
 		tooltip = {
@@ -2470,6 +2524,7 @@ system_event = {
 planet_event = {
 	id = cstorms.1715
 	title = cstorms.1715.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1715.desc.common
@@ -2515,6 +2570,7 @@ planet_event = {
 		set_planet_flag = afflicted_by_storm_event
 		owner = { set_country_flag = triggered_electrified_oceans }
 	}
+
 	option = {
 		name = cstorms.1715.a
 		owner = {
@@ -2597,6 +2653,7 @@ system_event = {
 planet_event = {
 	id = cstorms.1725
 	title = cstorms.1725.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1725.desc.common
@@ -2653,6 +2710,7 @@ planet_event = {
 		set_planet_flag = afflicted_by_storm_event
 		owner = { set_country_flag = triggered_ghostly_apparitions }
 	}
+
 	option = {
 		name = cstorms.1725.a
 		allow = {
@@ -2744,6 +2802,7 @@ planet_event = {
 	show_sound = event_collapsing_ruins
 	is_triggered_only = yes
 	location = this
+
 	option = {
 		name = FASCINATING
 		remove_deposit = d_active_volcano
@@ -2761,6 +2820,7 @@ planet_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			clear_affected_storm_flag = { SCOPE_TYPE = planet }
@@ -2831,6 +2891,7 @@ planet_event = {
 		set_planet_flag = afflicted_by_storm_event
 		owner = { set_country_flag = triggered_sky_mountain }
 	}
+
 	option = {
 		name = INTERESTING
 		add_deposit = d_sky_mountain
@@ -2918,6 +2979,7 @@ planet_event = {
 planet_event = {
 	id = cstorms.1755
 	title = cstorms.1755.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1755.desc.common
@@ -2953,6 +3015,7 @@ planet_event = {
 	show_sound = event_collapsing_ruins
 	is_triggered_only = yes
 	location = this
+
 	option = {
 		name = FASCINATING
 		if = {
@@ -2974,6 +3037,7 @@ planet_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			clear_affected_storm_flag = { SCOPE_TYPE = planet }
@@ -3026,6 +3090,7 @@ system_event = {
 planet_event = {
 	id = cstorms.1761
 	title = cstorms.1761.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1761.desc.common
@@ -3060,6 +3125,7 @@ planet_event = {
 		set_planet_flag = afflicted_by_storm_event
 		owner = { set_country_flag = triggered_dusty_drink }
 	}
+
 	option = {
 		name = cstorms.1761.a
 		trigger = {
@@ -3102,6 +3168,7 @@ planet_event = {
 	show_sound = event_default
 	is_triggered_only = yes
 	location = this
+
 	option = {
 		name = EXCELLENT
 		remove_modifier = pm_satured_filtration
@@ -3191,6 +3258,7 @@ system_event = {
 planet_event = {
 	id = cstorms.1771
 	title = cstorms.1771.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1771.desc.common
@@ -3226,6 +3294,7 @@ planet_event = {
 		set_planet_flag = afflicted_by_storm_event
 		owner = { set_country_flag = triggered_flightless_fauna }
 	}
+
 	option = {
 		name = cstorms.1771.a
 		trigger = {
@@ -3341,6 +3410,7 @@ planet_event = {
 		solar_system = { is_inside_storm = no }
 		is_owned_by = from
 	}
+
 	option = {
 		name = cstorms.1776.a
 		add_deposit = d_avian_reserve
@@ -3381,6 +3451,7 @@ country_event = {
 	id = cstorms.1801
 	title = cstorms.1801.name
 	desc = cstorms.1801.desc
+
 	inline_script = {
 		script = cosmic_storms/StormEventPicture
 		STORM_SCOPE = fromfrom
@@ -3389,6 +3460,7 @@ country_event = {
 	show_sound = event_default
 	is_triggered_only = yes
 	location = from
+
 	option = {
 		name = CURIOUS
 		from = {
@@ -3409,6 +3481,7 @@ country_event = {
 ship_event = {
 	id = cstorms.1805
 	title = cstorms.1805.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1805.desc
@@ -3454,6 +3527,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		controller = {
@@ -3531,6 +3605,7 @@ ship_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3589,6 +3664,7 @@ system_event = {
 	show_sound = event_default
 	is_triggered_only = yes
 	location = this
+
 	option = {
 		name = cstorms.1816.a
 		enable_special_project = {
@@ -3607,6 +3683,7 @@ ship_event = {
 	show_sound = event_ancient_drone
 	is_triggered_only = yes
 	location = this
+
 	option = {
 		name = cstorms.1820.a
 		controller = {
@@ -3709,6 +3786,7 @@ ship_event = {
 	id = cstorms.1826
 	title = cstorms.1826.name
 	desc = cstorms.1826.desc
+
 	inline_script = {
 		script = cosmic_storms/StormEventPicture
 		STORM_SCOPE = from
@@ -3717,6 +3795,7 @@ ship_event = {
 	show_sound = event_energy_field
 	is_triggered_only = yes
 	location = this
+
 	option = {
 		name = REMARKABLE
 		custom_tooltip = cstorms.1826.storm_tt
@@ -3800,10 +3879,12 @@ country_event = {
 	trigger = {
 		exists = event_target:caravaneer_fleet3_country
 	}
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet3_country
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = cstorms.1835.a
 		trigger = {
@@ -4077,6 +4158,7 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_evt_cosmic_storms_shroud_storm
 	location = from
+
 	option = {
 		name = cstorms.8510.a
 	}
@@ -4089,6 +4171,7 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_evt_cosmic_storms_shroud_storm
 	location = from
+
 	option = {
 		name = cstorms.8515.a
 	}
@@ -4101,6 +4184,7 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_evt_cosmic_storms_shroud_storm
 	location = from
+
 	option = {
 		name = cstorms.8520.a
 	}
@@ -4172,6 +4256,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = CURIOUS
 		if = {
@@ -4189,6 +4274,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -4207,6 +4293,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.1850.a
 		controller = {
@@ -4241,6 +4328,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -4250,6 +4338,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.1855
 	title = cstorms.1855.name
+
 	desc = {
 		trigger = {
 			text = cstorms.1855.desc
@@ -4271,6 +4360,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = FASCINATING
 		if = {
@@ -4357,6 +4447,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -4377,6 +4468,7 @@ planet_event = {
 
 	trigger = {
 	}
+
 	option = {
 		name = cstorms.8000.a
 	}

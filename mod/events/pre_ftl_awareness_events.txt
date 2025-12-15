@@ -86,6 +86,7 @@ country_event = {
 
 	trigger = {
 		is_country_type = default
+		exists = FROMFROM.solar_system # Vfix log
 		FROMFROM.solar_system = {
 			any_system_colony = {
 				has_owner = yes
@@ -595,6 +596,7 @@ country_event = {
 		}
 		set_country_flag = first_contact_completed@event_target:contact_empire
 	}
+
 	option = {
 		name = UNFORTUNATE
 		hidden_effect = {
@@ -625,6 +627,7 @@ country_event = {
 		set_country_flag = first_contact_completed@event_target:contact_empire
 		event_target:contact_empire = { set_country_flag = pre_ftl_initiating_contact }
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		hidden_effect = {

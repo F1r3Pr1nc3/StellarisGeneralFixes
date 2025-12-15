@@ -64,6 +64,7 @@ planet_event = {
 		remove_deposit = d_tree_of_life_colony
 		remove_deposit = d_tree_of_life_home
 	}
+
 	option = {
 		name = UNFORTUNATE
 		tooltip = {
@@ -148,6 +149,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = EXCELLENT
 		locked_random_list = {
@@ -231,6 +233,7 @@ planet_event = {
 			max_steps = 6
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_modifier = { modifier = colonial_remains }
@@ -415,6 +418,7 @@ country_event = {
 	immediate = {
 		fromfrom = { remove_deposit = d_progenitor add_deposit = d_progenitor_empty }
 	}
+
 	option = {
 		name = origin.3215.a
 		if = {
@@ -639,6 +643,7 @@ planet_event = {
 		remove_deposit = d_progenitor
 		add_deposit = d_progenitor_empty
 	}
+
 	option = {
 		name = origin.3245.a
 	}
@@ -651,6 +656,7 @@ planet_event = {
 	option = {
 		name = origin.3245.d
 	}
+
 	after = {
 		owner = {
 			if = {
@@ -755,9 +761,11 @@ country_event = {
 	picture = GFX_evt_progenitor_throne
 	show_sound = evn_ove_progenitor_throne
 	is_triggered_only = yes
+
 	option = {
 		name = origin.3215.a
 	}
+
 	after = {
 		owner = {
 			if = {
@@ -894,6 +902,7 @@ country_event = {
 	trigger = {
 		has_origin = origin_star_slingshot
 	}
+
 	option = {
 		name = origin.3510.a
 		add_resource = { influence = 150 }
@@ -913,9 +922,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.3515.a
 		owner = {
@@ -941,9 +952,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -969,9 +982,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.3515.a
 	}
@@ -989,9 +1004,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -1017,9 +1034,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.3515.a
 	}
@@ -1037,9 +1056,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.3540.a
 		owner = {
@@ -1168,6 +1189,7 @@ country_event = {
 		has_country_flag = shroudwalker_enclave_diplomacy_engaged
 		exists = event_target:shroudwalker_enclave_country
 	}
+
 	desc = {
 		trigger = {
 			hidden:owner = {
@@ -1184,10 +1206,12 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
 	}
+
 	immediate = {
 		country_event = {
 			id = tutorial.2100
@@ -1253,6 +1277,7 @@ ship_event = {
 fleet_event = {
 	id = origin.5620
 	title = "origin.5615.name"
+
 	desc = {
 		trigger = { has_fleet_flag = used_shroud_tunnel }
 		text = origin.5620.b.desc
@@ -1268,6 +1293,7 @@ fleet_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
@@ -1285,6 +1311,7 @@ fleet_event = {
 	immediate = {
 		owner = { set_country_flag = teachers_origin_meet_enclave }
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -1295,6 +1322,7 @@ fleet_event = {
 country_event = {
 	id = origin.5625
 	title = "origin.5625.name"
+
 	desc = {
 		trigger = {
 			NOT = { exists = event_target:shroudwalker_system_owner_closed }
@@ -1336,6 +1364,7 @@ country_event = {
 			add_seen_bypass_type = shroud_tunnel
 		}
 	}
+
 	option = {
 		trigger = {
 			NOT = { exists = event_target:shroudwalker_system_owner_closed }
@@ -1425,6 +1454,7 @@ country_event = {
 	desc = origin.5703.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:overlord_empire
 		planet_background = event_target:overlord_empire
@@ -1432,6 +1462,7 @@ country_event = {
 		city_level = event_target:overlord_empire
 		room = event_target:overlord_empire.ruler
 	}
+
 	trigger = {
 		has_origin = origin_imperial_vassal
 		is_ai = no
@@ -1440,6 +1471,7 @@ country_event = {
 	immediate = {
 		overlord = { save_event_target_as = overlord_empire }
 	}
+
 	option = {
 		name = origin.5703.a
 		icon = { icon = GFX_option_icon_hostile text = dialog_hostile_overlord }
@@ -1467,6 +1499,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = origin.5705 }
@@ -1477,6 +1510,7 @@ country_event = {
 country_event = {
 	id = origin.5705
 	title = TRANSMISSION
+
 	desc = {
 		trigger = { has_country_flag = imperial_fiefdom_harsh_response }
 		text = origin.5705.desc.harsh
@@ -1502,6 +1536,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:overlord_empire
 		planet_background = event_target:overlord_empire
@@ -1509,10 +1544,12 @@ country_event = {
 		city_level = event_target:overlord_empire
 		room = event_target:overlord_empire.ruler
 	}
+
 	trigger = {
 		has_origin = origin_imperial_vassal
 		is_ai = no
 	}
+
 	option = {
 		name = origin.5705.a
 		origin_imperial_fiefdom_bulwark_specialization_effect = yes
@@ -1544,6 +1581,7 @@ country_event = {
 			country_event = { id = origin.5708 }
 		}
 	}
+
 	after = {
 		remove_country_flag = imperial_fiefdom_harsh_response
 		remove_country_flag = imperial_fiefdom_grateful_response
@@ -1557,6 +1595,7 @@ country_event = {
 	desc = origin.5706.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:overlord_empire
 		planet_background = event_target:overlord_empire
@@ -1564,6 +1603,7 @@ country_event = {
 		city_level = event_target:overlord_empire
 		room = event_target:overlord_empire.ruler
 	}
+
 	option = {
 		name = origin.5706.a
 		default_hide_option = yes
@@ -1585,6 +1625,7 @@ country_event = {
 	desc = origin.5707.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:overlord_empire
 		planet_background = event_target:overlord_empire
@@ -1592,6 +1633,7 @@ country_event = {
 		city_level = event_target:overlord_empire
 		room = event_target:overlord_empire.ruler
 	}
+
 	option = {
 		name = origin.5707.a
 		default_hide_option = yes
@@ -1613,6 +1655,7 @@ country_event = {
 	desc = origin.5708.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:overlord_empire
 		planet_background = event_target:overlord_empire
@@ -1620,6 +1663,7 @@ country_event = {
 		city_level = event_target:overlord_empire
 		room = event_target:overlord_empire.ruler
 	}
+
 	option = {
 		name = origin.5708.a
 		default_hide_option = yes
@@ -1800,6 +1844,7 @@ country_event = {
 	trigger = {
 		has_origin = origin_imperial_vassal
 	}
+
 	option = {
 		name = origin.5725.a
 	}
@@ -2024,6 +2069,7 @@ country_event = {
 		custom_tooltip = origin.5735.c.tt
 		add_resource = { influence = 100 }
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -2112,6 +2158,7 @@ country_event = {
 	trigger = {
 		has_origin = origin_imperial_vassal
 	}
+
 	option = {
 		name = origin.5745.a
 		origin_imperial_vassal_new_overlord_eventchain_1 = yes
@@ -2141,6 +2188,7 @@ country_event = {
 	trigger = {
 		has_origin = origin_imperial_vassal
 	}
+
 	option = {
 		name = origin.5750.a
 		origin_imperial_vassal_new_overlord_eventchain_1 = yes
@@ -2169,6 +2217,7 @@ country_event = {
 	trigger = {
 		has_origin = origin_imperial_vassal
 	}
+
 	option = {
 		name = origin.5755.a
 		origin_imperial_vassal_new_overlord_eventchain_1 = yes
@@ -2197,6 +2246,7 @@ country_event = {
 	trigger = {
 		has_origin = origin_imperial_vassal
 	}
+
 	option = {
 		name = origin.5760.a
 		origin_imperial_vassal_new_overlord_eventchain_1 = yes
@@ -2276,6 +2326,7 @@ country_event = {
 country_event = {
 	id = origin.6005
 	title = origin.6005.name
+
 	desc = {
 		trigger = {
 			success_text = { text = origin.6005.desc.base1 has_country_flag = base1 }
@@ -2327,6 +2378,7 @@ country_event = {
 		set_timed_country_flag = { flag = fotd_leader_cooldown years = 10 }
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6005.a
 		clone_leader = {
@@ -2349,6 +2401,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_country_flag = base1
 		remove_country_flag = base2
@@ -2365,6 +2418,7 @@ country_event = {
 country_event = {
 	id = origin.6006
 	title = origin.6005.name
+
 	desc = {
 		trigger = {
 			success_text = { text = origin.6006.desc.base1 has_country_flag = base1 }
@@ -2401,6 +2455,7 @@ country_event = {
 		set_timed_country_flag = { flag = fotd_leader_cooldown years = 10 }
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6006.a
 		clone_leader = {
@@ -2423,6 +2478,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_country_flag = base1
 		remove_country_flag = base2
@@ -2448,6 +2504,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = { # Yes
 		name = origin.6010.a
 		custom_tooltip = origin.6010.a.tt
@@ -2488,6 +2545,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = { # Yes
 		name = origin.6010.a
 		custom_tooltip = origin.6010.a.tt
@@ -2557,6 +2615,7 @@ country_event = {
 	trigger = {
 		exists = event_target:fotd_Leader
 	}
+
 	option = { # Yes
 		name = UNFORTUNATE
 		custom_tooltip = origin.6012.a.tt
@@ -2647,6 +2706,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = origin.6015.a
 		add_fotd_tech = yes
@@ -2681,6 +2741,7 @@ country_event = {
 	option = {
 		name = origin.6015.c
 	}
+
 	after = {
 		remove_country_flag = terraforming_tech
 		remove_country_flag = unity_tech
@@ -2737,6 +2798,7 @@ country_event = {
 		}
 		set_timed_country_flag = { flag = fotd_requested_aid_recently years = 10 }
 	}
+
 	option = { # Help
 		allow = { support_seperatist_deficit_trigger = yes }
 		name = origin.6020.a
@@ -2762,6 +2824,7 @@ country_event = {
 		}
 		add_modifier = { modifier = fotd_rationed_living years = 10 }
 	}
+
 	after = {
 		remove_country_flag = mineral_seperatist_deficit
 		remove_country_flag = food_seperatist_deficit
@@ -2775,6 +2838,7 @@ country_event = {
 country_event = {
 	id = origin.6025
 	title = origin.6025.name
+
 	desc = {
 		trigger = { has_country_flag = fotd_aided_seperatists }
 		text = origin.6025.desc.helped
@@ -2849,6 +2913,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = origin.6025.a
 		trigger = { has_country_flag = fotd_aided_seperatists }
@@ -2874,6 +2939,7 @@ country_event = {
 	option = {
 		name = origin.6025.c
 	}
+
 	after = {
 		remove_country_flag = slowed_science_ships
 		remove_country_flag = slowed_first_contact
@@ -2910,6 +2976,7 @@ country_event = {
 		set_country_flag = encountered_alien_life
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6030.a
 		if = {
@@ -2947,6 +3014,7 @@ country_event = {
 		set_country_flag = encountered_sapient_alien_life
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6040.a
 		add_modifier = { modifier = fotd_secure_contact years = 5 }
@@ -3002,6 +3070,7 @@ first_contact_event = {
 country_event = {
 	id = origin.6045
 	title = origin.6045.name
+
 	desc = {
 		trigger = { has_country_flag = fotd_secured_contact }
 		text = origin.6045.desc.secured
@@ -3053,6 +3122,7 @@ country_event = {
 		}
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = { # Stop them and Apologize
 		trigger = { has_country_flag = fotd_secured_contact }
 		name = origin.6045.a
@@ -3125,6 +3195,7 @@ country_event = {
 	is_triggered_only = yes
 	show_sound = event_ship_explosion
 	location = event_target.target_system
+
 	option = {
 		name = origin.6046.a
 		ai_chance = { weight = 100 }
@@ -3144,6 +3215,7 @@ country_event = {
 	picture = GFX_evt_fear_of_the_dark
 	is_triggered_only = yes
 	show_sound = event_red_alert
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -3177,6 +3249,7 @@ country_event = {
 country_event = {
 	id = origin.6055
 	title = origin.6055.name
+
 	desc = {
 		trigger = { has_modifier = fotd_refusal_to_work }
 		text = origin.6055.desc.protests
@@ -3210,6 +3283,7 @@ country_event = {
 		}
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		trigger = {
 			NOT = { has_modifier = fotd_refusal_to_work }
@@ -3256,6 +3330,7 @@ country_event = {
 		set_country_flag = encountered_leviathan_life
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6060.a
 		custom_tooltip = origin.6060.a.tt
@@ -3335,6 +3410,7 @@ country_event = {
 		set_country_flag = became_subject
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6065.a
 		add_modifier = { modifier = fotd_disunity years = 5 }
@@ -3379,6 +3455,7 @@ country_event = {
 		set_country_flag = got_a_subject
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6075.a
 		if = {
@@ -3457,6 +3534,7 @@ country_event = {
 		set_country_flag = declared_war
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6085.a
 		if = {
@@ -3503,6 +3581,7 @@ country_event = {
 		set_country_flag = had_war_declared_on
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = BATTLESTATIONS
 		custom_tooltip = five_percent_xenophobe_tt
@@ -3534,6 +3613,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6095.a
 	}
@@ -3556,6 +3636,7 @@ country_event = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 		set_country_flag = had_modular_cybernetics
 	}
+
 	option = {
 		name = origin.6096.a
 		add_modifier = { modifier = fotd_terrified_outraged years = 10 }
@@ -3574,6 +3655,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6099.a
 	}
@@ -3591,6 +3673,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6100.a
 		add_modifier = { modifier = fotd_terrified_outraged years = 10 }
@@ -3609,6 +3692,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6105.a
 	}
@@ -3618,6 +3702,7 @@ country_event = {
 country_event = {
 	id = origin.6110
 	title = origin.6110.name
+
 	desc = {
 		trigger = {
 			text = origin.6110.desc
@@ -3643,6 +3728,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6110.a
 		add_modifier = { modifier = fotd_terrified_outraged years = 10 }
@@ -3661,6 +3747,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6115.a
 	}
@@ -3678,6 +3765,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6120.a
 		add_modifier = { modifier = fotd_terrified_outraged years = 10 }
@@ -3696,6 +3784,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6125.a
 		if = {
@@ -3732,6 +3821,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6125.a
 		if = {
@@ -3768,6 +3858,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6125.a
 		if = {
@@ -3857,6 +3948,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = origin.6145.a
 		enable_special_project = {
@@ -3941,6 +4033,7 @@ country_event = {
 		}
 		begin_event_chain = { event_chain = "fotd_chain" target = this }
 	}
+
 	option = {
 		name = origin.6150.a
 		tooltip = {
@@ -3972,6 +4065,7 @@ ship_event = {
 			any_system_planet = { has_planet_flag = fotd_hunter@root.owner }
 		}
 	}
+
 	option = {
 		name = origin.6155.a
 		hidden_effect = {
@@ -4004,6 +4098,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {# Everything needs to die
 		name = origin.6160.a
 		custom_tooltip = origin.6160.a.tooltip
@@ -4085,6 +4180,7 @@ country_event = {
 	is_triggered_only = yes
 	location = fromfrom
 	event_chain = fotd_chain
+
 	option = {
 		allow = { is_galactic_custodian = no is_galactic_emperor = no }
 		name = origin.6165.a
@@ -4228,6 +4324,7 @@ country_event = {
 	trigger = {
 		home_planet.owner = { is_same_empire = root }
 	}
+
 	option = {
 		name = origin.6170.a
 		start_situation = {
@@ -4269,6 +4366,7 @@ situation_event = {
 		}
 		event_target:fotd_seperatist_planet@owner = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = DEVASTATING
 	}
@@ -4292,6 +4390,7 @@ situation_event = {
 		has_situation_flag = counter_shot
 		has_situation_flag = controlled_shattering
 	}
+
 	option = {
 		name = origin.6180.a
 		owner = { end_event_chain = fotd_chain }
@@ -4305,6 +4404,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -4333,6 +4433,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = origin.6185.a
 		enable_special_project = { name = "FOTD_DEFLECTING_FIELDS" location = owner.home_planet }
@@ -4481,6 +4582,7 @@ country_event = {
 		set_country_flag = signed_migration_pact
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6205.a
 		if = {
@@ -4563,6 +4665,7 @@ country_event = {
 		set_country_flag = had_total_war_declared_on
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6220.a
 		if = {
@@ -4647,6 +4750,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6230.a
 		from.target = {
@@ -4702,6 +4806,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = origin.6235.a
 		from.target = { change_pc = from.owner_species }
@@ -4713,6 +4818,7 @@ country_event = {
 country_event = {
 	id = origin.6240
 	title = origin.6240.name
+
 	desc = {
 		trigger = {
 			home_planet = { is_starting_planet_type = no }
@@ -4742,6 +4848,7 @@ country_event = {
 	immediate = {
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -5223,6 +5330,7 @@ country_event = {
 		set_country_flag = had_seperatist_fleet_toast
 		event_target:fotd_seperatist_planet@root = { save_event_target_as = fotd_seperatist_planet }
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -5292,6 +5400,7 @@ country_event = {
 	desc = origin.6275.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -5299,9 +5408,11 @@ country_event = {
 		city_level = from
 		room = from.ruler
 	}
+
 	immediate = {
 		from = { set_awareness = 100 }
 	}
+
 	option = { # We can work something out
 		name = origin.6275.a
 		add_modifier = { modifier = fotd_triumviri }

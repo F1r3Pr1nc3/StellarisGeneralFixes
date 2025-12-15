@@ -6,11 +6,13 @@ building_augmentation_bazaars = {
 	base_buildtime = @b2_time
 	planet_limit = 1
 	category = trade
+
 	building_sets = {
 		government
 		urban
 		trade
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_valid_civic = civic_augmentation_bazaars }
@@ -19,9 +21,11 @@ building_augmentation_bazaars = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -30,13 +34,16 @@ building_augmentation_bazaars = {
 			has_modifier = resort_colony
 		}
 	}
+
 	planet_modifier = {
 		job_augmentor_add = 100
 	}
+
 	inline_script = {
 		script = "jobs/politician_add"
 		AMOUNT = @building_static_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -45,6 +52,7 @@ building_augmentation_bazaars = {
 		}
 		auto_mod_monthly_add = 200
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -54,6 +62,7 @@ building_augmentation_bazaars = {
 			energy = @b2_upkeep
 		}
 	}
+
 	ai_resource_production = {
 		energy = 5
 		trigger = {
@@ -76,12 +85,14 @@ building_transcendental_retreat = {
 	base_buildtime = @b2_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 		research
 		society
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_valid_civic = civic_natural_design }
@@ -90,9 +101,11 @@ building_transcendental_retreat = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -101,6 +114,7 @@ building_transcendental_retreat = {
 			has_modifier = resort_colony
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { has_owner = yes }
 		logistic_growth_mult = 0.025
@@ -115,6 +129,7 @@ building_transcendental_retreat = {
 		potential = { always = yes }
 		job_healthcare_add = 100
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -124,9 +139,11 @@ building_transcendental_retreat = {
 			energy = @b3_upkeep
 		}
 	}
+
 	triggered_desc = {
 		text = natural_design_ascension_bonus
 	}
+
 	prerequisites = {
 	}
 }
@@ -135,12 +152,14 @@ building_hive_transcendental_retreat = {
 	base_buildtime = @b2_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 		research
 		society
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_valid_civic = civic_hive_natural_design }
@@ -150,9 +169,11 @@ building_hive_transcendental_retreat = {
 			owner = { is_wilderness_empire = yes }
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -161,6 +182,7 @@ building_hive_transcendental_retreat = {
 			has_modifier = resort_colony
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { has_owner = yes }
 		logistic_growth_mult = 0.025
@@ -171,10 +193,12 @@ building_hive_transcendental_retreat = {
 		potential = { always = yes }
 		planet_jobs_produces_mult = 0.1
 	}
+
 	inline_script = {
 		script = jobs/spawning_drone_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -184,6 +208,7 @@ building_hive_transcendental_retreat = {
 			energy = @b3_upkeep
 		}
 	}
+
 	triggered_desc = {
 		trigger = { is_scope_valid = yes }
 		text = natural_design_hive_ascension_bonus
@@ -192,6 +217,7 @@ building_hive_transcendental_retreat = {
 		trigger = { is_scope_valid = no }
 		text = natural_design_hive_ascension_bonus_no_scope
 	}
+
 	prerequisites = {
 	}
 }
@@ -204,6 +230,7 @@ building_amphitheater_of_the_mind = {
 	position_priority = 100
 	base_buildtime = @b2_time
 	planet_limit = 1
+
 	empire_limit = {
 		base = 1
 		modifier = { factor = -1 has_country_flag = cybernetic_creed_research }
@@ -211,6 +238,7 @@ building_amphitheater_of_the_mind = {
 
 	can_demolish = no
 	category = research
+
 	building_sets = {
 		government
 		research
@@ -219,6 +247,7 @@ building_amphitheater_of_the_mind = {
 		engineering
 		unity
 	}
+
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
@@ -235,9 +264,11 @@ building_amphitheater_of_the_mind = {
 			}
 		}
 	}
+
 	convert_to = {
 		building_temple
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_owner = yes
@@ -250,6 +281,7 @@ building_amphitheater_of_the_mind = {
 			owner = { has_country_flag = cybernetic_creed_research }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -266,6 +298,7 @@ building_amphitheater_of_the_mind = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -275,9 +308,11 @@ building_amphitheater_of_the_mind = {
 			energy = @b2_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_researchers_upkeep_mult = -0.05
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
@@ -286,9 +321,11 @@ building_amphitheater_of_the_mind = {
 		script = jobs/researchers_add
 		AMOUNT = @building_static_jobs_3
 	}
+
 	upgrades = {
 		building_grand_concert_hall_of_the_mind
 	}
+
 	ai_resource_production = {
 		trigger = {
 			planet_resource_compare = { resource = physics_research value >= 30 }
@@ -305,6 +342,7 @@ building_grand_concert_hall_of_the_mind = {
 	can_build = no
 	can_demolish = no
 	category = research
+
 	building_sets = {
 		government
 		research
@@ -313,6 +351,7 @@ building_grand_concert_hall_of_the_mind = {
 		engineering
 		unity
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
@@ -325,6 +364,7 @@ building_grand_concert_hall_of_the_mind = {
 			owner = { has_country_flag = cybernetic_creed_research }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -341,6 +381,7 @@ building_grand_concert_hall_of_the_mind = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -350,9 +391,11 @@ building_grand_concert_hall_of_the_mind = {
 			energy = @b2_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_researchers_upkeep_mult = -0.10
 	}
+
 	inline_script = {
 		script = jobs/politician_add
 		AMOUNT = @building_static_jobs_low
@@ -365,6 +408,7 @@ building_grand_concert_hall_of_the_mind = {
 		script = jobs/researchers_add
 		AMOUNT = @building_static_jobs_high_3
 	}
+
 	ai_resource_production = {
 		trigger = {
 			planet_resource_compare = { resource = physics_research value >= 30 }
@@ -381,6 +425,7 @@ building_battlement_of_steel = {
 	can_be_ruined = no
 	base_buildtime = @b2_time
 	planet_limit = 1
+
 	empire_limit = {
 		base = 1
 		modifier = { factor = -1 has_country_flag = cybernetic_creed_war }
@@ -388,6 +433,7 @@ building_battlement_of_steel = {
 
 	can_demolish = no
 	category = army
+
 	building_sets = {
 		government
 		industrial
@@ -395,6 +441,7 @@ building_battlement_of_steel = {
 		fortress
 		unity
 	}
+
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
@@ -411,9 +458,11 @@ building_battlement_of_steel = {
 			}
 		}
 	}
+
 	convert_to = {
 		building_temple
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
@@ -426,6 +475,7 @@ building_battlement_of_steel = {
 			owner = { has_country_flag = cybernetic_creed_war }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -442,9 +492,11 @@ building_battlement_of_steel = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		planet_orbital_bombardment_damage = -0.15
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
@@ -453,6 +505,7 @@ building_battlement_of_steel = {
 		script = jobs/soldiers_add
 		AMOUNT = @building_static_jobs
 	}
+
 	resources = {
 		category = planet_buildings_strongholds
 		cost = {
@@ -462,6 +515,7 @@ building_battlement_of_steel = {
 			energy = @b1_upkeep
 		}
 	}
+
 	upgrades = {
 		building_grand_battlements_of_steel
 	}
@@ -474,11 +528,13 @@ building_grand_battlements_of_steel = {
 	can_build = no
 	can_demolish = no
 	category = army
+
 	building_sets = {
 		government
 		fortress
 		unity
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
@@ -491,6 +547,7 @@ building_grand_battlements_of_steel = {
 			owner = { has_country_flag = cybernetic_creed_war }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -509,9 +566,11 @@ building_grand_battlements_of_steel = {
 	}
 
 	planetary_ftl_inhibitor = yes
+
 	planet_modifier = {
 		planet_orbital_bombardment_damage = -0.3
 	}
+
 	inline_script = {
 		script = jobs/politician_add
 		AMOUNT = @building_static_jobs_low
@@ -524,6 +583,7 @@ building_grand_battlements_of_steel = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	resources = {
 		category = planet_buildings_strongholds
 		cost = {
@@ -540,6 +600,7 @@ building_sanctuary_of_toil = {
 	position_priority = 100
 	base_buildtime = @b2_time
 	planet_limit = 1
+
 	empire_limit = {
 		base = 1
 		modifier = { factor = -1 has_country_flag = cybernetic_creed_labor }
@@ -547,6 +608,7 @@ building_sanctuary_of_toil = {
 
 	can_demolish = no
 	category = resource
+
 	building_sets = {
 		government
 		generator
@@ -554,6 +616,7 @@ building_sanctuary_of_toil = {
 		farming
 		unity
 	}
+
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
@@ -570,9 +633,11 @@ building_sanctuary_of_toil = {
 			}
 		}
 	}
+
 	convert_to = {
 		building_temple
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
@@ -585,6 +650,7 @@ building_sanctuary_of_toil = {
 			owner = { has_country_flag = cybernetic_creed_labor }
 		}
 	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -600,18 +666,22 @@ building_sanctuary_of_toil = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		planet_farmers_food_produces_add = 0.375
 		planet_technician_energy_produces_add = 0.375
 		planet_miners_minerals_produces_add = 0.375
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	upgrades = {
 		building_grand_cathedral_of_toil
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -629,6 +699,7 @@ building_grand_cathedral_of_toil = {
 	can_build = no
 	can_demolish = no
 	category = resource
+
 	building_sets = {
 		government
 		generator
@@ -636,6 +707,7 @@ building_grand_cathedral_of_toil = {
 		farming
 		unity
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
@@ -648,6 +720,7 @@ building_grand_cathedral_of_toil = {
 			owner = { has_country_flag = cybernetic_creed_labor }
 		}
 	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -663,11 +736,13 @@ building_grand_cathedral_of_toil = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		planet_farmers_food_produces_add = 0.75
 		planet_technician_energy_produces_add = 0.75
 		planet_miners_minerals_produces_add = 0.75
 	}
+
 	inline_script = {
 		script = jobs/politician_add
 		AMOUNT = @building_static_jobs_low
@@ -676,6 +751,7 @@ building_grand_cathedral_of_toil = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -692,6 +768,7 @@ building_forge_of_the_fellowship = {
 	position_priority = 100
 	base_buildtime = @b2_time
 	planet_limit = 1
+
 	empire_limit = {
 		base = 1
 		modifier = { factor = -1 has_country_flag = cybernetic_creed_construction }
@@ -699,6 +776,7 @@ building_forge_of_the_fellowship = {
 
 	can_demolish = no
 	category = manufacturing
+
 	building_sets = {
 		government
 		industrial
@@ -706,6 +784,7 @@ building_forge_of_the_fellowship = {
 		foundry
 		unity
 	}
+
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
@@ -722,9 +801,11 @@ building_forge_of_the_fellowship = {
 			}
 		}
 	}
+
 	convert_to = {
 		building_temple
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
@@ -736,6 +817,7 @@ building_forge_of_the_fellowship = {
 			owner = { has_country_flag = cybernetic_creed_construction }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -752,6 +834,7 @@ building_forge_of_the_fellowship = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -761,10 +844,12 @@ building_forge_of_the_fellowship = {
 			energy = @b2_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_artisans_produces_mult = 0.05
 		planet_metallurgists_produces_mult = 0.05
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
@@ -777,6 +862,7 @@ building_forge_of_the_fellowship = {
 		script = jobs/factory_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	upgrades = {
 		building_grand_forge_of_the_fellowship
 	}
@@ -788,6 +874,7 @@ building_grand_forge_of_the_fellowship = {
 	can_build = no
 	can_demolish = no
 	category = manufacturing
+
 	building_sets = {
 		government
 		industrial
@@ -795,6 +882,7 @@ building_grand_forge_of_the_fellowship = {
 		foundry
 		unity
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
@@ -807,6 +895,7 @@ building_grand_forge_of_the_fellowship = {
 			owner = { has_country_flag = cybernetic_creed_construction }
 		}
 	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -825,6 +914,7 @@ building_grand_forge_of_the_fellowship = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -834,10 +924,12 @@ building_grand_forge_of_the_fellowship = {
 			energy = @b3_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_artisans_produces_mult = 0.10
 		planet_metallurgists_produces_mult = 0.10
 	}
+
 	inline_script = {
 		script = jobs/politician_add
 		AMOUNT = @building_static_jobs_low
@@ -861,6 +953,7 @@ building_the_sanctum_of_augmentation = {
 	position_priority = 100
 	base_buildtime = @b2_time
 	planet_limit = 1
+
 	empire_limit = {
 		base = 1
 		modifier = { factor = -1 has_country_flag = cybernetic_creed_general }
@@ -868,10 +961,12 @@ building_the_sanctum_of_augmentation = {
 
 	can_demolish = no
 	category = unity
+
 	building_sets = {
 		government
 		unity
 	}
+
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
@@ -883,9 +978,11 @@ building_the_sanctum_of_augmentation = {
 			has_country_flag = cybernetic_creed_general
 		}
 	}
+
 	convert_to = {
 		building_temple
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
@@ -898,6 +995,7 @@ building_the_sanctum_of_augmentation = {
 			owner = { has_country_flag = cybernetic_creed_general }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -914,6 +1012,7 @@ building_the_sanctum_of_augmentation = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -923,6 +1022,7 @@ building_the_sanctum_of_augmentation = {
 			energy = @b2_upkeep
 		}
 	}
+
 	inline_script = {
 		script = jobs/politician_add
 		AMOUNT = @building_static_jobs_low
@@ -931,6 +1031,7 @@ building_the_sanctum_of_augmentation = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs
 	}
+
 	upgrades = {
 		building_the_united_sanctum_of_augmentation
 	}
@@ -942,10 +1043,12 @@ building_the_united_sanctum_of_augmentation = {
 	can_build = no
 	can_demolish = no
 	category = unity
+
 	building_sets = {
 		government
 		unity
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
@@ -958,6 +1061,7 @@ building_the_united_sanctum_of_augmentation = {
 			owner = { has_country_flag = cybernetic_creed_general }
 		}
 	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -973,6 +1077,7 @@ building_the_united_sanctum_of_augmentation = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -982,6 +1087,7 @@ building_the_united_sanctum_of_augmentation = {
 			energy = @b3_upkeep
 		}
 	}
+
 	inline_script = {
 		script = jobs/politician_add
 		AMOUNT = @building_static_jobs
@@ -1003,6 +1109,7 @@ building_identity_repository = {
 	can_demolish = no
 	can_be_disabled = no
 	category = research
+
 	building_sets = {
 		government
 		research
@@ -1010,6 +1117,7 @@ building_identity_repository = {
 		society
 		engineering
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -1017,17 +1125,21 @@ building_identity_repository = {
 			NOT = { has_country_flag = synthetic_fertility_no_identity_left_behind }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		NOT = { owner = { has_origin = origin_synthetic_fertility } }
 	}
+
 	convert_to = {
 		building_research_lab_1
 	}
+
 	allow = {
 		is_occupied_flag = no
 		owner = { has_origin = origin_synthetic_fertility }
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1050,6 +1162,7 @@ building_identity_repository = {
 			mult = owner.value:identity_repository_scaling_mult
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes # Vfix: Why is this even needed in the first place?? That means no matter what, every damn building trigger in the game is applied, that's rediculous!!
@@ -1057,6 +1170,7 @@ building_identity_repository = {
 		robotic_pop_bonus_workforce_mult = 0.000075
 		mult = owner.value:identity_repository_scaling_mult
 	}
+
 	triggered_desc = {
 		text = building_identity_repository_tt
 	}
@@ -1068,21 +1182,26 @@ building_abandoned_gene_clinic = {
 	can_demolish = no
 	can_build = no
 	category = amenity
+
 	building_sets = {
 		government
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_origin = origin_synthetic_fertility }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		owner = { has_origin = origin_synthetic_fertility }
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		NOT = { owner = { has_origin = origin_synthetic_fertility } }
 	}
+
 	triggered_desc = {
 		text = building_abandoned_gene_clinic_tt
 	}
@@ -1099,6 +1218,7 @@ building_lathe_capital = {
 	can_be_ruined = no
 	can_be_disabled = no
 	position_priority = 0
+
 	building_sets = {
 		cosmogenesis_world
 	}
@@ -1110,9 +1230,11 @@ building_lathe_capital = {
 		uses_district_set = cosmogenesis_world
 		has_owner = yes
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	resources = {
 		category = planet_buildings
 		upkeep = {
@@ -1120,11 +1242,13 @@ building_lathe_capital = {
 			alloys = 5
 		}
 	}
+
 	planet_modifier = {
 		planet_housing_add = 2000
 		planet_amenities_add = 1500
 		planet_stability_add = 15
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -1133,6 +1257,7 @@ building_lathe_capital = {
 		planet_jobs_productive_upkeep_mult = 0.1
 		planet_jobs_productive_produces_mult = 0.1
 	}
+
 	upgrades = {
 		"building_lathe_major_capital"
 	}
@@ -1147,6 +1272,7 @@ building_lathe_major_capital = {
 	can_be_ruined = no
 	can_be_disabled = no
 	position_priority = 0
+
 	building_sets = {
 		cosmogenesis_world
 	}
@@ -1159,9 +1285,11 @@ building_lathe_major_capital = {
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1172,12 +1300,14 @@ building_lathe_major_capital = {
 			alloys = 10
 		}
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = 2
 		planet_housing_add = 4000
 		planet_amenities_add = 3000
 		planet_stability_add = 25
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -1194,9 +1324,11 @@ building_lathe_major_capital = {
 		planet_jobs_productive_upkeep_mult = 0.1
 		planet_jobs_productive_produces_mult = 0.1
 	}
+
 	upgrades = {
 		"building_lathe_super_capital"
 	}
+
 	on_built = {
 		set_planet_entity = { entity = "neural_calculator_phase_2_entity" }
 	}
@@ -1211,6 +1343,7 @@ building_lathe_super_capital = {
 	can_be_ruined = no
 	can_be_disabled = no
 	position_priority = 0
+
 	building_sets = {
 		cosmogenesis_world
 	}
@@ -1223,9 +1356,11 @@ building_lathe_super_capital = {
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1236,12 +1371,14 @@ building_lathe_super_capital = {
 			alloys = 15
 		}
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = 4
 		planet_housing_add = 10000
 		planet_amenities_add = 5000
 		planet_stability_add = 40
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -1266,6 +1403,7 @@ building_lathe_super_capital = {
 		planet_jobs_productive_upkeep_mult = 0.1
 		planet_jobs_productive_produces_mult = 0.1
 	}
+
 	on_built = {
 		set_planet_entity = { entity = "neural_calculator_phase_3_entity" }
 	}
@@ -1278,17 +1416,21 @@ building_lathe_super_capital = {
 building_lathe_resonator = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = resource
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1301,6 +1443,7 @@ building_lathe_resonator = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
+
 	triggered_planet_modifier = {
 		planet_jobs_upkeep_mult = 1
 	}
@@ -1309,9 +1452,11 @@ building_lathe_resonator = {
 		planet_jobs_produces_mult = 0.01
 		mult = value:num_chip_slave_raw
 	}
+
 	prerequisites = {
 		tech_lathe_resonator
 	}
+
 	triggered_desc = {
 		text = lathe_resonator_tt
 	}
@@ -1324,19 +1469,23 @@ building_lathe_resonator = {
 building_lathe_stabilisator = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = government
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1349,6 +1498,7 @@ building_lathe_stabilisator = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
+
 	triggered_planet_modifier = {
 		planet_stability_add = 15
 	}
@@ -1361,19 +1511,23 @@ building_lathe_stabilisator = {
 building_lathe_overclocker = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = resource
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1386,6 +1540,7 @@ building_lathe_overclocker = {
 			volatile_motes = @b2_rare_upkeep
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			NOT = { owner = { has_deficit = energy } }
@@ -1412,19 +1567,23 @@ building_lathe_overclocker = {
 building_lathe_preserver = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = amenity
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1437,9 +1596,11 @@ building_lathe_preserver = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
+
 	planet_modifier = {
 		pop_purge_speed = -0.15
 	}
+
 	prerequisites = {
 		tech_lathe_preserver
 	}
@@ -1452,19 +1613,23 @@ building_lathe_preserver = {
 building_lathe_reactor = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = resource
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1476,6 +1641,7 @@ building_lathe_reactor = {
 			exotic_gases = @b4_rare_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_jobs_upkeep_mult = -0.15
 		planet_buildings_upkeep_mult = -0.15
@@ -1490,19 +1656,23 @@ building_lathe_reactor = {
 building_lathe_life_support = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = amenity
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1515,10 +1685,12 @@ building_lathe_life_support = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_housing_add = 5000
 		planet_amenities_add = 5000
 	}
+
 	prerequisites = {
 		tech_lathe_life_support
 	}
@@ -1531,19 +1703,23 @@ building_lathe_life_support = {
 building_lathe_cogitator = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = army
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1556,19 +1732,23 @@ building_lathe_cogitator = {
 			volatile_motes = @b3_rare_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_amenities_add = -5000
 		planet_jobs_produces_mult = -0.35
 	}
+
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_mult = 0.01
 		ship_experience_gain_mult = 0.02
 		mult = value:num_chip_slave_raw
 	}
+
 	triggered_desc = {
 		text = building_lathe_cogitator_tt
 	}
+
 	prerequisites = {
 		tech_lathe_cogitator
 	}
@@ -1581,19 +1761,23 @@ building_lathe_cogitator = {
 building_lathe_validator = {
 	base_buildtime = @b2_time
 	planet_limit = 2
+
 	building_sets = {
 		cosmogenesis_world
 	}
+
 	potential = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
 
 	category = research
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1606,17 +1790,21 @@ building_lathe_validator = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
+
 	planet_modifier = {
 		planet_stability_add = -10
 	}
+
 	triggered_country_modifier = {
 		potential = { always = yes }
 		category_computing_research_speed_mult = 0.01
 		mult = value:num_chip_slave_raw
 	}
+
 	triggered_desc = {
 		text = building_lathe_validator_tt
 	}
+
 	prerequisites = {
 		tech_lathe_validator
 	}
@@ -1632,6 +1820,7 @@ building_lathe_validator = {
 
 building_augmentation_center = {
 	base_buildtime = @b3_time
+
 	desc = { # Regular empire, default
 		trigger = {
 			has_owner = yes
@@ -1696,6 +1885,7 @@ building_augmentation_center = {
 	}
 
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
@@ -1714,9 +1904,11 @@ building_augmentation_center = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -1726,6 +1918,7 @@ building_augmentation_center = {
 			}
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -1808,6 +2001,7 @@ building_augmentation_center = {
 		}
 		planet_jobs_produces_mult = 0.05
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1825,23 +2019,28 @@ building_augmentation_center = {
 building_cyberdome = {
 	base_buildtime = @b3_time
 	planet_limit = 1
+
 	desc = {
 		text = building_cyberdome_desc
 	}
 
 	category = amenity
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_imperial_authority = yes has_country_flag = cyber_collectivist }
 		is_capital = yes
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		OR = {
 			AND = {
@@ -1854,6 +2053,7 @@ building_cyberdome = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		job_cyberdome_spectator_add = 200
 		planet_entertainers_unity_produces_add = 1
@@ -1872,6 +2072,7 @@ building_cyberdome = {
 		job_cyberdome_duelist_per_pop = 0.05 # 1 job per 20 pops
 		job_cyberdome_spectator_per_pop = 0.1 # 1 job per 10 pops
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1889,34 +2090,42 @@ building_cyberdome = {
 
 building_identity_complex = {
 	base_buildtime = @b3_time
+
 	empire_limit = {
 		base = 1
 	}
+
 	desc = {
 		text = building_identity_complex_desc
 	}
 
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 		research
 		physics
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_country_flag = identity_complex_available }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		NOT = { owner = { has_country_flag = identity_complex_available } }
 	}
+
 	planet_modifier = {
 		job_identity_designer_add = 200
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1938,21 +2147,25 @@ building_nanolab_1 = {
 	base_buildtime = @b2_time
 	planet_limit = 6
 	category = research
+
 	building_sets = {
 		research
 		physics
 		society
 		engineering
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_tradition = tr_nanotech_adopt }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_owner = yes
 		owner = { has_tradition = tr_nanotech_adopt }
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -1961,6 +2174,7 @@ building_nanolab_1 = {
 			has_modifier = resort_colony
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1972,13 +2186,16 @@ building_nanolab_1 = {
 			nanites = @b2_rare_upkeep
 		}
 	}
+
 	inline_script = {
 		script = jobs/engineers_add
 		AMOUNT = @building_static_jobs
 	}
+
 	upgrades = {
 		"building_nanolab_2"
 	}
+
 	triggered_desc = {
 		trigger = {
 			has_owner = yes
@@ -1999,20 +2216,24 @@ building_nanolab_2 = {
 	base_buildtime = @b3_time
 	can_build = no
 	category = research
+
 	building_sets = {
 		research
 		physics
 		society
 		engineering
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_tradition = tr_nanotech_1 }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -2021,6 +2242,7 @@ building_nanolab_2 = {
 			has_modifier = resort_colony
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2032,14 +2254,17 @@ building_nanolab_2 = {
 			nanites = @b3_rare_upkeep
 		}
 	}
+
 	inline_script = {
 		script = jobs/engineers_add
 		AMOUNT = @building_static_jobs
 	}
+
 	planet_modifier = {
 		planet_engineers_engineering_research_produces_add = 2
 		planet_engineers_nanites_upkeep_add = 1
 	}
+
 	triggered_desc = {
 		trigger = {
 			has_owner = yes
@@ -2059,10 +2284,12 @@ building_nanolab_2 = {
 building_nanotech_cauldron = {
 	base_buildtime = @b2_time
 	category = manufacturing
+
 	building_sets = {
 		industrial
 		foundry
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_tradition = tr_nanotech_2 }
@@ -2071,9 +2298,11 @@ building_nanotech_cauldron = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -2082,6 +2311,7 @@ building_nanotech_cauldron = {
 			has_modifier = resort_colony
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {

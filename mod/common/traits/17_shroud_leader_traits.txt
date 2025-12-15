@@ -11,35 +11,42 @@ leader_trait_whispering_mind = {
 		COUNCIL = no
 		TIER = 1
 	}
+
 	self_modifier = {
 		species_leader_exp_gain = 0.2
 		leader_lifespan_add = -10
 	}
+
 	triggered_fleet_modifier = {
 		potential = { leader_class = commander }
 		ship_tracking_mult = 0.1
 		ship_accuracy_mult = 0.05
 	}
+
 	triggered_modifier = {
 		potential = { leader_class = scientist }
 		ship_anomaly_generation_chance_mult = 0.1
 		ship_anomaly_research_speed_mult = 0.1
 	}
+
 	triggered_planet_modifier = {
 		potential = { leader_class = official }
 		planet_researchers_produces_mult = 0.05
 		planet_structures_cost_mult = -0.05
 	}
+
 	leader_potential_add = {
 		has_shroud_dlc = yes
 		exists = from
 		from = { has_country_flag = knowledge_accord }
 	}
+
 	leader_class = {
 		commander
 		scientist
 		official
 	}
+
 	selectable_weight = {
 		weight = @shared_trait_weight
 		inline_script = paragon/not_council_weight_mult
@@ -50,6 +57,7 @@ leader_trait_whispering_mind_2 = {
 	replace_traits = {
 		"leader_trait_whispering_mind"
 	}
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -58,30 +66,36 @@ leader_trait_whispering_mind_2 = {
 		COUNCIL = no
 		TIER = 2
 	}
+
 	self_modifier = {
 		species_leader_exp_gain = 0.4
 		leader_lifespan_add = -20
 	}
+
 	triggered_fleet_modifier = {
 		potential = { leader_class = commander }
 		ship_tracking_mult = 0.15
 		ship_accuracy_mult = 0.1
 	}
+
 	triggered_modifier = {
 		potential = { leader_class = scientist }
 		ship_anomaly_generation_chance_mult = 0.15
 		ship_anomaly_research_speed_mult = 0.15
 	}
+
 	triggered_planet_modifier = {
 		potential = { leader_class = official }
 		planet_researchers_produces_mult = 0.1
 		planet_structures_cost_mult = -0.1
 	}
+
 	leader_potential_add = {
 		has_shroud_dlc = yes
 		exists = from
 		from = { has_country_flag = knowledge_accord }
 	}
+
 	leader_class = {
 		commander
 		scientist
@@ -93,6 +107,7 @@ leader_trait_whispering_mind_3 = {
 	replace_traits = {
 		"leader_trait_whispering_mind_2"
 	}
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -101,30 +116,36 @@ leader_trait_whispering_mind_3 = {
 		COUNCIL = no
 		TIER = 2
 	}
+
 	self_modifier = {
 		species_leader_exp_gain = 0.6
 		leader_lifespan_add = -30
 	}
+
 	triggered_fleet_modifier = {
 		potential = { leader_class = commander }
 		ship_tracking_mult = 0.2
 		ship_accuracy_mult = 0.15
 	}
+
 	triggered_modifier = {
 		potential = { leader_class = scientist }
 		ship_anomaly_generation_chance_mult = 0.2
 		ship_anomaly_research_speed_mult = 0.2
 	}
+
 	triggered_planet_modifier = {
 		potential = { leader_class = official }
 		planet_researchers_produces_mult = 0.15
 		planet_structures_cost_mult = -0.15
 	}
+
 	leader_potential_add = {
 		has_shroud_dlc = yes
 		exists = from
 		from = { has_country_flag = knowledge_accord }
 	}
+
 	leader_class = {
 		commander
 		scientist
@@ -141,17 +162,21 @@ leader_trait_shroud_warped = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	self_modifier = {
 		leader_lifespan_add = 20
 	}
+
 	planet_modifier = {
 		planet_pops_psionic_unity_produces_add = 0.5
 		psionic_pop_bonus_workforce_mult = 0.1
 	}
+
 	sector_modifier = {
 		planet_pops_psionic_unity_produces_add = 0.25
 		psionic_pop_bonus_workforce_mult = 0.05
 	}
+
 	triggered_modifier = {
 		potential = { leader_class = scientist }
 		ship_archaeological_site_excavation_speed_mult = 0.25
@@ -160,20 +185,24 @@ leader_trait_shroud_warped = {
 		potential = { has_astral_planes_dlc = yes leader_class = scientist }
 		ship_astral_rift_speed_mult = 0.25
 	}
+
 	triggered_army_modifier = {
 		potential = { leader_class = commander }
 		army_morale_damage_mult = 0.15
 		custom_tooltip = leader_trait_shroud_warped_invasion_effect
 		show_only_custom_tooltip = no
 	}
+
 	triggered_galcom_modifier = {
 		potential = { leader_class = official }
 		diplo_weight_mult = 0.1
 	}
+
 	triggered_federation_modifier = {
 		potential = { leader_class = official }
 		federation_experience_add = 0.5
 	}
+
 	leader_class = {
 		commander
 		scientist
@@ -186,6 +215,7 @@ leader_trait_shroud_warped = {
 
 leader_trait_shroudshaper = {
 	immortal_leaders = yes
+
 	inline_script = {
 		script = trait/icon_psionic
 		CLASS = leader
@@ -286,6 +316,7 @@ leader_trait_shroudshaper = {
 		diplo_weight_mult = 0.05
 		mult = value:transcended_psionic_multiplier
 	}
+
 	leader_class = {
 		commander
 		scientist
@@ -298,6 +329,7 @@ leader_trait_shroudshaper = {
 
 leader_trait_iron_will = {
 	leader_trait_type = veteran
+
 	inline_script = {
 		script = trait/icon
 		CLASS = commander
@@ -306,20 +338,24 @@ leader_trait_iron_will = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	fleet_modifier = {
 		psionic_aura_resistance_mult = 0.9
 		ship_armor_hardening_add = 0.2
 		ship_tracking_mult = 0.25
 	}
+
 	army_modifier = {
 		army_morale = 0.5
 		army_health = 0.25
 	}
+
 	triggered_system_modifier = { # planet not working
 		potential = { exists = planet }
 		psionic_aura_resistance_mult = 0.2 # Vfix
 		mult = trigger:has_total_skill
 	}
+
 	leader_class = {
 		commander
 	}
@@ -331,6 +367,7 @@ leader_trait_iron_will = {
 # Shroud Patrons
 leader_trait_disciple_of_the_cradle = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -339,17 +376,21 @@ leader_trait_disciple_of_the_cradle = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	leader_class = {
 		official
 	}
+
 	self_modifier = {
 		leader_lifespan_add = 15
 	}
+
 	planet_modifier = {
 		planet_stability_add = 10
 		planet_crime_add = -10
 		planet_jobs_sr_zro_produces_mult = 0.10
 	}
+
 	triggered_councilor_modifier = {
 		custom_tooltip = leader_trait_disciple_of_the_cradle_envoys_zro
 		show_only_custom_tooltip = no
@@ -364,6 +405,7 @@ leader_trait_disciple_of_the_cradle = {
 
 leader_trait_disciple_of_the_eater = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -372,9 +414,11 @@ leader_trait_disciple_of_the_eater = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	leader_class = {
 		commander
 	}
+
 	triggered_fleet_modifier = {
 		ship_fire_rate_mult = 0.35
 		ship_weapon_damage = 0.25
@@ -383,6 +427,7 @@ leader_trait_disciple_of_the_eater = {
 		custom_tooltip = leader_trait_disciple_of_the_eater_zro_fleet_attack_effect
 		show_only_custom_tooltip = no
 	}
+
 	triggered_army_modifier = {
 		army_damage_mult = 0.5
 		custom_tooltip = leader_trait_disciple_of_the_eater_zro_army_attack_effect
@@ -395,6 +440,7 @@ leader_trait_disciple_of_the_eater = {
 
 leader_trait_disciple_of_the_instrument = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -403,9 +449,11 @@ leader_trait_disciple_of_the_instrument = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	leader_class = {
 		official
 	}
+
 	triggered_planet_modifier = {
 		planet_jobs_produces_mult = 0.2
 		planet_miners_sr_zro_produces_add = 0.5
@@ -413,6 +461,7 @@ leader_trait_disciple_of_the_instrument = {
 		custom_tooltip = leader_trait_disciple_of_the_instrument_planetary_decision_effect
 		show_only_custom_tooltip = no
 	}
+
 	triggered_sector_modifier = {
 		planet_jobs_produces_mult = 0.1
 		planet_miners_sr_zro_produces_add = 0.25
@@ -425,6 +474,7 @@ leader_trait_disciple_of_the_instrument = {
 
 leader_trait_disciple_of_the_composer = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -433,9 +483,11 @@ leader_trait_disciple_of_the_composer = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	leader_class = {
 		scientist
 	}
+
 	triggered_planet_modifier = {
 		planet_jobs_physics_research_produces_mult = 0.05
 		planet_jobs_society_research_produces_mult = 0.05
@@ -445,6 +497,7 @@ leader_trait_disciple_of_the_composer = {
 		planet_pops_upkeep_mult = 0.15
 		logistic_growth_mult = 0.15
 	}
+
 	triggered_sector_modifier = {
 		planet_jobs_physics_research_produces_mult = 0.025
 		planet_jobs_society_research_produces_mult = 0.025
@@ -461,9 +514,11 @@ leader_trait_disciple_of_the_composer = {
 
 leader_trait_disciple_of_the_composer_2 = {
 	leader_trait_type = destiny
+
 	replace_traits = {
 		"leader_trait_disciple_of_the_composer"
 	}
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -472,12 +527,15 @@ leader_trait_disciple_of_the_composer_2 = {
 		COUNCIL = no
 		TIER = 2
 	}
+
 	leader_class = {
 		scientist
 	}
+
 	self_modifier = {
 		leader_lifespan_mult = -0.35
 	}
+
 	triggered_planet_modifier = {
 		planet_jobs_physics_research_produces_mult = 0.1
 		planet_jobs_society_research_produces_mult = 0.1
@@ -487,6 +545,7 @@ leader_trait_disciple_of_the_composer_2 = {
 		planet_pops_upkeep_mult = 0.35
 		logistic_growth_mult = 0.35
 	}
+
 	triggered_sector_modifier = {
 		planet_jobs_physics_research_produces_mult = 0.05
 		planet_jobs_society_research_produces_mult = 0.05
@@ -502,6 +561,7 @@ leader_trait_disciple_of_the_composer_2 = {
 
 leader_trait_disciple_of_the_whisperers = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -510,9 +570,11 @@ leader_trait_disciple_of_the_whisperers = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	leader_class = {
 		scientist
 	}
+
 	triggered_councilor_modifier = {
 		rare_tech_draw_chance_mult = 0.25
 		rare_tech_research_speed_mult = 0.25
@@ -529,6 +591,7 @@ leader_trait_disciple_of_the_whisperers = {
 
 leader_trait_disciple_of_the_end = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -537,9 +600,11 @@ leader_trait_disciple_of_the_end = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	leader_class = {
 		commander
 	}
+
 	triggered_fleet_modifier = {
 		custom_tooltip = leader_trait_disciple_of_the_end_effects
 		show_only_custom_tooltip = no
@@ -556,6 +621,7 @@ leader_trait_disciple_of_the_end = {
 # Endbringers
 leader_trait_blinded = {
 	leader_trait_type = negative
+
 	inline_script = {
 		script = trait/icon_negative
 		CLASS = leader
@@ -564,16 +630,19 @@ leader_trait_blinded = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	triggered_modifier = {
 		potential = { leader_class = scientist }
 		science_ship_survey_speed = -1
 		ship_archaeological_site_excavation_speed_mult = -1
 		ship_astral_rift_speed_mult = -1
 	}
+
 	councilor_modifier = {
 		country_unity_produces_mult = 1
 		council_agenda_progress_speed = -0.1
 	}
+
 	leader_class = {
 		commander
 		scientist

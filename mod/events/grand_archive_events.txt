@@ -245,9 +245,11 @@ first_contact_event = {
 	immediate = {
 		set_site_progress_locked = yes
 	}
+
 	after = {
 		set_site_progress_locked = no
 	}
+
 	option = {
 		name = grand_archive.2000.a
 		set_first_contact_stage = voidworms_stage_2
@@ -257,6 +259,7 @@ first_contact_event = {
 first_contact_event = {
 	id = grand_archive.2005
 	title = grand_archive.2005.name
+
 	desc = {
 		trigger = {
 			text = grand_archive.2005.desc
@@ -276,6 +279,7 @@ first_contact_event = {
 	immediate = {
 		set_site_progress_locked = yes
 	}
+
 	option = {
 		name = {
 			trigger = { owner = { is_homicidal = no } }
@@ -304,6 +308,7 @@ first_contact_event = {
 			}
 		}
 	}
+
 	after = {
 		finish_first_contact_effect = yes
 		set_site_progress_locked = no
@@ -344,6 +349,7 @@ country_event = {
 	immediate = {
 		establish_communications_no_message = event_target:voidworms_country
 	}
+
 	option = {
 		name = story.101.aa
 		add_modifier = { modifier = voidworms_hunting_buff }
@@ -360,6 +366,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = {
@@ -401,6 +408,7 @@ country_event = {
 	show_sound = ga_event_voidworms_plague
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2015.a
 		add_modifier = { modifier = voidworm_enzymes days = -1 }
@@ -581,6 +589,7 @@ country_event = {
 		has_global_flag = voidworms_plague_crisis_ended
 		NOT = { has_specimen = voidworm_heart }
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -594,6 +603,7 @@ country_event = {
 	show_sound = ga_event_voidworms_system_destroyed
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		if = {
@@ -884,6 +894,7 @@ country_event = {
 	picture = GFX_evt_civil_action
 	show_sound = event_assembly_fight
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -942,6 +953,7 @@ country_event = {
 	picture = GFX_evt_voidworm_flock
 	show_sound = ga_event_voidworms_plague
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -1004,6 +1016,7 @@ country_event = {
 			save_event_target_as = invaded_system
 		}
 	}
+
 	option = {
 		name = OK
 	}
@@ -1043,6 +1056,7 @@ planet_event = {
 country_event = {
 	id = grand_archive.2195
 	title = "grand_archive.2195.name"
+
 	desc = {
 		trigger = {
 			species = { is_robotic = no is_lithoid = no }
@@ -1073,6 +1087,7 @@ country_event = {
 	immediate = {
 		set_country_flag = bombarded_by_voidworms_event
 	}
+
 	option = {
 		name = {
 			trigger = { is_homicidal = no }
@@ -1313,6 +1328,7 @@ country_event = {
 		}
 		country_event = { id = grand_archive.2305 days = 360 }
 	}
+
 	after = {
 		every_playable_country = {
 			country_event = { id = timeline.66 } # Timeline Voidworm Plague Crisis
@@ -1353,6 +1369,7 @@ country_event = {
 country_event = {
 	id = grand_archive.2310
 	title = grand_archive.2310.name
+
 	desc = {
 		trigger = {
 			has_communications = event_target:voidworms_country
@@ -1382,9 +1399,11 @@ country_event = {
 		create_voidworm_crisis_eradicate_chain = yes
 		start_situation = { type = situation_voidworm_plague }
 	}
+
 	option = {
 		name = grand_archive.2310.a
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -1473,6 +1492,7 @@ country_event = {
 	id = grand_archive.2400
 	title = grand_archive.2400.name
 	desc = grand_archive.2400.desc
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1482,6 +1502,7 @@ country_event = {
 
 	show_sound = event_construction
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2400.a
 		allow = {
@@ -1526,6 +1547,7 @@ country_event = {
 country_event = {
 	id = grand_archive.2405
 	title = grand_archive.2405.name
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = grand_archive.2405.desc.default
@@ -1538,6 +1560,7 @@ country_event = {
 	picture = GFX_evt_salute
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2405.a
 		trigger = { is_gestalt = no }
@@ -1546,6 +1569,7 @@ country_event = {
 		name = GOOD
 		trigger = { is_gestalt = yes }
 	}
+
 	after = {
 		custom_tooltip = grand_archive.2405.tt
 		hidden_effect = {
@@ -1569,6 +1593,7 @@ country_event = {
 country_event = {
 	id = grand_archive.2410
 	title = grand_archive.2410.name
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = grand_archive.2410.desc.default
@@ -1577,6 +1602,7 @@ country_event = {
 		trigger = { is_gestalt = yes }
 		text = grand_archive.2410.desc.gestalt
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1586,6 +1612,7 @@ country_event = {
 
 	show_sound = event_machinery
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 		if = {
@@ -1875,6 +1902,7 @@ country_event = {
 			exile_leader_as = infected_leader
 		}
 	}
+
 	option = {
 		name = grand_archive.2420.a
 		hidden_effect = {
@@ -1918,6 +1946,7 @@ country_event = {
 	id = grand_archive.2425
 	title = grand_archive.2425.name
 	desc = grand_archive.2425.desc.default
+
 	desc = {
 		trigger = {
 			if = {
@@ -1937,6 +1966,7 @@ country_event = {
 			}
 		}
 	}
+
 	picture = {
 		trigger = {
 			OR = {
@@ -1971,6 +2001,7 @@ country_event = {
 		}
 		export_resource_stockpile_to_variable = { resource = food variable = current_food_stockpile }
 	}
+
 	option = {
 		name = grand_archive.2425.a.default
 		trigger = {
@@ -2045,6 +2076,7 @@ country_event = {
 	picture = GFX_evt_surrender
 	show_sound = event_criminal_activity
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2430.a
 		allow = {
@@ -2078,6 +2110,7 @@ country_event = {
 	picture = GFX_evt_society_research
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		add_random_research_option = {
@@ -2099,6 +2132,7 @@ country_event = {
 country_event = {
 	id = grand_archive.2445
 	title = grand_archive.2445.name
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = grand_archive.2445.desc.default
@@ -2111,6 +2145,7 @@ country_event = {
 	picture = GFX_evt_scientific_experiments
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2445.a.default
 		trigger = { is_gestalt = no }
@@ -2173,6 +2208,7 @@ country_event = {
 	picture = GFX_evt_voidworms
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2450.a
 	}
@@ -2191,6 +2227,7 @@ country_event = {
 	picture = GFX_evt_voidworm_flock
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		random_situation = {
@@ -2231,6 +2268,7 @@ country_event = {
 country_event = {
 	id = grand_archive.2500
 	title = grand_archive.2500.name
+
 	desc = {
 		trigger = {
 			NOT = { has_technology = tech_voidworm_immunity }
@@ -2252,6 +2290,7 @@ country_event = {
 			any_owned_ship = { always = yes }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -2266,6 +2305,7 @@ first_contact_event = {
 	is_triggered_only = yes
 	location = solar_system
 	first_contact = yes
+
 	abort_trigger = {
 		OR = {
 			NAND = {
@@ -2275,14 +2315,17 @@ first_contact_event = {
 			owner = { has_communications = root.contact_country }
 		}
 	}
+
 	immediate = {
 		set_name = grand_archive.2800.name
 	}
+
 	after = {
 		hidden_effect = {
 			fire_on_action = { on_action = on_first_contact_started }
 		}
 	}
+
 	option = {
 		name = grand_archive.2800.a
 		set_first_contact_starting_stage = yes
@@ -2292,6 +2335,7 @@ first_contact_event = {
 country_event = {
 	id = grand_archive.2900
 	title = grand_archive.2900.name
+
 	desc = {
 		trigger = {
 			text = grand_archive.2900.desc
@@ -2322,6 +2366,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = {
@@ -2331,6 +2376,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = grand_archive.2900.a
 		trigger = { is_homicidal = no }
@@ -2360,6 +2406,7 @@ country_event = {
 first_contact_event = {
 	id = grand_archive.2901
 	title = grand_archive.2900.name
+
 	desc = {
 		trigger = {
 			text = grand_archive.2900.desc
@@ -2379,6 +2426,7 @@ first_contact_event = {
 	immediate = {
 		set_site_progress_locked = yes
 	}
+
 	option = {
 		name = grand_archive.2900.a
 		trigger = { owner = { is_homicidal = no } }
@@ -2407,6 +2455,7 @@ first_contact_event = {
 			increase_hunted_fauna_count = yes
 		}
 	}
+
 	after = {
 		finish_first_contact_effect = yes
 		set_site_progress_locked = no
@@ -2429,6 +2478,7 @@ country_event = {
 	picture = GFX_evt_cutholoids_hidden
 	show_sound = ga_cutholoids_idle
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.2905.a
 		owner = {
@@ -2720,6 +2770,7 @@ country_event = {
 	show_sound = event_comms_cutoff
 	location = event_target:cutholoid_under_radar
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.3011.a
 	}
@@ -2746,6 +2797,7 @@ country_event = {
 	immediate = {
 		set_country_flag = met_another_cutholoid
 	}
+
 	option = {
 		name = grand_archive.3012.a
 	}
@@ -2810,6 +2862,7 @@ fleet_event = {
 fleet_event = {
 	id = grand_archive.3016
 	title = "grand_archive.3016.name"
+
 	desc = {
 		text = grand_archive.3016.desc.leader_killed
 		trigger = {
@@ -2842,6 +2895,7 @@ fleet_event = {
 			controller = { remove_country_flag = leader_digested_by_cutholoid }
 		}
 	}
+
 	option = {
 		name = OK
 		leader = {
@@ -2865,6 +2919,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:cutholoid_system_for@controller }
@@ -2908,9 +2963,11 @@ fleet_event = {
 	immediate = {
 		event_target:cutholoid_system_for@controller = { save_event_target_as = current_system }
 	}
+
 	option = {
 		name = grand_archive.3018.a
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:cutholoid_system_for@controller }
@@ -2940,9 +2997,11 @@ country_event = {
 		}
 		spawn_cutholoid_from_asteroid = { LOCATION = event_target:revealed_cutholoid }
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:cutholoid_system_for@this }
@@ -3214,6 +3273,7 @@ country_event = {
 	picture = GFX_evt_civil_action
 	show_sound = event_assembly_fight
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -3272,6 +3332,7 @@ country_event = {
 	picture = GFX_evt_cutholoids_attack
 	show_sound = ga_cutholoids_idle
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -3334,6 +3395,7 @@ country_event = {
 			save_event_target_as = invaded_system
 		}
 	}
+
 	option = {
 		name = OK
 	}
@@ -3667,6 +3729,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4006
 	title = "grand_archive.4006.name"
+
 	desc = {
 		trigger = { acquired_specimen_count > 0 }
 		text = grand_archive.4006.desc.default
@@ -3699,6 +3762,7 @@ country_event = {
 	immediate = {
 		set_country_flag = grand_archive_kickstart_proposed
 	}
+
 	option = {
 		allow = {
 			has_resource = { type = energy amount >= 1000 }
@@ -3827,6 +3891,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4105
 	title = "grand_archive.4105.name"
+
 	desc = {
 		trigger = {
 			if = {
@@ -3851,6 +3916,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = from
 		room = enclave_curator_room
@@ -3863,6 +3929,7 @@ country_event = {
 		can_get_collection_rewards_from_curators = yes
 		is_eligible_collection_stage_1_reward_not_skipped_any = yes
 	}
+
 	option = {
 		name = grand_archive.4105.1.mineral_insight
 		trigger = { is_eligible_collection_stage_1_reward_not_skipped_xeno_geology = yes }
@@ -3954,6 +4021,7 @@ country_event = {
 		skip_collection_stage_1_reward = yes
 		default_hide_option = yes
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = pending_curator_collection_reward
@@ -3967,6 +4035,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4106
 	title = "grand_archive.4105.name"
+
 	desc = {
 		trigger = {
 			if = {
@@ -3991,6 +4060,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = from
 		room = enclave_curator_room
@@ -4003,6 +4073,7 @@ country_event = {
 		can_get_collection_rewards_from_curators = yes
 		is_eligible_collection_stage_2_reward_not_skipped_any = yes
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = { is_eligible_collection_stage_2_reward_not_skipped_xeno_geology = yes }
@@ -4051,6 +4122,7 @@ country_event = {
 		skip_collection_stage_2_reward = yes
 		default_hide_option = yes
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = pending_curator_collection_reward
@@ -4064,6 +4136,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4107
 	title = "grand_archive.4105.name"
+
 	desc = {
 		trigger = {
 			if = {
@@ -4130,6 +4203,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = from
 		room = enclave_curator_room
@@ -4172,6 +4246,7 @@ country_event = {
 			roll_selected_historical_item_relic = yes
 		}
 	}
+
 	inline_script = {
 		script = grand_archive/collection/stage_3_reward_options_by_category
 		EVENT_ID = grand_archive.4105
@@ -4211,11 +4286,13 @@ country_event = {
 		RESOURCE = unity
 		RESOURCE_MULT = unity
 	}
+
 	option = {
 		name = grand_archive.4105.3.no
 		skip_collection_stage_3_reward = yes
 		default_hide_option = yes
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = pending_curator_collection_reward
@@ -4336,6 +4413,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4121
 	title = "grand_archive.4121.name"
+
 	desc = {
 		trigger = { exists = event_target:backup_curator_country }
 		text = grand_archive.4121.desc.dead
@@ -4351,6 +4429,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = event_target:communicating_curator
 		room = enclave_curator_room
@@ -4371,6 +4450,7 @@ country_event = {
 			event_target:curator_enclave_country = { save_event_target_as = communicating_curator }
 		}
 	}
+
 	option = {
 		name = VERYWELL
 		if = {
@@ -4380,6 +4460,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = grand_archive.4100 days = 30 }
@@ -4854,6 +4935,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4510
 	title = grand_archive.4510.name
+
 	desc = {
 		trigger = {
 			from = {
@@ -4920,6 +5002,7 @@ country_event = {
 	picture = GFX_evt_large_explosion
 	show_sound = ga_grand_archive_destruction
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		trigger = {
@@ -4930,6 +5013,7 @@ country_event = {
 		name = EXCELLENT
 		trigger = { has_valid_civic = civic_barbaric_despoilers }
 	}
+
 	after = {
 		if = {
 			limit = { has_ancrel = yes }
@@ -4944,6 +5028,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4515
 	title = grand_archive.4515.name
+
 	desc = {
 		trigger = {
 			has_country_flag = ga_destroyed_contains_specimen
@@ -4978,6 +5063,7 @@ country_event = {
 	picture = GFX_evt_archaeologists_escaping
 	show_sound = ga_grand_archive_destruction
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -4988,6 +5074,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4520
 	title = grand_archive.4520.name
+
 	desc = {
 		trigger = { has_country_flag = ga_destroyed_contains_space_fauna }
 		text = grand_archive.4520.desc.freed
@@ -5002,6 +5089,7 @@ country_event = {
 	picture = GFX_evt_grand_archive
 	show_sound = ga_event_grand_archive
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -5116,6 +5204,7 @@ country_event = {
 	picture = GFX_evt_grand_archive
 	show_sound = ga_event_grand_archive
 	is_triggered_only = yes
+
 	option = {
 		name = VERYWELL
 	}
@@ -5126,6 +5215,7 @@ country_event = {
 country_event = {
 	id = grand_archive.4560
 	title = grand_archive.4560.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -5158,6 +5248,7 @@ country_event = {
 			release_vivarium_fauna = { category = all cull_vivarium_critter = yes }
 		}
 	}
+
 	option = {
 		name = VERYWELL
 		add_resource = { alloys = 500 }
@@ -5225,6 +5316,7 @@ country_event = {
 	immediate = {
 		set_variable = { which = repopulate_cost value = value:vivarium_repopulation_cost }
 	}
+
 	option = {
 		name = grand_archive.4580.a
 	}
@@ -5385,6 +5477,7 @@ country_event = {
 			save_event_target_as = treasure_planet_candidate_3
 		}
 	}
+
 	option = {
 		trigger = { exists = event_target:treasure_planet_candidate_1 }
 		name = grand_archive.5015.a
@@ -5409,6 +5502,7 @@ country_event = {
 			save_event_target_as = selected_treasure_planet
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -5508,6 +5602,7 @@ country_event = {
 			save_event_target_as = treasure_trove_planet
 		}
 	}
+
 	option = {
 		name = grand_archive.6010.a
 		hidden_effect = {
@@ -5527,6 +5622,7 @@ country_event = {
 ship_event = {
 	id = grand_archive.6015
 	title = "grand_archive.6015.name"
+
 	desc = {
 		trigger = {
 			hidden:fromfrom = {
@@ -5559,9 +5655,11 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = grand_archive.6015.a
 	}
+
 	after = {
 		fromfrom = {
 			give_treasure_trove_reward = {
@@ -5659,6 +5757,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = grand_archive.6025.a
 		from = {
@@ -5706,6 +5805,7 @@ country_event = {
 	picture = GFX_evt_exploding_ship
 	is_triggered_only = yes
 	location = event_target:treasure_trove_planet
+
 	option = {
 		name = grand_archive.6031.a
 		complete_special_project = {
@@ -5748,6 +5848,7 @@ country_event = {
 		}
 		end_event_chain = "treasure_troves_chain"
 	}
+
 	option = {
 		name = grand_archive.6035.a
 	}
@@ -5835,6 +5936,7 @@ inline_script = {
 country_event = {
 	id = grand_archive.7010
 	title = grand_archive.7010.name
+
 	desc = {
 		trigger = { has_origin = origin_primal_calling }
 		text = grand_archive.7010.desc.primal_calling
@@ -5849,6 +5951,7 @@ country_event = {
 	picture = GFX_evt_voidlures
 	show_sound = ga_event_hunter_fanfare_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 	}
@@ -5879,6 +5982,7 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_evt_voidlures
 	show_sound = ga_event_hunter_fanfare_announcement
+
 	option = {
 		name = VERYWELL
 	}
@@ -5975,6 +6079,7 @@ country_event = {
 country_event = {
 	id = grand_archive.7210
 	title = grand_archive.7210.name
+
 	desc = {
 		trigger = {
 			text = grand_archive.7210.desc.common
@@ -6002,11 +6107,13 @@ country_event = {
 	immediate = {
 		set_variable = { which = vivarium_capacity value = value:get_vivarium_capacity }
 	}
+
 	after = {
 		hidden_effect = {
 			clear_variable = vivarium_capacity
 		}
 	}
+
 	option = {
 		name = VERYWELL
 	}
@@ -6019,6 +6126,7 @@ country_event = {
 	show_sound = event_default
 	picture = GFX_evt_gravity_snare
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.7220.a
 	}
@@ -6152,6 +6260,7 @@ country_event = {
 	id = grand_archive.9005
 	title = grand_archive.9005.name
 	diplomatic_title = grand_archive.9005.name
+
 	desc = {
 		trigger = {
 			NOT = { has_country_flag = captured_leader_decision_postponed@fromfrom }
@@ -6165,12 +6274,14 @@ country_event = {
 
 	show_sound = par_notification_ethics_generic
 	event_window_type = leader_recruit
+
 	picture_event_data = {
 		portrait = fromfrom
 	}
 
 	picture = GFX_leader_recruitment_bg_renowned
 	is_triggered_only = yes
+
 	option = {
 		tag = hire_leader
 		name = grand_archive.9005.a
@@ -6272,6 +6383,7 @@ country_event = {
 			kill_leader = { show_notification = yes executed = yes }
 		}
 	}
+
 	option = {
 		name = grand_archive.9010.a
 		allow = { is_xenophile = no is_pacifist = no }
@@ -6296,6 +6408,7 @@ country_event = {
 		name = grand_archive.9010.c
 		add_intel = { amount = 100 who = from }
 	}
+
 	after = {
 		hidden_effect = {
 			fromfrom = {
@@ -6566,6 +6679,7 @@ country_event = {
 	show_sound = event_space_amoeba
 	picture = GFX_evt_friendly_amoeba
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = { name = "space_amoeba_UNIQUE_MUTATION_PROJECT" owner = root }
@@ -6579,6 +6693,7 @@ country_event = {
 	show_sound = evn_ove_tiyanki_family
 	picture = GFX_evt_tiyanki_family
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = { name = "tiyanki_UNIQUE_MUTATION_PROJECT" owner = root }
@@ -6592,6 +6707,7 @@ country_event = {
 	show_sound = ga_voidworms_troika_attack
 	picture = GFX_evt_voidworm_flock
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = { name = "voidworm_UNIQUE_MUTATION_PROJECT" owner = root }
@@ -6605,6 +6721,7 @@ country_event = {
 	show_sound = ga_cutholoids_emerge
 	picture = GFX_evt_cutholoids_attack
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = { name = "cutholoid_UNIQUE_MUTATION_PROJECT" owner = root }
@@ -6618,6 +6735,7 @@ country_event = {
 	show_sound = event_space_crystals
 	picture = GFX_evt_space_crystals
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = {
@@ -6634,6 +6752,7 @@ country_event = {
 	show_sound = event_space_amoeba
 	picture = GFX_evt_friendly_amoeba
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_space_amoeba }
@@ -6647,6 +6766,7 @@ country_event = {
 	show_sound = evn_ove_tiyanki_family
 	picture = GFX_evt_tiyanki_family
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_tiyanki }
@@ -6660,6 +6780,7 @@ country_event = {
 	picture = GFX_evt_voidworm_flock
 	show_sound = ga_event_voidworms_plague
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_voidworm }
@@ -6673,6 +6794,7 @@ country_event = {
 	picture = GFX_evt_cutholoids_attack
 	show_sound = ga_cutholoids_idle
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_cutholoid }
@@ -6686,6 +6808,7 @@ country_event = {
 	show_sound = event_space_crystals
 	picture = GFX_evt_space_crystals
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_crystalline_entity }
@@ -6706,6 +6829,7 @@ country_event = {
 		has_technology = tech_controlled_mutations_2
 		NOT = { has_technology = tech_unique_mutation_restorative_enzymes }
 	}
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = { name = tiyanki_matriarch_UNIQUE_MUTATION_PROJECT owner = this }
@@ -6719,6 +6843,7 @@ country_event = {
 	show_sound = event_space_whale
 	picture = GFX_evt_ancient_tiyanki
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_restorative_enzymes message = no }
@@ -6785,6 +6910,7 @@ country_event = {
 		has_technology = tech_controlled_mutations_2
 		NOT = { has_technology = tech_unique_mutation_starborne_biology }
 	}
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = { name = voidspawn_UNIQUE_MUTATION_PROJECT owner = this }
@@ -6798,6 +6924,7 @@ country_event = {
 	show_sound = event_space_whale
 	picture = GFX_evt_voidspawn
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		give_technology = { tech = tech_unique_mutation_starborne_biology message = no }
@@ -7124,6 +7251,7 @@ country_event = {
 	show_sound = ga_gravity_snare_success
 	picture = GFX_evt_gravity_snare
 	is_triggered_only = yes
+
 	option = {
 		name = grand_archive.9960.a
 		add_tech_option_or_research_effect = {
@@ -7154,6 +7282,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = primal_calling_first_cloning_insight }
 	}
+
 	option = {
 		name = grand_archive.9970.a
 		owner = {

@@ -5,11 +5,13 @@ tech_planetary_defenses = {
 	cost = 0
 	area = society
 	start_tech = yes
+
 	category = {
 		military_theory
 	}
 
 	tier = 0
+
 	technology_swap = { # Wilderness icon swap
 		name = tech_wilderness_planetary_defenses
 		inherit_icon = no
@@ -27,6 +29,7 @@ tech_interplanetary_commerce = {
 	cost = 0
 	area = society
 	start_tech = yes
+
 	category = {
 		statecraft
 	}
@@ -45,9 +48,11 @@ tech_space_trading = {
 	cost = @tier1cost3
 	area = society
 	tier = 1
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_interplanetary_commerce"
 	}
@@ -71,9 +76,11 @@ tech_interstellar_economics = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_space_trading"
 	}
@@ -106,9 +113,11 @@ tech_galactic_markets = {
 	cost = @tier4cost1
 	area = society
 	tier = 4
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 		"tech_interstellar_economics"
@@ -144,6 +153,7 @@ tech_galactic_markets = {
 tech_prescient_data_modeling = {
 	cost = @tier3cost1
 	area = society
+
 	category = {
 		statecraft
 	}
@@ -170,6 +180,7 @@ tech_industrial_farming = {
 	cost = 0
 	area = society
 	tier = 0
+
 	category = {
 		biology
 	}
@@ -183,9 +194,11 @@ tech_eco_simulation = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_industrial_farming"
 	}
@@ -266,9 +279,11 @@ tech_gene_crops = {
 	cost = @tier2cost1
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_eco_simulation"
 	}
@@ -336,9 +351,11 @@ tech_nano_vitality_crops = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_gene_crops"
 	}
@@ -406,9 +423,11 @@ tech_nutrient_replication = {
 	area = society
 	tier = 4
 	is_rare = yes
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_nano_vitality_crops"
 	}
@@ -488,6 +507,7 @@ tech_hydroponics = {
 	cost = 0
 	area = society
 	tier = 0
+
 	category = {
 		biology
 	}
@@ -547,9 +567,11 @@ tech_food_processing_1 = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_eco_simulation"
 	}
@@ -562,6 +584,7 @@ tech_food_processing_1 = {
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	weight_modifier = {
 		modifier = { factor = 2 country_uses_food = yes }
 		modifier = {
@@ -630,20 +653,24 @@ tech_food_processing_2 = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_food_processing_1"
 	}
 
 	weight = @tier3weight1
+
 	technology_swap = { # Wilderness icon swap
 		name = tech_wilderness_food_processing_2
 		inherit_icon = no
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	weight_modifier = {
 		factor = 2
 		modifier = {
@@ -702,12 +729,14 @@ tech_food_processing_2 = {
 # ##################
 tech_society_1 = {
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 1
 	cost = @tier1cost3
+
 	prerequisites = {
 		"tech_basic_science_lab_1"
 	}
@@ -739,12 +768,14 @@ tech_society_1 = {
 
 tech_society_2 = {
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 2
 	cost = @tier2cost3
+
 	prerequisites = {
 		"tech_society_1"
 	}
@@ -783,12 +814,14 @@ tech_society_2 = {
 
 tech_society_3 = {
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 3
 	cost = @tier3cost3
+
 	prerequisites = {
 		"tech_society_2"
 	}
@@ -877,6 +910,7 @@ tech_alien_life_studies = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		biology
 	}
@@ -966,29 +1000,35 @@ tech_colonization_1 = {
 	cost = 0
 	area = society
 	tier = 0
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_space_exploration"
 	}
 
 	start_tech = yes
+
 	prereqfor_desc = {
 		ship = {
 			title = "TECH_UNLOCK_COLONY_SHIP_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_COLONY_SHIP_CONSTRUCTION_DESC"
 		}
 	}
+
 	weight_modifier = {
 		factor = 1000
 	}
+
 	technology_swap = {
 		name = tech_colonization_1_wilderness
 		inherit_icon = yes
 		inherit_effects = no
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	ai_weight = {
 	}
 }
@@ -998,9 +1038,11 @@ tech_colonization_2 = {
 	cost = @tier1cost3
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
@@ -1023,9 +1065,11 @@ tech_colonization_3 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_2"
 	}
@@ -1048,9 +1092,11 @@ tech_colonization_4 = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_3"
 	}
@@ -1073,9 +1119,11 @@ tech_colonization_5 = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_4"
 	}
@@ -1098,9 +1146,11 @@ tech_tomb_world_adaption = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_3"
 	}
@@ -1145,9 +1195,11 @@ tech_basic_health = {
 	area = society
 	start_tech = yes
 	tier = 0
+
 	category = {
 		biology
 	}
+
 	potential = {
 		is_regular_empire = yes
 		is_individual_machine = no
@@ -1159,9 +1211,11 @@ tech_frontier_health = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_basic_health"
 		"tech_genome_mapping"
@@ -1190,9 +1244,11 @@ tech_frontier_hospital = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_frontier_health"
 		"tech_colonial_centralization"
@@ -1223,20 +1279,25 @@ tech_mountain_range = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier2weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1268,20 +1329,25 @@ tech_volcano = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier2weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1298,12 +1364,14 @@ tech_volcano = {
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
 	}
+
 	prereqfor_desc = {
 		diplo_action = {
 			title = "TECH_UNLOCK_VOLCANO_TERRAFORM_TITLE"
 			desc = "TECH_UNLOCK_VOLCANO_TERRAFORM_DESC"
 		}
 	}
+
 	ai_weight = {
 		modifier = {
 			factor = 0
@@ -1320,20 +1388,25 @@ tech_dangerous_wildlife = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier2weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1364,20 +1437,25 @@ tech_dense_jungle = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier1weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1408,20 +1486,25 @@ tech_quicksand_basin = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier1weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1452,20 +1535,25 @@ tech_noxious_swamp = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier1weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1496,20 +1584,25 @@ tech_massive_glacier = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier1weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1540,20 +1633,25 @@ tech_toxic_kelp = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier1weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1584,20 +1682,25 @@ tech_deep_sinkhole = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier1weight2
+
 	weight_groups = {
 		deposit_blockers
 	}
+
 	mod_weight_if_group_picked = {
 		deposit_blockers = 0.5
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -1631,15 +1734,19 @@ tech_terrestrial_sculpting = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonization_1"
 	}
 
 	weight = @tier2weight3
+
 	feature_flags = { build_terraform_station }
+
 	weight_modifier = {
 		factor = 1.5	# terraforming needs to be a bit more common
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
@@ -1652,6 +1759,7 @@ tech_terrestrial_sculpting = {
 		modifier = { add = 5 has_origin = origin_wilderness }
 		modifier = { factor = 0 is_lithoid_devouring_swarm = yes }
 	}
+
 	technology_swap = {
 		name = tech_terrestrial_sculpting_wilderness
 		inherit_icon = yes
@@ -1659,6 +1767,7 @@ tech_terrestrial_sculpting = {
 		trigger = { is_wilderness_empire = yes }
 		modifier = { custom_tooltip = tech_terrestrial_sculpting_wilderness_effect }
 	}
+
 	ai_weight = {
 		factor = @terraforming_tech_ai_factor
 		modifier = {
@@ -1701,15 +1810,19 @@ tech_ecological_adaptation = {
 	cost = @tier3cost2
 	area = society
 	tier = 3
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_terrestrial_sculpting"
 	}
 
 	weight = @tier3weight2
+
 	feature_flags = { terraform_inhabited }
+
 	weight_modifier = {
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 	}
@@ -1745,9 +1858,11 @@ tech_climate_restoration = {
 	cost = @tier4cost1
 	area = society
 	tier = 4
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_terrestrial_sculpting"
 	}
@@ -1760,6 +1875,7 @@ tech_climate_restoration = {
 			desc = "TECH_UNLOCK_TERRAFORMING_NUKED_CHANGE_DESC"
 		}
 	}
+
 	weight_modifier = {
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 	}
@@ -1786,6 +1902,7 @@ tech_volcanic_forge = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
@@ -1817,16 +1934,20 @@ tech_volcanic_terraforming = {
 	area = society
 	tier = 2
 	is_rare = yes
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = { # the base Terraforming tech + Clear Volcano Blockers
 		"tech_terrestrial_sculpting"
 		"tech_volcano"
 	}
+
 	potential = {
 		has_infernals = yes
 	}
+
 	prereqfor_desc = {
 		diplo_action = {
 			title = "TECH_UNLOCK_VOLCANIC_TERRAFORM_TITLE"
@@ -1876,6 +1997,7 @@ tech_genome_mapping = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
+
 	category = {
 		biology
 	}
@@ -1912,12 +2034,14 @@ tech_genome_mapping = {
 			any_owned_species = { is_organic_species = yes }
 		}
 	}
+
 	technology_swap = {
 		name = tech_genome_mapping_wilderness
 		inherit_icon = yes
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	ai_weight = {
 		factor = @pop_growth_tech_ai_factor
 	}
@@ -1928,9 +2052,11 @@ tech_vitality_boosters = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_genome_mapping"
 	}
@@ -1971,15 +2097,19 @@ tech_epigenetic_triggers = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_genome_mapping"
 	}
 
 	weight = @tier2weight2
+
 	feature_flags = { uplifting }
+
 	potential = {
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -1993,12 +2123,14 @@ tech_epigenetic_triggers = {
 			has_civic = civic_machine_guided_sapience
 		}
 	}
+
 	prereqfor_desc = {
 		custom = {
 			title = "TECH_UNLOCK_EPIGENETICS_TITLE"
 			desc = "TECH_UNLOCK_EPIGENETICS_DESC"
 		}
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0
@@ -2042,9 +2174,11 @@ tech_cloning = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_genome_mapping"
 	}
@@ -2084,11 +2218,13 @@ tech_gene_banks = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
 
 	is_rare = yes
+
 	prerequisites = {
 		"tech_cloning"
 	}
@@ -2132,12 +2268,14 @@ tech_gene_banks = {
 tech_gene_seed_purification = {
 	cost = @tier4cost1
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 4
 	is_rare = yes
+
 	prerequisites = {
 		"tech_gene_tailoring"
 	}
@@ -2192,12 +2330,14 @@ tech_gene_seed_purification = {
 tech_morphogenetic_field_mastery = {
 	cost = @tier4cost1
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 4
 	is_rare = yes
+
 	prerequisites = {
 		"tech_epigenetic_triggers"
 	}
@@ -2255,9 +2395,11 @@ tech_gene_tailoring = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_genome_mapping"
 	}
@@ -2270,13 +2412,16 @@ tech_gene_tailoring = {
 		description_parameters = { POINTS = @tech_gene_tailoring_POINTS }
 		BIOLOGICAL_species_trait_points_add = @tech_gene_tailoring_POINTS
 	}
+
 	feature_flags = { modify_traits pop_self_modification }
+
 	technology_swap = {
 		name = tech_gene_tailoring_overtuned
 		inherit_icon = yes
 		inherit_effects = no
 		trigger = { has_origin = origin_overtuned }
 	}
+
 	potential = {
 		OR = {
 			is_machine_empire = no
@@ -2320,17 +2465,21 @@ tech_glandular_acclimation = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_gene_tailoring"
 	}
 
 	weight = @tier3weight3
+
 	feature_flags = {
 		habitability_gene_modding # No longer does anything except make a tooltip, handled in game rules ("can_gene_mod_habitability")
 	}
+
 	potential = {
 		OR = {
 			is_machine_empire = no
@@ -2605,17 +2754,20 @@ tech_glandular_acclimation = {
 tech_gene_expressions = {
 	cost = @tier3cost3
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 3
 	is_rare = yes
+
 	prerequisites = {
 		"tech_gene_tailoring"
 	}
 
 	weight = @tier3weight3
+
 	prereqfor_desc = {
 		custom = {
 			title = "TECH_UNLOCK_GENE_EXPRESSIONS_TITLE"
@@ -2628,6 +2780,7 @@ tech_gene_expressions = {
 			desc = "TECH_UNLOCK_VOCATIONAL_GENES_DESC"
 		}
 	}
+
 	potential = {
 		OR = {
 			NOR = {
@@ -2666,12 +2819,14 @@ tech_gene_expressions = {
 tech_selected_lineages = {
 	cost = @tier3cost2
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 3
 	is_rare = yes
+
 	prerequisites = {
 		"tech_vitality_boosters"
 	}
@@ -2717,12 +2872,14 @@ tech_selected_lineages = {
 tech_capacity_boosters = {
 	cost = @tier4cost3
 	area = society
+
 	category = {
 		biology
 	}
 
 	tier = 4
 	is_rare = yes
+
 	prerequisites = {
 		"tech_selected_lineages"
 	}
@@ -2769,6 +2926,7 @@ tech_regenerative_hull_tissue = {
 	cost = @tier3cost2
 	tier = 3
 	is_rare = yes
+
 	category = {
 		biology
 	}
@@ -2789,6 +2947,7 @@ tech_doctrine_fleet_size_1 = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
+
 	category = {
 		military_theory
 	}
@@ -2814,9 +2973,11 @@ tech_doctrine_fleet_size_2 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_fleet_size_1"
 	}
@@ -2842,9 +3003,11 @@ tech_doctrine_fleet_size_3 = {
 	cost = @tier3cost2
 	area = society
 	tier = 3
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_fleet_size_2"
 	}
@@ -2870,9 +3033,11 @@ tech_doctrine_fleet_size_4 = {
 	cost = @tier4cost1
 	area = society
 	tier = 4
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_fleet_size_3"
 	}
@@ -2898,9 +3063,11 @@ tech_doctrine_fleet_size_5 = {
 	cost = @tier5cost3
 	area = society
 	tier = 5
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_fleet_size_4"
 	}
@@ -2926,6 +3093,7 @@ tech_interstellar_fleet_traditions = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		military_theory
 	}
@@ -2947,9 +3115,11 @@ tech_refit_standards = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_interstellar_fleet_traditions"
 	}
@@ -2968,6 +3138,7 @@ tech_refit_standards = {
 	ai_weight = {
 		modifier = { factor = 2 is_militarist = yes }
 	}
+
 	technology_swap = {
 		name = tech_refit_standards_beastmasters
 		inherit_icon = no
@@ -2985,9 +3156,11 @@ tech_command_matrix = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_refit_standards"
 	}
@@ -2997,9 +3170,11 @@ tech_command_matrix = {
 	modifier = {
 		ship_fire_rate_mult = 0.05
 	}
+
 	prereqfor_desc = {
 		hide_prereq_for_desc = component
 	}
+
 	weight_modifier = {
 		factor = 3
 		modifier = { factor = 2 is_militarist = yes }
@@ -3015,6 +3190,7 @@ tech_doctrine_navy_size_1 = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		military_theory
 	}
@@ -3040,9 +3216,11 @@ tech_doctrine_navy_size_2 = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_navy_size_1"
 	}
@@ -3068,9 +3246,11 @@ tech_doctrine_navy_size_3 = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_navy_size_2"
 	}
@@ -3096,9 +3276,11 @@ tech_doctrine_navy_size_4 = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_doctrine_navy_size_3"
 	}
@@ -3126,6 +3308,7 @@ tech_centralized_command = {
 	cost = @tier3cost2
 	area = society
 	tier = 3
+
 	category = {
 		military_theory
 	}
@@ -3150,9 +3333,11 @@ tech_combat_training = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_centralized_command"
 	}
@@ -3178,9 +3363,11 @@ tech_ground_defense_planning = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_planetary_defenses"
 	}
@@ -3197,6 +3384,7 @@ tech_ground_defense_planning = {
 		factor = 2
 		modifier = { factor = 2 is_militarist = yes }
 	}
+
 	technology_swap = {
 		name = tech_ground_defense_planning
 		inherit_icon = yes
@@ -3206,6 +3394,7 @@ tech_ground_defense_planning = {
 			army_defense_damage_mult = 0.33
 		}
 	}
+
 	ai_weight = {
 		modifier = { factor = 2 is_militarist = yes }
 	}
@@ -3216,9 +3405,11 @@ tech_global_defense_grid = {
 	cost = @tier2cost1
 	area = society
 	tier = 2
+
 	category = {
 		military_theory
 	}
+
 	prerequisites = {
 		"tech_ground_defense_planning"
 	}
@@ -3231,6 +3422,7 @@ tech_global_defense_grid = {
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	modifier = {
 		army_defense_health_mult = 0.25
 	}
@@ -3257,6 +3449,7 @@ tech_psionic_theory = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		psionics
 	}
@@ -3368,11 +3561,13 @@ tech_telepathy = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		psionics
 	}
 
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -3386,6 +3581,7 @@ tech_telepathy = {
 			is_gestalt = no
 		}
 	}
+
 	technology_swap = {
 		name = tech_telepathy_machine_gestalt
 		inherit_icon = yes
@@ -3404,6 +3600,7 @@ tech_telepathy = {
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	weight_modifier = {
 		factor = 0.5
 		modifier = {
@@ -3448,11 +3645,13 @@ tech_precognition_interface = {
 	cost = @tier4cost2
 	area = society
 	tier = 4
+
 	category = {
 		psionics
 	}
 
 	is_rare = yes
+
 	prerequisites = {
 		"tech_telepathy"
 	}
@@ -3467,6 +3666,7 @@ tech_precognition_interface = {
 			desc = "TECH_UNLOCK_COMBAT_COMPUTER_PRECOG_DESC"
 		}
 	}
+
 	potential = {
 		OR = {
 			has_shroud_dlc = yes
@@ -3511,11 +3711,13 @@ tech_thought_enforcement = {
 	cost = @tier4cost2
 	area = society
 	tier = 4
+
 	category = {
 		psionics
 	}
 
 	is_rare = yes
+
 	prerequisites = {
 		"tech_telepathy"
 	}
@@ -3529,6 +3731,7 @@ tech_thought_enforcement = {
 			is_gestalt = no
 		}
 	}
+
 	technology_swap = {
 		name = tech_thought_enforcement_gestalt
 		inherit_icon = yes
@@ -3536,6 +3739,7 @@ tech_thought_enforcement = {
 		trigger = { is_gestalt = yes }
 		weight = { factor = 1 }
 	}
+
 	weight_modifier = {
 		factor = 0.5
 		modifier = { factor = 0 has_psionic_ascension = no }
@@ -3587,6 +3791,7 @@ tech_psi_jump_drive_1 = {
 	cost = @tier5cost2
 	area = society
 	tier = 5
+
 	category = {
 		psionics
 	}
@@ -3594,6 +3799,7 @@ tech_psi_jump_drive_1 = {
 	ai_update_type = all
 	is_rare = yes
 	is_dangerous = yes
+
 	prerequisites = {
 		"tech_precognition_interface"
 	}
@@ -3601,19 +3807,23 @@ tech_psi_jump_drive_1 = {
 	weight = @tier5weight2
 	is_dangerous = yes
 	is_reverse_engineerable = no
+
 	feature_flags = { jump_method }
+
 	prereqfor_desc = {
 		component = {
 			title = "TECH_UNLOCK_PSI_JUMPDRIVE_1_TITLE"
 			desc = "TECH_UNLOCK_PSI_JUMPDRIVE_1_DESC"
 		}
 	}
+
 	potential = {
 		OR = {
 			has_shroud_dlc = yes
 			is_gestalt = no
 		}
 	}
+
 	technology_swap = {
 		name = tech_bio_psi_jump_drive_1
 		inherit_icon = no
@@ -3627,6 +3837,7 @@ tech_psi_jump_drive_1 = {
 		}
 		weight = { factor = 1 }
 	}
+
 	weight_modifier = {
 		factor = 0.1
 		modifier = {
@@ -3668,6 +3879,7 @@ tech_psi_jump_drive_1 = {
 tech_galactic_ambitions = {
 	cost = @tier2cost2
 	area = society
+
 	category = {
 		new_worlds
 	}
@@ -3695,11 +3907,13 @@ tech_galactic_ambitions = {
 tech_manifest_destiny = {
 	cost = @tier4cost2
 	area = society
+
 	category = {
 		new_worlds
 	}
 
 	tier = 4
+
 	prerequisites = {
 		"tech_galactic_ambitions"
 	}
@@ -3726,15 +3940,18 @@ tech_manifest_destiny = {
 tech_interstellar_campaigns = {
 	cost = @tier2cost3
 	area = society
+
 	category = {
 		military_theory
 	}
 
 	tier = 2
 	weight = @tier2weight3
+
 	prerequisites = {
 		tech_galactic_ambitions
 	}
+
 	modifier = {
 		country_claim_influence_cost_mult = -0.1
 		country_war_exhaustion_mult = -0.1
@@ -3761,15 +3978,18 @@ tech_interstellar_campaigns = {
 tech_galactic_campaigns = {
 	cost = @tier4cost1
 	area = society
+
 	category = {
 		military_theory
 	}
 
 	tier = 4
 	weight = @tier4weight1
+
 	prerequisites = {
 		tech_interstellar_campaigns
 	}
+
 	modifier = {
 		country_claim_influence_cost_mult = -0.1
 		country_war_exhaustion_mult = -0.1
@@ -3797,6 +4017,7 @@ tech_galactic_campaigns = {
 tech_existential_campaigns = {
 	cost = @tier5cost3
 	area = society
+
 	category = {
 		military_theory
 	}
@@ -3805,9 +4026,11 @@ tech_existential_campaigns = {
 	weight = @tier5weight3
 	is_rare = yes
 	is_dangerous = yes
+
 	prerequisites = {
 		tech_galactic_campaigns
 	}
+
 	modifier = {
 		show_only_custom_tooltip = yes
 		custom_tooltip = tech_existential_campaigns_effect
@@ -3845,6 +4068,7 @@ tech_planetary_government = {
 	cost = @tier0cost1
 	area = society
 	tier = 0
+
 	category = {
 		statecraft
 	}
@@ -3857,6 +4081,7 @@ tech_planetary_government = {
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	starting_potential = {
 		is_low_tech_start = no # So Broken Shackles origin players don't start with it
 	}
@@ -3867,15 +4092,18 @@ tech_planetary_unification = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_planetary_government"
 	}
 
 	weight = @tier1weight1
 	gateway = capital
+
 	feature_flags = { campaign_edicts }
 
 	# also unlocks planet-happiness edict and gives a one time Unity award
@@ -3903,9 +4131,11 @@ tech_colonial_centralization = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_planetary_unification"
 	}
@@ -3920,6 +4150,7 @@ tech_colonial_centralization = {
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	modifier = {
 		country_official_cap_add = 1
 		country_commander_cap_add = 1
@@ -3940,21 +4171,25 @@ tech_galactic_administration = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
 
 	weight = @tier3weight3
 	gateway = capital # unlocks Empire Capital-Complex
+
 	technology_swap = { # Wilderness icon swap
 		name = tech_wilderness_galactic_administration
 		inherit_icon = no
 		inherit_effects = yes
 		trigger = { is_wilderness_empire = yes }
 	}
+
 	modifier = { # add civic slot
 		country_government_civic_points_add = 1
 	}
@@ -3972,9 +4207,11 @@ tech_planetary_infrastructure_1 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 		"tech_ship_armor_2"
@@ -3997,6 +4234,7 @@ tech_planetary_infrastructure_1 = {
 	ai_weight = {
 		factor = @building_slots_ai_tech_factor
 	}
+
 	technology_swap = {
 		name = tech_planetary_infrastructure_1_wilderness
 		inherit_icon = yes
@@ -4014,9 +4252,11 @@ tech_planetary_infrastructure_2 = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
+
 	category = {
 		new_worlds
 	}
+
 	prerequisites = {
 		"tech_galactic_administration"
 		"tech_ship_armor_4"
@@ -4039,6 +4279,7 @@ tech_planetary_infrastructure_2 = {
 	ai_weight = {
 		factor = @building_slots_ai_tech_factor
 	}
+
 	technology_swap = {
 		name = tech_planetary_infrastructure_2_wilderness
 		inherit_icon = yes
@@ -4057,9 +4298,11 @@ tech_subdermal_stimulation = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_genome_mapping"
 	}
@@ -4068,6 +4311,7 @@ tech_subdermal_stimulation = {
 	is_rare = yes
 	# unlocks Chemical Bliss living standard
 	feature_flags = { bliss_standard }
+
 	potential = {
 		NOR = {
 			is_gestalt = yes
@@ -4095,9 +4339,11 @@ tech_tracking_implants = {
 	area = society
 	cost = @tier4cost2
 	tier = 4
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_subdermal_stimulation"
 		"tech_galactic_bureaucracy"
@@ -4136,9 +4382,11 @@ tech_global_production_strategy = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_alloys_1"
 		"tech_colonial_centralization"
@@ -4170,9 +4418,11 @@ tech_adaptive_bureaucracy = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_planetary_unification"
 	}
@@ -4199,9 +4449,11 @@ tech_effective_bureaucracy = {
 	cost = @tier2cost1
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_adaptive_bureaucracy"
 	}
@@ -4231,9 +4483,11 @@ tech_colonial_bureaucracy = {
 	cost = @tier2cost1
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_adaptive_bureaucracy"
 	}
@@ -4261,9 +4515,11 @@ tech_galactic_bureaucracy = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_bureaucracy"
 	}
@@ -4291,9 +4547,11 @@ tech_living_state = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
@@ -4325,9 +4583,11 @@ tech_collective_self = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
@@ -4362,9 +4622,11 @@ tech_autonomous_agents = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
@@ -4396,9 +4658,11 @@ tech_embodied_dynamism = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_autonomous_agents"
 	}
@@ -4433,6 +4697,7 @@ tech_neural_implants = {
 	cost = @tier1cost3
 	area = society
 	tier = 1
+
 	category = {
 		statecraft
 	}
@@ -4496,6 +4761,7 @@ tech_artificial_moral_codes = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
@@ -4524,9 +4790,11 @@ tech_synthetic_thought_patterns = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_artificial_moral_codes"
 	}
@@ -4554,6 +4822,7 @@ tech_unity_of_purpose = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
@@ -4582,9 +4851,11 @@ tech_collective_production_methods = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_unity_of_purpose"
 	}
@@ -4611,9 +4882,11 @@ tech_resource_processing_algorithms = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_unity_of_purpose"
 	}
@@ -4642,6 +4915,7 @@ tech_holo_entertainment = {
 	cost = 0
 	area = society
 	start_tech = yes
+
 	category = {
 		statecraft
 	}
@@ -4658,11 +4932,13 @@ tech_holo_entertainment = {
 tech_hyper_entertainment_forum = {
 	cost = @tier1cost3
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 1
+
 	prerequisites = {
 		"tech_holo_entertainment"
 	}
@@ -4691,11 +4967,13 @@ tech_hyper_entertainment_forum = {
 tech_paradise_dome = {
 	cost = @tier3cost1
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 3
+
 	prerequisites = {
 		"tech_housing_1"
 	}
@@ -4731,11 +5009,13 @@ tech_paradise_dome = {
 tech_cultural_heritage = {
 	cost = @tier1cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 1
+
 	prerequisites = {
 		"tech_planetary_unification"
 	}
@@ -4762,11 +5042,13 @@ tech_cultural_heritage = {
 tech_heritage_site = {
 	cost = @tier2cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 2
+
 	prerequisites = {
 		"tech_cultural_heritage"
 	}
@@ -4789,11 +5071,13 @@ tech_heritage_site = {
 tech_hypercomms_forum = {
 	cost = @tier3cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 3
+
 	prerequisites = {
 		"tech_heritage_site"
 		"tech_colonial_centralization"
@@ -4817,11 +5101,13 @@ tech_hypercomms_forum = {
 tech_autocurating_vault = {
 	cost = @tier3cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 3
+
 	prerequisites = {
 		"tech_administrative_ai"
 		"tech_colonial_centralization"
@@ -4844,11 +5130,13 @@ tech_autocurating_vault = {
 tech_holographic_rituals = {
 	cost = @tier2cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 2
+
 	prerequisites = {
 		"tech_planetary_government"
 	}
@@ -4883,11 +5171,13 @@ tech_holographic_rituals = {
 tech_consecration_fields = {
 	cost = @tier3cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 3
+
 	prerequisites = {
 		"tech_holographic_rituals"
 		"tech_colonial_centralization"
@@ -4915,11 +5205,13 @@ tech_consecration_fields = {
 tech_transcendent_faith = {
 	cost = @tier4cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 4
+
 	prerequisites = {
 		"tech_consecration_fields"
 		"tech_galactic_administration"
@@ -4949,6 +5241,7 @@ tech_hive_node = {
 	cost = 0
 	area = society
 	start_tech = yes
+
 	category = {
 		statecraft
 	}
@@ -4970,11 +5263,13 @@ tech_hive_node = {
 tech_hive_cluster = {
 	cost = @tier2cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 2
+
 	prerequisites = {
 		"tech_hive_node"
 	}
@@ -4995,11 +5290,13 @@ tech_hive_cluster = {
 tech_hive_confluence = {
 	cost = @tier3cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 3
+
 	prerequisites = {
 		"tech_hive_cluster"
 		"tech_colonial_centralization"
@@ -5019,6 +5316,7 @@ tech_wilderness_node = {
 	cost = 0
 	area = society
 	start_tech = yes
+
 	category = {
 		statecraft
 	}
@@ -5039,11 +5337,13 @@ tech_wilderness_node = {
 tech_wilderness_cluster = {
 	cost = @tier2cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 2
+
 	prerequisites = {
 		"tech_wilderness_node"
 	}
@@ -5060,11 +5360,13 @@ tech_wilderness_cluster = {
 tech_wilderness_confluence = {
 	cost = @tier3cost2
 	area = society
+
 	category = {
 		statecraft
 	}
 
 	tier = 3
+
 	prerequisites = {
 		"tech_wilderness_cluster"
 		"tech_colonial_centralization"
@@ -5086,6 +5388,7 @@ tech_ascension_theory = {
 	area = society
 	cost = @tier4cost2
 	tier = 4
+
 	category = {
 		statecraft
 	}
@@ -5097,7 +5400,9 @@ tech_ascension_theory = {
 	modifier = {
 		ascension_perks_add = 1
 	}
+
 	feature_flags = { unity_ambitions }
+
 	weight_modifier = {
 		factor = 0.5
 		modifier = { factor = 0 num_ascension_perk_slots < 6 }
@@ -5127,12 +5432,14 @@ tech_psionic_barrier = {
 	area = society
 	cost = @tier3cost1
 	tier = 3
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -5140,6 +5447,7 @@ tech_psionic_barrier = {
 	weight = 0
 	is_reverse_engineerable = no
 	icon = tech_psionic_barrier
+
 	technology_swap = {
 		name = tech_bio_psionic_barrier
 		inherit_icon = no
@@ -5162,6 +5470,7 @@ tech_psionic_barrier = {
 		inherit_effects = yes
 		trigger = { has_origin = origin_shroud_forged }
 	}
+
 	weight_modifier = {
 		factor = 0
 	}
@@ -5171,18 +5480,21 @@ tech_psionic_shield = {
 	area = society
 	cost = @tier5cost3
 	tier = 5
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
 
 	weight = 0
 	is_reverse_engineerable = no
+
 	technology_swap = {
 		name = tech_bio_psionic_shield
 		inherit_icon = no
@@ -5205,6 +5517,7 @@ tech_psionic_shield = {
 		inherit_effects = yes
 		trigger = { has_origin = origin_shroud_forged }
 	}
+
 	weight_modifier = {
 		factor = 0
 	}
@@ -5218,9 +5531,11 @@ tech_penal_colonies = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_artificial_moral_codes"
 	}
@@ -5258,9 +5573,11 @@ tech_resort_colonies = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_artificial_moral_codes"
 	}
@@ -5285,9 +5602,11 @@ tech_slave_colonies = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_neural_implants"
 	}
@@ -5328,6 +5647,7 @@ tech_housing_agrarian_idyll = {
 	cost = @tier3cost1
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
@@ -5355,9 +5675,11 @@ tech_federation_code = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
@@ -5402,9 +5724,11 @@ tech_xeno_diplomacy = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_federation_code"
 	}
@@ -5440,9 +5764,11 @@ tech_xeno_relations = {
 	cost = @tier3cost2
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_xeno_diplomacy"
 		"tech_galactic_administration"
@@ -5481,9 +5807,11 @@ tech_capital_productivity_1 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_planetary_unification"
 	}
@@ -5510,9 +5838,11 @@ tech_capital_productivity_2 = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 		"tech_capital_productivity_1"
@@ -5540,9 +5870,11 @@ tech_capital_productivity_3 = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_galactic_administration"
 		"tech_capital_productivity_2"
@@ -5573,12 +5905,14 @@ tech_covenant_composer = {
 	area = society
 	cost = @guardiantechcost
 	tier = @guardiantechtier
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -5596,12 +5930,14 @@ tech_covenant_eater = {
 	area = society
 	cost = @guardiantechcost
 	tier = @guardiantechtier
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -5619,12 +5955,14 @@ tech_covenant_instrument = {
 	area = society
 	cost = @guardiantechcost
 	tier = @guardiantechtier
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -5642,12 +5980,14 @@ tech_covenant_cradle = {
 	area = society
 	cost = @guardiantechcost
 	tier = @guardiantechtier
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -5665,12 +6005,14 @@ tech_covenant_whisperers = {
 	area = society
 	cost = @guardiantechcost
 	tier = @guardiantechtier
+
 	category = {
 		psionics
 	}
 
 	ai_update_type = all
 	is_rare = yes
+
 	prerequisites = {
 		"tech_psionic_theory"
 	}
@@ -5688,6 +6030,7 @@ tech_xeno_linguistics = {
 	cost = @tier1cost2
 	area = society
 	tier = 1
+
 	category = {
 		statecraft
 	}
@@ -5726,9 +6069,11 @@ tech_node_reformatting_1 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
@@ -5740,12 +6085,14 @@ tech_node_reformatting_1 = {
 	}
 
 	gateway = node_reformatting
+
 	prereqfor_desc = {
 		custom = {
 			title = "AGENDA_UNLOCK_NODE_REFORMATTING_TITLE"
 			desc = "AGENDA_UNLOCK_NODE_REFORMATTING_DESC"
 		}
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0.5
@@ -5797,9 +6144,11 @@ tech_node_reformatting_2 = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_node_reformatting_1"
 	}
@@ -5858,9 +6207,11 @@ tech_node_reformatting_3 = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_node_reformatting_2"
 	}
@@ -5924,9 +6275,11 @@ tech_node_culling_1 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_colonial_centralization"
 	}
@@ -5938,12 +6291,14 @@ tech_node_culling_1 = {
 	}
 
 	gateway = node_culling
+
 	prereqfor_desc = {
 		custom = {
 			title = "AGENDA_UNLOCK_NODE_CULLING_TITLE"
 			desc = "AGENDA_UNLOCK_NODE_CULLING_DESC"
 		}
 	}
+
 	technology_swap = {
 		name = tech_node_culling_1_cloning
 		inherit_icon = yes
@@ -5962,6 +6317,7 @@ tech_node_culling_1 = {
 			}
 		}
 	}
+
 	weight_modifier = {
 		modifier = {
 			factor = 0.5
@@ -6014,9 +6370,11 @@ tech_node_culling_2 = {
 	cost = @tier3cost3
 	area = society
 	tier = 3
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_node_culling_1"
 	}
@@ -6075,9 +6433,11 @@ tech_node_culling_3 = {
 	cost = @tier4cost3
 	area = society
 	tier = 4
+
 	category = {
 		statecraft
 	}
+
 	prerequisites = {
 		"tech_node_culling_2"
 	}
@@ -6143,9 +6503,11 @@ tech_bio_reactor = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_industrial_farming"
 	}
@@ -6182,9 +6544,11 @@ tech_bio_reactor_2 = {
 	cost = @tier2cost1
 	area = society
 	tier = 2
+
 	category = {
 		biology
 	}
+
 	prerequisites = {
 		"tech_bio_reactor"
 	}

@@ -604,14 +604,12 @@ planet_event = {
 		has_owner = yes
 		owner = {
 			if = {
-				NOR = {
-					limit = { is_gestalt = yes }
-					AND = {
-						has_country_flag = built_city_district
-						has_country_flag = built_generator_district
-						has_country_flag = built_mining_district
-						has_country_flag = built_farming_district
-					}
+				limit = { is_gestalt = yes }
+				NAND = {
+					has_country_flag = built_city_district
+					has_country_flag = built_generator_district
+					has_country_flag = built_mining_district
+					has_country_flag = built_farming_district
 				}
 			}
 			else_if = {
@@ -1212,6 +1210,7 @@ country_event = {
 			value = FROMFROM.solar_system.value:num_arc_furnace_planets
 		}
 	}
+
 	after = {
 		if = {
 			limit = {

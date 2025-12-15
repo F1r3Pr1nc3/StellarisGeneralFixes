@@ -27,12 +27,14 @@ building_private_mining_consortium = {
 			is_planet_class = pc_city
 		}
 	}
+
 	inline_script = {
 		script = jobs/miners_add
 		AMOUNT = @building_static_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_miners_trade_produces_add = @med_trade_from_jobs
@@ -73,6 +75,7 @@ building_private_mining_consortium = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -91,17 +94,21 @@ building_private_mining_consortium = {
 			energy = 2
 		}
 	}
+
 	ai_weight = {
 		factor = 1
 		mult = value:num_jobs_with_tag|TAG|minerals|
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_wildcat_miners
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -122,12 +129,14 @@ building_food_conglomerate = {
 			is_planet_class = pc_relic
 		}
 	}
+
 	inline_script = {
 		script = jobs/farmers_add
 		AMOUNT = @building_static_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_farmers_trade_produces_add = @med_trade_from_jobs
@@ -190,6 +199,7 @@ building_food_conglomerate = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -208,16 +218,20 @@ building_food_conglomerate = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_bio_reprocessing_facilities
 	}
+
 	ai_weight = {
 		factor = 1
 	} # AI has many other sources for this resource
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -233,12 +247,14 @@ building_virtual_entertainment_studios = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/factory_add
 		AMOUNT = @b1_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_artisans_trade_produces_add = @med_trade_from_jobs
@@ -291,6 +307,7 @@ building_virtual_entertainment_studios = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -309,13 +326,16 @@ building_virtual_entertainment_studios = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_underground_chemists
 	}
+
 	ai_weight = {
 		weight = 3
 		modifier = {
@@ -331,6 +351,7 @@ building_virtual_entertainment_studios = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -346,12 +367,14 @@ building_private_shipyards = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/foundry_add
 		AMOUNT = @b1_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_metallurgists_trade_produces_add = @med_trade_from_jobs
@@ -392,6 +415,7 @@ building_private_shipyards = {
 		}
 		planet_crime_floor_add = @crime_floor_from_legal_crime
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -410,16 +434,20 @@ building_private_shipyards = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_wrecking_yards
 	}
+
 	ai_weight = {
 		weight = 1
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -435,17 +463,20 @@ building_military_contractors = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/soldiers_add
 		AMOUNT = @building_static_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 10
 		mult = value:branch_office_value_for_buildings
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		army_starting_experience_add = 100
@@ -516,6 +547,7 @@ building_military_contractors = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -530,16 +562,20 @@ building_military_contractors = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_pirate_haven
 	}
+
 	ai_weight = {
 		factor = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -563,6 +599,7 @@ building_industrial_subsidiary = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/foundry_add
 		AMOUNT = 100
@@ -573,6 +610,7 @@ building_industrial_subsidiary = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_artisans_trade_produces_add = @med_trade_from_jobs
@@ -616,6 +654,7 @@ building_industrial_subsidiary = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -635,9 +674,11 @@ building_industrial_subsidiary = {
 			energy = 2
 		}
 	}
+
 	ai_weight = {
 		factor = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -653,12 +694,14 @@ building_public_relations_office = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_bureaucrats_trade_produces_add = @med_trade_from_jobs
@@ -709,6 +752,7 @@ building_public_relations_office = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -727,16 +771,20 @@ building_public_relations_office = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_syndicate_outreach_office
 	}
+
 	ai_weight = {
 		weight = 2
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -752,12 +800,14 @@ building_private_research_initiative = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/researchers_add
 		AMOUNT = @building_static_jobs_3
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		planet_physicists_trade_produces_add = @med_trade_from_jobs
 		planet_biologists_trade_produces_add = @med_trade_from_jobs
@@ -817,6 +867,7 @@ building_private_research_initiative = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -837,16 +888,20 @@ building_private_research_initiative = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_illicit_research_labs
 	}
+
 	ai_weight = {
 		weight = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -865,12 +920,14 @@ building_amusement_megaplex = {
 			NOT = { has_origin = origin_toxic_knights }
 		}
 	}
+
 	inline_script = {
 		script = jobs/entertainers_add
 		AMOUNT = @building_static_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_entertainers_trade_produces_add = @med_trade_from_jobs
@@ -923,6 +980,7 @@ building_amusement_megaplex = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -938,13 +996,16 @@ building_amusement_megaplex = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_underground_clubs
 	}
+
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -954,6 +1015,7 @@ building_amusement_megaplex = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -969,10 +1031,12 @@ building_commercial_forum = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/trader_add
 		AMOUNT = @building_static_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_traders_trade_produces_add = @low_trade_from_jobs
@@ -1025,6 +1089,7 @@ building_commercial_forum = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1039,16 +1104,20 @@ building_commercial_forum = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_smuggling_rings
 	}
+
 	ai_weight = {
 		weight = 50
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1064,24 +1133,30 @@ building_corporate_embassy = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 	}
+
 	prerequisites = {
 		"tech_xeno_diplomacy"
 	}
+
 	show_tech_unlock_if = {
 		is_megacorp = yes
 		is_criminal_syndicate = no
 	}
+
 	country_modifier = {
 		diplo_weight_economy_mult = 0.05
 	}
+
 	inline_script = {
 		script = "jobs/politician_add"
 		AMOUNT = @building_static_jobs_low
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_politicians_trade_produces_add = @high_trade_from_jobs
@@ -1146,6 +1221,7 @@ building_corporate_embassy = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1160,13 +1236,16 @@ building_corporate_embassy = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	convert_to = {
 		building_disinformation_center
 	}
+
 	ai_weight = {
 		weight = 50
 		modifier = {
@@ -1185,6 +1264,7 @@ building_private_security = {
 	potential = {
 		has_branch_office = yes
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			branch_office_owner = { is_legit_or_legal_criminal = yes }
@@ -1202,6 +1282,7 @@ building_private_security = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_enforcers_trade_produces_add = @med_trade_from_jobs
@@ -1263,6 +1344,7 @@ building_private_security = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1278,9 +1360,11 @@ building_private_security = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	ai_weight = {
 		factor = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1304,6 +1388,7 @@ building_wildcat_miners = {
 			is_planet_class = pc_city
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_miner_add = 100
@@ -1315,6 +1400,7 @@ building_wildcat_miners = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_miners_trade_produces_add = @med_trade_from_jobs
@@ -1347,6 +1433,7 @@ building_wildcat_miners = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1365,16 +1452,20 @@ building_wildcat_miners = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_private_mining_consortium
 	}
+
 	ai_weight = {
 		factor = 1
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1395,6 +1486,7 @@ building_bio_reprocessing_facilities = {
 			is_planet_class = pc_relic
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_farmer_add = 100
@@ -1406,6 +1498,7 @@ building_bio_reprocessing_facilities = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_farmers_trade_produces_add = @med_trade_from_jobs
@@ -1436,6 +1529,7 @@ building_bio_reprocessing_facilities = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1454,16 +1548,20 @@ building_bio_reprocessing_facilities = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_food_conglomerate
 	}
+
 	ai_weight = {
 		factor = 1
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1479,10 +1577,12 @@ building_underground_chemists = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/factory_add
 		AMOUNT = 100
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_criminal_add = 100
@@ -1537,6 +1637,7 @@ building_underground_chemists = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1555,13 +1656,16 @@ building_underground_chemists = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_virtual_entertainment_studios
 	}
+
 	ai_weight = {
 		weight = 3
 		modifier = {
@@ -1577,6 +1681,7 @@ building_underground_chemists = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1592,10 +1697,12 @@ building_wrecking_yards = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/foundry_add
 		AMOUNT = 100
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_criminal_add = 100
@@ -1636,6 +1743,7 @@ building_wrecking_yards = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1654,16 +1762,20 @@ building_wrecking_yards = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_private_shipyards
 	}
+
 	ai_weight = {
 		factor = 1
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1679,11 +1791,13 @@ building_pirate_haven = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 10
 		mult = value:branch_office_value_for_buildings
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_soldier_add = 100
@@ -1755,6 +1869,7 @@ building_pirate_haven = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1769,16 +1884,20 @@ building_pirate_haven = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_military_contractors
 	}
+
 	ai_weight = {
 		factor = 15
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1795,6 +1914,7 @@ building_underground_clubs = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_entertainer_add = 100
@@ -1836,6 +1956,7 @@ building_underground_clubs = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1851,14 +1972,17 @@ building_underground_clubs = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_amusement_megaplex
 		building_knightly_theme_park
 	}
+
 	ai_weight = {
 		weight = 5
 		modifier = {
@@ -1874,6 +1998,7 @@ building_underground_clubs = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1889,10 +2014,12 @@ building_syndicate_outreach_office = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_criminal_add = 100
@@ -1933,6 +2060,7 @@ building_syndicate_outreach_office = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1951,16 +2079,20 @@ building_syndicate_outreach_office = {
 			energy = 2
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_public_relations_office
 	}
+
 	ai_weight = {
 		weight = 5
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -1976,10 +2108,12 @@ building_illicit_research_labs = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	inline_script = {
 		script = jobs/researchers_add
 		AMOUNT = @scaling_district_3_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_criminal_add = 100
@@ -2026,6 +2160,7 @@ building_illicit_research_labs = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2046,16 +2181,20 @@ building_illicit_research_labs = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_private_research_initiative
 	}
+
 	ai_weight = {
 		weight = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -2071,6 +2210,7 @@ building_smuggling_rings = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_trader_add = 100
@@ -2110,6 +2250,7 @@ building_smuggling_rings = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2124,16 +2265,20 @@ building_smuggling_rings = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_commercial_forum
 	}
+
 	ai_weight = {
 		weight = 100
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -2149,28 +2294,35 @@ building_disinformation_center = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 	}
+
 	prerequisites = {
 		"tech_xeno_diplomacy"
 	}
+
 	show_tech_unlock_if = {
 		is_megacorp = yes
 		is_criminal_syndicate = yes
 	}
+
 	country_modifier = {
 		spy_network_levels_add = 5
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		pop_government_ethic_attraction = -0.25
 	}
+
 	inline_script = {
 		script = "jobs/politician_add"
 		AMOUNT = 100
 	}
+
 	triggered_planet_modifier = {
 		planet_crime_add = 25
 		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
@@ -2219,6 +2371,7 @@ building_disinformation_center = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2233,13 +2386,16 @@ building_disinformation_center = {
 			energy = 3
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	convert_to = {
 		building_corporate_embassy
 	}
+
 	ai_weight = {
 		weight = 50
 	}
@@ -2258,6 +2414,7 @@ building_subversive_shrine = {
 			is_illegal_criminal = yes
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_bureaucrat_add = 200
@@ -2265,6 +2422,7 @@ building_subversive_shrine = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		planet_crime_add = 25
 		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
@@ -2278,6 +2436,7 @@ building_subversive_shrine = {
 		pop_ethics_shift_speed_mult = 0.05
 		mult = value:councilor_level|TYPE|councilor_gospel_of_the_masses|
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2296,9 +2455,11 @@ building_subversive_shrine = {
 			energy = 2
 		}
 	}
+
 	ai_weight = {
 		weight = 250
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -2319,6 +2480,7 @@ building_temple_of_prosperity = {
 			is_legit_or_legal_criminal = yes
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_bureaucrat_add = 200
@@ -2326,6 +2488,7 @@ building_temple_of_prosperity = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = {
 			branch_office_owner = {
@@ -2335,6 +2498,7 @@ building_temple_of_prosperity = {
 		pop_ethics_shift_speed_mult = 0.05
 		mult = value:branch_office_councilor_level|TYPE|councilor_gospel_of_the_masses|
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2353,9 +2517,11 @@ building_temple_of_prosperity = {
 			energy = 2
 		}
 	}
+
 	ai_weight = {
 		weight = 250
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -2368,24 +2534,30 @@ building_executive_retreat = {
 	planet_limit = 1
 	owner_type = corporate
 	category = amenity
+
 	prerequisites = {
 		"tech_executive_retreat"
 	}
+
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		pop_amount >= 2500
 	}
+
 	country_modifier = {
 		planet_amenities_mult = 0.1
 	}
+
 	inline_script = {
 		script = jobs/entertainers_add
 		AMOUNT = @building_static_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_entertainers_trade_produces_add = @med_trade_from_jobs
@@ -2450,6 +2622,7 @@ building_executive_retreat = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2466,6 +2639,7 @@ building_executive_retreat = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
+
 	ai_weight = {
 		factor = 100
 	}
@@ -2476,24 +2650,30 @@ building_xeno_tourism_agency = {
 	planet_limit = 1
 	owner_type = corporate
 	category = government
+
 	prerequisites = {
 		"tech_xeno_tourism_agency"
 	}
+
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		pop_amount >= 2500
 	}
+
 	country_modifier = {
 		planet_resettlement_unemployed_destination_mult = 0.25
 	}
+
 	inline_script = {
 		script = jobs/entertainers_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_entertainers_trade_produces_add = @med_trade_from_jobs
@@ -2534,6 +2714,7 @@ building_xeno_tourism_agency = {
 	}
 
 	custom_tooltip = trade_value_from_workers_double
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2550,6 +2731,7 @@ building_xeno_tourism_agency = {
 			rare_crystals = @b2_rare_upkeep
 		}
 	}
+
 	ai_weight = {
 		weight = 100
 	}
@@ -2570,13 +2752,16 @@ building_imperial_concession_port = {
 			}
 		}
 	}
+
 	country_modifier = {
 		diplo_weight_economy_mult = 0.05
 	}
+
 	inline_script = {
 		script = "jobs/politician_add"
 		AMOUNT = 100
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_politicians_trade_produces_add = @high_trade_from_jobs
@@ -2589,6 +2774,7 @@ building_imperial_concession_port = {
 		}
 		planet_crime_floor_add = @crime_floor_from_legal_crime
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2606,9 +2792,11 @@ building_imperial_concession_port = {
 			trade = 20
 		}
 	}
+
 	ai_weight = {
 		weight = 100
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -2630,16 +2818,19 @@ building_knightly_theme_park = {
 			NOT = { has_country_flag = quest_abandoned }
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		pop_amount >= 5000
 	}
+
 	inline_script = {
 		script = jobs/entertainers_add
 		AMOUNT = @building_static_jobs
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		planet_entertainers_trade_produces_add = @med_trade_from_jobs
@@ -2678,6 +2869,7 @@ building_knightly_theme_park = {
 	}
 
 	custom_tooltip = trade_value_from_workers
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2693,10 +2885,12 @@ building_knightly_theme_park = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	triggered_desc = {
 		trigger = { has_owner = yes }
 		text = knightly_theme_park_quest_effect_desc
 	}
+
 	ai_weight = {
 		weight = 5
 	}
@@ -2721,10 +2915,13 @@ building_corporate_clinics = {
 			}
 		}
 	}
+
 	on_built = {
 	}
+
 	on_destroy = {
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			branch_office_owner = { is_criminal_syndicate = yes is_legit_or_legal_criminal = no }
@@ -2740,6 +2937,7 @@ building_corporate_clinics = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_healthcare_add = 100
@@ -2796,6 +2994,7 @@ building_corporate_clinics = {
 	}
 
 	custom_tooltip = trade_value_from_specialists
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2815,13 +3014,16 @@ building_corporate_clinics = {
 			consumer_goods = 1
 		}
 	}
+
 	triggered_desc = {
 		trigger = { has_owner = yes }
 		text = building_corporate_clinics_effect
 	}
+
 	ai_weight = {
 		weight = 120
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -2839,9 +3041,11 @@ building_augmentation_bazaars_branch = {
 		has_branch_office = yes
 		branch_office_owner = { has_valid_civic = civic_augmentation_bazaars }
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -2852,6 +3056,7 @@ building_augmentation_bazaars_branch = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		planet_jobs_trade_produces_mult = 0.10
 		job_augmentor_add = 100
@@ -2893,6 +3098,7 @@ building_augmentation_bazaars_branch = {
 	}
 
 	custom_tooltip = trade_value_from_specialists
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -2901,6 +3107,7 @@ building_augmentation_bazaars_branch = {
 		}
 		auto_mod_monthly_add = 100
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2919,8 +3126,10 @@ building_augmentation_bazaars_branch = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	prerequisites = {
 	}
+
 	ai_resource_production = {
 		energy = 5
 		trigger = {
@@ -2946,6 +3155,7 @@ building_ai_emporium = {
 		has_branch_office = yes
 		branch_office_owner = { is_synth_corporate = yes has_country_flag = synth_physical }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		custom_tooltip = {
@@ -2965,6 +3175,7 @@ building_ai_emporium = {
 			NOT = { owner = { has_policy_flag = robots_outlawed } }
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_roboticist_branch_office_value_mult = 0.10
@@ -2972,6 +3183,7 @@ building_ai_emporium = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	triggered_planet_modifier = {
 		potential = {
 			branch_office_owner = { is_criminal_syndicate = yes }
@@ -2987,9 +3199,11 @@ building_ai_emporium = {
 		}
 		planet_crime_floor_add = @crime_floor_from_legal_crime
 	}
+
 	on_built = {
 		owner = { create_built_robot_species = yes }
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -3001,6 +3215,7 @@ building_ai_emporium = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -3023,6 +3238,7 @@ building_clear_thought_clinic = {
 		has_branch_office = yes
 		branch_office_owner = { is_synth_corporate = yes has_country_flag = synth_virtual }
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			branch_office_owner = { is_criminal_syndicate = yes }
@@ -3046,6 +3262,7 @@ building_clear_thought_clinic = {
 	}
 
 	custom_tooltip = branch_office_building_trade_bonus
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -3057,6 +3274,7 @@ building_clear_thought_clinic = {
 			mult = value:branch_office_value_for_buildings
 		}
 	}
+
 	on_built = {
 		owner = { save_event_target_as = owner }
 		branch_office_owner = {
@@ -3070,6 +3288,7 @@ building_clear_thought_clinic = {
 			}
 		}
 	}
+
 	on_destroy = {
 		save_event_target_as = planet
 		owner = { save_event_target_as = owner }
@@ -3102,9 +3321,11 @@ building_clear_thought_clinic = {
 			}
 		}
 	}
+
 	triggered_desc = {
 		text = clear_thought_clinic_tt
 	}
+
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -3114,6 +3335,7 @@ building_clear_thought_clinic = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -3133,10 +3355,12 @@ building_carceral_test_facility = {
 		has_branch_office = yes
 		branch_office_owner = { has_valid_civic = civic_twisted_experimenters_corporate }
 	}
+
 	planet_modifier = {
 		job_enforcer_add = 100
 		job_slave_orderly_add = 50
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -3152,9 +3376,11 @@ building_carceral_test_facility = {
 			energy = 3
 		}
 	}
+
 	ai_weight = {
 		weight = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -3171,15 +3397,18 @@ building_psionic_offices = {
 		has_branch_office = yes
 		branch_office_owner = { is_megacorp = yes is_corporeal_authority = yes }
 	}
+
 	inline_script = {
 		script = jobs/telepaths_add
 		AMOUNT = 200
 	}
 
 	custom_tooltip = building_psionic_offices_tt
+
 	country_modifier = {
 		psionic_aura_effectiveness_mult = 0.02
 	}
+
 	triggered_planet_modifier = {
 		planet_jobs_trade_produces_mult = 0.02
 		mult = value:num_jobs_with_tag|TAG|telepath|
@@ -3200,6 +3429,7 @@ building_psionic_offices = {
 		}
 		job_capital_trader_add = @traders_from_civic
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -3214,6 +3444,7 @@ building_psionic_offices = {
 			sr_zro = 0.5
 		}
 	}
+
 	on_built = {
 		solar_system = {
 			set_star_flag = building_psionic_offices_emitting@root.branch_office_owner
@@ -3223,14 +3454,17 @@ building_psionic_offices = {
 			}
 		}
 	}
+
 	on_destroy = {
 		solar_system = {
 			remove_star_flag = building_psionic_offices_emitting@root.branch_office_owner
 		}
 	}
+
 	ai_weight = {
 		weight = 10
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -3248,13 +3482,16 @@ building_living_metal_clinic = {
 		has_branch_office = yes
 		branch_office_owner = { is_galvanic_empire = yes is_legit_or_legal_criminal = yes }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		owner = { is_gestalt = no }
 	}
+
 	planet_modifier = {
 		planet_jobs_worker_produces_mult = 0.05
 	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {

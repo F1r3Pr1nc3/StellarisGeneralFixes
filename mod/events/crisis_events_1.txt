@@ -68,6 +68,7 @@ country_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.11.a
 		begin_event_chain = { event_chain = "coming_storm_chain" target = root }
@@ -79,9 +80,11 @@ country_event = {
 	id = crisis.12
 	hide_window = yes
 	fire_only_once = yes
+
 	mean_time_to_happen = {
 		years = 50
 	}
+
 	trigger = {
 		is_country_type = default
 		has_global_flag = prethoryn_subspace_echoes
@@ -183,6 +186,7 @@ country_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.13.a
 		create_point_of_interest = {
@@ -233,9 +237,11 @@ country_event = {
 	id = crisis.14
 	hide_window = yes
 	fire_only_once = yes
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	trigger = {
 		has_global_flag = prethoryn_approaching_rim
 	}
@@ -257,6 +263,7 @@ country_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.15.a
 		hidden_effect = {
@@ -288,12 +295,14 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = swarm1
 		room = "swarm_room"
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.16.a
 		trigger = {
@@ -313,9 +322,11 @@ country_event = {
 	id = crisis.17
 	hide_window = yes
 	fire_only_once = yes
+
 	mean_time_to_happen = {
 		months = 30
 	}
+
 	trigger = {
 		has_global_flag = prethoryn_transmission
 	}
@@ -551,6 +562,7 @@ country_event = {
 			country_event = { id = crisis.19 days = 400 random = 200 }
 		}
 	}
+
 	after = {
 		every_playable_country = {
 			country_event = { id = timeline.70 } # Timeline Prethoryn Scourge
@@ -562,6 +574,7 @@ country_event = {
 country_event = {
 	id = crisis.18
 	title = "crisis.18.name"
+
 	desc = {
 		trigger = {
 			owner = { country_uses_bio_ships = no }
@@ -595,6 +608,7 @@ country_event = {
 			country_event = { id = origin.6125 days = 5 random = 2 }
 		}
 	}
+
 	option = {
 		name = crisis.18.a
 		trigger = {
@@ -1086,6 +1100,7 @@ country_event = {
 			save_event_target_as = prethoryn_invasion_system
 		}
 	}
+
 	option = {
 		name = crisis.20.a
 	}
@@ -1095,6 +1110,7 @@ country_event = {
 country_event = {
 	id = crisis.30
 	title = "TRANSMISSION"
+
 	desc = {
 		text = crisis.30.desc_01
 		trigger = { can_talk_to_prethoryn = no }
@@ -1121,6 +1137,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = swarm1
 		room = "swarm_room"
@@ -1131,6 +1148,7 @@ country_event = {
 	trigger = {
 		from = { is_country_type = swarm }
 	}
+
 	option = {
 		name = crisis.30.a
 		trigger = { can_talk_to_prethoryn = no }
@@ -1209,9 +1227,11 @@ country_event = {
 		is_country_type = swarm
 		endgame_crisis_large_size_trigger = yes
 	}
+
 	mean_time_to_happen = {
 		years = 1
 	}
+
 	immediate = {
 		set_crisis_sound = swarm_crisis_ambient_stage_3
 		set_crisis_stage_3 = yes
@@ -1262,6 +1282,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:sentinel_system
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.51.a
 		hidden_effect = {
@@ -1276,12 +1297,14 @@ country_event = {
 	title = "sentinel_title"
 	desc = "crisis.52.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:crisis_sentinels
 		room = "ethic_spaceship_room"
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.52.a
 		trigger = { exists = event_target:sentinel_fallen_empire }
@@ -1320,6 +1343,7 @@ country_event = {
 country_event = {
 	id = crisis.55
 	title = "sentinel_title"
+
 	desc = {
 		text = crisis.55.desc_01
 	}
@@ -1334,6 +1358,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = from
 		room = "ethic_spaceship_room"
@@ -1344,6 +1369,7 @@ country_event = {
 	trigger = {
 		from = { is_country_type = sentinels }
 	}
+
 	option = {
 		name = crisis.55.a
 		response_text = crisis.55.a.response
@@ -1368,9 +1394,11 @@ fleet_event = {
 		is_same_value = event_target:sentinel_alpha
 		count_playable_country = { count > 0 }
 	}
+
 	mean_time_to_happen = {
 		months = 100
 	}
+
 	immediate = {
 		random_playable_country = {
 			owner_species = { save_event_target_as = random_species }
@@ -1481,10 +1509,12 @@ country_event = {
 	title = "sentinel_title"
 	desc = "crisis.71.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:crisis_sentinels
 		room = "ethic_spaceship_room"
 	}
+
 	trigger = {
 		has_global_flag = sentinels_founded
 		is_country_type = default
@@ -1496,12 +1526,15 @@ country_event = {
 			NOT = { root = { is_at_war_with = prev } }
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 100
 	}
+
 	immediate = {
 		set_country_flag = sentinel_donation
 	}
+
 	option = {
 		name = crisis.71.a
 		response_text = crisis.71.a.response
@@ -1604,12 +1637,14 @@ country_event = {
 	title = "sentinel_title"
 	desc = "crisis.76.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:crisis_sentinels
 		room = "ethic_spaceship_room"
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.76.c
 	}
@@ -1627,9 +1662,11 @@ country_event = {
 		exists = event_target:sentinel_alpha
 		any_country = { is_country_type = swarm galaxy_percentage > 0.50 }
 	}
+
 	mean_time_to_happen = {
 		years = 1
 	}
+
 	immediate = {
 		set_country_flag = sentinel_anatomy_files
 		every_country = {
@@ -1645,12 +1682,14 @@ country_event = {
 	title = "sentinel_title"
 	desc = "crisis.78.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:crisis_sentinels
 		room = "ethic_spaceship_room"
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.78.c
 		add_modifier = { modifier = "sentinel_data" days = -1 }
@@ -1687,6 +1726,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:sentinel_system
 	is_triggered_only = yes
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -1701,11 +1741,13 @@ country_event = {
 	title = "sentinel_title"
 	desc = "crisis.82.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.76.c
 	}
@@ -1726,9 +1768,11 @@ country_event = {
 			owner = { is_country_type = swarm }
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 820
 	}
+
 	immediate = {
 		set_country_flag = injured_swarm_queen
 		random_system = {
@@ -1820,6 +1864,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.101.a
 		event_target:injured_queen = {
@@ -1858,6 +1903,7 @@ ship_event = {
 		}
 		destroy_ambient_object = fromfrom
 	}
+
 	option = {
 		name = crisis.105.a
 		hidden_effect = {
@@ -1921,9 +1967,11 @@ fleet_event = {
 		num_ships < 30
 		is_ship_size = queen_swarm
 	}
+
 	mean_time_to_happen = {
 		months = 2
 	}
+
 	immediate = {
 		random_list = {
 			33 = {
@@ -1958,6 +2006,7 @@ country_event = {
 	immediate = {
 		set_country_flag = queen_snatched
 	}
+
 	option = {
 		name = crisis.107.a
 	}
@@ -2111,6 +2160,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	location = event_target:feral_prethoryn_system
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.121.a
 	}
@@ -2772,6 +2822,7 @@ country_event = {
 	picture = GFX_evt_crisis_defeated
 	show_sound = event_celebration
 	is_triggered_only = yes
+
 	option = { # Spiritualist Response
 		name = crisis.211.a
 		trigger = {
@@ -3037,9 +3088,11 @@ country_event = {
 		has_crisis_stage_3 = yes
 		galaxy_percentage < 0.10
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = swarm_crisis_ambient_stage_2
 		set_crisis_stage_2 = yes
@@ -3055,9 +3108,11 @@ country_event = {
 		has_crisis_stage_2 = yes
 		galaxy_percentage > 0.20
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = swarm_crisis_ambient_stage_3
 		set_crisis_stage_3 = yes
@@ -3073,9 +3128,11 @@ country_event = {
 		has_crisis_stage_4 = yes
 		galaxy_percentage < 0.30
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = swarm_crisis_ambient_stage_3
 		set_crisis_stage_3 = yes
@@ -3091,9 +3148,11 @@ country_event = {
 		has_crisis_stage_3 = yes
 		galaxy_percentage > 0.40
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = swarm_crisis_ambient_stage_final
 		set_crisis_stage_4 = yes
@@ -3103,6 +3162,7 @@ country_event = {
 country_event = {
 	id = crisis.234
 	title = "crisis.234.name"
+
 	desc = {
 		trigger = { is_robot_empire = no is_gestalt = no }
 		text = crisis.234.desc.organic_non_gestalt
@@ -3128,9 +3188,11 @@ country_event = {
 		any_owned_leader = { has_leader_flag = captured_queen }
 		NOT = { has_country_flag = crisis.234 }
 	}
+
 	mean_time_to_happen = {
 		years = 100
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -3211,6 +3273,7 @@ country_event = {
 	picture = GFX_evt_unidentified_monster
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 		hidden_effect = {
@@ -3315,6 +3378,7 @@ country_event = {
 	immediate = {
 		set_country_flag = queen_captured
 	}
+
 	option = {
 		name = EXCELLENT
 		add_relic = "r_prethoryn_queen"

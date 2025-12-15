@@ -119,6 +119,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ancrel.6000.a
 		hidden_effect = {
@@ -137,7 +138,10 @@ country_event = {
 			}
 			if = {
 				limit = { is_hive_empire = yes }
-				modify_species = { species = event_target:omnicodex_species add_trait = trait_hive_mind }
+				modify_species = {
+					species = event_target:omnicodex_species
+					add_trait = trait_hive_mind
+				}
 			}
 		}
 		custom_tooltip = ancrel.6000.a.tooltip
@@ -161,7 +165,10 @@ country_event = {
 			}
 			if = {
 				limit = { is_hive_empire = yes }
-				modify_species = { species = event_target:omnicodex_species add_trait = trait_hive_mind }
+				modify_species = {
+					species = event_target:omnicodex_species
+					add_trait = trait_hive_mind
+				}
 			}
 		}
 		custom_tooltip = ancrel.6000.b.tooltip
@@ -185,7 +192,10 @@ country_event = {
 			}
 			if = {
 				limit = { is_hive_empire = yes }
-				modify_species = { species = event_target:omnicodex_species add_trait = trait_hive_mind }
+				modify_species = {
+					species = event_target:omnicodex_species
+					add_trait = trait_hive_mind
+				}
 			}
 		}
 		custom_tooltip = ancrel.6000.c.tooltip
@@ -209,7 +219,10 @@ country_event = {
 			}
 			if = {
 				limit = { is_hive_empire = yes }
-				modify_species = { species = event_target:omnicodex_species add_trait = trait_hive_mind }
+				modify_species = {
+					species = event_target:omnicodex_species
+					add_trait = trait_hive_mind
+				}
 			}
 		}
 		custom_tooltip = ancrel.6000.d.tooltip
@@ -233,7 +246,10 @@ country_event = {
 			}
 			if = {
 				limit = { is_hive_empire = yes }
-				modify_species = { species = event_target:omnicodex_species add_trait = trait_hive_mind }
+				modify_species = {
+					species = event_target:omnicodex_species
+					add_trait = trait_hive_mind
+				}
 			}
 		}
 		custom_tooltip = ancrel.6000.e.tooltip
@@ -254,9 +270,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -276,9 +294,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		small_artifact_reward = yes
@@ -298,9 +318,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = REMARKABLE
 		small_artifact_reward = yes
@@ -320,9 +342,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		great_artifact_reward = yes
@@ -396,6 +420,7 @@ planet_event = {
 		set_global_flag = arc_hunting_grounds
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		name = CURIOUS
 		create_archaeological_site = site_hunting_ground
@@ -415,9 +440,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -437,9 +464,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -460,9 +489,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -482,9 +513,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -504,9 +537,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = { add_relic = r_ancient_sword }
@@ -625,6 +660,7 @@ country_event = {
 			save_event_target_as = tomb_planet
 		}
 	}
+
 	option = {
 		name = ancrel.6099.a
 		event_target:tomb_planet = { create_archaeological_site = site_zarqlan }
@@ -644,9 +680,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		small_artifact_reward = yes
@@ -667,9 +705,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		owner = { set_country_flag = zarqlan_language_translated }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		small_artifact_reward = yes
@@ -689,9 +729,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -711,9 +753,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = REMARKABLE
 		small_artifact_reward = yes
@@ -733,9 +777,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ASTOUNDING
 		small_artifact_reward = yes
@@ -755,9 +801,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = { add_relic = r_severed_head }
@@ -795,6 +843,7 @@ fleet_event = {
 country_event = {
 	id = ancrel.6130
 	title = TRANSMISSION
+
 	desc = {
 		trigger = {
 			owner = {
@@ -822,6 +871,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:spiritualist_fallen_empire
 		planet_background = event_target:spiritualist_fallen_empire
@@ -829,6 +879,7 @@ country_event = {
 		city_level = event_target:spiritualist_fallen_empire
 		room = event_target:spiritualist_fallen_empire.ruler
 	}
+
 	trigger = {
 		any_country = {
 			is_fallen_empire = yes
@@ -847,6 +898,7 @@ country_event = {
 			add_opinion_modifier = { who = root modifier = opinion_zarqlans_chosen }
 		}
 	}
+
 	option = {
 		name = ancrel.6130.a
 		add_modifier = { modifier = chosen_of_zarqlan }
@@ -895,10 +947,12 @@ country_event = {
 	desc = "ancrel.6132.d.desc"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:spiritualist_fallen_empire
 		room = "ethic_spaceship_room"
 	}
+
 	option = {
 		name = ancrel.6132.a
 		hidden_effect = {
@@ -942,6 +996,7 @@ country_event = {
 	picture = GFX_evt_fleet_from_surface
 	show_sound = event_bad_omen
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.6132.a
 		hidden_effect = {
@@ -982,6 +1037,7 @@ ship_event = {
 	id = ancrel.6150
 	title = "ancrel.6150.name"
 	desc = "ancrel.6150.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1009,6 +1065,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1024,6 +1081,7 @@ ship_event = {
 	id = ancrel.6151
 	title = "ancrel.6150.name"
 	desc = "ancrel.6151.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1043,6 +1101,7 @@ ship_event = {
 	immediate = {
 		set_global_flag = minigalaxy_site_spawned
 	}
+
 	option = {
 		name = CURIOUS
 		from = { create_archaeological_site = site_minigalaxy_1 }
@@ -1063,9 +1122,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1085,9 +1146,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1115,9 +1178,11 @@ fleet_event = {
 			set_site_progress_locked = yes
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1166,9 +1231,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1188,9 +1255,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1210,9 +1279,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1232,9 +1303,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		large_artifact_reward = yes
@@ -1256,9 +1329,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1278,9 +1353,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1300,9 +1377,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1323,9 +1402,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		medium_artifact_reward = yes
@@ -1367,9 +1448,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1389,9 +1472,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1411,9 +1496,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		medium_artifact_reward = yes
@@ -1452,9 +1539,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1474,9 +1563,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1496,9 +1587,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1518,9 +1611,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1540,9 +1635,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		small_artifact_reward = yes
@@ -1562,9 +1659,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		large_artifact_reward = yes
@@ -1653,6 +1752,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ancrel.6500.a
 		custom_tooltip = stole_relic
@@ -1673,6 +1773,7 @@ country_event = {
 	show_sound = event_ground_battle
 	location = event_target:planet
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.6505.a
 		custom_tooltip = relic_lost
@@ -1693,9 +1794,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1716,6 +1819,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9020 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9005 }
 	}
@@ -1734,9 +1838,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -1776,9 +1882,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = { give_next_habitability_tech_option_effect = yes }
@@ -1799,9 +1907,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = OOPS
 		owner = { add_resource = { alloys = 500 } }
@@ -1814,6 +1924,7 @@ fleet_event = {
 	id = ancrel.9025
 	title = "ancrel.9025.name"
 	desc = "ancrel.9025.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1828,9 +1939,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1850,9 +1963,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1872,9 +1987,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1894,9 +2011,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = WORRYING
 		owner = {
@@ -1916,6 +2035,7 @@ fleet_event = {
 	id = ancrel.9045
 	title = "ancrel.9045.name"
 	desc = "ancrel.9045.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1930,9 +2050,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1952,9 +2074,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1975,6 +2099,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9065 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9051 }
 	}
@@ -1994,9 +2119,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = MARVELOUS
 		owner = {
@@ -2057,9 +2184,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -2100,9 +2229,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = PECULIAR
 		owner = {
@@ -2140,6 +2271,7 @@ fleet_event = {
 	id = ancrel.9070
 	title = "ancrel.9070.name"
 	desc = "ancrel.9070.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -2154,9 +2286,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2176,9 +2310,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2199,6 +2335,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9090 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9076 }
 	}
@@ -2217,9 +2354,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -2259,9 +2398,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		owner = {
@@ -2297,9 +2438,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -2370,9 +2513,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2392,9 +2537,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2415,6 +2562,7 @@ fleet_event = {
 			40 = { fleet_event = { id = ancrel.9115 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9101 }
 	}
@@ -2434,9 +2582,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -2486,9 +2636,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		owner = {
@@ -2533,9 +2685,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -2586,9 +2740,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2608,9 +2764,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2631,6 +2789,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9140 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9126 }
 	}
@@ -2649,9 +2808,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTENSIFIES
 		leader = {
@@ -2681,9 +2842,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -2718,9 +2881,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = NOTIME
 		owner = {
@@ -2762,9 +2927,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2785,6 +2952,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9160 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9146 }
 	}
@@ -2803,9 +2971,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = REMARKABLE
 		owner = {
@@ -2847,9 +3017,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = SCRAPIT
 		owner = {
@@ -2885,9 +3057,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = AMAZING
 		owner = {
@@ -2928,9 +3102,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2950,9 +3126,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2972,9 +3150,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2995,6 +3175,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9185 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9176 }
 	}
@@ -3014,9 +3195,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -3048,9 +3231,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -3076,9 +3261,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -3111,9 +3298,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3133,9 +3322,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3156,6 +3347,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9210 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9196 }
 	}
@@ -3175,9 +3367,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -3205,9 +3399,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = OOPS
 		owner = {
@@ -3235,9 +3431,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = GOODBYE
 		owner = {
@@ -3260,9 +3458,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3282,9 +3482,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3305,6 +3507,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9235 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9221 }
 	}
@@ -3323,9 +3526,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -3365,9 +3570,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = OOPS
 		owner = {
@@ -3418,6 +3625,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		owner = {
@@ -3488,6 +3696,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = GOODBYE
 	}
@@ -3513,9 +3722,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3535,9 +3746,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3557,9 +3770,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3580,6 +3795,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9265 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9251 }
 	}
@@ -3598,9 +3814,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -3660,9 +3878,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ASTOUNDING
 		owner = {
@@ -3713,9 +3933,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -3762,9 +3984,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3784,9 +4008,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3806,9 +4032,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3828,9 +4056,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3851,9 +4081,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3874,6 +4106,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9305 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9291 }
 	}
@@ -3892,9 +4125,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = SPLENDID
 		small_artifact_reward = yes
@@ -3915,9 +4150,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = SPLENDID
 		small_artifact_reward = yes
@@ -3938,9 +4175,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = SPLENDID
 		small_artifact_reward = yes
@@ -3962,9 +4201,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -3984,9 +4225,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4007,6 +4250,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9330 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9316 }
 	}
@@ -4025,6 +4269,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		owner = {
@@ -4061,6 +4306,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -4085,6 +4331,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		owner = {
@@ -4121,6 +4368,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 	}
@@ -4148,6 +4396,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		owner = {
@@ -4172,6 +4421,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -4200,9 +4450,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4222,9 +4474,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4245,6 +4499,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9355 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9341 }
 	}
@@ -4263,9 +4518,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -4317,9 +4574,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = PECULIAR
 		owner = {
@@ -4359,9 +4618,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -4394,6 +4655,7 @@ fleet_event = {
 	id = ancrel.9360
 	title = "ancrel.9360.name"
 	desc = "ancrel.9360.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -4408,9 +4670,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4430,9 +4694,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4453,6 +4719,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9380 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9366 }
 	}
@@ -4472,9 +4739,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -4507,6 +4776,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		owner = {
@@ -4531,6 +4801,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = PECULIAR
 	}
@@ -4556,9 +4827,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -4600,9 +4873,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4623,6 +4898,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9400 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9386 }
 	}
@@ -4641,9 +4917,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -4682,9 +4960,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -4710,9 +4990,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = PECULIAR
 		owner = {
@@ -4753,9 +5035,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4775,9 +5059,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -4798,6 +5084,7 @@ fleet_event = {
 			33 = { fleet_event = { id = ancrel.9425 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.9411 }
 	}
@@ -4816,9 +5103,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ASTOUNDING
 		owner = {
@@ -4868,9 +5157,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -4920,9 +5211,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -4984,6 +5277,7 @@ country_event = {
 	desc = "ancrel.10001.desc"
 	picture = GFX_evt_ancient_records
 	is_triggered_only = yes
+
 	option = {
 		name = "FASCINATING"
 		locked_random_list = {
@@ -5021,6 +5315,7 @@ country_event = {
 	desc = "ancrel.10002.desc"
 	picture = GFX_evt_ancient_records
 	is_triggered_only = yes
+
 	option = {
 		name = "FASCINATING"
 		add_modifier = { modifier = "arcane_insight" years = 5 }
@@ -5033,6 +5328,7 @@ country_event = {
 	desc = "ancrel.10003.desc"
 	picture = GFX_evt_ancient_records
 	is_triggered_only = yes
+
 	option = {
 		name = "FASCINATING"
 		locked_random_list = {
@@ -5217,6 +5513,7 @@ country_event = {
 	desc = "ancrel.10010.desc"
 	picture = GFX_evt_engineering_research
 	is_triggered_only = yes
+
 	option = {
 		name = "artifact_find_military_application_army"
 		custom_tooltip = "artifact_find_military_application_army_desc"
@@ -5288,6 +5585,7 @@ country_event = {
 	desc = "ancrel.10020.desc"
 	picture = GFX_evt_society_research
 	is_triggered_only = yes
+
 	option = {
 		name = "artifact_find_peaceful_application_happy_bios"
 		custom_tooltip = "artifact_find_peaceful_application_happy_bios_desc"
@@ -5383,6 +5681,7 @@ country_event = {
 country_event = {
 	id = ancrel.10030
 	title = "ancrel.10030.name"
+
 	desc = {
 		trigger = {
 			OR = {
@@ -5401,6 +5700,7 @@ country_event = {
 	picture = GFX_evt_mega_art_installation
 	is_triggered_only = yes
 	location = from
+
 	option = {
 		name = EXCELLENT
 	}
@@ -5423,6 +5723,7 @@ country_event = {
 	picture = GFX_evt_circuitry_modification
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		random_owned_leader = {
@@ -5502,6 +5803,7 @@ country_event = {
 	picture = GFX_evt_analyzing_artifacts
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = progress.2.a.mech # Acknowledged.
 	}
@@ -5524,6 +5826,7 @@ country_event = {
 	picture = GFX_evt_animal_wildlife
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		trigger = {
 			owner = {
@@ -5615,6 +5918,7 @@ country_event = {
 	picture = GFX_evt_city_planet
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		exclusive_trigger = { has_technology = tech_housing_2 }
 		name = INTERESTING
@@ -5706,6 +6010,7 @@ country_event = {
 country_event = {
 	id = ancrel.10250
 	title = ancrel.10250.name
+
 	desc = {
 		trigger = {
 			is_individual_machine = no
@@ -5730,6 +6035,7 @@ country_event = {
 	picture = GFX_evt_ringworld
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		exclusive_trigger = { has_technology = tech_mega_engineering }
 		name = INTERESTING
@@ -5786,6 +6092,7 @@ country_event = {
 country_event = {
 	id = ancrel.10100
 	title = ancrel.10100.name
+
 	desc = {
 		trigger = { is_machine_empire = yes }
 		text = ancrel.10100.desc_machine
@@ -5813,6 +6120,7 @@ country_event = {
 			complete_crisis_objective = crisobj_research_thesis
 		}
 	}
+
 	option = {
 		exclusive_trigger = { is_machine_empire = yes }
 		name = progress.2.a.mech # Acknowledged.
@@ -6000,6 +6308,7 @@ country_event = {
 			complete_crisis_objective = crisobj_research_thesis
 		}
 	}
+
 	option = {
 		name = ancrel.10110.option.fm_suppress # Suppress the findings.
 		owner = {
@@ -6093,6 +6402,7 @@ country_event = {
 	trigger = {
 		exists = event_target:leading_vultaum_research_scientist
 	}
+
 	option = {
 		name = UNFORTUNATE
 		event_target:leading_vultaum_research_scientist = {
@@ -6112,6 +6422,7 @@ country_event = {
 	trigger = {
 		exists = event_target:leading_vultaum_research_scientist
 	}
+
 	option = {
 		name = INTERESTING
 		event_target:leading_vultaum_research_scientist = {
@@ -6135,6 +6446,7 @@ country_event = {
 	trigger = {
 		exists = event_target:leading_vultaum_research_scientist
 	}
+
 	option = {
 		name = INTERESTING
 		event_target:leading_vultaum_research_scientist = {
@@ -6150,6 +6462,7 @@ country_event = {
 country_event = {
 	id = ancrel.10300
 	title = ancrel.10300.name
+
 	desc = {
 		trigger = { has_technology = tech_epigenetic_triggers }
 		text = ancrel.10300.desc.terraform
@@ -6164,6 +6477,7 @@ country_event = {
 	picture = GFX_evt_baol_grunur
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		exclusive_trigger = {
 			NOT = { has_technology = tech_epigenetic_triggers }
@@ -6254,6 +6568,7 @@ country_event = {
 	picture = GFX_evt_surreal_visions
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		random_owned_leader = {
@@ -6312,9 +6627,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.11000.a
 		small_artifact_reward = yes
@@ -6334,9 +6651,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.11005.a
 		small_artifact_reward = yes
@@ -6356,9 +6675,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.11010.a
 		small_artifact_reward = yes
@@ -6378,9 +6699,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.11015.a
 		hidden_effect = {
@@ -6416,6 +6739,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ancrel.11020.a
 		add_monthly_resource_mult = {
@@ -6525,11 +6849,13 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = ancrel.11025.desc
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.11025.a
 		if = {
@@ -6569,11 +6895,13 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = ancrel.11027.desc
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.11027.a
 	}
@@ -6584,11 +6912,13 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = ancrel.11030.desc
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.11030.a
 	}
@@ -6602,6 +6932,7 @@ country_event = {
 	picture = GFX_evt_black_hole
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	option = {
 		name = ancrel.11035.a
 	}
@@ -6627,6 +6958,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		from = {
 			if = {
@@ -6665,9 +6997,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -6678,6 +7012,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.12005
 	title = ancrel.12005.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = ancrel.12005.desc
@@ -6696,9 +7031,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.12005.A
 		leader = {
@@ -6752,9 +7089,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.12010.A
 		small_artifact_reward = yes
@@ -6776,9 +7115,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.12015.A
 		owner = {
@@ -6802,9 +7143,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -6825,9 +7168,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = first_contact.5.A
 		small_artifact_reward = yes
@@ -6838,6 +7183,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.12030
 	title = ancrel.12030.name
+
 	desc = {
 		trigger = {
 			owner = { is_lithoid = no is_robotic_species = no }
@@ -6864,9 +7210,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.2047.a
 		small_artifact_reward = yes
@@ -6887,9 +7235,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		small_artifact_reward = yes
@@ -6900,6 +7250,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.12040
 	title = ancrel.12040.name
+
 	desc = {
 		trigger = {
 			has_leviathans = yes
@@ -6947,6 +7298,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		if = {
@@ -6968,6 +7320,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ancrel.12040.A
 		allow = { owner = { is_pacifist = no } }
@@ -7083,6 +7436,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -7097,6 +7451,7 @@ country_event = {
 	id = ancrel.12065
 	title = ancrel.12065.name
 	desc = ancrel.12065.desc
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -7119,6 +7474,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = SPLENDID
 	}
@@ -7138,9 +7494,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -7160,9 +7518,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = PECULIAR
 		small_artifact_reward = yes
@@ -7182,9 +7542,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DISTURBING
 		small_artifact_reward = yes
@@ -7204,9 +7566,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = KEEP_SEARCHING
 		small_artifact_reward = yes
@@ -7269,10 +7633,12 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		large_artifact_reward = yes
 	}
+
 	option = {
 		name = ancrel.12090.A
 		trigger = {
@@ -7481,15 +7847,18 @@ country_event = {
 	desc = ancrel.12095.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = ancrel.12095.A
 	}
 	option = {
 		name = ancrel.12095.B
 	}
+
 	after = {
 		custom_tooltip = ancrel.12095.tooltip
 		hidden_effect = {
@@ -7509,9 +7878,11 @@ country_event = {
 	desc = ancrel.12095.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = ancrel.12100.A
 		custom_tooltip = ancrel.12095.tooltip
@@ -7537,6 +7908,7 @@ country_event = {
 	immediate = {
 		set_global_flag = polaris_seen
 	}
+
 	option = {
 		name = CURIOUS
 	}
@@ -7556,9 +7928,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = acnrel.13005.a
 		small_artifact_reward = yes
@@ -7579,9 +7953,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		small_artifact_reward = yes
@@ -7602,9 +7978,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = EXCELLENT
 		small_artifact_reward = yes
@@ -7624,6 +8002,7 @@ fleet_event = {
 			50 = { fleet_event = { id = ancrel.13025 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.13006 }
 	}
@@ -7643,6 +8022,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = ancrel.13020.a
 		medium_artifact_reward = yes
@@ -7661,6 +8041,7 @@ fleet_event = {
 			give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = medium TYPE = plantoid }
 		}
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
@@ -7670,6 +8051,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.13025
 	title = ancrel.13020.name
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -7693,6 +8075,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = ancrel.13020.a
 	}
@@ -7702,6 +8085,7 @@ fleet_event = {
 		}
 		name = ancrel.13020.b.evopred
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		medium_artifact_reward = yes
@@ -7775,9 +8159,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = CURIOUS
 		if = {
@@ -7810,9 +8196,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		if = {
@@ -7845,9 +8233,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTERESTING
 		if = {
@@ -7880,9 +8270,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = REMARKABLE
 		if = {
@@ -7915,9 +8307,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		hidden_effect = {
@@ -7955,6 +8349,7 @@ country_event = {
 	picture = GFX_evt_alien_nature
 	show_sound = event_dig_site
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.13135.a
 		trigger = {
@@ -8010,6 +8405,7 @@ country_event = {
 	picture = GFX_evt_alien_nature
 	show_sound = event_dig_site
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.13130.a
 		trigger = {
@@ -8071,9 +8467,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		small_artifact_reward = yes
@@ -8092,9 +8490,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		small_artifact_reward = yes
@@ -8112,9 +8512,11 @@ fleet_event = {
 
 	immediate = {
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.14003.a
 		small_artifact_reward = yes
@@ -8145,6 +8547,7 @@ fleet_event = {
 	show_sound = event_metal_fatigue
 	archaeology = yes
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.14004.a
 		small_artifact_reward = no
@@ -8160,6 +8563,7 @@ fleet_event = {
 	show_sound = event_metal_fatigue
 	archaeology = yes
 	is_triggered_only = yes
+
 	option = {
 		name = ancrel.14005.a
 		small_artifact_reward = no
@@ -8179,9 +8583,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = ancrel.14006.a
 		custom_tooltip = ancrel.14006.a.tooltip
@@ -8205,6 +8611,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.14100
 	title = "ancrel.14100.name"
+
 	desc = {
 		trigger = { owner = { is_reanimator = no } }
 		text = "ancrel.14100.desc"
@@ -8223,9 +8630,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		owner = {
@@ -8253,9 +8662,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -8283,9 +8694,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		owner = {
@@ -8303,6 +8716,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.14400
 	title = "ancrel.14400.name"
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_country_flag = encountered_elderly_tiyanki } }
@@ -8325,9 +8739,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -8366,6 +8782,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { expire_site_event = ancrel.14500 }
 	}
@@ -8375,6 +8792,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.14510
 	title = "ancrel.14510.name"
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_country_flag = encountered_elderly_tiyanki } }
@@ -8396,9 +8814,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = { # Dissect
 		name = ancrel.14510.a
 		trigger = {
@@ -8470,9 +8890,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -8499,9 +8921,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = site_setback
 		fromfrom = { add_stage_clues = -1 }
@@ -8564,6 +8988,7 @@ planet_event = {
 		set_global_flag = arc_transformation
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		name = CURIOUS
 		create_archaeological_site = site_transformation_dig
@@ -8583,9 +9008,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15000.a
 		owner = {
@@ -8612,9 +9039,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15001.a
 		owner = {
@@ -8641,9 +9070,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15002.a
 		owner = {
@@ -8672,9 +9103,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15003.a
 		owner = {
@@ -8722,9 +9155,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15005.a
 		owner = {
@@ -8750,9 +9185,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15004.a
 		owner = {
@@ -8774,9 +9211,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = INTRIGUING
 		small_artifact_reward = yes
@@ -8795,9 +9234,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15022.a
 		small_artifact_reward = yes
@@ -8816,9 +9257,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15023.a
 		small_artifact_reward = no
@@ -8837,9 +9280,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = ancrel.15024.a
 		small_artifact_reward = no
@@ -8859,9 +9304,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = ancrel.15025.a
 		small_artifact_reward = no

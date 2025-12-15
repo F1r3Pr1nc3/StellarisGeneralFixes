@@ -11,6 +11,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		fromfromfrom = {
 			solar_system = {
@@ -39,6 +40,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		fromfromfrom = {
 			solar_system = {
@@ -69,6 +71,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		fromfromfrom = {
 			solar_system = {
@@ -99,6 +102,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		fromfromfrom = {
 			solar_system = {
@@ -129,6 +133,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		fromfromfrom = {
 			solar_system = {
@@ -204,6 +209,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		from = {
 			star = {
@@ -219,6 +225,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		from = {
 			star = {
@@ -235,6 +242,7 @@ country_event = {
 	hide_window = yes
 	location = from
 	is_triggered_only = yes
+
 	after = {
 		from = {
 			star = {
@@ -301,6 +309,7 @@ country_event = {
 			export_resource_stockpile_to_variable = { resource = consumer_goods variable = paperclips_current_amount }
 		}
 	}
+
 	after = {
 		start_situation = { type = situation_paperclips target = root }
 	}
@@ -322,12 +331,7 @@ country_event = {
 			country_event = { id = cyber.5005 }
 			remove_modifier = paperclip_failure
 		}
-		if = {
-			limit = {
-				owner = {
-					resource_stockpile_compare = { resource = consumer_goods value < paperclips_once_again }
-				}
-			}
+		else = {
 			country_event = { id = cyber.5006 }
 		}
 	}
@@ -346,6 +350,7 @@ country_event = {
 	immediate = {
 		export_resource_stockpile_to_variable = { resource = consumer_goods variable = paperclips_current_amount }
 	}
+
 	option = {
 		name = cyber.5005.a
 		custom_tooltip = cyber.5005.a.tooltip
@@ -460,6 +465,7 @@ country_event = {
 			score = value:paperclips_reward|DIVISOR|30|
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			set_variable = { which = paperclips_current_amount value = 0 }
@@ -483,6 +489,7 @@ country_event = {
 		set_country_flag = failed_paperclip_quota
 		export_resource_stockpile_to_variable = { resource = consumer_goods variable = paperclips_current_amount }
 	}
+
 	option = {
 		name = cyber.5006.a
 		add_modifier = { modifier = paperclip_failure days = -1 }
@@ -500,6 +507,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = cyber.5000 days = 30 }
@@ -841,15 +849,21 @@ country_event = {
 	}
 
 	immediate = {
-		modify_species = { species = owner_species add_trait = trait_robot_digital_1 }
+		modify_species = {
+			species = owner_species
+			add_trait = trait_robot_digital_1
+		}
 		change_dominant_species = { species = last_created_species change_all = yes }
 	}
+
 	after = {
 		hidden_effect = {
 			random_owned_planet = {
 				limit = { is_planet_class = pc_cosmogenesis_world }
 				every_owned_pop_group = {
-					modify_species = { remove_trait = trait_robot_digital_1 }
+					modify_species = {
+						remove_trait = trait_robot_digital_1
+					}
 				}
 			}
 		}
@@ -1366,6 +1380,7 @@ planet_event = {
 			kill_all_pop = yes
 		}
 	}
+
 	option = {
 		name = cybernetics.5048.a
 	}
@@ -1448,7 +1463,10 @@ planet_event = {
 					is_same_species = owner_species
 					has_virtual_species_trait = no
 				}
-				modify_species = { species = this add_trait = trait_robot_digital_2 }
+				modify_species = {
+					species = this
+					add_trait = trait_robot_digital_2
+				}
 			}
 		}
 		else = {
@@ -1457,7 +1475,10 @@ planet_event = {
 					is_same_species = owner_species
 					has_virtual_species_trait = no
 				}
-				modify_species = { species = this add_trait = trait_robot_digital_1 }
+				modify_species = {
+					species = this
+					add_trait = trait_robot_digital_1
+				}
 			}
 		}
 	}

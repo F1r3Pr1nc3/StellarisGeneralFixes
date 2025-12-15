@@ -646,6 +646,7 @@ event = {
 country_event = {
 	id = astral_planes.15
 	title = astral_planes.15.name
+
 	desc = {
 		trigger = {
 			owner = {
@@ -674,6 +675,7 @@ country_event = {
 	picture = GFX_evt_crystal_sphere
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.15.a
 		hidden_effect = {
@@ -724,6 +726,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_country_flag = has_acquired_crystal_sphere
 		remove_country_flag = crystal_sphere_event_delayed
@@ -784,6 +787,7 @@ country_event = {
 	picture = GFX_evt_crystal_sphere
 	show_sound = event_alien_nature
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.30.a
 		set_country_flag = crystal_sphere_event_delayed
@@ -811,6 +815,7 @@ country_event = {
 fleet_event = {
 	id = astral_planes.45
 	title = astral_planes.45.name
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = opened_wormhole_to_formless_system }
@@ -859,6 +864,7 @@ fleet_event = {
 			add_seen_bypass_type = strange_wormhole
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -879,6 +885,7 @@ country_event = {
 			NOT = { has_country_flag = opened_wormhole_to_formless_system }
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -891,6 +898,7 @@ country_event = {
 country_event = {
 	id = astral_planes.100
 	title = astral_planes.100.name
+
 	desc = {
 		trigger = {
 			from = {
@@ -927,6 +935,7 @@ country_event = {
 			has_tech_option = tech_rift_sphere
 		}
 	}
+
 	option = {
 		name = astral_planes.100.a
 		start_situation = { type = situation_a_rift_in_space target = from }
@@ -953,6 +962,7 @@ country_event = {
 			has_tech_option = tech_rift_sphere
 		}
 	}
+
 	option = {
 		name = astral_planes.101.a
 		start_situation = { type = situation_a_rift_in_space target = from }
@@ -975,6 +985,7 @@ country_event = {
 			has_country_flag = cosmogenesis_empire_has_won
 		}
 	}
+
 	option = {
 		name = FASCINATING
 	}
@@ -1168,6 +1179,7 @@ country_event = {
 		from = { set_situation_locked = yes }
 		set_country_flag = situation_a_rift_in_space_locked
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -1251,6 +1263,7 @@ country_event = {
 			add_trait = { trait = leader_trait_rift_warped }
 		}
 	}
+
 	option = {
 		name = astral_planes.210.a
 		tooltip = {
@@ -1350,6 +1363,7 @@ bypass_event = {
 	trigger = {
 		has_astral_planes_dlc = yes
 	}
+
 	option = {
 		name = astral_planes.1030.a
 		custom_tooltip = astral_planes.1030.a.tooltip
@@ -1474,6 +1488,7 @@ country_event = {
 		has_astral_planes_dlc = yes
 		last_increased_tech = "tech_rift_sphere"
 	}
+
 	option = {
 		name = astral_planes.2005.a
 	}
@@ -1498,6 +1513,7 @@ fleet_event = {
 		from = { has_star_flag = formless_system }
 		fromfrom = { has_star_flag = crystal_sphere_system }
 	}
+
 	option = {
 		name = ONSCREEN
 		owner = {
@@ -1513,6 +1529,7 @@ country_event = {
 	desc = "astral_planes.3005.desc"
 	location = from
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = exd2
 		room = "extradimensional_orange_room"
@@ -1520,6 +1537,7 @@ country_event = {
 
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	option = {
 		name = astral_planes.3005.a
 	}
@@ -1560,6 +1578,7 @@ country_event = {
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	option = {
 		name = ONSCREEN
 		country_event = { id = astral_planes.3020 }
@@ -1572,6 +1591,7 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "astral_planes.3020.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
@@ -1579,6 +1599,7 @@ country_event = {
 
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	option = {
 		name = astral_planes.3020.a
 		establish_communications_no_message = event_target:formless_country
@@ -1696,6 +1717,7 @@ fleet_event = {
 country_event = {
 	id = astral_planes.3050
 	title = NAME_Formless
+
 	desc = {
 		trigger = { NOT = { is_hostile = from } }
 		text = astral_planes.3050.desc
@@ -1709,10 +1731,12 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	trigger = {
 		has_astral_planes_dlc = yes
 		from = { is_country_type = formless }
@@ -1729,6 +1753,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = astral_planes.3050.a
 		custom_tooltip = astral_planes.3050.a.tt
@@ -1806,10 +1831,12 @@ country_event = {
 	desc = astral_planes.3070.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = exd2
 		room = "extradimensional_orange_room"
 	}
+
 	option = {
 		name = astral_planes.3070.a
 		custom_tooltip = astral_planes.3070.a.tt
@@ -1936,10 +1963,12 @@ country_event = {
 			add_trait = { trait = leader_trait_energy_weapon_specialist consume_selection = yes }
 		}
 	}
+
 	picture_event_data = {
 		portrait = event_target:ethic_leader
 		room = "extradimensional_formless_room"
 	}
+
 	option = {
 		name = astral_planes.3100.a
 		response_text = astral_planes.3100.a.desc
@@ -2045,10 +2074,12 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	trigger = {
 		has_country_flag = picked_formless_reward_path
 	}
@@ -2097,6 +2128,7 @@ country_event = {
 		}
 		event_target:prev_formless_country = { destroy_country = yes }
 	}
+
 	option = {
 		name = EXCELLENT
 		default_hide_option = yes
@@ -2153,6 +2185,7 @@ country_event = {
 country_event = {
 	id = astral_planes.3102
 	title = NAME_Formless
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2167,13 +2200,16 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	trigger = {
 		has_country_flag = picked_formless_reward_path
 	}
+
 	option = {
 		name = astral_planes.3102.a
 		default_hide_option = yes
@@ -2195,15 +2231,18 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	trigger = {
 		has_astral_planes_dlc = yes
 		from = { is_country_type = formless }
 		has_country_flag = allied_with_formless
 	}
+
 	option = {
 		name = astral_planes.3110.d
 		trigger = {
@@ -2356,6 +2395,7 @@ country_event = {
 country_event = {
 	id = astral_planes.3114
 	title = NAME_Formless
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2371,10 +2411,12 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	option = {
 		name = astral_planes.3114.a
 		trigger = {
@@ -2417,6 +2459,7 @@ country_event = {
 country_event = {
 	id = astral_planes.3115
 	title = NAME_Formless
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2432,10 +2475,12 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	option = {
 		name = astral_planes.3115.a
 		allow = {
@@ -2483,10 +2528,12 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	option = {
 		name = astral_planes.3114.b
 		hidden_effect = {
@@ -2583,10 +2630,12 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	location = fromfromfrom
+
 	picture_event_data = {
 		portrait = exd1
 		room = "extradimensional_blue_room"
 	}
+
 	option = {
 		name = DOTDOTDOT
 	}
@@ -2601,10 +2650,12 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	location = fromfromfrom
+
 	picture_event_data = {
 		portrait = exd2
 		room = "extradimensional_orange_room"
 	}
+
 	option = {
 		name = DOTDOTDOT
 	}
@@ -2619,10 +2670,12 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 	location = fromfromfrom
+
 	picture_event_data = {
 		portrait = exd3
 		room = "extradimensional_green_room"
 	}
+
 	option = {
 		name = DOTDOTDOT
 	}
@@ -2668,6 +2721,7 @@ country_event = {
 			country_event = { id = astral_planes.3151 days = 360 }
 		}
 	}
+
 	after = {
 		country_event = { id = timeline.65 } # Timeline The Formless War
 	}
@@ -2697,12 +2751,14 @@ leader_event = {
 	picture = GFX_evt_formless_system
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = this
 		room = root.owner
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.3155.a
 		kill_leader = { fire = yes show_notification = no }
@@ -2756,6 +2812,7 @@ country_event = {
 	desc = astral_planes.3165.desc
 	picture = GFX_evt_formless_system
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		add_relic = r_eternal_throne
@@ -2771,15 +2828,18 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "formless_diplomacy_window"
 	location = event_target:formless_capital
+
 	picture_event_data = {
 		portrait = exd4
 		room = "extradimensional_formless_room"
 	}
+
 	trigger = {
 		has_astral_planes_dlc = yes
 		NOT = { has_country_flag = opened_wormhole_to_formless_system }
 		from = { is_country_type = formless }
 	}
+
 	option = {
 		name = GOODBYE
 		default_hide_option = yes
@@ -3043,6 +3103,7 @@ ship_event = {
 	show_sound = rift_open
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = INTRIGUING
 		enable_special_project = { name = ASTRAL_SCAR_PROJECT location = from }
@@ -3057,6 +3118,7 @@ country_event = {
 	show_sound = rift_open
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.6001.a
 		fromfromfrom = { add_deposit = d_physics_10 }
@@ -3107,6 +3169,7 @@ ship_event = {
 	show_sound = ap_rift_event_0_astral_wonder
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.6006.a
 		ship_event = { id = astral_planes.6007 scopes = { from = from } }
@@ -3127,6 +3190,7 @@ ship_event = {
 	show_sound = ap_rift_event_0_astral_wonder
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -3156,6 +3220,7 @@ ship_event = {
 	show_sound = rift_open
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		from = {
@@ -3174,6 +3239,7 @@ country_event = {
 	show_sound = rift_open
 	location = fromfromfromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = { astral_thread_small_reward = yes }
@@ -3206,6 +3272,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = astral_planes.6010.a
 		allow = {
@@ -3252,6 +3319,7 @@ ship_event = {
 	show_sound = rift_open
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.6011.a
 		owner = { astral_thread_small_reward = yes }
@@ -3279,6 +3347,7 @@ ship_event = {
 	show_sound = event_administrative_work
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.6012.a
 		owner = { add_resource = { energy = 500 } }
@@ -3295,6 +3364,7 @@ ship_event = {
 	show_sound = ap_rift_event_0_astral_wonder
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.6013.a
 		owner = {
@@ -3344,6 +3414,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = astral_planes.6020.a
 		owner = { astral_thread_small_reward = yes }
@@ -3370,6 +3441,7 @@ ship_event = {
 	show_sound = ap_rift_event_0_astral_wonder
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		from = {
@@ -3395,6 +3467,7 @@ ship_event = {
 			solar_system = { exists = owner is_owned_by = root.owner }
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		owner = { astral_thread_large_reward = yes }
@@ -3467,6 +3540,7 @@ planet_event = {
 planet_event = {
 	id = astral_planes.6030
 	title = astral_planes.6030.name
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3479,6 +3553,7 @@ planet_event = {
 		}
 		text = astral_planes.6030.desc.scar
 	}
+
 	picture = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3505,6 +3580,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = FASCINATING
 		add_modifier = { modifier = astralnomical_interest_modifier }
@@ -3518,6 +3594,7 @@ planet_event = {
 planet_event = {
 	id = astral_planes.6035
 	title = astral_planes.6035.name
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3530,6 +3607,7 @@ planet_event = {
 		}
 		text = astral_planes.6035.desc.scar
 	}
+
 	picture = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3556,6 +3634,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = INTERESTING
 		custom_tooltip = astral_planes.6035.tt
@@ -3570,6 +3649,7 @@ planet_event = {
 planet_event = {
 	id = astral_planes.6040
 	title = astral_planes.6040.name
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3582,6 +3662,7 @@ planet_event = {
 		}
 		text = astral_planes.6040.desc.scar
 	}
+
 	picture = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3608,6 +3689,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = astral_planes.6040.a
 		set_planet_flag = accepted_mechanical_god_visions
@@ -3629,6 +3711,7 @@ planet_event = {
 		}
 		ai_chance = { factor = 10 }
 	}
+
 	after = {
 		custom_tooltip = astral_planes.6040.tt
 		hidden_effect = {
@@ -3649,6 +3732,7 @@ planet_event = {
 	id = astral_planes.6045
 	title = astral_planes.6045.name
 	desc = astral_planes.6045.desc
+
 	picture = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3675,6 +3759,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = astral_planes.6045.a
 		random_owned_pop_group = { kill_single_pop = yes }
@@ -3688,6 +3773,7 @@ planet_event = {
 planet_event = {
 	id = astral_planes.6050
 	title = astral_planes.6050.name
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3716,6 +3802,7 @@ planet_event = {
 		}
 		text = astral_planes.6050.desc.scar_blackstar
 	}
+
 	picture = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3742,6 +3829,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = EXCELLENT
 		remove_modifier = astralnomical_interest_modifier
@@ -3775,6 +3863,7 @@ planet_event = {
 planet_event = {
 	id = astral_planes.6055
 	title = astral_planes.6055.name
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3787,6 +3876,7 @@ planet_event = {
 		}
 		text = astral_planes.6055.desc.scar
 	}
+
 	picture = {
 		trigger = {
 			owner = { has_country_flag = has_found_astral_rift_marvel }
@@ -3813,6 +3903,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = astral_planes.6055.a
 		remove_modifier = astralnomical_interest_modifier
@@ -3876,6 +3967,7 @@ ship_event = {
 	immediate = {
 		from = { set_planet_flag = planet_under_investigation }
 	}
+
 	option = {
 		name = astral_planes.6060.a
 		enable_special_project = { name = SPONTANEOUS_EXPLOSIONS location = from }
@@ -3891,6 +3983,7 @@ ship_event = {
 	show_sound = event_ground_battle
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_planes.6065.a
 		hidden_effect = {
@@ -3929,6 +4022,7 @@ ship_event = {
 			ship_event = { id = astral_planes.6085 days = 300 random = 120 scopes = { from = from } }
 		}
 	}
+
 	after = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -3945,6 +4039,7 @@ ship_event = {
 ship_event = {
 	id = astral_planes.6070
 	title = astral_planes.6070.name
+
 	desc = {
 		trigger = {
 			owner = {
@@ -3972,6 +4067,7 @@ ship_event = {
 	show_sound = event_super_explosion
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		from = {
@@ -4002,6 +4098,7 @@ ship_event = {
 	show_sound = event_default
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		controller = {
@@ -4025,6 +4122,7 @@ ship_event = {
 ship_event = {
 	id = astral_planes.6080
 	title = astral_planes.6080.name
+
 	desc = {
 		trigger = {
 			owner = {
@@ -4052,6 +4150,7 @@ ship_event = {
 	show_sound = event_ship_explosion
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		from = {
@@ -4075,6 +4174,7 @@ ship_event = {
 	show_sound = event_super_explosion
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		hidden_effect = {
@@ -4137,6 +4237,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = ONSCREEN
 		country_event = { id = astral_planes.6105 }
@@ -4162,6 +4263,7 @@ country_event = {
 country_event = {
 	id = astral_planes.6105
 	title = "NAME_Mercedes"
+
 	desc = {
 		trigger = { is_human_species = no }
 		text = "astral_planes.6105.desc.reg"
@@ -4223,10 +4325,12 @@ country_event = {
 		}
 		event_target:mercedes_leader = { set_owner = root exile_leader_as = mercedes_leader }
 	}
+
 	picture_event_data = {
 		portrait = event_target:mercedes_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = DISMISS
 		tag = dismiss_leader

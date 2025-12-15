@@ -44,6 +44,7 @@ ship_event = {
 			}
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -54,6 +55,7 @@ ship_event = {
 			}
 		}
 	}
+
 	immediate = {
 		owner = {
 			set_country_flag = inetian_intro
@@ -79,6 +81,7 @@ ship_event = {
 	immediate = {
 		begin_event_chain = { event_chain = cs_inetian_chain target = owner }
 	}
+
 	option = {
 		name = INTERESTING
 		tooltip = {
@@ -118,6 +121,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.110.a
 		owner = {
@@ -135,6 +139,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -154,6 +159,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -171,6 +177,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -190,6 +197,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.120.a
 		owner = {
@@ -286,6 +294,7 @@ fleet_event = {
 		owner = { add_resource = { energy = -300 } }
 		fromfrom = { add_stage_clues = 2 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -306,6 +315,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.125.a
 		owner = {
@@ -342,6 +352,7 @@ fleet_event = {
 		}
 		fromfrom = { add_stage_clues = 3 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -361,6 +372,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.130.a
 		owner = {
@@ -383,6 +395,7 @@ fleet_event = {
 			owner = root.owner
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -399,6 +412,7 @@ fleet_event = {
 	location = event_target:wm_digsite_A.solar_system
 	show_sound = event_machinery
 	is_triggered_only = yes
+
 	option = { # #no rewards because it transitions into next dig sites
 		name = INTERESTING
 	}
@@ -420,6 +434,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -437,6 +452,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -457,6 +473,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.145.a
 		owner = {
@@ -474,6 +491,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -484,6 +502,7 @@ fleet_event = {
 	id = cstorms.150
 	event_chain = cs_inetian_chain
 	title = "cstorms.150.name"
+
 	desc = {
 		text = "cstorms.150.desc.a"
 		trigger = {
@@ -534,6 +553,7 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		owner = { set_country_flag = pc_arcsite_A_completed }
 	}
+
 	option = {
 		name = cstorms.150.a
 		owner = {
@@ -548,6 +568,7 @@ fleet_event = {
 			fleet_event = { id = cstorms.175 }
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -569,6 +590,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = UNDERSTOOD
 		owner = {
@@ -586,6 +608,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -606,6 +629,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -623,6 +647,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -633,6 +658,7 @@ fleet_event = {
 	id = cstorms.165
 	event_chain = cs_inetian_chain
 	title = "cstorms.165.name"
+
 	desc = {
 		text = "cstorms.165.desc.a"
 		trigger = {
@@ -682,6 +708,7 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		owner = { set_country_flag = pc_arcsite_B_completed }
 	}
+
 	option = {
 		name = cstorms.165.a
 		owner = {
@@ -696,6 +723,7 @@ fleet_event = {
 			fleet_event = { id = cstorms.175 }
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -717,6 +745,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.170.a
 		owner = {
@@ -734,6 +763,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -754,6 +784,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.171.a
 		owner = {
@@ -771,6 +802,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -781,6 +813,7 @@ fleet_event = {
 	id = cstorms.172
 	event_chain = cs_inetian_chain
 	title = "cstorms.172.name"
+
 	desc = {
 		text = "cstorms.172.desc.a"
 		trigger = {
@@ -830,6 +863,7 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		owner = { set_country_flag = pc_arcsite_C_completed }
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -863,6 +897,7 @@ fleet_event = {
 			fleet_event = { id = cstorms.175 }
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -901,6 +936,7 @@ country_event = {
 	location = from
 	show_sound = event_activating_unknown_technology
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.176.a
 		add_monthly_resource_mult = {
@@ -946,6 +982,7 @@ country_event = {
 			give_technology = { tech = tech_storm_manipulation }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = cstorms.179 days = 30 }
@@ -1054,6 +1091,7 @@ country_event = {
 	location = event_target:wm_digsite_storm_formation
 	show_sound = event_sensor_ping
 	is_triggered_only = yes
+
 	option = { # #no rewards this is a transition event
 		name = cstorms.180.a
 		event_target:wm_digsite_storm_formation = {
@@ -1081,6 +1119,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -1098,6 +1137,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1113,6 +1153,7 @@ fleet_event = {
 	show_sound = event_scanner
 	is_triggered_only = yes
 	archaeology = yes
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -1142,6 +1183,7 @@ fleet_event = {
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
 	archaeology = yes
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -1173,6 +1215,7 @@ fleet_event = {
 	show_sound = event_administrative_work
 	is_triggered_only = yes
 	archaeology = yes
+
 	option = {
 		name = cstorms.184.a
 		owner = {
@@ -1345,6 +1388,7 @@ country_event = {
 	show_sound = event_default
 	location = event_target:wm_last_storm_shelter
 	is_triggered_only = yes
+
 	option = { # #no rewards for transition event
 		name = cstorms.186.a
 		event_target:wm_last_storm_shelter = {
@@ -1368,6 +1412,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = UNDERSTOOD
 		owner = {
@@ -1385,6 +1430,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1404,6 +1450,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = PROCEED
 		owner = {
@@ -1421,6 +1468,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1441,6 +1489,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -1453,6 +1502,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1473,6 +1523,7 @@ fleet_event = {
 		owner = { set_country_flag = weather_manipulator_found }
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.193.a
 		owner = {
@@ -1496,6 +1547,7 @@ fleet_event = {
 			set_country_flag = completed_inetian_traders_precursor
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1509,6 +1561,7 @@ ship_event = {
 	picture = GFX_evt_ongoing_disaster
 	is_triggered_only = yes
 	fire_only_once = yes
+
 	option = {
 		name = UNDERSTOOD
 		owner = {
@@ -1594,6 +1647,7 @@ ship_event = {
 			}
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -1604,6 +1658,7 @@ ship_event = {
 			}
 		}
 	}
+
 	immediate = {
 		owner = {
 			set_country_flag = adakkaria_intro
@@ -1630,6 +1685,7 @@ ship_event = {
 	immediate = {
 		begin_event_chain = { event_chain = cs_adAkkaria_chain }
 	}
+
 	option = {
 		name = FASCINATING
 		tooltip = {
@@ -1664,6 +1720,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -1681,6 +1738,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1701,6 +1759,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -1712,6 +1771,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1732,6 +1792,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -1781,6 +1842,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1801,6 +1863,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.230.a
 		owner = {
@@ -1852,6 +1915,7 @@ fleet_event = {
 			add_modifier = { modifier = melodramatic_much years = 1 }
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -1872,6 +1936,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.235.a
 		owner = {
@@ -1889,6 +1954,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		hidden_effect = {
@@ -2013,9 +2079,11 @@ country_event = {
 			destroy_cosmic_storm = yes
 		}
 	}
+
 	option = {
 		name = cstorms.245.a
 	}
+
 	after = {
 		event_target:planet_windswept_fates = {
 			create_archaeological_site = site_adakarria_windswept_fates
@@ -2039,6 +2107,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2105.a
 		owner = {
@@ -2056,6 +2125,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2076,6 +2146,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2110.a
 		owner = {
@@ -2093,6 +2164,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2113,6 +2185,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -2130,6 +2203,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2150,6 +2224,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2120.a
 		owner = {
@@ -2167,6 +2242,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2187,6 +2263,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -2204,6 +2281,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2224,6 +2302,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -2252,6 +2331,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		fleet_event = { id = cstorms.2140 days = 15 }
@@ -2306,6 +2386,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		event_target:planet_storm_to_signal = {
@@ -2315,6 +2396,7 @@ fleet_event = {
 			create_archaeological_site = site_adakkaria_fleets_of_the_thrice_damned
 		}
 	}
+
 	after = {
 		# Remove flag, was only necessary locally to track if a system with asteroids was found.
 		owner = { remove_country_flag = planet_storm_to_signal_found }
@@ -2336,6 +2418,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -2353,6 +2436,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2372,6 +2456,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2155.a
 		owner = {
@@ -2389,6 +2474,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2408,6 +2494,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = PECULIAR
 		owner = {
@@ -2425,6 +2512,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2434,6 +2522,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2165
 	title = cstorms.2165.name
+
 	desc = {
 		trigger = {
 			owner = { is_gestalt = yes }
@@ -2472,6 +2561,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2165.a
 		owner = {
@@ -2489,6 +2579,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2498,6 +2589,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2170
 	title = cstorms.2170.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = yes } }
 		text = cstorms.2170.desc.gestalt
@@ -2516,6 +2608,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = UNDERSTOOD
 		owner = {
@@ -2544,6 +2637,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = {
 			set_site_progress_locked = no
@@ -2598,6 +2692,7 @@ country_event = {
 	location = event_target:planet_assembling_the_past
 	fire_only_once = yes
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -2614,6 +2709,7 @@ country_event = {
 	title = cstorms.2185.name
 	desc = cstorms.2185.desc
 	event_chain = cs_adAkkaria_chain
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -2638,6 +2734,7 @@ country_event = {
 			create_archaeological_site = site_adakkaria_the_patriotic_institute
 		}
 	}
+
 	option = {
 		name = cstorms.2185.a
 	}
@@ -2658,6 +2755,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -2675,6 +2773,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2684,6 +2783,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2205
 	title = cstorms.2205.name
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = yes }
@@ -2706,6 +2806,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -2717,6 +2818,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2736,6 +2838,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2210.a
 		owner = {
@@ -2753,6 +2856,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2772,6 +2876,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -2789,6 +2894,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2808,6 +2914,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2220.a
 		owner = {
@@ -2825,6 +2932,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -2845,6 +2953,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2225.a
 		owner = {
@@ -2870,6 +2979,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		hidden_effect = {
@@ -2927,6 +3037,7 @@ country_event = {
 	show_sound = event_space_cloud
 	location = event_target:adSul_star
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		enable_special_project = {
@@ -2944,6 +3055,7 @@ country_event = {
 	picture = GFX_evt_surreal_visions
 	show_sound = evn_ove_shroud_tunnel
 	is_triggered_only = yes
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = cstorms.2245.desc
@@ -2952,6 +3064,7 @@ country_event = {
 		trigger = { is_gestalt = yes }
 		text = cstorms.2245.desc.gestalt
 	}
+
 	option = {
 		name = ON_SCREEN
 		country_event = { id = cstorms.2260 }
@@ -2967,6 +3080,7 @@ country_event = {
 	picture = GFX_evt_cosmic_storms_shroud_storm
 	show_sound = evn_ove_shroud_tunnel
 	is_triggered_only = yes
+
 	option = {
 		name = ON_SCREEN
 		country_event = { id = cstorms.2260 }
@@ -2980,6 +3094,7 @@ country_event = {
 	desc = cstorms.2260.desc
 	show_sound = event_whispering
 	picture = GFX_evt_cosmic_storms_the_storm_speaks
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -2987,6 +3102,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2260.a
 		response_text = cstorms.2260.a.resp
@@ -3011,6 +3127,7 @@ country_event = {
 	title = cstorms.2265.name
 	desc = cstorms.2265.desc
 	show_sound = event_whispering
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3018,6 +3135,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2260.a # Same text as 2260, so re-using
 		response_text = cstorms.2260.a.resp
@@ -3047,6 +3165,7 @@ country_event = {
 	title = cstorms.2270.name
 	desc = cstorms.2270.desc
 	show_sound = event_whispering
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3054,6 +3173,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2260.a # Same text as 2260, so re-using
 		response_text = cstorms.2260.a.resp
@@ -3089,6 +3209,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		owner = {
@@ -3106,6 +3227,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -3125,6 +3247,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = {
 			trigger = { owner = { is_homicidal = no } }
@@ -3149,6 +3272,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -3159,6 +3283,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2295
 	title = cstorms.2295.name
+
 	desc = {
 		trigger = {
 			owner = { is_authoritarian_or_homicidal = yes is_gestalt = no }
@@ -3242,6 +3367,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -3324,6 +3450,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -3334,6 +3461,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2300
 	title = cstorms.2300.name
+
 	desc = {
 		trigger = { has_psionic_leader = no }
 		text = cstorms.2300.desc
@@ -3351,6 +3479,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = {
 			trigger = { has_psionic_leader = no }
@@ -3417,6 +3546,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -3427,6 +3557,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2305
 	title = cstorms.2305.name
+
 	desc = {
 		trigger = {
 			has_psionic_leader = no
@@ -3454,6 +3585,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -3471,6 +3603,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -3481,6 +3614,7 @@ fleet_event = {
 fleet_event = {
 	id = cstorms.2310
 	title = cstorms.2310.name
+
 	desc = {
 		trigger = {
 			owner = { is_authoritarian_or_homicidal = no }
@@ -3504,6 +3638,7 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	option = {
 		name = cstorms.2310.a
 		owner = {
@@ -3524,6 +3659,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
@@ -3535,6 +3671,7 @@ country_event = {
 	title = cstorms.2320.name
 	desc = cstorms.2320.desc
 	show_sound = event_whispering
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3542,6 +3679,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2320.a
 		response_text = cstorms.2320.a.resp
@@ -3571,6 +3709,7 @@ country_event = {
 	title = cstorms.2320.name # Re-use from 2320
 	desc = cstorms.2325.desc
 	show_sound = event_whispering
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3578,6 +3717,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = { # Re-use from 2320
 		name = cstorms.2320.a
 		response_text = cstorms.2320.a.resp
@@ -3607,6 +3747,7 @@ country_event = {
 	title = cstorms.2320.name # Re-use from 2320
 	desc = cstorms.2330.desc
 	show_sound = event_whispering
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3614,6 +3755,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2330.a
 		hidden_effect = {
@@ -3628,6 +3770,7 @@ country_event = {
 	title = cstorms.2320.name # Re-use from 2320
 	desc = cstorms.2335.desc
 	show_sound = event_whispering
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3635,6 +3778,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = { # Free The Storm
 		name = cstorms.2335.a
 		hidden_effect = {
@@ -3655,6 +3799,7 @@ country_event = {
 	title = cstorms.2320.name # Re-use from 2320
 	desc = cstorms.2340.desc
 	show_sound = evn_ove_shroudwalker_enclave
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3662,6 +3807,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2340.a
 		hidden_effect = {
@@ -3676,6 +3822,7 @@ country_event = {
 	title = cstorms.2320.name # Re-use from 2320
 	desc = cstorms.2345.desc
 	show_sound = event_screams
+
 	picture_event_data = {
 		portrait = shroud1
 		room = cosmic_storm_room
@@ -3683,6 +3830,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2345.a
 		hidden_effect = {
@@ -3700,6 +3848,7 @@ country_event = {
 	show_sound = evn_ove_shroudwalker_enclave
 	is_triggered_only = yes
 	specimen = piece_of_invocator
+
 	option = {
 		name = cstorms.2350.a
 		set_country_flag = adakkaria_world_found
@@ -3759,6 +3908,7 @@ country_event = {
 	immediate = {
 		set_country_flag = tempest_invocator_found
 	}
+
 	option = {
 		name = cstorms.2355.a
 		add_relic = r_the_tempest_invocator
@@ -3770,6 +3920,7 @@ country_event = {
 country_event = {
 	id = cstorms.2365
 	title = cstorms.2365.name
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = cstorms.2365.desc.default
@@ -3782,6 +3933,7 @@ country_event = {
 	picture = GFX_evt_cosmic_storms_celebration
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = cstorms.2365.a
 		add_modifier = { modifier = patriotic_institute_true_potential_unleashed }

@@ -9,12 +9,14 @@
 marauder_1_1 = {
 	class = "rl_standard_stars"
 	usage = misc_system_init
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 230
 	}
 
 	max_instances = 1
+
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -31,7 +33,9 @@ marauder_1_1 = {
 	}
 
 	spawn_chance = 100
+
 	flags = { marauder_system marauder_capital_1 }
+
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -232,6 +236,7 @@ marauder_1_1 = {
 	}
 
 	change_orbit = 50
+
 	planet = {
 		class = pc_molten
 		orbit_distance = 25
@@ -635,6 +640,7 @@ marauder_1_1 = {
 			}
 		}
 	}
+
 	neighbor_system = {
 		distance = { min = 0 max = 50 }
 		initializer = "marauder_1_2"
@@ -643,6 +649,7 @@ marauder_1_1 = {
 		distance = { min = 0 max = 50 }
 		initializer = "marauder_1_3"
 	}
+
 	init_effect = {
 		event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -652,7 +659,9 @@ marauder_1_1 = {
 # System II
 marauder_1_2 = {
 	class = "rl_standard_stars"
+
 	flags = { marauder_system }
+
 	planet = {
 		count = 1
 		class = star
@@ -758,6 +767,7 @@ marauder_1_2 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 3 max = 6 }
 		class = "rl_unhabitable_planets"
@@ -771,6 +781,7 @@ marauder_1_2 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -784,11 +795,14 @@ marauder_1_2 = {
 # System III
 marauder_1_3 = {
 	class = "rl_standard_stars"
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 95
 	}
+
 	flags = { marauder_system }
+
 	planet = {
 		count = 1
 		class = star
@@ -954,6 +968,7 @@ marauder_1_3 = {
 	}
 
 	change_orbit = 30
+
 	planet = {
 		count = 2
 		class = "rl_unhabitable_planets"
@@ -962,6 +977,7 @@ marauder_1_3 = {
 	}
 
 	change_orbit = 25
+
 	planet = {
 		count = { min = 1 max = 4 }
 		class = pc_asteroid
@@ -981,6 +997,7 @@ marauder_1_3 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -998,12 +1015,14 @@ marauder_1_3 = {
 marauder_2_1 = {
 	class = "sc_black_hole"
 	usage = misc_system_init
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 270
 	}
 
 	max_instances = 1
+
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -1020,7 +1039,9 @@ marauder_2_1 = {
 	}
 
 	spawn_chance = 100
+
 	flags = { marauder_system marauder_capital_2 }
+
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -1336,6 +1357,7 @@ marauder_2_1 = {
 	}
 
 	change_orbit = 250
+
 	planet = {
 		class = "pc_asteroid"
 		orbit_angle = -80
@@ -1592,6 +1614,7 @@ marauder_2_1 = {
 			}
 		}
 	}
+
 	neighbor_system = {
 		distance = { min = 0 max = 50 }
 		initializer = "marauder_2_2"
@@ -1600,6 +1623,7 @@ marauder_2_1 = {
 		distance = { min = 0 max = 50 }
 		initializer = "marauder_2_3"
 	}
+
 	init_effect = {
 		event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -1613,7 +1637,9 @@ marauder_2_1 = {
 # System II
 marauder_2_2 = {
 	class = "rl_standard_stars"
+
 	flags = { marauder_system }
+
 	planet = {
 		count = 1
 		class = star
@@ -1719,6 +1745,7 @@ marauder_2_2 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 3 max = 6 }
 		class = "rl_unhabitable_planets"
@@ -1732,6 +1759,7 @@ marauder_2_2 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -1741,11 +1769,14 @@ marauder_2_2 = {
 # System III
 marauder_2_3 = {
 	class = "rl_standard_stars"
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 95
 	}
+
 	flags = { marauder_system }
+
 	planet = {
 		count = 1
 		class = star
@@ -1911,6 +1942,7 @@ marauder_2_3 = {
 	}
 
 	change_orbit = 30
+
 	planet = {
 		count = 2
 		class = "rl_unhabitable_planets"
@@ -1919,6 +1951,7 @@ marauder_2_3 = {
 	}
 
 	change_orbit = 25
+
 	planet = {
 		count = { min = 1 max = 4 }
 		class = pc_asteroid
@@ -1938,6 +1971,7 @@ marauder_2_3 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -1956,6 +1990,7 @@ marauder_3_1 = {
 	class = "sc_pulsar"
 	usage = misc_system_init
 	max_instances = 1
+
 	usage_odds = {
 		base = 0
 		modifier = {
@@ -1972,7 +2007,9 @@ marauder_3_1 = {
 	}
 
 	spawn_chance = 100
+
 	flags = { marauder_system marauder_capital_3 }
+
 	planet = {
 		class = star
 		orbit_distance = 0
@@ -2112,6 +2149,7 @@ marauder_3_1 = {
 	}
 
 	change_orbit = 150
+
 	planet = {
 		class = pc_gas_giant
 		size = 40
@@ -2427,6 +2465,7 @@ marauder_3_1 = {
 			}
 		}
 	}
+
 	neighbor_system = {
 		distance = { min = 0 max = 50 }
 		initializer = "marauder_3_2"
@@ -2435,6 +2474,7 @@ marauder_3_1 = {
 		distance = { min = 0 max = 50 }
 		initializer = "marauder_3_3"
 	}
+
 	init_effect = {
 		event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -2448,7 +2488,9 @@ marauder_3_1 = {
 # System II
 marauder_3_2 = {
 	class = "rl_standard_stars"
+
 	flags = { marauder_system }
+
 	planet = {
 		count = 1
 		class = star
@@ -2554,6 +2596,7 @@ marauder_3_2 = {
 	}
 
 	change_orbit = 45
+
 	planet = {
 		count = { min = 3 max = 6 }
 		class = "rl_unhabitable_planets"
@@ -2567,6 +2610,7 @@ marauder_3_2 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes
@@ -2576,11 +2620,14 @@ marauder_3_2 = {
 # System III
 marauder_3_3 = {
 	class = "rl_standard_stars"
+
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 95
 	}
+
 	flags = { marauder_system }
+
 	planet = {
 		count = 1
 		class = star
@@ -2746,6 +2793,7 @@ marauder_3_3 = {
 	}
 
 	change_orbit = 30
+
 	planet = {
 		count = 2
 		class = "rl_unhabitable_planets"
@@ -2754,6 +2802,7 @@ marauder_3_3 = {
 	}
 
 	change_orbit = 25
+
 	planet = {
 		count = { min = 1 max = 4 }
 		class = pc_asteroid
@@ -2773,6 +2822,7 @@ marauder_3_3 = {
 			orbit_distance = 5
 		}
 	}
+
 	init_effect = {
 		event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
 		create_marauder_starbase = yes

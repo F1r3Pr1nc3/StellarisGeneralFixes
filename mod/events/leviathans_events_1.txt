@@ -28,6 +28,7 @@ country_event = {
 		}
 		country_event = { id = story.8 days = 15 }
 	}
+
 	after = {
 		save_event_target_as = this_country
 		country_event = { id = timeline.53 } # Timeline Encountered Leviathan
@@ -50,6 +51,7 @@ country_event = {
 		from = { save_event_target_as = leviathan_destroyed_country }
 		country_event = { id = leviathans.6 days = 2 }
 	}
+
 	after = {
 		if = { # We need an exception for the Enigmatic Fortress since it isnt 'destroyed' the first time around
 			limit = {
@@ -97,6 +99,7 @@ country_event = {
 	location = event_target:leviathan_destroyed_system
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -168,6 +171,7 @@ country_event = {
 	show_sound = event_radio_chatter
 	event_message_type = ENCLAVE_DIPLOMACY
 	is_triggered_only = yes
+
 	after = {
 		hidden_effect = {
 			from = {
@@ -199,6 +203,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = SCUM
 		trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -341,6 +346,7 @@ country_event = {
 country_event = {
 	id = leviathans.102
 	title = leviathans.102.name
+
 	desc = {
 		text = leviathans.102a.desc
 		trigger = {
@@ -365,10 +371,12 @@ country_event = {
 	custom_gui = "enclave_trader_window"
 	custom_gui_option = "enclave_trader_option"
 	event_message_type = ENCLAVE_DIPLOMACY
+
 	picture_event_data = {
 		portrait = from
 		room = enclave_trader_room
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -410,6 +418,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_trader_window"
 	custom_gui_option = "enclave_trader_option"
+
 	picture_event_data = {
 		portrait = event_target:xuracorp_country
 		room = enclave_trader_room
@@ -428,6 +437,7 @@ country_event = {
 	immediate = {
 		event_target:xuracorp_country = { save_event_target_as = enclave_country }
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -523,6 +533,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_trader_window"
 	custom_gui_option = "enclave_trader_option"
+
 	picture_event_data = {
 		portrait = event_target:riggan_country
 		room = enclave_trader_room
@@ -541,6 +552,7 @@ country_event = {
 	immediate = {
 		event_target:riggan_country = { save_event_target_as = enclave_country }
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -636,6 +648,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_trader_window"
 	custom_gui_option = "enclave_trader_option"
+
 	picture_event_data = {
 		portrait = event_target:muutagan_country
 		room = enclave_trader_room
@@ -654,6 +667,7 @@ country_event = {
 	immediate = {
 		event_target:muutagan_country = { save_event_target_as = enclave_country }
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -894,6 +908,7 @@ country_event = {
 	base = leviathans.105
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = leviathans.125.desc.z1
@@ -963,6 +978,7 @@ country_event = {
 	base = leviathans.106
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = leviathans.125.desc.z1
@@ -1032,6 +1048,7 @@ country_event = {
 	base = leviathans.107
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = leviathans.125.desc.z1
@@ -1100,6 +1117,7 @@ country_event = {
 	id = leviathans.126
 	base = leviathans.105
 	desc_clear = yes
+
 	desc = {
 		trigger = { is_gestalt = no is_worker_coop_empire = no }
 		text = leviathans.126.desc
@@ -1120,6 +1138,7 @@ country_event = {
 	id = leviathans.127
 	base = leviathans.106
 	desc_clear = yes
+
 	desc = {
 		trigger = { is_gestalt = no is_worker_coop_empire = no }
 		text = leviathans.126.desc
@@ -1140,6 +1159,7 @@ country_event = {
 	id = leviathans.128
 	base = leviathans.107
 	desc_clear = yes
+
 	desc = {
 		trigger = { is_gestalt = no is_worker_coop_empire = no }
 		text = leviathans.126.desc
@@ -1163,6 +1183,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = leviathans.130.desc
+
 	option = {
 		name = leviathans.130.a
 		allow = {
@@ -1307,6 +1328,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = leviathans.131.desc
+
 	option = {
 		name = leviathans.131.a
 		allow = {
@@ -1451,6 +1473,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = leviathans.132.desc
+
 	option = {
 		name = leviathans.132.a
 		allow = {
@@ -1724,6 +1747,7 @@ country_event = {
 			remove_relation_flag = { who = from flag = muutagan_trade }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -1785,6 +1809,7 @@ country_event = {
 		remove_xuracorp_trades = yes
 		remove_relation_flag = { who = from flag = xuracorp_trade }
 	}
+
 	option = {
 		name = "leviathans.142.a"
 	}
@@ -1842,6 +1867,7 @@ country_event = {
 		remove_riggan_trades = yes
 		remove_relation_flag = { who = from flag = riggan_trade }
 	}
+
 	option = {
 		name = "leviathans.143.a"
 	}
@@ -1899,6 +1925,7 @@ country_event = {
 		remove_muutagan_trades = yes
 		remove_relation_flag = { who = from flag = muutagan_trade }
 	}
+
 	option = {
 		name = "leviathans.144.a"
 	}
@@ -2048,6 +2075,7 @@ country_event = {
 	base = leviathans.105
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = { has_active_xuracorp_trade = yes }
 		text = leviathans.156.desc
@@ -2056,6 +2084,7 @@ country_event = {
 		trigger = { has_active_xuracorp_trade = no }
 		text = leviathans.156.desc.notrade
 	}
+
 	immediate = {
 		set_country_flag = attacked_xuracorp
 		if = {
@@ -2067,6 +2096,7 @@ country_event = {
 			add_trust = { who = root amount = -100 }
 		}
 	}
+
 	option = {
 		name = leviathans.156.a
 		tooltip = {
@@ -2102,6 +2132,7 @@ country_event = {
 		from = { has_country_flag = trader_enclave_country_1 }
 		has_country_flag = attacked_xuracorp
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -2133,6 +2164,7 @@ country_event = {
 	base = leviathans.106
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = { has_active_riggan_trade = yes }
 		text = leviathans.159.desc
@@ -2141,6 +2173,7 @@ country_event = {
 		trigger = { has_active_riggan_trade = no }
 		text = leviathans.159.desc.notrade
 	}
+
 	immediate = {
 		set_country_flag = attacked_riggans
 		if = {
@@ -2152,6 +2185,7 @@ country_event = {
 			add_trust = { who = root amount = -100 }
 		}
 	}
+
 	option = {
 		name = leviathans.156.a
 		tooltip = {
@@ -2187,6 +2221,7 @@ country_event = {
 		from = { has_country_flag = trader_enclave_country_2 }
 		has_country_flag = attacked_riggans
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -2218,6 +2253,7 @@ country_event = {
 	base = leviathans.107
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = { has_active_muutagan_trade = yes }
 		text = leviathans.162.desc
@@ -2226,6 +2262,7 @@ country_event = {
 		trigger = { has_active_muutagan_trade = no }
 		text = leviathans.162.desc.notrade
 	}
+
 	immediate = {
 		set_country_flag = attacked_muutagans
 		if = {
@@ -2237,6 +2274,7 @@ country_event = {
 			add_trust = { who = root amount = -100 }
 		}
 	}
+
 	option = {
 		name = leviathans.156.a
 		tooltip = {
@@ -2272,6 +2310,7 @@ country_event = {
 		from = { has_country_flag = trader_enclave_country_3 }
 		has_country_flag = attacked_muutagans
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -2409,6 +2448,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = leviathans.171.a
 		custom_tooltip = enclave_energy_trade_ended
@@ -2484,12 +2524,14 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = from
 		room = enclave_artist_room
 	}
 
 	location = event_target:artisan_enclave_system
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -2520,6 +2562,7 @@ country_event = {
 country_event = {
 	id = leviathans.300
 	title = leviathans.300.name
+
 	desc = {
 		trigger = {
 			NOT = { has_country_flag = enclave_artist_encountered }
@@ -2538,6 +2581,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:artist_enclave_country
 		room = enclave_artist_room
@@ -2704,6 +2748,7 @@ country_event = {
 country_event = {
 	id = leviathans.301
 	title = leviathans.301.name
+
 	desc = {
 		trigger = { has_country_flag = enclave_artist_encountered }
 		text = leviathans.301.desc
@@ -2725,6 +2770,7 @@ country_event = {
 		from = { is_country_type = enclave has_country_flag = artist_enclave_country }
 		has_country_flag = enclave_artist_ignores
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -2783,6 +2829,7 @@ country_event = {
 	option_clear = yes
 	desc = leviathans.305.desc
 	event_message_type = ENCLAVE_DIPLOMACY
+
 	option = {
 		name = DEAL
 		add_resource = { energy = -600 }
@@ -2880,6 +2927,7 @@ country_event = {
 		# Reset any 'seen all this content' flags from patronage updates
 		remove_country_flag = enclave_artist_patron_content_seen
 	}
+
 	option = {
 		name = DEAL
 		allow = {
@@ -3046,6 +3094,7 @@ country_event = {
 	option_clear = yes
 	event_message_type = ENCLAVE_DIPLOMACY
 	title = leviathans.321.name
+
 	desc = {
 		trigger = {
 			text = "leviathans.321.desc"
@@ -3067,6 +3116,7 @@ country_event = {
 			}
 		}
 	}
+
 	trigger = {
 		exists = event_target:artist_enclave_country
 		has_modifier = enclave_artist_patron
@@ -3119,6 +3169,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = leviathans.311 days = 240 random = 90 }
@@ -3186,6 +3237,7 @@ country_event = {
 			resource_stockpile_compare = { resource = energy value >= 2000 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = leviathans.311 days = 300 random = 75 }
@@ -3256,6 +3308,7 @@ country_event = {
 	immediate = {
 		set_country_flag = enclave_artist_patron_event_3
 	}
+
 	option = {
 		name = leviathans.324.a
 		add_resource = { minerals = 500 }
@@ -3264,6 +3317,7 @@ country_event = {
 		name = leviathans.324.b
 		add_resource = { influence = 50 }
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = leviathans.311 days = 300 random = 75 }
@@ -3278,6 +3332,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = leviathans.325.desc
+
 	option = {
 		name = GOODBYE
 	}
@@ -3291,6 +3346,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = leviathans.330.desc
+
 	option = {
 		name = DEAL
 		allow = {
@@ -3412,6 +3468,7 @@ country_event = {
 	immediate = {
 		random_owned_planet = { save_event_target_as = this_planet }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		add_modifier = { modifier = enclave_artist_festival_outrage years = 2 }
@@ -3420,6 +3477,7 @@ country_event = {
 		name = leviathans.335.b
 		add_resource = { influence = -100 }
 	}
+
 	after = {
 		event_target:this_planet = {
 			random_owned_pop_group = { kill_single_pop = yes }
@@ -3454,6 +3512,7 @@ country_event = {
 			species = { save_event_target_as = artist_species }
 		}
 	}
+
 	option = {
 		name = leviathans.336.a
 		event_target:this_planet = {
@@ -3468,7 +3527,9 @@ country_event = {
 			hidden_effect = {
 				every_owned_pop_group = {
 					limit = { is_same_species = event_target:artist_species }
-					modify_species = { ideal_planet_class = event_target:this_planet }
+					modify_species = {
+						ideal_planet_class = event_target:this_planet
+					}
 				}
 			}
 		}
@@ -3499,6 +3560,7 @@ country_event = {
 	immediate = {
 		set_timed_country_flag = { flag = enclave_artist_ignores years = 10 }
 	}
+
 	option = {
 		name = leviathans.337.a
 		remove_modifier = enclave_artist_festival
@@ -3557,6 +3619,7 @@ country_event = {
 		}
 		event_target:artist_enclave_country = { set_country_flag = art_college@root }
 	}
+
 	option = { # Back
 		name = EXCELLENT
 		custom_tooltip = leviathans.340.tooltip
@@ -3574,6 +3637,7 @@ country_event = {
 	option_clear = yes
 	title = leviathans.345.name
 	desc = leviathans.345.desc
+
 	option = {
 		name = DEAL
 		if = {
@@ -3731,6 +3795,7 @@ country_event = {
 	show_sound = event_structural_collapse
 	location = event_target:destroyed_station_location
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		trigger = { has_country_flag = enclave_artist_ignores }
@@ -3766,6 +3831,7 @@ country_event = {
 			remove_country_flag = artist_festival_purchased
 		}
 	}
+
 	option = {
 		name = OK
 		custom_tooltip = leviathans.307.a.tooltip
@@ -3783,6 +3849,7 @@ country_event = {
 country_event = {
 	id = leviathans.354
 	title = leviathans.300.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3808,6 +3875,7 @@ country_event = {
 			solar_system = { save_event_target_as = station_system }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -3892,6 +3960,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = from
 		room = enclave_curator_room
@@ -3900,6 +3969,7 @@ country_event = {
 	location = event_target:curator_enclave_system
 	is_triggered_only = yes
 	event_message_type = ENCLAVE_DIPLOMACY
+
 	option = {
 		trigger = {
 			OR = { # This is a hack to display the civic icon if needed
@@ -3954,6 +4024,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = event_target:curator_enclave_country
 		room = enclave_curator_room
@@ -4265,6 +4336,7 @@ country_event = {
 		# Ergo, 1000 Energy at 100 Empire Size
 		multiply_variable = { which = curator_insight_cost value = value:edict_size_effect }
 	}
+
 	option = {
 		name = leviathans.507.a
 		allow = {
@@ -5143,6 +5215,7 @@ country_event = {
 	option_clear = yes
 	title = leviathans.556.name
 	desc = leviathans.556.desc
+
 	option = {
 		name = {
 			trigger = {
@@ -5210,6 +5283,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	title = leviathans.558.name
+
 	desc = {
 		text = leviathans.558.desc
 		trigger = {
@@ -5223,6 +5297,7 @@ country_event = {
 			NOT = { has_global_flag = toxic_god_spawned }
 		}
 	}
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = toxic_god_spawned }
@@ -5232,6 +5307,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -5373,6 +5449,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	title = leviathans.559.name
+
 	desc = {
 		text = leviathans.559.desc
 		trigger = {
@@ -5468,6 +5545,7 @@ country_event = {
 
 	# Standard options
 	inline_script = enclaves/curators_guardians_options
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = curator_unplugged_notalk # used in Unplugged dialog
@@ -5527,6 +5605,7 @@ country_event = {
 			owner_species = { save_event_target_as = curator_species }
 		}
 	}
+
 	option = {
 		name = leviathans.590.a
 		allow = {
@@ -5607,6 +5686,7 @@ country_event = {
 			owner_species = { save_event_target_as = curator_species }
 		}
 	}
+
 	option = {
 		name = leviathans.598.a
 		allow = {
@@ -5993,6 +6073,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = leviathans.4100.desc
+
 	inline_script = {
 		script = grand_archive/collection/curator_postponed_options_by_category
 		EVENT_ID = leviathans.4100
@@ -6175,6 +6256,7 @@ country_event = {
 			remove_modifier = "curator_insight"
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -6298,6 +6380,7 @@ country_event = {
 			add_opinion_modifier = { who = event_target:curator_destroyer modifier = opinion_destroyed_curator }
 		}
 	}
+
 	option = {
 		name = "leviathans.594.a"
 		exclusive_trigger = {
@@ -6359,10 +6442,12 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = event_target:curator_enclave_country
 		room = enclave_curator_room
 	}
+
 	option = {
 		name = leviathans.156.a
 	}
@@ -6382,6 +6467,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
 	custom_gui_option = "enclave_curator_option"
+
 	picture_event_data = {
 		portrait = event_target:curator_enclave_country
 		room = enclave_curator_room
@@ -6393,6 +6479,7 @@ country_event = {
 		from = { is_country_type = enclave has_country_flag = curator_enclave_country }
 		has_country_flag = attacked_curators
 	}
+
 	option = {
 		name = {
 			trigger = { has_valid_civic = civic_fanatic_purifiers }
@@ -6464,6 +6551,7 @@ fleet_event = {
 fleet_event = {
 	id = leviathans.610
 	title = leviathans.610.name
+
 	desc = {
 		text = leviathans.610.desc
 		trigger = {
@@ -6496,6 +6584,7 @@ fleet_event = {
 	immediate = {
 		owner = { set_country_flag = dragon_encounter }
 	}
+
 	option = {
 		name = leviathans.610.a
 	}
@@ -6705,6 +6794,7 @@ country_event = {
 country_event = {
 	id = leviathans.649
 	title = leviathans.650.name
+
 	desc = {
 		text = leviathans.649.desc
 		trigger = { is_gestalt = no }
@@ -6720,6 +6810,7 @@ country_event = {
 	trigger = {
 		from = { is_country_type = guardian_dragon }
 	}
+
 	option = {
 		name = leviathans.649.a
 		trigger = { is_gestalt = no }
@@ -6736,6 +6827,7 @@ fleet_event = {
 	id = leviathans.650
 	# hide_window = yes
 	title = leviathans.650.name
+
 	desc = {
 		text = leviathans.650.desc
 		trigger = { owner = { is_gestalt = no } }
@@ -6776,6 +6868,7 @@ fleet_event = {
 			fleet_event = { id = leviathans.651 }
 		}
 	}
+
 	option = {
 		name = leviathans.649.a
 		trigger = { owner = { is_gestalt = no } }
@@ -7096,6 +7189,7 @@ country_event = {
 	immediate = {
 		event_target:guardian_dragon_planet = { set_planet_flag = deboned }
 	}
+
 	option = {
 		name = leviathans.660.a
 		grant_dragon_armor_effect = yes
@@ -7170,6 +7264,7 @@ country_event = {
 	immediate = {
 		event_target:guardian_dragon_planet = { set_planet_flag = deegged }
 	}
+
 	option = {
 		name = leviathans.661.a
 		custom_tooltip = leviathans.661.a.tooltip
@@ -7221,6 +7316,7 @@ planet_event = {
 		}
 		owner = { set_country_flag = hatched_dragon }
 	}
+
 	option = {
 		name = leviathans.664.a
 		custom_tooltip = leviathans.664.a.tooltip
@@ -7230,6 +7326,7 @@ planet_event = {
 country_event = {
 	id = leviathans.665
 	title = leviathans.665.name
+
 	desc = {
 		trigger = { is_hive_empire = no is_machine_empire = no }
 		text = leviathans.665.desc
@@ -7247,6 +7344,7 @@ country_event = {
 	location = capital_scope
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -7256,6 +7354,7 @@ country_event = {
 country_event = {
 	id = leviathans.670
 	title = leviathans.670.name
+
 	desc = {
 		text = leviathans.670.desc
 		trigger = {
@@ -7316,6 +7415,7 @@ country_event = {
 			end_curator_chain = yes
 		}
 	}
+
 	option = {
 		name = leviathans.670.a
 		trigger = { can_harvest_dna = no }
@@ -7341,6 +7441,7 @@ country_event = {
 		add_resource = { influence = 300 }
 		add_relic = r_dragon_trophy
 	}
+
 	after = {
 		if = {
 			limit = { exists = fromfrom.leader }
@@ -7370,6 +7471,7 @@ country_event = {
 country_event = {
 	id = leviathans.675
 	title = "distar.218.name"
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = "leviathans.675.desc.regular"
@@ -7387,6 +7489,7 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_evt_necromancy
 	show_sound = event_mystic_reveal
+
 	option = {
 		name = "it_hungers"
 		create_fleet = {

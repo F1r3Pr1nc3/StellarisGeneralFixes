@@ -178,9 +178,11 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "observation.2.a"
 	}
+
 	after = {
 		custom_tooltip = cannot_reveal_tt
 		custom_tooltip = cannot_dismantle_outpost_tt
@@ -237,6 +239,7 @@ country_event = {
 		}
 		remove_country_flag = asteroid_sighted_pre_ftl_country
 	}
+
 	option = {
 		name = "observation.4.a"
 		custom_tooltip = observation.4.a.tt
@@ -269,6 +272,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "observation.5.a"
 		event_target:pre_ftl_country = { add_awareness = 5 }
@@ -344,6 +348,7 @@ country_event = {
 	immediate = {
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.7.a"
 		add_monthly_resource_mult = {
@@ -372,6 +377,7 @@ country_event = {
 	immediate = {
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.8.a"
 		add_monthly_resource_mult = {
@@ -395,6 +401,7 @@ country_event = {
 	show_sound = event_ship_explosion
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.9.a"
 		# Steam age and up should have a chance to spot it.
@@ -421,6 +428,7 @@ country_event = {
 		set_country_flag = physics_insights
 		set_predictive_observation_insight = { VALUE = 10 }
 	}
+
 	option = {
 		name = "observation.10.a"
 		add_observation_insight_effect = {
@@ -496,6 +504,7 @@ country_event = {
 	id = observation.101
 	title = "observation.101.name"
 	desc = "observation.101.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -519,6 +528,7 @@ country_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
 	}
+
 	option = {
 		name = "observation.101.a"
 		hidden_effect = {
@@ -539,6 +549,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		custom_tooltip = cannot_reveal_tt
 		custom_tooltip = cannot_dismantle_outpost_tt
@@ -564,6 +575,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "observation.102.a"
 		add_modifier = { modifier = missing_scientist years = 1 }
@@ -596,6 +608,7 @@ country_event = {
 			set_timed_country_flag = { flag = new_industrial_age years = 1 }
 		}
 	}
+
 	option = {
 		name = CURIOUS
 		custom_tooltip = advance_to_age_tt
@@ -643,6 +656,7 @@ country_event = {
 	desc = "observation.104.desc"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = root
 		planet_background = event_target:pre_ftl_planet
@@ -650,6 +664,7 @@ country_event = {
 		room = event_target:pre_ftl_country
 		city_level = event_target:pre_ftl_planet
 	}
+
 	trigger = {
 		event_target:pre_ftl_planet = {
 			has_planet_flag = cult_reported
@@ -673,6 +688,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = observation.104.a
 		response_text = observation.104.a.response
@@ -727,6 +743,7 @@ country_event = {
 			set_timed_country_flag = { flag = new_machine_age years = 1 }
 		}
 	}
+
 	option = { # Support Operation
 		name = "observation.105.a"
 		from = {
@@ -740,6 +757,7 @@ country_event = {
 	option = { # Deny Operation
 		name = "observation.105.b"
 	}
+
 	after = {
 		custom_tooltip = advance_to_age_tt
 		tooltip = { add_awareness = 100 }
@@ -758,6 +776,7 @@ ship_event = {
 	show_sound = event_ground_battle
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.106.a"
 		hidden_effect = {
@@ -842,6 +861,7 @@ country_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = no }
 	}
+
 	option = {
 		name = "observation.3205.a"
 		if = {
@@ -881,6 +901,7 @@ country_event = {
 			observation_outpost_owner = { has_country_flag = missing_scientist_chain }
 		}
 	}
+
 	option = {
 		name = "observation.107.a"
 		event_target:pre_ftl_country = { shift_ethic = "ethic_fanatic_spiritualist" }
@@ -960,10 +981,12 @@ country_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = no }
 	}
+
 	option = {
 		name = "observation.108.a"
 		custom_tooltip = regress_to_age_tt
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:pre_ftl_country = {
@@ -1003,6 +1026,7 @@ country_event = {
 			set_timed_country_flag = { flag = new_early_space_age years = 1 }
 		}
 	}
+
 	option = {
 		name = "observation.109.a"
 		custom_tooltip = advance_to_age_tt
@@ -1013,6 +1037,7 @@ country_event = {
 			country_event = { id = observation.110 days = 20 random = 10 }
 		}
 	}
+
 	after = {
 		# TODO: Should really make something of this, they should stay pissed at you.
 		event_target:pre_ftl_planet.observation_outpost = { dismantle = yes }
@@ -1025,6 +1050,7 @@ country_event = {
 	title = TRANSMISSION
 	desc = "observation.110.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:pre_ftl_country
 		planet_background = event_target:pre_ftl_planet
@@ -1044,6 +1070,7 @@ country_event = {
 		remove_country_flag = extracted_holy_savior@event_target:pre_ftl_country
 		event_target:pre_ftl_country = { remove_country_flag = extraction_teched_up }
 	}
+
 	option = {
 		name = observation.110.a
 		response_text = observation.110.a.response
@@ -1080,6 +1107,7 @@ country_event = {
 	title = TRANSMISSION
 	desc = "observation.111.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = root
 		planet_background = event_target:pre_ftl_planet
@@ -1089,9 +1117,11 @@ country_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = observation.111.a
 	}
+
 	after = {
 		hidden_effect = {
 			# TODO: Should copy over a scientist leader for them?
@@ -1112,10 +1142,12 @@ country_event = {
 	show_sound = event_ship_explosion
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "DISCONCERTING"
 		event_target:pre_ftl_planet.observation_outpost = { dismantle = yes }
 	}
+
 	after = {
 		event_target:pre_ftl_planet = {
 			owner = {
@@ -1176,6 +1208,7 @@ situation_event = {
 country_event = {
 	id = observation.201
 	title = "observation.201.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1215,6 +1248,7 @@ country_event = {
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.201.a"
 		enable_special_project = {
@@ -1227,6 +1261,7 @@ country_event = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
 	}
+
 	after = {
 		custom_tooltip = cannot_reveal_tt
 		custom_tooltip = cannot_dismantle_outpost_tt
@@ -1237,6 +1272,7 @@ country_event = {
 ship_event = {
 	id = observation.202
 	title = "observation.202.name"
+
 	desc = {
 		trigger = {
 			owner = { is_regular_empire = yes }
@@ -1265,6 +1301,7 @@ ship_event = {
 		}
 		text = observation.202.hive_pre_ftl.desc.gestalt
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1286,6 +1323,7 @@ ship_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = no }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1303,6 +1341,7 @@ ship_event = {
 country_event = {
 	id = observation.203
 	title = "observation.203.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1343,6 +1382,7 @@ country_event = {
 			owner = { save_event_target_as = pre_ftl_country }
 		}
 	}
+
 	option = {
 		name = "observation.203.a"
 		hidden_effect = {
@@ -1415,6 +1455,7 @@ country_event = {
 			set_country_flag = scientists_captured_chain
 		}
 	}
+
 	option = {
 		name = "observation.3210.a"
 		event_target:pre_ftl_country = { set_awareness = 100 }
@@ -1459,6 +1500,7 @@ planet_event = {
 country_event = {
 	id = observation.205
 	title = "observation.205.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1496,6 +1538,7 @@ country_event = {
 	immediate = {
 		event_target:pre_ftl_planet = { nuke_pre_ftls_effect = yes }
 	}
+
 	option = {
 		name = observation.205.a
 		event_target:pre_ftl_planet = {
@@ -1508,6 +1551,7 @@ country_event = {
 country_event = {
 	id = observation.206
 	title = "observation.206.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1545,6 +1589,7 @@ country_event = {
 	immediate = {
 		event_target:pre_ftl_planet = { nuke_pre_ftls_toxic_effect = yes }
 	}
+
 	option = {
 		name = observation.206.a
 		from = {
@@ -1557,6 +1602,7 @@ country_event = {
 country_event = {
 	id = observation.207
 	title = "observation.207.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1602,6 +1648,7 @@ country_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = no }
 	}
+
 	option = {
 		name = observation.207.a
 		custom_tooltip = regress_to_age_tt
@@ -1634,6 +1681,7 @@ planet_event = {
 country_event = {
 	id = observation.209
 	title = "observation.209.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1667,6 +1715,7 @@ country_event = {
 	show_sound = event_ground_battle
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.209.a"
 		custom_tooltip = acquired_tech_tooltip
@@ -1704,6 +1753,7 @@ planet_event = {
 country_event = {
 	id = observation.211
 	title = "observation.211.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -1741,6 +1791,7 @@ country_event = {
 	immediate = {
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.211.a"
 		trigger = {
@@ -1791,6 +1842,7 @@ country_event = {
 country_event = {
 	id = observation.212
 	title = "observation.212.name"
+
 	desc = {
 		trigger = { is_machine_empire = no }
 		text = observation.212.desc
@@ -1815,6 +1867,7 @@ country_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = no }
 	}
+
 	option = {
 		name = "observation.212.a"
 		tooltip = {
@@ -1889,6 +1942,7 @@ country_event = {
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.301.a"
 		event_target:pre_ftl_planet = {
@@ -1903,6 +1957,7 @@ country_event = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
 	}
+
 	after = {
 		custom_tooltip = cannot_reveal_tt
 		custom_tooltip = cannot_dismantle_outpost_tt
@@ -1931,6 +1986,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "observation.302.a"
 		owner = {
@@ -1972,6 +2028,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "observation.303.a"
 		fromfromfrom = {
@@ -2066,6 +2123,7 @@ country_event = {
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
 	}
+
 	option = {
 		name = "observation.1001.a"
 		enable_special_project = {
@@ -2085,6 +2143,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		custom_tooltip = cannot_reveal_tt
 		custom_tooltip = cannot_dismantle_outpost_tt
@@ -2113,6 +2172,7 @@ ship_event = {
 		event_target:abducted_scientist@event_target:pre_ftl_country = { save_event_target_as = abducted_scientist }
 		owner = { save_event_target_as = observation_post_owner }
 	}
+
 	option = {
 		name = "EXCELLENT"
 		custom_tooltip = observation.1002.tt
@@ -2149,6 +2209,7 @@ ship_event = {
 		}
 		owner = { save_event_target_as = observation_post_owner }
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		event_target:pre_ftl_country = { add_awareness = 10 }
@@ -2192,6 +2253,7 @@ country_event = {
 		}
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.1004.a"
 		add_observation_insight_effect = {
@@ -2269,6 +2331,7 @@ country_event = {
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "DISCONCERTING"
 		event_target:pre_ftl_country = {
@@ -2291,6 +2354,7 @@ country_event = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
 	}
+
 	after = {
 		custom_tooltip = cannot_reveal_tt
 		custom_tooltip = cannot_dismantle_outpost_tt
@@ -2306,6 +2370,7 @@ country_event = {
 	show_sound = event_air_raid_siren
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.1102.a"
 		hidden_effect = {
@@ -2379,6 +2444,7 @@ country_event = {
 			set_variable = { which = TechProgressPercentage value = 10 }
 		}
 	}
+
 	option = {
 		name = "observation.1103.a"
 		custom_tooltip = tech_progress_gain_tt
@@ -2396,6 +2462,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:pre_ftl_country = { clear_variable = TechProgressPercentage }
@@ -2412,6 +2479,7 @@ country_event = {
 	show_sound = event_conversation
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.1104.a"
 		event_target:pre_ftl_country = { add_awareness = -10 }
@@ -2432,6 +2500,7 @@ country_event = {
 	id = observation.1105
 	title = "observation.1105.name"
 	desc = "observation.1105.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -2443,6 +2512,7 @@ country_event = {
 	location = event_target:pre_ftl_planet
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.1105.a"
 		event_target:pre_ftl_planet = {
@@ -2518,6 +2588,7 @@ ship_event = {
 			owner = { save_event_target_as = pre_ftl_country }
 		}
 	}
+
 	option = {
 		name = "observation.1106.a"
 		event_target:pre_ftl_planet = {
@@ -2551,6 +2622,7 @@ ship_event = {
 			owner = { save_event_target_as = pre_ftl_country }
 		}
 	}
+
 	option = {
 		name = "observation.1107.a"
 		event_target:pre_ftl_country = { add_awareness = 10 }
@@ -2624,6 +2696,7 @@ country_event = {
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "observation.1201.a"
 		event_target:pre_ftl_planet = {
@@ -2654,6 +2727,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		observation_breach_effect = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
@@ -2686,6 +2760,7 @@ ship_event = {
 			observation_outpost = { set_event_locked = no }
 		}
 	}
+
 	option = {
 		name = "observation.1202.a"
 		owner = {
@@ -2727,6 +2802,7 @@ country_event = {
 			owner = { save_event_target_as = pre_ftl_country }
 		}
 	}
+
 	option = {
 		name = "observation.1203.a"
 		event_target:pre_ftl_planet = {
@@ -2812,6 +2888,7 @@ country_event = {
 			capital_scope.observation_outpost = { set_event_locked = no }
 		}
 	}
+
 	option = {
 		name = "observation.1205.a"
 		custom_tooltip = observation.1205.tt
@@ -2900,6 +2977,7 @@ situation_event = {
 country_event = {
 	id = observation.1301
 	title = "observation.1301.name"
+
 	desc = {
 		text = observation.1301.xenophobe
 		exclusive_trigger = {
@@ -2933,6 +3011,7 @@ country_event = {
 	immediate = {
 		save_event_target_as = observation_post_owner
 	}
+
 	option = {
 		name = "INTERESTING"
 		event_target:pre_ftl_country = {
@@ -2998,6 +3077,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		observation_breach_effect = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
@@ -3015,6 +3095,7 @@ country_event = {
 	show_sound = event_air_raid_siren
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3215.a"
 		observation_breach_effect = {
@@ -3167,6 +3248,7 @@ planet_event = {
 country_event = {
 	id = observation.1402
 	title = "observation.1402.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -3204,6 +3286,7 @@ country_event = {
 	immediate = {
 		event_target:pre_ftl_planet = { nuke_pre_ftls_effect = yes }
 	}
+
 	option = {
 		name = observation.1402.a
 		event_target:pre_ftl_planet = {
@@ -3235,6 +3318,7 @@ planet_event = {
 country_event = {
 	id = observation.1404
 	title = "observation.1404.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -3272,6 +3356,7 @@ country_event = {
 	immediate = {
 		event_target:pre_ftl_planet = { nuke_pre_ftls_toxic_effect = yes }
 	}
+
 	option = {
 		name = observation.1404.a
 		from = {
@@ -3310,6 +3395,7 @@ planet_event = {
 country_event = {
 	id = observation.1406
 	title = "observation.1406.name"
+
 	desc = {
 		trigger = {
 			is_regular_empire = yes
@@ -3357,6 +3443,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = observation.1406.a
 		custom_tooltip = regress_to_age_tt
@@ -3422,6 +3509,7 @@ country_event = {
 	id = observation.1501
 	title = "observation.1501.name"
 	desc = "observation.1501.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3432,6 +3520,7 @@ country_event = {
 	location = event_target:pre_ftl_planet
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.1501.a"
 		enable_special_project = {
@@ -3468,6 +3557,7 @@ ship_event = {
 	id = observation.1502
 	title = "PROJECT_COMPLETE"
 	desc = "observation.1502.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3477,6 +3567,7 @@ ship_event = {
 
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.1502.a"
 		owner = {
@@ -3548,6 +3639,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -3596,10 +3688,12 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EXCELLENT"
 		custom_tooltip = tech_progress_gain_tt
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:pre_ftl_country = { clear_variable = TechProgressPercentage }
@@ -3662,6 +3756,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2016.tt
@@ -3719,6 +3814,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -3778,6 +3874,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EXCELLENT"
 		custom_tooltip = observation.2014.tt
@@ -3831,6 +3928,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EXCELLENT"
 		custom_tooltip = observation.2014.tt
@@ -4002,6 +4100,7 @@ country_event = {
 			shift_ethic = "ethic_xenophile"
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 		tooltip = {
@@ -4064,6 +4163,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 		custom_tooltip = observation.2031.tt
@@ -4123,6 +4223,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EXCELLENT"
 		custom_tooltip = observation.2032.tt
@@ -4182,6 +4283,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "EXCELLENT"
 		custom_tooltip = observation.2033.tt
@@ -4250,6 +4352,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 		custom_tooltip = observation.2034.tt
@@ -4318,6 +4421,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 		custom_tooltip = observation.2035.tt
@@ -4380,6 +4484,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 		custom_tooltip = observation.2036.tt
@@ -4439,6 +4544,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 		custom_tooltip = observation.2037.tt
@@ -4490,6 +4596,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -4541,6 +4648,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -4592,6 +4700,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -4643,6 +4752,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -4694,6 +4804,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -4745,6 +4856,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "UNFORTUNATE"
 		custom_tooltip = observation.2018.tt
@@ -4770,6 +4882,7 @@ country_event = {
 			any_owned_pop_group = { is_authoritarian = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -4777,6 +4890,7 @@ country_event = {
 			any_owned_pop_group = { is_authoritarian = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_authoritarian"
@@ -4805,6 +4919,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -4828,6 +4943,7 @@ country_event = {
 			any_owned_pop_group = { is_egalitarian = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -4835,6 +4951,7 @@ country_event = {
 			any_owned_pop_group = { is_egalitarian = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_egalitarian"
@@ -4863,6 +4980,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -4886,6 +5004,7 @@ country_event = {
 			any_owned_pop_group = { is_xenophobe = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -4893,6 +5012,7 @@ country_event = {
 			any_owned_pop_group = { is_xenophobe = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_xenophobe"
@@ -4912,6 +5032,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -4935,6 +5056,7 @@ country_event = {
 			any_owned_pop_group = { is_xenophile = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -4942,6 +5064,7 @@ country_event = {
 			any_owned_pop_group = { is_xenophile = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_xenophile"
@@ -4961,6 +5084,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -4984,6 +5108,7 @@ country_event = {
 			any_owned_pop_group = { is_militarist = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -4991,6 +5116,7 @@ country_event = {
 			any_owned_pop_group = { is_militarist = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_militarist"
@@ -5010,6 +5136,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -5033,6 +5160,7 @@ country_event = {
 			any_owned_pop_group = { is_pacifist = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -5040,6 +5168,7 @@ country_event = {
 			any_owned_pop_group = { is_pacifist = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_pacifist"
@@ -5059,6 +5188,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -5082,6 +5212,7 @@ country_event = {
 			any_owned_pop_group = { is_spiritualist = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -5089,6 +5220,7 @@ country_event = {
 			any_owned_pop_group = { is_spiritualist = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_spiritualist"
@@ -5108,6 +5240,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}
@@ -5131,6 +5264,7 @@ country_event = {
 			any_owned_pop_group = { is_materialist = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -5138,6 +5272,7 @@ country_event = {
 			any_owned_pop_group = { is_materialist = yes }
 		}
 	}
+
 	immediate = {
 		set_timed_country_flag = { flag = indoctrination_cooldown months = 18 }
 		shift_ethic = "ethic_materialist"
@@ -5157,6 +5292,7 @@ country_event = {
 	show_sound = event_hand_shake
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "observation.3139.a"
 	}

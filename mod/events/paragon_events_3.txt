@@ -40,6 +40,7 @@ country_event = {
 	immediate = {
 		from = { save_event_target_as = gateway_system }
 	}
+
 	option = {
 		name = "paragon.3000.a"
 		hidden_effect = {
@@ -57,6 +58,7 @@ country_event = {
 	location = event_target:paragon_gateway_dude_homegate
 	fire_only_once = yes
 	is_triggered_only = yes
+
 	option = {
 		name = {
 			trigger = { is_gestalt = no }
@@ -179,6 +181,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3002.a"
 		enable_special_project = {
@@ -193,6 +196,7 @@ country_event = {
 country_event = {
 	id = paragon.3003
 	title = "paragon.3003.name"
+
 	desc = {
 		text = paragon.3003.desc
 		trigger = { is_gestalt = no }
@@ -214,6 +218,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3003.a"
 		trigger = { is_gestalt = no is_fanatic_xenophobe = no }
@@ -328,6 +333,7 @@ country_event = {
 country_event = {
 	id = paragon.3004
 	title = "paragon.3004.name"
+
 	desc = {
 		trigger = { has_country_flag = found_skravird }
 		text = paragon.3004.a.desc
@@ -352,6 +358,7 @@ country_event = {
 	immediate = {
 		set_country_flag = met_skrand
 	}
+
 	option = {
 		name = "paragon.3004.a"
 		hidden_effect = {
@@ -379,10 +386,12 @@ country_event = {
 	immediate = {
 		remove_global_flag = sharpbeak_recruit_phase
 	}
+
 	picture_event_data = {
 		portrait = event_target:admiral_sharpbeak
 		room = galactic_custodian_room
 	}
+
 	option = {
 		name = paragon.3005.a
 		response_text = paragon.3005.a.response
@@ -458,6 +467,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.3006.a
 		hidden_effect = {
@@ -485,6 +495,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3007.a"
 		set_country_flag = attacked_sharpbeak
@@ -513,6 +524,7 @@ country_event = {
 		start_situation = { type = situation_paragon_skrand_sickness }
 		start_situation = { type = situation_paragon_skrand_cure }
 	}
+
 	option = {
 		name = "paragon.3010.a"
 	}
@@ -538,6 +550,7 @@ situation_event = {
 			event_target:admiral_sharpbeak = { kill_leader = {  } }
 		}
 	}
+
 	option = {
 		name = TERRIBLE
 		destroy_situation = this
@@ -555,6 +568,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -572,6 +586,7 @@ situation_event = {
 	immediate = {
 		event_target:admiral_sharpbeak = { remove_trait = trait_ruler_warlike_2 }
 	}
+
 	option = {
 		name = WORRYING
 	}
@@ -589,6 +604,7 @@ situation_event = {
 	immediate = {
 		event_target:admiral_sharpbeak = { remove_trait = leader_trait_resilient }
 	}
+
 	option = {
 		name = DISCONCERTING
 	}
@@ -610,6 +626,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		destroy_situation = this
@@ -635,6 +652,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3020.a"
 		add_research_option = tech_strike_craft_skrand
@@ -659,6 +677,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3021.a"
 		add_research_option = tech_strike_craft_skrand
@@ -697,6 +716,7 @@ country_event = {
 			save_global_event_target_as = leader_to_fire_skrand
 		}
 	}
+
 	option = {
 		name = "paragon.admiral_fight.a"
 		custom_tooltip = paragon.admiral_fight.a.tt
@@ -748,6 +768,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3031.a"
 		custom_tooltip = paragon.situations.tt
@@ -772,6 +793,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -792,6 +814,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = CURIOUS
 	}
@@ -808,6 +831,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -845,6 +869,7 @@ country_event = {
 			save_global_event_target_as = leader_to_fire_skrand
 		}
 	}
+
 	option = {
 		name = "paragon.admiral_fight.a"
 		custom_tooltip = paragon.admiral_fight.a.tt
@@ -905,6 +930,7 @@ country_event = {
 			save_global_event_target_as = leader_to_fire_skrand
 		}
 	}
+
 	option = {
 		name = "paragon.admiral_fight.a"
 		custom_tooltip = paragon.3036.a.tt
@@ -946,6 +972,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3040.a"
 		custom_tooltip = paragon.situations.tt
@@ -968,6 +995,7 @@ situation_event = {
 	immediate = {
 		owner = { set_country_flag = talon_upgraded }
 	}
+
 	option = {
 		name = EXCELLENT
 		event_target:last_talon_ship = {
@@ -994,6 +1022,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -1010,6 +1039,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = UNFORTUNATE
 		add_situation_progress = -5
@@ -1034,10 +1064,12 @@ country_event = {
 
 	immediate = {
 	}
+
 	picture_event_data = {
 		portrait = paragon02 # sharpbeak_portrait
 		room = paragon_skrand_room
 	}
+
 	option = {
 		name = paragon.3050.a
 		response_text = paragon.3050.a.response
@@ -1071,6 +1103,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1091,6 +1124,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -1107,6 +1141,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -1129,6 +1164,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3060.a"
 		custom_tooltip = paragon.situations.tt
@@ -1151,6 +1187,7 @@ situation_event = {
 	immediate = {
 		owner = { set_country_flag = studied_talon }
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1195,6 +1232,7 @@ situation_event = {
 			country_event = { id = paragon.3073 }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		destroy_situation = this
@@ -1215,6 +1253,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3072.a"
 		start_situation = { type = situation_paragon_skrand_rebuild }
@@ -1286,6 +1325,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3080.a"
 		custom_tooltip = paragon.situations.tt
@@ -1307,6 +1347,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = EXCELLENT
 		custom_tooltip = paragon.3081.tt
@@ -1346,6 +1387,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = WORRYING
 	}
@@ -1366,10 +1408,12 @@ country_event = {
 
 	immediate = {
 	}
+
 	picture_event_data = {
 		portrait = paragon02 # sharpbeak_portrait
 		room = paragon_skrand_room
 	}
+
 	option = {
 		name = paragon.3083.a
 		response_text = paragon.3083.a.response
@@ -1392,6 +1436,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3090.a"
 		custom_tooltip = paragon.situations.tt
@@ -1413,6 +1458,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = FASCINATING
 	}
@@ -1429,6 +1475,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = FASCINATING
 	}
@@ -1445,6 +1492,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = FASCINATING
 	}
@@ -1461,6 +1509,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -1513,6 +1562,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.3100.a
 		owner = {
@@ -1553,6 +1603,7 @@ country_event = {
 			abort_special_project = { type = LEGENDARY_LEADER_FIRST_PROJECT }
 		}
 	}
+
 	option = { # Resuscitate leader
 		name = paragon.3104.a
 		capital_scope = {
@@ -1590,6 +1641,7 @@ country_event = {
 			abort_special_project = { type = LEGENDARY_LEADER_FIRST_PROJECT }
 		}
 	}
+
 	option = { # Take leader
 		name = paragon.3105.a
 		trigger = { is_homicidal = no is_gestalt = no }
@@ -1641,6 +1693,7 @@ country_event = {
 			give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = medium TYPE = humanoid }
 		}
 	}
+
 	after = {
 		clear_global_event_target = exakeides_planet
 	}
@@ -1655,6 +1708,7 @@ country_event = {
 	show_sound = event_finding_loot
 	fire_only_once = yes
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -1672,6 +1726,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.3114.a
 		trigger = { is_xenophile = yes }
@@ -1712,6 +1767,7 @@ country_event = {
 		trigger = { is_materialist = yes }
 		set_global_flag = leader_raised_materialist
 	}
+
 	after = {
 		country_event = { id = paragon.3115 days = 3600 }
 	}
@@ -1793,10 +1849,12 @@ country_event = {
 			}
 		}
 	}
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 		room = galactic_custodian_room
 	}
+
 	option = {
 		name = paragon.3115.a
 		hidden_effect = {
@@ -1816,13 +1874,16 @@ country_event = {
 	show_sound = par_event_keides
 	picture = GFX_leader_recruitment_bg_legendary_keides
 	event_window_type = leader_recruit
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 		room = galactic_custodian_room
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
+
 	option = {
 		# Special tag to make mark this is the hire option
 		name = HIRE
@@ -1925,9 +1986,11 @@ country_event = {
 	picture = GFX_evt_analyzing_artifacts
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
@@ -1949,6 +2012,7 @@ country_event = {
 		set_visited = event_target:2nd_system_legendary
 		set_visited = event_target:3rd_system_legendary
 	}
+
 	option = {
 		name = CURIOUS
 		begin_event_chain = { event_chain = paragon_legendary_leader_chain target = root }
@@ -2004,6 +2068,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.3120.a
 		from = {
@@ -2037,6 +2102,7 @@ country_event = {
 	immediate = {
 		remove_point_of_interest = legendary_leader_system.1
 	}
+
 	option = {
 		name = paragon.3121.a
 		country_event = { id = paragon.3122 }
@@ -2059,21 +2125,26 @@ country_event = {
 	is_triggered_only = yes
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	immediate = {
 		country_event = { id = paragon.3123 }
 	}
+
 	option = {
 		name = paragon.3122.a
 		if = {
@@ -2117,6 +2188,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.3125.a
 		from = {
@@ -2146,6 +2218,7 @@ country_event = {
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
+
 	option = {
 		name = paragon.3126.a
 		country_event = { id = paragon.3127 }
@@ -2168,21 +2241,26 @@ country_event = {
 	is_triggered_only = yes
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	immediate = {
 		country_event = { id = paragon.3123 }
 	}
+
 	option = {
 		name = paragon.3127.a
 		if = {
@@ -2226,6 +2304,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.3130.a
 		from = {
@@ -2255,6 +2334,7 @@ country_event = {
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
+
 	option = {
 		name = paragon.3131.a
 		country_event = { id = paragon.3132 }
@@ -2277,21 +2357,26 @@ country_event = {
 	show_sound = par_event_keides
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	immediate = {
 		country_event = { id = paragon.3123 }
 	}
+
 	option = {
 		name = paragon.3132.a
 		if = {
@@ -2351,9 +2436,11 @@ country_event = {
 	is_triggered_only = yes
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
@@ -2370,6 +2457,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.3135.a
 		capital_scope = {
@@ -2394,9 +2482,11 @@ country_event = {
 	location = capital_scope
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
@@ -2407,6 +2497,7 @@ country_event = {
 			country_event = { id = paragon.3123 }
 		}
 	}
+
 	option = {
 		name = paragon.3140.a
 		hidden_effect = {
@@ -2427,9 +2518,11 @@ country_event = {
 	location = capital_scope
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_legendary_keides"
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 	}
+
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
@@ -2451,6 +2544,7 @@ country_event = {
 		set_country_flag = encountered_first_wormhole
 		add_seen_bypass_type = wormhole
 	}
+
 	option = {
 		name = paragon.3141.a
 		hidden_effect = {
@@ -2513,6 +2607,7 @@ ship_event = {
 		}
 		from = { has_star_flag = legendary_leader_final_system }
 	}
+
 	option = {
 		name = paragon.3144.a
 		hidden_effect = {
@@ -2531,6 +2626,7 @@ country_event = {
 	diplomatic = yes
 	fire_only_once = yes
 	location = fromfrom
+
 	picture_event_data = {
 		portrait = ai_crisis_1
 	}
@@ -2540,6 +2636,7 @@ country_event = {
 	trigger = {
 		any_owned_leader = { has_trait = leader_trait_legendary_far_from_home }
 	}
+
 	option = {
 		name = paragon.3145.a
 		capital_scope = {
@@ -2566,6 +2663,7 @@ country_event = {
 	desc = "paragon.3146.desc"
 	diplomatic = yes
 	fire_only_once = yes
+
 	picture_event_data = {
 		portrait = ai_crisis_1
 	}
@@ -2575,9 +2673,11 @@ country_event = {
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
+
 	option = {
 		name = paragon.3146.a
 	}
+
 	after = {
 		country_event = { id = paragon.3147 days = 15 random = 15 }
 	}
@@ -2601,6 +2701,7 @@ country_event = {
 			delete_fleet = { target = this destroy_template = yes }
 		}
 	}
+
 	option = {
 		name = paragon.3147.a
 	}
@@ -2619,6 +2720,7 @@ country_event = {
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
+
 	option = {
 		name = paragon.3148.a
 		event_target:overlord_enforcers_automated_fleet = {
@@ -2647,6 +2749,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.3149.a
 		abort_special_project = { type = LEGENDARY_LEADER_SABOTAGE_FLEET_PROJECT }
@@ -2671,9 +2774,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3150.a
 	}
@@ -2697,9 +2802,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3151.a
 	}
@@ -2723,9 +2830,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3152.a
 	}
@@ -2749,9 +2858,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3153.a
 	}
@@ -2775,9 +2886,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3154.a
 	}
@@ -2801,9 +2914,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3155.a
 	}
@@ -2827,9 +2942,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = paragon.3156.a
 		owner = {
@@ -2847,6 +2964,7 @@ country_event = {
 	fire_only_once = yes
 	show_sound = par_event_keides
 	picture = GFX_leader_recruitment_bg_renowned
+
 	picture_event_data = {
 		portrait = event_target:legendary_lost_leader
 		room = paragon_keides_room
@@ -2857,6 +2975,7 @@ country_event = {
 	trigger = {
 		exists = event_target:legendary_lost_leader
 	}
+
 	option = { # It was their failure, not yours.
 		name = paragon.3160.a
 		response_text = paragon.3160.a.response
@@ -3003,6 +3122,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = "paragon.3902.a"
 		trigger = { is_gestalt = no }

@@ -10,6 +10,7 @@ manifesti = {
 	visual_ethic = "manifesti_visual_ethic"
 	unique = yes
 	support_multiplier = 1
+
 	resources = {
 		category = pop_factions
 		produces = {
@@ -66,6 +67,7 @@ manifesti = {
 			mult = @crowdsourcing_manifesti_multiplier
 		}
 	}
+
 	extortion_resource = {
 		category = pop_factions
 		produces = {
@@ -123,6 +125,7 @@ manifesti = {
 			mult = @faction_extortion_research_ratio
 		}
 	}
+
 	is_potential = {
 		years_passed > 10
 		is_ai = no
@@ -137,16 +140,19 @@ manifesti = {
 			has_country_flag = manifesti_decline # Applied if/when the faction is suppressed
 		}
 	}
+
 	parameters = {
 		empire = {
 			type = country
 			valid_objects = { is_same_value = root }
 		}
 	}
+
 	can_join_pre_triggers = {
 		is_being_purged = no
 		is_enslaved = no
 	}
+
 	can_join_faction = {
 		OR = {
 			has_ethic = ethic_egalitarian
@@ -157,6 +163,7 @@ manifesti = {
 		can_think = yes
 		NOT = { has_pop_group_flag = manifesti_bored }
 	}
+
 	attraction = {
 		base = 160
 		modifier = {
@@ -191,6 +198,7 @@ manifesti = {
 			}
 		}
 	}
+
 	leader = {
 		base = 100
 		modifier = {
@@ -354,12 +362,14 @@ manifesti = {
 		ETHIC_FANATIC = ethic_fanatic_egalitarian
 		ETHIC_OPPOSED = ethic_authoritarian
 	}
+
 	on_create = {
 		pop_faction_event = { id = factions.0 }
 		owner = {
 			country_event = { id = manifesti.30 days = 940 }
 		}
 	}
+
 	on_destroy = {
 		if = {
 			limit = { has_modifier = promoted_egalitarian }
@@ -371,6 +381,7 @@ manifesti = {
 		}
 		country_event = { id = manifesti.30 }
 	}
+
 	actions = {
 		embrace_faction = {
 			title = "EMBRACE_FACTION"

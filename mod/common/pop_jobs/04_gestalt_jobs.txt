@@ -750,7 +750,7 @@ coordinator = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = {
 				has_tradition = tr_modularity_4
 			}
@@ -1753,85 +1753,7 @@ fabricator = {
 
 	resources = {
 		category = planet_metallurgists
-		produces = {
-			alloys = 3
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = {
-					is_machine_empire = yes
-				}
-			}
-			alloys = 1
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = {
-					is_catalytic_empire = yes
-				}
-			}
-			alloys = 0.75
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = {
-					is_robot_empire = yes
-					is_catalytic_empire = yes
-				}
-			}
-			alloys = 1.25
-		}
-		produces = {
-			trigger = {
-				planet = {
-					has_planet_flag = has_material_requisitorium
-				}
-			}
-			alloys = @requisitorium_alloys_reduction
-		}
-		upkeep = {
-			minerals = 6
-		}
-		upkeep = {
-			trigger = {
-				exists = owner
-				owner = {
-					is_catalytic_empire = yes
-				}
-			}
-			minerals = -6
-			food = 9
-		}
-		upkeep = {
-			trigger = {
-				exists = owner
-				owner = {
-					is_machine_empire = yes
-					is_catalytic_empire = no
-				}
-			}
-			minerals = 2
-		}
-		upkeep = {
-			trigger = {
-				exists = owner
-				owner = {
-					is_machine_empire = yes
-					is_catalytic_empire = yes
-				}
-			}
-		}
-		upkeep = {
-			trigger = {
-				planet = {
-					has_planet_flag = has_material_requisitorium
-				}
-			}
-			minerals = 2
-		}
+		inline_script = "output/foundry_output"
 	}
 
 	overlord_resources = {

@@ -22,6 +22,7 @@ ship_event = {
 			from = { set_planet_flag = tollok_rong@root.owner }
 		}
 	}
+
 	option = {
 		name = anomaly.5000.a
 		enable_special_project = { name = "GAS_GIANT_SIGNAL" location = from }
@@ -47,6 +48,7 @@ ship_event = {
 			country_event = { id = story.6 days = 30 }
 		}
 	}
+
 	option = {
 		name = "ONSCREEN"
 		owner = {
@@ -66,6 +68,7 @@ country_event = {
 	id = anomaly.5002
 	title = "PROJECT_FAILURE"
 	desc = "anomaly.5002.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -76,6 +79,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = fromfromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -93,9 +97,11 @@ country_event = {
 	immediate = {
 		save_event_target_as = MyCountry
 	}
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = anomaly.5003.a
 		response_text = anomaly.5003.a.response
@@ -168,6 +174,7 @@ ship_event = {
 	show_sound = event_ship_thrusters
 	location = fromfromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.5004.a
 		hidden_effect = {
@@ -198,6 +205,7 @@ country_event = {
 	id = anomaly.5005
 	title = "PROJECT_FAILURE"
 	desc = "anomaly.5005.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -208,6 +216,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -220,6 +229,7 @@ country_event = {
 	desc = "anomaly.5006.desc"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
@@ -231,6 +241,7 @@ country_event = {
 			set_country_flag = baldarak_settled
 		}
 	}
+
 	option = {
 		name = anomaly.5006.a
 		trigger = {
@@ -260,20 +271,25 @@ country_event = {
 	desc = "anomaly.5007.desc"
 	trackable = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = baldarak_settled
 		NOT = { has_country_flag = new_baldarak_colony_request }
 	}
+
 	mean_time_to_happen = {
 		years = 20
 	}
+
 	immediate = {
 		set_country_flag = new_baldarak_colony_request
 		save_event_target_as = MyCountry
 	}
+
 	option = {
 		name = anomaly.5007.a
 		response_text = anomaly.5007.a.response
@@ -352,6 +368,7 @@ ship_event = {
 			owner = { set_country_flag = new_baldarak_settled }
 		}
 	}
+
 	option = {
 		name = anomaly.5008.a
 		random_galaxy_planet = {
@@ -378,9 +395,11 @@ country_event = {
 	desc = "anomaly.5009.desc"
 	trackable = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_settled
 		NOT = { has_country_flag = chabky_raddh }
@@ -391,9 +410,11 @@ country_event = {
 			set_country_flag = chabky_raddh
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 220
 	}
+
 	option = {
 		name = anomaly.5009.a
 		response_text = anomaly.5009.a.response
@@ -421,6 +442,7 @@ ship_event = {
 	show_sound = event_airlock
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.5010.a
 		hidden_effect = {
@@ -436,9 +458,11 @@ country_event = {
 	desc = "anomaly.5011.desc"
 	trackable = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_settled
 		has_country_flag = chabky_raddh_done
@@ -450,9 +474,11 @@ country_event = {
 			set_country_flag = new_baldarak_contact_lost
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	option = {
 		name = anomaly.5011.a
 		response_text = anomaly.5011.a.response
@@ -476,6 +502,7 @@ ship_event = {
 	id = anomaly.5012
 	title = "PROJECT_COMPLETE"
 	desc = "anomaly.5012.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -490,6 +517,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = new_baldarak_revolutionary_front }
 	}
+
 	option = {
 		name = anomaly.5012.a
 		hidden_effect = {
@@ -508,9 +536,11 @@ country_event = {
 	trackable = yes
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = anomaly.5013.a
 		response_text = anomaly.5013.a.response
@@ -545,9 +575,11 @@ country_event = {
 	trackable = yes
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = anomaly.5014.a
 		response_text = anomaly.5014.a.response
@@ -571,6 +603,7 @@ ship_event = {
 	id = anomaly.5015
 	title = "PROJECT_COMPLETE"
 	desc = "anomaly.5015.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -581,6 +614,7 @@ ship_event = {
 	show_sound = event_airlock
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.5015.a
 		hidden_effect = {
@@ -598,12 +632,15 @@ country_event = {
 	desc = "anomaly.5016.desc"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	immediate = {
 		set_country_flag = baldarak_revolution_1
 	}
+
 	option = {
 		name = anomaly.5016.a
 	}
@@ -615,16 +652,20 @@ country_event = {
 	title = "anomaly.5017.name"
 	desc = "anomaly.5017.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = baldarak_revolution_1
 		NOT = { has_country_flag = baldarak_revolution_2 }
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	immediate = {
 		set_country_flag = baldarak_revolution_2
 		random_galaxy_planet = {
@@ -636,6 +677,7 @@ country_event = {
 			set_name = "NAME_Chabkymak"
 		}
 	}
+
 	option = {
 		name = "INTERESTING"
 	}
@@ -653,9 +695,11 @@ country_event = {
 	title = "anomaly.5017.name"
 	desc = "anomaly.5018.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = baldarak_revolution_2
 		NOR = {
@@ -663,12 +707,15 @@ country_event = {
 			has_country_flag = dathnak_blocked
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	immediate = {
 		set_country_flag = baldarak_revolution_3
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -686,9 +733,11 @@ country_event = {
 	title = "anomaly.5017.name"
 	desc = "anomaly.5019.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = baldarak_revolution_3
 		NOR = {
@@ -696,9 +745,11 @@ country_event = {
 			has_country_flag = dathnak_blocked
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	immediate = {
 		set_country_flag = baldarak_revolution_4
 		random_galaxy_planet = {
@@ -710,6 +761,7 @@ country_event = {
 			set_name = "NAME_New_Baldarak"
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -724,6 +776,7 @@ ship_event = {
 	show_sound = event_airlock
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.5020.a
 		hidden_effect = {
@@ -741,12 +794,15 @@ country_event = {
 	desc = "anomaly.5021.desc"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	immediate = {
 		set_country_flag = new_baldarak_occupation_1
 	}
+
 	option = {
 		name = anomaly.5021.a
 	}
@@ -758,19 +814,24 @@ country_event = {
 	title = "anomaly.5022.name"
 	desc = "anomaly.5022.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_occupation_1
 		NOT = { has_country_flag = new_baldarak_occupation_2 }
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	immediate = {
 		set_country_flag = new_baldarak_occupation_2
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -785,19 +846,24 @@ country_event = {
 	title = "anomaly.5022.name"
 	desc = "anomaly.5023.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_occupation_2
 		NOT = { has_country_flag = new_baldarak_occupation_3 }
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	immediate = {
 		set_country_flag = new_baldarak_occupation_3
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -812,19 +878,24 @@ country_event = {
 	title = "anomaly.5017.name"
 	desc = "anomaly.5024.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_occupation_3
 		NOT = { has_country_flag = new_baldarak_occupation_4 }
 	}
+
 	mean_time_to_happen = {
 		years = 10
 	}
+
 	immediate = {
 		set_country_flag = new_baldarak_occupation_4
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -836,9 +907,11 @@ country_event = {
 	title = "anomaly.5025.name"
 	desc = "anomaly.5025.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_settled
 		NOR = {
@@ -846,12 +919,15 @@ country_event = {
 			has_country_flag = baldarak_science_academy
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 320
 	}
+
 	immediate = {
 		set_country_flag = baldarak_science_academy
 	}
+
 	option = {
 		name = anomaly.5025.a
 		add_monthly_resource_mult = {
@@ -869,9 +945,11 @@ country_event = {
 	title = "anomaly.5026.name"
 	desc = "anomaly.5026.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		has_country_flag = new_baldarak_settled
 		NOR = {
@@ -879,12 +957,15 @@ country_event = {
 			has_country_flag = baldarak_spring_cleaning
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 320
 	}
+
 	immediate = {
 		set_country_flag = baldarak_spring_cleaning
 	}
+
 	option = {
 		name = anomaly.5026.a
 		add_monthly_resource_mult = {
@@ -948,6 +1029,7 @@ country_event = {
 ship_event = {
 	id = anomaly.6660
 	title = anomaly.6005.name
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -982,6 +1064,7 @@ ship_event = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1008,6 +1091,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = discovered_modifier_planet }
 	}
+
 	option = {
 		name = INTRIGUING
 		custom_tooltip = anomaly.6660.a.tooltip
@@ -1018,6 +1102,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6661
 	title = anomaly.6005.name
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -1052,6 +1137,7 @@ ship_event = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1078,6 +1164,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = discovered_modifier_planet }
 	}
+
 	option = {
 		name = INTRIGUING
 		custom_tooltip = anomaly.6660.a.tooltip
@@ -1156,6 +1243,7 @@ ship_event = {
 			begin_event_chain = { event_chain = parvus_III_chain target = this }
 		}
 	}
+
 	option = {
 		name = anomaly.6700.a
 		tooltip = {
@@ -1177,6 +1265,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6705
 	title = "anomaly.6705.name"
+
 	desc = {
 		trigger = {
 			text = anomaly.6705.desc.start
@@ -1197,6 +1286,7 @@ ship_event = {
 	show_sound = event_mystic_reveal
 	event_chain = parvus_III_chain
 	is_triggered_only = yes
+
 	option = {
 		allow = {
 			owner = { has_technology = tech_self_aware_logic }
@@ -1248,6 +1338,7 @@ ship_event = {
 			owner = root.owner
 		}
 	}
+
 	after = {
 		owner = {
 			country_event = { id = anomaly.6710 days = 80 random = 1000 }
@@ -1260,6 +1351,7 @@ country_event = {
 	title = "anomaly.6710.name"
 	picture = GFX_evt_gray_goo
 	show_sound = event_mystic_reveal
+
 	desc = {
 		trigger = {
 			text = anomaly.6710.desc.start
@@ -1283,6 +1375,7 @@ country_event = {
 	immediate = {
 		set_country_flag = nanite_anomaly_followup
 	}
+
 	option = {
 		allow = { has_technology = tech_self_aware_logic }
 		name = anomaly.6710.a
@@ -1324,6 +1417,7 @@ ship_event = {
 	event_chain = parvus_III_chain
 	is_triggered_only = yes
 	specimen = ancient_nanites
+
 	option = {
 		name = anomaly.6715.a
 		event_target:nanite_swarm_planet = {
@@ -1369,6 +1463,7 @@ ship_event = {
 	show_sound = event_space_battle
 	event_chain = parvus_III_chain
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		event_target:nanite_swarm_planet = {
@@ -1395,12 +1490,15 @@ planet_event = {
 		has_modifier = nanite_swarm_modifier
 		pop_amount > 0
 	}
+
 	mean_time_to_happen = {
 		months = 6
 	}
+
 	immediate = {
 		destroy_colony = yes
 	}
+
 	option = {
 		name = anomaly.6725.a
 	}
@@ -1420,6 +1518,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = colorscience_divination_flag }
 	}
+
 	option = {
 		trigger = { owner = { is_gestalt = no } }
 		name = anomaly.6740.a
@@ -1512,6 +1611,7 @@ ship_event = {
 	show_sound = event_default
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6745.a
 		owner = {
@@ -1534,6 +1634,7 @@ ship_event = {
 			}
 		}
 	}
+
 	after = {
 		from = {
 			add_modifier = { modifier = "terraforming_candidate" days = -1 }
@@ -1549,6 +1650,7 @@ ship_event = {
 	show_sound = event_default
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		from = {
@@ -1573,6 +1675,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6755.a
 		enable_special_project = { name = "FOLLOWING_FUNGI_PROJECT" location = from }
@@ -1611,6 +1714,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6760.a
 		from = {
@@ -1644,6 +1748,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6760.b
 		owner = {
@@ -1695,6 +1800,7 @@ ship_event = {
 		event_target:fumongus_planet.solar_system = { save_event_target_as = fumongus_system }
 		owner = { set_visited = event_target:fumongus_system }
 	}
+
 	option = {
 		name = anomaly.6770.a
 		owner = {
@@ -1738,6 +1844,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -1762,6 +1869,7 @@ country_event = {
 	trackable = yes
 	is_triggered_only = yes
 	specimen = mutated_fumongus
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1798,6 +1906,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = anomaly.6786.a
 		from = { add_deposit = d_minerals_3 custom_tooltip = anomaly.6786.a.tooltip }
@@ -1821,6 +1930,7 @@ ship_event = {
 	is_triggered_only = yes
 	trackable = yes
 	specimen = castaway_robot
+
 	option = {
 		name = "FASCINATING"
 	}
@@ -1846,6 +1956,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		from = { add_deposit = d_physics_3 }
@@ -1873,6 +1984,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "anomaly.6791.a"
 		from = {
@@ -1888,6 +2000,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6792
 	title = "anomaly.6792.name"
+
 	desc = {
 		trigger = {
 			owner = { has_psionic_species_trait = no }
@@ -1922,6 +2035,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		trigger = {
 			owner = { is_psionic_species = no }
@@ -1959,6 +2073,7 @@ ship_event = {
 country_event = {
 	id = anomaly.6793
 	title = "anomaly.6793.name"
+
 	desc = {
 		trigger = { is_gestalt = no is_robot_empire = no }
 		text = "anomaly.6793.desc"
@@ -1994,6 +2109,7 @@ country_event = {
 	immediate = {
 		set_country_flag = ubume_talking
 	}
+
 	option = {
 		name = REMARKABLE
 		event_target:hillos_asteroid = {
@@ -2009,6 +2125,7 @@ country_event = {
 country_event = {
 	id = anomaly.6794
 	title = "anomaly.6794.name"
+
 	desc = {
 		trigger = { is_gestalt = no is_robot_empire = no }
 		text = "anomaly.6794.desc"
@@ -2028,6 +2145,7 @@ country_event = {
 	location = event_target:hillos_country
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = {
 			trigger = { is_gestalt = no is_robot_empire = no }
@@ -2056,6 +2174,7 @@ country_event = {
 country_event = {
 	id = anomaly.6795
 	title = "anomaly.6794.name"
+
 	desc = {
 		trigger = { is_gestalt = no is_robot_empire = no }
 		text = "anomaly.6795.desc"
@@ -2075,6 +2194,7 @@ country_event = {
 	location = event_target:hillos_country
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = "anomaly.6795.a"
 		owner = {
@@ -2109,6 +2229,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = anomaly.6800.a
 		owner = {
@@ -2158,6 +2279,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = anomaly.6805.a
 		owner = {
@@ -2188,6 +2310,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = anomaly.6810.a
 		random_list = {
@@ -2331,10 +2454,12 @@ country_event = {
 	is_triggered_only = yes
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
+
 	picture_event_data = {
 		portrait = event_target:giant_alien_curators
 		room = enclave_curator_room
 	}
+
 	option = {
 		name = anomaly.6815.a
 		hidden_effect = {
@@ -2350,12 +2475,14 @@ country_event = {
 	is_triggered_only = yes
 	diplomatic = yes
 	custom_gui = "enclave_curator_window"
+
 	picture_event_data = {
 		portrait = event_target:giant_alien_curators
 		room = enclave_curator_room
 	}
 
 	specimen = curator_survey
+
 	option = {
 		name = anomaly.6820.a
 		if = {
@@ -2392,6 +2519,7 @@ country_event = {
 ship_event = {
 	id = anomaly.6825
 	title = "anomaly.6825.name"
+
 	desc = {
 		trigger = {
 			text = anomaly.6825.desc.start
@@ -2419,6 +2547,7 @@ ship_event = {
 		}
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = CURIOUS
 		from = { add_deposit = d_society_4 }
@@ -2462,6 +2591,7 @@ country_event = {
 	picture = GFX_evt_hive
 	show_sound = event_crystal_ship
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6835.a
 		custom_tooltip = anomaly.6835.a.tooltip
@@ -2500,6 +2630,7 @@ ship_event = {
 	show_sound = event_ship_bridge
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6840.a
 		owner = {
@@ -2527,6 +2658,7 @@ ship_event = {
 	id = anomaly.6845
 	title = "anomaly.6845.name"
 	desc = "anomaly.6845.desc"
+
 	picture = {
 		trigger = { owner = { values_others = yes } }
 		picture = GFX_evt_worrying_signal
@@ -2543,6 +2675,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		trigger = { owner = { values_others = no } }
 		name = FASCINATING
@@ -2577,6 +2710,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6850
 	title = "anomaly.6850.name"
+
 	desc = {
 		trigger = {
 			text = anomaly.6850.desc
@@ -2587,6 +2721,7 @@ ship_event = {
 			}
 		}
 	}
+
 	picture = {
 		trigger = { owner = { values_others = yes } }
 		picture = GFX_evt_gas_giant
@@ -2599,6 +2734,7 @@ ship_event = {
 	show_sound = event_celebration
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6850.a
 		owner = {
@@ -2628,6 +2764,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6855
 	title = "anomaly.6855.name"
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = "anomaly.6855.desc.regular"
@@ -2636,6 +2773,7 @@ ship_event = {
 		trigger = { owner = { is_gestalt = yes } }
 		text = "anomaly.6855.desc.gestalt"
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -2654,6 +2792,7 @@ ship_event = {
 			exile_leader_as = trapped_in_storm
 		}
 	}
+
 	option = {
 		name = anomaly.6855.a
 		enable_special_project = { name = "RESCUE_STORM" location = this }
@@ -2685,6 +2824,7 @@ ship_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -2725,6 +2865,7 @@ ship_event = {
 	show_sound = event_bad_omen
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6865.a
 		owner = {
@@ -2750,6 +2891,7 @@ country_event = {
 	picture = GFX_evt_wormhole
 	show_sound = event_celebration
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.6870.a
 		remove_modifier = unexplained_insights
@@ -2784,6 +2926,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = anomaly.6875.a
 		event_target:sleeping_crystal = { set_deposit = d_rare_crystals_2 }
@@ -2821,6 +2964,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.6880.a
 		owner = {
@@ -2843,6 +2987,7 @@ ship_event = {
 			}
 		}
 	}
+
 	after = {
 		from = { remove_planet_flag = sleeping_crystal set_planet_flag = annoyed_crystal }
 	}
@@ -2883,6 +3028,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -2900,6 +3046,7 @@ ship_event = {
 	immediate = {
 		fromfromfrom = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.6890.a
 		fromfromfrom = { set_deposit = d_society_5 }
@@ -2916,6 +3063,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6895
 	title = "anomaly.6895.name"
+
 	desc = {
 		trigger = {
 			owner = { is_catalytic_empire = no }
@@ -2937,6 +3085,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = CURIOUS
 		from = { set_deposit = d_engineering_4 }
@@ -2991,6 +3140,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.6900.a
 		custom_tooltip = anomaly.6900.a.tooltip
@@ -3084,6 +3234,7 @@ ship_event = {
 	title = "anomaly.6905.name"
 	desc = anomaly.6905.desc
 	location = from
+
 	picture = {
 		trigger = {
 			from = { is_planet_class = pc_molten }
@@ -3121,6 +3272,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.6905.a
 		from = { set_deposit = d_society_4 }
@@ -3149,6 +3301,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6910
 	title = "anomaly.6910.name"
+
 	desc = {
 		trigger = {
 			text = anomaly.6910.desc.start
@@ -3163,6 +3316,7 @@ ship_event = {
 	location = fromfromfrom
 	is_triggered_only = yes
 	specimen = enormous_scrambled_albumen
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -3190,6 +3344,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.6915
 	title = "anomaly.6915.name"
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = "anomaly.6915.desc.regular"
@@ -3207,6 +3362,7 @@ ship_event = {
 	immediate = {
 		destroy_fleet = fleet
 	}
+
 	option = {
 		name = UNFORTUNATE
 		fromfromfrom = { set_deposit = d_society_6 }
@@ -3237,6 +3393,7 @@ ship_event = {
 	picture = GFX_evt_asteroid_field
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "anomaly.7000.a"
 		allow = {
@@ -3260,6 +3417,7 @@ ship_event = {
 country_event = {
 	id = anomaly.7010
 	title = "anomaly.7010.name"
+
 	desc = {
 		trigger = { has_country_flag = vending_machine_contents_full is_megacorp = yes }
 		text = anomaly.7010.desc.full.megacorp
@@ -3320,6 +3478,7 @@ country_event = {
 			30 = { set_country_flag = vending_machine_contents_rot }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = vending_machine_contents_full
@@ -3327,6 +3486,7 @@ country_event = {
 			remove_country_flag = vending_machine_contents_rot
 		}
 	}
+
 	option = {
 		name = anomaly.7010.a
 		trigger = { has_country_flag = vending_machine_contents_full is_megacorp = yes }
@@ -3389,6 +3549,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.7020.a
 		from = { create_archaeological_site = site_space_shanty_dig }
@@ -3409,6 +3570,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.7030.desc.a
 		from = { create_archaeological_site = site_rage_sage_dig }
@@ -3419,6 +3581,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.7100
 	title = "anomaly.7100.name"
+
 	desc = {
 		trigger = {
 			owner = {
@@ -3446,6 +3609,7 @@ ship_event = {
 	show_sound = event_laboratory_sound
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		from = { set_deposit = d_society_3 }
@@ -3456,6 +3620,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.7101
 	title = "anomaly.7101.name"
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = anomaly.7101.standard.desc
@@ -3478,6 +3643,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		trigger = { owner = { is_gestalt = no } }
 		name = anomaly.7101.a
@@ -3509,6 +3675,7 @@ ship_event = {
 	id = anomaly.3140
 	title = "anomaly.3140.name"
 	desc = "anomaly.3140.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3520,6 +3687,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = INTRIGUING
 		hidden_effect = {
@@ -3553,6 +3721,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -3577,6 +3746,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		trigger = {
 			NOT = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
@@ -3607,6 +3777,7 @@ ship_event = {
 	id = anomaly.7110
 	title = "anomaly.7110.name"
 	desc = "anomaly.7110.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3618,6 +3789,7 @@ ship_event = {
 	location = from
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = PECULIAR
 		owner = {
@@ -3634,6 +3806,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.7115
 	title = "anomaly.7115.name"
+
 	desc = {
 		# Non-hive empire, non-immortal leader, non-heir leader
 		trigger = {
@@ -3709,6 +3882,7 @@ ship_event = {
 			leader = { save_event_target_as = intemporal_leader }
 		}
 	}
+
 	option = {
 		# Exile leader
 		name = anomaly.7115.a
@@ -3779,6 +3953,7 @@ ship_event = {
 country_event = {
 	id = anomaly.7120
 	title = "anomaly.7120.name"
+
 	desc = {
 		trigger = { is_hive_empire = no }
 		text = "anomaly.7120.desc.regular"
@@ -3787,6 +3962,7 @@ country_event = {
 		trigger = { is_hive_empire = yes }
 		text = "anomaly.7120.desc.hive"
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3798,6 +3974,7 @@ country_event = {
 	location = owner.capital_scope # not in science ship anymore
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -3826,6 +4003,7 @@ ship_event = {
 	immediate = {
 		from = { set_planet_flag = data_diamond_planet }
 	}
+
 	option = {
 		name = anomaly.3145.a
 		hidden_effect = {
@@ -3844,6 +4022,7 @@ ship_event = {
 	show_sound = event_mystic_reveal_light
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.3150.a
 		custom_tooltip = anomaly.3150.a.tooltip
@@ -3927,6 +4106,7 @@ ship_event = {
 	show_sound = event_bad_omen
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.3165.a
 		from = {
@@ -3952,6 +4132,7 @@ ship_event = {
 	id = anomaly.7135
 	title = "anomaly.7135.name"
 	desc = "anomaly.7135.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3969,6 +4150,7 @@ ship_event = {
 			add_modifier = { modifier = "alien_infestation" days = -1 }
 		}
 	}
+
 	option = {
 		name = anomaly.7135.a
 		enable_special_project = {
@@ -3996,6 +4178,7 @@ country_event = {
 	show_sound = event_alien_nature
 	location = event_target:desertling_planet
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.7140.a
 		custom_tooltip = anomaly.7140.a.tooltip
@@ -4113,6 +4296,7 @@ country_event = {
 country_event = {
 	id = anomaly.7145
 	title = "anomaly.7145.name"
+
 	desc = { # If planet is owned
 		trigger = {
 			event_target:desertling_planet = { pop_amount > 0 }
@@ -4130,6 +4314,7 @@ country_event = {
 	show_sound = event_wind_ruins
 	location = event_target:desertling_planet
 	is_triggered_only = yes
+
 	option = { # If planet is not owned
 		name = anomaly.7145.a
 		trigger = {
@@ -4162,6 +4347,7 @@ country_event = {
 country_event = {
 	id = anomaly.7146
 	title = "anomaly.7145.name"
+
 	desc = {
 		trigger = { # If planet is owned
 			event_target:desertling_planet = { pop_amount > 0 }
@@ -4179,6 +4365,7 @@ country_event = {
 	show_sound = event_wind_ruins
 	location = event_target:desertling_planet
 	is_triggered_only = yes
+
 	option = { # If planet is not owned
 		name = anomaly.7145.a
 		trigger = {
@@ -4212,6 +4399,7 @@ country_event = {
 	id = anomaly.7150
 	title = "anomaly.7150.name"
 	desc = "anomaly.7150.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -4222,6 +4410,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	location = event_target:desertling_planet
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.7150.a
 		event_target:desertling_planet = {
@@ -4241,6 +4430,7 @@ country_event = {
 	show_sound = event_ground_battle
 	location = event_target:desertling_planet
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.7155.a
 		owner = { add_resource = { food = 500 } }
@@ -4256,6 +4446,7 @@ ship_event = {
 	show_sound = event_mystic_reveal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.7200.a
 		owner = {
@@ -4305,6 +4496,7 @@ ship_event = {
 	show_sound = event_energy_field
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = INTERESTING
 		from = { add_deposit = d_geocentric_experiment }
@@ -4346,6 +4538,7 @@ ship_event = {
 			}
 		}
 	}
+
 	after = {
 		owner = { add_research_option = tech_mine_dark_matter }
 	}
@@ -4355,6 +4548,7 @@ ship_event = {
 ship_event = {
 	id = anomaly.2000
 	title = "anomaly.2000.name"
+
 	desc = {
 		trigger = { owner = { is_hive_empire = no } }
 		text = anomaly.2000.default.desc
@@ -4374,6 +4568,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.2000.a
 		enable_special_project = {
@@ -4397,6 +4592,7 @@ ship_event = {
 	location = fromfrom
 	desc = "anomaly.2005.desc"
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.2005.a
 		leader = { add_experience = 200 }
@@ -4420,6 +4616,7 @@ ship_event = {
 	show_sound = event_ship_thrusters
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.2006.a
 		leader = { add_experience = 50 }
@@ -4447,6 +4644,7 @@ ship_event = {
 	immediate = {
 		from = { clear_deposits = yes }
 	}
+
 	option = {
 		name = anomaly.2010.a
 		enable_special_project = {
@@ -4477,6 +4675,7 @@ ship_event = {
 	location = fromfrom
 	desc = "anomaly.2015.desc"
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.2015.a
 		leader = { add_experience = 200 }
@@ -4500,6 +4699,7 @@ ship_event = {
 	show_sound = event_ship_thrusters
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = anomaly.2020.a
 		leader = { add_experience = 50 }

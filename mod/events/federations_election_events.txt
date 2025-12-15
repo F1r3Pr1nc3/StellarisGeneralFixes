@@ -41,6 +41,7 @@ country_event = {
 country_event = {
 	id = fedel.2
 	title = fedel.2.name
+
 	desc = {
 		trigger = {
 			is_gestalt = no
@@ -84,6 +85,7 @@ country_event = {
 			set_country_flag = arena_combat_not_participating
 		}
 	}
+
 	option = {
 		name = fedel.2.a
 		trigger = { is_gestalt = no }
@@ -531,6 +533,7 @@ country_event = {
 country_event = {
 	id = fedel.10
 	title = fedel.10.name
+
 	desc = {
 		trigger = {
 			leader = {
@@ -717,6 +720,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = fedel.10.a
 		custom_tooltip = tooltip_arena_won
@@ -731,6 +735,7 @@ country_event = {
 country_event = {
 	id = fedel.15
 	title = fedel.15.name
+
 	desc = {
 		trigger = {
 			leader = {
@@ -866,6 +871,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -890,6 +896,7 @@ country_event = {
 	id = fedel.16
 	title = fedel.16.name
 	diplomatic_title = BLANK_STRING
+
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
@@ -1392,6 +1399,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:winning_country
 		planet_background = event_target:winning_country
@@ -1399,6 +1407,7 @@ country_event = {
 		city_level = event_target:winning_country
 		room = event_target:winning_country
 	}
+
 	option = {
 		name = fedel.16.a
 	}
@@ -1435,6 +1444,7 @@ country_event = {
 country_event = {
 	id = fedel.501
 	title = fedel.501.name
+
 	desc = {
 		trigger = {
 			NOT = { has_country_flag = no_psi_battle }
@@ -1460,9 +1470,11 @@ country_event = {
 	picture = GFX_evt_conclave
 	show_sound = event_whispering
 	is_triggered_only = yes
+
 	abort_trigger = { # incidentally, abort_effect also exists
 		has_country_flag = psi_battle_timer_over
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -1483,6 +1495,7 @@ country_event = {
 			set_country_flag = psi_battle
 		}
 	}
+
 	option = {
 		name = fedel.501.a
 		trigger = {
@@ -1691,6 +1704,7 @@ country_event = {
 country_event = {
 	id = fedel.510
 	title = fedel.510.name
+
 	desc = {
 		trigger = {
 			check_variable = { which = psionic_ability value <= 300 }
@@ -1760,6 +1774,7 @@ country_event = {
 	picture = GFX_evt_psionic_battle
 	show_sound = event_cityscape
 	is_triggered_only = yes
+
 	option = {
 		name = fedel.510.a
 		set_federation_leader = root
@@ -1771,6 +1786,7 @@ country_event = {
 country_event = {
 	id = fedel.515
 	title = fedel.515.name
+
 	desc = {
 		trigger = {
 			has_country_flag = psi_battle
@@ -1845,6 +1861,7 @@ country_event = {
 	picture = GFX_evt_psionic_battle
 	show_sound = event_screams
 	is_triggered_only = yes
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1857,6 +1874,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = fedel.515.a
 		custom_tooltip = psionic_battle_outcome
@@ -1903,6 +1921,7 @@ country_event = {
 country_event = {
 	id = fedel.1501
 	title = fedel.1501.name
+
 	desc = {
 		trigger = { is_subject = no }
 		text = fedel.1501.desc
@@ -1915,6 +1934,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_factions
 	is_triggered_only = yes
+
 	option = {
 		name = "fedel.1501.a"
 		custom_tooltip = "tooltip_thesis_begin"
@@ -2319,6 +2339,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		country_event = { id = fedel.1510 days = 1 } # Tidy up
 	}
@@ -2328,6 +2349,7 @@ country_event = {
 country_event = {
 	id = fedel.1506
 	title = "fedel.1506.name"
+
 	desc = { # For those empires with insufficient researchers
 		trigger = {
 			NOT = { event_target:winning_thesis = { is_same_value = root } }
@@ -2381,6 +2403,7 @@ country_event = {
 	picture = GFX_evt_announcement
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		trigger = {
 			event_target:winning_thesis = { is_same_value = root }
@@ -2520,6 +2543,7 @@ country_event = {
 country_event = {
 	id = fedel.899
 	title = fedel.899.name
+
 	desc = {
 		trigger = { is_subject = no }
 		text = fedel.899.desc
@@ -2539,6 +2563,7 @@ country_event = {
 			set_timed_country_flag = { flag = bid_contender days = @goldenrule_flagtimer }
 		}
 	}
+
 	option = {
 		name = fedel.899.a
 	}
@@ -2692,6 +2717,7 @@ country_event = {
 			set_timed_country_flag = { flag = has_abstained days = @goldenrule_flagtimer }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			federation = {
@@ -2723,6 +2749,7 @@ country_event = {
 		remove_country_flag = bid_contender
 		remove_country_flag = has_abstained
 	}
+
 	option = {
 		name = fedel.903.a
 	}
@@ -2754,6 +2781,7 @@ country_event = {
 	}
 
 	### Invest
+
 	option = {
 		name = fedel.904.a
 		custom_tooltip = fedel.904.a.tooltip
@@ -2821,6 +2849,7 @@ country_event = {
 			modifier = { factor = 5 has_civic = civic_ruthless_competition }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = fedel.905 days = @goldenrule_flagtimer }
@@ -2867,6 +2896,7 @@ country_event = {
 country_event = {
 	id = fedel.906
 	title = fedel.906.name
+
 	desc = {
 		trigger = {
 			federation = { has_federation_flag = winner_decision_invest }
@@ -2889,11 +2919,13 @@ country_event = {
 	diplomatic_title = BLANK_STRING
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:federation_bidding_winner
 		room = event_target:federation_bidding_winner
 		planet_background = event_target:federation_bidding_winner
 	}
+
 	option = {
 		name = MARVELOUS
 		trigger = {
@@ -2961,6 +2993,7 @@ country_event = {
 country_event = {
 	id = fedel.1805
 	title = fedel.1805.name
+
 	desc = {
 		text = fedel.1805.desc
 		trigger = { is_subject = no }
@@ -2973,6 +3006,7 @@ country_event = {
 	picture = GFX_evt_three_sided_deal
 	show_sound = event_default
 	is_triggered_only = yes
+
 	abort_trigger = {
 		has_active_event = { fedel.1815 }
 	}
@@ -3010,6 +3044,7 @@ country_event = {
 country_event = {
 	id = fedel.1815
 	title = fedel.1815.name
+
 	desc = {
 		text = fedel.1815.desc
 		trigger = {
@@ -3024,11 +3059,13 @@ country_event = {
 	picture = GFX_evt_three_sided_deal
 	show_sound = event_default
 	is_triggered_only = yes
+
 	abort_trigger = {
 		has_active_event = { fedel.1825 }
 	}
 
 	inline_script = conclave_federation_challenge_options
+
 	option = {
 		name = fedel.1815.E
 		allow = {
@@ -3110,6 +3147,7 @@ country_event = {
 	picture = GFX_evt_grand_speech
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = fedel.1825.A
 		trigger = { is_same_value = event_target:conclave_winner }

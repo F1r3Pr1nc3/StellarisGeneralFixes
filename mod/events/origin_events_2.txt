@@ -15,6 +15,7 @@ fleet_event = {
 	id = origin.1100
 	title = "origin.1100.name"
 	desc = "origin.1100.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -29,9 +30,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -51,9 +54,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -73,9 +78,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -103,9 +110,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		small_artifact_reward = yes
@@ -166,6 +175,7 @@ country_event = {
 	show_sound = event_energy_field
 	location = event_target:doorstep_gateway
 	is_triggered_only = yes
+
 	option = {
 		name = MARVELOUS
 		owner = {
@@ -264,6 +274,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 		hidden_effect = {
@@ -298,6 +309,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = PECULIAR
 		enable_special_project = {
@@ -334,6 +346,7 @@ country_event = {
 	picture = GFX_evt_satellite_in_orbit
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = CURIOUS
 	}
@@ -355,6 +368,7 @@ country_event = {
 			save_event_target_as = doorstep_gateway
 		}
 	}
+
 	option = {
 		name = INTRIGUING
 		enable_special_project = {
@@ -377,6 +391,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = INTRIGUING
 		hidden_effect = {
@@ -389,6 +404,7 @@ country_event = {
 country_event = {
 	id = origin.1020
 	title = "origin.1020.name"
+
 	desc = {
 		text = "origin.1020.desc"
 		trigger = { is_machine_empire = no }
@@ -405,6 +421,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = INTRIGUING
 		owner = {
@@ -493,6 +510,7 @@ country_event = {
 		}
 		set_country_flag = gateway_swarm
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -502,6 +520,7 @@ country_event = {
 country_event = {
 	id = origin.1030
 	title = "origin.1030.name"
+
 	desc = {
 		text = "origin.1030.desc"
 		trigger = { is_gestalt = no }
@@ -520,6 +539,7 @@ country_event = {
 		has_origin = origin_galactic_doorstep
 		fromfromfrom = { has_fleet_flag = gateway_vermin }
 	}
+
 	option = {
 		name = origin.1030.a
 		hidden_effect = {
@@ -532,6 +552,7 @@ country_event = {
 country_event = {
 	id = origin.1035
 	title = "origin.1035.name"
+
 	desc = {
 		text = "origin.1035.desc"
 		trigger = { is_gestalt = no }
@@ -577,6 +598,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -586,6 +608,7 @@ country_event = {
 country_event = {
 	id = origin.1040
 	title = "origin.1040.name"
+
 	desc = {
 		text = "origin.1040.desc"
 		trigger = { is_gestalt = no }
@@ -602,6 +625,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = TERRIBLE
 		root = {
@@ -639,6 +663,7 @@ country_event = {
 			set_country_flag = gateway_reactivated
 		}
 	}
+
 	option = {
 		name = origin.1050.A
 		if = {
@@ -656,6 +681,7 @@ country_event = {
 			add_tech_progress = { tech = tech_gateway_construction progress = 0.95 }
 		}
 	}
+
 	after = {
 		save_event_target_as = this_country
 		add_timeline_event = {
@@ -678,6 +704,7 @@ country_event = {
 fleet_event = {
 	id = origin.1200
 	title = "origin.1200.name"
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = arc_site_moon }
@@ -700,9 +727,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = ex_gravitas_stage_1 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1200.c
 		small_artifact_reward = yes
@@ -725,9 +754,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = ex_gravitas_stage_2 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1205.a
 		small_artifact_reward = yes
@@ -740,6 +771,7 @@ fleet_event = {
 	id = origin.1210
 	title = "origin.1210.name"
 	desc = "origin.1210.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -755,9 +787,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = ex_gravitas_stage_3 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1210.a
 		small_artifact_reward = yes
@@ -769,6 +803,7 @@ fleet_event = {
 fleet_event = {
 	id = origin.1215
 	title = "origin.1215.name"
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = arc_site_moon }
@@ -790,10 +825,12 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		owner = { remove_country_flag = arc_site_moon remove_country_flag = arc_site_planet }
 	}
+
 	option = {
 		name = AMAZING
 		owner = {
@@ -827,9 +864,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = something_waiting_stage_1 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -851,9 +890,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = something_waiting_stage_2 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1225.a
 		small_artifact_reward = yes
@@ -875,9 +916,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = something_waiting_stage_3 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1230.a
 		small_artifact_reward = yes
@@ -898,9 +941,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		small_artifact_reward = yes
@@ -979,9 +1024,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = buried_deep_stage_1 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1002,9 +1049,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = EXCELLENT
 		small_artifact_reward = yes
@@ -1083,9 +1132,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = in_memoriam_stage_1 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1250.a
 		small_artifact_reward = yes
@@ -1107,9 +1158,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = in_memoriam_stage_2 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1131,9 +1184,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = in_memoriam_stage_3 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1260.a
 		small_artifact_reward = yes
@@ -1154,9 +1209,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1265.a
 		small_artifact_reward = yes
@@ -1235,9 +1292,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = the_last_stand_stage_1 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -1258,9 +1317,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1275.a
 		small_artifact_reward = yes
@@ -1281,9 +1342,11 @@ fleet_event = {
 		from = { set_site_progress_locked = yes }
 		from = { save_event_target_as = the_last_stand_stage_3 }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1280.a
 		small_artifact_reward = yes
@@ -1356,9 +1419,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = PECULIAR
 		small_artifact_reward = yes
@@ -1384,9 +1449,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1290.a
 		small_artifact_reward = yes
@@ -1406,9 +1473,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1295.a
 		small_artifact_reward = yes
@@ -1451,6 +1520,7 @@ fleet_event = {
 			20 = { fleet_event = { id = origin.1325 } }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = origin.1296 }
 	}
@@ -1474,6 +1544,7 @@ fleet_event = {
 			fleet_event = { id = origin.1330 }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = origin.1297 }
 	}
@@ -1492,9 +1563,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1300.a
 		small_artifact_reward = yes
@@ -1515,9 +1588,11 @@ fleet_event = {
 		fromfrom = { set_site_progress_locked = yes }
 		owner = { set_country_flag = dark_secret_tyrant }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1305.a
 		small_artifact_reward = yes
@@ -1537,10 +1612,12 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		owner = { remove_country_flag = dark_secret_tyrant }
 	}
+
 	option = {
 		name = origin.1310.a
 		small_artifact_reward = yes
@@ -1566,9 +1643,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1315.a
 		small_artifact_reward = yes
@@ -1589,9 +1668,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1320.a
 		small_artifact_reward = yes
@@ -1611,9 +1692,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1325.a
 		small_artifact_reward = yes
@@ -1638,9 +1721,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1330.a
 		small_artifact_reward = yes
@@ -1673,9 +1758,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1365.a
 		small_artifact_reward = yes
@@ -1695,9 +1782,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = origin.1370.a
 		small_artifact_reward = yes
@@ -2122,6 +2211,7 @@ country_event = {
 	immediate = {
 		begin_event_chain = { event_chain = "intercepting_history_chain" target = root }
 	}
+
 	option = {
 		name = FASCINATING
 		event_target:fusion_drive_trail = {
@@ -2159,6 +2249,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		hidden_effect = {
@@ -2207,6 +2298,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		owner = {
@@ -2246,6 +2338,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		hidden_effect = {
@@ -2267,6 +2360,7 @@ fleet_event = {
 	id = origin.1351
 	title = "origin.1351.name"
 	desc = "origin.1351.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -2301,6 +2395,7 @@ fleet_event = {
 			clear_global_event_target = benefactors_end_station
 		}
 	}
+
 	option = {
 		name = OK
 		hidden_effect = {
@@ -2327,6 +2422,7 @@ country_event = {
 	location = from
 	event_chain = intercepting_history_chain
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		event_target:benefactor_planet = {
@@ -2374,6 +2470,7 @@ country_event = {
 	immediate = {
 		set_country_flag = origin_shoulders_closure
 	}
+
 	option = {
 		name = origin.1360.a
 		owner = {
@@ -2402,6 +2499,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		clear_global_event_target = benefactor_planet
 		clear_global_event_target = benefactor_homeworld
@@ -2425,6 +2523,7 @@ country_event = {
 	immediate = {
 		begin_event_chain = { event_chain = "relentless_pursuit_chain" target = root }
 	}
+
 	option = {
 		name = OK
 		event_target:fusion_drive_trail = {
@@ -2462,6 +2561,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		hidden_effect = {
@@ -2483,6 +2583,7 @@ fleet_event = {
 	id = origin.1390
 	title = "origin.1390.name"
 	desc = "origin.1390.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -2516,6 +2617,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		owner = {
@@ -2555,6 +2657,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		hidden_effect = {
@@ -2603,6 +2706,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		event_target:mindwipe_cannon = {
@@ -2635,9 +2739,11 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		clear_global_event_target = primitive_relentless_species
 	}
+
 	option = {
 		name = origin.1405.a
 	}
@@ -2656,6 +2762,7 @@ country_event = {
 	immediate = {
 		set_country_flag = origin_shoulders_closure
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -2682,9 +2789,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = DIG
 		small_artifact_reward = yes
@@ -2704,11 +2813,13 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 		clear_global_event_target = relentless_planet
 		clear_global_event_target = relentless_homeworld
 	}
+
 	option = {
 		name = OK
 		small_artifact_reward = yes

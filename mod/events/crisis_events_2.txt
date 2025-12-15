@@ -299,6 +299,7 @@ country_event = {
 			country_event = { id = crisis.1008 }
 		}
 	}
+
 	after = {
 		every_playable_country = {
 			country_event = { id = timeline.67 } # Timeline Unbidden Crisis
@@ -430,6 +431,7 @@ country_event = {
 	show_sound = event_ex_started
 	location = event_target:extradimensional_system
 	is_triggered_only = yes
+
 	after = {
 		begin_event_chain = { event_chain = "extradimensional_invasion_chain" target = root }
 		create_point_of_interest = {
@@ -463,6 +465,7 @@ country_event = {
 			country_event = { id = origin.6130 days = 5 random = 2 }
 		}
 	}
+
 	option = {
 		name = crisis.18.a
 		trigger = {
@@ -578,6 +581,7 @@ country_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_alien_signal
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.1008.a
 		hidden_effect = {
@@ -602,6 +606,7 @@ country_event = {
 			save_event_target_as = extradimensional_system
 		}
 	}
+
 	after = {
 		begin_event_chain = { event_chain = "extradimensional_invasion_chain" target = root }
 		create_point_of_interest = {
@@ -635,6 +640,7 @@ country_event = {
 			country_event = { id = origin.6130 days = 5 random = 2 }
 		}
 	}
+
 	option = {
 		name = crisis.18.a
 		trigger = {
@@ -750,6 +756,7 @@ country_event = {
 	diplomatic_title = BLANK_STRING
 	desc = "crisis.1010.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = exd1
 		room = "extradimensional_blue_room"
@@ -760,6 +767,7 @@ country_event = {
 	immediate = {
 		establish_communications_no_message = event_target:extradimensionals
 	}
+
 	option = {
 		name = crisis.1010.a
 	}
@@ -865,6 +873,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = crisis.1011.a
 	}
@@ -951,6 +960,7 @@ country_event = {
 		remove_point_of_interest = extradimensional_invasion_poi.1
 		set_country_flag = extradimensionals_expunged
 	}
+
 	option = {
 		name = crisis.1013.a
 	}
@@ -973,6 +983,7 @@ country_event = {
 		set_global_flag = extradimensional_first_portal_destroyed
 		remove_point_of_interest = extradimensional_invasion_poi.1
 	}
+
 	option = {
 		name = crisis.1016.a
 	}
@@ -982,6 +993,7 @@ country_event = {
 country_event = {
 	id = crisis.1050
 	title = "TRANSMISSION"
+
 	desc = {
 		text = crisis.1050.desc_01
 		trigger = {
@@ -1036,6 +1048,7 @@ country_event = {
 
 	diplomatic = yes
 	force_open = yes
+
 	picture_event_data = {
 		portrait = exd1
 		room = "extradimensional_blue_room"
@@ -1046,6 +1059,7 @@ country_event = {
 	trigger = {
 		from = { is_country_type = extradimensional }
 	}
+
 	option = {
 		name = crisis.1050.a
 		response_text = crisis.1050.a.response
@@ -1115,6 +1129,7 @@ country_event = {
 country_event = {
 	id = crisis.1051
 	title = "TRANSMISSION"
+
 	desc = {
 		text = crisis.1051.desc_01
 		trigger = {
@@ -1142,6 +1157,7 @@ country_event = {
 
 	diplomatic = yes
 	force_open = yes
+
 	picture_event_data = {
 		portrait = exd2
 		room = "extradimensional_orange_room"
@@ -1152,6 +1168,7 @@ country_event = {
 	trigger = {
 		from = { is_country_type = extradimensional_2 }
 	}
+
 	option = {
 		name = crisis.1051.a
 		response_text = crisis.1051.a.response
@@ -1162,6 +1179,7 @@ country_event = {
 country_event = {
 	id = crisis.1052
 	title = "TRANSMISSION"
+
 	desc = {
 		text = crisis.1052.desc_01
 	}
@@ -1174,6 +1192,7 @@ country_event = {
 
 	diplomatic = yes
 	force_open = yes
+
 	picture_event_data = {
 		portrait = exd3
 		room = "extradimensional_green_room"
@@ -1184,6 +1203,7 @@ country_event = {
 	trigger = {
 		from = { is_country_type = extradimensional_3 }
 	}
+
 	option = {
 		name = crisis.1052.a
 		response_text = crisis.1052.a.response
@@ -1202,9 +1222,11 @@ country_event = {
 		NOT = { has_global_flag = extradimensional_second_portal }
 		endgame_crisis_large_size_trigger = yes
 	}
+
 	mean_time_to_happen = {
 		years = 1
 	}
+
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_3
 		set_crisis_stage_3 = yes
@@ -1533,6 +1555,7 @@ country_event = {
 			establish_communications_no_message = root
 		}
 	}
+
 	option = {
 		name = crisis.1110.a
 		begin_event_chain = {
@@ -1594,6 +1617,7 @@ country_event = {
 	picture = GFX_evt_wormhole
 	show_sound = event_alien_signal
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.1112.a
 		hidden_effect = {
@@ -1608,12 +1632,14 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "crisis.1113.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = exd2
 		room = "extradimensional_orange_room"
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.1113.a
 	}
@@ -1678,6 +1704,7 @@ country_event = {
 	title = "crisis.1116.name"
 	picture = GFX_evt_wormhole
 	show_sound = event_super_explosion
+
 	desc = {
 		text = "crisis.1116.desc.a"
 		trigger = { has_communications = event_target:portal_killer }
@@ -1699,6 +1726,7 @@ country_event = {
 		remove_point_of_interest = extradimensional_invasion_poi.2
 		set_country_flag = extradimensionals_expunged
 	}
+
 	option = {
 		name = crisis.1013.a
 	}
@@ -1721,6 +1749,7 @@ country_event = {
 		set_global_flag = extradimensional_second_portal_destroyed
 		remove_point_of_interest = extradimensional_invasion_poi.2
 	}
+
 	option = {
 		name = crisis.1016.a
 	}
@@ -1739,9 +1768,11 @@ country_event = {
 		is_country_type = extradimensional_2
 		any_country = { is_country_type = extradimensional }
 	}
+
 	mean_time_to_happen = {
 		months = 40
 	}
+
 	immediate = {
 		set_global_flag = extradimensional_third_portal
 		random_country = {
@@ -2070,6 +2101,7 @@ country_event = {
 			establish_communications_no_message = root
 		}
 	}
+
 	option = {
 		name = crisis.1210.a
 		begin_event_chain = {
@@ -2102,12 +2134,14 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "crisis.1211.desc"
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = exd3
 		room = "extradimensional_green_room"
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = crisis.1211.a
 	}
@@ -2172,6 +2206,7 @@ country_event = {
 	title = "crisis.1216.name"
 	picture = GFX_evt_wormhole
 	show_sound = event_super_explosion
+
 	desc = {
 		text = "crisis.1216.desc.a"
 		trigger = { has_communications = event_target:portal_killer }
@@ -2193,6 +2228,7 @@ country_event = {
 		remove_point_of_interest = extradimensional_invasion_poi.3
 		set_country_flag = extradimensionals_expunged
 	}
+
 	option = {
 		name = crisis.1013.a
 	}
@@ -2215,6 +2251,7 @@ country_event = {
 		set_global_flag = extradimensional_third_portal_destroyed
 		remove_point_of_interest = extradimensional_invasion_poi.3
 	}
+
 	option = {
 		name = crisis.1016.a
 	}
@@ -3223,6 +3260,7 @@ country_event = {
 		end_event_chain = "extradimensional_invasion_chain_2"
 		end_event_chain = "extradimensional_invasion_chain_3"
 	}
+
 	option = { # Spiritualist Response
 		name = crisis.1271.a
 		trigger = {
@@ -3313,6 +3351,7 @@ country_event = {
 		trigger = { has_ethic = "ethic_fanatic_xenophile" }
 		add_monthly_resource_mult = { resource = unity value = @tier5unityreward }
 	}
+
 	after = {
 		if = {
 			limit = { has_origin = origin_fear_of_the_dark }
@@ -3681,9 +3720,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_2
 		set_crisis_stage_2 = yes
@@ -3710,9 +3751,11 @@ country_event = {
 			galaxy_percentage > 0.15
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_3
 		set_crisis_stage_3 = yes
@@ -3742,9 +3785,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_3
 		set_crisis_stage_3 = yes
@@ -3771,9 +3816,11 @@ country_event = {
 			galaxy_percentage > 0.30
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_final
 		set_crisis_stage_4 = yes
@@ -3800,9 +3847,11 @@ country_event = {
 			galaxy_percentage > 0.05
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_2
 		set_crisis_stage_2 = yes
@@ -3817,6 +3866,7 @@ country_event = {
 	picture = GFX_evt_surreal_visions
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 		add_relic = r_unbidden_warlock

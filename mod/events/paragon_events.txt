@@ -82,9 +82,11 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
+
 	after = {
 		hidden_effect = {
 			clear_global_event_target = beholder_planet
@@ -106,6 +108,7 @@ ship_event = {
 	trigger = {
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.3.a
 		hidden_effect = {
@@ -142,6 +145,7 @@ country_event = {
 			add_modifier = { modifier = the_beholder_presapients_protected }
 		}
 	}
+
 	option = {
 		name = paragon.4.a
 		trigger = { is_militarist = no is_xenophobe = no }
@@ -215,12 +219,14 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.5.a
 		hidden_effect = {
 			country_event = { id = paragon.25 days = 20 random = 20 }
 		}
 	}
+
 	after = {
 		add_resource = { society_research = 2000 }
 	}
@@ -242,9 +248,11 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = EXCELLENT
 	}
+
 	after = {
 		enable_special_project = {
 			name = WHISPER_TEMPLE_STUDY
@@ -269,6 +277,7 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.11.a
 		hidden_effect = {
@@ -293,9 +302,11 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.15.a
 	}
+
 	after = {
 		enable_special_project = {
 			name = WHISPER_TEMPLE_STUDY
@@ -320,6 +331,7 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.20.a
 		hidden_effect = {
@@ -344,6 +356,7 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.25.a
 		hidden_effect = {
@@ -367,6 +380,7 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = FASCINATING
 		enable_special_project = {
@@ -392,6 +406,7 @@ country_event = {
 		exists = event_target:beholder_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.30.a
 		allow = {
@@ -454,6 +469,7 @@ country_event = {
 	location = event_target:beholder_planet
 	is_triggered_only = yes
 	event_window_type = leader_recruit
+
 	picture_event_data = {
 		portrait = event_target:beholder_leader
 	}
@@ -526,6 +542,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = { # HIRE
 		name = HIRE
 		tag = hire_leader
@@ -626,6 +643,7 @@ country_event = {
 		response_text = paragon.1.c.response
 		is_dialog_only = yes
 	}
+
 	after = {
 		hidden_effect = {
 			clear_global_event_target = beholder_planet
@@ -885,12 +903,15 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		room = paragon_azaryn_room
 	}
+
 	immediate = {
 		set_country_flag = azaryn_chain_started
 	}
+
 	option = {
 		name = paragon.202.a # Hello?
 		response_text = paragon.202.a.response
@@ -899,6 +920,7 @@ country_event = {
 	option = {
 		name = paragon.202.b # Odd. Terminate the comms.
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = paragon.204 days = 120 random = 90 }
@@ -920,9 +942,11 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.204.a # Trace it
 		enable_special_project = { name = UNKNOWN_COMMS_PROJECT }
@@ -944,6 +968,7 @@ country_event = {
 	trigger = {
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.206.a
 		hidden_effect = {
@@ -966,15 +991,18 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	immediate = {
 		hidden_effect = {
 			set_variable = { which = variable_azaryn_score value = 0 }
 		}
 	}
+
 	option = {
 		name = paragon.208.a # Who are you?
 		set_country_flag = flag_azaryn_option_intro_done
@@ -1012,6 +1040,7 @@ country_event = {
 country_event = {
 	id = paragon.210
 	title = "paragon.210.name"
+
 	desc = {
 		trigger = { has_country_flag = flag_azaryn_option_virus }
 		text = paragon.210.desc
@@ -1032,16 +1061,19 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.210.a # Go ahead.
 		hidden_effect = {
 			country_event = { id = paragon.212 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = flag_azaryn_option_virus
@@ -1054,6 +1086,7 @@ country_event = {
 country_event = {
 	id = paragon.212
 	title = "paragon.212.name"
+
 	desc = {
 		trigger = {
 			NOT = { has_country_flag = flag_azaryn_option_intro_done }
@@ -1076,10 +1109,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.212.a # What is Azathea?
 		response_text = paragon.212.a.response
@@ -1101,6 +1136,7 @@ country_event = {
 	option = {
 		name = paragon.212.d # Until next time.
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = flag_azaryn_option_intro_done
@@ -1121,6 +1157,7 @@ country_event = {
 	trigger = {
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.214.a
 		add_resource = { society_research = 2000 }
@@ -1147,10 +1184,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.216.a # We would.
 		hidden_effect = {
@@ -1164,6 +1203,7 @@ country_event = {
 			change_variable = { which = variable_azaryn_score value = -1 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = paragon.218 }
@@ -1175,6 +1215,7 @@ country_event = {
 country_event = {
 	id = paragon.218
 	title = "paragon.218.name"
+
 	desc = {
 		trigger = { has_country_flag = flag_azaryn_option_take_life }
 		text = paragon.218.desc_yes
@@ -1197,10 +1238,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = { # Very well. Goodbye.
 		name = paragon.218.a
 		enable_special_project = { name = AZARYNS_RAFFLESIA_PROJECT }
@@ -1219,6 +1262,7 @@ country_event = {
 	trigger = {
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.220.a # Open comms.
 		add_resource = { society_research = 5000 }
@@ -1244,10 +1288,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = { # We would.
 		name = paragon.222.a
 		hidden_effect = {
@@ -1261,6 +1307,7 @@ country_event = {
 			change_variable = { which = variable_azaryn_score value = -1 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = paragon.224 }
@@ -1273,6 +1320,7 @@ country_event = {
 country_event = {
 	id = paragon.224
 	title = "paragon.224.name"
+
 	desc = {
 		trigger = { has_country_flag = flag_azaryn_option_sacrifice }
 		text = paragon.224.desc_yes
@@ -1295,10 +1343,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = { # If the moment allows.
 		name = paragon.224.a
 		hidden_effect = {
@@ -1312,6 +1362,7 @@ country_event = {
 			change_variable = { which = variable_azaryn_score value = -1 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = paragon.226 }
@@ -1324,6 +1375,7 @@ country_event = {
 country_event = {
 	id = paragon.226
 	title = "paragon.226.name"
+
 	desc = {
 		trigger = { has_country_flag = flag_azaryn_option_hesitate }
 		text = paragon.226.desc_no # switched places with desc_yes below, as they are mixed up in loc
@@ -1346,13 +1398,16 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_3_buds
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = GOODBYE
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = paragon.228 days = 60 }
@@ -1397,6 +1452,7 @@ country_event = {
 	}
 
 	event_window_type = leader_recruit
+
 	picture_event_data = {
 		portrait = event_target:azaryn_leader
 		room = paragon_azaryn_room
@@ -1469,6 +1525,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = { # What exactly is astrocreation?
 		trigger = {
 			NOT = { has_country_flag = flag_azaryn_what_is_astrocreation }
@@ -1556,6 +1613,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = flag_azaryn_what_is_astrocreation
@@ -1568,6 +1626,7 @@ country_event = {
 country_event = {
 	id = paragon.230
 	title = "paragon.230.name"
+
 	desc = {
 		trigger = {
 			check_variable = { which = variable_azaryn_score value >= 4 }
@@ -1592,15 +1651,18 @@ country_event = {
 	is_triggered_only = yes
 	diplomatic = yes
 	diplomatic_title = BLANK_STRING
+
 	picture_event_data = {
 		portrait = event_target:azaryn_leader
 		room = paragon_azaryn_room
 	}
 
 	picture = GFX_leader_recruitment_bg_renowned
+
 	option = {
 		name = EXCELLENT
 	}
+
 	after = {
 		create_message = {
 			type = MESSAGE_RECRUITED_LEADER
@@ -1654,9 +1716,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.232.a
 	}
@@ -1680,9 +1744,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.235.a
 	}
@@ -1705,10 +1771,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = paragon_azaryn_no_buds
 		room = paragon_azaryn_room
 	}
+
 	immediate = {
 		hidden_effect = {
 			event_target:azaryn_ship = {
@@ -1723,6 +1791,7 @@ country_event = {
 			set_country_flag = million_souls_achievement
 		}
 	}
+
 	option = {
 		name = paragon.240.a
 		hidden_effect = {
@@ -1747,14 +1816,17 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	immediate = {
 		hidden_effect = {
 			set_country_flag = azaryn_dead
 		}
 	}
+
 	option = {
 		name = paragon.241.a
 		custom_tooltip = paragon.241.a.custom_tooltip
@@ -1938,6 +2010,7 @@ planet_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:azaryn_leader = {
@@ -2000,6 +2073,7 @@ country_event = {
 		has_paragon_dlc = yes
 		exists = event_target:azaryn_leader
 	}
+
 	option = {
 		name = paragon.260.a
 		enable_special_project = { name = NUCLEUS_SAMPLE_STOLEN location = from }
@@ -2028,10 +2102,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:azaryn_leader
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.261.a
 		add_modifier = { modifier = pheromone_cocktail_best days = 999 }
@@ -2069,9 +2145,11 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 	}
+
 	after = {
 		switch = {
 			trigger = has_technology
@@ -2104,6 +2182,7 @@ country_event = {
 		exists = event_target:nucleus_building_planet
 		has_paragon_dlc = yes
 	}
+
 	option = {
 		name = paragon.270.a
 		add_resource = {
@@ -2140,10 +2219,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:azaryn_leader
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.272.a
 		hidden_effect = {
@@ -2167,10 +2248,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:azaryn_leader
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.273.a
 		if = {
@@ -2207,6 +2290,7 @@ country_event = {
 	immediate = {
 		add_modifier = { modifier = nucleus_sample_boils years = 1 }
 	}
+
 	option = {
 		name = paragon.275.a
 		hidden_effect = {
@@ -2214,6 +2298,7 @@ country_event = {
 		}
 		custom_tooltip = paragon.270.b.custom_tooltip # Might leave empire
 	}
+
 	after = {
 		while = {
 			count = 5
@@ -2256,13 +2341,16 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:azaryn_leader
 		room = paragon_azaryn_room
 	}
+
 	option = {
 		name = paragon.280.a
 	}
+
 	after = {
 		add_resource = { energy = -1000 }
 	}
@@ -3207,12 +3295,14 @@ country_event = {
 	picture = GFX_evt_coronation
 	show_sound = event_factions
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.551.a
 		add_modifier = { modifier = paragon_death_public_funeral years = 5 }
@@ -3229,12 +3319,14 @@ country_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.552.a
 		add_modifier = { modifier = paragon_death_private_funeral years = 5 }
@@ -3251,12 +3343,14 @@ country_event = {
 	picture = GFX_evt_news_room
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.553.a
 		add_modifier = { modifier = paragon_death_good_tidings years = 5 }
@@ -3273,12 +3367,14 @@ country_event = {
 	picture = GFX_evt_society_research
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.554.a
 		add_modifier = { modifier = paragon_death_pragmatic_approach years = 5 }
@@ -3295,12 +3391,14 @@ country_event = {
 	picture = GFX_evt_coronation
 	show_sound = event_factions
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.555.a
 		add_modifier = { modifier = paragon_death_harmonious_passing years = 5 }
@@ -3317,12 +3415,14 @@ country_event = {
 	picture = GFX_evt_space_funeral
 	show_sound = event_ship_thrusters
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.556.a
 		add_modifier = { modifier = paragon_death_military_funeral years = 5 }
@@ -3339,12 +3439,14 @@ country_event = {
 	picture = GFX_evt_board_meeting
 	show_sound = event_administrative_work
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.557.a
 		add_modifier = { modifier = paragon_death_foundation_peace years = 10 }
@@ -3361,12 +3463,14 @@ country_event = {
 	picture = GFX_evt_coronation
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.558.a
 		add_modifier = { modifier = paragon_death_reignited_traditions years = 5 }
@@ -3383,12 +3487,14 @@ country_event = {
 	picture = GFX_evt_ship_travel
 	show_sound = event_ship_thrusters
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.559.a
 		add_modifier = { modifier = paragon_death_to_the_stars years = 5 }
@@ -3405,12 +3511,14 @@ country_event = {
 	picture = GFX_evt_grand_speech
 	show_sound = evn_ove_grand_speech
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.560.a
 		add_modifier = { modifier = paragon_death_towering_memorial years = 10 }
@@ -3427,12 +3535,14 @@ country_event = {
 	picture = GFX_evt_obelisk_tourists
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.561.a
 		add_modifier = { modifier = paragon_death_name_wall years = 5 }
@@ -3449,12 +3559,14 @@ country_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_conversation
 	is_triggered_only = yes
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.562.a
 		add_modifier = { modifier = paragon_death_landmark_building years = 5 }
@@ -3478,12 +3590,14 @@ country_event = {
 			save_event_target_as = burial_planet
 		}
 	}
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.563.a
 		event_target:burial_planet = {
@@ -3499,6 +3613,7 @@ country_event = {
 	id = paragon.570
 	title = "paragon.570.name"
 	desc = "paragon.570.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -3512,12 +3627,14 @@ country_event = {
 	trigger = {
 		is_machine_empire = yes
 	}
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.570.a
 		add_modifier = { modifier = paragon_death_virtual_advisors years = 5 }
@@ -3538,12 +3655,14 @@ country_event = {
 	trigger = {
 		is_hive_empire = yes
 	}
+
 	after = {
 		# Clean up the clone since we aren't using it anymore
 		from = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = paragon.571.a
 		if = {
@@ -3810,9 +3929,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1000.a
 		custom_tooltip = paragon_leader_dismissed_tooltip
@@ -3851,9 +3972,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1005.a
 		owner = {
@@ -3906,9 +4029,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1010.a
 		owner = {
@@ -3942,9 +4067,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1015.a
 		owner = {
@@ -3974,9 +4101,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1020.a
 		add_experience = 5000
@@ -4004,9 +4133,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1025.a
 		add_experience = 1000
@@ -4058,9 +4189,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1030.a
 		owner = {
@@ -4100,9 +4233,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1035.a
 		owner = {
@@ -4144,9 +4279,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1040.a
 		owner = {
@@ -4178,9 +4315,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1045.a
 		owner = {
@@ -4236,9 +4375,11 @@ leader_event = {
 
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	option = {
 		name = paragon.1050.a
 		owner = {

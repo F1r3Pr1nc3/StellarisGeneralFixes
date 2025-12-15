@@ -2569,17 +2569,10 @@ country_event = {
 			planet_event = { id = game_start.21 days = 120 random = 40 } # Upgrade colony shelter on additional colonies.
 			planet_event = { id = game_start.22 days = 180 random = 60 } # Set up additional buildings (mines, farms, power plants)
 			planet_event = { id = game_start.23 days = 360 random = 90 } # Add additional pops
-			starbase = {
-				if = {
-					limit = { has_starbase_size < starbase_starhold }
-					set_starbase_size = starbase_starhold
-				}
-				set_starbase_module = { slot = 1 module = shipyard }
-				set_starbase_module = { slot = 2 module = shipyard }
-				set_starbase_module = { slot = 3 module = shipyard }
-			}
+			starbase = { inline_script = "marauder/create_marauder_shipyard" }
 		}
 	}
+
 	after = {
 		if = {
 			limit = { used_naval_capacity_percent < 0.75 }
@@ -2652,6 +2645,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = { # Assign leader to fleet
 		if = {
 			limit = {
@@ -3178,6 +3172,7 @@ country_event = {
 			destroy_country = yes
 		}
 	}
+
 	after = {
 		clear_global_event_target = marauders_garrison_1
 	}

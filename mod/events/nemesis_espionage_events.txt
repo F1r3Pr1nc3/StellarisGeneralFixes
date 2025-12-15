@@ -66,6 +66,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -83,6 +84,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -100,6 +102,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = OK
 	}
@@ -118,6 +121,7 @@ country_event = {
 		exists = from.target
 		is_xenophobe = yes
 	}
+
 	option = {
 		name = SCUM
 	}
@@ -135,6 +139,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -152,6 +157,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -209,6 +215,7 @@ country_event = {
 country_event = {
 	id = espionage.21
 	title = "espionage.21.name"
+
 	desc = {
 		trigger = {
 			from.target = { current_awareness_level < high }
@@ -230,6 +237,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -248,6 +256,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -257,6 +266,7 @@ country_event = {
 country_event = {
 	id = espionage.23
 	title = "espionage.23.name"
+
 	desc = {
 		trigger = {
 			from.target = { current_awareness_level < high }
@@ -278,6 +288,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -287,6 +298,7 @@ country_event = {
 country_event = {
 	id = espionage.24
 	title = "espionage.21.name"
+
 	desc = {
 		trigger = {
 			from.target = { current_awareness_level < high }
@@ -308,6 +320,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = SCUM
 	}
@@ -317,6 +330,7 @@ country_event = {
 country_event = {
 	id = espionage.25
 	title = "espionage.21.name"
+
 	desc = {
 		trigger = {
 			from.target = { current_awareness_level < high }
@@ -338,6 +352,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = GOOD
 	}
@@ -347,6 +362,7 @@ country_event = {
 country_event = {
 	id = espionage.26
 	title = "espionage.21.name"
+
 	desc = {
 		trigger = {
 			from.target = { current_awareness_level < high }
@@ -368,6 +384,7 @@ country_event = {
 	trigger = {
 		exists = from.target
 	}
+
 	option = {
 		name = OK
 	}
@@ -466,6 +483,7 @@ country_event = {
 country_event = {
 	id = espionage.1001
 	title = espionage.1001.name
+
 	desc = {
 		text = espionage.1001.desc.network
 		trigger = { has_active_spynetwork = yes }
@@ -482,6 +500,7 @@ country_event = {
 	trigger = {
 		exists = event_target:disavowed_agent_country
 	}
+
 	option = { # Ignore
 		name = espionage.1001.a
 		hidden_effect = {
@@ -508,6 +527,7 @@ country_event = {
 			country_event = { id = espionage.1020 days = 30 random = 5 }
 		}
 	}
+
 	after = {
 		begin_event_chain = { event_chain = operative_resurfaces_chain target = root }
 		hidden_effect = {
@@ -530,6 +550,7 @@ country_event = {
 		exists = event_target:disavowed_agent_country
 		has_event_chain = operative_resurfaces_chain
 	}
+
 	option = { # Ignore
 		name = espionage.1005.a
 		hidden_effect = {
@@ -636,6 +657,7 @@ country_event = {
 		exists = event_target:disavowed_agent_country
 		has_event_chain = operative_resurfaces_chain
 	}
+
 	option = {
 		name = GOOD
 		end_event_chain = operative_resurfaces_chain
@@ -646,6 +668,7 @@ country_event = {
 country_event = {
 	id = espionage.1012
 	title = espionage.1012.name
+
 	desc = {
 		text = espionage.1012.desc.official
 		trigger = { exists = event_target:disavowed_agent_official }
@@ -681,6 +704,7 @@ country_event = {
 			add_opinion_modifier = { who = root modifier = opinion_disavowed_agent_caught }
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		event_target:disavowed_agent_country = {
@@ -693,6 +717,7 @@ country_event = {
 			add_opinion_modifier = { who = root modifier = opinion_disavowed_agent_caught }
 		}
 	}
+
 	after = {
 		end_event_chain = operative_resurfaces_chain
 	}
@@ -712,6 +737,7 @@ country_event = {
 		exists = event_target:disavowed_agent_country
 		has_event_chain = operative_resurfaces_chain
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:disavowed_agent_country = {
@@ -780,6 +806,7 @@ country_event = {
 country_event = {
 	id = espionage.1016
 	title = espionage.1016.name
+
 	desc = {
 		text = espionage.1016.desc.network
 		trigger = { has_active_spynetwork = yes }
@@ -798,6 +825,7 @@ country_event = {
 		exists = event_target:disavowed_agent_country
 		has_event_chain = operative_resurfaces_chain
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		end_event_chain = operative_resurfaces_chain
@@ -818,6 +846,7 @@ country_event = {
 		exists = event_target:disavowed_agent_country
 		has_event_chain = operative_resurfaces_chain
 	}
+
 	option = {
 		name = espionage.1017.a
 		if = {
@@ -931,6 +960,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = GOOD
 		switch = {
@@ -990,6 +1020,7 @@ country_event = {
 		exists = event_target:disavowed_agent_country
 		has_event_chain = operative_resurfaces_chain
 	}
+
 	option = {
 		name = espionage.1022.a
 		random_spynetwork = {
@@ -1070,6 +1101,7 @@ country_event = {
 			2 = { set_country_flag = vividsight_4yr } # Redundant flag as far as event script is concerned, but useful for debugging
 		}
 	}
+
 	option = { # Embrace notoriety
 		name = espionage.1030.a
 		random_spynetwork = {
@@ -1129,6 +1161,7 @@ country_event = {
 country_event = {
 	id = espionage.1040
 	title = espionage.1040.name
+
 	desc = {
 		text = espionage.1040.desc.regular
 		trigger = {
@@ -1215,6 +1248,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = { # as random event
 		name = EXCELLENT
 		trigger = {
@@ -1286,6 +1320,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_country_flag = espionage_caught_spies
 		remove_country_flag = espionage_caught_saboteurs
@@ -1342,6 +1377,7 @@ country_event = {
 		}
 		set_timed_country_flag = { flag = recently_received_finderskeepers years = 7 }
 	}
+
 	option = {
 		name = EXCELLENT
 		root = {
@@ -1357,6 +1393,7 @@ country_event = {
 country_event = {
 	id = espionage.1060
 	title = espionage.1060.name
+
 	desc = {
 		trigger = { is_megacorp = no }
 		text = espionage.1060.desc
@@ -1408,6 +1445,7 @@ country_event = {
 		}
 		set_timed_country_flag = { flag = recently_dropped_finderskeepers years = 22 }
 	}
+
 	option = { # Accept the loss
 		name = {
 			trigger = {
@@ -1507,6 +1545,7 @@ country_event = {
 country_event = {
 	id = espionage.1070
 	title = espionage.1070.name
+
 	desc = {
 		text = espionage.1070.desc.identified
 		trigger = {
@@ -1600,6 +1639,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = { # Keep quiet (known infiltrator)
 		name = espionage.1070.a
 		trigger = { has_country_flag = hostile_infiltrator_identified@from }
@@ -1851,6 +1891,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		remove_country_flag = hostile_infiltrator_identified@from
 	}
@@ -1860,6 +1901,7 @@ country_event = {
 country_event = {
 	id = espionage.1071
 	title = espionage.1071.name
+
 	desc = {
 		text = espionage.1071.desc
 		trigger = {
@@ -1887,6 +1929,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = {
 			text = CURSES
@@ -1947,6 +1990,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = {
 			text = UNFORTUNATE
@@ -2031,6 +2075,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = CURSES
 		tooltip = {
@@ -2254,6 +2299,7 @@ country_event = {
 country_event = {
 	id = espionage.1081
 	title = espionage.1081.name
+
 	desc = {
 		text = espionage.1081.desc
 		trigger = {
@@ -2290,6 +2336,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = { # Indignation, including IF the plotter is an ally
 		name = {
 			text = espionage.1081.a
@@ -2398,6 +2445,7 @@ country_event = {
 		}
 		ai_chance = { factor = 2 }
 	}
+
 	after = {
 		remove_country_flag = insidious_plot_samecountry
 		event_target:insidious_plot_country = {
@@ -2410,6 +2458,7 @@ country_event = {
 country_event = {
 	id = espionage.1082
 	title = espionage.1082.name
+
 	desc = {
 		text = espionage.1082.desc
 		trigger = {
@@ -2439,6 +2488,7 @@ country_event = {
 			leader = { save_event_target_as = insidious_plot_spymaster }
 		}
 	}
+
 	option = { # Cautious indignation
 		name = espionage.1082.a
 		if = {
@@ -2515,6 +2565,7 @@ country_event = {
 		name = espionage.1082.b
 		ai_chance = { factor = 2 }
 	}
+
 	after = {
 		remove_country_flag = insidious_plot_samecountry
 	}
@@ -2524,6 +2575,7 @@ country_event = {
 country_event = {
 	id = espionage.1085
 	title = espionage.1085.name
+
 	desc = {
 		text = espionage.1085.desc
 		trigger = {
@@ -2545,6 +2597,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = { # Non-Federation ally response
 		name = CURIOUS
 		trigger = {

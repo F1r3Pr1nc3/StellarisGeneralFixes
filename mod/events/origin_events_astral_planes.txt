@@ -78,6 +78,7 @@ country_event = {
 	picture = GFX_evt_astral_rift
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = ONSCREEN
 		country_event = { id = astral_planes.2110 }
@@ -90,12 +91,14 @@ country_event = {
 	title = astral_planes.2110.name
 	desc = astral_planes.2110.desc
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = END_TRANSMISSION
 	}
@@ -110,6 +113,7 @@ planet_event = {
 	show_sound = event_finding_loot
 	location = this
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		create_archaeological_site = riftworld_digsite
@@ -129,9 +133,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = astral_planes.2125.a
 	}
@@ -150,9 +156,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = astral_planes.2130.a
 	}
@@ -171,9 +179,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = FASCINATING
 		small_artifact_reward = yes
@@ -183,6 +193,7 @@ fleet_event = {
 fleet_event = {
 	id = astral_planes.2140
 	title = astral_planes.2140.name
+
 	desc = {
 		trigger = {
 			controller = {
@@ -232,9 +243,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = {
 			trigger = {

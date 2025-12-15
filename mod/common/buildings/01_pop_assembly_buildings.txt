@@ -6,10 +6,12 @@ building_robot_assembly_plant = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		OR = {
@@ -33,9 +35,11 @@ building_robot_assembly_plant = {
 		}
 		NOT = { has_modifier = resort_colony }
 	}
+
 	convert_to = {
 		building_machine_assembly_plant
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -48,9 +52,11 @@ building_robot_assembly_plant = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_robot_assembly_complex
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -74,10 +80,12 @@ building_robot_assembly_plant = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/roboticist_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -137,6 +145,7 @@ building_robot_assembly_plant = {
 		}
 		planet_jobs_upkeep_mult = -0.05
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -146,6 +155,7 @@ building_robot_assembly_plant = {
 			energy = @b2_upkeep
 		}
 	}
+
 	prerequisites = {
 		"tech_robotic_workers"
 	}
@@ -156,10 +166,12 @@ building_robot_assembly_complex = {
 	base_buildtime = @b3_time
 	can_build = no
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		OR = {
@@ -182,12 +194,15 @@ building_robot_assembly_complex = {
 			}
 		}
 	}
+
 	convert_to = {
 		building_machine_assembly_complex
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -211,10 +226,12 @@ building_robot_assembly_complex = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/roboticist_add
 		AMOUNT = @building_static_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -274,6 +291,7 @@ building_robot_assembly_complex = {
 		}
 		planet_jobs_upkeep_mult = -0.05
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -285,6 +303,7 @@ building_robot_assembly_complex = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
+
 	prerequisites = {
 		tech_robot_assembly_complex
 	}
@@ -299,10 +318,12 @@ building_machine_assembly_plant = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -316,9 +337,11 @@ building_machine_assembly_plant = {
 			has_modifier = resort_colony
 		}
 	}
+
 	convert_to = {
 		building_robot_assembly_plant
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -331,6 +354,7 @@ building_machine_assembly_plant = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -344,10 +368,12 @@ building_machine_assembly_plant = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/roboticist_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -361,6 +387,7 @@ building_machine_assembly_plant = {
 		}
 		auto_mod_monthly_add = 200
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -370,9 +397,11 @@ building_machine_assembly_plant = {
 			energy = @b1_upkeep
 		}
 	}
+
 	upgrades = {
 		building_machine_assembly_complex
 	}
+
 	prerequisites = {
 	}
 }
@@ -381,10 +410,12 @@ building_machine_assembly_complex = {
 	base_buildtime = @b3_time
 	can_build = no
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -398,12 +429,15 @@ building_machine_assembly_complex = {
 			has_modifier = resort_colony
 		}
 	}
+
 	convert_to = {
 		building_robot_assembly_complex
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -417,10 +451,12 @@ building_machine_assembly_complex = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/roboticist_add
 		AMOUNT = @building_static_jobs
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -434,6 +470,7 @@ building_machine_assembly_complex = {
 		}
 		auto_mod_monthly_add = 400
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -445,6 +482,7 @@ building_machine_assembly_complex = {
 			rare_crystals = @b3_rare_upkeep
 		}
 	}
+
 	prerequisites = {
 		tech_mega_assembly
 	}
@@ -458,10 +496,12 @@ building_spawning_pool = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -472,6 +512,7 @@ building_spawning_pool = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -481,10 +522,12 @@ building_spawning_pool = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/spawning_drone_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -508,6 +551,7 @@ building_spawning_pool = {
 		}
 		job_augmentor_drone_add = 200
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -517,12 +561,15 @@ building_spawning_pool = {
 			energy = 2
 		}
 	}
+
 	convert_to = {
 		building_offspring_nest
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	triggered_desc = {
 		text = spawning_pool_tooltip
 	}
@@ -532,10 +579,12 @@ building_offspring_nest = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_origin = origin_progenitor_hive }
@@ -544,6 +593,7 @@ building_offspring_nest = {
 			owner = { is_ai = no }
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		NOT = { owner = { has_origin = origin_progenitor_hive } }
@@ -556,12 +606,15 @@ building_offspring_nest = {
 		script = jobs/spawning_drone_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	convert_to = {
 		building_spawning_pool
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -569,6 +622,7 @@ building_offspring_nest = {
 		}
 		job_augmentor_drone_add = 200
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -578,6 +632,7 @@ building_offspring_nest = {
 			energy = 2
 		}
 	}
+
 	triggered_desc = { # Vfix
 		trigger = {
 			has_owner = yes
@@ -601,10 +656,12 @@ building_necrophage_elevation_chamber = {
 	position_priority = 100
 	skip_automation_upgrading = yes # colony automation will not try to upgrade this
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	desc = {
 		trigger = {
 			NAND = {
@@ -621,6 +678,7 @@ building_necrophage_elevation_chamber = {
 		}
 		text = building_necrophage_elevation_chamber_desc_hive
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -632,6 +690,7 @@ building_necrophage_elevation_chamber = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		custom_tooltip = {
@@ -653,6 +712,7 @@ building_necrophage_elevation_chamber = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -671,6 +731,7 @@ building_necrophage_elevation_chamber = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		job_necro_apprentice_add = 100
 	}
@@ -684,6 +745,7 @@ building_necrophage_elevation_chamber = {
 		potential = { organic_pops_last_month_growth >= 2 }
 		job_necro_apprentice_add = 100
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -693,11 +755,14 @@ building_necrophage_elevation_chamber = {
 			energy = @b1_upkeep
 		}
 	}
+
 	upgrades = {
 		building_necrophage_house_of_apotheosis
 	}
+
 	prerequisites = {
 	}
+
 	triggered_desc = {
 		text = necrophage_elevation_timer_tooltip
 		trigger = { has_planet_flag = necrophage_elevation_timer }
@@ -715,10 +780,12 @@ building_necrophage_house_of_apotheosis = {
 	can_build = no
 	position_priority = 100
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	desc = {
 		trigger = {
 			NAND = {
@@ -735,6 +802,7 @@ building_necrophage_house_of_apotheosis = {
 		}
 		text = building_necrophage_house_of_apotheosis_desc_hive
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -747,6 +815,7 @@ building_necrophage_house_of_apotheosis = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -756,6 +825,7 @@ building_necrophage_house_of_apotheosis = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -774,9 +844,11 @@ building_necrophage_house_of_apotheosis = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		job_necro_apprentice_add = 600
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_hive
@@ -785,6 +857,7 @@ building_necrophage_house_of_apotheosis = {
 		}
 		job_necro_apprentice_add = 400
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -796,13 +869,16 @@ building_necrophage_house_of_apotheosis = {
 			exotic_gases = @b2_rare_upkeep
 		}
 	}
+
 	prerequisites = {
 		tech_glandular_acclimation
 	}
+
 	show_tech_unlock_if = {
 		has_origin = origin_necrophage
 		has_trait = trait_necrophage
 	}
+
 	triggered_desc = {
 		text = necrophage_elevation_timer_tooltip
 		trigger = { has_planet_flag = necrophage_elevation_timer }
@@ -816,6 +892,7 @@ building_necrophage_house_of_apotheosis = {
 building_clone_vats = {
 	base_buildtime = @b1_time
 	category = pop_assembly
+
 	planet_limit = {
 		base = 1
 		modifier = {
@@ -837,10 +914,12 @@ building_clone_vats = {
 			add = 1
 		}
 	}
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		NOT = { has_modifier = resort_colony }
@@ -859,9 +938,11 @@ building_clone_vats = {
 			free_jobs <= 0
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_ai = yes } # Vfix opt
@@ -870,6 +951,7 @@ building_clone_vats = {
 		free_housing <= 0
 		free_jobs <= 0
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -886,6 +968,7 @@ building_clone_vats = {
 		}
 		auto_mod_monthly_add = 200
 	}
+
 	triggered_planet_pop_group_modifier_for_all = {
 		potential = {
 			exists = owner # Vfix
@@ -893,6 +976,7 @@ building_clone_vats = {
 		}
 		bonus_pop_growth = 1.5
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -900,6 +984,7 @@ building_clone_vats = {
 		}
 		fake_pop_growth_mod = 1.5
 	}
+
 	triggered_planet_pop_group_modifier_for_all = {
 		potential = {
 			exists = owner # Vfix
@@ -910,6 +995,7 @@ building_clone_vats = {
 		}
 		bonus_pop_growth = 3
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -920,6 +1006,7 @@ building_clone_vats = {
 		}
 		fake_pop_growth_mod = 3
 	}
+
 	triggered_planet_pop_group_modifier_for_all = {
 		potential = {
 			exists = owner # Vfix
@@ -927,6 +1014,7 @@ building_clone_vats = {
 		}
 		bonus_pop_growth = 4.5
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -954,6 +1042,7 @@ building_clone_vats = {
 		}
 		clone_soldiers_sustained = @clones_sustained_low
 	}
+
 	resources = {
 		category = planet_buildings_clone_vats
 		# Base cost
@@ -1023,6 +1112,7 @@ building_clone_vats = {
 			alloys = @b2_alloy_upkeep
 		}
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -1031,6 +1121,7 @@ building_clone_vats = {
 		planet_jobs_trade_produces_mult = @replicatory_association_trade_mult
 		planet_amenities_add = @replicatory_association_amenities_add
 	}
+
 	prerequisites = {
 		tech_cloning
 	}
@@ -1040,14 +1131,17 @@ building_clone_army_clone_vat = {
 	icon = building_ancient_relics
 	base_buildtime = 90
 	position_priority = 100
+
 	empire_limit = {
 		base = 5
 	}
 
 	category = pop_assembly
+
 	building_sets = {
 		origin
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -1055,9 +1149,11 @@ building_clone_army_clone_vat = {
 			NOT = { has_country_flag = clone_army_fertility_unlocked }
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -1068,6 +1164,7 @@ building_clone_army_clone_vat = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		clone_soldiers_sustained = @clones_sustained_high
 	}
@@ -1080,12 +1177,14 @@ building_clone_army_clone_vat = {
 		}
 		bonus_pop_growth = 20
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			check_variable = { which = clone_pops_missing_per_vat value > 2200 }
 		}
 		fake_pop_growth_mod = 20
 	}
+
 	inline_script = {
 		script = buildings/clone_army_vat_output
 		UPPER_LIMIT = 2200
@@ -1134,6 +1233,7 @@ building_clone_army_clone_vat = {
 		LOWER_LIMIT = 600
 		GROWTH = 4
 	}
+
 	triggered_planet_pop_group_modifier_for_species = {
 		potential = {
 			has_infertile_clone_soldier_trait = yes
@@ -1141,6 +1241,7 @@ building_clone_army_clone_vat = {
 		}
 		bonus_pop_growth = 2
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			check_variable = { which = clone_pops_missing_per_vat value <= 600 }
@@ -1156,6 +1257,7 @@ building_clone_army_clone_vat = {
 		planet_amenities_add = @replicatory_association_amenities_add
 		mult = 2
 	}
+
 	resources = {
 		category = planet_buildings_clone_vats
 		cost = {
@@ -1186,10 +1288,13 @@ building_clone_army_clone_vat = {
 			alloys = @b2_alloy_upkeep
 		}
 	}
+
 	upgrades = {
 	}
+
 	prerequisites = {
 	}
+
 	triggered_desc = {
 		text = building_clone_army_clone_vat_effect_desc
 	}
@@ -1206,10 +1311,12 @@ building_posthumous_employment_center = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		OR = {
@@ -1228,10 +1335,12 @@ building_posthumous_employment_center = {
 		}
 		owner = { is_regular_empire = yes has_valid_civic = civic_permanent_employment }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -1245,9 +1354,11 @@ building_posthumous_employment_center = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		job_reassigner_add = 100
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1264,6 +1375,7 @@ building_toxic_bath_hive = {
 	planet_limit = 1
 	icon = building_toxic_bath_hive
 	category = amenity
+
 	building_sets = {
 		government
 		urban
@@ -1271,6 +1383,7 @@ building_toxic_bath_hive = {
 		foundry
 		factory
 	}
+
 	potential = {
 		has_owner = yes
 		owner = {
@@ -1279,9 +1392,11 @@ building_toxic_bath_hive = {
 			has_valid_civic = civic_hive_toxic_baths
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -1291,16 +1406,19 @@ building_toxic_bath_hive = {
 			}
 		}
 	}
+
 	triggered_desc = {
 		text = spawning_drone_is_mutagenic_tt
 	}
 	triggered_desc = {
 		text = NEW_LINE
 	}
+
 	inline_script = {
 		script = jobs/spawning_drone_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1317,6 +1435,7 @@ building_toxic_bath_machine = {
 	planet_limit = 1
 	icon = building_toxic_bath_machine
 	category = amenity
+
 	building_sets = {
 		government
 		urban
@@ -1324,6 +1443,7 @@ building_toxic_bath_machine = {
 		foundry
 		factory
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { # Vfix opt
@@ -1334,9 +1454,11 @@ building_toxic_bath_machine = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { # Vfix opt
@@ -1349,16 +1471,19 @@ building_toxic_bath_machine = {
 			}
 		}
 	}
+
 	triggered_desc = {
 		text = roboticist_is_mutagenic_tt
 	}
 	triggered_desc = {
 		text = NEW_LINE
 	}
+
 	inline_script = {
 		script = jobs/roboticist_add
 		AMOUNT = @building_static_jobs_low
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1374,12 +1499,15 @@ building_automation_1 = {
 	base_buildtime = @b1_time
 	district_limit = 1
 	category = pop_assembly
+
 	building_sets = {
 		automation
 	}
+
 	potential = {
 		always = no
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1392,16 +1520,20 @@ building_automation_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_2
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1416,12 +1548,15 @@ building_automation_1 = {
 			mult = value:count_any_building
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		is_wilderness_empire = no
 	}
+
 	triggered_desc = {
 		text = automation_tooltip
 	}
@@ -1431,6 +1566,7 @@ building_automation_2 = {
 	base_buildtime = @b2_time
 	can_build = no
 	category = pop_assembly
+
 	building_sets = {
 		government
 		urban
@@ -1438,9 +1574,11 @@ building_automation_2 = {
 		mining
 		generator
 	}
+
 	potential = {
 		always = no
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1453,11 +1591,14 @@ building_automation_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1472,12 +1613,15 @@ building_automation_2 = {
 			mult = value:count_any_building
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		is_wilderness_empire = no
 	}
+
 	triggered_desc = {
 		text = automation_2_tooltip
 	}
@@ -1488,13 +1632,16 @@ building_automation_city_1 = {
 	district_limit = 1
 	category = pop_assembly
 	icon = building_automation_1
+
 	building_sets = {
 		government
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1507,9 +1654,11 @@ building_automation_city_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_city_2
 	}
+
 	planet_limit = {
 		base = 1
 		modifier = {
@@ -1520,13 +1669,16 @@ building_automation_city_1 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1537,12 +1689,15 @@ building_automation_city_1 = {
 			mult = value:city_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_city_tooltip
 	}
@@ -1553,13 +1708,16 @@ building_automation_city_2 = {
 	can_build = no
 	category = pop_assembly
 	icon = building_automation_2
+
 	building_sets = {
 		government
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1572,6 +1730,7 @@ building_automation_city_2 = {
 			}
 		}
 	}
+
 	planet_limit = {
 		base = 1
 		modifier = {
@@ -1582,13 +1741,16 @@ building_automation_city_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1599,12 +1761,15 @@ building_automation_city_2 = {
 			mult = value:city_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_city_2_tooltip
 	}
@@ -1615,13 +1780,16 @@ building_automation_urban_1 = {
 	district_limit = 1
 	category = pop_assembly
 	icon = building_automation_1
+
 	building_sets = {
 		urban_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1634,9 +1802,11 @@ building_automation_urban_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_urban_2
 	}
+
 	planet_limit = {
 		base = 1
 		modifier = {
@@ -1647,13 +1817,16 @@ building_automation_urban_1 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1664,12 +1837,15 @@ building_automation_urban_1 = {
 			mult = value:city_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_city_tooltip
 	}
@@ -1688,13 +1864,16 @@ building_automation_urban_2 = {
 	can_build = no
 	category = pop_assembly
 	icon = building_automation_2
+
 	building_sets = {
 		urban_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1707,6 +1886,7 @@ building_automation_urban_2 = {
 			}
 		}
 	}
+
 	planet_limit = {
 		base = 1
 		modifier = {
@@ -1717,13 +1897,16 @@ building_automation_urban_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1734,12 +1917,15 @@ building_automation_urban_2 = {
 			mult = value:city_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_city_2_tooltip
 	}
@@ -1758,13 +1944,16 @@ building_automation_generator_1 = {
 	district_limit = 1
 	category = pop_assembly
 	icon = building_automation_1
+
 	building_sets = {
 		generator_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1777,16 +1966,20 @@ building_automation_generator_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_generator_2
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1797,12 +1990,15 @@ building_automation_generator_1 = {
 			mult = value:generator_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_tooltip
 	}
@@ -1829,13 +2025,16 @@ building_automation_generator_2 = {
 	can_build = no
 	category = pop_assembly
 	icon = building_automation_2
+
 	building_sets = {
 		generator_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1848,13 +2047,16 @@ building_automation_generator_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1865,12 +2067,15 @@ building_automation_generator_2 = {
 			mult = value:generator_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_2_tooltip
 	}
@@ -1897,13 +2102,16 @@ building_automation_mining_1 = {
 	district_limit = 1
 	category = pop_assembly
 	icon = building_automation_1
+
 	building_sets = {
 		mining_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1916,16 +2124,20 @@ building_automation_mining_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_mining_2
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1936,12 +2148,15 @@ building_automation_mining_1 = {
 			mult = value:mining_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_tooltip
 	}
@@ -1968,13 +2183,16 @@ building_automation_mining_2 = {
 	can_build = no
 	category = pop_assembly
 	icon = building_automation_2
+
 	building_sets = {
 		mining_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -1987,13 +2205,16 @@ building_automation_mining_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2004,12 +2225,15 @@ building_automation_mining_2 = {
 			mult = value:mining_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_2_tooltip
 	}
@@ -2036,13 +2260,16 @@ building_automation_farming_1 = {
 	district_limit = 1
 	category = pop_assembly
 	icon = building_automation_1
+
 	building_sets = {
 		farming_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -2055,16 +2282,20 @@ building_automation_farming_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_farming_2
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2075,12 +2306,15 @@ building_automation_farming_1 = {
 			mult = value:farming_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_tooltip
 	}
@@ -2107,13 +2341,16 @@ building_automation_farming_2 = {
 	can_build = no
 	category = pop_assembly
 	icon = building_automation_2
+
 	building_sets = {
 		farming_automation
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -2126,13 +2363,16 @@ building_automation_farming_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2143,12 +2383,15 @@ building_automation_farming_2 = {
 			mult = value:farming_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_2_tooltip
 	}
@@ -2179,13 +2422,16 @@ building_automation_urban_arcology_1 = {
 	district_limit = 1
 	category = pop_assembly
 	icon = building_automation_1
+
 	building_sets = {
 		urban_automation_arcology
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -2198,16 +2444,20 @@ building_automation_urban_arcology_1 = {
 			}
 		}
 	}
+
 	upgrades = {
 		building_automation_urban_arcology_2
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2218,12 +2468,15 @@ building_automation_urban_arcology_1 = {
 			mult = value:city_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_assembly_pattern
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_city_tooltip
 	}
@@ -2246,13 +2499,16 @@ building_automation_urban_arcology_2 = {
 	can_build = no
 	category = pop_assembly
 	icon = building_automation_2
+
 	building_sets = {
 		urban_automation_arcology
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	allow = {
 		is_occupied_flag = no
 		hidden_trigger = {
@@ -2265,13 +2521,16 @@ building_automation_urban_arcology_2 = {
 			}
 		}
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_wilderness_empire = yes }
 	}
+
 	planet_modifier = {
 		district_automated_workforce = 0.5
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -2282,12 +2541,15 @@ building_automation_urban_arcology_2 = {
 			mult = value:city_districts_value
 		}
 	}
+
 	prerequisites = {
 		tech_construction_templates
 	}
+
 	show_tech_unlock_if = {
 		always = no
 	}
+
 	triggered_desc = {
 		text = automation_city_2_tooltip
 	}

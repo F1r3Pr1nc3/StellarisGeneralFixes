@@ -57,6 +57,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = federations2.1.A
 		trigger = { owner = { is_xenophile = no } }
@@ -136,6 +137,7 @@ ship_event = {
 			any_fleet_in_system = { has_fleet_flag = too_many_moons_warder }
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -154,9 +156,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = SEARCH
 		small_artifact_reward = yes
@@ -176,9 +180,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = federations2.3.A
 		small_artifact_reward = yes
@@ -198,9 +204,11 @@ fleet_event = {
 	immediate = {
 		from = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		from = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = federations2.4.A
 		trigger = { owner = { is_pacifist = no } }
@@ -247,6 +255,7 @@ fleet_event = {
 			fleet_event = { id = federations2.7 }
 		}
 	}
+
 	after = {
 		from = { expire_site_event = federations2.5 }
 	}
@@ -256,6 +265,7 @@ fleet_event = {
 fleet_event = {
 	id = federations2.6
 	title = federations2.6.name
+
 	desc = {
 		trigger = {
 			event_target:fanatic_xenophobe_fe = { is_country_type = fallen_empire }
@@ -278,6 +288,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	option = { # A sad tale
 		name = federations2.6.A
 		trigger = {
@@ -323,6 +334,7 @@ fleet_event = {
 			owner = { has_civic = civic_hive_devouring_swarm }
 		}
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		large_artifact_reward = yes
@@ -337,6 +349,7 @@ fleet_event = {
 fleet_event = {
 	id = federations2.7
 	title = federations2.7.name
+
 	desc = {
 		trigger = {
 			owner = { is_synthetic_empire = no }
@@ -364,6 +377,7 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	option = { # A sad tale
 		name = federations2.6.A
 		trigger = {
@@ -402,6 +416,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 		large_artifact_reward = yes
@@ -437,9 +452,11 @@ fleet_event = {
 	immediate = {
 		fromfrom = { set_site_progress_locked = yes }
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		fromfrom = { add_stage_clues = -3 }
@@ -465,9 +482,11 @@ fleet_event = {
 			}
 		}
 	}
+
 	after = {
 		fromfrom = { set_site_progress_locked = no }
 	}
+
 	option = {
 		name = federations2.702.A
 		hidden_effect = {
@@ -512,6 +531,7 @@ planet_event = {
 	title = federations2.8.name
 	desc = federations2.8.desc
 	location = root
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -556,6 +576,7 @@ planet_event = {
 		set_planet_flag = colony_event
 		owner = { set_country_flag = dancing_fever_colony_event }
 	}
+
 	option = {
 		name = federations2.8.A
 		hidden_effect = {
@@ -580,6 +601,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = federations2.9.A
 		enable_special_project = {
@@ -613,6 +635,7 @@ planet_event = {
 	location = root
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.10.A
 		add_deposit = d_disco_planet
@@ -641,6 +664,7 @@ planet_event = {
 	location = root
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.11.A
 		add_deposit = d_fuming_bog
@@ -675,6 +699,7 @@ planet_event = {
 	immediate = {
 		remove_modifier = dancing_fad
 	}
+
 	option = {
 		name = federations2.12.A
 		random_owned_pop_group = {
@@ -706,6 +731,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = INTERESTING
 		remove_modifier = dancing_fad
@@ -732,6 +758,7 @@ planet_event = {
 	immediate = {
 		remove_modifier = dancing_fad
 	}
+
 	option = {
 		name = federations2.14.A
 		add_deposit = d_disco_planet2
@@ -747,6 +774,7 @@ planet_event = {
 	location = root
 	show_sound = event_laboratory_sound
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.15.A
 		remove_modifier = dancing_to_death_modifier
@@ -875,6 +903,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = federations2.50.A # sounds like a spiffing idea
 		custom_tooltip = federations2.50.A.tooltip
@@ -957,6 +986,7 @@ country_event = {
 	desc = federations2.51.desc
 	show_sound = event_default
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -970,6 +1000,7 @@ country_event = {
 	trigger = {
 		from = { is_federation_leader = yes }
 	}
+
 	option = {
 		name = federations2.51.A # let's do this
 		from = {
@@ -1098,6 +1129,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_ghost_town
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.53.A
 		federation = { add_cohesion = -100 }
@@ -1125,6 +1157,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = hegemony_ethos_militarist
@@ -1154,6 +1187,7 @@ country_event = {
 country_event = {
 	id = federations2.54
 	title = federations2.54.name
+
 	desc = {
 		text = federations2.54.desc.said_yes
 		trigger = { has_country_flag = hegemony_joint_operation_yes }
@@ -1166,6 +1200,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_ghost_town
 	is_triggered_only = yes
+
 	option = {
 		name = {
 			text = federations2.54.A.yes
@@ -1189,6 +1224,7 @@ country_event = {
 	picture = GFX_evt_diplomatic_visit
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.55.A
 		custom_tooltip = hegemon_join_operation_happens_tooltip
@@ -1241,6 +1277,7 @@ country_event = {
 country_event = {
 	id = federations2.56
 	title = federations2.56.name
+
 	desc = {
 		text = federations2.56.desc.said_yes
 		trigger = { has_country_flag = hegemony_joint_operation_yes }
@@ -1257,6 +1294,7 @@ country_event = {
 	picture = GFX_evt_diplomatic_visit
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.56.A
 		trigger = { has_country_flag = hegemony_joint_operation_yes }
@@ -1304,6 +1342,7 @@ country_event = {
 	show_sound = event_announcement
 	is_triggered_only = yes
 	location = fromfrom
+
 	option = {
 		name = EXCELLENT
 		tooltip = {
@@ -1352,6 +1391,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -1377,6 +1417,7 @@ country_event = {
 country_event = {
 	id = federations2.58
 	title = federations2.58.name
+
 	desc = {
 		text = federations2.58.desc
 		trigger = {
@@ -1452,6 +1493,7 @@ country_event = {
 	show_sound = event_announcement
 	is_triggered_only = yes
 	location = fromfrom
+
 	option = {
 		name = {
 			text = federations2.58.A.good
@@ -1612,6 +1654,7 @@ country_event = {
 	show_sound = event_announcement
 	is_triggered_only = yes
 	location = fromfrom
+
 	option = {
 		name = EXCELLENT
 		fromfrom.owner = {
@@ -1631,6 +1674,7 @@ country_event = {
 country_event = {
 	id = federations2.60
 	title = federations2.60.name
+
 	desc = {
 		trigger = {
 			federation = {
@@ -1675,6 +1719,7 @@ country_event = {
 	show_sound = event_announcement
 	is_triggered_only = yes
 	location = fromfrom
+
 	option = {
 		name = {
 			text = EXCELLENT
@@ -1697,6 +1742,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = hegemony_joint_operation_yes
@@ -1709,6 +1755,7 @@ country_event = {
 country_event = {
 	id = federations2.61
 	title = federations2.61.name
+
 	desc = {
 		trigger = {
 			federation = {
@@ -1767,6 +1814,7 @@ country_event = {
 	show_sound = event_announcement
 	is_triggered_only = yes
 	location = fromfrom
+
 	option = {
 		name = {
 			text = federations2.61.A.good
@@ -1801,6 +1849,7 @@ country_event = {
 		}
 		tooltip = { hegemony_join_operation_reward = yes }
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = hegemony_joint_operation_no
@@ -1815,6 +1864,7 @@ country_event = {
 country_event = {
 	id = federations2.62
 	title = federations2.62.name
+
 	desc = {
 		trigger = {
 			federation = {
@@ -1869,6 +1919,7 @@ country_event = {
 	immediate = {
 		set_country_flag = hegemony_joint_operation_monument
 	}
+
 	option = {
 		name = {
 			text = federations2.62.A.good
@@ -1907,6 +1958,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		end_event_chain = hegemony_joint_project_chain
 		hidden_effect = {
@@ -1936,6 +1988,7 @@ country_event = {
 	immediate = {
 		set_timed_country_flag = { flag = federations2.70 days = 5 }
 	}
+
 	option = {
 		name = federations2.70.A
 		end_event_chain = hegemony_joint_project_chain
@@ -1977,6 +2030,7 @@ country_event = {
 	immediate = {
 		set_timed_country_flag = { flag = federations2.71 days = 5 }
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		end_event_chain = hegemony_joint_project_chain
@@ -2012,6 +2066,7 @@ country_event = {
 	immediate = {
 		set_timed_country_flag = { flag = federations2.72 days = 5 }
 	}
+
 	option = {
 		name = federations2.72.A
 		end_event_chain = hegemony_joint_project_chain
@@ -2084,6 +2139,7 @@ country_event = {
 			set_variable = { which = militarist_joint_operation_no value = 0 }
 		}
 	}
+
 	option = {
 		name = federations2.100.A # sounds like a spiffing idea
 		custom_tooltip = federations2.100.A.tooltip
@@ -2122,6 +2178,7 @@ country_event = {
 	desc = federations2.101.desc
 	show_sound = event_default
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -2135,6 +2192,7 @@ country_event = {
 	trigger = {
 		from = { is_federation_leader = yes }
 	}
+
 	option = {
 		name = federations2.101.A # let's do this
 		from = {
@@ -2269,6 +2327,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_ghost_town
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.103.A
 		federation = { add_cohesion = -100 }
@@ -2296,6 +2355,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			federation = {
@@ -2316,6 +2376,7 @@ country_event = {
 country_event = {
 	id = federations2.104
 	title = federations2.104.name
+
 	desc = {
 		text = federations2.104.desc.said_yes
 		trigger = { has_country_flag = militarist_joint_operation_yes }
@@ -2328,6 +2389,7 @@ country_event = {
 	picture = GFX_evt_arguing_senate
 	show_sound = event_ghost_town
 	is_triggered_only = yes
+
 	option = {
 		name = {
 			text = federations2.104.A.yes
@@ -2365,7 +2427,7 @@ country_event = {
 						limit = {
 							NOR = {
 								has_star_flag = no_more_military_projects_here
-								any_system_planet = { is_colony = yes }
+								any_system_colony = { has_owner = yes }
 							}
 							root = {
 								any_controlled_fleet = { is_ship_class = shipclass_military can_access_system = prevprev }
@@ -2419,6 +2481,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = federations2.105.A
 		event_target:military_exercises_target = {
@@ -2452,6 +2515,7 @@ country_event = {
 			custom_tooltip = no_following_nations_said_no
 		}
 	}
+
 	after = {
 		if = {
 			limit = { is_ai = yes }
@@ -2473,6 +2537,7 @@ country_event = {
 country_event = {
 	id = federations2.106
 	title = federations2.106.name
+
 	desc = {
 		text = federations2.106.desc.said_yes
 		trigger = { has_country_flag = militarist_joint_operation_yes }
@@ -2498,7 +2563,7 @@ country_event = {
 					random_system_within_border = {
 						limit = {
 							NOR = {
-								any_system_planet = { is_colony = yes }
+								any_system_colony = { has_owner = yes }
 								has_star_flag = no_more_military_projects_here
 							}
 							root = {
@@ -2553,6 +2618,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = federations2.106.A
 		trigger = { has_country_flag = militarist_joint_operation_yes }
@@ -2579,6 +2645,7 @@ country_event = {
 		}
 		custom_tooltip = military_join_operation_happens_tooltip
 	}
+
 	after = {
 		if = {
 			limit = { is_ai = yes }
@@ -2605,6 +2672,7 @@ country_event = {
 	show_sound = event_announcement
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = federations2.108.A
 		custom_tooltip = federations2.108.tt
@@ -2687,6 +2755,7 @@ ship_event = {
 		}
 		owner = { country_event = { id = federations2.113 days = 30 } } # check if failed
 	}
+
 	option = {
 		name = federations2.109.A
 	}
@@ -2722,6 +2791,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -2752,6 +2822,7 @@ country_event = {
 		}
 		event_target:militarist_federation_training_target = { delete_fleet = this }
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -2837,6 +2908,7 @@ country_event = {
 country_event = {
 	id = federations2.115
 	title = federations2.115.name
+
 	desc = {
 		trigger = {
 			federation = { has_federation_flag = militarist_joint_operation_complete_success }
@@ -2868,6 +2940,7 @@ country_event = {
 	immediate = {
 		save_event_target_as = root_scope
 	}
+
 	option = {
 		name = {
 			text = federations2.115.A
@@ -3027,6 +3100,7 @@ country_event = {
 	picture = GFX_evt_federation_fleet
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 		hidden_effect = {
@@ -3045,6 +3119,7 @@ country_event = {
 	picture = GFX_evt_fleet_from_surface
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 		hidden_effect = {

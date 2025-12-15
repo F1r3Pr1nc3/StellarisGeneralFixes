@@ -13,6 +13,7 @@ country_event = {
 	title = action.1.name
 	message_desc = action.1.message
 	location = event_target:contact_empire.capital_scope
+
 	picture_event_data = {
 		portrait = event_target:contact_empire
 		planet_background = event_target:contact_empire
@@ -22,6 +23,7 @@ country_event = {
 	}
 
 	### Custom First Contact system flavour
+
 	desc = {
 		text = action.1.desc_hacking_01
 		trigger = {
@@ -2359,6 +2361,7 @@ country_event = {
 			}
 		}
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -3163,6 +3166,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -3203,6 +3207,7 @@ country_event = {
 	title = action.1.name
 	message_desc = action.1.message
 	location = event_target:contact_empire.capital_scope
+
 	picture_event_data = {
 		portrait = event_target:contact_empire
 		planet_background = event_target:contact_empire
@@ -3212,6 +3217,7 @@ country_event = {
 	}
 
 	### Custom First Contact system flavour
+
 	desc = {
 		text = action.2.desc_01
 		trigger = {
@@ -3360,6 +3366,7 @@ country_event = {
 		name = action.2.k
 		trigger = { is_megacorp = yes }
 	}
+
 	after = {
 		add_intel = { who = event_target:contact_empire amount = 100 }
 		if = {
@@ -3390,6 +3397,7 @@ country_event = {
 country_event = {
 	id = action.5
 	title = "action.5.name"
+
 	picture = {
 		trigger = {
 			event_target:primitive_civ = { is_gestalt = no }
@@ -3405,6 +3413,7 @@ country_event = {
 
 	location = fromfrom
 	show_sound = event_pre_ftl_civilization
+
 	desc = { # Stone Age Regular
 		text = action.5.desc_00
 		trigger = {
@@ -3500,6 +3509,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		hidden_effect = {
@@ -3512,6 +3522,7 @@ country_event = {
 country_event = {
 	id = action.6
 	title = "action.5.name"
+
 	picture = {
 		trigger = {
 			event_target:primitive_civ = { is_gestalt = no }
@@ -3527,6 +3538,7 @@ country_event = {
 
 	location = fromfrom
 	show_sound = event_scanner
+
 	desc = { # Industrial Age
 		text = action.6.desc_01
 		trigger = {
@@ -3595,6 +3607,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		hidden_effect = {
@@ -3658,6 +3671,7 @@ country_event = {
 country_event = {
 	id = action.11
 	title = "action.11.name"
+
 	desc = {
 		text = "action.11.desc"
 		trigger = {
@@ -3701,6 +3715,7 @@ country_event = {
 		}
 		country_event = { id = distar.238 days = 1 }
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:contact_empire = {
@@ -3740,6 +3755,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		# trigger = {
 		# 	NOT = { # Vfix removed in v2.2
@@ -3976,6 +3992,7 @@ ship_event = {
 country_event = {
 	id = action.13
 	title = "action.13.name"
+
 	desc = {
 		text = "action.13.desc"
 		trigger = {
@@ -4015,6 +4032,7 @@ country_event = {
 		from = { save_event_target_as = contact_empire }
 		country_event = { id = distar.239 days = 1 }
 	}
+
 	option = {
 		trigger = {
 			# NOT = { # Vfix removed in v2.2
@@ -4110,6 +4128,7 @@ country_event = {
 country_event = {
 	id = action.140
 	title = action.14.name
+
 	desc = { # Non-Purge Policy Regular Empires
 		text = action.14.desc
 		trigger = {
@@ -4302,6 +4321,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = action.14.a.phobe
 		custom_tooltip = action.14.a.tooltip
@@ -5003,6 +5023,7 @@ country_event = {
 	id = action.37
 	title = action.37.name
 	message_desc = action.37.message
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -5010,6 +5031,7 @@ country_event = {
 		city_level = from
 		room = FROM.ruler
 	}
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -5124,6 +5146,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = action.37.a
 	}
@@ -5134,6 +5157,7 @@ country_event = {
 	id = action.38
 	title = action.38.name
 	message_desc = action.38.message
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -5141,6 +5165,7 @@ country_event = {
 		city_level = from
 		room = FROM.ruler
 	}
+
 	desc = {
 		trigger = {
 			hidden:from = {
@@ -5219,6 +5244,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -5240,6 +5266,7 @@ country_event = {
 	id = action.39
 	title = action.39.name
 	message_desc = action.39.message
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -5247,6 +5274,7 @@ country_event = {
 		city_level = from
 		room = FROM.ruler
 	}
+
 	desc = {
 		trigger = {
 			hidden:from.owner = {
@@ -5305,6 +5333,7 @@ country_event = {
 	trigger = {
 		is_ai = no
 	}
+
 	option = {
 		name = action.39.a
 	}
@@ -5382,6 +5411,7 @@ country_event = {
 			war_begun_num_fleets_gone_mia = { who = prev value > 0 }
 		}
 	}
+
 	desc = {
 		trigger = {
 			text = "action.41.desc.a"
@@ -5398,6 +5428,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "OK"
 	}
@@ -5740,6 +5771,7 @@ country_event = {
 	id = action.48
 	title = action.37.name
 	message_desc = action.37.message
+
 	picture_event_data = {
 		portrait = from
 		planet_background = from
@@ -5747,6 +5779,7 @@ country_event = {
 		city_level = from
 		room = FROM.ruler
 	}
+
 	desc = {
 		trigger = {
 			from = { has_generic_government = yes is_galactic_emperor = no }
@@ -5929,6 +5962,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = action.48.a
 		trigger = { has_generic_government = yes }
@@ -6207,6 +6241,7 @@ country_event = {
 	show_sound = event_default
 	picture = "GFX_evt_city_ruins"
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -6214,6 +6249,7 @@ country_event = {
 		name = "action.62.memorialist.a"
 		exclusive_trigger = { is_memorialist_empire = yes }
 	}
+
 	after = {
 		if = {
 			limit = { has_country_flag = payback_stolen_revenge }
@@ -6234,6 +6270,7 @@ country_event = {
 	show_sound = event_default
 	picture = "GFX_evt_city_ruins"
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -6460,6 +6497,7 @@ country_event = {
 	id = action.71
 	title = action.71.name
 	desc = action.71.desc
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -6493,6 +6531,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -6532,6 +6571,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -6568,6 +6608,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -6609,6 +6650,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -6739,6 +6781,7 @@ country_event = {
 	show_sound = event_super_explosion
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = action.82.a
 		custom_tooltip = bombed_to_tomb_world
@@ -6761,6 +6804,7 @@ country_event = {
 			complete_crisis_objective = crisobj_destroy_worlds
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		custom_tooltip = bombed_to_tomb_world
@@ -6909,6 +6953,7 @@ country_event = {
 	show_sound = event_default
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		tooltip = {
@@ -6943,6 +6988,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		tooltip = {
@@ -7251,6 +7297,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		tooltip = {
@@ -7581,6 +7628,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = zro_found }
 	}
+
 	option = {
 		name = action.942.a
 		custom_tooltip = action.92.zro.tooltip
@@ -7600,6 +7648,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = zro_found }
 	}
+
 	option = {
 		name = action.92.a
 		owner = {
@@ -7616,6 +7665,7 @@ ship_event = {
 ship_event = {
 	id = action.94
 	title = action.92.name
+
 	desc = {
 		trigger = {
 			success_text = {
@@ -7809,6 +7859,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = action.92.a
 		from = {

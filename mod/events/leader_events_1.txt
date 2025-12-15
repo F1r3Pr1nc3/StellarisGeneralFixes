@@ -11,6 +11,7 @@ namespace = leader
 country_event = {
 	id = leader.1
 	title = "leader.1.name"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.1.desc.hive"
@@ -23,6 +24,7 @@ country_event = {
 		trigger = { is_hive_empire = no is_machine_empire = no }
 		text = "leader.1.desc"
 	}
+
 	picture = {
 		trigger = {
 			fromfrom = {
@@ -89,7 +91,7 @@ country_event = {
 					name = random
 					skill = 2
 					traits = {
-						1 = leader_trait_gale_speed
+						1 = leader_trait_gale_speed # councilor_trait_not_allowed
 						2 = leader_trait_aggressive
 						0 = leader_trait_eager
 					}
@@ -163,6 +165,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = GOOD
 		custom_tooltip = new_admiral
@@ -174,6 +177,7 @@ country_event = {
 country_event = {
 	id = leader.5
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.newadmiraltrait.desc.hive"
@@ -212,6 +216,7 @@ country_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fromfrom = {
@@ -226,6 +231,7 @@ country_event = {
 country_event = {
 	id = leader.6
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.newadmiraltrait.desc.hive"
@@ -264,6 +270,7 @@ country_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fromfrom = {
@@ -278,6 +285,7 @@ country_event = {
 country_event = {
 	id = leader.7
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.newadmiraltrait.desc.hive"
@@ -316,6 +324,7 @@ country_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fromfrom = {
@@ -330,6 +339,7 @@ country_event = {
 country_event = {
 	id = leader.8
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.newadmiraltrait.desc.hive"
@@ -369,6 +379,7 @@ country_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fromfrom = {
@@ -383,6 +394,7 @@ country_event = {
 country_event = {
 	id = leader.9
 	title = "admiral_trait_loss"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.lostadmiraltrait.desc.hive"
@@ -414,6 +426,7 @@ country_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fromfrom = {
@@ -426,6 +439,7 @@ country_event = {
 fleet_event = {
 	id = leader.10
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -466,6 +480,7 @@ fleet_event = {
 		leader = { save_event_target_as = officer }
 		solar_system = { save_event_target_as = system }
 	}
+
 	option = {
 		name = GOOD
 		leader = {
@@ -478,6 +493,7 @@ fleet_event = {
 fleet_event = {
 	id = leader.11
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -521,6 +537,7 @@ fleet_event = {
 		leader = { save_event_target_as = officer }
 		solar_system = { save_event_target_as = system }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		leader = {
@@ -533,6 +550,7 @@ fleet_event = {
 fleet_event = {
 	id = leader.12
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -577,6 +595,7 @@ fleet_event = {
 		leader = { save_event_target_as = officer }
 		solar_system = { save_event_target_as = system }
 	}
+
 	option = {
 		name = GOOD
 		leader = {
@@ -592,6 +611,7 @@ fleet_event = {
 fleet_event = {
 	id = leader.13
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -639,6 +659,7 @@ fleet_event = {
 			from = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		leader = {
@@ -651,6 +672,7 @@ fleet_event = {
 fleet_event = {
 	id = leader.14
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -692,6 +714,7 @@ fleet_event = {
 		leader = { save_event_target_as = officer }
 		solar_system = { save_event_target_as = system }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		leader = {
@@ -704,6 +727,7 @@ fleet_event = {
 fleet_event = {
 	id = leader.15
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -743,12 +767,15 @@ fleet_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 20
 	}
+
 	immediate = {
 		leader = { save_event_target_as = officer }
 	}
+
 	option = {
 		name = GOOD
 		leader = {
@@ -800,6 +827,7 @@ fleet_event = {
 country_event = {
 	id = leader.17
 	title = "admiral_trait_loss"
+
 	desc = {
 		trigger = { is_hive_empire = yes }
 		text = "leader.lostadmiraltrait.desc.hive"
@@ -831,6 +859,7 @@ country_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fromfrom = {
@@ -917,6 +946,7 @@ country_event = {
 ship_event = {
 	id = leader.19
 	title = "admiral_trait_gain"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = yes }
@@ -963,6 +993,7 @@ ship_event = {
 			solar_system = { save_event_target_as = system }
 		}
 	}
+
 	option = {
 		name = GOOD
 		fleet = {
@@ -986,6 +1017,7 @@ country_event = {
 		has_policy_flag = ai_outlawed
 		any_owned_leader = { has_trait = leader_trait_sapient_AI_assistant }
 	}
+
 	option = {
 		name = GOOD
 		every_owned_leader = {

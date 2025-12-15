@@ -88,6 +88,7 @@ country_event = {
 
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = caravaneer_home_room
@@ -131,6 +132,7 @@ country_event = {
 			save_event_target_as = caravaneer_home_country
 		}
 	}
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = cara_home_slots
@@ -244,6 +246,7 @@ country_event = {
 	desc = anomaly.3103.a.response
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = caravaneer_home_room
@@ -280,6 +283,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara_homicide_exit
 	}
@@ -293,6 +297,7 @@ country_event = {
 	custom_gui = "enclave_caravaneer_window"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = caravaneer_home_room
@@ -300,6 +305,7 @@ country_event = {
 	}
 
 	location = event_target:caravaneer_home_system
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = ccoinswhat
@@ -387,6 +393,7 @@ country_event = {
 	custom_gui = "enclave_caravaneer_window"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = caravaneer_slotmachine_room
@@ -398,6 +405,7 @@ country_event = {
 	immediate = {
 		random = { chance = 1 set_country_flag = hello }
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -406,6 +414,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = cara_home_spin
@@ -445,6 +454,7 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	show_sound = event_slot_machine
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = caravaneer_slotmachine_room
@@ -472,6 +482,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = SCORE
@@ -603,6 +614,7 @@ country_event = {
 	custom_gui = "enclave_caravaneer_window"
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = caravaneer_lootbox_room
@@ -610,6 +622,7 @@ country_event = {
 	}
 
 	location = event_target:caravaneer_home_system
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = cara_home_lootbox_buy
@@ -673,6 +686,7 @@ country_event = {
 country_event = {
 	id = cara.310
 	title = cara_home_lootbox.title
+
 	desc = {
 		trigger = {
 			has_country_flag = buying_boxes_desc
@@ -752,6 +766,7 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
 	show_sound = event_lootbox_good
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country.ruler
 		room = caravaneer_lootbox_room
@@ -834,6 +849,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -882,6 +898,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = OK
@@ -1089,6 +1106,7 @@ country_event = {
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
 	show_sound = event_lootbox_galatron
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country.ruler
 		room = caravaneer_galatron_room
@@ -1096,6 +1114,7 @@ country_event = {
 	}
 
 	location = event_target:caravaneer_home_system
+
 	option = {
 		custom_gui = "enclave_caravaneer_option"
 		name = cara.320.a
@@ -1385,6 +1404,7 @@ country_event = {
 			country_event = { id = cara.1003 } # notification
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -1409,6 +1429,7 @@ country_event = {
 	show_sound = event_ship_thrusters
 	location = event_target:destroyed_fleet_location
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -1471,6 +1492,7 @@ fleet_event = {
 country_event = {
 	id = cara.1020
 	title = cara_fleet1_contact.title
+
 	desc = {
 		trigger = {
 			any_system_within_border = {
@@ -1494,6 +1516,7 @@ country_event = {
 		text = fleet1contact2notinborder
 		text = fleet1contact3notinborder
 	}
+
 	trigger = {
 		exists = event_target:caravaneer_fleet1_country
 		NOT = { has_communications = event_target:caravaneer_fleet1_country }
@@ -1502,10 +1525,12 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet1_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -1520,6 +1545,7 @@ country_event = {
 			establish_communications_no_message = event_target:caravaneer_home_country
 		}
 	}
+
 	option = {
 		name = cara_fleet1_contacted
 		allow = {
@@ -1586,10 +1612,12 @@ country_event = {
 	auto_opens = no
 	notification_event_icon = "GFX_message_caravaneers_trade"
 	show_sound = advisor_notification_incoming_transmission_01
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet1_country
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = cara_fleet1_deal
 		hidden_effect = {
@@ -1617,13 +1645,16 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet1_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		cara_generate_deal1 = yes
 	}
+
 	option = {
 		name = cara_fleet1_take_deal
 		allow = {
@@ -1696,10 +1727,12 @@ country_event = {
 	auto_opens = no
 	notification_event_icon = "GFX_message_caravaneers_trade"
 	show_sound = advisor_notification_incoming_transmission_01
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet1_country
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		caravaneer_fleet1_active_diplo = no
 	}
@@ -1708,6 +1741,7 @@ country_event = {
 		remove_country_flag = cara_fleet1_getback
 		cara_generate_deal1 = yes
 	}
+
 	option = {
 		name = cara_fleet1_take_deal
 		allow = { cara_allow_deal1 = yes }
@@ -2021,6 +2055,7 @@ country_event = {
 			country_event = { id = cara.2003 } # notification
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -2045,6 +2080,7 @@ country_event = {
 	show_sound = event_ship_thrusters
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -2106,6 +2142,7 @@ fleet_event = {
 country_event = {
 	id = cara.2020
 	title = cara_fleet2_contact.title
+
 	desc = {
 		trigger = {
 			any_system_within_border = {
@@ -2135,6 +2172,7 @@ country_event = {
 		text = fleet2contact5notinborder
 		text = fleet2contact6notinborder
 	}
+
 	trigger = {
 		exists = event_target:caravaneer_fleet2_country
 		NOT = { has_communications = event_target:caravaneer_fleet2_country }
@@ -2143,10 +2181,12 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet2_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -2161,6 +2201,7 @@ country_event = {
 			establish_communications_no_message = event_target:caravaneer_home_country
 		}
 	}
+
 	option = {
 		name = cara_fleet2_contacted
 		allow = {
@@ -2216,10 +2257,12 @@ country_event = {
 	auto_opens = no
 	notification_event_icon = "GFX_message_caravaneers_trade"
 	show_sound = advisor_notification_incoming_transmission_01
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet2_country
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = cara_fleet2_deal
 		hidden_effect = {
@@ -2243,6 +2286,7 @@ country_event = {
 country_event = {
 	id = cara.2200
 	title = cara_fleet2_deals.title
+
 	desc = {
 		text = fleet2dealdesc1
 		trigger = { has_country_flag = fleet2deal1 }
@@ -2303,13 +2347,16 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet2_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		cara_generate_deal2 = yes
 	}
+
 	option = {
 		name = cara_fleet2_take_deal
 		allow = { cara_allow_deal2 = yes }
@@ -2402,10 +2449,12 @@ country_event = {
 	auto_opens = no
 	notification_event_icon = "GFX_message_caravaneers_trade"
 	show_sound = advisor_notification_incoming_transmission_01
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet2_country
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		caravaneer_fleet2_active_diplo = no
 	}
@@ -2429,6 +2478,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara_fleet2_take_deal
 		allow = { cara_allow_deal2 = yes }
@@ -2767,6 +2817,7 @@ country_event = {
 			country_event = { id = cara.3003 } # notification
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -2791,6 +2842,7 @@ country_event = {
 	show_sound = event_ship_thrusters
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -2852,6 +2904,7 @@ fleet_event = {
 country_event = {
 	id = cara.3020
 	title = cara_fleet3_contact.title
+
 	desc = {
 		trigger = {
 			any_system_within_border = {
@@ -2884,10 +2937,12 @@ country_event = {
 		exists = event_target:caravaneer_fleet3_country
 		NOT = { has_communications = event_target:caravaneer_fleet3_country }
 	}
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet3_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -2902,6 +2957,7 @@ country_event = {
 			establish_communications_no_message = event_target:caravaneer_home_country
 		}
 	}
+
 	option = {
 		name = cara_fleet3_contacted
 		allow = {
@@ -2949,6 +3005,7 @@ country_event = {
 	desc = fleet3hewwo1
 	desc = fleet3hewwo2
 	desc = fleet3hewwo3
+
 	desc = {
 		trigger = {
 			any_playable_country = {
@@ -2961,6 +3018,7 @@ country_event = {
 
 	desc = fleet3hewwo5
 	desc = fleet3hewwo6
+
 	desc = {
 		trigger = {
 			exists = event_target:ratling_species
@@ -2978,10 +3036,12 @@ country_event = {
 	auto_opens = no
 	notification_event_icon = "GFX_message_caravaneers_trade"
 	show_sound = advisor_notification_incoming_transmission_01
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet3_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		# Generate 'scammer' country for fleet3hewwo4
 		if = {
@@ -3000,6 +3060,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara_fleet3_deal
 		hidden_effect = {
@@ -3023,6 +3084,7 @@ country_event = {
 country_event = {
 	id = cara.3200
 	title = cara_fleet3_deals.title
+
 	desc = {
 		trigger = { has_country_flag = fleet3deal1 }
 		text = fleet3dealdesc1 # Selling minerals
@@ -3071,13 +3133,16 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet3_country
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		cara_generate_deal3 = yes
 	}
+
 	option = {
 		name = cara_fleet3_take_deal
 		allow = { cara_allow_deal3 = yes }
@@ -3162,6 +3227,7 @@ fleet_event = {
 country_event = {
 	id = cara.3251
 	title = cara_fleet3_redeals.title
+
 	desc = {
 		trigger = { has_country_flag = fleet3deal1 }
 		text = fleet3dealdesc1 # Selling minerals
@@ -3209,10 +3275,12 @@ country_event = {
 	auto_opens = no
 	notification_event_icon = "GFX_message_caravaneers_trade"
 	show_sound = advisor_notification_incoming_transmission_01
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet3_country
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		caravaneer_fleet3_active_diplo = no
 	}
@@ -3242,6 +3310,7 @@ country_event = {
 		}
 		cara_generate_deal3 = yes
 	}
+
 	option = {
 		name = cara_fleet3_take_deal
 		allow = { cara_allow_deal3 = yes }
@@ -3429,6 +3498,7 @@ country_event = {
 			add_opinion_modifier = { who = root modifier = opinion_destroyed_caravaneer_home }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -3447,6 +3517,7 @@ country_event = {
 	location = fromfromfrom.solar_system
 	show_sound = event_ship_bridge
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -3460,10 +3531,12 @@ country_event = {
 	diplomatic = yes
 	is_triggered_only = yes
 	custom_gui = "enclave_caravaneer_window"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_home_country
 		room = ethic_spaceship_room
 	}
+
 	trigger = { # check that they still own the system
 		event_target:cara_home_new_location = {
 			exists = space_owner
@@ -3476,6 +3549,7 @@ country_event = {
 			exists = event_target:caravaneer_fleet3_country
 		}
 	}
+
 	option = { # Accept
 		name = cara.930.a
 		custom_tooltip = cara.930.a.tooltip
@@ -3650,6 +3724,7 @@ country_event = {
 	location = event_target:cara_home_new_location
 	show_sound = event_ship_bridge
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -3707,6 +3782,7 @@ country_event = {
 			set_country_flag = relic_robbery_achievement
 		}
 	}
+
 	option = {
 		name = cara.950.a
 		tooltip = {
@@ -3723,6 +3799,7 @@ country_event = {
 	picture = GFX_evt_alien_segregation
 	show_sound = event_life_support_fail
 	is_triggered_only = yes
+
 	option = {
 		name = cara.951.a
 		tooltip = {
@@ -3875,6 +3952,7 @@ country_event = {
 	picture = GFX_evt_caravaneers
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
+
 	option = {
 		name = cara.970.a
 		locked_random_list = {
@@ -3965,6 +4043,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		custom_tooltip = cara.4000.a.tooltip
@@ -4025,6 +4104,7 @@ country_event = {
 		set_timed_country_flag = { flag = caravan_pops_join_recent years = 10 }
 		set_timed_country_flag = { flag = caravan_recent_event years = 2 }
 	}
+
 	option = {
 		name = cara.4010.a
 		custom_tooltip = cara.4010.a.tooltip
@@ -4082,6 +4162,7 @@ country_event = {
 			last_created_ambient_object = { save_event_target_as = caravan_hulk_object }
 		}
 	}
+
 	option = {
 		name = cara.4020.a
 		event_target:caravan_hulk_object = {
@@ -4129,6 +4210,7 @@ country_event = {
 			event_target:caravan_hulk_object = { destroy_ambient_object = this }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_random_research_option = {
@@ -4191,6 +4273,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara.4030.a
 		add_monthly_resource_mult = {
@@ -4248,6 +4331,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara.4040.a
 		add_monthly_resource_mult = {
@@ -4359,6 +4443,7 @@ country_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		exclusive_trigger = { is_xenophile = yes }
 		name = cara.4041.phile
@@ -4371,6 +4456,7 @@ country_event = {
 		exclusive_trigger = { is_xenophile = no is_xenophobe = no }
 		name = cara.4041.a
 	}
+
 	after = {
 		tooltip = {
 			event_target:pleased_planet = {
@@ -4422,6 +4508,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara.4050.a
 		add_resource = { energy = -200 }
@@ -4567,9 +4654,11 @@ country_event = {
 	picture = GFX_evt_caravaneers
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = cara.4110.a
 		response_text = cara.4110.a.response
@@ -4605,9 +4694,11 @@ country_event = {
 	picture = GFX_evt_caravaneers
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	immediate = {
 		random_list = {
 			30 = {
@@ -4633,6 +4724,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		exclusive_trigger = { has_country_flag = collector_empty }
@@ -4677,6 +4769,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = collector_1
@@ -4697,6 +4790,7 @@ planet_event = {
 	picture = GFX_evt_caravaneers
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = cara.4120.a
 		add_modifier = { modifier = criminal_gambling years = 5 }
@@ -4715,6 +4809,7 @@ planet_event = {
 	immediate = {
 		save_event_target_as = pleased_planet
 	}
+
 	option = {
 		name = cara.4130.a
 		add_modifier = { modifier = festival_aftermath years = 5 }
@@ -4762,6 +4857,7 @@ planet_event = {
 	picture = GFX_evt_caravaneers
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		add_modifier = { modifier = slot_machine_bounty years = 5 }
@@ -4797,11 +4893,15 @@ planet_event = {
 			set_pop_group_flag = caravan_tough_flag
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		every_owned_pop_group = {
 			limit = { has_pop_group_flag = caravan_tough_flag }
-			modify_species = { species = this add_trait = trait_resilient }
+			modify_species = {
+				species = this
+				add_trait = trait_resilient
+			}
 			remove_pop_group_flag = caravan_tough_flag
 		}
 	}
@@ -4812,6 +4912,7 @@ planet_event = {
 	id = cara.4160
 	title = "cara.4160.name"
 	picture = GFX_evt_exploding_planet
+
 	desc = {
 		trigger = { exists = event_target:punchmoon }
 		text = cara.4160.desc
@@ -4850,6 +4951,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = cara.4160.a
 		if = {
@@ -4880,6 +4982,7 @@ planet_event = {
 	desc = "cara.4161.desc"
 	picture = GFX_evt_psionics
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = {

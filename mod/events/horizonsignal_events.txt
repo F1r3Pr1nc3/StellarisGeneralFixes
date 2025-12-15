@@ -31,6 +31,7 @@ event = {
 fleet_event = {
 	id = akx.8888
 	title = akx.9000.name
+
 	desc = {
 		trigger = { text = akx.9000.desc }
 	}
@@ -53,6 +54,7 @@ fleet_event = {
 			save_global_event_target_as = horizonsignal_system
 		}
 	}
+
 	option = {
 		name = OK
 		solar_system = {
@@ -104,6 +106,7 @@ fleet_event = {
 			observer_event = { id = observer.70 }
 		}
 	}
+
 	option = {
 		name = OK
 		from = {
@@ -130,6 +133,7 @@ ship_event = {
 	immediate = {
 		leader = { save_event_target_as = horizonsignal_firstleader }
 	}
+
 	option = {
 		name = akx.9001.a
 		begin_event_chain = { event_chain = WORM_CHAIN_1 target = root.owner }
@@ -162,6 +166,7 @@ ship_event = {
 			exile_leader_as = exiled_horizonsignal_firstleader
 		}
 	}
+
 	after = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -181,6 +186,7 @@ ship_event = {
 			delete_fleet = this
 		}
 	}
+
 	option = {
 		name = akx.9005.a.spiritualist
 		trigger = {
@@ -209,6 +215,7 @@ ship_event = {
 	show_sound = event_ship_bridge
 	location = this
 	is_triggered_only = yes
+
 	after = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -226,6 +233,7 @@ ship_event = {
 			add_trait = { trait = leader_trait_substance_abuser }
 		}
 	}
+
 	option = {
 		name = akx.9006.a
 	}
@@ -254,6 +262,7 @@ country_event = {
 			save_global_event_target_as = horizonsignal_secondleader
 		}
 	}
+
 	option = {
 		name = akx.9010.a.collective
 		custom_tooltip = akx.9010.a.tooltip
@@ -317,11 +326,13 @@ country_event = {
 
 	immediate = {
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = akx.9020 days = 320 random = 40 }
 		}
 	}
+
 	option = {
 		name = akx.9011.a
 	}
@@ -352,6 +363,7 @@ country_event = {
 			planet_event = { id = akx.9100 days = 320 random = 40 }
 		}
 	}
+
 	after = {
 		event_target:horizon_debris_object_1 = {
 			enable_special_project = {
@@ -361,6 +373,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9012.a
 	}
@@ -379,6 +392,7 @@ ship_event = {
 	immediate = {
 		fromfrom = { destroy_ambient_object = this }
 	}
+
 	option = {
 		name = OK
 		owner = {
@@ -406,6 +420,7 @@ country_event = {
 	show_sound = event_ship_bridge
 	location = root.capital_scope
 	is_triggered_only = yes
+
 	after = {
 		end_event_chain = WORM_CHAIN_1
 		add_monthly_resource_mult = {
@@ -422,6 +437,7 @@ country_event = {
 			add_trait = { trait = leader_trait_substance_abuser }
 		}
 	}
+
 	option = {
 		name = akx.9013.a
 	}
@@ -445,6 +461,7 @@ country_event = {
 			save_global_event_target_as = horizonsignal_thirdleader
 		}
 	}
+
 	option = {
 		name = akx.9020.a
 		custom_tooltip = akx.9020.a.tooltip
@@ -485,6 +502,7 @@ country_event = {
 			planet_event = { id = akx.9100 days = 320 random = 40 }
 		}
 	}
+
 	option = {
 		name = akx.9021.a
 		if = {
@@ -543,6 +561,7 @@ country_event = {
 			save_event_target_as = debris_2
 		}
 	}
+
 	option = {
 		name = akx.9022.a
 		event_target:debris_2 = {
@@ -563,6 +582,7 @@ country_event = {
 	show_sound = event_ship_bridge
 	location = root.capital_scope
 	is_triggered_only = yes
+
 	after = {
 		end_event_chain = WORM_CHAIN_1
 		add_monthly_resource_mult = {
@@ -584,6 +604,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9013.b
 	}
@@ -601,6 +622,7 @@ planet_event = {
 	location = root
 	trackable = yes
 	is_triggered_only = yes
+
 	after = {
 		enable_special_project = {
 			name = LOOP_TEMPLE_PROJECT
@@ -608,6 +630,7 @@ planet_event = {
 			owner = root.owner
 		}
 	}
+
 	option = {
 		name = akx.9100.spiritual.a
 		trigger = {
@@ -633,6 +656,7 @@ planet_event = {
 	show_sound = event_ship_bridge
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = akx.9101.a.notspiritual
 		custom_tooltip = akx.9101.a.notspiritual.tooltip
@@ -753,6 +777,7 @@ fleet_event = {
 		create_ambient_object = { type = loop_debris_02_object location = from }
 		last_created_ambient_object = { save_event_target_as = horizon_pod }
 	}
+
 	option = {
 		name = INTERESTING
 		event_target:horizon_pod = {
@@ -794,6 +819,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9201.militarist.a
 		# custom_tooltip = 9201.militarist.a.tooltip
@@ -878,6 +904,7 @@ country_event = {
 		}
 		event_target:researchingscientist = { make_unleashed_messenger = yes }
 	}
+
 	option = {
 		name = akx.9210.a
 		event_target:researchingscientist = {
@@ -942,6 +969,7 @@ country_event = {
 			event_target:researchingscientist = { make_unleashed_messenger = yes }
 		}
 	}
+
 	option = {
 		name = akx.9211.a
 		custom_tooltip = akx.9211.a.tooltip
@@ -1042,6 +1070,7 @@ country_event = {
 		}
 		event_target:researchingscientist9220 = { make_leashed_messenger = yes }
 	}
+
 	option = {
 		name = akx.9220.a
 		event_target:researchingscientist9220 = {
@@ -1105,6 +1134,7 @@ country_event = {
 			event_target:researchingscientist9220 = { make_leashed_messenger = yes }
 		}
 	}
+
 	option = {
 		name = akx.9221.a
 		custom_tooltip = akx.9221.a.tooltip
@@ -1212,6 +1242,7 @@ fleet_event = {
 			set_country_flag = syzygy_encountered
 		}
 	}
+
 	option = {
 		name = akx.9300.a.admiralabsent
 		custom_tooltip = akx.9300.a.admiralabsent.tooltip
@@ -1256,10 +1287,12 @@ country_event = {
 	desc = akx.9310.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:mirrored_syzygy_admiral
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = akx.9310.a
 		# custom_tooltip = akx.9310.a.tooltip
@@ -1491,10 +1524,12 @@ country_event = {
 	desc = akx.9310.e.response
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:mirrored_syzygy_admiral
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = DOTDOTDOT
 		hidden_effect = {
@@ -1551,6 +1586,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -1623,6 +1659,7 @@ country_event = {
 		}
 		last_created_ambient_object = { save_event_target_as = syzygy_debris_01 }
 	}
+
 	after = {
 		event_target:syzygy_debris_01 = {
 			enable_special_project = {
@@ -1632,6 +1669,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 	}
@@ -1645,6 +1683,7 @@ country_event = {
 	show_sound = event_ship_bridge
 	location = fromfromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		event_target:mirrored_syzygy_admiral = {
@@ -1662,11 +1701,13 @@ country_event = {
 	show_sound = event_ship_bridge
 	location = fromfromfrom
 	is_triggered_only = yes
+
 	after = {
 		event_target:mirrored_syzygy_admiral = {
 			add_trait = { trait = leader_trait_foredoomed_to_a_rendezvous }
 		}
 	}
+
 	option = {
 		name = akx.9321.a
 	}
@@ -1687,6 +1728,7 @@ country_event = {
 		has_country_flag = worm_events_available
 		from = { has_trait = leader_trait_foredoomed_to_a_rendezvous }
 	}
+
 	option = {
 		name = akx.9330.a
 	}
@@ -1703,6 +1745,7 @@ ship_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_ship_bridge
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		owner = {
@@ -1750,9 +1793,11 @@ planet_event = {
 			NOT = { has_country_flag = coils_of_god }
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 50
 	}
+
 	immediate = {
 		save_global_event_target_as = coils_planet
 		observation_outpost_owner = {
@@ -1771,6 +1816,7 @@ country_event = {
 	show_sound = event_ship_bridge
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = akx.9400.a
 		hidden_effect = {
@@ -1809,6 +1855,7 @@ country_event = {
 			owner = { is_primitive = yes }
 		}
 	}
+
 	option = {
 		name = OK
 	}
@@ -1829,6 +1876,7 @@ country_event = {
 			owner = { is_primitive = yes }
 		}
 	}
+
 	option = {
 		name = OK
 		hidden_effect = {
@@ -1852,6 +1900,7 @@ country_event = {
 			owner = { is_primitive = yes }
 		}
 	}
+
 	option = {
 		name = akx.9450.a
 		# custom_tooltip = akx.9450.a.tooltip
@@ -1912,6 +1961,7 @@ country_event = {
 	immediate = {
 		set_country_flag = coils_god_halted
 	}
+
 	after = {
 		if = {
 			limit = { has_technology = tech_akx_worm_2 }
@@ -1926,6 +1976,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9460.a
 	}
@@ -1948,6 +1999,7 @@ country_event = {
 			owner = { is_primitive = yes }
 		}
 	}
+
 	after = {
 		if = {
 			limit = { has_technology = tech_akx_worm_2 }
@@ -1962,6 +2014,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9465.a
 	}
@@ -1988,6 +2041,7 @@ country_event = {
 	immediate = {
 		set_country_flag = coils_god_halted
 	}
+
 	after = {
 		event_target:coils_planet = {
 			observation_outpost = {
@@ -2011,6 +2065,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9470.a
 	}
@@ -2051,6 +2106,7 @@ country_event = {
 			delete_fleet = fleet
 		}
 	}
+
 	after = {
 		if = {
 			limit = { has_technology = tech_akx_worm_2 }
@@ -2065,6 +2121,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9480.a
 		custom_tooltip = akx.9480.a.tooltip
@@ -2090,6 +2147,7 @@ country_event = {
 			owner = { is_primitive = yes }
 		}
 	}
+
 	after = {
 		add_monthly_resource_mult = {
 			resource = society_research
@@ -2108,6 +2166,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9490.a
 		custom_tooltip = akx.9490.a.tooltip
@@ -2159,6 +2218,7 @@ planet_event = {
 		save_global_event_target_as = waiting_world
 		add_deposit = d_mothballed_facilities
 	}
+
 	option = {
 		name = akx.9500.a
 		allow = {
@@ -2197,10 +2257,12 @@ planet_event = {
 
 	immediate = {
 	}
+
 	after = {
 		tooltip = { remove_deposit = d_mothballed_facilities }
 		add_modifier = { modifier = waiting_world_ruins days = -1 }
 	}
+
 	option = {
 		name = akx.9505.a
 		custom_tooltip = akx.9505.a.tooltip
@@ -2222,6 +2284,7 @@ planet_event = {
 	picture = GFX_evt_colony_settlement
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = akx.9510.a
 		hidden_effect = {
@@ -2259,6 +2322,7 @@ planet_event = {
 		}
 		create_pop_group = { species = event_target:waiting_world_species size = 300 }
 	}
+
 	option = {
 		name = akx.9520.a
 		custom_tooltip = akx.9510.b.tooltip
@@ -2296,6 +2360,7 @@ planet_event = {
 		}
 		create_pop_group = { species = event_target:waiting_world_species size = 500 }
 	}
+
 	option = {
 		name = akx.9525.a
 		hidden_effect = {
@@ -2321,9 +2386,11 @@ planet_event = {
 	location = root
 	trackable = yes
 	is_triggered_only = yes
+
 	after = {
 		destroy_colony = yes
 	}
+
 	option = {
 		name = akx.9530.a
 		enable_special_project = {
@@ -2354,6 +2421,7 @@ ship_event = {
 	picture = GFX_evt_colony_settlement
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		owner = {
@@ -2388,6 +2456,7 @@ planet_event = {
 	location = root
 	trackable = yes
 	is_triggered_only = yes
+
 	option = {
 		name = akx.9540.a
 		custom_tooltip = akx.9540.a.tooltip
@@ -2482,11 +2551,13 @@ planet_event = {
 			add_opinion_modifier = { who = root.owner modifier = opinion_genocidal_our_species }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			destroy_colony = yes
 		}
 	}
+
 	option = {
 		name = akx.9541.a
 		owner = {
@@ -2514,6 +2585,7 @@ planet_event = {
 	picture = GFX_evt_colony_settlement
 	location = root
 	is_triggered_only = yes
+
 	after = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -2537,6 +2609,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.9545.a
 	}
@@ -2572,9 +2645,11 @@ fleet_event = {
 			}
 		}
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	option = {
 		name = akx.9600.a
 		trigger = {
@@ -2643,12 +2718,15 @@ fleet_event = {
 	location = root
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	immediate = {
 		owner = { set_country_flag = retainer_conversation }
 	}
+
 	option = {
 		name = akx.9600.a
 		trigger = {
@@ -2717,9 +2795,11 @@ fleet_event = {
 	location = root
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	option = {
 		name = akx.9600.a
 		trigger = {
@@ -2803,9 +2883,11 @@ fleet_event = {
 			has_country_flag = retainer_first_convo_concluded
 		}
 	}
+
 	picture_event_data = {
 		room = technosphere_room
 	}
+
 	option = {
 		name = akx.9610.a
 		allow = {
@@ -2854,6 +2936,7 @@ fleet_event = {
 			star = { save_event_target_as = hole_pets }
 		}
 	}
+
 	option = {
 		name = akx.9620.a
 		hidden_effect = {
@@ -2895,6 +2978,7 @@ planet_event = {
 	immediate = {
 		owner = { set_country_flag = alignment_built }
 	}
+
 	after = {
 		owner = {
 			end_event_chain = WORM_CHAIN_1
@@ -2906,6 +2990,7 @@ planet_event = {
 			owner = root.owner
 		}
 	}
+
 	option = {
 		name = akx.10000.a
 	}
@@ -2921,6 +3006,7 @@ planet_event = {
 	picture = GFX_evt_dimensional_horror
 	location = root
 	is_triggered_only = yes
+
 	option = {
 		name = akx.10010.a
 		hidden_effect = {
@@ -3005,7 +3091,10 @@ planet_event = {
 					# add planet class to organics
 					if = {
 						limit = { is_robot_pop_group = no }
-						modify_species = { species = this ideal_planet_class = pc_nuked }
+						modify_species = {
+							species = this
+							ideal_planet_class = pc_nuked
+						}
 					}
 					# add planet classes to basic machines
 					if = {
@@ -3043,18 +3132,30 @@ planet_event = {
 						# remove opposite traits
 						if = {
 							limit = { has_trait = trait_natural_engineers }
-							modify_species = { species = this remove_trait = trait_natural_engineers }
+							modify_species = {
+								species = this
+								remove_trait = trait_natural_engineers
+							}
 						}
 						if = {
 							limit = { has_trait = trait_natural_sociologists }
-							modify_species = { species = this remove_trait = trait_natural_sociologists }
+							modify_species = {
+								species = this
+								remove_trait = trait_natural_sociologists
+							}
 						}
 						if = {
 							limit = { has_trait = trait_nerve_stapled }
-							modify_species = { species = this remove_trait = trait_nerve_stapled }
+							modify_species = {
+								species = this
+								remove_trait = trait_nerve_stapled
+							}
 						}
 						# add trait
-						modify_species = { species = this add_trait = trait_natural_physicists }
+						modify_species = {
+							species = this
+							add_trait = trait_natural_physicists
+						}
 					}
 					if = {
 						limit = {
@@ -3066,9 +3167,15 @@ planet_event = {
 						# remove opposite traits
 						if = {
 							limit = { has_trait = trait_charismatic }
-							modify_species = { species = this remove_trait = trait_charismatic }
+							modify_species = {
+								species = this
+								remove_trait = trait_charismatic
+							}
 						}
-						modify_species = { species = this add_trait = trait_repugnant }
+						modify_species = {
+							species = this
+							add_trait = trait_repugnant
+						}
 					}
 					# Add traits to machines
 					if = {
@@ -3079,7 +3186,10 @@ planet_event = {
 						# remove opposite traits
 						if = {
 							limit = { has_trait = trait_robot_artificial_engineers }
-							modify_species = { species = this remove_trait = trait_robot_artificial_engineers }
+							modify_species = {
+								species = this
+								remove_trait = trait_robot_artificial_engineers
+							}
 						}
 						if = {
 							limit = { has_trait = trait_robot_artificial_sociologists }
@@ -3089,7 +3199,10 @@ planet_event = {
 							}
 						}
 						# add trait
-						modify_species = { species = this add_trait = trait_robot_artificial_engineers }
+						modify_species = {
+							species = this
+							add_trait = trait_robot_artificial_engineers
+						}
 					}
 					if = { # IM trait
 						limit = {
@@ -3099,10 +3212,16 @@ planet_event = {
 						# remove opposite traits
 						if = {
 							limit = { has_trait = trait_robot_emotion_emulators }
-							modify_species = { species = this remove_trait = trait_robot_emotion_emulators }
+							modify_species = {
+								species = this
+								remove_trait = trait_robot_emotion_emulators
+							}
 						}
 						# add trait
-						modify_species = { species = this add_trait = trait_robot_uncanny }
+						modify_species = {
+							species = this
+							add_trait = trait_robot_uncanny
+						}
 					}
 				}
 				change_pc = pc_nuked
@@ -3120,6 +3239,7 @@ planet_event = {
 			observer_event = { id = observer.71 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			owner = {
@@ -3129,6 +3249,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = akx.10020.a
 		owner = { end_event_chain = WORM_CHAIN_2 }
@@ -3154,12 +3275,14 @@ country_event = {
 	immediate = {
 		event_target:worm_enemy = { destroy_country = yes }
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = worm_events_available
 			set_country_flag = worm_awaited
 		}
 	}
+
 	option = {
 		name = akx.10021.a
 		end_event_chain = WORM_CHAIN_2
@@ -3183,6 +3306,7 @@ country_event = {
 			add_relic = r_worm_scales
 		}
 	}
+
 	after = {
 		if = {
 			limit = {

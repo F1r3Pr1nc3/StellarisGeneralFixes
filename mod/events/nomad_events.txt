@@ -742,6 +742,7 @@ country_event = {
 		has_country_flag = nomads_contacted
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = "nomad.9.a"
 		trigger = { is_xenophile = no is_xenophobe = no }
@@ -761,6 +762,7 @@ country_event = {
 	id = nomad.10
 	title = nomad.10.name
 	desc = nomad.10.desc
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
@@ -782,6 +784,7 @@ country_event = {
 		event_target:contact_speaker = { establish_communications_no_message = root }
 		set_country_flag = nomads_contacted
 	}
+
 	option = { # friendly
 		name = {
 			text = action.1.selective
@@ -1267,6 +1270,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -1495,10 +1499,12 @@ country_event = {
 	desc = nomad.21.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOR = {
 			has_country_flag = nomad_ignores
@@ -1522,6 +1528,7 @@ country_event = {
 			remove_planet_flag = nomad_mission_location
 		}
 	}
+
 	option = {
 		name = nomad.21.c
 		response_text = nomad.21.c.response
@@ -1572,6 +1579,7 @@ country_event = {
 country_event = {
 	id = nomad.30
 	title = "nomad.30.name"
+
 	desc = {
 		text = nomad.30.desc_01
 		trigger = {
@@ -1607,6 +1615,7 @@ country_event = {
 
 	location = event_target:nomad_fleet
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:nomad_speaker
 		room = ethic_spaceship_room
@@ -1630,6 +1639,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = nomad.30.a
 		is_dialog_only = yes
@@ -1781,10 +1791,12 @@ country_event = {
 	diplomatic = yes
 	location = event_target:NomadMissionPlanet
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 		exists = from
@@ -1810,6 +1822,7 @@ country_event = {
 			remove_planet_flag = nomad_mission_location
 		}
 	}
+
 	option = {
 		name = nomad.41.b
 		response_text = nomad.41.b.response
@@ -1945,7 +1958,10 @@ country_event = {
 				set_owner = event_target:nomad_new_country
 				event_target:nomad_new_country = {
 					every_owned_pop_group = {
-						modify_species = { species = prev ideal_planet_class = prevprev }
+						modify_species = {
+							species = prev
+							ideal_planet_class = prevprev
+						}
 					}
 				}
 				set_surveyed = { surveyed = yes surveyor = root }
@@ -2237,10 +2253,12 @@ country_event = {
 	desc = nomad.100.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		event_target:nomad_fleet = {
 			if = {
@@ -2256,6 +2274,7 @@ country_event = {
 		}
 		remove_country_flag = nomad_hates_you
 	}
+
 	option = {
 		name = OK
 		trigger = { is_xenophile = no is_xenophobe = no }
@@ -2277,16 +2296,19 @@ country_event = {
 	desc = nomad.105.desc
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		set_country_flag = nomad_hates_you
 		event_target:nomad_fleet = {
 			fleet_event = { id = nomad.15 }
 		}
 	}
+
 	option = {
 		name = OK
 		trigger = { is_xenophile = no is_xenophobe = no }
@@ -2396,10 +2418,12 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		set_country_flag = nomad_ship_trade
 		event_target:nomad01_country = {
@@ -2410,6 +2434,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = nomad.500.a
 		is_dialog_only = yes
@@ -2435,13 +2460,16 @@ country_event = {
 	desc = nomad.505.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.505.a
 		is_dialog_only = yes
@@ -2467,13 +2495,16 @@ country_event = {
 	desc = nomad.510.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.510.a
 		is_dialog_only = yes
@@ -2499,13 +2530,16 @@ country_event = {
 	desc = nomad.511.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.511.a
 		allow = {
@@ -2569,13 +2603,16 @@ country_event = {
 	desc = nomad.512.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.511.a
 		allow = {
@@ -2628,13 +2665,16 @@ country_event = {
 	desc = nomad.513.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.513.b
 		allow = {
@@ -2689,10 +2729,12 @@ country_event = {
 	desc = nomad.514.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
@@ -2702,6 +2744,7 @@ country_event = {
 			owner = { save_event_target_as = nomads }
 		}
 	}
+
 	option = {
 		name = nomad.514.a
 		hidden_effect = {
@@ -2784,12 +2827,15 @@ country_event = {
 	desc = nomad.520.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.520.a
 		is_dialog_only = yes
@@ -2809,9 +2855,11 @@ country_event = {
 	desc = nomad.521.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
@@ -2823,6 +2871,7 @@ country_event = {
 			remove_country_flag = nomad_doublecrossing
 		}
 	}
+
 	option = {
 		name = nomad.521.a
 		hidden_effect = {
@@ -2843,12 +2892,15 @@ country_event = {
 	desc = nomad.522.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.522.b
 		is_dialog_only = yes
@@ -2879,12 +2931,15 @@ country_event = {
 	desc = nomad.523.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.523.c
 		hidden_effect = {
@@ -2917,12 +2972,15 @@ country_event = {
 	desc = nomad.524.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	option = {
 		name = nomad.524.a
 		hidden_effect = {
@@ -2935,6 +2993,7 @@ country_event = {
 country_event = {
 	id = nomad.525
 	title = nomad.500.title
+
 	desc = {
 		text = nomad.525.desc
 		trigger = {
@@ -2960,10 +3019,12 @@ country_event = {
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
+
 	picture_event_data = {
 		portrait = event_target:contact_speaker_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = nomad.525.a
 		hidden_effect = {
@@ -2981,9 +3042,11 @@ country_event = {
 	desc = nomad.525.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	trigger = {
 		NOT = { has_country_flag = nomad_ignores }
 	}
@@ -2998,6 +3061,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = nomad.525.a
 		hidden_effect = {
@@ -3012,6 +3076,7 @@ country_event = {
 country_event = {
 	id = nomad.530
 	title = nomad.500.title
+
 	desc = {
 		text = nomad.530.desc.15ships
 		trigger = {
@@ -3078,6 +3143,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OK
 		hidden_effect = {

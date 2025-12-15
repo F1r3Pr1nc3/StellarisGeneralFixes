@@ -22,6 +22,7 @@
 
 resolution_declare_crisis = {
 	icon = "GFX_resolution_declare_crisis"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -31,6 +32,7 @@ resolution_declare_crisis = {
 
 	target = yes
 	harmful = yes
+
 	valid_target = {
 		NOT = { is_same_empire = from }
 		OR = {
@@ -42,10 +44,12 @@ resolution_declare_crisis = {
 		}
 		NOT = { has_country_flag = declared_crisis }
 	}
+
 	modifier = {
 		starbase_shipyard_build_speed_mult = 0.20
 		ships_upkeep_mult = -0.1
 	}
+
 	effect = {
 		custom_tooltip = resolution_declare_crisis_tooltip
 		hidden_effect = {
@@ -123,6 +127,7 @@ resolution_declare_crisis = {
 			declare_crisis_war_effect = yes
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		has_galactic_emperor = no
@@ -267,6 +272,7 @@ resolution_declare_crisis = {
 
 resolution_repeal_crisis = {
 	icon = "GFX_resolution_repeal_red"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -276,10 +282,12 @@ resolution_repeal_crisis = {
 
 	target = yes
 	harmful = no
+
 	valid_target = {
 		is_default_or_fallen = yes
 		has_country_flag = declared_crisis
 	}
+
 	effect = {
 		hidden_effect = {
 			remove_country_flag = declared_crisis
@@ -301,6 +309,7 @@ resolution_repeal_crisis = {
 			country_event = { id = crisis.4111 }
 		}
 	}
+
 	potential = {
 		has_galactic_emperor = no
 		has_nemesis = yes
@@ -363,6 +372,7 @@ resolution_repeal_crisis = {
 
 resolution_declare_crisis_empire = {
 	icon = "GFX_resolution_declare_crisis"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -372,6 +382,7 @@ resolution_declare_crisis_empire = {
 
 	target = yes
 	harmful = yes
+
 	valid_target = {
 		NOR = {
 			is_same_empire = from
@@ -386,10 +397,12 @@ resolution_declare_crisis_empire = {
 		}
 		NOT = { has_country_flag = declared_crisis }
 	}
+
 	modifier = {
 		starbase_shipyard_build_speed_mult = 0.20
 		ships_upkeep_mult = -0.1
 	}
+
 	effect = {
 		custom_tooltip = resolution_declare_crisis_empire_tooltip
 		hidden_effect = {
@@ -433,6 +446,7 @@ resolution_declare_crisis_empire = {
 			declare_crisis_war_effect = yes
 		}
 	}
+
 	potential = {
 		has_galactic_emperor = yes
 		has_nemesis = yes
@@ -572,6 +586,7 @@ resolution_declare_crisis_empire = {
 
 resolution_repeal_crisis_empire = {
 	icon = "GFX_resolution_repeal_red"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -581,10 +596,12 @@ resolution_repeal_crisis_empire = {
 
 	target = yes
 	harmful = no
+
 	valid_target = {
 		is_default_or_fallen = yes
 		has_country_flag = declared_crisis
 	}
+
 	effect = {
 		hidden_effect = {
 			remove_country_flag = declared_crisis
@@ -610,6 +627,7 @@ resolution_repeal_crisis_empire = {
 			country_event = { id = crisis.4113 }
 		}
 	}
+
 	potential = {
 		has_galactic_emperor = yes
 		has_nemesis = yes
@@ -674,6 +692,7 @@ resolution_repeal_crisis_empire = {
 # Nominate Custodian
 resolution_galacticreforms_nominate_custodian = {
 	icon = "GFX_resolution_nominate_custodian"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -683,6 +702,7 @@ resolution_galacticreforms_nominate_custodian = {
 
 	target = yes
 	harmful = no
+
 	valid_target = {
 		is_country_type = default
 		is_galactic_community_member = yes
@@ -699,6 +719,7 @@ resolution_galacticreforms_nominate_custodian = {
 			}
 		}
 	}
+
 	effect = {
 		set_galactic_custodian = yes
 		hidden_effect = {
@@ -709,12 +730,14 @@ resolution_galacticreforms_nominate_custodian = {
 			}
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_council_established = yes
 		has_galactic_custodian = no
 		has_galactic_emperor = no
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "nominate_custodian_requires_independence"
@@ -728,9 +751,11 @@ resolution_galacticreforms_nominate_custodian = {
 			}
 		}
 	}
+
 	active = {
 		has_galactic_custodian = no
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -834,6 +859,7 @@ resolution_galacticreforms_nominate_custodian = {
 # Unseat Custodian
 resolution_galacticreforms_unseat_custodian = {
 	icon = "GFX_resolution_end_custodianship"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -843,11 +869,14 @@ resolution_galacticreforms_unseat_custodian = {
 
 	target = yes
 	harmful = yes
+
 	valid_target = {
 		is_galactic_custodian = yes
 	}
+
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_galacticreforms_unseat_custodian_tooltip
 		hidden_effect = {
@@ -858,14 +887,18 @@ resolution_galacticreforms_unseat_custodian = {
 			country_event = { id = custodian.16 }
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		is_galactic_custodian = no
 	}
+
 	active = {
 		has_galactic_custodian = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = {
@@ -967,6 +1000,7 @@ resolution_galacticreforms_unseat_custodian = {
 # Form the Galactic Empire
 resolution_custodian_form_empire = {
 	icon = "GFX_resolution_form_galactic_empire"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -978,6 +1012,7 @@ resolution_custodian_form_empire = {
 
 	modifier = {
 	}
+
 	effect = {
 		if = {
 			limit = { is_gestalt = no }
@@ -998,23 +1033,28 @@ resolution_custodian_form_empire = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
 		is_active_resolution = "resolution_custodian_perpetual_custodianship"
 		has_galactic_emperor = no
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "requires_no_war_in_heaven"
 			NOT = { has_global_flag = war_in_heaven_ongoing } # Can't become Emperor during WiH
 		}
 	}
+
 	active = {
 		has_galactic_custodian = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -1108,6 +1148,7 @@ resolution_custodian_form_empire = {
 # Form the Awakaned Galactic Empire
 resolution_awakened_galactic_empire = {
 	icon = "GFX_resolution_form_galactic_empire"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1119,21 +1160,26 @@ resolution_awakened_galactic_empire = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_form_awakened_galactic_empire
 		hidden_effect = {
 			country_event = { id = emperor.1 }
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_country_flag = fallen_empire_hive_control
 		has_galactic_emperor = no
 	}
+
 	active = {
 		exists = event_target:fallen_empire_hive_control
 	}
+
 	ai_weight = {
 		base = @resolution_weight_hated
 		modifier = {
@@ -1233,6 +1279,7 @@ resolution_awakened_galactic_empire = {
 # United Front
 resolution_custodian_united_front = {
 	icon = "GFX_resolution_united_front"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1255,16 +1302,20 @@ resolution_custodian_united_front = {
 		damage_vs_player_crisis_mult = 0.2
 		country_energy_produces_mult = -0.03
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_united_front }
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
@@ -1378,6 +1429,7 @@ resolution_custodian_united_front = {
 # Galactic Mobilization
 resolution_custodian_galactic_mobilization = {
 	icon = "GFX_resolution_galactic_mobilization"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1389,6 +1441,7 @@ resolution_custodian_galactic_mobilization = {
 
 	modifier = {
 	}
+
 	triggered_modifier = {
 		potential = { is_gestalt = no }
 		modifier = { resolution_custodian_galactic_mobilization = 1 }
@@ -1397,16 +1450,20 @@ resolution_custodian_galactic_mobilization = {
 		potential = { is_gestalt = yes }
 		modifier = { resolution_custodian_galactic_mobilization_gestalt = 1 }
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_galactic_mobilization }
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
@@ -1514,6 +1571,7 @@ resolution_custodian_galactic_mobilization = {
 # Introduce Galactic Standard
 resolution_custodian_galactic_standard = {
 	icon = "GFX_resolution_galactic_standard"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1526,16 +1584,20 @@ resolution_custodian_galactic_standard = {
 	modifier = {
 		resolution_custodian_galactic_standard = 1
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_galactic_standard }
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		OR = {
@@ -1580,6 +1642,7 @@ resolution_custodian_galactic_standard = {
 # Anti-Piracy Initiative
 resolution_custodian_anti_piracy = {
 	icon = "GFX_resolution_anti_piracy_initiative"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1596,16 +1659,20 @@ resolution_custodian_anti_piracy = {
 		damage_vs_country_type_awakened_marauders_mult = 0.2
 		country_energy_produces_mult = -0.03
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_anti_piracy }
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		OR = {
@@ -1646,6 +1713,7 @@ resolution_custodian_anti_piracy = {
 # Extend Custodianship
 resolution_custodian_extend_custodianship = {
 	icon = "GFX_resolution_term_limits"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1657,6 +1725,7 @@ resolution_custodian_extend_custodianship = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_custodian_extend_custodianship_tooltip
 		hidden_effect = {
@@ -1664,8 +1733,10 @@ resolution_custodian_extend_custodianship = {
 			set_country_flag = extended_custodianship
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
@@ -1674,9 +1745,11 @@ resolution_custodian_extend_custodianship = {
 			has_country_flag = extended_custodianship
 		}
 	}
+
 	active = {
 		has_galactic_custodian = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -1770,6 +1843,7 @@ resolution_custodian_extend_custodianship = {
 # Remove Custodianship Term Limit
 resolution_custodian_perpetual_custodianship = {
 	icon = "GFX_resolution_term_limits"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1781,27 +1855,33 @@ resolution_custodian_perpetual_custodianship = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_custodian_perpetual_custodianship_tooltip
 		hidden_effect = {
 			set_custodian_term_days = -1 # -1 means that the timer will stop counting
 		}
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_perpetual_custodianship }
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
 	}
+
 	active = {
 		has_galactic_custodian = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = {
@@ -1905,6 +1985,7 @@ resolution_custodian_perpetual_custodianship = {
 # Prematurely End Custodianship
 resolution_custodian_end_custodianship = {
 	icon = "GFX_resolution_end_custodianship"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -1916,21 +1997,26 @@ resolution_custodian_end_custodianship = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_custodian_end_custodianship_tooltip
 		hidden_effect = {
 			country_event = { id = custodian.14 }
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
 	}
+
 	active = {
 		has_galactic_custodian = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_popular
 		modifier = {
@@ -2058,6 +2144,7 @@ resolution_custodian_end_custodianship = {
 # Galactic Defense force
 resolution_custodian_gdf = {
 	icon = "GFX_resolution_galactic_defense_force"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2066,15 +2153,18 @@ resolution_custodian_gdf = {
 	}
 
 	target = no
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_gdf }
 		}
 	}
+
 	modifier = {
 		resolution_custodian_gdf = 1
 	}
+
 	effect = {
 		set_galactic_defense_force = yes
 		hidden_effect = {
@@ -2089,8 +2179,10 @@ resolution_custodian_gdf = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
@@ -2212,6 +2304,7 @@ resolution_custodian_gdf = {
 # Expand GDF
 resolution_custodian_expand_gdf = {
 	icon = "GFX_resolution_expand_gdf"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2220,16 +2313,19 @@ resolution_custodian_expand_gdf = {
 	}
 
 	target = no
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_expand_gdf }
 		}
 	}
+
 	modifier = {
 		resolution_custodian_gdf_2 = 1
 		country_community_gdf_naval_capacity = 400
 	}
+
 	effect = {
 		hidden_effect = {
 			if = {
@@ -2244,8 +2340,10 @@ resolution_custodian_expand_gdf = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
@@ -2368,6 +2466,7 @@ resolution_custodian_expand_gdf = {
 # Disband the GDF
 resolution_custodian_disband_gdf = {
 	icon = "GFX_resolution_disband_gdf"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2379,6 +2478,7 @@ resolution_custodian_disband_gdf = {
 
 	modifier = {
 	}
+
 	effect = {
 		set_galactic_defense_force = no
 		hidden_effect = {
@@ -2405,8 +2505,10 @@ resolution_custodian_disband_gdf = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_active_resolution = "resolution_custodian_gdf"
@@ -2533,6 +2635,7 @@ resolution_custodian_disband_gdf = {
 # Interstellar Navigation Agency
 resolution_custodian_ina = {
 	icon = "GFX_resolution_form_ina"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2545,16 +2648,20 @@ resolution_custodian_ina = {
 	modifier = {
 		resolution_custodian_ina = 1
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_ina }
 		}
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
@@ -2598,6 +2705,7 @@ resolution_custodian_ina = {
 # Disband the Interstellar Navigation Agency
 resolution_custodian_disband_ina = {
 	icon = "GFX_resolution_disband_ina"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2609,11 +2717,14 @@ resolution_custodian_disband_ina = {
 
 	modifier = {
 	}
+
 	effect = {
 		cancel_resolution = "resolution_custodian_ina"
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_active_resolution = "resolution_custodian_ina"
@@ -2652,6 +2763,7 @@ resolution_custodian_disband_ina = {
 # Galactic Trade Organization
 resolution_custodian_gto = {
 	icon = "GFX_resolution_form_gto"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2664,24 +2776,30 @@ resolution_custodian_gto = {
 	modifier = {
 		resolution_custodian_gto = 1
 	}
+
 	active = {
 		has_galactic_emperor = no
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
 		has_galactic_emperor = no
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_custodian_gto }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -2723,6 +2841,7 @@ resolution_custodian_gto = {
 # Disband the Galactic Trade Organization
 resolution_custodian_disband_gto = {
 	icon = "GFX_resolution_disband_gto"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2734,11 +2853,14 @@ resolution_custodian_disband_gto = {
 
 	modifier = {
 	}
+
 	effect = {
 		cancel_resolution = "resolution_custodian_gto"
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_active_resolution = "resolution_custodian_gto"
@@ -2786,6 +2908,7 @@ resolution_custodian_disband_gto = {
 # GALPOL
 resolution_custodian_galpol = {
 	icon = "GFX_resolution_form_galpol"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2798,20 +2921,25 @@ resolution_custodian_galpol = {
 	modifier = {
 		resolution_custodian_galpol = 1
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis = yes
 		is_galactic_custodian = yes
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_custodian_galpol" }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -2848,6 +2976,7 @@ resolution_custodian_galpol = {
 # Disband GALPOL
 resolution_custodian_disband_galpol = {
 	icon = "GFX_resolution_disband_galpol"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2859,11 +2988,14 @@ resolution_custodian_disband_galpol = {
 
 	modifier = {
 	}
+
 	effect = {
 		cancel_resolution = "resolution_custodian_galpol"
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		is_active_resolution = "resolution_custodian_galpol"
 	}
@@ -2915,6 +3047,7 @@ resolution_galactic_empire_imperial_crusade = {
 			}
 		}
 	}
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -2924,6 +3057,7 @@ resolution_galactic_empire_imperial_crusade = {
 
 	target = yes
 	harmful = yes
+
 	valid_target = {
 		is_country_type = default
 		NOR = {
@@ -2934,13 +3068,16 @@ resolution_galactic_empire_imperial_crusade = {
 			is_at_war_with = galactic_emperor
 		}
 	}
+
 	allow = {
 		imperial_authority >= 140
 	}
+
 	active = {
 		has_galactic_emperor = yes
 		from = { is_at_war_with = galactic_emperor }
 	}
+
 	effect = {
 		custom_tooltip = resolution_imperial_crusade_tooltip
 		hidden_effect = {
@@ -3003,6 +3140,7 @@ resolution_galactic_empire_imperial_crusade = {
 			}
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -3036,6 +3174,7 @@ resolution_galactic_empire_imperial_crusade = {
 # United Front (Imperial version)
 resolution_emperor_united_front = {
 	icon = "GFX_resolution_united_front"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3058,24 +3197,30 @@ resolution_emperor_united_front = {
 		damage_vs_player_crisis_mult = 0.2
 		country_energy_produces_mult = -0.03
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_united_front" }
 		}
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		any_country = { is_crisis_faction = yes }
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -3178,6 +3323,7 @@ resolution_emperor_united_front = {
 # Imperial Armada
 resolution_emperor_imperial_armada = {
 	icon = "GFX_resolution_imperial_armada"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3190,12 +3336,14 @@ resolution_emperor_imperial_armada = {
 	modifier = {
 		resolution_custodian_gdf = 1
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_imperial_armada" }
 		}
 	}
+
 	effect = {
 		if = {
 			limit = { galactic_defense_force_exists = no } # e.g. Custodian becomes Emperor
@@ -3207,15 +3355,19 @@ resolution_emperor_imperial_armada = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = {
@@ -3329,6 +3481,7 @@ resolution_emperor_imperial_armada = {
 # Expand Imperial Armada
 resolution_emperor_expand_ia = {
 	icon = "GFX_resolution_expand_armada"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3337,28 +3490,35 @@ resolution_emperor_expand_ia = {
 	}
 
 	target = no
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_expand_ia" }
 		}
 	}
+
 	modifier = {
 		resolution_custodian_gdf_2 = 1
 		country_community_gdf_naval_capacity = 400
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_active_resolution = "resolution_emperor_imperial_armada"
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -3460,6 +3620,7 @@ resolution_emperor_expand_ia = {
 # Imperial Legions
 resolution_emperor_imperial_legions = {
 	icon = "GFX_resolution_imperial_legions"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3468,14 +3629,17 @@ resolution_emperor_imperial_legions = {
 	}
 
 	target = no
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_imperial_legions" }
 		}
 	}
+
 	modifier = {
 	}
+
 	effect = {
 		event_target:gal_emperor = { custom_tooltip = resolution_emperor_imperial_legions_tooltip }
 		hidden_effect = {
@@ -3484,15 +3648,19 @@ resolution_emperor_imperial_legions = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = {
@@ -3594,6 +3762,7 @@ resolution_emperor_imperial_legions = {
 # Imperial Navigation Agency
 resolution_emperor_ina = {
 	icon = "GFX_resolution_form_ina"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3606,23 +3775,29 @@ resolution_emperor_ina = {
 	modifier = {
 		resolution_custodian_ina = 1
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_ina" }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -3661,6 +3836,7 @@ resolution_emperor_ina = {
 # Disband the Interstellar Navigation Agency
 resolution_emperor_disband_ina = {
 	icon = "GFX_resolution_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3672,19 +3848,24 @@ resolution_emperor_disband_ina = {
 
 	modifier = {
 	}
+
 	effect = {
 		cancel_resolution = "resolution_emperor_ina"
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_active_resolution = "resolution_emperor_ina"
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -3718,6 +3899,7 @@ resolution_emperor_disband_ina = {
 # Galactic Trade Organization
 resolution_emperor_gto = {
 	icon = "GFX_resolution_form_gto"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3730,23 +3912,29 @@ resolution_emperor_gto = {
 	modifier = {
 		resolution_custodian_gto = 1
 	}
+
 	effect = {
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = resolution_emperor_gto }
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = {
@@ -3788,6 +3976,7 @@ resolution_emperor_gto = {
 # Disband the Galactic Trade Organization
 resolution_emperor_disband_gto = {
 	icon = "GFX_resolution_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3799,19 +3988,24 @@ resolution_emperor_disband_gto = {
 
 	modifier = {
 	}
+
 	effect = {
 		cancel_resolution = "resolution_emperor_gto"
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_active_resolution = "resolution_emperor_gto"
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -3853,6 +4047,7 @@ resolution_emperor_disband_gto = {
 # Imperial Security Directorate
 resolution_emperor_isd = {
 	icon = "GFX_resolution_imperial_security_directorate"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3861,15 +4056,18 @@ resolution_emperor_isd = {
 	}
 
 	target = no
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_isd" }
 		}
 	}
+
 	modifier = {
 		resolution_emperor_isd = 1
 	}
+
 	effect = {
 		event_target:gal_emperor = {
 			add_modifier = { modifier = "imperial_security_directorate" }
@@ -3880,15 +4078,19 @@ resolution_emperor_isd = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -3930,6 +4132,7 @@ resolution_emperor_isd = {
 # Imperial Charter
 resolution_emperor_imperial_charter = {
 	icon = "GFX_resolution_imperial_trade_company"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -3939,20 +4142,24 @@ resolution_emperor_imperial_charter = {
 
 	target = yes
 	harmful = no
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_imperial_charter" }
 		}
 	}
+
 	valid_target = {
 		is_country_type = default
 		is_galactic_community_member = yes
 		is_megacorp = yes
 		is_galactic_emperor = no
 	}
+
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_imperial_charter_tooltip
 		hidden_effect = {
@@ -3974,8 +4181,10 @@ resolution_emperor_imperial_charter = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
@@ -3984,9 +4193,11 @@ resolution_emperor_imperial_charter = {
 			has_global_flag = imperial_charter_granted
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -4020,6 +4231,7 @@ resolution_emperor_imperial_charter = {
 # Revoke Imperial Charter
 resolution_emperor_revoke_imperial_charter = {
 	icon = "GFX_resolution_imperial_trade_company"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4029,6 +4241,7 @@ resolution_emperor_revoke_imperial_charter = {
 
 	target = yes
 	harmful = yes
+
 	valid_target = {
 		is_country_type = default
 		is_galactic_community_member = yes
@@ -4036,8 +4249,10 @@ resolution_emperor_revoke_imperial_charter = {
 		is_galactic_emperor = no
 		has_modifier = imperial_charter
 	}
+
 	modifier = {
 	}
+
 	effect = {
 		hidden_effect = {
 			remove_global_flag = imperial_charter_granted
@@ -4053,16 +4268,20 @@ resolution_emperor_revoke_imperial_charter = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		has_global_flag = imperial_charter_granted
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_popular
 		modifier = {
@@ -4087,6 +4306,7 @@ resolution_emperor_revoke_imperial_charter = {
 # Abolish Imperial Council
 resolution_emperor_abolish_council = {
 	icon = "GFX_resolution_abolish_imperial_council"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4098,6 +4318,7 @@ resolution_emperor_abolish_council = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_abolish_council_tooltip
 		hidden_effect = {
@@ -4109,6 +4330,7 @@ resolution_emperor_abolish_council = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4118,14 +4340,17 @@ resolution_emperor_abolish_council = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_galactic_council_established = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_hated
 		modifier = {
@@ -4156,6 +4381,7 @@ resolution_emperor_restore_council = {
 		is_galactic_emperor = yes
 		is_galactic_council_established = no
 	}
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4167,11 +4393,14 @@ resolution_emperor_restore_council = {
 
 	modifier = {
 	}
+
 	allow = {
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_restore_council_tooltip
 		hidden_effect = {
@@ -4186,6 +4415,7 @@ resolution_emperor_restore_council = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4195,6 +4425,7 @@ resolution_emperor_restore_council = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_loved
 		modifier = {
@@ -4243,6 +4474,7 @@ resolution_emperor_restore_council = {
 
 resolution_emperor_council_size_1 = {
 	icon = "GFX_resolution_imperial_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4254,6 +4486,7 @@ resolution_emperor_council_size_1 = {
 
 	modifier = {
 	}
+
 	effect = {
 		set_council_size = 1
 		hidden_effect = {
@@ -4264,6 +4497,7 @@ resolution_emperor_council_size_1 = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4273,15 +4507,18 @@ resolution_emperor_council_size_1 = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_galactic_council_established = yes
 		num_council_positions = 2
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_hated
 		modifier = {
@@ -4318,6 +4555,7 @@ resolution_emperor_council_size_1 = {
 
 resolution_emperor_council_size_2 = {
 	icon = "GFX_resolution_imperial_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4329,6 +4567,7 @@ resolution_emperor_council_size_2 = {
 
 	modifier = {
 	}
+
 	effect = {
 		set_council_size = 2
 		hidden_effect = {
@@ -4339,6 +4578,7 @@ resolution_emperor_council_size_2 = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4348,6 +4588,7 @@ resolution_emperor_council_size_2 = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
@@ -4357,9 +4598,11 @@ resolution_emperor_council_size_2 = {
 			num_council_positions = 3
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = { # raising the number of slots is more popular than lowering it
@@ -4456,6 +4699,7 @@ resolution_emperor_council_size_2 = {
 
 resolution_emperor_council_size_3 = {
 	icon = "GFX_resolution_imperial_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4467,6 +4711,7 @@ resolution_emperor_council_size_3 = {
 
 	modifier = {
 	}
+
 	effect = {
 		set_council_size = 3
 		set_global_flag = galactic_council_formed
@@ -4478,6 +4723,7 @@ resolution_emperor_council_size_3 = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4487,6 +4733,7 @@ resolution_emperor_council_size_3 = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
@@ -4496,9 +4743,11 @@ resolution_emperor_council_size_3 = {
 			num_council_positions = 4
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = { # raising the number of slots is more popular than lowering it
@@ -4595,6 +4844,7 @@ resolution_emperor_council_size_3 = {
 
 resolution_emperor_council_size_4 = {
 	icon = "GFX_resolution_imperial_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4606,6 +4856,7 @@ resolution_emperor_council_size_4 = {
 
 	modifier = {
 	}
+
 	effect = {
 		set_council_size = 4
 		set_global_flag = galactic_council_formed
@@ -4617,6 +4868,7 @@ resolution_emperor_council_size_4 = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4626,6 +4878,7 @@ resolution_emperor_council_size_4 = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
@@ -4635,9 +4888,11 @@ resolution_emperor_council_size_4 = {
 			num_council_positions = 5
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_normal
 		modifier = { # raising the number of slots is more popular than lowering it
@@ -4734,6 +4989,7 @@ resolution_emperor_council_size_4 = {
 
 resolution_emperor_council_size_5 = {
 	icon = "GFX_resolution_imperial_council_size"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4745,6 +5001,7 @@ resolution_emperor_council_size_5 = {
 
 	modifier = {
 	}
+
 	effect = {
 		set_council_size = 5
 		set_global_flag = galactic_council_formed
@@ -4756,6 +5013,7 @@ resolution_emperor_council_size_5 = {
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
+
 	fail_effects = {
 		hidden_effect = {
 			set_timed_country_flag = {
@@ -4765,15 +5023,18 @@ resolution_emperor_council_size_5 = {
 			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_galactic_council_established = yes
 		num_council_positions = 4
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_popular
 		modifier = {
@@ -4812,6 +5073,7 @@ resolution_emperor_council_size_5 = {
 # Permanent Seat
 resolution_emperor_permanent_seat = {
 	icon = "GFX_resolution_imperial_council_member_permanent"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4821,6 +5083,7 @@ resolution_emperor_permanent_seat = {
 
 	target = yes
 	harmful = no
+
 	valid_target = {
 		is_country_type = default
 		is_galactic_community_member = yes
@@ -4828,9 +5091,11 @@ resolution_emperor_permanent_seat = {
 		is_permanent_councillor = no
 		is_galactic_emperor = no
 	}
+
 	effect = {
 		add_permanent_councillor = yes
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
@@ -4840,15 +5105,18 @@ resolution_emperor_permanent_seat = {
 			is_active_resolution = "resolution_emperor_by_appointment"
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_permanent_seat" }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -4867,6 +5135,7 @@ resolution_emperor_permanent_seat = {
 # Revoke Permanent Seat
 resolution_emperor_revoke_permanent_seat = {
 	icon = "GFX_resolution_imperial_council_member_permanent"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4876,6 +5145,7 @@ resolution_emperor_revoke_permanent_seat = {
 
 	target = yes
 	harmful = yes
+
 	valid_target = {
 		is_country_type = default
 		is_galactic_community_member = yes
@@ -4883,9 +5153,11 @@ resolution_emperor_revoke_permanent_seat = {
 		is_permanent_councillor = yes
 		is_galactic_emperor = no
 	}
+
 	effect = {
 		remove_permanent_councillor = yes
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
@@ -4895,9 +5167,11 @@ resolution_emperor_revoke_permanent_seat = {
 			is_active_resolution = "resolution_emperor_by_appointment"
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -4916,6 +5190,7 @@ resolution_emperor_revoke_permanent_seat = {
 # Trial of Advancement
 resolution_emperor_trial_of_advancement = {
 	icon = "GFX_resolution_imperial_council_trial"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -4927,6 +5202,7 @@ resolution_emperor_trial_of_advancement = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_trial_of_advancement_tooltip
 		hidden_effect = {
@@ -4948,21 +5224,26 @@ resolution_emperor_trial_of_advancement = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_trial_of_advancement" }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -5019,6 +5300,7 @@ resolution_emperor_trial_of_advancement = {
 # By Appointment
 resolution_emperor_by_appointment = {
 	icon = "GFX_resolution_imperial_council_appointment"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -5030,6 +5312,7 @@ resolution_emperor_by_appointment = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_by_appointment_tooltip
 		hidden_effect = {
@@ -5051,21 +5334,26 @@ resolution_emperor_by_appointment = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_by_appointment" }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_hated
 	}
@@ -5074,6 +5362,7 @@ resolution_emperor_by_appointment = {
 # By Election
 resolution_emperor_by_election = {
 	icon = "GFX_resolution_imperial_council_diplomatic_weight"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -5085,6 +5374,7 @@ resolution_emperor_by_election = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_by_election_tooltip
 		hidden_effect = {
@@ -5107,21 +5397,26 @@ resolution_emperor_by_election = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	allow = {
 		custom_tooltip = {
 			fail_text = "resolution_already_active"
 			NOT = { is_active_resolution = "resolution_emperor_by_election" }
 		}
 	}
+
 	ai_weight = {
 		base = @resolution_weight_disliked
 		modifier = {
@@ -5171,6 +5466,7 @@ resolution_emperor_by_election = {
 # Pax Galactica
 resolution_emperor_pax_galactica = {
 	icon = "GFX_resolution_pax_galactica"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -5182,6 +5478,7 @@ resolution_emperor_pax_galactica = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_pax_galactica_tooltip
 		hidden_effect = {
@@ -5203,12 +5500,15 @@ resolution_emperor_pax_galactica = {
 			}
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 	}
+
 	allow = {
 		imperial_authority >= 180
 		custom_tooltip = {
@@ -5216,9 +5516,11 @@ resolution_emperor_pax_galactica = {
 			NOT = { is_active_resolution = "resolution_emperor_pax_galactica" }
 		}
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = {
@@ -5297,6 +5599,7 @@ resolution_emperor_pax_galactica = {
 # Repeal Pax Galactica
 resolution_emperor_repeal_pax_galactica = {
 	icon = "GFX_resolution_repeal_pax_galactica"
+
 	resources = {
 		category = resolutions
 		cost = {
@@ -5308,22 +5611,27 @@ resolution_emperor_repeal_pax_galactica = {
 
 	modifier = {
 	}
+
 	effect = {
 		custom_tooltip = resolution_emperor_repeal_pax_galactica_tooltip
 		hidden_effect = {
 			cancel_resolution = "resolution_emperor_pax_galactica"
 		}
 	}
+
 	fail_effects = {
 	}
+
 	potential = {
 		has_nemesis_or_control_fragment = yes
 		is_galactic_emperor = yes
 		is_active_resolution = "resolution_emperor_pax_galactica"
 	}
+
 	active = {
 		has_galactic_emperor = yes
 	}
+
 	ai_weight = {
 		base = @resolution_weight_unpopular
 		modifier = {

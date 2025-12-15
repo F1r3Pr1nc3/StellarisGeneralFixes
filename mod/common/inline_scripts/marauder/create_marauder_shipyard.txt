@@ -1,0 +1,39 @@
+if = {
+	limit = { has_starbase_size < starbase_starhold }
+	set_starbase_size = starbase_starhold
+}
+if = {
+	limit = {
+		NOR = {
+			has_starbase_module = shipyard
+			is_starbase_building_module = shipyard
+			count_starbase_modules = { count > 2 }
+		}
+	}
+	remove_starbase_module = { slot = 5 }
+	set_starbase_module = { slot = 5 module = shipyard }
+	remove_starbase_module = { slot = 4 }
+	set_starbase_module = { slot = 4 module = shipyard }
+	remove_starbase_module = { slot = 3 }
+	set_starbase_module = { slot = 3 module = shipyard }
+}
+if = {
+	limit = {
+		NOR = {
+			has_starbase_building = crew_quarters
+			is_starbase_building_building = crew_quarters
+		}
+	}
+	remove_starbase_building = { slot = 3 }
+	set_starbase_building = { slot = 3 building = crew_quarters }
+}
+if = {
+	limit = {
+		NOR = {
+			has_starbase_building = fleet_academy
+			is_starbase_building_building = fleet_academy
+		}
+	}
+	remove_starbase_building = { slot = 2 }
+	set_starbase_building = { slot = 2 building = fleet_academy }
+}

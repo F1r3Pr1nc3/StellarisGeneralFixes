@@ -18,24 +18,29 @@ d_mountain_range = {
 	time = 270
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 1000
 		}
 	}
+
 	potential = {
 		planet_size >= 10
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_minerals_produces_add = @ranger_large_production
@@ -44,6 +49,7 @@ d_mountain_range = {
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
 	inline_script = deposits/environmental_architects_natural_blocker_pops
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_low
 		modifier = { factor = 2 is_planet_class = pc_alpine }
@@ -53,6 +59,7 @@ d_mountain_range = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_mountain_range"
 	}
@@ -62,24 +69,29 @@ d_active_volcano = {
 	time = 270
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 1000
 		}
 	}
+
 	potential = {
 		planet_size >= 10
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_energy_produces_add = @ranger_large_production
@@ -88,6 +100,7 @@ d_active_volcano = {
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
 	inline_script = deposits/environmental_architects_natural_blocker_pops
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_low
 		modifier = { factor = 0.5 is_planet_class = pc_alpine }
@@ -98,6 +111,7 @@ d_active_volcano = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_volcano"
 	}
@@ -107,33 +121,39 @@ d_dangerous_wildlife_blocker = {
 	time = 270
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		NOR = {
 			planet_size < 10
 			is_planet_class = pc_volcanic
 		}
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_society_research_produces_add = @ranger_large_production
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		hidden_effect = {
 			if = {
@@ -150,6 +170,7 @@ d_dangerous_wildlife_blocker = {
 	}
 
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_low
 		modifier = { factor = 0.5 planet_size < 15 }
@@ -158,6 +179,7 @@ d_dangerous_wildlife_blocker = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_dangerous_wildlife"
 	}
@@ -168,30 +190,36 @@ d_lethal_ecosphere_blocker = {
 	time = 720000
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 50000
 		}
 	}
+
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_society_research_produces_add = 4
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		hidden_effect = {
 			if = {
@@ -208,9 +236,11 @@ d_lethal_ecosphere_blocker = {
 	}
 
 	inline_script = deposits/ai_weight_natural_blocker
+
 	prerequisites = {
 		"tech_dangerous_wildlife"
 	} # Vfix?
+
 	drop_weight = {
 		weight = 0
 	}
@@ -220,30 +250,36 @@ d_dense_jungle = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		is_wet = yes
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_food_produces_add = @ranger_small_production
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
@@ -254,6 +290,7 @@ d_dense_jungle = {
 
 	all_blocker_swap_types = yes
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -268,6 +305,7 @@ d_dense_jungle = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_dense_jungle"
 	}
@@ -277,30 +315,36 @@ d_toxic_kelp = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		is_wet = yes
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_food_produces_add = @ranger_small_production
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
@@ -311,6 +355,7 @@ d_toxic_kelp = {
 
 	all_blocker_swap_types = yes
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = { factor = 2 is_planet_class = pc_ocean }
@@ -319,6 +364,7 @@ d_toxic_kelp = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_toxic_kelp"
 	}
@@ -328,24 +374,29 @@ d_deep_sinkhole = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		is_dry = yes
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_energy_produces_add = @ranger_small_production
@@ -355,6 +406,7 @@ d_deep_sinkhole = {
 	inline_script = deposits/environmental_architects_natural_blocker_pops
 	all_blocker_swap_types = yes
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -369,6 +421,7 @@ d_deep_sinkhole = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_deep_sinkhole"
 	}
@@ -378,24 +431,29 @@ d_quicksand_basin = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		is_dry = yes
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_minerals_produces_add = @ranger_small_production
@@ -405,6 +463,7 @@ d_quicksand_basin = {
 	inline_script = deposits/environmental_architects_natural_blocker_pops
 	all_blocker_swap_types = yes
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = { factor = 2 is_planet_class = pc_desert }
@@ -413,6 +472,7 @@ d_quicksand_basin = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_quicksand_basin"
 	}
@@ -422,30 +482,36 @@ d_noxious_swamp = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		is_cold = yes
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_food_produces_add = @ranger_small_production
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
@@ -456,6 +522,7 @@ d_noxious_swamp = {
 
 	all_blocker_swap_types = yes
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = { factor = 2 is_planet_class = pc_tundra }
@@ -464,6 +531,7 @@ d_noxious_swamp = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_noxious_swamp"
 	}
@@ -473,24 +541,29 @@ d_massive_glacier = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
 			energy = 500
 		}
 	}
+
 	potential = {
 		is_cold = yes
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	triggered_planet_modifier = {
 		potential = { biologist_is_ranger_trigger = yes }
 		planet_biologists_minerals_produces_add = @ranger_small_production
@@ -500,6 +573,7 @@ d_massive_glacier = {
 	inline_script = deposits/environmental_architects_natural_blocker_pops
 	all_blocker_swap_types = yes
 	inline_script = deposits/ai_weight_natural_blocker
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -514,6 +588,7 @@ d_massive_glacier = {
 			num_free_districts = { type = district_city value < 2 }
 		}
 	}
+
 	prerequisites = {
 		"tech_massive_glacier"
 	}
@@ -530,15 +605,18 @@ d_radioactive_wasteland = {
 	potential = {
 		is_planet_class = pc_nuked
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 800
 		}
 	}
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -557,15 +635,18 @@ d_city_ruins = {
 		is_planet_class = pc_nuked
 		is_planet_class = pc_relic
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1200
 		}
 	}
+
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
@@ -585,15 +666,18 @@ d_bomb_crater = {
 	potential = {
 		is_planet_class = pc_nuked
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 800
 		}
 	}
+
 	drop_weight = {
 		weight = @blocker_low
 		modifier = {
@@ -611,9 +695,11 @@ d_crater = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -631,9 +717,11 @@ d_ruined_district = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -650,6 +738,7 @@ d_wandering_forests = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
@@ -664,9 +753,11 @@ d_sinkhole_subterraneans = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -683,11 +774,13 @@ d_titanic_life_blocker = {
 	potential = {
 		always = no
 	}
+
 	resources = {
 		produces = {
 			society_research = 8
 		}
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
@@ -703,11 +796,13 @@ d_failing_infrastructure = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = yes
+
 	blocker_swap_types = {
 		d_rushing_waterfalls
 		d_searing_desert
@@ -719,6 +814,7 @@ d_failing_infrastructure = {
 		d_fertile_lands
 		d_great_river
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -737,11 +833,13 @@ d_forgotten_civilization = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = yes
+
 	blocker_swap_types = {
 		d_rushing_waterfalls
 		d_searing_desert
@@ -753,6 +851,7 @@ d_forgotten_civilization = {
 		d_fertile_lands
 		d_great_river
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -771,9 +870,11 @@ d_decrepit_dwellings = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	on_cleared = {
 		hidden_effect = {
 			if = {
@@ -809,6 +910,7 @@ d_decrepit_dwellings = {
 	}
 
 	inline_script = deposits/ai_weight_pop_creating_blocker
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -827,14 +929,17 @@ d_tomb_world_ruins = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	on_cleared = {
 		create_pop_group = { species = owner }
 	}
 
 	inline_script = deposits/ai_weight_pop_creating_blocker
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -852,15 +957,18 @@ d_tomb_world_wasteland = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = no
+
 	blocker_swap_types = {
 		d_underwater_vent
 		d_submerged_ore_veins
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -878,15 +986,18 @@ d_machine_empire_ruins = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = no
+
 	blocker_swap_types = {
 		d_metal_boneyard
 		d_organic_landfill
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -904,14 +1015,17 @@ d_exterminators_ruins = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = no
+
 	blocker_swap_types = {
 		d_metal_boneyard
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -929,14 +1043,17 @@ d_former_battlefield = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = no
+
 	blocker_swap_types = {
 		d_organic_landfill
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -954,11 +1071,13 @@ d_strip_mine = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = yes
+
 	blocker_swap_types = {
 		d_rushing_waterfalls
 		d_searing_desert
@@ -966,6 +1085,7 @@ d_strip_mine = {
 		d_prosperous_mesa
 		d_ore_rich_caverns
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -983,9 +1103,11 @@ d_unsupervised_settlement = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	on_cleared = {
 		hidden_effect = {
 			if = {
@@ -1011,6 +1133,7 @@ d_unsupervised_settlement = {
 	}
 
 	inline_script = deposits/ai_weight_pop_creating_blocker
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1028,14 +1151,17 @@ d_collapsed_burrows = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	on_cleared = {
 		create_pop_group = { species = owner }
 	}
 
 	inline_script = deposits/ai_weight_pop_creating_blocker
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1053,15 +1179,18 @@ d_assimilators_ruins = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = no
+
 	blocker_swap_types = {
 		d_metal_boneyard
 		d_organic_landfill
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1079,15 +1208,18 @@ d_fungoid_extermination = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 300
 		}
 	}
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
@@ -1105,9 +1237,11 @@ d_egg_cracking = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1126,14 +1260,17 @@ d_ruined_building_blocker = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	on_cleared = {
 		create_pop_group = { species = owner }
 	}
 
 	inline_script = deposits/ai_weight_pop_creating_blocker
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1151,9 +1288,11 @@ d_ruined_arcology = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1161,6 +1300,7 @@ d_ruined_arcology = {
 			minerals = 250
 		}
 	}
+
 	on_cleared = {
 		if = {
 			limit = {
@@ -1210,6 +1350,7 @@ d_ruined_arcology = {
 			}
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1222,9 +1363,11 @@ d_archaeological_site = {
 	potential = {
 		always = no
 	}
+
 	can_be_cleared = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
@@ -1243,6 +1386,7 @@ d_hibernating_lithoids = {
 	potential = {
 		always = no
 	}
+
 	on_cleared = {
 		if = {
 			limit = { is_homeworld = no }
@@ -1256,6 +1400,7 @@ d_hibernating_lithoids = {
 			create_pop_group = { species = owner }
 		}
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1267,6 +1412,7 @@ d_hibernating_lithoids = {
 			minerals = 1000
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -1285,6 +1431,7 @@ d_lithoid_devastation = {
 	potential = {
 		always = no
 	}
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = requires_actor_not_devouring_swarm_lithoid
@@ -1297,19 +1444,23 @@ d_lithoid_devastation = {
 			}
 		}
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 		pop_environment_tolerance = -0.1
 	}
+
 	drop_weight = {
 		weight = 0
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1324,9 +1475,11 @@ d_terraforming_blocker = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1344,9 +1497,11 @@ d_exploited_deposit_blocker = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1363,16 +1518,19 @@ d_tainted_snowcaps = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 		planet_amenities_add = -500
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1386,22 +1544,26 @@ d_poisonous_algae = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 		planet_farmers_food_produces_mult = -0.15
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
 		}
 		give_evolutionary_predator_situation_progress = { PROGRESS = @evopred_large_blocker_progress }
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1415,22 +1577,26 @@ d_venomous_insects = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -2
 		pop_happiness = -0.1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
 		}
 		give_evolutionary_predator_situation_progress = { PROGRESS = @evopred_small_blocker_progress }
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1444,15 +1610,18 @@ d_unpleasant_atmosphere = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		pop_environment_tolerance = -0.05
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 500
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1466,15 +1635,18 @@ d_rotten_soil = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
 		}
 	}
+
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -1492,14 +1664,17 @@ d_mass_graves = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		habitability_ceil_add = -0.1
 		planet_amenities_add = -500
 		planet_max_districts_add = -2
 	}
+
 	on_cleared = {
 		give_evolutionary_predator_situation_progress = { PROGRESS = @evopred_large_blocker_progress }
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1515,20 +1690,24 @@ d_seed_bombing_fungoid_blocker = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		hidden_effect = {
 			give_bio_repurposing_reward_on_organic_deposit_cleared = yes
@@ -1580,6 +1759,7 @@ d_seed_bombing_fungoid_blocker = {
 	}
 
 	all_blocker_swap_types = yes
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1602,20 +1782,24 @@ d_seed_bombing_plantoid_blocker = {
 	time = 180
 	is_for_colonizable = yes
 	category = deposit_cat_blockers_natural
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
 			NOT = { planet = { has_building = building_ranger_lodge } }
 		}
 	}
+
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	inline_script = deposits/environmental_architects_natural_blocker_modifier
+
 	on_cleared = {
 		give_bio_repurposing_reward_on_organic_deposit_cleared = yes
 		hidden_effect = {
@@ -1667,6 +1851,7 @@ d_seed_bombing_plantoid_blocker = {
 	}
 
 	all_blocker_swap_types = yes
+
 	resources = {
 		category = deposit_blockers_natural
 		cost = {
@@ -1693,10 +1878,12 @@ d_sprawling_landfill_blocker = {
 	potential = {
 		always = no
 	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 		pop_environment_tolerance = -0.05
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1714,10 +1901,12 @@ d_nanotech_devastation = {
 	potential = {
 		always = no
 	}
+
 	can_be_cleared_potential = {
 		exists = owner
 		NOT = { owner = { has_tradition = tr_nanotech_adopt } }
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -1726,9 +1915,11 @@ d_nanotech_devastation = {
 		planet_max_districts_add = -1
 		habitability_ceil_add = -0.05
 	}
+
 	drop_weight = {
 		weight = 0
 	}
+
 	resources = {
 		category = deposit_blockers
 		produces = {
@@ -1738,6 +1929,7 @@ d_nanotech_devastation = {
 			energy = 2500
 		}
 	}
+
 	ai_weight = {
 		weight = 2
 	}
@@ -1752,16 +1944,20 @@ d_ruined_hatchery = {
 	potential = {
 		always = no
 	}
+
 	triggered_planet_modifier = {
 		planet_max_districts_add = -4
 		habitability_ceil_add = -0.1
 	}
+
 	drop_weight = {
 		weight = 0
 	}
+
 	ai_weight = {
 		weight = 2
 	}
+
 	resources = {
 		category = deposit_blockers
 		cost = {
@@ -1777,6 +1973,7 @@ d_unplugged_assimilator_hulk = {
 	time = 240
 	is_for_colonizable = yes
 	category = deposit_cat_blockers
+
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = deposit_requires_unplugged
@@ -1784,14 +1981,17 @@ d_unplugged_assimilator_hulk = {
 			owner = { has_origin = origin_unplugged }
 		}
 	}
+
 	potential = {
 		always = no
 	} # applied in unplugged.2411
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
 
 	use_weights_for_blocker_swap_types = no
+
 	resources = {
 		category = deposit_blockers
 		cost = {

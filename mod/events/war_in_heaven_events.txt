@@ -75,6 +75,7 @@ country_event = {
 			has_country_flag = sleepers_awake_first_sleeper
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 5
 		# modifier = {
@@ -85,6 +86,7 @@ country_event = {
 		# 	}
 		# }
 	}
+
 	immediate = {
 		every_playable_country = {
 			set_timed_country_flag = { flag = ai_no_wars years = 15 }
@@ -202,6 +204,7 @@ country_event = {
 	id = war_in_heaven.2
 	title = war_in_heaven.2.name
 	desc = war_in_heaven.2.desc
+
 	picture = {
 		trigger = { from = { is_hive_empire = no } }
 		picture = GFX_evt_fallen_empire
@@ -214,6 +217,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.2.a
 	}
@@ -246,6 +250,7 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 1
 		# modifier = {
@@ -256,6 +261,7 @@ country_event = {
 		# 	}
 		# }
 	}
+
 	immediate = {
 		remove_country_flag = ai_no_wars
 		event_target:FirstSleeper = { remove_country_flag = ai_no_wars }
@@ -295,6 +301,7 @@ country_event = {
 	id = war_in_heaven.4
 	title = war_in_heaven.4.name
 	desc = war_in_heaven.4.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -317,6 +324,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.4.a
 		trigger = {
@@ -734,6 +742,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		country_event = { id = timeline.76 } # Timeline War in Heaven
 	}
@@ -744,6 +753,7 @@ country_event = {
 	id = war_in_heaven.5
 	title = war_in_heaven.5.name
 	desc = war_in_heaven.5.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -770,6 +780,7 @@ country_event = {
 	trigger = {
 		is_subject = no
 	}
+
 	option = {
 		name = war_in_heaven.5.a
 	}
@@ -780,6 +791,7 @@ country_event = {
 	id = war_in_heaven.6
 	title = war_in_heaven.6.name
 	desc = war_in_heaven.6.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -802,6 +814,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.6.a
 	}
@@ -812,6 +825,7 @@ country_event = {
 	id = war_in_heaven.7
 	title = war_in_heaven.4.name
 	desc = war_in_heaven.7.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -842,6 +856,7 @@ country_event = {
 			every_war = { remove_war_participant = prev }
 		}
 	}
+
 	option = {
 		name = war_in_heaven.7.a
 		trigger = { is_galactic_emperor = yes }
@@ -997,6 +1012,7 @@ country_event = {
 	id = war_in_heaven.11
 	title = war_in_heaven.11.name
 	desc = war_in_heaven.11.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1019,6 +1035,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.11.a
 	}
@@ -1062,9 +1079,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		# Custodian is asked first, if one exists
 		if = {
@@ -1226,6 +1245,7 @@ country_event = {
 country_event = {
 	id = war_in_heaven.13
 	title = war_in_heaven.13.name
+
 	desc = {
 		text = war_in_heaven.13.desc
 		trigger = {
@@ -1250,6 +1270,7 @@ country_event = {
 		text = war_in_heaven.13.desc3
 		trigger = { is_galactic_custodian = yes }
 	}
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1276,6 +1297,7 @@ country_event = {
 	immediate = {
 		set_country_flag = war_in_heaven_nonaligned_league_check
 	}
+
 	option = {
 		name = war_in_heaven.13.a
 		ai_chance = { factor = 100 }
@@ -1412,9 +1434,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 1
 	}
+
 	immediate = {
 		set_country_flag = war_in_heaven_nonaligned_league_check
 		random_playable_country = {
@@ -1432,6 +1456,7 @@ country_event = {
 	id = war_in_heaven.15
 	title = war_in_heaven.15.name
 	desc = war_in_heaven.15.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1461,6 +1486,7 @@ country_event = {
 			NOT = { has_country_flag = formed_nonaligned_league }
 		}
 	}
+
 	option = {
 		name = war_in_heaven.15.a
 		ai_chance = { factor = 100 }
@@ -1622,6 +1648,7 @@ country_event = {
 	id = war_in_heaven.16
 	title = war_in_heaven.16.name
 	desc = war_in_heaven.16.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1663,12 +1690,15 @@ country_event = {
 			has_country_flag = sleepers_awake_ancient_rival
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 3
 	}
+
 	immediate = {
 		set_global_flag = war_in_heaven_nonaligned_league_war
 	}
+
 	option = {
 		name = war_in_heaven.16.a
 		every_country = {
@@ -1758,6 +1788,7 @@ country_event = {
 	id = war_in_heaven.18
 	title = war_in_heaven.18.name
 	desc = war_in_heaven.18.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1780,6 +1811,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.18.a
 	}
@@ -1788,6 +1820,7 @@ country_event = {
 country_event = {
 	id = war_in_heaven.19
 	title = war_in_heaven.19.name
+
 	desc = {
 		text = war_in_heaven.19.desc
 		trigger = { from = { has_federation = no } }
@@ -1803,6 +1836,7 @@ country_event = {
 		text = war_in_heaven.19.desc2
 		trigger = { is_in_federation_with = from }
 	}
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1829,6 +1863,7 @@ country_event = {
 	immediate = {
 		set_country_flag = war_in_heaven_nonaligned_league_check
 	}
+
 	option = {
 		name = war_in_heaven.19.a
 		trigger = {
@@ -1867,6 +1902,7 @@ country_event = {
 	id = war_in_heaven.20
 	title = war_in_heaven.20.name
 	desc = war_in_heaven.20.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1889,6 +1925,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.20.a
 	}
@@ -1898,6 +1935,7 @@ country_event = {
 	id = war_in_heaven.21
 	title = war_in_heaven.21.name
 	desc = war_in_heaven.21.desc
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1920,6 +1958,7 @@ country_event = {
 	show_sound = event_alien_signal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = war_in_heaven.21.a
 	}
@@ -1928,6 +1967,7 @@ country_event = {
 country_event = {
 	id = war_in_heaven.22
 	title = war_in_heaven.22.name
+
 	desc = {
 		text = war_in_heaven.22.desc
 		trigger = { from = { has_federation = no } }
@@ -1936,6 +1976,7 @@ country_event = {
 		text = war_in_heaven.22.desc2
 		trigger = { from = { has_federation = yes } }
 	}
+
 	picture = {
 		trigger = {
 			count_country = {
@@ -1962,6 +2003,7 @@ country_event = {
 	immediate = {
 		set_country_flag = war_in_heaven_nonaligned_league_check
 	}
+
 	option = {
 		name = war_in_heaven.22.a
 	}

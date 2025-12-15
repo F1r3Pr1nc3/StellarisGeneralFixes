@@ -55,10 +55,12 @@ country_event = {
 	immediate = {
 		start_situation = { type = paragon_origin_promise }
 	}
+
 	option = {
 		name = "paragon.5004.a"
 		custom_tooltip = paragon.5004.a.tt
 	}
+
 	after = {
 		begin_event_chain = { event_chain = paragon_origin_promise_chain target = root }
 	}
@@ -69,6 +71,7 @@ planet_event = {
 	id = paragon.5005
 	title = "paragon.5005.name"
 	desc = "paragon.5005.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -99,6 +102,7 @@ planet_event = {
 		owner = { set_country_flag = first_colony }
 		set_planet_flag = first_colonized_planet
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -179,6 +183,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_factions
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -192,6 +197,7 @@ country_event = {
 	immediate = {
 		country_event = { id = paragon.5020 days = 180 random = 360 }
 	}
+
 	option = {
 		name = paragon.5008.a
 		custom_tooltip = paragon.5008.a.tt
@@ -212,6 +218,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -225,6 +232,7 @@ country_event = {
 	immediate = {
 		country_event = { id = paragon.5020 days = 180 random = 360 }
 	}
+
 	option = {
 		name = paragon.5009.a
 		custom_tooltip = paragon.5009.a.tt
@@ -249,6 +257,7 @@ planet_event = {
 			NOT = { has_country_flag = increase_leader_upkeep }
 		}
 	}
+
 	option = {
 		name = paragon.5010.a
 		custom_tooltip = paragon.5010.a_tt
@@ -285,6 +294,7 @@ planet_event = {
 	show_sound = event_celebration
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = owner.ruler
 		planet_background = owner.capital_scope
@@ -292,6 +302,7 @@ planet_event = {
 		city_level = owner.capital_scope
 		room = owner.ruler
 	}
+
 	trigger = {
 		has_owner = yes
 		owner = {
@@ -300,6 +311,7 @@ planet_event = {
 			NOT = { has_country_flag = increase_leader_upkeep }
 		}
 	}
+
 	option = {
 		name = paragon.5011.a
 		response_text = paragon.5011.a.response
@@ -317,6 +329,7 @@ planet_event = {
 	show_sound = event_celebration
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = owner.ruler
 		planet_background = owner.capital_scope
@@ -324,6 +337,7 @@ planet_event = {
 		city_level = owner.capital_scope
 		room = owner.ruler
 	}
+
 	trigger = {
 		has_owner = yes
 		owner = {
@@ -332,6 +346,7 @@ planet_event = {
 			NOT = { has_country_flag = increase_leader_upkeep }
 		}
 	}
+
 	option = {
 		name = paragon.5012.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -355,6 +370,7 @@ planet_event = {
 	show_sound = event_celebration
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = owner.ruler
 		planet_background = owner.capital_scope
@@ -362,6 +378,7 @@ planet_event = {
 		city_level = owner.capital_scope
 		room = owner.ruler
 	}
+
 	trigger = {
 		has_owner = yes
 		owner = {
@@ -370,6 +387,7 @@ planet_event = {
 			NOT = { has_country_flag = increase_leader_upkeep }
 		}
 	}
+
 	option = {
 		name = paragon.5013.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -405,6 +423,7 @@ country_event = {
 	immediate = {
 		set_country_flag = paragon_origin_small_problems
 	}
+
 	option = {
 		name = paragon.5014.a
 		owner = {
@@ -438,6 +457,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.5110.a
 		owner = {
@@ -463,6 +483,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = origin_comms_problem
 	}
+
 	option = {
 		name = paragon.5120.a
 		owner = {
@@ -491,6 +512,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5121.a
 		remove_modifier = paragon_origin_comms_down
@@ -515,6 +537,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = origin_protests_problem
 	}
+
 	option = {
 		name = paragon.5130.a
 		owner = {
@@ -543,6 +566,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5131.a
 		remove_modifier = paragon_origin_worker_strike
@@ -567,6 +591,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = origin_military_problem
 	}
+
 	option = {
 		name = paragon.5140.a
 		owner = {
@@ -596,6 +621,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5141.a
 		remove_modifier = paragon_origin_military_dissidents
@@ -620,6 +646,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = origin_nepotism_problem
 	}
+
 	option = {
 		name = paragon.5150.a
 		owner = {
@@ -648,6 +675,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5151.a
 		every_planet_within_border = {
@@ -694,6 +722,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = { # Change to Imperial
 		name = paragon.5020.a
 		custom_tooltip = paragon.5020.a.tt
@@ -749,6 +778,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.5021.a
 		trigger = {
@@ -1005,6 +1035,7 @@ country_event = {
 		name = paragon.5021.h
 		paragon_origin_gain_modifier = yes
 	}
+
 	after = {
 		add_modifier = { modifier = media_coverage_positive_low years = 1 }
 	}
@@ -1019,6 +1050,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1051,6 +1083,7 @@ country_event = {
 			save_event_target_as = your_ally
 		}
 	}
+
 	option = {
 		name = paragon.5023.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -1095,6 +1128,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1114,6 +1148,7 @@ country_event = {
 			save_event_target_as = your_ally
 		}
 	}
+
 	option = {
 		name = paragon.5025.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -1160,6 +1195,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1179,6 +1215,7 @@ country_event = {
 	immediate = {
 		set_country_flag = made_paragon_speech_win
 	}
+
 	option = {
 		name = paragon.5027.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -1225,6 +1262,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_bad_omen
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1244,6 +1282,7 @@ country_event = {
 	immediate = {
 		set_country_flag = made_paragon_speech_lost
 	}
+
 	option = {
 		name = paragon.5029.a
 		custom_tooltip = paragon.leader.growth.negative
@@ -1286,6 +1325,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_bad_omen
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1309,6 +1349,7 @@ country_event = {
 			save_event_target_as = your_ally
 		}
 	}
+
 	option = {
 		name = paragon.5033.a
 		custom_tooltip = paragon.leader.growth.negative
@@ -1371,6 +1412,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1386,6 +1428,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5038.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -1405,6 +1448,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -1420,6 +1464,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5039.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -1460,6 +1505,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.5050.a
 		start_situation = { type = paragon_origin_forgotten }
@@ -1496,6 +1542,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = WORRYING
 		custom_tooltip = paragon.leader.growth.negative
@@ -1545,6 +1592,7 @@ situation_event = {
 			pop_group_transfer_ethic = { ETHOS = ethic_egalitarian AMOUNT = 100 }
 		}
 	}
+
 	option = {
 		name = DISTURBING
 		custom_tooltip = paragon.leader.growth.negative
@@ -1594,6 +1642,7 @@ situation_event = {
 			pop_group_transfer_ethic = { ETHOS = ethic_egalitarian AMOUNT = 100 }
 		}
 	}
+
 	option = {
 		name = DISCONCERTING
 		custom_tooltip = paragon.leader.growth.negative
@@ -1640,6 +1689,7 @@ situation_event = {
 
 	immediate = {
 	}
+
 	option = { # Imprison them
 		name = paragon.5057.a
 		owner = {
@@ -1700,6 +1750,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5058.a
 		paragon_origin_bad_trait_giver = yes
@@ -1722,6 +1773,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5059.a
 		ruler = { paragon_origin_legendary_leader_trait_giver = yes }
@@ -1732,6 +1784,7 @@ country_event = {
 country_event = {
 	id = paragon.5060
 	title = "paragon.5060.name"
+
 	desc = {
 		trigger = { has_country_flag = forgotten_negotiated }
 		text = paragon.5060.desc.negotiated
@@ -1748,6 +1801,7 @@ country_event = {
 	show_sound = event_celebration
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		planet_background = root.owner
@@ -1755,6 +1809,7 @@ country_event = {
 		city_level = root.owner
 		room = root.owner
 	}
+
 	trigger = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
@@ -1764,6 +1819,7 @@ country_event = {
 		country_event = { id = paragon.5061 days = 1800 random = 1800 }
 		country_event = { id = paragon.5058 days = 180 random = 360 }
 	}
+
 	option = {
 		name = paragon.5060.a
 		ruler = { paragon_origin_legendary_leader_trait_giver = yes }
@@ -1779,6 +1835,7 @@ country_event = {
 		}
 		custom_tooltip = paragon.5060.b.tt
 	}
+
 	after = {
 		add_modifier = { modifier = media_coverage_positive_low months = 6 }
 	}
@@ -1805,6 +1862,7 @@ country_event = {
 		}
 		set_country_flag = paragon_origin_purges
 	}
+
 	option = {
 		name = WORRYING
 		custom_tooltip = paragon.leader.delusion.negative
@@ -1876,6 +1934,7 @@ country_event = {
 			capital_scope = { save_event_target_as = first_reformist_planet }
 		}
 	}
+
 	option = {
 		name = paragon.5062.a
 		custom_tooltip = paragon.5062.a.tt
@@ -1931,6 +1990,7 @@ country_event = {
 	title = "paragon.5063.name"
 	picture = GFX_evt_announcement
 	show_sound = event_administrative_work
+
 	desc = {
 		trigger = {
 			NOT = { ruler = { has_leader_flag = paragon_origin_legendary_leader } }
@@ -1954,6 +2014,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5063.death.a
 		trigger = {
@@ -1997,6 +2058,7 @@ situation_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_bad_omen
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -2017,6 +2079,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = paragon.5064.a
 		add_situation_progress = 8
@@ -2050,6 +2113,7 @@ situation_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_bad_omen
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -2070,6 +2134,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = paragon.5065.a
 		add_situation_progress = 8
@@ -2112,6 +2177,7 @@ situation_event = {
 		}
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = paragon.5071.a
 		trigger = { owner = { is_xenophobe = no } }
@@ -2158,6 +2224,7 @@ situation_event = {
 		}
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = WORRYING
 		add_situation_progress = 1
@@ -2183,6 +2250,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = GOOD
 		add_situation_progress = -4
@@ -2208,6 +2276,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = WORRYING
 		locked_random_list = {
@@ -2244,6 +2313,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = DISTURBING
 		locked_random_list = {
@@ -2283,6 +2353,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = MARVELOUS
 		add_situation_progress = -2
@@ -2311,6 +2382,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = origin_recent_random_event years = 1 }
 	}
+
 	option = {
 		name = DISTURBING
 		add_situation_progress = 1
@@ -2325,6 +2397,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_factions
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -2337,6 +2410,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5095.a
 		random_situation = {
@@ -2356,6 +2430,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_factions
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -2372,6 +2447,7 @@ country_event = {
 	immediate = {
 		remove_country_flag = paragon_origin_purges
 	}
+
 	option = {
 		name = GOOD
 		country_event = { id = paragon.5210 days = 30 random = 90 }
@@ -2386,6 +2462,7 @@ country_event = {
 	show_sound = event_factions
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		planet_background = root.owner
@@ -2393,6 +2470,7 @@ country_event = {
 		city_level = root.owner
 		room = root.owner
 	}
+
 	trigger = {
 		exists = ruler
 		ruler = {
@@ -2412,6 +2490,7 @@ country_event = {
 	immediate = {
 		set_country_flag = luminary_ascension_path
 	}
+
 	option = {
 		name = paragon.5201.a
 		country_event = { id = paragon.5202 days = 30 }
@@ -2422,6 +2501,7 @@ country_event = {
 country_event = {
 	id = paragon.5202
 	title = "paragon.5202.name"
+
 	desc = {
 		text = paragon.5202.regular
 		trigger = {
@@ -2435,6 +2515,7 @@ country_event = {
 
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -2446,6 +2527,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.5202.a
 		custom_tooltip = paragon.5202.a.tt
@@ -2481,6 +2563,7 @@ country_event = {
 	immediate = {
 		set_country_flag = main_player_empire_@this
 	}
+
 	option = {
 		name = paragon.5210.a
 		trigger = {
@@ -2628,6 +2711,7 @@ country_event = {
 	immediate = {
 		set_country_flag = won_with_1
 	}
+
 	option = {
 		name = paragon.5211.a
 	}
@@ -2679,6 +2763,7 @@ country_event = {
 			remove_modifier = paragon_origin_reformists
 		}
 	}
+
 	option = {
 		name = paragon.5213.a
 		trigger = { is_xenophile = yes }
@@ -2709,6 +2794,7 @@ country_event = {
 		trigger = { is_spiritualist = yes }
 		add_modifier = { modifier = paragon_origin_rebel_spiritualist days = -1 }
 	}
+
 	after = {
 		paragon_origin_gain_modifier = yes
 		hidden_effect = {
@@ -2753,6 +2839,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.5220.a
 		custom_tooltip = paragon.5220.a.tt
@@ -2785,6 +2872,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.5221.a
 		custom_tooltip = paragon.5221.a.tt
@@ -2838,6 +2926,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = paragon.5222.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -2913,6 +3002,7 @@ country_event = {
 			every_owned_planet = { set_owner = root }
 		}
 	}
+
 	option = {
 		name = paragon.5223.a
 		add_modifier = { modifier = paragon_origin_united_through_war days = -1 }
@@ -2937,6 +3027,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -2949,9 +3040,11 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			random_system_within_border = {
@@ -2993,6 +3086,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3006,9 +3100,11 @@ country_event = {
 	immediate = {
 		owner.capital_scope.solar_system = { save_event_target_as = planet_to_spawn_fleet }
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		custom_tooltip = paragon.5310.tt
 		owner = {
@@ -3037,6 +3133,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3049,9 +3146,11 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			locked_random_list = {
@@ -3071,6 +3170,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3083,9 +3183,11 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			every_owned_leader = {
@@ -3104,6 +3206,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3116,9 +3219,11 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			random_owned_starbase = {
@@ -3152,6 +3257,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3176,9 +3282,11 @@ country_event = {
 	immediate = {
 		owner = { set_country_flag = living_metal_found }
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			random_planet_within_border = {
@@ -3210,6 +3318,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3234,9 +3343,11 @@ country_event = {
 	immediate = {
 		owner = { set_country_flag = dark_matter_found }
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			random_planet_within_border = {
@@ -3270,6 +3381,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3286,9 +3398,11 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		custom_tooltip = paragon.5340.tt
 		hidden_effect = {
@@ -3307,6 +3421,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3319,9 +3434,11 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			capital_scope = { add_deposit = d_arcane_device }
@@ -3337,6 +3454,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3355,9 +3473,11 @@ country_event = {
 			owner = { set_country_flag = strategic_resource_found }
 		}
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		locked_random_list = {
 			1 = {
@@ -3552,6 +3672,7 @@ country_event = {
 	picture = GFX_evt_legendary_leader
 	show_sound = event_celebration
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = root.owner.ruler
 		room = root.owner
@@ -3566,9 +3687,11 @@ country_event = {
 	immediate = {
 		owner = { set_country_flag = paragon_origin_orbital_rings }
 	}
+
 	option = {
 		name = paragon.origin.insight
 	}
+
 	after = {
 		owner = {
 			if = {
@@ -3585,6 +3708,7 @@ country_event = {
 country_event = {
 	id = paragon.5900
 	title = "paragon.5900.name"
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -3632,6 +3756,7 @@ country_event = {
 			remove_modifier = paragon_origin_reformists
 		}
 	}
+
 	option = {
 		name = paragon.5900.a
 		trigger = {
@@ -3950,6 +4075,7 @@ country_event = {
 country_event = {
 	id = paragon.6000
 	title = "paragon.6000.name"
+
 	desc = {
 		text = paragon.6000.desc
 		trigger = {
@@ -3990,6 +4116,7 @@ country_event = {
 
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4001,6 +4128,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.6000.a
 		trigger = {
@@ -4129,6 +4257,7 @@ country_event = {
 	desc = paragon.6005.desc
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4140,6 +4269,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.6005.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -4152,6 +4282,7 @@ country_event = {
 			add_trait = { trait = leader_trait_the_apparatus_luminary }
 		}
 	}
+
 	after = {
 		country_event = { id = paragon.6035 days = 15 random = 30 }
 	}
@@ -4164,6 +4295,7 @@ country_event = {
 	desc = paragon.6010.desc
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4175,6 +4307,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.6010.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -4187,6 +4320,7 @@ country_event = {
 			add_trait = { trait = leader_trait_the_cybernetic_luminary }
 		}
 	}
+
 	after = {
 		country_event = { id = paragon.6035 days = 15 random = 30 }
 	}
@@ -4196,6 +4330,7 @@ country_event = {
 country_event = {
 	id = paragon.6015
 	title = "paragon.6015.name"
+
 	desc = {
 		trigger = {
 			text = paragon.6015.desc_1
@@ -4214,6 +4349,7 @@ country_event = {
 
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4225,6 +4361,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.6015.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -4237,6 +4374,7 @@ country_event = {
 			add_trait = { trait = leader_trait_the_psionic_luminary }
 		}
 	}
+
 	after = {
 		country_event = { id = paragon.6035 days = 15 random = 30 }
 	}
@@ -4249,6 +4387,7 @@ country_event = {
 	desc = paragon.6020.desc
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4260,6 +4399,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.6020.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -4272,6 +4412,7 @@ country_event = {
 			add_trait = { trait = leader_trait_the_synth_luminary }
 		}
 	}
+
 	after = {
 		country_event = { id = paragon.6035 days = 15 random = 30 }
 	}
@@ -4284,6 +4425,7 @@ country_event = {
 	desc = paragon.6025.desc
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4295,6 +4437,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = {
 		name = paragon.6025.a
 		custom_tooltip = paragon.leader.growth.positive
@@ -4307,6 +4450,7 @@ country_event = {
 			add_trait = { trait = leader_trait_the_genetic_luminary }
 		}
 	}
+
 	after = {
 		country_event = { id = paragon.6035 days = 15 random = 30 }
 	}
@@ -4316,6 +4460,7 @@ country_event = {
 country_event = {
 	id = paragon.6030
 	title = "paragon.6030.name"
+
 	desc = {
 		trigger = { founder_species_is_machine = yes }
 		text = paragon.6030.desc.machine
@@ -4327,6 +4472,7 @@ country_event = {
 
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4342,6 +4488,7 @@ country_event = {
 		}
 		resource_stockpile_compare = { resource = sr_zro value = 0 }
 	}
+
 	option = {
 		name = paragon.6030.a
 		allow = {
@@ -4367,6 +4514,7 @@ country_event = {
 	desc = paragon.6035.desc
 	picture = GFX_evt_legendary_leader
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = owner.ruler
 		room = owner
@@ -4378,6 +4526,7 @@ country_event = {
 		exists = ruler
 		ruler = { has_leader_flag = paragon_origin_legendary_leader }
 	}
+
 	option = { # Null choice, status quo
 		name = paragon.6035.a
 	}
@@ -4412,6 +4561,7 @@ country_event = {
 		paragon_origin_gain_modifier = yes
 		custom_tooltip = paragon.6035.b.tt
 	}
+
 	after = {
 		hidden_effect = {
 			save_event_target_as = this_country

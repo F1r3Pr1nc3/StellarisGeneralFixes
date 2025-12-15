@@ -14,6 +14,7 @@ namespace = distar
 ship_event = {
 	id = distar.1
 	title = "distar.1.name"
+
 	desc = {
 		trigger = { exists = event_target:wreckage_owner }
 		text = "distar.1.desc.contact"
@@ -55,6 +56,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.1.a"
 		owner = {
@@ -94,6 +96,7 @@ ship_event = {
 country_event = {
 	id = distar.2
 	title = "distar.2.name"
+
 	desc = {
 		trigger = { is_machine_empire = no }
 		text = "distar.2.desc"
@@ -106,6 +109,7 @@ country_event = {
 	location = event_target:wreckage_owner
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:wreckage_owner
 		planet_background = event_target:wreckage_owner
@@ -113,6 +117,7 @@ country_event = {
 		city_level = event_target:wreckage_owner
 		room = event_target:wreckage_owner.ruler
 	}
+
 	option = {
 		trigger = {
 			resource_stockpile_compare = { resource = minerals value >= 300 }
@@ -157,6 +162,7 @@ country_event = {
 	location = event_target:wreckage_owner
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:wreckage_owner
 		planet_background = event_target:wreckage_owner
@@ -164,6 +170,7 @@ country_event = {
 		city_level = event_target:wreckage_owner
 		room = event_target:wreckage_owner.ruler
 	}
+
 	option = {
 		name = distar.3.a
 		add_resource = { influence = 100 }
@@ -211,6 +218,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		from = {
@@ -225,6 +233,7 @@ ship_event = {
 planet_event = {
 	id = distar.7
 	title = "distar.7.name"
+
 	desc = {
 		trigger = {
 			has_modifier = superflare_planet
@@ -266,6 +275,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		trigger = {
 			OR = {
@@ -323,6 +333,7 @@ ship_event = {
 	show_sound = event_scanner
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		fromfrom = {
@@ -346,6 +357,7 @@ country_event = {
 	show_sound = event_scanner
 	location = fromfromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = TERRIBLE
 		fromfromfrom = {
@@ -378,6 +390,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		from = {
@@ -412,6 +425,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = CURIOUS
 		from = {
@@ -525,6 +539,7 @@ planet_event = {
 		planet_event = { id = distar.31 days = 1800 random = 720 }
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		trigger = {
 			owner = {
@@ -584,6 +599,7 @@ planet_event = {
 			planet_event = { id = distar.27 days = 90 random = 10 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_modifier = "primitive_robots"
@@ -603,6 +619,7 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 	}
+
 	option = {
 		name = "distar.27.a"
 		enable_special_project = {
@@ -627,6 +644,7 @@ ship_event = {
 		exists = owner
 		owner = { is_machine_empire = yes }
 	}
+
 	option = {
 		name = "distar.28.a"
 		owner = {
@@ -655,6 +673,7 @@ ship_event = {
 		exists = owner
 		owner = { is_machine_empire = no }
 	}
+
 	option = {
 		name = "distar.29.a"
 		owner = {
@@ -681,9 +700,11 @@ ship_event = {
 	location = fromfromfrom
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = "distar.30.a"
 		response_text = distar.30.desc
@@ -789,6 +810,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.31.a"
 		enable_special_project = {
@@ -860,6 +882,7 @@ planet_event = {
 		}
 		planet_event = { id = distar.32 days = 60 }
 	}
+
 	option = {
 		name = WORRYING
 	}
@@ -919,6 +942,7 @@ planet_event = {
 			type = "enraged_army"
 		}
 	}
+
 	option = {
 		name = distar.33.a
 		custom_tooltip = distar.33.a.tooltip
@@ -928,6 +952,7 @@ planet_event = {
 country_event = {
 	id = distar.34
 	title = "distar.34.name"
+
 	desc = {
 		trigger = { has_country_flag = started_retrovirus_project }
 		text = "distar.34.desc.a"
@@ -948,6 +973,7 @@ country_event = {
 		fromfrom = { has_planet_flag = retrovirus_armies }
 		from = { is_same_value = event_target:enraged_colonists_country }
 	}
+
 	option = {
 		name = distar.34.a
 		hidden_effect = {
@@ -964,6 +990,7 @@ planet_event = {
 	show_sound = event_red_alert
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "distar.35.a"
 		add_modifier = { modifier = researcher_rage years = 1 }
@@ -986,6 +1013,7 @@ planet_event = {
 			remove_country_flag = started_retrovirus_project
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1063,6 +1091,7 @@ planet_event = {
 country_event = {
 	id = distar.37
 	title = "distar.34.name"
+
 	desc = {
 		trigger = { has_country_flag = started_retrovirus_project }
 		text = "distar.34.desc.a"
@@ -1085,6 +1114,7 @@ country_event = {
 			controller = { is_same_empire = event_target:enraged_colonists_country }
 		}
 	}
+
 	option = {
 		name = distar.34.a
 		hidden_effect = {
@@ -1104,6 +1134,7 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	specimen = nanite_sludge
+
 	option = {
 		name = EXCELLENT
 		owner = {
@@ -1153,6 +1184,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		event_target:dark_flow_gateway = {
@@ -1185,6 +1217,7 @@ ship_event = {
 			save_event_target_as = dark_flow_gateway
 		}
 	}
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -1210,6 +1243,7 @@ ship_event = {
 ship_event = {
 	id = distar.50
 	title = "distar.50.name"
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = amoeba_encountered }
@@ -1279,6 +1313,7 @@ ship_event = {
 			auto_follow_fleet = { target = event_target:science_ship_fleet attack_fleet = no }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			owner = {
@@ -1299,6 +1334,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = { # Pacify/adopt it
 		name = distar.50.a
 		trigger = { owner = { is_homicidal = no } }
@@ -1369,6 +1405,7 @@ ship_event = {
 			}
 		}
 	}
+
 	abort_trigger = {
 		NOT = { exists = event_target:lost_amoeba_fleet }
 	}
@@ -1425,6 +1462,7 @@ country_event = {
 			event_target:lost_amoeba_country = { destroy_country = yes }
 		}
 	}
+
 	option = {
 		name = "distar.51.a"
 		event_target:lost_amoeba_adult_fleet = {
@@ -1604,6 +1642,7 @@ country_event = {
 	trigger = {
 		exists = event_target:lost_amoeba_adult_fleet
 	}
+
 	option = {
 		name = "distar.55.a"
 		event_target:lost_amoeba_adult_fleet = { set_name = "NAME_Blitz" }
@@ -1683,6 +1722,7 @@ country_event = {
 	trigger = {
 		exists = event_target:lost_amoeba_adult_fleet
 	}
+
 	option = {
 		name = "distar.56.a"
 		event_target:lost_amoeba_adult_fleet = { set_name = "NAME_Storm" }
@@ -1773,6 +1813,7 @@ country_event = {
 			event_target:lost_amoeba_country = { destroy_country = yes }
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		if = {
@@ -1803,6 +1844,7 @@ country_event = {
 ship_event = {
 	id = distar.53
 	title = "distar.53.name"
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_technology = tech_regenerative_hull_tissue } }
@@ -1833,6 +1875,7 @@ ship_event = {
 			event_target:lost_amoeba_country = { destroy_country = yes }
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -1892,6 +1935,7 @@ country_event = {
 			event_target:lost_amoeba_country = { destroy_country = yes }
 		}
 	}
+
 	option = {
 		name = CURSES
 	}
@@ -1911,6 +1955,7 @@ country_event = {
 	trigger = {
 		exists = event_target:amoeba_finding_scientist
 	}
+
 	option = {
 		name = "distar.57.a"
 		event_target:amoeba_finding_scientist = {
@@ -1954,6 +1999,7 @@ ship_event = {
 ship_event = {
 	id = distar.340
 	title = "distar.57.name"
+
 	desc = {
 		trigger = { exists = event_target:amoeba_finding_scientist }
 		text = "distar.340.desc.science"
@@ -1972,6 +2018,7 @@ ship_event = {
 
 	trigger = {
 	}
+
 	option = {
 		name = "distar.340.a"
 		trigger = { owner = { is_reanimator = yes } }
@@ -2007,6 +2054,7 @@ ship_event = {
 country_event = {
 	id = distar.59
 	title = "distar.218.name"
+
 	desc = {
 		trigger = { exists = event_target:amoeba_finding_scientist }
 		text = "distar.59.desc" # This is the loc that mentions the scientist
@@ -2030,6 +2078,7 @@ country_event = {
 			save_event_target_as = reanimated_amoeba
 		}
 	}
+
 	option = {
 		name = "it_hungers"
 		event_target:reanimated_amoeba = { set_disabled = no }
@@ -2112,6 +2161,7 @@ country_event = {
 		}
 		event_target:lost_amoeba_adult_fleet = { delete_fleet = this }
 	}
+
 	option = {
 		name = ASTOUNDING
 		custom_tooltip = "distar.304.a.tooltip"
@@ -2145,6 +2195,7 @@ ship_event = {
 		solar_system = { save_global_event_target_as = ouroboros_system }
 		from = { set_planet_flag = ouroboros_pulsar_flag }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -2233,6 +2284,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -2249,10 +2301,12 @@ country_event = {
 	location = event_target:kohtalo_second_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:kohtalo_captain
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.62.a"
 		hidden_effect = {
@@ -2269,10 +2323,12 @@ country_event = {
 	location = event_target:kohtalo_second_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:kohtalo_captain
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.63.a"
 		hidden_effect = {
@@ -2289,10 +2345,12 @@ country_event = {
 	location = event_target:kohtalo_second_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:kohtalo_captain
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.64.a"
 		hidden_effect = {
@@ -2309,10 +2367,12 @@ country_event = {
 	location = event_target:kohtalo_second_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:kohtalo_captain
 		room = ethic_spaceship_room
 	}
+
 	immediate = {
 		event_target:ouroboros_system = {
 			random_system_planet = {
@@ -2321,6 +2381,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.65.a"
 		custom_tooltip = "distar.65.a.tooltip"
@@ -2346,10 +2407,12 @@ country_event = {
 	location = event_target:kohtalo_second_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:kohtalo_captain
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.66.a"
 		hidden_effect = {
@@ -2381,10 +2444,12 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = OOPS
 		event_target:ouroboros_pulsar = { add_deposit = d_physics_7 }
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:kohtalo_country }
@@ -2417,6 +2482,7 @@ country_event = {
 			save_event_target_as = kohtalo_second_ambient
 		}
 	}
+
 	option = {
 		name = "distar.68.a"
 		event_target:ouroboros_pulsar = { add_deposit = d_physics_7 }
@@ -2436,6 +2502,7 @@ ship_event = {
 	immediate = {
 		from = { set_deposit = d_physics_3 }
 	}
+
 	option = {
 		name = "distar.70.a"
 		trigger = {
@@ -2614,6 +2681,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = { # Default, if you have free tiles
 		name = "distar.71.pop.default"
 		custom_tooltip = "distar.71.pop.tooltip"
@@ -2885,6 +2953,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.72.a"
 		trigger = {
@@ -2986,6 +3055,7 @@ ship_event = {
 	show_sound = event_scanner
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		from = { add_rare_crystals = yes }
@@ -3024,6 +3094,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 	}
@@ -3036,6 +3107,7 @@ ship_event = {
 			give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = large }
 		}
 	}
+
 	after = {
 		owner = {
 			add_monthly_resource_mult = {
@@ -3092,6 +3164,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	location = event_target:dead_god_planet
 	is_triggered_only = yes
+
 	option = {
 		name = "distar.82.a"
 		event_target:dead_god_planet = {
@@ -3145,6 +3218,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		trigger = { owner = { is_xenophobe = no } }
@@ -3183,6 +3257,7 @@ ship_event = {
 		exists = owner
 		owner = { is_machine_empire = no }
 	}
+
 	option = {
 		name = "distar.90.a"
 	}
@@ -3225,6 +3300,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.91.a"
 		custom_tooltip = "distar.91.a.tooltip"
@@ -3253,6 +3329,7 @@ country_event = {
 	trigger = {
 		NOT = { event_target:rum_nation = { is_hostile_to = root } }
 	}
+
 	picture_event_data = {
 		portrait = event_target:rum_nation
 		planet_background = event_target:rum_nation
@@ -3260,6 +3337,7 @@ country_event = {
 		city_level = event_target:rum_nation
 		room = event_target:rum_nation.ruler
 	}
+
 	option = {
 		name = distar.92.a
 		add_resource = { influence = 100 }
@@ -3281,6 +3359,7 @@ country_event = {
 	trigger = {
 		event_target:rum_nation = { is_hostile_to = root }
 	}
+
 	picture_event_data = {
 		portrait = event_target:rum_nation
 		planet_background = event_target:rum_nation
@@ -3288,6 +3367,7 @@ country_event = {
 		city_level = event_target:rum_nation
 		room = event_target:rum_nation.ruler
 	}
+
 	option = {
 		name = distar.93.a
 		event_target:rum_nation = {
@@ -3306,6 +3386,7 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	specimen = vibrating_crystal
+
 	option = {
 		name = INTERESTING
 		from = {
@@ -3323,6 +3404,7 @@ ship_event = {
 	show_sound = event_scanner
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "distar.100.a"
 		from = {
@@ -3341,6 +3423,7 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	specimen = invasive_exofungus
+
 	option = {
 		name = WORRYING
 		owner = {
@@ -3373,6 +3456,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = CURIOUS
 		from = { add_deposit = d_physics_3 }
@@ -3398,6 +3482,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		from = { add_deposit = d_minerals_3 }
@@ -3414,6 +3499,7 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	specimen = flooded_settlement_mound
+
 	option = {
 		name = INTERESTING
 		from = {
@@ -3432,6 +3518,7 @@ ship_event = {
 	show_sound = event_scanner
 	location = event_target:derelict_particle_accelerator
 	is_triggered_only = yes
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -3529,6 +3616,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -3573,6 +3661,7 @@ fleet_event = {
 			country_event = { id = story.8 days = 15 }
 		}
 	}
+
 	option = {
 		name = DISCONCERTING
 	}
@@ -3637,6 +3726,7 @@ country_event = {
 			end_curator_chain = yes
 		}
 	}
+
 	option = {
 		name = OK
 		exclusive_trigger = {
@@ -3784,6 +3874,7 @@ country_event = {
 		set_country_flag = harvested_scavenger_parts
 		add_research_option = tech_leviathan_techgenesis
 	}
+
 	after = {
 		generate_parade_city = yes
 		start_situation = {
@@ -3815,6 +3906,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		from = { add_deposit = d_physics_4 }
@@ -3836,6 +3928,7 @@ ship_event = {
 			country_event = { id = story.1 days = 30 }
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -3868,6 +3961,7 @@ ship_event = {
 			country_event = { id = story.1 days = 30 }
 		}
 	}
+
 	option = {
 		name = CURIOUS
 		owner = {
@@ -3892,6 +3986,7 @@ ship_event = {
 	show_sound = event_scanner
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		# Ariphaos Todo: Move this to dialog?
 		trigger = {
@@ -3955,6 +4050,7 @@ ship_event = {
 ship_event = {
 	id = distar.156
 	title = "distar.156.name"
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -4078,6 +4174,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -4097,6 +4194,7 @@ country_event = {
 	show_sound = event_scanner
 	location = fromfrom
 	is_triggered_only = yes
+
 	option = {
 		name = CURSES
 	}
@@ -4109,10 +4207,12 @@ country_event = {
 	location = event_target:repaired_warform
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.158.a"
 		response_text = distar.158.a.response
@@ -4151,10 +4251,12 @@ country_event = {
 	location = event_target:repaired_warform
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.159.a"
 		trigger = { is_machine_empire = no }
@@ -4178,10 +4280,12 @@ country_event = {
 	location = event_target:repaired_warform
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.160.a"
 		trigger = { is_machine_empire = no }
@@ -4205,10 +4309,12 @@ country_event = {
 	location = event_target:repaired_warform
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.161.a"
 		trigger = { is_machine_empire = no }
@@ -4239,10 +4345,12 @@ country_event = {
 	location = event_target:repaired_warform
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.162.a"
 		trigger = { is_machine_empire = no }
@@ -4266,10 +4374,12 @@ country_event = {
 	location = event_target:repaired_warform
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.163.a"
 		trigger = { is_machine_empire = no }
@@ -4294,10 +4404,12 @@ country_event = {
 	is_triggered_only = yes
 	picture = GFX_leader_recruitment_bg_renowned
 	event_window_type = leader_recruit
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = distar.165.dismiss
 		tag = dismiss_leader
@@ -4388,10 +4500,12 @@ country_event = {
 	event_window_type = leader_recruit
 	picture = GFX_leader_recruitment_bg_renowned
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = distar.165.dismiss
 		custom_tooltip = "distar.165.b"
@@ -4448,12 +4562,14 @@ country_event = {
 	show_sound = event_life_support_fail
 	picture = GFX_evt_sapient_AI
 	event_window_type = leader_story
+
 	picture_event_data = {
 		portrait = event_target:warform_leader
 		room = ethic_spaceship_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = OOPS
 		hidden_effect = {
@@ -4486,6 +4602,7 @@ ship_event = {
 			event_target:warform_country = { destroy_country = yes }
 		}
 	}
+
 	option = {
 		name = "distar.167.a"
 		owner = { add_resource = { alloys = 75 } }
@@ -4546,6 +4663,7 @@ country_event = {
 ship_event = {
 	id = distar.170
 	title = "distar.170.name"
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -4571,6 +4689,7 @@ ship_event = {
 			create_generic_presapient_species = { UPLIFT_TO = REP }
 		}
 	}
+
 	option = {
 		trigger = {
 			owner = {
@@ -4630,6 +4749,7 @@ ship_event = {
 	immediate = {
 		leader = { save_event_target_as = brainslug_scientist }
 	}
+
 	option = {
 		name = "distar.171.a"
 		owner = {
@@ -4676,6 +4796,7 @@ ship_event = {
 		}
 		owner = { set_country_flag = finished_brainslug_chain }
 	}
+
 	option = {
 		trigger = {
 			owner = {
@@ -4996,6 +5117,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		from = { add_deposit = d_minerals_4 }
@@ -5012,6 +5134,7 @@ ship_event = {
 	location = from
 	is_triggered_only = yes
 	specimen = carnivorous_megaflora
+
 	option = {
 		name = DISCONCERTING
 		owner = {
@@ -5028,6 +5151,7 @@ ship_event = {
 ship_event = {
 	id = distar.190
 	title = "distar.190.name"
+
 	desc = {
 		trigger = {
 			owner = { is_regular_empire = yes }
@@ -5065,6 +5189,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = distar.190.a
 		trigger = {
@@ -5138,6 +5263,7 @@ ship_event = {
 country_event = {
 	id = distar.191
 	title = "distar.191.name"
+
 	desc = {
 		trigger = { exists = event_target:living_planet_scientist }
 		text = "distar.191.desc.alive"
@@ -5171,6 +5297,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.191.a"
 		event_target:living_planet_tar = {
@@ -5187,6 +5314,7 @@ country_event = {
 country_event = {
 	id = distar.192
 	title = "distar.192.name"
+
 	desc = {
 		trigger = {
 			event_target:living_planet_scientist = {
@@ -5209,6 +5337,7 @@ country_event = {
 		}
 		text = "distar.192.desc.neuter"
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -5230,6 +5359,7 @@ country_event = {
 	immediate = {
 		set_country_flag = strange_calling_fired
 	}
+
 	option = {
 		name = "distar.192.a"
 		custom_tooltip = "distar.192.a.tooltip"
@@ -5265,6 +5395,7 @@ country_event = {
 	id = distar.193
 	title = "distar.193.name"
 	desc = "distar.193.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -5289,6 +5420,7 @@ country_event = {
 	immediate = {
 		set_country_flag = completed_living_sea
 	}
+
 	option = {
 		name = INCREDIBLE
 		if = {
@@ -5350,6 +5482,7 @@ country_event = {
 	immediate = {
 		set_country_flag = completed_living_sea
 	}
+
 	option = {
 		name = FASCINATING
 		if = {
@@ -5404,10 +5537,12 @@ country_event = {
 		exists = event_target:living_planet_scientist
 		event_target:living_planet_tar = { has_modifier = living_sea }
 	}
+
 	picture_event_data = {
 		portrait = event_target:living_planet_scientist
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.195.a"
 		hidden_effect = {
@@ -5431,6 +5566,7 @@ country_event = {
 		exists = event_target:living_planet_tar
 		event_target:living_planet_tar = { has_modifier = living_sea }
 	}
+
 	option = {
 		name = CURSES
 		event_target:living_planet_scientist = {
@@ -5587,6 +5723,7 @@ country_event = {
 	id = distar.198
 	title = "distar.198.name"
 	desc = "distar.198.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -5597,6 +5734,7 @@ country_event = {
 	show_sound = event_scanner
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = CURSES
 		tooltip = { end_event_chain = "living_planet_chain" }
@@ -5634,6 +5772,7 @@ country_event = {
 fleet_event = {
 	id = distar.211
 	title = "distar.211.name"
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = tiyanki_encountered }
@@ -5674,6 +5813,7 @@ fleet_event = {
 			country_event = { id = story.8 days = 15 }
 		}
 	}
+
 	option = {
 		name = INCREDIBLE
 		hidden_effect = {
@@ -5730,6 +5870,7 @@ country_event = {
 			end_curator_chain = yes
 		}
 	}
+
 	option = {
 		name = "distar.212.a"
 		trigger = {
@@ -5782,6 +5923,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -5809,6 +5951,7 @@ country_event = {
 	show_sound = event_space_whale
 	location = event_target:dead_matriarch
 	is_triggered_only = yes
+
 	option = {
 		name = BATTLESTATIONS
 		hidden_effect = {
@@ -5951,6 +6094,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -5968,10 +6112,12 @@ country_event = {
 	picture = GFX_leader_recruitment_bg_renowned
 	event_window_type = leader_recruit
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:captain_reth
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		allow = { is_homicidal = no }
 		tag = hire_leader
@@ -6044,10 +6190,12 @@ country_event = {
 	location = event_target:ahab_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:captain_reth
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = TASTY
 		exclusive_trigger = { has_civic = civic_hive_devouring_swarm }
@@ -6113,10 +6261,12 @@ country_event = {
 	location = event_target:ahab_fleet
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:captain_reth
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.217.a"
 		event_target:ahab_fleet = {
@@ -6132,6 +6282,7 @@ country_event = {
 country_event = {
 	id = distar.218
 	title = "distar.218.name"
+
 	desc = {
 		trigger = { is_hive_empire = no is_machine_empire = no }
 		text = "distar.218.desc.regular"
@@ -6147,6 +6298,7 @@ country_event = {
 
 	location = event_target:dead_matriarch
 	is_triggered_only = yes
+
 	picture = {
 		trigger = { is_machine_empire = no }
 		picture = GFX_evt_necromancy
@@ -6157,6 +6309,7 @@ country_event = {
 	}
 
 	show_sound = event_space_whale
+
 	option = {
 		name = "it_hungers"
 		create_fleet = {
@@ -6185,6 +6338,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:dead_matriarch }
@@ -6197,6 +6351,7 @@ country_event = {
 ship_event = {
 	id = distar.220
 	title = "distar.220.name"
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -6222,6 +6377,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		custom_tooltip = "distar.220.a.tooltip"
@@ -6267,6 +6423,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = "distar.225.a"
 		from = { add_alloys = yes }
@@ -6321,6 +6478,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = CURIOUS
 	}
@@ -6336,6 +6494,7 @@ fleet_event = {
 			owner = { has_civic = civic_machine_terminator }
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -6370,6 +6529,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = ratling_capital_surveyed }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -6619,6 +6779,7 @@ country_event = {
 			event_target:ratling_planet_6_tar = { save_global_event_target_as = ratling_planet_6 }
 		}
 	}
+
 	option = {
 		name = REMARKABLE
 		begin_event_chain = { event_chain = ketling_study_chain target = root }
@@ -6757,6 +6918,7 @@ country_event = {
 ship_event = {
 	id = distar.234
 	title = "distar.234.name"
+
 	desc = {
 		text = "distar.234.desc"
 	}
@@ -6773,6 +6935,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = researched_ketlings }
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -6805,6 +6968,7 @@ ship_event = {
 			end_event_chain = "ketling_study_chain"
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -6827,6 +6991,7 @@ ship_event = {
 country_event = {
 	id = distar.235
 	title = "distar.235.name"
+
 	desc = {
 		trigger = {
 			any_system = {
@@ -6956,6 +7121,7 @@ country_event = {
 			add_modifier = { modifier = planet_culture_shock years = 10 }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		exclusive_trigger = {
@@ -7389,6 +7555,7 @@ country_event = {
 		else = {
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -7544,6 +7711,7 @@ fleet_event = {
 			event_target:shroud_country = { establish_communications_no_message = root.owner }
 		}
 	}
+
 	option = {
 		name = "distar.240.a"
 	}
@@ -7553,6 +7721,7 @@ fleet_event = {
 fleet_event = {
 	id = distar.242
 	title = "distar.242.name"
+
 	desc = {
 		trigger = {
 			owner = { has_country_flag = encountered_sealed_system }
@@ -7614,6 +7783,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = BATTLESTATIONS
 	}
@@ -7635,6 +7805,7 @@ country_event = {
 		FromFromFrom.fleet = { is_same_value = event_target:sealed_psionic_entity }
 		is_country_type = default
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -7644,6 +7815,7 @@ country_event = {
 ship_event = {
 	id = distar.244
 	title = "distar.244.name"
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no }
@@ -7661,6 +7833,7 @@ ship_event = {
 	show_sound = event_laboratory_sound
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -7719,6 +7892,7 @@ ship_event = {
 			set_age = 709
 		}
 	}
+
 	option = {
 		name = ONSCREEN
 		hidden_effect = {
@@ -7750,10 +7924,12 @@ country_event = {
 	picture = GFX_leader_recruitment_bg_renowned
 	event_window_type = leader_recruit
 	is_triggered_only = yes # Vfix double
+
 	picture_event_data = {
 		portrait = event_target:caretaker_leader_tar
 		room = ethic_spaceship_room
 	}
+
 	option = {	# Accept the leader
 		tag = hire_leader
 		name = {
@@ -7868,10 +8044,12 @@ country_event = {
 	picture = GFX_evt_robot_encounter
 	event_window_type = leader_story
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caretaker_leader_tar
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.247.a"
 		add_monthly_resource_mult = {
@@ -7887,6 +8065,7 @@ country_event = {
 country_event = {
 	id = distar.248
 	title = "distar.248.name"
+
 	desc = {
 		trigger = { is_machine_empire = yes }
 		text = "distar.248.desc.machi"
@@ -7900,10 +8079,12 @@ country_event = {
 	picture = GFX_evt_exploding_ship
 	event_window_type = leader_story
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:caretaker_leader_tar
 		room = ethic_spaceship_room
 	}
+
 	option = {
 		name = "distar.248.machi"
 		exclusive_trigger = { is_machine_empire = yes }
@@ -7937,6 +8118,7 @@ ship_event = {
 	id = distar.250
 	title = "distar.250.name"
 	desc = "distar.250.desc"
+
 	picture = {
 		trigger = {
 			from = { is_planet_class = pc_shrouded }
@@ -7965,6 +8147,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "distar.250.a"
 		hidden_effect = {
@@ -7977,6 +8160,7 @@ ship_event = {
 ship_event = {
 	id = distar.251
 	title = "distar.251.name"
+
 	desc = {
 		trigger = {
 			event_target:phaseshift_planet = {
@@ -8029,6 +8213,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -8046,6 +8231,7 @@ ship_event = {
 ship_event = {
 	id = distar.302
 	title = "distar.250.name"
+
 	desc = {
 		trigger = {
 			owner = { has_special_project = PHASESHIFT_PROJECT }
@@ -8058,6 +8244,7 @@ ship_event = {
 		}
 		text = "distar.302.desc.noproj"
 	}
+
 	picture = {
 		trigger = {
 			from = { is_planet_class = pc_shrouded }
@@ -8078,6 +8265,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = surveyed_phaseshift_planet }
 	}
+
 	option = {
 		name = FASCINATING
 		hidden_effect = {
@@ -8107,6 +8295,7 @@ ship_event = {
 	immediate = {
 		owner = { set_country_flag = surveyed_phaseshift_planet }
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -8150,6 +8339,7 @@ ship_event = {
 	show_sound = event_mystic_reveal
 	location = event_target:phaseshift_planet
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		custom_tooltip = "distar.253.a.tooltip"
@@ -8235,6 +8425,7 @@ ship_event = {
 country_event = {
 	id = distar.255
 	title = "distar.255.name"
+
 	desc = {
 		trigger = { has_country_flag = surveyed_phaseshift_planet }
 		text = "distar.255.desc"
@@ -8256,6 +8447,7 @@ country_event = {
 			is_at_war_with = from
 		}
 	}
+
 	option = {
 		name = "distar.255.a"
 		event_target:phaseshift_planet = {
@@ -8331,6 +8523,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -8444,6 +8637,7 @@ ship_event = {
 	show_sound = event_alien_nature
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "distar.234.phobe"
 		owner = {
@@ -8582,6 +8776,7 @@ planet_event = {
 		any_owned_pop_group = { is_same_species = event_target:livestock_species }
 		owner = { is_machine_empire = no }
 	}
+
 	option = {
 		name = "distar.262.a"
 		owner = {
@@ -8632,6 +8827,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = CURIOUS
 		owner = {
@@ -8695,6 +8891,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = "discovery.270.a"
 		owner = {
@@ -8728,6 +8925,7 @@ ship_event = {
 ship_event = {
 	id = distar.275
 	title = "distar.275.name"
+
 	desc = {
 		trigger = {
 			owner = { num_communications > 0 }
@@ -8751,6 +8949,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {
@@ -8792,6 +8991,7 @@ ship_event = {
 	id = distar.280
 	title = "distar.280.name"
 	desc = "distar.280.desc"
+
 	picture = {
 		trigger = {
 			from = { is_planet_class = pc_desert }
@@ -8826,6 +9026,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = ASTOUNDING
 		from = {
@@ -8890,6 +9091,7 @@ ship_event = {
 			country_event = { id = story.5 days = 30 }
 		}
 	}
+
 	option = {
 		name = INCREDIBLE
 		owner = {

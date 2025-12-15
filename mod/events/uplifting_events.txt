@@ -10,6 +10,7 @@ namespace = uplift
 ship_event = {
 	id = uplift.6000
 	title = uplift.6000.name.2
+
 	desc = {
 		text = uplift.6000.wilderness.desc
 		exclusive_trigger = {
@@ -91,6 +92,7 @@ ship_event = {
 	desc = {
 		text = uplift.6000.fallback.desc
 	}
+
 	picture = {
 		picture = GFX_evt_animal_wildlife
 		trigger = {
@@ -126,6 +128,7 @@ ship_event = {
 			from = { is_planet_class = pc_nuked }
 		}
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -159,6 +162,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = uplift.6000.a
 		trigger = {
@@ -178,6 +182,7 @@ ship_event = {
 planet_event = {
 	id = uplift.6010
 	title = uplift.6010.name
+
 	desc = {
 		text = uplift.6010.continental.desc
 		exclusive_trigger = { is_planet_class = pc_continental }
@@ -246,6 +251,7 @@ planet_event = {
 		}
 		remove_planet_flag = upl_ongoing_planet
 	}
+
 	option = {
 		name = uplift.6010.a
 		custom_tooltip = uplift.6010.tt
@@ -269,6 +275,7 @@ planet_event = {
 	picture = GFX_evt_colony_settlement
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -281,6 +288,7 @@ planet_event = {
 	picture = GFX_evt_smugglers_in_bar
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		add_modifier = { modifier = uplift_rocky years = 2 }
@@ -332,6 +340,7 @@ planet_event = {
 			NOT = { has_pop_group_flag = upl_ethic_spimat }
 		}
 	}
+
 	option = {
 		name = uplift.7200.a
 	}
@@ -390,6 +399,7 @@ planet_event = {
 			NOT = { has_pop_group_flag = upl_ethic_pacmil }
 		}
 	}
+
 	option = {
 		name = uplift.7205.a
 	}
@@ -451,6 +461,7 @@ planet_event = {
 			NOT = { has_pop_group_flag = upl_ethic_xenoph }
 		}
 	}
+
 	option = {
 		name = uplift.7210.a
 	}
@@ -508,6 +519,7 @@ planet_event = {
 			NOT = { has_pop_group_flag = upl_ethic_colind }
 		}
 	}
+
 	option = {
 		name = uplift.7215.a
 	}
@@ -584,12 +596,15 @@ planet_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 100
 	}
+
 	immediate = {
 		set_planet_flag = chainblocked
 	}
+
 	option = {
 		name = UNFORTUNATE
 		trigger = {
@@ -641,12 +656,15 @@ planet_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 100
 	}
+
 	immediate = {
 		set_planet_flag = unethical_presapient_experiments
 	}
+
 	option = {
 		name = uplift.7510.a
 		add_modifier = { modifier = unproductive_without_experiments years = 2 }
@@ -718,12 +736,15 @@ planet_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 5000
 	}
+
 	immediate = {
 		owner = { set_country_flag = fidgeting_natives }
 	}
+
 	option = {
 		name = uplift.7520.a
 		trigger = { owner = { is_xenophobe = no } }
@@ -765,6 +786,7 @@ planet_event = {
 	picture = GFX_evt_colony_settlement
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		owner = {

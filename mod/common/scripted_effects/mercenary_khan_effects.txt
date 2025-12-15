@@ -199,9 +199,11 @@ create_marauder_fleet = {
 
 create_small_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = commander
-		species = event_target:satrapy_species
+	event_target:satrapy_empire = {
+		random_pool_leader = {
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 	create_fleet = {
 		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
@@ -221,7 +223,10 @@ create_small_marauder_auxiliaries = {
 				create_dyn_marauder_fleet = { OUTRIDER = 10 LANCER = 4 CHAMPION = 2 GLORY = 0 }
 			}
 			set_location = { target = root distance = 10 angle = random }
-			set_home_base = root.starbase
+			if = {
+				limit = { exists = root.solar_system.starbase }
+				set_home_base = root.solar_system.starbase
+			}
 		}
 		settings = {
 			can_upgrade = no
@@ -232,15 +237,17 @@ create_small_marauder_auxiliaries = {
 		}
 	}
 	last_created_fleet = {
-		assign_leader = last_created_leader
+		assign_leader = event_target:satrapy_commander
 	}
 }
 
 create_medium_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = commander
-		species = event_target:satrapy_species
+	event_target:satrapy_empire = {
+		random_pool_leader = {
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 	create_fleet = {
 		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
@@ -260,7 +267,10 @@ create_medium_marauder_auxiliaries = {
 				create_dyn_marauder_fleet = { OUTRIDER = 16 LANCER = 8 CHAMPION = 6 GLORY = 0 }
 			}
 			set_location = { target = root distance = 10 angle = random }
-			set_home_base = root.starbase
+			if = {
+				limit = { exists = root.solar_system.starbase }
+				set_home_base = root.solar_system.starbase
+			}
 		}
 		settings = {
 			can_upgrade = no
@@ -271,15 +281,17 @@ create_medium_marauder_auxiliaries = {
 		}
 	}
 	last_created_fleet = {
-		assign_leader = last_created_leader
+		assign_leader = event_target:satrapy_commander
 	}
 }
 
 create_large_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = commander
-		species = event_target:satrapy_species
+	event_target:satrapy_empire = {
+		random_pool_leader = {
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 	create_fleet = {
 		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
@@ -299,7 +311,10 @@ create_large_marauder_auxiliaries = {
 				create_dyn_marauder_fleet = { OUTRIDER = 22 LANCER = 12 CHAMPION = 8 }
 			}
 			set_location = { target = root distance = 10 angle = random }
-			set_home_base = root.starbase
+			if = {
+				limit = { exists = root.solar_system.starbase }
+				set_home_base = root.solar_system.starbase
+			}
 		}
 		settings = {
 			can_upgrade = no
@@ -310,15 +325,17 @@ create_large_marauder_auxiliaries = {
 		}
 	}
 	last_created_fleet = {
-		assign_leader = last_created_leader
+		assign_leader = event_target:satrapy_commander
 	}
 }
 
 create_very_large_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = commander
-		species = event_target:satrapy_species
+	event_target:satrapy_empire = {
+		random_pool_leader = {
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 	create_fleet = {
 		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
@@ -338,7 +355,10 @@ create_very_large_marauder_auxiliaries = {
 				create_dyn_marauder_fleet = { OUTRIDER = 26 LANCER = 18 CHAMPION = 12 }
 			}
 			set_location = { target = root distance = 10 angle = random }
-			set_home_base = root.starbase
+			if = {
+				limit = { exists = root.solar_system.starbase }
+				set_home_base = root.solar_system.starbase
+			}
 		}
 		settings = {
 			can_upgrade = no
@@ -349,7 +369,7 @@ create_very_large_marauder_auxiliaries = {
 		}
 	}
 	last_created_fleet = {
-		assign_leader = last_created_leader
+		assign_leader = event_target:satrapy_commander
 	}
 }
 
@@ -380,28 +400,21 @@ create_marauder_successor_fleet = {
 		limit = {
 			NOR = {
 				count_owned_leader = { count > 12
-					limit = { leader_class = commander is_event_leader = no }
+					limit = { leader_class = commander }
 				}
 				any_owned_leader = {
 					leader_class = commander
 					is_idle = yes
 					NOR = {
-						is_event_leader = yes
+						# is_event_leader = yes merc are event_leader
 						is_councilor = yes
 						is_ruler = yes
+						exists = fleet
 					}
 				}
 			}
 		}
-		create_leader = {
-			class = commander
-			species = owner_species
-			name = random
-			skill = 3
-			leader_age_min = 25
-			leader_age_max = 45
-			traits = { trait = leader_trait_mercenary_warrior }
-		}
+		create_marauder_merc_admiral = yes
 		last_created_fleet = { assign_leader = last_created_leader }
 	}
 	else = {
@@ -410,9 +423,10 @@ create_marauder_successor_fleet = {
 				leader_class = commander
 				is_idle = yes
 				NOR = {
-					is_event_leader = yes
+					# is_event_leader = yes merc are event_leader
 					is_councilor = yes
 					is_ruler = yes
+					exists = fleet
 				}
 			}
 			weights = { base = 1 modifier = { add = 4 NOT = { exists = fleet } } }

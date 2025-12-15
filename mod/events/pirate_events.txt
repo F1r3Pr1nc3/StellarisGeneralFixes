@@ -11,6 +11,7 @@ country_event = {
 	picture = GFX_evt_pirate_armada
 	show_sound = event_space_battle
 	location = event_target:pirate_system
+
 	desc = {
 		trigger = {
 			if = {
@@ -83,6 +84,7 @@ country_event = {
 			}
 		}
 	}
+
 	trigger = {
 		is_ai = no	# PATCH|OPT
 		is_country_type = default
@@ -185,6 +187,7 @@ country_event = {
 		}
 		run_in_ai_mode = yes # Vfix
 	}
+
 	option = {
 		name = pirate.2.a
 		trigger = {
@@ -570,6 +573,7 @@ country_event = {
 	desc_clear = yes
 	trigger_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			if = {
@@ -581,6 +585,7 @@ country_event = {
 			}
 		}
 	}
+
 	trigger = {
 		is_country_type = default
 		NOT = { has_country_flag = birth_of_piracy }
@@ -596,6 +601,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -612,6 +618,7 @@ country_event = {
 	desc_clear = yes
 	trigger_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			if = {
@@ -623,6 +630,7 @@ country_event = {
 			}
 		}
 	}
+
 	trigger = {
 		is_country_type = default
 		NOR = {
@@ -632,6 +640,7 @@ country_event = {
 		exists = capital_scope
 		has_monthly_income = { resource = trade value > 100 }
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -678,6 +687,7 @@ fleet_event = {
 	immediate = {
 		owner = { set_country_flag = privateers_found }
 	}
+
 	option = {
 		name = pirate.10.a.nobirth
 		trigger = {
@@ -739,6 +749,7 @@ country_event = {
 	id = pirate.15
 	title = pirate.15.name
 	picture = GFX_evt_exploding_ship
+
 	desc = {
 		trigger = {
 			NOT = { has_event_chain = "l_cluster_chain" }
@@ -756,6 +767,7 @@ country_event = {
 	immediate = {
 		set_global_flag = privateers_destroyed
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -779,9 +791,11 @@ fleet_event = {
 		exists = solar_system
 		solar_system = { has_star_flag = pirate_home_system }
 	}
+
 	mean_time_to_happen = {
 		years = 50
 	}
+
 	immediate = {
 		random_playable_country = {
 			limit = {
@@ -873,6 +887,7 @@ country_event = {
 	id = pirate.25
 	title = pirate.25.name
 	picture = GFX_evt_large_explosion
+
 	desc = {
 		trigger = {
 			text = pirate.25.desc
@@ -925,6 +940,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = { has_country_flag = massive_loot }
@@ -1029,6 +1045,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -1089,6 +1106,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = { has_country_flag = massive_loot }
@@ -1298,6 +1316,7 @@ country_event = {
 		save_event_target_as = pirate_target
 		event_target:pirate_system = { create_normal_pirate_country = yes create_pirate_fleet = yes }
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -1349,6 +1368,7 @@ country_event = {
 		last_created_country = { set_country_flag = drone_pirate }
 		create_pirate_fleet = yes
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -1382,6 +1402,7 @@ country_event = {
 		last_created_country = { set_country_flag = drone_pirate }
 		create_pirate_fleet = yes
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -1433,6 +1454,7 @@ country_event = {
 		last_created_country = { set_country_flag = machine_pirate }
 		create_pirate_fleet = yes
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -1466,6 +1488,7 @@ country_event = {
 		last_created_country = { set_country_flag = machine_pirate }
 		create_pirate_fleet = yes
 	}
+
 	option = {
 		name = pirate.50.a
 	}
@@ -1775,6 +1798,7 @@ country_event = {
 country_event = {
 	id = pirate.155
 	title = "pirate.155.name"
+
 	desc = {
 		text = "pirate.155.desc.regular"
 		trigger = { is_regular_empire = yes }
@@ -1790,6 +1814,7 @@ country_event = {
 
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:thalassocracy_country # Vfix opt
 		room = ethic_spaceship_room
@@ -1815,6 +1840,7 @@ country_event = {
 		establish_communications_no_message = event_target:thalassocracy_country
 		set_country_flag = met_thalassocracy
 	}
+
 	option = { # Disbelief
 		name = "pirate.155.a"
 	}

@@ -32,6 +32,7 @@ country_event = {
 			targets = { root }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
@@ -74,6 +75,7 @@ country_event = {
 		}
 		set_country_flag = Hyperthermia_Lv1_unlocked
 	}
+
 	after = {
 		begin_event_chain = { event_chain = galactic_hyperthermia_chain target = root }
 	}
@@ -83,6 +85,7 @@ country_event = {
 country_event = {
 	id = infernals.1005
 	title = infernals.1005.name
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_country_flag = red_giant_discovered_crystallized_entropy } }
@@ -100,6 +103,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1005.a
 		custom_tooltip = infernals.1005.a.tt
@@ -110,6 +114,7 @@ country_event = {
 		custom_tooltip = infernals.1005.b.tt
 		trigger = { is_gestalt = yes }
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -131,6 +136,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 		enable_special_project = {
@@ -161,6 +167,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1010.a
 		trigger = { is_gestalt = no }
@@ -185,6 +192,7 @@ country_event = {
 		set_country_flag = allow_terraforming_into_volcanic
 		activate_fog_machine = crisis_firestorm_S
 	}
+
 	option = {
 		name = infernals.1015.a # Become evil
 		custom_tooltip = infernals.1015.a.desc
@@ -227,6 +235,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1020.a
 		custom_tooltip = infernals.1020.a.tt
@@ -248,6 +257,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1021.a
 		trigger = { is_gestalt = no }
@@ -267,6 +277,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1025.a
 		custom_tooltip = infernals.1025.a.tt
@@ -315,6 +326,7 @@ country_event = {
 		}
 		start_situation = { type = situation_galactic_hyperthermia_timer target = root }
 	}
+
 	option = {
 		name = infernals.1030.a
 		custom_tooltip = infernals.1030.a.tt
@@ -363,6 +375,7 @@ country_event = {
 		}
 		activate_fog_machine = crisis_firestorm_L
 	}
+
 	option = {
 		name = infernals.1035.a
 		trigger = { is_gestalt = no }
@@ -635,6 +648,7 @@ country_event = {
 	show_sound = event_death_cult
 	event_chain = galactic_hyperthermia_chain
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1042.a
 	}
@@ -648,6 +662,7 @@ country_event = {
 	picture = GFX_evt_crisis_declared
 	show_sound = event_announcement
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1043.a
 	}
@@ -657,6 +672,7 @@ country_event = {
 situation_event = {
 	id = infernals.1045
 	title = infernals.1045.name
+
 	desc = {
 		trigger = {
 			owner = { has_crisis_level = crisis_hyperthermia_level_5 }
@@ -674,6 +690,7 @@ situation_event = {
 	show_sound = event_worrying_signal
 	situation = this
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1045.a
 		custom_tooltip = infernals.1045.a.tooltip
@@ -773,6 +790,7 @@ country_event = {
 			add_modifier = { modifier = crisis_conduit_stop }
 		}
 	}
+
 	option = {
 		name = infernals.1052.a
 		custom_tooltip = infernals.1052.a.tt
@@ -884,6 +902,7 @@ country_event = {
 		is_at_war = yes
 		is_at_war_with = event_target:crucible_builders
 	}
+
 	option = { # Thats evil!
 		name = infernals.1053.a
 	}
@@ -957,6 +976,7 @@ country_event = {
 			targets = { root }
 		}
 	}
+
 	option = {
 		name = infernals.1055.a
 		trigger = { is_gestalt = no }
@@ -987,6 +1007,7 @@ country_event = {
 		name = infernals.1055.f
 		trigger = { is_homicidal = yes }
 	}
+
 	after = {
 		add_relic = r_crystallized_singularity
 	}
@@ -1000,6 +1021,7 @@ country_event = {
 	picture = GFX_evt_cosmic_storms_solar_storm
 	show_sound = event_the_great_awakening
 	is_triggered_only = yes
+
 	option = {
 		name = infernals.1056.a
 		trigger = { is_gestalt = no }

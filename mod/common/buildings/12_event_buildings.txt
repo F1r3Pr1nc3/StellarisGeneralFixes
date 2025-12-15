@@ -11,27 +11,33 @@ building_junkheap = {
 	position_priority = 0
 	capital_tier = 1
 	category = amenity
+
 	building_sets = {
 		government
 		urban
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { is_country_type = ratlings }
 		NOT = { has_modifier = slave_colony }
 	}
+
 	convert_to = {
 		building_machine_capital
 		building_capital
 		building_hive_capital
 	}
+
 	planet_modifier = {
 		planet_housing_add = 1500
 		planet_amenities_add = 2000
 		job_ratling_scavenger_add = 1000
 	}
+
 	upgrades = {
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -44,20 +50,24 @@ building_akx_worm_3 = {
 	can_be_ruined = no
 	can_be_disabled = no
 	category = research
+
 	building_sets = {
 		government
 		research
 		physics
 	}
+
 	potential = {
 		exists = planet
 		is_capital = yes
 		has_owner = yes
 		NOT = { has_modifier = slave_colony }
 	}
+
 	prerequisites = {
 		"tech_akx_worm_3"
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -70,6 +80,7 @@ building_akx_worm_3 = {
 			physics_research = 16
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -82,16 +93,20 @@ building_great_pyramid = {
 	can_be_ruined = no
 	can_be_disabled = no
 	category = government
+
 	building_sets = {
 		pre_ftl
 	}
+
 	potential = {
 		NOT = { has_modifier = slave_colony }
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 	}
+
 	planet_modifier = {
 	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -99,6 +114,7 @@ building_great_pyramid = {
 			society_research = 2
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -109,11 +125,13 @@ building_artist_patron = {
 	can_demolish = yes
 	empire_limit = 1
 	category = unity
+
 	building_sets = {
 		government
 		urban
 		unity
 	}
+
 	potential = {
 		custom_tooltip = {
 			text = EMPIRE_UNIQUE_BUILDING
@@ -121,9 +139,11 @@ building_artist_patron = {
 		}
 		NOT = { has_modifier = slave_colony }
 	}
+
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
 	}
+
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
@@ -132,12 +152,14 @@ building_artist_patron = {
 		planet_civilians_unity_produces_add = 0.5
 		planet_civilians_consumer_goods_upkeep_add = 0.25
 	}
+
 	resources = {
 		category = planet_buildings
 		upkeep = {
 			energy = 2
 		}
 	}
+
 	triggered_desc = {
 		trigger = {
 			has_owner = yes
@@ -152,6 +174,7 @@ building_artist_patron = {
 		}
 		text = job_civilian_ethics_effect
 	}
+
 	desc = {
 		trigger = {
 			has_owner = yes
@@ -166,6 +189,7 @@ building_artist_patron = {
 		}
 		text = building_artist_patron_gestalt_desc
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -178,23 +202,28 @@ building_waste_reprocessing_center = {
 	can_build = yes
 	can_demolish = yes
 	category = resource
+
 	building_sets = {
 		urban
 		generator
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_country_flag = bought_waste_reprocessing_center }
 		NOT = { has_modifier = slave_colony }
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_gestalt = no }
 	}
+
 	planet_modifier = {
 		planet_amenities_add = 500
 		job_technician_drone_add = 200
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -211,9 +240,11 @@ building_waste_reprocessing_center = {
 			biomass = @b2_biomass
 		}
 	}
+
 	inline_script = {
 		script = buildings/on_all_wilderness_buildings_districts
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -224,30 +255,36 @@ building_nuumismatic_shrine = {
 	can_demolish = yes
 	planet_limit = 1
 	category = unity
+
 	building_sets = {
 		government
 		urban
 		unity
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_country_flag = nuumismatic_shrine }
 		NOT = { has_modifier = slave_colony }
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_gestalt = yes }
 	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs
 	}
+
 	resources = {
 		cost = {
 			minerals = 1000
 		}
 		category = planet_buildings
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -257,11 +294,13 @@ building_crystal_plant_2 = {
 	base_buildtime = 800
 	can_build = no
 	category = manufacturing
+
 	building_sets = {
 		industrial
 		factory
 		foundry
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_country_flag = lithoid_crystal_plant }
@@ -270,14 +309,17 @@ building_crystal_plant_2 = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
+
 	planet_modifier = {
 		planet_metallurgists_rare_crystals_produces_add = 0.5
 		planet_artisans_rare_crystals_produces_add = 0.5
 	}
+
 	triggered_planet_modifier = {
 		potential = { industrial_jobs_are_catalytic_trigger = no }
 		planet_metallurgists_minerals_upkeep_add = 1.25
@@ -288,6 +330,7 @@ building_crystal_plant_2 = {
 		planet_metallurgists_food_upkeep_add = 2
 		planet_artisans_food_upkeep_add = 2
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -297,9 +340,11 @@ building_crystal_plant_2 = {
 			energy = 3
 		}
 	}
+
 	prerequisites = {
 		"tech_rare_crystals"
 	}
+
 	show_tech_unlock_if = {
 		owner = { has_country_flag = lithoid_crystal_plant }
 	}
@@ -310,9 +355,11 @@ building_zroni_equilibrator = {
 	can_demolish = yes
 	planet_limit = 1
 	category = government
+
 	building_sets = {
 		government
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -325,29 +372,35 @@ building_zroni_equilibrator = {
 			sr_zro = 4
 		}
 	}
+
 	potential = {
 		has_owner = yes
 		owner = { has_country_flag = zroni_legacy }
 		has_planet_flag = zroni_legacy_flag
 	}
+
 	destroy_trigger = {
 		NAND = {
 			has_owner = yes
 			owner = { has_country_flag = zroni_legacy }
 		}
 	}
+
 	inline_script = {
 		script = jobs/biologists_add
 		AMOUNT = @building_static_jobs_high # 400 jobs
 	}
+
 	planet_modifier = {
 		planet_biologists_physics_research_produces_add = 2
 		planet_biologists_society_research_upkeep_add = 2
 		planet_biologists_sr_zro_upkeep_add = 1
 	}
+
 	triggered_desc = {
 		text = biology_unit_is_observator_tt
 	}
+
 	on_built = {
 		if = {
 			limit = {
@@ -379,6 +432,7 @@ building_zroni_equilibrator = {
 			}
 		}
 	}
+
 	on_destroy = {
 		if = {
 			limit = {
@@ -402,6 +456,7 @@ building_zroni_equilibrator = {
 			}
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 	}
@@ -410,13 +465,16 @@ building_zroni_equilibrator = {
 building_composer_sanctum = {
 	base_buildtime = @b3_time
 	category = government
+
 	building_sets = {
 		government
 		unity
 	}
+
 	empire_limit = {
 		base = 1
 	}
+
 	potential = {
 		has_owner = yes
 		OR = {
@@ -435,10 +493,12 @@ building_composer_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -454,13 +514,16 @@ building_composer_sanctum = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/telepaths_add
 		AMOUNT = 300
 	}
+
 	country_modifier = {
 		pop_environment_tolerance = 0.10
 	}
+
 	triggered_country_modifier = {
 		potential = { has_shroud_dlc = no }
 		planet_jobs_produces_mult = 0.05
@@ -469,6 +532,7 @@ building_composer_sanctum = {
 		potential = { has_shroud_dlc = yes }
 		leader_lifespan_add = 20
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -485,13 +549,16 @@ building_composer_sanctum = {
 building_eater_sanctum = {
 	base_buildtime = @b3_time
 	category = government
+
 	building_sets = {
 		government
 		unity
 	}
+
 	empire_limit = {
 		base = 1
 	}
+
 	potential = {
 		has_owner = yes
 		OR = {
@@ -510,10 +577,12 @@ building_eater_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -529,14 +598,17 @@ building_eater_sanctum = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/telepaths_add
 		AMOUNT = 300
 	}
+
 	country_modifier = {
 		ship_weapon_range_mult = 0.1
 		ships_upkeep_mult = -0.05
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -553,13 +625,16 @@ building_eater_sanctum = {
 building_instrument_sanctum = {
 	base_buildtime = @b3_time
 	category = government
+
 	building_sets = {
 		government
 		unity
 	}
+
 	empire_limit = {
 		base = 1
 	}
+
 	potential = {
 		has_owner = yes
 		OR = {
@@ -578,10 +653,12 @@ building_instrument_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -597,10 +674,12 @@ building_instrument_sanctum = {
 			}
 		}
 	}
+
 	inline_script = {
 		script = jobs/telepaths_add
 		AMOUNT = 300
 	}
+
 	triggered_country_modifier = {
 		potential = { owner = { is_gestalt = yes } }
 		planet_amenities_mult = 0.1
@@ -609,9 +688,11 @@ building_instrument_sanctum = {
 		potential = { owner = { is_gestalt = no } }
 		pop_happiness = 0.05
 	}
+
 	country_modifier = {
 		planet_jobs_trade_produces_mult = 0.1
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -628,13 +709,16 @@ building_instrument_sanctum = {
 building_whisperers_sanctum = {
 	base_buildtime = @b3_time
 	category = government
+
 	building_sets = {
 		government
 		unity
 	}
+
 	empire_limit = {
 		base = 1
 	}
+
 	potential = {
 		OR = {
 			AND = {
@@ -652,27 +736,33 @@ building_whisperers_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
+
 	allow = {
 		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 	}
+
 	destroy_trigger = {
 		has_shroud_dlc = no
 		has_owner = yes
 		NOT = { owner = { has_country_flag = whisperers_covenant_rank_1 } }
 	}
+
 	inline_script = {
 		script = jobs/telepaths_add
 		AMOUNT = 300
 	}
+
 	country_modifier = {
 		envoys_add = 1
 		spy_network_daily_value_mult = 0.15
 	}
+
 	triggered_desc = {
 		trigger = { has_first_contact_dlc = yes }
 		text = covenant_detection_first_contact_effect
 	}
+
 	on_built = {
 		if = {
 			limit = { has_first_contact_dlc = yes }
@@ -685,6 +775,7 @@ building_whisperers_sanctum = {
 			}
 		}
 	}
+
 	on_destroy = {
 		if = {
 			limit = { has_first_contact_dlc = yes }
@@ -695,6 +786,7 @@ building_whisperers_sanctum = {
 			}
 		}
 	}
+
 	resources = {
 		category = planet_buildings
 		cost = {

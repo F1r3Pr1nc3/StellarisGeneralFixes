@@ -61,6 +61,7 @@ country_event = {
 	location = event_target:awakened_machine_empire.capital_scope
 	diplomatic = yes
 	is_triggered_only = yes
+
 	picture_event_data = {
 		portrait = event_target:awakened_machine_empire
 		planet_background = event_target:awakened_machine_empire
@@ -68,6 +69,7 @@ country_event = {
 		city_level = event_target:awakened_machine_empire
 		room = event_target:awakened_machine_empire.ruler
 	}
+
 	desc = {
 		text = fallen_machine_empire.2.desc_01
 		trigger = {
@@ -80,6 +82,7 @@ country_event = {
 			event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_2 }
 		}
 	}
+
 	option = {
 		trigger = {
 			event_target:awakened_machine_empire = { has_country_flag = fallen_machine_empire_awaken_1 }
@@ -139,6 +142,7 @@ country_event = {
 	show_sound = event_default
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 	}
@@ -150,9 +154,11 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 100
 	}
+
 	trigger = { # Vfix minor opt
 		is_country_type = default
 		NOR = {
@@ -208,6 +214,7 @@ country_event = {
 	desc = fallen_machine_empire.11.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -215,6 +222,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.11.a
 		ai_chance = {
@@ -274,16 +282,19 @@ country_event = {
 	title = fallen_machine_empire.12.name
 	desc = fallen_machine_empire.12.desc
 	picture = GFX_evt_genetic_modification
+
 	desc = {
 		trigger = { is_gestalt = yes }
 		text = fallen_machine_empire.12.desc.b
 	}
+
 	trigger = {
 		OR = {
 			has_modifier = machine_empire_inoculations
 			has_modifier = machine_empire_inoculations_xenophobe
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 10
 		modifier = {
@@ -291,6 +302,7 @@ country_event = {
 			has_country_flag = fallen_machine_empire_awaken_2
 		}
 	}
+
 	immediate = {
 		if = {
 			limit = { has_modifier = machine_empire_inoculations }
@@ -301,6 +313,7 @@ country_event = {
 			remove_modifier = machine_empire_inoculations_xenophobe
 		}
 	}
+
 	option = {
 		name = fallen_machine_empire.12.a
 		add_modifier = { modifier = machine_empire_mutations years = 10 }
@@ -313,16 +326,19 @@ country_event = {
 	title = fallen_machine_empire.13.name
 	desc = fallen_machine_empire.13.desc
 	picture = GFX_evt_genetic_modification
+
 	desc = {
 		trigger = { is_gestalt = yes }
 		text = fallen_machine_empire.13.desc.b
 	}
+
 	trigger = {
 		OR = {
 			has_modifier = machine_empire_inoculations
 			has_modifier = machine_empire_inoculations_xenophobe
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 10
 		modifier = {
@@ -330,6 +346,7 @@ country_event = {
 			has_country_flag = fallen_machine_empire_awaken_1
 		}
 	}
+
 	immediate = {
 		if = {
 			limit = { has_modifier = machine_empire_inoculations }
@@ -340,6 +357,7 @@ country_event = {
 			remove_modifier = machine_empire_inoculations_xenophobe
 		}
 	}
+
 	option = {
 		name = fallen_machine_empire.13.a
 		add_modifier = { modifier = machine_empire_health_boost days = -1 }
@@ -352,9 +370,11 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 100
 	}
+
 	trigger = {
 		OR = {
 			is_machine_empire = yes
@@ -410,6 +430,7 @@ country_event = {
 	desc = fallen_machine_empire.21.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -417,6 +438,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.21.a
 		ai_chance = { factor = 75 }
@@ -454,6 +476,7 @@ country_event = {
 	trigger = {
 		has_modifier = machine_empire_code_rewrite
 	}
+
 	mean_time_to_happen = {
 		years = 10
 		modifier = {
@@ -461,9 +484,11 @@ country_event = {
 			has_country_flag = fallen_machine_empire_awaken_2
 		}
 	}
+
 	immediate = {
 		remove_modifier = machine_empire_code_rewrite
 	}
+
 	option = {
 		name = fallen_machine_empire.22.a
 		add_modifier = { modifier = machine_empire_code_bugs years = 10 }
@@ -480,6 +505,7 @@ country_event = {
 	trigger = {
 		has_modifier = machine_empire_code_rewrite
 	}
+
 	mean_time_to_happen = {
 		years = 10
 		modifier = {
@@ -487,9 +513,11 @@ country_event = {
 			has_country_flag = fallen_machine_empire_awaken_1
 		}
 	}
+
 	immediate = {
 		remove_modifier = machine_empire_code_rewrite
 	}
+
 	option = {
 		name = fallen_machine_empire.23.a
 		add_modifier = { modifier = machine_empire_code_improvements days = -1 }
@@ -502,9 +530,11 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 50
 	}
+
 	trigger = {
 		pop_amount > 1000
 		is_machine_empire = yes
@@ -570,6 +600,7 @@ country_event = {
 	desc = fallen_machine_empire.31.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -577,6 +608,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.31.a
 		ai_chance = { factor = 75 }
@@ -626,10 +658,12 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = { factor = 0.5 is_machine_empire = yes }
 	}
+
 	trigger = {
 		is_ai = no
 		is_country_type = default
@@ -710,6 +744,7 @@ country_event = {
 	desc = fallen_machine_empire.41.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -717,6 +752,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.41.a
 		ai_chance = { factor = 90 }
@@ -759,9 +795,11 @@ country_event = {
 		is_at_war = yes
 		any_country = { has_country_flag = fe_task_attack_empire_target is_at_war_with = root }
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_attack_empire_active
 		random_country = {
@@ -776,6 +814,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -783,6 +822,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.42.a
 		custom_tooltip = fallen_machine_empire_happy_task_tooltip
@@ -815,9 +855,11 @@ country_event = {
 			is_at_war = yes
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 1
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_attack_empire_active
 		random_country = {
@@ -832,6 +874,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -839,6 +882,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.43.a
 		custom_tooltip = fallen_machine_empire_unhappy_task_tooltip
@@ -889,9 +933,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_attack_empire_active
 		hidden_effect = {
@@ -915,10 +961,12 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 200
 		modifier = { factor = 0.5 is_machine_empire = yes }
 	}
+
 	trigger = {
 		is_ai = no
 		is_country_type = default
@@ -994,6 +1042,7 @@ country_event = {
 	desc = fallen_machine_empire.51.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1001,6 +1050,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.51.a
 		ai_chance = { factor = 90 }
@@ -1046,9 +1096,11 @@ country_event = {
 			pop_amount > 400
 		}
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_colonize_planet_active
 		random_country = {
@@ -1063,6 +1115,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1070,6 +1123,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.52.a
 		custom_tooltip = fallen_machine_empire_happy_task_tooltip
@@ -1115,9 +1169,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		years = 1
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_colonize_planet_active
 		random_country = {
@@ -1132,6 +1188,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1139,6 +1196,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.53.a
 		custom_tooltip = fallen_machine_empire_unhappy_task_tooltip
@@ -1185,9 +1243,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_colonize_planet_active
 		hidden_effect = {
@@ -1211,6 +1271,7 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = { factor = 0.75 is_machine_empire = yes }
@@ -1226,6 +1287,7 @@ country_event = {
 			}
 		}
 	}
+
 	trigger = {
 		is_country_type = default
 		NOR = {
@@ -1286,6 +1348,7 @@ country_event = {
 	desc = fallen_machine_empire.61.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1293,6 +1356,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.61.a
 		begin_event_chain = { event_chain = fe_no_wars_task_chain target = root }
@@ -1319,9 +1383,11 @@ country_event = {
 		has_country_flag = fe_task_no_wars
 		NOT = { has_country_flag = fe_task_no_wars_timer }
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_no_wars_active
 		random_country = {
@@ -1332,6 +1398,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1339,6 +1406,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.62.a
 		custom_tooltip = fallen_machine_empire_happy_task_tooltip
@@ -1371,9 +1439,11 @@ country_event = {
 			is_war_participant = { who = root side = attackers }
 		}
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_no_wars_active
 		random_country = {
@@ -1384,6 +1454,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1391,6 +1462,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.63.a
 		custom_tooltip = fallen_machine_empire_angry_task_tooltip
@@ -1436,9 +1508,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_no_wars_active
 		hidden_effect = {
@@ -1461,6 +1535,7 @@ country_event = {
 	title = OK
 	desc = OK
 	hide_window = yes
+
 	mean_time_to_happen = {
 		years = 100
 		modifier = { factor = 0.75 is_machine_empire = yes }
@@ -1476,6 +1551,7 @@ country_event = {
 			}
 		}
 	}
+
 	trigger = {
 		is_country_type = default
 		NOR = {
@@ -1541,6 +1617,7 @@ country_event = {
 	desc = fallen_machine_empire.71.desc
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1548,6 +1625,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.71.a
 		begin_event_chain = { event_chain = fe_no_colonies_task_chain target = root }
@@ -1574,9 +1652,11 @@ country_event = {
 		has_country_flag = fe_task_no_colonies
 		NOT = { has_country_flag = fe_task_no_colonies_timer }
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_no_colonies_active
 		random_country = {
@@ -1587,6 +1667,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1594,6 +1675,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.72.a
 		custom_tooltip = fallen_machine_empire_happy_task_tooltip
@@ -1623,9 +1705,11 @@ country_event = {
 		has_country_flag = fe_task_no_colonies_timer
 		any_owned_planet = { is_under_colonization = yes }
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_no_colonies_active
 		random_country = {
@@ -1636,6 +1720,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:FallenEmpireTaskOrigin
 		planet_background = event_target:FallenEmpireTaskOrigin
@@ -1643,6 +1728,7 @@ country_event = {
 		city_level = event_target:FallenEmpireTaskOrigin
 		room = event_target:FallenEmpireTaskOrigin.ruler
 	}
+
 	option = {
 		name = fallen_machine_empire.73.a
 		custom_tooltip = fallen_machine_empire_angry_task_tooltip
@@ -1688,9 +1774,11 @@ country_event = {
 			}
 		}
 	}
+
 	mean_time_to_happen = {
 		days = 10
 	}
+
 	immediate = {
 		remove_global_flag = fe_task_no_colonies_active
 		hidden_effect = {

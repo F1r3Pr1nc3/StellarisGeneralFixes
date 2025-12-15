@@ -3,6 +3,7 @@ DISTAR_WRECK_CAT = {
 	desc = "DISTAR_WRECK_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -30,6 +31,7 @@ DISTAR_FLARE_CAT = {
 	desc = "DISTAR_FLARE_CAT_DESC"
 	picture = "GFX_evt_dead_city"
 	level = 1
+
 	spawn_chance = { # Vfix
 		base = 0 # Handled in SysInit
 	}
@@ -41,6 +43,7 @@ DISTAR_RAINBOW_CAT = {
 	desc = "DISTAR_RAINBOW_CAT_DESC"
 	picture = "GFX_evt_black_hole"
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -58,6 +61,7 @@ DISTAR_HOLO_CAT = {
 	desc = "DISTAR_HOLO_CAT_DESC"
 	picture = "GFX_evt_black_hole"
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -75,6 +79,7 @@ DISTAR_ROBO_CAT = {
 	desc = "DISTAR_ROBO_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 1
+
 	spawn_chance = { # Vfix
 		base = 0 # Handled in SysInit
 	}
@@ -87,6 +92,7 @@ DISTAR_NANO_CAT = {
 	desc = "DISTAR_NANO_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -100,6 +106,7 @@ DISTAR_NANO_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.40 }
 	}
@@ -109,6 +116,7 @@ DISTAR_FLOW_CAT = {
 	desc = "DISTAR_FLOW_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 100 # Intentional, as it competes with other is_star anomalies
@@ -129,6 +137,7 @@ DISTAR_LOST_CAT = {
 	desc = "DISTAR_LOST_CAT_DESC"
 	picture = "GFX_evt_gas_giant"
 	level = 2
+
 	spawn_chance = {
 		modifier = { add = 1 is_planet_class = pc_gas_giant }
 		modifier = {
@@ -152,6 +161,7 @@ DISTAR_TIME_CAT = {
 	desc = "DISTAR_TIME_CAT_DESC"
 	picture = "GFX_evt_space_debris"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -180,6 +190,7 @@ DISTAR_CLONE_CAT = {
 	level = 6
 	# Spawn set via initialisers
 	max_once_global = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.70 }
 	}
@@ -189,6 +200,7 @@ DISTAR_GEODE_CAT = {
 	desc = "DISTAR_GEODE_CAT_DESC"
 	picture = "GFX_evt_space_debris"
 	level = 5
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -205,6 +217,7 @@ DISTAR_DEAD_GOD_CAT = {
 	desc = "DISTAR_DEAD_GOD_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1000
@@ -221,6 +234,7 @@ DISTAR_DEAD_GOD_CAT = {
 			}
 		}
 	}
+
 	on_spawn = {
 		solar_system = {
 			random_system_colony = {
@@ -242,6 +256,7 @@ DISTAR_ELECTRO_CAT = {
 	desc = "DISTAR_ELECTRO_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -261,6 +276,7 @@ DISTAR_RUM_CAT = {
 	desc = "DISTAR_RUM_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -290,6 +306,7 @@ DISTAR_RUM_CAT = {
 			}
 		}
 	}
+
 	on_success = {
 		1 = {
 			modifier = {
@@ -312,6 +329,7 @@ DISTAR_SOOTHE_CAT = {
 	desc = "DISTAR_SOOTHE_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 1
+
 	spawn_chance = {
 		modifier = { add = 1 habitable_planet = yes }
 		modifier = {
@@ -330,6 +348,7 @@ DISTAR_SOOTHE_GC_CAT = {
 	desc = "DISTAR_SOOTHE_GC_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 1
+
 	spawn_chance = {
 		modifier = { add = 1 habitable_planet = yes }
 		modifier = {
@@ -348,6 +367,7 @@ DISTAR_EXO_CAT = {
 	desc = "DISTAR_EXO_CAT_DESC"
 	picture = "GFX_evt_alien_nature"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 10
@@ -356,6 +376,7 @@ DISTAR_EXO_CAT = {
 			planet_size > 15
 		}
 	}
+
 	on_spawn = {
 		add_modifier = { modifier = exofungus days = -1 }
 	}
@@ -367,6 +388,7 @@ DISTAR_ICE_CAT = {
 	desc = "DISTAR_ICE_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -383,6 +405,7 @@ DISTAR_METAL_CAT = {
 	desc = "DISTAR_METAL_CAT_DESC"
 	picture = "GFX_evt_toxic"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -391,6 +414,7 @@ DISTAR_METAL_CAT = {
 			NOT = { has_deposit_for = shipclass_research_station }
 		}
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.115 }
 	}
@@ -400,6 +424,7 @@ DISTAR_OCEAN_CAT = {
 	desc = "DISTAR_OCEAN_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -407,6 +432,7 @@ DISTAR_OCEAN_CAT = {
 			is_planet_class = pc_ocean
 		}
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.120 }
 	}
@@ -416,11 +442,13 @@ DISTAR_COLLAPSE_CAT = {
 	desc = "DISTAR_COLLAPSE_CAT_DESC"
 	picture = "GFX_evt_space_station"
 	level = 6
+
 	spawn_chance = { # Vfix
 		base = 0 # Handled in SysInit
 	}
 
 	max_once_global = no
+
 	on_success = {
 		1 = { anomaly_event = distar.125 }
 	}
@@ -430,9 +458,11 @@ DISTAR_FOES_CAT = {
 	desc = "DISTAR_FOES_CAT_DESC"
 	picture = "GFX_evt_alien_cavemen"
 	level = 3
+
 	spawn_chance = { # Vfix
 		base = 0 # Handled in on_actions
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.131 }
 	}
@@ -442,6 +472,7 @@ DISTAR_DIAMOND_CAT = {
 	desc = "DISTAR_DIAMOND_CAT_DESC"
 	picture = "GFX_evt_star_white"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -453,6 +484,7 @@ DISTAR_DIAMOND_CAT = {
 	}
 
 	null_spawn_chance = 0.5 # 50% chance to spawn
+
 	on_success = {
 		1 = { anomaly_event = distar.140 }
 	}
@@ -462,6 +494,7 @@ DISTAR_MOLTEN_CAT = {
 	desc = "DISTAR_MOLTEN_CAT_DESC"
 	picture = "GFX_evt_molten"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -472,6 +505,7 @@ DISTAR_MOLTEN_CAT = {
 	}
 
 	null_spawn_chance = 0.5 # 50% chance to spawn
+
 	on_success = {
 		1 = { anomaly_event = distar.145 }
 	}
@@ -482,6 +516,7 @@ DISTAR_MERCURY_CAT = {
 	picture = "GFX_evt_ship_in_orbit"
 	level = 7
 	should_ai_and_humans_use = yes # So that the AI can also find living metal
+
 	spawn_chance = {
 		modifier = {
 			add = 0.1
@@ -490,6 +525,7 @@ DISTAR_MERCURY_CAT = {
 			has_any_strategic_resource = no
 		}
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.150 }
 	}
@@ -499,6 +535,7 @@ DISTAR_WARFORM_CAT = {
 	desc = "DISTAR_WARFORM_CAT_DESC"
 	picture = "GFX_evt_toxic"
 	level = 5
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -508,6 +545,7 @@ DISTAR_WARFORM_CAT = {
 	}
 
 	max_once_global = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.155 }
 	}
@@ -517,6 +555,7 @@ DISTAR_BRAINSLUG_CAT = {
 	desc = "DISTAR_BRAINSLUG_CAT_DESC"
 	picture = "GFX_evt_alien_nature"
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 10
@@ -532,11 +571,13 @@ DISTAR_BRAINSLUG_CAT = {
 			from.owner = { is_wilderness_empire = yes }
 		}
 	}
+
 	on_spawn = {
 		add_deposit = d_abandoned_primitive_homesteads
 	}
 
 	max_once_global = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.170 }
 	}
@@ -546,6 +587,7 @@ DISTAR_THIRSTY_CAT = {
 	desc = "DISTAR_THIRSTY_CAT_DESC"
 	picture = "GFX_evt_warm_barren"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -554,6 +596,7 @@ DISTAR_THIRSTY_CAT = {
 			NOT = { has_deposit_for = shipclass_research_station }
 		}
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.180 }
 	}
@@ -563,6 +606,7 @@ DISTAR_FLYTRAP_CAT = {
 	desc = "DISTAR_FLYTRAP_CAT_DESC"
 	picture = "GFX_evt_alien_nature"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 10
@@ -580,9 +624,11 @@ DISTAR_FLYTRAP_CAT = {
 			}
 		}
 	}
+
 	on_spawn = {
 		add_modifier = { modifier = predatory_plants days = -1 }
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.185 }
 	}
@@ -592,6 +638,7 @@ DISTAR_LIVING_CAT = {
 	desc = "DISTAR_LIVING_CAT_DESC"
 	picture = "GFX_evt_ocean"
 	level = 5
+
 	spawn_chance = { # Vfix
 		base = 0 # Handled in SysInit
 	}
@@ -603,6 +650,7 @@ DISTAR_ZONE_CAT = {
 	desc = "DISTAR_ZONE_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -614,6 +662,7 @@ DISTAR_ZONE_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_spawn = {
 	}
 
@@ -624,14 +673,17 @@ DISTAR_RAT_CAT = {
 	desc = "DISTAR_RAT_CAT_DESC"
 	picture = "GFX_evt_city_ruins"
 	level = 2
+
 	spawn_chance = { # Vfix
 		base = 0 # Handled in on_actions
 	}
 
 	max_once = yes
 	max_once_global = no
+
 	on_spawn = {
 	}
+
 	on_success = {
 		1 = {
 			max_once = yes
@@ -645,9 +697,11 @@ DISTAR_MED_CAT = {
 	desc = "DISTAR_MED_CAT_DESC"
 	picture = "GFX_evt_space_debris"
 	level = 5
+
 	spawn_chance = { # Vfix
 		base = 0 # Set in sys_init
 	}
+
 	on_spawn = {
 	}
 
@@ -658,9 +712,11 @@ DISTAR_POD_CAT = {
 	desc = "DISTAR_POD_CAT_DESC"
 	picture = "GFX_evt_space_debris"
 	level = 3
+
 	spawn_chance = { # Vfix
 		base = 0 # Set in sys_init
 	}
+
 	on_spawn = {
 	}
 
@@ -671,11 +727,14 @@ DISTAR_PHASE_CAT = {
 	desc = "DISTAR_PHASE_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 10
+
 	spawn_chance = { # Vfix
 		base = 0 # Set in distar.256
 	}
+
 	on_spawn = {
 	}
+
 	on_success = {
 		0 = { # Case where we don't own the system, and planet is still shifting
 			modifier = {
@@ -722,6 +781,7 @@ DISTAR_SOY_CAT = {
 	desc = "DISTAR_SOY_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 6
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -745,6 +805,7 @@ DISTAR_SOY_CAT = {
 			}
 		}
 	}
+
 	on_spawn = {
 		planet_event = { id = distar.260 }
 	}
@@ -756,6 +817,7 @@ DISTAR_SIGNAL_CAT = {
 	desc = "DISTAR_SIGNAL_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -766,6 +828,7 @@ DISTAR_SIGNAL_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_spawn = {
 	}
 
@@ -776,6 +839,7 @@ DISTAR_PUZZLE_CAT = {
 	desc = "DISTAR_PUZZLE_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 1
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -786,6 +850,7 @@ DISTAR_PUZZLE_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_spawn = {
 	}
 
@@ -796,6 +861,7 @@ DISTAR_NANOCITY_CAT = {
 	desc = "DISTAR_NANOCITY_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -809,6 +875,7 @@ DISTAR_NANOCITY_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.275 }
 	}
@@ -818,6 +885,7 @@ DISTAR_NANOSAND_CAT = {
 	desc = "DISTAR_NANOSAND_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 2
+
 	spawn_chance = {
 		modifier = {
 			add = 1
@@ -835,6 +903,7 @@ DISTAR_NANOSAND_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.280 }
 	}
@@ -844,6 +913,7 @@ DISTAR_MEDGAS_CAT = {
 	desc = "DISTAR_MEDGAS_CAT_DESC"
 	picture = "GFX_evt_ship_in_orbit"
 	level = 3
+
 	spawn_chance = {
 		modifier = { # Normal chance to spawn if player has completed chain
 			add = 1
@@ -876,6 +946,7 @@ DISTAR_MEDGAS_CAT = {
 
 	max_once_global = no
 	max_once = yes
+
 	on_success = {
 		1 = { anomaly_event = distar.285 }
 	}
@@ -891,6 +962,7 @@ debris_gasgiant_category_temp = {
 	level = 8
 	max_once_global = yes
 	null_spawn_chance = 0.65 # 35% chance to spawn
+
 	spawn_chance = {
 		modifier = {
 			add = 0.35
@@ -916,6 +988,7 @@ star_lifting_category = {
 	picture = "GFX_evt_star_pulsar"
 	level = 4
 	max_once_global = yes
+
 	spawn_chance = { # Vfix
 		base = 0 # added in system initializer
 	}
@@ -927,6 +1000,7 @@ abandoned_outpost_category = {
 	picture = "GFX_evt_ship_in_orbit"
 	level = 4
 	max_once_global = yes
+
 	spawn_chance = { # Vfix
 		base = 0 # added in system initializer
 	}
@@ -939,6 +1013,7 @@ ast_debris_field_1_cat_2 = {
 	picture = "GFX_evt_space_debris"
 	level = 3
 	max_once = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -946,6 +1021,7 @@ ast_debris_field_1_cat_2 = {
 			is_asteroid = yes
 		}
 	}
+
 	on_success = {
 		1 = {
 			modifier = {
@@ -992,6 +1068,7 @@ atomic_clock_cat = {
 	picture = "GFX_evt_space_debris"
 	level = 3
 	max_once = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1018,6 +1095,7 @@ atomic_clock_cat = {
 		}
 		modifier = { factor = 0 has_distar = no }
 	}
+
 	on_success = {
 		1 = distar.1045
 	}
@@ -1027,6 +1105,7 @@ gaia_planet_cat = {
 	picture = "GFX_evt_alien_nature"
 	level = 3
 	max_once_global = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1042,6 +1121,7 @@ corrupt_data_cat = {
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 4
 	max_once_global = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1069,6 +1149,7 @@ irregular_energy_cat = {
 	picture = "GFX_evt_ship_in_orbit"
 	level = 4
 	max_once_global = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 0.1
@@ -1092,6 +1173,7 @@ irregular_energy_cat = {
 peculiar_patterns_cat = {
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 3
+
 	spawn_chance = {
 		modifier = {
 			add = 0.1
@@ -1105,6 +1187,7 @@ peculiar_patterns_cat = {
 			}
 		}
 	}
+
 	on_success = {
 		0 = {
 			modifier = {
@@ -1147,6 +1230,7 @@ peculiar_patterns_cat = {
 tomb_world_cat = {
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1160,6 +1244,7 @@ tomb_world_cat = {
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
 	}
+
 	on_success = {
 		0 = {
 			modifier = {
@@ -1200,6 +1285,7 @@ tomb_world_cat = {
 alien_life_cat = {
 	picture = GFX_evt_alien_nature
 	level = 3
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1219,6 +1305,7 @@ moon_cat = {
 	picture = "GFX_evt_ship_in_orbit"
 	level = 3
 	max_once_global = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1238,6 +1325,7 @@ moon_cat = {
 			}
 		}
 	}
+
 	on_success = {
 		1 = { anomaly_event = distar.2025 }
 	}
@@ -1247,6 +1335,7 @@ time_loop_world = {
 	picture = "GFX_evt_ship_in_orbit"
 	level = 4
 	max_once_global = yes
+
 	spawn_chance = { # Vfix
 		base = 0 # added in system initializer
 	}
@@ -1258,6 +1347,7 @@ stolen_ship_cat = {
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 3
 	max_once_global = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1283,6 +1373,7 @@ transmitter_cat = {
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 2
 	max_once_global = yes
+
 	spawn_chance = {
 		modifier = {
 			add = 3
@@ -1317,6 +1408,7 @@ disco_trojan_asteroid_cat = {
 	desc = "disco_trojan_asteroid_cat_desc"
 	picture = "GFX_evt_asteroid_field"
 	level = 3
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1341,6 +1433,7 @@ disco_impossible_organism_cat = {
 	level = 6
 	max_once_global = yes
 	null_spawn_chance = 0.75 # 25% chance to spawn
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1368,6 +1461,7 @@ disco_stranded_scientist_cat = {
 	picture = "GFX_evt_asteroid_field"
 	max_once_global = yes
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1395,6 +1489,7 @@ disco_molluscoid_miners_cat = {
 	desc = "disco_molluscoid_miners_cat_desc"
 	picture = "GFX_evt_warm_barren"
 	level = 3
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1427,6 +1522,7 @@ disco_alien_machine_cat = {
 	picture = "GFX_evt_asteroid_field"
 	level = 3
 	null_spawn_chance = 0.5 # 50% chance to spawn
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1444,6 +1540,7 @@ disco_speed_demon_cat = {
 	desc = "disco_speed_demon_cat_desc"
 	picture = "GFX_evt_asteroid_field"
 	level = 4
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1470,6 +1567,7 @@ disco_breathing_rift_cat = {
 	desc = "disco_breathing_rift_cat_desc"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 3
+
 	spawn_chance = {
 		modifier = {
 			add = 2
@@ -1491,6 +1589,7 @@ disco_gray_cat = {
 	desc = "disco_gray_cat_desc"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 3
+
 	spawn_chance = {
 		modifier = {
 			add = 6

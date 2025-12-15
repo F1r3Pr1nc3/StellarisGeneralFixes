@@ -10,6 +10,7 @@ namespace = astral_rift
 astral_rift_event = {
 	id = astral_rift.1
 	title = astral_rift.1.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -25,6 +26,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.1.a
 		set_next_astral_rift_event = { id = astral_rift.3 }
@@ -34,6 +36,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.3
 	title = astral_rift.3.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -50,6 +53,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.3.a
 		set_astral_rift_flag = militants_first_choice
@@ -90,6 +94,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.5
 	title = astral_rift.5.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -195,6 +200,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.10
 	title = astral_rift.10.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -211,6 +217,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.10.a
 		allow = {
@@ -304,6 +311,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.15
 	title = astral_rift.15.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -334,6 +342,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = {
 			trigger = {
@@ -474,6 +483,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.16
 	title = astral_rift.16.name
+
 	desc = {
 		trigger = {
 			explorer = { is_homicidal = no }
@@ -492,6 +502,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		explorer = {
@@ -515,6 +526,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.20
 	title = astral_rift.20.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -546,6 +558,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.20.a
 		allow = {
@@ -590,6 +603,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.25
 	title = astral_rift.25.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -619,6 +633,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.25.a
 		custom_tooltip = astral_rift.25.a.tt
@@ -692,6 +707,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		finish_astral_rift = yes
 		hidden_effect = {
@@ -707,6 +723,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.30
 	title = astral_rift.30.name
+
 	desc = {
 		trigger = {
 			explorer = { is_homicidal = no }
@@ -744,6 +761,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	option = {
 		allow = {
 			custom_tooltip = {
@@ -859,6 +877,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		finish_astral_rift = yes
 		hidden_effect = {
@@ -874,6 +893,7 @@ astral_rift_event = {
 country_event = {
 	id = astral_rift.40
 	title = astral_rift.40.name
+
 	desc = {
 		trigger = {
 			if = {
@@ -898,6 +918,7 @@ country_event = {
 	picture = GFX_evt_astral_rift
 	show_sound = ap_rift_event_0_astral_wonder
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.40.a
 		if = {
@@ -1045,6 +1066,7 @@ country_event = {
 	picture = GFX_evt_astral_rift
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.50.a
 		country_event = { id = astral_rift.55 scopes = { from = from } }
@@ -1055,6 +1077,7 @@ country_event = {
 country_event = {
 	id = astral_rift.55
 	title = "TRANSMISSION"
+
 	desc = {
 		trigger = {
 			hidden_trigger = { is_gestalt = yes }
@@ -1103,9 +1126,11 @@ country_event = {
 	location = from
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = astral_rift.55.a
 		hidden_effect = {
@@ -1126,9 +1151,11 @@ country_event = {
 	location = from
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = astral_rift.56.a
 		country_event = { id = astral_rift.57 scopes = { from = from } }
@@ -1147,9 +1174,11 @@ country_event = {
 	location = from
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = astral_rift.57.a
 		default_hide_option = yes
@@ -1171,6 +1200,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.100.a
 		set_next_astral_rift_event = { id = astral_rift.105 }
@@ -1181,6 +1211,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.110 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -1195,6 +1226,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_medium_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = { astral_thread_small_reward = yes }
@@ -1212,6 +1244,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		set_astral_rift_flag = deconstruct_wall
@@ -1230,6 +1263,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.115
 	title = astral_rift.115.name
+
 	desc = {
 		trigger = { has_astral_rift_flag = drill_through_floor }
 		text = astral_rift.115.desc.glass
@@ -1244,6 +1278,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.115.a
 		set_next_astral_rift_event = { id = astral_rift.125 on_roll_failed = astral_rift.120 fail_probability = @default_failure_probability }
@@ -1269,6 +1304,7 @@ astral_rift_event = {
 	trigger = {
 		exists = leader # Vfix
 	}
+
 	option = {
 		name = UNFORTUNATE
 		hidden_effect = {
@@ -1298,6 +1334,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.125.a
 		explorer = {
@@ -1316,6 +1353,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.130.a
 		explorer = { astral_thread_large_reward = yes }
@@ -1382,6 +1420,7 @@ fleet_event = {
 	trigger = {
 		exists = leader # Vfix
 	}
+
 	option = {
 		name = FASCINATING
 		leader = {
@@ -1396,6 +1435,7 @@ fleet_event = {
 			add_trait = { trait = leader_trait_rift_warped }
 		}
 	}
+
 	after = {
 		if = {
 			limit = { has_fleet_flag = temporary_fleet }
@@ -1419,6 +1459,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.200.a
 		set_next_astral_rift_event = { id = astral_rift.205 }
@@ -1427,6 +1468,7 @@ astral_rift_event = {
 		name = astral_rift.200.b
 		set_next_astral_rift_event = { id = astral_rift.210 }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -1442,6 +1484,7 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 	specimen = leviathan_scale
+
 	option = {
 		name = astral_rift.205.a
 		explorer = {
@@ -1466,6 +1509,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.210.a
 		explorer = {
@@ -1519,6 +1563,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.215.a
 		set_next_astral_rift_event = { id = astral_rift.220 }
@@ -1529,6 +1574,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.225 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_medium_reward = yes }
 	}
@@ -1543,6 +1589,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.220.a
 		explorer = {
@@ -1566,6 +1613,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.225.a
 		explorer = {
@@ -1596,6 +1644,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.300.a
 		set_next_astral_rift_event = { id = astral_rift.305 }
@@ -1604,6 +1653,7 @@ astral_rift_event = {
 		name = astral_rift.300.b
 		set_next_astral_rift_event = { id = astral_rift.310 }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -1618,6 +1668,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.305.a
 		explorer = { astral_thread_small_reward = yes }
@@ -1634,6 +1685,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.310.a
 		explorer = { astral_thread_small_reward = yes }
@@ -1644,6 +1696,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.315
 	title = astral_rift.315.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -1659,6 +1712,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.315.a
 		explorer = { astral_thread_small_reward = yes }
@@ -1675,6 +1729,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.320.a
 		explorer = { astral_thread_small_reward = yes }
@@ -1691,6 +1746,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.325.a
 		set_next_astral_rift_event = { id = astral_rift.330 }
@@ -1716,6 +1772,7 @@ astral_rift_event = {
 			set_variable = { which = num_authorized_fractal_seeds value = 9 }
 		}
 	}
+
 	option = {
 		name = astral_rift.330.a
 		explorer = { astral_thread_large_reward = yes }
@@ -1739,6 +1796,7 @@ astral_rift_event = {
 			set_variable = { which = num_authorized_fractal_seeds value = 3 }
 		}
 	}
+
 	option = {
 		name = astral_rift.335.a
 		explorer = { astral_thread_large_reward = yes }
@@ -1762,6 +1820,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.500.a
 		set_next_astral_rift_event = { id = astral_rift.505 }
@@ -1770,6 +1829,7 @@ astral_rift_event = {
 		name = astral_rift.500.b
 		set_next_astral_rift_event = { id = astral_rift.505 }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -1778,6 +1838,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.505
 	title = astral_rift.505.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -1793,6 +1854,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.505.a
 		set_next_astral_rift_event = { id = astral_rift.510 }
@@ -1836,6 +1898,7 @@ astral_rift_event = {
 		}
 		set_next_astral_rift_event = { id = astral_rift.516 }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -1850,6 +1913,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = INTRIGUING
 		explorer = { astral_thread_small_reward = yes }
@@ -1866,6 +1930,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_medium_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = { astral_thread_medium_reward = yes }
@@ -1876,6 +1941,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.516
 	title = astral_rift.515.name
+
 	desc = {
 		trigger = { explorer = { is_gestalt = no } }
 		text = astral_rift.515.desc.aquatic
@@ -1890,6 +1956,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = { astral_thread_medium_reward = yes }
@@ -1906,6 +1973,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.520.a
 		set_next_astral_rift_event = { id = astral_rift.525 }
@@ -1916,6 +1984,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.530 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = {
 			add_monthly_resource_mult = {
@@ -1932,6 +2001,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.525
 	title = astral_rift.525.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -1947,6 +2017,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.525.a
 		hidden_effect = {
@@ -1983,6 +2054,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -1997,6 +2069,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.530.a
 		explorer = {
@@ -2021,6 +2094,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		explorer = {
@@ -2051,6 +2125,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		explorer = {
@@ -2081,6 +2156,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		explorer = {
@@ -2117,6 +2193,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		trigger = {
 			explorer = { is_unfriendly = no }
@@ -2165,6 +2242,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -2179,6 +2257,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_medium_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.605.a
 		set_next_astral_rift_event = { id = astral_rift.615 }
@@ -2219,6 +2298,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		explorer = {
 			add_monthly_resource_mult = {
@@ -2240,6 +2320,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		trigger = {
 			explorer = { is_unfriendly = no }
@@ -2310,6 +2391,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -2328,6 +2410,7 @@ astral_rift_event = {
 	immediate = {
 		set_astral_rift_flag = killed_creature
 	}
+
 	option = {
 		name = astral_rift.611.a
 		explorer = {
@@ -2351,6 +2434,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.615.a
 		custom_tooltip = astral_rift.615.a.tt
@@ -2379,6 +2463,7 @@ astral_rift_event = {
 			}
 		}
 	}
+
 	after = {
 		finish_astral_rift = yes
 	}
@@ -2393,6 +2478,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = OK
 		explorer = {
@@ -2410,6 +2496,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.625
 	title = astral_rift.625.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2425,6 +2512,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 		explorer = { astral_thread_large_reward = yes }
@@ -2474,6 +2562,7 @@ country_event = {
 	picture = GFX_evt_announcement
 	show_sound = event_default
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.691.a
 		add_monthly_resource_mult = {
@@ -2535,6 +2624,7 @@ country_event = {
 	picture = GFX_evt_coronation
 	show_sound = event_life_support_fail
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.696.a
 		add_monthly_resource_mult = {
@@ -2567,6 +2657,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.700.a
 		set_next_astral_rift_event = { id = astral_rift.705 }
@@ -2577,6 +2668,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.710 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -2591,6 +2683,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = { astral_thread_small_reward = yes }
@@ -2607,6 +2700,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_medium_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = {
@@ -2630,6 +2724,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.715.a
 		set_next_astral_rift_event = { id = astral_rift.720 }
@@ -2640,6 +2735,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.725 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_medium_reward = yes }
 	}
@@ -2654,6 +2750,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = {
@@ -2677,6 +2774,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		explorer = {
@@ -2694,6 +2792,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.730
 	title = astral_rift.730.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2710,6 +2809,7 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 	specimen = the_writer_sphere
+
 	option = {
 		name = astral_rift.730.a
 		explorer = {
@@ -2735,6 +2835,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.800.a
 		set_next_astral_rift_event = { id = astral_rift.805 }
@@ -2758,6 +2859,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.810 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -2772,6 +2874,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.805.a
 		set_next_astral_rift_event = { id = astral_rift.815 }
@@ -2782,6 +2885,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.810 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -2796,6 +2900,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_medium_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.810.a
 		set_next_astral_rift_event = { id = astral_rift.815 }
@@ -2806,6 +2911,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.820 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -2824,6 +2930,7 @@ astral_rift_event = {
 	trigger = {
 		exists = leader # Vfix
 	}
+
 	option = {
 		name = astral_rift.815.a
 		hidden_effect = {
@@ -2847,6 +2954,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.820
 	title = astral_rift.820.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2862,6 +2970,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.820.a
 		set_next_astral_rift_event = { id = astral_rift.825 }
@@ -2872,6 +2981,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.830 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = {
 			add_monthly_resource_mult = {
@@ -2894,6 +3004,7 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 	specimen = advisor_core
+
 	option = {
 		name = astral_rift.825.a
 		explorer = {
@@ -2933,6 +3044,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.830.a
 		explorer = {
@@ -2987,6 +3099,7 @@ country_event = {
 fleet_event = {
 	id = astral_rift.840
 	title = astral_rift.840.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = astral_rift.840.desc.default
@@ -3003,6 +3116,7 @@ fleet_event = {
 	trigger = {
 		exists = leader # Vfix
 	}
+
 	option = {
 		name = FASCINATING
 		leader = {
@@ -3038,6 +3152,7 @@ fleet_event = {
 country_event = {
 	id = astral_rift.845
 	title = astral_rift.845.name
+
 	desc = {
 		trigger = { is_tutorial_level = 0 }
 		text = astral_rift.845.desc.disabled
@@ -3046,6 +3161,7 @@ country_event = {
 		trigger = { is_tutorial_level != 0 }
 		text = astral_rift.845.desc.enabled
 	}
+
 	show_sound = {
 		sound = tut_evil_vir_assistance_mode_on
 		trigger = { is_tutorial_level = 0 }
@@ -3057,6 +3173,7 @@ country_event = {
 
 	is_triggered_only = yes
 	is_advisor_event = yes
+
 	option = {
 		name = astral_rift.845.shutdown
 		trigger = { is_tutorial_level = 0 }
@@ -3090,6 +3207,7 @@ namespace = astral_rift
 astral_rift_event = {
 	id = astral_rift.900
 	title = astral_rift.900.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3105,6 +3223,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_initial_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.900.a
 		set_next_astral_rift_event = { id = astral_rift.905 }
@@ -3115,6 +3234,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.910 on_roll_failed = astral_rift.915 fail_probability = @default_failure_probability }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = {
 			add_monthly_resource_mult = {
@@ -3137,6 +3257,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.905.a
 		explorer = { astral_thread_small_reward = yes }
@@ -3147,6 +3268,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.910
 	title = astral_rift.910.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3162,10 +3284,12 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = FASCINATING
 		set_next_astral_rift_event = { id = astral_rift.920 }
 	}
+
 	after = {
 		explorer = {
 			add_monthly_resource_mult = {
@@ -3182,6 +3306,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.915
 	title = astral_rift.915.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3197,6 +3322,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		fleet = {
@@ -3218,6 +3344,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.920
 	title = astral_rift.920.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3233,10 +3360,12 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.920.a
 		set_next_astral_rift_event = { id = astral_rift.925 }
 	}
+
 	after = {
 		explorer = {
 			add_monthly_resource_mult = {
@@ -3253,6 +3382,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.925
 	title = astral_rift.925.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3268,6 +3398,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.925.a
 		set_next_astral_rift_event = { id = astral_rift.930 }
@@ -3278,6 +3409,7 @@ astral_rift_event = {
 		set_next_astral_rift_event = { id = astral_rift.935 }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
+
 	after = {
 		explorer = { astral_thread_small_reward = yes }
 	}
@@ -3292,6 +3424,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_hard_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.930.a
 		explorer = { astral_thread_medium_reward = yes }
@@ -3302,6 +3435,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.935
 	title = astral_rift.935.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3317,6 +3451,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_easy_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = astral_rift.935.a
 		explorer = {
@@ -3334,6 +3469,7 @@ astral_rift_event = {
 astral_rift_event = {
 	id = astral_rift.940
 	title = astral_rift.940.name
+
 	desc = {
 		trigger = {
 			explorer = { is_spiritualist = no }
@@ -3352,6 +3488,7 @@ astral_rift_event = {
 	difficulty = @astral_rift_transition_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
 	option = {
 		name = AMAZING
 		explorer = {

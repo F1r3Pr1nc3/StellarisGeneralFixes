@@ -21,6 +21,7 @@ namespace = enclave
 ship_event = {
 	id = enclave.100
 	title = "enclave.100.name"
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.100a.desc
@@ -58,6 +59,7 @@ ship_event = {
 			add_seen_bypass_type = shroud_tunnel
 		}
 	}
+
 	option = {
 		name = enclave.100.a
 	}
@@ -82,6 +84,7 @@ fleet_event = {
 	immediate = {
 		set_event_locked = yes
 	}
+
 	option = {
 		name = DEAL
 		custom_tooltip = "enclave.2.a.tooltip"
@@ -153,9 +156,11 @@ fleet_event = {
 			}
 		}
 	}
+
 	abort_trigger = {
 		owner = { has_origin = origin_mindwardens }
 	}
+
 	after = {
 		hidden_effect = {
 			set_event_locked = no
@@ -175,6 +180,7 @@ fleet_event = {
 			TRUST = 30
 		}
 	}
+
 	after = {
 		event_target:mercenary_enclave_creator = {
 			country_event = { id = enclave.205 }
@@ -240,6 +246,7 @@ country_event = {
 			country_event = { id = enclave.26 }
 		}
 	}
+
 	after = {
 		destroy_country = yes
 		every_country = {
@@ -254,6 +261,7 @@ country_event = {
 	id = enclave.24
 	hide_window = yes
 	is_triggered_only = yes
+
 	after = {
 		add_modifier = {
 			modifier = country_enclave_capacity_decrease_modifier
@@ -275,6 +283,7 @@ country_event = {
 	immediate = {
 		set_country_flag = destroyed_mercs
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -300,6 +309,7 @@ country_event = {
 			multiplier = value:created_enclave_number
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		trigger = {
@@ -380,6 +390,7 @@ country_event = {
 country_event = {
 	id = enclave.29
 	title = "enclave.27"
+
 	desc = {
 		trigger = {
 			if = {
@@ -393,6 +404,7 @@ country_event = {
 			}
 		}
 	}
+
 	picture = {
 		trigger = {
 			event_target:mercenary_enclave_country = { is_mercenary_mindwarden_enclave = yes }
@@ -407,6 +419,7 @@ country_event = {
 	}
 
 	location = event_target:merc_system
+
 	show_sound = {
 		trigger = {
 			event_target:mercenary_enclave_country = { is_mercenary_mindwarden_enclave = yes }
@@ -437,6 +450,7 @@ country_event = {
 			set_location = { target = event_target:mercenary_home_system }
 		}
 	}
+
 	option = { # Refund money good luck
 		name = {
 			trigger = {
@@ -544,6 +558,7 @@ country_event = {
 country_event = {
 	id = enclave.205
 	title = enclave.205.name
+
 	desc = {
 		trigger = {
 			NOT = { is_hostile = event_target:mercenary_enclave_country }
@@ -559,6 +574,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_mercenary_window"
 	custom_gui_option = "enclave_mercenary_option"
+
 	picture_event_data = {
 		portrait = event_target:mercenary_enclave_country
 		room = mercenary_enclave_room
@@ -869,6 +885,7 @@ country_event = {
 		}
 		default_hide_option = yes
 	}
+
 	after = {
 		hidden_effect = {
 			set_country_flag = mercenary_enclave_diplomacy_engaged
@@ -1144,6 +1161,7 @@ country_event = {
 	base = enclave.205
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			NOT = { event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_1 } }
@@ -1913,6 +1931,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		start_situation = { type = mercenary_dividends target = root }
 		destroy_situation = from
@@ -1926,11 +1945,13 @@ country_event = {
 	base = enclave.205
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		text = enclave.280.a.desc
 		text = enclave.280.b.desc
 		text = enclave.280.c.desc
 	}
+
 	immediate = {
 		event_target:mercenary_enclave_country = {
 			random_owned_fleet = {
@@ -2312,6 +2333,7 @@ country_event = {
 		}
 		set_country_flag = mercenary_enclave_rented_fleet
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -2327,6 +2349,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		add_resource = { energy = 3000 }
@@ -2345,6 +2368,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		add_resource = { energy = 6000 }
@@ -2363,6 +2387,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		add_resource = { energy = 12000 }
@@ -2381,6 +2406,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		add_resource = { energy = 20000 }
@@ -2399,6 +2425,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		add_resource = { energy = 30000 }
@@ -2417,6 +2444,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 		add_resource = { energy = 44000 }
@@ -2438,6 +2466,7 @@ country_event = {
 	picture = GFX_evt_mercenary_enclave
 	show_sound = evn_ove_mercenary_enclave
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		trigger = {
@@ -2542,6 +2571,7 @@ country_event = {
 	picture = GFX_evt_mercenary_enclave
 	show_sound = evn_ove_mercenary_enclave
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		trigger = {
@@ -2628,6 +2658,7 @@ country_event = {
 	picture = GFX_evt_mercenary_enclave
 	show_sound = evn_ove_mercenary_enclave
 	is_triggered_only = yes
+
 	option = {
 		name = EXCELLENT
 		trigger = {
@@ -2995,6 +3026,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
@@ -3117,6 +3149,7 @@ country_event = {
 	picture = GFX_evt_mercenary_enclave
 	show_sound = evn_ove_mercenary_enclave
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.2025.a
 		add_monthly_resource_mult = {
@@ -3309,6 +3342,7 @@ country_event = {
 	picture = GFX_evt_mercenary_enclave
 	show_sound = evn_ove_mercenary_enclave
 	is_triggered_only = yes
+
 	option = {
 		name = DEAL
 		trigger = { max_naval_capacity < 76 }
@@ -3611,6 +3645,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = { # Yes, open diplomacy
 		name = enclave.2050.a
 		custom_tooltip = enclave.2050.a.tt
@@ -3780,6 +3815,7 @@ country_event = {
 	picture = GFX_evt_mercenary_fleet
 	show_sound = evn_ove_mercenary_fleet
 	is_triggered_only = yes
+
 	option = { # Nope
 		name = enclave.2060.a
 	}
@@ -4048,6 +4084,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_salvager_window"
 	custom_gui_option = "enclave_salvager_option"
+
 	picture_event_data = {
 		portrait = event_target:salvager_enclave_country
 		room = salvagers_room
@@ -4127,6 +4164,7 @@ country_event = {
 		}
 		text = enclave.305.desc.hostile
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -4338,6 +4376,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		set_country_flag = salvager_enclave_diplomacy_engaged
 	}
@@ -4350,6 +4389,7 @@ country_event = {
 	base = enclave.305
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			has_country_flag = has_scrappable_fleet
@@ -4367,6 +4407,7 @@ country_event = {
 		}
 		text = enclave.310.nofleet.desc
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -4778,6 +4819,7 @@ country_event = {
 		name = GOODBYE
 		default_hide_option = yes
 	}
+
 	after = {
 		remove_country_flag = has_scrappable_fleet
 		remove_country_flag = has_organic_scrappable_fleet
@@ -4905,6 +4947,7 @@ country_event = {
 	base = enclave.305
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			NOT = { has_country_flag = salvager_enclave_recently_reclaimed_all }
@@ -4915,6 +4958,7 @@ country_event = {
 		trigger = { has_country_flag = salvager_enclave_recently_reclaimed_all }
 		text = enclave.320.timeout.desc
 	}
+
 	immediate = {
 		salvager_enclave_find_reclaimed_corvette_design = yes
 		salvager_enclave_find_reclaimed_frigate_design = yes
@@ -5280,6 +5324,7 @@ country_event = {
 		name = GOODBYE
 		default_hide_option = yes
 	}
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -5328,6 +5373,7 @@ country_event = {
 	base = enclave.305
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			event_target:salvager_enclave_country = {
@@ -5487,6 +5533,7 @@ country_event = {
 	base = enclave.305
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		trigger = {
 			has_country_flag = salvage_commission_available # includes opinion check
@@ -5508,6 +5555,7 @@ country_event = {
 		}
 		text = enclave.340.lowopinion.desc
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -5617,6 +5665,7 @@ country_event = {
 		name = GOODBYE
 		default_hide_option = yes
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = salvage_commission_available
@@ -5795,6 +5844,7 @@ country_event = {
 	base = enclave.305
 	desc_clear = yes
 	option_clear = yes
+
 	desc = {
 		text = enclave.350.desc
 		trigger = {
@@ -5874,6 +5924,7 @@ country_event = {
 country_event = {
 	id = enclave.360
 	title = enclave.360.name
+
 	desc = {
 		trigger = {
 			NOR = {
@@ -5937,6 +5988,7 @@ country_event = {
 			1 = { set_country_flag = salvager_scrap_bonus_physics }
 		}
 	}
+
 	option = {
 		trigger = {
 			NOR = {
@@ -5996,6 +6048,7 @@ country_event = {
 			max = @tier2researchmax
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = salvager_scrap_bonus_engineering
@@ -6017,6 +6070,7 @@ country_event = {
 	immediate = {
 		remove_country_flag = salvager_enclave_salvage_commission_active
 	}
+
 	option = {
 		name = enclave.365.a
 		trigger = {
@@ -6053,6 +6107,7 @@ country_event = {
 			country_event = { id = enclave.340 } # Commission Salvage
 		}
 	}
+
 	after = {
 		custom_tooltip = enclave.365.tt
 		if = {
@@ -6129,6 +6184,7 @@ country_event = {
 	immediate = {
 		set_country_flag = destroyed_salvager # Achievement
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -6147,6 +6203,7 @@ country_event = {
 	location = event_target:salvager_system
 	show_sound = event_ship_bridge
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -6342,10 +6399,12 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
 	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -6596,6 +6655,7 @@ country_event = {
 			hidden_trigger = { shroudwalker_no_dialog = yes }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			set_country_flag = shroudwalker_enclave_diplomacy_engaged
@@ -6725,6 +6785,7 @@ country_event = {
 	desc_clear = yes
 	desc = enclave.415.desc
 	option_clear = yes
+
 	option = {
 		name = DOTDOTDOT
 		custom_tooltip = enclave.415.tt
@@ -6743,13 +6804,16 @@ situation_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
 	}
+
 	option = {
 		name = DOTDOTDOT
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -6874,6 +6938,7 @@ country_event = {
 			set_country_flag = non_prophet_organization_achievement
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		add_resource = {
@@ -6892,6 +6957,7 @@ country_event = {
 	location = event_target:shroudwalker_system
 	show_sound = event_ship_bridge
 	is_triggered_only = yes
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -7041,6 +7107,7 @@ country_event = {
 			add_seen_bypass_type = shroud_tunnel
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 	}
@@ -7074,6 +7141,7 @@ country_event = {
 			country_event = { id = enclave.4240 }
 		}
 	}
+
 	after = {
 		every_country = {
 			limit = {
@@ -7094,12 +7162,14 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = "enclave.4240.a"
 		add_modifier = { modifier = "shroudwalkers_depart_reverence" years = 20 }
@@ -7108,6 +7178,7 @@ country_event = {
 		name = "enclave.4240.b"
 		add_modifier = { modifier = "shroudwalkers_depart_anger" years = 20 }
 	}
+
 	after = {
 		add_resource = { sr_zro = 50 }
 	}
@@ -7121,6 +7192,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
@@ -7142,6 +7214,7 @@ country_event = {
 	immediate = {
 		set_country_flag = teachers_warning
 	}
+
 	option = {
 		name = "enclave.4243.a"
 	}
@@ -7177,6 +7250,7 @@ country_event = {
 			country_event = { id = enclave.4245 }
 		}
 	}
+
 	after = {
 		every_country = {
 			limit = {
@@ -7197,12 +7271,14 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = "enclave.4245.a"
 		add_modifier = { modifier = "shroudwalkers_depart_reverence" years = 20 }
@@ -7211,6 +7287,7 @@ country_event = {
 		name = "enclave.4245.b"
 		add_modifier = { modifier = "shroudwalkers_depart_anger" years = 20 }
 	}
+
 	after = {
 		add_resource = { sr_zro = 50 }
 		if = {
@@ -7267,6 +7344,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "enclave.4250.a"
 		trigger = {
@@ -7338,6 +7416,7 @@ situation_event = {
 planet_event = {
 	id = enclave.5005
 	title = "enclave.5005.name"
+
 	desc = {
 		trigger = {
 			hidden:owner = {
@@ -7379,6 +7458,7 @@ planet_event = {
 		owner = { set_country_flag = too_lucid_flag }
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		name = enclave.5005.a
 		planet_event = { id = enclave.5010 days = 60 random = 20 }
@@ -7403,6 +7483,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5010.a
 		planet_event = { id = enclave.5025 days = 60 random = 30 }
@@ -7432,6 +7513,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = UNDERSTOOD
 		enable_special_project = {
@@ -7445,6 +7527,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5020
 	title = "enclave.5020.name"
+
 	desc = {
 		trigger = {
 			hidden:owner = {
@@ -7481,6 +7564,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5020.a
 		add_modifier = { modifier = too_lucid_02 months = 120 }
@@ -7504,6 +7588,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5025.a
 		planet_event = { id = enclave.5030 days = 60 random = 30 }
@@ -7524,6 +7609,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = UNDERSTOOD
 		planet_event = { id = enclave.5035 days = 60 random = 30 }
@@ -7543,6 +7629,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5035.a
 		add_modifier = { modifier = martial_law months = 120 }
@@ -7616,6 +7703,7 @@ ship_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		owner = {
@@ -7649,6 +7737,7 @@ country_event = {
 		exists = owner
 		owner = { has_event_chain = shrouded_ship_chain }
 	}
+
 	option = {
 		name = FASCINATING
 		hidden_effect = {
@@ -7714,6 +7803,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = "enclave.5065.a"
 		owner = { end_event_chain = shrouded_ship_chain }
@@ -7782,6 +7872,7 @@ planet_event = {
 		owner = { set_country_flag = rogue_shaman_flag }
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		name = enclave.5075.a
 		event_target:shaman_divination_situation = { add_situation_progress = 40 }
@@ -7833,6 +7924,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		event_target:shaman_divination_situation = { add_situation_progress = 25 }
 		name = enclave.5076.a
@@ -7859,6 +7951,7 @@ planet_event = {
 	immediate = {
 		owner = { remove_country_flag = active_divination_event }
 	}
+
 	option = {
 		event_target:shaman_divination_situation = { add_situation_progress = 30 }
 		name = enclave.5077.a
@@ -7880,6 +7973,7 @@ planet_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5080.a
 		event_target:shaman_divination_situation = { add_situation_progress = 25 }
@@ -7917,6 +8011,7 @@ planet_event = {
 	immediate = {
 		remove_modifier = rogue_shaman_03
 	}
+
 	option = {
 		event_target:shaman_divination_situation = { add_situation_progress = 15 }
 		name = CURIOUS
@@ -7943,6 +8038,7 @@ planet_event = {
 	immediate = {
 		owner = { remove_country_flag = active_divination_event }
 	}
+
 	option = {
 		event_target:shaman_divination_situation = { add_situation_progress = 10 }
 		name = FASCINATING
@@ -8011,6 +8107,7 @@ planet_event = {
 		owner = { set_country_flag = great_schism_flag }
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		name = enclave.5090.a
 		event_target:schism_divination_situation = { add_situation_progress = 10 }
@@ -8051,10 +8148,12 @@ planet_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
 	}
+
 	immediate = {
 		create_country = {
 			name = "NAME_Shroud_Reformers"
@@ -8083,6 +8182,7 @@ planet_event = {
 			ruler = { save_event_target_as = shroud_reformer }
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		hidden_effect = {
@@ -8098,6 +8198,7 @@ planet_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:reformers_of_the_shroud
 		room = shroudwalkers_room
@@ -8108,6 +8209,7 @@ planet_event = {
 	trigger = {
 		exists = event_target:schism_divination_situation
 	}
+
 	option = {
 		name = "enclave.5100.a"
 		event_target:schism_divination_situation = { add_situation_progress = 10 }
@@ -8144,10 +8246,12 @@ planet_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:reformers_of_the_shroud
 		room = from.ruler
 	}
+
 	option = {
 		name = EXCELLENT
 		hidden_effect = {
@@ -8171,6 +8275,7 @@ planet_event = {
 	trigger = {
 		exists = event_target:schism_divination_situation
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:schism_divination_situation = { add_situation_progress = 20 }
@@ -8191,6 +8296,7 @@ planet_event = {
 	immediate = {
 		event_target:reformers_of_the_shroud = { destroy_country = yes }
 	}
+
 	option = {
 		name = EXCELLENT
 		add_modifier = { modifier = great_schism_01 days = -1 }
@@ -8210,6 +8316,7 @@ planet_event = {
 	immediate = {
 		event_target:reformers_of_the_shroud = { destroy_country = yes }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		add_modifier = { modifier = great_schism_02 days = -1 }
@@ -8224,6 +8331,7 @@ planet_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
@@ -8234,6 +8342,7 @@ planet_event = {
 	trigger = {
 		exists = event_target:schism_divination_situation
 	}
+
 	option = {
 		name = DOTDOTDOT
 		event_target:schism_divination_situation = { add_situation_progress = 80 }
@@ -8285,6 +8394,7 @@ country_event = {
 	immediate = {
 		set_country_flag = floating_parts_flag
 	}
+
 	option = {
 		name = INTERESTING
 		event_target:floating_parts_situation = { add_situation_progress = 6 }
@@ -8312,6 +8422,7 @@ country_event = {
 			set_star_flag = floating_engine_flag
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -8367,6 +8478,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = enclave.5156.a
 		event_target:floating_parts_situation = { add_situation_progress = 6 }
@@ -8389,6 +8501,7 @@ country_event = {
 	picture = GFX_evt_sapient_AI
 	location = event_target:floating_core_system
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5140.a
 		enable_special_project = { name = "FLOATING_PARTS_PROJECT_01" }
@@ -8402,6 +8515,7 @@ country_event = {
 	picture = GFX_evt_ship_in_orbit_3
 	location = event_target:floating_core_system
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5145.a
 		create_fleet = {
@@ -8475,6 +8589,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:lightshow_situation = { add_situation_progress = 20 }
@@ -8522,6 +8637,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:grimacing_situation = { add_situation_progress = 20 }
@@ -8561,6 +8677,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:teapot_situation = { add_situation_progress = 20 }
@@ -8619,6 +8736,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:brainslug_situation = { add_situation_progress = 30 }
@@ -8695,6 +8813,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:atmoseco_situation = { add_situation_progress = 30 }
@@ -8734,6 +8853,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:colorscience_situation = { add_situation_progress = 30 }
@@ -8773,6 +8893,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		event_target:terminal_divination_planet = {
@@ -8849,6 +8970,7 @@ planet_event = {
 	immediate = {
 		owner = { set_country_flag = redivivus_flag }
 	}
+
 	option = {
 		name = enclave.5195.a
 		hidden_effect = {
@@ -8876,6 +8998,7 @@ planet_event = {
 		has_ground_combat = no
 		original_owner = yes
 	}
+
 	option = {
 		name = enclave.5200.a
 		hidden_effect = {
@@ -8958,6 +9081,7 @@ situation_event = {
 			set_country_flag = divination_shattered_frontier
 		}
 	}
+
 	option = {
 		name = enclave.5500.a
 		event_target:shattered_frontier_planet = {
@@ -8974,6 +9098,7 @@ situation_event = {
 planet_event = {
 	id = enclave.5501
 	title = enclave.5501.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.5501.desc
@@ -8982,6 +9107,7 @@ planet_event = {
 		trigger = { owner = { is_gestalt = yes } }
 		text = enclave.5501.gestalt.desc
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -8993,6 +9119,7 @@ planet_event = {
 	location = root
 	situation = event_target:divination_situation
 	is_triggered_only = yes
+
 	option = {
 		name = CURSES
 		trigger = { owner = { is_gestalt = no } }
@@ -9004,6 +9131,7 @@ planet_event = {
 	option = {
 		name = CURIOUS
 	}
+
 	after = {
 		add_planet_devastation = 5
 		if = {
@@ -9025,6 +9153,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5502
 	title = enclave.5502.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.5502.desc
@@ -9033,6 +9162,7 @@ planet_event = {
 		trigger = { owner = { is_gestalt = yes } }
 		text = enclave.5502.gestalt.desc
 	}
+
 	picture = {
 		trigger = { owner = { is_gestalt = no } }
 		picture = GFX_evt_burning_city
@@ -9111,6 +9241,7 @@ planet_event = {
 			add_modifier = { modifier = shattered_frontier_lockdown_machine years = 2 }
 		}
 	}
+
 	after = {
 		custom_tooltip = enclave.5502.pop_removed
 		hidden_effect = {
@@ -9127,6 +9258,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5503
 	title = enclave.5503.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -9147,6 +9279,7 @@ planet_event = {
 	location = root
 	situation = event_target:divination_situation
 	is_triggered_only = yes
+
 	option = {
 		name = GOOD
 		trigger = { has_modifier = shattered_frontier_looting }
@@ -9193,6 +9326,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5504
 	title = enclave.5504.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.5504.desc
@@ -9227,6 +9361,7 @@ planet_event = {
 		# 	save_event_target_as = shattered_frontier_ship #only works here
 		# }
 	}
+
 	option = {
 		name = WORRYING
 	}
@@ -9242,6 +9377,7 @@ planet_event = {
 			owner = { has_technology = tech_psionic_theory }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:shattered_frontier_ship = { destroy_ambient_object = this }
@@ -9253,6 +9389,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5505
 	title = enclave.5505.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.5505.desc
@@ -9353,6 +9490,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5506
 	title = enclave.5506.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.5506.desc
@@ -9361,6 +9499,7 @@ planet_event = {
 		trigger = { owner = { is_gestalt = yes } }
 		text = enclave.5506.gestalt.desc
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -9388,6 +9527,7 @@ planet_event = {
 			destroy_ambient_object = this
 		}
 	}
+
 	option = {
 		name = enclave.5506.a
 		trigger = { owner = { is_gestalt = no } }
@@ -9401,6 +9541,7 @@ planet_event = {
 			years = 15
 		}
 	}
+
 	after = {
 		remove_modifier = shattered_frontier_storm_mod
 		add_planet_devastation = 15
@@ -9417,6 +9558,7 @@ planet_event = {
 planet_event = {
 	id = enclave.5510
 	title = enclave.5510.name
+
 	desc = {
 		trigger = { owner = { is_gestalt = no } }
 		text = enclave.5510.desc
@@ -9425,6 +9567,7 @@ planet_event = {
 		trigger = { owner = { is_gestalt = yes } }
 		text = enclave.5510.gestalt.desc
 	}
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -9448,6 +9591,7 @@ planet_event = {
 	immediate = {
 		event_target:shattered_frontier_storm = { destroy_ambient_object = this }
 	}
+
 	option = {
 		name = ONSCREEN
 		remove_modifier = shattered_frontier_storm_mod
@@ -9475,6 +9619,7 @@ country_event = {
 	title = enclave.5515.name
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
@@ -9585,6 +9730,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = enclave.5515.a
 		icon = { icon = GFX_option_icon_friendly text = dialog_friendly_tt }
@@ -9599,6 +9745,7 @@ country_event = {
 			set_country_flag = shattered_frontier_dialog_hostile
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = enclave.5516 }
@@ -9611,6 +9758,7 @@ country_event = {
 	title = enclave.5515.name
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
@@ -9619,6 +9767,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = enclave.5516.a
 		icon = { icon = GFX_option_icon_isolationist text = dialog_wary_tt }
@@ -9650,6 +9799,7 @@ country_event = {
 	id = enclave.5520
 	title = enclave.5515.name
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:shattered_frontier_official
 		graphical_culture = root
@@ -9657,6 +9807,7 @@ country_event = {
 	}
 
 	is_triggered_only = yes
+
 	desc = {
 		trigger = { has_country_flag = shattered_frontier_dialog_friendly }
 		text = enclave.5520.friendly.desc
@@ -9667,6 +9818,7 @@ country_event = {
 		}
 		text = enclave.5520.wary.desc
 	}
+
 	immediate = {
 		event_target:shattered_frontier_colony_ship = { set_name = "NAME_Mended_Frontier" }
 	}
@@ -9690,6 +9842,7 @@ country_event = {
 			country_event = { id = enclave.5525 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_country_flag = shattered_frontier_dialog_friendly
@@ -9708,6 +9861,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = enclave.5521.a
 		hidden_effect = {
@@ -9725,6 +9879,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = enclave.5522.a
 		clone_leader = {
@@ -9741,6 +9896,7 @@ country_event = {
 	id = enclave.5525
 	title = enclave.5515.name
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:shattered_frontier_official
 		graphical_culture = root
@@ -9753,6 +9909,7 @@ country_event = {
 	immediate = {
 		event_target:shattered_frontier_colony_ship = { set_name = "NAME_Mended_Frontier" }
 	}
+
 	option = {
 		name = enclave.5525.a
 		hidden_effect = {
@@ -9770,6 +9927,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = enclave.5526.a
 		hidden_effect = {
@@ -9789,6 +9947,7 @@ country_event = {
 	id = enclave.5530
 	title = enclave.5515.name
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:shattered_frontier_official
 		graphical_culture = root
@@ -9841,6 +10000,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = END_TRANSMISSION
 		default_hide_option = yes
@@ -9856,6 +10016,7 @@ country_event = {
 	title = enclave.5535.name
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
@@ -9944,6 +10105,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = enclave.5535.a
 		icon = { icon = GFX_option_icon_hostile text = dialog_hostile_tt }
@@ -9952,6 +10114,7 @@ country_event = {
 		name = enclave.5535.b
 		icon = { icon = GFX_option_icon_friendly text = dialog_friendly_tt }
 	}
+
 	after = {
 		hidden_effect = {
 			country_event = { id = enclave.5536 }
@@ -9964,6 +10127,7 @@ country_event = {
 	title = enclave.5535.name
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
@@ -9972,6 +10136,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = enclave.5536.a
 		icon = { icon = GFX_option_icon_hostile text = dialog_hostile_tt }
@@ -9994,6 +10159,7 @@ country_event = {
 	id = enclave.5540
 	title = enclave.5535.name
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:shattered_frontier_official
 		graphical_culture = root
@@ -10006,6 +10172,7 @@ country_event = {
 	immediate = {
 		event_target:shattered_frontier_colony_ship = { set_name = "NAME_Mended_Frontier" }
 	}
+
 	option = {
 		name = DOTDOTDOT
 		icon = { icon = GFX_option_icon_isolationist text = dialog_wary_tt }
@@ -10031,6 +10198,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = enclave.5541.a
 		icon = { icon = GFX_option_icon_isolationist text = dialog_wary_tt }
@@ -10061,6 +10229,7 @@ country_event = {
 	id = enclave.5550
 	title = enclave.5535.name
 	diplomatic = yes
+
 	picture_event_data = {
 		portrait = event_target:shattered_frontier_official
 		graphical_culture = root
@@ -10106,6 +10275,7 @@ country_event = {
 
 	immediate = {
 	}
+
 	option = {
 		name = END_TRANSMISSION
 		default_hide_option = yes
@@ -10159,6 +10329,7 @@ situation_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
@@ -10166,10 +10337,12 @@ situation_event = {
 
 	location = event_target:shroudwalker_enclave_system
 	is_triggered_only = yes
+
 	option = {
 		name = enclave.5557.a
 		owner = { add_resource = { energy = 1000 } }
 	}
+
 	after = { # Vfix by Dr. Addiction
 		destroy_situation = this
 	}
@@ -10217,6 +10390,7 @@ country_event = {
 		set_country_flag = active_divination_event
 		set_country_flag = wayward_pilgrims_flag
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		hidden_effect = {
@@ -10238,9 +10412,11 @@ country_event = {
 	immediate = {
 		set_country_flag = wayward_pilgrims_flag
 	}
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = enclave.5565.a
 		event_target:pilgrims_divination_situation = { add_situation_progress = 20 }
@@ -10300,9 +10476,11 @@ country_event = {
 	diplomatic = yes
 	situation = from # this will only do anything if from is actually a situation
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	option = {
 		name = enclave.5570.a
 		event_target:pilgrims_divination_situation = { add_situation_progress = 15 }
@@ -10329,13 +10507,16 @@ country_event = {
 	diplomatic = yes
 	situation = from # this will only do anything if from is actually a situation
 	is_triggered_only = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
+
 	immediate = {
 		remove_modifier = wayward_pilgrim_00
 		remove_modifier = wayward_pilgrim_01
 	}
+
 	option = {
 		name = UNDERSTOOD
 		add_modifier = { modifier = wayward_pilgrim_06 years = 5 }
@@ -10367,6 +10548,7 @@ country_event = {
 			last_created_ambient_object = { set_ambient_object_flag = wayward_psi_storm }
 		}
 	}
+
 	option = {
 		name = enclave.5575.a
 		hidden_effect = {
@@ -10397,6 +10579,7 @@ country_event = {
 fleet_event = {
 	id = enclave.6000
 	title = "enclave.6000.name"
+
 	desc = {
 		trigger = {
 			hidden:owner = {
@@ -10454,6 +10637,7 @@ fleet_event = {
 			leader = { change_leader_portrait = mol12 }
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		leader = { add_experience = 200 }
@@ -10529,6 +10713,7 @@ fleet_event = {
 fleet_event = {
 	id = enclave.6005
 	title = "enclave.6005.name"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = no is_machine_empire = no }
@@ -10595,6 +10780,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = CURIOUS
 	}
@@ -10603,6 +10789,7 @@ fleet_event = {
 fleet_event = {
 	id = enclave.6010
 	title = "enclave.6010.name"
+
 	desc = {
 		trigger = {
 			owner = { is_hive_empire = no is_machine_empire = no }
@@ -10660,6 +10847,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNDERSTOOD
 		if = {
@@ -10717,6 +10905,7 @@ country_event = {
 	picture = GFX_evt_physics_research
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = UNDERSTOOD
 	}
@@ -10743,6 +10932,7 @@ fleet_event = {
 			set_timed_country_flag = { flag = dreamers_wake_cooldown years = 2 }
 		}
 	}
+
 	option = {
 		name = WORRYING
 		hidden_effect = {
@@ -10763,6 +10953,7 @@ fleet_event = {
 	show_sound = event_mystic_reveal
 	location = from
 	is_triggered_only = yes
+
 	option = {
 		name = "enclave.6025.a"
 		add_modifier = { modifier = embrace_dreamer days = -1 }
@@ -10788,6 +10979,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_artist_window"
 	custom_gui_option = "enclave_artist_option"
+
 	picture_event_data = {
 		portrait = event_target:shroudwalker_enclave_country
 		room = shroudwalkers_room
@@ -10818,6 +11010,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = enclave.7000.a
 	}
@@ -10832,6 +11025,7 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_salvager_window"
 	custom_gui_option = "enclave_salvager_option"
+
 	picture_event_data = {
 		portrait = event_target:salvager_enclave_country
 		room = salvagers_room
@@ -10866,6 +11060,7 @@ country_event = {
 		set_country_flag = salvager_enclave_diplomacy_engaged
 		establish_communications_no_message = event_target:salvager_enclave_country
 	}
+
 	option = {
 		name = enclave.7005.a
 		trigger = { is_xenophobe = no }
@@ -10999,6 +11194,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = enclave.7055.desc
+
 	option = {
 		name = DOTDOTDOT
 	}
@@ -11019,6 +11215,7 @@ country_event = {
 			exists = leader
 		}
 	}
+
 	option = {
 		name = INTERESTING
 		if = {
@@ -11087,6 +11284,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -11114,6 +11312,7 @@ country_event = {
 			add_intel = { who = fromfrom amount = 20 }
 		}
 	}
+
 	option = {
 		name = INTERESTING
 	}
@@ -11126,6 +11325,7 @@ country_event = {
 	desc_clear = yes
 	option_clear = yes
 	desc = enclave.7075.desc
+
 	option = {
 		name = enclave.7075.a
 	}
@@ -11313,10 +11513,12 @@ country_event = {
 leader_event = {
 	id = enclave.8000
 	title = enclave.8000.name
+
 	picture = {
 		picture = GFX_evt_shroudwalker_enclave
 		trigger = { has_leader_flag = shroudwalker_teacher }
 	}
+
 	desc = {
 		text = enclave.8000.shroudwalker_teacher.desc.councilor
 		trigger = { has_leader_flag = shroudwalker_teacher is_councilor = yes }
@@ -11325,10 +11527,12 @@ leader_event = {
 		text = enclave.8000.shroudwalker_teacher.desc
 		trigger = { has_leader_flag = shroudwalker_teacher is_councilor = no }
 	}
+
 	picture = {
 		picture = GFX_evt_salvager_enclave_disassembly
 		trigger = { has_leader_flag = master_salvager }
 	}
+
 	desc = {
 		text = enclave.8000.master_salvager.desc.councilor
 		trigger = { has_leader_flag = master_salvager is_councilor = yes }
@@ -11337,10 +11541,12 @@ leader_event = {
 		text = enclave.8000.master_salvager.desc
 		trigger = { has_leader_flag = master_salvager is_councilor = no }
 	}
+
 	picture = {
 		picture = GFX_evt_physics_research
 		trigger = { has_leader_flag = curator_archivist }
 	}
+
 	desc = {
 		text = enclave.8000.curator_archivist.desc.councilor
 		trigger = { has_leader_flag = curator_archivist is_councilor = yes }
@@ -11349,10 +11555,12 @@ leader_event = {
 		text = enclave.8000.curator_archivist.desc
 		trigger = { has_leader_flag = curator_archivist is_councilor = no }
 	}
+
 	picture = {
 		picture = GFX_evt_cargoship_caravan
 		trigger = { has_leader_flag = trader_leader }
 	}
+
 	desc = {
 		text = enclave.8000.trader_leader.desc.councilor
 		trigger = { has_leader_flag = trader_leader is_councilor = yes }
@@ -11366,9 +11574,11 @@ leader_event = {
 	is_triggered_only = yes
 	event_window_type = leader_story
 	event_picture_background = "GFX_leader_recruitment_bg_renowned"
+
 	picture_event_data = {
 		portrait = root
 	}
+
 	immediate = {
 		switch = {
 			trigger = has_trait
@@ -11392,6 +11602,7 @@ leader_event = {
 			}
 		}
 	}
+
 	option = {
 		name = DISAPPOINTING
 		if = {

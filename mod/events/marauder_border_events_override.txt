@@ -718,6 +718,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		if = {
 			limit = {
@@ -959,6 +960,7 @@ country_event = {
 		}
 		country_event = { id = marauder.609 } # Fully handover + empire init
 	}
+
 	after = {
 		if = {
 			limit = { exists = event_target:raider_khanate }
@@ -994,19 +996,17 @@ country_event = {
 		}
 		event_target:new_khanate = {
 			ordered_owned_planet = {
-				limit = { sapient_pop_amount > 0 }
+				limit = {
+					is_colony = yes
+					is_occupied_flag = no
+					is_under_colonization = no
+					sapient_pop_amount > 100
+					exists = starbase
+				}
 				position = 0
 				order_by = trigger:sapient_pop_amount
 				set_capital = yes
-				starbase = {
-					if = {
-						limit = { has_starbase_size < starbase_starhold }
-						set_starbase_size = starbase_starhold
-					}
-					set_starbase_module = { slot = 1 module = shipyard }
-					set_starbase_module = { slot = 2 module = shipyard }
-					set_starbase_module = { slot = 3 module = shipyard }
-				}
+				starbase = { inline_script = "marauder/create_marauder_shipyard" }
 				save_event_target_as = new_diadochi_capital
 			}
 			country_event = { id = marauder_borders.1001 days = 40 } # Wait to build sectors
@@ -1624,6 +1624,7 @@ country_event = {
 		country_event = { id = khan.610 } # Init more stuff? SET_DIADOCHI_LEADERS_AND_FLEET (First Diadochi)
 		set_update_modifiers_batch = end
 	}
+
 	after = {
 		every_playable_country = {
 			limit = {

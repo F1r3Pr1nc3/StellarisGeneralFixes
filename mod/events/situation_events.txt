@@ -45,6 +45,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = situation.5.A # investigate it
 		icon = {
@@ -63,6 +64,7 @@ planet_event = {
 		}
 		event_target:new_situation = { set_situation_approach = approach_observe }
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:new_situation = {
@@ -77,6 +79,7 @@ planet_event = {
 situation_event = {
 	id = situation.10
 	title = situation.10.name
+
 	desc = {
 		text = situation.10.desc
 		trigger = { owner = { is_gestalt = no } }
@@ -95,9 +98,11 @@ situation_event = {
 		set_situation_locked = yes
 		set_situation_flag = observe_not_an_option
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = {
 		name = situation.10.A
 		set_situation_approach = approach_cordon_off
@@ -131,6 +136,7 @@ situation_event = {
 situation_event = {
 	id = situation.15
 	title = situation.15.name
+
 	desc = {
 		text = situation.15.desc.standard
 		trigger = {
@@ -181,6 +187,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = cute_kittens
 	}
+
 	option = {
 		name = situation.15.A
 		custom_tooltip = situation.15.A.tooltip
@@ -199,10 +206,12 @@ situation_event = {
 	location = target
 	situation = this
 	show_sound = event_mystic_reveal_light
+
 	option = {
 		name = FASCINATING
 		target = { add_deposit = d_space_time_anomaly }
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -218,6 +227,7 @@ situation_event = {
 	location = target
 	situation = this
 	show_sound = event_collapsing_ruins
+
 	option = {
 		name = UNDERSTOOD
 		owner = {
@@ -229,6 +239,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -244,6 +255,7 @@ situation_event = {
 	location = target
 	situation = this
 	show_sound = event_mystic_reveal_light
+
 	option = {
 		name = situation.30.A
 		owner = {
@@ -255,6 +267,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -270,6 +283,7 @@ situation_event = {
 	location = target
 	situation = this
 	show_sound = event_activating_unknown_technology
+
 	option = {
 		name = DISCONCERTING
 	}
@@ -279,6 +293,7 @@ situation_event = {
 situation_event = {
 	id = situation.45
 	title = situation.45.name
+
 	desc = {
 		text = situation.45.desc
 		trigger = {
@@ -307,6 +322,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = harder_to_study
 	}
+
 	option = {
 		name = WORRYING
 		custom_tooltip = situation.15.A.tooltip # deliberate
@@ -324,10 +340,12 @@ situation_event = {
 	situation = this
 	show_sound = event_mysterious_signal
 	specimen = impossible_object
+
 	option = {
 		name = situation.50.A
 		target = { add_deposit = d_space_time_anomaly }
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -344,6 +362,7 @@ situation_event = {
 	situation = this
 	show_sound = event_ship_explosion
 	specimen = impossible_object
+
 	option = {
 		name = situation.50.A
 		target = {
@@ -354,6 +373,7 @@ situation_event = {
 			add_deposit = d_space_time_anomaly
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -392,6 +412,7 @@ planet_event = {
 	immediate = {
 		set_planet_flag = colony_event
 	}
+
 	option = {
 		name = INTERESTING
 		owner = {
@@ -410,6 +431,7 @@ situation_event = {
 	show_sound = event_default
 	location = target
 	situation = this
+
 	option = {
 		name = situation.155.A
 		set_situation_approach = situation_snow_observation
@@ -450,6 +472,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = random_event
 	}
+
 	option = {
 		name = situation.160.A
 		custom_tooltip = situation.160.A.tooltip
@@ -472,6 +495,7 @@ situation_event = {
 	is_triggered_only = yes
 	location = target
 	situation = this
+
 	option = {
 		name = situation.165.A
 		trigger = {
@@ -506,6 +530,7 @@ situation_event = {
 		trigger = { current_situation_approach = situation_snow_hostile }
 		# No effect
 	}
+
 	after = {
 		custom_tooltip = situation.165.tooltip
 		set_situation_flag = path_locked
@@ -530,6 +555,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = random_event
 	}
+
 	option = {
 		name = situation.170.A
 		custom_tooltip = situation.170.A.tooltip
@@ -555,6 +581,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = random_research_event
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -562,6 +589,7 @@ situation_event = {
 			current_situation_approach = situation_snow_observation
 		}
 	}
+
 	option = {
 		name = FASCINATING
 		owner = {
@@ -583,11 +611,13 @@ situation_event = {
 	show_sound = event_whispering
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	location = target
+
 	option = {
 		name = situation.180.A
 		custom_tooltip = situation.185.B.tooltip
@@ -612,6 +642,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -625,11 +656,13 @@ situation_event = {
 	show_sound = event_whispering
 	is_triggered_only = yes
 	diplomatic = yes
+
 	picture_event_data = {
 		room = no_video_feed_room
 	}
 
 	location = target
+
 	option = {
 		name = situation.185.A
 		target = { add_deposit = d_living_snow_reserve }
@@ -663,6 +696,7 @@ situation_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -693,6 +727,7 @@ country_event = {
 			planet_event = { id = situation.195 days = 1800 random = 360 }
 		}
 	}
+
 	option = {
 		name = WORRYING
 		custom_tooltip = situation.190.tooltip
@@ -722,6 +757,7 @@ planet_event = {
 		change_pc = pc_frozen
 		clear_deposits = yes
 	}
+
 	option = {
 		name = situation.195.A
 		tooltip = { change_pc = pc_frozen }
@@ -778,6 +814,7 @@ country_event = {
 			}
 		}
 	}
+
 	after = {
 		country_event = { id = situation.501 }
 	}
@@ -808,6 +845,7 @@ country_event = {
 		}
 		set_country_flag = gravity_well_happened
 	}
+
 	option = {
 		name = situation.501.a # try to get away!
 		icon = {
@@ -835,6 +873,7 @@ country_event = {
 		}
 		event_target:new_situation = { set_situation_approach = approach_advance }
 	}
+
 	after = {
 		event_target:new_situation = { set_situation_locked = no }
 	}
@@ -844,6 +883,7 @@ country_event = {
 situation_event = {
 	id = situation.510
 	title = "situation.510.name"
+
 	desc = {
 		text = situation.510.spirit.desc
 		trigger = {
@@ -856,6 +896,7 @@ situation_event = {
 			owner = { is_spiritualist = no }
 		}
 	}
+
 	picture = {
 		trigger = {
 			owner = { is_spiritualist = yes }
@@ -883,6 +924,7 @@ situation_event = {
 			current_situation_approach = approach_advance
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -890,6 +932,7 @@ situation_event = {
 			owner = { has_civic = civic_technocracy }
 		}
 	}
+
 	immediate = {
 		set_situation_flag = mutiny
 		switch = {
@@ -899,6 +942,7 @@ situation_event = {
 		}
 		set_situation_approach = approach_advance
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		icon = {
@@ -964,6 +1008,7 @@ situation_event = {
 		}
 		set_situation_approach = approach_retreat
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		icon = {
@@ -974,6 +1019,7 @@ situation_event = {
 		tooltip = { set_situation_approach = approach_retreat set_situation_flag = mutiny }
 		custom_tooltip = situation.511.tooltip
 	}
+
 	after = {
 		hidden_effect = {
 			situation_event = { id = situation.513 days = 20 random = 25 }
@@ -1013,6 +1059,7 @@ situation_event = {
 			remove_situation_flag = mutiny_previous_approach_retreat
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		custom_tooltip = situation.513.tooltip
@@ -1036,6 +1083,7 @@ situation_event = {
 	immediate = {
 		add_situation_progress = 10
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		tooltip = { add_situation_progress = 10 }
@@ -1051,6 +1099,7 @@ situation_event = {
 	is_triggered_only = yes
 	situation = this
 	location = target
+
 	option = {
 		name = ACKNOWLEDGED
 		owner = {
@@ -1088,9 +1137,11 @@ situation_event = {
 		modifier = { factor = 3 current_stage = gravity_well_high }
 		modifier = { factor = 4 current_stage = gravity_well_no_return }
 	}
+
 	immediate = {
 		set_situation_flag = penrose_process
 	}
+
 	option = {
 		name = "situation.540.a"
 		custom_tooltip = "situation.540.a.tooltip"
@@ -1123,6 +1174,7 @@ situation_event = {
 	immediate = {
 		add_situation_progress = -30
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		tooltip = { add_situation_progress = -30 }
@@ -1143,6 +1195,7 @@ situation_event = {
 	immediate = {
 		add_situation_progress = -10
 	}
+
 	option = {
 		name = UNFORTUNATE
 		tooltip = { add_situation_progress = -10 }
@@ -1159,6 +1212,7 @@ situation_event = {
 	is_triggered_only = yes
 	situation = this
 	location = target
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -1168,6 +1222,7 @@ situation_event = {
 situation_event = {
 	id = situation.590
 	title = "situation.590.name"
+
 	desc = {
 		text = situation.590.desc.hive
 		trigger = {
@@ -1271,6 +1326,7 @@ situation_event = {
 			} # bad
 		}
 	}
+
 	after = {
 		target = { destroy_fleet = fleet }
 		destroy_situation = this
@@ -1281,6 +1337,7 @@ situation_event = {
 country_event = {
 	id = situation.591
 	title = "situation.591.name"
+
 	desc = {
 		text = situation.591.desc.hive
 		trigger = {
@@ -1298,6 +1355,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
 	location = event_target:black_hole_station
+
 	option = {
 		name = ACKNOWLEDGED
 		add_monthly_resource_mult = {
@@ -1308,6 +1366,7 @@ country_event = {
 		}
 		add_modifier = { modifier = gestalt_black_hole_good }
 	}
+
 	after = {
 		if = {
 			limit = { is_hive_empire = yes }
@@ -1324,6 +1383,7 @@ country_event = {
 country_event = {
 	id = situation.592
 	title = "situation.592.name"
+
 	desc = {
 		text = situation.592.desc.hive
 		trigger = {
@@ -1341,6 +1401,7 @@ country_event = {
 	show_sound = event_bad_omen
 	is_triggered_only = yes
 	location = event_target:black_hole_station
+
 	option = {
 		name = ACKNOWLEDGED
 		owner = {
@@ -1353,6 +1414,7 @@ country_event = {
 			add_modifier = { modifier = gestalt_black_hole_bad }
 		}
 	}
+
 	after = {
 		if = {
 			limit = { is_hive_empire = yes }
@@ -1386,6 +1448,7 @@ situation_event = {
 	id = situation.596
 	title = "situation.596.name"
 	desc = "situation.596.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1395,6 +1458,7 @@ situation_event = {
 
 	is_triggered_only = yes
 	location = target
+
 	option = {
 		name = "EXCELLENT"
 		owner = {
@@ -1406,6 +1470,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -1416,6 +1481,7 @@ situation_event = {
 	id = situation.597
 	title = "situation.597.name"
 	desc = "situation.597.desc"
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -1425,6 +1491,7 @@ situation_event = {
 
 	is_triggered_only = yes
 	location = target
+
 	option = {
 		name = "EXCELLENT"
 		owner = {
@@ -1440,6 +1507,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -1467,6 +1535,7 @@ planet_event = {
 		is_capital = no
 		is_occupied_flag = no
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = {
@@ -1475,6 +1544,7 @@ planet_event = {
 			# greater chance of happening on planets with weak magnetosphere, because science
 		}
 	}
+
 	trigger = {
 		NOR = {
 			has_planet_flag = colony_event
@@ -1500,11 +1570,13 @@ planet_event = {
 		add_modifier = { modifier = magnetic_disruption years = 5 }
 		count_drones_on_planet = { ENERGY = 1 }
 	}
+
 	after = {
 		hidden_effect = {
 			planet_event = { id = situation.202 days = 15 }
 		}
 	}
+
 	option = { # Protect everyone
 		name = situation.200.c
 		custom_tooltip = "situation.200.c.tooltip"
@@ -1599,6 +1671,7 @@ planet_event = {
 			set_country_flag = solar_storm_happened
 		}
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 		icon = {
@@ -1617,6 +1690,7 @@ planet_event = {
 		# 	set_country_flag = solar_storm_happened
 		# }
 	}
+
 	after = {
 		# Setting initial approach depending on the previous choice
 		# Also starts with more or less progress (radiation damage)
@@ -1685,6 +1759,7 @@ situation_event = {
 	immediate = {
 		set_situation_flag = bio_trophies_help
 	}
+
 	option = { # let them help
 		name = situation.203.a
 		hidden_effect = {
@@ -1748,6 +1823,7 @@ situation_event = {
 	immediate = {
 		get_unprotected_drone = yes
 	}
+
 	option = { # disconnect the drone
 		name = {
 			trigger = {
@@ -1842,6 +1918,7 @@ situation_event = {
 situation_event = {
 	id = situation.213
 	title = situation.213.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -1870,11 +1947,13 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		target = {
 			set_timed_planet_flag = { flag = assembly_line_broke_recently months = 6 }
 		}
 	}
+
 	option = { # restore facility
 		name = {
 			trigger = {
@@ -1977,6 +2056,7 @@ situation_event = {
 situation_event = {
 	id = situation.215
 	title = situation.215.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -1992,6 +2072,7 @@ situation_event = {
 	is_triggered_only = yes
 	situation = this
 	location = target
+
 	option = {
 		name = {
 			trigger = {
@@ -2028,6 +2109,7 @@ situation_event = {
 situation_event = {
 	id = situation.216
 	title = situation.216.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2043,6 +2125,7 @@ situation_event = {
 	is_triggered_only = yes
 	situation = this
 	location = target
+
 	option = {
 		name = {
 			trigger = {
@@ -2079,6 +2162,7 @@ situation_event = {
 situation_event = {
 	id = situation.250
 	title = situation.250.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2108,6 +2192,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -2130,6 +2215,7 @@ situation_event = {
 situation_event = {
 	id = situation.251
 	title = situation.251.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2149,6 +2235,7 @@ situation_event = {
 	trigger = {
 		has_situation_flag = vanished_pop
 	}
+
 	option = { # reinstall Ubuntu
 		name = {
 			trigger = {
@@ -2203,6 +2290,7 @@ situation_event = {
 situation_event = {
 	id = situation.252
 	title = situation.252.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2232,6 +2320,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -2250,6 +2339,7 @@ situation_event = {
 situation_event = {
 	id = situation.253
 	title = situation.253.name
+
 	desc = {
 		trigger = {
 			switch = {
@@ -2279,6 +2369,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = {
 			trigger = {
@@ -2329,11 +2420,13 @@ situation_event = {
 	show_sound = event_life_support_fail
 	situation = this
 	location = target
+
 	after = {
 		hidden_effect = {
 			situation_event = { id = situation.291 }
 		}
 	}
+
 	option = {
 		name = situation.290.a
 		hidden_effect = {
@@ -2377,6 +2470,7 @@ situation_event = {
 	is_triggered_only = yes
 	show_sound = event_power_down
 	location = target
+
 	after = {
 		hidden_effect = {
 			target = {
@@ -2387,6 +2481,7 @@ situation_event = {
 		}
 		destroy_situation = this
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -2403,6 +2498,7 @@ situation_event = {
 	show_sound = event_solar_fusion
 	situation = this
 	location = target
+
 	after = {
 		hidden_effect = {
 			target = {
@@ -2411,6 +2507,7 @@ situation_event = {
 		}
 		destroy_situation = this
 	}
+
 	option = {
 		name = EXCELLENT
 		# hidden_effect = { # Vfix
@@ -2438,6 +2535,7 @@ situation_event = {
 	show_sound = event_solar_fusion
 	situation = this
 	location = target
+
 	after = {
 		hidden_effect = {
 			target = {
@@ -2446,6 +2544,7 @@ situation_event = {
 		}
 		destroy_situation = this
 	}
+
 	option = {
 		name = GOOD
 		owner = {
@@ -2470,6 +2569,7 @@ situation_event = {
 	show_sound = event_solar_fusion
 	situation = this
 	location = target
+
 	after = {
 		hidden_effect = {
 			target = {
@@ -2478,6 +2578,7 @@ situation_event = {
 		}
 		destroy_situation = this
 	}
+
 	option = {
 		name = UNFORTUNATE
 		owner = {
@@ -2498,6 +2599,7 @@ planet_event = {
 	trigger = {
 		has_deposit = d_machine_care_home
 	}
+
 	after = {
 		remove_deposit = d_machine_care_home
 	}
@@ -2510,6 +2612,7 @@ planet_event = {
 			save_event_target_as = bio_pop
 		}
 	}
+
 	option = { # scrap it
 		name = situation.299.a
 		owner = { add_resource = { alloys = 1000 } }
@@ -2594,6 +2697,7 @@ event = {
 			}
 		}
 	}
+
 	after = {
 		every_playable_country = {
 			country_event = { id = timeline.68 } # Timeline Kaleidoscope Crisis
@@ -2715,6 +2819,7 @@ country_event = {
 	immediate = {
 		capital_scope.solar_system = { spawn_kaleidoscope_effect = yes }
 	}
+
 	option = {
 		name = CURIOUS
 		capital_scope = {
@@ -2749,6 +2854,7 @@ country_event = {
 country_event = {
 	id = situation.2004
 	title = situation.2004.name
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_country_flag = seen_kaleidoscope } }
@@ -2766,9 +2872,11 @@ country_event = {
 	show_sound = event_kaleidoscopic_lights
 	is_triggered_only = yes
 	location = event_target:kaleidoscope_system
+
 	option = {
 		name = CURIOUS
 	}
+
 	after = {
 		set_country_flag = seen_kaleidoscope
 	}
@@ -2782,6 +2890,7 @@ planet_event = {
 	picture = GFX_evt_generator_powerup
 	is_triggered_only = yes
 	location = root
+
 	option = {
 		name = situation.2005.a
 	}
@@ -2791,6 +2900,7 @@ planet_event = {
 planet_event = {
 	id = situation.2010
 	title = situation.2010.name
+
 	desc = {
 		trigger = {
 			NOT = { owner = { has_country_flag = encountered_kaleidoscope } }
@@ -2846,6 +2956,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = situation.2010.a
 		icon = {
@@ -2876,6 +2987,7 @@ planet_event = {
 		event_target:new_kaleidoscope_situation = { set_situation_approach = approach_a_lot_of_food }
 		custom_tooltip = situation.2010.tooltip
 	}
+
 	after = {
 		owner = { set_country_flag = encountered_kaleidoscope }
 	}
@@ -2890,6 +3002,7 @@ planet_event = {
 	show_sound = event_celebration
 	is_triggered_only = yes
 	location = root
+
 	option = {
 		name = EXCELLENT
 		remove_modifier = phantom_load
@@ -2910,6 +3023,7 @@ espionage_operation_event = {
 	desc = situation.2020.desc
 	picture = GFX_evt_spy_network
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -2940,6 +3054,7 @@ espionage_operation_event = {
 		}
 		set_espionage_operation_progress_locked = yes
 	}
+
 	option = {
 		name = LAUNCH_OPERATION
 		hidden_effect = {
@@ -2948,6 +3063,7 @@ espionage_operation_event = {
 			}
 		}
 	}
+
 	after = {
 		# Cleanup
 		owner = {
@@ -2969,6 +3085,7 @@ country_event = {
 	picture = GFX_evt_bribery
 	show_sound = event_energy_field
 	is_triggered_only = yes
+
 	option = {
 		name = SPLENDID
 	}
@@ -2999,10 +3116,12 @@ situation_event = {
 			}
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_negative_events_value }
 	}
+
 	immediate = {
 		set_timed_situation_flag = { flag = kaleidoscope_invasion years = 2 }
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
@@ -3016,6 +3135,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		event_target:infested_planet = {
@@ -3035,6 +3155,7 @@ situation_event = {
 			}
 		}
 	}
+
 	abort_trigger = {
 		NOT = { event_target:infested_planet.owner = { is_same_empire = root.owner } }
 	}
@@ -3066,10 +3187,12 @@ situation_event = {
 			}
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_negative_events_value }
 	}
+
 	immediate = {
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
 		owner = {
@@ -3086,6 +3209,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = situation.2031.a
 		if = {
@@ -3129,14 +3253,17 @@ situation_event = {
 			owner = { is_machine_empire = yes }
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_negative_events_value }
 	}
+
 	immediate = {
 		set_situation_flag = kaleidoscope_unnerving_patterns
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		tooltip = {
@@ -3165,13 +3292,16 @@ situation_event = {
 		}
 		owner = { is_spiritualist = yes }
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_negative_events_value }
 	}
+
 	immediate = {
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
 	}
+
 	option = {
 		name = situation.2033.a
 		allow = {
@@ -3211,14 +3341,17 @@ situation_event = {
 			has_situation_flag = kaleidoscope_pilfering_patterns
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_negative_events_value }
 	}
+
 	immediate = {
 		set_situation_flag = kaleidoscope_pilfering_patterns
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
 	}
+
 	option = {
 		name = UNFORTUNATE
 		tooltip = {
@@ -3247,14 +3380,17 @@ situation_event = {
 			has_situation_flag = kaleidoscope_random_events
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_positive_events_value }
 	}
+
 	immediate = {
 		set_timed_situation_flag = { flag = kaleidoscope_soothing_patterns years = 2 }
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
 	}
+
 	option = {
 		name = ASTOUNDING
 		owner = {
@@ -3284,14 +3420,17 @@ situation_event = {
 			has_situation_flag = kaleidoscope_dazzling_patterns
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_positive_events_value }
 	}
+
 	immediate = {
 		set_timed_situation_flag = { flag = kaleidoscope_dazzling_patterns years = 2 }
 		set_timed_situation_flag = { flag = kaleidoscope_random_events years = 1 }
 	}
+
 	option = {
 		name = CURIOUS
 		owner = {
@@ -3329,9 +3468,11 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = ACKNOWLEDGED
 	}
+
 	after = {
 		set_global_flag = kaleidoscope_finished # just in case we need it in the future
 		owner = {
@@ -3361,6 +3502,7 @@ country_event = {
 	picture = GFX_evt_city_planet
 	show_sound = event_kaleidoscopic_lights
 	is_triggered_only = yes
+
 	option = {
 		name = CURIOUS
 	}
@@ -3386,10 +3528,12 @@ situation_event = {
 		}
 		set_situation_locked = yes
 	}
+
 	option = {
 		name = FASCINATING
 		owner = { add_relic = r_vacuum_flower }
 	}
+
 	after = {
 		set_global_flag = kaleidoscope_finished # just in case we need it in the future
 		destroy_situation = this
@@ -3413,6 +3557,7 @@ country_event = {
 	picture = GFX_evt_kaleidoscopic_lights
 	show_sound = event_kaleidoscopic_lights
 	is_triggered_only = yes
+
 	option = {
 		name = CURIOUS
 	}
@@ -3439,9 +3584,11 @@ situation_event = {
 		}
 		set_situation_locked = yes
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
+
 	after = {
 		set_global_flag = kaleidoscope_finished # just in case we need it in the future
 		destroy_situation = this
@@ -3463,6 +3610,7 @@ country_event = {
 	picture = GFX_evt_exploding_planet
 	show_sound = event_kaleidoscopic_lights
 	is_triggered_only = yes
+
 	option = {
 		name = CURIOUS
 	}
@@ -3494,10 +3642,12 @@ situation_event = {
 			}
 		}
 	}
+
 	weight_multiplier = {
 		factor = 1
 		modifier = { factor = value:kaleidoscope_positive_events_value }
 	}
+
 	option = {
 		name = situation.2048.a
 		custom_tooltip = situation.2048.a.tooltip
@@ -3517,6 +3667,7 @@ country_event = {
 	show_sound = event_kaleidoscopic_lights
 	is_triggered_only = yes
 	location = event_target:gifted_sphere
+
 	option = {
 		name = EXCELLENT
 		set_global_flag = kaleidoscope_finished # just in case we need it in the future
@@ -3614,6 +3765,7 @@ situation_event = {
 	id = situation.1000
 	title = situation.1000.name
 	location = target
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3633,6 +3785,7 @@ situation_event = {
 		exists = owner
 		owner = { is_gestalt = yes }
 	}
+
 	option = {
 		trigger = { has_situation_flag = small_unity_reward }
 		set_celebration_modifier = yes
@@ -3672,6 +3825,7 @@ situation_event = {
 		}
 		name = situation.1000.c
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -3681,6 +3835,7 @@ situation_event = {
 	id = situation.1005
 	title = situation.1005.name
 	location = target
+
 	desc = {
 		trigger = {
 			switch = {
@@ -3700,6 +3855,7 @@ situation_event = {
 		exists = owner
 		owner = { is_gestalt = no }
 	}
+
 	option = {
 		trigger = { has_situation_flag = small_unity_reward }
 		set_celebration_modifier = yes
@@ -3739,6 +3895,7 @@ situation_event = {
 		}
 		name = situation.1005.c
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -3761,9 +3918,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = { # Be slow
 		name = situation.1045.a
 		add_situation_progress = -30
@@ -3808,9 +3967,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = { # Attach it to the starbase
 		name = situation.1050.a
 		target = {
@@ -3863,9 +4024,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = { # Power the city
 		name = situation.1055.a
 		target = {
@@ -3919,9 +4082,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = { # Harvest it
 		trigger = {
 			owner = { country_uses_food = yes }
@@ -4003,9 +4168,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	immediate = {
 		create_country = {
 			name = "NAME_Clutch_of_Whelps"
@@ -4043,6 +4210,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = { # Kill the whelps
 		trigger = { owner = { values_others = no } }
 		name = situation.1065.a
@@ -4082,7 +4250,12 @@ situation_event = {
 	}
 	option = { # Find them a home
 		trigger = {
-			owner = { is_unfriendly = no is_xenophobe = no }
+			owner = {
+				NOR = {
+					is_unfriendly = yes
+					is_xenophobe = yes
+				}
+			}
 		}
 		name = situation.1065.b
 		custom_tooltip = situation.1065.b.tooltip
@@ -4164,10 +4337,12 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 		owner = { set_country_flag = machine_age_nanites_studied } # Familiarity with nanites gained for Machine Ascension
 	}
+
 	option = { # Use it for Construction
 		name = situation.1070.a
 		owner = { add_resource = { alloys = 5000 } }
@@ -4228,9 +4403,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = { # Infuse the atmosphere
 		name = situation.1075.a
 		custom_tooltip = situation.1075.a.tooltip
@@ -4278,9 +4455,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = { # Return it to the Black Hole
 		allow = { owner = { is_materialist = no } }
 		name = situation.1080.a
@@ -4335,6 +4514,7 @@ planet_event = {
 	id = situation.1085
 	title = situation.1085.name
 	location = this
+
 	desc = {
 		trigger = { has_modifier = horror_study_trophy }
 		text = situation.1085.desc.study
@@ -4346,6 +4526,7 @@ planet_event = {
 
 	picture = GFX_evt_surreal_visions
 	is_triggered_only = yes
+
 	option = {
 		trigger = { has_modifier = horror_study_trophy }
 		name = situation.1085.a
@@ -4391,6 +4572,7 @@ planet_event = {
 	id = situation.1090
 	title = situation.1090.name
 	location = this
+
 	desc = {
 		trigger = { has_modifier = horror_study_trophy2 }
 		text = situation.1090.desc.study
@@ -4402,6 +4584,7 @@ planet_event = {
 
 	picture = GFX_evt_surreal_visions
 	is_triggered_only = yes
+
 	option = {
 		trigger = { has_modifier = horror_study_trophy2 }
 		name = situation.1090.a
@@ -4453,6 +4636,7 @@ planet_event = {
 	picture = GFX_evt_shrouded_planet
 	is_triggered_only = yes
 	location = this
+
 	option = { # This is the end
 		name = {
 			text = situation.1095.a
@@ -4515,9 +4699,11 @@ situation_event = {
 	immediate = {
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = {# Rescue the pop
 		name = situation.1100.a
 		if = {
@@ -4531,7 +4717,7 @@ situation_event = {
 	option = {# Let the pop die
 		name = situation.1100.b
 		target = {
-			random_owned_pop_group = { kill_single_pop = yes }
+			weighted_random_owned_pop_group = { kill_single_pop = yes }
 		}
 	}
 	option = {
@@ -4552,7 +4738,7 @@ situation_event = {
 			trigger = { owner = { is_gestalt = yes } }
 		}
 		target = {
-			random_owned_pop_group = { kill_single_pop = yes }
+			weighted_random_owned_pop_group = { kill_single_pop = yes }
 		}
 		if = {
 			limit = {
@@ -4586,6 +4772,7 @@ situation_event = {
 	id = situation.1110
 	title = situation.1110.name
 	location = target
+
 	desc = {
 		trigger = {
 			owner = { is_machine_empire = no is_lithoid = no }
@@ -4602,6 +4789,7 @@ situation_event = {
 		}
 		text = situation.1110.desc.machine
 	}
+
 	trigger = {
 		has_situation_flag = celebration_voidspawn
 	}
@@ -4617,9 +4805,11 @@ situation_event = {
 		}
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = {
 		name = situation.1110.a
 		custom_tooltip = situation.1110.a.tooltip
@@ -4646,6 +4836,7 @@ situation_event = {
 	is_triggered_only = yes
 	situation = this
 	location = target
+
 	option = {
 		name = EXCELLENT
 		target = { remove_modifier = voidspawn_contaminant }
@@ -4658,6 +4849,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -4686,9 +4878,11 @@ situation_event = {
 		}
 		set_situation_locked = yes
 	}
+
 	after = {
 		set_situation_locked = no
 	}
+
 	option = {
 		name = situation.1120.a
 		custom_tooltip = situation.1120.a.tooltip
@@ -4705,6 +4899,7 @@ situation_event = {
 	}
 
 	is_triggered_only = yes
+
 	option = {
 		name = situation.1120.b
 		add_situation_progress = 15
@@ -4716,6 +4911,7 @@ espionage_operation_event = {
 	id = situation.1125
 	title = situation.1125.name
 	location = target.capital_star
+
 	desc = {
 		trigger = {
 			target.capital_star = { is_binary_star = yes }
@@ -4737,6 +4933,7 @@ espionage_operation_event = {
 
 	picture = GFX_evt_inhabited_solar_system
 	is_triggered_only = yes
+
 	option = {
 		name = PROCEED
 	}
@@ -4749,6 +4946,7 @@ espionage_operation_event = {
 	picture = GFX_evt_spymaster
 	location = target.capital_star
 	is_triggered_only = yes
+
 	option = {
 		name = ACKNOWLEDGED
 	}
@@ -4765,6 +4963,7 @@ espionage_operation_event = {
 	immediate = {
 		set_espionage_operation_progress_locked = yes
 	}
+
 	option = {
 		name = LAUNCH_OPERATION
 		hidden_effect = {
@@ -4775,6 +4974,7 @@ espionage_operation_event = {
 			}
 		}
 	}
+
 	after = {
 		set_espionage_operation_progress_locked = no
 	}
@@ -4786,6 +4986,7 @@ country_event = {
 	desc = situation.1140.desc
 	picture = GFX_evt_stellarites
 	is_triggered_only = yes
+
 	option = {
 		name = situation.1140.a
 		from.target = {
@@ -4797,6 +4998,7 @@ country_event = {
 country_event = {
 	id = situation.1145
 	title = situation.1145.name
+
 	desc = {
 		trigger = { is_gestalt = no }
 		text = situation.1145.desc.regular
@@ -4813,6 +5015,7 @@ country_event = {
 	picture = GFX_evt_star_yellow
 	location = capital_star
 	is_triggered_only = yes
+
 	option = {
 		name = situation.1145.a
 		capital_scope = {
@@ -4852,6 +5055,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = situation.1150.a
 		start_situation = { type = situation_stellarite_infested_star target = root.capital_star }
@@ -4904,6 +5108,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = situation.1160.a
 		capital_star = {
@@ -4946,6 +5151,7 @@ situation_event = {
 	id = situation.1170
 	title = situation.1170.name
 	location = target
+
 	desc = {
 		trigger = { has_situation_flag = knows_who_did_it }
 		text = situation.1170.desc.knows
@@ -4986,6 +5192,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		trigger = { has_situation_flag = dont_know_who_did_it }
 		name = situation.1170.a
@@ -5004,6 +5211,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -5026,6 +5234,7 @@ situation_event = {
 			}
 		}
 	}
+
 	after = {
 		destroy_situation = this
 	}
@@ -5035,6 +5244,7 @@ situation_event = {
 	id = situation.1180
 	is_triggered_only = yes
 	hide_window = yes
+
 	after = {
 		destroy_situation = this
 	}

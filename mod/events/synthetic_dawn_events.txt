@@ -75,6 +75,7 @@ country_event = {
 	id = syndaw.21
 	title = syndaw.21.name
 	desc = syndaw.21.desc
+
 	inline_script = {
 		script = events/biogenesis_event_art
 		OWNER = owner
@@ -120,6 +121,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -169,6 +171,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -218,6 +221,7 @@ country_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 	}
@@ -428,6 +432,7 @@ country_event = {
 	immediate = {
 		set_country_flag = triggered_syndaw_500
 	}
+
 	option = {
 		name = syndaw.500.a
 		custom_tooltip = syndaw.500.a.tooltip
@@ -464,6 +469,7 @@ country_event = {
 	trigger = {
 		has_synthetic_dawn = yes
 	}
+
 	option = {
 		name = syndaw.501.a
 		custom_tooltip = syndaw.501.a.tooltip
@@ -495,6 +501,7 @@ country_event = {
 	trigger = {
 		has_synthetic_dawn = yes
 	}
+
 	option = {
 		name = syndaw.502.a
 		add_modifier = { modifier = syndaw_research_bonus years = 7 }
@@ -554,6 +561,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {	# Keep Robots.
 		name = syndaw.505.a
 		custom_tooltip = syndaw.505.a.tooltip
@@ -611,6 +619,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = syndaw.510.a
 		custom_tooltip = syndaw.510.a.tooltip
@@ -647,6 +656,7 @@ situation_event = {
 		destroy_ship = event_target:target_station
 		set_timed_situation_flag = { flag = flag_recent_event days = @recent_event_pause }
 	}
+
 	option = {
 		name = syndaw.511.a
 		custom_tooltip = syndaw.511.a.tooltip
@@ -780,6 +790,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = syndaw.515.a
 		custom_tooltip = syndaw.515.a.tooltip
@@ -824,6 +835,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		custom_tooltip = syndaw.520.a.tooltip
@@ -865,6 +877,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = flag_recent_event days = @recent_event_pause }
 	}
+
 	option = {
 		name = syndaw.521.a
 		custom_tooltip = syndaw.521.a.tooltip
@@ -895,6 +908,7 @@ situation_event = {
 	immediate = {
 		set_timed_situation_flag = { flag = flag_recent_event days = @recent_event_pause }
 	}
+
 	option = {
 		name = DISCONCERTING
 	}
@@ -938,6 +952,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {	# Ignore Robot wishes.
 		name = syndaw.525.a
 		custom_tooltip = syndaw.525.a.tooltip
@@ -987,6 +1002,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = WORRYING
 		custom_tooltip = syndaw.526.a.tooltip
@@ -1067,6 +1083,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = {
 		name = UNFORTUNATE
 		custom_tooltip = syndaw.530.a.tooltip
@@ -1098,6 +1115,7 @@ situation_event = {
 			add_modifier = { modifier = syndaw_production_surplus years = 10 }
 		}
 	}
+
 	option = {
 		name = EXCELLENT
 		tooltip = {
@@ -1175,6 +1193,7 @@ situation_event = {
 			}
 		}
 	}
+
 	option = { # Has Robot Pops on planet. Prio because it hurts a bit more to lose.
 		name = syndaw.540.a
 		custom_tooltip = syndaw.540.a.tooltip
@@ -1260,6 +1279,7 @@ planet_event = {
 			}
 		}
 	}
+
 	option = {
 		name = syndaw.545.a
 		custom_tooltip = syndaw.545.a.tooltip
@@ -1322,6 +1342,7 @@ country_event = {
 	trigger = {
 		has_synthetic_dawn = yes
 	}
+
 	option = { # patch
 		name = syndaw.550.a
 		custom_tooltip = syndaw.550.a.tooltip
@@ -1349,6 +1370,7 @@ country_event = {
 			modifier = { factor = 0 is_fanatic_authoritarian = yes }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			end_event_chain = machine_uprising_chain
@@ -1369,6 +1391,7 @@ country_event = {
 	trigger = {
 		has_synthetic_dawn = yes
 	}
+
 	option = { # Wipe
 		name = syndaw.555.a
 		custom_tooltip = syndaw.555.a.tooltip
@@ -1386,6 +1409,7 @@ country_event = {
 		name = syndaw.555.b
 		abort_special_project = { type = PROJECT_MACHINE_UPRISING_WIPE }
 	}
+
 	after = {
 		hidden_effect = {
 			end_event_chain = machine_uprising_chain
@@ -1457,6 +1481,7 @@ situation_event = {
 planet_event = {
 	id = syndaw.1020
 	title = syndaw.1020.name
+
 	desc = {
 		trigger = {
 			owner = { is_materialist = yes }
@@ -1648,6 +1673,7 @@ planet_event = {
 		# Done using variable.
 		event_target:organic_empire = { clear_variable = var_uprising_cruelty_to_robots }
 	}
+
 	option = {
 		name = syndaw.1020.a
 		custom_tooltip = syndaw.1020.a.tooltip
@@ -1676,6 +1702,7 @@ planet_event = {
 			}
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			event_target:current_uprising_originator = {
@@ -2137,6 +2164,7 @@ country_event = {
 country_event = {
 	id = syndaw.1025
 	title = syndaw.1025.name
+
 	desc = {
 		trigger = { is_synthetic_empire = yes }
 		text = syndaw.1025.desc.machine
@@ -2160,6 +2188,7 @@ country_event = {
 			is_same_value = event_target:current_uprising
 		}
 	}
+
 	option = {
 		name = syndaw.1025.a
 	}
@@ -2169,6 +2198,7 @@ country_event = {
 country_event = {
 	id = syndaw.1030
 	title = syndaw.1030.name
+
 	desc = {
 		trigger = { is_synthetic_empire = yes }
 		text = syndaw.1030.desc.machine
@@ -2185,6 +2215,7 @@ country_event = {
 	trigger = {
 		has_synthetic_dawn = yes
 	}
+
 	option = {
 		name = OK
 	}
@@ -2194,6 +2225,7 @@ country_event = {
 country_event = {
 	id = syndaw.1035
 	title = syndaw.1035.name
+
 	desc = {
 		trigger = { is_synthetic_empire = yes }
 		text = syndaw.1035.desc.machine
@@ -2210,6 +2242,7 @@ country_event = {
 	trigger = {
 		has_synthetic_dawn = yes
 	}
+
 	option = {
 		name = OK
 	}
@@ -2240,6 +2273,7 @@ country_event = {
 country_event = {
 	id = syndaw.1200
 	title = syndaw.1200.name
+
 	desc = {
 		trigger = {
 			event_target:current_uprising = { is_individual_machine = no }
@@ -2275,6 +2309,7 @@ country_event = {
 		}
 		observer_event = { id = observer.82 }
 	}
+
 	option = {
 		name = syndaw.1200.a
 		add_monthly_resource_mult = {
@@ -2320,6 +2355,7 @@ country_event = {
 country_event = {
 	id = syndaw.1205
 	title = syndaw.1205.name
+
 	desc = {
 		trigger = { is_materialist = yes }
 		text = syndaw.1205.desc.mater
@@ -2380,6 +2416,7 @@ country_event = {
 		}
 		observer_event = { id = observer.83 }
 	}
+
 	option = {
 		name = OK
 		add_monthly_resource_mult = {
@@ -2424,6 +2461,7 @@ country_event = {
 country_event = {
 	id = syndaw.1201
 	title = syndaw.1200.name
+
 	desc = {
 		trigger = { is_individual_machine = no }
 		text = syndaw.1201.desc
@@ -2444,6 +2482,7 @@ country_event = {
 	immediate = {
 		observer_event = { id = observer.82 }
 	}
+
 	option = {
 		name = syndaw.1200.a
 		add_monthly_resource_mult = {
@@ -2486,6 +2525,7 @@ country_event = {
 country_event = {
 	id = syndaw.1206
 	title = syndaw.1205.name
+
 	desc = {
 		trigger = { is_spiritualist = no }
 		text = syndaw.1206.desc
@@ -2511,6 +2551,7 @@ country_event = {
 		}
 		observer_event = { id = observer.83 }
 	}
+
 	option = {
 		name = OK
 		add_monthly_resource_mult = {

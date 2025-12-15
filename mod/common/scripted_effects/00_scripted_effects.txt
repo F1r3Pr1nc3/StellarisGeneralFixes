@@ -2320,7 +2320,7 @@ update_leader_after_modification = {
 								}
 								NOT = { has_trait = leader_trait_virtual }
 							}
-							remove_trait = leader_trait_synthetic
+							# remove_trait = leader_trait_synthetic
 							add_trait = { trait = leader_trait_virtual show_message = no }
 						}
 					}
@@ -2329,23 +2329,30 @@ update_leader_after_modification = {
 					prev = { # Compare machine_synthetic_leader_effect / cybernetics.5080
 						if = {
 							limit = {
+								NOT = { has_trait = leader_trait_synthetic }
 								owner = {
-									NOR = {
+									OR = {
 										is_synthetic_empire = yes
 										has_tradition = tr_synthetics_finish
 										has_tradition = tr_modularity_finish
 									}
 								}
 							}
-							remove_trait = leader_trait_synthetic
-						}
-						else_if = {
-							limit = {
-								NOT = { has_trait = leader_trait_synthetic }
-							}
-							remove_trait = leader_trait_virtual # very unlikely
 							add_trait = { trait = leader_trait_synthetic show_message = no }
 						}
+						# else_if = {
+						# 	limit = {
+						# 		has_trait = leader_trait_synthetic
+						# 		owner = {
+						# 			NOR = {
+						# 				is_synthetic_empire = yes
+						# 				has_tradition = tr_synthetics_finish
+						# 				has_tradition = tr_modularity_finish
+						# 			}
+						# 		}
+						# 	}
+						# 	remove_trait = leader_trait_synthetic
+						# }
 					}
 				}
 			}
