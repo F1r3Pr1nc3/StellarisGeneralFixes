@@ -1,3 +1,5 @@
+# All capital buildings... except the Synaptic Lathe
+
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
@@ -52,6 +54,48 @@ triggered_planet_modifier = {
 	}
 	job_warrior_drone_add = 1
 	mult = modifier:job_soldier_or_warrior_add
+}
+
+# Productivity Techs
+triggered_planet_modifier = {
+	potential = {
+		capital_tier >= 2
+		exists = owner
+		owner = {
+			has_technology = tech_capital_productivity_1
+			NAND = {
+				has_technology = tech_capital_productivity_2
+				prev = { capital_tier >= 3 }
+			}
+		}
+	}
+	pop_bonus_workforce_mult = 0.1
+}
+
+triggered_planet_modifier = {
+	potential = {
+		capital_tier >= 3
+		exists = owner
+		owner = {
+			has_technology = tech_capital_productivity_2
+			NAND = {
+				has_technology = tech_capital_productivity_3
+				prev = { capital_tier >= 4 }
+			}
+		}
+	}
+	pop_bonus_workforce_mult = 0.2
+}
+
+triggered_planet_modifier = {
+	potential = {
+		capital_tier >= 4
+		exists = owner
+		owner = {
+			has_technology = tech_capital_productivity_3
+		}
+	}
+	pop_bonus_workforce_mult = 0.3
 }
 
 # Cyber Organ Harvesting
@@ -215,9 +259,6 @@ triggered_planet_modifier = {
 	}
 	job_replicator_add = 100
 }
-
-# Primal Calling origin: Give Ethic-based jobs
-inline_script = jobs/wranglers_or_variant_add
 
 #Traders from Branch Offices
 triggered_planet_modifier = {

@@ -254,8 +254,15 @@ planet_event = {
 		owner = {
 			exists = ruler
 			ruler = { has_leader_flag = paragon_origin_legendary_leader }
-			NOT = { has_country_flag = increase_leader_upkeep }
+			NOR = {
+				has_country_flag = increase_leader_upkeep
+				has_country_flag = had_paragon_5010
+			}
 		}
+	}
+
+	immediate = {
+		owner = { set_country_flag = had_paragon_5010 }
 	}
 
 	option = {

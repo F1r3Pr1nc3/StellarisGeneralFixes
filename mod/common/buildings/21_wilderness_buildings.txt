@@ -172,15 +172,6 @@ building_capital_wilderness = {
 		script = buildings/on_all_wilderness_buildings_districts
 	}
 
-	# 'Improved Production' Technology effects:
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_1 }
-		}
-		pop_bonus_workforce_mult = 0.1
-	}
-
 	ai_estimate_without_unemployment = yes
 }
 
@@ -256,25 +247,6 @@ building_major_capital_wilderness = {
 		upkeep = {
 			food = @b3_upkeep
 		}
-	}
-
-	# 'Improved Production' Technology effects:
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				has_technology = tech_capital_productivity_1
-				NOT = { has_technology = tech_capital_productivity_2 }
-			}
-		}
-		pop_bonus_workforce_mult = 0.1
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_2 }
-		}
-		pop_bonus_workforce_mult = 0.2
 	}
 
 	upgrades = {
@@ -358,35 +330,6 @@ building_system_capital_wilderness = {
 		script = buildings/on_all_wilderness_buildings_districts
 	}
 
-	# 'Improved Production' Technology effects:
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				has_technology = tech_capital_productivity_1
-				NOT = { has_technology = tech_capital_productivity_2 }
-			}
-		}
-		pop_bonus_workforce_mult = 0.1
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				has_technology = tech_capital_productivity_2
-				NOT = { has_technology = tech_capital_productivity_3 }
-			}
-		}
-		pop_bonus_workforce_mult = 0.2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_3 }
-		}
-		pop_bonus_workforce_mult = 0.3
-	}
-
 	ai_estimate_without_unemployment = yes
 }
 
@@ -456,35 +399,6 @@ building_imperial_capital_wilderness = {
 		upkeep = {
 			food = @b4_upkeep
 		}
-	}
-
-	# 'Improved Production' Technology effects:
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				has_technology = tech_capital_productivity_1
-				NOT = { has_technology = tech_capital_productivity_2 }
-			}
-		}
-		pop_bonus_workforce_mult = 0.1
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				has_technology = tech_capital_productivity_2
-				NOT = { has_technology = tech_capital_productivity_3 }
-			}
-		}
-		pop_bonus_workforce_mult = 0.2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_3 }
-		}
-		pop_bonus_workforce_mult = 0.3
 	}
 
 	ai_estimate_without_unemployment = yes
@@ -698,7 +612,7 @@ building_tendril_cradle_3 = {
 
 	planet_modifier = {
 		job_logistics_drone_add = @building_static_jobs_high
-		planet_pops_trade_produces_mult = 0.20
+		planet_pops_trade_produces_mult = 0.10
 	}
 
 	inline_script = {
@@ -753,7 +667,7 @@ building_tendril_cradle_4 = {
 
 	planet_modifier = {
 		job_logistics_drone_add = @building_static_jobs_high
-		planet_pops_trade_produces_mult = 0.30
+		planet_pops_trade_produces_mult = 0.15
 	}
 
 	inline_script = {
@@ -926,9 +840,9 @@ building_brain_node_3 = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 1
-		planet_biologists_society_research_produces_add = 1
-		planet_engineers_engineering_research_produces_add = 1
+		planet_physicists_physics_research_produces_add = 0.25
+		planet_biologists_society_research_produces_add = 0.25
+		planet_engineers_engineering_research_produces_add = 0.25
 	}
 
 	inline_script = {
@@ -999,12 +913,12 @@ building_brain_node_4 = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 1
-		planet_biologists_society_research_produces_add = 1
-		planet_engineers_engineering_research_produces_add = 1
-		pop_calculator_physicist_bonus_workforce_mult = 0.15
-		pop_calculator_biologist_bonus_workforce_mult = 0.15
-		pop_calculator_engineer_bonus_workforce_mult = 0.15
+		planet_physicists_physics_research_produces_add = 0.25
+		planet_biologists_society_research_produces_add = 0.25
+		planet_engineers_engineering_research_produces_add = 0.25
+		pop_calculator_physicist_bonus_workforce_mult = 0.05
+		pop_calculator_biologist_bonus_workforce_mult = 0.05
+		pop_calculator_engineer_bonus_workforce_mult = 0.05
 	}
 
 	inline_script = {
@@ -1200,7 +1114,7 @@ building_commensal_clearing_3 = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.25
 	}
 
 	inline_script = {
@@ -1275,8 +1189,8 @@ building_commensal_clearing_4 = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 1
-		pop_bureaucrat_bonus_workforce_mult = 0.15
+		planet_bureaucrats_unity_produces_add = 0.25
+		pop_bureaucrat_bonus_workforce_mult = 0.05
 	}
 
 	inline_script = {
@@ -1448,7 +1362,7 @@ building_massive_growth_3 = {
 	}
 
 	planet_modifier = {
-		planet_farmers_food_produces_add = 2
+		planet_farmers_food_produces_add = 0.5
 	}
 
 	inline_script = {
@@ -1530,8 +1444,8 @@ building_massive_growth_4 = {
 	}
 
 	planet_modifier = {
-		planet_farmers_food_produces_add = 2
-		pop_agri_drone_bonus_workforce_mult = 0.15
+		planet_farmers_food_produces_add = 0.5
+		pop_agri_drone_bonus_workforce_mult = 0.05
 	}
 
 	inline_script = {
@@ -1702,7 +1616,7 @@ building_bioelectric_stimulator_3 = {
 	}
 
 	planet_modifier = {
-		planet_technician_energy_produces_add = 2
+		planet_technician_energy_produces_add = 0.5
 	}
 
 	inline_script = {
@@ -1775,8 +1689,8 @@ building_bioelectric_stimulator_4 = {
 	}
 
 	planet_modifier = {
-		planet_technician_energy_produces_add = 2
-		pop_technician_drone_bonus_workforce_mult = 0.15
+		planet_technician_energy_produces_add = 0.5
+		pop_technician_drone_bonus_workforce_mult = 0.05
 	}
 
 	inline_script = {
@@ -1948,7 +1862,7 @@ building_churning_tunnels_3 = {
 	}
 
 	planet_modifier = {
-		planet_miners_minerals_produces_add = 2
+		planet_miners_minerals_produces_add = 0.5
 	}
 
 	inline_script = {
@@ -2013,8 +1927,8 @@ building_churning_tunnels_4 = {
 	}
 
 	planet_modifier = {
-		planet_miners_minerals_produces_add = 2
-		pop_mining_drone_bonus_workforce_mult = 0.15
+		planet_miners_minerals_produces_add = 0.5
+		pop_mining_drone_bonus_workforce_mult = 0.05
 	}
 
 	inline_script = {
@@ -2198,8 +2112,8 @@ building_natural_furnace_2 = {
 	}
 
 	planet_modifier = {
-		planet_metallurgists_alloys_produces_add = 2
-		planet_metallurgists_minerals_upkeep_add = 4
+		planet_metallurgists_alloys_produces_add = 0.5
+		planet_metallurgists_minerals_upkeep_add = 2
 	}
 
 	inline_script = {
@@ -2270,9 +2184,9 @@ building_natural_furnace_3 = {
 	}
 
 	planet_modifier = {
-		pop_foundry_bonus_workforce_mult = 0.15
-		planet_metallurgists_alloys_produces_add = 2
-		planet_metallurgists_minerals_upkeep_add = 4
+		pop_foundry_bonus_workforce_mult = 0.05
+		planet_metallurgists_alloys_produces_add = 0.5
+		planet_metallurgists_minerals_upkeep_add = 2
 	}
 
 	inline_script = {
@@ -2435,7 +2349,7 @@ building_avatar_chamber_2 = {
 	planet_modifier = {
 		planet_housing_add = 300
 		planet_amenities_no_happiness_add = 600
-		planet_bureaucrats_produces_mult = 0.20
+		planet_bureaucrats_produces_mult = 0.05
 	}
 
 	triggered_desc = {
@@ -2523,7 +2437,7 @@ building_avatar_chamber_3 = {
 	planet_modifier = {
 		planet_housing_add = 300
 		planet_amenities_no_happiness_add = 800
-		planet_bureaucrats_produces_mult = 0.20
+		planet_bureaucrats_produces_mult = 0.10
 	}
 
 	triggered_desc = {
@@ -2973,7 +2887,7 @@ building_ozone_thickener = {
 	}
 
 	custom_storm_ai_weight = {
-		weight = 5
+		weight = 1
 		modifier = {
 			factor = 5
 			has_owner = yes
@@ -3123,15 +3037,19 @@ building_subterranean_cache = {
 					NOT = { has_building = building_resource_silo }
 					OR = {
 						owner = {
-							is_machine_empire = yes
-							has_active_tradition = tr_domination_modular_depot
+							OR = {
+								AND = {
+									is_machine_empire = yes
+									has_active_tradition = tr_domination_modular_depot
+								}
+								AND = {
+									has_ascension_perk = ap_arcology_project
+									NOT = { has_technology = tech_mega_engineering }
+								}
+							}
 						}
 						is_active_resolution = "resolution_greatergood_balance_in_the_middle"
 						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-						owner = {
-							has_ascension_perk = ap_arcology_project
-							NOT = { has_technology = tech_mega_engineering }
-						}
 					}
 				}
 			}

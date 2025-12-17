@@ -1,0 +1,42 @@
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	modifier = {
+		job_astral_researcher_add = $AMOUNT$
+	}
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_hive_empire = yes
+		}
+	}
+	modifier = {
+		job_astral_drone_add = $AMOUNT$
+	}
+}
+
+triggered_country_modifier = {
+	potential = {
+		exists = owner
+		owner = { is_wilderness_empire = yes }
+	}
+	modifier = {
+		country_naval_cap_add = 0.25
+	}
+	mult = planet.modifier:job_researcher_naval_cap_add
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { is_machine_empire = yes }
+	}
+	modifier = {
+		job_astral_unit_add = $AMOUNT$
+	}
+}

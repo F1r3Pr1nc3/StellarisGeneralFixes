@@ -145,7 +145,7 @@ building_food_processing_facility = {
 	}
 
 	planet_modifier = {
-		planet_farmers_produces_mult = 0.20
+		planet_farmers_food_produces_add = 0.25
 	}
 
 	upgrades = {
@@ -232,13 +232,12 @@ building_food_processing_center = {
 	}
 
 	planet_modifier = {
-		planet_farmers_produces_mult = 0.20
-		planet_farmers_food_produces_add = 2
+		planet_farmers_food_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_farmers_food_produces_add = 2
+		planet_farmers_food_produces_add = 0.25
 	}
 
 	prerequisites = {
@@ -497,7 +496,7 @@ building_baol_organic_plant = {
 		script = buildings/planet_job_resource_produces_add
 		JOB = farmers
 		RESOURCE = food
-		AMOUNT = 1
+		AMOUNT = 0.25
 	}
 
 	# Additional farmer output (non-Archaeoengineering)
@@ -506,14 +505,14 @@ building_baol_organic_plant = {
 			has_owner = yes
 			owner = { country_uses_consumer_goods = yes }
 		}
-		planet_farmers_consumer_goods_produces_add = 0.5
+		planet_farmers_consumer_goods_produces_add = 0.10
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { country_uses_consumer_goods = no }
 		}
-		planet_farmers_energy_produces_add = 1
+		planet_farmers_energy_produces_add = 0.25
 	}
 
 	# Additional farmer output (with Archaeoengineering)
@@ -522,14 +521,14 @@ building_baol_organic_plant = {
 			has_owner = yes
 			owner = { country_uses_consumer_goods = yes has_ascension_perk = ap_archaeoengineers }
 		}
-		planet_farmers_consumer_goods_produces_add = 0.5
+		planet_farmers_consumer_goods_produces_add = 0.125
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { country_uses_consumer_goods = no has_ascension_perk = ap_archaeoengineers }
 		}
-		planet_farmers_energy_produces_add = 1
+		planet_farmers_energy_produces_add = 0.25
 	}
 
 	resources = {
@@ -691,7 +690,7 @@ building_mineral_purification_plant = {
 	}
 
 	planet_modifier = {
-		planet_miners_produces_mult = 0.20
+		planet_miners_minerals_produces_add = 0.25
 	}
 
 	upgrades = {
@@ -789,24 +788,20 @@ building_mineral_purification_hub = {
 		}
 	}
 
-	planet_modifier = {
-		planet_miners_produces_mult = 0.20
-	}
-
 	triggered_planet_modifier = {
 		potential = {
 			NOT = { is_planet_class = pc_shattered_ring_habitable }
 		}
-		planet_miners_minerals_produces_add = 2
+		planet_miners_minerals_produces_add = 0.5
 	}
 	triggered_planet_modifier = {
 		potential = { is_planet_class = pc_shattered_ring_habitable }
-		planet_miners_minerals_produces_add = 1
-		planet_miners_alloys_produces_add = 0.5
+		planet_miners_minerals_produces_add = 0.25
+		planet_miners_alloys_produces_add = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_miners_minerals_produces_add = 2
+		planet_miners_minerals_produces_add = 0.25
 	}
 
 	prerequisites = {
@@ -1140,7 +1135,7 @@ building_energy_grid = {
 	}
 
 	planet_modifier = {
-		planet_technician_produces_mult = 0.20
+		planet_technician_energy_produces_add = 0.25
 	}
 
 	prerequisites = {
@@ -1222,13 +1217,12 @@ building_energy_nexus = {
 	}
 
 	planet_modifier = {
-		planet_technician_produces_mult = 0.20
-		planet_technician_energy_produces_add = 2
+		planet_technician_energy_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_technician_energy_produces_add = 2
+		planet_technician_energy_produces_add = 0.25
 	}
 
 	prerequisites = {
@@ -1477,15 +1471,19 @@ building_resource_silo = {
 					NOT = { has_building = building_resource_silo }
 					OR = {
 						owner = {
-							is_machine_empire = yes
-							has_active_tradition = tr_domination_modular_depot
+							OR = {
+								AND = {
+									is_machine_empire = yes
+									has_active_tradition = tr_domination_modular_depot
+								}
+								AND = {
+									has_ascension_perk = ap_arcology_project
+									NOT = { has_technology = tech_mega_engineering }
+								}
+							}
 						}
 						is_active_resolution = "resolution_greatergood_balance_in_the_middle"
 						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
-						owner = {
-							has_ascension_perk = ap_arcology_project
-							NOT = { has_technology = tech_mega_engineering }
-						}
 					}
 				}
 			}
@@ -1512,6 +1510,13 @@ building_resource_silo = {
 			owner = { has_technology = tech_construction_templates }
 		}
 		country_resource_max_add = 5000
+	}
+	triggered_country_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { has_valid_civic = civic_machine_obsessional_directive }
+		}
+		country_resource_max_consumer_goods_add = 5000
 	}
 
 	prerequisites = {
@@ -1639,7 +1644,7 @@ building_bio_reactor_2 = {
 	planet_modifier = {
 		planet_farmers_food_produces_add = -3
 		planet_farmers_energy_produces_add = 2
-		planet_farmers_exotic_gases_produces_add = 0.5
+		planet_farmers_exotic_gases_produces_add = 0.05
 	}
 
 	prerequisites = {

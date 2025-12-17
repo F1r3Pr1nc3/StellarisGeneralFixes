@@ -970,7 +970,7 @@ decision_arcology_project = {
 		category = decisions
 		cost = {
 			influence = 200
-			minerals = 20000
+			alloys = 10000
 		}
 	}
 
@@ -1054,13 +1054,7 @@ decision_arcology_project = {
 			planet_event = { id = action.68 }
 			if = { # Vfix Ariphaos
 				limit = { has_planet_flag = dportal_event }
-				if = {
-					limit = { owner = { is_gestalt = yes } }
-					add_deposit = d_portal_research_zone_gestalt
-				}
-				else = {
-					add_deposit = d_portal_research_zone
-				}
+				add_deposit = d_portal_research_zone
 			}
 			owner = {
 				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
@@ -1103,7 +1097,7 @@ decision_arcology_project_relic = {
 		category = decisions
 		cost = {
 			influence = 200
-			minerals = 20000
+			alloys = 10000
 		}
 	}
 
@@ -1150,13 +1144,7 @@ decision_arcology_project_relic = {
 			add_deposit = d_former_relic_world
 			if = { # Vfix Ariphaos
 				limit = { has_planet_flag = dportal_event }
-				if = {
-					limit = { owner = { is_gestalt = yes } }
-					add_deposit = d_portal_research_zone_gestalt
-				}
-				else = {
-					add_deposit = d_portal_research_zone
-				}
+				add_deposit = d_portal_research_zone
 			}
 			planet_event = { id = mega.201 }
 			while = {

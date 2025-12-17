@@ -738,9 +738,9 @@ building_grand_cathedral_of_toil = {
 	}
 
 	planet_modifier = {
-		planet_farmers_food_produces_add = 0.75
-		planet_technician_energy_produces_add = 0.75
-		planet_miners_minerals_produces_add = 0.75
+		planet_farmers_food_produces_add = 0.5
+		planet_technician_energy_produces_add = 0.5
+		planet_miners_minerals_produces_add = 0.5
 	}
 
 	inline_script = {
@@ -1246,7 +1246,7 @@ building_lathe_capital = {
 	planet_modifier = {
 		planet_housing_add = 2000
 		planet_amenities_add = 1500
-		planet_stability_add = 15
+		planet_stability_add = 10
 	}
 
 	triggered_planet_modifier = {
@@ -1254,8 +1254,7 @@ building_lathe_capital = {
 			has_owner = yes
 			owner = { has_technology = tech_capital_productivity_1 }
 		}
-		planet_jobs_productive_upkeep_mult = 0.1
-		planet_jobs_productive_produces_mult = 0.1
+		pop_bonus_workforce_mult = 0.1
 	}
 
 	upgrades = {
@@ -1293,7 +1292,7 @@ building_lathe_major_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b4_minerals
+			alloys = @fe_alloy_cost_2
 		}
 		upkeep = {
 			energy = @b3_upkeep
@@ -1305,24 +1304,25 @@ building_lathe_major_capital = {
 		planet_max_districts_add = 2
 		planet_housing_add = 4000
 		planet_amenities_add = 3000
-		planet_stability_add = 25
+		planet_stability_add = 10
 	}
 
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_1 }
+			owner = {
+				has_technology = tech_capital_productivity_1
+				NOT = { has_technology = tech_capital_productivity_2 }
+			}
 		}
-		planet_jobs_productive_upkeep_mult = 0.1
-		planet_jobs_productive_produces_mult = 0.1
+		pop_bonus_workforce_mult = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { has_technology = tech_capital_productivity_2 }
 		}
-		planet_jobs_productive_upkeep_mult = 0.1
-		planet_jobs_productive_produces_mult = 0.1
+		pop_bonus_workforce_mult = 0.2
 	}
 
 	upgrades = {
@@ -1364,7 +1364,7 @@ building_lathe_super_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b4_minerals
+			alloys = @fe_alloy_cost_2
 		}
 		upkeep = {
 			energy = @b3_upkeep
@@ -1376,32 +1376,35 @@ building_lathe_super_capital = {
 		planet_max_districts_add = 4
 		planet_housing_add = 10000
 		planet_amenities_add = 5000
-		planet_stability_add = 40
+		planet_stability_add = 15
 	}
 
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_1 }
+			owner = {
+				has_technology = tech_capital_productivity_1
+				NOT = { has_technology = tech_capital_productivity_2 }
+			}
 		}
-		planet_jobs_productive_upkeep_mult = 0.1
-		planet_jobs_productive_produces_mult = 0.1
+		pop_bonus_workforce_mult = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { has_technology = tech_capital_productivity_2 }
+			owner = {
+				has_technology = tech_capital_productivity_2
+				NOT = { has_technology = tech_capital_productivity_3 }
+			}
 		}
-		planet_jobs_productive_upkeep_mult = 0.1
-		planet_jobs_productive_produces_mult = 0.1
+		pop_bonus_workforce_mult = 0.2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { has_technology = tech_capital_productivity_3 }
 		}
-		planet_jobs_productive_upkeep_mult = 0.1
-		planet_jobs_productive_produces_mult = 0.1
+		pop_bonus_workforce_mult = 0.3
 	}
 
 	on_built = {
@@ -1434,8 +1437,8 @@ building_lathe_resonator = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			rare_crystals = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			rare_crystals = @fe_sr_cost_1
 			advanced_logic = @b2_minerals
 		}
 		upkeep = {
@@ -1489,8 +1492,8 @@ building_lathe_stabilisator = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			exotic_gases = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			exotic_gases = @fe_sr_cost_1
 			advanced_logic = @b2_minerals
 		}
 		upkeep = {
@@ -1500,7 +1503,7 @@ building_lathe_stabilisator = {
 	}
 
 	triggered_planet_modifier = {
-		planet_stability_add = 15
+		planet_stability_add = 10
 	}
 
 	ai_estimate_without_unemployment = yes
@@ -1531,8 +1534,8 @@ building_lathe_overclocker = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			volatile_motes = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			volatile_motes = @fe_sr_cost_1
 			advanced_logic = @b2_minerals
 		}
 		upkeep = {
@@ -1587,8 +1590,8 @@ building_lathe_preserver = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			exotic_gases = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			exotic_gases = @fe_sr_cost_1
 			advanced_logic = @b2_minerals
 		}
 		upkeep = {
@@ -1633,8 +1636,8 @@ building_lathe_reactor = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			exotic_gases = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			exotic_gases = @fe_sr_cost_1
 			advanced_logic = @b2_minerals
 		}
 		upkeep = {
@@ -1676,8 +1679,8 @@ building_lathe_life_support = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			rare_crystals = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			rare_crystals = @fe_sr_cost_1
 			advanced_logic = @b2_minerals
 		}
 		upkeep = {
@@ -1723,8 +1726,8 @@ building_lathe_cogitator = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			volatile_motes = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			volatile_motes = @fe_sr_cost_1
 			advanced_logic = @b3_minerals
 		}
 		upkeep = {
@@ -1781,8 +1784,8 @@ building_lathe_validator = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
-			rare_crystals = @fe_sr_cost
+			alloys = @fe_alloy_cost_1
+			rare_crystals = @fe_sr_cost_1
 			advanced_logic = @b3_minerals
 		}
 		upkeep = {
@@ -2056,8 +2059,8 @@ building_cyberdome = {
 
 	planet_modifier = {
 		job_cyberdome_spectator_add = 200
-		planet_entertainers_unity_produces_add = 1
-		planet_entertainers_alloys_upkeep_add = 0.5
+		planet_entertainers_unity_produces_add = 0.5
+		planet_entertainers_alloys_upkeep_add = 0.25
 	}
 
 	# With edict
@@ -2069,8 +2072,8 @@ building_cyberdome = {
 		planet_housing_add = 5000
 		planet_resettlement_unemployed_destination_mult = 0.25
 		planet_pops_upkeep_mult = -0.1
-		job_cyberdome_duelist_per_pop = 0.05 # 1 job per 20 pops
-		job_cyberdome_spectator_per_pop = 0.1 # 1 job per 10 pops
+		job_cyberdome_duelist_add = 200
+		job_cyberdome_spectator_add = 1000
 	}
 
 	resources = {
@@ -2261,8 +2264,8 @@ building_nanolab_2 = {
 	}
 
 	planet_modifier = {
-		planet_engineers_engineering_research_produces_add = 2
-		planet_engineers_nanites_upkeep_add = 1
+		planet_engineers_engineering_research_produces_add = 0.5
+		planet_engineers_nanites_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -2315,7 +2318,7 @@ building_nanotech_cauldron = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @b3_minerals
+			alloys = @fe_alloy_cost_1
 		}
 		upkeep = {
 			nanites = 3

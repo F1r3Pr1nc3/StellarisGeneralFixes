@@ -236,9 +236,9 @@ building_institute = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 2
-		planet_biologists_society_research_produces_add = 2
-		planet_engineers_engineering_research_produces_add = 2
+		planet_physicists_physics_research_produces_add = 0.5
+		planet_biologists_society_research_produces_add = 0.5
+		planet_engineers_engineering_research_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
@@ -246,21 +246,27 @@ building_institute = {
 			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-		planet_researchers_consumer_goods_upkeep_add = 1.5
+		planet_researchers_consumer_goods_upkeep_add = 1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		planet_researchers_energy_upkeep_add = 3
+		planet_researchers_energy_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_hive_empire = yes }
 		}
-		planet_researchers_minerals_upkeep_add = 4
+		planet_researchers_minerals_upkeep_add = 2
+	}
+
+	inline_script = {
+		script = "jobs/politician_add_from_civic"
+		AMOUNT = @building_static_jobs
+		CIVIC = civic_technocracy
 	}
 
 	prerequisites = {
@@ -305,8 +311,12 @@ building_supercomputer = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 			has_modifier = penal_colony
-			owner = { is_regular_empire = yes }
-			owner = { is_wilderness_empire = yes }
+			owner = {
+				OR = {
+					is_regular_empire = yes
+					is_wilderness_empire = yes
+				}
+			}
 		}
 	}
 
@@ -332,9 +342,9 @@ building_supercomputer = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 2
-		planet_biologists_society_research_produces_add = 2
-		planet_engineers_engineering_research_produces_add = 2
+		planet_physicists_physics_research_produces_add = 0.5
+		planet_biologists_society_research_produces_add = 0.5
+		planet_engineers_engineering_research_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
@@ -342,21 +352,21 @@ building_supercomputer = {
 			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-		planet_researchers_consumer_goods_upkeep_add = 1.5
+		planet_researchers_consumer_goods_upkeep_add = 1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		planet_researchers_energy_upkeep_add = 3
+		planet_researchers_energy_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_hive_empire = yes }
 		}
-		planet_researchers_minerals_upkeep_add = 4
+		planet_researchers_minerals_upkeep_add = 2
 	}
 
 	prerequisites = {
@@ -462,9 +472,9 @@ building_shroud_observatory_2 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_physics_research_produces_add = 1
-		planet_biologists_society_research_produces_add = 1
-		planet_biologists_sr_zro_upkeep_add = 0.5
+		planet_biologists_physics_research_produces_add = 0.25
+		planet_biologists_society_research_produces_add = 0.25
+		planet_biologists_sr_zro_upkeep_add = 0.25
 	}
 
 	triggered_desc = {
@@ -528,9 +538,9 @@ building_shroud_observatory_3 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_physics_research_produces_add = 2
-		planet_biologists_society_research_produces_add = 2
-		planet_biologists_sr_zro_upkeep_add = 1
+		planet_biologists_physics_research_produces_add = 0.5
+		planet_biologists_society_research_produces_add = 0.5
+		planet_biologists_sr_zro_upkeep_add = 0.5
 	}
 
 	triggered_desc = {
@@ -605,7 +615,7 @@ building_archaeostudies_faculty = {
 	}
 
 	planet_modifier = {
-		planet_biologists_society_research_produces_add = 1
+		planet_biologists_society_research_produces_add = 0.25
 	}
 
 	triggered_planet_modifier = {
@@ -613,32 +623,32 @@ building_archaeostudies_faculty = {
 			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-		planet_biologists_consumer_goods_upkeep_add = 1
+		planet_biologists_consumer_goods_upkeep_add = 0.5
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		planet_biologists_energy_upkeep_add = 2
+		planet_biologists_energy_upkeep_add = 1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_hive_empire = yes }
 		}
-		planet_biologists_minerals_upkeep_add = 2.5
+		planet_biologists_minerals_upkeep_add = 1
 	}
 	triggered_planet_modifier = {
 		potential = { is_planet_class = pc_relic }
-		planet_biologists_minor_artifacts_produces_add = 0.5
+		planet_biologists_minor_artifacts_produces_add = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { has_ascension_perk = ap_archaeoengineers }
 		}
-		planet_biologists_minor_artifacts_produces_add = 0.5
+		planet_biologists_minor_artifacts_produces_add = 0.05
 	}
 
 	triggered_country_modifier = {
@@ -650,7 +660,7 @@ building_archaeostudies_faculty = {
 	}
 	triggered_country_modifier = {
 		potential = { is_planet_class = pc_relic }
-		category_archaeostudies_research_speed_mult = 0.5
+		category_archaeostudies_research_speed_mult = 0.25
 	}
 
 	inline_script = {
@@ -659,7 +669,7 @@ building_archaeostudies_faculty = {
 	}
 
 	country_modifier = {
-		category_archaeostudies_research_speed_mult = 0.5
+		category_archaeostudies_research_speed_mult = 0.25
 		country_resource_max_minor_artifacts_add = 1000
 	}
 
@@ -772,7 +782,7 @@ building_vultaum_reality_computer = {
 			has_owner = yes
 			owner = { has_ascension_perk = ap_cosmogenesis }
 		}
-		planet_physicists_advanced_logic_produces_add = 0.5
+		planet_physicists_advanced_logic_produces_add = 0.25
 	}
 
 	inline_script = {
@@ -849,7 +859,7 @@ building_physics_lab_1 = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 1
+		planet_physicists_physics_research_produces_add = 0.25
 	}
 
 	upgrades = {
@@ -924,8 +934,8 @@ building_physics_lab_2 = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 2
-		planet_physicists_volatile_motes_upkeep_add = 0.5
+		planet_physicists_physics_research_produces_add = 0.5
+		planet_physicists_volatile_motes_upkeep_add = 0.25
 	}
 
 	upgrades = {
@@ -998,9 +1008,9 @@ building_physics_lab_3 = {
 	}
 
 	planet_modifier = {
-		physicist_jobs_bonus_workforce_mult = 0.15
-		planet_physicists_physics_research_produces_add = 2
-		planet_physicists_volatile_motes_upkeep_add = 0.5
+		physicist_jobs_bonus_workforce_mult = 0.1
+		planet_physicists_physics_research_produces_add = 0.5
+		planet_physicists_volatile_motes_upkeep_add = 0.25
 	}
 
 	prerequisites = {
@@ -1075,7 +1085,7 @@ building_biolab_1 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_society_research_produces_add = 1
+		planet_biologists_society_research_produces_add = 0.25
 	}
 
 	upgrades = {
@@ -1151,8 +1161,8 @@ building_biolab_2 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_society_research_produces_add = 2
-		planet_biologists_exotic_gases_upkeep_add = 0.5
+		planet_biologists_society_research_produces_add = 0.5
+		planet_biologists_exotic_gases_upkeep_add = 0.25
 	}
 
 	upgrades = {
@@ -1226,9 +1236,9 @@ building_biolab_3 = {
 	}
 
 	planet_modifier = {
-		biologist_jobs_bonus_workforce_mult = 0.15
-		planet_biologists_society_research_produces_add = 2
-		planet_biologists_exotic_gases_upkeep_add = 0.5
+		biologist_jobs_bonus_workforce_mult = 0.1
+		planet_biologists_society_research_produces_add = 0.5
+		planet_biologists_exotic_gases_upkeep_add = 0.25
 	}
 
 	prerequisites = {
@@ -1303,7 +1313,7 @@ building_engineering_facility_1 = {
 	}
 
 	planet_modifier = {
-		planet_engineers_engineering_research_produces_add = 1
+		planet_engineers_engineering_research_produces_add = 0.25
 	}
 
 	upgrades = {
@@ -1377,8 +1387,8 @@ building_engineering_facility_2 = {
 	}
 
 	planet_modifier = {
-		planet_engineers_engineering_research_produces_add = 2
-		planet_engineers_rare_crystals_upkeep_add = 0.5
+		planet_engineers_engineering_research_produces_add = 0.5
+		planet_engineers_rare_crystals_upkeep_add = 0.25
 	}
 
 	upgrades = {
@@ -1450,9 +1460,9 @@ building_engineering_facility_3 = {
 	}
 
 	planet_modifier = {
-		engineer_jobs_bonus_workforce_mult = 0.15
-		planet_engineers_engineering_research_produces_add = 2
-		planet_engineers_rare_crystals_upkeep_add = 0.5
+		engineer_jobs_bonus_workforce_mult = 0.1
+		planet_engineers_engineering_research_produces_add = 0.5
+		planet_engineers_rare_crystals_upkeep_add = 0.25
 	}
 
 	prerequisites = {
@@ -1515,25 +1525,25 @@ building_ranger_lodge = {
 	}
 
 	ai_resource_production = {
-		unity = 2
+		unity = 1.0
 		mult = value:natural_blocker_count
 	}
 	ai_resource_production = {
-		unity = 1
+		unity = 0.5
 		trigger = {
 			owner_has_resolution = { RES = resolution_ecology_integrated_gardens }
 		}
 		mult = value:natural_blocker_count
 	}
 	ai_resource_production = {
-		unity = 1
+		unity = 0.5
 		trigger = {
 			owner_has_resolution = { RES = resolution_ecology_environmental_control_board }
 		}
 		mult = value:natural_blocker_count
 	}
 	ai_resource_production = {
-		unity = 1
+		unity = 0.5
 		trigger = {
 			owner_has_resolution = { RES = resolution_ecology_paradise_initiative }
 		}
@@ -1542,7 +1552,7 @@ building_ranger_lodge = {
 
 	planet_modifier = {
 		job_biologist_add = 100 # 100 Rangers no matter what
-		deposit_blockers_natural_unity_produces_add = 2
+		deposit_blockers_natural_unity_produces_add = 1.0
 	}
 
 	triggered_planet_modifier = {
@@ -1561,19 +1571,19 @@ building_ranger_lodge = {
 		potential = {
 			owner_has_resolution = { RES = resolution_ecology_integrated_gardens }
 		}
-		deposit_blockers_natural_unity_produces_add = 1
+		deposit_blockers_natural_unity_produces_add = 0.5
 	}
 	triggered_planet_modifier = {
 		potential = {
 			owner_has_resolution = { RES = resolution_ecology_environmental_control_board }
 		}
-		deposit_blockers_natural_unity_produces_add = 2
+		deposit_blockers_natural_unity_produces_add = 1.0
 	}
 	triggered_planet_modifier = {
 		potential = {
 			owner_has_resolution = { RES = resolution_ecology_paradise_initiative }
 		}
-		deposit_blockers_natural_unity_produces_add = 3
+		deposit_blockers_natural_unity_produces_add = 1.5
 	}
 
 	resources = {
@@ -1647,7 +1657,7 @@ building_research_upkeep_1 = {
 	}
 
 	planet_modifier = {
-		planet_researchers_upkeep_mult = -0.20
+		planet_researchers_upkeep_mult = -0.10
 	}
 
 	prerequisites = {
@@ -1726,7 +1736,7 @@ building_research_efficiency_1 = {
 	}
 
 	planet_modifier = {
-		researcher_jobs_bonus_workforce_mult = 0.15
+		researcher_jobs_bonus_workforce_mult = 0.05
 	}
 
 	triggered_planet_modifier = {
@@ -1736,8 +1746,8 @@ building_research_efficiency_1 = {
 			is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
 			has_modifier = pm_extradimensional_experimentation
 		}
-		planet_physicists_sr_zro_upkeep_add = 1
-		planet_physicists_physics_research_produces_add = 2
+		planet_physicists_sr_zro_upkeep_add = 0.5
+		planet_physicists_physics_research_produces_add = 1
 	}
 
 	prerequisites = {

@@ -4793,7 +4793,10 @@ country_event = {
 						is_at_war = yes
 						is_hostile = root
 						root = { is_hostile = prev }
-						any_owned_planet = { has_planet_flag = has_been_scanned }
+					}
+					any_owned_planet = {
+						is_colony = yes
+						NOT = { has_planet_flag = has_been_scanned }
 					}
 				}
 			}
@@ -4847,7 +4850,10 @@ country_event = {
 						is_at_war = yes
 						is_hostile = root
 						root = { is_hostile = prev }
-						any_owned_planet = { has_planet_flag = has_been_scanned }
+					}
+					any_owned_planet = {
+						is_colony = yes
+						NOT = { has_planet_flag = has_been_scanned }
 					}
 				}
 			}
@@ -5225,7 +5231,10 @@ country_event = {
 						is_ai = yes
 						is_at_war = yes
 						is_hostile = root.owner
-						any_owned_planet = { has_planet_flag = has_been_scanned }
+					}
+					any_owned_planet = {
+						is_colony = yes
+						NOT = { has_planet_flag = has_been_scanned }
 					}
 				}
 			}

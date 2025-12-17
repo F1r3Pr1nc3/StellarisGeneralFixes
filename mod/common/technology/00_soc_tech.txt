@@ -168,7 +168,7 @@ tech_prescient_data_modeling = {
 	}
 
 	modifier = {
-		planet_jobs_trade_produces_mult = 0.05
+		planet_jobs_trade_produces_mult = 0.025
 	}
 }
 
@@ -206,8 +206,7 @@ tech_eco_simulation = {
 	weight = @tier1weight1
 
 	modifier = {
-		planet_farmers_food_produces_mult = 0.2
-		starbase_constructions_food_produces_mult = 0.10
+		planet_farmers_food_produces_mult = 0.05
 	}
 
 	weight_modifier = {
@@ -291,8 +290,7 @@ tech_gene_crops = {
 	weight = @tier2weight1
 
 	modifier = {
-		planet_farmers_food_produces_mult = 0.2
-		starbase_constructions_food_produces_mult = 0.10
+		planet_farmers_food_produces_mult = 0.05
 	}
 
 	potential = {
@@ -363,8 +361,7 @@ tech_nano_vitality_crops = {
 	weight = @tier3weight1
 
 	modifier = {
-		planet_farmers_food_produces_mult = 0.2
-		starbase_constructions_food_produces_mult = 0.10
+		planet_farmers_food_produces_mult = 0.05
 	}
 
 	potential = {
@@ -435,8 +432,7 @@ tech_nutrient_replication = {
 	weight = @tier4weight3
 
 	modifier = {
-		planet_jobs_food_produces_mult = 0.15
-		starbase_constructions_food_produces_mult = 0.10
+		planet_farmers_food_produces_mult = 0.05
 	}
 
 	potential = {
@@ -3198,7 +3194,7 @@ tech_doctrine_navy_size_1 = {
 	weight = @tier1weight2
 
 	modifier = {
-		country_naval_cap_add = 25
+		country_naval_cap_add = 20
 	}
 
 	weight_modifier = {
@@ -3228,7 +3224,7 @@ tech_doctrine_navy_size_2 = {
 	weight = @tier2weight2
 
 	modifier = {
-		country_naval_cap_add = 25
+		country_naval_cap_add = 30
 	}
 
 	weight_modifier = {
@@ -3258,7 +3254,7 @@ tech_doctrine_navy_size_3 = {
 	weight = @tier3weight1
 
 	modifier = {
-		country_naval_cap_add = 25
+		country_naval_cap_add = 40
 	}
 
 	weight_modifier = {
@@ -3288,7 +3284,7 @@ tech_doctrine_navy_size_4 = {
 	weight = @tier4weight3
 
 	modifier = {
-		country_naval_cap_add = 25
+		country_naval_cap_add = 50
 	}
 
 	weight_modifier = {
@@ -3470,7 +3466,7 @@ tech_psionic_theory = {
 	}
 
 	modifier = {
-		empire_size_pops_mult = -0.10
+		empire_size_pops_mult = -0.05
 	}
 
 	weight_modifier = {
@@ -4108,7 +4104,7 @@ tech_planetary_unification = {
 
 	# also unlocks planet-happiness edict and gives a one time Unity award
 	modifier = {
-		country_unity_produces_mult = 0.05
+		country_unity_produces_mult = 0.025
 		show_only_custom_tooltip = no
 		custom_tooltip = tech_planetary_unification_effect
 	}
@@ -4563,7 +4559,7 @@ tech_living_state = {
 	}
 
 	modifier = {
-		pop_factions_produces_mult = 0.1
+		pop_factions_produces_mult = 0.05
 	}
 
 	weight_modifier = {
@@ -4802,7 +4798,7 @@ tech_synthetic_thought_patterns = {
 	weight = @tier3weight3
 
 	modifier = {
-		planet_jobs_produces_mult = 0.05
+		planet_jobs_produces_mult = 0.025
 	}
 
 	potential = {
@@ -4863,7 +4859,7 @@ tech_collective_production_methods = {
 	weight = @tier3weight1
 
 	modifier = {
-		planet_jobs_produces_mult = 0.05
+		planet_jobs_produces_mult = 0.025
 	}
 
 	potential = {
@@ -4894,7 +4890,7 @@ tech_resource_processing_algorithms = {
 	weight = @tier3weight1
 
 	modifier = {
-		planet_jobs_produces_mult = 0.05
+		planet_jobs_produces_mult = 0.025
 	}
 
 	potential = {
@@ -5116,8 +5112,10 @@ tech_autocurating_vault = {
 	weight = @tier3weight1
 
 	potential = {
-		is_spiritualist = no
-		is_wilderness_empire = no
+		NOR = {
+			is_spiritualist = yes
+			is_wilderness_empire = yes
+		}
 	}
 
 	weight_modifier = {

@@ -2425,7 +2425,7 @@ country_event = {
 				random_member = {
 					random_system_within_border = {
 						limit = {
-							NOR = {
+							NOR = { # Vfix
 								has_star_flag = no_more_military_projects_here
 								any_system_colony = { has_owner = yes }
 							}
@@ -2562,9 +2562,9 @@ country_event = {
 				random_member = {
 					random_system_within_border = {
 						limit = {
-							NOR = {
-								any_system_colony = { has_owner = yes }
+							NOR = { # Vfix
 								has_star_flag = no_more_military_projects_here
+								any_system_colony = { has_owner = yes }
 							}
 							root = {
 								any_controlled_fleet = { is_ship_class = shipclass_military can_access_system = prevprev }

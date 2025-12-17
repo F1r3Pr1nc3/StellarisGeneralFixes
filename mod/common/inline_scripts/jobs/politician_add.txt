@@ -1,0 +1,25 @@
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_worker_coop_empire = no
+			is_gestalt = no
+		}
+		NAND = {
+			has_planet_flag = toxic_knights_habitat
+			owner = { has_origin = origin_toxic_knights }
+		}
+	}
+	job_politician_add = $AMOUNT$
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_worker_coop_empire = yes
+		}
+	}
+	job_bureaucrat_add = $AMOUNT$
+	mult = 1.5
+}

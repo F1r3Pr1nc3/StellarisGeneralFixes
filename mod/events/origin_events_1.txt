@@ -2624,7 +2624,12 @@ country_event = {
 		}
 		# Parliamentary System interaction
 		if = {
-			limit = { has_valid_civic = civic_parliamentary_system }
+			limit = {
+				OR = {
+					has_valid_civic = civic_parliamentary_system
+					has_valid_civic = civic_media_conglomerate
+				}
+			}
 			country_event = { id = origin.5041 days = 30 }
 		}
 	}

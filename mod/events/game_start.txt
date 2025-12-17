@@ -215,6 +215,9 @@ event = {
 		### SLOW DOWN PRE-FTL EVENTS
 		set_timed_global_flag = { flag = asteroid_sighted_pre_ftl_global years = 10 }
 		set_timed_global_flag = { flag = nuclear_war_pre_ftl_global years = 10 }
+		every_playable_country = {
+			add_modifier = { modifier = game_start years = 10 }
+		}
 		### ORIGINS
 		# Scion
 		every_playable_country = {
@@ -820,8 +823,10 @@ country_event = {
 		if = {
 			limit = {
 				OR = {
-					is_lithoid_empire = no
-					is_machine_empire = no
+					NOR = {
+						is_lithoid_empire = yes
+						is_machine_empire = yes
+					}
 					is_catalytic_empire = yes
 					has_country_flag = non_lithoid_subspecies
 					has_origin = origin_broken_shackles

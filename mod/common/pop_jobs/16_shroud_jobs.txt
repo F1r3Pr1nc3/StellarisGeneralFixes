@@ -29,32 +29,32 @@ telepath_drone = {
 	resources = {
 		category = planet_telepaths
 		produces = {
-			unity = 9
+			unity = 4.5
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_active_tradition = tr_domination_judgment_corps }
 			}
-			unity = 1
+			unity = 0.5
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_country_flag = whisperers_covenant_confirmed }
 			}
-			physics_research = 3
-			engineering_research = 3
-			society_research = 3
+			physics_research = 1.5
+			engineering_research = 1.5
+			society_research = 1.5
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_country_flag = whisperers_covenant_rank_1 }
 			}
-			physics_research = 3
-			engineering_research = 3
-			society_research = 3
+			physics_research = 1.5
+			engineering_research = 1.5
+			society_research = 1.5
 		}
 		# Update @telepath_whisperers_research for covenant custom_tooltip
 		upkeep = {
@@ -93,7 +93,7 @@ telepath_drone = {
 				}
 			}
 		}
-		planet_stability_add = 2
+		planet_stability_add = 0.75
 	}
 
 	triggered_country_modifier = {
@@ -247,7 +247,7 @@ physician_drone = {
 	resources = {
 		category = planet_doctors
 		produces = {
-			unity = 6
+			unity = 3
 		}
 		upkeep = {
 			energy = 4
@@ -308,7 +308,7 @@ energy_thrall = {
 	resources = {
 		category = planet_energy_thralls
 		produces = {
-			unity = 2
+			unity = 1
 		}
 	}
 
@@ -317,11 +317,6 @@ energy_thrall = {
 			exists = owner
 		}
 		species_leader_exp_gain = 0.05
-	}
-
-	inline_script = {
-		script = "jobs/galactic_curator_council_output"
-		CATEGORY = planet_energy_thralls
 	}
 
 	weight = {
@@ -371,7 +366,7 @@ drone_energy_thrall = {
 	resources = {
 		category = planet_energy_thralls
 		produces = {
-			unity = 2
+			unity = 1
 		}
 	}
 
@@ -444,9 +439,9 @@ test_subject = {
 	resources = {
 		category = planet_test_subjects
 		produces = {
-			engineering_research = 1
-			physics_research = 1
-			society_research = 2
+			engineering_research = 0.5
+			physics_research = 0.5
+			society_research = 1
 		}
 	}
 
@@ -496,9 +491,9 @@ test_subject_drone = {
 	resources = {
 		category = planet_test_subjects
 		produces = {
-			engineering_research = 1
-			physics_research = 1
-			society_research = 2
+			engineering_research = 0.5
+			physics_research = 0.5
+			society_research = 1
 		}
 		upkeep = {
 			energy = 1
@@ -559,9 +554,9 @@ experiment_engineer = {
 			trigger = {
 				exists = planet
 			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
 			multiplier = planet.value:experiment_engineer_crime_research_output
 		}
 		produces = {
@@ -590,9 +585,9 @@ experiment_engineer = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
 		}
 	}
 
@@ -659,9 +654,9 @@ experiment_engineer_drone = {
 			trigger = {
 				exists = planet
 			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
 			multiplier = planet.value:experiment_engineer_crime_research_output
 		}
 		produces = {
@@ -690,9 +685,9 @@ experiment_engineer_drone = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
 		}
 	}
 
@@ -784,7 +779,7 @@ production_overseer = {
 	swappable_data = {
 		default = {
 			condition_string = SPECIALIST_JOB_TRIGGER
-			building_icon = building_robot_assembly_plant
+			building_icon = building_automation_1
 		}
 	}
 
@@ -805,20 +800,20 @@ production_overseer = {
 	resources = {
 		category = planet_production_overseers
 		produces = {
-			unity = 3
+			engineering_research = 2
 		}
 		upkeep = {
-			consumer_goods = 2
+			consumer_goods = 1
 		}
 	}
 
 	triggered_planet_modifier = {
-		planet_amenities_add = 500
+		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
 	planet_modifier = {
-		bonus_automated_workforce_mult = 0.03
+		bonus_automated_workforce_mult = 0.02
 	}
 
 	weight = {

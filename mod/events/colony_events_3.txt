@@ -39,7 +39,7 @@ planet_event = {
 		has_modifier = "irradiated_planet"
 		NOR = {
 			has_planet_flag = irradiated_colony_flag
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -170,7 +170,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = titanic_life_colony_flag
 			is_planet_class = pc_volcanic
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -330,7 +330,7 @@ planet_event = {
 		has_modifier = "unstable_tectonics"
 		NOR = {
 			has_modifier = "recent_quake"
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -423,7 +423,7 @@ planet_event = {
 		has_modifier = "asteroid_belt"
 		NOR = {
 			has_modifier = "recent_comet"
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -459,7 +459,7 @@ planet_event = {
 		has_modifier = "atmospheric_hallucinogen"
 		NOR = {
 			has_planet_flag = atmospheric_hallucinogen_colony_flag
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -676,7 +676,7 @@ planet_event = {
 			has_modifier = "magnetic_research_boost"
 			has_modifier = "magnetic_disruption"
 			has_planet_flag = magnetic_mystery_solved
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -734,7 +734,7 @@ planet_event = {
 			has_modifier = "magnetic_research_boost"
 			has_modifier = "magnetic_disruption"
 			has_planet_flag = magnetic_mystery_solved
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -831,7 +831,7 @@ planet_event = {
 					has_modifier = "magnetic_research_boost"
 					has_modifier = "magnetic_disruption"
 					has_ground_combat = yes
-					pop_amount <= 0
+					pop_amount < 1
 				}
 			}
 			random_list = {
@@ -940,7 +940,7 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount <= 0
+			pop_amount < 1
 			is_artificial = yes
 			has_planet_flag = colony_event
 		}
@@ -1061,7 +1061,7 @@ planet_event = {
 					has_country_flag = dportal_country
 				}
 			}
-			pop_amount <= 0
+			pop_amount < 1
 			is_artificial = yes
 			has_planet_flag = colony_event
 		}
@@ -3012,16 +3012,16 @@ planet_event = {
 
 	trigger = {
 		NOR = {
-			owner = { is_ai = yes }
-			has_planet_flag = colony_event
-			is_artificial = yes
 			owner = {
 				OR = {
+					is_ai = yes
 					has_country_flag = bluelotus
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount <= 0
+			has_planet_flag = colony_event
+			is_artificial = yes
+			pop_amount < 1
 		}
 		any_owned_pop_job = {
 			OR = {
@@ -4538,8 +4538,12 @@ planet_event = {
 	trigger = {
 		habitable_planet = yes
 		NOR = {
-			owner = { has_country_flag = ancient_manufactorium }
-			owner = { is_wilderness_empire = yes }
+			owner = {
+				OR = {
+					has_country_flag = ancient_manufactorium
+					is_wilderness_empire = yes
+				}
+			}
 			has_planet_flag = colony_event
 			is_artificial = yes
 		}
@@ -5962,7 +5966,7 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount <= 0
+			pop_amount < 1
 			has_planet_flag = colony_event
 			is_artificial = yes
 		}
@@ -8294,11 +8298,15 @@ planet_event = {
 	trigger = {
 		has_modifier = "stratovents"
 		NOR = {
-			pop_amount <= 0
+			pop_amount < 1
 			has_planet_flag = colony_event
 			has_planet_flag = stratovent_world_colony
-			owner = { has_country_flag = stratovents_event_started }
-			owner = { is_gestalt = yes } # Static modifiers and gestalt don't mix easily, have to check later (PDT?) how this could be added
+			owner = {
+				OR = {
+					has_country_flag = stratovents_event_started
+					is_gestalt = yes # Static modifiers and gestalt don't mix easily, have to check later (PDT?) how this could
+				}
+			}
 		}
 		owner = {
 			OR = {

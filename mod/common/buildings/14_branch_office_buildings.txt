@@ -5,9 +5,9 @@
 @traders_from_civic = 200
 @crime_floor_from_legal_crime = 5
 @trade_value_from_jobs = 0.01
-@high_trade_from_jobs = 1
-@med_trade_from_jobs = 0.5
-@low_trade_from_jobs = 0.25
+@high_trade_from_jobs = 0.15
+@med_trade_from_jobs = 0.10
+@low_trade_from_jobs = 0.05
 
 ## REGULAR MEGACORP ##
 
@@ -473,7 +473,7 @@ building_military_contractors = {
 
 	triggered_country_modifier = {
 		potential = { always = yes }
-		country_naval_cap_add = 10
+		country_naval_cap_add = 5
 		mult = value:branch_office_value_for_buildings
 	}
 
@@ -1794,7 +1794,7 @@ building_pirate_haven = {
 
 	triggered_country_modifier = {
 		potential = { always = yes }
-		country_naval_cap_add = 10
+		country_naval_cap_add = 5
 		mult = value:branch_office_value_for_buildings
 	}
 
@@ -2320,7 +2320,7 @@ building_disinformation_center = {
 
 	inline_script = {
 		script = "jobs/politician_add"
-		AMOUNT = 100
+		AMOUNT = @building_static_jobs_low
 	}
 
 	triggered_planet_modifier = {
@@ -2759,7 +2759,7 @@ building_imperial_concession_port = {
 
 	inline_script = {
 		script = "jobs/politician_add"
-		AMOUNT = 100
+		AMOUNT = @building_static_jobs_low
 	}
 
 	triggered_planet_modifier = {

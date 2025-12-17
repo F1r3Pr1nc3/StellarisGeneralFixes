@@ -179,10 +179,8 @@ building_precinct_house = {
 		hidden_trigger = {
 			NAND = {
 				owner = { is_ai = yes }
-				OR = {
-					has_forbidden_jobs = enforcer
-					has_available_jobs = enforcer
-				}
+				has_forbidden_jobs = enforcer
+				has_available_jobs = enforcer
 			}
 		}
 	}
@@ -234,10 +232,8 @@ building_hall_judgment = {
 		NOT = { has_modifier = slave_colony }
 		if = {
 			limit = { owner = { is_ai = yes } }
-			NOR = {
-				has_forbidden_jobs = enforcer
-				has_available_jobs = enforcer
-			}
+			NOT = { has_forbidden_jobs = enforcer }
+			NOT = { has_available_jobs = enforcer }
 		}
 	}
 
@@ -316,10 +312,10 @@ building_state_academy = {
 
 	planet_modifier = {
 		job_enforcer_add = 200
-		planet_civilians_physics_research_produces_add = 0.5
-		planet_civilians_society_research_produces_add = 0.5
-		planet_civilians_engineering_research_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 1
+		planet_civilians_physics_research_produces_add = 0.1
+		planet_civilians_society_research_produces_add = 0.1
+		planet_civilians_engineering_research_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.25
 	}
 
 	resources = {
@@ -377,10 +373,10 @@ building_center_of_guidance = {
 
 	planet_modifier = {
 		job_enforcer_add = 500
-		planet_civilians_physics_research_produces_add = 1
-		planet_civilians_society_research_produces_add = 1
-		planet_civilians_engineering_research_produces_add = 1
-		planet_civilians_consumer_goods_upkeep_add = 2
+		planet_civilians_physics_research_produces_add = 0.2
+		planet_civilians_society_research_produces_add = 0.2
+		planet_civilians_engineering_research_produces_add = 0.2
+		planet_civilians_consumer_goods_upkeep_add = 0.5
 	}
 
 	resources = {
@@ -424,11 +420,9 @@ building_sentinel_posts = {
 		hidden_trigger = {
 			NAND = {
 				owner = { is_ai = yes }
-				OR = {
-					has_building = building_sentinel_posts
-					has_forbidden_jobs = patrol_drone
-					has_available_jobs = patrol_drone
-				}
+				has_building = building_sentinel_posts
+				has_forbidden_jobs = patrol_drone
+				has_available_jobs = patrol_drone
 			}
 		}
 	}
@@ -517,7 +511,7 @@ building_order_keep = {
 			has_owner = yes
 			owner = { has_country_flag = toxoids_7090_a }
 		}
-		planet_stability_add = 15
+		planet_stability_add = 5
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -679,7 +673,7 @@ building_psi_corps = {
 	}
 
 	planet_modifier = {
-		planet_stability_add = 5
+		planet_stability_add = 2
 	}
 
 	triggered_planet_modifier = {
@@ -922,8 +916,10 @@ building_gaiaseeders_1 = {
 			is_planet_class = pc_hive
 			is_planet_class = pc_machine
 			is_planet_class = pc_relic
-			has_owner = no
-			owner = { is_idyllic_bloom_empire = no }
+			NAND = {
+				has_owner = yes
+				owner = { is_idyllic_bloom_empire = yes }
+			}
 		}
 	}
 
@@ -1002,8 +998,10 @@ building_gaiaseeders_2 = {
 			is_planet_class = pc_city
 			is_planet_class = pc_hive
 			is_planet_class = pc_machine
-			has_owner = no
-			owner = { is_idyllic_bloom_empire = no }
+			NAND = {
+				has_owner = yes
+				owner = { is_idyllic_bloom_empire = yes }
+			}
 		}
 	}
 
@@ -1064,8 +1062,10 @@ building_gaiaseeders_3 = {
 			is_planet_class = pc_city
 			is_planet_class = pc_hive
 			is_planet_class = pc_machine
-			has_owner = no
-			owner = { is_idyllic_bloom_empire = no }
+			NAND = {
+				has_owner = yes
+				owner = { is_idyllic_bloom_empire = yes }
+			}
 		}
 	}
 

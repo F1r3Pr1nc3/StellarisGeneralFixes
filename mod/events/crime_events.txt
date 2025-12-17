@@ -5,7 +5,7 @@
 ############################
 
 namespace = crime
-# Criminal Underworld Appears (Unemployment)
+# Rising Unemployment on X (Unemployment) - currently disabled
 planet_event = {
 	id = crime.1
 	title = crime.1.name
@@ -127,10 +127,6 @@ planet_event = {
 
 	weight_multiplier = {
 		factor = 1
-		modifier = { factor = 2.0 num_unemployed > 750 }
-		modifier = { factor = 2.0 num_unemployed > 1000 }
-		modifier = { factor = 2.0 num_unemployed > 1500 }
-		modifier = { factor = 2.0 num_unemployed > 2000 }
 	}
 
 	# Top Option
@@ -789,7 +785,7 @@ planet_event = {
 
 	trigger = {
 		NOR = {
-			pop_amount <= 0
+			pop_amount < 1
 			owner = {
 				is_ai = yes	# PATCH|OPT
 			}
@@ -855,7 +851,12 @@ planet_event = {
 	option = {
 		name = crime.40.a
 		trigger = {
-			owner = { is_gestalt = no is_twisted_experimenters_empire = no }
+			owner = {
+				NOR = {
+					is_gestalt = yes
+					is_twisted_experimenters_empire = yes
+				}
+			}
 		}
 		tooltip = {
 			add_modifier = { modifier = "criminal_underworld" days = -1 }
@@ -995,7 +996,7 @@ planet_event = {
 		}
 		NOR = {
 			has_planet_flag = criminal_underworld_appeared
-			pop_amount <= 0
+			pop_amount < 1
 			planet_crime > 10
 		}
 	}

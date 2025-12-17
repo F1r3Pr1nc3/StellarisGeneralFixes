@@ -279,7 +279,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = burned_forest_precious
 			has_planet_flag = burned_forest_minerals
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -324,7 +324,7 @@ planet_event = {
 			has_planet_flag = burned_forest_precious
 			has_planet_flag = burned_forest_minerals
 			has_any_strategic_resource = yes
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -367,7 +367,7 @@ planet_event = {
 		has_planet_flag = burned_forests
 		NOR = {
 			has_planet_flag = burned_forest_damage
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -403,7 +403,7 @@ planet_event = {
 		has_planet_flag = forest_pheremones
 		NOR = {
 			has_planet_flag = forest_pheremones_adaptation
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -439,7 +439,7 @@ planet_event = {
 		has_planet_flag = forest_pheremones
 		NOR = {
 			has_planet_flag = forest_pheremones_studies
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -482,7 +482,7 @@ planet_event = {
 		has_planet_flag = forest_pheremones
 		NOR = {
 			has_planet_flag = forest_pheremones_fire
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -565,10 +565,14 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		NOR = {
-			owner = { is_wilderness_empire = yes }
-			pop_amount <= 0
+			owner = {
+				OR = {
+					is_ai = yes
+					is_wilderness_empire = yes
+				}
+			}
+			pop_amount < 1
 			is_artificial = yes
-			owner = { is_ai = yes }
 			has_global_flag = seismic_disturbance_global
 			has_planet_flag = colony_event
 			is_planet_class = pc_nuked
@@ -1286,7 +1290,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_war
 		NOR = {
 			has_planet_flag = seismic_disturbance_raid
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1368,7 +1372,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = seismic_disturbance_pocket
 			has_ground_combat = yes
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1455,7 +1459,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = seismic_disturbance_expansion
 			# has_any_strategic_resource = no
-			pop_amount <= 0
+			pop_amount < 1
 		}
 		# planet_size < 25
 	}
@@ -1509,7 +1513,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_destroyed
 		NOR = {
 			has_planet_flag = seismic_disturbance_gold
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1557,7 +1561,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_destroyed
 		NOR = {
 			has_planet_flag = seismic_disturbance_treasury
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1603,7 +1607,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_destroyed
 		NOR = {
 			has_planet_flag = seismic_disturbance_quake
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1643,7 +1647,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_friendly
 		NOR = {
 			has_planet_flag = seismic_disturbance_famine
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1711,7 +1715,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_friendly
 		NOR = {
 			has_planet_flag = seismic_disturbance_gift
-			pop_amount <= 0
+			pop_amount < 1
 		}
 		check_variable = { which = "angry_subterraneans" value < 1 }
 	}
@@ -1771,7 +1775,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_friendly
 		NOR = {
 			has_planet_flag = seismic_disturbance_refugees
-			pop_amount <= 0
+			pop_amount < 1
 		}
 		# free_housing > 0
 	}
@@ -1835,7 +1839,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_friendly
 		NOR = {
 			has_planet_flag = seismic_disturbance_anthropologists
-			pop_amount <= 0
+			pop_amount < 1
 		}
 		check_variable = { which = "angry_subterraneans" value < 1 }
 	}
@@ -1882,7 +1886,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_friendly
 		NOR = {
 			has_planet_flag = seismic_disturbance_quake2
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -1934,7 +1938,7 @@ planet_event = {
 		has_planet_flag = seismic_disturbance_friendly
 		NOR = {
 			has_planet_flag = seismic_disturbance_tech
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -2231,7 +2235,7 @@ planet_event = {
 		has_planet_flag = did_not_terraform
 		NOR = {
 			has_planet_flag = terraforming_unstable_weather
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -2270,7 +2274,7 @@ planet_event = {
 		has_planet_flag = did_not_terraform
 		NOR = {
 			has_planet_flag = terraforming_drought
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -2818,7 +2822,7 @@ planet_event = {
 		has_planet_flag = terraforming_mutants_defeated
 		NOR = {
 			has_planet_flag = terraforming_mutant_stalker
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -3052,7 +3056,7 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			solar_system = { is_capital_system = yes }
 			owner = { is_gestalt = yes }
-			pop_amount <= 0
+			pop_amount < 1
 		}
 	}
 
@@ -3366,7 +3370,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = wasteland_nuclear_bomb
 			solar_system = { is_capital_system = yes }
-			pop_amount <= 0
+			pop_amount < 1
 			owner = { has_country_flag = had_colony_155 }
 		}
 	}
@@ -3459,7 +3463,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = wasteland_particle_accelerator
 			solar_system = { is_capital_system = yes }
-			pop_amount <= 0
+			pop_amount < 1
 			owner = { has_country_flag = had_colony_160 }
 		}
 	}
@@ -3511,7 +3515,7 @@ planet_event = {
 		NOR = {
 			has_planet_flag = wasteland_infrastructure
 			solar_system = { is_capital_system = yes }
-			pop_amount <= 0
+			pop_amount < 1
 			owner = { has_country_flag = had_colony_161 }
 		}
 	}
@@ -3563,7 +3567,7 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = nuked_planet_anomalies_disabled
 			solar_system = { is_capital_system = yes }
-			pop_amount <= 0
+			pop_amount < 1
 			owner = { has_country_flag = had_colony_162 }
 		}
 	}
@@ -3638,7 +3642,7 @@ planet_event = {
 		}
 		owner = { empire_has_good_habitability_on_tomb_worlds = no is_gestalt = no }
 		NOR = {
-			pop_amount <= 0
+			pop_amount < 1
 			owner = { has_country_flag = had_colony_163 }
 		}
 	}
@@ -3690,7 +3694,7 @@ planet_event = {
 			has_planet_flag = wasteland_pacifist_movement
 			solar_system = { is_capital_system = yes }
 			owner = { is_gestalt = yes }
-			pop_amount <= 0
+			pop_amount < 1
 		}
 		any_owned_pop_group = {
 			NOR = {
@@ -3774,7 +3778,7 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = nuked_planet_anomalies_disabled
 			solar_system = { is_capital_system = yes }
-			pop_amount <= 0
+			pop_amount < 1
 			owner = { has_country_flag = had_colony_170 }
 		}
 	}
@@ -3968,8 +3972,14 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		NOR = {
-			owner = { is_ai = yes }
-			pop_amount <= 0
+			owner = {
+				OR = {
+					is_ai = yes
+					has_country_flag = asteroid_sighted_country
+					is_wilderness_empire = yes
+				}
+			}
+			pop_amount < 1
 			years_passed >= 50
 			is_planet_class = pc_habitat
 			is_planet_class = pc_ringworld_habitable
@@ -3977,8 +3987,6 @@ planet_event = {
 			has_planet_flag = asteroid_sighted
 			has_planet_flag = asteroid_collision
 			has_global_flag = asteroid_sighted_global
-			owner = { has_country_flag = asteroid_sighted_country }
-			owner = { is_wilderness_empire = yes }
 		}
 	}
 

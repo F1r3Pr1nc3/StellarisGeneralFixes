@@ -5816,12 +5816,12 @@ country_event = {
 		NOR = {
 			has_global_flag = fircon_6000_fired
 			has_country_flag = recent_preftl_diplomatic_event
-			any_observed_pre_ftl_within_border = {
-				OR = {
-					is_subterranean_empire = yes
-					has_civic = civic_flat_world_theory
-					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
-				}
+		}
+		any_observed_pre_ftl_within_border = {
+			NOR = {
+				is_subterranean_empire = yes
+				has_civic = civic_flat_world_theory
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 			}
 		}
 	}
@@ -7913,9 +7913,7 @@ country_event = {
 			is_gestalt = yes
 		}
 		any_observed_pre_ftl_within_border = {
-			NOT = {
-				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
-			}
+			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
 		}
 	}
 

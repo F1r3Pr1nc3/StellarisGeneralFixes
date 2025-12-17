@@ -837,13 +837,11 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		NOR = {
-			owner = { has_country_flag = cured_rage_virus }
-			any_owned_pop_group = {
-				OR = {
-					is_robot_pop_group = yes
-					has_modifier = erratic_behavior
-				}
+		NOT = { owner = { has_country_flag = cured_rage_virus } }
+		any_owned_pop_group = {
+			NOR = {
+				is_robot_pop_group = yes
+				has_modifier = erratic_behavior
 			}
 		}
 	}
@@ -1472,6 +1470,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1487,6 +1486,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1502,6 +1502,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1517,6 +1518,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1532,6 +1534,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1555,6 +1558,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1578,6 +1582,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1593,6 +1598,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1608,6 +1614,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 		hidden_effect = {
@@ -1625,6 +1632,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 			}
 		}
 	}
@@ -2148,6 +2156,7 @@ country_event = {
 				add_modifier = { modifier = "evolved_weapon_boost_2" days = -1 }
 				add_modifier = { modifier = "evolved_firing_rate" days = -1 }
 				add_modifier = { modifier = "evolved_evasion" days = -1 }
+				add_modifier = { modifier = "no_naval_capacity" days = -1 }
 				set_fleet_flag = lost_amoeba_centenarian_fleet@root
 				save_event_target_as = lost_amoeba_centenarian_fleet
 			}
@@ -4879,10 +4888,8 @@ ship_event = {
 			hidden_trigger = {
 				owner = {
 					is_xenophobe = yes
-					NOR = {
-						any_owned_pop_group = { is_xenophobe = yes }
-						has_origin = origin_evolutionary_predators
-					}
+					any_owned_pop_group = { is_xenophobe = no }
+					NOT = { has_origin = origin_evolutionary_predators }
 				}
 			}
 		}

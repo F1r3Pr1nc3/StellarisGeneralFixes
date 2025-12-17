@@ -989,7 +989,12 @@ holding_dread_outpost = {
 
 	allow = {
 		is_occupied_flag = no
-		owner = { is_reanimator = no is_machine_empire = no }
+		owner = {
+			NOR = {
+				is_reanimator = yes
+				is_machine_empire = yes
+			}
+		}
 	}
 
 	triggered_planet_modifier = {
@@ -1274,7 +1279,7 @@ holding_recruitment_office = {
 	}
 
 	triggered_country_modifier = {
-		country_naval_cap_add = 10
+		country_naval_cap_add = 5
 	}
 
 	triggered_planet_modifier = {
@@ -1932,7 +1937,7 @@ holding_knight_commandery = {
 	}
 
 	country_modifier = {
-		country_naval_cap_add = 4
+		country_naval_cap_add = 2
 		knight_quest_progress_add = 0.025
 	}
 }

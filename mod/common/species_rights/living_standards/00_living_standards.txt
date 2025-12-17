@@ -132,10 +132,7 @@ living_standard_shared_burden = {
 				owner = { has_deficit = consumer_goods }
 			}
 		}
-		pop_cat_ruler_happiness = 0.05
-		pop_cat_specialist_happiness = 0.05
-		pop_cat_worker_happiness = 0.05
-		pop_unemployment_demotion_time_mult = -0.45
+		pop_happiness = 0.05
 	}
 
 	triggered_pop_group_modifier = {
@@ -367,11 +364,11 @@ living_standard_worker_ownership = {
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_high
 		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_high
+		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_high
 		pop_cat_ruler_political_power = 3
 		pop_cat_specialist_political_power = 3
 		pop_cat_worker_political_power = 3
 		pop_cat_civilian_political_power = 3
-		pop_civilian_bonus_workforce_mult = 0.15
 	}
 
 	triggered_pop_group_modifier = {
@@ -381,9 +378,7 @@ living_standard_worker_ownership = {
 				has_active_tradition = tr_mercantile_worker_coop_improved_ownership
 			}
 		}
-		pop_cat_ruler_happiness = 0.05
-		pop_cat_specialist_happiness = 0.05
-		pop_cat_worker_happiness = 0.05
+		pop_happiness = 0.05
 	}
 
 	allow = {
@@ -435,9 +430,7 @@ living_standard_utopian = {
 				owner = { has_deficit = consumer_goods }
 			}
 		}
-		pop_cat_ruler_happiness = 0.20
-		pop_cat_specialist_happiness = 0.20
-		pop_cat_worker_happiness = 0.20
+		pop_happiness = 0.20
 	}
 
 	triggered_pop_group_modifier = {
@@ -465,11 +458,11 @@ living_standard_utopian = {
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
+		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_high
 		pop_cat_ruler_political_power = 4
 		pop_cat_specialist_political_power = 4
 		pop_cat_worker_political_power = 4
 		pop_cat_civilian_political_power = 4
-		pop_civilian_bonus_workforce_mult = 0.2
 	}
 
 	potential = {
@@ -561,6 +554,167 @@ living_standard_utopian = {
 	}
 }
 
+living_standard_good = {
+
+	in_breach_of = {
+		{
+			trigger = {
+				is_gestalt = no
+			}
+			key = resolution_greatergood_universal_prosperity_mandate
+		}
+	}
+
+	triggered_pop_group_modifier = {
+		potential = {
+			NAND = {
+				exists = owner
+				owner = { has_deficit = consumer_goods }
+			}
+		}
+
+		pop_happiness = 0.10
+	}
+
+	triggered_pop_group_modifier = {
+		potential = {
+			is_pop_category = civilian
+		}
+		pop_category_civilians_unity_produces_add = 1
+	}
+
+	triggered_pop_group_modifier = {
+		# Triggered to hide from the auto-generated tooltip
+		potential = {
+			always = yes
+		}
+		pop_cat_ruler_unemployment_political_power = 4
+		pop_cat_specialist_unemployment_political_power = 3
+		pop_cat_worker_unemployment_political_power = 2
+	}
+
+	pop_group_modifier = {
+		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
+		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
+		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_high
+		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_high
+		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_low
+		pop_cat_ruler_political_power = 4
+		pop_cat_specialist_political_power = 3
+		pop_cat_worker_political_power = 2
+		pop_cat_civilian_political_power = 2
+	}
+
+	potential = {
+		exists = from
+		from = {
+			NOR = {
+				is_gestalt = yes
+				has_valid_civic = civic_shared_burden
+				is_worker_coop_empire = yes
+				has_valid_civic = civic_dystopian_society
+			}
+		}
+		NOT = { has_trait = trait_hive_mind }
+		OR = {
+			AND = {
+				is_robotic = yes
+				OR = {
+					species_rights_robot_full_rights_check = yes
+					from = { is_individual_machine = yes }
+				}
+			}
+			is_robotic = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = is_slaves_chattel_or_domestic
+			if = {
+				limit = {
+					has_citizenship_type = { country = from type = citizenship_slavery }
+				}
+				NOR = {
+					has_slavery_type = { country = from type = slavery_normal }
+					has_slavery_type = { country = from type = slavery_domestic }
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = is_purged_not_neutered
+			if = {
+				limit = {
+					OR = {
+						has_citizenship_type = { country = from type = citizenship_purge_machine }
+						has_citizenship_type = { country = from type = citizenship_purge }
+					}
+				}
+				OR = {
+					has_purge_type = { country = from type = purge_neutering }
+					has_purge_type = { country = from type = purge_cosmogenesis_lathe_resettle }
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
+			NOT = {
+				has_citizenship_type = {
+					type = citizenship_assimilation
+					country = from
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { has_citizenship_type = { country = from type = citizenship_full } }
+				from = {
+					NOR = {
+						is_pacifist = yes
+						is_egalitarian = yes
+					}
+				}
+				AND = {
+					NOT = { has_living_standard = { country = from type = living_standard_good } }
+					NOT = {
+						from = {
+							has_monthly_income = {
+								resource = minerals
+								value > 150
+							}
+						}
+					}
+				}
+				AND = {
+					has_living_standard = { country = from type = living_standard_good }
+					NOT = {
+						from = {
+							has_monthly_income = {
+								resource = minerals
+								value > 100
+							}
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			from = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+			}
+		}
+	}
+}
+
 living_standard_academic_privilege = {
 	in_breach_of = {
 		{
@@ -604,11 +758,11 @@ living_standard_academic_privilege = {
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_normal
 		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_normal
+		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_very_low
 		pop_cat_ruler_political_power = 6
 		pop_cat_specialist_political_power = 2.5
 		pop_cat_worker_political_power = 0.5
 		pop_cat_civilian_political_power = 0.5
-		pop_civilian_bonus_workforce_mult = 0.10
 	}
 
 	potential = {
@@ -709,166 +863,6 @@ living_standard_academic_privilege = {
 				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
 				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 			}
-		}
-	}
-}
-
-living_standard_good = {
-
-	in_breach_of = {
-		{
-			trigger = {
-				is_gestalt = no
-			}
-			key = resolution_greatergood_universal_prosperity_mandate
-		}
-	}
-
-	triggered_pop_group_modifier = {
-		potential = {
-			NAND = {
-				exists = owner
-				owner = { has_deficit = consumer_goods }
-			}
-		}
-		pop_cat_ruler_happiness = 0.10
-		pop_cat_specialist_happiness = 0.10
-		pop_cat_worker_happiness = 0.10
-		pop_cat_slave_happiness = 0.10
-	}
-
-	triggered_pop_group_modifier = {
-		potential = {
-			is_pop_category = civilian
-		}
-		pop_category_civilians_unity_produces_add = 1
-	}
-
-	triggered_pop_group_modifier = {
-		# Triggered to hide from the auto-generated tooltip
-		potential = {
-			always = yes
-		}
-		pop_cat_ruler_unemployment_political_power = 4
-		pop_cat_specialist_unemployment_political_power = 3
-		pop_cat_worker_unemployment_political_power = 2
-	}
-
-	pop_group_modifier = {
-		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high
-		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
-		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_high
-		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_high
-		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_low
-		pop_cat_ruler_political_power = 4
-		pop_cat_specialist_political_power = 3
-		pop_cat_worker_political_power = 2
-		pop_cat_civilian_political_power = 2
-		pop_civilian_bonus_workforce_mult = 0.1
-	}
-
-	potential = {
-		exists = from
-		from = {
-			NOR = {
-				is_gestalt = yes
-				has_valid_civic = civic_shared_burden
-				is_worker_coop_empire = yes
-				has_valid_civic = civic_dystopian_society
-			}
-		}
-		NOT = { has_trait = trait_hive_mind }
-		OR = {
-			AND = {
-				is_robotic = yes # Vfix
-				OR = {
-					species_rights_robot_full_rights_check = yes
-					from = { is_individual_machine = yes }
-				}
-			}
-			is_robotic = no # Vfix
-		}
-	}
-
-	allow = {
-		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = is_slaves_chattel_or_domestic
-			if = {
-				limit = {
-					has_citizenship_type = { country = from type = citizenship_slavery }
-				}
-				NOR = {
-					has_slavery_type = { country = from type = slavery_normal }
-					has_slavery_type = { country = from type = slavery_domestic }
-				}
-			}
-		}
-		custom_tooltip = {
-			fail_text = is_purged_not_neutered
-			if = {
-				limit = {
-					OR = {
-						has_citizenship_type = { country = from type = citizenship_purge_machine }
-						has_citizenship_type = { country = from type = citizenship_purge }
-					}
-				}
-				OR = {
-					has_purge_type = { country = from type = purge_neutering }
-					has_purge_type = { country = from type = purge_cosmogenesis_lathe_resettle }
-				}
-			}
-		}
-		custom_tooltip = {
-			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
-			NOT = {
-				has_citizenship_type = {
-					type = citizenship_assimilation
-					country = from
-				}
-			}
-		}
-	}
-	ai_will_do = {
-		factor = 5
-		modifier = {
-			factor = 0
-			OR = {
-				NOT = { has_citizenship_type = { country = from type = citizenship_full } }
-				from = {
-					is_pacifist = no
-					is_egalitarian = no
-				}
-				AND = {
-					NOT = { has_living_standard = { country = from type = living_standard_good } }
-					NOT = {
-						from = {
-							has_monthly_income = {
-								resource = minerals
-								value > 150
-							}
-						}
-					}
-				}
-				AND = {
-					has_living_standard = { country = from type = living_standard_good }
-					NOT = {
-						from = {
-							has_monthly_income = {
-								resource = minerals
-								value > 100
-							}
-						}
-					}
-				}
-			}
-		}
-		modifier = {
-			factor = 0.25
-			from = {
-				is_galactic_community_member = yes
-			}
-			is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
 		}
 	}
 }
@@ -1024,6 +1018,7 @@ living_standard_stratified = {
 			always = yes
 		}
 		pop_cat_worker_happiness = -0.10
+		pop_cat_civilian_happiness = -0.10
 		pop_cat_slave_happiness = -0.10
 	}
 
@@ -1131,10 +1126,7 @@ living_standard_subsistence = {
 		potential = {
 			always = yes
 		}
-		pop_cat_ruler_happiness = -0.05
-		pop_cat_specialist_happiness = -0.10
-		pop_cat_worker_happiness = -0.20
-		pop_cat_slave_happiness = -0.10
+		pop_happiness = -0.20
 	}
 
 	triggered_pop_group_modifier = {

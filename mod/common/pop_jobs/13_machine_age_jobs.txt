@@ -33,8 +33,8 @@ haruspex = {
 	resources = {
 		category = planet_bureaucrats
 		produces = {
-			unity = 3
-			engineering_research = 2.5
+			unity = 1.5
+			engineering_research = 1.25
 		}
 		produces = { # Reduced production to make up for the trade value
 			trigger = {
@@ -43,7 +43,7 @@ haruspex = {
 					is_megacorp = yes
 				}
 			}
-			engineering_research = -0.5
+			engineering_research = -0.25
 			trade = 2
 		}
 		upkeep = {
@@ -78,7 +78,7 @@ haruspex = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = {
 				has_tradition = tr_modularity_4
 			}
@@ -157,11 +157,11 @@ technophant = {
 	resources = {
 		category = planet_bureaucrats
 		produces = {
-			unity = 6
-			engineering_research = 5
+			unity = 5
+			engineering_research = 2.5
 		}
 		upkeep = {
-			consumer_goods = 2
+			consumer_goods = 3
 		}
 	}
 
@@ -213,6 +213,7 @@ technophant = {
 }
 
 # COSMOGENESIS
+
 neural_chip = {
 	category = chip_slave
 	first_come_first_served = yes
@@ -242,9 +243,9 @@ neural_chip = {
 	resources = {
 		category = planet_neural_chips
 		produces = {
-			society_research = 0.75
-			engineering_research = 0.75
-			physics_research = 0.75
+			society_research = 0.375
+			engineering_research = 0.375
+			physics_research = 0.375
 			advanced_logic = 0.025
 			mult = value:num_chip_slave
 		}
@@ -435,7 +436,7 @@ augmentor = { # Normal empire
 				has_owner = yes
 				is_cyborg_empire = no
 			}
-			engineering_research = 6
+			engineering_research = 3
 		}
 
 		produces = {
@@ -443,7 +444,7 @@ augmentor = { # Normal empire
 				has_owner = yes
 				is_cyborg_empire = yes
 			}
-			engineering_research = 3
+			engineering_research = 1.5
 		}
 
 		upkeep = {
@@ -527,10 +528,12 @@ augmentor_drone = { # Hive empire
 		produces = {
 			trigger = {
 				has_owner = yes
-				is_cyborg_empire = no
-				can_assemble_hive_pop = no
+				NOR = {
+					is_cyborg_empire = yes
+					can_assemble_hive_pop = yes
+				}
 			}
-			engineering_research = 6
+			engineering_research = 3
 		}
 
 		produces = {
@@ -541,7 +544,7 @@ augmentor_drone = { # Hive empire
 					can_assemble_hive_pop = yes
 				}
 			}
-			engineering_research = 3
+			engineering_research = 1.5
 		}
 
 		upkeep = {
@@ -644,14 +647,14 @@ identity_designer = {
 	resources = {
 		category = planet_pop_assemblers
 		produces = {
-			engineering_research = 2
+			engineering_research = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				NOT = { owner = { has_country_flag = identity_designer_converter } }
 			}
-			engineering_research = 3
+			engineering_research = 1.5
 		}
 		upkeep = {
 			alloys = 2
@@ -759,7 +762,7 @@ cyberdome_duelist = {
 	resources = {
 		category = planet_jobs
 		produces = {
-			unity = 2
+			unity = 1
 		}
 		upkeep = {
 			alloys = 1
@@ -920,9 +923,9 @@ nanotech_research_unit = {
 	resources = {
 		category = planet_researchers
 		produces = {
-			physics_research = 2
-			engineering_research = 6
-			society_research = 2
+			physics_research = 1
+			engineering_research = 3
+			society_research = 1
 		}
 		upkeep = {
 			energy = 4
@@ -946,21 +949,13 @@ nanotech_research_unit = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
 		}
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			local_or_sector_governor_has_trait = {
-				TRAIT = leader_trait_academia_recruiter
-			}
-		}
-		country_naval_cap_add = 1
-		mult = planet.modifier:job_researcher_naval_cap_add
-	}
+	inline_script = "jobs/academia_recruiter_naval_cap_add"
 
 	weight = {
 		weight = @complex_drone_job_weight
@@ -1013,9 +1008,9 @@ nanotech_researcher = {
 	resources = {
 		category = planet_researchers
 		produces = {
-			physics_research = 2
-			engineering_research = 6
-			society_research = 2
+			physics_research = 1
+			engineering_research = 3
+			society_research = 1
 		}
 		upkeep = {
 			consumer_goods = 1
@@ -1039,21 +1034,13 @@ nanotech_researcher = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
 		}
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			local_or_sector_governor_has_trait = {
-				TRAIT = leader_trait_academia_recruiter
-			}
-		}
-		country_naval_cap_add = 1
-		mult = planet.modifier:job_researcher_naval_cap_add
-	}
+	inline_script = "jobs/academia_recruiter_naval_cap_add"
 
 	weight = {
 		weight = @specialist_job_weight

@@ -19,11 +19,11 @@ building_autochthon_monument = {
 			has_modifier = penal_colony
 			owner = {
 				OR = {
-					is_ai = yes
 					is_gestalt = yes
 					is_megacorp = yes
 					is_memorialist_empire = yes
 					is_entropy_drinkers_empire = yes
+					is_ai = yes
 				}
 			}
 		}
@@ -58,8 +58,8 @@ building_autochthon_monument = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.05
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -85,6 +85,10 @@ building_autochthon_monument = {
 		building_avatar_chamber_1
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	show_tech_unlock_if = {
 		is_gestalt = no
 		is_megacorp = no
@@ -98,10 +102,6 @@ building_autochthon_monument = {
 
 	upgrades = {
 		building_heritage_site
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -131,11 +131,6 @@ building_heritage_site = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -163,6 +158,11 @@ building_heritage_site = {
 		building_avatar_chamber_2
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -177,8 +177,8 @@ building_heritage_site = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.10
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -193,12 +193,10 @@ building_heritage_site = {
 	}
 
 	show_tech_unlock_if = {
-		NOR = {
-			is_gestalt = yes
-			is_megacorp = yes
-			is_memorialist_empire = yes
-			is_entropy_drinkers_empire = yes
-		}
+		is_gestalt = no
+		is_megacorp = no
+		is_memorialist_empire = no
+		is_entropy_drinkers_empire = no
 	}
 
 	ai_resource_production = {
@@ -236,11 +234,6 @@ building_hypercomms_forum = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -268,6 +261,11 @@ building_hypercomms_forum = {
 		building_avatar_chamber_3
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -282,8 +280,8 @@ building_hypercomms_forum = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -348,16 +346,16 @@ building_bureaucratic_1 = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	ai_weight_coefficient = 0
 
 	convert_to = {
 		building_temple
 		building_hive_node
 		building_uplink_node
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -408,10 +406,6 @@ building_bureaucratic_2 = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -429,6 +423,10 @@ building_bureaucratic_2 = {
 		building_network_junction
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -442,7 +440,7 @@ building_bureaucratic_2 = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_upkeep_mult = -0.20
+		planet_bureaucrats_upkeep_mult = -0.10
 	}
 
 	prerequisites = {
@@ -478,10 +476,6 @@ building_bureaucratic_3 = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -499,6 +493,10 @@ building_bureaucratic_3 = {
 		building_system_conflux
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -512,10 +510,18 @@ building_bureaucratic_3 = {
 	}
 
 	planet_modifier = {
-		pop_bureaucrat_bonus_workforce_mult = 0.15
+		pop_bureaucrat_bonus_workforce_mult = 0.05
 	}
 
-	inline_script = buildings/job_high_priest_variants_add_saintly_hierarchy
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner.federation
+			owner = {
+				federation = { has_federation_perk = all_the_priests_2 }
+			}
+		}
+		job_politician_add = @building_static_jobs_low
+	}
 
 	prerequisites = {
 		"tech_galactic_bureaucracy"
@@ -559,18 +565,16 @@ building_temple = {
 		has_owner = yes
 		OR = {
 			owner = {
-				is_spiritualist = no
 				OR = {
+					NOR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
 					is_gestalt = yes
-					has_make_spiritualist_perk = no
 				}
 			}
 			has_modifier = slave_colony
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 
 	ai_weight_coefficient = 0
@@ -579,6 +583,10 @@ building_temple = {
 		building_bureaucratic_1
 		building_hive_node
 		building_uplink_node
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -638,18 +646,16 @@ building_holotemple = {
 		NOT = { has_modifier = slave_colony }
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
 			owner = {
-				is_spiritualist = no
 				OR = {
+					NOR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
 					is_gestalt = yes
-					has_make_spiritualist_perk = no
 				}
 			}
 			has_modifier = slave_colony
@@ -660,6 +666,10 @@ building_holotemple = {
 		building_bureaucratic_2
 		building_hive_cluster
 		building_network_junction
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -676,7 +686,7 @@ building_holotemple = {
 
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.10
-		planet_bureaucrats_upkeep_mult = -0.20
+		planet_bureaucrats_upkeep_mult = -0.10
 	}
 
 	prerequisites = {
@@ -717,18 +727,16 @@ building_sacred_nexus = {
 		NOT = { has_modifier = slave_colony }
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
 			owner = {
-				is_spiritualist = no
 				OR = {
+					NOR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
 					is_gestalt = yes
-					has_make_spiritualist_perk = no
 				}
 			}
 			has_modifier = slave_colony
@@ -739,6 +747,10 @@ building_sacred_nexus = {
 		building_bureaucratic_3
 		building_hive_confluence
 		building_system_conflux
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -755,7 +767,7 @@ building_sacred_nexus = {
 
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.15
-		pop_bureaucrat_bonus_workforce_mult = 0.15
+		pop_bureaucrat_bonus_workforce_mult = 0.05
 	}
 
 	prerequisites = {
@@ -813,6 +825,10 @@ building_uplink_node = {
 		building_hive_node
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -836,10 +852,6 @@ building_uplink_node = {
 		is_machine_empire = yes
 		NOT = { has_valid_civic = civic_machine_servitor }
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_network_junction = {
@@ -860,11 +872,6 @@ building_network_junction = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -882,6 +889,11 @@ building_network_junction = {
 		building_commensal_clearing_3
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -895,7 +907,7 @@ building_network_junction = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_upkeep_mult = -0.20
+		planet_bureaucrats_upkeep_mult = -0.10
 	}
 
 	prerequisites = {
@@ -926,11 +938,6 @@ building_system_conflux = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -947,6 +954,11 @@ building_system_conflux = {
 		building_hive_confluence
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -960,7 +972,7 @@ building_system_conflux = {
 	}
 
 	planet_modifier = {
-		pop_coordinator_bonus_workforce_mult = 0.15
+		pop_coordinator_bonus_workforce_mult = 0.05
 	}
 
 	prerequisites = {
@@ -1008,6 +1020,10 @@ building_hive_node = {
 		building_commensal_clearing_1
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	inline_script = {
 		script = jobs/unity_jobs_add
 		AMOUNT = @building_static_jobs
@@ -1035,10 +1051,6 @@ building_hive_node = {
 	prerequisites = {
 		"tech_hive_node"
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_hive_cluster = {
@@ -1056,11 +1068,6 @@ building_hive_cluster = {
 		owner = { is_hive_empire = yes is_wilderness_empire = no }
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -1076,6 +1083,11 @@ building_hive_cluster = {
 		building_holotemple
 		building_commensal_clearing_3
 		building_network_junction
+	}
+
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
 	}
 
 	resources = {
@@ -1113,7 +1125,7 @@ building_hive_cluster = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_upkeep_mult = -0.20
+		planet_bureaucrats_upkeep_mult = -0.10
 	}
 
 	prerequisites = {
@@ -1135,11 +1147,6 @@ building_hive_confluence = {
 		owner = { is_hive_empire = yes is_wilderness_empire = no }
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -1155,6 +1162,11 @@ building_hive_confluence = {
 		building_sacred_nexus
 		building_commensal_clearing_4
 		building_system_conflux
+	}
+
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
 	}
 
 	resources = {
@@ -1188,7 +1200,7 @@ building_hive_confluence = {
 	}
 
 	planet_modifier = {
-		pop_coordinator_bonus_workforce_mult = 0.15
+		pop_coordinator_bonus_workforce_mult = 0.05
 	}
 
 	prerequisites = {
@@ -1227,15 +1239,15 @@ building_sacrificial_temple_1 = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	convert_to = {
 		building_bureaucratic_1
 		building_temple
 		building_hive_node
 		building_uplink_node
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1287,10 +1299,6 @@ building_sacrificial_temple_2 = {
 		owner = { is_death_cult_empire = yes }
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -1304,6 +1312,10 @@ building_sacrificial_temple_2 = {
 		building_holotemple
 		building_hive_cluster
 		building_network_junction
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1320,7 +1332,7 @@ building_sacrificial_temple_2 = {
 
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.1
-		planet_bureaucrats_produces_mult = 0.20
+		planet_bureaucrats_produces_mult = 0.05
 	}
 
 	inline_script = {
@@ -1354,10 +1366,6 @@ building_sacrificial_temple_3 = {
 		NOT = { has_modifier = slave_colony }
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -1371,6 +1379,10 @@ building_sacrificial_temple_3 = {
 		building_sacred_nexus
 		building_system_conflux
 		building_hive_confluence
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1387,7 +1399,7 @@ building_sacrificial_temple_3 = {
 
 	planet_modifier = {
 		pop_ethic_spiritualist_attraction_mult = 0.15
-		pop_mortal_initiate_bonus_workforce_mult = 0.15
+		pop_mortal_initiate_bonus_workforce_mult = 0.05
 	}
 
 	inline_script = {
@@ -1440,6 +1452,10 @@ building_galactic_memorial_1 = {
 		building_avatar_chamber_1
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -1465,17 +1481,17 @@ building_galactic_memorial_1 = {
 			has_owner = yes
 			owner = { is_regular_empire = yes }
 		}
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_gestalt = yes }
 		}
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -1528,10 +1544,6 @@ building_galactic_memorial_1 = {
 	ai_resource_production = {
 		unity = 10
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 # Pillar of Quietus
@@ -1551,12 +1563,6 @@ building_galactic_memorial_2 = {
 		owner = { is_memorialist_empire = yes }
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_owner = yes
-		has_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -1571,6 +1577,12 @@ building_galactic_memorial_2 = {
 		building_simulation_2
 		building_sensorium_2
 		building_avatar_chamber_2
+	}
+
+	allow = {
+		is_occupied_flag = no
+		has_owner = yes
+		has_upgraded_capital = yes
 	}
 
 	resources = {
@@ -1608,9 +1620,9 @@ building_galactic_memorial_2 = {
 			has_owner = yes
 			owner = { is_gestalt = yes }
 		}
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -1682,11 +1694,6 @@ building_galactic_memorial_3 = {
 		owner = { is_memorialist_empire = yes }
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -1701,6 +1708,11 @@ building_galactic_memorial_3 = {
 		building_simulation_3
 		building_sensorium_3
 		building_avatar_chamber_3
+	}
+
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
 	}
 
 	resources = {
@@ -1730,17 +1742,17 @@ building_galactic_memorial_3 = {
 			has_owner = yes
 			owner = { is_regular_empire = yes }
 		}
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_gestalt = yes }
 		}
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -1843,9 +1855,9 @@ building_simulation_1 = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.05
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -1867,6 +1879,10 @@ building_simulation_1 = {
 		building_lifecrypt_corporate_1
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	show_tech_unlock_if = {
 		is_machine_empire = yes
 		is_memorialist_empire = no
@@ -1880,10 +1896,6 @@ building_simulation_1 = {
 
 	upgrades = {
 		building_simulation_2
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -1905,11 +1917,6 @@ building_simulation_2 = {
 			is_memorialist_empire = no
 			is_entropy_drinkers_empire = no
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
@@ -1937,6 +1944,11 @@ building_simulation_2 = {
 		building_lifecrypt_corporate_2
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -1951,9 +1963,9 @@ building_simulation_2 = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.10
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -2000,11 +2012,6 @@ building_simulation_3 = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -2030,6 +2037,11 @@ building_simulation_3 = {
 		building_lifecrypt_corporate_3
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -2044,9 +2056,9 @@ building_simulation_3 = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	prerequisites = {
@@ -2115,6 +2127,10 @@ building_corporate_monument = {
 		building_lifecrypt_corporate_1
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -2129,8 +2145,8 @@ building_corporate_monument = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.05
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -2157,10 +2173,6 @@ building_corporate_monument = {
 	upgrades = {
 		building_corporate_site
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_corporate_site = {
@@ -2182,11 +2194,6 @@ building_corporate_site = {
 			is_memorialist_empire = no
 			is_entropy_drinkers_empire = no
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
@@ -2214,6 +2221,11 @@ building_corporate_site = {
 		building_lifecrypt_corporate_2
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -2228,8 +2240,8 @@ building_corporate_site = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.10
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -2279,11 +2291,6 @@ building_corporate_forum = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -2309,6 +2316,11 @@ building_corporate_forum = {
 		building_lifecrypt_corporate_3
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -2323,8 +2335,8 @@ building_corporate_forum = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		planet_civilians_unity_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
 	}
 
 	triggered_desc = {
@@ -2368,11 +2380,9 @@ building_sensorium_1 = {
 		NOT = { has_modifier = slave_colony }
 		owner = {
 			is_hive_empire = yes
-			NOR = {
-				is_memorialist_empire = yes
-				is_entropy_drinkers_empire = yes
-				is_wilderness_empire = yes # see 'building_avatar_chamber_1'
-			}
+			is_memorialist_empire = no
+			is_entropy_drinkers_empire = no
+			is_wilderness_empire = no # see 'building_avatar_chamber_1'
 		}
 	}
 
@@ -2402,6 +2412,10 @@ building_sensorium_1 = {
 		building_lifecrypt_corporate_1
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		produces = {
@@ -2416,9 +2430,9 @@ building_sensorium_1 = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.05
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -2443,10 +2457,6 @@ building_sensorium_1 = {
 	upgrades = {
 		building_sensorium_2
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_sensorium_2 = {
@@ -2464,17 +2474,10 @@ building_sensorium_2 = {
 		NOT = { has_modifier = slave_colony }
 		owner = {
 			is_hive_empire = yes
-			NOR = {
-				is_memorialist_empire = yes
-				is_entropy_drinkers_empire = yes
-				is_wilderness_empire = yes # see 'building_avatar_chamber_2'
-			}
+			is_memorialist_empire = no
+			is_entropy_drinkers_empire = no
+			is_wilderness_empire = no # see 'building_avatar_chamber_2'
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
@@ -2504,6 +2507,11 @@ building_sensorium_2 = {
 		building_avatar_chamber_2
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	prerequisites = {
 		"tech_heritage_site"
 	}
@@ -2528,9 +2536,9 @@ building_sensorium_2 = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.10
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	triggered_desc = {
@@ -2562,17 +2570,10 @@ building_sensorium_3 = {
 		NOT = { has_modifier = slave_colony }
 		owner = {
 			is_hive_empire = yes
-			NOR = {
-				is_memorialist_empire = yes
-				is_entropy_drinkers_empire = yes
-				is_wilderness_empire = yes # see 'building_avatar_chamber_3'
-			}
+			is_memorialist_empire = no
+			is_entropy_drinkers_empire = no
+			is_wilderness_empire = no # see 'building_avatar_chamber_3'
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
@@ -2598,17 +2599,20 @@ building_sensorium_3 = {
 		building_avatar_chamber_3
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
+	}
+
 	prerequisites = {
 		"tech_hypercomms_forum"
 	}
 
 	show_tech_unlock_if = {
 		is_hive_empire = yes
-		NOR = {
-			is_memorialist_empire = yes
-			is_wilderness_empire = yes
-			is_entropy_drinkers_empire = yes
-		}
+		is_memorialist_empire = no
+		is_wilderness_empire = no
+		is_entropy_drinkers_empire = no
 	}
 
 	resources = {
@@ -2625,9 +2629,9 @@ building_sensorium_3 = {
 
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		planet_maintenance_drones_unity_produces_add = 0.50
-		planet_maintenance_drones_trade_produces_add = 0.50
-		planet_maintenance_drones_minerals_upkeep_add = 0.25
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
 	}
 
 	ai_resource_production = {
@@ -2657,21 +2661,15 @@ building_autocurating_vault = {
 		has_owner = yes
 		is_special_colony_type = no
 		owner = {
-			NOR = {
-				is_machine_empire = yes # see 'building_alpha_hub'
-				is_megacorp = yes # see 'building_corporate_vault'
-				is_spiritualist = yes # see 'building_citadel_of_faith'
-				is_wilderness_empire = yes
-			}
-			OR = { # only Hive Minds may avoid effects and restrictions imposed by the 'make_spiritualist_1' Federation Perk
+			is_machine_empire = no		# see 'building_alpha_hub'
+			is_megacorp = no			# see 'building_corporate_vault'
+			is_spiritualist = no		# see 'building_citadel_of_faith'
+			is_wilderness_empire = no
+			OR = {						# only Hive Minds may avoid effects and restrictions imposed by the 'make_spiritualist_1' Federation Perk
 				is_hive_empire = yes
 				has_make_spiritualist_perk = no
 			}
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -2693,6 +2691,10 @@ building_autocurating_vault = {
 		building_alpha_hub
 		building_corporate_vault
 		building_trophy_vault
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -2720,44 +2722,56 @@ building_autocurating_vault = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 1
-		planet_bureaucrats_physics_research_produces_add = 1
-		planet_bureaucrats_society_research_produces_add = 1
-		planet_bureaucrats_engineering_research_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.25
+		planet_bureaucrats_physics_research_produces_add = 0.1
+		planet_bureaucrats_society_research_produces_add = 0.1
+		planet_bureaucrats_engineering_research_produces_add = 0.1
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_bureaucrats_unity_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-		planet_bureaucrats_consumer_goods_upkeep_add = 3
+		planet_bureaucrats_consumer_goods_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		planet_bureaucrats_energy_upkeep_add = 6
+		planet_bureaucrats_energy_upkeep_add = 4
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { is_hive_empire = yes is_lithoid_empire = no }
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = no
+				is_infernal_empire = no
+			}
 		}
-		planet_bureaucrats_food_upkeep_add = 3
-		planet_bureaucrats_energy_upkeep_add = 3
+		planet_bureaucrats_food_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_hive_empire = yes is_lithoid_empire = yes }
 		}
-		planet_bureaucrats_minerals_upkeep_add = 3
+		planet_bureaucrats_minerals_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { is_hive_empire = yes is_infernal_empire = yes }
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
 		planet_bureaucrats_energy_upkeep_add = 3
 	}
 
@@ -2766,12 +2780,10 @@ building_autocurating_vault = {
 	}
 
 	show_tech_unlock_if = {
-		NOR = {
-			is_machine_empire = yes
-			is_spiritualist = yes
-			is_megacorp = yes
-			is_wilderness_empire = yes
-		}
+		is_machine_empire = no
+		is_spiritualist = no
+		is_megacorp = no
+		is_wilderness_empire = no
 		OR = {
 			is_hive_empire = yes
 			has_make_spiritualist_perk = no
@@ -2805,18 +2817,16 @@ building_citadel_of_faith = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
 			owner = {
-				is_spiritualist = no
 				OR = {
+					NOR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
 					is_gestalt = yes
-					has_make_spiritualist_perk = no
 				}
 			}
 			has_modifier = slave_colony
@@ -2828,6 +2838,10 @@ building_citadel_of_faith = {
 		building_alpha_hub
 		building_corporate_vault
 		building_trophy_vault
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -2855,26 +2869,26 @@ building_citadel_of_faith = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 3
+		planet_bureaucrats_unity_produces_add = 1
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_bureaucrats_unity_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.5
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-		planet_bureaucrats_consumer_goods_upkeep_add = 3
+		planet_bureaucrats_consumer_goods_upkeep_add = 1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		planet_bureaucrats_energy_upkeep_add = 6
+		planet_bureaucrats_energy_upkeep_add = 4
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -2885,15 +2899,30 @@ building_citadel_of_faith = {
 				is_infernal_empire = no
 			}
 		}
-		planet_bureaucrats_food_upkeep_add = 3
-		planet_bureaucrats_energy_upkeep_add = 3
+		planet_bureaucrats_food_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_hive_empire = yes is_lithoid_empire = yes }
 		}
-		planet_bureaucrats_minerals_upkeep_add = 3
+		planet_bureaucrats_minerals_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	inline_script = {
+		script = "jobs/politician_add_from_civic"
+		AMOUNT = @building_static_jobs
+		CIVIC = civic_exalted_priesthood
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { is_hive_empire = yes is_infernal_empire = yes }
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
 		planet_bureaucrats_energy_upkeep_add = 3
 	}
 	triggered_planet_modifier = {
@@ -2933,10 +2962,6 @@ building_corporate_vault = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -2956,6 +2981,10 @@ building_corporate_vault = {
 		building_autocurating_vault
 		building_alpha_hub
 		building_trophy_vault
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -2984,12 +3013,12 @@ building_corporate_vault = {
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_bureaucrats_unity_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.5
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 1
-		planet_bureaucrats_trade_produces_add = 5
+		planet_bureaucrats_unity_produces_add = 0.5
+		planet_bureaucrats_trade_produces_add = 2
 	}
 
 	triggered_planet_modifier = {
@@ -2997,14 +3026,14 @@ building_corporate_vault = {
 			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-		planet_bureaucrats_consumer_goods_upkeep_add = 3
+		planet_bureaucrats_consumer_goods_upkeep_add = 1
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		planet_bureaucrats_energy_upkeep_add = 6
+		planet_bureaucrats_energy_upkeep_add = 4
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -3015,15 +3044,23 @@ building_corporate_vault = {
 				is_infernal_empire = no
 			}
 		}
-		planet_bureaucrats_food_upkeep_add = 3
-		planet_bureaucrats_energy_upkeep_add = 3
+		planet_bureaucrats_food_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
 			owner = { is_hive_empire = yes is_lithoid_empire = yes }
 		}
-		planet_bureaucrats_minerals_upkeep_add = 3
+		planet_bureaucrats_minerals_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { is_hive_empire = yes is_infernal_empire = yes }
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
 		planet_bureaucrats_energy_upkeep_add = 3
 	}
 	triggered_planet_modifier = {
@@ -3064,11 +3101,6 @@ building_alpha_hub = {
 		}
 	}
 
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		owner = {
@@ -3084,6 +3116,11 @@ building_alpha_hub = {
 		building_citadel_of_faith
 		building_corporate_vault
 		building_trophy_vault
+	}
+
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
 	}
 
 	resources = {
@@ -3111,15 +3148,15 @@ building_alpha_hub = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 1
-		planet_bureaucrats_physics_research_produces_add = 1
-		planet_bureaucrats_society_research_produces_add = 1
-		planet_bureaucrats_engineering_research_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.5
+		planet_bureaucrats_physics_research_produces_add = 0.1
+		planet_bureaucrats_society_research_produces_add = 0.1
+		planet_bureaucrats_engineering_research_produces_add = 0.1
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_bureaucrats_unity_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.25
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -3226,6 +3263,10 @@ building_organic_sanctuary = {
 		building_communal_housing
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -3297,10 +3338,6 @@ building_organic_sanctuary = {
 			}
 		}
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_organic_paradise = {
@@ -3328,6 +3365,10 @@ building_organic_paradise = {
 	convert_to = {
 		building_paradise_dome
 		building_communal_housing_large
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -3397,10 +3438,6 @@ building_organic_paradise = {
 			}
 		}
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_trophy_vault = {
@@ -3419,10 +3456,6 @@ building_trophy_vault = {
 		owner = { has_valid_civic = civic_machine_servitor }
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -3438,6 +3471,10 @@ building_trophy_vault = {
 		building_corporate_vault
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -3451,8 +3488,8 @@ building_trophy_vault = {
 	}
 
 	planet_modifier = {
-		planet_bio_trophies_unity_produces_add = 2
-		planet_bio_trophies_consumer_goods_upkeep_add = 1
+		planet_bio_trophies_unity_produces_add = 0.5
+		planet_bio_trophies_consumer_goods_upkeep_add = 0.5
 		pop_cat_bio_trophy_happiness = 0.10
 	}
 
@@ -3529,7 +3566,7 @@ building_league_offices = {
 	}
 
 	planet_modifier = {
-		planet_bureaucrats_unity_produces_add = 1
+		planet_bureaucrats_unity_produces_add = 0.25
 	}
 
 	triggered_desc = {

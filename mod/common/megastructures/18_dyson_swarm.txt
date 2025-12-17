@@ -318,12 +318,14 @@ dyson_swarm_3 = {
 		exists = owner
 		NOR = {
 			system_has_arc_furnace = yes
-			solar_system = { has_star_flag = arc_furnace_construction }
 			solar_system = {
-				any_system_colony = {
-					has_owner = yes
-					is_artificial = no
-					owner = { is_primitive = no }
+				OR = {
+					has_star_flag = arc_furnace_construction
+					any_system_colony = {
+						has_owner = yes
+						is_artificial = no
+						owner = { is_primitive = no }
+					}
 				}
 			}
 		}

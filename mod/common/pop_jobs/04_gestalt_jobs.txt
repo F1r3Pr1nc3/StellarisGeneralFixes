@@ -115,7 +115,7 @@ spawning_drone = {
 					healthcare_is_genomic_researcher_trigger = yes
 				}
 			}
-			society_research = 6
+			society_research = 3
 		}
 		produces = {
 			trigger = {
@@ -128,7 +128,7 @@ spawning_drone = {
 					has_completed_genetic_situation = yes
 				}
 			}
-			society_research = 3
+			society_research = 1.5
 		}
 		upkeep = {
 			trigger = {
@@ -499,8 +499,8 @@ gestation_drone = {
 			alloys = @drone_alloy_upkeep_normal
 		}
 		produces = {
-			society_research = 2
-			engineering_research = 2
+			society_research = 1
+			engineering_research = 1
 		}
 	}
 
@@ -569,7 +569,7 @@ evaluator = {
 	resources = {
 		category = planet_evaluators
 		produces = {
-			unity = 4
+			unity = 2
 		}
 		upkeep = {
 			energy = 2
@@ -675,7 +675,7 @@ coordinator = {
 	resources = {
 		category = planet_bureaucrats
 		produces = {
-			unity = 4
+			unity = 2
 		}
 		produces = {
 			trigger = {
@@ -684,7 +684,7 @@ coordinator = {
 					is_memorialist_empire = yes
 				}
 			}
-			unity = 1
+			unity = 0.5
 		}
 		upkeep = {
 			trigger = {
@@ -726,7 +726,7 @@ coordinator = {
 				is_memorialist_empire = yes
 			}
 		}
-		planet_stability_add = 0.5
+		planet_stability_add = 0.2
 	}
 
 	triggered_planet_modifier = {
@@ -933,7 +933,7 @@ calculator_physicist = {
 					physicist_is_extradimensional_research_unit_trigger = no
 				}
 			}
-			physics_research = 6
+			physics_research = 3
 		}
 		produces = {
 			trigger = {
@@ -948,7 +948,7 @@ calculator_physicist = {
 					}
 				}
 			}
-			physics_research = 4
+			physics_research = 2
 		}
 		produces = {
 			trigger = {
@@ -959,7 +959,7 @@ calculator_physicist = {
 			}
 			alloys = 2
 			minerals = 4
-			physics_research = 6
+			physics_research = 3
 			multiplier = planet.value:materiality_engine_produces_mult
 		}
 		upkeep = {
@@ -1013,7 +1013,7 @@ calculator_physicist = {
 			trigger = {
 				physicist_is_space_time_researcher_trigger = yes
 			}
-			physics_research = 2
+			physics_research = 1
 			sr_dark_matter = 0.2
 		}
 		upkeep = {
@@ -1056,7 +1056,7 @@ calculator_physicist = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			physics_research = 2
+			physics_research = 1
 		}
 		produces = {
 			trigger = {
@@ -1071,19 +1071,11 @@ calculator_physicist = {
 					}
 				}
 			}
-			physics_research = 1
+			physics_research = 0.5
 		}
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			local_or_sector_governor_has_trait = {
-				TRAIT = leader_trait_academia_recruiter
-			}
-		}
-		country_naval_cap_add = 1
-		mult = planet.modifier:job_researcher_naval_cap_add
-	}
+	inline_script = "jobs/academia_recruiter_naval_cap_add"
 
 	inline_script = "jobs/inf_navalcap_jobs"
 
@@ -1233,7 +1225,7 @@ calculator_biologist = {
 	resources = {
 		category = planet_biologists
 		produces = {
-			society_research = 6
+			society_research = 3
 		}
 		produces = {
 			trigger = {
@@ -1242,8 +1234,8 @@ calculator_biologist = {
 					biologist_is_observator_trigger = yes
 				}
 			}
-			physics_research = 9
-			society_research = 3
+			physics_research = 4.5
+			society_research = 1.5
 		}
 		upkeep = {
 			trigger = {
@@ -1309,19 +1301,11 @@ calculator_biologist = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			society_research = 1
+			society_research = 0.5
 		}
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			local_or_sector_governor_has_trait = {
-				TRAIT = leader_trait_academia_recruiter
-			}
-		}
-		country_naval_cap_add = 1
-		mult = planet.modifier:job_researcher_naval_cap_add
-	}
+	inline_script = "jobs/academia_recruiter_naval_cap_add"
 
 	inline_script = "jobs/inf_navalcap_jobs"
 
@@ -1467,13 +1451,13 @@ calculator_engineer = {
 	resources = {
 		category = planet_engineers
 		produces = {
-			engineering_research = 6
+			engineering_research = 3
 		}
 		produces = {
 			trigger = {
 				engineer_is_nanotech_researcher_trigger = yes
 			}
-			engineering_research = 2
+			engineering_research = 1
 		}
 		upkeep = {
 			trigger = {
@@ -1525,15 +1509,7 @@ calculator_engineer = {
 		}
 	}
 
-	triggered_country_modifier = {
-		potential = {
-			local_or_sector_governor_has_trait = {
-				TRAIT = leader_trait_academia_recruiter
-			}
-		}
-		country_naval_cap_add = 1
-		mult = planet.modifier:job_researcher_naval_cap_add
-	}
+	inline_script = "jobs/academia_recruiter_naval_cap_add"
 
 	inline_script = "jobs/inf_navalcap_jobs"
 
@@ -2173,7 +2149,7 @@ patrol_drone = {
 	resources = {
 		category = planet_jobs
 		produces = {
-			unity = 1
+			unity = 0.5
 		}
 	}
 
@@ -2238,7 +2214,7 @@ patrol_drone = {
 #Motes
 mote_harvesting_drone = {
 	category = complex_drone
-
+	possible = { always = no }
 	swappable_data = {
 		default = {
 			condition_string = DRONE_JOB_TRIGGER
@@ -2258,59 +2234,12 @@ mote_harvesting_drone = {
 			weight = 10
 		}
 	}
-
-	tags = { strategic_resource volatile_motes }
-
-	possible_pre_triggers = {
-		has_owner = yes
-		is_sapient = yes
-		is_being_assimilated = no
-		is_being_purged = no
-		is_enslaved = no
-	}
-
-	possible_precalc = can_fill_drone_job
-
-	possible = { can_think = yes }
-
-	resources = {
-		category = planet_sr_miners
-		produces = {
-			volatile_motes = 2
-		}
-		upkeep = {
-			energy = 1
-		}
-	}
-
-	weight = {
-		weight = @complex_drone_job_weight
-		mult = value:job_weights_modifier|JOB|mote_harvesting_drone|RESOURCE|volatile_motes|
-		mult = value:scripted_job_weight_shroud_forged_mult
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-	}
-
-	promotion = {
-		time = @standard_promotion_time
-		effect = {
-			pop_amount_change_category = {
-				CATEGORY = complex_drone
-				AMOUNT = local_pop_amount
-			}
-		}
-	}
 }
 
 #Crystals
 crystal_mining_drone = {
 	category = complex_drone
-
+	possible = { always = no }
 	swappable_data = {
 		default = {
 			condition_string = DRONE_JOB_TRIGGER
@@ -2330,59 +2259,12 @@ crystal_mining_drone = {
 			weight = 10
 		}
 	}
-
-	tags = { strategic_resource rare_crystals }
-
-	possible_pre_triggers = {
-		has_owner = yes
-		is_sapient = yes
-		is_being_assimilated = no
-		is_being_purged = no
-		is_enslaved = no
-	}
-
-	possible_precalc = can_fill_drone_job
-
-	possible = { can_think = yes }
-
-	resources = {
-		category = planet_sr_miners
-		produces = {
-			rare_crystals = 2
-		}
-		upkeep = {
-			energy = 1
-		}
-	}
-
-	weight = {
-		weight = @complex_drone_job_weight
-		mult = value:job_weights_modifier|JOB|crystal_mining_drone|RESOURCE|rare_crystals|
-		mult = value:scripted_job_weight_shroud_forged_mult
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-	}
-
-	promotion = {
-		time = @standard_promotion_time
-		effect = {
-			pop_amount_change_category = {
-				CATEGORY = complex_drone
-				AMOUNT = local_pop_amount
-			}
-		}
-	}
 }
 
 #Gases
 gas_extraction_drone = {
 	category = complex_drone
-
+	possible = { always = no }
 	swappable_data = {
 		default = {
 			condition_string = DRONE_JOB_TRIGGER
@@ -2402,53 +2284,6 @@ gas_extraction_drone = {
 			weight = 10
 		}
 	}
-
-	tags = { strategic_resource exotic_gases }
-
-	possible_pre_triggers = {
-		has_owner = yes
-		is_sapient = yes
-		is_being_assimilated = no
-		is_being_purged = no
-		is_enslaved = no
-	}
-
-	possible_precalc = can_fill_drone_job
-
-	possible = { can_think = yes }
-
-	resources = {
-		category = planet_sr_miners
-		produces = {
-			exotic_gases = 2
-		}
-		upkeep = {
-			energy = 1
-		}
-	}
-
-	weight = {
-		weight = @complex_drone_job_weight
-		mult = value:job_weights_modifier|JOB|gas_extraction_drone|RESOURCE|exotic_gases|
-		mult = value:scripted_job_weight_shroud_forged_mult
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-	}
-
-	promotion = {
-		time = @standard_promotion_time
-		effect = {
-			pop_amount_change_category = {
-				CATEGORY = complex_drone
-				AMOUNT = local_pop_amount
-			}
-		}
-	}
 }
 
 # Trade
@@ -2460,6 +2295,14 @@ logistics_drone = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_maintenance_depot
 			icon = low_tech_bureaucrat
+		}
+		swap_type = {
+			trigger = {
+				trader_is_subterranean = yes
+			}
+			name = underground_contact_drone
+			desc = underground_contact_drone
+			weight = 5
 		}
 		swap_type = {
 			trigger = {
@@ -2493,6 +2336,12 @@ logistics_drone = {
 		produces = {
 			trade = 6
 		}
+		produces = {
+			trigger = {
+				trader_is_subterranean = yes
+			}
+			trade = 3
+		}
 		upkeep = {
 			trigger = {
 				exists = owner
@@ -2510,6 +2359,26 @@ logistics_drone = {
 				}
 			}
 			minerals = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_machine_empire = yes
+				}
+				trader_is_subterranean = yes
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_hive_empire = yes
+				}
+				trader_is_subterranean = yes
+			}
+			minerals = 1
 		}
 	}
 
@@ -3208,7 +3077,7 @@ wilderness_maintenance_drone = {
 
 ##Solider Jobs
 warrior_drone = {
-	category = simple_drone
+	category = complex_drone
 
 	swappable_data = {
 		default = {
@@ -3237,6 +3106,8 @@ warrior_drone = {
 	}
 	resources = {
 		category = planet_soldiers
+
+		upkeep = { alloys = 1 }
 	}
 
 	inline_script = "output/soldier_triggered_modifiers"
@@ -3250,7 +3121,7 @@ warrior_drone = {
 	}
 
 	possible_precalc = can_fill_drone_job
-	possible = { simple_drone_trigger = yes }
+	possible = { can_think = yes }
 
 	weight = {
 		weight = @simple_drone_job_weight
@@ -3310,7 +3181,7 @@ warrior_drone = {
 		time = @standard_promotion_time
 		effect = {
 			pop_amount_change_category = {
-				CATEGORY = simple_drone
+				CATEGORY = complex_drone
 				AMOUNT = local_pop_amount
 			}
 		}
@@ -3377,7 +3248,7 @@ polytechnic_drone = {
 	}
 
 	planet_modifier = {
-		planet_miners_unity_produces_add = @polytechnic_output
+		planet_miners_engineering_research_produces_add = @polytechnic_output
 		planet_technician_physics_research_produces_add = @polytechnic_output
 		planet_metallurgists_engineering_research_produces_add = @polytechnic_output
 		planet_artisans_engineering_research_produces_add = @polytechnic_output
@@ -3419,7 +3290,7 @@ offworld_prospector_drone = {
 	possible = { can_think = yes }
 
 	resources = {
-		category = planet_sr_miners
+		category = planet_metallurgists
 		upkeep = {
 			energy = @offworld_prospector_upkeep
 		}

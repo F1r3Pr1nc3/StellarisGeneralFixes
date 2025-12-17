@@ -373,66 +373,72 @@ country_event = {
 			}
 			modifier = {
 				factor = 0.5
-				OR = {
-					event_target:FirstSleeper = {
-						is_fanatic_spiritualist = yes
-						root = { is_spiritualist = no }
-					}
-					event_target:FirstSleeper = {
-						is_fanatic_materialist = yes
-						root = { is_materialist = no }
+				event_target:FirstSleeper = {
+					OR = {
+						AND = {
+							is_fanatic_spiritualist = yes
+							root = { is_spiritualist = no }
+						}
+						AND = {
+							is_fanatic_materialist = yes
+							root = { is_materialist = no }
+						}
 					}
 				}
 			}
 			modifier = {
 				factor = 0.5
-				OR = {
-					event_target:FirstSleeper = {
-						is_fanatic_xenophobe = yes
-						root = { is_militarist = no is_xenophobe = no }
-					}
-					event_target:FirstSleeper = {
-						is_fanatic_xenophile = yes
-						root = { is_pacifist = no is_xenophile = no }
-					}
-					event_target:FirstSleeper = {
-						is_hive_empire = yes
-						root = { is_hive_empire = no }
-					}
-					event_target:FirstSleeper = {
-						has_country_flag = fallen_empire_hive_war
-						root = { is_pacifist = yes }
+				event_target:FirstSleeper = {
+					OR = {
+						AND = {
+							is_fanatic_xenophobe = yes
+							root = { is_militarist = no is_xenophobe = no }
+						}
+						AND = {
+							is_fanatic_xenophile = yes
+							root = { is_pacifist = no is_xenophile = no }
+						}
+						AND = {
+							is_hive_empire = yes
+							root = { is_hive_empire = no }
+						}
+						AND = {
+							has_country_flag = fallen_empire_hive_war
+							root = { is_pacifist = yes }
+						}
 					}
 				}
 			}
 			modifier = {
 				factor = 0.1
-				OR = {
-					event_target:FirstSleeper = {
-						is_fanatic_xenophobe = yes
-						root = {
-							OR = {
-								is_pacifist = yes
-								is_xenophile = yes
+				event_target:FirstSleeper = {
+					OR = {
+						AND = {
+							is_fanatic_xenophobe = yes
+							root = {
+								OR = {
+									is_pacifist = yes
+									is_xenophile = yes
+								}
 							}
 						}
-					}
-					event_target:FirstSleeper = {
-						is_fanatic_xenophile = yes
-						root = {
-							OR = {
-								is_militarist = yes
-								is_xenophobe = yes
+						AND = {
+							is_fanatic_xenophile = yes
+							root = {
+								OR = {
+									is_militarist = yes
+									is_xenophobe = yes
+								}
 							}
 						}
-					}
-					event_target:FirstSleeper = {
-						is_fanatic_materialist = yes
-						root = { is_spiritualist = yes }
-					}
-					event_target:FirstSleeper = {
-						is_fanatic_spiritualist = yes
-						root = { is_materialist = yes }
+						AND = {
+							is_fanatic_materialist = yes
+							root = { is_spiritualist = yes }
+						}
+						AND = {
+							is_fanatic_spiritualist = yes
+							root = { is_materialist = yes }
+						}
 					}
 				}
 			}
@@ -558,66 +564,72 @@ country_event = {
 			}
 			modifier = {
 				factor = 0.2
-				OR = {
-					from = {
-						is_fanatic_spiritualist = yes
-						root = { is_spiritualist = no }
-					}
-					from = {
-						is_fanatic_materialist = yes
-						root = { is_materialist = no }
+				from = {
+					OR = {
+						AND = {
+							is_fanatic_spiritualist = yes
+							root = { is_spiritualist = no }
+						}
+						AND = {
+							is_fanatic_materialist = yes
+							root = { is_materialist = no }
+						}
 					}
 				}
 			}
 			modifier = {
 				factor = 0.5
-				OR = {
-					from = {
-						is_fanatic_xenophobe = yes
-						root = { is_militarist = no is_xenophobe = no }
-					}
-					from = {
-						is_fanatic_xenophile = yes
-						root = { is_pacifist = no is_xenophile = no }
-					}
-					from = {
-						is_hive_empire = yes
-						root = { is_hive_empire = no }
-					}
-					from = {
-						has_country_flag = fallen_empire_hive_war
-						root = { is_pacifist = yes }
+				from = {
+					OR = {
+						AND = {
+							is_fanatic_xenophobe = yes
+							root = { is_militarist = no is_xenophobe = no }
+						}
+						AND = {
+							is_fanatic_xenophile = yes
+							root = { is_pacifist = no is_xenophile = no }
+						}
+						AND = {
+							is_hive_empire = yes
+							root = { is_hive_empire = no }
+						}
+						AND = {
+							has_country_flag = fallen_empire_hive_war
+							root = { is_pacifist = yes }
+						}
 					}
 				}
 			}
 			modifier = {
 				factor = 0.1
-				OR = {
-					from = {
-						is_fanatic_xenophobe = yes
-						root = {
-							OR = {
-								is_pacifist = yes
-								is_xenophile = yes
+				from = {
+					OR = {
+						AND = {
+							is_fanatic_xenophobe = yes
+							root = {
+								OR = {
+									is_pacifist = yes
+									is_xenophile = yes
+								}
 							}
 						}
-					}
-					from = {
-						is_fanatic_xenophile = yes
-						root = {
-							OR = {
-								is_militarist = yes
-								is_xenophobe = yes
+						AND = {
+							is_fanatic_xenophile = yes
+							root = {
+								OR = {
+									is_militarist = yes
+									is_xenophobe = yes
+								}
 							}
 						}
-					}
-					from = {
-						is_fanatic_materialist = yes
-						root = { is_spiritualist = yes }
-					}
-					from = {
-						is_fanatic_spiritualist = yes
-						root = { is_materialist = yes }
+						AND = {
+							is_fanatic_materialist = yes
+							root = { is_spiritualist = yes }
+						}
+						AND = {
+							is_fanatic_spiritualist = yes
+							root = { is_materialist = yes }
+						}
 					}
 				}
 			}

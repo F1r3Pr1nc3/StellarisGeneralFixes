@@ -6579,8 +6579,12 @@ country_event = {
 					is_under_open_technological_enlightenment = root
 					is_under_societal_enlightenment = root
 					has_pre_ftl_trade = root
-					root = { is_improving_relations_with = prev }
-					root = { is_harming_relations_with = prev }
+					root = {
+						OR = {
+							is_improving_relations_with = prev
+							is_harming_relations_with = prev
+						}
+					}
 				}
 			}
 			any_pre_ftl_within_border = { has_country_flag = violation_of_non_interference@root }
@@ -6602,8 +6606,12 @@ country_event = {
 							is_under_open_technological_enlightenment = root
 							is_under_societal_enlightenment = root
 							has_pre_ftl_trade = root
-							root = { is_improving_relations_with = prev }
-							root = { is_harming_relations_with = prev }
+							root = {
+								OR = {
+									is_improving_relations_with = prev
+									is_harming_relations_with = prev
+								}
+							}
 						}
 					}
 				}

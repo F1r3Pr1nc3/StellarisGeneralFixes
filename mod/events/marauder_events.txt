@@ -6439,11 +6439,11 @@ event = {
 			NOR = {
 				is_homicidal = yes
 				is_genocidal_infernal = yes
-				any_rival_country = {
-					OR = {
-						has_country_flag = under_marauder_attack
-						has_country_flag = target_of_hired_ai_raid
-					}
+			}
+			any_rival_country = {
+				NOR = {
+					has_country_flag = under_marauder_attack
+					has_country_flag = target_of_hired_ai_raid
 				}
 			}
 			resource_stockpile_compare = { resource = energy value >= 5000 }
@@ -6469,14 +6469,14 @@ event = {
 					is_genocidal_infernal = yes
 					has_ai_personality = honorbound_warriors
 					has_ai_personality = xenophobic_isolationists
-					any_rival_country = {
-						OR = {
-							has_country_flag = under_marauder_attack
-							has_country_flag = target_of_hired_ai_raid
-						}
+					resource_stockpile_compare = { resource = energy value < 5000 }
+				}
+				any_rival_country = {
+					NOR = {
+						has_country_flag = under_marauder_attack
+						has_country_flag = target_of_hired_ai_raid
 					}
 				}
-				resource_stockpile_compare = { resource = energy value >= 5000 }
 				any_relation = {
 					is_country_type = dormant_marauders
 					has_communications = prev
@@ -11114,6 +11114,7 @@ country_event = {
 		}
 		run_in_ai_mode = yes # Vfix?
 	}
+
 	after = {
 		set_subject_of = { who = event_target:raider_khanate preset = preset_satrapy }
 	}
@@ -11204,10 +11205,10 @@ fleet_event = {
 					}
 					OR = {
 						event_target:global_event_country = {
-							check_variable = { which = CmtVarReinforceCycle_Khan value < 2 }
-						}
-						event_target:global_event_country = {
-							check_variable = { which = CmtVarReinforceCycle_Khan value > 4 }
+							OR = {
+								check_variable = { which = CmtVarReinforceCycle_Khan value < 2 }
+								check_variable = { which = CmtVarReinforceCycle_Khan value > 4 }
+							}
 						}
 						check_variable = { which = CmtVarKhanReinforcementCounter value > 9.5 }
 					}

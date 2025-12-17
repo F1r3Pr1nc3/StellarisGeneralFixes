@@ -13,17 +13,7 @@ manifesti = {
 
 	resources = {
 		category = pop_factions
-		produces = {
-			trigger = {
-				owner = {
-					NOR = {
-						has_civic = civic_crowdsourcing
-						has_civic = civic_corporate_crowdsourcing
-					}
-				}
-			}
-			unity = @faction_base_output
-		}
+		inline_script = pop_faction_types/shared_unity_production
 		produces = {
 			trigger = {
 				owner = {
@@ -190,7 +180,7 @@ manifesti = {
 		modifier = { # Outcasts and radicals
 			factor = 1.5
 			OR = {
-				NOR = {
+				NAND = {
 					is_same_species = owner_species
 					has_citizenship_type = { type = citizenship_full country = owner }
 				}
@@ -357,7 +347,7 @@ manifesti = {
 
 	# Faction Demands for Ruler and Council positions.
 	inline_script = {
-		script = "paragon/global_faction_demands"
+		script = "pop_faction_types/global_faction_demands"
 		ETHIC = ethic_egalitarian
 		ETHIC_FANATIC = ethic_fanatic_egalitarian
 		ETHIC_OPPOSED = ethic_authoritarian
@@ -392,9 +382,12 @@ manifesti = {
 			potential = {
 				exists = owner
 				owner = {
-					NAND = {
-						is_subject = yes
-						any_agreement = { agreement_preset = preset_dominion }
+					OR = {
+						is_subject = no
+						count_agreement = {
+							count = 0
+							limit = { agreement_preset = preset_dominion }
+						}
 					}
 				}
 			}

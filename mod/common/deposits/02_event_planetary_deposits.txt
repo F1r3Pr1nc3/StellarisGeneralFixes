@@ -4,13 +4,6 @@
 # blocked_modifier - applied to planet
 # planet_modifier - applied to planet always
 # station = station class in orbit to gather
-@high = 16
-@med = 8
-@low = 4
-@high_rare = 2
-@med_rare = 1
-@low_rare = 0.5
-
 d_metal_boneyard = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
@@ -55,27 +48,14 @@ d_migrating_forest_reserve = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
 		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
 		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -155,27 +135,18 @@ d_valley_of_zanaam = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 400
-		job_biologist_add = 400
-		job_engineer_add = 400
+		job_physicist_add = 200
+		job_biologist_add = 200
+		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 400
-		job_calculator_biologist_add = 400
-		job_calculator_engineer_add = 400
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 400
-		job_calculator_biologist_add = 400
-		job_calculator_engineer_add = 400
+		job_calculator_physicist_add = 200
+		job_calculator_biologist_add = 200
+		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -220,26 +191,13 @@ d_the_zone = {
 			owner = { is_regular_empire = yes }
 		}
 		job_physicist_add = 200
-		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
 		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -281,8 +239,7 @@ d_toy_factory_complex = {
 	icon = d_building_complex
 
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.10
-		planet_jobs_engineering_research_produces_mult = 0.20
+		planet_engineers_society_research_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
@@ -290,26 +247,13 @@ d_toy_factory_complex = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
-		job_biologist_add = 200
 		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
 		job_calculator_engineer_add = 200
 	}
 
@@ -332,27 +276,14 @@ d_mutant_landfill = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
 		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
 		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -375,26 +306,13 @@ d_ancient_bombardment_craters = {
 			owner = { is_regular_empire = yes }
 		}
 		job_physicist_add = 200
-		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
 		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -416,26 +334,13 @@ d_ancient_battlefield = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
-		job_biologist_add = 200
 		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
 		job_calculator_engineer_add = 200
 	}
 
@@ -458,27 +363,14 @@ d_irradiated_ruins = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
 		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
 		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -540,26 +432,13 @@ d_ancient_particle_accelerator = {
 			owner = { is_regular_empire = yes }
 		}
 		job_physicist_add = 200
-		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
 		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -581,27 +460,14 @@ d_underground_vault = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
 		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
 		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -655,27 +521,14 @@ d_flooded_mounds = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
 		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
 		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -720,7 +573,7 @@ d_wetware_computer = {
 	icon = d_toxic_kelp
 
 	planet_modifier = {
-		planet_jobs_engineering_research_produces_mult = 0.2
+		planet_biologists_physics_research_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
@@ -728,27 +581,14 @@ d_wetware_computer = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 200
 		job_biologist_add = 200
-		job_engineer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 200
 		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 200
-		job_calculator_biologist_add = 200
-		job_calculator_engineer_add = 200
 	}
 
 	drop_weight = {
@@ -770,27 +610,14 @@ d_savage_wildlands = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 100
-		job_biologist_add = 100
-		job_engineer_add = 100
+		job_biologist_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 100
-		job_calculator_biologist_add = 100
-		job_calculator_engineer_add = 100
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		job_calculator_physicist_add = 100
-		job_calculator_biologist_add = 100
-		job_calculator_engineer_add = 100
+		job_calculator_biologist_add = 200
 	}
 
 	drop_weight = {
@@ -1067,10 +894,10 @@ d_underground_contact_zone = {
 	is_for_colonizable = yes
 	category = deposit_cat_rare
 	icon = d_quarantine_zone
+	custom_tooltip = trader_is_subterranean_tt
 
 	planet_modifier = {
 		planet_max_districts_add = 2
-		district_generator_max_add = 2
 	}
 
 	triggered_planet_modifier = {
@@ -1078,16 +905,14 @@ d_underground_contact_zone = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_underground_trade_worker_add = 100
-		job_underground_trade_worker_per_pop = 0.05 # 1 per 20
+		job_trader_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_underground_contact_drone_add = 100
-		job_underground_contact_drone_per_pop = 0.05 # 1 per 20
+		job_logistics_drone_add = 200
 	}
 
 	drop_weight = {
@@ -1106,16 +931,14 @@ d_space_time_anomaly = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		job_physicist_add = 100
-		job_physicist_per_pop = 0.04 # 1 per 25
+		job_physicist_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_space_time_anomaly_researcher_gestalt_add = 100
-		job_space_time_anomaly_researcher_gestalt_per_pop = 0.04 # 1 per 25
+		job_calculator_physicist_add = 200
 	}
 
 	drop_weight = {
@@ -1129,28 +952,35 @@ d_portal_research_zone = {
 	icon = d_quarantine_zone
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 8
+		planet_physicists_physics_research_produces_add = 4
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_planet_flag = dportal_closed }
-		planet_physicists_physics_research_produces_add = -6
+		planet_physicists_physics_research_produces_add = -3
 	}
 	triggered_planet_modifier = {
 		potential = { has_planet_flag = dportal_energy }
-		planet_physicists_energy_produces_add = 6
+		planet_physicists_energy_produces_add = 3
 	}
 	triggered_planet_modifier = {
 		potential = { has_planet_flag = dportal_void }
-		planet_physicists_sr_dark_matter_produces_add = 0.2
+		planet_physicists_sr_dark_matter_produces_add = 0.1
 	}
 	triggered_planet_modifier = {
 		potential = { has_planet_flag = dportal_void2 }
-		planet_physicists_sr_dark_matter_produces_add = 1
+		planet_physicists_sr_dark_matter_produces_add = 0.5
 	}
 	triggered_planet_modifier = {
 		potential = {
 			has_planet_flag = dportal_hell
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		planet_physicists_consumer_goods_upkeep_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
@@ -1158,24 +988,14 @@ d_portal_research_zone = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		job_physicist_add = 100
-		job_physicist_per_pop = 0.04 # 1 per 25
-		planet_physicists_consumer_goods_upkeep_add = 3
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		job_calculator_physicist_add = 100
-		job_calculator_physicist_per_pop = 0.04 # 1 per 25
-	}
-	triggered_planet_modifier = {
-		potential = {
 			has_planet_flag = dportal_hell
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		planet_physicists_minerals_upkeep_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
@@ -1183,54 +1003,26 @@ d_portal_research_zone = {
 	}
 	triggered_planet_modifier = {
 		potential = {
+			has_planet_flag = dportal_hell
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = { is_machine_empire = yes }
 		}
-		planet_physicists_minerals_upkeep_add = 8
+		planet_physicists_energy_upkeep_add = 1.5
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_planet_flag = dportal_hell
 			exists = owner
 			owner = { is_machine_empire = yes }
 		}
 		planet_physicists_energy_upkeep_add = 3
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		planet_physicists_energy_upkeep_add = 6
+
+	inline_script = {
+		script = jobs/physicists_add
+		AMOUNT = @building_static_jobs
 	}
 
-	drop_weight = {
-		weight = 0
-	}
-}
-
-# this is a bit redundant now that triggered jobs work
-d_portal_research_zone_gestalt = {
-	is_for_colonizable = yes
-	category = deposit_cat_rare
-	icon = d_quarantine_zone
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		job_dimensional_portal_researcher_add = 100
-		job_dimensional_portal_researcher_per_pop = 0.04 # 1 per 25
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		job_dimensional_portal_researcher_gestalt_add = 100
-		job_dimensional_portal_researcher_gestalt_per_pop = 0.04 # 1 per 25
-	}
+	custom_tooltip = physicist_is_dimension_portal_researcher_tt
 
 	drop_weight = {
 		weight = 0
@@ -1437,16 +1229,14 @@ d_turtle_miner = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		job_miner_add = 100
-		job_miner_per_pop = 0.04 # 1 per 20
+		job_miner_add = 400
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_turtle_miner_gestalt_add = 100
-		job_turtle_miner_gestalt_per_pop = 0.04 # 1 per 20
+		job_turtle_miner_gestalt_add = 400
 	}
 
 	drop_weight = {
@@ -1492,7 +1282,7 @@ d_nano_corpses = {
 
 	planet_modifier = {
 		district_mining_max_add = 3
-		planet_miners_rare_crystals_produces_add = 0.2
+		planet_miners_alloys_produces_add = 0.25
 	}
 
 	drop_weight = {
@@ -1530,7 +1320,7 @@ d_landed_dragon = {
 	}
 
 	planet_modifier = {
-		planet_stability_add = 10
+		planet_stability_add = 5
 	}
 
 	drop_weight = {
@@ -1628,8 +1418,7 @@ d_machine_care_home = {
 			exists = owner
 			owner = { has_civic = civic_machine_servitor }
 		}
-		job_machine_nurse_add = 100
-		job_machine_nurse_per_pop = 0.04 # 1 per 20
+		job_machine_nurse_add = 400
 	}
 
 	drop_weight = {
@@ -1943,21 +1732,12 @@ d_toxic_god_envenomed_seas_upgraded = {
 
 	planet_modifier = {
 		planet_max_districts_add = 1
+		planet_farmers_exotic_gases_produces_add = @SR_LARGE
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_regular_empire = yes }
-		}
-		job_gas_extractor_add = 500
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		job_gas_extraction_drone_add = 500
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @building_static_jobs_very_high
 	}
 }
 
@@ -1995,16 +1775,14 @@ d_ancient_manufactorium_working = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		job_manufactorium_specialist_add = 100
-		job_manufactorium_specialist_per_pop = 0.04 # 1 per 25
+		job_manufactorium_specialist_add = 400
 	}
 	triggered_planet_modifier = { # casual gestalt
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_manufactorium_complex_drone_add = 100
-		job_manufactorium_complex_drone_per_pop = 0.04 # 1 per 25
+		job_manufactorium_complex_drone_add = 400
 	}
 	triggered_planet_modifier = { # memorialists standard
 		potential = {
@@ -2052,7 +1830,6 @@ d_ancient_manufactorium_scrapyard = {
 	planet_modifier = {
 		planet_engineers_engineering_research_produces_add = 2
 		planet_engineers_alloys_produces_add = 2
-		planet_engineers_minerals_produces_add = 2
 	}
 
 	triggered_planet_modifier = {
@@ -2061,7 +1838,7 @@ d_ancient_manufactorium_scrapyard = {
 			owner = { is_regular_empire = yes }
 		}
 		job_engineer_add = 200
-		planet_engineers_consumer_goods_upkeep_add = 2 # Vfix
+		planet_engineers_consumer_goods_upkeep_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -2070,6 +1847,7 @@ d_ancient_manufactorium_scrapyard = {
 		}
 		job_manufactorium_scraper_drone_add = 200
 		planet_engineers_energy_upkeep_add = 4 # Vfix
+		planet_engineers_minerals_upkeep_add = 2
 	}
 
 	drop_weight = {
@@ -2199,16 +1977,14 @@ d_stasis_prison = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		job_stasis_warden_add = 100
-		job_stasis_warden_per_pop = 0.04 # 1 per 25
+		job_stasis_warden_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_stasis_warden_drone_add = 100
-		job_stasis_warden_drone_per_pop = 0.04 # 1 per 25
+		job_stasis_warden_drone_add = 200
 	}
 
 	drop_weight = {
@@ -2227,7 +2003,7 @@ d_prisoner_intergration = {
 			owner = { is_gestalt = no }
 		}
 		job_entertainer_add = 100
-		planet_stability_add = 5
+		planet_stability_add = 2
 		BIOLOGICAL_logistic_growth_mult = 0.1
 	}
 
@@ -2413,16 +2189,14 @@ d_astrogarbage_collector = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		job_astrogarbage_collector_add = 200
-		job_astrogarbage_collector_per_pop = 0.04 # 1 per 20
+		job_astrogarbage_collector_add = 400
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_astrogarbage_collector_gestalt_add = 200
-		job_astrogarbage_collector_gestalt_per_pop = 0.04 # 1 per 20
+		job_astrogarbage_collector_gestalt_add = 400
 	}
 
 	drop_weight = {
@@ -2446,16 +2220,14 @@ d_myrmeku_power_farms = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_myrmeku_power_farmer_add = 100
-		job_myrmeku_power_farmer_per_pop = 0.04 # 1 per 25
+		job_myrmeku_power_farmer_add = 400
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_myrmeku_power_farmer_gestalt_add = 100
-		job_myrmeku_power_farmer_gestalt_per_pop = 0.04 # 1 per 25
+		job_myrmeku_power_farmer_gestalt_add = 400
 	}
 
 	drop_weight = {
@@ -2469,21 +2241,13 @@ d_crystalline_glacier = {
 	icon = d_crystal_forest
 	category = deposit_cat_rare
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		job_crystal_miner_add = 300
-		job_crystal_miner_per_pop = 0.04 # 1 per 20
+	planet_modifier = {
+		planet_miners_rare_crystals_produces_add = @SR_LARGE
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		job_crystal_mining_drone_add = 300
-		job_crystal_mining_drone_per_pop = 0.04 # 1 per 20
+
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = @building_static_jobs_high
 	}
 
 	drop_weight = {
@@ -2500,23 +2264,14 @@ d_mineral_seabed = {
 		weight = 0
 	}
 
-	custom_tooltip = miner_is_mineral_diver_tt
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		job_miner_add = 200
-		job_miner_per_pop = 0.04 # 1 per 20
+	planet_modifier = {
+		planet_miners_alloys_produces_add = 1
+		planet_miners_minerals_produces_add = -1
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		job_mineral_diver_drone_add = 200
-		job_mineral_diver_drone_per_pop = 0.04 # 1 per 20
+
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = @building_static_jobs_high
 	}
 
 	drop_weight = {
@@ -2583,8 +2338,7 @@ d_desertling_infestation = {
 			exists = owner
 			owner = { is_gestalt = no }
 		}
-		job_alien_hunter_add = 300
-		job_alien_hunter_per_pop = 0.04 # 1 per 20
+		job_alien_hunter_add = 600
 	}
 
 	planet_modifier = {
@@ -2654,14 +2408,14 @@ d_geocentric_experiment = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
-		job_physicist_add = 400
+		job_physicist_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		job_calculator_physicist_add = 400
+		job_calculator_physicist_add = 200
 	}
 
 	drop_weight = {

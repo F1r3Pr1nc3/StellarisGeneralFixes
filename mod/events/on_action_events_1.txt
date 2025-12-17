@@ -3682,6 +3682,7 @@ country_event = {
 			# }
 		}
 	}
+
 	# desc = {
 	# 	text = action.11.abandoned.desc
 	# 	trigger = {
@@ -3690,7 +3691,6 @@ country_event = {
 	# 		}
 	# 	}
 	# }
-
 	picture = GFX_evt_throne_room
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
@@ -7139,8 +7139,12 @@ event = {
 								OR = {
 									is_homeworld = yes
 									has_modifier = instability_join_revolt
-									owner = { has_origin = origin_demonic_incursion }
-									owner = { has_country_flag = former_owner@prevprevprev }
+									owner = {
+										OR = {
+											has_origin = origin_demonic_incursion
+											has_country_flag = former_owner@prevprevprev
+										}
+									}
 								}
 							}
 							NOR = {
@@ -7227,8 +7231,12 @@ event = {
 								OR = {
 									is_homeworld = yes
 									has_modifier = instability_join_revolt
-									owner = { has_origin = origin_demonic_incursion }
-									owner = { has_country_flag = former_owner@prevprevprev }
+									owner = {
+										OR = {
+											has_origin = origin_demonic_incursion
+											has_country_flag = former_owner@prevprevprev
+										}
+									}
 								}
 							}
 							NOR = {

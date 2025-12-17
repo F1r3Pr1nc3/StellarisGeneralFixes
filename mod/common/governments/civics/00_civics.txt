@@ -206,8 +206,8 @@ civic_beacon_of_liberty = {
 		}
 	}
 	modifier = {
-		country_unity_produces_mult = 0.15
-		empire_size_pops_mult = -0.15
+		country_unity_produces_mult = 0.10
+		empire_size_pops_mult = -0.10
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 
@@ -561,7 +561,7 @@ civic_police_state = {
 		}
 	}
 	modifier = {
-		planet_stability_add = 5
+		planet_stability_add = 3
 		planet_enforcers_unity_produces_add = 1
 		add_attunement_the_instrument_of_desire = @civic_attunement1
 	}
@@ -963,7 +963,7 @@ civic_distinguished_admiralty = {
 	}
 	modifier = {
 		ship_fire_rate_mult = 0.10
-		commander_exp_gain = 0.2
+		leader_commanders_upkeep_mult = -0.25
 		command_limit_add = 20
 		commander_initial_skill = 2
 		add_attunement_the_eater_of_worlds = @civic_attunement1
@@ -1339,7 +1339,11 @@ civic_parliamentary_system = {
 				value = civic_corporate_crowdsourcing
 				value = civic_crowdsourcing
 			}
-			NOT = { value = civic_secret_societies }
+			NOR = {
+				value = civic_secret_societies
+				value = civic_secret_societies_corporate
+				value = civic_media_conglomerate
+			}
 		}
 		origin = {
 			NOT = {
@@ -1376,7 +1380,8 @@ civic_parliamentary_system = {
 	}
 	description = "civic_tooltip_parliamentary_system_effects"
 	modifier = {
-		pop_factions_produces_mult = 0.40
+		pop_factions_produces_mult = 0.20
+		faction_demands_unmet_mult = 0.50
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 }
@@ -1591,7 +1596,6 @@ civic_shared_burden = {
 	}
 	modifier = {
 		planet_stability_add = 5
-		pop_unemployment_demotion_time_mult = -0.45
 		add_attunement_the_composer_of_strands = @civic_attunement1
 	}
 	random_weight = {
@@ -2970,7 +2974,7 @@ civic_dimensional_worship = {
 		}
 	}
 	modifier = {
-		country_astral_threads_produces_mult = 0.25
+		planet_bureaucrats_physics_research_produces_add = 1
 		rare_tech_draw_chance_mult = 0.1
 	}
 	custom_tooltip_with_modifiers = "civic_dimensional_worship_effects_additional"
@@ -3245,7 +3249,7 @@ civic_sovereign_guardianship = {
 		empire_size_colonies_mult = 1
 		empire_size_branch_office_mult = 1
 		empire_size_systems_mult = 1.50
-		empire_size_pops_mult = -0.50
+		empire_size_pops_mult = -0.25
 		empire_size_districts_mult = -0.50
 		diplo_weight_mult = 0.2
 
@@ -3427,6 +3431,7 @@ civic_individual_machine_warbots = {
 		army_damage_mult = 0.2
 		armies_upkeep_mult = -0.2
 		commander_initial_skill = 2
+		leader_commanders_upkeep_mult = -0.25
 		add_attunement_the_eater_of_worlds = @civic_attunement1
 	}
 }
@@ -3725,7 +3730,9 @@ civic_crowdsourcing = {
 			NOR = {
 				value = civic_corporate_crowdsourcing
 				value = civic_parliamentary_system
+				value = civic_media_conglomerate
 				value = civic_secret_societies
+				value = civic_secret_societies_corporate
 			}
 		}
 	}
@@ -3923,7 +3930,9 @@ civic_secret_societies = {
 		civics = {
 			NOR = {
 				value = civic_parliamentary_system
+				value = civic_media_conglomerate
 				value = civic_crowdsourcing
+				value = civic_corporate_crowdsourcing
 				value = civic_fanatic_purifiers
 				value = civic_secret_societies_corporate
 			}
@@ -4085,14 +4094,6 @@ civic_tankbound = {
 	}
 	modifier = {
 		planet_jobs_upkeep_mult = @civic_tankbound_job_upkeep
-		planet_districts_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_rw_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_rw_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_hab_energy_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_hab_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
 	}
 	hide_modifiers = yes
 

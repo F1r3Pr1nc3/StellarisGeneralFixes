@@ -1201,6 +1201,7 @@ generate_start_deposits_and_blockers = {
 	}
 
 	# Ocean Paradise Origin
+
 	if = {
 		limit = {
 			owner = {
@@ -1214,6 +1215,7 @@ generate_start_deposits_and_blockers = {
 	}
 
 	# Wilderness Origin
+
 	if = {
 		limit = {
 			owner = { is_wilderness_empire = yes }
@@ -1328,6 +1330,7 @@ generate_start_buildings_and_districts = {
 	inline_script = "game_start/authority_machine"
 	## End of Default
 	## Start of Unique District Setup
+
 	## Species
 	inline_script = "game_start/species_lithoids"
 	inline_script = "game_start/species_infernals"
@@ -1351,6 +1354,11 @@ generate_start_buildings_and_districts = {
 	## Origin
 	# Default
 	inline_script = "game_start/origin_default"
+	# Shadows of the Shroud
+	inline_script = "game_start/origin_shroud_forged"
+	inline_script = "game_start/origin_mindwarden"
+	# Grand Archive
+	inline_script = "game_start/origin_primal_calling"
 	# Machine Age
 	inline_script = "game_start/origin_cybernetic_creed"
 	inline_script = "game_start/origin_synthetic_fertility"
@@ -1377,10 +1385,7 @@ generate_start_buildings_and_districts = {
 	inline_script = "game_start/origin_machine"
 	# Utopia
 	inline_script = "game_start/origin_mechanist"
-	# Shroud-Forged
-	inline_script = "game_start/origin_shroud_forged"
-	# Mindwardens
-	inline_script = "game_start/origin_mindwarden"
+
 	# Tankbound civic (removes every farming districts so we want to do that at the end)
 	inline_script = "game_start/civic_tankbound"
 	# Volcanic Worlds use a different district_set and deposits
@@ -2098,6 +2103,7 @@ generate_home_planet_final_pass = {
 }
 
 ### Origins
+
 void_dweller_home_planet_setup = {
 	optimize_memory
 	set_planet_flag = habitat_level_2
@@ -2644,9 +2650,9 @@ imperial_origin_start_effect = {
 
 	else_if = {
 		limit = { # Backup if any of the other main empire systems are missing
-			NAND = {
-				any_system = { has_star_flag = overlord_system_2_flag }
-				any_system = { has_star_flag = overlord_system_3_flag }
+			OR = {
+				count_system = { count = 0 limit = { has_star_flag = overlord_system_2_flag } }
+				count_system = { count = 0 limit = { has_star_flag = overlord_system_3_flag } }
 			}
 		}
 		event_target:origin_imperial_homeland.solar_system = {
