@@ -3174,7 +3174,9 @@ building_ai_emporium = {
 		}
 		custom_tooltip = {
 			fail_text = building_ai_emporium_outlawed_robots_tt
-			NOT = { owner = { has_policy_flag = robots_outlawed } }
+			owner = {
+				NOT = { has_policy_flag = robots_outlawed }
+			}
 		}
 	}
 

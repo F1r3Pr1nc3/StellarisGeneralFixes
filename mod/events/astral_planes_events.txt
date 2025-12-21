@@ -668,7 +668,9 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { owner = { has_country_flag = has_acquired_crystal_sphere } }
+			owner = {
+				NOT = { has_country_flag = has_acquired_crystal_sphere }
+			}
 		}
 		text = astral_planes.15.desc.default
 	}
@@ -856,7 +858,9 @@ fleet_event = {
 			is_same_value = event_target:crystal_sphere_system
 			has_natural_wormhole = yes
 		}
-		NOT = { owner = { has_country_flag = encountered_strange_wormhole } }
+		owner = {
+			NOT = { has_country_flag = encountered_strange_wormhole }
+		}
 	}
 
 	immediate = {
@@ -1000,7 +1004,9 @@ ship_event = {
 	trigger = {
 		has_astral_planes_dlc = yes
 		from = { is_scope_type = planet is_astral_scar = yes }
-		NOT = { controller = { has_country_flag = started_harvest_astral_threads } }
+		controller = {
+			NOT = { has_country_flag = started_harvest_astral_threads }
+		}
 	}
 
 	immediate = {
@@ -1095,7 +1101,9 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = { from.astral_rift = { exists = explorer } }
+				from.astral_rift = {
+					NOT = { exists = explorer }
+				}
 			}
 			if = {
 				limit = {
@@ -2599,21 +2607,9 @@ country_event = {
 		from = {
 			switch = {
 				trigger = is_country_type
-				extradimensional = {
-					prev = {
-						country_event = { id = astral_planes.3121 }
-					}
-				}
-				extradimensional_2 = {
-					prev = {
-						country_event = { id = astral_planes.3122 }
-					}
-				}
-				extradimensional_3 = {
-					prev = {
-						country_event = { id = astral_planes.3123 }
-					}
-				}
+				extradimensional = { prev = { country_event = { id = astral_planes.3121 } } }
+				extradimensional_2 = { prev = { country_event = { id = astral_planes.3122 } } }
+				extradimensional_3 = { prev = { country_event = { id = astral_planes.3123 } } }
 			}
 		}
 	}

@@ -34,6 +34,10 @@ building_foundry_1 = {
 		}
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
 		# Vfix sync
 		has_owner = yes
@@ -53,10 +57,6 @@ building_foundry_1 = {
 	}
 
 	ai_weight_coefficient = 0
-
-	allow = {
-		is_occupied_flag = no
-	}
 
 	resources = {
 		category = planet_buildings
@@ -231,6 +231,10 @@ building_factory_1 = {
 		}
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
 		# Vfix sync
 		has_owner = yes
@@ -247,10 +251,6 @@ building_factory_1 = {
 	}
 
 	ai_weight_coefficient = 0
-
-	allow = {
-		is_occupied_flag = no
-	}
 
 	resources = {
 		category = planet_buildings
@@ -286,10 +286,6 @@ building_factory_2 = {
 		industrial
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	potential = {
 		has_owner = yes
 		owner = { country_uses_consumer_goods = yes }
@@ -297,6 +293,10 @@ building_factory_2 = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -344,10 +344,6 @@ building_factory_3 = {
 		industrial
 	}
 
-	allow = {
-		is_occupied_flag = no
-	}
-
 	potential = {
 		has_owner = yes
 		owner = { country_uses_consumer_goods = yes }
@@ -355,6 +351,10 @@ building_factory_3 = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -409,6 +409,10 @@ building_refinery = {
 		owner = { is_wilderness_empire = no } # see 'building_churning_stomach'
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -441,10 +445,6 @@ building_refinery = {
 	show_tech_unlock_if = {
 		is_wilderness_empire = no
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_chemical_plant = {
@@ -466,6 +466,10 @@ building_chemical_plant = {
 		}
 		has_owner = yes
 		owner = { is_wilderness_empire = no } # see 'building_mote_aggravator'
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -500,10 +504,6 @@ building_chemical_plant = {
 	show_tech_unlock_if = {
 		is_wilderness_empire = no
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_crystal_plant = {
@@ -525,6 +525,10 @@ building_crystal_plant = {
 		}
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	resources = {
@@ -562,10 +566,6 @@ building_crystal_plant = {
 
 	upgrades = {
 		"building_crystal_plant_2"
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -608,7 +608,7 @@ building_nanite_transmuter = {
 		}
 		produces = {
 			trigger = {
-				NOT = { owner = { has_deficit = nanites } }
+				owner = { NOT = { has_deficit = nanites } }
 			}
 			rare_crystals = 5
 			volatile_motes = 5
@@ -653,6 +653,11 @@ building_ministry_production = {
 		}
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
+	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -660,11 +665,6 @@ building_ministry_production = {
 			has_modifier = slave_colony
 			owner = { is_gestalt = yes } # Vfix opt
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
 	}
 
 	inline_script = {
@@ -723,14 +723,13 @@ building_production_center = {
 		owner = { is_gestalt = yes is_wilderness_empire = no }
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	destroy_trigger = {
 		has_owner = yes
 		owner = { is_gestalt = no }
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
 	}
 
 	planet_modifier = {
@@ -794,6 +793,11 @@ building_coordinated_fulfillment_center_1 = {
 		}
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_upgraded_capital = yes
+	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -809,11 +813,6 @@ building_coordinated_fulfillment_center_1 = {
 
 	show_tech_unlock_if = {
 		is_relentless_industrialist_empire = yes
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_upgraded_capital = yes
 	}
 
 	triggered_desc = {
@@ -928,6 +927,11 @@ building_coordinated_fulfillment_center_2 = {
 		foundry
 	}
 
+	allow = {
+		is_occupied_flag = no
+		has_major_upgraded_capital = yes
+	}
+
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -935,11 +939,6 @@ building_coordinated_fulfillment_center_2 = {
 			has_modifier = slave_colony
 			owner = { is_relentless_industrialist_empire = no }
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
 	}
 
 	triggered_desc = {
@@ -1069,6 +1068,10 @@ building_archaeo_refinery = {
 		owner = { has_technology = tech_archaeo_refinery }
 	}
 
+	allow = {
+		is_occupied_flag = no
+	}
+
 	planet_modifier = {
 		planet_jobs_exotic_gases_produces_mult = 0.1
 		planet_jobs_rare_crystals_produces_mult = 0.1
@@ -1112,10 +1115,6 @@ building_archaeo_refinery = {
 	prerequisites = {
 		"tech_archaeo_refinery"
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_foundry_upkeep_1 = {
@@ -1134,6 +1133,10 @@ building_foundry_upkeep_1 = {
 			owner = { is_wilderness_empire = yes } # see 'building_natural_furnace_2'
 			has_modifier = resort_colony
 		}
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1185,10 +1188,6 @@ building_foundry_upkeep_1 = {
 	show_tech_unlock_if = {
 		is_wilderness_empire = no
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_foundry_efficiency_1 = {
@@ -1210,6 +1209,10 @@ building_foundry_efficiency_1 = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1261,10 +1264,6 @@ building_foundry_efficiency_1 = {
 	show_tech_unlock_if = {
 		is_wilderness_empire = no
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_factory_upkeep_1 = {
@@ -1284,6 +1283,10 @@ building_factory_upkeep_1 = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1331,10 +1334,6 @@ building_factory_upkeep_1 = {
 	prerequisites = {
 		tech_luxuries_1
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_factory_efficiency_1 = {
@@ -1354,6 +1353,10 @@ building_factory_efficiency_1 = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
+	}
+
+	allow = {
+		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1400,10 +1403,6 @@ building_factory_efficiency_1 = {
 
 	prerequisites = {
 		tech_luxuries_2
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 

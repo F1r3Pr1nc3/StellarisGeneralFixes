@@ -95,7 +95,9 @@ building_military_academy = {
 		cost = {
 			trigger = {
 				has_owner = yes
-				NOT = { owner = { has_valid_civic = civic_machine_tactical_algorithms } }
+				owner = {
+					NOT = { has_valid_civic = civic_machine_tactical_algorithms }
+				}
 			}
 			volatile_motes = @b2_rare_cost
 		}
@@ -105,7 +107,9 @@ building_military_academy = {
 		upkeep = {
 			trigger = {
 				has_owner = yes
-				NOT = { owner = { has_valid_civic = civic_machine_tactical_algorithms } }
+				owner = {
+					NOT = { has_valid_civic = civic_machine_tactical_algorithms }
+				}
 			}
 			volatile_motes = @b2_rare_upkeep
 		}

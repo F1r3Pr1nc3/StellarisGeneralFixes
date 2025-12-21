@@ -2001,8 +2001,8 @@ has_isolated_system = {
 					space_owner = { is_same_empire = root }
 				}
 			}
-			count_neighbor_system = { count = 0
-				limit = {
+			NOT = {
+				any_neighbor_system = {
 					NOT = { exists = space_owner }
 				}
 			}
@@ -3501,8 +3501,8 @@ basic_eligibility_for_separatism_joining_trigger = {
 
 default_endgame_early_start_triggers = {
 	OR = {
-		count_country = { count = 0
-			limit = {
+		NOT = {
+			any_country = {
 				OR = {
 					is_country_type = fallen_empire
 					is_country_type = awakened_fallen_empire
@@ -3640,8 +3640,9 @@ should_terraform_trigger = {
 					is_sapient = yes
 					ideal_planet_class = $CLASS_TO$
 				}
-				count_owned_species = { count = 0
-					limit = {
+				NOT = {
+					any_owned_species = {
+						ideal_planet_class = $CLASS_FROM$
 						is_sapient = yes
 						ideal_planet_class = $CLASS_FROM$
 					}
@@ -4160,14 +4161,14 @@ ai_should_build_habitats = { # Vfix opt
 			}
 		}
 	}
-	count_planet_within_border = { count = 0
-		limit = {
+	NOT = {
+		any_planet_within_border = {
 			is_colony = no
-			is_planet_class = pc_habitat
+			is_planet_class = pc_habitat # Vfix double
 		}
 	}
-	count_neighbor_country = { count = 0
-		limit = {
+	NOT = {
+		any_neighbor_country = {
 			is_crisis_faction = yes
 		}
 	}

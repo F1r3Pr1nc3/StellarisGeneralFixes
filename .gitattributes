@@ -1,0 +1,19 @@
+# 1. Default Behavior
+# Treat everything as text unless otherwise specified.
+# Git will convert to LF on commit, and to CRLF on checkout (Windows).
+* text=auto
+
+# 2. Stellaris Script Files
+# Explicitly mark these as text to avoid confusion.
+*.txt text eol=crlf
+*.gui text eol=crlf
+*.gfx text eol=crlf
+*.asset text eol=crlf
+*.dlc text eol=crlf
+*.mod text eol=lf
+
+# 3. Localization Files
+# These are sensitive. We force CRLF because some older Pdx tools
+# get grumpy with pure LF, though the game is fine with either.
+*.yml text eol=crlf
+

@@ -547,42 +547,54 @@ planet_event = {
 				set_planet_flag = contraband_volatile_motes
 				modifier = {
 					factor = 0
-					NOT = { owner = { has_technology = "tech_mine_volatile_motes" } }
+					owner = {
+						NOT = { has_technology = "tech_mine_volatile_motes" }
+					}
 				}
 			}
 			10 = {
 				set_planet_flag = contraband_exotic_gases
 				modifier = {
 					factor = 0
-					NOT = { owner = { has_technology = "tech_mine_exotic_gases" } }
+					owner = {
+						NOT = { has_technology = "tech_mine_exotic_gases" }
+					}
 				}
 			}
 			10 = {
 				set_planet_flag = contraband_rare_crystals
 				modifier = {
 					factor = 0
-					NOT = { owner = { has_technology = "tech_mine_rare_crystals" } }
+					owner = {
+						NOT = { has_technology = "tech_mine_rare_crystals" }
+					}
 				}
 			}
 			10 = {
 				set_planet_flag = contraband_living_metal
 				modifier = {
 					factor = 0
-					NOT = { owner = { has_technology = "tech_mine_living_metal" } }
+					owner = {
+						NOT = { has_technology = "tech_mine_living_metal" }
+					}
 				}
 			}
 			10 = {
 				set_planet_flag = contraband_zro
 				modifier = {
 					factor = 0
-					NOT = { owner = { has_technology = "tech_mine_zro" } }
+					owner = {
+						NOT = { has_technology = "tech_mine_zro" }
+					}
 				}
 			}
 			10 = {
 				set_planet_flag = contraband_dark_matter
 				modifier = {
 					factor = 0
-					NOT = { owner = { has_technology = "tech_mine_dark_matter" } }
+					owner = {
+						NOT = { has_technology = "tech_mine_dark_matter" }
+					}
 				}
 			}
 		}
@@ -1960,7 +1972,7 @@ planet_event = {
 	trigger = {
 		has_center_of_drug_trade_modifier = yes
 		owner = {
-			resource_stockpile_compare = { resource = exotic_gases value > 10 }
+			has_country_resource = { type = exotic_gases amount > 10 }
 		}
 	}
 

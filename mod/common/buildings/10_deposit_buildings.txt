@@ -270,7 +270,9 @@ building_xeno_zoo = {
 					has_citizenship_type = { type = citizenship_protected_drone country = owner }
 				}
 			}
-			NOT = { owner = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
 		}
 		job_livestock_zoo_animal_add = 300
 	}
@@ -278,7 +280,9 @@ building_xeno_zoo = {
 		potential = {
 			any_owned_pop_group = { is_livestock = yes is_lithoid = yes }
 			has_owner = yes
-			NOT = { owner = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
 		}
 		job_livestock_zoo_animal_lithoid_add = 300
 	}
@@ -307,7 +311,9 @@ building_xeno_zoo = {
 	triggered_desc = {
 		trigger = {
 			has_owner = yes
-			NOT = { owner = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
 		}
 		text = pre_sapient_job_xeno_zoo_animal_tt
 	}
@@ -327,7 +333,9 @@ building_xeno_zoo = {
 	triggered_desc = {
 		trigger = {
 			has_owner = yes
-			NOT = { owner = { has_valid_civic = civic_warrior_culture } }
+			owner = {
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
 		}
 		text = job_xeno_zoo_animal_effect_desc
 	}

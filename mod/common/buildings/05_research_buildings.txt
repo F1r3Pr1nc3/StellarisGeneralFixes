@@ -1,3 +1,4 @@
+# Vfix patch (just halved values for research_produces_add of v4.3b)
 #############
 # Science buildings
 #############
@@ -236,9 +237,9 @@ building_institute = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 0.5
-		planet_biologists_society_research_produces_add = 0.5
-		planet_engineers_engineering_research_produces_add = 0.5
+		planet_physicists_physics_research_produces_add = 1
+		planet_biologists_society_research_produces_add = 1
+		planet_engineers_engineering_research_produces_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -342,9 +343,9 @@ building_supercomputer = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 0.5
-		planet_biologists_society_research_produces_add = 0.5
-		planet_engineers_engineering_research_produces_add = 0.5
+		planet_physicists_physics_research_produces_add = 1
+		planet_biologists_society_research_produces_add = 1
+		planet_engineers_engineering_research_produces_add = 1
 	}
 
 	triggered_planet_modifier = {
@@ -475,8 +476,8 @@ building_shroud_observatory_2 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_physics_research_produces_add = 0.25
-		planet_biologists_society_research_produces_add = 0.25
+		planet_biologists_physics_research_produces_add = 0.5
+		planet_biologists_society_research_produces_add = 0.5
 		planet_biologists_sr_zro_upkeep_add = 0.25
 	}
 
@@ -541,8 +542,8 @@ building_shroud_observatory_3 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_physics_research_produces_add = 0.5
-		planet_biologists_society_research_produces_add = 0.5
+		planet_biologists_physics_research_produces_add = 1
+		planet_biologists_society_research_produces_add = 1
 		planet_biologists_sr_zro_upkeep_add = 0.5
 	}
 
@@ -618,7 +619,7 @@ building_archaeostudies_faculty = {
 	}
 
 	planet_modifier = {
-		planet_biologists_society_research_produces_add = 0.25
+		planet_biologists_society_research_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
@@ -862,7 +863,7 @@ building_physics_lab_1 = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 0.25
+		planet_physicists_physics_research_produces_add = 0.5
 	}
 
 	upgrades = {
@@ -937,7 +938,7 @@ building_physics_lab_2 = {
 	}
 
 	planet_modifier = {
-		planet_physicists_physics_research_produces_add = 0.5
+		planet_physicists_physics_research_produces_add = 1
 		planet_physicists_volatile_motes_upkeep_add = 0.25
 	}
 
@@ -1012,7 +1013,7 @@ building_physics_lab_3 = {
 
 	planet_modifier = {
 		physicist_jobs_bonus_workforce_mult = 0.1
-		planet_physicists_physics_research_produces_add = 0.5
+		planet_physicists_physics_research_produces_add = 1
 		planet_physicists_volatile_motes_upkeep_add = 0.25
 	}
 
@@ -1088,7 +1089,7 @@ building_biolab_1 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_society_research_produces_add = 0.25
+		planet_biologists_society_research_produces_add = 0.5
 	}
 
 	upgrades = {
@@ -1164,7 +1165,7 @@ building_biolab_2 = {
 	}
 
 	planet_modifier = {
-		planet_biologists_society_research_produces_add = 0.5
+		planet_biologists_society_research_produces_add = 1
 		planet_biologists_exotic_gases_upkeep_add = 0.25
 	}
 
@@ -1240,7 +1241,7 @@ building_biolab_3 = {
 
 	planet_modifier = {
 		biologist_jobs_bonus_workforce_mult = 0.1
-		planet_biologists_society_research_produces_add = 0.5
+		planet_biologists_society_research_produces_add = 1
 		planet_biologists_exotic_gases_upkeep_add = 0.25
 	}
 
@@ -1316,7 +1317,7 @@ building_engineering_facility_1 = {
 	}
 
 	planet_modifier = {
-		planet_engineers_engineering_research_produces_add = 0.25
+		planet_engineers_engineering_research_produces_add = 0.5
 	}
 
 	upgrades = {
@@ -1390,7 +1391,7 @@ building_engineering_facility_2 = {
 	}
 
 	planet_modifier = {
-		planet_engineers_engineering_research_produces_add = 0.5
+		planet_engineers_engineering_research_produces_add = 1
 		planet_engineers_rare_crystals_upkeep_add = 0.25
 	}
 
@@ -1464,7 +1465,7 @@ building_engineering_facility_3 = {
 
 	planet_modifier = {
 		engineer_jobs_bonus_workforce_mult = 0.1
-		planet_engineers_engineering_research_produces_add = 0.5
+		planet_engineers_engineering_research_produces_add = 1
 		planet_engineers_rare_crystals_upkeep_add = 0.25
 	}
 
@@ -1517,9 +1518,13 @@ building_ranger_lodge = {
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
-			owner = { is_gestalt = yes }
+			owner = {
+				OR = {
+					is_gestalt = yes
+					NOT = { has_valid_civic = civic_environmentalist }
+				}
+			}
 			has_modifier = slave_colony
-			NOT = { owner = { has_valid_civic = civic_environmentalist } }
 			is_planet_class = pc_city
 			is_planet_class = pc_hive
 			is_planet_class = pc_machine

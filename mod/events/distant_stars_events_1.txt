@@ -7263,7 +7263,7 @@ country_event = {
 				set_graphical_culture = mammalian_01
 				save_global_event_target_as = ratling_country
 				set_country_flag = ratling_country
-				country_event = { id = distar.20330 days = 1 }
+				country_event = { id = distar.20330 days = 1 } # Vfix
 			}
 		}
 		##Prepare the planets
@@ -8521,7 +8521,10 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = { owner = { has_country_flag = surveyed_phaseshift_planet } }
+		exists = owner
+		owner = {
+			NOT = { has_country_flag = surveyed_phaseshift_planet }
+		}
 	}
 
 	immediate = {

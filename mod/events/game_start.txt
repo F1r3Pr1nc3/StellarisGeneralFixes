@@ -1098,7 +1098,9 @@ country_event = {
 					}
 					else_if = {
 						limit = {
-							NOT = { root = { has_valid_civic = civic_hive_cordyceptic_drones } }
+							root = {
+								NOT = { has_valid_civic = civic_hive_cordyceptic_drones }
+							}
 						}
 						while = {
 							count = 2
@@ -1324,7 +1326,9 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		NOT = { owner = { has_origin = origin_shattered_ring } }
+		owner = {
+			NOT = { has_origin = origin_shattered_ring }
+		}
 	}
 
 	immediate = {

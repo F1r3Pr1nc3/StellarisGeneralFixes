@@ -1081,8 +1081,8 @@ end_aura = {
 					}
 					if = {
 						limit = {
-							count_planet_within_border = { count = 0
-								limit = {
+							NOT = {
+								any_planet_within_border = {
 									has_zro_deposit = yes
 								}
 							}
@@ -1135,8 +1135,8 @@ end_aura = {
 					}
 					if = {
 						limit = {
-							count_planet_within_border = { count = 0
-								limit = {
+							NOT = {
+								any_planet_within_border = {
 									has_zro_deposit = yes
 								}
 							}
@@ -1240,8 +1240,8 @@ end_aura = {
 
 	increase_trigger = {
 		# EotC owner has tech_aura_intensification by default
-		count_neighbor_system = { count = 0
-			limit = {
+		NOT = {
+			any_neighbor_system = {
 				has_star_flag = aura_is_clashing_against_@root
 			}
 		}

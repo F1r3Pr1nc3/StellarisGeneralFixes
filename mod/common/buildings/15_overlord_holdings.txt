@@ -633,9 +633,9 @@ holding_offspring_nest = {
 	}
 
 	allow = {
-		NOR = {
-			is_occupied_flag = yes
-			owner = { has_origin = origin_progenitor_hive }
+		is_occupied_flag = no
+		owner = {
+			NOT = { has_origin = origin_progenitor_hive }
 		}
 	}
 
@@ -731,10 +731,8 @@ holding_offworld_foundry = {
 
 	destroy_trigger = {
 		has_owner = yes
-		NOT = {
-			owner = {
-				is_specialist_subject_type = { TYPE = prospectorium }
-			}
+		owner = {
+			NOT = { is_specialist_subject_type = { TYPE = prospectorium } }
 		}
 	}
 }
@@ -820,10 +818,8 @@ holding_overlord_vigil_command = {
 
 	destroy_trigger = {
 		has_owner = yes
-		NOT = {
-			owner = {
-				is_specialist_subject_type = { TYPE = bulwark }
-			}
+		owner = {
+			NOT = { is_specialist_subject_type = { TYPE = bulwark } }
 		}
 	}
 }
@@ -884,10 +880,8 @@ holding_parasitic_algorithms = {
 
 	destroy_trigger = {
 		has_owner = yes
-		NOT = {
-			owner = {
-				is_specialist_subject_type = { TYPE = scholarium }
-			}
+		owner = {
+			NOT = { is_specialist_subject_type = { TYPE = scholarium } }
 		}
 	}
 
@@ -1143,7 +1137,9 @@ holding_idyllic_bloom = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			NOT = { owner = { has_ascension_perk = ap_hydrocentric } }
+			owner = {
+				NOT = { has_ascension_perk = ap_hydrocentric }
+			}
 		}
 		monthly_loyalty = 1
 	}

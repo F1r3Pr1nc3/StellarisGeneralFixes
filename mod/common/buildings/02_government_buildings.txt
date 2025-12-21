@@ -179,8 +179,10 @@ building_precinct_house = {
 		hidden_trigger = {
 			NAND = {
 				owner = { is_ai = yes }
-				has_forbidden_jobs = enforcer
-				has_available_jobs = enforcer
+				OR = {
+					has_forbidden_jobs = enforcer
+					has_available_jobs = enforcer
+				}
 			}
 		}
 	}
@@ -312,10 +314,11 @@ building_state_academy = {
 
 	planet_modifier = {
 		job_enforcer_add = 200
-		planet_civilians_physics_research_produces_add = 0.1
-		planet_civilians_society_research_produces_add = 0.1
-		planet_civilians_engineering_research_produces_add = 0.1
-		planet_civilians_consumer_goods_upkeep_add = 0.25
+		# Vfix patch (just halved values of v4.3b)
+		planet_civilians_physics_research_produces_add = 0.25
+		planet_civilians_society_research_produces_add = 0.25
+		planet_civilians_engineering_research_produces_add = 0.25
+		planet_civilians_consumer_goods_upkeep_add = 0.5
 	}
 
 	resources = {
@@ -360,7 +363,9 @@ building_center_of_guidance = {
 
 	destroy_trigger = {
 		has_owner = yes
-		NOT = { owner = { has_valid_civic = civic_civil_education } }
+		owner = {
+			NOT = { has_valid_civic = civic_civil_education }
+		}
 	}
 
 	convert_to = {
@@ -373,10 +378,11 @@ building_center_of_guidance = {
 
 	planet_modifier = {
 		job_enforcer_add = 500
-		planet_civilians_physics_research_produces_add = 0.2
-		planet_civilians_society_research_produces_add = 0.2
-		planet_civilians_engineering_research_produces_add = 0.2
-		planet_civilians_consumer_goods_upkeep_add = 0.5
+		# Vfix patch (just halved values of v4.3b)
+		planet_civilians_physics_research_produces_add = 0.5
+		planet_civilians_society_research_produces_add = 0.5
+		planet_civilians_engineering_research_produces_add = 0.5
+		planet_civilians_consumer_goods_upkeep_add = 1
 	}
 
 	resources = {
@@ -420,9 +426,11 @@ building_sentinel_posts = {
 		hidden_trigger = {
 			NAND = {
 				owner = { is_ai = yes }
-				has_building = building_sentinel_posts
-				has_forbidden_jobs = patrol_drone
-				has_available_jobs = patrol_drone
+				OR = {
+					has_building = building_sentinel_posts
+					has_forbidden_jobs = patrol_drone
+					has_available_jobs = patrol_drone
+				}
 			}
 		}
 	}
@@ -474,7 +482,9 @@ building_order_keep = {
 		has_owner = yes
 		owner = { has_origin = origin_toxic_knights }
 		has_planet_flag = toxic_knights_habitat
-		NOT = { owner = { has_country_flag = quest_abandoned } }
+		owner = {
+			NOT = { has_country_flag = quest_abandoned }
+		}
 	}
 
 	allow = {
@@ -502,7 +512,9 @@ building_order_keep = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { owner = { has_country_flag = quest_over } }
+			owner = {
+				NOT = { has_country_flag = quest_over }
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
@@ -591,7 +603,9 @@ building_order_castle = {
 
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { owner = { has_country_flag = quest_over } }
+			owner = {
+				NOT = { has_country_flag = quest_over }
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
@@ -765,8 +779,8 @@ building_embassy = {
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
-			owner = { is_gestalt = yes } # Vfix opt
 			is_capital = no
+			owner = { is_gestalt = yes } # Vfix opt
 		}
 	}
 
@@ -840,8 +854,8 @@ building_grand_embassy = {
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
-			owner = { is_gestalt = yes } # Vfix opt
 			is_capital = no
+			owner = { is_gestalt = yes } # Vfix opt
 		}
 	}
 

@@ -109,7 +109,9 @@ building_transcendental_retreat = {
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
-			NOT = { owner = { has_valid_civic = civic_natural_design } }
+			owner = {
+				NOT = { has_valid_civic = civic_natural_design }
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}
@@ -177,7 +179,9 @@ building_hive_transcendental_retreat = {
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
-			NOT = { owner = { has_valid_civic = civic_hive_natural_design } }
+			owner = {
+				NOT = { has_valid_civic = civic_hive_natural_design }
+			}
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 		}

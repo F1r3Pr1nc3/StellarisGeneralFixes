@@ -1488,7 +1488,9 @@ d_big_nature_preserve_blocker = {
 	can_be_cleared = {
 		custom_tooltip = {
 			fail_text = has_ranger_lodge
-			NOT = { planet = { has_building = building_ranger_lodge } }
+			planet = {
+				NOT = { has_building = building_ranger_lodge }
+			}
 		}
 	}
 

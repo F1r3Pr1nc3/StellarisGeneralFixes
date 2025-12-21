@@ -1281,7 +1281,9 @@ country_event = {
 		random_controlled_fleet = {
 			limit = {
 				has_fleet_flag = scion_borrowed_fleet
-				NOT = { leader = { has_leader_flag = leader_death_events_blocked } }
+				leader = {
+					NOT = { has_leader_flag = leader_death_events_blocked }
+				}
 			}
 			leader = {
 				kill_leader = { show_notification = no }
@@ -1400,7 +1402,9 @@ country_event = {
 			solar_system = { generate_home_system_resources = yes }
 			if = {
 				limit = {
-					NOT = { root = { has_valid_civic = civic_selective_kinship } }
+					root = {
+						NOT = { has_valid_civic = civic_selective_kinship }
+					}
 				}
 				create_fed_planet_1_species = { CLASS = random }
 			}
@@ -1408,45 +1412,19 @@ country_event = {
 				root = {
 					switch = {
 						trigger = is_species_class
-						HUM = {
-							create_fed_planet_1_species = { CLASS = HUM }
-						}
-						MAM = {
-							create_fed_planet_1_species = { CLASS = MAM }
-						}
-						FUN = {
-							create_fed_planet_1_species = { CLASS = FUN }
-						}
-						AVI = {
-							create_fed_planet_1_species = { CLASS = AVI }
-						}
-						PLANT = {
-							create_fed_planet_1_species = { CLASS = PLANT }
-						}
-						ART = {
-							create_fed_planet_1_species = { CLASS = ART }
-						}
-						REP = {
-							create_fed_planet_1_species = { CLASS = REP }
-						}
-						MOL = {
-							create_fed_planet_1_species = { CLASS = MOL }
-						}
-						LITHOID = {
-							create_fed_planet_1_species = { CLASS = LITHOID }
-						}
-						NECROID = {
-							create_fed_planet_1_species = { CLASS = NECROID }
-						}
-						AQUATIC = {
-							create_fed_planet_1_species = { CLASS = AQUATIC }
-						}
-						TOX = {
-							create_fed_planet_1_species = { CLASS = TOX }
-						}
-						default = {
-							create_fed_planet_1_species = { CLASS = HUM }
-						}
+						HUM =		{ create_fed_planet_1_species = { CLASS = HUM } }
+						MAM =		{ create_fed_planet_1_species = { CLASS = MAM } }
+						FUN =		{ create_fed_planet_1_species = { CLASS = FUN } }
+						AVI =		{ create_fed_planet_1_species = { CLASS = AVI } }
+						PLANT =		{ create_fed_planet_1_species = { CLASS = PLANT } }
+						ART =		{ create_fed_planet_1_species = { CLASS = ART } }
+						REP =		{ create_fed_planet_1_species = { CLASS = REP } }
+						MOL =		{ create_fed_planet_1_species = { CLASS = MOL } }
+						LITHOID =	{ create_fed_planet_1_species = { CLASS = LITHOID } }
+						NECROID =	{ create_fed_planet_1_species = { CLASS = NECROID } }
+						AQUATIC =	{ create_fed_planet_1_species = { CLASS = AQUATIC } }
+						TOX =		{ create_fed_planet_1_species = { CLASS = TOX } }
+						default =	{ create_fed_planet_1_species = { CLASS = HUM } }
 					}
 				}
 			}
@@ -1534,7 +1512,9 @@ country_event = {
 			solar_system = { generate_home_system_resources = yes }
 			if = {
 				limit = {
-					NOT = { root = { has_valid_civic = civic_selective_kinship } }
+					root = {
+						NOT = { has_valid_civic = civic_selective_kinship }
+					}
 				}
 				create_fed_planet_2_species = { CLASS = random }
 			}
@@ -1542,45 +1522,19 @@ country_event = {
 				root = {
 					switch = {
 						trigger = is_species_class
-						HUM = {
-							create_fed_planet_2_species = { CLASS = HUM }
-						}
-						MAM = {
-							create_fed_planet_2_species = { CLASS = MAM }
-						}
-						FUN = {
-							create_fed_planet_2_species = { CLASS = FUN }
-						}
-						AVI = {
-							create_fed_planet_2_species = { CLASS = AVI }
-						}
-						PLANT = {
-							create_fed_planet_2_species = { CLASS = PLANT }
-						}
-						ART = {
-							create_fed_planet_2_species = { CLASS = ART }
-						}
-						REP = {
-							create_fed_planet_2_species = { CLASS = REP }
-						}
-						MOL = {
-							create_fed_planet_2_species = { CLASS = MOL }
-						}
-						LITHOID = {
-							create_fed_planet_2_species = { CLASS = LITHOID }
-						}
-						NECROID = {
-							create_fed_planet_2_species = { CLASS = NECROID }
-						}
-						AQUATIC = {
-							create_fed_planet_2_species = { CLASS = AQUATIC }
-						}
-						TOX = {
-							create_fed_planet_2_species = { CLASS = TOX }
-						}
-						default = {
-							create_fed_planet_2_species = { CLASS = HUM }
-						}
+						HUM =		{ create_fed_planet_2_species = { CLASS = HUM } }
+						MAM =		{ create_fed_planet_2_species = { CLASS = MAM } }
+						FUN =		{ create_fed_planet_2_species = { CLASS = FUN } }
+						AVI =		{ create_fed_planet_2_species = { CLASS = AVI } }
+						PLANT =		{ create_fed_planet_2_species = { CLASS = PLANT } }
+						ART =		{ create_fed_planet_2_species = { CLASS = ART } }
+						REP =		{ create_fed_planet_2_species = { CLASS = REP } }
+						MOL =		{ create_fed_planet_2_species = { CLASS = MOL } }
+						LITHOID =	{ create_fed_planet_2_species = { CLASS = LITHOID } }
+						NECROID =	{ create_fed_planet_2_species = { CLASS = NECROID } }
+						AQUATIC =	{ create_fed_planet_2_species = { CLASS = AQUATIC } }
+						TOX =		{ create_fed_planet_2_species = { CLASS = TOX } }
+						default =	{ create_fed_planet_2_species = { CLASS = HUM } }
 					}
 				}
 			}

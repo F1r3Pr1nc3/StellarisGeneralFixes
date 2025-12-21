@@ -892,42 +892,60 @@ decision_unconsecrated_worlds = {
 					remove_modifier = consecrated_quality_4
 					solar_system = {
 						random_system_ambient_object = {
-							limit = { is_ambient_object_type = consecrated_planet_stage_3_object }
+							limit = {
+								is_ambient_object_type = consecrated_planet_stage_3_object
+							}
 							destroy_ambient_object = this
 						}
 					}
 					from = {
-						change_variable = { which = consecrated_variable value = -4 }
+						change_variable = {
+							which = consecrated_variable
+							value = -4
+						}
 					}
 				}
 				consecrated_quality_3 = {
 					remove_modifier = consecrated_quality_3
 					solar_system = {
 						random_system_ambient_object = {
-							limit = { is_ambient_object_type = consecrated_planet_stage_2_object }
+							limit = {
+								is_ambient_object_type = consecrated_planet_stage_2_object
+							}
 							destroy_ambient_object = this
 						}
 					}
 					from = {
-						change_variable = { which = consecrated_variable value = -3 }
+						change_variable = {
+							which = consecrated_variable
+							value = -3
+						}
 					}
 				}
 				consecrated_quality_2 = {
 					remove_modifier = consecrated_quality_2
 					solar_system = {
 						random_system_ambient_object = {
-							limit = { is_ambient_object_type = consecrated_planet_stage_1_object }
+							limit = {
+								is_ambient_object_type = consecrated_planet_stage_1_object
+							}
 							destroy_ambient_object = this
 						}
 					}
 					from = {
-						change_variable = { which = consecrated_variable value = -2 }
+						change_variable = {
+							which = consecrated_variable
+							value = -2
+						}
 					}
 				}
 				consecrated_quality_1 = {
 					remove_modifier = consecrated_quality_1
 					from = {
-						change_variable = { which = consecrated_variable value = -1 }
+						change_variable = {
+							which = consecrated_variable
+							value = -1
+						}
 					}
 				}
 			}
@@ -1808,7 +1826,9 @@ decision_crystalline_refugees = {
 	allow = {
 		custom_tooltip = {
 			fail_text = crystalline_hostility_trigger_tt
-			NOT = { event_target:central_crystal_empire = { is_hostile = root.owner } }
+			event_target:central_crystal_empire = {
+				NOT = { is_hostile = root.owner }
+			}
 		}
 	}
 
@@ -1853,7 +1873,9 @@ decision_crystalline_architecture = {
 	allow = {
 		custom_tooltip = {
 			fail_text = crystalline_hostility_trigger_tt
-			NOT = { event_target:central_crystal_empire = { is_hostile = root.owner } }
+			event_target:central_crystal_empire = {
+				NOT = { is_hostile = root.owner }
+			}
 		}
 	}
 
@@ -2082,7 +2104,9 @@ decision_expand_planetary_sea = {
 			owner = {
 				any_owned_starbase = {
 					has_starbase_building = ice_mining_station
-					NOT = { solar_system = { has_star_flag = ice_mining_in_progress } }
+					solar_system = {
+						NOT = { has_star_flag = ice_mining_in_progress }
+					}
 				}
 			}
 		}
@@ -2122,7 +2146,9 @@ decision_expand_planetary_sea = {
 			random_owned_starbase = {
 				limit = {
 					has_starbase_building = ice_mining_station
-					NOT = { solar_system = { has_star_flag = ice_mining_in_progress } }
+					solar_system = {
+						NOT = { has_star_flag = ice_mining_in_progress }
+					}
 				}
 				solar_system = {
 					set_timed_star_flag = { flag = ice_mining_in_progress days = root.decision_length }
@@ -2241,7 +2267,9 @@ decision_flood_habitat = {
 			owner = {
 				any_owned_starbase = {
 					has_starbase_building = ice_mining_station
-					NOT = { solar_system = { has_star_flag = ice_mining_in_progress } }
+					solar_system = {
+						NOT = { has_star_flag = ice_mining_in_progress }
+					}
 				}
 			}
 		}
@@ -2268,7 +2296,9 @@ decision_flood_habitat = {
 			random_owned_starbase = {
 				limit = {
 					has_starbase_building = ice_mining_station
-					NOT = { solar_system = { has_star_flag = ice_mining_in_progress } }
+					solar_system = {
+						NOT = { has_star_flag = ice_mining_in_progress }
+					}
 				}
 				solar_system = {
 					set_timed_star_flag = { flag = ice_mining_in_progress days = root.decision_length }

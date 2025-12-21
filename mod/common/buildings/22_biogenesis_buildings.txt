@@ -142,7 +142,9 @@ building_genomic_facility = {
 
 	destroy_trigger = {
 		has_owner = yes
-		NOT = { owner = { has_country_flag = genomic_research_facility_unlocked } }
+		owner = {
+			NOT = { has_country_flag = genomic_research_facility_unlocked }
+		}
 	}
 
 	resources = {
