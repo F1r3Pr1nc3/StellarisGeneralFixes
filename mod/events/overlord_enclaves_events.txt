@@ -126,7 +126,7 @@ fleet_event = {
 			factor = 10
 			modifier = {
 				factor = 0
-				owner = { is_fanatic_pacifist = yes }
+				owner = { has_ethic = ethic_fanatic_pacifist }
 			}
 			modifier = {
 				factor = 0.1
@@ -138,7 +138,7 @@ fleet_event = {
 			}
 			modifier = {
 				factor = 10
-				owner = { is_fanatic_militarist = yes }
+				owner = { has_ethic = ethic_fanatic_militarist }
 			}
 			modifier = {
 				factor = 5
@@ -152,7 +152,10 @@ fleet_event = {
 			factor = 5
 			modifier = {
 				factor = 0.1
-				owner = { is_militarist = yes is_fanatic_pacifist = no }
+				owner = {
+					is_militarist = yes
+					NOT = { has_ethic = ethic_fanatic_pacifist }
+				}
 			}
 		}
 	}
@@ -7041,7 +7044,7 @@ situation_event = {
 		owner = {
 			NOR = {
 				is_gestalt = yes
-				is_fanatic_egalitarian = yes
+				has_ethic = ethic_fanatic_egalitarian
 				has_country_flag = recent_envoy_event
 			}
 			any_relation = {
@@ -10662,7 +10665,7 @@ fleet_event = {
 	option = {
 		name = enclave.6000b.b
 		trigger = {
-			owner = { is_fanatic_xenophobe = yes }
+			owner = { has_ethic = ethic_fanatic_xenophobe }
 		}
 		leader = {
 			save_event_target_as = dissected_leader

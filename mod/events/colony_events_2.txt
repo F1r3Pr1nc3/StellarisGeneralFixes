@@ -1349,7 +1349,12 @@ planet_event = {
 		name = colony.2001.b
 		custom_tooltip = colony.2001.b.pacifism.tooltip
 		trigger = {
-			owner = { is_pacifist = no is_fanatic_egalitarian = no }
+			owner = {
+				NOR = {
+					is_pacifist = yes
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
 		}
 		hidden_effect = {
 			weighted_random_owned_pop_group = {
@@ -1371,7 +1376,12 @@ planet_event = {
 		name = colony.2001.b
 		custom_tooltip = colony.2001.b.military.tooltip
 		trigger = {
-			owner = { is_militarist = no is_fanatic_egalitarian = no }
+			owner = {
+				NOR = {
+					is_militarist = yes
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
 		}
 		hidden_effect = {
 			weighted_random_owned_pop_group = {
@@ -2633,7 +2643,12 @@ planet_event = {
 		name = colony.2025.b
 		custom_tooltip = colony.2025.b.tooltip
 		trigger = {
-			owner = { is_xenophobe = no is_fanatic_militarist = no }
+			owner = {
+				NOR = {
+					is_xenophobe = yes
+					has_ethic = ethic_fanatic_militarist
+				}
+			}
 		}
 		hidden_effect = {
 			random_owned_pop_group = {
@@ -2660,7 +2675,7 @@ planet_event = {
 			owner = {
 				OR = {
 					is_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -4480,7 +4495,7 @@ planet_event = {
 					}
 					modifier = {
 						factor = 3
-						owner = { is_fanatic_egalitarian = yes }
+						owner = { has_ethic = ethic_fanatic_egalitarian }
 					}
 					planet_event = { id = colony.2085 days = 10 random = 20 }
 				}

@@ -1689,26 +1689,26 @@ country_event = {
 				}
 				if = {
 					limit = {
-						root = { is_fanatic_xenophobe = yes }
+						root = { has_ethic = ethic_fanatic_xenophobe }
 					}
 					set_subject_of = { who = root preset = preset_thrall }
 				}
 				if = {
 					limit = {
-						root = { is_fanatic_xenophile = yes }
+						root = { has_ethic = ethic_fanatic_xenophile }
 					}
 					set_subject_of = { who = root preset = preset_signatory }
 				}
 				if = {
 					limit = {
-						root = { is_fanatic_spiritualist = yes }
+						root = { has_ethic = ethic_fanatic_spiritualist }
 					}
 					set_subject_of = { who = root preset = preset_dominion }
 					shift_ethic = ethic_fanatic_spiritualist
 				}
 				if = {
 					limit = {
-						root = { is_fanatic_materialist = yes }
+						root = { has_ethic = ethic_fanatic_materialist }
 					}
 					set_subject_of = { who = root preset = preset_satellite }
 				}
@@ -1764,26 +1764,26 @@ country_event = {
 			}
 			if = {
 				limit = {
-					root = { is_fanatic_xenophobe = yes }
+					root = { has_ethic = ethic_fanatic_xenophobe }
 				}
 				set_subject_of = { who = root preset = preset_thrall }
 			}
 			if = {
 				limit = {
-					root = { is_fanatic_xenophile = yes }
+					root = { has_ethic = ethic_fanatic_xenophile }
 				}
 				set_subject_of = { who = root preset = preset_signatory }
 			}
 			if = {
 				limit = {
-					root = { is_fanatic_spiritualist = yes }
+					root = { has_ethic = ethic_fanatic_spiritualist }
 				}
 				set_subject_of = { who = root preset = preset_dominion }
 				shift_ethic = ethic_fanatic_spiritualist
 			}
 			if = {
 				limit = {
-					root = { is_fanatic_materialist = yes }
+					root = { has_ethic = ethic_fanatic_materialist }
 				}
 				set_subject_of = { who = root preset = preset_satellite }
 			}
@@ -2303,9 +2303,9 @@ country_event = {
 		name = preftl.180.b # Don't cede
 		trigger = { is_homicidal = no }
 		allow = {
-			OR = {
-				values_others = no
-				resource_stockpile_compare = { resource = influence value >= 100 }
+			NAND = {
+				values_others = yes
+				resource_stockpile_compare = { resource = influence value < 100 }
 			}
 		}
 		if = {
@@ -2354,9 +2354,9 @@ country_event = {
 			}
 		}
 		allow = {
-			OR = {
-				is_xenophile = no
-				resource_stockpile_compare = { resource = influence value >= 200 }
+			NAND = {
+				is_xenophile = yes
+				resource_stockpile_compare = { resource = influence value < 200 }
 			}
 		}
 		if = {
@@ -3901,7 +3901,7 @@ situation_event = {
 				}
 			}
 			if = {
-				limit = { is_fanatic_militarist = yes }
+				limit = { has_ethic = ethic_fanatic_militarist }
 				every_owned_pop_group = {
 					limit = {
 						has_any_ethic = yes
@@ -3963,7 +3963,7 @@ situation_event = {
 				}
 			}
 			if = {
-				limit = { is_fanatic_militarist = yes }
+				limit = { has_ethic = ethic_fanatic_militarist }
 				every_owned_pop_group = {
 					limit = {
 						has_any_ethic = yes
@@ -5025,7 +5025,9 @@ situation_event = {
 		}
 		target.owner = {
 			if = {
-				limit = { is_fanatic_authoritarian = no }
+				limit = {
+					NOT = { has_ethic = ethic_fanatic_authoritarian }
+				}
 				shift_ethic = ethic_fanatic_authoritarian
 			}
 			set_policy = {

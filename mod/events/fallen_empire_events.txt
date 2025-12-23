@@ -142,7 +142,7 @@ situation_event = {
 			# Demand - ban AI research (spiritualist)
 			else_if = {
 				limit = {
-					root.owner = { is_fanatic_spiritualist = yes }
+					root.owner = { has_ethic = ethic_fanatic_spiritualist }
 					is_valid_target_fe_stop_ai = yes
 				}
 				country_event = { id = fallen_empires.5 scopes = { from = root.owner } }
@@ -150,7 +150,7 @@ situation_event = {
 			# Demand - ban slavery and purging (xenophile)
 			else_if = {
 				limit = {
-					root.owner = { is_fanatic_xenophile = yes }
+					root.owner = { has_ethic = ethic_fanatic_xenophile }
 					is_valid_target_fe_stop_atrocities = yes
 				}
 				country_event = { id = fallen_empires.6 scopes = { from = root.owner } }
@@ -539,7 +539,7 @@ situation_event = {
 						set_owner = root.owner
 						if = {
 							limit = {
-								root.owner = { is_fanatic_xenophobe = yes }
+								root.owner = { has_ethic = ethic_fanatic_xenophobe }
 							}
 							create_ship = {
 								name = random
@@ -549,7 +549,7 @@ situation_event = {
 						}
 						if = {
 							limit = {
-								root.owner = { is_fanatic_xenophile = yes }
+								root.owner = { has_ethic = ethic_fanatic_xenophile }
 							}
 							create_ship = {
 								name = random
@@ -559,7 +559,7 @@ situation_event = {
 						}
 						if = {
 							limit = {
-								root.owner = { is_fanatic_spiritualist = yes }
+								root.owner = { has_ethic = ethic_fanatic_spiritualist }
 							}
 							create_ship = {
 								name = random
@@ -569,7 +569,7 @@ situation_event = {
 						}
 						if = {
 							limit = {
-								root.owner = { is_fanatic_materialist = yes }
+								root.owner = { has_ethic = ethic_fanatic_materialist }
 							}
 							create_ship = {
 								name = random

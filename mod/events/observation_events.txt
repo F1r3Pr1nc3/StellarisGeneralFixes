@@ -866,7 +866,9 @@ country_event = {
 		name = "observation.3205.a"
 		if = {
 			limit = {
-				event_target:pre_ftl_country = { is_fanatic_spiritualist = no }
+				event_target:pre_ftl_country = {
+					NOT = { has_ethic = ethic_fanatic_spiritualist }
+				}
 			}
 			event_target:pre_ftl_country = { shift_ethic = "ethic_fanatic_spiritualist" }
 		}
@@ -3962,7 +3964,7 @@ country_event = {
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_xenophobe = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_xenophobe }
 				}
 				country_event = { id = observation.2030 } # Xenophobe to Xenophile
 			}
@@ -4018,42 +4020,42 @@ country_event = {
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_militarist = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_militarist }
 				}
 				country_event = { id = observation.2038 } # Pacifists Enlighten Militarists
 			}
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_pacifist = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_pacifist }
 				}
 				country_event = { id = observation.2039 } # Militarists Enlightening Pacifists
 			}
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_spiritualist = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_spiritualist }
 				}
 				country_event = { id = observation.2040 } # Materialists Enlightening Spiritualists
 			}
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_materialist = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_materialist }
 				}
 				country_event = { id = observation.2041 } # Spiritualists Enlightening Materialists
 			}
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_authoritarian = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_authoritarian }
 				}
 				country_event = { id = observation.2042 } # Egalitarians Enlightening Authoritarians
 			}
 			1 = {
 				modifier = {
 					factor = 0.5
-					event_target:pre_ftl_country = { is_fanatic_egalitarian = yes }
+					event_target:pre_ftl_country = { has_ethic = ethic_fanatic_egalitarian }
 				}
 				country_event = { id = observation.2043 } # Authoritarians Enlightening Egalitarians
 			}

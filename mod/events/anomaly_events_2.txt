@@ -1125,7 +1125,9 @@ ship_event = {
 
 	option = {
 		trigger = {
-			owner = { is_fanatic_pacifist = no }
+			owner = {
+				NOT = { has_ethic = ethic_fanatic_pacifist }
+			}
 		}
 		name = anomaly.3015.a
 		from = {
@@ -1417,7 +1419,9 @@ ship_event = {
 	option = {
 		name = anomaly.3040.a
 		trigger = {
-			owner = { is_fanatic_xenophobe = no }
+			owner = {
+				NOT = { has_ethic = ethic_fanatic_xenophobe }
+			}
 		}
 		hidden_effect = {
 			owner = {
@@ -1449,7 +1453,10 @@ ship_event = {
 	option = {
 		name = anomaly.3040.b
 		trigger = {
-			owner = { has_ethic = ethic_xenophobe is_fanatic_xenophobe = no }
+			owner = {
+				has_ethic = ethic_xenophobe
+				NOT = { has_ethic = ethic_fanatic_xenophobe }
+			}
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -1463,7 +1470,7 @@ ship_event = {
 	option = {
 		name = anomaly.3040.c
 		trigger = {
-			owner = { is_fanatic_xenophobe = yes }
+			owner = { has_ethic = ethic_fanatic_xenophobe }
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -1674,7 +1681,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_xenophobe
 					has_civic = civic_machine_terminator
 				}
 			}
@@ -1686,7 +1693,7 @@ ship_event = {
 	option = {
 		name = anomaly.3060.b
 		trigger = {
-			owner = { is_fanatic_xenophobe = yes }
+			owner = { has_ethic = ethic_fanatic_xenophobe }
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -2015,7 +2022,7 @@ country_event = {
 		name = anomaly.3086.b
 		trigger = {
 			NOR = {
-				is_fanatic_xenophobe = yes
+				has_ethic = ethic_fanatic_xenophobe
 				has_civic = civic_machine_terminator
 				has_civic = civic_fanatic_purifiers
 			}
@@ -3237,7 +3244,9 @@ ship_event = {
 	option = {
 		name = anomaly.3125.b
 		trigger = {
-			owner = { is_fanatic_xenophobe = no }
+			owner = {
+				NOT = { has_ethic = ethic_fanatic_xenophobe }
+			}
 		}
 		from = {
 			enable_special_project = { name = "MANUFACTORY_PROJECT" owner = root.owner }

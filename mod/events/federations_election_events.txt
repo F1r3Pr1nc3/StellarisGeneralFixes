@@ -305,7 +305,7 @@ country_event = {
 					### Fanatic Militarist
 					if = {
 						limit = {
-							prev = { is_fanatic_militarist = yes }
+							prev = { has_ethic = ethic_fanatic_militarist }
 						}
 						change_variable = { which = leader_ability value = 10 }
 					}
@@ -319,7 +319,7 @@ country_event = {
 					### Fanatic Pacifist
 					if = {
 						limit = {
-							prev = { is_fanatic_pacifist = yes }
+							prev = { has_ethic = ethic_fanatic_pacifist }
 						}
 						subtract_variable = { which = leader_ability value = 10 }
 					}
@@ -2848,7 +2848,7 @@ country_event = {
 		ai_chance = {
 			factor = 10
 			modifier = { factor = 5 has_ethic = ethic_egalitarian }
-			modifier = { factor = 7 is_fanatic_egalitarian = yes }
+			modifier = { factor = 7 has_ethic = ethic_fanatic_egalitarian }
 		}
 	}
 
@@ -2867,9 +2867,9 @@ country_event = {
 		ai_chance = {
 			factor = 10
 			modifier = { factor = 2 has_ethic = ethic_authoritarian }
-			modifier = { factor = 3 is_fanatic_authoritarian = yes }
+			modifier = { factor = 3 has_ethic = ethic_fanatic_authoritarian }
 			modifier = { factor = 2 has_ethic = ethic_xenophobe }
-			modifier = { factor = 3 is_fanatic_xenophobe = yes }
+			modifier = { factor = 3 has_ethic = ethic_fanatic_xenophobe }
 			modifier = { factor = 3 is_gestalt = yes }
 			modifier = { factor = 5 has_civic = civic_criminal_heritage }
 			modifier = { factor = 5 has_civic = civic_ruthless_competition }

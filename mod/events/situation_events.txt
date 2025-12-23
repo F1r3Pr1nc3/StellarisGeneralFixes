@@ -4631,7 +4631,9 @@ planet_event = {
 	}
 	option = {
 		allow = {
-			owner = { is_fanatic_materialist = no }
+			owner = {
+				NOT = { has_ethic = ethic_fanatic_materialist }
+			}
 		}
 		name = situation.1090.c
 		if = {

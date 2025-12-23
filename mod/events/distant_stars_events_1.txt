@@ -3029,8 +3029,8 @@ planet_event = {
 			owner = {
 				NOR = {
 					has_civic = civic_machine_servitor
-					is_fanatic_xenophile = yes
-					is_fanatic_egalitarian = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_egalitarian
 				}
 			}
 		}
@@ -8667,7 +8667,7 @@ ship_event = {
 		exclusive_trigger = {
 			owner = {
 				OR = {
-					is_fanatic_authoritarian = yes
+					has_ethic = ethic_fanatic_authoritarian
 					has_civic = civic_slaver_guilds
 				}
 				NOT = { has_origin = origin_evolutionary_predators }

@@ -1312,28 +1312,17 @@ synth_queen_wipe_system = {
 					}
 				}
 				change_pc = pc_gray_goo
-				clear_deposits = yes
-				if = {
-					limit = {
-						NOT = { has_deposit = d_nanites_deposit }
-					}
-					add_deposit = d_nanites_deposit
-				}
-			}
-			every_system_planet = {
-				limit = {
-					NOR = {
-						is_star = yes
-						is_planet_class = pc_gas_giant
-						is_planet_class = pc_astral_scar
-						is_planet_class = pc_habitat
-						is_asteroid = yes
-						is_colonizable = no
-						has_ringworld_output_boost = yes
+				if = { # Vfix opt (double)
+					limit = { is_colonizable = no }
+					clear_deposits = yes
+					if = {
+						limit = {
+							NOT = { has_deposit = d_nanites_deposit }
+						}
+						add_deposit = d_nanites_deposit
 					}
 				}
-				change_pc = pc_gray_goo
-				if = {
+				else_if = {
 					limit = {
 						NOT = { has_modifier = terraforming_candidate }
 					}
@@ -1377,7 +1366,7 @@ synth_queen_wipe_system = {
 				limit = {
 					has_star_flag = synth_queen_system
 					exists = event_target:synth_queen_country_global
-					NOT = { any_ship_in_system = { is_ship_size = big_starbase_synth_queen } }
+					NOT = { any_starbase_in_system = { is_ship_size = big_starbase_synth_queen } } # Vfix opt
 				}
 				create_starbase = {
 					size = starbase_synth_queen
@@ -2105,8 +2094,8 @@ make_fallen_empire = {
 		else_if = {
 			limit = {
 				OR = {
-					is_fanatic_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 			add_global_ship_design = "NAME_Reaper"
@@ -2125,8 +2114,8 @@ make_fallen_empire = {
 		else_if = {
 			limit = {
 				OR = {
-					is_fanatic_xenophile = yes
-					is_fanatic_pacifist = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_pacifist
 				}
 			}
 			add_global_ship_design = "NAME_Adjuster"
@@ -2143,7 +2132,7 @@ make_fallen_empire = {
 			set_graphical_culture = fallen_empire_03
 		}
 		else_if = {
-			limit = { is_fanatic_spiritualist = yes }
+			limit = { has_ethic = ethic_fanatic_spiritualist }
 			add_global_ship_design = "NAME_Cleanser"
 			add_global_ship_design = "NAME_Eternal"
 			add_global_ship_design = "NAME_Avatar"

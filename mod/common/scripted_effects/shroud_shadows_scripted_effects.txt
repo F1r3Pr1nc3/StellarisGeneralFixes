@@ -518,7 +518,7 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_pacifist_picked }
 				is_pacifist = yes
 			}
-			modifier = { factor = 10 is_fanatic_pacifist = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_pacifist }
 			set_country_flag = $FACTION$_pacifist_picked
 			set_country_flag = $FACTION$_pacifist_selected
 		}
@@ -528,7 +528,7 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_militarist_picked }
 				is_militarist = yes
 			}
-			modifier = { factor = 10 is_fanatic_militarist = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_militarist }
 			set_country_flag = $FACTION$_militarist_picked
 			set_country_flag = $FACTION$_militarist_selected
 		}
@@ -538,7 +538,7 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_materialist_picked }
 				is_materialist = yes
 			}
-			modifier = { factor = 10 is_fanatic_materialist = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_materialist }
 			set_country_flag = $FACTION$_materialist_picked
 			set_country_flag = $FACTION$_materialist_selected
 		}
@@ -549,17 +549,18 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_spiritualist_picked }
 				is_spiritualist = yes
 			}
-			modifier = { factor = 10 is_fanatic_spiritualist = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_spiritualist }
 			set_country_flag = $FACTION$_spiritualist_picked
 			set_country_flag = $FACTION$_spiritualist_selected
-		} ]
+		}
+		]
 		0 = {
 			modifier = {
 				add = 1
 				NOT = { has_country_flag = $FACTION$_egalitarian_picked }
 				is_egalitarian = yes
 			}
-			modifier = { factor = 10 is_fanatic_egalitarian = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_egalitarian }
 			set_country_flag = $FACTION$_egalitarian_picked
 			set_country_flag = $FACTION$_egalitarian_selected
 		}
@@ -569,7 +570,7 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_authoritarian_picked }
 				is_authoritarian = yes
 			}
-			modifier = { factor = 10 is_fanatic_authoritarian = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_authoritarian }
 			set_country_flag = $FACTION$_authoritarian_picked
 			set_country_flag = $FACTION$_authoritarian_selected
 		}
@@ -580,7 +581,7 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_xenophile_picked }
 				is_xenophile = yes
 			}
-			modifier = { factor = 10 is_fanatic_xenophile = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_xenophile }
 			set_country_flag = $FACTION$_xenophile_picked
 			set_country_flag = $FACTION$_xenophile_selected
 		}
@@ -592,7 +593,7 @@ roll_secret_faction_internal = {
 				NOT = { has_country_flag = $FACTION$_xenophobe_picked }
 				is_xenophobe = yes
 			}
-			modifier = { factor = 10 is_fanatic_xenophobe = yes }
+			modifier = { factor = 10 has_ethic = ethic_fanatic_xenophobe }
 			set_country_flag = $FACTION$_xenophobe_picked
 			set_country_flag = $FACTION$_xenophobe_selected
 		}

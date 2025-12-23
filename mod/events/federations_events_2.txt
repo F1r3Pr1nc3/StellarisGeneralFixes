@@ -229,20 +229,13 @@ fleet_event = {
 	immediate = {
 		if = {
 			limit = {
-				any_country = {
-					is_fallen_empire = yes
-					is_fanatic_xenophobe = yes
-					has_communications = root.owner
-				}
+				any_country = { is_fallen_empire_xenophobe = yes has_communications = root.owner }
 			}
 			random_list = {
 				1 = { fleet_event = { id = federations2.7 } }
 				4 = {
 					random_country = {
-						limit = {
-							is_fallen_empire = yes
-							is_fanatic_xenophobe = yes
-						}
+						limit = { is_fallen_empire_xenophobe = yes }
 						save_event_target_as = fanatic_xenophobe_fe
 					}
 					fleet_event = { id = federations2.6 }
@@ -866,31 +859,31 @@ country_event = {
 			}
 			# And set them again :D
 			if = {
-				limit = { is_fanatic_militarist = yes }
+				limit = { has_ethic = ethic_fanatic_militarist }
 				set_country_flag = hegemony_ethos_militarist
 			}
 			else_if = {
-				limit = { is_fanatic_pacifist = yes }
+				limit = { has_ethic = ethic_fanatic_pacifist }
 				set_country_flag = hegemony_ethos_pacifist
 			}
 			else_if = {
-				limit = { is_fanatic_xenophobe = yes }
+				limit = { has_ethic = ethic_fanatic_xenophobe }
 				set_country_flag = hegemony_ethos_xenophobe
 			}
 			else_if = {
-				limit = { is_fanatic_xenophile = yes }
+				limit = { has_ethic = ethic_fanatic_xenophile }
 				set_country_flag = hegemony_ethos_xenophile
 			}
 			else_if = {
-				limit = { is_fanatic_materialist = yes }
+				limit = { has_ethic = ethic_fanatic_materialist }
 				set_country_flag = hegemony_ethos_materialist
 			}
 			else_if = {
-				limit = { is_fanatic_spiritualist = yes }
+				limit = { has_ethic = ethic_fanatic_spiritualist }
 				set_country_flag = hegemony_ethos_spiritualist
 			}
 			else_if = { # hopefully never
-				limit = { is_fanatic_egalitarian = yes }
+				limit = { has_ethic = ethic_fanatic_egalitarian }
 				set_country_flag = hegemony_ethos_egalitarian
 			}
 			else = {

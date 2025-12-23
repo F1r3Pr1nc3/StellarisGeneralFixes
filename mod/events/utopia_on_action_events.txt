@@ -895,7 +895,7 @@ country_event = {
 		else = {
 			random_playable_country = {
 				limit = {
-					is_fanatic_spiritualist = yes
+					has_ethic = ethic_fanatic_spiritualist
 					has_communications = root
 					NOT = { is_same_value = root }
 				}
@@ -2051,7 +2051,7 @@ country_event = {
 				change_variable = { which = composer_covenant_rank value = 0.03 }
 			}
 			else_if = {
-				limit = { is_fanatic_xenophile = yes }
+				limit = { has_ethic = ethic_fanatic_xenophile }
 				change_variable = { which = composer_covenant_rank value = 0.07 }
 			}
 			if = { # Ethics disliked
@@ -2063,7 +2063,7 @@ country_event = {
 			}
 			else_if = {
 				limit = {
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_xenophobe
 					check_variable = { which = composer_covenant_rank value < 2 }
 				}
 				change_variable = { which = composer_covenant_rank value = -0.05 }
@@ -2125,7 +2125,7 @@ country_event = {
 				change_variable = { which = eater_covenant_rank value = 0.03 }
 			}
 			else_if = {
-				limit = { is_fanatic_militarist = yes }
+				limit = { has_ethic = ethic_fanatic_militarist }
 				change_variable = { which = eater_covenant_rank value = 0.07 }
 			}
 			if = { # Ethics disliked
@@ -2137,7 +2137,7 @@ country_event = {
 			}
 			else_if = {
 				limit = {
-					is_fanatic_pacifist = yes
+					has_ethic = ethic_fanatic_pacifist
 					check_variable = { which = eater_covenant_rank value < 2 }
 				}
 				change_variable = { which = eater_covenant_rank value = -0.05 }
@@ -2191,7 +2191,7 @@ country_event = {
 				change_variable = { which = instrument_covenant_rank value = 0.03 }
 			}
 			else_if = {
-				limit = { is_fanatic_authoritarian = yes }
+				limit = { has_ethic = ethic_fanatic_authoritarian }
 				change_variable = { which = instrument_covenant_rank value = 0.07 }
 			}
 			if = { # Ethics disliked
@@ -2203,7 +2203,7 @@ country_event = {
 			}
 			else_if = {
 				limit = {
-					is_fanatic_egalitarian = yes
+					has_ethic = ethic_fanatic_egalitarian
 					check_variable = { which = instrument_covenant_rank value < 2 }
 				}
 				change_variable = { which = instrument_covenant_rank value = -0.05 }
@@ -2264,7 +2264,7 @@ country_event = {
 				change_variable = { which = whisperers_covenant_rank value = 0.03 }
 			}
 			else_if = {
-				limit = { is_fanatic_materialist = yes }
+				limit = { has_ethic = ethic_fanatic_materialist }
 				change_variable = { which = whisperers_covenant_rank value = 0.07 }
 			}
 			if = { # Ethics disliked
@@ -2276,7 +2276,7 @@ country_event = {
 			}
 			else_if = {
 				limit = {
-					is_fanatic_spiritualist = yes
+					has_ethic = ethic_fanatic_spiritualist
 					check_variable = { which = whisperers_covenant_rank value < 2 }
 				}
 				change_variable = { which = whisperers_covenant_rank value = -0.05 }

@@ -1796,7 +1796,7 @@ ship_event = {
 		custom_tooltip = red_giant_lusus_triangulated_tt
 		root.owner = {
 			hidden_effect = { # remove the unfinished triangulation projects.
-				abort_special_project = INF_ORIGIN_RED_GIANT_TRIANGULATION
+				abort_special_project = { type = INF_ORIGIN_RED_GIANT_TRIANGULATION } # Vfix?
 			}
 			create_point_of_interest = {
 				id = red_giant_lusus_event_poi
@@ -1842,7 +1842,7 @@ ship_event = {
 	option = {
 		name = infernals.115.c
 		trigger = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -4569,7 +4569,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_xenophobe
 					is_homicidal = yes
 				}
 			}

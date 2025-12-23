@@ -2200,14 +2200,18 @@ astral_rift_event = {
 	option = {
 		name = astral_rift.3225.a
 		trigger = {
-			explorer = { is_fanatic_spiritualist = no }
+			explorer = {
+				NOT = { has_ethic = ethic_fanatic_spiritualist }
+			}
 		}
 		set_next_astral_rift_event = { id = astral_rift.3235 }
 	}
 	option = {
 		name = astral_rift.3225.b
 		trigger = {
-			explorer = { is_fanatic_materialist = no }
+			explorer = {
+				NOT = { has_ethic = ethic_fanatic_materialist }
+			}
 		}
 		set_next_astral_rift_event = { id = astral_rift.3240 }
 	}

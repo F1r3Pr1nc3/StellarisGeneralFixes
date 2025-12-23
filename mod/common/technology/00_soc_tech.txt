@@ -244,7 +244,7 @@ tech_eco_simulation = {
 			}
 		}
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 		modifier = { factor = 2 has_relic = r_pox_sample }
 		modifier = { factor = 2 country_uses_bio_ships = yes }
 		modifier = {
@@ -269,7 +269,7 @@ tech_eco_simulation = {
 
 	ai_weight = {
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 	}
 }
 
@@ -332,7 +332,7 @@ tech_gene_crops = {
 			}
 		}
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 		modifier = { factor = 2 has_relic = r_pox_sample }
 		modifier = { factor = 2 country_uses_bio_ships = yes }
 	}
@@ -340,7 +340,7 @@ tech_gene_crops = {
 	ai_weight = {
 		factor = @farming_ai_weight_factor
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 	}
 }
 
@@ -403,7 +403,7 @@ tech_nano_vitality_crops = {
 			}
 		}
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 		modifier = { factor = 2 has_relic = r_pox_sample }
 		modifier = { factor = 2 country_uses_bio_ships = yes }
 	}
@@ -411,7 +411,7 @@ tech_nano_vitality_crops = {
 	ai_weight = {
 		factor = @farming_ai_weight_factor
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 	}
 }
 
@@ -486,7 +486,7 @@ tech_nutrient_replication = {
 			TECHNOLOGY = tech_nutrient_replication
 		}
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 		modifier = { factor = 2 has_relic = r_pox_sample }
 		modifier = { factor = 2 country_uses_bio_ships = yes }
 	}
@@ -494,7 +494,7 @@ tech_nutrient_replication = {
 	ai_weight = {
 		factor = @farming_ai_weight_factor
 		modifier = { factor = 1.25 has_ethic = ethic_pacifist }
-		modifier = { factor = 1.5 is_fanatic_pacifist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_pacifist }
 	}
 }
 
@@ -952,9 +952,9 @@ tech_alien_life_studies = {
 		modifier = {
 			factor = 3
 			OR = {
-				is_fanatic_xenophile = yes
+				has_ethic = ethic_fanatic_xenophile
 				AND = {
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_xenophobe
 					NOT = { has_ai_personality = xenophobic_isolationists }
 				}
 			}
@@ -981,9 +981,9 @@ tech_alien_life_studies = {
 		modifier = {
 			factor = 1.5
 			OR = {
-				is_fanatic_xenophile = yes
+				has_ethic = ethic_fanatic_xenophile
 				AND = {
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_xenophobe
 					NOT = { has_ai_personality = xenophobic_isolationists }
 				}
 			}
@@ -2138,10 +2138,10 @@ tech_epigenetic_triggers = {
 				}
 			}
 		}
-		modifier = { factor = 0.5 is_fanatic_xenophobe = yes }
+		modifier = { factor = 0.5 has_ethic = ethic_fanatic_xenophobe }
 		modifier = { factor = 0.75 has_ethic = ethic_xenophobe }
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
-		modifier = { factor = 1.5 is_fanatic_xenophile = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 2 has_relic = r_pox_sample }
 		modifier = { factor = 0.5 is_individual_machine = yes }
 		modifier = { factor = 0.5 has_origin = origin_synthetic_fertility }
@@ -2154,10 +2154,10 @@ tech_epigenetic_triggers = {
 	}
 
 	ai_weight = {
-		modifier = { factor = 0.5 is_fanatic_xenophobe = yes }
+		modifier = { factor = 0.5 has_ethic = ethic_fanatic_xenophobe }
 		modifier = { factor = 0.75 has_ethic = ethic_xenophobe }
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
-		modifier = { factor = 1.5 is_fanatic_xenophile = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_xenophile }
 	}
 }
 
@@ -2291,7 +2291,7 @@ tech_gene_seed_purification = {
 		}
 		modifier = { factor = 1.25 is_hive_empire = yes }
 		modifier = { factor = 1.25 has_ethic = ethic_militarist }
-		modifier = { factor = 1.5 is_fanatic_militarist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_militarist }
 		modifier = {
 			factor = 0.10
 			NOR = {
@@ -2350,7 +2350,7 @@ tech_morphogenetic_field_mastery = {
 		modifier = { factor = 0 is_machine_empire = yes }
 		modifier = { factor = 1.25 is_hive_empire = yes }
 		modifier = { factor = 1.25 has_ethic = ethic_militarist }
-		modifier = { factor = 1.5 is_fanatic_militarist = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_militarist }
 		modifier = {
 			factor = 0.20
 			NOR = {
@@ -2851,7 +2851,7 @@ tech_selected_lineages = {
 	}
 
 	ai_weight = {
-		modifier = { factor = 0 is_fanatic_egalitarian = yes }
+		modifier = { factor = 0 has_ethic = ethic_fanatic_egalitarian }
 	}
 }
 
@@ -3746,7 +3746,7 @@ tech_thought_enforcement = {
 		modifier = {
 			factor = 3
 			is_spiritualist = yes
-			is_fanatic_authoritarian = yes
+			has_ethic = ethic_fanatic_authoritarian
 		}
 		modifier = { factor = 2 has_valid_civic = civic_police_state }
 		modifier = {
@@ -3919,7 +3919,7 @@ tech_manifest_destiny = {
 
 	ai_weight = {
 		modifier = { factor = 1.5 has_ethic = ethic_militarist }
-		modifier = { factor = 2 is_fanatic_militarist = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_militarist }
 	}
 }
 
@@ -3996,7 +3996,7 @@ tech_galactic_campaigns = {
 
 	ai_weight = {
 		modifier = { factor = 1.5 has_ethic = ethic_militarist }
-		modifier = { factor = 2 is_fanatic_militarist = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_militarist }
 	}
 }
 
@@ -4028,10 +4028,10 @@ tech_existential_campaigns = {
 			OR = {
 				is_homicidal = yes
 				num_communications < 1
-				is_fanatic_pacifist = yes
+				has_ethic = ethic_fanatic_pacifist
 			}
 		}
-		modifier = { factor = 2 is_fanatic_militarist = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_militarist }
 		modifier = { factor = 1.5 has_ethic = ethic_militarist }
 		modifier = { factor = 2 num_communications > 2 }
 		modifier = { factor = 2 num_communications > 3 }
@@ -4040,8 +4040,8 @@ tech_existential_campaigns = {
 	}
 
 	ai_weight = {
-		modifier = { factor = 0 is_fanatic_pacifist = yes }
-		modifier = { factor = 2 is_fanatic_militarist = yes }
+		modifier = { factor = 0 has_ethic = ethic_fanatic_pacifist }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_militarist }
 		modifier = { factor = 1.5 has_ethic = ethic_militarist }
 		modifier = { factor = 0.5 has_ethic = ethic_pacifist }
 	}
@@ -4107,7 +4107,7 @@ tech_planetary_unification = {
 		factor = @capital_tech_ai_factor
 		modifier = { factor = 0.75 is_pacifist = no }
 		modifier = { factor = 1.25 has_ethic = ethic_authoritarian }
-		modifier = { factor = 1.5 is_fanatic_authoritarian = yes }
+		modifier = { factor = 1.5 has_ethic = ethic_fanatic_authoritarian }
 	}
 }
 
@@ -5689,17 +5689,17 @@ tech_federation_code = {
 	weight_modifier = {
 		factor = 2
 		modifier = { factor = 2 is_galactic_community_member = yes }
-		modifier = { factor = 2 is_fanatic_xenophile = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
 		modifier = { factor = 0.5 has_ethic = ethic_xenophobe }
-		modifier = { factor = 0.25 is_fanatic_xenophobe = yes }
+		modifier = { factor = 0.25 has_ethic = ethic_fanatic_xenophobe }
 	}
 
 	ai_weight = {
-		modifier = { factor = 2 is_fanatic_xenophile = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
 		modifier = { factor = 0.5 has_ethic = ethic_xenophobe }
-		modifier = { factor = 0.25 is_fanatic_xenophobe = yes }
+		modifier = { factor = 0.25 has_ethic = ethic_fanatic_xenophobe }
 	}
 }
 
@@ -5731,14 +5731,14 @@ tech_xeno_diplomacy = {
 	weight_modifier = {
 		factor = 2
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
-		modifier = { factor = 2 is_fanatic_xenophile = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 2 is_galactic_community_member = yes }
 		modifier = { factor = 0.01 has_civic = civic_inwards_perfection }
 	}
 
 	ai_weight = {
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
-		modifier = { factor = 2 is_fanatic_xenophile = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 0.01 has_civic = civic_inwards_perfection }
 	}
 }
@@ -5772,14 +5772,14 @@ tech_xeno_relations = {
 	weight_modifier = {
 		factor = 2
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
-		modifier = { factor = 2 is_fanatic_xenophile = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 2 is_galactic_community_member = yes }
 		modifier = { factor = 0.01 has_civic = civic_inwards_perfection }
 	}
 
 	ai_weight = {
 		modifier = { factor = 1.25 has_ethic = ethic_xenophile }
-		modifier = { factor = 2 is_fanatic_xenophile = yes }
+		modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile }
 		modifier = { factor = 0.01 has_civic = civic_inwards_perfection }
 	}
 }

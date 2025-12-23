@@ -9,19 +9,35 @@ on_single_player_save_game_load = {
 	}
 }
 
-# A planet has been colonized.
-# Scope = Planet
-# on_colonized = {
-# 	events = {
+# No scope, like on_game_start
+on_monthly_pulse = {
+	events = {
+		crisis.1230 # Extradimensionals crisis sound
+	}
+}
 
+# No scope, like on_game_start
+# on_yearly_pulse = {
+# 	events = {
+# 		crisis.1100 # Extradimensionals Second Portal
 # 	}
 # }
-# This = owner of ship 1 (destroyed)
-# From = owner of ship 2 (combatant)
-# FromFrom = ship 1
-# FromFromFrom = ship 2
-on_ship_destroyed_victim = {
+
+# This = owner of fleet 1 (destroyed)
+# From = owner of fleet 2 (combatant)
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
+on_fleet_destroyed_victim = {
 	events = {
-		khan.525
+		khan.525 # May Horde Triggered
+	}
+}
+
+# This = starbase being destroyed (not ship!)
+# From = fleet that destroyed the starbase
+on_starbase_destroyed = {
+	events = {
+		crisis.1312 # Extradimensionals
+		crisis.1284 # Extradimensionals Anchor Destroyed (replaces .1281)
 	}
 }

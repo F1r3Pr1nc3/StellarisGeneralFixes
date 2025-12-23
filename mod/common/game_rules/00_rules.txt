@@ -3420,7 +3420,7 @@ leader_election_weight = {
 		custom_tooltip = {
 			success_text = Xeno
 			owner = {
-				is_fanatic_xenophobe = yes
+				has_ethic = ethic_fanatic_xenophobe
 				NOT = { is_same_species = prev } #Invalidated if you have selective kinship
 				NAND = {
 					has_valid_civic = civic_selective_kinship
@@ -3468,7 +3468,7 @@ leader_election_weight = {
 	modifier = {
 		custom_tooltip = {
 			success_text = Xeno
-			owner = { is_fanatic_xenophile = yes }
+			owner = { has_ethic = ethic_fanatic_xenophile }
 			exists = owner.ruler
 			NOT = {
 				is_same_species = owner.ruler

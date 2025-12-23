@@ -1435,7 +1435,7 @@ replace_building_with_multiple_districts_effect = {
 set_predictive_observation_insight = {
 	set_variable = { which = observation_predictive_insight_change value = $VALUE$ }
 	if = {
-		limit = { is_fanatic_xenophile = yes }
+		limit = { has_ethic = ethic_fanatic_xenophile }
 		multiply_variable = { which = observation_predictive_insight_change value = 2 }
 	}
 	if = {
@@ -1503,7 +1503,7 @@ add_observation_insight_effect = {
 	hidden_effect = {
 		set_variable = { which = observation_insight_change value = $VALUE$ }
 		if = {
-			limit = { is_fanatic_xenophile = yes }
+			limit = { has_ethic = ethic_fanatic_xenophile }
 			multiply_variable = { which = observation_insight_change value = 2 }
 		}
 		if = {

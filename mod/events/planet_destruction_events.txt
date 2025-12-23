@@ -879,10 +879,7 @@ planet_event = {
 			spawn_ringworld_neutron_effect = yes
 		}
 		if = {
-			limit = { is_artificial = yes }
-			# nothing
-		}
-		else = {
+			limit = { is_artificial = no }
 			change_pc = this
 		}
 		# For Infested worlds
@@ -1179,10 +1176,7 @@ planet_event = {
 			spawn_ringworld_divine_effect = yes
 		}
 		if = {
-			limit = { is_artificial = yes }
-			# nothing
-		}
-		else = {
+			limit = { is_artificial = no }
 			change_pc = this
 		}
 		add_modifier = { modifier = god_rayed years = 10 }
@@ -1363,12 +1357,11 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				exists = owner
-				is_owned_by = from.owner
+				NAND = {
+					exists = owner
+					is_owned_by = from.owner
+				}
 			}
-			# already owned
-		}
-		else = {
 			set_owner = from.owner
 		}
 		every_owned_pop_group = {
@@ -1410,10 +1403,7 @@ planet_event = {
 			spawn_ringworld_nanobot_effect = yes
 		}
 		if = {
-			limit = { is_artificial = yes }
-			# nothing
-		}
-		else = {
+			limit = { is_artificial = no }
 			change_pc = this
 		}
 	}
@@ -2615,10 +2605,7 @@ planet_event = {
 			spawn_ringworld_neutron_effect = yes
 		}
 		if = {
-			limit = { is_artificial = yes }
-			# nothing
-		}
-		else = {
+			limit = { is_artificial = no }
 			change_pc = this
 		}
 		set_timed_planet_flag = { flag = devolved_planet years = 1 }

@@ -2706,8 +2706,10 @@ ship_event = {
 		trigger = {
 			owner = {
 				# Vanilla would only trigger for purifiers and despoilers.
-				is_unfriendly = no
-				is_fanatic_xenophobe = no
+				NOR = {
+					is_unfriendly = yes
+					has_ethic = ethic_fanatic_xenophobe
+				}
 			}
 		}
 		name = anomaly.6845.a

@@ -658,7 +658,9 @@ planet_event = {
 				has_planet_flag = frontier_egalitarianism
 				has_planet_flag = frontier_alternatives
 			}
-			owner = { is_fanatic_authoritarian = no }
+			owner = {
+				NOT = { has_ethic = ethic_fanatic_authoritarian }
+			}
 		}
 		owner = {
 			add_monthly_resource_mult = {
@@ -814,7 +816,9 @@ planet_event = {
 				has_planet_flag = frontier_discourse
 				has_planet_flag = frontier_authoritarianism
 			}
-			owner = { is_fanatic_egalitarian = no }
+			owner = {
+				NOT = { has_ethic = ethic_fanatic_egalitarian }
+			}
 		}
 		owner = {
 			add_monthly_resource_mult = {

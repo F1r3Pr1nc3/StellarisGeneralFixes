@@ -892,60 +892,42 @@ decision_unconsecrated_worlds = {
 					remove_modifier = consecrated_quality_4
 					solar_system = {
 						random_system_ambient_object = {
-							limit = {
-								is_ambient_object_type = consecrated_planet_stage_3_object
-							}
+							limit = { is_ambient_object_type = consecrated_planet_stage_3_object }
 							destroy_ambient_object = this
 						}
 					}
 					from = {
-						change_variable = {
-							which = consecrated_variable
-							value = -4
-						}
+						change_variable = { which = consecrated_variable value = -4 }
 					}
 				}
 				consecrated_quality_3 = {
 					remove_modifier = consecrated_quality_3
 					solar_system = {
 						random_system_ambient_object = {
-							limit = {
-								is_ambient_object_type = consecrated_planet_stage_2_object
-							}
+							limit = { is_ambient_object_type = consecrated_planet_stage_2_object }
 							destroy_ambient_object = this
 						}
 					}
 					from = {
-						change_variable = {
-							which = consecrated_variable
-							value = -3
-						}
+						change_variable = { which = consecrated_variable value = -3 }
 					}
 				}
 				consecrated_quality_2 = {
 					remove_modifier = consecrated_quality_2
 					solar_system = {
 						random_system_ambient_object = {
-							limit = {
-								is_ambient_object_type = consecrated_planet_stage_1_object
-							}
+							limit = { is_ambient_object_type = consecrated_planet_stage_1_object }
 							destroy_ambient_object = this
 						}
 					}
 					from = {
-						change_variable = {
-							which = consecrated_variable
-							value = -2
-						}
+						change_variable = { which = consecrated_variable value = -2 }
 					}
 				}
 				consecrated_quality_1 = {
 					remove_modifier = consecrated_quality_1
 					from = {
-						change_variable = {
-							which = consecrated_variable
-							value = -1
-						}
+						change_variable = { which = consecrated_variable value = -1 }
 					}
 				}
 			}
@@ -1224,7 +1206,7 @@ decision_market_nomination = {
 				has_valid_civic = civic_inwards_perfection
 				AND = {
 					is_ai = yes
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_xenophobe
 				}
 			}
 		}

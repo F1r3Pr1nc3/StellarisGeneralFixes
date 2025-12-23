@@ -31,9 +31,7 @@ electric_storm = {
 		potential = {
 			always = yes
 		}
-		modifier = {
-			ship_speed_mult = 1
-		}
+		ship_speed_mult = 1
 	}
 
 	### negative effects ###
@@ -42,9 +40,7 @@ electric_storm = {
 		potential = {
 			always = yes
 		}
-		modifier = {
-			custom_tooltip = electric_storm_fleet_tt
-		}
+		custom_tooltip = electric_storm_fleet_tt
 	}
 
 	###
@@ -121,11 +117,9 @@ particle_storm = {
 		potential = {
 			always = yes
 		}
-		modifier = {
-			ships_upkeep_mult = 0.5
-			custom_tooltip = particle_storm_fleet_tt
-			show_only_custom_tooltip = no
-		}
+		ships_upkeep_mult = 0.5
+		custom_tooltip = particle_storm_fleet_tt
+		show_only_custom_tooltip = no
 	}
 
 	on_start = {
@@ -195,11 +189,9 @@ gravity_storm = {
 		potential = {
 			is_colony = yes
 		}
-		modifier = {
-			planet_enforcers_produces_mult = 0.5
-			planet_bureaucrats_produces_mult = 0.5
-			planet_entertainers_produces_mult = 0.5
-		}
+		planet_enforcers_produces_mult = 0.5
+		planet_bureaucrats_produces_mult = 0.5
+		planet_entertainers_produces_mult = 0.5
 	}
 
 	### negative effects ###
@@ -320,9 +312,7 @@ magnetic_storm = {
 		potential = {
 			is_colony = yes
 		}
-		modifier = {
-			planet_metallurgists_upkeep_mult = -2
-		}
+		planet_metallurgists_upkeep_mult = -2
 	}
 
 	### negative effects ###
@@ -343,9 +333,7 @@ magnetic_storm = {
 		potential = {
 			system_has_negating_storm_building = no
 		}
-		modifier = {
-			starbase_shipyard_build_speed_mult = -0.5
-		}
+		starbase_shipyard_build_speed_mult = -0.5
 	}
 
 	triggered_planet_modifier = {
@@ -353,18 +341,14 @@ magnetic_storm = {
 			is_colony = no
 			system_has_negating_storm_building = no
 		}
-		modifier = {
-			stations_upkeep_mult = 1
-		}
+		stations_upkeep_mult = 1
 	}
 
 	triggered_fleet_modifier = {
 		potential = {
 			always = yes
 		}
-		modifier = {
-			ships_upkeep_mult = 1
-		}
+		ships_upkeep_mult = 1
 	}
 
 	on_start = {
@@ -505,18 +489,15 @@ celestial_storm = {
 	spawn_weight = 1
 	description = celestial_storm_lore_description
 
-
 	### positive effects ###
 
 	triggered_planet_modifier = {
 		potential = {
 			is_colony = yes
 		}
-		modifier = {
-			planet_farmers_produces_mult = 1
-			planet_miners_produces_mult = 1
-			planet_technician_produces_mult = 1
-		}
+		planet_farmers_produces_mult = 1
+		planet_miners_produces_mult = 1
+		planet_technician_produces_mult = 1
 	}
 
 	### negative effects ###
@@ -536,10 +517,8 @@ celestial_storm = {
 		potential = {
 			always = yes
 		}
-		modifier = {
-			ship_cloaking_strength_add = 10
-			ship_speed_mult = -0.5
-		}
+		ship_cloaking_strength_add = 10
+		ship_speed_mult = -0.5
 	}
 
 	on_start = {
@@ -624,29 +603,23 @@ shroud_storm = {
 		potential = {
 			always = yes
 		}
-		modifier = {
-			ship_evasion_mult = 0.1
-		}
+		ship_evasion_mult = 0.1
 	}
 
 	triggered_fleet_modifier = {
 		potential = {
 			owner = { has_country_flag = breached_shroud }
 		}
-		modifier = {
-			ship_evasion_mult = @shroud_storm_evasion
-			custom_tooltip = "shroud_storm_ship_evasion_modifier_tt"
-		}
+		ship_evasion_mult = @shroud_storm_evasion
+		custom_tooltip = "shroud_storm_ship_evasion_modifier_tt"
 	}
 
 	triggered_fleet_modifier = {
 		potential = {
 			owner = { has_country_flag = breached_shroud }
 		}
-		modifier = {
-			ship_weapon_damage = @shroud_storm_damage
-			custom_tooltip = "shroud_storm_ship_damage_modifier_tt"
-		}
+		ship_weapon_damage = @shroud_storm_damage
+		custom_tooltip = "shroud_storm_ship_damage_modifier_tt"
 	}
 
 	triggered_planet_modifier = {
@@ -658,9 +631,7 @@ shroud_storm = {
 			}
 			owner = { is_gestalt = no }
 		}
-		modifier = {
-			pop_telepath_bonus_workforce_mult = 0.5
-		}
+		pop_telepath_bonus_workforce_mult = 0.5
 	}
 
 	### negative effects ###
@@ -718,7 +689,6 @@ shroud_storm = {
 	cosmic_storm_galaxy_lightning_time = 10.0
 	cosmic_storm_galaxy_max_opacity = 0.4
 }
-
 
 # Nexus Storm Type
 

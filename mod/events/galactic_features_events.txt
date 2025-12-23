@@ -396,8 +396,6 @@ country_event = {
 		room = ethic_spaceship_room
 	}
 
-	is_triggered_only = yes
-
 	option = {
 		name = "galactic_features.304.a"
 		response_text = "galactic_features.304.a.response"
@@ -793,37 +791,37 @@ country_event = {
 		name = galactic_features.361.a
 		trigger = {
 			OR = {
-				is_fanatic_pacifist = yes
+				has_ethic = ethic_fanatic_pacifist
 				is_fanatic = no
 			}
 		}
 	}
 	option = {
 		name = galactic_features.361.a.milit
-		trigger = { is_fanatic_militarist = yes }
+		trigger = { has_ethic = ethic_fanatic_militarist }
 	}
 	option = {
 		name = galactic_features.361.a.phobe
 		trigger = {
 			OR = {
-				is_fanatic_xenophobe = yes
+				has_ethic = ethic_fanatic_xenophobe
 				has_civic = civic_machine_terminator
 			}
 		}
 	}
 	option = {
 		name = galactic_features.361.a.phile
-		trigger = { is_fanatic_xenophile = yes }
+		trigger = { has_ethic = ethic_fanatic_xenophile }
 	}
 	option = {
 		name = galactic_features.361.a.spiri
-		trigger = { is_fanatic_spiritualist = yes }
+		trigger = { has_ethic = ethic_fanatic_spiritualist }
 	}
 	option = {
 		name = galactic_features.361.a.mater
 		trigger = {
 			OR = {
-				is_fanatic_materialist = yes
+				has_ethic = ethic_fanatic_materialist
 				AND = {
 					is_machine_empire = yes
 					NOT = { has_civic = civic_machine_terminator }
@@ -3505,8 +3503,8 @@ country_event = {
 				is_militarist = yes
 				is_xenophobe = yes
 				OR = {
-					is_fanatic_militarist = yes
-					is_fanatic_xenophobe = yes
+					has_ethic = ethic_fanatic_militarist
+					has_ethic = ethic_fanatic_xenophobe
 				}
 			}
 		}
@@ -3530,8 +3528,8 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					is_fanatic_pacifist = yes
-					is_fanatic_xenophile = yes
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_xenophile
 					has_valid_civic = civic_machine_servitor
 				}
 			}

@@ -229,10 +229,12 @@ country_event = {
 		custom_tooltip = utopia.2.a.tooltip
 		trigger = {
 			from = {
-				is_fanatic_xenophile = no
-				is_fanatic_materialist = no
-				is_fanatic_pacifist = no
-				is_fanatic_egalitarian = no
+				NOR = {
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_materialist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_egalitarian
+				}
 			}
 		}
 		ai_chance = { factor = 10 }
@@ -266,10 +268,10 @@ country_event = {
 		trigger = {
 			from = {
 				OR = {
-					is_fanatic_xenophile = yes
-					is_fanatic_materialist = yes
-					is_fanatic_pacifist = yes
-					is_fanatic_egalitarian = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_materialist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_egalitarian
 				}
 			}
 		}
@@ -410,10 +412,10 @@ country_event = {
 		name = OK
 		trigger = {
 			NOR = {
-				is_fanatic_xenophile = yes
-				is_fanatic_materialist = yes
-				is_fanatic_pacifist = yes
-				is_fanatic_egalitarian = yes
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_egalitarian
 			}
 		}
 		# custom_tooltip = utopia.3.a.tooltip
@@ -424,10 +426,10 @@ country_event = {
 		name = utopia.5.b
 		trigger = {
 			OR = {
-				is_fanatic_xenophile = yes
-				is_fanatic_materialist = yes
-				is_fanatic_pacifist = yes
-				is_fanatic_egalitarian = yes
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_egalitarian
 			}
 		}
 		add_monthly_resource_mult = {
@@ -471,10 +473,12 @@ country_event = {
 		name = OK
 		trigger = {
 			fromfrom = {
-				is_fanatic_xenophile = no
-				is_fanatic_materialist = no
-				is_fanatic_pacifist = no
-				is_fanatic_egalitarian = no
+				NOR = {
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_materialist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_egalitarian
+				}
 			}
 		}
 	}
@@ -483,10 +487,10 @@ country_event = {
 		trigger = {
 			fromfrom = {
 				OR = {
-					is_fanatic_xenophile = yes
-					is_fanatic_materialist = yes
-					is_fanatic_pacifist = yes
-					is_fanatic_egalitarian = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_materialist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_egalitarian
 				}
 			}
 		}
@@ -841,7 +845,7 @@ country_event = {
 			modifier = { factor = 90 income < 0 }
 		}
 		if = {
-			limit = { is_fanatic_materialist = yes }
+			limit = { has_ethic = ethic_fanatic_materialist }
 			add_modifier = { modifier = unity_increase_utopia_30 years = 5 }
 		}
 		hidden_effect = {

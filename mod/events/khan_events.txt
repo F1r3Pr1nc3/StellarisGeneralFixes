@@ -1667,11 +1667,12 @@ country_event = {
 	}
 }
 
-# May Horde Triggered Through Destruction of Stations (on_ship_destroyed_victim).
-# This = owner of ship 1 (destroyed)
-# From = owner of ship 2 (combatant)
-# fromfrom = ship 1
-# fromfromfrom = ship 2
+# May Horde Triggered Through Destruction of Stations (on_fleet_destroyed_victim)
+# Compare khan.526
+# This = owner of fleet 1 (destroyed)
+# From = owner of fleet 2 (combatant)
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 country_event = {
 	id = khan.525
 	hide_window = yes
@@ -1691,14 +1692,10 @@ country_event = {
 	}
 
 	immediate = {
-		# fromfrom.solar_system = {
-		# 	save_event_target_as = home_system
-		# }
 		every_owned_fleet = {
 			limit = {
 				is_mobile = yes
 				exists = solar_system
-				# exists = leader
 				NOR = {
 					is_civilian = yes
 					is_fleet_idle = yes
@@ -1793,13 +1790,15 @@ country_event = {
 					change_variable = { which = "planets_lost_to_marauder" value = 1 }
 					if = {
 						limit = {
-							OR = {
-								is_ai = no
-								fleet_power < 24000
-								check_variable = { which = "planets_lost_to_marauder" value > 22 }
-								num_owned_planets < 3
+							NOR = {
+								AND = {
+									is_ai = yes
+									fleet_power >= 24000
+									check_variable = { which = "planets_lost_to_marauder" value <= 22 }
+									num_owned_planets >= 3
+								}
+								has_active_event = { marauder.551 }
 							}
-							NOT = { has_active_event = { marauder.551 } }
 						}
 						country_event = { id = marauder.551 } # Submit Dialog
 					}
@@ -2096,8 +2095,8 @@ country_event = {
 		# Return colonies that have only the starbase conquered.
 		every_system_within_border = {
 			limit = {
-				exists = starbase
-				starbase = { is_owned_by = root }
+				# exists = starbase
+				# starbase = { is_owned_by = root }
 				any_system_colony = {
 					has_owner = yes
 					NOR = {

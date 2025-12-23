@@ -704,7 +704,9 @@ planet_event = {
 				max = @tier2influencemax
 			}
 			if = {
-				limit = { is_fanatic_xenophobe = no }
+				limit = {
+					NOT = { has_ethic = ethic_fanatic_xenophobe }
+				}
 				shift_ethic = ethic_fanatic_xenophobe
 			}
 		}

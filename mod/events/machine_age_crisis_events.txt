@@ -82,10 +82,7 @@ country_event = {
 	after = {
 		hidden_effect = {
 			random_country = {
-				limit = {
-					is_fallen_empire = yes
-					is_fanatic_materialist = yes
-				}
+				limit = { is_fallen_empire_materialist = yes }
 				save_event_target_as = materialist_fe
 			}
 			country_event = { id = crisis.7111 days = 7 }
@@ -348,10 +345,7 @@ country_event = {
 		}
 		change_variable = { which = applied_infinity_thesis value = +1 }
 		random_country = {
-			limit = {
-				is_fallen_empire = yes
-				is_fanatic_materialist = yes
-			}
+			limit = { is_fallen_empire_materialist = yes }
 			if = {
 				limit = {
 					has_country_flag = warned_by_materialist_fe
@@ -3081,7 +3075,7 @@ country_event = {
 		every_system = {
 			limit = {
 				has_star_flag = synth_queen_system
-				NOT = { any_ship_in_system = { is_ship_class = shipclass_starbase } }
+				NOT = { any_starbase_in_system = {  } } # Vfix opt
 			}
 			create_fleet = {
 				name = "NAME_Synth_Queen_Starbase"
@@ -3495,19 +3489,14 @@ event = {
 				}
 			}
 			# Ensure the Fallen Empire ships are dead dead
-			every_system_within_border = {
+			every_owned_starbase = { # Vfix opt
 				limit = {
-					exists = starbase
-					starbase = {
-						fleet = {
-							NOR = {
-								is_ship_size = starbase_synth_queen
-								is_ship_size = big_starbase_synth_queen
-							}
-						}
+					NOR = {
+						is_ship_size = starbase_synth_queen
+						is_ship_size = big_starbase_synth_queen
 					}
 				}
-				starbase = { delete_fleet = fleet }
+				delete_fleet = fleet
 			}
 		}
 		every_playable_country = {
@@ -3686,20 +3675,15 @@ country_event = {
 					}
 				}
 			}
-			every_system_within_border = {
+			every_owned_starbase = { # Vfix opt
 				limit = {
-					exists = starbase
-					starbase = {
-						fleet = {
-							NOR = {
-								is_ship_size = starbase_synth_queen
-								is_ship_size = big_starbase_synth_queen
-							}
-						}
+					NOR = {
+						is_ship_size = starbase_synth_queen
+						is_ship_size = big_starbase_synth_queen
 					}
 				}
-				starbase = { delete_fleet = fleet }
-				remove_modifier = queen_scorn_storm
+				solar_system = { remove_modifier = queen_scorn_storm }
+				delete_fleet = fleet
 			}
 		}
 		if = {

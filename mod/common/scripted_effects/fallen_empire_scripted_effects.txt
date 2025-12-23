@@ -565,8 +565,8 @@ awaken_guardians_of_the_galaxy = {
 					NOT = { has_country_flag = awakening_not_allowed }
 					is_country_type = fallen_empire
 					OR = {
-						is_fanatic_materialist = yes
-						is_fanatic_xenophile = yes
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
 						has_country_flag = fallen_empire_hive_war
 					}
 					fleet_power > 60000
@@ -588,7 +588,7 @@ awaken_guardians_of_the_galaxy = {
 				limit = {
 					NOT = { has_country_flag = awakening_not_allowed }
 					is_country_type = fallen_empire
-					is_fanatic_materialist = yes
+					has_ethic = ethic_fanatic_materialist
 					fleet_power > 60000
 				}
 				set_country_flag = guardians_of_the_galaxy
@@ -609,8 +609,8 @@ awaken_guardians_of_the_galaxy = {
 					NOT = { has_country_flag = awakening_not_allowed }
 					is_country_type = fallen_empire
 					OR = {
-						is_fanatic_materialist = yes
-						is_fanatic_xenophile = yes
+						has_ethic = ethic_fanatic_materialist
+						has_ethic = ethic_fanatic_xenophile
 						has_country_flag = fallen_empire_hive_war
 					}
 					fleet_power > 60000
@@ -660,7 +660,7 @@ create_fallen_empire_platform = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		create_ship = {
 			name = random
@@ -670,7 +670,7 @@ create_fallen_empire_platform = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		create_ship = {
 			name = random
@@ -682,8 +682,8 @@ create_fallen_empire_platform = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -697,8 +697,8 @@ create_fallen_empire_platform = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophile = yes
-					is_fanatic_pacifist = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_pacifist
 				}
 			}
 		}
@@ -733,7 +733,7 @@ create_fallen_empire_colossus = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		create_ship = {
 			name = random
@@ -743,7 +743,7 @@ create_fallen_empire_colossus = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		create_ship = {
 			name = random
@@ -755,8 +755,8 @@ create_fallen_empire_colossus = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -770,8 +770,8 @@ create_fallen_empire_colossus = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophile = yes
-					is_fanatic_pacifist = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_pacifist
 				}
 			}
 		}
@@ -806,7 +806,7 @@ create_fallen_empire_titan = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		create_ship = {
 			name = random
@@ -816,7 +816,7 @@ create_fallen_empire_titan = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		create_ship = {
 			name = random
@@ -828,8 +828,8 @@ create_fallen_empire_titan = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -843,8 +843,8 @@ create_fallen_empire_titan = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophile = yes
-					is_fanatic_pacifist = yes
+					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_fanatic_pacifist
 				}
 			}
 		}
@@ -912,7 +912,7 @@ create_fallen_empire_large_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		create_ship = {
 			name = random
@@ -922,7 +922,7 @@ create_fallen_empire_large_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		create_ship = {
 			name = random
@@ -934,8 +934,8 @@ create_fallen_empire_large_ship = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -947,7 +947,7 @@ create_fallen_empire_large_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_xenophile = yes }
+			owner = { has_ethic = ethic_fanatic_xenophile }
 		}
 		create_ship = {
 			name = random
@@ -1093,7 +1093,7 @@ create_fallen_empire_small_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		create_ship = {
 			name = random
@@ -1103,7 +1103,7 @@ create_fallen_empire_small_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		create_ship = {
 			name = random
@@ -1115,8 +1115,8 @@ create_fallen_empire_small_ship = {
 		limit = {
 			owner = {
 				OR = {
-					is_fanatic_xenophobe = yes
-					is_fanatic_militarist = yes
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -1128,7 +1128,7 @@ create_fallen_empire_small_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_xenophile = yes }
+			owner = { has_ethic = ethic_fanatic_xenophile }
 		}
 		create_ship = {
 			name = random
@@ -1240,7 +1240,7 @@ create_fallen_empire_construction_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		create_ship = {
 			name = random
@@ -1250,7 +1250,7 @@ create_fallen_empire_construction_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_spiritualist = yes }
+			owner = { has_ethic = ethic_fanatic_spiritualist }
 		}
 		create_ship = {
 			name = random
@@ -1260,7 +1260,7 @@ create_fallen_empire_construction_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_xenophobe = yes }
+			owner = { has_ethic = ethic_fanatic_xenophobe }
 		}
 		create_ship = {
 			name = random
@@ -1270,7 +1270,7 @@ create_fallen_empire_construction_ship = {
 	}
 	if = {
 		limit = {
-			owner = { is_fanatic_xenophile = yes }
+			owner = { has_ethic = ethic_fanatic_xenophile }
 		}
 		create_ship = {
 			name = random

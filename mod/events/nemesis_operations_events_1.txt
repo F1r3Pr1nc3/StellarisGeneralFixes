@@ -3295,7 +3295,12 @@ country_event = {
 		name = operation.5005.c
 		trigger = {
 			has_monthly_income = { resource = energy value >= 40 }
-			from.target = { is_fanatic_xenophobe = no is_fanatic_authoritarian = no }
+			from.target = {
+				NOR = {
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @OperationBribeThreshold3 }
@@ -3314,7 +3319,12 @@ country_event = {
 		trigger = {
 			has_monthly_income = { resource = energy value >= 10 }
 			has_monthly_income = { resource = energy value < 40 }
-			from.target = { is_fanatic_xenophobe = no is_fanatic_authoritarian = no }
+			from.target = {
+				NOR = {
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @OperationBribeThreshold2 }
@@ -3332,7 +3342,12 @@ country_event = {
 		name = operation.5005.c
 		trigger = {
 			has_monthly_income = { resource = energy value < 10 }
-			from.target = { is_fanatic_xenophobe = no is_fanatic_authoritarian = no }
+			from.target = {
+				NOR = {
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @OperationBribeThreshold1 }
@@ -4328,9 +4343,11 @@ country_event = {
 	option = { # Kill the operatives
 		name = operation.5040.b
 		trigger = {
-			from.spynetwork = { has_available_spy_power >= 10 }
-			is_pacifist = no
-			is_fanatic_xenophile = no
+			NOR = {
+				from.spynetwork = { has_available_spy_power < 10 }
+				is_pacifist = yes
+				has_ethic = ethic_fanatic_xenophile
+			}
 		}
 		from = {
 			set_espionage_operation_progress_locked = no

@@ -157,41 +157,41 @@ country_event = {
 								}
 								OR = {
 									AND = {
-										is_fanatic_xenophobe = yes
+										has_ethic = ethic_fanatic_xenophobe
 										event_target:first_awakener = {
 											OR = {
-												is_fanatic_xenophile = yes
+												has_ethic = ethic_fanatic_xenophile
 												has_country_flag = fallen_empire_hive_war
 											}
 										}
 									}
 									AND = {
-										is_fanatic_xenophile = yes
+										has_ethic = ethic_fanatic_xenophile
 										event_target:first_awakener = {
 											OR = {
-												is_fanatic_xenophobe = yes
+												has_ethic = ethic_fanatic_xenophobe
 												has_country_flag = fallen_empire_hive_control
 											}
 										}
 									}
 									AND = {
-										is_fanatic_spiritualist = yes
-										event_target:first_awakener = { is_fanatic_materialist = yes }
+										has_ethic = ethic_fanatic_spiritualist
+										event_target:first_awakener = { has_ethic = ethic_fanatic_materialist }
 									}
 									AND = {
-										is_fanatic_materialist = yes
-										event_target:first_awakener = { is_fanatic_spiritualist = yes }
+										has_ethic = ethic_fanatic_materialist
+										event_target:first_awakener = { has_ethic = ethic_fanatic_spiritualist }
 									}
 									AND = {
 										is_same_empire = event_target:strongest_fragment
 										event_target:first_awakener = {
 											OR = {
 												AND = {
-													is_fanatic_xenophobe = yes
+													has_ethic = ethic_fanatic_xenophobe
 													prev = { has_country_flag = fallen_empire_hive_war }
 												}
 												AND = {
-													is_fanatic_xenophile = yes
+													has_ethic = ethic_fanatic_xenophile
 													prev = { has_country_flag = fallen_empire_hive_control }
 												}
 											}
@@ -211,38 +211,38 @@ country_event = {
 							}
 							OR = {
 								AND = {
-									is_fanatic_xenophobe = yes
-									event_target:first_awakener = { is_fanatic_xenophile = yes }
+									has_ethic = ethic_fanatic_xenophobe
+									event_target:first_awakener = { has_ethic = ethic_fanatic_xenophile }
 								}
 								AND = {
-									is_fanatic_xenophile = yes
-									event_target:first_awakener = { is_fanatic_xenophobe = yes }
+									has_ethic = ethic_fanatic_xenophile
+									event_target:first_awakener = { has_ethic = ethic_fanatic_xenophobe }
 								}
 								AND = {
-									is_fanatic_spiritualist = yes
-									event_target:first_awakener = { is_fanatic_materialist = yes }
+									has_ethic = ethic_fanatic_spiritualist
+									event_target:first_awakener = { has_ethic = ethic_fanatic_materialist }
 								}
 								AND = {
-									is_fanatic_materialist = yes
-									event_target:first_awakener = { is_fanatic_spiritualist = yes }
+									has_ethic = ethic_fanatic_materialist
+									event_target:first_awakener = { has_ethic = ethic_fanatic_spiritualist }
 								}
 								AND = {
 									is_same_empire = event_target:strongest_fragment
 									has_country_flag = fallen_empire_hive_war
-									event_target:first_awakener = { is_fanatic_xenophobe = yes }
+									event_target:first_awakener = { has_ethic = ethic_fanatic_xenophobe }
 								}
 								AND = {
 									is_same_empire = event_target:strongest_fragment
 									has_country_flag = fallen_empire_hive_control
-									event_target:first_awakener = { is_fanatic_xenophile = yes }
+									event_target:first_awakener = { has_ethic = ethic_fanatic_xenophile }
 								}
 								AND = {
 									event_target:first_awakener = { has_country_flag = fallen_empire_hive_war }
-									is_fanatic_xenophobe = yes
+									has_ethic = ethic_fanatic_xenophobe
 								}
 								AND = {
 									event_target:first_awakener = { has_country_flag = fallen_empire_hive_control }
-									is_fanatic_xenophile = yes
+									has_ethic = ethic_fanatic_xenophile
 								}
 							}
 						}

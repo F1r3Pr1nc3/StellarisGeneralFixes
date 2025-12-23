@@ -2127,9 +2127,9 @@ country_event = {
 				OR = {
 					has_ascension_perk = ap_become_the_crisis
 					is_homicidal = yes
-					is_fanatic_militarist = yes
-					is_fanatic_xenophobe = yes
-					is_fanatic_authoritarian = yes
+					has_ethic = ethic_fanatic_militarist
+					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_fanatic_authoritarian
 				}
 				is_galactic_custodian = no
 				is_galactic_emperor = no
@@ -2137,9 +2137,9 @@ country_event = {
 			if = {
 				limit = {
 					is_galactic_community_formed = yes
-					OR = {
-						is_galactic_community_member = no
-						galactic_community_rank >= 4
+					NAND = {
+						is_galactic_community_member = yes
+						galactic_community_rank < 4
 					}
 				}
 				# Custodian or galactic emperor
@@ -10441,10 +10441,10 @@ country_event = {
 									}
 								}
 							}
-							OR = {
-								is_ai = no
-								fleet_power < 84000
-								num_owned_planets < 12
+							NAND = {
+								is_ai = yes
+								fleet_power >= 84000
+								num_owned_planets >= 12
 							}
 						}
 					}
@@ -11053,15 +11053,17 @@ country_event = {
 			is_subject = yes
 		}
 		is_ai = yes
-		check_variable = { which = "planets_lost_to_marauder" value > 2 }
-		OR = {
-			is_homicidal = no
-			check_variable = { which = "planets_lost_to_marauder" value > 50 }
-		}
-		relative_power = {
-			who = event_target:raider_khanate
-			category = fleet
-			value = pathetic
+		NOR = {
+			check_variable = { which = "planets_lost_to_marauder" value <= 2 }
+			AND = {
+				is_homicidal = yes
+				check_variable = { which = "planets_lost_to_marauder" value <= 50 }
+			}
+			relative_power = {
+				who = event_target:raider_khanate
+				category = fleet
+				value != pathetic
+			}
 		}
 	}
 

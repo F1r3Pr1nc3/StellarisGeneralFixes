@@ -3674,10 +3674,10 @@ setup_baol_colony_3 = {
 				exists = archaeological_site
 				has_planet_flag = colony_event
 				has_planet_flag = suppress_archaeological_sites
-			}
-			OR = {
-				is_colony = no
-				sapient_pop_amount < 1000
+				AND = {
+					is_colony = yes
+					sapient_pop_amount >= 1000
+				}
 			}
 		}
 		save_event_target_as = baol_colony_3
@@ -3700,10 +3700,10 @@ setup_baol_colony_3_fallback = {
 				exists = archaeological_site
 				has_planet_flag = colony_event
 				has_planet_flag = suppress_archaeological_sites
-			}
-			OR = {
-				is_colony = no
-				sapient_pop_amount < 1000
+				AND = {
+					is_colony = yes
+					sapient_pop_amount >= 1000
+				}
 			}
 		}
 		save_event_target_as = baol_colony_3
@@ -4931,9 +4931,7 @@ reduce_unity_celebration = {
 			set_situation_flag = standard_unity_reward
 		}
 		small_unity_reward = {
-			owner = {
-				add_resource = { unity = -200 }
-			}
+			owner = { add_resource = { unity = -200 } }
 		}
 	}
 }
@@ -5109,9 +5107,7 @@ set_celebration_modifier = {
 			target = {
 				add_modifier = { modifier = stellar_devourer_trophy }
 			}
-			owner = {
-				set_country_flag = stellar_performance_achievement
-			}
+			owner = { set_country_flag = stellar_performance_achievement }
 		}
 	}
 }
@@ -6674,11 +6670,11 @@ zroni_digsite_spawn_effect = {
 			}
 			any_system_planet = {
 				habitable_planet = yes
-				OR = {
-					is_colony = no
-					sapient_pop_amount < 1000
-				}
 				NOR = {
+					AND = {
+						is_colony = yes
+						sapient_pop_amount >= 1000
+					}
 					has_anomaly = yes
 					exists = archaeological_site
 					has_planet_flag = hatchling_egg
@@ -6699,12 +6695,12 @@ zroni_digsite_spawn_effect = {
 		random_system_planet = {
 			limit = {
 				habitable_planet = yes
-				has_anomaly = no
-				OR = {
-					is_colony = no
-					sapient_pop_amount < 1000
-				}
 				NOR = {
+					has_anomaly = yes
+					AND = {
+						is_colony = yes
+						sapient_pop_amount >= 1000
+					}
 					exists = archaeological_site
 					has_planet_flag = hatchling_egg
 					has_planet_flag = suppress_archaeological_sites
@@ -7229,59 +7225,37 @@ set_earth_entity = {
 		switch = {
 			trigger = is_planet_class
 			pc_desert = {
-				set_planet_entity = {
-					entity = desert_planet_earth_entity
-				}
+				set_planet_entity = { entity = desert_planet_earth_entity }
 			}
 			pc_arid = {
-				set_planet_entity = {
-					entity = arid_planet_earth_entity
-				}
+				set_planet_entity = { entity = arid_planet_earth_entity }
 			}
 			pc_savannah = {
-				set_planet_entity = {
-					entity = savannah_planet_earth_entity
-				}
+				set_planet_entity = { entity = savannah_planet_earth_entity }
 			}
 			pc_tropical = {
-				set_planet_entity = {
-					entity = tropical_planet_earth_entity
-				}
+				set_planet_entity = { entity = tropical_planet_earth_entity }
 			}
 			pc_ocean = {
-				set_planet_entity = {
-					entity = ocean_planet_earth_entity
-				}
+				set_planet_entity = { entity = ocean_planet_earth_entity }
 			}
 			pc_continental = {
-				set_planet_entity = {
-					entity = continental_planet_earth_entity
-				}
+				set_planet_entity = { entity = continental_planet_earth_entity }
 			}
 			pc_tundra = {
-				set_planet_entity = {
-					entity = tundra_planet_earth_entity
-				}
+				set_planet_entity = { entity = tundra_planet_earth_entity }
 			}
 			pc_arctic = {
-				set_planet_entity = {
-					entity = arctic_planet_earth_entity
-				}
+				set_planet_entity = { entity = arctic_planet_earth_entity }
 			}
 			pc_alpine = {
-				set_planet_entity = {
-					entity = alpine_planet_earth_entity
-				}
+				set_planet_entity = { entity = alpine_planet_earth_entity }
 			}
 			pc_volcanic = {
-				set_planet_entity = {
-					entity = volcanic_planet_earth_entity
-				}
+				set_planet_entity = { entity = volcanic_planet_earth_entity }
 			}
 			default = {
-				set_planet_entity = {
-					entity = continental_planet_earth_entity
-				}
+				set_planet_entity = { entity = continental_planet_earth_entity }
 			}
 		}
 	}
@@ -7293,59 +7267,37 @@ set_mars_entity = {
 		switch = {
 			trigger = is_planet_class
 			pc_desert = {
-				set_planet_entity = {
-					entity = desert_planet_mars_entity
-				}
+				set_planet_entity = { entity = desert_planet_mars_entity }
 			}
 			pc_arid = {
-				set_planet_entity = {
-					entity = arid_planet_mars_entity
-				}
+				set_planet_entity = { entity = arid_planet_mars_entity }
 			}
 			pc_savannah = {
-				set_planet_entity = {
-					entity = savannah_planet_mars_entity
-				}
+				set_planet_entity = { entity = savannah_planet_mars_entity }
 			}
 			pc_tropical = {
-				set_planet_entity = {
-					entity = tropical_planet_mars_entity
-				}
+				set_planet_entity = { entity = tropical_planet_mars_entity }
 			}
 			pc_ocean = {
-				set_planet_entity = {
-					entity = ocean_planet_mars_entity
-				}
+				set_planet_entity = { entity = ocean_planet_mars_entity }
 			}
 			pc_continental = {
-				set_planet_entity = {
-					entity = continental_planet_mars_entity
-				}
+				set_planet_entity = { entity = continental_planet_mars_entity }
 			}
 			pc_tundra = {
-				set_planet_entity = {
-					entity = tundra_planet_mars_entity
-				}
+				set_planet_entity = { entity = tundra_planet_mars_entity }
 			}
 			pc_arctic = {
-				set_planet_entity = {
-					entity = arctic_planet_mars_entity
-				}
+				set_planet_entity = { entity = arctic_planet_mars_entity }
 			}
 			pc_alpine = {
-				set_planet_entity = {
-					entity = alpine_planet_mars_entity
-				}
+				set_planet_entity = { entity = alpine_planet_mars_entity }
 			}
 			pc_volcanic = {
-				set_planet_entity = {
-					entity = volcanic_planet_mars_entity
-				}
+				set_planet_entity = { entity = volcanic_planet_mars_entity }
 			}
 			default = {
-				set_planet_entity = {
-					entity = arid_planet_mars_entity
-				}
+				set_planet_entity = { entity = arid_planet_mars_entity }
 			}
 		}
 	}
@@ -7826,11 +7778,14 @@ sacrifice_single_pop = {
 # If POP_GROUP_FLAG is set, it's set on the target pop group
 pop_group_transfer_ethic = {
 	[[POP_GROUP]
+
 	$POP_GROUP$ = {
 		save_event_target_as = source_pop_group
 	}
+
 	]
 	[[!POP_GROUP]
+
 	weighted_random_owned_pop_group = {
 		limit = {
 			has_any_ethic = yes
@@ -7842,6 +7797,7 @@ pop_group_transfer_ethic = {
 		}
 		save_event_target_as = source_pop_group
 	}
+
 	]
 	if = { # Vfix
 		limit = { exists = event_target:source_pop_group }

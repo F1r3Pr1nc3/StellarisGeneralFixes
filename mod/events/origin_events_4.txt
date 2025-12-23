@@ -2503,9 +2503,9 @@ country_event = {
 	option = {
 		name = EXCELLENT
 		trigger = {
-			OR = {
-				is_xenophobe = no
-				num_research_agreements = 0
+			NAND = {
+				is_xenophobe = yes
+				num_research_agreements > 0
 			}
 		}
 	}

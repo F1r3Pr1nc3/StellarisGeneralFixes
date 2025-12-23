@@ -6110,14 +6110,14 @@ country_event = {
 	desc = {
 		trigger = {
 			is_regular_empire = yes
-			is_fanatic_materialist = yes
+			has_ethic = ethic_fanatic_materialist
 		}
 		text = ancrel.10100.desc_fm
 	}
 	desc = {
 		trigger = {
 			is_regular_empire = yes
-			is_fanatic_materialist = no
+			NOT = { has_ethic = ethic_fanatic_materialist }
 		}
 		text = ancrel.10100.desc
 	}
@@ -6199,7 +6199,10 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			owner = { is_regular_empire = yes is_fanatic_materialist = no }
+			owner = {
+				is_regular_empire = yes
+				NOT = { has_ethic = ethic_fanatic_materialist }
+			}
 		}
 		name = INTERESTING
 		random_owned_leader = {
@@ -6233,7 +6236,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		name = ancrel.10100.option.fm_enough
 		random_owned_leader = {
@@ -6267,7 +6270,7 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			owner = { is_fanatic_materialist = yes }
+			owner = { has_ethic = ethic_fanatic_materialist }
 		}
 		name = ancrel.10100.option.fm_delve_deeper
 		random_owned_leader = {

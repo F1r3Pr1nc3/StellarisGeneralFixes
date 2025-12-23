@@ -1452,10 +1452,12 @@ country_event = {
 		text = crisis.2037.alt.desc
 		trigger = {
 			has_global_flag = first_machine_world_destroyed
-			NOT = { from = { has_planet_flag = destroyed_by_colossus } }
-			OR = {
-				is_machine_empire = no
-				check_variable = { which = "machine_worlds_destroyed" value > 2 }
+			NOR = {
+				from = { has_planet_flag = destroyed_by_colossus }
+				AND = {
+					is_machine_empire = yes
+					check_variable = { which = "machine_worlds_destroyed" value <= 2 }
+				}
 			}
 		}
 	}
@@ -4206,9 +4208,9 @@ country_event = {
 			limit = { has_ascension_perk = ap_become_the_crisis }
 			# Star-Eaters
 			if = {
-				limit = { has_crisis_perk = menp_star_eater }
-			}
-			else = {
+				limit = {
+					NOT = { has_crisis_perk = menp_star_eater }
+				}
 				every_controlled_ship = {
 					limit = { is_ship_size = star_eater }
 					delete_ship = this
@@ -4216,9 +4218,9 @@ country_event = {
 			}
 			# Cruisers
 			if = {
-				limit = { has_crisis_perk = menp_crisis_cruiser }
-			}
-			else = {
+				limit = {
+					NOT = { has_crisis_perk = menp_crisis_cruiser }
+				}
 				every_controlled_ship = {
 					limit = { is_ship_size = crisis_cruiser }
 					delete_ship = this
@@ -4226,9 +4228,9 @@ country_event = {
 			}
 			# Destroyers
 			if = {
-				limit = { has_crisis_perk = menp_crisis_destroyer }
-			}
-			else = {
+				limit = {
+					NOT = { has_crisis_perk = menp_crisis_destroyer }
+				}
 				every_controlled_ship = {
 					limit = { is_ship_size = crisis_destroyer }
 					delete_ship = this
@@ -4236,9 +4238,9 @@ country_event = {
 			}
 			# Corvettes
 			if = {
-				limit = { has_crisis_perk = menp_crisis_corvette }
-			}
-			else = {
+				limit = {
+					NOT = { has_crisis_perk = menp_crisis_corvette }
+				}
 				every_controlled_ship = {
 					limit = { is_ship_size = crisis_corvette }
 					delete_ship = this
