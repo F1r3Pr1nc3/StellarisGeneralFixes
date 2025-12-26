@@ -1,3 +1,4 @@
+
 is_valid_refugee_pop = {
 	exists = owner # Vfix
 	can_think = yes
@@ -6,11 +7,9 @@ is_valid_refugee_pop = {
 		is_non_sapient_robot = yes
 		AND = {
 			has_virtual_species_trait = yes
-			exists = owner
+			# exists = owner
 			owner = {
-				NOT = {
-					has_active_tradition = tr_virtuality_finish
-				}
+				NOT = { has_active_tradition = tr_virtuality_finish }
 			}
 		}
 	}
@@ -30,11 +29,8 @@ is_valid_refugee_pop = {
 				}
 			}
 			OR = {
-				AND = {
-					has_policy_flag = robots_allowed
-					prevprev = { is_robotic_species = yes }
-				}
 				prevprev = { is_robotic_species = no }
+				has_policy_flag = robots_allowed
 			}
 			any_owned_planet = {
 				is_under_colonization = no
@@ -49,32 +45,28 @@ country_has_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 	any_owned_planet = {
 		planet_has_habitability_and_housing = {
-			[[HABITABILITY
-				HABITABILITY = $HABITABILITY$
-			]
-			[[HOUSING
-				HOUSING = $HOUSING$
-			]
+			[[HABITABILITY HABITABILITY = $HABITABILITY$ ]
+			[[HOUSING HOUSING = $HOUSING$ ]
 		}
 	}
 }
 
 planet_has_habitability_and_housing = {
-	[[HABITABILITY
-		habitability = { who = event_target:refugee_pop value >= $HABITABILITY$ }
-	]
-	[[HOUSING
-		free_housing >= $HOUSING$
-	]
-	is_under_colonization = no
-	is_controlled_by = owner
-	has_orbital_bombardment = no
-	NOT = { is_planet_class = pc_cosmogenesis_world }
+	[[HABITABILITY habitability = { who = event_target:refugee_pop value >= $HABITABILITY$ } ]
+	[[HOUSING free_housing >= $HOUSING$ ]
+	NOR = { # Vfix opt
+		is_occupied_flag = yes
+		is_under_colonization = yes
+		has_orbital_bombardment = yes
+		is_planet_class = pc_cosmogenesis_world
+	}
 }
 
 ### TODO REMOVEME in v4.4 (Old v4.2 triggers)
+
 has_good_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.7 }
 		free_housing >= 100
@@ -86,6 +78,7 @@ has_good_habitability_and_housing = {
 
 has_good_habitability = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.7 }
 		is_under_colonization = no
@@ -96,6 +89,7 @@ has_good_habitability = {
 
 has_decent_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.5 }
 		free_housing >= 100
@@ -107,6 +101,7 @@ has_decent_habitability_and_housing = {
 
 has_decent_habitability = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.5 }
 		is_under_colonization = no
@@ -117,6 +112,7 @@ has_decent_habitability = {
 
 has_some_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.2 }
 		free_housing >= 100
@@ -128,6 +124,7 @@ has_some_habitability_and_housing = {
 
 has_some_habitability = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.2 }
 		is_under_colonization = no
@@ -138,11 +135,12 @@ has_some_habitability = {
 
 has_any_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
-		free_housing >= 100
-		is_under_colonization = no
-		is_occupied_flag = no
 		NOR = {
+			free_housing < 100
+			is_under_colonization = yes
+			is_occupied_flag = yes
 			has_orbital_bombardment = yes
 			is_planet_class = pc_cosmogenesis_world
 		}
@@ -163,17 +161,15 @@ has_any_habitability = {
 			}
 		}
 		OR = {
-			AND = {
-				prev = { has_policy_flag = robots_allowed }
-				is_robotic_species = yes
-			}
 			is_robotic_species = no
+			prev = { has_policy_flag = robots_allowed }
 		}
 	}
+
 	any_owned_planet = {
-		is_under_colonization = no
-		is_occupied_flag = no
 		NOR = {
+			is_under_colonization = yes
+			is_occupied_flag = yes
 			has_orbital_bombardment = yes
 			is_planet_class = pc_cosmogenesis_world
 		}

@@ -2396,6 +2396,7 @@ can_planet_auto_migrate = {
 	hidden_trigger = { # Vfix
 		has_owner = yes
 		is_colony = yes
+		is_under_colonization = no
 		owner = {
 			is_country_type_with_subjects = yes
 		}
@@ -2407,7 +2408,7 @@ can_planet_auto_migrate = {
 	custom_tooltip = {
 		fail_text = AUTO_MIGRATE_COLONY_TOO_NEW
 		OR = {
-			colony_age > 60
+			colony_age > 60 # FIXME: No valid colonization date
 			is_capital = yes # Don't break Doomsday!
 		}
 	}

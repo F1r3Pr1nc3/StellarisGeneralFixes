@@ -5289,12 +5289,10 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = from # Vfix: needed in any case
 		OR = {
 			has_origin = origin_fear_of_the_dark
-			AND = {
-				exists = from
-				from = { has_origin = origin_fear_of_the_dark }
-			}
+			from = { has_origin = origin_fear_of_the_dark }
 		}
 	}
 

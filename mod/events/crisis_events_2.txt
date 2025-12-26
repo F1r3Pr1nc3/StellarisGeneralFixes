@@ -4,7 +4,7 @@
 #
 # Written by Henrik Thyrwall
 #
-# Revised by FirePrince 2025
+# Revised by FirePrince 12/2025
 #
 ############################
 
@@ -96,13 +96,13 @@ country_event = {
 		random_system = {
 			limit = {
 				NOR = {
-					is_star_class = sc_pulsar
-					is_star_class = sc_binary_1
+					is_system_home_to_crystalline_entity = yes
+					is_binary_star = yes
+					has_star_flag = crisis_spawn_exclude
 					AND = {
 						exists = owner
 						owner = { is_fallen_empire = yes }
 					}
-					has_star_flag = crisis_spawn_exclude
 				}
 			}
 			set_star_flag = extradimensional_origin_system
@@ -129,7 +129,7 @@ country_event = {
 						colors = { "indigo" "blue" "null" "null" }
 					}
 					effect = {
-						set_country_flag = unbidden # Vfix not used!?
+						set_country_flag = unbidden # Vfix: not used?
 						create_ship_design = { design = "NAME_Void_Shaper" }
 						add_ship_design = last_created_design
 						create_ship_design = { design = "NAME_Unbidden_Anchor" }
@@ -730,6 +730,7 @@ country_event = {
 	diplomatic_title = BLANK_STRING
 	desc = "crisis.1010.desc"
 	diplomatic = yes
+	location = event_target:dimensional_portal
 
 	picture_event_data = {
 		portrait = exd1
@@ -793,31 +794,19 @@ planet_event = {
 				extradimensional = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain"
-							counter = "extradimensional_planets_1"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain" counter = "extradimensional_planets_1" amount = 1 }
 					}
 				}
 				extradimensional_2 = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_2" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_2"
-							counter = "extradimensional_planets_2"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_2" counter = "extradimensional_planets_2" amount = 1 }
 					}
 				}
 				extradimensional_3 = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_3" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_3"
-							counter = "extradimensional_planets_3"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_3" counter = "extradimensional_planets_3" amount = 1 }
 					}
 				}
 			}
@@ -826,15 +815,17 @@ planet_event = {
 		solar_system = {
 			if = { # Build starbase if no other colonies are left
 				limit = {
-					NOR = {
-						exists = starbase
+					NOT = {
 						any_system_colony = {
 							has_owner = yes
 							NOT = { is_owned_by = from }
 						}
 					}
 				}
-				create_starbase = { size = starbase_exd_0 owner = from }
+				if = { # Vfix
+					limit = { NOT = { exists = starbase } }
+					create_starbase = { owner = from size = starbase_exd_0 }
+				}
 				random_ship_in_system = {
 					limit = { is_owned_by = from }
 					ship_event = { id = crisis.1300 } # Check if starbase should be Anchor
@@ -1027,6 +1018,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+	location = event_target:dimensional_portal
 	force_open = yes
 
 	picture_event_data = {
@@ -1121,13 +1113,13 @@ country_event = {
 	}
 	desc = {
 		text = crisis.1051.desc_04
-		exclusive_trigger = {
-			# has_country_flag = works_with_formless # Happens if you have a Formless Admiral leader
+		exclusive_trigger = {	# has_country_flag = works_with_formless # Happens if you have a Formless Admiral leader
 			has_country_flag = allied_with_formless # Vfix proberly
 		}
 	}
 
 	diplomatic = yes
+	location = event_target:dimensional_portal
 	force_open = yes
 
 	picture_event_data = {
@@ -1163,6 +1155,7 @@ country_event = {
 	}
 
 	diplomatic = yes
+	location = event_target:dimensional_portal
 	force_open = yes
 
 	picture_event_data = {
@@ -1190,11 +1183,14 @@ country_event = {
 	hide_window = yes
 	fire_only_once = yes
 	is_triggered_only = yes
-	# trigger = {
-	# 	is_country_type = extradimensional
-	# 	NOT = { has_global_flag = extradimensional_second_portal }
-	# 	endgame_crisis_large_size_trigger = yes
-	# }
+
+	trigger = {
+		is_scope_valid = yes
+		is_country_type = extradimensional
+		# NOT = { has_global_flag = extradimensional_second_portal }
+		# endgame_crisis_large_size_trigger = yes
+	}
+
 	# mean_time_to_happen = {
 	# 	years = 1
 	# }
@@ -1205,8 +1201,9 @@ country_event = {
 		random_system_within_border = {
 			limit = {
 				NOR = {
-					is_star_class = sc_pulsar
-					is_star_class = sc_binary_1
+					is_system_home_to_crystalline_entity = yes
+					is_binary_star = yes
+					has_star_flag = crisis_spawn_exclude # Vfix
 					has_star_flag = extradimensional_origin_system
 				}
 			}
@@ -1234,7 +1231,7 @@ country_event = {
 						colors = { "brown" "orange" "null" "null" }
 					}
 					effect = {
-						set_country_flag = aberrant # Vfix not used!?
+						set_country_flag = aberrant # Vfix: not used?
 						save_global_event_target_as = extradimensionals2
 						create_ship_design = { design = "NAME_Void_Former" }
 						add_ship_design = last_created_design
@@ -1345,7 +1342,7 @@ country_event = {
 				limit = { exists = starbase }
 				starbase = { destroy_fleet = fleet }
 			}
-			create_starbase = { size = starbase_exd owner = event_target:extradimensionals2 }
+			create_starbase = { owner = event_target:extradimensionals2 size = starbase_exd }
 			star = {
 				create_ambient_object = { type = "extradimensional_2" location = this }
 				last_created_ambient_object = {
@@ -1561,6 +1558,7 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "crisis.1113.desc"
 	diplomatic = yes
+	location = event_target:dimensional_portal
 
 	picture_event_data = {
 		portrait = exd2
@@ -1614,8 +1612,7 @@ country_event = {
 				limit = { has_communications = from }
 				add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
 			}
-			every_playable_country = {
-				# limit = { }
+			every_playable_country = {	# limit = { }
 				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
 			}
 		}
@@ -1690,26 +1687,28 @@ country_event = {
 	id = crisis.1200
 	hide_window = yes
 	fire_only_once = yes
+	is_triggered_only = yes
 
 	trigger = {
-		has_global_flag = extradimensionals_fight
+		is_scope_valid = yes
 		is_country_type = extradimensional_2
-		NOT = { has_global_flag = extradimensional_third_portal }
-		exists = event_target:extradimensionals # Vfix opt any_country = { is_country_type = extradimensional }
+		# has_global_flag = extradimensionals_fight
+		# NOT = { has_global_flag = extradimensional_third_portal }
+		# exists = event_target:extradimensionals # Vfix opt any_country = { is_country_type = extradimensional }
 	}
 
-	mean_time_to_happen = {
-		months = 40
-	}
-
+	# mean_time_to_happen = {
+	# 	months = 40
+	# }
 	immediate = {
 		set_global_flag = extradimensional_third_portal
-		event_target:extradimensionals = {
+		event_target:extradimensional_2 = {
 			random_system_within_border = {
 				limit = {
 					NOR = {
-						is_star_class = sc_pulsar
-						is_star_class = sc_binary_1
+						is_system_home_to_crystalline_entity = yes
+						is_binary_star = yes
+						has_star_flag = crisis_spawn_exclude # Vfix
 						has_star_flag = extradimensional_origin_system
 						has_star_flag = extradimensional_second_portal_system
 					}
@@ -1738,7 +1737,7 @@ country_event = {
 							colors = { "green" "teal" "null" "null" }
 						}
 						effect = {
-							set_country_flag = vehement # Vfix not used!?
+							set_country_flag = vehement # Vfix: not used?
 							create_ship_design = { design = "NAME_Void_Weaver" }
 							add_ship_design = last_created_design
 							create_ship_design = { design = "NAME_Vehement_Anchor" }
@@ -1850,8 +1849,8 @@ country_event = {
 					starbase = { destroy_fleet = fleet }
 				}
 				create_starbase = {
-					size = starbase_exd
 					owner = event_target:extradimensional_trespassers
+					size = starbase_exd
 				}
 				star = {
 					create_ambient_object = { type = "extradimensional_2" location = this }
@@ -2007,8 +2006,7 @@ country_event = {
 			event_chain = "extradimensional_invasion_chain_3"
 			location = event_target:third_portal_system
 		}
-		hidden_effect = {
-			# owner = { # Vfix
+		hidden_effect = {	# owner = { # Vfix
 			add_event_chain_counter = {
 				event_chain = "extradimensional_invasion_chain_3"
 				counter = "dimensional_anchors_3"
@@ -2025,6 +2023,7 @@ country_event = {
 	title = "TRANSMISSION"
 	desc = "crisis.1211.desc"
 	diplomatic = yes
+	location = event_target:dimensional_portal
 
 	picture_event_data = {
 		portrait = exd3
@@ -2078,8 +2077,7 @@ country_event = {
 				limit = { has_communications = from }
 				add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
 			}
-			every_playable_country = {
-				# limit = { }
+			every_playable_country = {	# limit = { }
 				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
 			}
 		}
@@ -2170,12 +2168,9 @@ event = {
 	immediate = {
 		if = {
 			limit = { # Vfix (the whole mess)
-				has_global_flag = extradimensional_first_portal_destroyed # Vfix opt
+				has_global_flag = extradimensional_first_portal_destroyed
 				OR = {
-					NOR = {
-						has_global_flag = extradimensional_second_portal
-						has_global_flag = extradimensional_third_portal
-					}
+					NOT = { has_global_flag = extradimensional_second_portal }
 					AND = {
 						has_global_flag = extradimensional_second_portal_destroyed
 						OR = {
@@ -2191,7 +2186,7 @@ event = {
 						is_country_type = extradimensional_3
 					}
 					NOR = {
-						num_ships >= 6
+						num_ships > 5
 						any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 						event_target:portal_holder_1 = {
 							any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
@@ -2209,16 +2204,45 @@ event = {
 						is_country_type = extradimensional_3
 					}
 				}
-				# country_event = { id = crisis.1270 } # Vfix TODO TEST end_crisis or is it triggered on_action?
-				destroy_country = yes
+				destroy_country = yes # triggers crisis.1270
 			}
 		}
 		else_if = {
 			limit = {
+				exists = event_target:extradimensionals
 				NOT = { has_global_flag = extradimensional_second_portal }
 				event_target:extradimensionals = { endgame_crisis_large_size_trigger = yes }
 			}
-			country_event = { id = crisis.1100 days = 3 }
+			event_target:extradimensionals = {
+				country_event = { id = crisis.1100 days = 30 }
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_flag = extradimensionals_fight
+				exists = event_target:extradimensionals_2
+				OR = {
+					has_crisis_stage_3 = yes
+					has_crisis_stage_4 = yes
+				}
+				NOT = { has_global_flag = extradimensional_third_portal }
+			}
+			if = {
+				limit = {
+					OR = {
+						NOT = { exists = event_target:extradimensionals }
+						has_crisis_stage_4 = yes
+					}
+				}
+				event_target:extradimensionals_2 = {
+					country_event = { id = crisis.1200 days = 180 }
+				}
+			}
+			else = {
+				event_target:extradimensionals_2 = {
+					country_event = { id = crisis.1200 days = 540 random = 360 }
+				}
+			}
 		}
 	}
 }
@@ -2244,107 +2268,83 @@ country_event = {
 	}
 
 	immediate = {
-		# Spawn Construction Ships if needed
-		country_event = { id = crisis.1266 days = 6 }
+		country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
+		export_trigger_value_to_variable = {
+			trigger = count_controlled_fleet
+			parameters = {
+				limit = { is_ship_size = starbase_exd }
+			}
+			variable = num_anchors_exd
+		}
 		# If at fleet cap
 		if = {
-			limit = { num_ships > 2000 }
+			limit = { num_ships > 2000 } # roughly 30-60 fleets (+ 100 starbase fleets)
 			country_event = { id = crisis.1260 days = 600 random = 200 } # Check again later
 		}
 		# If no Anchors
 		else_if = {
 			limit = {
-				NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } }
+				check_variable = { which = num_anchors_exd value = 0 }
 			}
 			country_event = { id = crisis.1265 days = 1500 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 1
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 1 }
 			}
 			country_event = { id = crisis.1265 days = 1300 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 2
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 2 }
 			}
 			country_event = { id = crisis.1265 days = 1100 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 3
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 3 }
 			}
 			country_event = { id = crisis.1265 days = 900 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 4
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 4 }
 			}
 			country_event = { id = crisis.1265 days = 600 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 5
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 5 }
 			}
 			country_event = { id = crisis.1265 days = 400 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 6
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 6 }
 			}
 			country_event = { id = crisis.1265 days = 400 random = 200 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 7
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 7 }
 			}
 			country_event = { id = crisis.1265 days = 300 random = 100 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 8
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 8 }
 			}
 			country_event = { id = crisis.1265 days = 250 random = 50 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count = 9
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value = 9 }
 			}
 			country_event = { id = crisis.1265 days = 200 random = 50 }
 		}
 		else_if = {
 			limit = {
-				count_controlled_fleet = {
-					count > 9
-					limit = { is_ship_size = starbase_exd }
-				}
+				check_variable = { which = num_anchors_exd value > 9 }
 			}
 			country_event = { id = crisis.1265 days = 150 random = 50 }
 		}
@@ -2357,8 +2357,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		# Must only trigger if portal is still alive
+	trigger = {	# Must only trigger if portal is still alive
 		OR = {
 			any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 			event_target:portal_holder_1 = {
@@ -2410,8 +2409,7 @@ country_event = {
 		switch = { # Vfix opt
 			trigger = is_country_type
 			# Extradimensionals 1
-			extradimensional = {
-				# Create Fleet
+			extradimensional = {	# Create Fleet
 				create_fleet = {
 					effect = {
 						set_owner = root
@@ -2443,8 +2441,7 @@ country_event = {
 				}
 			}
 			# Extradimensionals 2
-			extradimensional_2 = {
-				# Create Fleet
+			extradimensional_2 = {	# Create Fleet
 				create_fleet = {
 					effect = {
 						set_owner = root
@@ -2476,8 +2473,7 @@ country_event = {
 				}
 			}
 			# Extradimensionals 3
-			extradimensional_3 = {
-				# Create Fleet
+			extradimensional_3 = {	# Create Fleet
 				create_fleet = {
 					effect = {
 						set_owner = root
@@ -2529,8 +2525,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		# Must only trigger if portal is still alive
+	trigger = {	# Must only trigger if portal is still alive
 		OR = {
 			any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 			event_target:portal_holder_1 = {
@@ -2543,8 +2538,7 @@ country_event = {
 		}
 	}
 
-	immediate = {
-		# Extradimensionals 1
+	immediate = {	# Extradimensionals 1
 		if = { # Vfix opt
 			limit = {
 				NOT = { exists = event_target:dimensional_portal }
@@ -2582,11 +2576,7 @@ country_event = {
 								design = "NAME_Void_Shaper"
 								graphical_culture = "extra_dimensional_01"
 							}
-							set_location = {
-								target = event_target:dimensional_portal
-								distance = 5
-								angle = random
-							}
+							set_location = { target = event_target:dimensional_portal distance = 5 angle = random }
 						}
 					}
 				}
@@ -2603,11 +2593,7 @@ country_event = {
 								design = "NAME_Void_Former"
 								graphical_culture = "extra_dimensional_02"
 							}
-							set_location = {
-								target = event_target:dimensional_portal
-								distance = 5
-								angle = random
-							}
+							set_location = { target = event_target:dimensional_portal distance = 5 angle = random }
 						}
 					}
 				}
@@ -2624,11 +2610,7 @@ country_event = {
 								design = "NAME_Void_Weaver"
 								graphical_culture = "extra_dimensional_03"
 							}
-							set_location = {
-								target = event_target:dimensional_portal
-								distance = 5
-								angle = random
-							}
+							set_location = { target = event_target:dimensional_portal distance = 5 angle = random }
 						}
 					}
 				}
@@ -2643,8 +2625,8 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		# is_ship_size = starbase_exd # now implicit
+	trigger = {	# is_ship_size = starbase_exd # now implicit
+		exists = owner
 		owner = {
 			OR = { # Vfix double
 				is_country_type = extradimensional
@@ -2710,8 +2692,7 @@ ship_event = {
 			switch = { # Vfix opt
 				trigger = is_country_type
 				# Extradimensionals 1
-				extradimensional = {
-					# Create Fleet
+				extradimensional = {	# Create Fleet
 					create_fleet = {
 						effect = {
 							set_owner = root.owner
@@ -2743,8 +2724,7 @@ ship_event = {
 					}
 				}
 				# Extradimensionals 2
-				extradimensional_2 = {
-					# Create Fleet
+				extradimensional_2 = {	# Create Fleet
 					create_fleet = {
 						effect = {
 							set_owner = root.owner
@@ -2776,8 +2756,7 @@ ship_event = {
 					}
 				}
 				# Extradimensionals 3
-				extradimensional_3 = {
-					# Create Fleet
+				extradimensional_3 = {	# Create Fleet
 					create_fleet = {
 						effect = {
 							set_owner = root.owner
@@ -2989,19 +2968,9 @@ ship_event = {
 	id = crisis.1280
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = { # Vfix now implicit
-	# 	exists = owner
-	# 	owner = {
-	# 		OR = {
-	# 			is_country_type = extradimensional
-	# 			is_country_type = extradimensional_2
-	# 			is_country_type = extradimensional_3
-	# 		}
-	# 	}
-	# 	# is_ship_size = starbase_exd # now implicit
-	# }
-	immediate = {
-		# log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
+	# trigger # Vfix now implicit
+
+	immediate = {	# log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
 		if = {  # Vfix sync
 			limit = {
 				NOT = { exists = event_target:portal_holder_1 }
@@ -3023,31 +2992,19 @@ ship_event = {
 				extradimensional = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain"
-							counter = "dimensional_anchors_1"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain" counter = "dimensional_anchors_1" amount = 1 }
 					}
 				}
 				extradimensional_2 = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_2" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_2"
-							counter = "dimensional_anchors_2"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_2" counter = "dimensional_anchors_2" amount = 1 }
 					}
 				}
 				extradimensional_3 = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_3" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_3"
-							counter = "dimensional_anchors_3"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_3" counter = "dimensional_anchors_3" amount = 1 }
 					}
 				}
 			}
@@ -3077,7 +3034,6 @@ starbase_event = {
 
 	trigger = {
 		is_ship_size = starbase_exd
-		# Vfix TODO another flag?
 		has_global_flag = extradimensional_invasion_happened
 		exists = owner
 		owner = {
@@ -3098,16 +3054,10 @@ starbase_event = {
 				extradimensional = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain"
-							counter = "dimensional_anchors_1"
-							amount = -1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain" counter = "dimensional_anchors_1" amount = -1 }
 					}
 					if = {
-						limit = {
-							NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } }
-						}
+						limit = { NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } } }
 						event_target:portal_holder_1 = { # Vfix opt
 							random_controlled_ship = {
 								limit = {
@@ -3122,16 +3072,10 @@ starbase_event = {
 				extradimensional_2 = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_2" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_2"
-							counter = "dimensional_anchors_2"
-							amount = -1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_2" counter = "dimensional_anchors_2" amount = -1 }
 					}
 					if = {
-						limit = {
-							NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } }
-						}
+						limit = { NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } } }
 						event_target:portal_holder_1 = { # Vfix opt
 							random_controlled_ship = {
 								limit = {
@@ -3146,16 +3090,10 @@ starbase_event = {
 				extradimensional_3 = {
 					every_playable_country = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_3" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_3"
-							counter = "dimensional_anchors_3"
-							amount = -1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_3" counter = "dimensional_anchors_3" amount = -1 }
 					}
 					if = {
-						limit = {
-							NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } }
-						}
+						limit = { NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } } }
 						event_target:portal_holder_1 = { # Vfix opt
 							random_controlled_ship = {
 								limit = {
@@ -3178,8 +3116,7 @@ starbase_event = {
 				limit = {
 					NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } }
 				}
-				switch = {
-					trigger = has_country_flag
+				switch = { trigger = has_country_flag
 					unbidden = {
 						event_target:portal_holder_1 = { # Vfix opt
 							random_controlled_ship = {
@@ -3202,7 +3139,7 @@ starbase_event = {
 							}
 						}
 					}
-					vehement = {
+					aberrant = {
 						event_target:portal_holder_1 = { # Vfix opt
 							random_controlled_ship = {
 								limit = {
@@ -3225,8 +3162,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		# Vfix TODO another flag?
+	trigger = {	# Vfix TODO another flag?
 		has_global_flag = extradimensional_invasion_happened
 		OR = {
 			is_country_type = extradimensional
@@ -3236,17 +3172,12 @@ country_event = {
 	}
 
 	immediate = {
-		switch = {
-			trigger = is_country_type
+		switch = { trigger = is_country_type
 			extradimensional = {
 				from = {
 					if = {
 						limit = { has_event_chain = "extradimensional_invasion_chain" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain"
-							counter = "extradimensional_kills_us_1"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain" counter = "extradimensional_kills_us_1" amount = 1 }
 					}
 				}
 				every_playable_country = {
@@ -3254,22 +3185,14 @@ country_event = {
 						has_event_chain = "extradimensional_invasion_chain"
 						NOT = { is_same_value = from }
 					}
-					add_event_chain_counter = {
-						event_chain = "extradimensional_invasion_chain"
-						counter = "extradimensional_kills_others_1"
-						amount = 1
-					}
+					add_event_chain_counter = { event_chain = "extradimensional_invasion_chain" counter = "extradimensional_kills_others_1" amount = 1 }
 				}
 			}
 			extradimensional_2 = {
 				from = {
 					if = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_2" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_2"
-							counter = "extradimensional_kills_us_2"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_2" counter = "extradimensional_kills_us_2" amount = 1 }
 					}
 				}
 				every_playable_country = {
@@ -3277,22 +3200,14 @@ country_event = {
 						has_event_chain = "extradimensional_invasion_chain_2"
 						NOT = { is_same_value = from }
 					}
-					add_event_chain_counter = {
-						event_chain = "extradimensional_invasion_chain_2"
-						counter = "extradimensional_kills_others_2"
-						amount = 1
-					}
+					add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_2" counter = "extradimensional_kills_others_2" amount = 1 }
 				}
 			}
 			extradimensional_3 = {
 				from = {
 					if = {
 						limit = { has_event_chain = "extradimensional_invasion_chain_3" }
-						add_event_chain_counter = {
-							event_chain = "extradimensional_invasion_chain_3"
-							counter = "extradimensional_kills_us_3"
-							amount = 1
-						}
+						add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_3" counter = "extradimensional_kills_us_3" amount = 1 }
 					}
 				}
 				every_playable_country = {
@@ -3300,11 +3215,7 @@ country_event = {
 						has_event_chain = "extradimensional_invasion_chain_3"
 						NOT = { is_same_value = from }
 					}
-					add_event_chain_counter = {
-						event_chain = "extradimensional_invasion_chain_3"
-						counter = "extradimensional_kills_others_3"
-						amount = 1
-					}
+					add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_3" counter = "extradimensional_kills_others_3" amount = 1 }
 				}
 			}
 		}
@@ -3317,8 +3228,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		# Vfix TODO another flag?
+	trigger = {	# Vfix TODO another flag?
 		has_global_flag = extradimensional_invasion_happened
 		OR = {
 			is_country_type = extradimensional
@@ -3335,36 +3245,23 @@ country_event = {
 	}
 
 	immediate = {
-		switch = {
-			trigger = is_country_type
+		switch = { trigger = is_country_type
 			extradimensional = {
 				every_playable_country = {
 					limit = { has_event_chain = "extradimensional_invasion_chain" }
-					add_event_chain_counter = {
-						event_chain = "extradimensional_invasion_chain"
-						counter = "extradimensional_victims_1"
-						amount = 1
-					}
+					add_event_chain_counter = { event_chain = "extradimensional_invasion_chain" counter = "extradimensional_victims_1" amount = 1 }
 				}
 			}
 			extradimensional_2 = {
 				every_playable_country = {
 					limit = { has_event_chain = "extradimensional_invasion_chain_2" }
-					add_event_chain_counter = {
-						event_chain = "extradimensional_invasion_chain_2"
-						counter = "extradimensional_victims_2"
-						amount = 1
-					}
+					add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_2" counter = "extradimensional_victims_2" amount = 1 }
 				}
 			}
 			extradimensional_3 = {
 				every_playable_country = {
 					limit = { has_event_chain = "extradimensional_invasion_chain_3" }
-					add_event_chain_counter = {
-						event_chain = "extradimensional_invasion_chain_3"
-						counter = "extradimensional_victims_3"
-						amount = 1
-					}
+					add_event_chain_counter = { event_chain = "extradimensional_invasion_chain_3" counter = "extradimensional_victims_3" amount = 1 }
 				}
 			}
 		}
@@ -3372,7 +3269,7 @@ country_event = {
 }
 
 # Events to manage crisis sound loop
-# Vfix OPT: all MTTH merged into one
+# Vfix OPT: all MTTH merged into one without
 event = {
 	id = crisis.1230
 	hide_window = yes
@@ -3408,47 +3305,36 @@ event = {
 				}
 			}
 			clear_variable = tmp_exd_gal_pct
-			switch = {
-				trigger = has_global_flag
+			switch = { trigger = has_global_flag
 				crisis_stage_4 = {
 					if = {
-						limit = {
-							check_variable = { which = exd_galaxy_percentage value < 0.26 }
-						}
+						limit = { check_variable = { which = exd_galaxy_percentage value < 0.26 } }
 						set_crisis_sound = extradimensional_crisis_ambient_stage_3
 						set_crisis_stage_3 = yes
 					}
 				}
 				crisis_stage_3 = {
 					if = {
-						limit = {
-							check_variable = { which = exd_galaxy_percentage value > 0.30 }
-						}
+						limit = { check_variable = { which = exd_galaxy_percentage value > 0.30 } }
 						set_crisis_sound = extradimensional_crisis_ambient_stage_final
 						set_crisis_stage_4 = yes
 					}
 					else_if = {
-						limit = {
-							check_variable = { which = exd_galaxy_percentage value < 0.11 }
-						}
+						limit = { check_variable = { which = exd_galaxy_percentage value < 0.11 } }
 						set_crisis_sound = extradimensional_crisis_ambient_stage_2
 						set_crisis_stage_2 = yes
 					}
 				}
 				crisis_stage_2 = {
 					if = {
-						limit = {
-							check_variable = { which = exd_galaxy_percentage value > 0.15 }
-						}
+						limit = { check_variable = { which = exd_galaxy_percentage value > 0.15 } }
 						set_crisis_sound = extradimensional_crisis_ambient_stage_3
 						set_crisis_stage_3 = yes
 					}
 				}
 				crisis_stage_1 = {
 					if = {
-						limit = {
-							check_variable = { which = exd_galaxy_percentage value > 0.05 }
-						}
+						limit = { check_variable = { which = exd_galaxy_percentage value > 0.05 } }
 						set_crisis_sound = extradimensional_crisis_ambient_stage_2
 						set_crisis_stage_2 = yes
 					}
@@ -3624,8 +3510,17 @@ ship_event = {
 	}
 
 	immediate = {
-		owner = {
-			# Vfix opt (count several times up to 100 is wasting)
+		if = {
+			limit = {
+				exists = starbase
+				starbase = { NOT = { has_starbase_size = starbase_exd_0 } }
+			}
+			starbase = { # Vfix Hack for extra aberrant and vehement!?
+				set_starbase_size = starbase_exd_0
+			}
+		}
+
+		owner = {	# Vfix opt (count several times up to 100 is wasting)
 			export_trigger_value_to_variable = {
 				trigger = count_starbase_sizes
 				parameters = { starbase_size = starbase_exd_0 }
@@ -3803,17 +3698,18 @@ country_event = {
 			fromfrom.solar_system = { save_event_target_as = starbase_system }
 		}
 		event_target:starbase_system = {
-			solar_system = {
-				every_system_planet = {
-					limit = { has_orbital_station = yes }
-					orbital_station = { dismantle = yes }
-				}
-				create_starbase = { size = starbase_exd_0 owner = root }
-				random_ship_in_system = {
-					limit = { is_owned_by = root }
-					ship_event = { id = crisis.1300 } # Check if starbase should be Anchor
-					ship_event = { id = crisis.1310 } # Create system effect
-				}
+			every_system_planet = {
+				limit = { has_orbital_station = yes }
+				orbital_station = { dismantle = yes }
+			}
+			if = { # Vfix
+				limit = { NOT = { exists = starbase } }
+				create_starbase = { owner = root size = starbase_exd_0 }
+			}
+			random_ship_in_system = {
+				limit = { is_owned_by = root }
+				ship_event = { id = crisis.1300 } # Check if starbase should be Anchor
+				ship_event = { id = crisis.1310 } # Create system effect
 			}
 		}
 	}

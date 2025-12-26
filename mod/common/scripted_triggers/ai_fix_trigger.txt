@@ -1,3 +1,4 @@
+
 has_unbild_megastructure = {
 	any_system_within_border = {
 		OR = {
@@ -50,13 +51,14 @@ has_unbild_megastructure = {
 # energy = 10000 * 1.2 (weight = 0.9)
 want_energy_for_terraforming = {
 	has_ascension_worlds = yes
+
 	any_planet_within_border = {
 		OR = {
 			is_colony = yes
 			is_colonizable = yes
 		}
-		is_artificial = no
 		NOR = {
+			is_artificial = yes
 			is_planet_class = pc_hive
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
@@ -69,6 +71,7 @@ want_energy_for_terraforming = {
 # energy = 6000 * 2 (weight = 0.5)
 want_energy_for_gateway = {
 	has_technology = tech_gateway_activation
+
 	any_owned_megastructure = {
 		OR = {
 			is_megastructure_type = gateway_0
@@ -99,8 +102,8 @@ can_build_megastructure_ai_fix = {
 	OR = {
 		AND = {
 			has_technology = tech_dyson_sphere
-			count_owned_megastructure = { count = 0
-				limit = {
+			NOT = {
+				any_owned_megastructure = {
 					OR = {
 						is_megastructure_type = dyson_sphere_5
 						is_megastructure_type = dyson_sphere_restored
@@ -110,8 +113,8 @@ can_build_megastructure_ai_fix = {
 		}
 		AND = {
 			has_technology = tech_mega_engineering
-			count_owned_megastructure = { count = 0
-				limit = {
+			NOT = {
+				any_owned_megastructure = {
 					OR = {
 						is_megastructure_type = matter_decompressor_4
 						is_megastructure_type = matter_decompressor_restored
@@ -121,8 +124,8 @@ can_build_megastructure_ai_fix = {
 		}
 		AND = {
 			has_technology = tech_mega_shipyard
-			count_owned_megastructure = { count = 0
-				limit = {
+			NOT = {
+				any_owned_megastructure = {
 					OR = {
 						is_megastructure_type = mega_shipyard_3
 						is_megastructure_type = mega_shipyard_restored
@@ -145,12 +148,13 @@ can_build_megastructure_ai_fix = {
 
 can_build_arcology = {
 	has_ascension_perk = ap_arcology_project
+
 	any_owned_planet = {
 		is_colony = yes
-		is_artificial = no
-		free_district_slots < 1
-		num_uncleared_blockers < 1
 		NOR = {
+			is_artificial = yes
+			free_district_slots >= 1
+			num_uncleared_blockers >= 1
 			is_planet_class = pc_city
 			is_planet_class = pc_relic
 			has_modifier = resort_colony
@@ -160,6 +164,7 @@ can_build_arcology = {
 			has_designation = col_nanotech_world
 		}
 	}
+
 	count_owned_planet = {
 		count < 2
 		limit = {
@@ -173,12 +178,26 @@ can_build_arcology = {
 
 need_alloys_trade = {
 	has_deficits = yes
-	has_resource = { type = alloys amount > 1000 }
-	has_resource = { type = trade amount < 100 }
+
+	has_resource = {
+		type = alloys
+		amount > 1000
+	}
+	has_resource = {
+		type = trade
+		amount < 100
+	}
 }
 
 need_energy_trade = {
 	has_deficits = yes
-	has_resource = { type = energy amount > 3000 }
-	has_resource = { type = trade amount < 100 }
+
+	has_resource = {
+		type = energy
+		amount > 3000
+	}
+	has_resource = {
+		type = trade
+		amount < 100
+	}
 }

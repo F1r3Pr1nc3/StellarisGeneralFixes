@@ -948,7 +948,7 @@ bureaucrat = {
 					bureaucrat_is_numistic_priest = yes
 				}
 			}
-			unity = -1
+			unity = -2
 			trade = 6
 		}
 		upkeep = {
@@ -1422,14 +1422,14 @@ telepath = {
 		category = planet_telepaths
 		inline_script = "jobs/job_enforcer_triggered_resources"
 		produces = {
-			unity = 4.5
+			unity = 9
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_active_tradition = tr_domination_judgment_corps }
 			}
-			unity = 0.5
+			unity = 1
 		}
 		produces = {
 			trigger = {
@@ -2387,7 +2387,7 @@ trader = {
 					has_planet_flag = has_franchise_headquarters
 				}
 			}
-			unity = 0.5
+			unity = 1
 		}
 	}
 
@@ -2610,7 +2610,7 @@ necro_apprentice = {
 	resources = {
 		category = planet_necro_apprentices
 		produces = {
-			unity = 0.75
+			unity = 1.5
 		}
 		upkeep = {
 			trigger = {
@@ -3168,7 +3168,7 @@ knight = {
 		category = planet_knights
 		produces = {
 			trigger = { exists = owner }
-			unity = 1
+			unity = 2
 			mult = value:knights_unity_output_modifier
 		}
 		produces = {
@@ -3294,7 +3294,7 @@ resort_worker = {
 	resources = {
 		category = planet_entertainers
 		produces = {
-			unity = 1
+			unity = 2
 			trade = 4
 		}
 		upkeep = {

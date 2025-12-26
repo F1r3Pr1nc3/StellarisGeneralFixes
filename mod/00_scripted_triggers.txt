@@ -49,6 +49,7 @@ is_free_robot_species_rights = {
 
 species_rights_robot_full_rights_check = {
 	exists = from
+
 	from = {
 		OR = {
 			has_policy_flag = ai_full_rights
@@ -62,6 +63,7 @@ species_rights_robot_full_rights_check = {
 is_free_robot = {
 	has_trait = trait_mechanical
 	exists = owner
+
 	owner = {
 		has_technology = "tech_synthetic_workers"
 		OR = {
@@ -76,6 +78,7 @@ is_free_robot = {
 is_shackled_robot = {
 	has_trait = trait_mechanical
 	exists = owner
+
 	owner = { # Vfix
 		NOR = { # Robot is shackled unless it is explicitly freed
 			is_mechanical_empire = yes # Freed by: Being in a Machine Intelligence
@@ -111,6 +114,7 @@ country_has_shackled_robots = {
 is_non_sapient_robot = {
 	has_trait = trait_mechanical
 	exists = owner
+
 	owner = { # Vfix
 		is_machine_empire = no
 		OR = {
@@ -253,8 +257,7 @@ wears_clothes = {
 
 is_fallen_empire_hive = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 
 	is_hive_empire = yes
@@ -262,8 +265,7 @@ is_fallen_empire_hive = {
 
 is_fallen_empire_machine = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 
 	is_machine_empire = yes
@@ -276,8 +278,7 @@ is_fallen_empire_berserk_machine = {
 
 is_fallen_empire_materialist = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 
 	has_ethic = ethic_fanatic_materialist
@@ -285,8 +286,7 @@ is_fallen_empire_materialist = {
 
 is_fallen_empire_spiritualist = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 
 	has_ethic = ethic_fanatic_spiritualist
@@ -294,8 +294,7 @@ is_fallen_empire_spiritualist = {
 
 is_fallen_empire_xenophobe = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 
 	has_ethic = ethic_fanatic_xenophobe
@@ -303,8 +302,7 @@ is_fallen_empire_xenophobe = {
 
 is_fallen_empire_xenophile = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 
 	has_ethic = ethic_fanatic_xenophile
@@ -345,27 +343,27 @@ is_marauder_cluster = {
 
 has_leviathans = {
 	optimize_memory
-	host_has_dlc = "Leviathans Story Pack"
+	has_leviathans = yes
 }
 
 has_utopia = {
 	optimize_memory
-	host_has_dlc = "Utopia"
+	has_utopia = yes
 }
 
 has_plantoids = {
 	optimize_memory
-	host_has_dlc = "Plantoids Species Pack"
+	has_plantoids = yes
 }
 
 has_synthetic_dawn = {
 	optimize_memory
-	host_has_dlc = "Synthetic Dawn Story Pack"
+	has_synthetic_dawn = yes
 }
 
 has_humanoids = {
 	optimize_memory
-	host_has_dlc = "Humanoids Species Pack"
+	has_humanoids = yes
 }
 
 has_humanoids_local = {
@@ -375,12 +373,12 @@ has_humanoids_local = {
 
 has_not_humanoids = {
 	optimize_memory
-	NOT = { host_has_dlc = "Humanoids Species Pack" }
+	NOT = { has_humanoids = yes }
 }
 
 has_lithoids = {
 	optimize_memory
-	host_has_dlc = "Lithoids Species Pack"
+	has_lithoids = yes
 }
 
 has_mammalians_micro_dlc = {
@@ -390,35 +388,35 @@ has_mammalians_micro_dlc = {
 
 has_federations_dlc = {
 	optimize_memory
-	host_has_dlc = "Federations"
+	has_federations_dlc = yes
 }
 
 has_necroids = {
 	optimize_memory
-	host_has_dlc = "Necroids Species Pack"
+	has_necroids = yes
 }
 
 has_nemesis = {
 	optimize_memory
-	host_has_dlc = "Nemesis"
+	has_nemesis = yes
 }
 
 has_aquatics = {
 	optimize_memory
-	host_has_dlc = "Aquatics Species Pack"
+	has_aquatics = yes
 }
 
 has_apocalypse_dlc = {
 	optimize_memory
-	host_has_dlc = "Apocalypse"
+	has_apocalypse_dlc = yes
 }
 
 has_space_monster_dlc = {
 	optimize_memory
 	OR = {
-		host_has_dlc = "Leviathans Story Pack" # Ether Drake
+		has_leviathans = yes # Ether Drake
 		host_has_dlc = "Distant Stars Story Pack" # Tiyanki Martriarch, Voidspawn
-		host_has_dlc = "Ancient Relics Story Pack" # Shard
+		has_ancrel = yes # Shard
 		host_has_dlc = "Aquatics Species Pack" # Sky Dragon
 	}
 }
@@ -426,7 +424,7 @@ has_space_monster_dlc = {
 has_genetic_dlc = {
 	optimize_memory
 	OR = {
-		host_has_dlc = "Plantoids Species Pack" # Plantoid Traits
+		has_plantoids = yes # Plantoid Traits
 		host_has_dlc = "Lithoids Species Pack" # Lithoid Traits
 		has_space_monster_dlc = yes
 	}
@@ -442,86 +440,86 @@ harvested_leviathan_dna = {
 
 has_overlord_dlc = {
 	optimize_memory
-	host_has_dlc = "Overlord"
+	has_overlord_dlc = yes
 }
 
 has_toxoids = {
 	optimize_memory
-	host_has_dlc = "Toxoids Species Pack"
+	has_toxoids = yes
 }
 
 has_first_contact_dlc = {
 	optimize_memory
-	host_has_dlc = "First Contact Story Pack"
+	has_first_contact_dlc = yes
 }
 
 has_astral_planes_dlc = {
 	optimize_memory
-	host_has_dlc = "Astral Planes"
+	has_astral_planes_dlc = yes
 }
 
 has_cosmic_storms_dlc = {
 	optimize_memory
-	host_has_dlc = "Cosmic Storms"
+	has_cosmic_storms_dlc = yes
 }
 
 has_machine_age_dlc = {
 	optimize_memory
-	host_has_dlc = "The Machine Age"
+	has_machine_age_dlc = yes
 }
 
 has_synthetic_dawn_not_machine_age = {
 	optimize_memory
-	host_has_dlc = "Synthetic Dawn Story Pack"
+	has_synthetic_dawn = yes
 	NOT = { host_has_dlc = "The Machine Age" }
 }
 
 has_synthetic_dawn_and_machine_age = {
 	optimize_memory
-	host_has_dlc = "Synthetic Dawn Story Pack"
+	has_synthetic_dawn = yes
 	host_has_dlc = "The Machine Age"
 }
 
 has_grand_archive_dlc = {
 	optimize_memory
-	host_has_dlc = "Grand Archive"
+	has_grand_archive_dlc = yes
 }
 
 has_rick_the_cube_dlc = {
 	optimize_memory
-	host_has_dlc = "Rick The Cube Species Portrait"
+	has_rick_the_cube_dlc = yes
 }
 
 has_stargazer_dlc = {
 	optimize_memory
-	host_has_dlc = "Stargazer Species Portrait"
+	has_stargazer_dlc = yes
 }
 
 has_biogenesis_dlc = {
 	optimize_memory
-	host_has_dlc = "BioGenesis"
+	has_biogenesis_dlc = yes
 }
 
 has_shroud_dlc = {
 	optimize_memory
-	host_has_dlc = "Shadows of the Shroud"
+	has_shroud_dlc = yes
 }
 
 has_shroud_dlc_not_machine_age = {
 	optimize_memory
-	host_has_dlc = "Shadows of the Shroud"
+	has_shroud_dlc = yes
 	NOT = { host_has_dlc = "The Machine Age" }
 }
 
 has_shroud_dlc_and_machine_age = {
 	optimize_memory
-	host_has_dlc = "Shadows of the Shroud"
+	has_shroud_dlc = yes
 	host_has_dlc = "The Machine Age"
 }
 
 has_infernals = {
 	optimize_memory
-	host_has_dlc = "Infernals Species Pack"
+	has_infernals  = yes
 }
 
 uninhabitable_regular_planet = {
@@ -800,7 +798,7 @@ can_be_soldier = {
 allows_slavery = {
 	OR = {
 		has_policy_flag = slavery_allowed
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 	}
 }
 
@@ -808,7 +806,7 @@ allows_purge = {
 	OR = {
 		has_policy_flag = purge_allowed
 		has_policy_flag = purge_displacement_only # Vfix Ariphaos?
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 		has_valid_civic = civic_fanatic_purifiers
 	}
 }
@@ -1020,8 +1018,7 @@ is_disconnected_drone_pop = {
 	from = {
 		NOR = {
 			is_gestalt = yes
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
+			is_fallen_empire = yes
 		}
 	}
 }
@@ -1032,9 +1029,7 @@ is_disconnected_machine_pop = {
 
 	from = {
 		NOR = {
-			is_machine_empire = yes
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
+			is_fallen_empire_machine = yes
 			is_individual_machine = yes
 		}
 	}
@@ -1157,6 +1152,7 @@ is_binary_star = {
 # Use: owner_has_resolution = { RES = resolution_ecology_integrated_gardens }
 owner_has_resolution = {
 	exists = owner
+
 	owner = {
 		is_galactic_community_member = yes
 		is_active_resolution = $RES$
@@ -1266,8 +1262,7 @@ is_livestock = {
 
 is_synthetic_empire = {
 	OR = {
-		has_country_flag = synthetic_empire
-		is_machine_empire = yes
+		is_synthetic_empire = yes
 		is_individual_machine = yes
 	}
 }
@@ -1288,8 +1283,7 @@ is_trinary_star = {
 planet_can_be_liberated_from_owner = {
 	owner = {
 		NOR = {
-			is_country_type = awakened_fallen_empire
-			is_country_type = fallen_empire
+			is_fallen_empire = yes
 			is_hive_empire = yes
 			is_machine_empire = yes
 		}
@@ -1320,8 +1314,7 @@ is_unplugged_cyborg_empire = {
 
 is_mechanical_empire = {
 	OR = {
-		owner_species = { has_trait = trait_mechanical }
-		has_country_flag = synthetic_empire
+		is_mechanical_empire = yes
 	}
 }
 
@@ -1333,14 +1326,13 @@ is_robot_empire = {
 				has_trait = trait_machine_unit
 			}
 		}
-		has_country_flag = synthetic_empire
-		is_machine_empire = yes
+		is_synthetic_empire = yes
 	}
 }
 
 # Scopes: country, leader, pop, army, (colony) ship
-is_mechanical_species = {
-	species = {
+is_robotic_species = {
+	is_robotic_species = yes
 		# Machine Intelligence
 		is_robotic = yes # Robots & Synthetically-ascended Pops
 	}
@@ -1353,9 +1345,7 @@ is_virtual_empire = {
 }
 
 is_lithoid_empire = {
-	owner_species = {
-		is_lithoid = yes
-	}
+	is_lithoid_empire = yes
 }
 
 is_lithoid_devouring_swarm = {
@@ -1393,8 +1383,7 @@ is_lithoid_devouring_swarm_consumption_world = {
 
 is_country_type_with_subjects = {
 	OR = {
-		is_country_type = default
-		is_country_type = awakened_fallen_empire
+		is_country_type_with_subjects = yes
 		is_country_type = awakened_marauders
 	}
 }
@@ -1405,17 +1394,15 @@ is_valid_target_fe_stop_atrocities = {
 		allows_purge = yes
 	}
 	NOR = {
-		has_ethic = ethic_gestalt_consciousness
-		has_valid_civic = civic_machine_terminator
-		has_valid_civic = civic_hive_devouring_swarm
-		has_valid_civic = civic_fanatic_purifiers
+		is_gestalt = yes
+		is_homicidal = yes
 	}
 }
 
 is_valid_target_fe_stop_ai = {
 	NOR = {
 		has_policy_flag = ai_outlawed
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 		is_mechanical_empire = yes
 	}
 
@@ -1550,8 +1537,7 @@ is_fanatic = {
 
 is_pacifist = {
 	OR = {
-		has_ethic = ethic_pacifist
-		has_ethic = ethic_fanatic_pacifist
+		is_pacifist = yes
 	}
 }
 
@@ -1561,8 +1547,7 @@ is_fanatic_pacifist = {
 
 is_militarist = {
 	OR = {
-		has_ethic = ethic_militarist
-		has_ethic = ethic_fanatic_militarist
+		is_militarist = yes
 	}
 }
 
@@ -1572,8 +1557,7 @@ is_fanatic_militarist = {
 
 is_materialist = {
 	OR = {
-		has_ethic = ethic_materialist
-		has_ethic = ethic_fanatic_materialist
+		is_materialist = yes
 	}
 }
 
@@ -1583,8 +1567,7 @@ is_fanatic_materialist = {
 
 is_spiritualist = {
 	OR = {
-		has_ethic = ethic_spiritualist
-		has_ethic = ethic_fanatic_spiritualist
+		is_spiritualist = yes
 	}
 }
 
@@ -1594,8 +1577,7 @@ is_fanatic_spiritualist = {
 
 is_egalitarian = {
 	OR = {
-		has_ethic = ethic_egalitarian
-		has_ethic = ethic_fanatic_egalitarian
+		is_egalitarian = yes
 	}
 }
 
@@ -1605,8 +1587,7 @@ is_fanatic_egalitarian = {
 
 is_authoritarian = {
 	OR = {
-		has_ethic = ethic_authoritarian
-		has_ethic = ethic_fanatic_authoritarian
+		is_authoritarian = yes
 	}
 }
 
@@ -1616,8 +1597,7 @@ is_fanatic_authoritarian = {
 
 is_xenophile = {
 	OR = {
-		has_ethic = ethic_xenophile
-		has_ethic = ethic_fanatic_xenophile
+		is_xenophile = yes
 	}
 }
 
@@ -1627,8 +1607,7 @@ is_fanatic_xenophile = {
 
 is_xenophobe = {
 	OR = {
-		has_ethic = ethic_xenophobe
-		has_ethic = ethic_fanatic_xenophobe
+		is_xenophobe = yes
 	}
 }
 
@@ -1641,18 +1620,16 @@ is_regular_empire = {
 		is_country_type = default
 		# for checks in buildings and districts
 		is_country_type = awakened_marauders
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 		is_country_type = exiled
 	}
-	NOT = { has_ethic = ethic_gestalt_consciousness }
+	NOT = { is_gestalt = yes }
 }
 
 is_default_or_fallen = {
 	OR = {
 		is_country_type = default
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire # for checks in buildings
+		is_fallen_empire = yes # for checks in buildings
 	}
 }
 
@@ -1665,7 +1642,7 @@ is_capitalist = {
 }
 
 is_megacorp = {
-	has_authority = auth_corporate
+	is_megacorp = yes
 }
 
 has_corporate_government = {
@@ -1676,16 +1653,16 @@ has_corporate_government = {
 }
 
 is_gestalt = {
-	has_ethic = ethic_gestalt_consciousness
+	is_gestalt = yes
 }
 
 is_hive_empire = {
-	has_authority = auth_hive_mind
+	is_hive_empire = yes
 	# NOTE: also includes Wilderness Authority; see 'is_wilderness_empire'
 }
 
 is_machine_empire = {
-	has_authority = auth_machine_intelligence
+	is_machine_empire = yes
 }
 
 is_wilderness_empire = {
@@ -1709,7 +1686,7 @@ is_lithoid_or_infernal_empire = {
 # Power of one
 is_autocracy = {
 	OR = {
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 		is_imperial_authority = yes
 		is_dictatorial_authority = yes
 	}
@@ -1868,8 +1845,7 @@ has_comms_with_alien_empire = {
 			has_communications = root
 			OR = {
 				is_country_type = default
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+				is_fallen_empire = yes
 			}
 		}
 	}
@@ -1880,8 +1856,7 @@ has_comms_with_alien_civilization = {
 		has_communications = root
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
+			is_fallen_empire = yes
 			is_country_type = enclave
 			is_country_type = nomad
 			is_country_type = dormant_marauders
@@ -1896,8 +1871,7 @@ has_total_war_cb = {
 		AND = {
 			OR = {
 				is_country_type = default
-				is_country_type = awakened_fallen_empire
-				is_country_type = fallen_empire
+				is_fallen_empire = yes
 			}
 			OR = {
 				is_country_type = awakened_fallen_empire
@@ -1910,8 +1884,7 @@ has_total_war_cb = {
 					has_valid_civic = civic_machine_terminator
 					from = {
 						NOR = {
-							has_country_flag = synthetic_empire
-							is_machine_empire = yes
+							is_synthetic_empire = yes
 							is_individual_machine = yes
 						}
 					}
@@ -2014,6 +1987,7 @@ has_bordering_system = {
 # root: great khan's horde (country)
 is_potential_diadochi_system = {
 	exists = starbase
+
 	starbase = {
 		is_owned_by = root
 	}
@@ -2151,9 +2125,7 @@ system_has_dyson_sphere = {
 
 is_homicidal = {
 	OR = {
-		has_valid_civic = civic_fanatic_purifiers
-		has_valid_civic = civic_machine_terminator
-		has_valid_civic = civic_hive_devouring_swarm
+		is_homicidal = yes
 		has_valid_civic = civic_scorched_earth
 		has_valid_civic = civic_hive_scorched_earth
 		has_menace_perk = menp_behemoth_ever_hungry
@@ -2162,9 +2134,7 @@ is_homicidal = {
 
 is_unfriendly = {
 	OR = {
-		has_valid_civic = civic_fanatic_purifiers
-		has_valid_civic = civic_machine_terminator
-		has_valid_civic = civic_hive_devouring_swarm
+		is_homicidal = yes
 		has_valid_civic = civic_barbaric_despoilers
 		has_valid_civic = civic_scorched_earth
 		has_valid_civic = civic_hive_scorched_earth
@@ -2246,7 +2216,7 @@ has_active_muutagan_trade = {
 }
 
 has_distar = {
-	host_has_dlc = "Distant Stars Story Pack"
+	has_distar = yes
 }
 
 #########################################
@@ -2390,8 +2360,7 @@ can_have_exotic_gases_deposits = {
 
 is_fallen_empire = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 }
 
@@ -2520,6 +2489,7 @@ has_gw_interstellar_assembly = {
 
 can_generate_trade_value = {
 	exists = owner
+
 	owner = {
 		is_country_type = default
 	}
@@ -2537,7 +2507,7 @@ is_crossbreeding_possible = {
 }
 
 has_ancrel = {
-	host_has_dlc = "Ancient Relics Story Pack"
+	has_ancrel = yes
 }
 
 simulation_1_upkeep_affordable = {
@@ -3449,8 +3419,7 @@ default_endgame_early_start_triggers = {
 		NOT = {
 			any_country = {
 				OR = {
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 		}
@@ -3711,6 +3680,7 @@ is_subterranean_empire = {
 overlord_subject_event_trigger = {
 	exists = event_target:overlord_empire
 	exists = event_target:subject_empire
+
 	event_target:overlord_empire = {
 		is_overlord_to = event_target:subject_empire
 	}
@@ -3839,7 +3809,7 @@ is_faction_allowed = {
 		}
 	}
 	NOR = {
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 		has_country_flag = suppress_vanilla_factions
 	}
 }
@@ -4285,6 +4255,7 @@ got_any_unprotected_drones = {
 # This can replace all the specific ones.
 has_councilor = {
 	exists = owner
+
 	owner = {
 		any_owned_leader = { is_councilor = yes is_councilor_type = $COUNCILOR$ }
 	}
@@ -4894,6 +4865,7 @@ is_environmental_architects_empire = {
 
 influence_building_destruction_trigger = {
 	exists = owner
+
 	owner = { # Vfix tiny opt
 		is_ai = yes
 		NOR = {
@@ -5195,7 +5167,7 @@ can_have_slaves = {
 	OR = {
 		is_authoritarian = yes
 		is_xenophobe = yes
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 	}
 	NOT = { has_origin = origin_broken_shackles }
 }

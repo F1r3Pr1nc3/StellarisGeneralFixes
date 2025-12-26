@@ -1,6 +1,9 @@
-#this = species, from = country
+# this = species, from = country
 can_do_advanced_gene_modding = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		if = {
 			limit = {
@@ -37,7 +40,10 @@ advanced_traits_have_reduced_cost = {
 }
 
 can_add_negative_organic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		if = {
 			limit = {
@@ -57,17 +63,23 @@ can_add_negative_organic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_vocational_genetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_technology = tech_gene_expressions
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_beneficial_genetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		if = {
 			limit = {
@@ -84,9 +96,12 @@ can_remove_beneficial_genetic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_presapient_genetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		OR = {
 			has_technology = tech_epigenetic_triggers
@@ -106,15 +121,23 @@ can_remove_presapient_genetic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_overtuned_traits = {
-	hidden_trigger = { exists = from }
-	from = { has_origin = origin_overtuned }
+	hidden_trigger = {
+		exists = from
+	}
+
+	from = {
+		has_origin = origin_overtuned
+	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_overtuned_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		OR = {
 			has_origin = origin_overtuned
@@ -134,49 +157,67 @@ can_remove_overtuned_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_mutation_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_tradition = tr_mutation_adopt
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_or_remove_phenotype_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_tradition = tr_mutation_unnatural_selection
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_or_remove_special_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_mutation_nucleotide_isolation_tradition = yes
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_auto_preference_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_mutation_environmental_integration_tradition = yes
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_cloning_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_active_tradition = tr_cloning_somatic_synthesization_clone_army
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_pop_growth_genetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		OR = {
 			has_active_tradition = tr_cloning_somatic_synthesization
@@ -185,7 +226,7 @@ can_remove_pop_growth_genetic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_transgenic_traits = {
 	exists = from
 	from = {
@@ -194,9 +235,12 @@ can_add_transgenic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_or_remove_leviathan_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		if = {
 			limit = {
@@ -214,7 +258,7 @@ can_add_or_remove_leviathan_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 has_harvested_radiotrophic_dna = {
 	exists = from
 	from = {
@@ -222,21 +266,26 @@ has_harvested_radiotrophic_dna = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_change_habitability_preference = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	custom_tooltip = {
 		text = requires_technology_glandular_acclimation
-		from = {
-			has_technology = tech_glandular_acclimation
-		}
+		from = { has_technology = tech_glandular_acclimation }
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_cybernetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	has_trait = trait_cybernetic
+
 	custom_tooltip = {
 		text = requires_tr_cybernetics_integrated_anatomy
 		from = {
@@ -248,9 +297,11 @@ can_add_cybernetic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_unplugged_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
 	OR = {
 		has_trait = trait_unplugged_cybernetic_positives_3
 		has_trait = trait_unplugged_cybernetic_positives_2
@@ -262,15 +313,21 @@ can_add_unplugged_traits = {
 }
 
 can_add_aug_bazaar_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_valid_civic = civic_augmentation_bazaars
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_cybernetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	custom_tooltip = {
 		text = requires_tr_cybernetics_integrated_anatomy
 		from = {
@@ -282,72 +339,92 @@ can_remove_cybernetic_traits = {
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_remove_unplugged_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	custom_tooltip = {
-		from = {
-			has_origin = origin_unplugged
-		}
+		from = { has_origin = origin_unplugged }
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_genetic_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	custom_tooltip = {
 		text = requires_tech_gene_tailoring
-		from = {
-			has_technology = tech_gene_tailoring
-		}
+		from = { has_technology = tech_gene_tailoring }
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_droid_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_technology = tech_droid_workers
 		NOT = { has_policy_flag = ai_outlawed }
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_add_synth_traits = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		has_technology = tech_synthetic_workers
 		NOT = { has_policy_flag = ai_outlawed }
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 owner_is_machine_intelligence = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		is_machine_empire = yes
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 owner_is_individual_machine = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		is_individual_machine = yes
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 owner_is_hive_empire = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		is_hive_empire = yes
 	}
 }
 
-#this = species, from = country
+# this = species, from = country
 can_do_advanced_robo_modding = {
-	hidden_trigger = { exists = from }
+	hidden_trigger = {
+		exists = from
+	}
+
 	from = {
 		OR = {
 			has_tradition = tr_modularity_5
@@ -362,10 +439,11 @@ can_harvest_dna = {
 		has_utopia = yes
 		has_biogenesis_dlc = yes
 	}
+
 	# Only regular empires and hive-minds can genetically ascend.
-	is_machine_empire = no
-	# If you've taken other ascension path, we shouldn't let you harvest DNA anymore.
 	NOR = {
+		is_machine_empire = yes
+		# If you've taken other ascension path, we shouldn't let you harvest DNA anymore.
 		has_cybernetic_ascension = yes
 		has_psionic_ascension = yes
 		has_synthetic_ascension = yes
@@ -381,12 +459,14 @@ can_harvest_parts = {
 		has_technology = tech_synthetic_workers
 		has_technology = tech_binary_motivators
 	}
+
 	# Only machine empires and cyborgs can use mechanical leviathan parts.
 	OR = {
 		has_active_tradition = tr_cybernetics_integrated_anatomy
 		has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
 		is_synthetic_empire = yes
 	}
+
 	# If you've taken another ascension path, we shouldn't let you harvest parts anymore.
 	OR = {
 		has_psionic_ascension = no
@@ -438,9 +518,7 @@ can_assemble_bio_pop = {
 	planet = {
 		NAND = {
 			exists = assembling_species
-			assembling_species = {
-				is_robotic = yes
-			}
+			assembling_species = { is_robotic = yes }
 		}
 	}
 }
@@ -449,13 +527,10 @@ can_assemble_hive_pop = {
 	planet = {
 		OR = {
 			NOT = { exists = assembling_species }
-			AND = {
-				exists = assembling_species
-				assembling_species = {
-					OR = {
-						has_trait = trait_hive_mind
-						is_robotic = yes
-					}
+			assembling_species = {
+				OR = {
+					has_trait = trait_hive_mind
+					is_robotic = yes
 				}
 			}
 		}
@@ -466,12 +541,7 @@ can_assemble_robot = {
 	planet = {
 		OR = {
 			NOT = { exists = assembling_species }
-			AND = {
-				exists = assembling_species
-				assembling_species = {
-					is_robotic = yes
-				}
-			}
+			assembling_species = { is_robotic = yes }
 		}
 	}
 }

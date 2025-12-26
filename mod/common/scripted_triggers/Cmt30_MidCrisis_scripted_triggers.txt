@@ -7,54 +7,61 @@
 #####											#####
 #####################################################
 #####################################################
-
 ##############
 ###- Khan -###
 ##############
-
 ### Global Conditions
 
 CmtTriggerKhanAwakingMultipleCheck = {
 	optimize_memory
 	event_target:global_event_country = {
-		check_variable = { which = CmtVarKhanMultiple value != 1 }
-		NOT = { has_global_flag = marauder_crisis_started }
+		NOR = {
+			check_variable = { which = CmtVarKhanMultiple value = 1 }
+			has_global_flag = marauder_crisis_started
+		}
 		any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
 	}
 }
 
 ### Country Conditions
 ## Scope = country
+
 CmtTriggerHasPotentialKhanAwaking = {
-	optimize_memory
 	OR = {
 		AND = { # CmtTriggerIsSleepingMarauder
 			is_country_type = dormant_marauders
-			OR = {
-				NOT = { has_country_flag = restored_marauders_flag }
+			NAND = {
+				has_country_flag = restored_marauders_flag
 				# Fallback (Last Sleeping Marauder)
-				count_country = { count = 0
-					limit = {
-						is_country_type = dormant_marauders
-						NOT = { has_country_flag = restored_marauders_flag }
-					}
+				any_country = {
+					is_country_type = dormant_marauders
+					NOT = { has_country_flag = restored_marauders_flag }
 				}
 			}
 		}
-		AND = { is_pirate_country = yes has_country_flag = restored_marauders_flag }
+		AND = {
+			is_pirate_country = yes
+			has_country_flag = restored_marauders_flag
+		}
 		AND = {
 			has_origin = origin_khan_successor
 			is_at_war = no
-			OR = { has_country_flag = new_khanate_flag has_country_flag = diadochi }
+			OR = {
+				has_country_flag = new_khanate_flag
+				has_country_flag = diadochi
+			}
 			# NOT = { has_country_flag = restored_marauders_flag }
-			count_country = { count = 0 limit = { is_country_type = dormant_marauders } }
+			NOT = { any_country = { is_country_type = dormant_marauders } }
 		}
 	}
-	OR = {	# Human player hack
-		AND = { is_ai = no has_country_flag = new_khanate_flag }
+	OR = {
+		AND = {
+			is_ai = no
+			has_country_flag = new_khanate_flag
+		} # Human player hack
 		AND = {
 			has_country_flag = marauder_1
-			any_system_within_border = {} # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag'
+			any_owned_starbase = {  } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag'
 			any_system_within_border = {
 				has_star_flag = marauder_system
 				OR = {
@@ -65,7 +72,7 @@ CmtTriggerHasPotentialKhanAwaking = {
 		}
 		AND = {
 			has_country_flag = marauder_2
-			any_system_within_border = {} # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag
+			any_owned_starbase = {  } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag
 			any_system_within_border = {
 				has_star_flag = marauder_system
 				OR = {
@@ -76,7 +83,7 @@ CmtTriggerHasPotentialKhanAwaking = {
 		}
 		AND = {
 			has_country_flag = marauder_3
-			any_system_within_border = {} # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag
+			any_owned_starbase = {  } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag
 			any_system_within_border = {
 				has_star_flag = marauder_system
 				OR = {

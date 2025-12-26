@@ -1336,7 +1336,10 @@ fleet_event = {
 
 	immediate = {
 		remove_fleet_flag = flash_forging_hyper_relay
-		controller = { set_country_flag = flash_forge_hyper_relay_activated }
+		if = { # Vfix log
+			limit = {  exists = controller }
+			controller = { set_country_flag = flash_forge_hyper_relay_activated }
+		}
 	}
 }
 

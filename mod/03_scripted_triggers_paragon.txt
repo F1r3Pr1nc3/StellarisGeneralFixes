@@ -1,12 +1,10 @@
 
 has_paragon_dlc = {
-	host_has_dlc = "Galactic Paragons"
+	has_paragon_dlc = yes
 }
 
 is_hive_species = {
-	species = {
-		has_trait = trait_hive_mind
-	}
+	is_hive_species = yes
 }
 
 has_any_subclass = {
@@ -154,6 +152,7 @@ is_head_of_research = {
 
 is_pool_leader = {
 	exists = owner
+
 	owner = {
 		any_pool_leader = { is_same_value = prevprev }
 	}
@@ -255,6 +254,7 @@ has_trait_tier1or2or3 = {
 
 local_or_sector_governor_has_trait = {
 	exists = planet
+
 	planet = {
 		OR = {
 			AND = {
@@ -292,6 +292,7 @@ country_has_extra_council_position = {
 # planet scope
 has_azaryn_in_orbit = {
 	exists = event_target:azaryn_ship
+
 	any_fleet_in_orbit = {
 		any_owned_ship = { is_same_value = event_target:azaryn_ship }
 	}

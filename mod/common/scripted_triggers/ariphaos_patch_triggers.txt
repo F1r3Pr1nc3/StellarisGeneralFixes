@@ -1,10 +1,7 @@
-
 # Vanilla difficulty scaling for guardians is a rather big jump from cadet to ensign (~70%), then smaller buffs after.
 # This isn't quite enough to properly scale for crisis and FEs, but is better than nothing.
-
 # These values are used by the Curators to tell you how powerful they think your fleet is, and some similar checks for
 # how confident the AI should be with its fleet.
-
 ariphaos_patch_fleet_titanic = {
 	OR = {
 		AND = {
@@ -218,23 +215,20 @@ ariphaos_patch_planet_class_prod = {
 
 # Check if the AI should consider winding down its science production.
 ariphaos_patch_finished_tech = {
-	AND = {
-		# Physics
-		has_technology = tech_jump_drive_1
-		has_technology = tech_shield_hardeners_2
-		has_technology = tech_gateway_construction
-		# Society
-		has_technology = tech_ascension_theory
-		has_technology = tech_doctrine_fleet_size_5
-		# Engineering
-		has_technology = tech_titan_hull_2
-		has_technology = tech_armor_hardeners_2
-		has_technology = tech_battleship_hull_2
-	}
+	# Physics
+	has_technology = tech_jump_drive_1
+	has_technology = tech_shield_hardeners_2
+	has_technology = tech_gateway_construction
+	# Society
+	has_technology = tech_ascension_theory
+	has_technology = tech_doctrine_fleet_size_5
+	# Engineering
+	has_technology = tech_titan_hull_2
+	has_technology = tech_armor_hardeners_2
+	has_technology = tech_battleship_hull_2
 }
 
 # Same for traditions. Somewhat more aggressive.
 ariphaos_patch_finished_traditions = {
 	num_tradition_categories >= @TRADITION_CATEGORIES_MAX
 }
-

@@ -1,6 +1,7 @@
 
 buildings_build_building = {
 	planet_devastation < 10
+
 	planet = {
 		has_current_purge = no
 	}
@@ -23,25 +24,13 @@ country_uses_food = {
 		if = {
 			limit = {
 				# Check if we have an uninitialized economy, then return true to be safe because we don't know
-				resource_expenses_compare = {
-					resource = food
-					value = 0
-				}
-				resource_expenses_compare = {
-					resource = minerals
-					value = 0
-				}
-				resource_expenses_compare = {
-					resource = energy
-					value = 0
-				}
+				resource_expenses_compare = { resource = food value = 0 }
+				resource_expenses_compare = { resource = minerals value = 0 }
+				resource_expenses_compare = { resource = energy value = 0 }
 			}
 		}
 		else = {
-			resource_expenses_compare = {
-				resource = food
-				value > 0
-			}
+			resource_expenses_compare = { resource = food value > 0 }
 		}
 		country_uses_bio_ships = yes
 	}
@@ -51,18 +40,9 @@ country_uses_consumer_goods = {
 	if = {
 		limit = {
 			# Check if we have an uninitialized economy, then return true to be safe because we don't know
-			resource_expenses_compare = {
-				resource = food
-				value = 0
-			}
-			resource_expenses_compare = {
-				resource = minerals
-				value = 0
-			}
-			resource_expenses_compare = {
-				resource = energy
-				value = 0
-			}
+			resource_expenses_compare = { resource = food value = 0 }
+			resource_expenses_compare = { resource = minerals value = 0 }
+			resource_expenses_compare = { resource = energy value = 0 }
 		}
 		# Vfix by v.kihot: initialize on start
 		is_hive_empire = no
@@ -76,10 +56,7 @@ country_uses_consumer_goods = {
 		OR = {
 			has_valid_civic = civic_machine_obsessional_directive
 			has_valid_civic = civic_machine_servitor
-			resource_expenses_compare = {
-				resource = consumer_goods
-				value > 0
-			}
+			resource_expenses_compare = { resource = consumer_goods value > 0 }
 		}
 	}
 }
@@ -87,14 +64,26 @@ country_uses_consumer_goods = {
 buildings_difficulty = {
 	is_difficulty > 2
 	years_passed > 20
-	has_resource = { type = energy amount > 1000 }
-	has_resource = { type = minerals amount > 2000 }
+
+	has_resource = {
+		type = energy
+		amount > 1000
+	}
+	has_resource = {
+		type = minerals
+		amount > 2000
+	}
 }
 
 buildings_stop_pop = {
 	NOT = { has_planet_flag = ignore_ai_building_limitations }
+
 	has_owner = yes
-	owner = { is_ai = yes }
+
+	owner = {
+		is_ai = yes
+	}
+
 	free_housing < -400
 	free_district_slots = 0
 }
@@ -141,42 +130,22 @@ districts_good_food = {
 
 jobs_work_minerals_goods = {
 	has_owner = yes
+
 	owner = {
 		is_ai = yes
-		has_monthly_income = {
-			resource = minerals
-			value < 50
-		}
+		has_monthly_income = { resource = minerals value < 50 }
 		OR = {
 			AND = {
-				has_resource = {
-					type = minerals
-					amount < 5000
-				}
-				has_resource = {
-					type = consumer_goods
-					amount > 1500
-				}
+				has_resource = { type = minerals amount < 5000 }
+				has_resource = { type = consumer_goods amount > 1500 }
 			}
 			AND = {
-				has_resource = {
-					type = minerals
-					amount < 3000
-				}
-				has_resource = {
-					type = consumer_goods
-					amount > 750
-				}
+				has_resource = { type = minerals amount < 3000 }
+				has_resource = { type = consumer_goods amount > 750 }
 			}
 			AND = {
-				has_resource = {
-					type = minerals
-					amount < 501
-				}
-				has_resource = {
-					type = consumer_goods
-					amount > 500
-				}
+				has_resource = { type = minerals amount < 501 }
+				has_resource = { type = consumer_goods amount > 500 }
 			}
 		}
 	}
@@ -186,18 +155,12 @@ buildings_has_motes = {
 	has_owner = yes
 	OR = {
 		owner = {
-			has_monthly_income = {
-				resource = volatile_motes
-				value >= 3
-			}
+			has_monthly_income = { resource = volatile_motes value >= 3 }
 		}
 		AND = {
 			free_building_slots > 1
 			owner = {
-				has_monthly_income = {
-					resource = volatile_motes
-					value > 0
-				}
+				has_monthly_income = { resource = volatile_motes value > 0 }
 			}
 		}
 	}
@@ -207,18 +170,12 @@ buildings_has_crystals = {
 	has_owner = yes
 	OR = {
 		owner = {
-			has_monthly_income = {
-				resource = rare_crystals
-				value >= 3
-			}
+			has_monthly_income = { resource = rare_crystals value >= 3 }
 		}
 		AND = {
 			free_building_slots > 1
 			owner = {
-				has_monthly_income = {
-					resource = rare_crystals
-					value > 0
-				}
+				has_monthly_income = { resource = rare_crystals value > 0 }
 			}
 		}
 	}
@@ -228,18 +185,12 @@ buildings_has_exotic_gases = {
 	has_owner = yes
 	OR = {
 		owner = {
-			has_monthly_income = {
-				resource = exotic_gases
-				value >= 3
-			}
+			has_monthly_income = { resource = exotic_gases value >= 3 }
 		}
 		AND = {
 			free_building_slots > 1
 			owner = {
-				has_monthly_income = {
-					resource = exotic_gases
-					value > 0
-				}
+				has_monthly_income = { resource = exotic_gases value > 0 }
 			}
 		}
 	}
@@ -348,10 +299,7 @@ has_trade_designation = {
 meets_basic_energy_threshold = {
 	OR = {
 		has_monthly_income = { resource = energy value > @economic_plan_energy_target }
-		resource_stockpile_compare = {
-			resource = energy
-			value > @economic_plan_stockpile_threshold
-		}
+		resource_stockpile_compare = { resource = energy value > @economic_plan_stockpile_threshold }
 	}
 }
 
@@ -366,41 +314,47 @@ meets_basic_minerals_threshold = {
 }
 
 meets_basic_food_threshold = {
-	OR = {
-		country_uses_food = no
-		has_monthly_income = { resource = food value > @economic_plan_food_target }
-		resource_stockpile_compare = {
-			resource = food
-			value > @economic_plan_stockpile_threshold
-		}
+	NAND = {
+		country_uses_food = yes
+		has_monthly_income = { resource = food value <= @economic_plan_food_target }
+		resource_stockpile_compare = { resource = food value <= @economic_plan_stockpile_threshold }
 	}
 }
 
 meets_basic_alloys_threshold = {
 	OR = {
 		has_monthly_income = { resource = alloys value > @economic_plan_alloy_target }
-		resource_stockpile_compare = {
-			resource = alloys
-			value > @economic_plan_stockpile_threshold
-		}
+		resource_stockpile_compare = { resource = alloys value > @economic_plan_stockpile_threshold }
 	}
 }
 
 meets_basic_consumer_goods_threshold = {
-	OR = {
-		country_uses_consumer_goods = no
-		has_monthly_income = { resource = consumer_goods value > @economic_plan_consumer_goods_target }
+	NAND = {
+		country_uses_consumer_goods = yes
+		has_monthly_income = {
+			resource = consumer_goods
+			value <= @economic_plan_consumer_goods_target
+		}
 		resource_stockpile_compare = {
 			resource = consumer_goods
-			value > @economic_plan_stockpile_threshold
+			value <= @economic_plan_stockpile_threshold
 		}
 	}
 }
 
 meets_basic_research_threshold = {
-	has_monthly_income = { resource = physics_research value > @economic_plan_research_target }
-	has_monthly_income = { resource = society_research value > @economic_plan_research_target }
-	has_monthly_income = { resource = engineering_research value > @economic_plan_research_target }
+	has_monthly_income = {
+		resource = physics_research
+		value > @economic_plan_research_target
+	}
+	has_monthly_income = {
+		resource = society_research
+		value > @economic_plan_research_target
+	}
+	has_monthly_income = {
+		resource = engineering_research
+		value > @economic_plan_research_target
+	}
 }
 
 meets_basic_resource_thresholds = {

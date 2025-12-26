@@ -968,9 +968,8 @@ decision_arcology_project = {
 		category = decisions
 		cost = {
 			influence = 200
-			# Vfix patch
-			alloys = 5000 # 10000 # v4.3.b
-			minerals = 10000 # 20000 v4.2
+			# alloys = 10000 # v4.3.b
+			minerals = 20000 # v4.2
 		}
 	}
 
@@ -1097,9 +1096,8 @@ decision_arcology_project_relic = {
 		category = decisions
 		cost = {
 			influence = 200
-			# Vfix patch
-			alloys = 5000 # 10000 # v4.3.b
-			minerals = 10000 # 20000 v4.2
+			# alloys = 10000 # v4.3.b
+			minerals = 20000 # v4.2
 		}
 	}
 
@@ -2120,10 +2118,8 @@ decision_expand_planetary_sea = {
 		export_modifier_to_variable = { modifier = planet_decision_enact_speed_mult variable = decision_mult_var }
 		change_variable = { which = decision_mult_var value = 1 }
 		divide_variable = { which = decision_length value = decision_mult_var }
-		change_variable = { # ideally, may as well refer to this in the final effect
-			which = decision_length
-			value = 1
-		}
+		# ideally, may as well refer to this in the final effect
+		change_variable = { which = decision_length value = 1 }
 		owner = {
 			random_owned_starbase = {
 				limit = {

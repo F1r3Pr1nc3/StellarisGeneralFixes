@@ -7559,7 +7559,7 @@ country_event = {
 			}
 		}
 		## Reinforcement cycle
-		country_event = { id = marauder.520 days = 270 }
+		country_event = { id = marauder.520 days = 180 }
 		set_variable = { which = CmtVarKhanReinforcementCounter value = 10 }
 		set_country_flag = use_default_ships
 		# Should not attack Enclaves
@@ -7717,20 +7717,21 @@ country_event = {
 						has_trait = leader_trait_butcher
 					}
 				}
-				if = {
-					limit = { has_trait = subclass_commander_admiral }
-					remove_trait = subclass_commander_admiral
-				}
 				random_list = {
 					1 = {  }
 					5 = {
 						set_council_position = councilor_defense
-						if = {
-							limit = {
-								NOT = { has_trait = subclass_commander_councilor }
-							}
-							add_trait = { trait = subclass_commander_councilor show_message = no }
-						}
+						# FIXME for [reason] councilor_trait_not_allowed
+						# if = {
+						# 	limit = {
+						# 		NOT = { has_trait = subclass_commander_councilor }
+						# 	}
+						# 	if = {
+						# 		limit = { has_trait = subclass_commander_admiral }
+						# 		remove_trait = subclass_commander_admiral
+						# 	}
+						# 	add_trait = { trait = subclass_commander_councilor show_message = no }
+						# }
 					}
 					# 1 = { modifier = { factor = 0 prev = { NOT = { has_civic = civic_crusader_spirit } } } set_council_position = councilor_crusader_spirit }
 					# 1 = { modifier = { factor = 0 prev = { NOT = { has_civic = civic_barbaric_despoilers } } } set_council_position = councilor_barbaric_despoilers }
@@ -9317,18 +9318,20 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		# has_global_flag = marauder_crisis_started
-		has_global_flag = marauder_crisis_ongoing
+		has_global_flag = marauder_crisis_ongoing # marauder_crisis_started
 		is_country_type = awakened_marauders
 		exists = event_target:raider_khanate
 		is_same_empire = event_target:raider_khanate
-		NOT = { has_country_flag = khan_dead_event_fine }
 	}
 
 	immediate = {
 		country_event = { id = khan.306 } # Check/Create fallback rally_point
+		get_marauder_species = yes
 		if = {
-			limit = { exists = event_target:marauder_rally_point }
+			limit = {
+				exists = event_target:marauder_rally_point
+				NOT = { has_country_flag = khan_dead_event_fine }
+			}
 			if = {
 				limit = {
 					NOT = { has_country_flag = KhanReinforcement_Cycle }
@@ -12014,15 +12017,12 @@ country_event = {
 		# Similar code as in .604
 		# Start restore partial Marauders (cheap version, without planet check)
 		if = {
-			limit = { # BUG CWT: says wrongly AND is unnecessary.
-				calc_true_if = {
+			limit = {
+				calc_true_if = { # BUG CWT: says wrongly AND is unnecessary.
 					amount >= 2
-					exists = event_target:marauder_country_1
-					any_system_within_border = { has_star_flag = marauder_capital_1 }
-					exists = event_target:marauder_country_2
-					any_system_within_border = { has_star_flag = marauder_capital_2 }
-					exists = event_target:marauder_country_3
-					any_system_within_border = { has_star_flag = marauder_capital_3 }
+					AND = { exists = event_target:marauder_country_1 any_system_within_border = { has_star_flag = marauder_capital_1 } }
+					AND = { exists = event_target:marauder_country_2 any_system_within_border = { has_star_flag = marauder_capital_2 } }
+					AND = { exists = event_target:marauder_country_3 any_system_within_border = { has_star_flag = marauder_capital_3 } }
 				}
 			}
 			# Get second right country
@@ -12393,12 +12393,9 @@ country_event = {
 				NOT = { exists = event_target:marauder_capital }
 				calc_true_if = { # BUG CWT: says wrongly AND is unnecessary.
 					amount >= 2
-					exists = event_target:marauder_country_1
-					any_system_within_border = { has_star_flag = marauder_capital_1 }
-					exists = event_target:marauder_country_2
-					any_system_within_border = { has_star_flag = marauder_capital_2 }
-					exists = event_target:marauder_country_3
-					any_system_within_border = { has_star_flag = marauder_capital_3 }
+					AND = { exists = event_target:marauder_country_1 any_system_within_border = { has_star_flag = marauder_capital_1 } }
+					AND = { exists = event_target:marauder_country_2 any_system_within_border = { has_star_flag = marauder_capital_2 } }
+					AND = { exists = event_target:marauder_country_3 any_system_within_border = { has_star_flag = marauder_capital_3 } }
 				}
 			}
 			# Get First right country
@@ -12473,16 +12470,12 @@ country_event = {
 					# set_star_flag = second_marauder_system
 				}
 			}
-			## assign_first_marauder_systems
-			event_target:second_marauder_system = {
-				every_neighbor_system = {
-					limit = {
-						has_owner = yes
-						is_owned_by = root
-						exists = starbase
-					}
-					starbase = { set_owner = event_target:restored_marauders_2 }
-					# set_star_flag = second_marauder_system
+			if = {
+				limit = {
+					exists = event_target:second_marauder_system
+				}
+				## assign_first_marauder_systems
+				event_target:second_marauder_system = {
 					every_neighbor_system = {
 						limit = {
 							has_owner = yes
@@ -12491,125 +12484,131 @@ country_event = {
 						}
 						starbase = { set_owner = event_target:restored_marauders_2 }
 						# set_star_flag = second_marauder_system
+						every_neighbor_system = {
+							limit = {
+								has_owner = yes
+								is_owned_by = root
+								exists = starbase
+							}
+							starbase = { set_owner = event_target:restored_marauders_2 }
+							# set_star_flag = second_marauder_system
+						}
+					}
+					export_trigger_value_to_variable = {
+						trigger = distance
+						parameters = {
+							source = event_target:marauder_capital
+							max_distance <= 500
+							type = euclidean
+							use_bypasses = no
+						}
+						variable = marauder_distance_1
+					}
+					multiply_variable = { which = marauder_distance_1 value = 0.5 }
+					floor_variable = marauder_distance_1
+				}
+				log = "Distance second [second_marauder_system.marauder_distance_1]"
+				every_owned_starbase = {
+					limit = {
+						solar_system = { is_capital_system = no }
+						fleet = { is_owned_by = root is_controlled_by = root } # Just double check
+						# FIXME Disabled due "Malformed token: prev claim
+						# check_variable_arithmetic = { which = value:marauder_distance|SOURCE|event_target:second_marauder_system|max_distance|event_target:second_marauder_system.marauder_distance_1| value < event_target:second_marauder_system.marauder_distance_1 }
+						check_variable_arithmetic = {
+							which = value:marauder_distance|SOURCE|event_target:second_marauder_system|
+							value < event_target:second_marauder_system.marauder_distance_1
+						}
+					}
+					set_owner = event_target:restored_marauders_2
+				}
+				every_owned_fleet = {
+					limit = {
+						is_mobile = yes
+						is_owned_by = root
+						is_within_borders_of = event_target:restored_marauders_2
+					}
+					set_owner = event_target:restored_marauders_2
+					if = {
+						limit = { exists = leader }
+						leader = {
+							set_owner = event_target:restored_marauders_2
+							set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
+						}
+						if = {
+							limit = {
+								NOT = { is_ship_class = shipclass_transport }
+							}
+							assign_leader = leader
+						}
+					}
+					fleet_event = { id = khan.611 }
+				}
+				event_target:restored_marauders_2 = {
+					owner_species = { save_event_target_as = marauder_species }
+					country_event = { id = khan.306 }
+					# create_marauder_successor_fleet = yes
+					event_target:second_marauder_system = {
+						prev = { create_marauder_fleet = yes }
+						clear_variable = marauder_distance_1
 					}
 				}
-				export_trigger_value_to_variable = {
-					trigger = distance
-					parameters = {
-						source = event_target:marauder_capital
-						max_distance <= 500
-						type = euclidean
-						use_bypasses = no
-					}
-					variable = marauder_distance_1
-				}
-				multiply_variable = { which = marauder_distance_1 value = 0.5 }
-				floor_variable = marauder_distance_1
-			}
-			log = "Distance second [second_marauder_system.marauder_distance_1]"
-			every_owned_starbase = {
-				limit = {
-					solar_system = { is_capital_system = no }
-					fleet = { is_owned_by = root is_controlled_by = root } # Just double check
-					# FIXME Disabled due "Malformed token: prev claim
-					# check_variable_arithmetic = { which = value:marauder_distance|SOURCE|event_target:second_marauder_system|max_distance|event_target:second_marauder_system.marauder_distance_1| value < event_target:second_marauder_system.marauder_distance_1 }
-					check_variable_arithmetic = {
-						which = value:marauder_distance|SOURCE|event_target:second_marauder_system|
-						value < event_target:second_marauder_system.marauder_distance_1
-					}
-				}
-				set_owner = event_target:restored_marauders_2
-			}
-			every_owned_fleet = {
-				limit = {
-					is_mobile = yes
-					is_owned_by = root
-					is_within_borders_of = event_target:restored_marauders_2
-				}
-				set_owner = event_target:restored_marauders_2
 				if = {
-					limit = { exists = leader }
-					leader = {
-						set_owner = event_target:restored_marauders_2
-						set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
+					limit = {
+						calc_true_if = { # BUG CWT: says wrongly AND is unnecessary.
+							amount >= 2
+							AND = { exists = event_target:marauder_country_1 any_system_within_border = { has_star_flag = marauder_capital_1 } }
+							AND = { exists = event_target:marauder_country_2 any_system_within_border = { has_star_flag = marauder_capital_2 } }
+							AND = { exists = event_target:marauder_country_3 any_system_within_border = { has_star_flag = marauder_capital_3 } }
+						}
 					}
+					# Get Second right country
 					if = {
 						limit = {
-							NOT = { is_ship_class = shipclass_transport }
-						}
-						assign_leader = leader
-					}
-				}
-				fleet_event = { id = khan.611 }
-			}
-			event_target:restored_marauders_2 = {
-				owner_species = { save_event_target_as = marauder_species }
-				country_event = { id = khan.306 }
-				# create_marauder_successor_fleet = yes
-				event_target:second_marauder_system = {
-					prev = { create_marauder_fleet = yes }
-					clear_variable = marauder_distance_1
-				}
-			}
-			if = {
-				limit = {
-					calc_true_if = { # BUG CWT: says wrongly AND is unnecessary.
-						amount >= 2
-						exists = event_target:marauder_country_1
-						any_system_within_border = { has_star_flag = marauder_capital_1 }
-						exists = event_target:marauder_country_2
-						any_system_within_border = { has_star_flag = marauder_capital_2 }
-						exists = event_target:marauder_country_3
-						any_system_within_border = { has_star_flag = marauder_capital_3 }
-					}
-				}
-				# Get Second right country
-				if = {
-					limit = {
-						exists = event_target:marauder_country_1
-						event_target:marauder_country_1 = {
-							NOR = {
-								is_same_empire = root
-								is_same_empire = event_target:restored_marauders_2
+							exists = event_target:marauder_country_1
+							event_target:marauder_country_1 = {
+								NOR = {
+									is_same_empire = root
+									is_same_empire = event_target:restored_marauders_2
+								}
 							}
 						}
-					}
-					event_target:marauder_country_1 = { save_event_target_as = restored_marauders_3 }
-					if = {
-						limit = { exists = event_target:CmtTargetMarauderRallyPoint1 }
-						event_target:CmtTargetMarauderRallyPoint1.solar_system = { save_event_target_as = third_marauder_system }
-					}
-				}
-				else_if = {
-					limit = {
-						exists = event_target:marauder_country_2
-						event_target:marauder_country_2 = {
-							NOR = {
-								is_same_empire = root
-								is_same_empire = event_target:restored_marauders_2
-							}
+						event_target:marauder_country_1 = { save_event_target_as = restored_marauders_3 }
+						if = {
+							limit = { exists = event_target:CmtTargetMarauderRallyPoint1 }
+							event_target:CmtTargetMarauderRallyPoint1.solar_system = { save_event_target_as = third_marauder_system }
 						}
 					}
-					event_target:marauder_country_2 = { save_event_target_as = restored_marauders_3 }
-					if = {
-						limit = { exists = event_target:CmtTargetMarauderRallyPoint2 }
-						event_target:CmtTargetMarauderRallyPoint2.solar_system = { save_event_target_as = third_marauder_system }
-					}
-				}
-				else_if = {
-					limit = {
-						exists = event_target:marauder_country_3
-						event_target:marauder_country_3 = {
-							NOR = {
-								is_same_empire = root
-								is_same_empire = event_target:restored_marauders_2
+					else_if = {
+						limit = {
+							exists = event_target:marauder_country_2
+							event_target:marauder_country_2 = {
+								NOR = {
+									is_same_empire = root
+									is_same_empire = event_target:restored_marauders_2
+								}
 							}
 						}
+						event_target:marauder_country_2 = { save_event_target_as = restored_marauders_3 }
+						if = {
+							limit = { exists = event_target:CmtTargetMarauderRallyPoint2 }
+							event_target:CmtTargetMarauderRallyPoint2.solar_system = { save_event_target_as = third_marauder_system }
+						}
 					}
-					event_target:marauder_country_3 = { save_event_target_as = restored_marauders_3 }
-					if = {
-						limit = { exists = event_target:CmtTargetMarauderRallyPoint3 }
-						event_target:CmtTargetMarauderRallyPoint3.solar_system = { save_event_target_as = third_marauder_system }
+					else_if = {
+						limit = {
+							exists = event_target:marauder_country_3
+							event_target:marauder_country_3 = {
+								NOR = {
+									is_same_empire = root
+									is_same_empire = event_target:restored_marauders_2
+								}
+							}
+						}
+						event_target:marauder_country_3 = { save_event_target_as = restored_marauders_3 }
+						if = {
+							limit = { exists = event_target:CmtTargetMarauderRallyPoint3 }
+							event_target:CmtTargetMarauderRallyPoint3.solar_system = { save_event_target_as = third_marauder_system }
+						}
 					}
 				}
 				# Set third_marauder_system
@@ -12631,16 +12630,12 @@ country_event = {
 						save_event_target_as = third_marauder_system
 					}
 				}
-				# assign_second_marauder_systems
-				event_target:third_marauder_system = {
-					every_neighbor_system = {
-						limit = {
-							has_owner = yes
-							is_owned_by = root
-							exists = starbase
-						}
-						starbase = { set_owner = event_target:marauder_country_3 }
-						# set_star_flag = third_marauder_system
+				if = {
+					limit = {
+						exists = event_target:third_marauder_system
+					}
+					# assign_second_marauder_systems
+					event_target:third_marauder_system = {
 						every_neighbor_system = {
 							limit = {
 								has_owner = yes
@@ -12649,83 +12644,92 @@ country_event = {
 							}
 							starbase = { set_owner = event_target:marauder_country_3 }
 							# set_star_flag = third_marauder_system
-						}
-					}
-					export_trigger_value_to_variable = {
-						trigger = distance
-						parameters = {
-							source = event_target:marauder_capital
-							max_distance <= 500
-							type = euclidean
-							use_bypasses = no
-						}
-						variable = marauder_distance_1
-					}
-					multiply_variable = { which = marauder_distance_1 value = 0.5 }
-					floor_variable = marauder_distance_1
-					export_trigger_value_to_variable = {
-						trigger = distance
-						parameters = {
-							source = event_target:second_marauder_system
-							max_distance <= 500
-							type = euclidean
-							use_bypasses = no
-						}
-						variable = marauder_distance_2
-					}
-					multiply_variable = { which = marauder_distance_2 value = 0.5 }
-					floor_variable = marauder_distance_2
-					log = "Distance third to \\[This.marauder_distance_1] to \\[This.marauder_distance_2]"
-				}
-				# Near same as second
-				every_owned_starbase = {
-					limit = {
-						solar_system = { is_capital_system = no }
-						fleet = { is_owned_by = root is_controlled_by = root } # Just double check
-						# FIXME Disabled due "Malformed token: prev claim
-						# check_variable_arithmetic = { which = value:marauder_distance|SOURCE|event_target:third_marauder_system|max_distance|event_target:third_marauder_system.marauder_distance_1| value < event_target:third_marauder_system.marauder_distance_1 }
-						# check_variable_arithmetic = { which = value:marauder_distance|SOURCE|event_target:third_marauder_system|max_distance|event_target:third_marauder_system.marauder_distance_2| value < event_target:third_marauder_system.marauder_distance_2 }
-						check_variable_arithmetic = {
-							which = value:marauder_distance|SOURCE|event_target:third_marauder_system|
-							value < event_target:third_marauder_system.marauder_distance_1
-						}
-						check_variable_arithmetic = {
-							which = value:marauder_distance|SOURCE|event_target:third_marauder_system|
-							value < event_target:third_marauder_system.marauder_distance_2
-						}
-					}
-					set_owner = event_target:restored_marauders_3
-				}
-				every_owned_fleet = {
-					limit = {
-						is_mobile = yes
-						is_owned_by = root
-						is_within_borders_of = event_target:restored_marauders_3
-					}
-					set_owner = event_target:restored_marauders_3
-					if = {
-						limit = { exists = leader }
-						leader = {
-							set_owner = event_target:restored_marauders_3
-							set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
-						}
-						if = {
-							limit = {
-								NOT = { is_ship_class = shipclass_transport }
+							every_neighbor_system = {
+								limit = {
+									has_owner = yes
+									is_owned_by = root
+									exists = starbase
+								}
+								starbase = { set_owner = event_target:marauder_country_3 }
+								# set_star_flag = third_marauder_system
 							}
-							assign_leader = leader
 						}
+						export_trigger_value_to_variable = {
+							trigger = distance
+							parameters = {
+								source = event_target:marauder_capital
+								max_distance <= 500
+								type = euclidean
+								use_bypasses = no
+							}
+							variable = marauder_distance_1
+						}
+						multiply_variable = { which = marauder_distance_1 value = 0.5 }
+						floor_variable = marauder_distance_1
+						export_trigger_value_to_variable = {
+							trigger = distance
+							parameters = {
+								source = event_target:second_marauder_system
+								max_distance <= 500
+								type = euclidean
+								use_bypasses = no
+							}
+							variable = marauder_distance_2
+						}
+						multiply_variable = { which = marauder_distance_2 value = 0.5 }
+						floor_variable = marauder_distance_2
+						log = "Distance third to \\[This.marauder_distance_1] to \\[This.marauder_distance_2]"
 					}
-					fleet_event = { id = khan.611 }
-				}
-				event_target:restored_marauders_3 = {
-					owner_species = { save_event_target_as = marauder_species }
-					country_event = { id = khan.306 }
-					# create_marauder_successor_fleet = yes
-					event_target:third_marauder_system = {
-						prev = { create_marauder_fleet = yes }
-						clear_variable = marauder_distance_1
-						clear_variable = marauder_distance_2
+					# Near same as second
+					every_owned_starbase = {
+						limit = {
+							solar_system = { is_capital_system = no }
+							fleet = { is_owned_by = root is_controlled_by = root } # Just double check
+							# FIXME Disabled due "Malformed token: prev claim
+							# check_variable_arithmetic = { which = value:marauder_distance|SOURCE|event_target:third_marauder_system|max_distance|event_target:third_marauder_system.marauder_distance_1| value < event_target:third_marauder_system.marauder_distance_1 }
+							# check_variable_arithmetic = { which = value:marauder_distance|SOURCE|event_target:third_marauder_system|max_distance|event_target:third_marauder_system.marauder_distance_2| value < event_target:third_marauder_system.marauder_distance_2 }
+							check_variable_arithmetic = {
+								which = value:marauder_distance|SOURCE|event_target:third_marauder_system|
+								value < event_target:third_marauder_system.marauder_distance_1
+							}
+							check_variable_arithmetic = {
+								which = value:marauder_distance|SOURCE|event_target:third_marauder_system|
+								value < event_target:third_marauder_system.marauder_distance_2
+							}
+						}
+						set_owner = event_target:restored_marauders_3
+					}
+					every_owned_fleet = {
+						limit = {
+							is_mobile = yes
+							is_owned_by = root
+							is_within_borders_of = event_target:restored_marauders_3
+						}
+						set_owner = event_target:restored_marauders_3
+						if = {
+							limit = { exists = leader }
+							leader = {
+								set_owner = event_target:restored_marauders_3
+								set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
+							}
+							if = {
+								limit = {
+									NOT = { is_ship_class = shipclass_transport }
+								}
+								assign_leader = leader
+							}
+						}
+						fleet_event = { id = khan.611 }
+					}
+					event_target:restored_marauders_3 = {
+						owner_species = { save_event_target_as = marauder_species }
+						country_event = { id = khan.306 }
+						# create_marauder_successor_fleet = yes
+						event_target:third_marauder_system = {
+							prev = { create_marauder_fleet = yes }
+							clear_variable = marauder_distance_1
+							clear_variable = marauder_distance_2
+						}
 					}
 				}
 			}

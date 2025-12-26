@@ -4,16 +4,23 @@
 
 has_specialist_subject = {
 	is_overlord = yes
-	any_agreement = { has_active_specialization = any }
+
+	any_agreement = {
+		has_active_specialization = any
+	}
 }
 
 has_specialist_subject_type = {
 	is_overlord = yes
-	any_agreement = { has_active_specialization = specialist_$TYPE$ }
+
+	any_agreement = {
+		has_active_specialization = specialist_$TYPE$
+	}
 }
 
 has_specialist_subject_tier = {
 	is_overlord = yes
+
 	any_agreement = {
 		has_active_specialization = specialist_$TYPE$
 		specialist_tier >= $TIER$
@@ -22,21 +29,31 @@ has_specialist_subject_tier = {
 
 is_subject_with_preset = {
 	is_subject = yes
-	any_agreement = { agreement_preset = $PRESET$ }
+
+	any_agreement = {
+		agreement_preset = $PRESET$
+	}
 }
 
 is_specialist_subject = {
 	is_subject = yes
-	any_agreement = { has_active_specialization = any }
+
+	any_agreement = {
+		has_active_specialization = any
+	}
 }
 
 is_specialist_subject_type = {
 	is_subject = yes
-	any_agreement = { has_active_specialization = specialist_$TYPE$ }
+
+	any_agreement = {
+		has_active_specialization = specialist_$TYPE$
+	}
 }
 
 is_specialist_subject_tier = {
 	is_subject = yes
+
 	any_agreement = {
 		has_active_specialization = specialist_$TYPE$
 		specialist_tier >= $TIER$
@@ -65,7 +82,7 @@ overlord_has_num_armies_on_planet = {
 		limit = {
 			exists = owner
 			exists = ROOT.owner
-			ROOT.owner = { has_overlord = PREV.owner }
+			root.owner = { has_overlord = PREV.owner }
 		}
 	}
 }
@@ -76,23 +93,29 @@ overlord_has_more_than_num_armies_on_planet = {
 		limit = {
 			exists = owner
 			exists = ROOT.owner
-			ROOT.owner = { has_overlord = PREV.owner }
+			root.owner = { has_overlord = PREV.owner }
 		}
 	}
 }
 
 valid_for_scholarium_sensors = {
-	is_colony = no
-	is_preventing_anomaly = no
-	NOT = { is_planet_class = pc_astral_scar }
+	NOR = {
+		is_colony = yes
+		is_preventing_anomaly = yes
+		is_planet_class = pc_astral_scar
+	}
+
 	can_have_sensory_readings = yes
 }
 
 valid_for_prospectorium_discovery = {
-	has_deposit = no
-	has_anomaly = no
-	is_preventing_anomaly = no
-	NOT = { has_planet_flag = resource_discovery_flag }
+	NOR = {
+		has_deposit = yes
+		has_anomaly = yes
+		is_preventing_anomaly = yes
+		has_planet_flag = resource_discovery_flag
+	}
+
 	can_have_resource_discovery = yes
 }
 
@@ -102,15 +125,12 @@ federation_check_for_subject_trigger = {
 		OR = {
 			has_federation = no
 			is_subject = no
-			AND = {
-				is_subject = yes
-				is_in_federation_with = overlord
-			}
+			is_in_federation_with = overlord
 		}
 	}
 }
 
-#fleet scope
+# fleet scope
 is_merc_enclave_founding_allowed = {
 	owner = {
 		NOR = {
@@ -122,6 +142,7 @@ is_merc_enclave_founding_allowed = {
 			has_civic = civic_fanatic_purifiers
 		}
 	}
+
 	is_enclave_founding_allowed = {
 		FLEET_SIZE = 50
 		STARBASE_SHIP_SIZE = enclave_mercenary_station
@@ -131,11 +152,13 @@ is_merc_enclave_founding_allowed = {
 ######################
 # More Shroudwalking #
 ######################
+
 shroudwalker_insight_purchasing_trigger = {
 	custom_tooltip = {
 		fail_text = shroudwalker_insight_cooldown_tt
 		NOT = { has_country_flag = shroudwalker_insight_cooldown }
 	}
+
 	resource_stockpile_compare = {
 		resource = influence
 		value >= 50
@@ -152,13 +175,10 @@ shroudwalker_insight_save_spynetwork_trigger = {
 		NOT = { exists = event_target:$EVENT_TARGET$ }
 		target = { is_same_value = event_target:$EVENT_TARGET$ }
 		root = {
-			count_spynetwork = { count = 0
-				limit = {
+			NOT = {
+				any_spynetwork = {
 					is_owned_by = root
-					target = {
-						is_country_type = default
-						is_same_value = event_target:$EVENT_TARGET$
-					}
+					target = { is_country_type = default is_same_value = event_target:$EVENT_TARGET$ }
 					exists = leader
 				}
 			}
@@ -169,6 +189,7 @@ shroudwalker_insight_save_spynetwork_trigger = {
 ##########
 # Galcom #
 ##########
+
 not_allowed_for_galcom_resolution_trigger = {
 	NAND = {
 		owner = { is_galactic_community_member = yes }

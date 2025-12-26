@@ -4259,15 +4259,15 @@ event = {
 
 	trigger = {
 		has_global_flag = synth_queen_speech_2_happened
-		NOR = {
+		NOT = {
 			has_global_flag = synth_queen_side_quests_spawned
-			# Checks if everyone has finished talking to the Synth Queen
-			count_playable_country = {
-				count != all
-				limit = {
-					has_country_flag = speech_2
-					NOT = { has_country_flag = synth_queen_conversation_ongoing }
-				}
+		}
+		# Checks if everyone has finished talking to the Synth Queen
+		count_playable_country = {
+			count = all
+			limit = {
+				has_country_flag = speech_2
+				NOT = { has_country_flag = synth_queen_conversation_ongoing }
 			}
 		}
 	}

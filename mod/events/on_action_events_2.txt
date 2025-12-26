@@ -2739,11 +2739,16 @@ planet_event = {
 	}
 
 	trigger = {
-		NOT = { has_planet_flag = biomechanical_world }
-		owner = {
-			is_homicidal = no
-			is_gestalt = no
-			is_primitive = no
+		has_owner = yes # Vfix pre_triggers only apply on_actions events
+		NOR = {
+			has_planet_flag = biomechanical_world
+			owner = {
+				OR = {
+					is_primitive = yes
+					is_homicidal = yes
+					is_gestalt = yes
+				}
+			}
 		}
 		from = {
 			NOR = {

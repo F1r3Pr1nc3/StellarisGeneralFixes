@@ -2,10 +2,7 @@
 default_site_visible_trigger = {
 	is_country_type = default
 	OR = {
-		intel_level = {
-			level >= low
-			system = from.solar_system
-		}
+		intel_level = { level >= low system = from.solar_system }
 		AND = {
 			exists = from
 			from.planet = { is_within_borders_of = root }
@@ -14,7 +11,6 @@ default_site_visible_trigger = {
 }
 
 # Surveyor
-
 energy_candidate = {
 	OR = {
 		is_planet_class = pc_a_star
@@ -46,9 +42,11 @@ mineral_candidate = {
 }
 
 research_candidate = {
-	NOT = { has_deposit_for = shipclass_mining_station }
-	NOT = { is_planet_class = pc_astral_scar }
-	habitable_planet = no
+	NOR = {
+		has_deposit_for = shipclass_mining_station
+		is_planet_class = pc_astral_scar
+		habitable_planet = yes
+	}
 }
 
 alloy_candidate = {
@@ -121,7 +119,7 @@ is_baol_or_zroni_site = {
 
 has_minor_artifact_deposit = {
 	OR = {
-		has_deposit = d_artifacts_research_1 
+		has_deposit = d_artifacts_research_1
 		has_deposit = d_artifacts_research_2
 		has_deposit = d_artifacts_research_3
 		has_deposit = d_artifacts_mining_1

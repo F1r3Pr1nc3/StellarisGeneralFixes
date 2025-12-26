@@ -4736,8 +4736,25 @@ astral_rift_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		exists = leader # Vfix
+		exists = fleet # Vfix
+		exists = fleet.leader # Vfix
 		explorer = { is_wilderness_empire = no } # cannot afford to sacrifice Pops/whole planets
+	}
+
+	immediate = {
+		fleet.leader = { # Vfix (looks illogical but log claims)
+			save_event_target_as = volcano_dead_scientist
+		}
+		explorer = {
+			clone_leader = {
+				target = event_target:volcano_dead_scientist
+				set_age = 1
+				effect = {
+					save_event_target_as = volcano_dead_scientist@owner
+					exile_leader_as = volcano_dead_scientist@owner
+				}
+			}
+		}
 	}
 
 	option = {
@@ -4748,23 +4765,18 @@ astral_rift_event = {
 					id = astral_planes.205
 					scopes = { from = prev fromfrom = prev.fleet }
 				}
-				clone_leader = {
-					target = prev.leader
-					set_age = 1
-					effect = {
-						save_event_target_as = volcano_dead_scientist@owner
-						exile_leader_as = volcano_dead_scientist@owner
-					}
-				}
 				country_event = {
 					id = astral_rift.1950
 					days = 360
 					scopes = { from = event_target:volcano_dead_scientist@this fromfrom = prev.fleet }
 				}
 			}
-		}
-		leader = {
-			kill_leader = { class = scientist show_notification = yes }
+			if = { # Vfix (looks illogical but log claims)
+				limit = { exists = event_target:volcano_dead_scientist }
+				event_target:volcano_dead_scientist = {
+					kill_leader = { show_notification = yes }
+				}
+			}
 		}
 		explorer = { astral_thread_large_reward = yes }
 		finish_astral_rift = yes

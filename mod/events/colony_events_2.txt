@@ -30,6 +30,8 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
+		has_moon = yes
+		any_moon = { habitable_planet = no }
 		NOR = {
 			owner = {
 				OR = {
@@ -43,8 +45,6 @@ planet_event = {
 			has_planet_flag = colony_event
 			has_planet_flag = FLDrone_event
 		}
-		has_moon = yes
-		any_moon = { habitable_planet = no }
 	}
 
 	is_triggered_only = yes
@@ -352,6 +352,10 @@ planet_event = {
 		owner = { has_country_flag = FLDrone_country }
 	}
 
+	immediate = {
+		# set_global_flag = FLDrone_doing_global
+	}
+
 	option = {
 		name = colony.1510.a
 		owner = {
@@ -468,8 +472,8 @@ planet_event = {
 	option = {
 		name = colony.1513.a
 		hidden_effect = {
-			remove_global_flag = FLDrone_doing_global
 			set_global_flag = FLDrone_done_global
+			remove_global_flag = FLDrone_doing_global
 			create_country = {
 				name = "NAME_Wounded_Pirates"
 				type = faction
@@ -513,8 +517,8 @@ planet_event = {
 	option = {
 		name = colony.1514.a
 		hidden_effect = {
-			remove_global_flag = FLDrone_doing_global
 			set_global_flag = FLDrone_done_global
+			remove_global_flag = FLDrone_doing_global
 			create_country = {
 				name = "NAME_Cunning_Pirates"
 				type = faction

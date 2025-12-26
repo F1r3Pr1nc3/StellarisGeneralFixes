@@ -1,6 +1,5 @@
 ## For Compatibility
 ## Shared with: The Great Khan Expanded, A Deadly Tempest, Realistic Pirates, Daemonic Incursion, UAP
-
 # Workaround: as is_overlord_to is not working for Khan.
 # This = Satrapy
 is_subject_of_khan = {
@@ -9,9 +8,17 @@ is_subject_of_khan = {
 	has_global_flag = marauder_crisis_started
 	is_country_type = default
 	exists = event_target:raider_khanate
-	event_target:raider_khanate = { is_scope_valid = yes is_scope_type = country is_country_type = awakened_marauders }
+	event_target:raider_khanate = {
+		is_scope_valid = yes
+		is_scope_type = country
+		is_country_type = awakened_marauders
+	}
+
 	exists = overlord
-	overlord = { is_same_empire = event_target:raider_khanate }
+	overlord = {
+		is_same_empire = event_target:raider_khanate
+	}
+
 	# has_modifier = "satrapy_of_horde"
 	# OR = { # Only to be sure
 	# 	any_agreement = { agreement_preset = preset_satrapy }

@@ -1,10 +1,11 @@
+
 is_assigned_to_federation = {
 	has_envoy_task = {
 		task = federation
 	}
 }
 
-is_assigned_to_galcom =  {
+is_assigned_to_galcom = {
 	has_envoy_task = {
 		task = galactic_community
 	}
@@ -33,18 +34,14 @@ leader_should_wear_general_uniform = {
 		exists = planet
 		AND = {
 			exists = fleet
-			fleet = {
-				is_ship_class = shipclass_transport
-			}
+			fleet = { is_ship_class = shipclass_transport }
 		}
 		AND = {
 			exists = owner
 			owner = {
 				any_owned_army = {
 					exists = leader
-					leader = {
-						is_same_value = root
-					}
+					leader = { is_same_value = root }
 				}
 			}
 		}
@@ -67,9 +64,7 @@ has_blocker_removal_tech = {
 		AND = {
 			OR = {
 				has_origin = origin_shattered_ring
-				any_owned_planet = {
-					is_planet_class = pc_shattered_ring_habitable
-				}
+				any_owned_planet = { is_planet_class = pc_shattered_ring_habitable }
 			}
 			OR = {
 				has_technology = tech_thrusters_2
