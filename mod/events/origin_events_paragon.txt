@@ -3496,11 +3496,7 @@ country_event = {
 						is_colonizable = no
 						is_colony = no
 						has_any_strategic_resource = no
-						OR = {
-							is_planet_class = pc_frozen
-							is_planet_class = pc_ice_asteroid
-							is_inside_nebula = yes
-						}
+						can_have_exotic_gases_deposits = yes
 					}
 				}
 				owner = {
@@ -3516,11 +3512,7 @@ country_event = {
 								has_any_strategic_resource = yes
 								is_planet_class = pc_astral_scar
 							}
-							OR = {
-								is_planet_class = pc_frozen
-								is_planet_class = pc_ice_asteroid
-								is_inside_nebula = yes
-							}
+							can_have_exotic_gases_deposits = yes
 						}
 						add_deposit = d_exotic_gases_1
 					}
@@ -3646,13 +3638,15 @@ country_event = {
 					add = 1
 					any_planet_within_border = {
 						NOR = {
-							is_planet_class = pc_molten
-							is_planet_class = pc_asteroid
-							is_planet_class = pc_gas_giant
-							is_planet_class = pc_toxic
-							is_planet_class = pc_frozen
-							is_planet_class = pc_ice_asteroid
-							is_inside_nebula = yes
+							can_have_trade_deposits = yes # Vfix
+							can_have_exotic_gases_deposits = yes # Vfix
+							# is_planet_class = pc_molten
+							# is_planet_class = pc_gas_giant
+							# is_planet_class = pc_toxic
+							# is_planet_class = pc_asteroid
+							# is_planet_class = pc_ice_asteroid
+							# is_planet_class = pc_frozen
+							# is_inside_nebula = yes
 						}
 					}
 				}

@@ -6501,11 +6501,8 @@ resolution_rulesofwar_reverence_for_life = {
 				days = @resolution_flag_timer
 			}
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
-			every_playable_country = {
-				limit = {
-					has_policy_flag = purge_allowed
-					is_galactic_community_member = yes
-				}
+			every_galcom_member = {
+				limit = { has_policy_flag = purge_allowed }
 				country_event = { id = federations.10300 }
 			}
 		}
@@ -6704,11 +6701,8 @@ resolution_rulesofwar_last_resort_doctrine = {
 				days = @resolution_flag_timer
 			}
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
-			every_playable_country = {
-				limit = {
-					has_policy_flag = unrestricted_wars
-					is_galactic_community_member = yes
-				}
+			every_galcom_member = {
+				limit = { has_policy_flag = unrestricted_wars }
 				country_event = { id = federations.10320 }
 			}
 		}
@@ -6816,11 +6810,8 @@ resolution_rulesofwar_demobilization_initiative = {
 				days = @resolution_flag_timer
 			}
 			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
-			every_playable_country = {
-				limit = {
-					has_policy_flag = economic_policy_military
-					is_galactic_community_member = yes
-				}
+			every_galcom_member = {
+				limit = { has_policy_flag = economic_policy_military }
 				country_event = { id = federations.10330 }
 			}
 		}

@@ -7,7 +7,7 @@
 is_valid_rival = {
 	custom_tooltip = {
 		fail_text = INVALID_RIVAL_DESC
-		exists = root # Vfix log for unknown reason
+		exists = root # Vfix: somehow this appeared in the error log. No idea how!
 		root = {
 			is_scope_valid = yes
 			OR = {
@@ -292,10 +292,10 @@ species_has_uncapped_habitability_on_planet = {
 # Root = country
 # This = pop_group
 can_vote_in_democratic_election = {
-	has_citizenship_rights = yes
 	is_sapient = yes
 	is_enslaved = no
 	is_being_purged = no
+	has_citizenship_rights = yes
 }
 
 # This = leader
@@ -325,11 +325,9 @@ can_generate_leader_from_pop_group = {
 # This = species
 can_generate_leader_from_species = {
 	is_sapient = yes
-	OR = {
-		NAND = {
-			NOT = { root = { has_technology = "tech_synthetic_leaders" } }
-			has_trait = "trait_mechanical"
-		}
+	OR = { # Vfix opt minor
+		root = { has_technology = "tech_synthetic_leaders" }
+		NOT = { has_trait = "trait_mechanical" }
 		has_citizenship_type = { type = citizenship_full country = root }
 	}
 }

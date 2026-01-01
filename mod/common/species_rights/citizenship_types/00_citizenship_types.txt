@@ -318,10 +318,7 @@ citizenship_assimilation = {
 			}
 			custom_tooltip = { # non-devouring hive mind
 				fail_text = HIVE_SPECIES_MUST_BE_NON_HIVE
-				NOR = {
-					has_trait = trait_hive_mind
-					is_robotic = yes
-				}
+				is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes
 			}
 		}
 		else_if = {
@@ -876,11 +873,8 @@ citizenship_purge = {
 		from = { is_machine_empire = no }
 		OR = {
 			is_robotic = no
-			NOT = { from = { has_policy_flag = ai_full_rights } }
-			AND = {
-				from = { is_hive_empire = yes }
-				is_robotic = yes
-			}
+			from = { NOT = { has_policy_flag = ai_full_rights } }
+			from = { is_hive_empire = yes }
 		}
 	}
 
@@ -1065,14 +1059,20 @@ citizenship_purge_machine = {
 	potential = {
 		exists = from
 		from = { is_machine_empire = yes }
-		OR = {
-			NOT = {
-				from = { has_valid_civic = civic_machine_servitor }
-			}
-			from = { has_ascension_perk = ap_become_the_crisis }
-			is_lonely_hive_mind_pop = yes
-			is_robotic = yes
+		is_robotic = no
+		NAND = {
+			has_trait = trait_cybernetic
 			has_trait = trait_zombie
+			from = { has_ascension_perk = ap_mechromancy }
+		}
+		OR = { # Vfix opt minor
+			is_lonely_hive_mind_pop = yes
+			from = {
+				NAND = {
+					has_valid_civic = civic_machine_servitor
+					has_ascension_perk = ap_become_the_crisis
+				}
+			}
 		}
 	}
 

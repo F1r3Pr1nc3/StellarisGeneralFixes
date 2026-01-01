@@ -321,8 +321,8 @@ nemma_world_chain = {
 	picture = GFX_evt_continental
 	abort_trigger = {
 		owner = {
-			count_owned_planet = { count = 0
-				limit = {
+			NOT = {
+				any_owned_planet = {
 					has_planet_flag = turtle_world_colony
 				}
 			}
@@ -335,8 +335,8 @@ stratovent_world_chain = {
 	picture = GFX_evt_alien_nature
 	abort_trigger = {
 		owner = {
-			count_owned_planet = { count = 0
-				limit = {
+			NOT = {
+				any_owned_planet = {
 					has_planet_flag = stratovent_world_colony
 				}
 			}
