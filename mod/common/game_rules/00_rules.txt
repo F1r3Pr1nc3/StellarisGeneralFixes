@@ -2953,7 +2953,15 @@ is_country_psionic = {
 
 # this = species
 is_psionic_species = {
-	has_psionic_species_trait = yes
+	# has_psionic_species_trait = yes
+	OR = {
+		# is_latent_psionic_species = yes
+		has_trait = trait_latent_psionic
+		has_trait = trait_robot_latent_psionic
+		# is_psionic_species = yes
+		has_trait = trait_psionic
+		has_trait = trait_robot_psionic
+	}
 }
 
 chance_for_external_leader_pool = {

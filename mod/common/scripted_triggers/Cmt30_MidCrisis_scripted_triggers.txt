@@ -27,6 +27,7 @@ CmtTriggerKhanAwakingMultipleCheck = {
 ## Scope = country
 
 CmtTriggerHasPotentialKhanAwaking = {
+	optimize_memory
 	OR = {
 		AND = { # CmtTriggerIsSleepingMarauder
 			is_country_type = dormant_marauders
@@ -55,10 +56,10 @@ CmtTriggerHasPotentialKhanAwaking = {
 		}
 	}
 	OR = {
-		AND = {
+		AND = { # Human player hack
 			is_ai = no
 			has_country_flag = new_khanate_flag
-		} # Human player hack
+		}
 		AND = {
 			has_country_flag = marauder_1
 			any_owned_starbase = {  } # Double check, because strange error log:  Wrong scope for trigger 'has_star_flag'

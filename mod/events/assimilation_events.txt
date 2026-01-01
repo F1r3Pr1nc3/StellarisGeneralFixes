@@ -181,94 +181,87 @@ event = {
 			limit = {
 				num_unique_species > 1
 				any_owned_species = {
+					NOT = { is_same_species = prev.owner_species }
 					has_citizenship_type = { type = citizenship_assimilation country = prev }
 				}
 			}
-			# Cyborg Assimilation - Driven Assimilator or Regular Empire
+			# Vfix OPT
 			if = {
 				limit = {
-					is_hive_empire = no
-					num_unique_species > 1
 					any_owned_species = {
+						NOT = { is_same_species = prev.owner_species }
 						has_cyborg_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}
-				every_owned_planet = {
+				# Cyborg Assimilation - Hive Mind
+				if = {
 					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
-					}
-					planet_event = { id = assimilation.200 }
-				}
-			}
-			# Cyborg Assimilation - Hive Mind
-			else_if = {
-				limit = {
-					is_hive_empire = yes
-					num_unique_species > 1
-					any_owned_species = {
-						has_cyborg_assimilation_living_standard = { COUNTRY = prev }
-					}
-				}
-				every_owned_planet = {
-					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
-					}
-					planet_event = { id = assimilation.210 }
-				}
-			}
-			# Psionic Assimilation - Default Empires
-			if = {
-				limit = {
-					NOR = {
 						is_hive_empire = yes
+					}
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.210 }
+					}
+				}
+				# Cyborg Assimilation - Driven Assimilator or Regular Empire
+				else = {
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.200 }
+					}
+				}
+			}
+			# Vfix OPT
+			if = {
+				limit = {
+					any_owned_species = {
+						NOT = { is_same_species = prev.owner_species }
+						has_psionic_assimilation_living_standard = { COUNTRY = prev }
+					}
+				}
+				# Psionic Assimilation - Hive Mind
+				if = {
+					limit = {
+						is_hive_empire = yes
+					}
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.310 }
+					}
+				}
+				# Psionic Assimilation - Machine
+				else_if = {
+					limit = {
 						is_machine_empire = yes
 					}
-					any_owned_species = {
-						has_psionic_assimilation_living_standard = { COUNTRY = prev }
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.320 }
 					}
 				}
-				every_owned_planet = {
-					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
+				# Psionic Assimilation - Default Empires
+				else = {
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.300 }
 					}
-					planet_event = { id = assimilation.300 }
-				}
-			}
-			# Psionic Assimilation - Hive Mind
-			else_if = {
-				limit = {
-					is_hive_empire = yes
-					any_owned_species = {
-						has_psionic_assimilation_living_standard = { COUNTRY = prev }
-					}
-				}
-				every_owned_planet = {
-					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
-					}
-					planet_event = { id = assimilation.310 }
-				}
-			}
-			# Psionic Assimilation - Machine
-			else_if = {
-				limit = {
-					is_machine_empire = yes
-					any_owned_species = {
-						has_psionic_assimilation_living_standard = { COUNTRY = prev }
-					}
-				}
-				every_owned_planet = {
-					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
-					}
-					planet_event = { id = assimilation.320 }
 				}
 			}
 			# Synthetic/Machine Assimilation
 			if = {
 				limit = {
-					num_unique_species > 1
 					any_owned_species = {
+						NOT = { is_same_species = prev.owner_species }
 						has_synthetic_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}
@@ -286,8 +279,8 @@ event = {
 				limit = {
 					is_robotic_species = yes
 					has_tradition = tr_synthetics_transubstatiation_synthesis
-					num_unique_species > 1
 					any_owned_species = {
+						NOT = { is_same_species = prev.owner_species }
 						# has_robot_assimilation_living_standard = { COUNTRY = prev }
 						is_robotic = yes
 						has_citizenship_type = { type = citizenship_assimilation country = prev }
@@ -304,8 +297,8 @@ event = {
 			# Hive Dissociation Assimilation
 			if = {
 				limit = {
-					num_unique_species > 1
 					any_owned_species = {
+						NOT = { is_same_species = prev.owner_species }
 						has_dissociation_living_standard = { COUNTRY = prev }
 					}
 				}
@@ -316,36 +309,34 @@ event = {
 					planet_event = { id = assimilation.500 }
 				}
 			}
-			# Hive Mind Ego Assimilation
+			# Vfix OPT
 			if = {
 				limit = {
-					is_wilderness_empire = no
-					num_unique_species > 1
 					any_owned_species = {
+						NOT = { is_same_species = prev.owner_species }
 						has_ego_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}
-				every_owned_planet = {
+				# Wilderness Ego Assimilation
+				if = {
 					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
+						is_wilderness_empire = yes
 					}
-					planet_event = { id = assimilation.600 }
-				}
-			}
-			# Wilderness Ego Assimilation
-			else_if = { # Vfix opt
-				limit = {
-					is_wilderness_empire = yes
-					num_unique_species > 1
-					any_owned_species = {
-						has_ego_assimilation_living_standard = { COUNTRY = prev }
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.610 }
 					}
 				}
-				every_owned_planet = {
-					limit = {
-						NOT = { is_planet_class = pc_cosmogenesis_world }
+				# Hive Mind Ego Assimilation
+				else = {
+					every_owned_planet = {
+						limit = {
+							NOT = { is_planet_class = pc_cosmogenesis_world }
+						}
+						planet_event = { id = assimilation.600 }
 					}
-					planet_event = { id = assimilation.610 }
 				}
 			}
 		}
@@ -483,8 +474,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -610,8 +601,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -736,8 +727,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -854,8 +845,8 @@ planet_event = {
 				}
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -918,8 +909,8 @@ planet_event = {
 				}
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -991,8 +982,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -1094,8 +1085,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -1214,8 +1205,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -1338,8 +1329,8 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }
 
@@ -1476,7 +1467,7 @@ planet_event = {
 				TARGET = event_target:target_species
 			}
 		}
-		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 		clear_assimilation_variables = yes			# Clears variables
+		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
 	}
 }

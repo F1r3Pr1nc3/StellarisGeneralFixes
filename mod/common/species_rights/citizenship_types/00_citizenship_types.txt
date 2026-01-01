@@ -216,7 +216,7 @@ citizenship_assimilation = {
 						AND = {
 							# non-devouring hive mind
 							is_hive_empire = yes
-							NOT = { has_civic = civic_hive_devouring_swarm }
+							NOT = { has_civic = civic_hive_devouring_swarm } # Vfix
 						}
 						# Regular empire
 						AND = {
@@ -937,6 +937,8 @@ citizenship_purge = {
 				limit = {
 					from = {
 						is_hive_empire = yes
+						# non-devouring hive mind
+						NOT = { has_civic = civic_hive_devouring_swarm }
 					}
 					has_trait = trait_hive_mind
 				}

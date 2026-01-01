@@ -318,17 +318,17 @@ manifesti = {
 		}
 		trigger = {
 			owner = {
-				if = {
-					limit = {
-						has_federation = yes
-						is_federation_leader = yes
-					}
-					NOT = { any_owned_leader = { is_assigned_to_federation = yes } }
+				NAND = { # Vfix opt minor
+					has_federation = yes
+					is_federation_leader = yes
+					any_owned_leader = { is_assigned_to_federation = yes }
 				}
-				if = {
-					limit = { is_galactic_community_member = yes }
-					NOT = { any_owned_leader = { is_assigned_to_galcom = yes } }
-					is_proposing_resolution = any # Vfix
+				OR = {
+					is_galactic_community_member = no
+					AND = {
+						NOT = { any_owned_leader = { is_assigned_to_galcom = yes } }
+						is_proposing_resolution = any # Vfix
+					}
 				}
 			}
 		}

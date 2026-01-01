@@ -4860,8 +4860,8 @@ planet_event = {
 	hide_window = yes
 
 	trigger = {
-		from = { is_ai = no } # PATCH|OPT
-		sapient_pop_amount > 100
+		from = { is_ai = no } # Vfix PATCH|OPT
+		pop_amount > 100 # Vfix opt
 		fromfrom = { has_trait = trait_nascent_stage }
 		check_variable = { which = local_pop_amount value > 0 }
 	}
