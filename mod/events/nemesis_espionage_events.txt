@@ -419,7 +419,7 @@ country_event = {
 				country_event = { id = espionage.1040 } # A Surprise Catch (+asset)
 			}
 			1 = { country_event = { id = espionage.1050 } } # Finders Keepers (+decryption)
-			1 = { country_event = { id = espionage.1060 } } # Stray Communiqué (-encryption)
+			1 = { country_event = { id = espionage.1060 } } # Stray CommuniquÃ© (-encryption)
 			1 = {
 				modifier = {
 					factor = 0.5
@@ -1387,7 +1387,7 @@ country_event = {
 }
 
 #######################################
-# STRAY COMMUNIQUÉ (encryption debuff)
+# STRAY COMMUNIQUÃ‰ (encryption debuff)
 #######################################
 
 country_event = {
@@ -2170,131 +2170,147 @@ country_event = {
 					target = { save_event_target_as = insidious_plot_spynetwork }
 				}
 			}
-			if = { # there are federation allies to choose from, which aren't also in a federation with us
+			if = {
 				limit = {
-					event_target:insidious_plot_spynetwork = {
-						has_federation = yes
-						NOT = {
-							root = {
-								has_federation = yes
-								federation = {
-									is_same_value = event_target:insidious_plot_spynetwork.federation
+					exists = event_target:event_target:insidious_plot_spynetwork
+				}
+				if = { # there are federation allies to choose from, which aren't also in a federation with us
+					limit = {
+						event_target:insidious_plot_spynetwork = {
+							has_federation = yes
+							NOT = {
+								root = {
+									has_federation = yes
+									federation = {
+										is_same_value = event_target:insidious_plot_spynetwork.federation
+									}
+								}
+							}
+							federation = {
+								any_member = {
+									NOT = { is_same_value = prevprev }
+									has_communications = root
 								}
 							}
 						}
+					}
+					event_target:insidious_plot_spynetwork = {
 						federation = {
-							any_member = {
-								NOT = { is_same_value = prevprev }
-								has_communications = root
+							random_member = {
+								limit = {
+									has_communications = root
+									NOT = { is_same_value = prevprev }
+								}
+								save_event_target_as = insidious_plot_country
 							}
 						}
 					}
 				}
-				event_target:insidious_plot_spynetwork = {
-					federation = {
-						random_member = {
-							limit = {
-								has_communications = root
-								NOT = { is_same_value = prevprev }
+				else_if = { # there are empires friendly to the spy network country
+					limit = {
+						any_playable_country = {
+							NOT = { is_same_value = root }
+							has_communications = root
+							is_primitive = no
+							OR = {
+								is_friendly_to = event_target:insidious_plot_spynetwork
+								is_protective_to = event_target:insidious_plot_spynetwork
 							}
-							save_event_target_as = insidious_plot_country
 						}
 					}
+					random_playable_country = {
+						limit = {
+							NOT = { is_same_value = root }
+							has_communications = root
+							is_primitive = no
+							OR = {
+								is_friendly_to = event_target:insidious_plot_spynetwork
+								is_protective_to = event_target:insidious_plot_spynetwork
+							}
+						}
+						save_event_target_as = insidious_plot_country
+					}
 				}
-			}
-			else_if = { # there are empires friendly to the spy network country
-				limit = {
-					any_playable_country = {
-						NOT = { is_same_value = root }
-						has_communications = root
-						is_primitive = no
-						OR = {
-							is_friendly_to = event_target:insidious_plot_spynetwork
-							is_protective_to = event_target:insidious_plot_spynetwork
+				else_if = { # there are empires we've previously spied upon
+					limit = {
+						any_playable_country = {
+							has_country_flag = espionage_operation_targeted_by@root # Set by certain operations
 						}
 					}
-				}
-				random_playable_country = {
-					limit = {
-						NOT = { is_same_value = root }
-						has_communications = root
-						is_primitive = no
-						OR = {
-							is_friendly_to = event_target:insidious_plot_spynetwork
-							is_protective_to = event_target:insidious_plot_spynetwork
+					random_playable_country = {
+						limit = {
+							has_country_flag = espionage_operation_targeted_by@root
+							is_primitive = no
 						}
-					}
-					save_event_target_as = insidious_plot_country
-				}
-			}
-			else_if = { # there are empires we've previously spied upon
-				limit = {
-					any_playable_country = {
-						has_country_flag = espionage_operation_targeted_by@root # Set by certain operations
+						save_event_target_as = insidious_plot_country
 					}
 				}
-				random_playable_country = {
+				else = {
+					random_playable_country = {
+						limit = {
+							has_communications = root
+							is_primitive = no
+						}
+						save_event_target_as = insidious_plot_country
+					}
+				}
+				if = {
 					limit = {
-						has_country_flag = espionage_operation_targeted_by@root
-						is_primitive = no
+						event_target:insidious_plot_country = { is_same_empire = event_target:insidious_plot_spynetwork }
 					}
-					save_event_target_as = insidious_plot_country
+					set_country_flag = insidious_plot_samecountry
 				}
-			}
-			else = {
-				random_playable_country = {
-					limit = {
-						has_communications = root
-						is_primitive = no
-					}
-					save_event_target_as = insidious_plot_country
-				}
-			}
-			if = {
-				limit = {
-					event_target:insidious_plot_country = { is_same_empire = event_target:insidious_plot_spynetwork }
-				}
-				set_country_flag = insidious_plot_samecountry
 			}
 		}
-		random_list = {
-			9 = { # "Insidious Plot Uncovered"
-				modifier = {
-					factor = 1.2
-					has_country_flag = espionage_operation_targeted_by@event_target:insidious_plot_country
-				}
-				country_event = { id = espionage.1081 }
+		if = { # Vfix
+			limit = {
+				exists = event_target:event_target:insidious_plot_spynetwork
 			}
-			1 = { # "Suspect Plot Uncovered"
-				modifier = {
-					factor = 0
-					NOT = {
-						root = {
-							any_spynetwork = {
-								target = { is_same_value = event_target:insidious_plot_spynetwork }
-								is_spynetwork_level > 0
-								exists = leader
+			random_list = {
+				9 = { # "Insidious Plot Uncovered"
+					modifier = {
+						factor = 1.2
+						has_country_flag = espionage_operation_targeted_by@event_target:insidious_plot_country
+					}
+					country_event = { id = espionage.1081 }
+				}
+				1 = { # "Suspect Plot Uncovered"
+					modifier = {
+						factor = 0
+						NOT = {
+							root = {
+								any_spynetwork = {
+									exists = leader
+									target = { is_same_value = event_target:insidious_plot_spynetwork }
+									is_spynetwork_level > 0
+								}
 							}
 						}
 					}
-				}
-				modifier = {
-					factor = 9
-					root = {
-						relative_encryption_decryption = { target = event_target:insidious_plot_spynetwork value > 1.3 }
+					modifier = {
+						factor = 9
+						root = {
+							relative_encryption_decryption = { target = event_target:insidious_plot_spynetwork value > 1.3 }
+						}
+						root = {
+							relative_encryption_decryption = { target = event_target:insidious_plot_spynetwork value < 1.5 }
+						}
 					}
-					root = {
-						relative_encryption_decryption = { target = event_target:insidious_plot_spynetwork value < 1.5 }
+					modifier = {
+						factor = 18
+						root = {
+							relative_encryption_decryption = { target = event_target:insidious_plot_spynetwork value >= 1.5 }
+						}
 					}
+					country_event = { id = espionage.1082 }
 				}
-				modifier = {
-					factor = 18
-					root = {
-						relative_encryption_decryption = { target = event_target:insidious_plot_spynetwork value >= 1.5 }
-					}
-				}
-				country_event = { id = espionage.1082 }
 			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = espionage_operation_targeted_by@event_target:insidious_plot_country
+			}
+			country_event = { id = espionage.1081 }
 		}
 	}
 }

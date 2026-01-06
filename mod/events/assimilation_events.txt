@@ -44,13 +44,13 @@ planet_event = {
 			save_event_target_as = target_species
 		}
 		# Vfix TEST
-		set_variable = { which = var_local_pop_amount value = local_pop_amount }
-		if = { # IDK, this var seems out of order, special global in the event scope
-			limit = {
-				check_variable = { which = var_local_pop_amount value <= 0 }
-			}
-			set_variable = { which = var_local_pop_amount value = 1 }
-		}
+		# set_variable = { which = var_local_pop_amount value = local_pop_amount }
+		# if = { # IDK, this var seems out of order, special global in the event scope
+		# 	limit = {
+		# 		check_variable = { which = var_local_pop_amount value <= 0 }
+		# 	}
+		# 	set_variable = { which = var_local_pop_amount value = 1 }
+		# }
 		create_pop_group = {
 			pop_group = event_target:old_pop_group
 			species = event_target:target_species
@@ -59,7 +59,7 @@ planet_event = {
 				transfer_pop_amount = {
 					source = event_target:old_pop_group
 					target = this
-					amount = root.var_local_pop_amount
+					amount = root.local_pop_amount
 					growth_category = "GROWTH_CAT_GROWTH"
 				}
 				apply_post_assimilation_effects = yes
@@ -67,10 +67,10 @@ planet_event = {
 		}
 	}
 
-	after = {
-		# Vfix: just bad workaround
-		clear_variable = var_local_pop_amount
-	}
+	# after = {
+	# 	# Vfix: just bad workaround
+	# 	clear_variable = var_local_pop_amount
+	# }
 }
 
 # A pop amount has been assembled, try to transfer it to assimilation target if applicable
@@ -110,13 +110,13 @@ planet_event = {
 			save_event_target_as = target_species
 		}
 		# Vfix TEST
-		set_variable = { which = var_local_pop_amount value = local_pop_amount }
-		if = { # IDK, this var seems out of order, special global in the event scope
-			limit = {
-				check_variable = { which = var_local_pop_amount value <= 0 }
-			}
-			set_variable = { which = var_local_pop_amount value = 1 }
-		}
+		# set_variable = { which = var_local_pop_amount value = local_pop_amount }
+		# if = { # IDK, this var seems out of order, special global in the event scope
+		# 	limit = {
+		# 		check_variable = { which = var_local_pop_amount value <= 0 }
+		# 	}
+		# 	set_variable = { which = var_local_pop_amount value = 1 }
+		# }
 		create_pop_group = {
 			pop_group = event_target:old_pop_group
 			species = event_target:target_species
@@ -125,7 +125,7 @@ planet_event = {
 				transfer_pop_amount = {
 					source = event_target:old_pop_group
 					target = this
-					amount = root.var_local_pop_amount
+					amount = root.local_pop_amount
 					growth_category = "GROWTH_CAT_ASSEMBLY"
 				}
 				apply_post_assimilation_effects = yes
@@ -133,10 +133,10 @@ planet_event = {
 		}
 	}
 
-	after = {
-		# Vfix: just bad workaround
-		clear_variable = var_local_pop_amount
-	}
+	# after = {
+	# 	# Vfix: just bad workaround
+	# 	clear_variable = var_local_pop_amount
+	# }
 }
 
 # Pops Sub-Species integration on Montly Pulse

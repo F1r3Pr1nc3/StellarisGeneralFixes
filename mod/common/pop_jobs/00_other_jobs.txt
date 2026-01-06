@@ -256,10 +256,10 @@ slave_unprocessing = {
 		is_sapient = yes # Vfix
 		is_being_assimilated = no
 		is_being_purged = no
-		is_enslaved = yes
 	}
 
 	possible = {
+		is_enslaved = yes
 		NOT = { has_citizenship_type = { type = citizenship_slavery country = owner } }
 	}
 }
@@ -376,7 +376,7 @@ slave_overseer = {
 }
 
 slave_toiler = {
-	category = slave # Vfix
+	category = worker
 	is_capped_by_modifier = no
 
 	swappable_data = {
@@ -412,7 +412,7 @@ slave_toiler = {
 }
 
 organic_battery = {
-	category = slave # Vfix
+	category = worker
 	is_capped_by_modifier = no
 
 	tags = { energy }
@@ -441,7 +441,7 @@ organic_battery = {
 }
 
 livestock = {
-	category = slave # Vfix
+	category = worker
 	first_come_first_served = no
 	is_capped_by_modifier = no
 	swappable_data = {
@@ -1302,7 +1302,7 @@ organic_exhibit = {
 }
 
 livestock_lithoid = {
-	category = slave # Vfix
+	category = worker
 	first_come_first_served = no
 	is_capped_by_modifier = no
 

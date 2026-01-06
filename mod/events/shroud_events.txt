@@ -3761,9 +3761,7 @@ country_event = {
 			min = @tier1materialmin
 			max = @tier1materialmax
 		}
-		event_target:morphing_landscape_planet = {
-			finish_terraformation = yes
-		}
+		event_target:morphing_landscape_planet = { finish_terraformation = yes }
 		add_attunement = { the_composer_of_strands = @delve_attunement_large_anti }
 	}
 }
@@ -3780,9 +3778,7 @@ country_event = {
 		# Vfix: it looks strange but it seems to be happen (somehow)
 		if = {
 			limit = {
-				NOT = {
-					exists = event_target:morphing_landscape_planet
-				}
+				NOT = { exists = event_target:morphing_landscape_planet }
 			}
 			random_planet_within_border = {
 				limit = {
@@ -13594,6 +13590,7 @@ leader_event = {
 
 	trigger = {
 		has_shroud_dlc = yes
+		exists = owner # Vfix
 		owner = { is_imperial_authority = yes is_corporeal_authority = yes }
 	}
 
@@ -14418,9 +14415,9 @@ country_event = {
 	immediate = {
 		every_playable_country = {
 			limit = {
-				NOT = { has_country_flag = reached_excellent_relations_with_@root }
 				has_communications = root
 				opinion_level = { who = root level = excellent }
+				NOT = { has_country_flag = reached_excellent_relations_with_@root } # Vfix opt set last
 			}
 			set_country_flag = reached_excellent_relations_with_@root
 			root = {

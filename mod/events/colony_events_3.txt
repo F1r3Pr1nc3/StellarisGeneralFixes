@@ -308,7 +308,9 @@ planet_event = {
 				type = "titanic_guardian_army"
 			}
 		}
-		# set_planet_purge_type = purge_displacement # only when won, see colony_mod.103
+		random_owned_pop_group = { kill_single_pop = yes }
+		set_planet_purge_type = purge_displacement
+		planet_event = { id = colony_mod.103 days = 40 }
 	}
 
 	option = {
@@ -319,42 +321,52 @@ planet_event = {
 
 # Vfix New
 # Victory Titans
-country_event = {
+planet_event = {
 	id = colony_mod.103
 	hide_window = yes
 	is_triggered_only = yes
-
-	trigger = {
-		is_country_type = faction
-		# has_country_flag = titanic_life_faction # Lets rampage anyway
-		fromfrom = { has_planet_flag = titanic_life_colony_flag }
-	}
-
+	# trigger = {
+	# 	is_country_type = faction
+	# 	# has_country_flag = titanic_life_faction # Lets rampage anyway
+	# 	fromfrom = { has_planet_flag = titanic_life_colony_flag }
+	# }
 	immediate = {
-		fromfrom = {
-			set_planet_purge_type = purge_displacement # Vfix only if won
-			# clear_planet_purge_type = yes # Vfix only if lost, gets applied on general event
+		if = {
+			limit = { has_ground_combat = no }
 			if = {
 				limit = {
-					NOT = { has_deposit = d_titanic_life_blocker }
+					exists = controller
+					controller = { is_country_type = faction }
 				}
-				add_deposit = d_titanic_life_blocker
-			}
-			remove_modifier = "eat_the_titans"
-			remove_modifier = "eat_the_titans_evopred"
-			remove_planet_flag = nice_titan_study
-			if = {
-				limit = {
-					NOT = { has_modifier = titanic_life }
+				set_planet_purge_type = purge_displacement # Vfix only if won
+				if = {
+					limit = {
+						NOT = { has_deposit = d_titanic_life_blocker }
+					}
+					add_deposit = d_titanic_life_blocker
 				}
-				add_modifier = { modifier = titanic_life }
+				remove_modifier = "eat_the_titans"
+				remove_modifier = "eat_the_titans_evopred"
+				remove_planet_flag = nice_titan_study
+				if = {
+					limit = {
+						NOT = { has_modifier = titanic_life }
+					}
+					add_modifier = { modifier = titanic_life }
+				}
+				create_army = {
+					name = "NAME_Enraged_Guardian"
+					owner = root
+					species = root
+					type = "titanic_guardian_army"
+				}
 			}
-			create_army = {
-				name = "NAME_Enraged_Guardian"
-				owner = root
-				species = root
-				type = "titanic_guardian_army"
+			else = {
+				clear_planet_purge_type = yes # Vfix only if lost, gets applied on general event
 			}
+		}
+		else = {
+			planet_event = { id = colony_mod.103 days = 30 }
 		}
 	}
 }

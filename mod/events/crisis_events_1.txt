@@ -2089,8 +2089,10 @@ event = {
 			check_variable = { which = "feral_prethoryn_spawned" value < 10 }
 		}
 		any_system = {
-			has_owner = no
-			NOT = { has_star_flag = feral_prethoryn_system }
+			NOR = {
+				has_owner = yes
+				has_star_flag = feral_prethoryn_system
+			}
 			any_system_planet = { has_planet_flag = previously_infested }
 		}
 	}
@@ -2654,9 +2656,24 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	trigger = { # Vfix
+		has_global_flag = ongoing_prethoryn_invasion
+		# exists = event_target:prethoryn
+	}
+
 	immediate = {
 		if = {
 			limit = {
+				NOT = { exists = event_target:prethoryn }
+			}
+			random_country = {
+				limit = { is_country_type = swarm }
+				save_global_event_target_as = prethoryn
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:prethoryn
 				event_target:prethoryn = {
 					num_owned_planets > 0
 					num_ships < 2000
@@ -2677,7 +2694,12 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		save_event_target_as = prethoryn
+		if = {
+			limit = {
+				NOT = { exists = event_target:prethoryn }
+			}
+			save_global_event_target_as = prethoryn
+		}
 		owner_species = { save_event_target_as = prethoryn_species }
 		random_system_within_border = {
 			limit = { exists = starbase }
@@ -2821,12 +2843,8 @@ country_event = {
 			limit = {
 				has_owner = yes
 				is_occupied_flag = yes
-				controller = {
-					is_country_type = swarm
-				}
-				NOT = {
-					is_planet_class = pc_infested
-				}
+				controller = { is_country_type = swarm }
+				NOT = { is_planet_class = pc_infested }
 			}
 			clear_planet_purge_type = yes
 		}
@@ -2853,7 +2871,6 @@ country_event = {
 				country_event = { id = crisis.75 days = 15 random = 10 }
 			}
 		}
-
 	}
 }
 

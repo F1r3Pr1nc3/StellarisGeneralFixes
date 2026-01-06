@@ -51,14 +51,3 @@ on_starbase_destroyed = {
 		crisis.1284 # Extradimensionals Anchor Destroyed (replaces .1281)
 	}
 }
-
-# Triggers country_event for the attacker upon victory (before controller is switched)
-# This = country, lead attacker
-# From = country, planet owner
-# FromFrom = planet
-# 'Attacker' is the side that __STR_0__ to the planet controller. For example: spawned monster armies are attackers, but if they win and the player attempts to retake the planet, the player is the attacker
-on_planet_attackers_win = {
-	events = {
-		colony_mod.103 # Titanic Life
-	}
-}
