@@ -5760,34 +5760,36 @@ country_event = {
 	hide_window = yes
 
 	immediate = {
-		capital_scope.solar_system = {
-			if = {
-				limit = {
-					root.capital_scope = { has_ringworld_output_boost = no }
-				}
-				spawn_planet = {
-					class = pc_gaia
-					location = root.capital_scope
-					orbit_angle_offset = 90
-					size = 25
-					init_effect = {
-						set_planet_flag = colony_event
-						prevent_anomaly = yes
-						set_name = "NAME_Sol_X"
+		capital_scope = {
+			solar_system = {
+				if = {
+					limit = {
+						prev = { has_ringworld_output_boost = no }
+					}
+					spawn_planet = {
+						class = pc_gaia
+						location = prev
+						orbit_angle_offset = 90
+						size = 25
+						init_effect = {
+							set_planet_flag = colony_event
+							prevent_anomaly = yes
+							set_name = "NAME_Sol_X"
+						}
 					}
 				}
-			}
-			else = {
-				spawn_planet = {
-					class = pc_gaia
-					location = root.capital_scope
-					orbit_angle_offset = 180
-					orbit_distance_offset = 12
-					size = 25
-					init_effect = {
-						set_planet_flag = colony_event
-						prevent_anomaly = yes
-						set_name = "NAME_Sol_X"
+				else = {
+					spawn_planet = {
+						class = pc_gaia
+						location = prev
+						orbit_angle_offset = 180
+						orbit_distance_offset = 12
+						size = 25
+						init_effect = {
+							set_planet_flag = colony_event
+							prevent_anomaly = yes
+							set_name = "NAME_Sol_X"
+						}
 					}
 				}
 			}
@@ -5805,15 +5807,19 @@ country_event = {
 
 	trigger = {
 		from = {
-			any_defender = { has_country_flag = solarpunk_country }
+			any_defender = {
+				has_country_flag = solarpunk_country
+				is_same_empire = root  # Vfix opt
+			}
 		}
 	}
 
 	immediate = {
 		from = {
-			random_defender = {
-				limit = { has_country_flag = solarpunk_country }
-				set_faction_hostility = { target = root set_hostile = yes }
+			every_attacker = { # Vfix
+				root = {
+					set_faction_hostility = { target = prev set_hostile = yes }
+				}
 			}
 		}
 	}

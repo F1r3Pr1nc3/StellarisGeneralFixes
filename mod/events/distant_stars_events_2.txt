@@ -37,83 +37,90 @@ event = {
 					}
 				}
 				spawn_system = {
-					min_distance >= 20
-					max_distance <= 50
+					min_distance = 20
+					max_distance = 50
 					initializer = "distar_sealed_1_1"
-				}
-			}
-			# Spawn Sealed System
-			event_target:sealed_entry_system = {
-				spawn_system = {
-					min_distance >= 20
-					max_distance <= 30
-					max_jumps = 30
-					initializer = "distar_sealed_1_2"
-				}
-			}
-			# Isolate Sealed System
-			if = {
-				limit = { exists = event_target:sealed_system }
-				event_target:sealed_system = {
-					isolate_system = yes
-					# Create Shroud Country
-					if = {
-						limit = {
-							NOT = { exists = event_target:shroud_country }
-						}
-						create_country = {
-							name = "NAME_Creatures_of_the_Shroud"
-							type = shroud_spirits
-							flag = {
-								icon = { category = "special" file = "the_shroud.dds" }
-								background = { category = "backgrounds" file = "00_solid.dds" }
-								colors = { "dark_purple" "black" "null" "null" }
+					effect = { # Vfix
+						# Spawn Sealed System
+						# event_target:sealed_entry_system = {
+						spawn_system = {
+							min_distance = 20
+							max_distance = 30
+							max_jumps = 30
+							initializer = "distar_sealed_1_2"
+							effect = {
+								# Isolate Sealed System
+								isolate_system = yes
+								# Create Shroud Country
+								if = {
+									limit = {
+										NOT = { exists = event_target:shroud_country }
+									}
+									create_country = {
+										name = "NAME_Creatures_of_the_Shroud"
+										type = shroud_spirits
+										flag = {
+											icon = { category = "special" file = "the_shroud.dds" }
+											background = { category = "backgrounds" file = "00_solid.dds" }
+											colors = { "dark_purple" "black" "null" "null" }
+										}
+										effect = {
+											save_global_event_target_as = shroud_country
+										}
+									}
+								}
+								# Create Miniboss
+								create_fleet = {
+									name = "NAME_Psionic_Entity"
+									effect = {
+										set_owner = event_target:shroud_country
+										create_ship = { name = "NAME_Psionic_Entity" design = "NAME_Corrupted_Avatar" }
+										set_location = {
+											target = prev.star
+											distance = 100
+											angle = random
+										}
+										set_fleet_stance = aggressive
+										set_aggro_range_measure_from = return_point
+										set_aggro_range = 2000
+										save_global_event_target_as = sealed_psionic_entity
+									}
+									settings = {
+										spawn_debris = no
+										is_boss = yes
+									}
+								}
 							}
 						}
-						last_created_country = { save_global_event_target_as = shroud_country }
-					}
-					# Create Miniboss
-					create_fleet = {
-						name = "NAME_Psionic_Entity"
-						effect = {
-							set_owner = event_target:shroud_country
-							create_ship = { name = "NAME_Psionic_Entity" design = "NAME_Corrupted_Avatar" }
-							set_location = {
-								target = prev.star
-								distance = 100
-								angle = random
-							}
-							set_fleet_stance = aggressive
-							set_aggro_range_measure_from = return_point
-							set_aggro_range = 2000
-							save_global_event_target_as = sealed_psionic_entity
-						}
-						settings = {
-							spawn_debris = no
-							is_boss = yes
-						}
+						# }
 					}
 				}
 			}
 		}
 		set_spawn_system_batch = end
 		# Spawn Special Wormholes
-		event_target:sealed_entry_system = {
-			event_target:sealed_system = {
-				prev = { # done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
+		if = {
+			limit = { exists = event_target:sealed_system }
+			event_target:sealed_entry_system = {
+				event_target:sealed_system = {
+					prev = { # done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
+						spawn_natural_wormhole = {
+							bypass_type = wormhole
+							random_pos = no
+							orbit_angle = 360
+						}
+					}
 					spawn_natural_wormhole = {
 						bypass_type = wormhole
 						random_pos = no
-						orbit_angle = 360
+						orbit_angle = 270
 					}
+					link_wormholes = prev
 				}
-				spawn_natural_wormhole = {
-					bypass_type = wormhole
-					random_pos = no
-					orbit_angle = 270
-				}
-				link_wormholes = prev
 			}
+			# Vfix cleanup
+			clear_global_event_target = sealed_entry_system
+			clear_global_event_target = sealed_system
 		}
 	}
 }
@@ -706,9 +713,8 @@ country_event = {
 		hidden_effect = {
 			closest_system = {
 				spawn_system = {
-					min_distance >= 20
-					max_distance <= 30
-					# 45
+					min_distance = 20
+					max_distance = 30 # 45
 					# min_orientation_angle = 24
 					# max_orientation_angle = 66
 					initializer = vechtar_zavonia_system

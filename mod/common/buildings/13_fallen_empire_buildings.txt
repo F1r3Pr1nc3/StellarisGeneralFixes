@@ -3905,14 +3905,14 @@ building_fe_assembly_2 = {
 		owner = { # Vfix opt
 			OR = {
 				is_machine_empire = yes
-			AND = {
+				AND = {
 					is_regular_empire = yes
 					NOR = {
 						AND = {
 							is_ai = yes
 							exists = prev.assembling_species
 							prev.assembling_species = { is_robotic = no }
-				}
+						}
 						has_policy_flag = robots_outlawed
 					}
 					OR = {

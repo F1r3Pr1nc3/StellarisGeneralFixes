@@ -211,7 +211,16 @@ country_event = {
 		# Entropy Drinkers
 		# Adds the Psionic trait
 		if = {
-			limit = { is_entropy_drinkers_empire = yes }
+			limit = {
+				is_entropy_drinkers_empire = yes
+				from = { # Vfix: native exceptions - TODO for whatever reason
+					NOR = {
+						has_trait = leader_trait_cyborg
+						has_trait = leader_trait_limited_cyborg
+						has_trait = leader_trait_synthetic
+					}
+				}
+			}
 			from = {
 				add_trait = { trait = leader_trait_psionic show_message = no }
 			}

@@ -883,7 +883,6 @@ trait_very_strong = {
 	modifier = {
 		army_damage_mult = 0.40
 		worker_and_simple_drone_cat_bonus_workforce_mult = 0.05
-		soldier_jobs_bonus_workforce_mult = 0.15
 	}
 
 	slave_cost = {
@@ -939,7 +938,6 @@ trait_strong = {
 	modifier = {
 		army_damage_mult = 0.20
 		worker_and_simple_drone_cat_bonus_workforce_mult = 0.025
-		soldier_jobs_bonus_workforce_mult = 0.10
 	}
 
 	slave_cost = {
@@ -987,7 +985,6 @@ trait_weak = {
 	modifier = {
 		army_damage_mult = -0.20
 		worker_and_simple_drone_cat_bonus_workforce_mult = -0.025
-		soldier_jobs_bonus_workforce_mult = -0.10
 	}
 
 	slave_cost = {
@@ -1600,20 +1597,6 @@ trait_cybernetic = {
 		LITHOID
 	}
 	tags = { organic positive habitability army leader cybernetic }
-	resources = {
-		category = planet_pops
-		# Energy Upkeep
-		upkeep = {
-			trigger = {
-				is_being_purged = no
-				is_sapient = yes
-			}
-			energy = @cyborg_energy_upkeep
-		}
-	}
-
-	custom_tooltip_with_modifiers = TRAIT_CYBORG_EFFECT
-
 	modifier = {
 		pop_environment_tolerance = 0.20
 		army_damage_mult = 0.1
@@ -1821,8 +1804,6 @@ trait_survivor = {
 	modifier = {
 		pc_nuked_habitability = 0.7
 		leader_lifespan_add = 10
-		pop_housing_usage_mult = -0.10
-		pop_amenities_usage_mult = -0.15
 	}
 
 	slave_cost = {
@@ -1855,6 +1836,7 @@ trait_enigmatic_intelligence = {
 
 	opposites = {
 		"trait_nerve_stapled"
+		# "trait_erudite"
 		"trait_slow_learners"
 	}
 
@@ -1993,7 +1975,7 @@ trait_bioadaptability = {
 	cost = {
 		base = 1
 		modifier = {
-			factor = 0
+			mult = 0
 			exists = owner
 			owner = { has_country_flag = modification_green }
 		}
@@ -2043,7 +2025,7 @@ trait_social_pheromones = {
 	cost = {
 		base = 1
 		modifier = {
-			factor = 0
+			mult = 0
 			exists = owner
 			owner = { has_country_flag = modification_red }
 		}
@@ -2070,8 +2052,8 @@ trait_social_pheromones = {
 	}
 	tags = { organic positive housing amenities pop_growth interesting special }
 	modifier = {
-		pop_housing_usage_mult = -0.05
-		pop_amenities_usage_mult = -0.05
+		pop_housing_usage_mult = -0.15
+		pop_amenities_usage_mult = -0.10
 		logistic_growth_mult = 0.05
 	}
 
@@ -2089,7 +2071,7 @@ trait_limited_regeneration = {
 	cost = {
 		base = 1
 		modifier = {
-			factor = 0
+			mult = 0
 			exists = owner
 			owner = { has_country_flag = modification_blue }
 		}
@@ -2324,7 +2306,7 @@ trait_void_dweller_1 = {
 
 	species_potential_add = {
 		exists = from
-		from = { has_void_dweller_origin = yes }
+		from = { has_origin = origin_void_dwellers }
 	}
 
 	species_possible_add = {
@@ -2380,7 +2362,9 @@ trait_void_dweller_1 = {
 		}
 		modifier = {
 			subtract = 1.5
-			NOT = { from = { uses_district_set = habitat } }
+			from = {
+				NOT = { uses_district_set = habitat }
+			}
 		}
 	}
 }
@@ -2394,7 +2378,7 @@ trait_void_dweller_2 = {
 		from = {
 			OR = {
 				has_origin = origin_void_machines
-				has_void_dweller_origin = yes
+				has_origin = origin_void_dwellers
 			}
 		}
 	}
@@ -2449,7 +2433,9 @@ trait_void_dweller_2 = {
 		}
 		modifier = {
 			subtract = 1.5
-			NOT = { from = { uses_district_set = habitat } }
+			from = {
+				NOT = { uses_district_set = habitat }
+			}
 		}
 	}
 }
@@ -3036,6 +3022,16 @@ trait_zombie = {
 		planet_pops_upkeep_mult = -1
 	}
 
+	triggered_pop_group_modifier = {
+		potential = {
+			OR = {
+				is_pop_category = ruler
+				is_specialist_category = yes
+			}
+		}
+		pop_demotion_time_mult = -10.0
+	}
+
 	icon = "gfx/interface/icons/traits/trait_zombie.dds"
 	custom_tooltip = TRAIT_ZOMBIE_EFFECT
 
@@ -3091,7 +3087,7 @@ trait_humanoid_existential_iteroparity = {
 				}
 			}
 		}
-		logistic_growth_mult = 0.2
+		logistic_growth_mult = 0.3
 	}
 
 	slave_cost = {

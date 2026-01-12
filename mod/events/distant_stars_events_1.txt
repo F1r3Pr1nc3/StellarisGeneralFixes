@@ -7620,6 +7620,7 @@ country_event = {
 }
 
 # Adds CBs and opinion mods on Communications Established (action.11)
+# Playable country
 country_event = {
 	id = distar.238
 	hide_window = yes
@@ -7627,58 +7628,22 @@ country_event = {
 
 	trigger = {
 		from = {
+			is_country_type = default # Vfix
 			any_system_within_border = { has_star_flag = ratling_system }
 		}
 		exists = event_target:ratling_country
-		event_target:contact_empire = { is_same_empire = event_target:ratling_country }
-	}
-
-	immediate = {
-		every_system = {
-			limit = {
-				has_star_flag = ratling_system
-				is_owned_by = from
-			}
-			add_claims = {
-				who = event_target:ratling_country
-				num_of_claims = 1
-				show_notification = yes
-			}
-			event_target:ratling_country = {
-				add_opinion_modifier = { who = from modifier = opinion_ratling_system_stolen }
+		event_target:ratling_country = {
+			is_same_empire = event_target:contact_empire
+			NOT = {
+				has_opinion_modifier = { who = from modifier = opinion_ratling_system_stolen }
 			}
 		}
 	}
-}
 
-# Adds CBs and opinion mods on Communications Established (action.13)
-country_event = {
-	id = distar.239
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
+	immediate = {
 		from = {
-			any_system_within_border = { has_star_flag = ratling_system }
-		}
-		exists = event_target:ratling_country
-		event_target:contact_empire = { is_same_value = event_target:ratling_country }
-	}
-
-	immediate = {
-		if = {
-			limit = {
-				NOT = {
-					event_target:ratling_country = {
-						has_opinion_modifier = { who = from modifier = opinion_ratling_system_stolen }
-					}
-				}
-			}
-			every_system = {
-				limit = {
-					has_star_flag = ratling_system
-					is_owned_by = from
-				}
+			every_system_within_border = { # Vfix opt
+				limit = { has_star_flag = ratling_system }
 				add_claims = {
 					who = event_target:ratling_country
 					num_of_claims = 1
@@ -7689,6 +7654,19 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+# VFIX DUPE: DUPLICATE! distar.238
+# Adds CBs and opinion mods on Communications Established (action.13)
+country_event = {
+	id = distar.239
+	hide_window = yes
+	is_triggered_only = yes
+	is_test_event = yes
+
+	trigger = {
+		always = no
 	}
 }
 

@@ -1,11 +1,12 @@
 ######################################
 # Astral Rifts Events - 0000 to 0999 #
 ######################################
+
+namespace = astral_rift
+
 ##################################
 # Astral Rift - Riftworld Events #
 ##################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1
@@ -1203,8 +1204,6 @@ country_event = {
 # Astral Rift - Corridors Events #
 ##################################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.100
 	title = astral_rift.100.name
@@ -1409,7 +1408,7 @@ country_event = {
 					set_owner = prev
 					create_ship = { name = random random_existing_design = science }
 					set_fleet_stance = evasive
-					set_location = prev.capital_scope.star
+					set_location = prev.capital_star
 					every_owned_ship = { set_disabled = yes }
 					set_fleet_flag = temporary_fleet
 					save_event_target_as = returning_ship
@@ -1461,8 +1460,6 @@ fleet_event = {
 ##############################################
 # Astral Rift - Ancient Battlegrounds Events #
 ##############################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.200
@@ -1647,8 +1644,6 @@ astral_rift_event = {
 # Astral Rift - Astral Library Events #
 #######################################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.300
 	title = astral_rift.300.name
@@ -1822,8 +1817,6 @@ astral_rift_event = {
 ####################################
 # Astral Rift - Subnautical Events #
 ####################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.500
@@ -2195,8 +2188,6 @@ astral_rift_event = {
 ##############################
 # Astral Rift - Tower Events #
 ##############################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.600
@@ -2660,8 +2651,6 @@ country_event = {
 # Astral Rift - Whiteout Events #
 #################################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.700
 	title = astral_rift.700.name
@@ -2838,8 +2827,6 @@ astral_rift_event = {
 # Astral Rift - Advisor Events #
 ################################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.800
 	title = astral_rift.800.name
@@ -2889,6 +2876,18 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 
+	immediate = {
+		# Vfix
+		if = {
+			limit = { exists = fleet }
+			fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else_if = {
+			limit = { exists = from.fleet }
+			from.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+	}
+
 	option = {
 		name = astral_rift.805.a
 		set_next_astral_rift_event = { id = astral_rift.815 }
@@ -2914,6 +2913,18 @@ astral_rift_event = {
 	difficulty = @astral_rift_medium_plus_difficulty
 	astral_rift = yes
 	is_triggered_only = yes
+
+	immediate = {
+		# Vfix
+		if = {
+			limit = { exists = fleet }
+			fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else_if = {
+			limit = { exists = from.fleet }
+			from.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+	}
 
 	option = {
 		name = astral_rift.810.a
@@ -2942,23 +2953,65 @@ astral_rift_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		exists = leader # Vfix
+		OR = { # Vfix
+			exists = leader
+			exists = fleet
+			exists = event_target:astral_rift_fleet
+		}
+	}
+
+	immediate = {
+		# Vfix log: fallback
+		if = {
+			limit = { exists = fleet }
+			fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else_if = {
+			limit = { exists = from.fleet }
+			from.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		# Vfix log: fallback
+		if = {
+			limit = { exists = leader }
+			leader = { save_event_target_as = advisor_rift_lost_explorer }
+		}
+		else_if = {
+			limit = {
+				exists = event_target:astral_rift_fleet
+				exists = event_target:astral_rift_fleet.leader
+			}
+			event_target:astral_rift_fleet.leader = { save_event_target_as = advisor_rift_lost_explorer }
+		}
+		# Vfix log: fallback
+		if = {
+			limit = { exists = explorer }
+			explorer = { save_event_target_as = explorer }
+		}
+		else_if = {
+			limit = {
+				exists = event_target:astral_rift_fleet
+				exists = event_target:astral_rift_fleet.owner
+			}
+			event_target:astral_rift_fleet.owner = { save_event_target_as = explorer }
+		}
 	}
 
 	option = {
 		name = astral_rift.815.a
 		hidden_effect = {
-			explorer = {
+			event_target:explorer = {
 				country_event = {
 					id = astral_planes.205
-					scopes = { from = prev fromfrom = prev.fleet }
+					scopes = { from = prev fromfrom = event_target:astral_rift_fleet }
 				}
 			}
 		}
-		leader = { exile_leader_as = advisor_rift_lost_explorer@prev.explorer }
+		event_target:advisor_rift_lost_explorer = {
+			exile_leader_as = advisor_rift_lost_explorer@event_target:explorer
+		}
 		hidden_effect = {
-			explorer = {
-				country_event = { id = astral_rift.835 days = 1800 scopes = { from = prev.fleet } }
+			event_target:explorer = {
+				country_event = { id = astral_rift.835 days = 1800 scopes = { from = event_target:astral_rift_fleet } }
 			}
 		}
 		finish_astral_rift = yes
@@ -3086,7 +3139,7 @@ country_event = {
 		if = {
 			limit = {
 				exists = from
-				NOT = { from = { exists = leader } }
+				NOT = { exists = from.leader }
 			}
 			from = { save_event_target_as = returning_ship }
 		}
@@ -3096,13 +3149,14 @@ country_event = {
 					set_owner = prev
 					create_ship = { name = random random_existing_design = science }
 					set_fleet_stance = evasive
-					set_location = prev.capital_scope.star
+					set_location = prev.capital_star
 					every_owned_ship = { set_disabled = yes }
 					set_fleet_flag = temporary_fleet
 					save_event_target_as = returning_ship
 				}
 			}
 		}
+		# Vfix FIXME: log says exiled leader does not exists
 		event_target:returning_ship = {
 			set_leader = advisor_rift_lost_explorer@prev
 			fleet_event = { id = astral_rift.840 }
@@ -3135,7 +3189,12 @@ fleet_event = {
 		name = FASCINATING
 		leader = {
 			freeze_leader_age = no
-			add_trait = { trait = leader_trait_rift_warped }
+			if = { # Vfix log
+				limit = {
+					NOT = { has_trait = leader_trait_rift_warped }
+				}
+				add_trait = { trait = leader_trait_rift_warped }
+			}
 			locked_random_list = {
 				1 = {
 					modifier = { factor = 0 has_trait = leader_trait_spark_of_genius }
@@ -3216,8 +3275,6 @@ country_event = {
 # Astral Rift - Vortex Events #
 ###############################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.900
 	title = astral_rift.900.name
@@ -3245,6 +3302,7 @@ astral_rift_event = {
 	}
 	option = {
 		name = astral_rift.900.b
+		fleet = { save_event_target_as = astral_rift_fleet } # Vfix
 		set_next_astral_rift_event = { id = astral_rift.910 on_roll_failed = astral_rift.915 fail_probability = @default_failure_probability }
 		ai_chance = { inline_script = astral_rift/rift_difficulty_ai_weight }
 	}
@@ -3337,12 +3395,25 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 
+	immediate = {
+		# Vfix
+		if = {
+			limit = { exists = fleet }
+			fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else_if = {
+			limit = { exists = from.fleet }
+			from.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+	}
+
 	option = {
 		name = UNFORTUNATE
-		fleet = {
+		event_target:astral_rift_fleet = { # Vfix
 			kill_leader = { show_notification = yes }
 		}
-		explorer = {
+		# explorer = {
+		event_target:astral_rift_fleet.owner = { # Vfix
 			add_monthly_resource_mult = {
 				resource = exotic_gases
 				value = @tier3materialreward

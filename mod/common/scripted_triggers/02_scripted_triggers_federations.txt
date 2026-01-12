@@ -1,0 +1,277 @@
+### Federations Scripted Triggers
+
+scion_losing_defensive_war = {
+	any_war = {
+		any_defender = { is_same_empire = root }
+		any_attacker = {
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		defender_war_exhaustion > 0.8
+		attacker_war_exhaustion < 0.6
+	}
+}
+
+scion_losing_offensive_war = {
+	any_war = {
+		any_attacker = { is_same_empire = root }
+		any_defender = {
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		attacker_war_exhaustion > 0.8
+		defender_war_exhaustion < 0.6
+	}
+}
+
+scion_losing_defensive_war_combatant = {
+	any_war = {
+		any_defender = { is_same_empire = root }
+		any_attacker = {
+			is_same_value = prevprev
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		defender_war_exhaustion > 0.8
+		attacker_war_exhaustion < 0.6
+	}
+}
+
+scion_losing_offensive_war_combatant = {
+	any_war = {
+		any_attacker = { is_same_empire = root }
+		any_defender = {
+			is_same_value = prevprev
+			OR = {
+				relative_power = {
+					who = root
+					category = fleet
+					value = overwhelming
+				}
+				relative_power = {
+					who = root
+					category = fleet
+					value = superior
+				}
+			}
+		}
+		attacker_war_exhaustion > 0.8
+		defender_war_exhaustion < 0.6
+	}
+}
+
+is_doomsday_planet = {
+	OR = {
+		has_modifier = doomsday_1
+		has_modifier = doomsday_2
+		has_modifier = doomsday_3
+		has_modifier = doomsday_4
+		has_modifier = doomsday_5
+	}
+}
+
+has_make_spiritualist_perk = {
+	exists = federation
+	federation = {
+		has_federation_perk = make_spiritualist_1
+	}
+}
+
+federation_election_underway = {
+	OR = {
+		has_federation_flag = conclave_underway
+		has_federation_flag = bidding_war_underway
+		has_federation_flag = arena_combat_underway
+		has_federation_flag = psionic_battle_underway
+		has_federation_flag = thesis_underway
+	}
+}
+
+has_habitat_farming_designation = {
+	OR = {
+		has_designation = col_habitat_farming
+		has_designation = col_habitat_gestalt_farming
+	}
+}
+
+has_orbital_energy_deposit = {
+	OR = {
+		has_deposit = d_energy_1
+		has_deposit = d_energy_2
+		has_deposit = d_energy_3
+		has_deposit = d_energy_4
+		has_deposit = d_energy_5
+		has_deposit = d_energy_6
+		has_deposit = d_energy_7
+		has_deposit = d_energy_8
+		has_deposit = d_energy_9
+		has_deposit = d_energy_10
+		has_deposit = d_guardian_dragon_hoard
+	}
+}
+
+has_orbital_mining_deposit = {
+	OR = {
+		has_deposit = d_minerals_1
+		has_deposit = d_minerals_2
+		has_deposit = d_minerals_3
+		has_deposit = d_minerals_4
+		has_deposit = d_minerals_5
+		has_deposit = d_minerals_6
+		has_deposit = d_minerals_7
+		has_deposit = d_minerals_8
+		has_deposit = d_minerals_9
+		has_deposit = d_minerals_10
+		has_deposit = d_alloys_1
+		has_deposit = d_alloys_2
+		has_deposit = d_alloys_3
+		has_deposit = d_alloys_4
+		has_deposit = d_alloys_5
+		has_deposit = d_alloys_10
+		has_deposit = d_alloys_25
+		has_deposit = d_guardian_dragon_hoard
+		has_deposit = d_consumer_goods_obsessional_directive
+		has_deposit = d_arc_furnace_1
+		has_deposit = d_arc_furnace_2
+		has_deposit = d_arc_furnace_3
+		has_deposit = d_arc_furnace_4
+	}
+}
+
+habitat_owner_has_tech_for_deposit = {
+	if = {
+		limit = {
+			has_resource = { type = volatile_motes amount > 0 }
+		}
+		root.owner = { has_technology = tech_mine_volatile_motes }
+	}
+	if = {
+		limit = {
+			has_resource = { type = exotic_gases amount > 0 }
+		}
+		root.owner = { has_technology = tech_mine_exotic_gases }
+	}
+	if = {
+		limit = {
+			has_resource = { type = rare_crystals amount > 0 }
+		}
+		root.owner = { has_technology = tech_mine_rare_crystals }
+	}
+	if = {
+		limit = {
+			has_resource = { type = sr_living_metal amount > 0 }
+		}
+		root.owner = { has_technology = tech_mine_living_metal }
+	}
+	if = {
+		limit = {
+			has_resource = { type = sr_zro amount > 0 }
+		}
+		root.owner = { has_technology = tech_mine_zro }
+	}
+	if = {
+		limit = {
+			has_resource = { type = sr_dark_matter amount > 0 }
+		}
+		root.owner = { has_technology = tech_mine_dark_matter }
+	}
+	if = {
+		limit = {
+			has_resource = { type = astral_threads amount > 0 }
+		}
+		root.owner = { has_technology = tech_astral_harvesting }
+	}
+}
+
+# Checks if an empire can form a federation with another empire
+# this = Country scope, the other empire that is being checked as a potential federation partner
+# prev = Country scope, the original empire that checks if they can form a federation with the other empire
+can_form_federation_with_empire = {
+	is_country_type = default # The other country should be normal - we know that WE are
+	NOR = {
+		AND = { # We are a Determined Exterminator or Fanatic Purifiers and they are not the same species as us or a machine empire
+			prev = {
+				OR = {
+					has_valid_civic = civic_machine_terminator
+					has_valid_civic = civic_fanatic_purifiers
+				}
+			}
+			NAND = { # Vfix
+				exists = from
+				from = {
+					OR = {
+						is_scope_type = species
+						is_scope_type = country
+					}
+				}
+				OR = {
+					is_same_species = from
+					is_synthetic_empire = yes
+					is_individual_machine = yes
+				}
+			}
+		}
+		AND = { # As above, but THEY are a Determined Exterminator or Fanatic Purifiers
+			prev = {
+				NAND = { # Vfix
+					exists = from
+					from = {
+						OR = {
+							is_scope_type = species
+							is_scope_type = country
+						}
+					}
+					OR = {
+						is_same_species = from
+						is_synthetic_empire = yes
+						is_individual_machine = yes
+					}
+				}
+			}
+			OR = {
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+		prev = {
+			OR = {
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_inwards_perfection
+				has_origin = origin_endbringers
+			}
+		}
+		has_valid_civic = civic_hive_devouring_swarm
+		has_valid_civic = civic_inwards_perfection
+		has_origin = origin_endbringers
+	}
+}

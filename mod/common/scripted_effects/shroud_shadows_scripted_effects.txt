@@ -181,9 +181,11 @@ update_every_leader_from_psionic_countries = {
 	observer_event = { id = observer.6 }
 	every_playable_country = {
 		limit = {
-			is_ai = no
+			NOR = {
+				is_ai = yes
+				is_same_value = prev
+			}
 			has_communications = prev
-			NOT = { is_same_value = prev }
 		}
 		country_event = { id = utopia.2652 }
 	}

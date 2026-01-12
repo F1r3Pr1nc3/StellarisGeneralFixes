@@ -246,7 +246,11 @@ create_marauder_fleet = {
 create_small_marauder_auxiliaries = {
 	optimize_memory
 	event_target:satrapy_empire = {
-		random_pool_leader = { set_owner = prevprev save_event_target_as = satrapy_commander }
+		random_pool_leader = {
+			limit = { leader_class = commander }
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 
 	create_fleet = {
@@ -293,6 +297,7 @@ create_small_marauder_auxiliaries = {
 				}
 				set_home_base = root.solar_system.starbase
 			}
+			assign_leader = event_target:satrapy_commander
 		}
 		settings = {
 			can_upgrade = no
@@ -302,16 +307,16 @@ create_small_marauder_auxiliaries = {
 			uses_naval_capacity = no
 		}
 	}
-
-	last_created_fleet = {
-		assign_leader = event_target:satrapy_commander
-	}
 }
 
 create_medium_marauder_auxiliaries = {
 	optimize_memory
 	event_target:satrapy_empire = {
-		random_pool_leader = { set_owner = prevprev save_event_target_as = satrapy_commander }
+		random_pool_leader = {
+			limit = { leader_class = commander }
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 
 	create_fleet = {
@@ -357,6 +362,7 @@ create_medium_marauder_auxiliaries = {
 				}
 				set_home_base = root.solar_system.starbase
 			}
+			assign_leader = event_target:satrapy_commander
 		}
 		settings = {
 			can_upgrade = no
@@ -366,16 +372,16 @@ create_medium_marauder_auxiliaries = {
 			uses_naval_capacity = no
 		}
 	}
-
-	last_created_fleet = {
-		assign_leader = event_target:satrapy_commander
-	}
 }
 
 create_large_marauder_auxiliaries = {
 	optimize_memory
 	event_target:satrapy_empire = {
-		random_pool_leader = { set_owner = prevprev save_event_target_as = satrapy_commander }
+		random_pool_leader = {
+			limit = { leader_class = commander }
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 
 	create_fleet = {
@@ -420,6 +426,7 @@ create_large_marauder_auxiliaries = {
 				}
 				set_home_base = root.solar_system.starbase
 			}
+			assign_leader = event_target:satrapy_commander
 		}
 		settings = {
 			can_upgrade = no
@@ -429,16 +436,16 @@ create_large_marauder_auxiliaries = {
 			uses_naval_capacity = no
 		}
 	}
-
-	last_created_fleet = {
-		assign_leader = event_target:satrapy_commander
-	}
 }
 
 create_very_large_marauder_auxiliaries = {
 	optimize_memory
 	event_target:satrapy_empire = {
-		random_pool_leader = { set_owner = prevprev save_event_target_as = satrapy_commander }
+		random_pool_leader = {
+			limit = { leader_class = commander }
+			set_owner = prevprev
+			save_event_target_as = satrapy_commander
+		}
 	}
 
 	create_fleet = {
@@ -483,6 +490,7 @@ create_very_large_marauder_auxiliaries = {
 				}
 				set_home_base = root.solar_system.starbase
 			}
+			assign_leader = event_target:satrapy_commander
 		}
 		settings = {
 			can_upgrade = no
@@ -491,10 +499,6 @@ create_very_large_marauder_auxiliaries = {
 			can_change_leader = no
 			uses_naval_capacity = no
 		}
-	}
-
-	last_created_fleet = {
-		assign_leader = event_target:satrapy_commander
 	}
 }
 

@@ -2378,9 +2378,9 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			planet_devastation < 100
+		NAND = { # Vfix
 			exists = owner
+			planet_devastation < 100
 		}
 		is_planet_class = pc_infested
 	}

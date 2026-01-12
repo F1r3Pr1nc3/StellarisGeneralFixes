@@ -3033,7 +3033,6 @@ country_event = {
 }
 
 # id = crisis.1281 moved for compatibility
-
 # Extradimensional Kill Count (HIDDEN)
 country_event = {
 	id = crisis.1282
@@ -3479,6 +3478,7 @@ starbase_event = {
 	id = crisis.1320
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		has_global_flag = extradimensional_invasion_happened
 		# NOT = { has_global_flag = extradimensional_invasion_defeated }
@@ -3491,22 +3491,16 @@ starbase_event = {
 		}
 		NOT = {
 			solar_system = {
-				any_system_colony = {
-					has_owner = yes
-				}
+				any_system_colony = { has_owner = yes }
 				# For populated systems, they need to destroy the colonies
 			}
 		}
 	}
+
 	immediate = {
-		solar_system = {
-			save_event_target_as = starbase_system
-		}
+		solar_system = { save_event_target_as = starbase_system }
 		from.owner = {
-			country_event = {
-				id = crisis.1321
-				days = 5
-			}
+			country_event = { id = crisis.1321 days = 5 }
 			# Delay so that destroyed starbase is properly cleared out
 		}
 	}

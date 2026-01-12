@@ -343,9 +343,10 @@ cyberize_pops_effect = {
 			}
 		}
 	}
-	else = {
-		log_error = "Fail cyberize_pops_effect: No current cyberspecies found for \\[This.GetName]"
-	}
+
+	# else = {
+	# 	log_error = "Fail cyberize_pops_effect: No current cyberspecies found for \\[This.GetName]"
+	# }
 }
 
 cyberize_limited_hive_pops_effect = {
@@ -518,75 +519,84 @@ cyberize_creed_pops_effect = {
 # OBSOLETE: can be replaced with assimilate_leaders
 cyberize_leaders_effect = {
 	optimize_memory
-	every_owned_leader = {
+	if = {
 		limit = {
-			is_exact_same_species = event_target:changing_species
-			NOT = { has_trait = leader_trait_cyborg }
-			OR = {
-				is_spiritualist = no
-				owner = { has_country_flag = cyber_force_objectors }
-			}
+			exists = event_target:changing_species
+			exists = event_target:cyberspecies_current
 		}
-		change_species = event_target:cyberspecies_current
-		# remove_trait = leader_trait_psionic
-		# remove_trait = leader_trait_limited_cyborg
-		# add_trait = { trait = leader_trait_cyborg show_message = no }
-		update_leader_after_modification = yes
-	}
-
-	every_pool_leader = {
-		limit = {
-			is_exact_same_species = event_target:changing_species
-			NOT = { has_trait = leader_trait_cyborg }
-			OR = {
-				is_spiritualist = no
-				owner = { has_country_flag = cyber_force_objectors }
+		every_owned_leader = {
+			limit = {
+				is_exact_same_species = event_target:changing_species
+				NOT = { has_trait = leader_trait_cyborg }
+				OR = {
+					is_spiritualist = no
+					owner = { has_country_flag = cyber_force_objectors }
+				}
 			}
+			change_species = event_target:cyberspecies_current
+			# remove_trait = leader_trait_psionic
+			# remove_trait = leader_trait_limited_cyborg
+			# add_trait = { trait = leader_trait_cyborg show_message = no }
+			update_leader_after_modification = yes
 		}
-		change_species = event_target:cyberspecies_current
-		# remove_trait = leader_trait_psionic
-		# remove_trait = leader_trait_limited_cyborg
-		# add_trait = { trait = leader_trait_cyborg show_message = no }
-		update_leader_after_modification = yes
+		every_pool_leader = {
+			limit = {
+				is_exact_same_species = event_target:changing_species
+				NOT = { has_trait = leader_trait_cyborg }
+				OR = {
+					is_spiritualist = no
+					owner = { has_country_flag = cyber_force_objectors }
+				}
+			}
+			change_species = event_target:cyberspecies_current
+			# remove_trait = leader_trait_psionic
+			# remove_trait = leader_trait_limited_cyborg
+			# add_trait = { trait = leader_trait_cyborg show_message = no }
+			update_leader_after_modification = yes
+		}
+		update_node_portraits_if_gestalt_effect = yes
 	}
-
-	update_node_portraits_if_gestalt_effect = yes
 }
 
 # Requires: event_target:changing_species and event_target:cyberspecies_current
 # Only used once
 cyberize_leaders_limited_effect = {
-	every_owned_leader = {
+	optimize_memory
+	if = {
 		limit = {
-			is_exact_same_species = event_target:changing_species
-			NOR = {
-				has_trait = leader_trait_cyborg
-				has_trait = leader_trait_limited_cyborg
-			}
-			is_spiritualist = yes
+			exists = event_target:changing_species
+			exists = event_target:cyberspecies_current
 		}
-		change_species = event_target:cyberspecies_current
-		# remove_trait = leader_trait_psionic
-		# add_trait = { trait = leader_trait_limited_cyborg show_message = no }
-		update_leader_after_modification = yes
-	}
-
-	every_pool_leader = {
-		limit = {
-			is_exact_same_species = event_target:changing_species
-			NOR = {
-				has_trait = leader_trait_cyborg
-				has_trait = leader_trait_limited_cyborg
+		every_owned_leader = {
+			limit = {
+				is_exact_same_species = event_target:changing_species
+				NOR = {
+					has_trait = leader_trait_cyborg
+					has_trait = leader_trait_limited_cyborg
+				}
+				is_spiritualist = yes
 			}
-			is_spiritualist = yes
+			change_species = event_target:cyberspecies_current
+			# remove_trait = leader_trait_psionic
+			# add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+			update_leader_after_modification = yes
 		}
-		change_species = event_target:cyberspecies_current
-		# remove_trait = leader_trait_psionic
-		# add_trait = { trait = leader_trait_limited_cyborg show_message = no }
-		update_leader_after_modification = yes
+		every_pool_leader = {
+			limit = {
+				is_exact_same_species = event_target:changing_species
+				NOR = {
+					has_trait = leader_trait_cyborg
+					has_trait = leader_trait_limited_cyborg
+				}
+				is_spiritualist = yes
+			}
+			change_species = event_target:cyberspecies_current
+			# remove_trait = leader_trait_psionic
+			# add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+			update_leader_after_modification = yes
+		}
+		update_node_portraits_if_gestalt_effect = yes
 	}
-
-	update_node_portraits_if_gestalt_effect = yes
 }
 
 # Requires: event_target:cybercreedspecies@root.owner
@@ -628,19 +638,25 @@ cyberize_creed_leaders_effect = {
 # OBSOLETE: can be replaced with assimilate_colony_ships
 cyberize_colony_ships_effect = {
 	optimize_memory
-	every_controlled_ship = {
+	if = {
 		limit = {
-			is_ship_class = shipclass_colonizer
-			exists = species
-			species = {
-				is_exact_same_species = event_target:changing_species
-				NOR = {
-					has_trait = trait_cybernetic
-					has_trait = trait_limited_cybernetic
+			exists = event_target:changing_species
+			exists = event_target:cyberspecies_current
+		}
+		every_controlled_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				exists = species
+				species = {
+					is_exact_same_species = event_target:changing_species
+					NOR = {
+						has_trait = trait_cybernetic
+						has_trait = trait_limited_cybernetic
+					}
 				}
 			}
+			change_species = event_target:cyberspecies_current
 		}
-		change_species = event_target:cyberspecies_current
 	}
 }
 
@@ -648,31 +664,37 @@ cyberize_colony_ships_effect = {
 # OBSOLETE: can be replaced with assimilate_armies
 cyberize_armies_effect = {
 	optimize_memory
-	every_owned_army = {
+	if = {
 		limit = {
-			exists = species
-			species = {
-				is_exact_same_species = event_target:changing_species
-				NOR = {
-					has_trait = trait_cybernetic
-					has_trait = trait_limited_cybernetic
+			exists = event_target:changing_species
+			exists = event_target:cyberspecies_current
+		}
+		every_owned_army = {
+			limit = {
+				exists = species
+				species = {
+					is_exact_same_species = event_target:changing_species
+					NOR = {
+						has_trait = trait_cybernetic
+						has_trait = trait_limited_cybernetic
+					}
+				}
+				OR = {
+					army_type = assault_army
+					army_type = defense_army
+				}
+				# To be realistic!?
+				# NAND = {
+				# 	exists = fleet
+				# 	fleet = { is_in_combat = yes }
+				# }
+				NAND = {
+					exists = planet
+					planet = { has_ground_combat = yes }
 				}
 			}
-			OR = {
-				army_type = assault_army
-				army_type = defense_army
-			}
-			# To be realistic!?
-			# NAND = {
-			# 	exists = fleet
-			# 	fleet = { is_in_combat = yes }
-			# }
-			NAND = {
-				exists = planet
-				planet = { has_ground_combat = yes }
-			}
+			modify_army = { name = random species = event_target:cyberspecies_current }
 		}
-		modify_army = { name = random species = event_target:cyberspecies_current }
 	}
 }
 

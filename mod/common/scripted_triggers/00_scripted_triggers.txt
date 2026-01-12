@@ -38,12 +38,12 @@ is_pirate_system = {
 }
 
 is_shackled_robot_species_rights = {
-	is_robotic_species = yes
+	is_robotic = yes
 	species_rights_robot_full_rights_check = no
 }
 
 is_free_robot_species_rights = {
-	is_robotic_species = yes
+	is_robotic = yes
 	species_rights_robot_full_rights_check = yes
 }
 
@@ -3480,17 +3480,18 @@ valid_curators_intel_trade_target = {
 	is_country_type = default
 	NOR = {
 		is_same_empire = root
+		is_same_empire = prev # Vfix opt
 		AND = {
 			exists = event_target:curator_customer_1
-			is_same_empire = event_target:curator_customer_1
+			is_same_value = event_target:curator_customer_1
 		}
 		AND = {
 			exists = event_target:curator_customer_2
-			is_same_empire = event_target:curator_customer_2
+			is_same_value = event_target:curator_customer_2
 		}
 		AND = {
 			exists = event_target:curator_customer_3
-			is_same_empire = event_target:curator_customer_3
+			is_same_value = event_target:curator_customer_3
 		}
 	}
 	root = {
@@ -3500,8 +3501,11 @@ valid_curators_intel_trade_target = {
 			has_relation_flag = { who = prev flag = curator_bought_intel_on }
 		}
 	}
-	OR = { # AI doesn't use Curators, but players can get protection against this by not using them
-		AND = {
+	OR = {
+		event_target:curator_enclave_country = {
+			trust = { who = prev value >= 50 }
+		}
+		AND = {  # AI doesn't use Curators, but players can get protection against this by not using them
 			is_ai = yes
 			has_communications = event_target:curator_enclave_country
 			OR = {
@@ -3510,9 +3514,6 @@ valid_curators_intel_trade_target = {
 					any_fleet_in_system = { is_owned_by = event_target:curator_enclave_country }
 				}
 			}
-		}
-		event_target:curator_enclave_country = {
-			trust = { who = prev value >= 50 }
 		}
 	}
 }

@@ -323,7 +323,7 @@ country_event = {
 					change_species = event_target:syncretic_species
 				}
 			}
-			log = "FIX: Changed rebelling syncretic species \\[Root.owner_species.GetName] from \\[Root.GetName] ! "
+			log = "FIX: Changed rebelling syncretic species \\[Root.owner_species.GetName] from \\[Root.GetName]!"
 			clear_variable = syncretic_pops
 			every_owned_species = {
 				limit = {
@@ -1931,5 +1931,42 @@ country_event = {
 	}
 
 	after = { # set_name = random # Because sometimes native didn't work?
+	}
+}
+
+# VFIX NEW by FirePrince: TODO already exclude on war goal!?
+# War is starting, remove war participant, which already fight each other, like rebels
+country_event = {
+	id = rebellionfix.411
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		# is_war_leader = yes # any war
+		is_war_participant = { war = from side = defenders }
+		from = {
+			any_defender = {
+				NOT = { is_same_empire = root }
+				is_at_war_with = root
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					is_subject = yes
+					is_federation_leader = no
+				}
+				any_war = {
+					NOT = { is_same_value = from }
+					root = {
+						is_war_participant = { war = prev side = attackers }
+					}
+				}
+			}
+			from = { remove_war_participant = root }
+		}
 	}
 }

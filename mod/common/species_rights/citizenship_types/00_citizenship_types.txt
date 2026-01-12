@@ -491,12 +491,10 @@ citizenship_limited = {
 	}
 
 	potential = {
+		exists = from # Vfix needed anyway
 		OR = {
 			is_sapient = no
-			AND = {
-				exists = from
-				from = { is_hive_empire = no is_machine_empire = no }
-			}
+			from = { is_hive_empire = no is_machine_empire = no }
 		}
 		NOR = {
 			AND = {

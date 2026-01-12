@@ -1,11 +1,10 @@
 ######################################
 # Astral Rifts Events - 1000 to 1900 #
 ######################################
+namespace = astral_rift
 ################################
 # Astral Rift - Crystal Events #
 ################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1000
@@ -385,8 +384,6 @@ system_event = {
 # Astral Rift - Lonely Planet Events #
 ######################################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.1100
 	title = astral_rift.1100.name
@@ -564,8 +561,6 @@ astral_rift_event = {
 ###################################
 # Astral Rift - Microverse Events #
 ###################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1200
@@ -791,8 +786,6 @@ astral_rift_event = {
 ##############################
 # Astral Rift - Fluid Events #
 ##############################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1300
@@ -1052,6 +1045,7 @@ astral_rift_event = {
 		explorer = {
 			add_resource = { exotic_gases = -100 }
 		}
+		fleet = { save_event_target_as = astral_rift_fleet } # Vfix
 		set_next_astral_rift_event = { id = astral_rift.1325 on_roll_failed = astral_rift.1330 fail_probability = @default_failure_probability }
 		ai_chance = {
 			inline_script = astral_rift/rift_difficulty_ai_weight
@@ -1266,7 +1260,17 @@ astral_rift_event = {
 
 	option = {
 		name = GOOD
-		explorer = { add_relic = r_plasmic_core astral_thread_large_reward = yes }
+		explorer = {
+			if = {
+				limit = { # Vfix
+					hidden_trigger = {
+						NOT = { has_relic = r_plasmic_core }
+					}
+				}
+				add_relic = r_plasmic_core
+			}
+			astral_thread_large_reward = yes
+		}
 		finish_astral_rift = yes
 	}
 }
@@ -1291,13 +1295,25 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 
+	immediate = {
+		# Vfix
+		if = {
+			limit = { exists = fleet }
+			fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else = {
+			from.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+	}
+
 	option = {
 		name = UNFORTUNATE
-		explorer = {
+		# explorer = {
+		event_target:astral_rift_fleet.owner = { # Vfix
 			add_modifier = { modifier = rift_samples_biology_modifier years = 10 }
 			astral_thread_large_reward = yes
 		}
-		fleet = {
+		event_target:astral_rift_fleet = { # Vfix
 			kill_leader = { show_notification = yes }
 			destroy_fleet = this
 		}
@@ -1308,8 +1324,6 @@ astral_rift_event = {
 ###############################
 # Astral Rift - Garden Events #
 ###############################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1400
@@ -2281,8 +2295,6 @@ country_event = {
 #####################################
 # Astral Rift - Desert Ruins Events #
 #####################################
-
-namespace = astral_rift
 @timeToSolve = 3
 
 astral_rift_event = {
@@ -2998,8 +3010,6 @@ astral_rift_event = {
 # Astral Rift - Strange Station Events #
 ########################################
 
-namespace = astral_rift
-
 astral_rift_event = {
 	id = astral_rift.1600
 	title = astral_rift.1600.name
@@ -3669,7 +3679,12 @@ country_event = {
 					}
 				}
 			}
-			change_government = { authority = random civics = random }
+			change_government = random # Vfix
+			# change_government = { # Vfix log: failed to calculate configuration for country
+			# 	remove_invalid_civics = yes # Vfix
+			# 	authority = random
+			# 	civics = random
+			# }
 			set_name = random
 		}
 	}
@@ -3958,8 +3973,6 @@ astral_rift_event = {
 ##################################
 # Astral Rift - Rockworms Events #
 ##################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1800
@@ -4465,8 +4478,6 @@ country_event = {
 ################################
 # Astral Rift - Volcano Events #
 ################################
-
-namespace = astral_rift
 
 astral_rift_event = {
 	id = astral_rift.1900

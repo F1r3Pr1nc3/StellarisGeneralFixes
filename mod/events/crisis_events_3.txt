@@ -1055,14 +1055,10 @@ planet_event = {
 	immediate = {
 		if = { # Vfix opt
 			limit = {
-				NOT = {
-					exists = event_target:AI_crisis
-				}
+				NOT = { exists = event_target:AI_crisis }
 			}
 			random_country = {
-				limit = {
-					is_country_type = ai_empire
-				}
+				limit = { is_country_type = ai_empire }
 				save_global_event_target_as = AI_crisis
 			}
 		}
@@ -1122,14 +1118,10 @@ planet_event = {
 	immediate = {
 		if = { # Vfix opt
 			limit = {
-				NOT = {
-					exists = event_target:AI_crisis
-				}
+				NOT = { exists = event_target:AI_crisis }
 			}
 			random_country = {
-				limit = {
-					is_country_type = ai_empire
-				}
+				limit = { is_country_type = ai_empire }
 				save_global_event_target_as = AI_crisis
 			}
 		}
@@ -1704,7 +1696,6 @@ planet_event = {
 
 	immediate = {
 		controller = { save_event_target_as = AI_crisis }
-
 		set_owner = controller
 		create_pop_group = { species = event_target:custodian_bot size = 300 } # Vfix opt
 		every_owned_pop_group = {
@@ -3406,14 +3397,10 @@ event = {
 			set_variable = { which = exd_galaxy_percentage value = 0 }
 			if = { # Vfix opt
 				limit = {
-					NOT = {
-						exists = event_target:AI_crisis
-					}
+					NOT = { exists = event_target:AI_crisis }
 				}
 				random_country = {
-					limit = {
-						is_country_type = ai_empire
-					}
+					limit = { is_country_type = ai_empire }
 					save_global_event_target_as = AI_crisis
 				}
 			}

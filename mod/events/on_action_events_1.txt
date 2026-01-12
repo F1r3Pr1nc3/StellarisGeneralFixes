@@ -3739,7 +3739,7 @@ country_event = {
 
 	trigger = {
 		NOT = { has_country_flag = day_0 }
-		fromfrom = {
+		from = {
 			NOT = { has_country_flag = day_0 }
 			OR = {
 				is_country_type = default
@@ -3747,15 +3747,20 @@ country_event = {
 				is_mercenary = yes # Vfix
 			}
 		}
-		NOT = { has_country_flag = first_contact_completed@fromfrom }
+		NOT = { has_country_flag = first_contact_completed@from }
 	}
 
 	immediate = {
-		fromfrom = {
+		from = {
 			save_event_target_as = contact_empire
-			country_event = { id = action.13 }
+			if = {
+				limit = { is_country_type = default }
+				country_event = { id = action.13 }
+				prev = {
+					country_event = { id = distar.238 days = 1 } # ratling
+				}
+			}
 		}
-		country_event = { id = distar.238 days = 1 }
 	}
 
 	after = {
@@ -4036,23 +4041,22 @@ country_event = {
 
 	desc = {
 		text = "action.13.desc"
-		trigger = {
-			# NOT = { # Vfix removed in v2.2
-			# 	from = {
-			# 		has_relation_flag = { who = root flag = AbandonedRefugees }
-			# 	}
-			# }
-		}
+		# trigger = { # Vfix removed in v2.2
+		# 	NOT = {
+		# 		from = {
+		# 			has_relation_flag = { who = root flag = AbandonedRefugees }
+		# 		}
+		# 	}
+		# }
 	}
-	desc = {
-		text = "action.13.abandoned.desc"
-		trigger = {
-			# from = { # Vfix removed in v2.2
-			# 	has_relation_flag = { who = root flag = AbandonedRefugees }
-			# }
-		}
-	}
-
+	# desc = { # Vfix removed in v2.2
+	# 	text = "action.13.abandoned.desc"
+	# 	trigger = {
+	# 		from = {
+	# 			has_relation_flag = { who = root flag = AbandonedRefugees }
+	# 		}
+	# 	}
+	# }
 	picture = GFX_evt_throne_room
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
@@ -4060,7 +4064,10 @@ country_event = {
 	trigger = {
 		NOT = { has_country_flag = day_0 }
 		from = {
-			NOT = { has_country_flag = day_0 }
+			NOR = {
+				has_country_flag = day_0
+				is_same_value = root # Vfix superflous but happens!?
+			}
 			OR = {
 				is_country_type = default
 				is_country_type = enclave
@@ -4071,7 +4078,7 @@ country_event = {
 
 	immediate = {
 		from = { save_event_target_as = contact_empire }
-		country_event = { id = distar.239 days = 1 }
+		country_event = { id = distar.238 days = 1 } # ratling
 	}
 
 	option = {

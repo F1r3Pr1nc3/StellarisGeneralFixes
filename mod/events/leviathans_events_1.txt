@@ -5808,23 +5808,24 @@ country_event = {
 			owner_species = { save_event_target_as = curator_species }
 		}
 		# Poll for valid Intel targets
-		random_country = {
+		# Vfix opt
+		random_playable_country = {
 			limit = {
 				valid_curators_intel_trade_target = yes # includes checks for event targets set in this event
 			}
 			save_event_target_as = curator_customer_1
-		}
-		random_country = {
-			limit = { valid_curators_intel_trade_target = yes }
-			save_event_target_as = curator_customer_2
-		}
-		random_country = {
-			limit = { valid_curators_intel_trade_target = yes }
-			save_event_target_as = curator_customer_3
-		}
-		random_country = {
-			limit = { valid_curators_intel_trade_target = yes }
-			save_event_target_as = curator_customer_4
+			random_playable_country = {
+				limit = { valid_curators_intel_trade_target = yes }
+				save_event_target_as = curator_customer_2
+				random_playable_country = {
+					limit = { valid_curators_intel_trade_target = yes }
+					save_event_target_as = curator_customer_3
+					random_playable_country = {
+						limit = { valid_curators_intel_trade_target = yes }
+						save_event_target_as = curator_customer_4
+					}
+				}
+			}
 		}
 	}
 
@@ -6053,11 +6054,11 @@ country_event = {
 		else_if = { # Random default empire
 			limit = {
 				any_playable_country = {
-					NOT = { is_same_value = root }
+					NOT = { is_same_empire = root }
 				}
 			}
 			random_playable_country = {
-				limit = { NOT = { is_same_value = root } }
+				limit = { NOT = { is_same_empire = root } }
 				save_event_target_as = unfriends
 			}
 		}
@@ -6065,8 +6066,8 @@ country_event = {
 			random_country = {
 				limit = {
 					NOR = {
-						is_same_value = root
-						is_same_value = event_target:curator_enclave_country
+						is_same_empire = root
+						is_same_empire = event_target:curator_enclave_country
 					}
 					OR = {
 						is_primitive = yes
@@ -6118,9 +6119,9 @@ country_event = {
 	option = {
 		name = GOODBYE
 		default_hide_option = yes
-		hidden_effect = {
-			remove_country_flag = curator_enclave_diplomacy_engaged
-		}
+		# hidden_effect = { Vfix never used
+		# 	remove_country_flag = curator_enclave_diplomacy_engaged
+		# }
 	}
 }
 

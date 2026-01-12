@@ -496,12 +496,12 @@ fleet_event = {
 
 	immediate = {
 		leader = { save_event_target_as = officer }
-		solar_system = { save_event_target_as = system }
+		from = { save_event_target_as = system } # Vfix
 	}
 
 	option = {
 		name = GOOD
-		leader = {
+		event_target:officer = { # Vfix
 			add_trait = { trait = leader_trait_cautious }
 		}
 	}
@@ -553,12 +553,12 @@ fleet_event = {
 
 	immediate = {
 		leader = { save_event_target_as = officer }
-		solar_system = { save_event_target_as = system }
+		from = { save_event_target_as = system } # Vfix
 	}
 
 	option = {
 		name = UNFORTUNATE
-		leader = {
+		event_target:officer = { # Vfix
 			add_trait = { trait = leader_trait_nervous }
 		}
 	}
@@ -611,12 +611,12 @@ fleet_event = {
 
 	immediate = {
 		leader = { save_event_target_as = officer }
-		solar_system = { save_event_target_as = system }
+		from = { save_event_target_as = system } # Vfix
 	}
 
 	option = {
 		name = GOOD
-		leader = {
+		event_target:officer = { # Vfix
 			add_trait = { trait = leader_trait_unyielding }
 		}
 	}
@@ -669,18 +669,12 @@ fleet_event = {
 
 	immediate = {
 		leader = { save_event_target_as = officer }
-		if = {
-			limit = { exists = solar_system }
-			solar_system = { save_event_target_as = system }
-		}
-		else = { # Vfix
-			from = { save_event_target_as = system }
-		}
+		from = { save_event_target_as = system } # Vfix
 	}
 
 	option = {
 		name = GOOD
-		leader = {
+		event_target:officer = { # Vfix
 			add_trait = { trait = leader_trait_gale_speed }
 		}
 	}
@@ -730,12 +724,12 @@ fleet_event = {
 
 	immediate = {
 		leader = { save_event_target_as = officer }
-		solar_system = { save_event_target_as = system }
+		from = { save_event_target_as = system } # Vfix
 	}
 
 	option = {
 		name = UNFORTUNATE
-		leader = {
+		event_target:officer = { # Vfix
 			add_trait = { trait = leader_trait_lethargic }
 		}
 	}
@@ -769,14 +763,10 @@ fleet_event = {
 	location = root
 
 	trigger = {
-		exists = owner
+		can_generate_trade_value = yes # Vfix flex
 		is_being_repaired = yes
 		exists = leader
-		owner = {
-			is_country_type = default
-			is_gestalt = no
-			has_technology = tech_doctrine_fleet_size_3
-		}
+		owner = { is_gestalt = no has_technology = tech_doctrine_fleet_size_3 }
 		leader = {
 			leader_class = commander
 			NOR = {
@@ -785,6 +775,7 @@ fleet_event = {
 			}
 		}
 	}
+
 	# Vfix TODO DEPRECATE
 	mean_time_to_happen = {
 		years = 20
@@ -796,7 +787,7 @@ fleet_event = {
 
 	option = {
 		name = GOOD
-		leader = {
+		event_target:officer = { # Vfix
 			add_trait = { trait = leader_trait_engineer }
 		}
 	}
@@ -1042,10 +1033,8 @@ country_event = {
 	option = {
 		name = GOOD
 		every_owned_leader = {
-			if = {
-				limit = { has_trait = leader_trait_sapient_AI_assistant }
-				remove_trait = leader_trait_sapient_AI_assistant
-			}
+			limit = { has_trait = leader_trait_sapient_AI_assistant } # Vfix opt
+			remove_trait = leader_trait_sapient_AI_assistant
 		}
 	}
 }

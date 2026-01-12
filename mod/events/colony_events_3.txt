@@ -310,7 +310,7 @@ planet_event = {
 		}
 		random_owned_pop_group = { kill_single_pop = yes }
 		set_planet_purge_type = purge_displacement
-		planet_event = { id = colony_mod.103 days = 40 }
+		planet_event = { id = colony_mod.103 days = 64 }
 	}
 
 	option = {
@@ -356,8 +356,8 @@ planet_event = {
 				}
 				create_army = {
 					name = "NAME_Enraged_Guardian"
-					owner = root
-					species = root
+					owner = controller
+					species = controller
 					type = "titanic_guardian_army"
 				}
 			}
@@ -6761,7 +6761,7 @@ country_event = {
 	immediate = {
 		create_ambient_object = {
 			type = "extradimensional_2"
-			location = capital_scope.star
+			location = capital_star
 			use_3d_location = yes
 			entity_offset = { min = 80 max = 80 }
 			entity_offset_angle = { min = 180 max = 180 }

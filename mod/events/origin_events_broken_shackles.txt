@@ -82,6 +82,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = owner
 		owner = {
 			has_country_flag = visited_former_home_world # Checking that origin.5001 has fired.
 			NOT = { has_country_flag = recently_found_homeworld }
@@ -246,7 +247,7 @@ ship_event = {
 		}
 		name = origin.5000.a
 		owner = {
-			add_modifier = { modifier = "broken_shackles_homeworld_found_01" days = 1800 }
+			add_modifier = { modifier = "broken_shackles_homeworld_found_01" years = 5 }
 			hidden_effect = {
 				country_event = { id = origin.5002 days = 360 random = 50 }
 			}
@@ -342,7 +343,7 @@ ship_event = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
 				NOR = {
-					pop_amount <= 0
+					pop_amount < 1
 					is_planet_class = pc_nuked
 					owner = { is_primitive = yes }
 				}
@@ -435,7 +436,7 @@ ship_event = {
 		}
 		name = EXCELLENT
 		owner = {
-			add_modifier = { modifier = "broken_shackles_homeworld_found_02" days = 1800 }
+			add_modifier = { modifier = "broken_shackles_homeworld_found_02" years = 5 }
 		}
 	}
 	option = {
@@ -657,7 +658,7 @@ country_event = {
 		name = origin.5005.a
 		event_target:martialed_planet = { remove_modifier = "martial_law" }
 		remove_modifier = broken_shackles_homeworld_found_03
-		add_modifier = { modifier = "broken_shackles_homeworld_found_05" days = 3600 }
+		add_modifier = { modifier = "broken_shackles_homeworld_found_05" years = 10 }
 		hidden_effect = {
 			every_owned_pop_group = {
 				limit = {
@@ -684,19 +685,21 @@ country_event = {
 
 	immediate = {
 		random_owned_leader = {
-			limit = {
+			limit = { # Vfix
 				leader_class = scientist
 				OR = {
 					is_same_species = root.species
+					AND = {
+						exists = home_planet
+						home_planet = { is_same_value = event_target:broken_shackles_homeworld }
+					}
 					AND = {
 						exists = event_target:broken_shackles_homeworld_owner
 						is_same_species = event_target:broken_shackles_homeworld_owner.species
 					}
 				}
-				species = {
-					can_live_on_planet = event_target:broken_shackles_homeworld
-				}
-				NOR = { # Vfix
+				species = { can_live_on_planet = event_target:broken_shackles_homeworld }
+				NOR = {
 					is_immortal = yes
 					has_leader_flag = leader_death_events_blocked
 					is_robotic_species = yes
@@ -716,18 +719,20 @@ country_event = {
 			}
 		}
 		random_owned_leader = {
-			limit = {
+			limit = { # Vfix
 				OR = {
 					is_same_species = root.species
+					AND = {
+						exists = home_planet
+						home_planet = { is_same_value = event_target:broken_shackles_homeworld }
+					}
 					AND = {
 						exists = event_target:broken_shackles_homeworld_owner
 						is_same_species = event_target:broken_shackles_homeworld_owner.species
 					}
 				}
-				species = {
-					can_live_on_planet = event_target:broken_shackles_homeworld
-				}
-				NOR = { # Vfix
+				species = { can_live_on_planet = event_target:broken_shackles_homeworld }
+				NOR = {
 					is_immortal = yes
 					has_leader_flag = leader_death_events_blocked
 					is_robotic_species = yes
@@ -796,7 +801,7 @@ country_event = {
 	option = {
 		name = EXCELLENT
 		remove_modifier = broken_shackles_homeworld_found_04
-		add_modifier = { modifier = "broken_shackles_homeworld_found_06" days = 9000 }
+		add_modifier = { modifier = "broken_shackles_homeworld_found_06" years = 25 }
 		hidden_effect = {
 			every_owned_pop_group = {
 				limit = {
@@ -824,7 +829,7 @@ country_event = {
 	option = {
 		name = EXCELLENT
 		remove_modifier = broken_shackles_homeworld_found_04
-		add_modifier = { modifier = "broken_shackles_homeworld_found_07" days = 9000 }
+		add_modifier = { modifier = "broken_shackles_homeworld_found_07" years = 25 }
 		hidden_effect = {
 			every_owned_pop_group = {
 				limit = {
@@ -934,6 +939,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = owner
 		owner = {
 			has_country_flag = visited_former_home_world # Checking that origin.5001 has fired.
 			NOT = { has_country_flag = recently_found_homeworld }
@@ -988,6 +994,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = owner
 		owner = {
 			has_origin = origin_broken_shackles
 			NOT = { has_country_flag = broken_shackles_first_outpost }
@@ -1164,7 +1171,7 @@ fleet_event = {
 					species = {
 						NOT = { is_same_value = root.owner_species }
 					}
-					is_pop_category = specialist
+					is_specialist_category = yes
 				}
 				species = {
 					save_event_target_as = engineering_shackled_species
@@ -1187,9 +1194,9 @@ fleet_event = {
 					}
 				}
 			}
-			random_list = {
-				90 = {  }
-				10 = { from = { set_archaeology_flag = scavenger_reward } }
+			random = {
+				chance = 10
+				from = { set_archaeology_flag = scavenger_reward }
 			}
 		}
 	}
@@ -1269,9 +1276,9 @@ fleet_event = {
 					}
 				}
 			}
-			random_list = {
-				90 = {  }
-				10 = { from = { set_archaeology_flag = scavenger_reward } }
+			random = {
+				chance = 10
+				from = { set_archaeology_flag = scavenger_reward }
 			}
 		}
 	}
@@ -1352,9 +1359,9 @@ fleet_event = {
 					}
 				}
 			}
-			random_list = {
-				90 = {  }
-				10 = { from = { set_archaeology_flag = scavenger_reward } }
+			random = {
+				chance = 10
+				from = { set_archaeology_flag = scavenger_reward }
 			}
 		}
 	}
@@ -1426,9 +1433,9 @@ fleet_event = {
 					}
 				}
 			}
-			random_list = {
-				90 = {  }
-				10 = { from = { set_archaeology_flag = scavenger_reward } }
+			random = {
+				chance = 10
+				from = { set_archaeology_flag = scavenger_reward }
 			}
 		}
 	}
@@ -1536,9 +1543,9 @@ fleet_event = {
 					}
 				}
 			}
-			random_list = {
-				90 = {  }
-				10 = { from = { set_archaeology_flag = scavenger_reward } }
+			random = {
+				chance = 10
+				from = { set_archaeology_flag = scavenger_reward }
 			}
 		}
 	}
@@ -1555,7 +1562,7 @@ fleet_event = {
 				limit = {
 					NOT = { has_communications = event_target:MSI_country }
 				}
-				add_modifier = { modifier = "broken_shackles_MSI_found" days = 3600 }
+				add_modifier = { modifier = "broken_shackles_MSI_found" years = 10 }
 			}
 			capital_scope = { remove_deposit = d_ship_debris_broken_shackles_blocker }
 		}
@@ -1584,7 +1591,7 @@ fleet_event = {
 				limit = {
 					NOT = { has_communications = event_target:MSI_country }
 				}
-				add_modifier = { modifier = "broken_shackles_MSI_found" days = 3600 }
+				add_modifier = { modifier = "broken_shackles_MSI_found" years = 10 }
 			}
 			add_monthly_resource_mult = {
 				resource = alloys
@@ -1749,7 +1756,7 @@ country_event = {
 	option = {
 		name = UNDERSTOOD
 		custom_tooltip = origin.5041.tt
-		add_modifier = { modifier = unshackled_politics_broken_shackles days = 3600 }
+		add_modifier = { modifier = unshackled_politics_broken_shackles years = 10 }
 	}
 }
 
@@ -1894,7 +1901,7 @@ country_event = {
 }
 
 country_event = {
-	id = "origin.5049"
+	id = origin.5049
 	title = "origin.5049.name"
 	desc = "origin.5049.desc"
 	picture = GFX_evt_surreal_visions
@@ -1903,7 +1910,7 @@ country_event = {
 
 	option = {
 		name = origin.5049.a
-		add_modifier = { modifier = diverse_design days = 3600 }
+		add_modifier = { modifier = diverse_design years = 10 }
 	}
 }
 
@@ -1951,7 +1958,7 @@ first_contact_event = {
 	option = {
 		name = origin.5065.a
 		owner = {
-			add_modifier = { modifier = broken_shackles_MSI_contact_01 days = 1800 }
+			add_modifier = { modifier = broken_shackles_MSI_contact_01 years = 5 }
 		}
 		hidden_effect = {
 			set_first_contact_stage = slavers_stage_2
@@ -2010,7 +2017,7 @@ first_contact_event = {
 				limit = { has_modifier = broken_shackles_MSI_contact_01 }
 				remove_modifier = broken_shackles_MSI_contact_01
 			}
-			add_modifier = { modifier = broken_shackles_MSI_contact_02 days = 3600 }
+			add_modifier = { modifier = broken_shackles_MSI_contact_02 years = 10 }
 			add_opinion_modifier = { who = event_target:MSI_country modifier = contact_with_MSI_02 }
 		}
 		finish_first_contact_effect = yes
@@ -2045,7 +2052,7 @@ country_event = {
 	trigger = {
 		is_galactic_community_member = yes
 		has_origin = origin_broken_shackles
-		any_country = { has_origin = origin_slavers is_galactic_community_member = yes }
+		any_galcom_member = { has_origin = origin_slavers }
 		NOR = {
 			has_country_flag = met_MSI
 			has_country_flag = met_MSI_at_GalCom
@@ -2059,14 +2066,14 @@ country_event = {
 	option = {
 		name = origin.5075.a
 		add_opinion_modifier = { who = event_target:MSI_country modifier = contact_with_MSI_01 }
-		add_modifier = { modifier = broken_shackles_MSI_contact_01 days = 1800 }
+		add_modifier = { modifier = broken_shackles_MSI_contact_01 years = 5 }
 	}
 }
 
 ## GalCom Events ##
 # Resolution - Greater Than Ourselves - Proposed
 country_event = {
-	id = "origin.5094"
+	id = origin.5094
 	title = "origin.5094.name"
 	desc = "origin.5094.desc"
 	picture = GFX_evt_arguing_senate
@@ -2094,7 +2101,7 @@ country_event = {
 
 # Resolution - Greater Than Ourselves - Passed
 country_event = {
-	id = "origin.5095"
+	id = origin.5095
 	title = "origin.5095.name"
 	desc = "origin.5095.desc"
 	picture = GFX_evt_arguing_senate
@@ -2123,13 +2130,13 @@ country_event = {
 
 	option = {
 		name = origin.5095.a
-		add_modifier = { modifier = broken_shackles_slavery_outlawed days = 3600 }
+		add_modifier = { modifier = broken_shackles_slavery_outlawed years = 10 }
 	}
 }
 
 # Resolution - Greater Than Ourselves - Failed
 country_event = {
-	id = "origin.5100"
+	id = origin.5100
 	title = "origin.5100.name"
 	desc = "origin.5100.desc"
 	picture = GFX_evt_arguing_senate
@@ -2158,13 +2165,13 @@ country_event = {
 
 	option = {
 		name = origin.5100.a
-		add_modifier = { modifier = broken_shackles_slavery_continues days = 3600 }
+		add_modifier = { modifier = broken_shackles_slavery_continues years = 10 }
 	}
 }
 
 # Resolution - Balance in the Middle - Proposed
 country_event = {
-	id = "origin.5104"
+	id = origin.5104
 	title = "origin.5094.name"
 	desc = "origin.5104.desc"
 	picture = GFX_evt_arguing_senate
@@ -2192,7 +2199,7 @@ country_event = {
 
 # Resolution - Balance in the Middle - Passed
 country_event = {
-	id = "origin.5105"
+	id = origin.5105
 	title = "origin.5105.name"
 	desc = "origin.5105.desc"
 	picture = GFX_evt_arguing_senate
@@ -2221,13 +2228,13 @@ country_event = {
 
 	option = {
 		name = EXCELLENT
-		add_modifier = { modifier = broken_shackles_slavery_outlawed days = 1800 }
+		add_modifier = { modifier = broken_shackles_slavery_outlawed years = 5 }
 	}
 }
 
 # Resolution - Balance in the Middle - Failed
 country_event = {
-	id = "origin.5110"
+	id = origin.5110
 	title = "origin.5110.name"
 	desc = "origin.5110.desc"
 	picture = GFX_evt_arguing_senate
@@ -2256,13 +2263,13 @@ country_event = {
 
 	option = {
 		name = origin.5110.a
-		add_modifier = { modifier = broken_shackles_slavery_continues days = 1800 }
+		add_modifier = { modifier = broken_shackles_slavery_continues years = 5 }
 	}
 }
 
 # Resolution - Organic Slavery Ban - Proposed
 country_event = {
-	id = "origin.5114"
+	id = origin.5114
 	title = "origin.5094.name"
 	desc = "origin.5114.desc"
 	picture = GFX_evt_arguing_senate
@@ -2290,7 +2297,7 @@ country_event = {
 
 # Resolution - Organic Slavery Ban - Passed
 country_event = {
-	id = "origin.5115"
+	id = origin.5115
 	title = "origin.5115.name"
 	desc = "origin.5115.desc"
 	picture = GFX_evt_arguing_senate
@@ -2319,13 +2326,13 @@ country_event = {
 
 	option = {
 		name = EXCELLENT
-		add_modifier = { modifier = broken_shackles_slavery_outlawed days = 3600 }
+		add_modifier = { modifier = broken_shackles_slavery_outlawed years = 10 }
 	}
 }
 
 # Resolution - Organic Slavery Ban - Failed
 country_event = {
-	id = "origin.5120"
+	id = origin.5120
 	title = "origin.5120.name"
 	desc = "origin.5120.desc"
 	picture = GFX_evt_arguing_senate
@@ -2354,13 +2361,13 @@ country_event = {
 
 	option = {
 		name = origin.5120.a
-		add_modifier = { modifier = broken_shackles_slavery_continues days = 3600 }
+		add_modifier = { modifier = broken_shackles_slavery_continues years = 10 }
 	}
 }
 
 # Resolution - Sentient Slavery Ban - Proposed
 country_event = {
-	id = "origin.5124"
+	id = origin.5124
 	title = "origin.5094.name"
 	desc = "origin.5124.desc"
 	picture = GFX_evt_arguing_senate
@@ -2388,7 +2395,7 @@ country_event = {
 
 # Resolution - Sentient Slavery Ban - Passed
 country_event = {
-	id = "origin.5125"
+	id = origin.5125
 	title = "origin.5125.name"
 	desc = "origin.5125.desc"
 	picture = GFX_evt_arguing_senate
@@ -2417,13 +2424,13 @@ country_event = {
 
 	option = {
 		name = EXCELLENT
-		add_modifier = { modifier = broken_shackles_slavery_outlawed days = 1800 }
+		add_modifier = { modifier = broken_shackles_slavery_outlawed years = 5 }
 	}
 }
 
 # Resolution - Sentient Slavery Ban - Failed
 country_event = {
-	id = "origin.5130"
+	id = origin.5130
 	title = "origin.5130.name"
 	desc = "origin.5130.desc"
 	picture = GFX_evt_arguing_senate
@@ -2452,13 +2459,13 @@ country_event = {
 
 	option = {
 		name = origin.5120.a
-		add_modifier = { modifier = broken_shackles_slavery_continues days = 1800 }
+		add_modifier = { modifier = broken_shackles_slavery_continues years = 5 }
 	}
 }
 
 # Resolution - Repealed
 country_event = {
-	id = "origin.5131"
+	id = origin.5131
 	title = "origin.5131.name"
 	desc = "origin.5131.desc"
 	picture = GFX_evt_arguing_senate
@@ -2475,7 +2482,7 @@ country_event = {
 
 	option = {
 		name = origin.5131.a
-		add_modifier = { modifier = broken_shackles_slavery_repeal days = 2400 }
+		add_modifier = { modifier = broken_shackles_slavery_repeal months = 80 }
 	}
 }
 
@@ -2552,13 +2559,13 @@ country_event = {
 	}
 
 	immediate = {
-		set_timed_country_flag = { flag = lost_war_with_slavers days = 1800 }
+		set_timed_country_flag = { flag = lost_war_with_slavers years = 5 }
 	}
 
 	option = {
 		name = origin.5140.a
 		remove_modifier = broken_shackles_war_01
-		add_modifier = { modifier = broken_shackles_war_02 days = 3600 }
+		add_modifier = { modifier = broken_shackles_war_02 years = 10 }
 	}
 }
 
@@ -2594,7 +2601,7 @@ country_event = {
 				country_event = { id = origin.5142 days = 1 }
 			}
 		}
-		set_timed_country_flag = { flag = status_quo_with_slavers days = 1800 }
+		set_timed_country_flag = { flag = status_quo_with_slavers years = 5 }
 	}
 }
 
@@ -2609,7 +2616,7 @@ country_event = {
 	option = {
 		name = origin.5140.a
 		remove_modifier = broken_shackles_war_01
-		add_modifier = { modifier = broken_shackles_war_04 days = 3600 }
+		add_modifier = { modifier = broken_shackles_war_04 years = 10 }
 	}
 }
 
@@ -2630,13 +2637,13 @@ country_event = {
 	}
 
 	immediate = {
-		set_timed_country_flag = { flag = won_war_with_slavers days = 1800 }
+		set_timed_country_flag = { flag = won_war_with_slavers years = 5 }
 	}
 
 	option = {
 		name = EXCELLENT
 		remove_modifier = broken_shackles_war_01
-		add_modifier = { modifier = broken_shackles_war_03 days = 3600 }
+		add_modifier = { modifier = broken_shackles_war_03 years = 10 }
 	}
 }
 
@@ -2689,6 +2696,9 @@ country_event = {
 			limit = {
 				from = {
 					is_war_participant = { who = root side = attackers }
+					any_owned_pop_group = { # Vfix
+						NOT = { has_ethic = ethic_militarist }
+					}
 				}
 			}
 			hidden_effect = {
@@ -2708,7 +2718,7 @@ country_event = {
 
 	option = {
 		name = origin.5146.a
-		add_modifier = { modifier = broken_shackles_war_01 days = 1080 }
+		add_modifier = { modifier = broken_shackles_war_01 years = 3 }
 	}
 
 	after = {
@@ -2757,7 +2767,7 @@ country_event = {
 
 	option = {
 		name = origin.5147.a
-		add_modifier = { modifier = broken_shackles_war_01 days = 1080 }
+		add_modifier = { modifier = broken_shackles_war_01 years = 3 }
 	}
 
 	after = {
@@ -2786,7 +2796,7 @@ country_event = {
 
 	option = {
 		name = origin.5150.a
-		add_modifier = { modifier = broken_shackles_federated_02 days = 3600 }
+		add_modifier = { modifier = broken_shackles_federated_02 years = 10 }
 	}
 }
 
@@ -2814,7 +2824,7 @@ country_event = {
 
 	option = {
 		name = origin.5150.a
-		add_modifier = { modifier = broken_shackles_federated_01 days = 3600 }
+		add_modifier = { modifier = broken_shackles_federated_01 years = 10 }
 	}
 }
 
@@ -2910,8 +2920,10 @@ country_event = {
 			resource_stockpile_compare = { resource = energy value >= 5000 }
 			resource_stockpile_compare = { resource = unity value >= 3000 }
 		}
-		add_resource = { energy = -5000 }
-		add_resource = { unity = -3000 }
+		add_resource = {
+			energy = -5000
+			unity = -3000
+		}
 		add_modifier = { modifier = cost_of_freedom_11 days = -1 }
 		hidden_effect = {
 			reroll_random = yes
@@ -2947,8 +2959,10 @@ country_event = {
 			resource_stockpile_compare = { resource = energy value >= 7000 }
 			resource_stockpile_compare = { resource = unity value >= 5000 }
 		}
-		add_resource = { energy = -7000 }
-		add_resource = { unity = -5000 }
+		add_resource = {
+			energy = -7000
+			unity = -5000
+		}
 		add_modifier = { modifier = cost_of_freedom_04 days = -1 }
 		reroll_random = yes
 		hidden_effect = {
@@ -3042,7 +3056,7 @@ country_event = {
 	option = {
 		name = origin.5220.a
 		remove_modifier = cost_of_freedom_06
-		add_modifier = { modifier = cost_of_freedom_07 days = 1080 }
+		add_modifier = { modifier = cost_of_freedom_07 years = 3 }
 	}
 }
 
@@ -3064,7 +3078,7 @@ country_event = {
 			limit = { has_modifier = cost_of_freedom_11 }
 			remove_modifier = cost_of_freedom_11
 		}
-		add_modifier = { modifier = cost_of_freedom_12_a days = 1080 }
+		add_modifier = { modifier = cost_of_freedom_12_a years = 3 }
 		hidden_effect = {
 			country_event = { id = origin.5255 days = 1080 random = 200 }
 		}
@@ -3089,7 +3103,7 @@ country_event = {
 			limit = { has_modifier = cost_of_freedom_11 }
 			remove_modifier = cost_of_freedom_11
 		}
-		add_modifier = { modifier = cost_of_freedom_12_b days = 1080 }
+		add_modifier = { modifier = cost_of_freedom_12_b years = 3 }
 		hidden_effect = {
 			country_event = { id = origin.5255 days = 1080 random = 200 }
 		}
@@ -3114,7 +3128,7 @@ country_event = {
 			limit = { has_modifier = cost_of_freedom_11 }
 			remove_modifier = cost_of_freedom_11
 		}
-		add_modifier = { modifier = cost_of_freedom_12_c days = 1080 }
+		add_modifier = { modifier = cost_of_freedom_12_c years = 3 }
 		hidden_effect = {
 			country_event = { id = origin.5255 days = 1080 random = 200 }
 		}
@@ -3138,7 +3152,7 @@ country_event = {
 			min = @tier3unitymin
 			max = @tier3unitymax
 		}
-		add_modifier = { modifier = cost_of_freedom_13 days = 7200 }
+		add_modifier = { modifier = cost_of_freedom_13 years = 20 }
 	}
 }
 
@@ -3159,7 +3173,7 @@ country_event = {
 			min = @tier3unitymin
 			max = @tier3unitymax
 		}
-		add_modifier = { modifier = cost_of_freedom_14 days = 7200 }
+		add_modifier = { modifier = cost_of_freedom_14 years = 20 }
 	}
 }
 
@@ -3180,7 +3194,7 @@ country_event = {
 			min = @tier3unitymin
 			max = @tier3unitymax
 		}
-		add_modifier = { modifier = cost_of_freedom_15 days = 7200 }
+		add_modifier = { modifier = cost_of_freedom_15 years = 20 }
 	}
 }
 
@@ -3260,7 +3274,7 @@ country_event = {
 			limit = { has_modifier = broken_shackles_homeworld_found_03 }
 			remove_modifier = broken_shackles_homeworld_found_03
 		}
-		add_modifier = { modifier = "broken_shackles_homeworlds_found" days = 3600 }
+		add_modifier = { modifier = "broken_shackles_homeworlds_found" years = 10 }
 	}
 }
 
@@ -3342,7 +3356,7 @@ country_event = {
 
 	option = {
 		name = UNDERSTOOD
-		add_modifier = { modifier = "broken_shackles_reconciliation" days = 1080 }
+		add_modifier = { modifier = "broken_shackles_reconciliation" years = 3 }
 	}
 }
 
@@ -3510,6 +3524,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = owner
 		owner = {
 			has_origin = origin_broken_shackles
 			NOT = { has_country_flag = uplifting_decision_main }
@@ -3541,6 +3556,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = owner
 		owner = {
 			has_origin = origin_broken_shackles
 			NOT = { has_country_flag = uplifting_decision }
@@ -3588,6 +3604,6 @@ country_event = {
 			min = @tier4unitymin
 			max = @tier4unitymax
 		}
-		add_modifier = { modifier = broken_shackles_homeworld_uplifted days = 7200 }
+		add_modifier = { modifier = broken_shackles_homeworld_uplifted years = 20 }
 	}
 }

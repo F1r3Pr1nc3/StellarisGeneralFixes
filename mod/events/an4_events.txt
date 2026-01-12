@@ -506,13 +506,7 @@ event = {
 			event_target:crystal_country = { # Vfix
 				random_owned_fleet = {
 					limit = { exists = solar_system }
-					solar_system = {
-						set_timed_star_flag = {
-							flag = crystal_splitter_starting_system
-							years = 9 # to fit within decade_pulse
-						}
-						save_event_target_as = crystal_splitter_starting_system
-					}
+					solar_system = { save_event_target_as = crystal_splitter_starting_system }
 				}
 			}
 		}
@@ -530,54 +524,63 @@ event = {
 						has_star_flag = crystal_splitter_starting_system
 					}
 				}
-				set_timed_star_flag = {
-					flag = crystal_splitter_starting_system
-					years = 9 # to fit within decade_pulse
-				}
 				save_event_target_as = crystal_splitter_starting_system
 			}
 		}
-		# Pick another, unoccupied system
-		if = {
+		if = { # Vfix: last fallback
 			limit = {
-				any_system = {
-					distance = {
-						source = event_target:crystal_splitter_starting_system
-						use_bypasses = no
-						min_jumps = 1
-						max_jumps = 5
-					}
-					is_valid_crystal_splitter_system = yes
-				}
+				NOT = { exists = event_target:crystal_splitter_starting_system }
 			}
-			event_target:crystal_splitter_starting_system = {
-				closest_system = {
-					limit = { is_valid_crystal_splitter_system = yes }
-					use_bypasses = no
-					min_steps = 1
-					max_steps = 5
-					set_timed_star_flag = { flag = crystal_splitter_destination_system years = 9 }
-					save_event_target_as = crystal_splitter_destination_system
-				}
-			}
-		}
-		else = {
 			random_system = {
 				limit = { is_valid_crystal_splitter_system = yes }
-				set_timed_star_flag = { flag = crystal_splitter_destination_system years = 9 }
-				save_event_target_as = crystal_splitter_destination_system
+				save_event_target_as = crystal_splitter_starting_system
 			}
 		}
 		# Send out a 'ship'
 		event_target:crystal_splitter_starting_system = {
+			set_timed_star_flag = {
+				flag = crystal_splitter_starting_system
+				years = 9 # to fit within decade_pulse
+			}
+			# Pick another, unoccupied system
+			if = {
+				limit = {
+					any_system = {
+						distance = {
+							source = event_target:crystal_splitter_starting_system
+							use_bypasses = no
+							min_jumps = 1
+							max_jumps = 6
+						}
+						is_valid_crystal_splitter_system = yes
+					}
+				}
+				closest_system = {
+					limit = { is_valid_crystal_splitter_system = yes }
+					use_bypasses = no
+					min_steps = 1
+					max_steps = 6
+					set_timed_star_flag = { flag = crystal_splitter_destination_system years = 9 }
+					save_event_target_as = crystal_splitter_destination_system
+				}
+			}
+			else = {
+				random_system = {
+					limit = { is_valid_crystal_splitter_system = yes }
+					set_timed_star_flag = { flag = crystal_splitter_destination_system years = 9 }
+					save_event_target_as = crystal_splitter_destination_system
+				}
+			}
 			random_system_planet = {
 				limit = { is_star = no }
 				save_event_target_as = crystal_splitter_starting_planet
 			}
+		}
+		event_target:crystal_splitter_country = {
 			create_fleet = {
 				name = "NAME_Cracked_Crystalline_Shard"
 				effect = {
-					set_owner = event_target:crystal_splitter_country
+					set_owner = prev
 					set_fleet_stance = passive
 					create_ship = { name = "" design = "NAME_Cracked_Crystalline_Shard" }
 					set_location = {
