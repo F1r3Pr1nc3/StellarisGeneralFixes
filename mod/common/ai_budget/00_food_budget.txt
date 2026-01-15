@@ -200,6 +200,10 @@ food_expenditure_colonies_expand = {
 		ai_colonize_plans > 0
 		has_resource = { type = food amount > 400 }
 		has_monthly_income = { resource = food value > 1 }
+		# OR = { # Vfix opt
+		# 	country_uses_bio_ships = no
+		# 	has_resource = { type = food amount > 600 } # Bioship colony ship costs 600 food (900 for hive)
+		# }
 	}
 
 	weight = {
@@ -235,7 +239,7 @@ food_expenditure_colonies_expand = {
 			is_guided_sapience_empire = yes
 			is_virtual_empire = yes
 		}
-		modifier = { mult = 2 country_uses_bio_ships = yes }
+		modifier = { factor = 2 country_uses_bio_ships = yes }
 	}
 
 	desired_max = {
@@ -267,7 +271,7 @@ food_expenditure_colonies_expand = {
 			is_guided_sapience_empire = yes
 			is_virtual_empire = yes
 		}
-		modifier = { mult = 2 country_uses_bio_ships = yes }
+		modifier = { factor = 2 country_uses_bio_ships = yes }
 	}
 }
 

@@ -1975,7 +1975,7 @@ trait_bioadaptability = {
 	cost = {
 		base = 1
 		modifier = {
-			mult = 0
+			factor = 0
 			exists = owner
 			owner = { has_country_flag = modification_green }
 		}
@@ -2025,7 +2025,7 @@ trait_social_pheromones = {
 	cost = {
 		base = 1
 		modifier = {
-			mult = 0
+			factor = 0
 			exists = owner
 			owner = { has_country_flag = modification_red }
 		}
@@ -2071,7 +2071,7 @@ trait_limited_regeneration = {
 	cost = {
 		base = 1
 		modifier = {
-			mult = 0
+			factor = 0
 			exists = owner
 			owner = { has_country_flag = modification_blue }
 		}
@@ -2306,7 +2306,7 @@ trait_void_dweller_1 = {
 
 	species_potential_add = {
 		exists = from
-		from = { has_origin = origin_void_dwellers }
+		from = { has_void_dweller_origin = yes }
 	}
 
 	species_possible_add = {
@@ -2378,7 +2378,7 @@ trait_void_dweller_2 = {
 		from = {
 			OR = {
 				has_origin = origin_void_machines
-				has_origin = origin_void_dwellers
+				has_void_dweller_origin = yes
 			}
 		}
 	}
@@ -3025,11 +3025,11 @@ trait_zombie = {
 	triggered_pop_group_modifier = {
 		potential = {
 			OR = {
-				is_pop_category = ruler
+				is_elite_category = yes
 				is_specialist_category = yes
 			}
 		}
-		pop_demotion_time_mult = -10.0
+		pop_unemployment_demotion_time_mult = -10.0
 	}
 
 	icon = "gfx/interface/icons/traits/trait_zombie.dds"

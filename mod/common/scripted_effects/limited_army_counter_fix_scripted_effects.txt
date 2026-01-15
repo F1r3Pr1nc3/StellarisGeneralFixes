@@ -1,0 +1,55 @@
+@titanic_life_soldier_per_planet_maximum = 3
+# Root = prev = country
+# This = removed_army
+decrement_army_count = {
+	optimize_memory
+	switch = { trigger = army_type
+		titanic_assault_army = {
+			prev = {
+				if = {
+					limit = { check_variable = { which = titanic_life_soldier_count value > 0 } }
+					set_timed_country_flag = { flag = army_counter_decremented@prev days = 7 }
+					subtract_variable = { which = titanic_life_soldier_count value = 1 }
+				}
+			}
+		}
+		titanic_azizian_assault_army = {
+			prev = {
+				if = {
+					limit = { check_variable = { which = titanic_azizian_soldier_count value > 0 } }
+					set_timed_country_flag = { flag = army_counter_decremented@prev days = 7 }
+					subtract_variable = { which = titanic_azizian_soldier_count value = 1 }
+				}
+			}
+		}
+		imperial_legion = {
+			prev = {
+				if = {
+					limit = { check_variable = { which = imperial_legion_soldier_count value > 0 } }
+					set_timed_country_flag = { flag = army_counter_decremented@prev days = 7 }
+					subtract_variable = { which = imperial_legion_soldier_count value = 1 }
+				}
+			}
+		}
+	}
+}
+
+# Titanic Life dependng on planet count
+# this = country
+increment_titanic_life_soldier_maximum = {
+	optimize_memory
+	change_variable = {
+		which = titanic_life_soldier_maximum
+		value = @titanic_life_soldier_per_planet_maximum
+	}
+}
+
+# Invoke this effect when a country loses a planet with Titanic Life
+# this = country
+decrement_titanic_life_soldier_maximum = {
+	optimize_memory
+	subtract_variable = {
+		which = titanic_life_soldier_maximum
+		value = @titanic_life_soldier_per_planet_maximum
+	}
+}

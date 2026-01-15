@@ -589,6 +589,20 @@ country_event = {
 	location = event_target:mercenary_enclave_system
 
 	immediate = {
+		if = { # Vfix
+			limit = {
+				NOT = { exists = event_target:mercenary_enclave_country }
+			}
+			random_country = {
+				limit = {
+					is_mercenary = yes
+					NOT = { any_owned_fleet = { is_leased = yes } }
+					has_country_flag = created_by@prev
+					prev = { has_country_flag = merc_enclave_founder@prev }
+				}
+				save_event_target_as = mercenary_enclave_country
+			}
+		}
 		event_target:mercenary_enclave_country = {
 			species = { save_event_target_as = mercenary_enclave_species }
 			random_owned_fleet = {
@@ -625,20 +639,6 @@ country_event = {
 		}
 		add_resource = { energy = -2500 }
 		hidden_effect = {
-			if = { # Vfix: just to be sure as this event is included in many
-				limit = {
-					NOT = { exists = event_target:mercenary_enclave_country }
-				}
-				random_country = {
-					limit = {
-						is_mercenary = yes
-						NOT = { any_owned_fleet = { is_leased = yes } }
-						has_country_flag = created_by@prev
-						prev = { has_country_flag = merc_enclave_founder@prev }
-					}
-					save_event_target_as = mercenary_enclave_country
-				}
-			}
 			event_target:mercenary_enclave_country = {
 				set_faction_hostility = { target = root set_neutral = yes }
 				every_owned_fleet = {
@@ -673,6 +673,7 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = { factor = 1 }
 	}
 
 	# Hire fleet
@@ -811,6 +812,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = enclave.240 }
 		}
+		ai_chance = { factor = 1 }
 	}
 
 	# Recruit Armies
@@ -831,6 +833,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = enclave.270 }
 		}
+		ai_chance = { factor = 1 }
 	}
 
 	# Mercenary Logistic Services
@@ -858,6 +861,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = enclave.2030 }
 		}
+		ai_chance = { factor = 1 }
 	}
 
 	# Patron Panel
@@ -884,6 +888,7 @@ country_event = {
 			NOT = { is_hostile = event_target:mercenary_enclave_country }
 		}
 		default_hide_option = yes
+		ai_chance = { factor = 0.5 }
 	}
 
 	after = {
@@ -6105,7 +6110,9 @@ country_event = {
 			event_target:salvager_enclave_country = {
 				trust = { who = root value >= 20 }
 			}
-			any_available_debris = {  }
+			hidden_trigger = {
+				count_available_debris = { count > 0 }
+			}
 		}
 		hidden_effect = {
 			country_event = { id = enclave.340 } # Commission Salvage

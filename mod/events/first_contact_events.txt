@@ -102,7 +102,7 @@ first_contact_event = {
 				exists = owner
 				exists = contact_country
 			}
-			contact_country = { is_country_type = primitive }
+			contact_country = { is_primitive = yes }
 			owner = { has_communications = root.contact_country }
 		}
 	}
@@ -2138,12 +2138,7 @@ first_contact_event = {
 		}
 		if = {
 			limit = {
-				contact_country = {
-					OR = {
-						is_synthetic_empire = yes
-						is_individual_machine = yes
-					}
-				}
+				contact_country = { is_synthetic_empire = yes }
 			}
 			owner = {
 				add_resource = { influence = 50 }
@@ -3750,12 +3745,7 @@ first_contact_event = {
 		}
 		if = {
 			limit = {
-				contact_country = {
-					OR = {
-						is_synthetic_empire = yes
-						is_individual_machine = yes
-					}
-				}
+				contact_country = { is_synthetic_empire = yes }
 			}
 			owner = {
 				add_resource = { influence = 50 }
@@ -5993,7 +5983,7 @@ first_contact_event = {
 
 first_contact_event = {
 	id = first_contact.472
-	title = first_contact.472.name
+	title = first_contact.470.name # Vfix
 	desc = first_contact.472.desc
 	picture = GFX_evt_mysterious_signal
 	inline_script = first_contact_event_sounds
@@ -7990,11 +7980,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		OR = {
-			is_country_type = default
-			is_fallen_empire = yes
-		}
-		from = { is_country_type = primitive }
+		is_default_or_fallen = yes
+		from = { is_primitive = yes }
 	}
 
 	immediate = {

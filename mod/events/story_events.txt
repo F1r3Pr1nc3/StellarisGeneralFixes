@@ -1947,13 +1947,13 @@ country_event = {
 			from = {
 				OR = {
 					has_country_flag = radical_cult
-					is_fallen_empire = yes
+					has_country_flag = day_0
 					is_primitive = yes
+					is_fallen_empire = yes
 					is_guardian_country = yes
 					has_relation_flag = { flag = no_coms who = root }
 					# has_relation_flag = { flag = AbandonedRefugees who = root } # Vfix removed in v2.2
 					has_relation_flag = { flag = scientist_pirate_relation who = root } # Vfix
-					has_country_flag = day_0
 				}
 			}
 		}
@@ -2011,6 +2011,9 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_materialist } # Vfix
+		}
 	}
 
 	# Spiritualist
@@ -2030,6 +2033,9 @@ country_event = {
 					CATEGORY = physics_research
 				}
 			}
+		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_spiritualist } # Vfix
 		}
 	}
 
@@ -2051,6 +2057,9 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_militarist } # Vfix
+		}
 	}
 
 	# Pacifist
@@ -2068,6 +2077,9 @@ country_event = {
 					CATEGORY = society_research
 				}
 			}
+		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_pacifist } # Vfix
 		}
 	}
 
@@ -2089,6 +2101,9 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_authoritarian } # Vfix
+		}
 	}
 
 	# Xenophile
@@ -2107,6 +2122,9 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_xenophile } # Vfix
+		}
 	}
 
 	# Xenophobe
@@ -2124,6 +2142,9 @@ country_event = {
 					CATEGORY = society_research
 				}
 			}
+		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_xenophobe } # Vfix
 		}
 	}
 
@@ -2145,6 +2166,9 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = {
+			modifier = { factor = 2 has_ethic = ethic_fanatic_egalitarian } # Vfix
+		}
 	}
 
 	# Hive
@@ -2165,6 +2189,7 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = { factor = 1 }
 	}
 
 	# Machine
@@ -2185,6 +2210,7 @@ country_event = {
 				}
 			}
 		}
+		ai_chance = { factor = 1 }
 	}
 	option = {
 		exclusive_trigger = { has_valid_civic = civic_hive_devouring_swarm }

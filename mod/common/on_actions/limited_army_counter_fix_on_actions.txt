@@ -1,0 +1,94 @@
+# Fired when loading a single-player game
+on_single_player_save_game_load = {
+	events = {
+		limited_army_counter_fix.3 # Ensure accurate army counters
+	}
+}
+
+# on_yearly_pulse = {
+# 	events = {
+# 		limited_army_counter_fix.3 # Wasting doublecheck: Ensure accurate army counters
+# 	}
+# }
+
+# Fired when army construction has been completed
+# Scope = planet
+# from = army
+on_army_recruited = {
+	events = {
+		limited_army_counter_fix.2
+	}
+}
+
+# Fired when an army has been killed in ground combat
+# Scope = owner
+# from = army
+# fromfrom = opponent
+# fromfromfrom = planet
+on_army_killed_in_combat = {
+	events = {
+		limited_army_counter_fix.1
+	}
+}
+
+# Does not fire when on fleet
+# Fired when an army has ceased to exist for any other reason
+# Scope = country
+# from = army
+on_army_killed_no_combat = {
+	events = {
+		limited_army_counter_fix.1
+	}
+}
+
+# Fired whenever a new owner is set for a planet, be it after a war, through a trade, or colonization
+# Scope = planet
+# from = country, new owner
+# prev = country, previous owner (optional)
+on_planet_transfer = {
+	events = {
+		limited_army_counter_fix.4
+	}
+}
+
+# Fired when a planet has been colonized
+# Scope = planet
+on_colonized = {
+	events = {
+		limited_army_counter_fix.5
+	}
+}
+
+# Fired when a colony has been destroyed, just before the owner and controller are cleared
+# Scope = planet
+on_colony_destroyed = {
+	events = {
+		limited_army_counter_fix.7
+	}
+}
+
+# Fired when a fleet is disbanded (but not individual ships)
+# Scope = owner
+# from = fleet
+# on_fleet_disbanded = {
+# 	events = {
+# 		limited_army_counter_fix.6 # Deprecated at v3.14 due to performance effectiveness
+# 	}
+# }
+
+# (but not fleet)
+# This = owner of ship
+# From = disbanded ship
+on_ship_disbanded = {
+	events = {
+		limited_army_counter_fix.16
+	}
+}
+
+# This = owner of army
+# From = disbanded army
+on_army_disbanded = {
+	events = {
+		limited_army_counter_fix.17
+	}
+}

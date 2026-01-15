@@ -282,8 +282,8 @@ fleet_event = {
 					if = {
 						limit = {
 							NOR = {
-								event_target:nomad_contact_country = { is_hostile = event_target:nomad_owner }
 								from = { has_star_flag = hostile_system }
+								event_target:nomad_contact_country = { is_hostile = event_target:nomad_owner }
 							}
 							exists = space_owner
 						}
@@ -357,6 +357,7 @@ fleet_event = {
 					factor = 0
 					event_target:nomad_contact_country = {
 						NOR = {
+							is_hive_empire = yes
 							any_owned_planet = {
 								# free_housing > 0
 								OR = {
@@ -365,7 +366,6 @@ fleet_event = {
 									is_planet_class = pc_savannah
 								}
 							}
-							is_hive_empire = yes
 						}
 					}
 				}
@@ -375,6 +375,7 @@ fleet_event = {
 				}
 				modifier = {
 					factor = 1.5
+					NOT = { owner = { has_country_flag = nomad_left_stragglers } }
 					event_target:nomad_contact_country = {
 						OR = {
 							is_xenophile = yes
@@ -382,7 +383,6 @@ fleet_event = {
 							is_spiritualist = yes
 						}
 					}
-					NOT = { owner = { has_country_flag = nomad_left_stragglers } }
 				}
 				modifier = {
 					factor = 0.30
@@ -393,26 +393,27 @@ fleet_event = {
 			30 = { # Ask for a planet to settle on
 				modifier = {
 					factor = 0
-					event_target:nomad_contact_country = {
-						NOR = {
-							any_planet_within_border = {
-								is_colony = no
-								OR = {
-									is_planet_class = pc_tundra
-									is_planet_class = pc_arid
-									is_planet_class = pc_desert
-									is_planet_class = pc_tropical
-									is_planet_class = pc_continental
-									is_planet_class = pc_gaia
-								}
-								NOR = {
-									has_modifier = "holy_planet"
-									solar_system = {
-										any_system_colony = { has_owner = yes }
+					event_target:nomad_contact_country = { # Vfix opt
+						is_hive_empire = yes
+						NOT = {
+							any_system_within_border = {
+								NOT = { any_system_colony = { has_owner = yes } }
+								any_system_planet = {
+									NOR = {
+										is_star = yes
+										is_colony = yes
+										has_modifier = "holy_planet"
+									}
+									OR = {
+										is_planet_class = pc_tundra
+										is_planet_class = pc_arid
+										is_planet_class = pc_desert
+										is_planet_class = pc_tropical
+										is_planet_class = pc_continental
+										is_planet_class = pc_gaia
 									}
 								}
 							}
-							is_hive_empire = yes
 						}
 					}
 				}
@@ -422,6 +423,7 @@ fleet_event = {
 				}
 				modifier = {
 					factor = 1.75
+					NOT = { owner = { has_country_flag = nomad_settled } }
 					event_target:nomad_contact_country = {
 						OR = {
 							is_xenophile = yes
@@ -429,7 +431,6 @@ fleet_event = {
 							is_spiritualist = yes
 						}
 					}
-					NOT = { owner = { has_country_flag = nomad_settled } }
 				}
 				fleet_event = { id = nomad.40 }
 			}
@@ -1751,19 +1752,19 @@ fleet_event = {
 		event_target:nomad_contact_country = {
 			random_planet_within_border = {
 				limit = {
-					is_colony = no
+					NOR = {
+						is_colony = yes
+						has_modifier = "holy_planet"
+						solar_system = {
+							any_system_colony = { has_owner = yes }
+						}
+					}
 					OR = {
 						is_planet_class = pc_gaia
 						is_planet_class = pc_tropical
 						is_planet_class = pc_desert
 						is_planet_class = pc_ocean
 						is_planet_class = pc_arid
-					}
-					NOR = {
-						has_modifier = "holy_planet"
-						solar_system = {
-							any_system_colony = { has_owner = yes }
-						}
 					}
 				}
 				set_planet_flag = nomad_mission_location

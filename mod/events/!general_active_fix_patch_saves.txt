@@ -7,229 +7,229 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	# fire_only_once = yes
-	trigger = {
-		years_passed > 20
-	}
-
 	immediate = {
+		log = "Stellaris v4.2 General Fixes loaded"
 		if = {
-			limit = { has_global_flag = prethoryn_main_invasion }
+			limit = { years_passed > 20 }
 			if = {
-				limit = {
-					has_global_flag = ongoing_prethoryn_invasion
-					NOT = { exists = event_target:prethoryn }
-					any_country = { is_country_type = swarm }
+				limit = { has_global_flag = prethoryn_main_invasion }
+				if = {
+					limit = {
+						has_global_flag = ongoing_prethoryn_invasion
+						NOT = { exists = event_target:prethoryn }
+						any_country = { is_country_type = swarm }
+					}
+					random_country = {
+						limit = { is_country_type = swarm }
+						save_global_event_target_as = prethoryn # Vfix opt
+					}
 				}
-				random_country = {
-					limit = { is_country_type = swarm }
-					save_global_event_target_as = prethoryn # Vfix opt
+				random_playable_country = {
+					limit = {
+						is_ai = no
+						has_country_flag = queen_captured
+					}
+					random_owned_fleet = {
+						limit = { has_fleet_flag = pet_queen }
+						save_global_event_target_as = pet_queen
+					}
 				}
 			}
 			random_playable_country = {
-				limit = {
-					is_ai = no
-					has_country_flag = queen_captured
-				}
-				random_owned_fleet = {
-					limit = { has_fleet_flag = pet_queen }
-					save_global_event_target_as = pet_queen
-				}
-			}
-		}
-		random_playable_country = {
-			limit = { is_ai = no }
-			# Fix Shroud engaging for non DLC players, just hack, reason unknown
-			# https://forum.paradoxplaza.com/forum/threads/stellaris-nothing-happens-when-i-try-to-contact-the-shroud-in-the-diplomacy-screen-4-0-21-bb43.1854038/
-			if = {
-				limit = { has_shroud_dlc = no }
+				limit = { is_ai = no }
+				# Fix Shroud engaging for non DLC players, just hack, reason unknown
+				# https://forum.paradoxplaza.com/forum/threads/stellaris-nothing-happens-when-i-try-to-contact-the-shroud-in-the-diplomacy-screen-4-0-21-bb43.1854038/
 				if = {
-					limit = { has_country_flag = shroud_diplomacy_engaged }
-					remove_country_flag = shroud_diplomacy_engaged
-				}
-				if = {	# Just backward compat. from 4.0 to 4.1
-					limit = {
-						NOT = { any_country = { is_country_type = shroud has_country_flag = shroud_country_flag } }
-					}
-					random_country = {
-						limit = {
-							is_country_type = shroud
-							NOR = {
-								has_country_flag = shroud_country_flag
-								has_country_flag = animator_of_clay_country_flag
-							}
-						}
-						set_country_flag = shroud_country_flag
-					}
-				}
-			}
-			if = {
-				limit = {
-					should_use_increased_treasure_trove_drops = yes
-					has_event_chain = "treasure_hunters_origin_story_chain"
-					OR = {
-						has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
-						has_point_of_interest = { poi = black_needle_base_system_poi }
-						has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
-					}
-				}
-				# weights = { base = 1 modifier = { add = 99 is_ai = no } }
-				if = {	# Fix Vanilla Survey Treasure Hunter Shattered world grand_archive.8051
-					limit = {
-						has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
-						any_system = {
-							has_star_flag = hidden_treasure_system
-							is_point_of_interest = {
-								id = treasure_hunters_explore_system_poi.1
-								event_chain = treasure_hunters_origin_story_chain
-								owner = prev
-							}
-							OR = {
-								NOR = {
-									has_owner = yes
-									exists = starbase
-								}
-								space_owner = { is_same_empire = prevprevprev }
-							}
-							any_system_planet = {
-								has_planet_flag = shattered_ytterite_world
-								is_surveyed = { who = prev status = yes }
-							}
-						}
-					}
-					random_system = {
-						limit = {
-							has_star_flag = hidden_treasure_system
-							is_point_of_interest = {
-								id = treasure_hunters_explore_system_poi.1
-								event_chain = treasure_hunters_origin_story_chain
-								owner = prev
-							}
-							any_system_planet = {
-								has_planet_flag = shattered_ytterite_world
-								is_surveyed = { who = prev status = yes }
-							}
-						}
-						prev = {
-							country_event = { id = grand_archive.8052 scopes = { from = prev } }
-						}
-					}
-				}
-				else_if = {	# Fix Vanilla Survey Treasure Hunter Black Needle Base grand_archive.8101
-					limit = {
-						has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
-						any_system = {
-							has_star_flag = hidden_treasure_system
-							is_point_of_interest = {
-								id = black_needle_base_system_poi
-								event_chain = treasure_hunters_origin_story_chain
-								owner = prev
-							}
-							OR = {
-								NOR = {
-									has_owner = yes
-									exists = starbase
-								}
-								space_owner = { is_same_empire = prevprevprev }
-							}
-							any_system_planet = {
-								has_deposit = d_black_needle_base
-								is_surveyed = { who = prev status = yes }
-							}
-						}
-					}
-					random_system = {
-						limit = {
-							has_star_flag = hidden_treasure_system
-							is_point_of_interest = {
-								id = black_needle_base_system_poi
-								event_chain = treasure_hunters_origin_story_chain
-								owner = prev
-							}
-							any_system_planet = {
-								has_deposit = d_black_needle_base
-								is_surveyed = { who = prev status = yes }
-							}
-						}
-						prev = {
-							country_event = { id = grand_archive.8102 scopes = { from = prev } }
-						}
-					}
-				}
-				else_if = {	# Fix Vanilla Survey Treasure Hunter Smeegibb shelter grand_archive.8201
-					limit = {
-						has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
-						any_system = {
-							has_star_flag = hidden_treasure_system
-							is_point_of_interest = {
-								id = smeegibb_shelter_system_poi.1
-								event_chain = treasure_hunters_origin_story_chain
-								owner = prev
-							}
-							OR = {
-								NOR = {
-									has_owner = yes
-									exists = starbase
-								}
-								space_owner = { is_same_empire = prevprevprev }
-							}
-							any_system_planet = {
-								has_planet_flag = smeegibb_shelter
-								is_surveyed = { who = prev status = yes }
-							}
-						}
-					}
-					random_system = {
-						limit = {
-							has_star_flag = hidden_treasure_system
-							is_point_of_interest = {
-								id = smeegibb_shelter_system_poi.1
-								event_chain = treasure_hunters_origin_story_chain
-								owner = prev
-							}
-							any_system_planet = {
-								has_planet_flag = smeegibb_shelter
-								is_surveyed = { who = prev status = yes }
-							}
-						}
-						prev = {
-							country_event = { id = grand_archive.8202 scopes = { from = prev } }
-						}
-					}
-				}
-			}
-			else_if = {	# Fix vanilla treasure hunter __STR_1__
-				limit = {
-					should_use_increased_treasure_trove_drops = yes
-					OR = {
-						has_country_flag = black_needle_base_ransacked
-						has_country_flag = black_needle_base_stolen_tech
-						# has_country_flag = smeegibb_arc_site_spawned
-					}
-					NOT = { has_point_of_interest = { poi = black_needle_base_system_poi } }
-					any_system_within_border = {
-						has_star_flag = hidden_treasure_system
-						any_system_planet = {
-							OR = {
-								has_planet_flag = planet_defended_forbid_colonization
-								has_planet_flag = can_have_scripted_bombardment
-							}
-							has_deposit = d_black_needle_base
-						}
-					}
-				}
-				random_planet_within_border = {
-					limit = {
-						has_deposit = d_black_needle_base
-						has_planet_flag = planet_defended_forbid_colonization
-					}
-					remove_deposit = d_black_needle_base
-					remove_planet_flag = planet_defended_forbid_colonization
-					set_planet_flag = black_needle_base_destroyed
+					limit = { has_shroud_dlc = no }
 					if = {
+						limit = { has_country_flag = shroud_diplomacy_engaged }
+						remove_country_flag = shroud_diplomacy_engaged
+					}
+					if = {	# Just backward compat. from 4.0 to 4.1
 						limit = {
-							NOT = { has_deposit = d_abandoned_black_needle_base }
+							NOT = { any_country = { is_country_type = shroud has_country_flag = shroud_country_flag } }
 						}
-						add_deposit = d_abandoned_black_needle_base
+						random_country = {
+							limit = {
+								is_country_type = shroud
+								NOR = {
+									has_country_flag = shroud_country_flag
+									has_country_flag = animator_of_clay_country_flag
+								}
+							}
+							set_country_flag = shroud_country_flag
+						}
+					}
+				}
+				if = {
+					limit = {
+						should_use_increased_treasure_trove_drops = yes
+						has_event_chain = "treasure_hunters_origin_story_chain"
+						OR = {
+							has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
+							has_point_of_interest = { poi = black_needle_base_system_poi }
+							has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
+						}
+					}
+					# weights = { base = 1 modifier = { add = 99 is_ai = no } }
+					if = {	# Fix Vanilla Survey Treasure Hunter Shattered world grand_archive.8051
+						limit = {
+							has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
+							any_system = {
+								has_star_flag = hidden_treasure_system
+								is_point_of_interest = {
+									id = treasure_hunters_explore_system_poi.1
+									event_chain = treasure_hunters_origin_story_chain
+									owner = prev
+								}
+								OR = {
+									NOR = {
+										has_owner = yes
+										exists = starbase
+									}
+									space_owner = { is_same_empire = prevprevprev }
+								}
+								any_system_planet = {
+									has_planet_flag = shattered_ytterite_world
+									is_surveyed = { who = prev status = yes }
+								}
+							}
+						}
+						random_system = {
+							limit = {
+								has_star_flag = hidden_treasure_system
+								is_point_of_interest = {
+									id = treasure_hunters_explore_system_poi.1
+									event_chain = treasure_hunters_origin_story_chain
+									owner = prev
+								}
+								any_system_planet = {
+									has_planet_flag = shattered_ytterite_world
+									is_surveyed = { who = prev status = yes }
+								}
+							}
+							prev = {
+								country_event = { id = grand_archive.8052 scopes = { from = prev } }
+							}
+						}
+					}
+					else_if = {	# Fix Vanilla Survey Treasure Hunter Black Needle Base grand_archive.8101
+						limit = {
+							has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
+							any_system = {
+								has_star_flag = hidden_treasure_system
+								is_point_of_interest = {
+									id = black_needle_base_system_poi
+									event_chain = treasure_hunters_origin_story_chain
+									owner = prev
+								}
+								OR = {
+									NOR = {
+										has_owner = yes
+										exists = starbase
+									}
+									space_owner = { is_same_empire = prevprevprev }
+								}
+								any_system_planet = {
+									has_deposit = d_black_needle_base
+									is_surveyed = { who = prev status = yes }
+								}
+							}
+						}
+						random_system = {
+							limit = {
+								has_star_flag = hidden_treasure_system
+								is_point_of_interest = {
+									id = black_needle_base_system_poi
+									event_chain = treasure_hunters_origin_story_chain
+									owner = prev
+								}
+								any_system_planet = {
+									has_deposit = d_black_needle_base
+									is_surveyed = { who = prev status = yes }
+								}
+							}
+							prev = {
+								country_event = { id = grand_archive.8102 scopes = { from = prev } }
+							}
+						}
+					}
+					else_if = {	# Fix Vanilla Survey Treasure Hunter Smeegibb shelter grand_archive.8201
+						limit = {
+							has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
+							any_system = {
+								has_star_flag = hidden_treasure_system
+								is_point_of_interest = {
+									id = smeegibb_shelter_system_poi.1
+									event_chain = treasure_hunters_origin_story_chain
+									owner = prev
+								}
+								OR = {
+									NOR = {
+										has_owner = yes
+										exists = starbase
+									}
+									space_owner = { is_same_empire = prevprevprev }
+								}
+								any_system_planet = {
+									has_planet_flag = smeegibb_shelter
+									is_surveyed = { who = prev status = yes }
+								}
+							}
+						}
+						random_system = {
+							limit = {
+								has_star_flag = hidden_treasure_system
+								is_point_of_interest = {
+									id = smeegibb_shelter_system_poi.1
+									event_chain = treasure_hunters_origin_story_chain
+									owner = prev
+								}
+								any_system_planet = {
+									has_planet_flag = smeegibb_shelter
+									is_surveyed = { who = prev status = yes }
+								}
+							}
+							prev = {
+								country_event = { id = grand_archive.8202 scopes = { from = prev } }
+							}
+						}
+					}
+				}
+				else_if = {	# Fix vanilla treasure hunter __STR_1__
+					limit = {
+						should_use_increased_treasure_trove_drops = yes
+						OR = {
+							has_country_flag = black_needle_base_ransacked
+							has_country_flag = black_needle_base_stolen_tech
+							# has_country_flag = smeegibb_arc_site_spawned
+						}
+						NOT = { has_point_of_interest = { poi = black_needle_base_system_poi } }
+						any_system_within_border = {
+							has_star_flag = hidden_treasure_system
+							any_system_planet = {
+								OR = {
+									has_planet_flag = planet_defended_forbid_colonization
+									has_planet_flag = can_have_scripted_bombardment
+								}
+								has_deposit = d_black_needle_base
+							}
+						}
+					}
+					random_planet_within_border = {
+						limit = {
+							has_deposit = d_black_needle_base
+							has_planet_flag = planet_defended_forbid_colonization
+						}
+						remove_deposit = d_black_needle_base
+						remove_planet_flag = planet_defended_forbid_colonization
+						set_planet_flag = black_needle_base_destroyed
+						if = {
+							limit = {
+								NOT = { has_deposit = d_abandoned_black_needle_base }
+							}
+							add_deposit = d_abandoned_black_needle_base
+						}
 					}
 				}
 			}

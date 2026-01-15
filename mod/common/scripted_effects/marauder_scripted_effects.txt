@@ -315,9 +315,9 @@ create_first_diadochi = {
 						distance = 20
 						angle = random
 					}
-					assign_leader = last_created_leader # Vfix
 				}
 			}
+			last_created_army = { assign_leader = last_created_leader }
 			# Constructor
 			create_fleet = {
 				effect = {
@@ -539,9 +539,9 @@ create_second_diadochi = {
 						distance = 20
 						angle = random
 					}
-					assign_leader = last_created_leader # Vfix
 				}
 			}
+			last_created_army = { assign_leader = last_created_leader }
 			# Constructor
 			create_fleet = {
 				effect = {
@@ -763,9 +763,9 @@ create_third_diadochi = {
 						distance = 20
 						angle = random
 					}
-					assign_leader = last_created_leader # Vfix
 				}
 			}
+			last_created_army = { assign_leader = last_created_leader }
 			# Constructor
 			create_fleet = {
 				effect = {
@@ -987,9 +987,9 @@ create_fourth_diadochi = {
 						distance = 20
 						angle = random
 					}
-					assign_leader = last_created_leader # Vfix
 				}
 			}
+			last_created_army = { assign_leader = last_created_leader }
 			# Constructor
 			create_fleet = {
 				effect = {
@@ -1296,8 +1296,11 @@ create_marauder_armies = {
 				distance = 20
 				angle = random
 			}
-			assign_leader = last_created_leader # Vfix
 		}
+	}
+
+	last_created_army = {
+		assign_leader = last_created_leader
 	}
 }
 

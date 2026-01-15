@@ -224,23 +224,38 @@ planet_event = {
 	}
 }
 
+# special_project
+# Vfix: Limited Counter Army Fix
 planet_event = {
 	id = colony_mod.101
-	title = "colony_mod.101.name"
-	desc = "colony_mod.101.desc"
+	title = colony_mod.101.name
+	desc = colony_mod.101.desc
 	picture = GFX_evt_alien_cavemen
 	show_sound = event_air_raid_siren
 	location = root
 	is_triggered_only = yes
 
+	immediate = {
+		owner = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = titanic_life_soldiers }
+				}
+				# Flag IS needed, even by the base game, to determine whether the player can recruit this type of armies
+				set_country_flag = titanic_life_soldiers
+				# If they didn't have the flag, this is the first time completing the project - set up the count and maximum variables
+				set_variable = { which = titanic_life_soldier_count value = 0 }
+				set_variable = { which = titanic_life_soldier_maximum value = 0 }
+			}
+			increment_titanic_life_soldier_maximum = yes
+		}
+		set_planet_flag = titanic_life_can_build
+	}
+
 	option = {
 		name = EXCELLENT
 		trigger = {
 			NOT = { has_planet_flag = nice_titan_study }
-		}
-		hidden_effect = {
-			owner = { set_country_flag = titanic_life_soldiers } # Owner flag not actually needed, but could have techs or other things tie into it
-			set_planet_flag = titanic_life_can_build
 		}
 		custom_tooltip = titanic_recruit_tooltip
 	}
@@ -248,8 +263,6 @@ planet_event = {
 		name = EXCELLENT
 		trigger = { has_planet_flag = nice_titan_study }
 		hidden_effect = {
-			owner = { set_country_flag = titanic_life_soldiers } # Owner flag not actually needed, but could have techs or other things tie into it
-			set_planet_flag = titanic_life_can_build
 			every_deposit = {
 				limit = { is_deposit_type = d_titanic_life_blocker }
 				clear_blocker = yes

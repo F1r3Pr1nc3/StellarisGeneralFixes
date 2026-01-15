@@ -1,0 +1,381 @@
+### Written by Corsairmarks (2021-2023)
+### Refactored by FirePrince (2024 for v3.14)
+
+namespace = limited_army_counter_fix
+# By on_army_killed_in_combat and on_army_killed_no_combat
+# Decrements the appropriate army counters so you can build reinforcements up to the cap
+# from = army
+country_event = {
+	id = limited_army_counter_fix.1 # (replaces emperor.450)
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		NOT = { has_country_flag = army_counter_decremented@from }
+		from = { is_limited_army = yes }
+	}
+
+	immediate = {
+		from = { decrement_army_count = yes }
+	}
+}
+
+# By on_army_recruited
+# Decrement queued and increment counter of matching type, or remove the army if it would exceed the cap (also refunds the cost)
+# In case "on_unqueued" is not working: Like another planet would exceed the new, lower cap, ideally army recruitment would be be cancelled.
+# Armies cannot be dequeued via script, so instead watch when armies are recruited.
+# Because of a possible crash, the army deletion occurs one day after the "over cap" army finishes being recruited.
+# from = army
+planet_event = {
+	id = limited_army_counter_fix.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		from = { is_limited_army = yes }
+	}
+
+	immediate = {
+		from = {
+			switch = { trigger = army_type
+				titanic_assault_army = {
+					owner = {
+						if = {
+							limit = { check_variable = { which = titanic_life_soldier_queued_count value > 0 } }
+							subtract_variable = { which = titanic_life_soldier_queued_count value = 1 }
+						}
+						if = {
+							limit = { has_available_titanic_life_capacity = yes }
+							change_variable = { which = titanic_life_soldier_count value = 1 }
+						}
+						else = {
+							country_event = { id = limited_army_counter_fix.8 days = 1 scopes = { from = prev } }
+						}
+					}
+				}
+				titanic_azizian_assault_army = {
+					owner = {
+						if = {
+							limit = { check_variable = { which = titanic_azizian_soldier_queued_count value > 0 } }
+							subtract_variable = { which = titanic_azizian_soldier_queued_count value = 1 }
+						}
+						if = {
+							limit = { has_available_titanic_azizian_capacity = yes }
+							change_variable = { which = titanic_azizian_soldier_count value = 1 }
+						}
+						else = {
+							country_event = { id = limited_army_counter_fix.8 days = 1 scopes = { from = prev } }
+						}
+					}
+				}
+				imperial_legion = {
+					owner = {
+						if = {
+							limit = { check_variable = { which = imperial_legion_soldier_queued_count value > 0 } }
+							subtract_variable = { which = imperial_legion_soldier_queued_count value = 1 }
+						}
+						if = {
+							limit = { has_available_imperial_legion_capacity = yes }
+							change_variable = { which = imperial_legion_soldier_count value = 1 }
+						}
+						else = {
+							country_event = { id = limited_army_counter_fix.8 days = 1 scopes = { from = prev } }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# SYNC INCREMENT_ARMY_COUNT - Opt by FirePrince
+# By on_yearly_pulse and on_single_player_save_game_load - multiplayer can manually fire this event if needed
+# Ensure accurate army counters because we do not count destroyed transports (which most of the time to AI happens)
+# This is necessary to catch any disbanded or otherwise destroyed army and to change maximum Titanic Beast capacity
+event = {
+	id = limited_army_counter_fix.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_playable_country = {
+			limit = { is_limited_army_country = yes }
+			if = {
+				limit = {
+					has_country_flag = titanic_life_soldiers
+					is_variable_set = titanic_life_soldier_count
+				}
+				set_variable = { which = titanic_life_soldier_maximum value = 0 }
+				every_owned_planet = {
+					limit = {
+						is_colony = yes
+						has_planet_flag = titanic_life_can_build
+					}
+					prev = { increment_titanic_life_soldier_maximum = yes }
+				}
+				if = {
+					limit = {
+						check_variable = { which = titanic_life_soldier_maximum value > 0 }
+					}
+					if = {
+						limit = {
+							NOT = { is_variable_set = titanic_life_soldier_queued_count }
+						}
+						set_variable = { which = titanic_life_soldier_queued_count value = 0 }
+					}
+					set_variable = { which = titanic_life_soldier_count value = 0 }
+					every_owned_army = {
+						limit = { army_type = titanic_assault_army }
+						prev = {
+							change_variable = { which = titanic_life_soldier_count value = 1 }
+						}
+					}
+				}
+				else = {
+					clear_variable = titanic_life_soldier_count
+					clear_variable = titanic_life_soldier_queued_count
+					clear_variable = titanic_life_soldier_maximum
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = titanic_azizian_soldiers
+					is_variable_set = titanic_azizian_soldier_count
+				}
+				if = {
+					limit = {
+						any_owned_planet = { is_colony = yes has_planet_flag = titanic_azizian_can_build }
+					}
+					if = {
+						limit = {
+							NOT = { is_variable_set = titanic_azizian_soldier_queued_count }
+						}
+						set_variable = { which = titanic_azizian_soldier_queued_count value = 0 }
+					}
+					set_variable = { which = titanic_azizian_soldier_count value = 0 }
+					every_owned_army = {
+						limit = { army_type = titanic_azizian_assault_army }
+						prev = {
+							change_variable = { which = titanic_azizian_soldier_count value = 1 }
+						}
+					}
+				}
+				else = {
+					clear_variable = titanic_azizian_soldier_count
+					clear_variable = titanic_azizian_soldier_queued_count
+				}
+			}
+			if = {
+				limit = {
+					is_galactic_emperor = yes
+					is_variable_set = imperial_legion_soldier_count
+				}
+				if = {
+					limit = { is_active_resolution = resolution_emperor_imperial_legions }
+					if = {
+						limit = {
+							NOT = { is_variable_set = imperial_legion_soldier_queued_count }
+						}
+						set_variable = { which = imperial_legion_soldier_queued_count value = 0 }
+					}
+					set_variable = { which = imperial_legion_soldier_count value = 0 }
+					every_owned_army = {
+						limit = { army_type = imperial_legion }
+						prev = {
+							change_variable = { which = imperial_legion_soldier_count value = 1 }
+						}
+					}
+				}
+				else = {
+					clear_variable = imperial_legion_soldier_count
+					clear_variable = imperial_legion_soldier_queued_count
+				}
+			}
+		}
+	}
+}
+
+# By on_planet_transfer
+# from = country, new owner
+# fromfrom = country, previous owner (optional)
+planet_event = {
+	id = limited_army_counter_fix.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_planet_flag = titanic_life_can_build
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				exists = from
+				from = { is_scope_type = country has_country_flag = titanic_life_soldiers }
+			}
+			from = { increment_titanic_life_soldier_maximum = yes }
+		}
+		if = {
+			limit = {
+				exists = fromfrom
+				fromfrom = { is_scope_type = country has_country_flag = titanic_life_soldiers }
+			}
+			fromfrom = { decrement_titanic_life_soldier_maximum = yes }
+		}
+	}
+}
+
+# By on_colonized
+planet_event = {
+	id = limited_army_counter_fix.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_planet_flag = titanic_life_can_build
+		has_owner = yes
+		owner = { has_country_flag = titanic_life_soldiers }
+	}
+
+	immediate = {
+		owner = { increment_titanic_life_soldier_maximum = yes }
+	}
+}
+
+# DEPRECATED at v3.14 due to performance effectiveness (vanilla in-ability to scope from ship to army)
+# 2 years penalty cooldown should be fine
+# By on_fleet_disbanded
+# from = fleet
+country_event = {
+	id = limited_army_counter_fix.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		from = { is_ship_class = shipclass_transport }
+		is_limited_army_country = yes
+		any_owned_army = {
+			exists = fleet
+			is_limited_army = yes
+			fleet = { is_same_value = from }
+		}
+	}
+
+	immediate = {
+		every_owned_army = {
+			limit = {
+				exists = fleet
+				fleet = { is_same_value = from }
+				is_limited_army = yes
+				root = {
+					NOT = { has_country_flag = army_counter_decremented@prev }
+				}
+			}
+			# log="\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
+			decrement_army_count = yes
+		}
+	}
+}
+
+# By on_colony_destroyed
+planet_event = {
+	id = limited_army_counter_fix.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_planet_flag = titanic_life_can_build
+		has_owner = yes
+		owner = { has_country_flag = titanic_life_soldiers }
+	}
+
+	immediate = {
+		owner = { decrement_titanic_life_soldier_maximum = yes }
+	}
+}
+
+# Remove and refund an army that was over cap, matches cost in 10_limited_army_counter_fix_armies_overrides.txt
+# from = army, to be removed
+country_event = {
+	id = limited_army_counter_fix.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		from = { is_limited_army = yes }
+	}
+
+	immediate = {
+		log = "\\[This.GetName] LIMITED ARMY was over cap, refund it!?"
+		set_timed_country_flag = { flag = army_counter_decremented@from days = 7 }
+		from = {
+			switch = { trigger = army_type
+				imperial_legion					= { root = { add_resource = { minerals = 300 } } }
+				titanic_assault_army			= { root = { add_resource = { minerals = 300 } } }
+				titanic_azizian_assault_army	= { root = { add_resource = { minerals = 250 energy = 50 } } }
+			}
+			remove_army = yes
+		}
+	}
+}
+
+# By on_ship_disbanded
+# From = disbanded ship
+country_event = {
+	id = limited_army_counter_fix.16
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		from = { is_ship_class = shipclass_transport }
+		is_limited_army_country = yes
+		any_owned_army = {
+			exists = fleet
+			fleet = { is_same_value = from.fleet }
+			is_limited_army = yes
+		}
+	}
+
+	immediate = {
+		random_owned_army = {
+			limit = {
+				exists = fleet
+				fleet = { is_same_value = from.fleet }
+				is_limited_army = yes
+				root = {
+					NOT = { has_country_flag = army_counter_decremented@prev }
+				}
+			}
+			# log="\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
+			decrement_army_count = yes
+		}
+	}
+}
+
+# By on_army_disbanded
+# From = disbanded army
+country_event = {
+	id = limited_army_counter_fix.17
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		from = {
+			NOT = { exists = fleet }
+			is_limited_army = yes
+		}
+		NOT = { has_country_flag = army_counter_decremented@prev }
+		is_limited_army_country = yes
+	}
+
+	immediate = {
+		# log="\\[This.GetName] has a limited army disbanded \\[From.GetName]"
+		from = { decrement_army_count = yes }
+	}
+}
