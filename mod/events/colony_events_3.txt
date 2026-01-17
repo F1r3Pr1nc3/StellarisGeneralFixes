@@ -3359,6 +3359,7 @@ planet_event = {
 	trackable = yes
 	event_chain = nemma_world_chain
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	pre_triggers = {
 		has_owner = yes
@@ -3790,6 +3791,7 @@ planet_event = {
 #	picture = GFX_evt_alien_nature
 #	show_sound = event_air_raid_siren
 #	location = ROOT
+# fire_only_once = yes # Vfix opt
 #
 #	pre_triggers = {
 #		has_owner = yes
@@ -4170,6 +4172,7 @@ planet_event = {
 	show_sound = event_scanner
 	location = root
 	trackable = yes
+	fire_only_once = yes # Vfix opt
 
 	pre_triggers = {
 		has_owner = yes
@@ -6969,12 +6972,18 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = colony.9822 }
 		}
+		ai_chance = {
+			factor = 2
+		}
 	}
 	option = {
 		trigger = { is_machine_empire = yes }
 		name = colony.9821.c.robot
 		hidden_effect = {
 			country_event = { id = colony.9822 }
+		}
+		ai_chance = {
+			factor = 2
 		}
 	}
 }
@@ -9454,6 +9463,9 @@ planet_event = {
 		hidden_effect = {
 			planet_event = { id = colony.10016 }
 		}
+		ai_chance = {
+			factor = 2
+		}
 	}
 	option = { # Do not send anyone
 		name = colony.10015.b
@@ -9618,6 +9630,9 @@ planet_event = {
 				min = @tier1unitymin
 				max = @tier1unitymax
 			}
+		}
+		ai_chance = {
+			factor = 2
 		}
 	}
 	option = { # Distrust Tamperion

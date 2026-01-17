@@ -673,7 +673,7 @@ planet_event = {
 		set_variable = { which = pop_amount value = value:num_free_virtual_jobs }
 		# Create pops for every free job
 		create_pop_group = { species = owner_species size = pop_amount }
-		check_planet_employment = yes # Vfix? FirePrince
+		# check_planet_employment = yes # Vfix?
 	}
 
 	# Give jobs time to assign
@@ -688,7 +688,7 @@ planet_event = {
 						is_unemployed = yes
 						is_pop_category = civilian
 						is_pop_category = maintenance_drone
-						is_pop_category = "" # Vfix hack by Xahkarias
+						is_pop_category = no_category # Vfix hack by Xahkarias
 					}
 				}
 			}
@@ -700,7 +700,7 @@ planet_event = {
 						is_unemployed = yes
 						is_pop_category = civilian
 						is_pop_category = maintenance_drone
-						is_pop_category = "" # Vfix hack by Xahkarias
+						is_pop_category = no_category # Vfix hack by Xahkarias
 					}
 				}
 				kill_pop_group = { pop_group = this percentage = 1 }
@@ -736,7 +736,7 @@ country_event = {
 						is_unemployed = yes
 						is_pop_category = civilian
 						is_pop_category = maintenance_drone
-						# is_pop_category = "" # Vfix hack by Xahkarias
+						# is_pop_category = no_category # Vfix hack by Xahkarias
 					}
 				}
 			}
@@ -760,7 +760,7 @@ country_event = {
 							is_unemployed = yes
 							is_pop_category = civilian
 							is_pop_category = maintenance_drone
-							# is_pop_category = "" # Vfix hack by Xahkarias
+							# is_pop_category = no_category # Vfix hack by Xahkarias
 						}
 					}
 				}
@@ -773,7 +773,7 @@ country_event = {
 						is_unemployed = yes
 						is_pop_category = civilian
 						is_pop_category = maintenance_drone
-						# is_pop_category = "" # Vfix hack by Xahkarias
+						# is_pop_category = no_category # Vfix hack by Xahkarias
 					}
 				}
 				kill_pop_group = { pop_group = this percentage = 1 }

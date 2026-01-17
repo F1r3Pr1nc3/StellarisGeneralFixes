@@ -2,7 +2,8 @@
 ###############
 # New Pirates #
 ###############
-
+#
+# Needs event_target:owner_species
 create_normal_pirate_country = {
 	optimize_memory
 	event_target:pirate_system = {
@@ -35,106 +36,65 @@ create_normal_pirate_country = {
 	}
 }
 
-# # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
-# create_drone_pirate_country = {
-# 	optimize_memory
-# 	event_target:pirate_system = {
-# 		random_system_planet = {
-# 			save_event_target_as = pirate_home
-# 			create_country = {
-# 				name = "NAME_Pirates"
-# 				type = pirate
-# 				species = event_target:owner_species
-# 				name_list = "PRT1"
-# 				flag = {
-# 					background = { category = "backgrounds" file = "00_solid.dds" }
-# 					colors = { "black" "black" "null" "null" }
-# 				}
-# 				effect = { save_event_target_as = pirate_band set_country_flag = drone_pirate }
-# 			}
-# 			event_target:pirate_band = {
-# 				set_name = random
-# 				randomize_flag_symbol = "pirate"
-# 				every_country = { limit = { is_country_type_with_subjects = yes } establish_communications_no_message = prev }
-# 			}
-# 		}
-# 	}
-# }
-# # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
-# create_drone_pirate_country_2 = {
-# 	optimize_memory
-# 	event_target:pirate_system = {
-# 		random_system_planet = {
-# 			save_event_target_as = pirate_home
-# 			create_country = {
-# 				name = "NAME_Pirates"
-# 				type = pirate
-# 				species = event_target:pirate_species
-# 				name_list = "PRT1"
-# 				flag = {
-# 					background = { category = "backgrounds" file = "00_solid.dds" }
-# 					colors = { "black" "black" "null" "null" }
-# 				}
-# 				effect = { save_event_target_as = pirate_band set_country_flag = drone_pirate }
-# 			}
-# 			event_target:pirate_band = {
-# 				set_name = random
-# 				randomize_flag_symbol = "pirate"
-# 				every_country = { limit = { is_country_type_with_subjects = yes } establish_communications_no_message = prev }
-# 			}
-# 		}
-# 	}
-# }
-# # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
-# create_machine_pirate_country = {
-# 	optimize_memory
-# 	event_target:pirate_system = {
-# 		random_system_planet = {
-# 			save_event_target_as = pirate_home
-# 			create_country = {
-# 				name = "NAME_Pirates"
-# 				type = pirate
-# 				species = event_target:owner_species
-# 				name_list = "PRT1"
-# 				flag = {
-# 					background = { category = "backgrounds" file = "00_solid.dds" }
-# 					colors = { "black" "black" "null" "null" }
-# 				}
-# 				effect = { save_event_target_as = pirate_band set_country_flag = machine_pirate }
-# 			}
-# 			event_target:pirate_band = {
-# 				set_name = random
-# 				randomize_flag_symbol = "pirate"
-# 				every_country = { limit = { is_country_type_with_subjects = yes } establish_communications_no_message = prev }
-# 			}
-# 		}
-# 	}
-# }
-# # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
-# create_machine_pirate_country_2 = {
-# 	optimize_memory
-# 	event_target:pirate_system = {
-# 		random_system_planet = {
-# 			save_event_target_as = pirate_home
-# 			create_country = {
-# 				name = "NAME_Pirates"
-# 				type = pirate
-# 				species = event_target:pirate_species
-# 				name_list = "PRT1"
-# 				flag = {
-# 					background = { category = "backgrounds" file = "00_solid.dds" }
-# 					colors = { "black" "black" "null" "null" }
-# 				}
-# 				effect = { save_event_target_as = pirate_band set_country_flag = machine_pirate }
-# 			}
-# 			event_target:pirate_band = {
-# 				set_name = random
-# 				randomize_flag_symbol = "pirate"
-# 				every_country = { limit = { is_country_type_with_subjects = yes } establish_communications_no_message = prev }
-# 			}
-# 		}
-# 	}
-# }
+# DELETEME: Deprecated Obsolete Needless Vanilla Dummie
+create_drone_pirate_country = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_drone_pirate_country' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	create_normal_pirate_country = yes
+
+	last_created_country = {
+		set_country_flag = drone_pirate
+	}
+}
+
+# DELETEME: Deprecated Obsolete Needless Vanilla Dummie
+create_drone_pirate_country_2 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_drone_pirate_country_2' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	if = {
+		limit = {
+			NOT = { exists = event_target:owner_species }
+		}
+		event_target:pirate_species = { save_event_target_as = owner_species }
+	}
+	create_normal_pirate_country = yes
+	last_created_country = {
+		set_country_flag = drone_pirate
+	}
+}
+
+# DELETEME: Deprecated Obsolete Needless Vanilla Dummie
+create_machine_pirate_country = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_machine_pirate_country' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	if = {
+		limit = {
+			NOT = { exists = event_target:owner_species }
+		}
+		event_target:pirate_species = { save_event_target_as = owner_species }
+	}
+	create_normal_pirate_country = yes
+	last_created_country = {
+		set_country_flag = machine_pirate
+	}
+}
+
+# DELETEME: Deprecated Obsolete Needless Vanilla Dummie
+create_machine_pirate_country_2 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_machine_pirate_country_2' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	if = {
+		limit = {
+			NOT = { exists = event_target:owner_species }
+		}
+		event_target:pirate_species = { save_event_target_as = owner_species }
+	}
+	create_normal_pirate_country = yes
+	last_created_country = {
+		set_country_flag = machine_pirate
+	}
+}
+
 # root = pirate_target country / ship
 create_pirate_base_1 = {
 	optimize_memory
@@ -311,10 +271,11 @@ create_pirate_fleet = {
 	}
 }
 
-## ALL create_pirate_ships DEPRECATED Vanilla due create_dyn_pirate_fleet
-
+## DELETEME - DEPRECATED: All Vanilla create_pirate_ships are obsolete - due 'create_dyn_pirate_fleet'
 create_pirate_ships_0 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_0' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log = "DEPRECATION WARNING: '$1' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -330,6 +291,7 @@ create_pirate_ships_0 = {
 
 create_pirate_ships_1 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_1' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -356,6 +318,7 @@ create_pirate_ships_1 = {
 
 create_pirate_ships_2 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_2' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -382,6 +345,7 @@ create_pirate_ships_2 = {
 
 create_pirate_ships_3 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_3' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -408,6 +372,7 @@ create_pirate_ships_3 = {
 
 create_pirate_ships_4 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_4' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -434,6 +399,7 @@ create_pirate_ships_4 = {
 
 create_pirate_ships_5 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_5' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -482,6 +448,7 @@ create_pirate_ships_5 = {
 
 create_pirate_ships_6 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_6' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -541,6 +508,7 @@ create_pirate_ships_6 = {
 
 create_pirate_ships_7 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_7' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -600,6 +568,7 @@ create_pirate_ships_7 = {
 
 create_pirate_ships_8 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_8' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -659,6 +628,7 @@ create_pirate_ships_8 = {
 
 create_pirate_ships_9 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_9' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -685,6 +655,7 @@ create_pirate_ships_9 = {
 
 create_pirate_ships_10 = {
 	optimize_memory
+	log = "DEPRECATION WARNING: 'create_pirate_ships_10' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -831,406 +802,513 @@ create_privateer_fleet = {
 	}
 }
 
-# ## All create_privateer_ship DEPRECATED Vanilla due create_dyn_pirate_fleet
-# create_privateer_ships_0 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 1
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_1 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Reaver" }
-# 	while = {
-# 		count = 2
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_2 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Reaver" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 2
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_3 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 7
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_4 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 11
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_5 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 10
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_6 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 2
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_7 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Marauder" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_8 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 8
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Marauder" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 8
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 8
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_9 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Pirate_Galleon" }
-# 	while = {
-# 		count = 1
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 3
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 5
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_10 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Pirate_Galleon" }
-# 	while = {
-# 		count = 1
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 6
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 10
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_11 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Pirate_Galleon" }
-# 	while = {
-# 		count = 2
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 3
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 4
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
-# create_privateer_ships_12 = {
-# 	optimize_memory
-# 	create_ship_design = { design = "NAME_Pirate_Galleon" }
-# 	while = {
-# 		count = 2
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Skull" }
-# 	while = {
-# 		count = 8
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Brigand" }
-# 	while = {
-# 		count = 8
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Black_Earl" }
-# 	while = {
-# 		count = 8
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# 	create_ship_design = { design = "NAME_Corsair" }
-# 	while = {
-# 		count = 12
-# 		create_ship = {
-# 			name = random
-# 			design = last_created_design
-# 			graphical_culture = "pirate_01"
-# 		}
-# 	}
-# }
+## DELETEME - DEPRECATED: All Vanilla create_privateer_ship are obsolete - due 'create_dyn_pirate_fleet'
+
+create_privateer_ships_0 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_0' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 1
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_1 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_1' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Reaver"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_2 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_2' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Reaver"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_3 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_3' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 7
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_4 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_4' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 11
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_5 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_5' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 10
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_6 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_6' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_7 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_7' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_8 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_8' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_9 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_9' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Pirate_Galleon"
+	}
+	while = {
+		count = 1
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 3
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 5
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_10 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_10' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Pirate_Galleon"
+	}
+	while = {
+		count = 1
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 10
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_11 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_11' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Pirate_Galleon"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 3
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_privateer_ships_12 = {
+	optimize_memory
+	log = "DEPRECATION WARNING: 'create_privateer_ships_12' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	create_ship_design = {
+		design = "NAME_Pirate_Galleon"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 12
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
 #####################
 # Late-game Pirates
 #####################

@@ -1233,7 +1233,7 @@ country_event = {
 			has_research_station = yes
 			NOR = {
 				has_deposit_for = shipclass_mining_station
-				count_owned_pop_amount = { count >= 1 limit = {  } }
+				count_owned_pop_amount = { count > 0 }
 			}
 		}
 	}
@@ -1246,7 +1246,7 @@ country_event = {
 					has_research_station = yes
 					NOR = {
 						has_deposit_for = shipclass_mining_station
-						count_owned_pop_amount = { count >= 1 limit = {  } }
+						count_owned_pop_amount = { count > 0 }
 					}
 				}
 			}
@@ -1271,7 +1271,7 @@ system_event = {
 				has_research_station = yes
 				NOR = {
 					has_deposit_for = shipclass_mining_station
-					count_owned_pop_amount = { count >= 1 limit = {  } }
+					count_owned_pop_amount = { count > 0 }
 				}
 			}
 			add_deposit = d_physics_7
@@ -1291,7 +1291,7 @@ country_event = {
 		any_planet_within_border = {
 			NOR = {
 				has_deposit_for = shipclass_mining_station
-				count_owned_pop_amount = { count >= 1 limit = {  } }
+				count_owned_pop_amount = { count > 0 }
 			}
 		}
 	}
@@ -1303,7 +1303,7 @@ country_event = {
 				any_system_planet = {
 					NOR = {
 						has_deposit_for = shipclass_mining_station
-						count_owned_pop_amount = { count >= 1 limit = {  } }
+						count_owned_pop_amount = { count > 0 }
 					}
 				}
 			}
@@ -1327,7 +1327,7 @@ system_event = {
 			limit = {
 				NOR = {
 					has_deposit_for = shipclass_mining_station
-					count_owned_pop_amount = { count >= 1 limit = {  } }
+					count_owned_pop_amount = { count > 0 }
 				}
 			}
 			add_deposit = d_society_7
@@ -1807,7 +1807,7 @@ country_event = {
 		has_grand_archive_dlc = yes
 		NOT = { has_country_flag = shroud_575_triggered }
 		has_megastructure = grand_archive_0
-		any_exhibit = {  }
+		count_exhibit = { count > 0 }
 		any_exhibit = { is_exhibit_active = yes is_specimen_category = historical_item }
 	}
 
