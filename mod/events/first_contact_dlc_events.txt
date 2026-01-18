@@ -28,7 +28,7 @@ ship_event = {
 		owner = { set_country_flag = built_observation_post }
 	}
 }
-
+# on_monthly_pulse
 event = {
 	id = fircon.10
 	hide_window = yes
@@ -36,11 +36,19 @@ event = {
 
 	trigger = {
 		has_first_contact_dlc = yes
-		any_playable_country = { has_country_flag = built_observation_post }
+		any_playable_country = {
+			has_country_flag = built_observation_post
+			any_observed_pre_ftl_within_border = { # Vfix opt
+				 NOR = {
+					 has_awareness > 99
+					 has_country_flag = solarpunk_country
+				 }
+			 }
+		}
 	}
 
 	immediate = {
-		every_playable_country = {
+		random_playable_country = { # Vfix opt
 			limit = {
 				has_country_flag = built_observation_post
 				NOR = {
@@ -50,18 +58,24 @@ event = {
 					has_country_flag = pending_insight_tech
 				}
 			}
-			clear_variable = observation_post_insight
+			set_variable = { which = observation_post_insight value = 0 }
+			# clear_variable = observation_post_insight # Vfix double
+			# if = { # Vfix double
+			# 	limit = {
+			# 		NOT = { is_variable_set = observation_post_insight }
+			# 	}
+			# 	set_variable = { which = observation_post_insight value = 0 }
+			# }
 			if = {
 				limit = {
-					NOT = { is_variable_set = observation_insight_change_comparator }
+					NOT = {
+						is_variable_set = observation_insight_change_comparator
+					}
 				}
-				set_variable = { which = observation_insight_change_comparator value = 0 }
-			}
-			if = {
-				limit = {
-					NOT = { is_variable_set = observation_post_insight }
+				set_variable = {
+					which = observation_insight_change_comparator
+					value = 0
 				}
-				set_variable = { which = observation_post_insight value = 0 }
 			}
 			if = {
 				limit = {
@@ -69,9 +83,8 @@ event = {
 				}
 				set_variable = { which = observation_insight_change value = 0 }
 			}
-			every_pre_ftl_within_border = {
+			every_observed_pre_ftl_within_border = {
 				limit = {
-					capital_scope = { has_observation_outpost = yes }
 					NOR = {
 						has_awareness >= 100
 						has_country_flag = solarpunk_country
@@ -96,27 +109,27 @@ event = {
 			if = {
 				limit = {
 					check_variable = { which = observation_post_insight value > 0 }
-				}
-				if = {
-					limit = {
-						NOT = { any_situation = { is_situation_type = situation_observation_insight } }
+					NOT = {
+						any_situation = {
+							is_situation_type = situation_observation_insight
+						}
 					}
-					start_situation = {
-						type = situation_observation_insight
-						target = this
-						effect = {
-							owner = {
-								switch = {
-									trigger = has_country_flag
-									favored_insights = {
-										prev = { set_situation_approach = approach_favor_insights }
-									}
-									favored_mission = {
-										prev = { set_situation_approach = approach_favor_mission }
-									}
-									default = {
-										prev = { set_situation_approach = approach_study_insights }
-									}
+				}
+				start_situation = {
+					type = situation_observation_insight
+					target = this
+					effect = {
+						owner = {
+							switch = {
+								trigger = has_country_flag
+								favored_insights = {
+									prev = { set_situation_approach = approach_favor_insights }
+								}
+								favored_mission = {
+									prev = { set_situation_approach = approach_favor_mission }
+								}
+								default = {
+									prev = { set_situation_approach = approach_study_insights }
 								}
 							}
 						}

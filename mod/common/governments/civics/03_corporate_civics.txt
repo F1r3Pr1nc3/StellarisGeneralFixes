@@ -1339,11 +1339,6 @@ civic_privatized_exploration = {
 				value = ethic_gestalt_consciousness
 			}
 		}
-		civics = { # Vfix by MrFunEGUY
-			NOT = {
-				value = civic_corporate_beastmasters
-			}
-		}
 	}
 	modification = {
 		add = {
@@ -1375,8 +1370,9 @@ civic_privatized_exploration = {
 			}
 		}
 		civics = {
-			NOT = {
+			NOR = {
 				value = civic_eager_explorers
+				value = civic_corporate_beastmasters # Vfix by MrFunEGUY
 			}
 			NOR = {
 				text = civic_tooltip_not_guardian

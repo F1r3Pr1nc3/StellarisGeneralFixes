@@ -39,7 +39,7 @@ create_normal_pirate_country = {
 # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
 create_drone_pirate_country = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_drone_pirate_country' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	log_error = "DEPRECATION WARNING: 'create_drone_pirate_country' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
 	create_normal_pirate_country = yes
 
 	last_created_country = {
@@ -50,14 +50,16 @@ create_drone_pirate_country = {
 # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
 create_drone_pirate_country_2 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_drone_pirate_country_2' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	log_error = "DEPRECATION WARNING: 'create_drone_pirate_country_2' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
 	if = {
 		limit = {
 			NOT = { exists = event_target:owner_species }
 		}
 		event_target:pirate_species = { save_event_target_as = owner_species }
 	}
+
 	create_normal_pirate_country = yes
+
 	last_created_country = {
 		set_country_flag = drone_pirate
 	}
@@ -66,14 +68,16 @@ create_drone_pirate_country_2 = {
 # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
 create_machine_pirate_country = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_machine_pirate_country' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	log_error = "DEPRECATION WARNING: 'create_machine_pirate_country' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
 	if = {
 		limit = {
 			NOT = { exists = event_target:owner_species }
 		}
 		event_target:pirate_species = { save_event_target_as = owner_species }
 	}
+
 	create_normal_pirate_country = yes
+
 	last_created_country = {
 		set_country_flag = machine_pirate
 	}
@@ -82,14 +86,16 @@ create_machine_pirate_country = {
 # DELETEME: Deprecated Obsolete Needless Vanilla Dummie
 create_machine_pirate_country_2 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_machine_pirate_country_2' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
+	log_error = "DEPRECATION WARNING: 'create_machine_pirate_country_2' is very outdated! - Tell that to your favorite modder - Greetings FirePrince."
 	if = {
 		limit = {
 			NOT = { exists = event_target:owner_species }
 		}
 		event_target:pirate_species = { save_event_target_as = owner_species }
 	}
+
 	create_normal_pirate_country = yes
+
 	last_created_country = {
 		set_country_flag = machine_pirate
 	}
@@ -272,10 +278,10 @@ create_pirate_fleet = {
 }
 
 ## DELETEME - DEPRECATED: All Vanilla create_pirate_ships are obsolete - due 'create_dyn_pirate_fleet'
+
 create_pirate_ships_0 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_0' is outdated - use 'create_dyn_pirate_fleet' instead!"
-	log = "DEPRECATION WARNING: '$1' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_0' is outdated - use 'create_dyn_pirate_fleet' instead!"
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -291,7 +297,8 @@ create_pirate_ships_0 = {
 
 create_pirate_ships_1 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_1' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_1' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -318,7 +325,8 @@ create_pirate_ships_1 = {
 
 create_pirate_ships_2 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_2' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_2' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -345,7 +353,8 @@ create_pirate_ships_2 = {
 
 create_pirate_ships_3 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_3' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_3' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -372,7 +381,8 @@ create_pirate_ships_3 = {
 
 create_pirate_ships_4 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_4' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_4' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -399,7 +409,8 @@ create_pirate_ships_4 = {
 
 create_pirate_ships_5 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_5' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_5' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -448,7 +459,8 @@ create_pirate_ships_5 = {
 
 create_pirate_ships_6 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_6' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_6' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -508,7 +520,8 @@ create_pirate_ships_6 = {
 
 create_pirate_ships_7 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_7' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_7' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -568,7 +581,8 @@ create_pirate_ships_7 = {
 
 create_pirate_ships_8 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_8' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_8' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -628,7 +642,8 @@ create_pirate_ships_8 = {
 
 create_pirate_ships_9 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_9' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_9' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -655,7 +670,8 @@ create_pirate_ships_9 = {
 
 create_pirate_ships_10 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_pirate_ships_10' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_pirate_ships_10' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -806,7 +822,8 @@ create_privateer_fleet = {
 
 create_privateer_ships_0 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_0' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_0' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Brigand"
 	}
@@ -822,7 +839,8 @@ create_privateer_ships_0 = {
 
 create_privateer_ships_1 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_1' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_1' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -838,7 +856,8 @@ create_privateer_ships_1 = {
 
 create_privateer_ships_2 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_2' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_2' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Reaver"
 	}
@@ -865,7 +884,8 @@ create_privateer_ships_2 = {
 
 create_privateer_ships_3 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_3' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_3' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -881,7 +901,8 @@ create_privateer_ships_3 = {
 
 create_privateer_ships_4 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_4' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_4' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -897,7 +918,8 @@ create_privateer_ships_4 = {
 
 create_privateer_ships_5 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_5' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_5' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -924,7 +946,8 @@ create_privateer_ships_5 = {
 
 create_privateer_ships_6 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_6' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_6' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -973,7 +996,8 @@ create_privateer_ships_6 = {
 
 create_privateer_ships_7 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_7' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_7' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -1033,7 +1057,8 @@ create_privateer_ships_7 = {
 
 create_privateer_ships_8 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_8' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_8' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Skull"
 	}
@@ -1093,7 +1118,8 @@ create_privateer_ships_8 = {
 
 create_privateer_ships_9 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_9' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_9' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -1131,7 +1157,8 @@ create_privateer_ships_9 = {
 
 create_privateer_ships_10 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_10' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_10' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -1191,7 +1218,8 @@ create_privateer_ships_10 = {
 
 create_privateer_ships_11 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_11' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_11' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}
@@ -1251,7 +1279,8 @@ create_privateer_ships_11 = {
 
 create_privateer_ships_12 = {
 	optimize_memory
-	log = "DEPRECATION WARNING: 'create_privateer_ships_12' is outdated - use 'create_dyn_pirate_fleet' instead!"
+	log_error = "DEPRECATION WARNING: 'create_privateer_ships_12' is outdated - use 'create_dyn_pirate_fleet' instead!"
+
 	create_ship_design = {
 		design = "NAME_Pirate_Galleon"
 	}

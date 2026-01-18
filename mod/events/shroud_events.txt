@@ -2820,6 +2820,7 @@ country_event = {
 # ==================================
 # 1500-1999 Psionic Auras
 # ==================================
+# on_colony_monthly_pulse
 planet_event = {
 	id = shroud.1500
 	hide_window = yes
@@ -2838,8 +2839,17 @@ planet_event = {
 	immediate = {
 		if = { # Psionic pops takes priority over Psionic Offices
 			limit = {
-				owner = { has_technology = tech_psionic_aura }
-				any_owned_pop_group = { has_psionic_species_trait = yes }
+				has_global_flag = end_of_the_cycle # Vfix opt
+				owner = {
+					OR = { # Vfix opt
+						has_covenant_with_end_of_the_cycle = yes
+						AND = {
+							is_ai = no
+							has_technology = tech_psionic_aura
+						}
+					}
+				}
+				any_owned_species = { is_psionic_species = yes } # Vfix opt
 			}
 			solar_system = {
 				natural_spawn_psionic_aura = { OWNER = root.owner }

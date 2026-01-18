@@ -483,9 +483,9 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		any_playable_country = { # PATCH|OPT
+		any_playable_country = {
 			NOR = {
-				is_ai = yes
+				is_ai = yes # Vfix OPT
 				has_country_flag = birth_of_piracy
 				has_monthly_income = { resource = trade value <= 100 }
 			}
@@ -493,8 +493,9 @@ event = {
 	}
 
 	immediate = {
-		every_playable_country = {
+		random_playable_country = { # Vfix opt
 			limit = {
+				is_ai = no # Vfix opt
 				NOT = { has_country_flag = birth_of_piracy }
 				exists = capital_scope
 				has_monthly_income = { resource = trade value > 100 }
@@ -513,7 +514,6 @@ event = {
 	}
 }
 
-# yearly pulse event
 country_event = {
 	id = pirate.5
 	hide_window = yes

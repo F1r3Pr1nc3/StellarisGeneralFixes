@@ -2125,7 +2125,7 @@ tech_epigenetic_triggers = {
 			NOR = {
 				has_country_flag = found_presapients
 				any_owned_planet = { # Vfix
-					any_owned_pop_group = {
+					any_owned_species = {
 						NOR = {
 							is_sapient = yes
 							has_trait = trait_nascent_stage
@@ -3468,7 +3468,7 @@ tech_psionic_theory = {
 					NOR = {
 						has_tier1or2or3_in_council = { TRAIT = leader_trait_expertise_psionics }
 						has_councilor = { COUNCILOR = "councilor_shroudwalker_teacher" }
-						any_owned_pop_group = { has_psionic_species_trait = yes }
+						any_owned_species = { is_psionic_species = yes } # Vfix opt
 					}
 				}
 				has_origin = origin_endbringers
@@ -3507,12 +3507,14 @@ tech_psionic_theory = {
 		}
 		modifier = {
 			factor = 2
-			any_owned_pop_group = { is_psionic_species = yes }
+			any_owned_species = { is_psionic_species = yes }
 		}
 		modifier = {
 			factor = 1.25
-			any_owned_pop_group = { is_latent_psionic_species = yes }
-			NOT = { any_owned_pop_group = { is_psionic_species = yes } }
+			any_owned_species = { is_latent_psionic_species = yes }
+			NOT = { any_owned_species = {
+
+			is_psionic_species = yes } }
 		}
 		modifier = {
 			factor = 2
@@ -5601,7 +5603,7 @@ tech_slave_colonies = {
 			NAND = {
 				allows_slavery = yes
 				# num_owned_planets > 1
-				any_owned_pop_group = { is_enslaved = yes }
+				any_owned_species = { is_enslaved = yes }
 			}
 		}
 		modifier = {
