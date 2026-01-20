@@ -445,69 +445,54 @@ cyberize_creed_pops_effect = {
 		if = {
 			limit = { exists = event_target:target_pop_group }
 			event_target:target_pop_group = {
-				if = {
-					limit = { # Spiritualist
-						has_ethic = ethic_spiritualist
-					}
-					owner = {
-						switch = {
-							trigger = has_country_flag
-							cybernetic_creed_construction = {
-								prev = {
-									modify_species = {
-										species = this
-										add_trait = trait_cyborg_creed_of_construction
-										add_traits_at_start_of_list = yes
-									}
-								}
-							}
-							cybernetic_creed_war = {
-								prev = {
-									modify_species = {
-										species = this
-										add_trait = trait_cyborg_creed_of_war
-										add_traits_at_start_of_list = yes
-									}
-								}
-							}
-							cybernetic_creed_research = {
-								prev = {
-									modify_species = {
-										species = this
-										add_trait = trait_cyborg_creed_of_research
-										add_traits_at_start_of_list = yes
-									}
-								}
-							}
-							cybernetic_creed_labor = {
-								prev = {
-									modify_species = {
-										species = this
-										add_trait = trait_cyborg_creed_of_labor
-										add_traits_at_start_of_list = yes
-									}
-								}
-							}
-							cybernetic_creed_general = {
-								prev = {
-									modify_species = {
-										species = this
-										add_trait = trait_cyborg_ritualistic_implants
-										add_traits_at_start_of_list = yes
-									}
+				owner = {
+					switch = {
+						trigger = has_country_flag
+						cybernetic_creed_construction = {
+							prev = {
+								modify_species = {
+									species = this
+									add_trait = trait_cyborg_creed_of_construction
+									add_traits_at_start_of_list = yes
 								}
 							}
 						}
-					}
-				}
-				else = { # Not Spiritualist
-					modify_species = {
-						species = this
-						remove_trait = trait_cyborg_creed_of_construction
-						remove_trait = trait_cyborg_creed_of_war
-						remove_trait = trait_cyborg_creed_of_research
-						remove_trait = trait_cyborg_creed_of_labor
-						remove_trait = trait_cyborg_ritualistic_implants
+						cybernetic_creed_war = {
+							prev = {
+								modify_species = {
+									species = this
+									add_trait = trait_cyborg_creed_of_war
+									add_traits_at_start_of_list = yes
+								}
+							}
+						}
+						cybernetic_creed_research = {
+							prev = {
+								modify_species = {
+									species = this
+									add_trait = trait_cyborg_creed_of_research
+									add_traits_at_start_of_list = yes
+								}
+							}
+						}
+						cybernetic_creed_labor = {
+							prev = {
+								modify_species = {
+									species = this
+									add_trait = trait_cyborg_creed_of_labor
+									add_traits_at_start_of_list = yes
+								}
+							}
+						}
+						cybernetic_creed_general = {
+							prev = {
+								modify_species = {
+									species = this
+									add_trait = trait_cyborg_ritualistic_implants
+									add_traits_at_start_of_list = yes
+								}
+							}
+						}
 					}
 				}
 			}
@@ -2992,26 +2977,10 @@ set_synth_origin_traits_effect = {
 	prev = {
 		switch = {
 			trigger = has_trait
-			trait_survivor = {
-				prev = {
-					change_species_characteristics = { add_trait = trait_robot_survivor }
-				}
-			}
-			trait_void_dweller_1 = {
-				prev = {
-					change_species_characteristics = { add_trait = trait_void_dweller_2 }
-				}
-			}
-			trait_aquatic = {
-				prev = {
-					change_species_characteristics = { add_trait = trait_robot_aquatic }
-				}
-			}
-			trait_cave_dweller = {
-				prev = {
-					change_species_characteristics = { add_trait = trait_robot_cave_dweller }
-				}
-			}
+			trait_survivor = { prev = { change_species_characteristics = { add_trait = trait_robot_survivor } } }
+			trait_void_dweller_1 = { prev = { change_species_characteristics = { add_trait = trait_void_dweller_2 } } }
+			trait_aquatic = { prev = { change_species_characteristics = { add_trait = trait_robot_aquatic } } }
+			trait_cave_dweller = { prev = { change_species_characteristics = { add_trait = trait_robot_cave_dweller } } }
 		}
 	}
 }

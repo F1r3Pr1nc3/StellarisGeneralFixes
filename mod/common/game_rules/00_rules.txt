@@ -949,18 +949,6 @@ can_species_procreate = {
 		}
 		has_species_flag = nivlac_no_procreation
 	}
-	if = {
-		limit = { has_cybernetic_creed_trait = yes }
-		root = {
-			NOT = {
-				any_owned_species = {
-					has_population_control = { country = root.owner type = no }
-					is_robotic_species = no
-					has_cybernetic_creed_trait = no
-				}
-			}
-		}
-	}
 }
 
 # Checks if a pop can be assembled
@@ -1011,18 +999,6 @@ species_uses_bonus_growth = {
 		limit = { has_infertile_clone_soldier_trait = yes }
 		root = {
 			check_variable = { which = clone_pops_missing_per_vat value > 0 }
-		}
-	}
-	if = {
-		limit = { has_cybernetic_creed_trait = yes }
-		root = {
-			NOT = {
-				any_owned_species = {
-					has_population_control = { country = root.owner type = no }
-					is_robotic_species = no
-					has_cybernetic_creed_trait = no
-				}
-			}
 		}
 	}
 }

@@ -494,19 +494,6 @@ augmentor_drone = { # Hive empire
 			icon = augmentor
 			desc = job_augmentor_drone_research_desc
 		}
-
-		swap_type = {
-			desc = job_augmentor_drone_assembly_desc
-
-			trigger = {
-				has_owner = yes
-				OR = {
-					is_cyborg_empire = yes
-					can_assemble_hive_pop = yes
-				}
-			}
-			weight = 1
-		}
 	}
 
 	tags = { research amenities }
@@ -526,26 +513,25 @@ augmentor_drone = { # Hive empire
 
 		produces = {
 			trigger = {
-				has_owner = yes
-				is_cyborg_empire = no
-				can_assemble_hive_pop = no
+				is_cyborg_empire = yes
 			}
-			engineering_research = 6
-		}
-
-		produces = {
-			trigger = {
-				has_owner = yes
-				OR = {
-					is_cyborg_empire = yes
-					can_assemble_hive_pop = yes
-				}
-			}
-			engineering_research = 3
+			engineering_research = 1.5
 		}
 
 		upkeep = {
+			trigger = {
+				is_cyborg_empire = yes
+			}
 			alloys = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_active_tradition = tr_cybernetics_assimilator_augmentation_centers
+				}
+			}
+			alloys = 3
 		}
 	}
 
@@ -559,14 +545,31 @@ augmentor_drone = { # Hive empire
 
 	triggered_planet_modifier = {
 		potential = {
-			has_owner = yes
-			OR = {
-				is_cyborg_empire = yes
-				can_assemble_hive_pop = yes
-			}
+			is_cyborg_empire = yes
 		}
 		logistic_growth_mult = 0.05
 		bonus_pop_growth_mult = 0.05
+	}
+
+	triggered_planet_pop_group_modifier_for_species = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_cybernetics_assimilator_augmentation_centers
+			}
+			has_trait = trait_cybernetic
+		}
+		bonus_pop_growth = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_active_tradition = tr_cybernetics_assimilator_augmentation_centers
+			}
+		}
+		fake_pop_growth_mod = 2
 	}
 
 	weight = {
@@ -637,8 +640,9 @@ identity_designer = {
 
 	possible_precalc = can_fill_specialist_job
 
-	planet_modifier = {
-		planet_amenities_add = 5
+	triggered_planet_modifier = {
+		planet_amenities_add = 500
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
 	resources = {

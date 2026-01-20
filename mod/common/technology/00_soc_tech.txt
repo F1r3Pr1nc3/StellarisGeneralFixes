@@ -3452,6 +3452,7 @@ tech_psionic_theory = {
 
 	modifier = {
 		empire_size_pops_mult = -0.05
+		army_morale_damage_taken_mult = -0.10
 	}
 
 	weight_modifier = {
@@ -3512,9 +3513,7 @@ tech_psionic_theory = {
 		modifier = {
 			factor = 1.25
 			any_owned_species = { is_latent_psionic_species = yes }
-			NOT = { any_owned_species = {
-
-			is_psionic_species = yes } }
+			NOT = { any_owned_species = { is_psionic_species = yes } }
 		}
 		modifier = {
 			factor = 2
@@ -4297,6 +4296,10 @@ tech_subdermal_stimulation = {
 			has_civic = civic_dystopian_society
 			is_individual_machine = yes
 		}
+	}
+
+	modifier = {
+		army_morale = 0.10
 	}
 
 	weight_modifier = {

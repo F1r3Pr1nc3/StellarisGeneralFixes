@@ -495,8 +495,10 @@ event = {
 	immediate = {
 		random_playable_country = { # Vfix opt
 			limit = {
-				is_ai = no # Vfix opt
-				NOT = { has_country_flag = birth_of_piracy }
+				NOR = {
+					is_ai = yes # Vfix opt
+					has_country_flag = birth_of_piracy
+				}
 				exists = capital_scope
 				has_monthly_income = { resource = trade value > 100 }
 				any_system_within_border = {
@@ -777,10 +779,12 @@ country_event = {
 	}
 }
 
-# raid from home system
+# Raid From Home System
+# Opt by FirePrince
 fleet_event = {
 	id = pirate.20
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		exists = event_target:young_blood
@@ -790,37 +794,29 @@ fleet_event = {
 		solar_system = { has_star_flag = pirate_home_system }
 	}
 
-	# Vfix TODO DEPRECATE
-	mean_time_to_happen = {
-		years = 50
-	}
+	# VFIX OPT DEPRECATED
+	# mean_time_to_happen = {
+	# 	years = 50
+	# }
 
 	immediate = {
-		random_playable_country = {
-			limit = {
-				fleet_power > 1800 # at least slightly more than the raiding party
-			}
-			capital_scope = { save_event_target_as = target_capital }
-		}
-		if = {
-			limit = {
-				NOT = { exists = event_target:target_capital }
-			}
-			break = yes
-		}
 		queue_actions = {
 			repeat = {
 				find_closest_system = {
 					trigger = {
 						id = pirate.20.a
-						any_system_planet = { is_same_value = event_target:target_capital }
+						can_generate_trade_value = yes # Vfix
+						is_capital_system = yes # Vfix
+						owner = {
+							fleet_power > 1800 # at least slightly more than the raiding party
+						}
 					}
 					found_system = {
 						move_to = this
 						find_closest_planet = {
 							trigger = {
 								id = pirate.20.b
-								is_same_value = event_target:target_capital
+								is_capital = yes # Vfix
 							}
 							found_planet = { move_to = this }
 						}
@@ -847,13 +843,13 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_ai = no	# PATCH|OPT
+		is_ai = no	# Vfix PATCH|OPT
+		# is_country_type = default
 		from = { is_pirate_country = yes has_communications = root }
 		fromfromfrom = {
 			is_ship_size = pirate_station
 			NOT = { has_fleet_flag = pirate_home_system_fleet }
 		}
-		is_country_type = default
 	}
 
 	immediate = {
@@ -1678,14 +1674,29 @@ event = {
 	}
 
 	immediate = {
-		random_list = {
-			1 = { # Bemat Thalassocracy
-				event_target:global_event_country = {
-					country_event = { id = pirate.150 days = 550 }
+		if = {
+			limit = { end_game_years_passed > -1 }
+			random_list = {
+				1 = { # Bemat Thalassocracy
+					event_target:global_event_country = {
+						country_event = { id = pirate.150 days = 550 }
+					}
 				}
+				# More pirate encounters can be added here
+				6 = {  }
 			}
-			# More pirate encounters can be added here
-			6 = {  }
+		}
+		else_if = {
+			limit = {
+				mid_game_years_passed < 1
+				years_passed > 25
+				exists = event_target:young_blood
+				NOT = { has_global_flag = privateers_destroyed }
+			}
+			# VFIX PATCH|OPT: replace MTTH
+			event_target:young_blood = {
+				fleet_event = { id = pirate.20 days = 144 }
+			}
 		}
 	}
 }

@@ -951,15 +951,25 @@ leader_trait_eater_chosen = {
 
 	# Any Class - Planet Modifier
 	triggered_planet_modifier = {
-		potential = { is_ruler = no }
+		potential = { is_ruler = no is_gestalt = no }
 		job_soldier_add = 200
+		mult = value:transcended_psionic_multiplier
+	}
+	triggered_planet_modifier = {
+		potential = { is_ruler = no is_gestalt = yes }
+		job_warrior_drone_per_pop = 0.1
 		mult = value:transcended_psionic_multiplier
 	}
 
 	# Any Class - Sector Modifier
 	triggered_sector_modifier = {
-		potential = { is_ruler = no }
+		potential = { is_ruler = no is_gestalt = no }
 		job_soldier_add = 100
+		mult = value:transcended_psionic_multiplier
+	}
+	triggered_sector_modifier = {
+		potential = { is_ruler = no is_gestalt = yes }
+		job_warrior_drone_per_pop = 0.05
 		mult = value:transcended_psionic_multiplier
 	}
 

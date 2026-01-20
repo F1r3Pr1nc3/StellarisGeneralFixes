@@ -6868,22 +6868,25 @@ country_event = {
 
 	trigger = {
 		any_system = {
+			NOR = { # Vfix opt
+				exists = starbase
+				exists = owner_or_space_owner
+				has_star_flag = hostile_system
+			}
 			any_system_planet = {
 				is_colonizable = yes
-				has_owner = no
-				is_colony = no
-				habitable_planet = yes
 				NOR = {
+					has_owner = yes
+					is_colony = yes
 					has_anomaly = yes
 					has_modifier = "holy_planet"
-					solar_system = { has_star_flag = hostile_system }
 				}
+				habitable_planet = yes
 				distance = {
 					source = root.owner.capital_scope
 					max_distance <= 300
 					min_distance >= 50
 				}
-				NOT = { solar_system = { exists = starbase } }
 			}
 		}
 	}
@@ -6999,22 +7002,25 @@ country_event = {
 
 	trigger = {
 		any_system = {
+			NOR = { # Vfix opt
+				exists = starbase
+				exists = owner_or_space_owner
+				has_star_flag = hostile_system
+			}
 			any_system_planet = {
 				is_colonizable = yes
-				has_owner = no
-				is_colony = no
-				habitable_planet = yes
 				NOR = {
+					has_owner = yes
+					is_colony = yes
 					has_anomaly = yes
 					has_modifier = "holy_planet"
-					solar_system = { has_star_flag = hostile_system }
 				}
+				habitable_planet = yes
 				distance = {
 					source = root.owner.capital_scope
 					max_distance <= 300
 					min_distance >= 50
 				}
-				NOT = { solar_system = { exists = starbase } }
 			}
 		}
 	}

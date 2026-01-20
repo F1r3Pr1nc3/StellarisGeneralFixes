@@ -307,7 +307,6 @@ triggered_country_modifier = {
 }
 
 #Storm Chasers get Storm Shelter effects for free
-
 triggered_planet_modifier = { #basic shelter
 	potential = {
 		exists = owner
@@ -377,4 +376,47 @@ triggered_planet_modifier = {
 	}
 
 	planet_jobs_unity_produces_mult = @storm_chasers_storm_building_unity_produces_mult
+}
+
+# Imperious Architecture
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			is_worker_coop_empire = no
+			has_active_tradition = tr_domination_imperious_architecture
+		}
+	}
+	planet_housing_add = 100
+	job_politician_add = 100
+	mult = trigger:capital_tier
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_gestalt = no
+			is_worker_coop_empire = yes
+			has_active_tradition = tr_domination_imperious_architecture
+		}
+	}
+	planet_housing_add = 100
+	job_bureaucrat_add = 150
+	mult = trigger:capital_tier
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+			has_active_tradition = tr_domination_imperious_architecture
+		}
+	}
+	planet_housing_add = 150
+	job_coordinator_add = 150
+	mult = trigger:capital_tier
 }

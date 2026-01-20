@@ -5,10 +5,7 @@ hidden_effect = {
 			limit = {
 				exists = controller
 				controller = {
-					OR = {
-						is_hostile_to = from.controller # checks diplomatic relation
-						is_hostile = from.controller # fix by Alfray Stryke
-					}
+					is_hostile = from.controller
 				}
 			}
 			every_owned_ship = {

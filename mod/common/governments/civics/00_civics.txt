@@ -663,8 +663,8 @@ civic_environmentalist = {
 		civics = {
 			NOR = {
 				value = civic_dystopian_society
-				value = civic_environmental_architects
-				value = civic_environmental_architects_megacorp
+				value = civic_environmental_architects # Vfix
+				value = civic_environmental_architects_megacorp # Vfix
 			}
 			NOR = {
 				text = civic_tooltip_not_relentless_industrialists
@@ -3665,7 +3665,8 @@ civic_beastmasters = {
 	}
 
 	modifier = {
-		artificial_ship_naval_cap_usage_mult = 2.0
+		starbase_shipyard_artificial_build_cost_mult = 2.0
+		ship_military_artificial_upkeep_mult = 2.0
 		space_fauna_ship_cost_mult = -0.15
 		space_fauna_ship_upkeep_mult = -0.10
 		add_attunement_the_composer_of_strands = @civic_attunement1
@@ -3696,6 +3697,7 @@ civic_genetic_identification = {
 			}
 		}
 	}
+	alternate_civic_version = civic_corporate_genetic_identification
 
 	modifier = {
 		planet_bureaucrats_society_research_produces_add = 1.5
@@ -3741,6 +3743,7 @@ civic_crowdsourcing = {
 			}
 		}
 	}
+	alternate_civic_version = civic_corporate_crowdsourcing
 
 	modifier = {
 		add_attunement_the_cradle_of_souls = @civic_attunement1
@@ -3812,6 +3815,7 @@ civic_entropy_drinkers = {
 			}
 		}
 	}
+	alternate_civic_version = civic_entropy_drinkers_corporate
 	modification = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
@@ -3915,6 +3919,7 @@ civic_twisted_experimenters = {
 			}
 		}
 	}
+	alternate_civic_version = civic_twisted_experimenters_corporate
 
 	random_weight = {
 		base = @civic_default_random_weight

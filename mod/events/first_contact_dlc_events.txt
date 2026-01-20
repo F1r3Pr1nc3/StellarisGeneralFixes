@@ -28,6 +28,7 @@ ship_event = {
 		owner = { set_country_flag = built_observation_post }
 	}
 }
+
 # on_monthly_pulse
 event = {
 	id = fircon.10
@@ -39,11 +40,11 @@ event = {
 		any_playable_country = {
 			has_country_flag = built_observation_post
 			any_observed_pre_ftl_within_border = { # Vfix opt
-				 NOR = {
-					 has_awareness > 99
-					 has_country_flag = solarpunk_country
-				 }
-			 }
+				NOR = {
+					has_awareness > 99
+					has_country_flag = solarpunk_country
+				}
+			}
 		}
 	}
 
@@ -68,14 +69,9 @@ event = {
 			# }
 			if = {
 				limit = {
-					NOT = {
-						is_variable_set = observation_insight_change_comparator
-					}
+					NOT = { is_variable_set = observation_insight_change_comparator }
 				}
-				set_variable = {
-					which = observation_insight_change_comparator
-					value = 0
-				}
+				set_variable = { which = observation_insight_change_comparator value = 0 }
 			}
 			if = {
 				limit = {
@@ -108,11 +104,9 @@ event = {
 			}
 			if = {
 				limit = {
-					check_variable = { which = observation_post_insight value > 0 }
-					NOT = {
-						any_situation = {
-							is_situation_type = situation_observation_insight
-						}
+					NOR = {
+						check_variable = { which = observation_post_insight value <= 0 }
+						any_situation = { is_situation_type = situation_observation_insight }
 					}
 				}
 				start_situation = {

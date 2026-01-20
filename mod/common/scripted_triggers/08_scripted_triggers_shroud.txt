@@ -1193,7 +1193,7 @@ check_aura_suppressors = {
 
 can_aura_spread_in_system = {
 	has_psionic_aura = no
-	check_aura_suppressors = no
+	is_psionic_aura_suppressed = no
 
 	is_close_to_psionic_aura_generator_system = {
 		OWNER = $OWNER$
@@ -1353,7 +1353,9 @@ is_leader_mia_or_in_transit = {
 # This = Leader
 is_leader_in_combat = {
 	exists = fleet # Vfix double
-	fleet = { is_in_combat = yes }
+	fleet = {
+		is_in_combat = yes
+	}
 }
 
 # This = Leader

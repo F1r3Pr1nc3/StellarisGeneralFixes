@@ -4545,7 +4545,7 @@ country_event = {
 		any_system_within_border = {
 			closest_system = {
 				min_steps = 0
-				max_steps = 3
+				max_steps = 5
 				limit = {
 					exists = space_owner
 					space_owner = { is_country_type = caravaneer_home has_communications = root }
@@ -4560,7 +4560,7 @@ country_event = {
 			limit = {
 				closest_system = {
 					min_steps = 0
-					max_steps = 3
+					max_steps = 5
 					limit = {
 						exists = space_owner
 						space_owner = { is_country_type = caravaneer_home has_communications = root }
@@ -4585,9 +4585,11 @@ country_event = {
 			}
 		}
 		random_list = {
-			500 = {  }
-			10 = { country_event = { id = cara.4110 } }
-			10 = { # No factor 0 modifier as I don't want the remaining option to be more common.
+			90 = {
+				# no effect
+			}
+			2 = { country_event = { id = cara.4110 } }
+			2 = { # No factor 0 modifier as I don't want the remaining option to be more common.
 				if = {
 					limit = { is_gestalt = no }
 					event_target:cara_border_planet = {
@@ -4595,7 +4597,7 @@ country_event = {
 					}
 				}
 			}
-			10 = {
+			2 = {
 				if = {
 					limit = { is_gestalt = no }
 					event_target:cara_border_planet = {
@@ -4603,7 +4605,7 @@ country_event = {
 					}
 				}
 			}
-			10 = {
+			2 = {
 				if = {
 					limit = { is_gestalt = no }
 					event_target:cara_border_planet = {
@@ -4611,7 +4613,7 @@ country_event = {
 					}
 				}
 			}
-			5 = {
+			1 = {
 				if = {
 					limit = {
 						NOR = {
@@ -4624,7 +4626,7 @@ country_event = {
 					}
 				}
 			}
-			5 = {
+			1 = {
 				if = {
 					limit = {
 						OR = {

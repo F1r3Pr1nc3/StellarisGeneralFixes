@@ -76,6 +76,27 @@ country_event = {
 	}
 }
 
+# Payback planet loses its modifier when conquered
+planet_event = {
+	id = origin.4001
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		exists = from
+		exists = fromfrom
+		fromfrom = { has_origin = origin_payback }
+		has_modifier = payback_unified_purpose
+		from = {
+			NOT = { has_origin = origin_payback }
+		}
+	}
+
+	immediate = {
+		remove_modifier = payback_unified_purpose
+	}
+}
+
 # Assorted setup
 country_event = {
 	id = origin.4005

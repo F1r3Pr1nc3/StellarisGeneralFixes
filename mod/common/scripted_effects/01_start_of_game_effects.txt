@@ -1625,41 +1625,6 @@ generate_start_pops = {
 		}
 	}
 
-	# Cybernetic Creed: add Unique Traits
-	if = {
-		limit = {
-			owner = { has_origin = origin_cybernetic_creed }
-		}
-		while = {
-			limit = {
-				any_owned_pop_group = {
-					is_robot_pop_group = no
-					has_ethic = ethic_spiritualist
-					has_cybernetic_creed_trait = no
-				}
-			}
-			weighted_random_owned_pop_group = {
-				limit = {
-					is_robot_pop_group = no
-					has_ethic = ethic_spiritualist
-					has_cybernetic_creed_trait = no
-				}
-				modify_species = {
-					species = this
-					add_trait = trait_cyborg_ritualistic_implants
-					add_traits_at_start_of_list = yes
-				}
-			}
-		}
-		owner = {
-			set_policy = {
-				policy = robot_pop_policy
-				option = robot_pops_allowed
-				cooldown = no
-			}
-		}
-	}
-
 	# Synthetic Fertility
 	if = {
 		limit = {
@@ -1859,7 +1824,10 @@ generate_civic_secondary_pops = {
 			}
 			set_living_standard = { country = root.owner type = living_standard_hive_mind }
 		}
-		create_pop_group = { size = 1000 species = last_created_species }
+		while = {
+			count = @civilians_counter
+			create_pop_group = { size = @civilians_gamestart species = last_created_species }
+		}
 	}
 }
 

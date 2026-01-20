@@ -1841,17 +1841,26 @@ country_event = {
 		name = shroud_forged.400.d
 		trigger = { has_breached_shroud = yes }
 		allow = {
-			resource_stockpile_compare = { resource = sr_zro value >= 500 }
+			resource_stockpile_compare = { resource = sr_zro value >= value:animator_planets_cost }
 			custom_tooltip = {
 				fail_text = animator_of_clay_cooldown_tt
 				NOT = { has_country_flag = animator_of_clay_cooldown }
 			}
 		}
-		add_resource = { sr_zro = -500 }
+		add_resource = {
+			sr_zro = -1
+			mult = value:animator_planets_cost
+		}
 		custom_tooltip = shroud_forged.400.d.tt
 		hidden_effect = {
-			every_system_within_border = {
-				every_system_colony = { animator_of_clay_create_vessels = yes }
+			every_owned_planet = {
+				limit = {
+					OR = {
+						has_deposit = d_shroud_rift_deposit
+						has_active_building = building_zroni_equilibrator
+					}
+				}
+				animator_of_clay_create_vessels = yes
 			}
 			shroud_forged_animator_of_clay_cooldown = { VALUE = 3600 }
 			country_event = { id = shroud_forged.470 }

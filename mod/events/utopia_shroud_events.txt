@@ -6359,21 +6359,19 @@ fleet_event = {
 			exists = event_target:the_end_of_the_cycle@this
 			event_target:the_end_of_the_cycle@this = { is_same_value = root }
 		}
-		any_system = {
-			any_system_planet = {
-				OR = {
-					is_colonizable = yes
-					has_owner = yes
-				}
-				NAND = {
-					has_planet_flag = exile_planet
-					any_galaxy_planet = {
-						OR = {
-							is_colonizable = yes
-							has_owner = yes
-						}
-						NOT = { has_planet_flag = exile_planet }
+		any_galaxy_planet = {
+			OR = {
+				is_colonizable = yes
+				has_owner = yes
+			}
+			NAND = {
+				has_planet_flag = exile_planet
+				any_galaxy_planet = {
+					OR = {
+						is_colonizable = yes
+						has_owner = yes
 					}
+					NOT = { has_planet_flag = exile_planet }
 				}
 			}
 		}
@@ -6829,7 +6827,7 @@ country_event = {
 				has_whisperers_madness = yes
 				has_whisperers_psychosis = yes
 			}
-			any_owned_pop_group = { pop_group_has_trait = "trait_psionic" }
+			any_owned_species = { is_psionic_species = yes } # Vfix
 		}
 	}
 
@@ -6841,7 +6839,7 @@ country_event = {
 					has_whisperers_madness = yes
 					has_whisperers_psychosis = yes
 				}
-				any_owned_pop_group = { pop_group_has_trait = "trait_psionic" }
+				any_owned_species = { is_psionic_species = yes } # Vfix
 			}
 			random_owned_pop_group = { kill_single_pop = yes }
 			save_event_target_as = planet_target # Vfix
@@ -6914,7 +6912,7 @@ country_event = {
 				has_whisperers_madness = yes
 				has_whisperers_psychosis = yes
 			}
-			any_owned_pop_group = { pop_group_has_trait = "trait_psionic" }
+			any_owned_species = { is_psionic_species = yes } # Vfix
 		}
 	}
 
@@ -6926,7 +6924,7 @@ country_event = {
 					has_whisperers_madness = yes
 					has_whisperers_psychosis = yes
 				}
-				any_owned_pop_group = { pop_group_has_trait = "trait_psionic" }
+				any_owned_species = { is_psionic_species = yes } # Vfix
 			}
 			random_owned_pop_group = { kill_single_pop = yes }
 			save_event_target_as = planet_target # Vfix

@@ -27,3 +27,50 @@ event = {
 		}
 	}
 }
+
+# By FirePrince
+namespace = leader
+# Engineer gained from Repairing
+# Vfix opt (on_five_year_pulse_country)
+country_event = {
+	id = leader.150
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		is_gestalt = no
+		has_technology = tech_doctrine_fleet_size_3
+		any_owned_fleet = {
+			is_civilian = no
+			is_being_repaired = yes
+			exists = leader
+			leader = {
+				leader_class = commander
+				NOR = {
+					num_traits >= 3
+					has_trait = leader_trait_engineer
+				}
+			}
+		}
+	}
+
+	immediate = {
+		random_owned_fleet = {
+			limit = {
+				is_civilian = no
+				is_being_repaired = yes
+				exists = leader
+				is_fleet_idle = no
+				leader = {
+					leader_class = commander
+					NOR = {
+						num_traits >= 3
+						has_trait = leader_trait_engineer
+					}
+				}
+			}
+			fleet_event = { id = leader.15 days = 7 }
+		}
+	}
+}

@@ -181,6 +181,7 @@ ships = {
 
 		trigger = {
 			is_scope_valid = yes
+			is_ship_class = shipclass_military
 			is_space_fauna = no
 		}
 	}
@@ -516,6 +517,24 @@ ships = {
 		trigger = {
 			is_scope_valid = yes
 			is_ship_class = shipclass_science_ship
+		}
+	}
+	
+	triggered_upkeep_modifier = {
+		key = ship_military_artificial
+		use_parent_icon = yes
+
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes
+			OR = {
+				is_ship_class = shipclass_military
+				is_ship_class = shipclass_military_special
+			}
+			is_space_fauna = no
 		}
 	}
 }

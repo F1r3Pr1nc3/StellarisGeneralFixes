@@ -11,7 +11,7 @@ setup_aura_clashing = {
 			aura_owner = {
 				NOT = { is_same_empire = root.aura_owner }
 			}
-			check_aura_suppressors = no
+			is_psionic_aura_suppressed = no
 		}
 		[[PRE_LOOP_EFFECTS] $PRE_LOOP_EFFECTS$ ]
 		export_trigger_value_to_variable = { trigger = monthly_intensity_increase variable = monthly_increase }
@@ -175,7 +175,7 @@ spread_aura_endlessly = {
 		random_neighbor_system = {
 			limit = {
 				has_psionic_aura = no
-				check_aura_suppressors = no
+				is_psionic_aura_suppressed = no
 			}
 			spawn_psionic_aura = { owner = prev.aura_owner }
 			weights = {

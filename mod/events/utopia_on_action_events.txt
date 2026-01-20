@@ -1033,21 +1033,19 @@ country_event = {
 
 	trigger = {
 		NOT = { from = { leader_class = envoy } }
-		OR = {
-			from = {
+		OR = { # Vfix opt
+			has_tradition = tr_synthetics_finish
+			has_tradition = tr_modularity_finish
+		}
+		from = {
+			OR = {
 				species = {
 					has_trait = trait_mechanical
 					NOT = { has_trait = trait_shroud_forged }
 				}
-			}
-			AND = {
-				from = {
+				AND = {
 					species = { has_trait = trait_machine_unit }
 					is_gestalt_node = no
-				}
-				OR = { # Vfix opt
-					has_tradition = tr_modularity_finish
-					has_tradition = tr_synthetics_finish
 				}
 			}
 		}

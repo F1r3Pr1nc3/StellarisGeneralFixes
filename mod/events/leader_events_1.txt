@@ -736,6 +736,7 @@ fleet_event = {
 }
 
 # Engineer gained from Repairing
+# Vfix opt
 fleet_event = {
 	id = leader.15
 	title = "admiral_trait_gain"
@@ -761,6 +762,7 @@ fleet_event = {
 
 	picture = GFX_evt_federation_fleet
 	location = root
+	is_triggered_only = yes
 
 	trigger = {
 		can_generate_trade_value = yes # Vfix flex
@@ -776,11 +778,10 @@ fleet_event = {
 		}
 	}
 
-	# Vfix TODO DEPRECATE
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	# Vfix DEPRECATED
+	# mean_time_to_happen = {
+	# 	years = 20
+	# }
 	immediate = {
 		leader = { save_event_target_as = officer }
 	}

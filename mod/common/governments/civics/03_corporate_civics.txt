@@ -2177,7 +2177,8 @@ civic_corporate_beastmasters = {
 	}
 
 	modifier = {
-		artificial_ship_naval_cap_usage_mult = 2.0
+		starbase_shipyard_artificial_build_cost_mult = 2.0
+		ship_military_artificial_upkeep_mult = 2.0
 		space_fauna_ship_cost_mult = -0.15
 		space_fauna_ship_upkeep_mult = -0.10
 		add_attunement_the_composer_of_strands = @civic_attunement1
@@ -2197,7 +2198,10 @@ civic_corporate_genetic_identification = {
 	description = "civic_corporate_genetic_identification_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		authority = { value = auth_corporate }
+		OR = {
+			authority = { value = auth_corporate }
+			civics = { value = civic_galactic_sovereign_megacorp }
+		}
 		civics = { NOT = { value = civic_genetic_identification } }
 		species_archetype = { NOT = { value = MACHINE } }
 	}
@@ -2209,6 +2213,7 @@ civic_corporate_genetic_identification = {
 			}
 		}
 	}
+	alternate_civic_version = civic_genetic_identification
 
 	random_weight = {
 		base = @civic_rare_random_weight
@@ -2235,7 +2240,10 @@ civic_corporate_crowdsourcing = {
 				value = ethic_gestalt_consciousness
 			}
 		}
-		authority = { value = auth_corporate }
+		OR = {
+			authority = { value = auth_corporate }
+			civics = { value = civic_galactic_sovereign_megacorp }
+		}
 	}
 	possible = {
 		ethics = {
@@ -2259,6 +2267,7 @@ civic_corporate_crowdsourcing = {
 			}
 		}
 	}
+	alternate_civic_version = civic_crowdsourcing
 
 	modifier = {
 		add_attunement_the_cradle_of_souls = @civic_attunement1
@@ -2314,6 +2323,7 @@ civic_entropy_drinkers_corporate = {
 			}
 		}
 	}
+	alternate_civic_version = civic_entropy_drinkers
 
 	modification = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
@@ -2423,6 +2433,7 @@ civic_twisted_experimenters_corporate = {
 			}
 		}
 	}
+	alternate_civic_version = civic_twisted_experimenters
 
 	random_weight = {
 		base = @civic_default_random_weight
@@ -2552,7 +2563,10 @@ civic_tankbound_corporate = {
 
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		authority = { value = auth_corporate }
+		OR = {
+			authority = { value = auth_corporate }
+			civics = { value = civic_galactic_sovereign_megacorp }
+		}
 		civics = { NOT = { value = civic_tankbound } }
 	}
 	possible = {
@@ -2631,7 +2645,10 @@ civic_corporate_world_forgers = {
 	description = "civic_world_forgers_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		authority = { value = auth_corporate }
+		OR = {
+			authority = { value = auth_corporate }
+			civics = { value = civic_galactic_sovereign_megacorp }
+		}
 	}
 	possible = {
 		# this does not prevent the empire from rolling the bioship at random
@@ -2679,7 +2696,10 @@ civic_corporate_galvanic_symbiosis = {
 	description = "civic_corporate_galvanic_symbiosis_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		authority = { value = auth_corporate }
+		OR = {
+			authority = { value = auth_corporate }
+			civics = { value = civic_galactic_sovereign_megacorp }
+		}
 	}
 	possible = {
 		species_class = { value = INF }

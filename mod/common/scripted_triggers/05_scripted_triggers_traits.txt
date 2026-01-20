@@ -514,38 +514,6 @@ empire_has_good_habitability_on_tomb_worlds = {
 	}
 }
 
-can_assemble_bio_pop = {
-	planet = {
-		NAND = {
-			exists = assembling_species
-			assembling_species = { is_robotic = yes }
-		}
-	}
-}
-
-can_assemble_hive_pop = {
-	planet = {
-		OR = {
-			NOT = { exists = assembling_species }
-			assembling_species = {
-				OR = {
-					has_trait = trait_hive_mind
-					is_robotic = yes
-				}
-			}
-		}
-	}
-}
-
-can_assemble_robot = {
-	planet = {
-		OR = {
-			NOT = { exists = assembling_species }
-			assembling_species = { is_robotic = yes }
-		}
-	}
-}
-
 has_infertile_clone_soldier_trait = {
 	OR = {
 		has_trait = trait_clone_soldier_infertile

@@ -1,7 +1,62 @@
-# VFIX REMOVEME at v4.4
+## REMOVEME at v4.3
+
 trader_is_subterranean = {
 	exists = planet
 	planet = {
 		has_deposit = d_underground_contact_zone
+	}
+}
+
+is_psionic_aura_suppressed = {
+	OR = {
+		check_aura_suppression_buildings = yes
+		any_system_colony = {
+			OR = {
+				AND = {
+					has_active_building = building_psionic_suppressor
+					exists = owner
+					owner = {
+						has_resource = { type = sr_zro amount > 0 }
+					}
+				}
+				has_active_building = building_ancient_ward_2
+			}
+		}
+		has_megastructure = shroud_seal
+		check_variable_arithmetic = { which = value:count_neighbor_shroud_seals value > 0 }
+	}
+}
+
+# 05_scripted_triggers_traits.txt
+# REMOVED on v4.3
+can_assemble_bio_pop = {
+	planet = {
+		NAND = {
+			exists = assembling_species
+			assembling_species = { is_robotic = yes }
+		}
+	}
+}
+# REMOVED on v4.3
+can_assemble_hive_pop = {
+	planet = {
+		OR = {
+			NOT = { exists = assembling_species }
+			assembling_species = {
+				OR = {
+					has_trait = trait_hive_mind
+					is_robotic = yes
+				}
+			}
+		}
+	}
+}
+# REMOVED on v4.3
+can_assemble_robot = {
+	planet = {
+		OR = {
+			NOT = { exists = assembling_species }
+			assembling_species = { is_robotic = yes }
+		}
 	}
 }
