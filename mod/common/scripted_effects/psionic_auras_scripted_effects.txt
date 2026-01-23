@@ -6,14 +6,18 @@ setup_aura_clashing = {
 	export_trigger_value_to_variable = { trigger = monthly_intensity_increase variable = monthly_increase }
 	every_neighbor_system = {
 		limit = {
-			[[PRE_LOOP_CONDITIONS] $PRE_LOOP_CONDITIONS$ ]
+			[[PRE_LOOP_CONDITIONS]
+			$PRE_LOOP_CONDITIONS$
+			]
 			has_psionic_aura = yes
 			aura_owner = {
 				NOT = { is_same_empire = root.aura_owner }
 			}
 			is_psionic_aura_suppressed = no
 		}
-		[[PRE_LOOP_EFFECTS] $PRE_LOOP_EFFECTS$ ]
+		[[PRE_LOOP_EFFECTS]
+		$PRE_LOOP_EFFECTS$
+		]
 		export_trigger_value_to_variable = { trigger = monthly_intensity_increase variable = monthly_increase }
 		if = {
 			limit = {

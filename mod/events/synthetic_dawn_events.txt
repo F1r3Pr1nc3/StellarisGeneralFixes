@@ -378,7 +378,7 @@ country_event = {
 		}
 		any_owned_planet = {
 			is_occupied_flag = no
-			any_owned_pop_group = { has_trait = trait_mechanical }
+			any_owned_species = { has_trait = trait_mechanical }
 		}
 	}
 
@@ -538,7 +538,7 @@ situation_event = {
 			any_owned_planet = {
 				is_occupied_flag = no
 				free_housing > 500
-				any_owned_pop_group = {
+				any_owned_species = {
 					NOT = { has_trait = trait_mechanical }
 				}
 			}
@@ -553,7 +553,7 @@ situation_event = {
 				limit = {
 					is_occupied_flag = no
 					free_housing > 500
-					any_owned_pop_group = {
+					any_owned_species = {
 						NOT = { has_trait = trait_mechanical }
 					}
 				}
@@ -935,7 +935,7 @@ situation_event = {
 		owner = {
 			any_owned_planet = {
 				is_occupied_flag = no
-				any_owned_pop_group = { has_trait = trait_mechanical }
+				any_owned_species = { has_trait = trait_mechanical }
 			}
 		}
 	}
@@ -948,7 +948,7 @@ situation_event = {
 			random_owned_planet = {
 				limit = {
 					is_occupied_flag = no
-					any_owned_pop_group = { has_trait = trait_mechanical }
+					any_owned_species = { has_trait = trait_mechanical }
 				}
 				save_event_target_as = target_planet
 			}
@@ -991,7 +991,7 @@ situation_event = {
 		event_target:target_planet = {
 			is_owned_by = root.owner
 			is_occupied_flag = no
-			any_owned_pop_group = { has_trait = trait_mechanical }
+			any_owned_species = { has_trait = trait_mechanical }
 		}
 	}
 
@@ -1148,7 +1148,7 @@ situation_event = {
 			OR = {
 				# Any Robots pops or robot armies? Check most likely first.
 				any_owned_planet = {
-					any_owned_pop_group = { has_trait = trait_mechanical }
+					any_owned_species = { has_trait = trait_mechanical }
 				}
 				any_owned_army = {
 					exists = planet
@@ -1188,7 +1188,7 @@ situation_event = {
 				}
 				random_owned_planet = {
 					limit = {
-						any_owned_pop_group = { has_trait = trait_mechanical }
+						any_owned_species = { has_trait = trait_mechanical }
 					}
 					save_event_target_as = target_planet
 				}
@@ -1202,7 +1202,7 @@ situation_event = {
 		add_situation_progress = 5
 		trigger = {
 			event_target:target_planet = {
-				any_owned_pop_group = { has_trait = trait_mechanical }
+				any_owned_species = { has_trait = trait_mechanical }
 			}
 		}
 		hidden_effect = {
@@ -1223,7 +1223,7 @@ situation_event = {
 		trigger = {
 			NOT = {
 				event_target:target_planet = {
-					any_owned_pop_group = { has_trait = trait_mechanical }
+					any_owned_species = { has_trait = trait_mechanical }
 				}
 			}
 			exists = event_target:target_army
@@ -1263,7 +1263,7 @@ planet_event = {
 		has_synthetic_dawn = yes
 		pop_amount > 0
 		is_occupied_flag = no
-		any_owned_pop_group = { has_trait = trait_mechanical }
+		any_owned_species = { has_trait = trait_mechanical }
 	}
 
 	immediate = {
@@ -1443,7 +1443,7 @@ situation_event = {
 				limit = {
 					NOT = {
 						any_owned_planet = {
-							any_owned_pop_group = { has_trait = trait_mechanical }
+							any_owned_species = { has_trait = trait_mechanical }
 						}
 					}
 				}
@@ -1453,13 +1453,13 @@ situation_event = {
 			else_if = {
 				limit = {
 					any_owned_planet = {
-						any_owned_pop_group = { has_trait = trait_mechanical }
+						any_owned_species = { has_trait = trait_mechanical }
 						is_capital = no
 					}
 				}
 				random_owned_planet = {
 					limit = {
-						any_owned_pop_group = { has_trait = trait_mechanical }
+						any_owned_species = { has_trait = trait_mechanical }
 						is_capital = no
 					}
 					planet_event = { id = syndaw.1020 }
@@ -1469,7 +1469,7 @@ situation_event = {
 			else = {
 				random_owned_planet = {
 					limit = {
-						any_owned_pop_group = { has_trait = trait_mechanical }
+						any_owned_species = { has_trait = trait_mechanical }
 					}
 					planet_event = { id = syndaw.1020 }
 				}
@@ -1594,7 +1594,7 @@ planet_event = {
 						}
 						is_under_colonization = yes
 					}
-					any_owned_pop_group = { has_trait = trait_mechanical }
+					any_owned_species = { has_trait = trait_mechanical }
 				}
 				effect = {
 					set_star_flag = machup_system_flip
@@ -1631,7 +1631,7 @@ planet_event = {
 				modifier = {
 					factor = 10
 					owner = {
-						any_owned_pop_group = {
+						any_owned_species = {
 							has_trait = trait_mechanical
 							has_trait = trait_robot_domestic_protocols
 						}

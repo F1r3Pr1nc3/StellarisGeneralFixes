@@ -879,12 +879,7 @@ d_decrepit_dwellings = {
 		hidden_effect = {
 			if = {
 				limit = {
-					any_owned_pop_group = {
-						NOR = {
-							has_trait = trait_hive_mind
-							is_robot_pop_group = yes
-						}
-					}
+					any_owned_species = { is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes }
 				}
 				weighted_random_owned_pop_group = {
 					limit = {
@@ -1112,7 +1107,7 @@ d_unsupervised_settlement = {
 		hidden_effect = {
 			if = {
 				limit = {
-					any_owned_pop_group = { is_robot_pop_group = no }
+					any_owned_species = { is_robotic = no }
 				}
 				weighted_random_owned_pop_group = {
 					limit = { is_robot_pop_group = no }

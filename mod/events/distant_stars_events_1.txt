@@ -528,14 +528,13 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		has_owner = yes
 		has_planet_flag = primitive_robot_planet
-		any_owned_pop_group = {
-			species = { has_species_flag = primitive_robots_flag }
-		}
 		owner = {
 			is_country_type = default
 			NOT = { has_country_flag = cured_rage_virus }
 		}
+		any_owned_species = { has_species_flag = primitive_robots_flag }
 	}
 
 	immediate = {
@@ -744,7 +743,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		any_owned_pop_group = { is_robot_pop_group = no }
+		any_owned_species = { is_robotic = no }
 	}
 
 	immediate = {
@@ -3048,7 +3047,7 @@ planet_event = {
 			controller = { has_country_flag = got_cryonic_clone_colonizer }
 			owner = { has_country_flag = got_cryonic_clone_colonizer }
 		}
-		any_owned_pop_group = { is_same_species = event_target:cryonic_clones }
+		any_owned_species = { is_same_species = event_target:cryonic_clones }
 	}
 
 	immediate = {
@@ -4714,12 +4713,10 @@ ship_event = {
 			owner = {
 				is_synthetic_empire = no
 				is_homicidal = no
-				any_owned_pop_group = {
-					species = {
-						NOR = {
-							has_trait = trait_cybernetic
-							is_robotic = yes
-						}
+				any_owned_species = { # Vfix opt minor
+					NOR = {
+						has_trait = trait_cybernetic
+						is_robotic = yes
 					}
 				}
 			}
@@ -5082,7 +5079,7 @@ country_event = {
 			every_owned_planet = {
 				limit = {
 					OR = {
-						any_owned_pop_group = { has_trait = trait_brainslug }
+						any_owned_species = { has_trait = trait_brainslug }
 						AND = {
 							exists = leader
 							leader = { has_trait = leader_trait_brainslug }
@@ -5103,7 +5100,7 @@ country_event = {
 			every_owned_planet = {
 				limit = {
 					OR = {
-						any_owned_pop_group = { has_trait = trait_brainslug }
+						any_owned_species = { has_trait = trait_brainslug }
 						AND = {
 							exists = leader
 							leader = { has_trait = leader_trait_brainslug }
@@ -6742,13 +6739,13 @@ country_event = {
 					}
 					any_system_planet = {
 						has_planet_flag = ratling_planet
-						any_owned_pop_group = { is_same_species = event_target:ratling_species }
+						any_owned_species = { is_same_species = event_target:ratling_species }
 					}
 				}
 				random_system_planet = {
 					limit = {
 						has_planet_flag = ratling_planet
-						any_owned_pop_group = { is_same_species = event_target:ratling_species }
+						any_owned_species = { is_same_species = event_target:ratling_species }
 					}
 					save_event_target_as = notif_planet
 				}
@@ -6759,7 +6756,7 @@ country_event = {
 				exists = event_target:ratling_planet_2_tar
 				event_target:ratling_planet_2_tar = {
 					NOT = { is_same_value = event_target:ratling_capital }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 			event_target:ratling_planet_2_tar = { save_global_event_target_as = ratling_planet_2 }
@@ -6769,7 +6766,7 @@ country_event = {
 				exists = event_target:ratling_planet_3_tar
 				event_target:ratling_planet_3_tar = {
 					NOT = { is_same_value = event_target:ratling_capital }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 			event_target:ratling_planet_3_tar = { save_global_event_target_as = ratling_planet_3 }
@@ -6779,7 +6776,7 @@ country_event = {
 				exists = event_target:ratling_planet_4_tar
 				event_target:ratling_planet_4_tar = {
 					NOT = { is_same_value = event_target:ratling_capital }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 			event_target:ratling_planet_4_tar = { save_global_event_target_as = ratling_planet_4 }
@@ -6789,7 +6786,7 @@ country_event = {
 				exists = event_target:ratling_planet_5_tar
 				event_target:ratling_planet_5_tar = {
 					NOT = { is_same_value = event_target:ratling_capital }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 			event_target:ratling_planet_5_tar = { save_global_event_target_as = ratling_planet_5 }
@@ -6799,7 +6796,7 @@ country_event = {
 				exists = event_target:ratling_planet_6_tar
 				event_target:ratling_planet_6_tar = {
 					NOT = { is_same_value = event_target:ratling_capital }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 			event_target:ratling_planet_6_tar = { save_global_event_target_as = ratling_planet_6 }
@@ -7025,7 +7022,7 @@ country_event = {
 				any_system_planet = {
 					has_planet_flag = ratling_planet
 					NOT = { is_same_value = fromfrom }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 		}
@@ -7039,7 +7036,7 @@ country_event = {
 					any_system_planet = {
 						has_planet_flag = ratling_planet
 						NOT = { is_same_value = fromfrom }
-						any_owned_pop_group = { is_same_species = event_target:ratling_species }
+						any_owned_species = { is_same_species = event_target:ratling_species }
 					}
 				}
 			}
@@ -7054,7 +7051,7 @@ country_event = {
 				any_system_planet = {
 					has_planet_flag = ratling_planet
 					NOT = { is_same_value = fromfrom }
-					any_owned_pop_group = { is_same_species = event_target:ratling_species }
+					any_owned_species = { is_same_species = event_target:ratling_species }
 				}
 			}
 		}
@@ -7069,7 +7066,7 @@ country_event = {
 					any_system_planet = {
 						has_planet_flag = ratling_planet
 						NOT = { is_same_value = fromfrom }
-						any_owned_pop_group = { is_same_species = event_target:ratling_species }
+						any_owned_species = { is_same_species = event_target:ratling_species }
 					}
 				}
 			}
@@ -8762,7 +8759,7 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = funlent_planet
-		any_owned_pop_group = { is_same_species = event_target:livestock_species }
+		any_owned_species = { is_same_species = event_target:livestock_species }
 		owner = { is_machine_empire = no }
 	}
 
@@ -8792,7 +8789,7 @@ planet_event = {
 		hidden_effect = {
 			while = {
 				limit = {
-					any_owned_pop_group = { is_same_species = event_target:livestock_species }
+					any_owned_species = { is_same_species = event_target:livestock_species }
 				}
 				random_owned_pop_group = {
 					limit = { is_same_species = event_target:livestock_species }

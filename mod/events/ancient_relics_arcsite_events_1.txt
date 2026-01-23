@@ -3783,13 +3783,8 @@ planet_event = {
 			limit = {
 				NOR = {
 					owner = { has_policy_flag = ai_full_rights }
-					any_owned_pop_group = {
-						species = {
-							NOR = {
-								is_archetype = MACHINE
-								is_archetype = ROBOT
-							}
-						}
+					any_owned_species = { # Vfix opt minor
+						is_robotic = no
 					}
 				}
 			}

@@ -204,6 +204,7 @@ tech_eco_simulation = {
 	}
 
 	weight = @tier1weight1
+	gateway = zone
 
 	modifier = {
 		planet_farmers_food_produces_mult = 0.05
@@ -5606,7 +5607,7 @@ tech_slave_colonies = {
 			NAND = {
 				allows_slavery = yes
 				# num_owned_planets > 1
-				any_owned_species = { is_enslaved = yes }
+				any_enslaved_species = {  } # Vfix opt
 			}
 		}
 		modifier = {

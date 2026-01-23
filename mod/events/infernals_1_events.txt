@@ -640,7 +640,7 @@ planet_event = {
 		# Ownership fix if Infernal pops exist, otherwise the colony is lost
 		if = {
 			limit = {
-				any_owned_pop_group = { is_scope_valid = yes is_scope_valid = yes }
+				any_owned_species = { is_scope_valid = yes }
 				owner = {
 					NOT = { is_same_empire = from.owner }
 				}

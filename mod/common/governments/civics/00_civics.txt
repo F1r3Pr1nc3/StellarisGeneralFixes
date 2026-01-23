@@ -178,7 +178,10 @@ civic_beacon_of_liberty = {
 			}
 		}
 		civics = {
-			NOT = { value = civic_crusader_spirit }
+			NOR = {
+				value = civic_brand_loyalty
+				value = civic_crusader_spirit
+			}
 		}
 	}
 	random_weight = { base = @civic_default_random_weight }
@@ -348,6 +351,11 @@ civic_meritocracy = {
 				value = auth_oligarchic
 			}
 		}
+		civics = {
+			NOT = {
+				value = civic_ruthless_competition
+			}
+		}
 	}
 	random_weight = { base = @civic_default_random_weight }
 	ai_weight = {
@@ -417,6 +425,7 @@ civic_citizen_service = {
 		}
 		civics = {
 			NOR = {
+				value = civic_naval_contractors
 				value = civic_reanimated_armies
 				value = civic_tankbound
 			}
@@ -560,8 +569,9 @@ civic_police_state = {
 			}
 		}
 		civics = {
-			NOT = {
+			NOR = {
 				value = civic_civil_education
+				value = civic_worker_coop
 			}
 		}
 	}
@@ -613,6 +623,11 @@ civic_idealistic_foundation = {
 				text = civic_tooltip_egalitarian
 				value = ethic_egalitarian
 				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_media_conglomerate
 			}
 		}
 	}
@@ -723,6 +738,8 @@ civic_slaver_guilds = {
 		}
 		civics = {
 			NOR = {
+				value = civic_corporate_hedonism
+				value = civic_indentured_assets
 				value = civic_pleasure_seekers
 				value = civic_tankbound
 			}
@@ -790,7 +807,10 @@ civic_inwards_perfection = {
 			}
 		}
 		civics = {
-			NOT = {
+			NOR = {
+				value = civic_death_cult
+				value = civic_death_cult_corporate
+				value = civic_diplomatic_corps
 				value = civic_pompous_purists
 			}
 			NOR = {
@@ -870,6 +890,7 @@ civic_warrior_culture = {
 			NOR = {
 				value = civic_dystopian_society
 				value = civic_pleasure_seekers
+				value = civic_private_military_companies
 			}
 		}
 	}
@@ -1083,6 +1104,13 @@ civic_cutthroat_politics = {
 		edicts_upkeep_mult = -0.20
 		intel_decryption_add = 1
 		add_attunement_the_cradle_of_souls = @civic_attunement1
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_worker_coop
+			}
+		}
 	}
 }
 
@@ -1593,9 +1621,10 @@ civic_shared_burden = {
 			}
 		}
 		civics = {
-			NOT = {
-				value = civic_technocracy
+			NOR = {
 				value = civic_pleasure_seekers
+				value = civic_technocracy
+				value = civic_worker_coop
 			}
 		}
 	}
@@ -1652,8 +1681,13 @@ civic_fanatic_purifiers = {
 		civics = {
 			NOR = {
 				value = civic_barbaric_despoilers
-				value = civic_pompous_purists
 				value = civic_crusader_spirit
+				value = civic_death_cult
+				value = civic_death_cult_corporate
+				value = civic_diplomatic_corps
+				value = civic_memorialist
+				value = civic_pompous_purists
+				value = civic_secret_societies
 				value = civic_selective_kinship
 			}
 			NOR = {
@@ -1978,6 +2012,7 @@ civic_diplomatic_corps = {
 			NOR = {
 				value = civic_fanatic_purifiers
 				value = civic_inwards_perfection
+				value = civic_public_relations_specialists
 				value = civic_scorched_earth
 			}
 		}
@@ -2109,9 +2144,10 @@ civic_memorialist = {
 	possible = {
 		civics = {
 			NOR = {
+				value = civic_entropy_drinkers
+				value = civic_entropy_drinkers_corporate
 				value = civic_fanatic_purifiers
 				value = civic_scorched_earth
-				value = civic_entropy_drinkers
 			}
 			NOR = {
 				text = civic_tooltip_not_relentless_industrialists
@@ -2250,12 +2286,14 @@ civic_pleasure_seekers = {
 	}
 	possible = {
 		civics = {
-			NOT = {
-				value = civic_warrior_culture
-				value = civic_shared_burden
-				value = civic_slaver_guilds # would enslave hedonists
+			NOR = {
 				value = civic_corporate_hedonism
 				value = civic_dystopian_society
+				value = civic_indentured_assets
+				value = civic_shared_burden
+				value = civic_slaver_guilds
+				value = civic_warrior_culture
+				value = civic_worker_coop
 			}
 		}
 		origin = {
@@ -2377,7 +2415,8 @@ civic_anglers = {
 			}
 		}
 		civics = {
-			NOT = {
+			NOR = {
+				value = civic_corporate_anglers
 				value = civic_tankbound
 			}
 		}
@@ -2522,8 +2561,10 @@ civic_toxic_baths = {
 			}
 		}
 		civics = {
-			NOT = {
+			NOR = {
 				value = civic_corporate_toxic_baths
+				value = civic_environmental_architects
+				value = civic_environmental_architects_megacorp
 			}
 		}
 	}
@@ -2571,11 +2612,13 @@ civic_relentless_industrialists = {
 		origin = { NOT = { value = origin_life_seeded } }
 		civics = {
 			NOR = {
-				value = civic_environmentalist
 				value = civic_agrarian_idyll
+				value = civic_corporate_relentless_industrialists
+				value = civic_environmental_architects
+				value = civic_environmental_architects_megacorp
+				value = civic_environmentalist
 				value = civic_idyllic_bloom
 				value = civic_memorialist
-				value = civic_corporate_relentless_industrialists
 			}
 			NOR = {
 				text = civic_tooltip_not_world_forgers
@@ -2876,8 +2919,9 @@ civic_eager_explorers = {
 		}
 		civics = {
 			NOR = {
-				value = civic_privatized_exploration
+				value = civic_beastmasters
 				value = civic_inwards_perfection
+				value = civic_privatized_exploration
 			}
 			NOR = {
 				text = civic_tooltip_not_guardian
@@ -3167,8 +3211,9 @@ civic_natural_design = {
 			}
 		}
 		civics = {
-			NOT = {
+			NOR = {
 				value = civic_guided_sapience
+				value = civic_twisted_experimenters_corporate
 			}
 			NOR = {
 				text = civic_tooltip_not_entropy_drinkers
@@ -3223,9 +3268,10 @@ civic_sovereign_guardianship = {
 		civics = {
 			NOR = {
 				value = civic_corporate_sovereign_guardianship
+				value = civic_fanatic_purifiers
+				value = civic_hive_scorched_earth
 				value = civic_inwards_perfection
 				value = civic_reanimated_armies
-				value = civic_fanatic_purifiers
 				value = civic_scorched_earth
 			}
 			NOR = {
@@ -3311,7 +3357,12 @@ civic_guided_sapience = {
 				value = civic_machine_exploration_protocol
 			}
 			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_hive_devouring_swarm
+				value = civic_hive_scorched_earth
+				value = civic_machine_terminator
 				value = civic_natural_design
+				value = civic_private_prospectors
 				value = civic_scorched_earth
 			}
 		}
@@ -3340,8 +3391,10 @@ civic_toxic_baths_individual_machine = {
 	possible = {
 		origin = { NOT = { value = origin_life_seeded } }
 		civics = {
-			NOT = {
+			NOR = {
 				value = civic_corporate_toxic_baths_individual_machine
+				value = civic_environmental_architects
+				value = civic_environmental_architects_megacorp
 			}
 		}
 	}
@@ -3867,7 +3920,10 @@ civic_superstitious_beliefs = {
 			}
 		}
 		civics = {
-			NOT = { value = civic_corporate_superstitious_beliefs }
+			NOR = {
+				value = civic_corporate_superstitious_beliefs
+				value = civic_death_cult
+			}
 		}
 	}
 
@@ -4138,14 +4194,15 @@ civic_scorched_earth = {
 		civics = {
 			NOR = {
 				value = civic_barbaric_despoilers
-				value = civic_pompous_purists
 				value = civic_crusader_spirit
-				value = civic_selective_kinship
-				value = civic_fanatic_purifiers
 				value = civic_death_cult
-				value = civic_secret_societies
 				value = civic_diplomatic_corps
+				value = civic_fanatic_purifiers
 				value = civic_memorialist
+				value = civic_pompous_purists
+				value = civic_secret_societies
+				value = civic_secret_societies_corporate
+				value = civic_selective_kinship
 			}
 			NOR = {
 				text = civic_tooltip_not_guardian
@@ -4174,6 +4231,7 @@ civic_scorched_earth = {
 				value = origin_ocean_paradise
 				value = origin_wilderness
 				value = origin_fear_of_the_dark
+				value = origin_scion
 			}
 		}
 	}

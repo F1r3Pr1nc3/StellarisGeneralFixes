@@ -3015,7 +3015,7 @@ country_event = {
 		trigger = {
 			exists = event_target:ratling_species
 			any_country = {
-				any_owned_pop_group = { is_same_species = event_target:ratling_species }
+				any_owned_species = { is_same_species = event_target:ratling_species }
 			}
 		}
 		text = "fleet3hewwo7"
@@ -4346,7 +4346,7 @@ country_event = {
 						factor = 0
 						event_target:pleased_planet = {
 							NOT = {
-								any_owned_pop_group = {
+								any_owned_species = {
 									NOT = { is_same_species = event_target:welcome_fleet.owner_species }
 								}
 							}
@@ -4511,7 +4511,8 @@ country_event = {
 	}
 }
 
-# DEPRECATED: replaced by cara.4102
+# DEPRECATED in v4.2: replaced by cara.4102
+# REPLACEME in v4.3
 # Vfix by https://forum.paradoxplaza.com/forum/threads/are-the-caravaneer-neighbor-events-working-these-days.1894052/#post-31040088
 country_event = {
 	id = cara.4101
@@ -4829,7 +4830,7 @@ planet_event = {
 						if = {
 							limit = {
 								event_target:pleased_planet = {
-									any_owned_pop_group = {
+									any_owned_species = {
 										NOT = { is_same_species = event_target:caravaneer_neighbor_species }
 									}
 								}
@@ -4869,9 +4870,9 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		any_owned_pop_group = {
+		any_owned_species = {
 			NOR = {
-				is_robot_pop_group = yes
+				is_robotic = yes
 				has_trait = trait_resilient
 			}
 		}

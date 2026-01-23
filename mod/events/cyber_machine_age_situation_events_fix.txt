@@ -437,11 +437,11 @@ situation_event = {
 			if = {
 				limit = {
 					NOT = {
-						any_owned_pop_group = {
+						any_owned_species = {
 							is_same_species = owner_species
 							NOR = {
-								pop_group_has_trait = trait_cybernetic
-								pop_group_has_trait = trait_limited_cybernetic
+								has_trait = trait_cybernetic
+								has_trait = trait_limited_cybernetic
 							}
 						}
 					}

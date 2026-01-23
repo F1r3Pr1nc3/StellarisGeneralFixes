@@ -1581,7 +1581,7 @@ planet_event = {
 		name = situation.200.c
 		custom_tooltip = "situation.200.c.tooltip"
 		allow = {
-			any_owned_pop_group = { is_robot_pop_group = yes }
+			any_owned_species = { is_robotic = yes }
 			owner = {
 				resource_stockpile_compare = { resource = energy value >= root.total_drones_cost }
 			}
@@ -1815,7 +1815,7 @@ situation_event = {
 		target = {
 			# make sure we're not killing the last pop
 			# and ending the colony
-			any_owned_pop_group = { is_robot_pop_group = yes }
+			any_owned_species = { is_robotic = yes }
 			count_owned_pop_amount = { count >= 300 }
 		}
 	}
@@ -4122,12 +4122,7 @@ situation_event = {
 		target = {
 			if = {
 				limit = {
-					any_owned_pop_group = {
-						NOR = {
-							has_trait = trait_hive_mind
-							is_robot_pop_group = yes
-						}
-					}
+					any_owned_species = { is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes }
 				}
 				weighted_random_owned_pop_group = {
 					limit = {

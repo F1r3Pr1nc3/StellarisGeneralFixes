@@ -4899,7 +4899,7 @@ pop_group_event = {
 	trigger = {
 		from = {
 			sapient_pop_amount < 1
-			any_owned_pop_group = { has_trait = trait_nascent_stage }
+			any_owned_species = { has_trait = trait_nascent_stage }
 		}
 	}
 
@@ -7370,7 +7370,7 @@ country_event = {
 		is_country_type = default
 		is_at_war = no
 		has_organic_pops = yes
-		any_owned_pop_group = { has_interesting_species_trait = yes }
+		any_owned_species = { has_interesting_species_trait = yes }
 		exists = event_target:fallen_empire_hive_growth
 		event_target:fallen_empire_hive_growth = {
 			is_country_type = fallen_empire
@@ -7744,7 +7744,7 @@ country_event = {
 			has_communications = root
 		}
 		NOT = { has_country_flag = hive_fallen_empire_event_cooldown }
-		any_owned_pop_group = { # First we check that the fallen empire doesn't already own this species
+		any_owned_species = { # First we check that the fallen empire doesn't already own this species
 			is_organic_species = yes
 			NOT = {
 				event_target:fallen_empire_hive_control = {
@@ -7780,7 +7780,7 @@ country_event = {
 		weighted_random_owned_pop_group = {
 			limit = {
 				pop_group_size > 1
-				species = { is_organic_species = yes }
+				is_organic_species = yes
 				NOT = {
 					event_target:fallen_empire_hive_control = {
 						any_owned_species = { is_same_species = prevprev }

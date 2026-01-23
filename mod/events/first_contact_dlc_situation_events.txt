@@ -1350,7 +1350,7 @@ country_event = {
 					# Prevent bankruptcy from minerals.
 					else_if = {
 						limit = {
-							any_owned_pop_group = { is_lithoid_empire = yes }
+							any_owned_species = { is_archetype = LITHOID } # Vfix
 						}
 						add_resource = { minerals = 100 }
 						prev = {

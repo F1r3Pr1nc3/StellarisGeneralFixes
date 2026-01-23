@@ -5920,7 +5920,7 @@ country_event = {
 			random_owned_planet = {
 				limit = {
 					is_capital = no
-					any_owned_pop_group = { is_sapient = yes is_robot_pop_group = no }
+					any_owned_species = { is_sapient = yes is_robotic = no }
 				}
 				random_owned_pop_group = {
 					limit = {
@@ -5945,7 +5945,7 @@ country_event = {
 			random_owned_planet = {
 				limit = {
 					is_capital = no
-					any_owned_pop_group = { is_sapient = yes is_robot_pop_group = no }
+					any_owned_species = { is_sapient = yes is_robotic = no }
 				}
 				random_owned_pop_group = {
 					limit = {
@@ -6345,16 +6345,19 @@ planet_event = {
 	}
 }
 
+# Situation Result reckoning_spawn
+# From shroud.8610 (end_of_the_cycle_endbringers), utopia.3320 (end_of_the_cycle)
 fleet_event = {
 	id = utopia.3323
 	hide_window = yes
+	is_triggered_only = yes
 
 	trigger = {
 		has_global_flag = end_of_the_cycle_complete
 		exists = owner
 		owner = { is_country_type = the_reckoning }
-		is_fleet_idle = yes
-		NOT = { has_global_flag = end_of_the_cycle_orders_cooldown }
+		# NOT = { has_global_flag = end_of_the_cycle_orders_cooldown } # Vfix DEPRECATED
+		exists = event_target:thereckoning_country
 		any_playable_country = {
 			exists = event_target:the_end_of_the_cycle@this
 			event_target:the_end_of_the_cycle@this = { is_same_value = root }
@@ -6377,76 +6380,82 @@ fleet_event = {
 		}
 	}
 
-	# Vfix TODO DEPRECATE
-	mean_time_to_happen = {
-		months = 3
-	}
-
+	# mean_time_to_happen = { months = 3 } # Vfix DEPRECATED
 	immediate = {
-		set_timed_global_flag = { flag = end_of_the_cycle_orders_cooldown months = 1 }
-		closest_system = {
+		if = {
 			limit = {
-				any_system_planet = {
-					OR = {
-						is_colonizable = yes
-						has_owner = yes
-					}
-					NAND = {
-						has_planet_flag = exile_planet
-						any_galaxy_planet = {
-							OR = {
-								is_colonizable = yes
-								has_owner = yes
-							}
-							NOT = { has_planet_flag = exile_planet }
-						}
-					}
-				}
+				is_fleet_idle = yes
+				NOT = { has_global_flag = end_of_the_cycle_orders_cooldown }
 			}
-			random_system_planet = {
+			set_timed_global_flag = { flag = end_of_the_cycle_orders_cooldown months = 1 }
+			closest_system = {
 				limit = {
-					OR = {
-						is_colonizable = yes
-						has_owner = yes
-					}
-					NAND = {
-						has_planet_flag = exile_planet
-						any_galaxy_planet = {
-							OR = {
-								is_colonizable = yes
-								has_owner = yes
+					any_system_planet = {
+						OR = {
+							is_colonizable = yes
+							has_owner = yes
+						}
+						NAND = {
+							has_planet_flag = exile_planet
+							any_galaxy_planet = {
+								OR = {
+									is_colonizable = yes
+									has_owner = yes
+								}
+								NOT = { has_planet_flag = exile_planet }
 							}
-							NOT = { has_planet_flag = exile_planet }
 						}
 					}
 				}
-				save_event_target_as = move_to_planet
+				random_system_planet = {
+					limit = {
+						OR = {
+							is_colonizable = yes
+							has_owner = yes
+						}
+						NAND = {
+							has_planet_flag = exile_planet
+							any_galaxy_planet = {
+								OR = {
+									is_colonizable = yes
+									has_owner = yes
+								}
+								NOT = { has_planet_flag = exile_planet }
+							}
+						}
+					}
+					save_event_target_as = move_to_planet
+				}
 			}
+			queue_actions = {
+				find_closest_system = {
+					trigger = {
+						id = utopia.3323.t1
+						any_system_planet = { is_same_value = event_target:move_to_planet }
+					}
+					found_system = {
+						move_to = this
+						find_closest_planet = {
+							trigger = {
+								id = utopia.3323.t2
+								is_same_value = event_target:move_to_planet
+							}
+							found_planet = {
+								move_to = this
+								effect = {
+									id = utopia.3323.e1
+									set_timed_global_flag = { flag = end_of_the_cycle_orders_cooldown months = 1 }
+									planet_event = { id = utopia.3324 }
+								}
+							}
+						}
+					}
+				}
+			}
+			fleet_event = { id = utopia.3323 days = 72 random = 27 } # Vfix opt: replace MTTH
 		}
-		queue_actions = {
-			find_closest_system = {
-				trigger = {
-					id = utopia.3323.t1
-					any_system_planet = { is_same_value = event_target:move_to_planet }
-				}
-				found_system = {
-					move_to = this
-					find_closest_planet = {
-						trigger = {
-							id = utopia.3323.t2
-							is_same_value = event_target:move_to_planet
-						}
-						found_planet = {
-							move_to = this
-							effect = {
-								id = utopia.3323.e1
-								set_timed_global_flag = { flag = end_of_the_cycle_orders_cooldown months = 1 }
-								planet_event = { id = utopia.3324 }
-							}
-						}
-					}
-				}
-			}
+		else = {
+			fleet_event = { id = utopia.3323 days = 48 } # Vfix opt: replace MTTH
 		}
 	}
 }
@@ -7419,7 +7428,7 @@ country_event = {
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				any_owned_pop_group = { is_psionic_species = yes }
+				any_owned_species = { is_psionic_species = yes }
 			}
 			weighted_random_owned_pop_group = {
 				limit = { is_psionic_species = yes }

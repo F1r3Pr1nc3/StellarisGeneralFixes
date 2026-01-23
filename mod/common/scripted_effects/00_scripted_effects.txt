@@ -1597,11 +1597,11 @@ remove_culture_shock = {
 		limit = {
 			planet = {
 				NOT = {
-					any_owned_pop_group = {
+					any_owned_species = {
 						NOR = {
-							pop_group_has_trait = trait_hive_mind
-							pop_group_has_trait = trait_cybernetic
-							pop_group_has_trait = trait_machine_unit
+							has_trait = trait_hive_mind
+							has_trait = trait_cybernetic
+							has_trait = trait_machine_unit
 						}
 					}
 				}
@@ -1765,7 +1765,7 @@ country_syndaw545_in_days = {
 	random_owned_planet = {
 		limit = {
 			is_occupied_flag = no
-			any_owned_pop_group = { has_trait = trait_mechanical }
+			any_owned_species = { has_trait = trait_mechanical }
 		}
 		planet_event = { id = syndaw.545 days = $DAYS$ random = $DAYS$ }
 	}

@@ -396,8 +396,8 @@ cyberize_creed_pops_effect = {
 	}
 	while = {
 		limit = {
+			exists = event_target:cyberspecies_current
 			any_owned_pop_group = {
-				exists = event_target:cyberspecies_current
 				is_same_species = owner_species
 				NOR = {
 					has_trait = trait_cybernetic
@@ -689,8 +689,8 @@ synthesize_pops_effect = {
 		limit = { exists = event_target:current_synthspecies } # Vfix opt
 		while = {
 			limit = {
-				any_owned_pop_group = {
-					is_same_species = owner_species
+				any_owned_species = {
+					is_same_species = prev.owner_species
 					NOT = { has_trait = trait_mechanical }
 				}
 			}

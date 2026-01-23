@@ -599,6 +599,15 @@ living_standard_good = {
 			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
 			NOT = { has_citizenship_type = { type = citizenship_assimilation country = from } }
 		}
+		custom_tooltip = {
+			fail_text = "SCORCHED_HERALDS_ONLY_INF"
+			if = {
+				limit = {
+					from = { is_genocidal_infernal = yes }
+				}
+				is_infernal = yes
+			}
+		}
 	}
 
 	ai_will_do = {
@@ -747,6 +756,15 @@ living_standard_academic_privilege = {
 			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
 			NOT = { has_citizenship_type = { type = citizenship_assimilation country = from } }
 		}
+		custom_tooltip = {
+			fail_text = "SCORCHED_HERALDS_ONLY_INF"
+			if = {
+				limit = {
+					from = { is_genocidal_infernal = yes }
+				}
+				is_infernal = yes
+			}
+		}
 	}
 
 	ai_will_do = {
@@ -880,6 +898,15 @@ living_standard_normal = {
 					has_purge_type = { country = from type = purge_neutering }
 					has_purge_type = { country = from type = purge_cosmogenesis_lathe_resettle }
 				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "SCORCHED_HERALDS_ONLY_INF"
+			if = {
+				limit = {
+					from = { is_genocidal_infernal = yes }
+				}
+				is_infernal = yes
 			}
 		}
 	}

@@ -984,7 +984,7 @@ country_event = {
 			capital_scope = {
 				if = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_machine_unit }
+						any_owned_species = { has_trait = trait_machine_unit }
 					}
 					random_owned_pop_group = {
 						limit = { pop_group_has_trait = trait_machine_unit }
@@ -1053,7 +1053,7 @@ country_event = {
 			capital_scope = {
 				if = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_machine_unit }
+						any_owned_species = { has_trait = trait_machine_unit }
 					}
 					random_owned_pop_group = {
 						limit = { pop_group_has_trait = trait_machine_unit }
@@ -1855,6 +1855,7 @@ country_event = {
 		hidden_effect = {
 			every_owned_planet = {
 				limit = {
+					is_colony = yes # Vfix opt
 					OR = {
 						has_deposit = d_shroud_rift_deposit
 						has_active_building = building_zroni_equilibrator
@@ -2401,7 +2402,7 @@ situation_event = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
 				NOT = { has_modifier = pm_shroud_forged_special_housing }
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -2412,7 +2413,7 @@ situation_event = {
 			random_owned_planet = {
 				limit = {
 					NOT = { has_modifier = pm_shroud_forged_special_housing }
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 				}
 				save_event_target_as = target_planet
 			}
@@ -2465,7 +2466,7 @@ situation_event = {
 					has_modifier = pm_shroud_forged_denied_ceremony
 					has_modifier = pm_shroud_forged_ceremony
 				}
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -2496,7 +2497,7 @@ situation_event = {
 							has_modifier = pm_shroud_forged_denied_ceremony
 							has_modifier = pm_shroud_forged_ceremony
 						}
-						any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+						any_owned_species = { has_trait = trait_shroud_forged }
 					}
 					save_event_target_as = target_planet
 				}
@@ -2595,7 +2596,7 @@ situation_event = {
 					has_modifier = pm_shroud_forged_troubling_elements_regulations
 					has_modifier = pm_shroud_forged_troubling_elements_cooperation
 				}
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -2628,7 +2629,7 @@ situation_event = {
 							has_modifier = pm_shroud_forged_troubling_elements_regulations
 							has_modifier = pm_shroud_forged_troubling_elements_cooperation
 						}
-						any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+						any_owned_species = { has_trait = trait_shroud_forged }
 					}
 					save_event_target_as = target_planet
 				}
@@ -2716,7 +2717,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -2726,7 +2727,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 				}
 				save_event_target_as = target_planet
 			}
@@ -2763,7 +2764,7 @@ situation_event = {
 				event_target:target_planet = {
 					if = {
 						limit = {
-							any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+							any_owned_species = { has_trait = trait_shroud_forged }
 						}
 						random_owned_pop_group = {
 							limit = { pop_group_has_trait = trait_shroud_forged }
@@ -2791,7 +2792,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				has_deposit = d_shroud_rift_deposit
 				NOT = { has_modifier = pm_shroud_forged_shroud_pilgrimage }
 			}
@@ -2803,7 +2804,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					has_deposit = d_shroud_rift_deposit
 					NOT = { has_modifier = pm_shroud_forged_shroud_pilgrimage }
 				}
@@ -2845,7 +2846,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -2868,7 +2869,7 @@ situation_event = {
 				}
 				random_owned_planet = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+						any_owned_species = { has_trait = trait_shroud_forged }
 					}
 					save_event_target_as = target_planet
 				}
@@ -2927,7 +2928,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -2938,7 +2939,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 				}
 				save_event_target_as = target_planet
 			}
@@ -2995,7 +2996,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOT = { has_modifier = pm_shroud_forged_dance_area }
 			}
 		}
@@ -3006,7 +3007,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOT = { has_modifier = pm_shroud_forged_dance_area }
 				}
 				save_event_target_as = target_planet
@@ -3042,7 +3043,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOT = { has_deposit = d_shroud_flora_deposit }
 			}
 		}
@@ -3053,7 +3054,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOT = { has_deposit = d_shroud_flora_deposit }
 				}
 				save_event_target_as = target_planet
@@ -3094,7 +3095,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOT = { has_modifier = pm_shroud_forged_inequality }
 			}
 		}
@@ -3105,7 +3106,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOT = { has_modifier = pm_shroud_forged_inequality }
 				}
 				save_event_target_as = target_planet
@@ -3149,7 +3150,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -3160,7 +3161,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 				}
 				save_event_target_as = target_planet
 			}
@@ -3199,7 +3200,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOT = { has_modifier = pm_shroud_forged_individualism }
 			}
 		}
@@ -3210,7 +3211,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOT = { has_modifier = pm_shroud_forged_individualism }
 				}
 				save_event_target_as = target_planet
@@ -3247,7 +3248,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -3270,7 +3271,7 @@ situation_event = {
 				}
 				random_owned_planet = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+						any_owned_species = { has_trait = trait_shroud_forged }
 					}
 					save_event_target_as = target_planet
 				}
@@ -3338,7 +3339,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				OR = {
 					has_deposit = d_shroud_rift_deposit
 					has_deposit = d_shroud_flora_deposit
@@ -3369,7 +3370,7 @@ situation_event = {
 				}
 				random_owned_planet = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+						any_owned_species = { has_trait = trait_shroud_forged }
 						OR = {
 							has_deposit = d_shroud_rift_deposit
 							has_deposit = d_shroud_flora_deposit
@@ -3389,7 +3390,7 @@ situation_event = {
 			event_target:target_planet = {
 				if = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_machine_unit }
+						any_owned_species = { has_trait = trait_machine_unit }
 					}
 					random_owned_pop_group = {
 						limit = { pop_group_has_trait = trait_machine_unit }
@@ -3446,7 +3447,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				has_deposit = d_shroud_rift_deposit
 			}
 		}
@@ -3457,7 +3458,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					has_deposit = d_shroud_rift_deposit
 				}
 				save_event_target_as = target_planet
@@ -3473,7 +3474,7 @@ situation_event = {
 			event_target:target_planet = {
 				if = {
 					limit = {
-						any_owned_pop_group = { pop_group_has_trait = trait_machine_unit }
+						any_owned_species = { has_trait = trait_machine_unit }
 					}
 					random_owned_pop_group = {
 						limit = { pop_group_has_trait = trait_machine_unit }
@@ -3503,7 +3504,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 			}
 		}
 	}
@@ -3513,7 +3514,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 				}
 				save_event_target_as = target_planet
 			}
@@ -3592,7 +3593,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOR = {
 					has_modifier = pm_shroud_forged_artistic_revolution
 					has_modifier = pm_shroud_forged_stopped_artists
@@ -3606,7 +3607,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOR = {
 						has_modifier = pm_shroud_forged_artistic_revolution
 						has_modifier = pm_shroud_forged_stopped_artists
@@ -3650,7 +3651,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOT = { has_modifier = pm_shroud_forged_fashion_modifier }
 			}
 		}
@@ -3661,7 +3662,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOT = { has_modifier = pm_shroud_forged_fashion_modifier }
 				}
 				save_event_target_as = target_planet
@@ -3699,7 +3700,7 @@ situation_event = {
 		owner = {
 			has_origin = origin_shroud_forged
 			any_owned_planet = {
-				any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+				any_owned_species = { has_trait = trait_shroud_forged }
 				NOT = { has_modifier = pm_shroud_forged_obsession_modifier }
 			}
 		}
@@ -3710,7 +3711,7 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { pop_group_has_trait = trait_shroud_forged }
+					any_owned_species = { has_trait = trait_shroud_forged }
 					NOT = { has_modifier = pm_shroud_forged_obsession_modifier }
 				}
 				save_event_target_as = target_planet

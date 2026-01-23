@@ -293,7 +293,7 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				any_owned_pop_group = { is_exact_same_species = root }
+				any_owned_species = { is_exact_same_species = root }
 			}
 			weighted_random_owned_pop_group = {
 				limit = { is_exact_same_species = root }
@@ -1156,7 +1156,7 @@ country_event = {
 			if = {
 				limit = {
 					OR = {
-						any_owned_pop_group = { is_same_species = from }
+						any_owned_species = { is_same_species = from }
 						any_owned_leader = { is_same_species = from }
 					}
 				}
@@ -1854,7 +1854,7 @@ country_event = {
 			random_owned_planet = { # OM NOM NOM NOM
 				limit = {
 					is_capital = no
-					any_owned_pop_group = { is_sapient = yes is_robot_pop_group = no }
+					any_owned_species = { is_sapient = yes is_robotic = no }
 				}
 				random_owned_pop_group = {
 					limit = {

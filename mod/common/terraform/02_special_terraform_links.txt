@@ -2665,16 +2665,15 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_pop_group = {
-					is_hive_species = no
+			from = { # Vfix opt
+				OR = {
+					is_colony = no
+					any_owned_species = {
+						NOT = {
+							has_trait = trait_hive_mind
+						}
+					}
 				}
-			}
-		}
-		modifier = {
-			factor = 0
-			from = {
-				is_colony = no
 			}
 		}
 	}

@@ -232,8 +232,8 @@ decision_slave_colony = {
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_slave_colony_must_have_slave
-			any_owned_pop_group = {
-				has_citizenship_type = { type = citizenship_slavery country = owner }
+			any_owned_species = {
+				has_citizenship_type = { type = citizenship_slavery country = prev.owner }
 			}
 		}
 		custom_tooltip = {
@@ -412,79 +412,80 @@ decision_abolish_resort_colony = {
 }
 
 # Crucible Colony
-decision_gestation_colony = {
-	owned_planets_only = yes
-	enactment_time = 180
+# REMOVED in v4.3
+# decision_gestation_colony = {
+# 	owned_planets_only = yes
+# 	enactment_time = 180
 
-	resources = {
-		category = decisions
-		cost = {
-			unity = 1000
-		}
-	}
+# 	resources = {
+# 		category = decisions
+# 		cost = {
+# 			unity = 1000
+# 		}
+# 	}
 
-	potential = {
-		is_capital = no
-		is_artificial = no
-		owner = { has_tradition = tr_cybernetics_assimilator_gestation }
-		NOR = {
-			is_planet_class = pc_machine
-			is_planet_class = pc_city
-			has_modifier = gestation_colony
-		}
-	}
+# 	potential = {
+# 		is_capital = no
+# 		is_artificial = no
+# 		owner = { has_tradition = tr_cybernetics_assimilator_gestation }
+# 		NOR = {
+# 			is_planet_class = pc_machine
+# 			is_planet_class = pc_city
+# 			has_modifier = gestation_colony
+# 		}
+# 	}
 
-	allow = {
-		planet_size >= 15
-		custom_tooltip = {
-			fail_text = decision_gestation_colony_only_one
-			NOT = {
-				owner = {
-					any_owned_planet = { has_modifier = gestation_colony }
-				}
-			}
-		}
-	}
+# 	allow = {
+# 		planet_size >= 15
+# 		custom_tooltip = {
+# 			fail_text = decision_gestation_colony_only_one
+# 			NOT = {
+# 				owner = {
+# 					any_owned_planet = { has_modifier = gestation_colony }
+# 				}
+# 			}
+# 		}
+# 	}
 
-	effect = {
-		add_modifier = { modifier = gestation_colony days = -1 }
-		hidden_effect = {
-			validate_planet_buildings_and_districts = yes
-		}
-	}
+# 	effect = {
+# 		add_modifier = { modifier = gestation_colony days = -1 }
+# 		hidden_effect = {
+# 			validate_planet_buildings_and_districts = yes
+# 		}
+# 	}
 
-	ai_weight = {
-		weight = 0
-	}
-}
+# 	ai_weight = {
+# 		weight = 0
+# 	}
+# }
 
-decision_abolish_gestation_colony = {
-	owned_planets_only = yes
-	icon = decision_gestation_colony
-	enactment_time = 180
+# decision_abolish_gestation_colony = {
+# 	owned_planets_only = yes
+# 	icon = decision_gestation_colony
+# 	enactment_time = 180
 
-	resources = {
-		category = decisions
-		cost = {
-			unity = 2500
-		}
-	}
+# 	resources = {
+# 		category = decisions
+# 		cost = {
+# 			unity = 2500
+# 		}
+# 	}
 
-	potential = {
-		has_modifier = gestation_colony
-	}
+# 	potential = {
+# 		has_modifier = gestation_colony
+# 	}
 
-	effect = {
-		remove_modifier = gestation_colony
-		hidden_effect = {
-			validate_planet_buildings_and_districts = yes
-		}
-	}
+# 	effect = {
+# 		remove_modifier = gestation_colony
+# 		hidden_effect = {
+# 			validate_planet_buildings_and_districts = yes
+# 		}
+# 	}
 
-	ai_weight = {
-		weight = 0
-	}
-}
+# 	ai_weight = {
+# 		weight = 0
+# 	}
+# }
 
 # Mastery of Nature
 decision_mastery_of_nature = {

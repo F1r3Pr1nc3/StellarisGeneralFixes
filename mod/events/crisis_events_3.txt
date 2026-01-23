@@ -222,13 +222,13 @@ country_event = {
 
 	trigger = {
 		has_technology = tech_synthetic_workers
-		any_owned_pop_group = { has_trait = "trait_mechanical" }
+		any_owned_species = { has_trait = "trait_mechanical" }
 	}
 
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				any_owned_pop_group = { has_trait = "trait_mechanical" }
+				any_owned_species = { has_trait = "trait_mechanical" }
 			}
 			random_list = {
 				50 = { planet_event = { id = crisis.2011 } }
@@ -246,13 +246,13 @@ country_event = {
 
 	trigger = {
 		is_machine_empire = yes
-		any_owned_pop_group = { has_trait = trait_machine_unit }
+		any_owned_species = { has_trait = trait_machine_unit }
 	}
 
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				any_owned_pop_group = { has_trait = trait_machine_unit }
+				any_owned_species = { has_trait = trait_machine_unit }
 			}
 			random_list = {
 				50 = { planet_event = { id = crisis.2502 } }
@@ -270,13 +270,13 @@ country_event = {
 
 	trigger = {
 		has_technology = tech_synthetic_workers
-		any_owned_pop_group = { has_trait = "trait_mechanical" }
+		any_owned_species = { has_trait = "trait_mechanical" }
 	}
 
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				any_owned_pop_group = { has_trait = "trait_mechanical" }
+				any_owned_species = { has_trait = "trait_mechanical" }
 			}
 			random_list = {
 				50 = { planet_event = { id = crisis.2015 } }
@@ -2770,7 +2770,7 @@ country_event = {
 	trigger = {
 		any_owned_planet = {
 			controller = { is_same_empire = root }
-			any_owned_pop_group = { has_trait = trait_machine_unit }
+			any_owned_species = { has_trait = trait_machine_unit }
 		}
 		NOT = { has_country_flag = potentially_corrupted_units }
 	}
@@ -2823,7 +2823,7 @@ country_event = {
 	trigger = {
 		any_owned_planet = {
 			controller = { is_same_empire = root }
-			any_owned_pop_group = { has_trait = trait_machine_unit }
+			any_owned_species = { has_trait = trait_machine_unit }
 		}
 	}
 
@@ -2832,7 +2832,7 @@ country_event = {
 			count = 4
 			random_owned_planet = {
 				limit = {
-					any_owned_pop_group = { has_trait = trait_machine_unit }
+					any_owned_species = { has_trait = trait_machine_unit }
 				}
 				random_owned_pop_group = {
 					limit = { has_trait = trait_machine_unit }

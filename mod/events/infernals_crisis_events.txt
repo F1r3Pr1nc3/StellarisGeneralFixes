@@ -749,10 +749,43 @@ country_event = {
 	}
 }
 
-# Conquering a Crucible - after a war (trigger)
+# Conquering a Crucible - after a war
+# on_war_ended, this = Loser, From = Main Winner
 country_event = {
 	id = infernals.1051
 	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = {
+			any_war = {
+				any_war_participant = { has_ascension_perk = ap_galactic_hyperthermia }
+			}
+		}
+	}
+
+	immediate = {
+		from = {
+			every_war = {
+				every_war_participant = {
+					limit = {
+						NOT = { has_ascension_perk = ap_galactic_hyperthermia }
+					}
+					country_event = { id = infernals.1052 }
+				}
+			}
+		}
+	}
+}
+
+# Conquering a Crucible - after a war (notification)
+country_event = {
+	id = infernals.1052
+	title = infernals.1052.name
+	desc = infernals.1052.desc
+	show_sound = event_spy_orb_build_upgrade
+	picture = GFX_evt_inf_crisis_crucible_construction
+	location = event_target:crucible_system
 	is_triggered_only = yes
 
 	trigger = {
@@ -787,21 +820,6 @@ country_event = {
 				}
 			}
 		}
-		country_event = { id = infernals.1052 }
-	}
-}
-
-# Conquering a Crucible - after a war (notification)
-country_event = {
-	id = infernals.1052
-	title = infernals.1052.name
-	desc = infernals.1052.desc
-	show_sound = event_spy_orb_build_upgrade
-	picture = GFX_evt_inf_crisis_crucible_construction
-	location = event_target:crucible_system
-	is_triggered_only = yes
-
-	immediate = {
 		if = {
 			limit = {
 				NOT = { has_ascension_perk = ap_galactic_hyperthermia }
@@ -862,7 +880,8 @@ country_event = {
 	}
 }
 
-# Conquering a Crucible - ongoing war (trigger)
+# Conquering a Crucible - ongoing war
+# on_megastructure_change_owner
 country_event = {
 	id = infernals.10530
 	hide_window = yes
@@ -875,7 +894,6 @@ country_event = {
 			has_megastructure_flag = galactic_crucible
 			NOT = { is_megastructure_type = galactic_crucible_5 }
 		}
-		NOT = { has_country_flag = discovered_crucible }
 		if = {
 			limit = { has_ascension_perk = ap_galactic_hyperthermia }
 			NOT = { from = { has_megastructure_flag = galactic_crucible@root } }
@@ -883,6 +901,10 @@ country_event = {
 	}
 
 	immediate = {
+		from = {
+			solar_system = { save_event_target_as = crucible_system }
+			set_halted = -1
+		}
 		random_playable_country = {
 			limit = {
 				is_at_war_with = root
@@ -890,11 +912,6 @@ country_event = {
 			}
 			save_event_target_as = crucible_builders
 		}
-		from = {
-			solar_system = { save_event_target_as = crucible_system }
-			set_halted = -1
-		}
-		set_timed_country_flag = { flag = discovered_crucible months = 6 }
 		if = {
 			limit = {
 				NOT = { has_ascension_perk = ap_galactic_hyperthermia }
@@ -902,11 +919,17 @@ country_event = {
 			add_modifier = { modifier = crisis_conduit_stop }
 		}
 		# Delay so wars can finish before the event is triggered (sometimes you conquer+finish)
-		country_event = { id = infernals.1053 days = 1 }
+		if = {
+			limit = {
+				NOT = { has_country_flag = discovered_crucible }
+			}
+			set_timed_country_flag = { flag = discovered_crucible months = 6 }
+			country_event = { id = infernals.1053 days = 1 }
+		}
 	}
 }
 
-# Conquering a Crucible - ongoing war (info)
+# Conquering a Crucible - ongoing war (notification)
 country_event = {
 	id = infernals.1053
 	title = infernals.1053.name

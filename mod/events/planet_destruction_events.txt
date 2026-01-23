@@ -1880,7 +1880,7 @@ planet_event = {
 		}
 		if = {
 			limit = {	# were there any Aquatic pops? If so, the ownership needs to be flipped
-				any_owned_pop_group = { is_scope_valid = yes }
+				any_owned_species = { is_scope_valid = yes }
 				NOT = { is_owned_by = from.owner }
 			}
 			set_owner = from.owner
@@ -2505,7 +2505,7 @@ planet_event = {
 		}
 		while = {
 			limit = {
-				any_owned_pop_group = { is_robot_pop_group = no is_sapient = yes }
+				any_owned_species = { is_robotic = no is_sapient = yes }
 			}
 			weighted_random_owned_pop_group = {
 				limit = {

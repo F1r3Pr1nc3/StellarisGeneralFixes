@@ -946,9 +946,7 @@ ship_event = {
 		exists = event_target:mardak_vol_species
 		event_target:utopian_planet = {
 			NOT = { has_planet_flag = triggered_vol_transmission }
-			any_owned_pop_group = {
-				species = { is_same_species = event_target:mardak_vol_species }
-			}
+			any_owned_species = { is_same_species = event_target:mardak_vol_species } # Vfix opt
 		}
 		from = {
 			solar_system = {
@@ -1025,7 +1023,7 @@ country_event = {
 		# is_same_value = event_target:country_that_discovered_mardak_vol
 		event_target:utopian_planet = {
 			solar_system = { exists = owner }
-			any_owned_pop_group = { is_same_species = event_target:mardak_vol_species }
+			any_owned_species = { is_same_species = event_target:mardak_vol_species }
 		}
 	}
 
@@ -1158,12 +1156,12 @@ country_event = {
 		if = {
 			limit = {
 				any_planet_within_border = {
-					any_owned_pop_group = { is_same_species = event_target:mardak_vol_species }
+					any_owned_species = { is_same_species = event_target:mardak_vol_species }
 				}
 			}
 			every_planet_within_border = {
 				limit = {
-					any_owned_pop_group = { is_same_species = event_target:mardak_vol_species }
+					any_owned_species = { is_same_species = event_target:mardak_vol_species }
 				}
 				every_owned_pop_group = {
 					limit = { is_same_species = event_target:mardak_vol_species }
@@ -1232,7 +1230,7 @@ country_event = {
 	trigger = {
 		event_target:utopian_planet = {
 			solar_system = { exists = owner }
-			any_owned_pop_group = { is_same_species = event_target:mardak_vol_species }
+			any_owned_species = { is_same_species = event_target:mardak_vol_species }
 		}
 	}
 
@@ -1457,12 +1455,12 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				any_owned_pop_group = { is_same_species = event_target:mardak_vol_species }
+				any_owned_species = { is_same_species = event_target:mardak_vol_species }
 			}
 			owner = {
 				every_planet_within_border = {
 					limit = {
-						any_owned_pop_group = { is_same_species = event_target:mardak_vol_species }
+						any_owned_species = { is_same_species = event_target:mardak_vol_species }
 					}
 					every_owned_pop_group = {
 						limit = { is_same_species = event_target:mardak_vol_species }

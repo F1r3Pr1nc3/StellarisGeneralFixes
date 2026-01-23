@@ -56,6 +56,13 @@ citizenship_full = {
 			}
 		}
 		custom_tooltip = {
+			fail_text = "SCORCHED_HERALDS_ONLY_INF"
+			if = {
+				limit = { from = { is_genocidal_infernal = yes } }
+				is_infernal = yes
+			}
+		}
+		custom_tooltip = {
 			fail_text = too_alien
 			OR = {
 				is_same_species = from
@@ -415,8 +422,8 @@ citizenship_assimilation = {
 					OR = {
 						is_homicidal = yes
 						any_owned_species = {
-							has_citizenship_type = { type = citizenship_assimilation country = root.from }
 							NOT = { is_same_value = root }
+							has_citizenship_type = { type = citizenship_assimilation country = root.from }
 						}
 					}
 				}
@@ -570,6 +577,13 @@ citizenship_limited = {
 			OR = {
 				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
 				is_same_species = from
+			}
+		}
+		custom_tooltip = {
+			fail_text = "SCORCHED_HERALDS_ONLY_INF"
+			if = {
+				limit = { from = { is_genocidal_infernal = yes } }
+				is_infernal = yes
 			}
 		}
 		custom_tooltip = {

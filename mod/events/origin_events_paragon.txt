@@ -29,6 +29,16 @@ country_event = {
 			set_leader_flag = immune_to_negative_traits
 			set_variable = { which = paragon_origin_story_ruling value = 2 }
 			set_variable = { which = paragon_origin_delusion_tier value = 1 }
+			# This is a hack to effectively add extra trait picks to the Luminary.
+			# This results in:
+			# - The Luminary trait is free.
+			# - The first trait selected in empire creation is their level 1 trait.
+			# - The second trait selected in empire creation is paid for with the negative trait selected.
+			# - All additional levels give +1 trait selection.
+			set_variable = { which = initial_level value = trigger:has_base_skill }
+			add_skill_without_trait_selection = trigger:num_positive_traits
+			set_skill = initial_level
+			clear_variable = initial_level
 		}
 		country_event = { id = paragon.5004 days = 180 random = 360 }
 	}
@@ -59,9 +69,6 @@ country_event = {
 	option = {
 		name = "paragon.5004.a"
 		custom_tooltip = paragon.5004.a.tt
-	}
-
-	after = {
 		begin_event_chain = { event_chain = paragon_origin_promise_chain target = root }
 	}
 }
