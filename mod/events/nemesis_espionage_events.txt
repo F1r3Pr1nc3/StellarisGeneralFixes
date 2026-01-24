@@ -1868,7 +1868,7 @@ country_event = {
 		hidden_effect = {
 			if = { # the assumed country is actually the culprit (NOT Smear Campaigns)
 				limit = {
-					event_target:hostile_infiltration_country = { is_same_empire = from }
+					event_target:hostile_infiltration_country = { is_same_value = from }
 				}
 				from = {
 					country_event = { id = espionage.1071 days = 1 } # Espionage Exposed
@@ -2172,7 +2172,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					exists = event_target:event_target:insidious_plot_spynetwork
+					exists = event_target:insidious_plot_spynetwork# Vfix
 				}
 				if = { # there are federation allies to choose from, which aren't also in a federation with us
 					limit = {
@@ -2256,7 +2256,7 @@ country_event = {
 				}
 				if = {
 					limit = {
-						event_target:insidious_plot_country = { is_same_empire = event_target:insidious_plot_spynetwork }
+						event_target:insidious_plot_country = { is_same_value = event_target:insidious_plot_spynetwork }
 					}
 					set_country_flag = insidious_plot_samecountry
 				}
@@ -2264,7 +2264,7 @@ country_event = {
 		}
 		if = { # Vfix
 			limit = {
-				exists = event_target:event_target:insidious_plot_spynetwork
+				exists = event_target:insidious_plot_spynetwork # Vfix
 			}
 			random_list = {
 				9 = { # "Insidious Plot Uncovered"

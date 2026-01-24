@@ -244,7 +244,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_empire = event_target:mercenary_destroyer }
+				NOT = { is_same_value = event_target:mercenary_destroyer }
 			}
 			country_event = { id = enclave.26 }
 		}
@@ -689,7 +689,7 @@ country_event = {
 						any_owned_fleet = {
 							is_ship_class = shipclass_military
 							is_leased = yes
-							controller = { is_same_empire = root }
+							controller = { is_same_value = root }
 						}
 					}
 				}
@@ -748,7 +748,7 @@ country_event = {
 				is_ship_class = shipclass_military
 				is_leased = yes
 				is_owned_by = event_target:mercenary_enclave_country
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 		}
 		hidden_effect = {
@@ -874,7 +874,7 @@ country_event = {
 				# is_homicidal = yes
 			}
 			exists = event_target:mercenary_patron
-			event_target:mercenary_patron = { is_same_empire = root }
+			event_target:mercenary_patron = { is_same_value = root }
 		}
 		hidden_effect = {
 			country_event = { id = enclave.280 }
@@ -1999,7 +1999,7 @@ country_event = {
 		trigger = {
 			exists = event_target:loaned_mercenary_fleet
 			NOR = { # Vfix opt
-				event_target:loaned_mercenary_fleet.controller = { is_same_empire = root }
+				event_target:loaned_mercenary_fleet.controller = { is_same_value = root }
 				event_target:mercenary_enclave_country = { has_country_flag = fleet_commandeered }
 			}
 		}
@@ -4217,7 +4217,7 @@ country_event = {
 					count > 1
 					limit = {
 						NOR = {
-							is_same_empire = root
+							is_same_value = root
 							has_ascension_perk = ap_enigmatic_engineering
 						}
 					}
@@ -6175,7 +6175,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_empire = event_target:salvager_destroyer }
+				NOT = { is_same_value = event_target:salvager_destroyer }
 			}
 			country_event = { id = enclave.380 }
 		}
@@ -6923,7 +6923,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_empire = event_target:shroudwalker_destroyer }
+				NOT = { is_same_value = event_target:shroudwalker_destroyer }
 			}
 			country_event = { id = enclave.440 }
 		}

@@ -10,7 +10,7 @@ namespace = nomad
 country_event = {
 	id = nomad.1
 	hide_window = yes # DEBUG TO NO TO SEE WHERE THE NOMADS SPAWN
-	location = event_target:nomad_spawn
+	# location = event_target:nomad_spawn
 	is_triggered_only = yes
 
 	trigger = {
@@ -2185,7 +2185,7 @@ country_event = {
 				limit = {
 					has_fleet_flag = nomad_on_mission
 					solar_system = {
-						space_owner = { is_same_empire = event_target:attacker_country }
+						space_owner = { is_same_value = event_target:attacker_country }
 					}
 				}
 				remove_fleet_flag = nomad_on_mission
@@ -2300,7 +2300,7 @@ country_event = {
 				limit = {
 					has_fleet_flag = nomad_on_mission
 					solar_system = {
-						space_owner = { is_same_empire = event_target:attacker_country }
+						space_owner = { is_same_value = event_target:attacker_country }
 					}
 				}
 				remove_fleet_flag = nomad_on_mission

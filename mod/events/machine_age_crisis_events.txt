@@ -2205,7 +2205,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = crisis.7516 days = 15 }
 			every_playable_country = {
-				limit = { NOT = { is_same_empire = root } }
+				limit = { NOT = { is_same_value = root } }
 				country_event = { id = crisis.7517 days = 1 }
 			}
 		}
@@ -2790,7 +2790,7 @@ country_event = {
 			}
 			every_playable_country = {
 				limit = {
-					NOT = { is_same_empire = root.owner }
+					NOT = { is_same_value = root.owner }
 				}
 				add_opinion_modifier = { modifier = opinion_cosmogenesis_thesis who = root }
 			}
@@ -3492,8 +3492,8 @@ event = {
 			every_owned_starbase = { # Vfix opt
 				limit = {
 					NOR = {
-						is_ship_size = starbase_synth_queen
-						is_ship_size = big_starbase_synth_queen
+						has_starbase_size = starbase_synth_queen
+						has_starbase_size = big_starbase_synth_queen
 					}
 				}
 				delete_fleet = fleet
@@ -3678,8 +3678,8 @@ country_event = {
 			every_owned_starbase = { # Vfix opt
 				limit = {
 					NOR = {
-						is_ship_size = starbase_synth_queen
-						is_ship_size = big_starbase_synth_queen
+						has_starbase_size = starbase_synth_queen
+						has_starbase_size = big_starbase_synth_queen
 					}
 				}
 				solar_system = { remove_modifier = queen_scorn_storm }
@@ -6665,7 +6665,7 @@ country_event = {
 						is_in_combat = yes
 					}
 					owner = {
-						NOT = { is_same_empire = from }
+						NOT = { is_same_value = from }
 						is_country_type = synth_queen
 					}
 				}
@@ -6694,7 +6694,7 @@ fleet_event = {
 					}
 				}
 				controller = {
-					NOT = { is_same_empire = root.owner }
+					NOT = { is_same_value = root.owner }
 				}
 			}
 		}
@@ -6717,7 +6717,7 @@ fleet_event = {
 							}
 						}
 						controller = {
-							NOT = { is_same_empire = root.owner }
+							NOT = { is_same_value = root.owner }
 						}
 					}
 					owner = { save_event_target_as = synth_queen_fighting_country }
@@ -6749,7 +6749,7 @@ fleet_event = {
 							}
 						}
 						controller = {
-							NOT = { is_same_empire = root.owner }
+							NOT = { is_same_value = root.owner }
 						}
 					}
 					owner = { save_event_target_as = synth_queen_fighting_country }
@@ -6790,7 +6790,7 @@ country_event = {
 			if = { # If already in Synth Queen territory, stay here
 				limit = {
 					exists = space_owner
-					space_owner = { is_same_empire = root }
+					space_owner = { is_same_value = root }
 				}
 				synth_queen_fleet_garrison = yes
 			}
@@ -6858,7 +6858,7 @@ fleet_event = {
 		has_fleet_flag = synth_queen_returning_outpost_ship
 		from = {
 			exists = space_owner
-			space_owner = { is_same_empire = event_target:synth_queen_country_global }
+			space_owner = { is_same_value = event_target:synth_queen_country_global }
 		}
 	}
 
@@ -12262,7 +12262,7 @@ event = {
 							any_fleet_in_system = {
 								exists = owner
 								owner = {
-									NOT = { is_same_empire = prevprevprev.owner }
+									NOT = { is_same_value = prevprevprev.owner }
 									OR = {
 										is_hostile = prevprevprev.owner
 										is_at_war_with = prevprevprev.owner
@@ -12273,7 +12273,7 @@ event = {
 							any_fleet_in_system = {
 								exists = controller
 								controller = {
-									NOT = { is_same_empire = prevprevprev.owner }
+									NOT = { is_same_value = prevprevprev.owner }
 									OR = {
 										is_hostile = prevprevprev.owner
 										is_at_war_with = prevprevprev.owner
@@ -12771,7 +12771,7 @@ country_event = {
 			}
 			every_country = {
 				limit = {
-					NOT = { is_same_empire = event_target:psi_defeated_synth_queen }
+					NOT = { is_same_value = event_target:psi_defeated_synth_queen }
 				}
 				country_event = { id = crisis.23030 days = 15 }
 			}

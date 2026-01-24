@@ -876,7 +876,7 @@ exiled_aura = {
 				OR = {
 					AND = {
 						exists = space_owner
-						space_owner = { is_same_empire = event_target:mindwarden_country@root.aura_owner }
+						space_owner = { is_same_value = event_target:mindwarden_country@root.aura_owner }
 					}
 					has_star_flag = mindwarden_buffer_system
 				}
@@ -1051,7 +1051,7 @@ end_aura = {
 				exists = owner
 				owner = {
 					NOR = {
-						is_same_empire = root.aura_owner
+						is_same_value = root.aura_owner
 						has_country_flag = has_encountered_end_aura
 					}
 				}
@@ -1105,7 +1105,7 @@ end_aura = {
 				has_owner = yes
 				owner = {
 					NOR = {
-						is_same_empire = root.aura_owner
+						is_same_value = root.aura_owner
 						has_country_flag = has_encountered_end_aura
 					}
 				}
@@ -1168,7 +1168,7 @@ end_aura = {
 				set_country_flag = end_aura_coverage_second_event_triggered
 				every_playable_country = {
 					limit = {
-						NOT = { is_same_empire = root.aura_owner }
+						NOT = { is_same_value = root.aura_owner }
 					}
 					country_event = {
 						id = shroud.4965
@@ -1189,7 +1189,7 @@ end_aura = {
 				set_country_flag = end_aura_coverage_first_event_triggered
 				every_playable_country = {
 					limit = {
-						NOT = { is_same_empire = root.aura_owner }
+						NOT = { is_same_value = root.aura_owner }
 					}
 					country_event = {
 						id = shroud.4960
@@ -1282,7 +1282,7 @@ end_aura = {
 				}
 			}
 			exists = owner
-			owner = { is_same_empire = prev.aura_owner }
+			owner = { is_same_value = prev.aura_owner }
 		}
 		custom_tooltip = fractalization_effect_tt
 		station_gatherers_produces_mult = 1.0

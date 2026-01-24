@@ -105,14 +105,14 @@ country_event = {
 				is_ai = no
 				OR = { # prevents diplo duplication
 					caravaneer_base_active_diplo = no # no open windows
-					from = { is_same_empire = root } # returning from open sub-menu
+					from = { is_same_value = root } # returning from open sub-menu
 				}
 				# new diplo opened from base or fleet
 				from = {
 					OR = {
 						is_country_type = caravaneer_home
 						is_country_type = caravaneer_fleet
-						is_same_empire = root # Vfix opt
+						is_same_value = root # Vfix opt
 					}
 				}
 			}
@@ -270,7 +270,7 @@ country_event = {
 					OR = {
 						is_country_type = caravaneer_home
 						is_country_type = caravaneer_fleet
-						is_same_empire = root # Vfix opt
+						is_same_value = root # Vfix opt
 					}
 				}
 			}
@@ -1460,7 +1460,7 @@ fleet_event = {
 		from = {
 			NAND = {
 				exists = space_owner
-				space_owner = { is_same_empire = root.fromfrom.space_owner }
+				space_owner = { is_same_value = root.fromfrom.space_owner }
 			}
 		}
 	}
@@ -1695,7 +1695,7 @@ fleet_event = {
 		fromfrom = {
 			NAND = {
 				exists = space_owner
-				space_owner = { is_same_empire = root.from.space_owner }
+				space_owner = { is_same_value = root.from.space_owner }
 			}
 		}
 	}
@@ -2109,7 +2109,7 @@ fleet_event = {
 		from = {
 			NAND = {
 				exists = space_owner
-				space_owner = { is_same_empire = root.fromfrom.space_owner }
+				space_owner = { is_same_value = root.fromfrom.space_owner }
 			}
 		}
 	}
@@ -2415,7 +2415,7 @@ fleet_event = {
 		fromfrom = {
 			NAND = {
 				exists = space_owner
-				space_owner = { is_same_empire = root.from.space_owner }
+				space_owner = { is_same_value = root.from.space_owner }
 			}
 		}
 	}
@@ -2869,7 +2869,7 @@ fleet_event = {
 		from = {
 			NAND = {
 				exists = space_owner
-				space_owner = { is_same_empire = root.fromfrom.space_owner }
+				space_owner = { is_same_value = root.fromfrom.space_owner }
 			}
 		}
 	}
@@ -3002,7 +3002,7 @@ country_event = {
 		trigger = {
 			any_playable_country = {
 				has_communications = event_target:caravaneer_fleet3_country
-				NOT = { is_same_empire = root }
+				NOT = { is_same_value = root }
 			}
 		}
 		text = "fleet3hewwo4"
@@ -3040,13 +3040,13 @@ country_event = {
 			limit = {
 				any_playable_country = {
 					has_communications = event_target:caravaneer_fleet3_country
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 			}
 			random_playable_country = {
 				limit = {
 					has_communications = event_target:caravaneer_fleet3_country
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 				save_event_target_as = scammer_country
 			}
@@ -3214,7 +3214,7 @@ fleet_event = {
 		fromfrom = {
 			NAND = {
 				exists = space_owner
-				space_owner = { is_same_empire = root.from.space_owner }
+				space_owner = { is_same_value = root.from.space_owner }
 			}
 		}
 	}
@@ -3547,7 +3547,7 @@ country_event = {
 	trigger = { # check that they still own the system
 		event_target:cara_home_new_location = {
 			exists = space_owner
-			space_owner = { is_same_empire = root }
+			space_owner = { is_same_value = root }
 		}
 		# a caravan fleet still exists
 		OR = {

@@ -3511,7 +3511,7 @@ country_event = {
 					every_fleet_in_system = {
 						limit = {
 							owner = {
-								NOT = { is_same_empire = event_target:pre_ftl_country }
+								NOT = { is_same_value = event_target:pre_ftl_country }
 							}
 							is_mobile = yes
 						}
@@ -4648,7 +4648,7 @@ country_event = {
 		trigger = {
 			any_spynetwork = {
 				is_owned_by = root
-				target = { is_same_empire = fromfrom.owner }
+				target = { is_same_value = fromfrom.owner }
 				has_available_spy_power >= 20
 			}
 		}
@@ -4656,7 +4656,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
-				target = { is_same_empire = fromfrom.owner }
+				target = { is_same_value = fromfrom.owner }
 			}
 			add_spy_network_level = -20
 		}
@@ -4673,7 +4673,7 @@ country_event = {
 			NOT = {
 				any_spynetwork = {
 					is_owned_by = root
-					target = { is_same_empire = from.owner }
+					target = { is_same_value = from.owner }
 					has_available_spy_power >= 20
 				}
 			}
@@ -4905,9 +4905,9 @@ fleet_event = {
 		exists = event_target:chosen_empire
 		exists = from.owner
 		owner = {
-			is_same_empire = event_target:chosen_empire
+			is_same_value = event_target:chosen_empire
 			NOR = {
-				is_same_empire = from.owner
+				is_same_value = from.owner
 				has_communications = from.owner
 			}
 		}
@@ -4916,7 +4916,7 @@ fleet_event = {
 	immediate = {
 		every_playable_country = {
 			limit = {
-				NOT = { is_same_empire = root.owner }
+				NOT = { is_same_value = root.owner }
 				intel_level = { system = from level > low }
 			}
 			country_event = { id = fircon.3510 }
@@ -5440,7 +5440,7 @@ planet_event = {
 					OR = {
 						AND = {
 							exists = planet
-							planet_owner = { is_same_empire = root.owner }
+							planet_owner = { is_same_value = root.owner }
 						}
 						AND = {
 							exists = solar_system
@@ -5816,7 +5816,7 @@ country_event = {
 		from = {
 			any_defender = {
 				has_country_flag = solarpunk_country
-				is_same_empire = root  # Vfix opt
+				is_same_value = root  # Vfix opt
 			}
 		}
 	}

@@ -1260,7 +1260,7 @@ country_event = {
 			limit = {
 				has_owner = yes
 				NOR = {
-					space_owner = { is_same_empire = event_target:swarm }
+					space_owner = { is_same_value = event_target:swarm }
 					has_star_flag = sealed_system
 					has_star_flag = lcluster
 					has_star_flag = crisis_spawn_exclude
@@ -1915,7 +1915,7 @@ ship_event = {
 		}
 		every_playable_country = {
 			limit = {
-				NOT = { is_same_empire = event_target:ship_owner }
+				NOT = { is_same_value = event_target:ship_owner }
 				has_special_project = CAPTURE_QUEEN
 			}
 			abort_special_project = { type = "CAPTURE_QUEEN" location = fromfrom }
@@ -2458,7 +2458,7 @@ planet_event = {
 						any_system_colony = {
 							has_owner = yes
 							owner = {
-								NOT = { is_same_empire = event_target:swarm }
+								NOT = { is_same_value = event_target:swarm }
 							}
 						}
 					}

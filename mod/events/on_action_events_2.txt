@@ -3,6 +3,7 @@
 # on_action_events
 #
 #########################################
+namespace = action
 ##############################
 # FORMING THE GALACTIC MARKET
 ##############################
@@ -910,7 +911,7 @@ pop_group_event = {
 				limit = {
 					NAND = {
 						exists = event_target:obsv_post_owner
-						is_same_empire = event_target:obsv_post_owner
+						is_same_value = event_target:obsv_post_owner
 					}
 				}
 				save_event_target_as = abductor
@@ -928,7 +929,7 @@ pop_group_event = {
 									is_same_value = event_target:abductor
 									AND = {
 										exists = event_target:obsv_post_owner
-										is_same_empire = event_target:obsv_post_owner
+										is_same_value = event_target:obsv_post_owner
 									}
 								}
 							}
@@ -2730,7 +2731,7 @@ country_event = {
 
 planet_event = {
 	id = action.601
-	show_sound = event_default
+	# show_sound = event_default
 	hide_window = yes
 	is_triggered_only = yes
 

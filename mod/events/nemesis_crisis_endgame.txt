@@ -1008,7 +1008,7 @@ country_event = {
 
 	trigger = {
 		exists = event_target:shroud_country # Vfix
-		is_same_empire = event_target:shroud_country
+		is_same_value = event_target:shroud_country
 		fromfrom = { has_fleet_flag = crisis_shroud_entity }
 	}
 
@@ -1346,7 +1346,7 @@ country_event = {
 		NAND = {
 			exists = from
 			exists = from.owner
-			from.owner = { is_same_empire = root }
+			from.owner = { is_same_value = root }
 		}
 	}
 

@@ -1582,7 +1582,7 @@ planet_event = {
 				owned_planets_percentage = var_country_robot_pops_percent
 				planet_limit = {
 					OR = {
-						controller = { is_same_empire = root.owner }
+						controller = { is_same_value = root.owner }
 						solar_system = {
 							exists = starbase
 							starbase = { is_owned_by = root.owner }

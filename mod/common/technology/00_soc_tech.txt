@@ -1948,13 +1948,9 @@ tech_volcanic_terraforming = {
 
 	weight = @tier2weight3
 
-	weight_modifier = { # We want this to be very rare.
-		modifier = { factor = 0.5 always = yes }
-	}
-	weight_modifier = {
+	weight_modifier = { # Vfix double
+		factor = 0.5 # We want this to be very rare.
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
-	}
-	weight_modifier = {
 		modifier = {
 			factor = 3 # We want this to be common if you have Volcanic planets
 			any_planet_within_border = { is_planet_class = pc_volcanic }
@@ -3788,7 +3784,6 @@ tech_psi_jump_drive_1 = {
 	}
 
 	weight = @tier5weight2
-	is_dangerous = yes
 	is_reverse_engineerable = no
 	feature_flags = { jump_method }
 	prereqfor_desc = {

@@ -1233,7 +1233,7 @@ country_event = {
 			has_research_station = yes
 			NOR = {
 				has_deposit_for = shipclass_mining_station
-				count_owned_pop_amount = { count > 0 }
+				count_owned_pop_amount = { count > 0 limit = { } }
 			}
 		}
 	}
@@ -1246,7 +1246,7 @@ country_event = {
 					has_research_station = yes
 					NOR = {
 						has_deposit_for = shipclass_mining_station
-						count_owned_pop_amount = { count > 0 }
+						count_owned_pop_amount = { count > 0 limit = { } }
 					}
 				}
 			}
@@ -1271,7 +1271,7 @@ system_event = {
 				has_research_station = yes
 				NOR = {
 					has_deposit_for = shipclass_mining_station
-					count_owned_pop_amount = { count > 0 }
+					count_owned_pop_amount = { count > 0 limit = { } }
 				}
 			}
 			add_deposit = d_physics_7
@@ -1291,7 +1291,7 @@ country_event = {
 		any_planet_within_border = {
 			NOR = {
 				has_deposit_for = shipclass_mining_station
-				count_owned_pop_amount = { count > 0 }
+				count_owned_pop_amount = { count > 0 limit = { } }
 			}
 		}
 	}
@@ -1303,7 +1303,7 @@ country_event = {
 				any_system_planet = {
 					NOR = {
 						has_deposit_for = shipclass_mining_station
-						count_owned_pop_amount = { count > 0 }
+						count_owned_pop_amount = { count > 0 limit = { } }
 					}
 				}
 			}
@@ -1327,7 +1327,7 @@ system_event = {
 			limit = {
 				NOR = {
 					has_deposit_for = shipclass_mining_station
-					count_owned_pop_amount = { count > 0 }
+					count_owned_pop_amount = { count > 0 limit = { } }
 				}
 			}
 			add_deposit = d_society_7
@@ -2862,7 +2862,7 @@ planet_event = {
 				solar_system = {
 					NAND = {
 						has_psionic_aura = yes
-						aura_owner = { is_same_empire = root.owner }
+						aura_owner = { is_same_value = root.owner }
 					}
 				}
 			}
@@ -7879,7 +7879,7 @@ country_event = {
 		# Vfix:  trying to add trust on oneself
 		event_target:target_country = {
 			if = {
-				limit = { NOT = { is_same_empire = prev } }
+				limit = { NOT = { is_same_value = prev } }
 				prev = {
 					add_trust = {
 						who = prev
@@ -9311,7 +9311,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_empire = event_target:mindwarden_destroyer }
+				NOT = { is_same_value = event_target:mindwarden_destroyer }
 			}
 			country_event = { id = shroud.4406 }
 		}
@@ -9656,7 +9656,6 @@ country_event = {
 	picture = GFX_evt_shroud_whisperers_in_the_void
 	is_triggered_only = yes
 	show_sound = event_whisperers_in_the_void
-	is_triggered_only = yes
 	diplomatic = yes
 	force_open = yes
 
@@ -9917,7 +9916,7 @@ country_event = {
 				exists = solar_system
 				solar_system = {
 					has_psionic_aura = yes
-					aura_owner = { is_same_empire = root.from }
+					aura_owner = { is_same_value = root.from }
 				}
 			}
 			if = {
@@ -9934,7 +9933,7 @@ country_event = {
 		every_system_within_border = {
 			limit = {
 				has_psionic_aura = yes
-				aura_owner = { is_same_empire = root.from }
+				aura_owner = { is_same_value = root.from }
 			}
 			every_system_colony = {
 				limit = { planet_devastation > 0 }
@@ -10003,7 +10002,7 @@ country_event = {
 	immediate = {
 		every_system_with_aura = {
 			limit = {
-				aura_owner = { is_same_empire = root }
+				aura_owner = { is_same_value = root }
 				has_owner = yes
 				NOR = {
 					is_owned_by = root
@@ -10189,14 +10188,14 @@ country_event = {
 			limit = { can_be_chosen_for_hindsight = yes }
 			save_event_target_as = hindsight_planet_candidate_1
 		}
-		ordered_owned_planet = {
+		random_owned_planet = { # Vfix
 			limit = {
 				can_be_chosen_for_hindsight = yes
 				NOT = { is_same_value = event_target:hindsight_planet_candidate_1 }
 			}
 			save_event_target_as = hindsight_planet_candidate_2
 		}
-		ordered_owned_planet = {
+		random_owned_planet = { # Vfix
 			limit = {
 				can_be_chosen_for_hindsight = yes
 				NOR = {
@@ -10206,7 +10205,7 @@ country_event = {
 			}
 			save_event_target_as = hindsight_planet_candidate_3
 		}
-		ordered_owned_planet = {
+		random_owned_planet = { # Vfix
 			limit = {
 				can_be_chosen_for_hindsight = yes
 				NOR = {
@@ -10942,7 +10941,7 @@ country_event = {
 			limit = {
 				NOR = {
 					is_ai = yes
-					is_same_empire = root
+					is_same_value = root
 				}
 			}
 			country_event = { id = shroud.4971 }
@@ -11006,7 +11005,7 @@ country_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = event_target:first_neighbor@root }
+					NOT = { is_same_value = event_target:first_neighbor@root }
 					secret_societies_neighbor_candidate = yes
 				}
 			}
@@ -12742,7 +12741,7 @@ country_event = {
 						any_owned_fleet = {
 							is_ship_class = shipclass_military
 							is_leased = yes
-							controller = { is_same_empire = root }
+							controller = { is_same_value = root }
 						}
 					}
 				}
@@ -12798,7 +12797,7 @@ country_event = {
 				is_ship_class = shipclass_military
 				is_leased = yes
 				is_owned_by = event_target:mindwarden_enclave_country
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 		}
 		hidden_effect = {
@@ -16882,7 +16881,7 @@ country_event = {
 			leader = { has_trait = leader_trait_disciple_of_the_end }
 			solar_system = {
 				has_psionic_aura = end_aura
-				aura_owner = { is_same_empire = root }
+				aura_owner = { is_same_value = root }
 			}
 		}
 	}

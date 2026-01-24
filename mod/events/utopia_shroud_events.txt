@@ -5684,7 +5684,7 @@ country_event = {
 				modifier = {
 					factor = 5
 					any_country = {
-						NOT = { is_same_empire = root }
+						NOT = { is_same_value = root }
 						has_been_declared_crisis = yes # Someone wants to destroy the galaxy? Let's give them a challenge.
 					}
 				}
@@ -7857,7 +7857,7 @@ country_event = {
 		random_owned_fleet = {
 			limit = { is_ship_class = shipclass_military }
 			save_event_target_as = demilitarized_fleet
-			destroy_fleet_naval_cap = { naval_cap = 12 kill_leader = no }
+			destroy_fleet_naval_cap = { target = this naval_cap = 12 kill_leader = no }
 		}
 	}
 

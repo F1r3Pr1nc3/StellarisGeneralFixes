@@ -34,7 +34,7 @@ resolution_declare_crisis = {
 	harmful = yes
 
 	valid_target = {
-		NOT = { is_same_empire = from }
+		NOT = { is_same_value = from }
 		OR = {
 			is_country_type = default
 			AND = {
@@ -84,7 +84,7 @@ resolution_declare_crisis = {
 				limit = {
 					NOR = {
 						is_ai = yes
-						is_same_empire = prev
+						is_same_value = prev
 					}
 				}
 				country_event = { id = crisis.4100 }
@@ -189,7 +189,7 @@ resolution_declare_crisis = {
 		# Never on yourself
 		modifier = {
 			factor = 0
-			is_same_empire = from
+			is_same_value = from
 			desc = gal_com_target_is_me
 		}
 		# More likely to declare on a crisis country that has started cracking stars
@@ -298,7 +298,7 @@ resolution_repeal_crisis = {
 				}
 				every_war_participant = {
 					limit = {
-						NOT = { is_same_empire = event_target:former_crisis }
+						NOT = { is_same_value = event_target:former_crisis }
 					}
 					country_event = { id = crisis.4110 }
 				}
@@ -385,7 +385,7 @@ resolution_declare_crisis_empire = {
 
 	valid_target = {
 		NOR = {
-			is_same_empire = from
+			is_same_value = from
 			is_galactic_emperor = yes
 		}
 		OR = {
@@ -437,7 +437,7 @@ resolution_declare_crisis_empire = {
 				limit = {
 					NOR = {
 						is_ai = yes
-						is_same_empire = prev
+						is_same_value = prev
 					}
 				}
 				country_event = { id = crisis.4101 }
@@ -502,7 +502,7 @@ resolution_declare_crisis_empire = {
 		# Never on yourself
 		modifier = {
 			factor = 0
-			is_same_empire = from
+			is_same_value = from
 			desc = gal_com_target_is_me
 		}
 		# Never on your ally
@@ -616,7 +616,7 @@ resolution_repeal_crisis_empire = {
 				}
 				every_war_participant = {
 					limit = {
-						NOT = { is_same_empire = event_target:former_crisis }
+						NOT = { is_same_value = event_target:former_crisis }
 					}
 					country_event = { id = crisis.4112 }
 				}
@@ -785,7 +785,7 @@ resolution_galacticreforms_nominate_custodian = {
 		}
 		modifier = {
 			factor = 20
-			is_same_empire = from
+			is_same_value = from
 			desc = gal_com_target_is_me
 		}
 		modifier = {
@@ -1254,7 +1254,7 @@ resolution_awakened_galactic_empire = {
 			is_subject = yes
 			overlord = {
 				is_fallen_empire = yes
-				NOT = { is_same_empire = event_target:fallen_empire_hive_control }
+				NOT = { is_same_value = event_target:fallen_empire_hive_control }
 			}
 			desc = gal_com_subject_of_fallen_empire
 		}
@@ -1263,7 +1263,7 @@ resolution_awakened_galactic_empire = {
 			is_subject = yes
 			overlord = {
 				is_fallen_empire = yes
-				is_same_empire = event_target:fallen_empire_hive_control # Vfix
+				is_same_value = event_target:fallen_empire_hive_control # Vfix
 			}
 			desc = gal_com_subject_of_fallen_empire
 		}
@@ -3087,19 +3087,19 @@ resolution_galactic_empire_imperial_crusade = {
 						is_in_federation_with = event_target:crusade_target
 						AND = {
 							exists = overlord
-							overlord = { is_same_empire = event_target:crusade_target }
+							overlord = { is_same_value = event_target:crusade_target }
 						}
 					}
 				}
 				if = {
 					limit = {
 						any_war = {
-							any_war_participant = { is_same_empire = event_target:crusade_target }
+							any_war_participant = { is_same_value = event_target:crusade_target }
 						}
 					}
 					every_war = {
 						limit = {
-							any_war_participant = { is_same_empire = event_target:crusade_target }
+							any_war_participant = { is_same_value = event_target:crusade_target }
 						}
 						remove_war_participant = event_target:crusade_target
 					}
@@ -3117,7 +3117,7 @@ resolution_galactic_empire_imperial_crusade = {
 					is_ai = no
 					has_communications = event_target:gal_emperor
 					has_communications = event_target:crusade_target
-					NOT = { is_same_empire = event_target:crusade_target }
+					NOT = { is_same_value = event_target:crusade_target }
 				}
 				country_event = { id = emperor.351 }
 			}
@@ -4140,7 +4140,7 @@ resolution_emperor_imperial_charter = {
 				limit = {
 					NOR = {
 						is_ai = yes
-						is_same_empire = prev
+						is_same_value = prev
 					}
 					is_galactic_community_member = yes
 					is_galactic_emperor = no
@@ -4180,7 +4180,7 @@ resolution_emperor_imperial_charter = {
 		}
 		modifier = {
 			factor = 20
-			is_same_empire = from
+			is_same_value = from
 			desc = gal_com_target_is_me
 		}
 		modifier = {

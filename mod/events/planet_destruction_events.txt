@@ -117,7 +117,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -129,8 +129,8 @@ planet_event = {
 				every_country = {
 					limit = {
 						NOR = {
-							is_same_empire = from.owner
-							is_same_empire = root.owner
+							is_same_value = from.owner
+							is_same_value = root.owner
 							AND = {
 								has_federation = yes
 								is_in_federation_with = from.owner
@@ -189,7 +189,7 @@ planet_event = {
 				# modifier for allies + those upset by genocide
 				every_country = {
 					limit = {
-						NOT = { is_same_empire = from.owner }
+						NOT = { is_same_value = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -210,7 +210,7 @@ planet_event = {
 				}
 				every_country = {
 					limit = {
-						NOT = { is_same_empire = from.owner }
+						NOT = { is_same_value = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -524,7 +524,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -534,8 +534,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -747,7 +747,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -757,8 +757,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -803,7 +803,7 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_playable_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -818,7 +818,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -902,7 +902,7 @@ country_event = {
 					is_planet_class = pc_infested
 					is_planet_class = pc_barren
 					is_planet_class = pc_barren_cold
-					count_owned_pop_amount = { count > 0 }
+					count_owned_pop_amount = { count > 0 limit = { } }
 				}
 			}
 		}
@@ -911,7 +911,7 @@ country_event = {
 		text = planet_destruction.301.bots.desc
 		trigger = {
 			from = {
-				count_owned_pop_amount = { count > 0 }
+				count_owned_pop_amount = { count > 0 limit = { } }
 			}
 		}
 	}
@@ -1076,7 +1076,7 @@ planet_event = {
 				NOT = { is_planet_class = pc_ai }
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -1086,8 +1086,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -1246,7 +1246,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -1256,8 +1256,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -1302,7 +1302,7 @@ planet_event = {
 			every_playable_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
+						is_same_value = from.owner
 						is_xenophobe = yes
 						is_homicidal = yes
 						is_xenophile = yes
@@ -1319,7 +1319,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -1734,7 +1734,7 @@ planet_event = {
 					exists = owner
 					owner = {
 						OR = {
-							is_same_empire = from.owner
+							is_same_value = from.owner
 							is_crisis_faction = yes
 							has_been_declared_crisis = yes
 						}
@@ -1748,7 +1748,7 @@ planet_event = {
 		if = {	# you've basically shortcutted terraforming. Yep, that's a breach
 			limit = {
 				exists = space_owner
-				space_owner = { is_same_empire = from.owner }
+				space_owner = { is_same_value = from.owner }
 				OR = {
 					NOT = { exists = owner }
 					is_owned_by = from.owner
@@ -1766,7 +1766,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -1776,8 +1776,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -1807,7 +1807,7 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_playable_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -1822,7 +1822,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -2079,7 +2079,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -2091,8 +2091,8 @@ planet_event = {
 				every_country = {
 					limit = {
 						NOR = {
-							is_same_empire = from.owner
-							is_same_empire = root.owner
+							is_same_value = from.owner
+							is_same_value = root.owner
 							AND = {
 								has_federation = yes
 								is_in_federation_with = from.owner
@@ -2157,7 +2157,7 @@ planet_event = {
 				# modifier for allies + those upset by genocide
 				every_country = {
 					limit = {
-						NOT = { is_same_empire = from.owner }
+						NOT = { is_same_value = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -2178,7 +2178,7 @@ planet_event = {
 				}
 				every_country = {
 					limit = {
-						NOT = { is_same_empire = from.owner }
+						NOT = { is_same_value = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -2399,7 +2399,7 @@ planet_event = {
 				NOT = { is_planet_class = pc_ai }
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -2409,8 +2409,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -2636,12 +2636,12 @@ country_event = {
 	title = planet_destruction.1000.name
 
 	desc = {
-		trigger = { is_same_empire = fromfrom.owner }
+		trigger = { is_same_value = fromfrom.owner }
 		text = planet_destruction.1000.desc.self
 	}
 	desc = {
 		trigger = {
-			NOT = { is_same_empire = fromfrom.owner }
+			NOT = { is_same_value = fromfrom.owner }
 			from = {
 				OR = {
 					is_planet_class = pc_shattered
@@ -2653,7 +2653,7 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { is_same_empire = fromfrom.owner }
+			NOT = { is_same_value = fromfrom.owner }
 			from = {
 				OR = {
 					is_planet_class = pc_shielded
@@ -2667,7 +2667,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_same_empire = fromfrom.owner
+				is_same_value = fromfrom.owner
 				from = {
 					OR = {
 						is_planet_class = pc_shattered
@@ -2812,7 +2812,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -2824,8 +2824,8 @@ planet_event = {
 				every_country = {
 					limit = {
 						NOR = {
-							is_same_empire = from.owner
-							is_same_empire = root.owner
+							is_same_value = from.owner
+							is_same_value = root.owner
 							AND = {
 								has_federation = yes
 								is_in_federation_with = from.owner
@@ -2884,7 +2884,7 @@ planet_event = {
 				# modifier for allies + those upset by genocide
 				every_country = {
 					limit = {
-						NOT = { is_same_empire = from.owner }
+						NOT = { is_same_value = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -2905,7 +2905,7 @@ planet_event = {
 				}
 				every_country = {
 					limit = {
-						NOT = { is_same_empire = from.owner }
+						NOT = { is_same_value = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner

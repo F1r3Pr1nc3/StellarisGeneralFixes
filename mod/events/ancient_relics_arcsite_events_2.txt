@@ -1701,8 +1701,8 @@ country_event = {
 		from = { is_country_type = default num_owned_relics > 0 }
 		fromfrom = { is_capital = yes }
 		any_war = {
-			any_attacker = { is_same_empire = root }
-			any_defender = { is_same_empire = from }
+			any_attacker = { is_same_value = root }
+			any_defender = { is_same_value = from }
 			NOT = { using_war_goal = { type = wg_take_galatron owner = attacker } }
 		}
 	}
@@ -1717,8 +1717,8 @@ country_event = {
 				modifier = {
 					factor = 6.67 # 50% chance of success
 					any_war = {
-						any_attacker = { is_same_empire = root }
-						any_defender = { is_same_empire = from }
+						any_attacker = { is_same_value = root }
+						any_defender = { is_same_value = from }
 						using_war_goal = { type = wg_plunder owner = attacker }
 					}
 				}
@@ -7877,7 +7877,7 @@ country_event = {
 		hidden_effect = {
 			set_global_flag = endgame_crisis_early_start
 			every_playable_country = {
-				limit = { NOT = { is_same_empire = root } }
+				limit = { NOT = { is_same_value = root } }
 				country_event = { id = ancrel.12100 }
 			}
 		}

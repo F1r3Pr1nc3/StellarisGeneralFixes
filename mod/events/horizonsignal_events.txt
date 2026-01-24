@@ -2535,7 +2535,7 @@ planet_event = {
 			limit = {
 				has_communications = root.owner
 				NOR = {
-					is_same_empire = root.owner
+					is_same_value = root.owner
 					is_same_species = root.owner
 					has_ai_personality_behaviour = purger
 				}
@@ -2549,7 +2549,7 @@ planet_event = {
 		every_country = {
 			limit = {
 				has_communications = root.owner
-				NOT = { is_same_empire = root.owner }
+				NOT = { is_same_value = root.owner }
 				is_same_species = event_target:purged_species
 			}
 			add_opinion_modifier = { who = root.owner modifier = opinion_genocidal_our_species }

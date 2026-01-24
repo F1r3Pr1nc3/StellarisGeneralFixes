@@ -16,8 +16,29 @@ broken_shackles_start_pop_ethic_effect = {
 }
 
 # Used for the security drones in the Payback Arc site
-create_slavers_dummy_country = {
-	optimize_memory
+# create_slavers_dummy_country = {
+# 	# optimize_memory
+# 	if = {
+# 		limit = {
+# 			NOT = { exists = event_target:slavers_dummy_country }
+# 		}
+# 		create_country = {
+# 			name = "NAME_MSI_country"
+# 			type = slavers_dummy
+# 			flag = {
+# 				icon = { category = "corporate" file = "corporate_07.dds" }
+# 				background = { category = "backgrounds" file = "pattern_01.dds" }
+# 				colors = { "mist_blue" "bright_purple" "null" "null" }
+# 			}
+# 			effect = {
+# 				save_global_event_target_as = slavers_dummy_country
+# 			}
+# 		}
+# 	}
+# }
+
+create_payback_digsite_fleet = {
+	# create_slavers_dummy_country = yes # Vfix opt
 	if = {
 		limit = {
 			NOT = { exists = event_target:slavers_dummy_country }
@@ -35,10 +56,6 @@ create_slavers_dummy_country = {
 			}
 		}
 	}
-}
-
-create_payback_digsite_fleet = {
-	create_slavers_dummy_country = yes
 
 	create_fleet = {
 		settings = {
@@ -2502,7 +2519,7 @@ seperatist_help_player_deficit_effect = {
 
 # used federations3.115 as a reference
 create_debt_collectors_country = {
-	optimize_memory
+	# optimize_memory
 	if = {
 		limit = {
 			NOT = {

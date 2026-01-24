@@ -1207,7 +1207,7 @@ is_close_to_psionic_aura_generator_system = {
 		max_steps = value:psionic_aura_hyperlane_range|OWNER|$OWNER$|
 		valid = {
 			has_psionic_aura = yes
-			aura_owner = { is_same_empire = $OWNER$ }
+			aura_owner = { is_same_value = $OWNER$ }
 		}
 		limit = {
 			can_system_generate_psionic_aura = { OWNER = $OWNER$ }
@@ -1300,7 +1300,7 @@ is_eligible_for_advanced_government = {
 can_be_chosen_for_hindsight = {
 	solar_system = {
 		has_psionic_aura = yes
-		aura_owner = { is_same_empire = root }
+		aura_owner = { is_same_value = root }
 	}
 	NOR = {
 		is_artificial = yes
@@ -1369,6 +1369,7 @@ is_leader_excavating_site = {
 
 disciple_of_the_cradle_councilors_count = {
 	count_owned_leader = {
+		count = all
 		limit = {
 			is_councilor = yes
 			has_trait = leader_trait_disciple_of_the_cradle
@@ -1481,7 +1482,7 @@ is_enclave_founding_allowed = {
 		exists = solar_system
 		solar_system = {
 			exists = owner
-			owner = { is_same_empire = root.owner is_same_empire = root.controller }
+			owner = { is_same_value = root.owner is_same_value = root.controller }
 			NOT = {
 				any_fleet_in_system = {
 					owner = { is_hostile = root.owner }

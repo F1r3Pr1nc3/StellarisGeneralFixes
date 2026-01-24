@@ -1688,7 +1688,7 @@ country_event = {
 		OR = {
 			exists = event_target:scandalous_insult_country
 			any_playable_country = {
-				NOT = { is_same_empire = root } # galcom check would return true for root
+				NOT = { is_same_value = root } # galcom check would return true for root
 				OR = {
 					AND = {
 						is_galactic_community_member = yes
@@ -1713,7 +1713,7 @@ country_event = {
 			}
 			random_playable_country = {
 				limit = {
-					NOT = { is_same_empire = root } # galcom check would return true for root
+					NOT = { is_same_value = root } # galcom check would return true for root
 					OR = {
 						AND = {
 							is_galactic_community_member = yes
@@ -2395,7 +2395,7 @@ country_event = {
 					is_assigned_to_galcom = yes
 					any_galcom_member = {
 						NOR = {
-							is_same_empire = root
+							is_same_value = root
 							is_same_species = root
 							is_same_species = prevprev
 							is_gestalt = yes
@@ -2431,7 +2431,7 @@ country_event = {
 						is_assigned_to_galcom = yes
 						any_galcom_member = {
 							NOR = {
-								is_same_empire = root
+								is_same_value = root
 								is_same_species = root
 								is_same_species = prevprev
 								is_gestalt = yes

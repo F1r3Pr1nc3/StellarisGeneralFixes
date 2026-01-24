@@ -344,11 +344,11 @@ country_event = {
 			}
 			modifier = {
 				factor = 5
-				any_neighbor_country = { is_same_empire = event_target:FirstSleeper }
+				any_neighbor_country = { is_same_value = event_target:FirstSleeper }
 			}
 			modifier = {
 				factor = 2
-				NOT = { any_neighbor_country = { is_same_empire = from } }
+				NOT = { any_neighbor_country = { is_same_value = from } }
 				any_system_within_border = {
 					distance_to_empire = {
 						who = from
@@ -526,11 +526,11 @@ country_event = {
 			}
 			modifier = {
 				factor = 5
-				any_neighbor_country = { is_same_empire = from }
+				any_neighbor_country = { is_same_value = from }
 			}
 			modifier = {
 				factor = 2
-				NOT = { any_neighbor_country = { is_same_empire = from } }
+				NOT = { any_neighbor_country = { is_same_value = from } }
 				any_system_within_border = {
 					distance_to_empire = {
 						who = from
@@ -723,13 +723,13 @@ country_event = {
 			}
 			if = {
 				limit = {
-					overlord = { is_same_empire = event_target:FirstSleeper }
+					overlord = { is_same_value = event_target:FirstSleeper }
 				}
 				join_war = event_target:FirstSleeper
 			}
 			if = {
 				limit = {
-					overlord = { is_same_empire = from }
+					overlord = { is_same_value = from }
 				}
 				join_war = from
 			}

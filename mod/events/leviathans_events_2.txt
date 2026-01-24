@@ -1289,7 +1289,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				NOR = {
-					is_same_empire = root
+					is_same_value = root
 					is_hostile = event_target:guardian_technosphere_country
 				}
 				OR = {
@@ -1374,7 +1374,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				NOR = {
-					is_same_empire = root
+					is_same_value = root
 					is_hostile = event_target:guardian_technosphere_country
 				}
 				OR = {
@@ -2135,7 +2135,7 @@ country_event = {
 					if = {
 						limit = {
 							exists = space_owner
-							space_owner = { is_same_empire = root }
+							space_owner = { is_same_value = root }
 						}
 						space_owner = {
 							add_modifier = { modifier = black_hole_pantagruel_research days = -1 }
@@ -2602,7 +2602,7 @@ country_event = {
 		exists = from
 		exists = event_target:fortress_country
 		exists = event_target:fortress_vault_core
-		from = { is_same_empire = event_target:fortress_country }
+		from = { is_same_value = event_target:fortress_country }
 		can_generate_trade_value = yes # For compat. Uses fallback owner
 		# exists = fromfromfrom
 		# fromfromfrom = { is_same_value = event_target:fortress_vault_core }

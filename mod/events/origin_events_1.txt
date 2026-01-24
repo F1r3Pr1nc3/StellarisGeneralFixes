@@ -942,7 +942,7 @@ event = {
 			NOT = { has_country_flag = scion_war_help }
 			OR = {
 				any_war = {
-					any_defender = { is_same_empire = prevprev }
+					any_defender = { is_same_value = prevprev }
 					any_attacker = {
 						OR = {
 							relative_power = {
@@ -961,7 +961,7 @@ event = {
 					attacker_war_exhaustion < 0.6
 				}
 				any_war = {
-					any_attacker = { is_same_empire = prevprev }
+					any_attacker = { is_same_value = prevprev }
 					any_defender = {
 						OR = {
 							relative_power = {
@@ -994,7 +994,7 @@ event = {
 				NOT = { has_country_flag = scion_war_help }
 				OR = {
 					any_war = {
-						any_defender = { is_same_empire = prevprev }
+						any_defender = { is_same_value = prevprev }
 						any_attacker = {
 							OR = {
 								relative_power = {
@@ -1013,7 +1013,7 @@ event = {
 						attacker_war_exhaustion < 0.6
 					}
 					any_war = {
-						any_attacker = { is_same_empire = prevprev }
+						any_attacker = { is_same_value = prevprev }
 						any_defender = {
 							OR = {
 								relative_power = {
@@ -1069,7 +1069,7 @@ country_event = {
 				limit = { scion_losing_defensive_war = yes }
 				random_country = {
 					limit = {
-						NOT = { is_same_empire = root }
+						NOT = { is_same_value = root }
 						is_at_war = yes
 						is_at_war_with = root
 						scion_losing_defensive_war_combatant = yes
@@ -1093,7 +1093,7 @@ country_event = {
 				limit = { scion_losing_offensive_war = yes }
 				random_country = {
 					limit = {
-						NOT = { is_same_empire = root }
+						NOT = { is_same_value = root }
 						is_at_war = yes
 						is_at_war_with = root
 						scion_losing_offensive_war_combatant = yes
@@ -1196,7 +1196,7 @@ country_event = {
 		from = {
 			using_war_goal = { type = wg_independence owner = attacker }
 			# Fire only for the attacker, i.e. a subject or Scion
-			any_attacker = { is_same_empire = root }
+			any_attacker = { is_same_value = root }
 			any_defender = { is_fallen_empire = yes }
 		}
 		# Fire only if root controls a fleet gifted by the FE via the "Scion" Origin

@@ -3214,7 +3214,6 @@ situation_event = {
 				save_event_target_as = rogue_geneticist
 			}
 		}
-		run_in_ai_mode = yes # Vfix
 	}
 
 	option = {
@@ -5274,7 +5273,7 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				any_neighbor_country = { is_same_empire = event_target:snatched_country }
+				any_neighbor_country = { is_same_value = event_target:snatched_country }
 			}
 			event_target:snatched_country = {
 				random_system_within_border = {
@@ -6139,7 +6138,7 @@ country_event = {
 					closest_system = {
 						limit = {
 							has_owner = yes
-							space_owner = { is_same_empire = root }
+							space_owner = { is_same_value = root }
 						}
 						save_event_target_as = target_system
 					}
@@ -6665,8 +6664,8 @@ country_event = {
 			random_country = {
 				limit = {
 					NOR = {
-						is_same_empire = root
-						is_same_empire = event_target:fallen_empire_hive_growth
+						is_same_value = root
+						is_same_value = event_target:fallen_empire_hive_growth
 					}
 					has_communications = root
 				}
@@ -8106,7 +8105,7 @@ country_event = {
 					solar_system = {
 						is_same_value = prevprev
 						exists = space_owner
-						space_owner = { is_same_empire = root }
+						space_owner = { is_same_value = root }
 					}
 				}
 				any_system_colony = { has_owner = yes is_owned_by = root }
@@ -8115,7 +8114,7 @@ country_event = {
 					limit = {
 						NAND = {
 							exists = starbase.owner
-							starbase.owner = { is_same_empire = root }
+							starbase.owner = { is_same_value = root }
 						}
 					}
 				}
@@ -8123,7 +8122,7 @@ country_event = {
 					count >= 2
 					limit = {
 						exists = starbase.owner
-						starbase.owner = { is_same_empire = root }
+						starbase.owner = { is_same_value = root }
 					}
 				}
 			}
@@ -8161,7 +8160,7 @@ country_event = {
 						solar_system = {
 							is_same_value = prevprev
 							exists = owner
-							space_owner = { is_same_empire = root }
+							space_owner = { is_same_value = root }
 						}
 					}
 					any_system_colony = { has_owner = yes is_owned_by = root }
@@ -8170,7 +8169,7 @@ country_event = {
 						limit = {
 							NAND = {
 								exists = starbase.owner
-								starbase.owner = { is_same_empire = root }
+								starbase.owner = { is_same_value = root }
 							}
 						}
 					}
@@ -8178,7 +8177,7 @@ country_event = {
 						count >= 2
 						limit = {
 							exists = starbase.owner
-							starbase.owner = { is_same_empire = root }
+							starbase.owner = { is_same_value = root }
 						}
 					}
 				}
@@ -8229,7 +8228,7 @@ country_event = {
 	trigger = {
 		event_target:offending_system = {
 			exists = space_owner
-			space_owner = { is_same_empire = root }
+			space_owner = { is_same_value = root }
 		}
 	}
 

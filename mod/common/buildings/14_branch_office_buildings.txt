@@ -3291,7 +3291,7 @@ building_clear_thought_clinic = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = event_target:branch_office_owner
-					target = { is_same_empire = event_target:owner }
+					target = { is_same_value = event_target:owner }
 				}
 				add_modifier = { modifier = clear_thought_clinic_modifier days = -1 }
 			}
@@ -3309,7 +3309,7 @@ building_clear_thought_clinic = {
 						any_owned_planet = {
 							NOT = { is_same_value = event_target:planet }
 							has_branch_office = yes
-							branch_office_owner = { is_same_empire = event_target:branch_office_owner }
+							branch_office_owner = { is_same_value = event_target:branch_office_owner }
 							has_holding = {
 								holding = building_clear_thought_clinic
 								owner = event_target:branch_office_owner
@@ -3322,7 +3322,7 @@ building_clear_thought_clinic = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = event_target:branch_office_owner
-						target = { is_same_empire = event_target:owner }
+						target = { is_same_value = event_target:owner }
 					}
 					remove_modifier = clear_thought_clinic_modifier
 				}

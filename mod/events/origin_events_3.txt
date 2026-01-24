@@ -3085,7 +3085,7 @@ country_event = {
 			closest_system = {
 				limit = {
 					has_owner = yes
-					space_owner = { is_same_empire = from }
+					space_owner = { is_same_value = from }
 					is_capital_system = no
 				}
 				max_steps = 20
@@ -3100,7 +3100,7 @@ country_event = {
 			closest_system = {
 				limit = {
 					has_owner = yes
-					space_owner = { is_same_empire = from }
+					space_owner = { is_same_value = from }
 					is_capital_system = no
 				}
 				max_steps = 20
@@ -4230,7 +4230,7 @@ country_event = {
 			every_playable_country = {
 				limit = {
 					exists = overlord
-					overlord = { is_same_empire = root }
+					overlord = { is_same_value = root }
 					NOT = { species = { is_same_species = root.species } }
 				}
 				release_subject = yes
@@ -4312,7 +4312,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		home_planet.owner = { is_same_empire = root }
+		home_planet.owner = { is_same_value = root }
 	}
 
 	option = {
@@ -4374,7 +4374,7 @@ situation_event = {
 
 	trigger = {
 		exists = owner
-		owner.home_planet.owner = { is_same_empire = root.owner }
+		owner.home_planet.owner = { is_same_value = root.owner }
 		has_situation_flag = deflecting_fields
 		has_situation_flag = reversed_thrusters
 		has_situation_flag = counter_shot

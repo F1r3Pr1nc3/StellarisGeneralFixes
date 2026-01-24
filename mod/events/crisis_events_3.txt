@@ -1606,7 +1606,7 @@ planet_event = {
 			AND = {
 				exists = from
 				exists = controller
-				from = { is_same_empire = root.controller } # Vfix
+				from = { is_same_value = root.controller } # Vfix
 			}
 			planet_devastation >= 50
 			has_planet_flag = planet_godrayed
@@ -1762,7 +1762,7 @@ planet_event = {
 			AND = {
 				exists = from
 				exists = controller
-				from = { is_same_empire = root.controller } # Vfix
+				from = { is_same_value = root.controller } # Vfix
 			}
 			planet_devastation >= 50
 		}
@@ -2421,7 +2421,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_event_chain = "ai_crisis_chain"
-				NOT = { is_same_empire = from }
+				NOT = { is_same_value = from }
 			}
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -2589,7 +2589,7 @@ country_event = {
 
 	trigger = {
 		any_owned_planet = {
-			controller = { is_same_empire = root }
+			controller = { is_same_value = root }
 			solar_system = {
 				exists = starbase
 				starbase = { is_owned_by = root }
@@ -2607,7 +2607,7 @@ country_event = {
 		set_country_flag = machine_spaceport_scuttled
 		random_owned_planet = {
 			limit = {
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 			save_event_target_as = space_port_hijacked_planet
 			solar_system = {
@@ -2769,7 +2769,7 @@ country_event = {
 
 	trigger = {
 		any_owned_planet = {
-			controller = { is_same_empire = root }
+			controller = { is_same_value = root }
 			any_owned_species = { has_trait = trait_machine_unit }
 		}
 		NOT = { has_country_flag = potentially_corrupted_units }
@@ -2822,7 +2822,7 @@ country_event = {
 
 	trigger = {
 		any_owned_planet = {
-			controller = { is_same_empire = root }
+			controller = { is_same_value = root }
 			any_owned_species = { has_trait = trait_machine_unit }
 		}
 	}
@@ -2896,7 +2896,7 @@ country_event = {
 			40 = { # Synth Bombing (Can happen multiple times)
 				random_owned_planet = {
 					limit = {
-						controller = { is_same_empire = root }
+						controller = { is_same_value = root }
 					}
 					planet_event = { id = crisis.2091 }
 				}
@@ -2904,7 +2904,7 @@ country_event = {
 			10 = { # Spaceport Scuttle Simulator (Light Version)
 				random_owned_planet = {
 					limit = {
-						controller = { is_same_empire = root }
+						controller = { is_same_value = root }
 					}
 					planet_event = { id = crisis.2092 }
 				}
@@ -2912,7 +2912,7 @@ country_event = {
 			10 = { # Fear and Suspicion
 				random_owned_planet = {
 					limit = {
-						controller = { is_same_empire = root }
+						controller = { is_same_value = root }
 					}
 					planet_event = { id = crisis.2093 }
 				}
@@ -2942,14 +2942,14 @@ country_event = {
 	trigger = {
 		any_owned_planet = {
 			exists = controller
-			controller = { is_same_empire = root }
+			controller = { is_same_value = root }
 		}
 	}
 
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 			save_event_target_as = infil_planet
 		}
@@ -2982,7 +2982,7 @@ country_event = {
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 			save_event_target_as = infil_planet
 		}
@@ -3014,7 +3014,7 @@ country_event = {
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 			save_event_target_as = infil_planet
 		}
@@ -3037,7 +3037,7 @@ country_event = {
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 			save_event_target_as = infil_planet2
 		}
@@ -3737,12 +3737,12 @@ country_event = {
 	option = {
 		name = DISCONCERTING
 		trigger = {
-			NOT = { is_same_empire = event_target:killer }
+			NOT = { is_same_value = event_target:killer }
 		}
 	}
 	option = {
 		name = crisis.2405.b
-		trigger = { is_same_empire = event_target:killer }
+		trigger = { is_same_value = event_target:killer }
 	}
 }
 

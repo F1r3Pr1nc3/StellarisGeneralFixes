@@ -67,7 +67,7 @@ event = {
 							}
 							prev = { # Is real neighbor
 								any_system_within_border = {
-									any_country_neighbor_to_system = { is_same_empire = prevprev }
+									any_country_neighbor_to_system = { is_same_value = prevprev }
 								}
 							}
 						}
@@ -523,7 +523,7 @@ ship_event = {
 									is_owned_by = root.owner
 									AND = {
 										exists = controller
-										controller = { is_same_empire = root.owner }
+										controller = { is_same_value = root.owner }
 									}
 								}
 							}
@@ -535,7 +535,7 @@ ship_event = {
 									is_owned_by = root.owner
 									AND = {
 										exists = controller
-										controller = { is_same_empire = root.owner }
+										controller = { is_same_value = root.owner }
 									}
 								}
 							}
@@ -620,7 +620,7 @@ ship_event = {
 								is_mobile = yes
 								is_disabled = no
 								owner = {
-									NOT = { is_same_empire = root.owner }
+									NOT = { is_same_value = root.owner }
 									is_hostile = root.owner
 									is_country_type = awakened_marauders
 								}
@@ -693,7 +693,7 @@ country_event = {
 				NAND = {
 					exists = event_target:marauder_rally_point
 					exists = event_target:marauder_rally_point.space_owner
-					event_target:marauder_rally_point.space_owner = { is_same_empire = root }
+					event_target:marauder_rally_point.space_owner = { is_same_value = root }
 					event_target:marauder_rally_point.solar_system = {
 						any_fleet_in_system = { is_owned_by = root is_mobile = yes }
 					}
@@ -817,7 +817,7 @@ country_event = {
 	trigger = {
 		exists = from
 		NOR = {
-			is_same_empire = from
+			is_same_value = from
 			AND = {
 				from = { has_country_flag = attacking_fleets_stopped }
 				has_country_flag = attacking_fleets_stopped
@@ -935,7 +935,7 @@ country_event = {
 		random_agreement = {
 			limit = {
 				is_owned_by = event_target:raider_khanate
-				target = { is_same_empire = root }
+				target = { is_same_value = root }
 			}
 			add_loyalty = 25
 		}
@@ -945,8 +945,8 @@ country_event = {
 				exists = event_target:marauders_garrison_1
 				event_target:marauders_garrison_1 = {
 					NOR = {
-						is_same_empire = root
-						is_same_empire = root.from
+						is_same_value = root
+						is_same_value = root.from
 					}
 				}
 				OR = {
@@ -975,7 +975,7 @@ country_event = {
 				random_agreement = {
 					limit = {
 						is_owned_by = event_target:raider_khanate
-						target = { is_same_empire = prev }
+						target = { is_same_value = prev }
 					}
 					add_loyalty = 90
 				}
@@ -1003,7 +1003,7 @@ country_event = {
 	trigger = {
 		has_global_flag = marauder_crisis_ongoing
 		exists = event_target:raider_khanate
-		is_same_empire = event_target:raider_khanate # is_country_type = awakened_marauders
+		is_same_value = event_target:raider_khanate # is_country_type = awakened_marauders
 	}
 
 	immediate = {
@@ -1011,7 +1011,7 @@ country_event = {
 			limit = { is_war_leader = yes }
 			every_war = {
 				limit = {
-					any_attacker = { is_same_empire = root }
+					any_attacker = { is_same_value = root }
 				}
 				every_attacker = {
 					limit = { is_hostile = root }
@@ -1035,7 +1035,7 @@ country_event = {
 			}
 			every_war = { # Less probably
 				limit = {
-					any_defender = { is_same_empire = root }
+					any_defender = { is_same_value = root }
 				}
 				every_defender = {
 					limit = { is_hostile = root }
@@ -1074,7 +1074,7 @@ country_event = {
 						}
 						prev = { # Is real neighbor
 							any_system_within_border = {
-								any_country_neighbor_to_system = { is_same_empire = prevprev }
+								any_country_neighbor_to_system = { is_same_value = prevprev }
 							}
 						}
 					}
@@ -1086,7 +1086,7 @@ country_event = {
 						is_subject_of_khan = yes # I know, this is very srange, but it happens for some unknown reason
 						NOR = {
 							has_country_flag = rebelling_satrapy
-							is_same_empire = prev # I know, this is very srange, but it happens for some unknown reason
+							is_same_value = prev # I know, this is very srange, but it happens for some unknown reason
 						}
 					}
 					log = "Fix ongoing hostility for [This.GetName]"
@@ -1128,8 +1128,8 @@ country_event = {
 							limit = {
 								has_communications = root
 								NOR = {
-									is_same_empire = root
-									is_same_empire = prevprev # Garrison
+									is_same_value = root
+									is_same_value = prevprev # Garrison
 									is_hostile = root
 									is_hostile_to = root
 									has_attitude_behavior = { target = root behavior = attack }
@@ -1157,8 +1157,8 @@ country_event = {
 									has_attitude_behavior = { target = root behavior = attack }
 								}
 								NOR = {
-									is_same_empire = root
-									is_same_empire = prevprev # Garrison
+									is_same_value = root
+									is_same_value = prevprev # Garrison
 									is_friendly_to = root
 									is_forced_friendly = root
 									is_loyal_to = root
@@ -1174,7 +1174,7 @@ country_event = {
 						every_subject = {
 							limit = { # is_subject_of_khan = yes
 								NOR = {
-									is_same_empire = prevprev
+									is_same_value = prevprev
 									has_country_flag = rebelling_satrapy
 									is_friendly_to = prevprev
 									is_forced_friendly = prevprev
@@ -1351,7 +1351,7 @@ country_event = {
 	trigger = {
 		has_global_flag = marauder_crisis_ongoing
 		exists = event_target:raider_khanate
-		is_same_empire = event_target:raider_khanate
+		is_same_value = event_target:raider_khanate
 	}
 
 	immediate = {
@@ -1435,7 +1435,7 @@ country_event = {
 				random_agreement = {
 					limit = {
 						is_owned_by = prev
-						target = { is_same_empire = prev }
+						target = { is_same_value = prev }
 					}
 					add_loyalty = 100
 				}
@@ -1564,7 +1564,7 @@ country_event = {
 			is_country_type = awakened_marauders
 			AND = {
 				exists = from
-				from = { is_same_empire = event_target:raider_khanate }
+				from = { is_same_value = event_target:raider_khanate }
 				is_subject_of_khan = yes
 				NOT = { has_country_flag = rebellion_cooldown }
 			}
@@ -1583,7 +1583,7 @@ country_event = {
 						exists = starbase
 						can_generate_trade_value = yes
 						owner = {
-							NOT = { is_same_empire = event_target:raider_khanate }
+							NOT = { is_same_value = event_target:raider_khanate }
 							OR = {
 								is_hostile_to = root
 								is_hostile = root
@@ -1860,7 +1860,7 @@ country_event = {
 		# 	}
 		# 	every_playable_country = {
 		# 		limit = {
-		# 			NOR = { is_ai = yes is_same_empire = root }
+		# 			NOR = { is_ai = yes is_same_value = root }
 		# 			has_communications = root
 		# 		}
 		# 		country_event = { id = khan.552 days = 2 }
@@ -1871,7 +1871,7 @@ country_event = {
 			limit = {
 				NOR = {
 					is_ai = yes
-					is_same_empire = root
+					is_same_value = root
 				}
 				has_communications = root
 			}
@@ -2045,7 +2045,7 @@ country_event = {
 # 		exists = event_target:raider_khanate
 # 		is_scope_valid = yes
 # 		is_scope_type = country
-# 		is_same_empire = event_target:raider_khanate
+# 		is_same_value = event_target:raider_khanate
 # 	}
 # 	immediate = {
 # 		# Give destroyer opportunity to be the Khan, compare marauder.510
@@ -2082,7 +2082,7 @@ country_event = {
 			limit = {
 				OR = {
 					NOT = { exists = from }
-					is_same_empire = from
+					is_same_value = from
 				}
 			}
 			break = yes

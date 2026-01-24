@@ -243,7 +243,7 @@ country_event = {
 				NOR = {
 					has_event_chain = l_cluster_chain
 					has_special_project = LCLUSTER_PROJECT
-					is_same_empire = root
+					is_same_value = root
 				}
 			}
 			country_event = { id = graygoo.13 }
@@ -487,7 +487,7 @@ country_event = {
 					is_ai = yes
 					AND = {
 						exists = event_target:goo_slayer
-						is_same_empire = event_target:goo_slayer
+						is_same_value = event_target:goo_slayer
 					}
 				}
 			}
@@ -2081,7 +2081,7 @@ country_event = {
 				limit = {
 					NOR = {
 						is_ai = yes
-						is_same_empire = event_target:goo_slayer
+						is_same_value = event_target:goo_slayer
 					}
 				}
 				country_event = { id = graygoo.182 }
@@ -2591,7 +2591,7 @@ country_event = {
 	trigger = { # Vfix merge
 		NOT = { has_country_flag = gray_diplomacy_engaged }
 		from = { is_country_type = gray }
-		is_same_empire = event_target:gray_owner
+		is_same_value = event_target:gray_owner
 		NOR = {
 			has_country_flag = gray_official_active
 			has_country_flag = gray_warship_active
@@ -2666,7 +2666,7 @@ country_event = {
 
 	trigger = {
 		from = { is_country_type = gray }
-		is_same_empire = event_target:gray_owner
+		is_same_value = event_target:gray_owner
 		has_country_flag = gray_official_active
 		NOR = {
 			has_country_flag = gray_reforming
@@ -2749,7 +2749,7 @@ country_event = {
 
 	trigger = {
 		from = { is_country_type = gray }
-		is_same_empire = event_target:gray_owner
+		is_same_value = event_target:gray_owner
 		has_country_flag = gray_warship_active
 		NOR = {
 			has_country_flag = gray_reforming
@@ -2841,7 +2841,7 @@ country_event = {
 			has_country_flag = gray_reforming
 			has_country_flag = gray_diplomacy_engaged
 		}
-		is_same_empire = event_target:gray_owner
+		is_same_value = event_target:gray_owner
 		any_owned_army = {
 			army_type = gray_army
 			OR = {
@@ -2959,7 +2959,7 @@ country_event = {
 
 	trigger = {
 		from = { is_country_type = gray }
-		is_same_empire = event_target:gray_owner
+		is_same_value = event_target:gray_owner
 		has_country_flag = gray_reforming
 	}
 

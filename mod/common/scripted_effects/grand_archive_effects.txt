@@ -2601,7 +2601,7 @@ get_frenzied_voidworms_target = {
 	if = {
 		limit = {
 			exists = home_planet
-			home_planet.owner = { is_same_empire = prev }
+			home_planet.owner = { is_same_value = prev }
 		}
 		home_planet = { save_event_target_as = $TARGET$ }
 	}

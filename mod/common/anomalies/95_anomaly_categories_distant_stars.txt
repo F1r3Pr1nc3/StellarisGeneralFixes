@@ -17,7 +17,7 @@ DISTAR_WRECK_CAT = {
 					has_communications = from.owner
 					NOR = {
 						is_at_war_with = from.owner
-						is_same_empire = from.owner
+						is_same_value = from.owner
 					}
 				}
 			}
@@ -744,7 +744,7 @@ DISTAR_PHASE_CAT = {
 					has_modifier = phaseshifted
 					NAND = {
 						exists = space_owner
-						space_owner = { is_same_empire = root.owner }
+						space_owner = { is_same_value = root.owner }
 					}
 				}
 			}
@@ -757,7 +757,7 @@ DISTAR_PHASE_CAT = {
 					has_planet_flag = phaseshifting_active
 					has_modifier = phaseshifted
 					exists = space_owner
-					space_owner = { is_same_empire = root.owner }
+					space_owner = { is_same_value = root.owner }
 				}
 			}
 			anomaly_event = distar.302

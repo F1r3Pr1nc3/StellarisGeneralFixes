@@ -746,7 +746,7 @@ planet_event = {
 
 	trigger = {
 		exists = event_target:living_snow_country
-		controller = { is_same_empire = event_target:living_snow_country }
+		controller = { is_same_value = event_target:living_snow_country }
 	}
 
 	immediate = {
@@ -2731,7 +2731,7 @@ situation_event = {
 			every_playable_country = {
 				limit = {
 					intel_level = { level > low system = root.owner.capital_scope.solar_system }
-					NOT = { is_same_empire = root.owner }
+					NOT = { is_same_value = root.owner }
 				}
 				country_event = { id = situation.2045 }
 			}
@@ -3169,7 +3169,7 @@ situation_event = {
 	}
 
 	abort_trigger = {
-		NOT = { event_target:infested_planet.owner = { is_same_empire = root.owner } }
+		NOT = { event_target:infested_planet.owner = { is_same_value = root.owner } }
 	}
 }
 
@@ -3500,7 +3500,7 @@ situation_event = {
 			every_playable_country = {
 				limit = {
 					intel_level = { level > low system = event_target:kaleidoscope_system }
-					NOT = { is_same_empire = root.owner }
+					NOT = { is_same_value = root.owner }
 				}
 				country_event = { id = situation.2045 }
 			}
@@ -3555,7 +3555,7 @@ situation_event = {
 			every_playable_country = {
 				limit = {
 					intel_level = { level > low system = event_target:kaleidoscope_system }
-					NOT = { is_same_empire = root.owner }
+					NOT = { is_same_value = root.owner }
 				}
 				country_event = { id = situation.2042 }
 			}
@@ -3609,7 +3609,7 @@ situation_event = {
 		every_playable_country = {
 			limit = {
 				intel_level = { level > low system = event_target:kaleidoscope_system }
-				NOT = { is_same_empire = root.owner }
+				NOT = { is_same_value = root.owner }
 			}
 			country_event = { id = situation.2044 }
 		}

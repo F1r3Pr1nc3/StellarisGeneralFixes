@@ -1,0 +1,25 @@
+
+ariphaos_patch_juggernaut_shipyards = {
+	potential = {
+		OR = {
+			has_technology = tech_juggernaut
+			has_country_flag = juggernaut_constructed
+		}
+		is_default_or_fallen = yes
+	}
+
+	option = {
+		name = "ariphaos_patch_juggernaut_enabled"
+		policy_flags = { ariphaos_patch_juggernaut_enabled }
+		AI_weight = {
+			modifier = { factor = 0 always = yes }
+		}
+	}
+	option = {
+		name = "ariphaos_patch_juggernaut_disabled"
+		policy_flags = { ariphaos_patch_juggernaut_disabled }
+		AI_weight = {
+			modifier = { factor = 100 always = yes }
+		}
+	}
+}

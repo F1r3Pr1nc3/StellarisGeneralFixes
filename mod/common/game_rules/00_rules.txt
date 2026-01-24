@@ -49,8 +49,8 @@ can_add_claim = {
 				exists = owner
 				owner = {
 					any_war = {
-						any_attacker = { is_same_empire = prevprev }
-						any_defender = { is_same_empire = root }
+						any_attacker = { is_same_value = prevprev }
+						any_defender = { is_same_value = root }
 					}
 				}
 			}
@@ -627,7 +627,7 @@ can_take_hostile_actions = {
 				any_agreement = { agreement_preset = preset_satrapy }
 				any_owned_planet = {
 					exists = controller
-					controller = { is_same_empire = prevprevprev }
+					controller = { is_same_value = prevprevprev }
 				}
 			}
 		}
@@ -651,7 +651,7 @@ can_take_hostile_actions = {
 	else_if = {
 		limit = {
 			exists = overlord
-			overlord = { is_same_empire = root }
+			overlord = { is_same_value = root }
 			root = {
 				any_agreement = { agreement_preset = preset_satrapy }
 			}
@@ -681,7 +681,7 @@ can_declare_war = {
 				has_policy_flag = no_wars
 				OR = {
 					is_subject = no
-					overlord = { is_same_empire = root }
+					overlord = { is_same_value = root }
 				}
 			}
 		}
@@ -1096,9 +1096,9 @@ can_orbital_bombard = {
 		AND = {
 			from.controller = {
 				is_country_type = faction
-				NOT = { is_same_empire = root.CONTROLLER }
+				NOT = { is_same_value = root.CONTROLLER }
 			}
-			from.owner = { is_same_empire = root.CONTROLLER }
+			from.owner = { is_same_value = root.CONTROLLER }
 		}
 	}
 }
@@ -1800,7 +1800,7 @@ can_build_branch_office_on_planet = {
 				owner = { is_primitive = yes }
 			}
 			has_observation_outpost = yes
-			observation_outpost_owner = { is_same_empire = root }
+			observation_outpost_owner = { is_same_value = root }
 		}
 	}
 	custom_tooltip = {
@@ -1819,10 +1819,10 @@ can_build_branch_office_on_planet = {
 						}
 						overlord = {
 							OR = {
-								is_same_empire = prevprev.owner
+								is_same_value = prevprev.owner
 								AND = { # Vfix
 									exists = prevprev.owner.overlord
-									is_same_empire = prevprev.owner.overlord
+									is_same_value = prevprev.owner.overlord
 								}
 							}
 						}
@@ -1837,10 +1837,10 @@ can_build_branch_office_on_planet = {
 						is_subject = yes
 						overlord = {
 							OR = {
-								is_same_empire = root
+								is_same_value = root
 								AND = { # Vfix
 									exists = root.overlord
-									is_same_empire = root.overlord
+									is_same_value = root.overlord
 								}
 							}
 							OR = {
@@ -1901,7 +1901,7 @@ can_build_branch_office_on_planet = {
 			owner = {
 				NAND = {
 					is_subject = yes
-					overlord = { is_same_empire = root.overlord }
+					overlord = { is_same_value = root.overlord }
 				}
 			}
 		}
@@ -2659,7 +2659,7 @@ can_dismiss_leader = {
 			fail_text = "requires_fleet_control"
 			exists = fleet
 			fleet = {
-				controller = { is_same_empire = prev.owner is_same_empire = prevprev.owner }
+				controller = { is_same_value = prev.owner is_same_value = prevprev.owner }
 			}
 		}
 	}

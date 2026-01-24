@@ -390,7 +390,7 @@ calc_intensity_from_neighbor_auras = {
 		parameters = {
 			limit = {
 				has_psionic_aura = yes
-				aura_owner = { is_same_empire = root.aura_owner }
+				aura_owner = { is_same_value = root.aura_owner }
 				is_aura_intensity_level = 2
 			}
 		}
@@ -402,7 +402,7 @@ calc_intensity_from_neighbor_auras = {
 		parameters = {
 			limit = {
 				has_psionic_aura = yes
-				aura_owner = { is_same_empire = root.aura_owner }
+				aura_owner = { is_same_value = root.aura_owner }
 				is_aura_intensity_level = 3
 			}
 		}
@@ -1200,7 +1200,7 @@ nb_systems_affected_by_eotc = {
 		parameters = {
 			limit = {
 				has_psionic_aura = end_aura
-				aura_owner = { is_same_empire = $AURA_OWNER$ }
+				aura_owner = { is_same_value = $AURA_OWNER$ }
 			}
 		}
 	}

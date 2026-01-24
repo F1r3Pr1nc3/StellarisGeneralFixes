@@ -143,7 +143,7 @@ diplomatic_map_mode = {
 		value = hsv { 0.3 1.0 0.6 1.0 }
 		custom_tooltip = "DIPLOMATIC_MAP_MODE_SAME_EMPIRE"
 		condition = {
-			is_same_empire = from
+			is_same_value = from
 		}
 	}
 
@@ -159,8 +159,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -193,8 +193,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -217,7 +217,7 @@ diplomatic_map_mode = {
 		condition = {
 			exists = overlord
 			overlord = {
-				is_same_empire = from
+				is_same_value = from
 			}
 			# check that we know this
 			OR = {
@@ -226,8 +226,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -250,7 +250,7 @@ diplomatic_map_mode = {
 		condition = {
 			exists = from.overlord
 			from.overlord = {
-				is_same_empire = prev
+				is_same_value = prev
 			}
 			OR = {
 				# Observer Mode
@@ -258,8 +258,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -287,8 +287,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -316,8 +316,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -345,8 +345,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -374,8 +374,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -403,8 +403,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -432,8 +432,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -462,8 +462,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -491,8 +491,8 @@ diplomatic_map_mode = {
 				fromfrom = {
 					OR = {
 						# it's us (Vfix minor opt)
-						is_same_empire = prev.from
-						is_same_empire = prev
+						is_same_value = prev.from
+						is_same_value = prev
 						# got the intel
 						has_intel_level = {
 							who = prev.from
@@ -519,7 +519,7 @@ intel_map_mode = {
 	display_espionage_operations = yes
 
 	color = { value = hsv { 0.0 0.0 0.8 0.7 } condition = { NOT = { exists = from } } custom_tooltip = "MAP_MODE_OBSERVER" }
-	color = { value = hsv { 0.580 1.0 0.8 1.0 } condition = { is_same_empire = from } custom_tooltip = "INTEL_MAP_MODE_TIP_SELF" }
+	color = { value = hsv { 0.580 1.0 0.8 1.0 } condition = { is_same_value = from } custom_tooltip = "INTEL_MAP_MODE_TIP_SELF" }
 
 	color = { value = hsv { 0.300 1.0 0.9 1.0 } condition = { intel = { who = from value > 85 } } hardcoded_tooltip = intel }
 	color = { value = hsv { 0.300 1.0 0.9 1.0 } condition = { intel = { who = from value > 80 } } hardcoded_tooltip = intel }
@@ -546,7 +546,7 @@ opinion_map_mode = {
 	shortcut = "CTRL+c"
 
 	color = { value = hsv { 0.0 0.0 0.8 0.7 } condition = { NOT = { exists = from } } custom_tooltip = "MAP_MODE_OBSERVER" }
-	color = { value = hsv { 0.580 1.0 0.8 1.0 } condition = { is_same_empire = from } }
+	color = { value = hsv { 0.580 1.0 0.8 1.0 } condition = { is_same_value = from } }
 
 	color = { value = hsv { 0.300 1.0 0.9 1.0 } condition = { opinion = { who = from value > 140 } } hardcoded_tooltip = opinion }
 	color = { value = hsv { 0.300 1.0 0.9 1.0 } condition = { opinion = { who = from value > 100 } } hardcoded_tooltip = opinion }
@@ -581,7 +581,7 @@ attitude_map_mode = {
 		value = hsv { 0.580 1.0 0.8 1.0 }
 		custom_tooltip = "DIPLOMATIC_MAP_MODE_SAME_EMPIRE"
 		condition = {
-			is_same_empire = from
+			is_same_value = from
 		}
 	}
 
@@ -669,7 +669,7 @@ neighbor_map_mode = {
 		condition = {
 			is_scope_valid = yes
 			exists = from
-			is_same_empire = from
+			is_same_value = from
 		}
 	}
 	color = {

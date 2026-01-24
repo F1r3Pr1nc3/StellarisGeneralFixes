@@ -100,7 +100,7 @@ revolt_situation_rebellion_joiners = {
 				has_modifier = instability_join_revolt
 				planet_stability < @\[ stabilitylevel2 + 10 ]
 				exists = controller
-				controller = { is_same_empire = root.owner }
+				controller = { is_same_value = root.owner }
 			}
 		}
 		potential = {
@@ -109,7 +109,7 @@ revolt_situation_rebellion_joiners = {
 					has_modifier = instability_join_revolt
 					planet_stability < @\[ stabilitylevel2 + 10 ]
 					exists = controller
-					controller = { is_same_empire = root.owner }
+					controller = { is_same_value = root.owner }
 				}
 			}
 		}
@@ -499,9 +499,7 @@ job_weights_modifier = {
 		}
 		trigger_scope = planet
 		mode = add
-		[[FACTOR]
-		mult = $FACTOR$
-		]
+		[[FACTOR] mult = $FACTOR$ ]
 	}
 	add = value:job_weights_manual_corrections|JOB|$JOB$|
 	add = 1
@@ -1936,16 +1934,12 @@ pre_ftl_pops_shifting_ethic = {
 		add = 15
 		has_pre_ftl_age = early_space_age
 	}
-	[[BONUS]
-	add = $bonus$
-	]
+	[[BONUS] add = $bonus$ ]
 }
 
 pre_ftl_gain_tech_progress = {
 	base = 192
-	[[BONUS]
-	add = $BONUS$
-	]
+	[[BONUS] add = $BONUS$ ]
 }
 
 primitive_slider_value = {
@@ -2398,7 +2392,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 10
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2410,7 +2404,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 20
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2422,7 +2416,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 30
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2434,7 +2428,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 40
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2446,7 +2440,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 50
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2458,7 +2452,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 60
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2470,7 +2464,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 70
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2482,7 +2476,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 80
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2494,7 +2488,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level >= 90
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}
@@ -2506,7 +2500,7 @@ pre_ftl_spy_network_mult = {
 			any_spynetwork = {
 				is_spynetwork_level = 100
 				target = {
-					is_same_empire = root.orbit.owner
+					is_same_value = root.orbit.owner
 				}
 			}
 		}

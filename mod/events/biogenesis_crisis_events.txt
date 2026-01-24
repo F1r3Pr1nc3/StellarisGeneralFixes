@@ -1034,7 +1034,7 @@ situation_event = {
 					set_country_flag = voidspawn_boss_met
 				}
 			}
-			owner = { save_event_target_as = event_target:behemoth_empire }
+			owner = { save_event_target_as = behemoth_empire } # Vfix
 		}
 	}
 }
@@ -1122,7 +1122,7 @@ country_event = {
 			}
 			random_country = {
 				limit = { has_menace_perk = menp_behemoth_ever_hungry }
-				save_event_target_as = event_target:behemoth_empire
+				save_event_target_as = behemoth_empire # Vfix
 			}
 		}
 	}
@@ -1443,14 +1443,14 @@ country_event = {
 						any_system_colony = {
 							has_owner = yes
 							is_colony = yes
-							owner = { NOT = { is_same_empire = root } }
+							owner = { NOT = { is_same_value = root } }
 						}
 					}
 					use_bypasses = no
 					random_system_colony = {
 						limit = {
 							has_owner = yes
-							owner = { NOT = { is_same_empire = root } }
+							owner = { NOT = { is_same_value = root } }
 						}
 						save_event_target_as = behemoth_rage_target
 					}
@@ -1526,14 +1526,14 @@ fleet_event = {
 					any_system_colony = {
 						has_owner = yes
 						is_colony = yes
-						owner = { NOT = { is_same_empire = root } }
+						owner = { NOT = { is_same_value = root } }
 					}
 				}
 				use_bypasses = no
 				random_system_colony = {
 					limit = {
 						has_owner = yes
-						owner = { NOT = { is_same_empire = root } }
+						owner = { NOT = { is_same_value = root } }
 					}
 					save_event_target_as = behemoth_rage_target
 				}
@@ -2382,7 +2382,7 @@ fleet_event = {
 		from = {
 			exists = owner
 			owner = {
-				NOT = { is_same_empire = event_target:behemoth_parent_country@root }
+				NOT = { is_same_value = event_target:behemoth_parent_country@root }
 			}
 		}
 	}

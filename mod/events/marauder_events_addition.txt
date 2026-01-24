@@ -440,7 +440,7 @@ fleet_event = {
 					owner = {
 						NOR = {
 							is_fallen_empire = yes
-							is_same_empire = root.owner
+							is_same_value = root.owner
 						}
 						is_hostile = root.owner
 					}
@@ -721,7 +721,7 @@ planet_event = {
 					OR = {
 						NOT = { exists = event_target:marauder_employer }
 						from = {
-							NOT = { is_same_empire = event_target:marauder_employer }
+							NOT = { is_same_value = event_target:marauder_employer }
 							has_country_flag = under_marauder_attack
 						}
 					}
@@ -745,7 +745,7 @@ planet_event = {
 						NOT = { exists = event_target:marauder_employer }
 						fromfrom = {
 							has_country_flag = under_marauder_attack
-							NOT = { is_same_empire = event_target:marauder_employer }
+							NOT = { is_same_value = event_target:marauder_employer }
 						}
 					}
 				}

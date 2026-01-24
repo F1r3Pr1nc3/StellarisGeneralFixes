@@ -574,7 +574,7 @@ country_event = {
 			limit = {
 				NOR = {
 					is_ai = yes
-					is_same_empire = root
+					is_same_value = root
 				}
 			}
 			country_event = { id = marauder.8 days = 10 }
@@ -1072,12 +1072,12 @@ country_event = {
 		if = {
 			limit = { exists = event_target:marauder_infighting }
 			if = {
-				limit = { is_same_empire = event_target:marauder_infighting }
+				limit = { is_same_value = event_target:marauder_infighting }
 				destroy_country = yes
 			}
 			if = {
 				limit = {
-					from = { is_same_empire = event_target:marauder_infighting }
+					from = { is_same_value = event_target:marauder_infighting }
 				}
 				set_country_type = dormant_marauders
 			}
@@ -2060,15 +2060,15 @@ country_event = {
 			root = {
 				random_rival_country = {
 					limit = {
-						NOT = { is_same_empire = event_target:raid_target_1 }
+						NOT = { is_same_value = event_target:raid_target_1 }
 					}
 					save_event_target_as = raid_target_2
 					root = {
 						random_rival_country = {
 							limit = {
 								NOR = {
-									is_same_empire = event_target:raid_target_1
-									is_same_empire = event_target:raid_target_2
+									is_same_value = event_target:raid_target_1
+									is_same_value = event_target:raid_target_2
 								}
 							}
 							save_event_target_as = raid_target_3
@@ -2076,9 +2076,9 @@ country_event = {
 								random_rival_country = {
 									limit = {
 										NOR = {
-											is_same_empire = event_target:raid_target_1
-											is_same_empire = event_target:raid_target_2
-											is_same_empire = event_target:raid_target_3
+											is_same_value = event_target:raid_target_1
+											is_same_value = event_target:raid_target_2
+											is_same_value = event_target:raid_target_3
 										}
 									}
 									save_event_target_as = raid_target_4
@@ -2100,22 +2100,22 @@ country_event = {
 					has_been_declared_crisis = yes
 				}
 				NOR = {
-					is_same_empire = root
+					is_same_value = root
 					AND = {
 						exists = event_target:raid_target_1
-						is_same_empire = event_target:raid_target_1
+						is_same_value = event_target:raid_target_1
 					}
 					AND = {
 						exists = event_target:raid_target_2
-						is_same_empire = event_target:raid_target_2
+						is_same_value = event_target:raid_target_2
 					}
 					AND = {
 						exists = event_target:raid_target_3
-						is_same_empire = event_target:raid_target_3
+						is_same_value = event_target:raid_target_3
 					}
 					AND = {
 						exists = event_target:raid_target_4
-						is_same_empire = event_target:raid_target_4
+						is_same_value = event_target:raid_target_4
 					}
 				}
 			}
@@ -2157,26 +2157,26 @@ country_event = {
 								is_galactic_emperor = yes
 							}
 							NOR = {
-								is_same_empire = root
+								is_same_value = root
 								AND = {
 									exists = event_target:raid_target_1
-									is_same_empire = event_target:raid_target_1
+									is_same_value = event_target:raid_target_1
 								}
 								AND = {
 									exists = event_target:raid_target_2
-									is_same_empire = event_target:raid_target_2
+									is_same_value = event_target:raid_target_2
 								}
 								AND = {
 									exists = event_target:raid_target_3
-									is_same_empire = event_target:raid_target_3
+									is_same_value = event_target:raid_target_3
 								}
 								AND = {
 									exists = event_target:raid_target_4
-									is_same_empire = event_target:raid_target_4
+									is_same_value = event_target:raid_target_4
 								}
 								AND = {
 									exists = event_target:raid_target_5
-									is_same_empire = event_target:raid_target_5
+									is_same_value = event_target:raid_target_5
 								}
 							}
 						}
@@ -2190,27 +2190,27 @@ country_event = {
 							galactic_community_rank > 3
 							AND = {
 								exists = event_target:raid_target_1
-								is_same_empire = event_target:raid_target_1
+								is_same_value = event_target:raid_target_1
 							}
 							AND = {
 								exists = event_target:raid_target_2
-								is_same_empire = event_target:raid_target_2
+								is_same_value = event_target:raid_target_2
 							}
 							AND = {
 								exists = event_target:raid_target_3
-								is_same_empire = event_target:raid_target_3
+								is_same_value = event_target:raid_target_3
 							}
 							AND = {
 								exists = event_target:raid_target_4
-								is_same_empire = event_target:raid_target_4
+								is_same_value = event_target:raid_target_4
 							}
 							AND = {
 								exists = event_target:raid_target_5
-								is_same_empire = event_target:raid_target_5
+								is_same_value = event_target:raid_target_5
 							}
 							AND = {
 								exists = event_target:raid_target_6
-								is_same_empire = event_target:raid_target_6
+								is_same_value = event_target:raid_target_6
 							}
 						}
 					}
@@ -2221,31 +2221,31 @@ country_event = {
 								galactic_community_rank > 3
 								AND = {
 									exists = event_target:raid_target_1
-									is_same_empire = event_target:raid_target_1
+									is_same_value = event_target:raid_target_1
 								}
 								AND = {
 									exists = event_target:raid_target_2
-									is_same_empire = event_target:raid_target_2
+									is_same_value = event_target:raid_target_2
 								}
 								AND = {
 									exists = event_target:raid_target_3
-									is_same_empire = event_target:raid_target_3
+									is_same_value = event_target:raid_target_3
 								}
 								AND = {
 									exists = event_target:raid_target_4
-									is_same_empire = event_target:raid_target_4
+									is_same_value = event_target:raid_target_4
 								}
 								AND = {
 									exists = event_target:raid_target_5
-									is_same_empire = event_target:raid_target_5
+									is_same_value = event_target:raid_target_5
 								}
 								AND = {
 									exists = event_target:raid_target_6
-									is_same_empire = event_target:raid_target_6
+									is_same_value = event_target:raid_target_6
 								}
 								AND = {
 									exists = event_target:raid_target_7
-									is_same_empire = event_target:raid_target_7
+									is_same_value = event_target:raid_target_7
 								}
 							}
 						}
@@ -2262,15 +2262,15 @@ country_event = {
 		# 			has_opposing_ethics = { COUNTRY1 = root COUNTRY2 = this }
 		# 		}
 		# 		NOR = {
-		# 			is_same_empire = root
-		# 			AND = { exists = event_target:raid_target_1 is_same_empire = event_target:raid_target_1 }
-		# 			AND = { exists = event_target:raid_target_2 is_same_empire = event_target:raid_target_2 }
-		# 			AND = { exists = event_target:raid_target_3 is_same_empire = event_target:raid_target_3 }
-		# 			AND = { exists = event_target:raid_target_4 is_same_empire = event_target:raid_target_4 }
-		# 			AND = { exists = event_target:raid_target_5 is_same_empire = event_target:raid_target_5 }
-		# 			AND = { exists = event_target:raid_target_6 is_same_empire = event_target:raid_target_6 }
-		# 			AND = { exists = event_target:raid_target_7 is_same_empire = event_target:raid_target_7 }
-		# 			AND = { exists = event_target:raid_target_8 is_same_empire = event_target:raid_target_8 }
+		# 			is_same_value = root
+		# 			AND = { exists = event_target:raid_target_1 is_same_value = event_target:raid_target_1 }
+		# 			AND = { exists = event_target:raid_target_2 is_same_value = event_target:raid_target_2 }
+		# 			AND = { exists = event_target:raid_target_3 is_same_value = event_target:raid_target_3 }
+		# 			AND = { exists = event_target:raid_target_4 is_same_value = event_target:raid_target_4 }
+		# 			AND = { exists = event_target:raid_target_5 is_same_value = event_target:raid_target_5 }
+		# 			AND = { exists = event_target:raid_target_6 is_same_value = event_target:raid_target_6 }
+		# 			AND = { exists = event_target:raid_target_7 is_same_value = event_target:raid_target_7 }
+		# 			AND = { exists = event_target:raid_target_8 is_same_value = event_target:raid_target_8 }
 		# 		}
 		# 	}
 		# 	save_event_target_as = raid_target_9
@@ -5279,7 +5279,7 @@ planet_event = {
 					OR = {
 						NOT = { exists = event_target:marauder_employer }
 						owner = {
-							NOT = { is_same_empire = event_target:marauder_employer }
+							NOT = { is_same_value = event_target:marauder_employer }
 							has_country_flag = under_marauder_attack
 						}
 					}
@@ -5302,7 +5302,7 @@ planet_event = {
 						NOT = { exists = event_target:marauder_employer }
 						controller = {
 							has_country_flag = under_marauder_attack
-							NOT = { is_same_empire = event_target:marauder_employer }
+							NOT = { is_same_value = event_target:marauder_employer }
 						}
 					}
 				}
@@ -7134,7 +7134,7 @@ country_event = {
 			every_country = {
 				limit = {
 					is_marauder = yes
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 				establish_communications_no_message = root
 				set_faction_hostility = { target = root set_friendly = yes }
@@ -7170,7 +7170,7 @@ country_event = {
 					exists = owner
 					owner = {
 						is_pirate_country = yes
-						NOT = { is_same_empire = root }
+						NOT = { is_same_value = root }
 					}
 				}
 				set_owner = root
@@ -7611,7 +7611,7 @@ country_event = {
 			if = {
 				limit = {
 					exists = event_target:marauder_country_1
-					NOT = { is_same_empire = event_target:marauder_country_1 }
+					NOT = { is_same_value = event_target:marauder_country_1 }
 					is_hostile = event_target:marauder_country_1
 				}
 				event_target:marauder_country_1 = {
@@ -7640,7 +7640,7 @@ country_event = {
 			if = {
 				limit = {
 					exists = event_target:marauder_country_2
-					NOT = { is_same_empire = event_target:marauder_country_2 }
+					NOT = { is_same_value = event_target:marauder_country_2 }
 					is_hostile = event_target:marauder_country_2
 				}
 				event_target:marauder_country_2 = {
@@ -7669,7 +7669,7 @@ country_event = {
 			if = {
 				limit = {
 					exists = event_target:marauder_country_3
-					NOT = { is_same_empire = event_target:marauder_country_3 }
+					NOT = { is_same_value = event_target:marauder_country_3 }
 					is_hostile = event_target:marauder_country_3
 				}
 				event_target:marauder_country_3 = {
@@ -8576,7 +8576,7 @@ country_event = {
 							fleet_power < 16000
 						}
 						exists = controller
-						controller = { is_same_empire = root }
+						controller = { is_same_value = root }
 					}
 					position = 0
 					order_by = trigger:fleet_power
@@ -8822,7 +8822,7 @@ event = {
 								fleet_power < 20000
 							}
 							exists = controller
-							controller = { is_same_empire = prevprev }
+							controller = { is_same_value = prevprev }
 						}
 					}
 					# Assign the strongest fleet
@@ -8838,7 +8838,7 @@ event = {
 								fleet_power < 20000
 							}
 							exists = controller
-							controller = { is_same_empire = prevprev }
+							controller = { is_same_value = prevprev }
 						}
 						position = 0
 						order_by = trigger:fleet_power
@@ -9172,7 +9172,7 @@ country_event = {
 		if = { # Planet belonged to liberator
 			limit = {
 				exists = event_target:planet_former_owner
-				event_target:planet_former_owner = { is_same_empire = root }
+				event_target:planet_former_owner = { is_same_value = root }
 			}
 			country_event = { id = marauder.516 }
 		}
@@ -9186,7 +9186,7 @@ country_event = {
 					exists = event_target:liberated_planet.starbase
 					exists = event_target:liberated_planet.starbase.owner
 					event_target:liberated_planet.starbase.owner = {
-						NOT = { is_same_empire = root }
+						NOT = { is_same_value = root }
 					}
 				}
 				event_target:liberated_planet.starbase.owner = { save_event_target_as = planet_former_owner }
@@ -9321,7 +9321,7 @@ country_event = {
 		has_global_flag = marauder_crisis_ongoing # marauder_crisis_started
 		is_country_type = awakened_marauders
 		exists = event_target:raider_khanate
-		is_same_empire = event_target:raider_khanate
+		is_same_value = event_target:raider_khanate
 	}
 
 	immediate = {
@@ -9759,7 +9759,7 @@ country_event = {
 		trigger = {
 			NAND = {
 				exists = event_target:khan_destroyer
-				is_same_empire = event_target:khan_destroyer
+				is_same_value = event_target:khan_destroyer
 			}
 		}
 	}
@@ -9767,7 +9767,7 @@ country_event = {
 		text = marauder.524.b.desc
 		trigger = {
 			exists = event_target:khan_destroyer
-			is_same_empire = event_target:khan_destroyer
+			is_same_value = event_target:khan_destroyer
 		}
 	}
 
@@ -9780,7 +9780,7 @@ country_event = {
 		trigger = {
 			NAND = {
 				exists = event_target:khan_destroyer
-				is_same_empire = event_target:khan_destroyer
+				is_same_value = event_target:khan_destroyer
 			}
 		}
 	}
@@ -9788,7 +9788,7 @@ country_event = {
 		name = marauder.524.b
 		trigger = {
 			exists = event_target:khan_destroyer
-			is_same_empire = event_target:khan_destroyer
+			is_same_value = event_target:khan_destroyer
 			NOT = { has_relic = r_khans_throne }
 		}
 		add_relic = r_khans_throne
@@ -11174,7 +11174,7 @@ fleet_event = {
 					is_subject_of_khan = yes
 					NOT = { has_country_flag = rebelling_satrapy }
 					exists = overlord # is_overlord_to not working
-					root.owner = { is_same_empire = prev.overlord }
+					root.owner = { is_same_value = prev.overlord }
 				}
 			}
 			space_owner = { save_event_target_as = satrapy_empire }
@@ -11282,7 +11282,7 @@ fleet_event = {
 				random_agreement = {
 					limit = {
 						is_owned_by = prev
-						target = { is_same_empire = event_target:satrapy_empire }
+						target = { is_same_value = event_target:satrapy_empire }
 					}
 					add_loyalty = 3
 				}
@@ -11316,7 +11316,7 @@ country_event = {
 
 	trigger = {
 		exists = event_target:raider_khanate
-		is_same_empire = event_target:raider_khanate
+		is_same_value = event_target:raider_khanate
 		NOT = { has_country_flag = marauder600_happened }
 	}
 
@@ -11332,7 +11332,7 @@ country_event = {
 			limit = { is_at_war = yes }
 			every_war = {
 				limit = {
-					any_war_participant = { is_same_empire = root }
+					any_war_participant = { is_same_value = root }
 					is_scope_type = war # If not the error.log tells: Invalid Scope
 				}
 				# prev = { set_truce = { target = prev type = war } }
@@ -11347,7 +11347,7 @@ country_event = {
 						OR = {
 							AND = {
 								exists = space_owner
-								space_owner = { is_same_empire = root }
+								space_owner = { is_same_value = root }
 							}
 							solar_system = {
 								OR = {
@@ -11844,7 +11844,7 @@ country_event = {
 									closest_system = {
 										limit = {
 											has_owner = yes
-											space_owner = { is_same_empire = root }
+											space_owner = { is_same_value = root }
 											NOT = { exists = sector }
 											exists = starbase
 											starbase.fleet = { is_owned_by = root }
@@ -11859,7 +11859,7 @@ country_event = {
 									closest_system = {
 										limit = {
 											has_owner = yes
-											space_owner = { is_same_empire = root }
+											space_owner = { is_same_value = root }
 											NOT = { exists = sector }
 											exists = starbase
 											starbase.fleet = { is_owned_by = root }
@@ -11871,7 +11871,7 @@ country_event = {
 								closest_system = {
 									limit = {
 										has_owner = yes
-										space_owner = { is_same_empire = root }
+										space_owner = { is_same_value = root }
 										NOT = { exists = sector }
 										exists = starbase
 										starbase.fleet = { is_owned_by = root }
@@ -11905,7 +11905,7 @@ country_event = {
 				limit = {
 					is_ai = no
 					exists = event_target:third_diadochi
-					is_same_empire = event_target:raider_khanate
+					is_same_value = event_target:raider_khanate
 				}
 				event_target:third_diadochi = { set_player = event_target:raider_khanate }
 			}
@@ -12065,7 +12065,7 @@ country_event = {
 			if = {
 				limit = {
 					exists = event_target:marauder_country_1
-					NOT = { is_same_empire = event_target:marauder_country_1 }
+					NOT = { is_same_value = event_target:marauder_country_1 }
 				}
 				event_target:marauder_country_1 = { save_event_target_as = restored_marauders_2 }
 				if = {
@@ -12076,7 +12076,7 @@ country_event = {
 			else_if = {
 				limit = {
 					exists = event_target:marauder_country_2
-					NOT = { is_same_empire = event_target:marauder_country_2 }
+					NOT = { is_same_value = event_target:marauder_country_2 }
 				}
 				event_target:marauder_country_2 = { save_event_target_as = restored_marauders_2 }
 				if = {
@@ -12087,7 +12087,7 @@ country_event = {
 			else_if = {
 				limit = {
 					exists = event_target:marauder_country_3
-					NOT = { is_same_empire = event_target:marauder_country_3 }
+					NOT = { is_same_value = event_target:marauder_country_3 }
 				}
 				event_target:marauder_country_3 = { save_event_target_as = restored_marauders_2 }
 				if = {
@@ -12173,7 +12173,7 @@ country_event = {
 				limit = {
 					is_ai = no
 					exists = event_target:new_khanate
-					is_same_empire = event_target:raider_khanate
+					is_same_value = event_target:raider_khanate
 				}
 				event_target:new_khanate = { set_player = event_target:raider_khanate }
 			}
@@ -12310,7 +12310,7 @@ country_event = {
 				limit = {
 					is_ai = no
 					exists = event_target:new_khanate
-					is_same_empire = event_target:raider_khanate
+					is_same_value = event_target:raider_khanate
 				}
 				event_target:new_khanate = { set_player = event_target:raider_khanate }
 			}
@@ -12447,7 +12447,7 @@ country_event = {
 			if = {
 				limit = {
 					exists = event_target:marauder_country_1
-					NOT = { is_same_empire = event_target:marauder_country_1 }
+					NOT = { is_same_value = event_target:marauder_country_1 }
 				}
 				event_target:marauder_country_1 = { save_event_target_as = restored_marauders_2 }
 				if = {
@@ -12458,7 +12458,7 @@ country_event = {
 			else_if = {
 				limit = {
 					exists = event_target:marauder_country_2
-					NOT = { is_same_empire = event_target:marauder_country_2 }
+					NOT = { is_same_value = event_target:marauder_country_2 }
 				}
 				event_target:marauder_country_2 = { save_event_target_as = restored_marauders_2 }
 				if = {
@@ -12469,7 +12469,7 @@ country_event = {
 			else_if = {
 				limit = {
 					exists = event_target:marauder_country_3
-					NOT = { is_same_empire = event_target:marauder_country_3 }
+					NOT = { is_same_value = event_target:marauder_country_3 }
 				}
 				event_target:marauder_country_3 = { save_event_target_as = restored_marauders_2 }
 				if = {
@@ -12619,8 +12619,8 @@ country_event = {
 							exists = event_target:marauder_country_1
 							event_target:marauder_country_1 = {
 								NOR = {
-									is_same_empire = root
-									is_same_empire = event_target:restored_marauders_2
+									is_same_value = root
+									is_same_value = event_target:restored_marauders_2
 								}
 							}
 						}
@@ -12635,8 +12635,8 @@ country_event = {
 							exists = event_target:marauder_country_2
 							event_target:marauder_country_2 = {
 								NOR = {
-									is_same_empire = root
-									is_same_empire = event_target:restored_marauders_2
+									is_same_value = root
+									is_same_value = event_target:restored_marauders_2
 								}
 							}
 						}
@@ -12651,8 +12651,8 @@ country_event = {
 							exists = event_target:marauder_country_3
 							event_target:marauder_country_3 = {
 								NOR = {
-									is_same_empire = root
-									is_same_empire = event_target:restored_marauders_2
+									is_same_value = root
+									is_same_value = event_target:restored_marauders_2
 								}
 							}
 						}
@@ -13467,7 +13467,7 @@ country_event = {
 					is_country_type = awakened_marauders
 					AND = {
 						exists = event_target:raider_khanate
-						is_same_empire = event_target:raider_khanate
+						is_same_value = event_target:raider_khanate
 					}
 					has_country_flag = marauder600_happened
 				}
@@ -13648,7 +13648,7 @@ country_event = {
 			hidden_trigger = {
 				OR = {
 					has_country_flag = no_khan_do
-					is_same_empire = event_target:khan_destroyer
+					is_same_value = event_target:khan_destroyer
 				}
 			}
 		}
@@ -13699,7 +13699,7 @@ country_event = {
 		}
 		from = {
 			exists = event_target:raider_khanate
-			is_same_empire = event_target:raider_khanate
+			is_same_value = event_target:raider_khanate
 		}
 	}
 

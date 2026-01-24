@@ -20,7 +20,7 @@ country_event = {
 		is_country_type = default
 		any_neighbor_country = {
 			is_country_type = default
-			NOT = { is_same_empire = root }
+			NOT = { is_same_value = root }
 			has_communications = root
 			NOR = {
 				is_homicidal = yes
@@ -31,7 +31,7 @@ country_event = {
 					is_country_type = default
 					is_country_type = fallen_empire
 				}
-				NOT = { is_same_empire = root }
+				NOT = { is_same_value = root }
 				has_communications = prev
 				NOT = { has_communications = root }
 			}
@@ -84,7 +84,7 @@ country_event = {
 		random_neighbor_country = {
 			limit = {
 				is_country_type = default
-				NOT = { is_same_empire = root }
+				NOT = { is_same_value = root }
 				has_communications = root
 				NOR = {
 					is_homicidal = yes
@@ -95,7 +95,7 @@ country_event = {
 						is_country_type = default
 						is_country_type = fallen_empire
 					}
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 					has_communications = prev
 					NOT = { has_communications = root }
 				}
@@ -107,7 +107,7 @@ country_event = {
 						is_country_type = default
 						is_country_type = fallen_empire
 					}
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 					has_communications = prev
 					NOT = { has_communications = root }
 				}
@@ -164,7 +164,7 @@ country_event = {
 				is_homicidal = yes
 				has_ethic = ethic_fanatic_xenophobe
 				has_valid_civic = civic_inwards_perfection
-				is_same_empire = root
+				is_same_value = root
 			}
 			has_communications = root
 			OR = { # stops Scions spreading knowledge across the galaxy quite so much (FE can be anywhere, if you establish comms with the FE then you get them with the Scion, then you soon find out about the whole opposite side of the galaxy)
@@ -176,7 +176,7 @@ country_event = {
 					is_country_type = default
 					is_country_type = fallen_empire
 				}
-				NOT = { is_same_empire = root }
+				NOT = { is_same_value = root }
 				has_communications = prev
 				NOT = { has_communications = root }
 			}
@@ -233,7 +233,7 @@ country_event = {
 					is_homicidal = yes
 					has_ethic = ethic_fanatic_xenophobe
 					has_valid_civic = civic_inwards_perfection
-					is_same_empire = root
+					is_same_value = root
 				}
 				has_communications = root
 				OR = { # stops Scions spreading knowledge across the galaxy quite so much (FE can be anywhere, if you establish comms with the FE then you get them with the Scion, then you soon find out about the whole opposite side of the galaxy)
@@ -245,7 +245,7 @@ country_event = {
 						is_country_type = default
 						is_country_type = fallen_empire
 					}
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 					has_communications = prev
 					NOT = { has_communications = root }
 				}
@@ -257,7 +257,7 @@ country_event = {
 						is_country_type = default
 						is_country_type = fallen_empire
 					}
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 					has_communications = prev
 					NOT = { has_communications = root }
 				}
@@ -317,7 +317,7 @@ country_event = {
 					exists = controller
 					controller = {
 						NOR = {
-							is_same_empire = root
+							is_same_value = root
 							is_same_value = root.fromfrom
 							is_primitive = yes
 						}

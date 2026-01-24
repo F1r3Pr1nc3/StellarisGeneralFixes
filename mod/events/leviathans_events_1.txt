@@ -1668,7 +1668,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_empire = event_target:trader_destroyer }
+				NOT = { is_same_value = event_target:trader_destroyer }
 			}
 			if = {
 				limit = {
@@ -6054,11 +6054,11 @@ country_event = {
 		else_if = { # Random default empire
 			limit = {
 				any_playable_country = {
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 			}
 			random_playable_country = {
-				limit = { NOT = { is_same_empire = root } }
+				limit = { NOT = { is_same_value = root } }
 				save_event_target_as = unfriends
 			}
 		}
@@ -6066,8 +6066,8 @@ country_event = {
 			random_country = {
 				limit = {
 					NOR = {
-						is_same_empire = root
-						is_same_empire = event_target:curator_enclave_country
+						is_same_value = root
+						is_same_value = event_target:curator_enclave_country
 					}
 					OR = {
 						is_primitive = yes
@@ -6289,7 +6289,7 @@ country_event = {
 		every_playable_country = {
 			limit = {
 				has_communications = root
-				NOT = { is_same_empire = event_target:curator_destroyer }
+				NOT = { is_same_value = event_target:curator_destroyer }
 			}
 			country_event = { id = leviathans.594 }
 		}
@@ -7304,7 +7304,7 @@ country_event = {
 			NOT = { has_planet_flag = deboned }
 			has_mining_station = yes
 			exists = controller
-			controller = { is_same_empire = root }
+			controller = { is_same_value = root }
 		}
 	}
 
@@ -7351,7 +7351,7 @@ country_event = {
 				is_same_value = event_target:guardian_dragon_planet
 				has_mining_station = yes
 				exists = controller
-				controller = { is_same_empire = root }
+				controller = { is_same_value = root }
 			}
 		}
 	}
@@ -7379,7 +7379,7 @@ country_event = {
 			NOT = { has_planet_flag = deegged }
 			has_mining_station = yes
 			exists = controller
-			controller = { is_same_empire = root }
+			controller = { is_same_value = root }
 		}
 	}
 

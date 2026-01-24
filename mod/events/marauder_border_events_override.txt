@@ -1,7 +1,6 @@
 
 namespace = marauder
 
-namespace = marauder_borders
 # Placeholder since v.3.9.1 (parser crashes if missing, but again ok with v.3.10)
 # Rebuild marauder starbase
 system_event = {
@@ -59,7 +58,7 @@ country_event = {
 			limit = {
 				OR = {
 					NOT = { exists = event_target:new_khanate }
-					is_same_empire = event_target:new_khanate
+					is_same_value = event_target:new_khanate
 				}
 				exists = last_created_country
 				last_created_country = { has_origin = origin_khan_successor }
@@ -70,7 +69,7 @@ country_event = {
 			limit = {
 				OR = {
 					NOT = { exists = event_target:new_khanate }
-					is_same_empire = event_target:new_khanate
+					is_same_value = event_target:new_khanate
 				}
 				exists = from
 				from = {
@@ -95,7 +94,7 @@ country_event = {
 							}
 						}
 					}
-					is_same_empire = event_target:new_khanate
+					is_same_value = event_target:new_khanate
 				}
 			}
 			break = yes
@@ -766,7 +765,7 @@ country_event = {
 			limit = {
 				OR = {
 					NOT = { exists = event_target:new_khanate }
-					is_same_empire = event_target:new_khanate
+					is_same_value = event_target:new_khanate
 				}
 				exists = from
 				from = {
@@ -861,6 +860,7 @@ country_event = {
 	}
 }
 
+namespace = marauder_borders
 ###### (By MrFunEGUY & FirePrince)
 ### Country Creation Before Potential Diadochi Split
 # Root = Awakened Marauders
@@ -962,7 +962,7 @@ country_event = {
 				limit = {
 					is_ai = no
 					exists = event_target:new_khanate
-					is_same_empire = event_target:raider_khanate
+					is_same_value = event_target:raider_khanate
 				}
 				event_target:new_khanate = { set_player = event_target:raider_khanate }
 			}
@@ -1091,7 +1091,7 @@ country_event = {
 				has_origin = origin_khan_successor
 				has_government = gov_diadochi
 				has_country_flag = diadochi
-				NOT = { is_same_empire = prev }
+				NOT = { is_same_value = prev }
 			}
 			if = {
 				limit = { is_pacifist = yes }
@@ -1104,7 +1104,7 @@ country_event = {
 			# Establish comms
 			every_country = {
 				limit = {
-					NOT = { is_same_empire = prev }
+					NOT = { is_same_value = prev }
 					OR = {
 						has_communications = root
 						AND = {
@@ -1129,7 +1129,7 @@ country_event = {
 					has_origin = origin_khan_successor
 					has_government = gov_diadochi
 					has_country_flag = diadochi
-					NOT = { is_same_empire = prev }
+					NOT = { is_same_value = prev }
 				}
 				if = {
 					limit = {
@@ -1156,10 +1156,10 @@ country_event = {
 							exists = starbase
 							starbase = { is_owned_by = prevprev }
 							# any_neighbor_system = { is_owned_by = prevprevprev }
-							# any_country_neighbor_to_system = { is_same_empire = prevprevprev }
+							# any_country_neighbor_to_system = { is_same_value = prevprevprev }
 							NOR = {
 								is_capital_system = yes
-								space_owner = { is_same_empire = prevprevprev }
+								space_owner = { is_same_value = prevprevprev }
 								has_star_flag = switched_system
 								any_neighbor_system = { has_owner = yes is_owned_by = prevprev }
 							}
@@ -1174,10 +1174,10 @@ country_event = {
 									starbase = { is_owned_by = prevprev }
 									NOR = {
 										is_capital_system = yes
-										space_owner = { is_same_empire = prevprevprev }
+										space_owner = { is_same_value = prevprevprev }
 										has_star_flag = switched_system
 									}
-									any_country_neighbor_to_system = { is_same_empire = event_target:planet_owner_2 } # prevprevprevprev
+									any_country_neighbor_to_system = { is_same_value = event_target:planet_owner_2 } # prevprevprevprev
 									OR = {
 										NOT = { any_neighbor_system = { has_owner = yes is_owned_by = prevprev } }
 										AND = {
@@ -1205,10 +1205,10 @@ country_event = {
 							exists = starbase
 							starbase = { is_owned_by = prevprev }
 							# any_neighbor_system = { is_owned_by = prevprevprev }
-							# any_country_neighbor_to_system = { is_same_empire = prevprevprev }
+							# any_country_neighbor_to_system = { is_same_value = prevprevprev }
 							NOR = {
 								is_capital_system = yes
-								space_owner = { is_same_empire = prevprevprev }
+								space_owner = { is_same_value = prevprevprev }
 								has_star_flag = switched_system
 								any_neighbor_system = { has_owner = yes is_owned_by = prevprev }
 							}
@@ -1223,10 +1223,10 @@ country_event = {
 									starbase = { is_owned_by = prevprev }
 									NOR = {
 										is_capital_system = yes
-										space_owner = { is_same_empire = prevprevprev }
+										space_owner = { is_same_value = prevprevprev }
 										has_star_flag = switched_system
 									}
-									any_country_neighbor_to_system = { is_same_empire = event_target:planet_owner_2 } # prevprevprevprev
+									any_country_neighbor_to_system = { is_same_value = event_target:planet_owner_2 } # prevprevprevprev
 									OR = {
 										NOT = { any_neighbor_system = { has_owner = yes is_owned_by = prevprev } }
 										AND = {
@@ -1255,10 +1255,10 @@ country_event = {
 									starbase = { is_owned_by = prevprev }
 									NOR = {
 										is_capital_system = yes
-										space_owner = { is_same_empire = prevprevprev }
+										space_owner = { is_same_value = prevprevprev }
 										has_star_flag = switched_system
 									}
-									any_country_neighbor_to_system = { is_same_empire = event_target:planet_owner_2 } # prevprevprevprev
+									any_country_neighbor_to_system = { is_same_value = event_target:planet_owner_2 } # prevprevprevprev
 									OR = {
 										NOT = { any_neighbor_system = { has_owner = yes is_owned_by = prevprev } }
 										AND = {
@@ -1283,10 +1283,10 @@ country_event = {
 									starbase = { is_owned_by = prevprev }
 									NOR = {
 										is_capital_system = yes
-										space_owner = { is_same_empire = prevprevprev }
+										space_owner = { is_same_value = prevprevprev }
 										has_star_flag = switched_system
 									}
-									any_country_neighbor_to_system = { is_same_empire = event_target:planet_owner_2 } # prevprevprevprev
+									any_country_neighbor_to_system = { is_same_value = event_target:planet_owner_2 } # prevprevprevprev
 									OR = {
 										NOT = { any_neighbor_system = { has_owner = yes is_owned_by = prevprev } }
 										AND = {
@@ -1332,7 +1332,7 @@ country_event = {
 									owner = {
 										has_government = gov_diadochi
 										has_origin = origin_khan_successor
-										NOT = { is_same_empire = prevprevprev }
+										NOT = { is_same_value = prevprevprev }
 									}
 								}
 							}
@@ -1372,7 +1372,7 @@ country_event = {
 								space_owner = {
 									has_government = gov_diadochi
 									has_origin = origin_khan_successor
-									NOT = { is_same_empire = prevprevprev }
+									NOT = { is_same_value = prevprevprev }
 								}
 							}
 							space_owner = {
@@ -1402,7 +1402,7 @@ country_event = {
 									}
 									exists = owner
 									owner = {
-										NOT = { is_same_empire = prevprevprev }
+										NOT = { is_same_value = prevprevprev }
 										is_neighbor_of = prevprevprev
 										has_government = gov_diadochi
 										has_origin = origin_khan_successor
@@ -1453,7 +1453,7 @@ country_event = {
 								}
 								exists = owner
 								owner = {
-									NOT = { is_same_empire = event_target:planet_owner_2 } # prevprevprev
+									NOT = { is_same_value = event_target:planet_owner_2 } # prevprevprev
 									is_neighbor_of = prevprevprev
 									has_government = gov_diadochi
 									has_origin = origin_khan_successor

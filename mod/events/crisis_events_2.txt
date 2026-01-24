@@ -107,8 +107,9 @@ country_event = {
 				}
 				NAND = { # Vfix
 					num_cosmic_storms > 0
+					any_cosmic_storm = { is_storm_type = electric_storm }
 					is_inside_storm = yes
-					is_storm_type = electric_storm
+					is_inside_storm = electric_storm
 				}
 			}
 			set_star_flag = extradimensional_origin_system
@@ -1230,8 +1231,9 @@ country_event = {
 				}
 				NAND = { # Vfix
 					num_cosmic_storms > 0
+					any_cosmic_storm = { is_storm_type = electric_storm }
 					is_inside_storm = yes
-					is_storm_type = electric_storm
+					is_inside_storm = electric_storm
 				}
 			}
 			set_star_flag = extradimensional_second_portal_system
@@ -1729,8 +1731,9 @@ country_event = {
 					}
 					NAND = { # Vfix
 						num_cosmic_storms > 0
+						any_cosmic_storm = { is_storm_type = electric_storm }
 						is_inside_storm = yes
-						is_storm_type = electric_storm
+						is_inside_storm = electric_storm
 					}
 				}
 				set_star_flag = extradimensional_third_portal_system
@@ -2848,7 +2851,7 @@ country_event = {
 					is_country_type = extradimensional_2
 					is_country_type = extradimensional_3
 				}
-				NOT = { is_same_empire = root }
+				NOT = { is_same_value = root }
 			}
 		}
 	}

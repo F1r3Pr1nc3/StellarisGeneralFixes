@@ -8,7 +8,7 @@
 # This = Fleet
 # default: OUTRIDER = 18 LANCER = 12 CHAMPION = 6 GLORY = 1
 create_dyn_marauder_fleet = {
-	optimize_memory
+	# optimize_memory
 	while = {
 		count = $OUTRIDER|18$
 		# count = @\[ $AMOUNT|3$ * 6 ]
@@ -53,7 +53,6 @@ create_dyn_marauder_fleet = {
 }
 
 create_1st_khan_fleet = {
-	optimize_memory
 	create_fleet = {
 		name = "NAME_Chosen_of_the_Great_Khan"
 		effect = {
@@ -107,7 +106,6 @@ create_1st_khan_fleet = {
 }
 
 create_2nd_khan_fleet = {
-	optimize_memory
 	create_fleet = {
 		name = "NAME_Chosen_of_the_Great_Khan"
 		effect = {
@@ -158,7 +156,7 @@ create_2nd_khan_fleet = {
 }
 
 create_marauder_fleet = {
-	optimize_memory
+	# optimize_memory
 	create_marauder_merc_admiral = yes
 
 	create_fleet = {
@@ -244,7 +242,7 @@ create_marauder_fleet = {
 }
 
 create_small_marauder_auxiliaries = {
-	optimize_memory
+	# optimize_memory
 	event_target:satrapy_empire = {
 		random_pool_leader = {
 			limit = { leader_class = commander }
@@ -310,7 +308,7 @@ create_small_marauder_auxiliaries = {
 }
 
 create_medium_marauder_auxiliaries = {
-	optimize_memory
+	# optimize_memory
 	event_target:satrapy_empire = {
 		random_pool_leader = {
 			limit = { leader_class = commander }
@@ -375,7 +373,7 @@ create_medium_marauder_auxiliaries = {
 }
 
 create_large_marauder_auxiliaries = {
-	optimize_memory
+	# optimize_memory
 	event_target:satrapy_empire = {
 		random_pool_leader = {
 			limit = { leader_class = commander }
@@ -439,7 +437,7 @@ create_large_marauder_auxiliaries = {
 }
 
 create_very_large_marauder_auxiliaries = {
-	optimize_memory
+	# optimize_memory
 	event_target:satrapy_empire = {
 		random_pool_leader = {
 			limit = { leader_class = commander }
@@ -954,7 +952,6 @@ assign_diadochi_systems = {
 # }
 # Override needless wasting vanilla effect
 set_diadochi_claims = {
-	optimize_memory
 }
 
 # NOTE: Don't use with every_*_system..., as this could lead to strange behavior
@@ -984,7 +981,7 @@ commit_system_to = {
 					is_owned_by = event_target:former_owner
 				}
 				has_star_flag = switched_system
-				$EMPIRE$ = { is_same_empire = event_target:former_owner }
+				$EMPIRE$ = { is_same_value = event_target:former_owner }
 				AND = {
 					is_capital_system = yes
 					space_owner = { is_ai = no }

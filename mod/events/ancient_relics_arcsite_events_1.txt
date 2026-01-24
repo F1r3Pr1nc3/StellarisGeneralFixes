@@ -5437,7 +5437,7 @@ country_event = {
 		has_country_flag = sentinels_invade_country
 		fromfrom = {
 			has_planet_flag = sentinels_won
-			controller = { is_same_empire = event_target:sentinels }
+			controller = { is_same_value = event_target:sentinels }
 		}
 	}
 
@@ -5561,7 +5561,7 @@ planet_event = {
 		is_same_value = event_target:sentinels_planet
 		exists = event_target:sentinels
 		exists = controller
-		controller = { is_same_empire = event_target:sentinels }
+		controller = { is_same_value = event_target:sentinels }
 		fromfrom = {
 			pop_group_size > 1	# Last Pop is still alive when this event is fired
 		}

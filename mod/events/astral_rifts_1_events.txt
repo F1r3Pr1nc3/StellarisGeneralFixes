@@ -3429,51 +3429,6 @@ astral_rift_event = {
 	}
 }
 
-# Mirrored Empire setup
-country_event = {
-	id = astral_planes.1690
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		has_country_flag = negociating_with_mirrored_empire
-		has_astral_planes_dlc = yes
-	}
-
-	immediate = {
-		every_relation = {
-			limit = {
-				is_country_type = mirrored_country
-				has_communications = root
-			}
-			copy_basic_resources_effect = {
-				FROM = root
-			}
-			copy_manufactured_resources_effect = {
-				FROM = root
-			}
-			copy_advanced_resources_effect = {
-				FROM = root
-			}
-			copy_rare_resources_effect = {
-				FROM = root
-			}
-			copy_basic_resources_incomes_effect = {
-				FROM = root
-			}
-			copy_manufactured_resources_incomes_effect = {
-				FROM = root
-			}
-			copy_advanced_resources_incomes_effect = {
-				FROM = root
-			}
-			copy_rare_resources_incomes_effect = {
-				FROM = root
-			}
-		}
-	}
-}
-
 # Event to clear mirrored country global event target
 country_event = {
 	id = astral_rift.1698
@@ -5017,5 +4972,52 @@ country_event = {
 			}
 		}
 		country_event = { id = astral_rift.1960 days = 360 scopes = { from = from } }
+	}
+}
+
+
+namespace = astral_planes # Vfix
+# Mirrored Empire setup
+country_event = {
+	id = astral_planes.1690
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = negociating_with_mirrored_empire
+		has_astral_planes_dlc = yes
+	}
+
+	immediate = {
+		every_relation = {
+			limit = {
+				is_country_type = mirrored_country
+				has_communications = root
+			}
+			copy_basic_resources_effect = {
+				FROM = root
+			}
+			copy_manufactured_resources_effect = {
+				FROM = root
+			}
+			copy_advanced_resources_effect = {
+				FROM = root
+			}
+			copy_rare_resources_effect = {
+				FROM = root
+			}
+			copy_basic_resources_incomes_effect = {
+				FROM = root
+			}
+			copy_manufactured_resources_incomes_effect = {
+				FROM = root
+			}
+			copy_advanced_resources_incomes_effect = {
+				FROM = root
+			}
+			copy_rare_resources_incomes_effect = {
+				FROM = root
+			}
+		}
 	}
 }

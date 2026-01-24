@@ -1690,9 +1690,8 @@ is_wilderness_empire = {
 }
 
 is_infernal_empire = {
-	owner_species = {
-		is_infernal = yes
-	}
+	exists = species # Vfix
+	species = { is_infernal = yes }
 }
 
 is_lithoid_or_infernal_empire = {
@@ -1973,7 +1972,7 @@ has_isolated_system = {
 			any_neighbor_system = {
 				has_owner = yes
 				NOT = { # Vfix
-					space_owner = { is_same_empire = root }
+					space_owner = { is_same_value = root }
 				}
 			}
 			NOT = {
@@ -3431,7 +3430,7 @@ basic_eligibility_for_separatism_joining_trigger = {
 		}
 	}
 	NOR = {
-		is_same_empire = event_target:revolt_situation.owner
+		is_same_value = event_target:revolt_situation.owner
 		is_subject = yes
 		is_in_federation_with = event_target:revolt_situation.owner
 		has_defensive_pact = event_target:revolt_situation.owner
@@ -3478,8 +3477,8 @@ should_ai_focus_on_trade = {
 valid_curators_intel_trade_target = {
 	is_country_type = default
 	NOR = {
-		is_same_empire = root
-		is_same_empire = prev # Vfix opt
+		is_same_value = root
+		is_same_value = prev # Vfix opt
 		AND = {
 			exists = event_target:curator_customer_1
 			is_same_value = event_target:curator_customer_1
@@ -4960,13 +4959,13 @@ is_legit_or_legal_criminal = {
 		AND = {
 			is_subject = yes
 			overlord = { # Vfix
-				is_same_empire = root.owner
+				is_same_value = root.owner
 			}
 		}
 		root.owner = {
 			is_subject = yes
 			overlord = { # Vfix
-				is_same_empire = prevprev
+				is_same_value = prevprev
 			}
 		}
 		AND = { # Vfix opt
@@ -4988,13 +4987,13 @@ is_illegal_criminal = {
 		AND = {
 			is_subject = yes
 			overlord = { # Vfix
-				is_same_empire = root.owner
+				is_same_value = root.owner
 			}
 		}
 		root.owner = {
 			is_subject = yes
 			overlord = { # Vfix
-				is_same_empire = prevprev
+				is_same_value = prevprev
 			}
 		}
 		# ImperiCorp

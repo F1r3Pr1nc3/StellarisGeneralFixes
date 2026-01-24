@@ -2,7 +2,7 @@
 # Prev = war_participant
 # VFix: don't break the loop
 end_war_effect = {
-	optimize_memory
+	# optimize_memory
 	# every_war_participant = {
 	if = { # Is defenders
 		# Because strange log behavior
@@ -12,8 +12,8 @@ end_war_effect = {
 			# count_attacker = { count > 0 throws already error
 			exists = prev
 			prev = { is_scope_valid = yes is_scope_type = country }
-			any_attacker = { always = yes }
-			any_defender = { always = yes }
+			any_attacker = { is_scope_valid = yes }
+			any_defender = { is_scope_valid = yes }
 		}
 		# Try to omit error.log
 		every_defender = {
@@ -26,7 +26,7 @@ end_war_effect = {
 			limit = { # Check again all after remove_war_participant.
 				is_scope_valid = yes
 				is_scope_type = war
-				any_attacker = { always = yes }
+				any_attacker = { is_scope_valid = yes }
 				# count_war_participants = {
 				# 	count > 0
 				# 	# limit = { }
@@ -36,7 +36,7 @@ end_war_effect = {
 			}
 			every_attacker = {
 				limit = {
-					# NOT = { is_same_empire = prevprev }
+					# NOT = { is_same_value = prevprev }
 					# NOT = { is_war_participant = { war = prev side = prevprev } }
 					is_war_participant = { war = prev side = attackers } # Because strange log behavior
 				}
@@ -50,7 +50,6 @@ end_war_effect = {
 # Make some factions neutral (not everything should be hostile to non crisis factions)
 # Scope = country (hostile)
 make_moderately_hostile = {
-	optimize_memory
 	set_country_flag = first_alien_life
 	set_country_flag = has_encountered_other_empire
 
@@ -97,7 +96,6 @@ make_moderately_hostile = {
 # }
 
 create_marauder_merc_admiral = {
-	optimize_memory
 	create_leader = {
 		class = commander
 		species = event_target:marauder_species
@@ -151,7 +149,6 @@ create_marauder_merc_admiral = {
 }
 
 create_marauder_merc_general = {
-	optimize_memory
 	create_leader = {
 		class = commander
 		species = event_target:marauder_species
@@ -181,7 +178,6 @@ create_marauder_merc_general = {
 # Needs event_target:former_owner
 # This = Country
 give_planets_former_owner = {
-	optimize_memory
 	# Give former owner
 	while = {
 		count = trigger:num_owned_planets
@@ -233,7 +229,7 @@ give_planets_former_owner = {
 				solar_system = { is_capital_system = no can_generate_trade_value = yes }
 				exists = space_owner
 				space_owner = {
-					NOT = { is_same_empire = event_target:former_owner }
+					NOT = { is_same_value = event_target:former_owner }
 					is_country_type_with_subjects = yes
 				}
 			}
@@ -246,7 +242,7 @@ give_planets_former_owner = {
 				solar_system = { is_capital_system = no can_generate_trade_value = yes }
 				exists = space_owner
 				space_owner = {
-					NOT = { is_same_empire = event_target:former_owner }
+					NOT = { is_same_value = event_target:former_owner }
 					is_country_type_with_subjects = yes
 				}
 			}

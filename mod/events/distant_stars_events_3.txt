@@ -416,7 +416,7 @@ country_event = {
 		trigger = {
 			event_target:hatchling_egg = { is_under_colonization = no }
 			exists = event_target:egg_owner
-			root = { is_same_empire = event_target:egg_owner }
+			root = { is_same_value = event_target:egg_owner }
 		}
 	}
 	desc = {
@@ -439,7 +439,7 @@ country_event = {
 			OR = {
 				AND = {
 					exists = event_target:egg_owner
-					root = { is_same_empire = event_target:egg_owner }
+					root = { is_same_value = event_target:egg_owner }
 				}
 				solar_system = { is_owned_by = root }
 			}
@@ -486,7 +486,7 @@ country_event = {
 			OR = {
 				AND = {
 					exists = event_target:egg_owner
-					root = { is_same_empire = event_target:egg_owner }
+					root = { is_same_value = event_target:egg_owner }
 				}
 				solar_system = { is_owned_by = root }
 			}
@@ -729,7 +729,7 @@ country_event = {
 		if = {
 			limit = {
 				exists = event_target:egg_owner
-				is_same_empire = event_target:egg_owner
+				is_same_value = event_target:egg_owner
 			}
 			add_monthly_resource_mult = {
 				resource = unity
@@ -742,7 +742,7 @@ country_event = {
 			limit = {
 				OR = {
 					NOT = { exists = event_target:egg_owner }
-					is_same_empire = event_target:egg_owner
+					is_same_value = event_target:egg_owner
 				}
 			}
 			add_monthly_resource_mult = {
@@ -759,7 +759,7 @@ country_event = {
 		if = {
 			limit = {
 				exists = event_target:egg_owner
-				is_same_empire = event_target:egg_owner
+				is_same_value = event_target:egg_owner
 			}
 			add_monthly_resource_mult = {
 				resource = unity
@@ -772,7 +772,7 @@ country_event = {
 			limit = {
 				OR = {
 					NOT = { exists = event_target:egg_owner }
-					is_same_empire = event_target:egg_owner
+					is_same_value = event_target:egg_owner
 				}
 			}
 			add_monthly_resource_mult = {
@@ -1647,7 +1647,7 @@ country_event = {
 		# Cancel project for others with compensation (Vfix)
 		every_playable_country = {
 			limit = {
-				NOT = { is_same_empire = root }
+				NOT = { is_same_value = root }
 				OR = {
 					has_event_chain = l_cluster_chain
 					has_special_project = LCLUSTER_PROJECT

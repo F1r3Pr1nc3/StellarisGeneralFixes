@@ -516,7 +516,7 @@ country_event = {
 			limit = {
 				NOR = {
 					is_ai = yes
-					is_same_empire = root
+					is_same_value = root
 				}
 				has_communications = root
 				root = { is_primitive = no }
@@ -868,7 +868,7 @@ country_event = {
 			limit = {
 				NOR = {
 					is_ai = yes
-					is_same_empire = root
+					is_same_value = root
 				}
 				has_communications = root
 			}
@@ -880,14 +880,14 @@ country_event = {
 				any_country = {
 					is_fallen_empire_spiritualist = yes
 					has_communications = root
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 			}
 			random_country = {
 				limit = {
 					is_fallen_empire_spiritualist = yes
 					has_communications = root
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 				country_event = { id = utopia.2557 days = 15 }
 			}
@@ -897,7 +897,7 @@ country_event = {
 				limit = {
 					has_ethic = ethic_fanatic_spiritualist
 					has_communications = root
-					NOT = { is_same_empire = root }
+					NOT = { is_same_value = root }
 				}
 				country_event = { id = utopia.2557 days = 15 }
 			}

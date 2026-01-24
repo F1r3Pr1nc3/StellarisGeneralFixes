@@ -2147,7 +2147,7 @@ country_event = {
 			if = {
 				limit = {
 					exists = space_owner
-					NOT = { space_owner = { is_same_empire = event_target:formless_country } }
+					NOT = { space_owner = { is_same_value = event_target:formless_country } }
 				}
 				if = {
 					limit = { exists = starbase }
@@ -4299,7 +4299,6 @@ country_event = {
 			background_ethic = ethic_fanatic_xenophile
 			skill = 4
 			skip_background_generation = yes
-			background_ethic = ethic_xenophile
 			custom_catch_phrase = mercedes_catch_phrase
 			randomize_traits = no
 			immortal = yes

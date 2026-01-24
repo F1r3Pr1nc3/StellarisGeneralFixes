@@ -1682,7 +1682,7 @@ espionage_operation_event = {
 				limit = {
 					any_playable_country = {
 						NOR = {
-							is_same_empire = root.owner
+							is_same_value = root.owner
 							is_same_value = root.target
 						}
 						has_communications = root.owner
@@ -1708,7 +1708,7 @@ espionage_operation_event = {
 				random_playable_country = {
 					limit = {
 						NOR = {
-							is_same_empire = root.owner
+							is_same_value = root.owner
 							is_same_value = root.target
 						}
 						has_communications = root.owner
@@ -1754,7 +1754,7 @@ espionage_operation_event = {
 				limit = {
 					any_playable_country = {
 						NOR = {
-							is_same_empire = root.owner
+							is_same_value = root.owner
 							is_same_value = root.target
 						}
 						has_communications = root.owner
@@ -1780,7 +1780,7 @@ espionage_operation_event = {
 				random_playable_country = {
 					limit = {
 						NOR = {
-							is_same_empire = root.owner
+							is_same_value = root.owner
 							is_same_value = root.target
 						}
 						has_communications = root.owner
@@ -2573,11 +2573,11 @@ espionage_operation_event = {
 						has_communications = root.owner
 						is_crisis_faction = yes
 						NOR = {
-							is_same_empire = root.owner
+							is_same_value = root.owner
 							is_same_value = root.target
 							AND = {
 								has_federation = yes
-								any_federation_ally = { is_same_empire = root.target }
+								any_federation_ally = { is_same_value = root.target }
 							}
 							AND = {
 								is_overlord = yes
@@ -2604,11 +2604,11 @@ espionage_operation_event = {
 						has_communications = root.owner
 						is_crisis_faction = yes
 						NOR = {
-							is_same_empire = root.owner
+							is_same_value = root.owner
 							is_same_value = root.target
 							AND = {
 								has_federation = yes
-								any_federation_ally = { is_same_empire = root.target }
+								any_federation_ally = { is_same_value = root.target }
 							}
 							AND = {
 								is_overlord = yes

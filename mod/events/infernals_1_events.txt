@@ -474,7 +474,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 				}
 				OR = {
 					is_active_resolution = "resolution_rulesofwar_independent_tribunals"
@@ -489,7 +489,7 @@ planet_event = {
 		if = { # Terraforming rules
 			limit = {
 				exists = space_owner
-				space_owner = { is_same_empire = from.owner }
+				space_owner = { is_same_value = from.owner }
 				OR = {
 					NOT = { exists = owner }
 					is_owned_by = from.owner
@@ -508,7 +508,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
@@ -518,8 +518,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_empire = from.owner
-						is_same_empire = root.owner
+						is_same_value = from.owner
+						is_same_value = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -549,7 +549,7 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_playable_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -564,7 +564,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -588,7 +588,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 				}
 			}
 			owner = {
@@ -642,7 +642,7 @@ planet_event = {
 			limit = {
 				any_owned_species = { is_scope_valid = yes }
 				owner = {
-					NOT = { is_same_empire = from.owner }
+					NOT = { is_same_value = from.owner }
 				}
 			}
 			set_owner = from.owner
@@ -1478,7 +1478,7 @@ country_event = {
 	picture = GFX_evt_inf_subspace_interference
 	show_sound = event_mystic_reveal
 	is_triggered_only = yes
-	location = capital_scope.solar_system.star
+	location = capital_star
 	trackable = yes
 	desc = infernals.95.desc
 
@@ -2209,7 +2209,7 @@ country_event = {
 
 	option = {
 		name = infernals.2505.a
-		start_situation = { type = situation_cosmic_dawn target = root.capital }
+		start_situation = { type = situation_cosmic_dawn target = root.capital_scope } # Vfix
 		hidden_effect = {
 			random_situation = {
 				limit = { is_situation_type = situation_cosmic_dawn }
@@ -2219,7 +2219,7 @@ country_event = {
 	}
 	option = {
 		name = infernals.2505.b
-		start_situation = { type = situation_cosmic_dawn target = root.capital }
+		start_situation = { type = situation_cosmic_dawn target = root.capital_scope } # Vfix
 		hidden_effect = {
 			random_situation = {
 				limit = { is_situation_type = situation_cosmic_dawn }
@@ -2230,7 +2230,7 @@ country_event = {
 	option = {
 		name = infernals.2505.c
 		trigger = { is_megacorp = yes }
-		start_situation = { type = situation_cosmic_dawn target = root.capital }
+		start_situation = { type = situation_cosmic_dawn target = root.capital_scope } # Vfix
 		hidden_effect = {
 			random_situation = {
 				limit = { is_situation_type = situation_cosmic_dawn }

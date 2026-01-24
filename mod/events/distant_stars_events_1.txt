@@ -48,7 +48,7 @@ ship_event = {
 					has_communications = prev
 					NOR = {
 						is_at_war_with = prev
-						is_same_empire = prev
+						is_same_value = prev
 					}
 					event_target:supply_wreckage_tar.solar_system = { has_access_fleet = prev }
 				}
@@ -1111,7 +1111,7 @@ country_event = {
 	trigger = {
 		fromfrom = { has_planet_flag = retrovirus_armies }
 		fromfrom = {
-			controller = { is_same_empire = event_target:enraged_colonists_country }
+			controller = { is_same_value = event_target:enraged_colonists_country }
 		}
 	}
 
@@ -3308,7 +3308,7 @@ ship_event = {
 					NOR = {
 						is_gestalt = yes
 						is_at_war_with = prev
-						is_same_empire = prev
+						is_same_value = prev
 					}
 				}
 				save_event_target_as = rum_nation
@@ -5213,7 +5213,7 @@ ship_event = {
 			limit = {
 				from = {
 					exists = space_owner
-					space_owner = { is_same_empire = root.owner }
+					space_owner = { is_same_value = root.owner }
 				}
 			}
 			event_target:living_planet_tar = {
@@ -5642,7 +5642,7 @@ ship_event = {
 		every_country = {
 			limit = {
 				has_special_project = STUDY_LIVING_SEA
-				NOT = { is_same_empire = root.owner }
+				NOT = { is_same_value = root.owner }
 			}
 			abort_special_project = { type = STUDY_LIVING_SEA }
 			create_point_of_interest = {
@@ -7630,7 +7630,7 @@ country_event = {
 		}
 		exists = event_target:ratling_country
 		event_target:ratling_country = {
-			is_same_empire = event_target:contact_empire
+			is_same_value = event_target:contact_empire
 			NOT = { has_opinion_modifier = { who = from modifier = opinion_ratling_system_stolen } }
 		}
 	}
@@ -8363,7 +8363,7 @@ ship_event = {
 			every_country = { # Just in case
 				limit = {
 					has_special_project = PHASESHIFT_PROJECT
-					NOT = { is_same_empire = root.owner }
+					NOT = { is_same_value = root.owner }
 				}
 				abort_special_project = { type = PHASESHIFT_PROJECT }
 			}
@@ -8399,7 +8399,7 @@ ship_event = {
 		every_country = {
 			limit = {
 				has_special_project = PHASESHIFT_PROJECT
-				NOT = { is_same_empire = root.owner }
+				NOT = { is_same_value = root.owner }
 			}
 			abort_special_project = { type = PHASESHIFT_PROJECT }
 		}

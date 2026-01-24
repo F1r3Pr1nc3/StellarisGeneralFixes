@@ -1140,7 +1140,7 @@ action_form_commercial_pact = {
 			NAND = {
 				has_federation = yes
 				federation = { has_federation_law = treaties_separate_no }
-				NOT = { any_federation_ally = { is_same_empire = root.from } }
+				NOT = { any_federation_ally = { is_same_value = root.from } }
 			}
 		}
 		custom_tooltip = {
@@ -1149,7 +1149,7 @@ action_form_commercial_pact = {
 				NAND = {
 					has_federation = yes
 					federation = { has_federation_law = treaties_separate_no }
-					NOT = { any_federation_ally = { is_same_empire = root } }
+					NOT = { any_federation_ally = { is_same_value = root } }
 				}
 			}
 		}
@@ -1338,7 +1338,7 @@ action_form_research_agreement = {
 			NAND = {
 				has_federation = yes
 				federation = { has_federation_law = treaties_separate_no }
-				NOT = { any_federation_ally = { is_same_empire = root.from } }
+				NOT = { any_federation_ally = { is_same_value = root.from } }
 			}
 		}
 		custom_tooltip = {
@@ -1347,7 +1347,7 @@ action_form_research_agreement = {
 				NAND = {
 					has_federation = yes
 					federation = { has_federation_law = treaties_separate_no }
-					NOT = { any_federation_ally = { is_same_empire = root } }
+					NOT = { any_federation_ally = { is_same_value = root } }
 				}
 			}
 		}
@@ -1355,7 +1355,7 @@ action_form_research_agreement = {
 			fail_text = "federation_automatic_research"
 			NAND = {
 				has_federation = yes
-				any_federation_ally = { is_same_empire = root.from }
+				any_federation_ally = { is_same_value = root.from }
 				federation = { has_federation_perk = research_federation_passive }
 			}
 		}
@@ -1615,7 +1615,7 @@ action_support_independence = {
 			NOT = {
 				from = {
 					exists = overlord
-					overlord = { is_same_empire = root }
+					overlord = { is_same_value = root }
 				}
 			}
 		}
@@ -1872,7 +1872,7 @@ action_form_migration_pact = {
 			fail_text = "federation_internal_migration"
 			NAND = {
 				has_federation = yes
-				any_federation_ally = { is_same_empire = root.from }
+				any_federation_ally = { is_same_value = root.from }
 				federation = { has_federation_law = free_migration_yes }
 			}
 		}
@@ -1881,7 +1881,7 @@ action_form_migration_pact = {
 			NAND = {
 				has_federation = yes
 				federation = { has_federation_law = treaties_separate_no }
-				NOT = { any_federation_ally = { is_same_empire = root.from } }
+				NOT = { any_federation_ally = { is_same_value = root.from } }
 			}
 		}
 		custom_tooltip = {
@@ -1890,7 +1890,7 @@ action_form_migration_pact = {
 				NAND = {
 					has_federation = yes
 					federation = { has_federation_law = treaties_separate_no }
-					NOT = { any_federation_ally = { is_same_empire = root } }
+					NOT = { any_federation_ally = { is_same_value = root } }
 				}
 			}
 		}
@@ -2278,7 +2278,7 @@ action_invite_to_federation = {
 				fail_text = requires_not_subject_to_start_federation
 				OR = {
 					is_subject = no
-					overlord = { is_same_empire = from }
+					overlord = { is_same_value = from }
 				}
 			}
 		}
@@ -2287,7 +2287,7 @@ action_invite_to_federation = {
 			from = {
 				OR = {
 					is_subject = no
-					overlord = { is_same_empire = root }
+					overlord = { is_same_value = root }
 				}
 			}
 		}
@@ -3163,7 +3163,7 @@ action_ask_to_become_subjugated = {
 			NAND = {
 				has_federation = yes
 				federation = { has_federation_law = treaties_separate_no }
-				NOT = { any_federation_ally = { is_same_empire = root.from } }
+				NOT = { any_federation_ally = { is_same_value = root.from } }
 			}
 		}
 		custom_tooltip = {
@@ -3172,7 +3172,7 @@ action_ask_to_become_subjugated = {
 				NAND = {
 					has_federation = yes
 					federation = { has_federation_law = treaties_separate_no }
-					NOT = { any_federation_ally = { is_same_empire = root } }
+					NOT = { any_federation_ally = { is_same_value = root } }
 				}
 			}
 		}
