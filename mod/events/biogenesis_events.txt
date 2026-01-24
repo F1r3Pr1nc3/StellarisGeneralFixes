@@ -4486,8 +4486,11 @@ situation_event = {
 		}
 		hidden_effect = {
 			every_country = {
-				limit = { values_others = yes }
-				add_opinion_modifier = { who = root modifier = opinion_population_purging }
+				limit = {
+					NOT = { is_same_value = root.owner } # Vfix
+					values_others = yes
+				}
+				add_opinion_modifier = { who = root.owner modifier = opinion_population_purging }
 			}
 		}
 		custom_tooltip = bio_335_opinion_tt

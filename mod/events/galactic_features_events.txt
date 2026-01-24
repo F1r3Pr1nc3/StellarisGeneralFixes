@@ -2232,17 +2232,21 @@ event = {
 	}
 }
 
-# Tiyanki Home System Destroyed
+# Tiyanki Home System Destroyed (on_fleet_destroyed_victim)
 country_event = {
 	id = galactic_features.366
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = { has_global_flag = tiyanki_home_cleared }
-		fromfrom.solar_system = {
+		is_country_type = tiyanki_garrison # Vfix opt
+		exists = fromfromfrom # Vfix: log says sometimes fleet already does not exists anymore
+		fromfromfrom.solar_system = {
 			has_star_flag = tiyanki_spawn_system
-			NOT = { any_fleet_in_system = { has_fleet_flag = tiyanki_home_system_fleet } }
+			NOR = {
+				has_global_flag = tiyanki_home_cleared
+				any_fleet_in_system = { has_fleet_flag = tiyanki_home_system_fleet }
+			}
 		}
 	}
 

@@ -544,7 +544,12 @@ fleet_event = {
 
 	option = {
 		name = EXCELLENT
-		owner = { add_relic = r_ancient_sword }
+		owner = {
+			if = { # Vfix
+				limit = { NOT = { has_relic = r_ancient_sword } }
+				add_relic = r_ancient_sword
+			}
+		}
 		large_artifact_reward = yes
 	}
 	option = {
@@ -555,9 +560,7 @@ fleet_event = {
 		owner = {
 			give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = large TYPE = arthropoid }
 			if = { # Vfix
-				limit = {
-					NOT = { has_relic = r_ancient_sword }
-				}
+				limit = { NOT = { has_relic = r_ancient_sword } }
 				add_relic = r_ancient_sword
 			}
 		}
@@ -808,7 +811,12 @@ fleet_event = {
 
 	option = {
 		name = INTRIGUING
-		owner = { add_relic = r_severed_head }
+		owner = {
+			if = { # Vfix
+				limit = { NOT = { has_relic = r_severed_head } }
+				add_relic = r_severed_head
+			}
+		}
 		large_artifact_reward = yes
 		hidden_effect = {
 			owner = {
@@ -1311,7 +1319,12 @@ fleet_event = {
 	option = {
 		name = CURIOUS
 		large_artifact_reward = yes
-		owner = { add_relic = "r_galaxy" }
+		owner = {
+			if = { # Vfix
+				limit = { NOT = { has_relic = r_galaxy } }
+				add_relic = r_galaxy
+			}
+		}
 	}
 }
 
@@ -3497,7 +3510,7 @@ fleet_event = {
 fleet_event = {
 	id = ancrel.9221
 	hide_window = yes
-	archaeology = yes
+	# archaeology = yes Vfix
 	is_triggered_only = yes
 
 	immediate = {
