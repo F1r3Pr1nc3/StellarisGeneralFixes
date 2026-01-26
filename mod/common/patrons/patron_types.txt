@@ -742,15 +742,13 @@ the_composer_of_strands = {
 
 		possible = {
 			has_technology = tech_psionic_aura
-			count_system_with_aura = { # Vfix because strange error log (country scope)
-				count > 0
-				limit = {
+			count_systems_with_aura > 0 # Vfix because strange error log (country scope)
+			any_system_with_aura = {
+				has_owner = yes
+				is_owned_by = root
+				any_system_colony = {
 					has_owner = yes
 					is_owned_by = root
-					any_system_colony = {
-						has_owner = yes
-						is_owned_by = root
-					}
 				}
 			}
 		}

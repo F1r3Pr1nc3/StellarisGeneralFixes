@@ -7724,7 +7724,6 @@ country_event = {
 					leader_class = commander
 					is_idle = yes
 					NOR = {
-						is_event_leader = yes
 						# is_councilor = yes
 						is_ruler = yes
 						exists = fleet
@@ -9525,10 +9524,10 @@ country_event = {
 						leader_class = commander
 						is_idle = yes
 						NOR = {
-							is_event_leader = yes
 							is_councilor = yes
 							is_ruler = yes
 							exists = fleet
+							has_trait = subclass_commander_general
 							has_trait = leader_trait_butcher
 						}
 					}
@@ -9549,14 +9548,13 @@ country_event = {
 								leader_class = commander
 								is_idle = yes
 								NOR = {
-									is_event_leader = yes
 									is_councilor = yes
 									is_ruler = yes
 									exists = fleet
+									has_trait = subclass_commander_general
 									has_trait = leader_trait_butcher
 								}
 							}
-							# weights = { base = 1 modifier = { add = 4 NOT = { exists = fleet } } }
 							prevprev = { assign_leader = prev }
 						}
 					}
@@ -9569,12 +9567,11 @@ country_event = {
 						leader_class = commander
 						is_idle = yes
 						NOR = {
-							is_event_leader = yes
 							is_councilor = yes
 							is_ruler = yes
 							exists = fleet
 						}
-						# TODO
+						# TODO more
 						OR = {
 							has_trait = subclass_commander_general
 							has_trait = leader_trait_butcher
@@ -9606,7 +9603,6 @@ country_event = {
 									leader_class = commander
 									is_idle = yes
 									NOR = {
-										is_event_leader = yes
 										is_councilor = yes
 										is_ruler = yes
 										# exists = fleet
@@ -9662,7 +9658,6 @@ country_event = {
 									leader_class = commander
 									is_idle = yes
 									NOR = {
-										is_event_leader = yes
 										is_councilor = yes
 										is_ruler = yes
 										# exists = fleet
@@ -9688,11 +9683,34 @@ country_event = {
 						limit = { num_armies < 40 }
 						create_marauder_armies = yes
 					}
-					if = {
-						limit = { fleet_power < 200000 }
-						create_marauder_fleet = yes
-					}
 					country_event = { id = marauder.520 days = 340 }
+					# If at fleet cap, check again later
+					if = {
+						limit = {
+							if = {
+								limit = { is_difficulty <= 2 }
+								fleet_power > 100000
+							}
+							else_if = {
+								limit = { is_difficulty = 3 }
+								fleet_power > 250000
+							}
+							else_if = {
+								limit = { is_difficulty = 4 }
+								fleet_power > 450000
+							}
+							else_if = {
+								limit = { is_difficulty = 5 }
+								fleet_power > 600000
+							}
+							else_if = {
+								limit = { is_difficulty = 6 }
+								fleet_power > 1000000
+							}
+						}
+						break = yes
+					}
+					create_marauder_fleet = yes
 				}
 			}
 		}
