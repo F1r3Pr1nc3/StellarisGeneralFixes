@@ -2472,82 +2472,51 @@ fleet_event = {
 	archaeology = yes
 	is_triggered_only = yes
 
-	option = {
-		name = ONSCREEN
-		owner = {
-			add_monthly_resource_mult = {
-				resource = engineering_research
-				value = @tier3researchreward
-				min = @tier3researchmin
-				max = @tier3researchmax
+	immediate = { # Vfix opt
+		create_species = {
+			name = "NAME_planetary_mechanocalibrator_species"
+			class = MACHINE
+			homeworld = event_target:mechanocalibrator_planet
+			portrait = default_robot
+			namelist = "AI"
+			traits = {
+				trait = trait_machine_unit
+				trait = trait_robot_mass_produced
+				trait = trait_robot_luxurious
+				trait = trait_robot_learning_algorithms
+				trait = trait_robot_high_maintenance
+				trait = trait_robot_logic_engines
+			}
+			effect = {
+				save_global_event_target_as = mechanocalibrator_species
 			}
 		}
-		hidden_effect = {
-			if = {
-				limit = { has_ancrel = yes }
-				create_species = {
-					name = "NAME_planetary_mechanocalibrator_species"
-					class = MACHINE
-					homeworld = event_target:mechanocalibrator_planet
-					portrait = sd_pla_robot
-					namelist = "AI"
-					traits = {
-						trait = trait_machine_unit
-						trait = trait_robot_mass_produced
-						trait = trait_robot_luxurious
-						trait = trait_robot_learning_algorithms
-						trait = trait_robot_high_maintenance
-						trait = trait_robot_logic_engines
-					}
-					effect = {
-						set_species_flag = mechanocalibrator_species_flag
-						save_global_event_target_as = mechanocalibrator_species
-					}
-				}
+		if = { # Vfix opt minor
+			limit = { has_ancrel = yes }
+			last_created_species = {
+				set_species_flag = mechanocalibrator_species_flag
+				change_species_portrait = sd_pla_robot
 			}
-			else = {
-				create_species = {
-					name = "NAME_planetary_mechanocalibrator_species"
-					class = MACHINE
-					homeworld = event_target:mechanocalibrator_planet
-					portrait = default_robot
-					namelist = "AI"
-					traits = {
-						trait = trait_machine_unit
-						trait = trait_robot_mass_produced
-						trait = trait_robot_luxurious
-						trait = trait_robot_learning_algorithms
-						trait = trait_robot_high_maintenance
-						trait = trait_robot_logic_engines
-					}
-					effect = {
-						save_global_event_target_as = mechanocalibrator_species
-					}
-				}
+		}
+		create_country = {
+			name = "NAME_planetary_mechanocalibrator"
+			ethos = { ethic = ethic_gestalt_consciousness }
+			authority = auth_machine_intelligence
+			civics = {
+				civic = civic_machine_predictive_analysis
+				civic = civic_machine_introspective
 			}
-			create_country = {
-				name = "NAME_planetary_mechanocalibrator"
-				ethos = { ethic = ethic_gestalt_consciousness }
-				authority = auth_machine_intelligence
-				civics = {
-					civic = civic_machine_predictive_analysis
-					civic = civic_machine_introspective
-				}
-				species = event_target:mechanocalibrator_species
-				type = mechanocalibrator
-				auto_delete = no
-				flag = {
-					icon = { category = "corporate" file = "corporate_06.dds" }
-					background = { category = "backgrounds" file = "00_solid.dds" }
-					colors = { "dark_grey" "dark_grey" "null" "null" }
-				}
-				ignore_initial_colony_error = yes
-				effect = {
-					save_event_target_as = mechanocalibrator_country
-				}
+			species = last_created_species # event_target:mechanocalibrator_species
+			type = mechanocalibrator
+			auto_delete = no
+			flag = {
+				icon = { category = "corporate" file = "corporate_06.dds" }
+				background = { category = "backgrounds" file = "00_solid.dds" }
+				colors = { "dark_grey" "dark_grey" "null" "null" }
 			}
-			event_target:mechanocalibrator_country = {
-				set_faction_hostility = { target = root.owner set_neutral = yes }
+			ignore_initial_colony_error = yes
+			effect = {
+				save_event_target_as = mechanocalibrator_country
 				create_leader = {
 					class = official
 					species = event_target:mechanocalibrator_species
@@ -2560,6 +2529,26 @@ fleet_event = {
 					}
 				}
 			}
+		}
+		last_created_country = {
+			set_faction_hostility = { target = root.owner set_neutral = yes }
+		}
+	}
+
+	option = {
+		name = ONSCREEN
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
 			owner = {
 				country_event = { id = ancrel.2057 }
 			}

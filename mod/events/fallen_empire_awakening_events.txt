@@ -372,11 +372,12 @@ country_event = {
 	desc = OK
 	hide_window = yes
 
-	trigger = {
-		NOT = { has_country_flag = awakening_not_allowed }
+	trigger = { # Vfix opt
+		is_country_type = fallen_empire # Can only awaken if asleep.
+		has_country_flag = guardians_of_the_galaxy
 		OR = {
-			NOT = { has_global_flag = guardians_of_the_galaxy_happened_recently }
 			has_country_flag = guardians_of_the_galaxy_twin
+			NOT = { has_global_flag = guardians_of_the_galaxy_happened_recently }
 		}
 		OR = {
 			AND = {
@@ -400,17 +401,18 @@ country_event = {
 				}
 			}
 		}
-		NAND = { # Not if WiH happened and either still lives, this is to prevent killing a GotG from ending the WiH bug.
-			has_global_flag = sleepers_awake_rival_waking
-			OR = {
-				exists = event_target:FirstSleeper
-				exists = event_target:SecondSleeper
+		NOR = {
+			AND = { # Not if WiH happened and either still lives, this is to prevent killing a GotG from ending the WiH bug.
+				has_global_flag = sleepers_awake_rival_waking
+				OR = {
+					exists = event_target:FirstSleeper
+					exists = event_target:SecondSleeper
+				}
 			}
+			# has_global_flag = guardians_of_the_galaxy_happened # We want to be able to have multiple.
+			has_country_flag = awakening_not_allowed
+			has_country_flag = timed_guardians_of_the_galaxy
 		}
-		is_country_type = fallen_empire # Can only awaken if asleep.
-		has_country_flag = guardians_of_the_galaxy
-		# NOT = { has_global_flag = guardians_of_the_galaxy_happened }   # We want to be able to have multiple.
-		NOT = { has_country_flag = timed_guardians_of_the_galaxy }
 	}
 
 	mean_time_to_happen = {

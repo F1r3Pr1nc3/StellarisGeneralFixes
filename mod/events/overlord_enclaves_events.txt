@@ -589,13 +589,14 @@ country_event = {
 	location = event_target:mercenary_enclave_system
 
 	immediate = {
-		if = { # Vfix
+		if = { # Vfix patch
 			limit = {
 				NOT = { exists = event_target:mercenary_enclave_country }
 			}
 			random_country = {
 				limit = {
 					is_mercenary = yes
+					has_country_flag = mercenary_enclave_country
 					NOT = { any_owned_fleet = { is_leased = yes } }
 					has_country_flag = created_by@prev
 					prev = { has_country_flag = merc_enclave_founder@prev }
@@ -603,28 +604,51 @@ country_event = {
 				save_event_target_as = mercenary_enclave_country
 			}
 		}
-		event_target:mercenary_enclave_country = {
-			species = { save_event_target_as = mercenary_enclave_species }
-			random_owned_fleet = {
-				limit = { is_ship_size = enclave_mercenary_station }
-				solar_system = {
-					save_event_target_as = mercenary_enclave_system
-					if = {
-						limit = { exists = space_owner }
-						space_owner = { save_event_target_as = mercenary_patron }
+		if = { # Vfix patch
+			limit = {
+				NOT = { exists = event_target:mercenary_enclave_country }
+			}
+			random_country = {
+				limit = {
+					is_mercenary = yes
+					has_country_flag = mercenary_enclave_country
+				}
+				save_event_target_as = mercenary_enclave_country
+			}
+		}
+		if = {
+			limit = { exists = event_target:mercenary_enclave_country }
+			event_target:mercenary_enclave_country = {
+				species = { save_event_target_as = mercenary_enclave_species }
+				random_owned_fleet = {
+					limit = { is_ship_size = enclave_mercenary_station }
+					solar_system = {
+						save_event_target_as = mercenary_enclave_system
+						if = {
+							limit = { exists = owner_or_space_owner }
+							owner_or_space_owner = { save_event_target_as = mercenary_patron }
+						}
 					}
 				}
-			}
-			random_owned_fleet = {
-				limit = {
-					is_ship_class = shipclass_military
-					is_leased = yes
+				random_owned_fleet = {
+					limit = {
+						is_ship_class = shipclass_military
+						is_leased = yes
+					}
+					controller = { save_event_target_as = current_client }
 				}
-				controller = { save_event_target_as = current_client }
 			}
 		}
 		# without this immediate is not invoked when event runs in a special mode that allows AI to collect trade data
 		run_in_ai_mode = yes
+	}
+	# Vfix patch
+	option = {
+		name = GOODBYE
+		exclusive_trigger = {
+			NOT = { exists = event_target:mercenary_enclave_country }
+		}
+		ai_chance = { factor = 0.5 }
 	}
 
 	# Hostility options
@@ -3583,6 +3607,10 @@ event = {
 							has_country_flag = merc_enclave_founder@prev
 							prev = { has_country_flag = created_by@prev }
 						}
+					}
+					any_owned_fleet = { # Vfix
+						is_ship_class = shipclass_military
+						is_leased = no
 					}
 				}
 				save_event_target_as = mercenary_enclave_country

@@ -4632,35 +4632,43 @@ country_event = {
 	}
 
 	immediate = { # Determine tribute level
-		if = {
-			limit = {
-				has_monthly_income = { resource = minerals value <= 50 }
-			}
-			set_country_flag = marauder_tribute_1@event_target:raiding_marauder
-		}
-		else_if = {
-			limit = {
-				has_monthly_income = { resource = minerals value <= 100 }
-			}
-			set_country_flag = marauder_tribute_2@event_target:raiding_marauder
-		}
-		else_if = {
-			limit = {
-				has_monthly_income = { resource = minerals value <= 150 }
-			}
-			set_country_flag = marauder_tribute_3@event_target:raiding_marauder
-		}
-		else_if = {
-			limit = {
-				has_monthly_income = { resource = minerals value <= 200 }
-			}
-			set_country_flag = marauder_tribute_4@event_target:raiding_marauder
-		}
-		else_if = {
+		if = { # Vfix opt minor
 			limit = {
 				has_monthly_income = { resource = minerals value <= 250 }
 			}
-			set_country_flag = marauder_tribute_5@event_target:raiding_marauder
+			if = {
+				limit = {
+					has_monthly_income = { resource = minerals value <= 200 }
+				}
+				if = {
+					limit = {
+						has_monthly_income = { resource = minerals value <= 150 }
+					}
+					if = {
+						limit = {
+							has_monthly_income = { resource = minerals value <= 100 }
+						}
+						if = {
+							limit = {
+								has_monthly_income = { resource = minerals value <= 50 }
+							}
+							set_country_flag = marauder_tribute_1@event_target:raiding_marauder
+						}
+						else = {
+							set_country_flag = marauder_tribute_2@event_target:raiding_marauder
+						}
+					}
+					else = {
+						set_country_flag = marauder_tribute_3@event_target:raiding_marauder
+					}
+				}
+				else = {
+					set_country_flag = marauder_tribute_4@event_target:raiding_marauder
+				}
+			}
+			else = {
+				set_country_flag = marauder_tribute_5@event_target:raiding_marauder
+			}
 		}
 		else = {
 			set_country_flag = marauder_tribute_6@event_target:raiding_marauder
@@ -4677,8 +4685,8 @@ country_event = {
 					event_target:raiding_marauder = {
 						has_country_flag = raid_cooldown
 						NOT = { has_country_flag = raid_ongoing }
-						exists = event_target:marauder_raiding_country
 					}
+					exists = event_target:marauder_raiding_country
 				}
 				remove_country_flag = raid_target_of@event_target:raiding_marauder
 				remove_country_flag = under_marauder_attack
@@ -4699,7 +4707,7 @@ country_event = {
 						# 	remove_country_flag = hired@prev
 						# }
 					}
-					random_owned_fleet = {
+					every_owned_fleet = {
 						limit = { has_fleet_flag = raiding_fleet }
 						delete_fleet = this
 					}
@@ -6456,20 +6464,15 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		years_passed >= 50
+		years_passed > 50 # TODO should be dynamic
 		any_playable_country = {
 			is_ai = yes
-			NOR = {
-				is_homicidal = yes
-				is_genocidal_infernal = yes
-			}
 			any_rival_country = {
 				NOR = {
 					has_country_flag = under_marauder_attack
 					has_country_flag = target_of_hired_ai_raid
 				}
 			}
-			resource_stockpile_compare = { resource = energy value >= 5000 }
 			any_relation = {
 				is_country_type = dormant_marauders
 				has_communications = prev
@@ -6477,6 +6480,11 @@ event = {
 					has_country_flag = raid_ongoing
 					has_country_flag = raid_cooldown
 				}
+			}
+			NOR = {
+				is_homicidal = yes
+				is_genocidal_infernal = yes
+				resource_stockpile_compare = { resource = energy value < 5000 }
 			}
 		}
 	}
@@ -6487,13 +6495,6 @@ event = {
 		random_playable_country = {
 			limit = {
 				is_ai = yes
-				NOR = {
-					is_homicidal = yes
-					is_genocidal_infernal = yes
-					has_ai_personality = honorbound_warriors
-					has_ai_personality = xenophobic_isolationists
-					resource_stockpile_compare = { resource = energy value < 5000 }
-				}
 				any_rival_country = {
 					NOR = {
 						has_country_flag = under_marauder_attack
@@ -6507,6 +6508,13 @@ event = {
 						has_country_flag = raid_ongoing
 						has_country_flag = raid_cooldown
 					}
+				}
+				NOR = {
+					is_homicidal = yes
+					is_genocidal_infernal = yes
+					has_ai_personality = honorbound_warriors
+					has_ai_personality = xenophobic_isolationists
+					resource_stockpile_compare = { resource = energy value < 5000 }
 				}
 			}
 			save_event_target_as = hired_marauders
@@ -7390,6 +7398,7 @@ country_event = {
 		set_name = random
 		# 	#room_name_override = "ethic_spaceship_room"
 		# }
+		set_variable = { which = CmtVarKhanRemainingLive value = 1 } # Compat with CM mods, more lives
 		unlock_council_selection = yes
 		unlock_council_slots = 1
 		### Admiral Khan
@@ -8239,7 +8248,7 @@ country_event = {
 		exists = leader
 		leader = { has_leader_flag = great_khan }
 		NOT = { has_country_flag = great_khan_defeated_temp } # Omit double call - possible superfluous
-		# NOT = { has_global_flag = great_khan_defeated_once } Khan can have more lives now
+		# NOT = { has_global_flag = great_khan_defeated_once } Khan can have more than 2 lives now
 		fromfrom = {
 			# OR = {
 			# 	AND = {
@@ -8278,7 +8287,7 @@ country_event = {
 	}
 
 	immediate = { # set_global_flag not needed
-		change_variable = { which = "CmtVarKhanRemainingLive" value = -1 } # # Not global_event_country
+		change_variable = { which = "CmtVarKhanRemainingLive" value = -1 }
 		if = {
 			limit = { exists = from }
 			from = {
@@ -8289,10 +8298,10 @@ country_event = {
 		if = { # .505 BUT NOT DIE.
 			limit = {
 				NOR = {
-					check_variable = { which = "CmtVarKhanRemainingLive" value <= -1.5 } # # Not global_event_country
+					check_variable = { which = "CmtVarKhanRemainingLive" value <= -1.5 }
 					AND = {
 						has_country_flag = great_khan_defeated_once
-						check_variable = { which = "CmtVarKhanRemainingLive" value < 0 } # # Not global_event_country
+						check_variable = { which = "CmtVarKhanRemainingLive" value < 0 }
 					}
 				}
 			}
@@ -12408,13 +12417,13 @@ country_event = {
 			name_list = random
 			# name = random
 			species = event_target:restored_marauders
-			type = dormant_marauders
+			# type = dormant_marauders
 			civics = {
 				civic = civic_anarcho_tribalism
 				civic = civic_slaver_guilds
 				civic = random
 			}
-			origin = origin_khan_successor
+			# origin = origin_khan_successor
 			flag = event_target:restored_marauders
 			ethos = {
 				ethic = ethic_fanatic_militarist
@@ -12423,10 +12432,12 @@ country_event = {
 			ignore_initial_colony_error = yes
 			day_zero_contact = no
 			exclude_day_zero_contact = root
-			released_by_country = root
+			# released_by_country = root
 			released_from_country = root
 			effect = {
 				save_event_target_as = restored_marauders
+				set_country_type = dormant_marauders
+				set_origin = origin_khan_successor
 			}
 		}
 		## Find multiple Marauder Capital Systems (Great Great Khan or conquered at great loss).

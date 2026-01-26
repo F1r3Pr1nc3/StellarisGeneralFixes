@@ -74,6 +74,7 @@ is_free_robot = {
 # should always match country_has_shackled_robots
 # The pop is a non-free robot
 is_shackled_robot = {
+	optimize_memory
 	has_trait = trait_mechanical
 	exists = owner
 	owner = { # Vfix
@@ -92,6 +93,7 @@ is_shackled_robot = {
 
 # make sure this means the same as is_shackled_robot
 country_has_shackled_robots = {
+	optimize_memory
 	NOR = {
 		is_mechanical_empire = yes
 		AND = {
@@ -109,6 +111,7 @@ country_has_shackled_robots = {
 
 # The pop is a non-sapient robot
 is_non_sapient_robot = {
+	optimize_memory
 	has_trait = trait_mechanical
 	exists = owner
 	owner = { # Vfix
@@ -252,20 +255,12 @@ wears_clothes = {
 }
 
 is_fallen_empire_hive = {
-	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-	}
-
+	is_fallen_empire = yes
 	is_hive_empire = yes
 }
 
 is_fallen_empire_machine = {
-	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-	}
-
+	is_fallen_empire = yes
 	is_machine_empire = yes
 }
 
@@ -275,38 +270,22 @@ is_fallen_empire_berserk_machine = {
 }
 
 is_fallen_empire_materialist = {
-	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-	}
-
+	is_fallen_empire = yes
 	has_ethic = ethic_fanatic_materialist
 }
 
 is_fallen_empire_spiritualist = {
-	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-	}
-
+	is_fallen_empire = yes
 	has_ethic = ethic_fanatic_spiritualist
 }
 
 is_fallen_empire_xenophobe = {
-	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-	}
-
+	is_fallen_empire = yes
 	has_ethic = ethic_fanatic_xenophobe
 }
 
 is_fallen_empire_xenophile = {
-	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-	}
-
+	is_fallen_empire = yes
 	has_ethic = ethic_fanatic_xenophile
 }
 
@@ -414,7 +393,6 @@ has_apocalypse_dlc = {
 }
 
 has_space_monster_dlc = {
-	optimize_memory
 	OR = {
 		host_has_dlc = "Leviathans Story Pack" # Ether Drake
 		host_has_dlc = "Distant Stars Story Pack" # Tiyanki Martriarch, Voidspawn
@@ -536,8 +514,7 @@ uninhabitable_regular_planet = {
 
 colonizable_planet = {
 	OR = {
-		is_planet_class = pc_city
-		is_planet_class = pc_relic
+		is_urban_planet = yes
 		is_planet_class = pc_nuked
 		is_planet_class = pc_hive
 		is_planet_class = pc_machine
@@ -549,8 +526,7 @@ colonizable_planet = {
 habitable_planet = {
 	OR = {
 		habitable_planet_not_urban = yes
-		is_planet_class = pc_relic
-		is_planet_class = pc_city
+		is_urban_planet = yes
 	}
 }
 
@@ -801,7 +777,7 @@ can_be_soldier = {
 allows_slavery = {
 	OR = {
 		has_policy_flag = slavery_allowed
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 	}
 }
 
@@ -809,7 +785,7 @@ allows_purge = {
 	OR = {
 		has_policy_flag = purge_allowed
 		has_policy_flag = purge_displacement_only # Vfix Ariphaos?
-		has_ethic = ethic_gestalt_consciousness
+		is_gestalt = yes
 		has_valid_civic = civic_fanatic_purifiers
 	}
 }
@@ -1030,8 +1006,7 @@ is_disconnected_machine_pop = {
 
 	from = {
 		NOR = {
-			is_machine_empire = yes
-			is_fallen_empire = yes
+			is_fallen_empire_machine = yes
 			is_individual_machine = yes
 		}
 	}
@@ -1284,8 +1259,7 @@ is_trinary_star = {
 planet_can_be_liberated_from_owner = {
 	owner = {
 		NOR = {
-			is_country_type = awakened_fallen_empire
-			is_country_type = fallen_empire
+			is_fallen_empire = yes
 			is_hive_empire = yes
 			is_machine_empire = yes
 		}
@@ -1323,17 +1297,12 @@ is_mechanical_empire = {
 
 is_robot_empire = {
 	OR = {
-		owner_species = {
-			OR = {
-				has_trait = trait_mechanical
-				has_trait = trait_machine_unit
-			}
-		}
-		has_country_flag = synthetic_empire
-		is_machine_empire = yes
+		is_robotic_species = yes # Vfix flex
+		is_synthetic_empire = yes
 	}
 }
 
+# DEPRECATED: replaced with is_robotic_species
 # Scopes: country, leader, pop, army, (colony) ship
 is_mechanical_species = {
 	species = {
@@ -1690,8 +1659,12 @@ is_wilderness_empire = {
 }
 
 is_infernal_empire = {
+	optimize_memory # Vfix opt
 	exists = owner_species # Vfix
-	owner_species = { is_infernal = yes }
+	owner_species = {
+		# is_infernal = yes
+		has_trait = trait_infernal
+	}
 }
 
 is_lithoid_or_infernal_empire = {
@@ -1889,56 +1862,39 @@ has_total_war_cb = {
 	OR = {
 		# attacker checks
 		AND = {
-			OR = {
-				is_country_type = default
-				is_country_type = awakened_fallen_empire
-				is_country_type = fallen_empire
-			}
+			is_default_or_fallen = yes # Vfix flex
 			OR = {
 				is_country_type = awakened_fallen_empire
 				has_valid_civic = civic_hive_devouring_swarm
-				has_menace_perk = menp_behemoth_ever_hungry
-				has_valid_civic = civic_machine_assimilator
 				has_valid_civic = civic_scorched_earth
 				has_valid_civic = civic_hive_scorched_earth
+				has_menace_perk = menp_behemoth_ever_hungry
 				AND = {
 					has_valid_civic = civic_machine_terminator
 					from = {
-						NOR = {
-							has_country_flag = synthetic_empire
-							is_machine_empire = yes
-							is_individual_machine = yes
-						}
+						is_synthetic_empire = no # Vfix flex
 					}
 				}
 				AND = {
 					has_valid_civic = civic_fanatic_purifiers
 					NOT = { is_same_species = from }
 				}
+				has_valid_civic = civic_machine_assimilator
 			}
 		}
 		# end threat checks
 		AND = {
 			is_country_type = default
 			NOR = {
-				is_country_type = awakened_fallen_empire
-				has_valid_civic = civic_fanatic_purifiers
-				has_valid_civic = civic_hive_devouring_swarm
+				# is_country_type = awakened_fallen_empire # Vfix opt
+				is_homicidal = yes # Vfix: menp_behemoth_ever_hungry already allowd to attack everyone
 				has_valid_civic = civic_machine_assimilator
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_scorched_earth
-				has_valid_civic = civic_hive_scorched_earth
 			}
 			from = {
 				OR = {
 					is_country_type = awakened_fallen_empire
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_hive_devouring_swarm
+					is_homicidal = yes # Vfix flex
 					has_valid_civic = civic_machine_assimilator
-					has_valid_civic = civic_machine_terminator
-					has_valid_civic = civic_scorched_earth
-					has_valid_civic = civic_hive_scorched_earth
-					has_menace_perk = menp_behemoth_ever_hungry
 				}
 			}
 		}
@@ -2384,6 +2340,7 @@ can_have_exotic_gases_deposits = {
 }
 
 is_fallen_empire = {
+	optimize_memory
 	OR = {
 		is_country_type = fallen_empire
 		is_country_type = awakened_fallen_empire
@@ -3407,6 +3364,7 @@ is_valid_crystal_splitter_system = {
 
 # Vfix opt
 basic_eligibility_for_separatism_joining_trigger = {
+	optimize_memory
 	is_country_type = default
 	has_communications = event_target:revolt_situation.owner
 	OR = {
@@ -4050,6 +4008,7 @@ is_organic_controllable_ship = {
 }
 
 is_organic_ship = {
+	optimize_memory
 	OR = {
 		is_ship_category = bio_ship
 		is_ship_category = space_amoeba
@@ -4088,6 +4047,7 @@ is_organic_ship = {
 
 # Vfix opt
 ai_should_build_habitats = {
+	optimize_memory
 	is_country_type = default
 	NAND = {
 		is_at_war = yes
@@ -4735,6 +4695,7 @@ system_has_storm_repelling_tech = {
 }
 
 system_has_storm_attraction_tech = {
+	has_owner = yes
 	OR = {
 		any_system_planet = {
 			OR = {
@@ -4766,6 +4727,7 @@ blocks_minister_of_state = {
 }
 
 is_terraforming_candidate = {
+	optimize_memory # Vfix opt
 	OR = {
 		has_modifier = terraforming_candidate
 		has_modifier = frozen_terraforming_candidate
@@ -5010,6 +4972,7 @@ is_illegal_criminal = {
 }
 
 weapon_tech_increased = {
+	optimize_memory
 	OR = {
 		#		last_increased_tech = tech_mass_drivers_1			# Starting Tech
 		last_increased_tech = tech_mass_drivers_2
@@ -5212,14 +5175,14 @@ has_natural_blocker = {
 }
 
 can_talk_to_prethoryn = {
-	OR = {
+	OR = { # Vfix opt minor
+		has_menace_perk = menp_behemoth_mind_meld
 		owner_species = {
 			OR = {
 				is_psionic_species = yes
 				has_trait = trait_hive_mind
 			}
 		}
-		has_menace_perk = menp_behemoth_mind_meld
 	}
 }
 

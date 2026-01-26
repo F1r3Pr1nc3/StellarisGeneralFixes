@@ -2274,6 +2274,7 @@ country_event = {
 
 	desc = {
 		trigger = {
+			exists = event_target:elderly_tiyanki_country
 			any_country = { is_country_type = tiyanki num_fleets > 0 }
 		}
 		text = "galactic_features.367.a.desc"
@@ -2284,10 +2285,10 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { any_country = { is_country_type = tiyanki num_fleets > 0 } }
 			any_system = { has_star_flag = elderly_tiyanki_system }
 			exists = event_target:elderly_tiyanki_fleet
 			exists = event_target:elderly_tiyanki_country
+			NOT = { any_country = { is_country_type = tiyanki num_fleets > 0 } }
 		}
 		text = "galactic_features.367.c.desc"
 	}
@@ -2300,10 +2301,10 @@ country_event = {
 		if = {
 			limit = {
 				NOR = {
-					any_country = { is_country_type = tiyanki num_fleets > 0 }
-					any_system = { has_star_flag = elderly_tiyanki_system }
 					exists = event_target:elderly_tiyanki_fleet
 					exists = event_target:elderly_tiyanki_country
+					any_country = { is_country_type = tiyanki num_fleets > 0 }
+					any_system = { has_star_flag = elderly_tiyanki_system }
 				}
 			}
 			set_global_flag = tiyanki_extinct

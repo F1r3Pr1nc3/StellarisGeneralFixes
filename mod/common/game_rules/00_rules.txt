@@ -670,13 +670,22 @@ can_take_hostile_actions = {
 # This = country, target
 # This rule is a condition for declaring war
 can_declare_war = {
+	hidden_trigger = {
+		exists = root
+		root = {
+			if = {
+				limit = { is_ai = yes }
+				is_at_war = no
+			}
+		}
+	}
 	custom_tooltip = {
 		fail_text = "ACTION_DECLARE_WAR_OVERLORD_ON_SUBJECT"
 		NOT = { has_overlord = root }
 	}
 	if = {
 		limit = {
-			exists = root
+			# exists = root
 			root = {
 				has_policy_flag = no_wars
 				OR = {
@@ -690,13 +699,7 @@ can_declare_war = {
 			always = no
 		}
 	}
-	if = {
-		limit = {
-			exists = root
-			root = { is_ai = yes }
-		}
-		root = { is_at_war = no }
-	}
+
 }
 
 # Root = country
@@ -723,15 +726,15 @@ can_colonize_planet = {
 		fail_text = "COLONIZATION_IMPOSSIBLE_DYSON_SPHERE_CONSTRUCTION"
 		if = {
 			limit = {
-				system_has_dyson_sphere = no
 				is_artificial = no # Colonizing habitats is fine
+				system_has_dyson_sphere = no
 			}
 			NOT = { solar_system = { has_star_flag = dyson_sphere_construction } }
 		}
 	}
 	custom_tooltip = {
 		fail_text = "COLONIZATION_IMPOSSIBLE_COSMOGENESIS_EXODUS"
-		exists = root
+		# exists = root
 		NOT = {
 			root = {
 				owner = { has_event_chain = cosmogenesis_planet_pickup_chain }
@@ -749,7 +752,7 @@ can_colonize_planet = {
 		fail_text = "BLANK_STRING"
 		if = {
 			limit = {
-				exists = root
+				# exists = root
 				root = { is_country_type = swarm }
 			}
 			is_artificial = no
@@ -821,6 +824,7 @@ can_terraform_planet = {
 	custom_tooltip = {
 		fail_text = "COLONIZATION_IMPOSSIBLE_WILDERNESS_TECH"
 		OR = {
+			is_planet_class = pc_gaia
 			NAND = {
 				root = {
 					is_wilderness_empire = yes
@@ -841,7 +845,6 @@ can_terraform_planet = {
 					}
 				}
 			}
-			is_planet_class = pc_gaia
 		}
 	}
 }
@@ -1449,13 +1452,13 @@ can_spawn_occupation_armies = {
 # root = country
 system_blocks_sensors = {
 	OR = {
-		is_inside_nebula = yes
 		has_modifier = space_storm
 		has_modifier = zroni_storm
 		has_modifier = queen_scorn_storm
 		has_star_flag = lcluster
 		has_star_flag = sealed_system
 		has_star_flag = storm_system
+		is_inside_nebula = yes
 	}
 }
 

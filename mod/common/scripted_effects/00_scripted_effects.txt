@@ -3407,7 +3407,10 @@ give_tech_option_or_progress_effect = {
 }
 
 # Use in war scope. War is deleted.
+# Prev = war_participant
+# VFix: don't break the loop
 end_war_effect = {
+	# optimize_memory
 	# every_war_participant = {
 	if = { # Is defenders
 		# Because strange log behavior
@@ -3431,7 +3434,7 @@ end_war_effect = {
 			limit = { # Check again all after remove_war_participant.
 				is_scope_valid = yes
 				is_scope_type = war
-				any_attacker = { always = yes }
+				any_attacker = { is_scope_valid = yes }
 				# count_war_participants = {
 				# 	count > 0
 				# 	# limit = { }
