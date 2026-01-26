@@ -7857,7 +7857,11 @@ country_event = {
 		random_owned_fleet = {
 			limit = { is_ship_class = shipclass_military }
 			save_event_target_as = demilitarized_fleet
-			destroy_fleet_naval_cap = { target = this naval_cap = 12 kill_leader = no }
+			destroy_fleet_naval_cap = {
+				target = this
+				naval_cap = 12
+				kill_leader = no
+			}
 		}
 	}
 

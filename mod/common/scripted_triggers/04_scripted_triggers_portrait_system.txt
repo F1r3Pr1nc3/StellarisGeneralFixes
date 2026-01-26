@@ -1,7 +1,7 @@
 # leader, pop or species scope (when called with species scope, from subscope can contain a country species related to)
 has_cybernetization_stage_1 = {
 	if = {
-		limit = { is_scope_type = leader}
+		limit = { is_scope_type = leader }
 		exists = species # Vfix
 		OR = {
 			has_trait = leader_trait_limited_cyborg
@@ -80,10 +80,7 @@ has_biogenesis_evolution_stage_2 = {
 				is_scope_type = pop
 				is_scope_type = pop_group
 			}
-			OR = {
-				is_elite_category = yes
-				is_pop_category = ruler_unemployment
-			}
+			is_elite_category = yes
 		}
 	}
 }

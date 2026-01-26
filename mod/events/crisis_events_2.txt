@@ -103,13 +103,12 @@ country_event = {
 						exists = owner
 						owner = { is_fallen_empire = yes }
 					}
-
-				}
-				NAND = { # Vfix
-					num_cosmic_storms > 0
-					any_cosmic_storm = { is_storm_type = electric_storm }
-					is_inside_storm = yes
-					is_inside_storm = electric_storm
+					AND = { # Vfix
+						num_cosmic_storms > 0
+						any_cosmic_storm = { is_storm_type = electric_storm }
+						is_inside_storm = yes
+						is_inside_storm = electric_storm
+					}
 				}
 			}
 			set_star_flag = extradimensional_origin_system
@@ -1228,12 +1227,12 @@ country_event = {
 					is_binary_star = yes
 					has_star_flag = crisis_spawn_exclude # Vfix
 					has_star_flag = extradimensional_origin_system
-				}
-				NAND = { # Vfix
-					num_cosmic_storms > 0
-					any_cosmic_storm = { is_storm_type = electric_storm }
-					is_inside_storm = yes
-					is_inside_storm = electric_storm
+					AND = { # Vfix
+						num_cosmic_storms > 0
+						any_cosmic_storm = { is_storm_type = electric_storm }
+						is_inside_storm = yes
+						is_inside_storm = electric_storm
+					}
 				}
 			}
 			set_star_flag = extradimensional_second_portal_system
@@ -1728,12 +1727,12 @@ country_event = {
 						has_star_flag = crisis_spawn_exclude # Vfix
 						has_star_flag = extradimensional_origin_system
 						has_star_flag = extradimensional_second_portal_system
-					}
-					NAND = { # Vfix
-						num_cosmic_storms > 0
-						any_cosmic_storm = { is_storm_type = electric_storm }
-						is_inside_storm = yes
-						is_inside_storm = electric_storm
+						AND = { # Vfix
+							num_cosmic_storms > 0
+							any_cosmic_storm = { is_storm_type = electric_storm }
+							is_inside_storm = yes
+							is_inside_storm = electric_storm
+						}
 					}
 				}
 				set_star_flag = extradimensional_third_portal_system
