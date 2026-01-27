@@ -2002,13 +2002,36 @@ country_event = {
 
 	immediate = {
 		set_global_flag = fe_xenophile_asked_brain_scans
+		if = {
+			limit = {
+				NOT = { exists = event_target:DLAF_awoken_homeworld }
+			}
+			random_galaxy_planet = {
+				limit = { has_planet_flag = DLAF_awoken_homeworld }
+				save_event_target_as = DLAF_awoken_homeworld
+			}
+		}
 		create_species = {
 			name = random
-			class = random_non_machine
+			class = FUN # Changed from random_non_machine
 			portrait = random
+			namelist = FUN3 # They will now have the same namelist as the Awoken Robots.
 			traits = random
 			allow_negative_traits = no
 			extra_trait_points = 1
+			effect = {
+				set_species_flag = DLAF_awoken_biological
+				if = {
+					limit = {
+						any_galaxy_planet = { has_planet_flag = DLAF_awoken_homeworld }
+					}
+					random_galaxy_planet = {
+						limit = { has_planet_flag = DLAF_awoken_homeworld }
+						save_event_target_as = DLAF_awoken_homeworld
+					}
+					set_species_homeworld = event_target:DLAF_awoken_homeworld
+				}
+			}
 		}
 		create_country = {
 			name = "NAME_Dead_Species"
