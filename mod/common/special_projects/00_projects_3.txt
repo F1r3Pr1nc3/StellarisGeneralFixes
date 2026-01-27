@@ -1002,31 +1002,12 @@ special_project = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
 						any_planet_within_border = {
-							habitable_planet = yes
-							NOR = {
-								is_colony = yes
-								has_anomaly = yes
-								is_capital = yes
-							}
+							DLAF_is_valid_awoken_colony_trigger = yes
 						}
 						any_system = {
-							NOR = {
-								exists = space_owner
-								has_star_flag = hostile_system
-								has_star_flag = guardian
-								has_star_flag = enclave
-								has_star_flag = primitive_system
-							}
+							DLAF_is_valid_awoken_country_colony_system_trigger = yes
 							any_system_planet = {
-								habitable_planet = yes
-								NOR = {
-									has_owner = yes
-									has_anomaly = yes
-									is_colony = yes
-									is_capital = yes
-									exists = owner
-									exists = controller
-								}
+								DLAF_is_valid_awoken_colony_trigger = yes
 							}
 						}
 					}
@@ -1037,16 +1018,7 @@ special_project = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
 						any_planet_within_border = {
-							habitable_planet = yes
-							NOR = {
-								has_owner = yes
-								has_anomaly = yes
-								is_colony = yes
-								is_capital = yes
-								is_under_colonization = yes
-								exists = owner
-								exists = controller
-							}
+							DLAF_is_valid_awoken_colony_trigger = yes
 						}
 					}
 					country_event = { id = anomaly.1198 }
@@ -1054,26 +1026,12 @@ special_project = {
 			# There are colonizable planets outside borders only
 				else_if = {
 					limit = {
-						has_technology = tech_droid_workers
+						#has_technology = tech_droid_workers # This was preventing Individualist Machines but they are now accounted for later on.
 						NOT = { has_policy_flag = ai_outlawed }
 						any_system = {
-							NOR = {
-								exists = space_owner
-								has_star_flag = hostile_system
-								has_star_flag = guardian
-								has_star_flag = enclave
-								has_star_flag = primitive_system
-							}
+							DLAF_is_valid_awoken_country_colony_system_trigger = yes
 							any_system_planet = {
-								habitable_planet = yes
-								NOR = {
-									has_anomaly = yes
-									is_colony = yes
-									is_capital = yes
-									exists = owner
-									exists = controller
-									has_modifier = "holy_planet"
-								}
+								DLAF_is_valid_awoken_colony_trigger = yes
 							}
 						}
 					}
@@ -1093,32 +1051,12 @@ special_project = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
 						any_planet_within_border = {
-							habitable_planet = yes
-							NOR = {
-								is_colony = yes
-								has_anomaly = yes
-								is_capital = yes
-							}
+							DLAF_is_valid_awoken_colony_trigger = yes
 						}
 						any_system = {
-							NOR = {
-								exists = space_owner
-								has_star_flag = hostile_system
-								has_star_flag = guardian
-								has_star_flag = enclave
-								has_star_flag = primitive_system
-							}
+							DLAF_is_valid_awoken_country_colony_system_trigger = yes
 							any_system_planet = {
-								habitable_planet = yes
-								NOR = {
-									has_owner = yes
-									has_anomaly = yes
-									is_colony = yes
-									is_capital = yes
-									exists = owner
-									exists = controller
-									has_modifier = "holy_planet"
-								}
+								DLAF_is_valid_awoken_colony_trigger = yes
 							}
 						}
 					}
@@ -1129,16 +1067,7 @@ special_project = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
 						any_planet_within_border = {
-							habitable_planet = yes
-							NOR = {
-								has_owner = yes
-								has_anomaly = yes
-								is_colony = yes
-								is_capital = yes
-								is_under_colonization = yes
-								exists = owner
-								exists = controller
-							}
+							DLAF_is_valid_awoken_colony_trigger = yes
 						}
 					}
 					country_event = { id = anomaly.1198 }
@@ -1146,26 +1075,12 @@ special_project = {
 				# There are colonizeable planets outside borders only
 				else_if = {
 					limit = {
-						has_technology = tech_droid_workers
+						#has_technology = tech_droid_workers # This was preventing Individualist Machines but they are now accounted for later on.
 						NOT = { has_policy_flag = ai_outlawed }
 						any_system = {
-							NOR = {
-								exists = space_owner
-								has_star_flag = hostile_system
-								has_star_flag = guardian
-								has_star_flag = enclave
-								has_star_flag = primitive_system
-							}
+							DLAF_is_valid_awoken_country_colony_system_trigger = yes
 							any_system_planet = {
-								habitable_planet = yes
-								NOR = {
-									has_anomaly = yes
-									is_colony = yes
-									is_capital = yes
-									exists = owner
-									exists = controller
-									has_modifier = "holy_planet"
-								}
+								DLAF_is_valid_awoken_colony_trigger = yes
 							}
 						}
 					}
