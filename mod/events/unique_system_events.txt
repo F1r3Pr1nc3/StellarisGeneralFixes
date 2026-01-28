@@ -1,15 +1,15 @@
-#################################
-#								#
-# Unique System Events			#
-#								#
-# Written by Joachim Holmsen	#
-#								#
-#################################
+#########################################
+#										#
+#	 Unique System Events				#
+#										#
+#	 Written by Joachim Holmsen			#
+#	 Patched by Dux 27/01/2026	#
+#										#
+#########################################
 
 namespace = unique
 
 ### Larion Arc Site
-
 # Crashed Ship
 fleet_event = {
 	id = unique.1
@@ -605,7 +605,6 @@ country_event = {
 }
 
 ### Zevox Arc Site
-
 # Log - Part 1
 fleet_event = {
 	id = unique.50
@@ -1067,22 +1066,10 @@ country_event = {
 						# set_country_flag = synthetic_empire # Not needed for Individualist Machines.
 						set_policy = { policy = artificial_intelligence_policy option = ai_full_rights }
 						## Techs no longer necessary for Individualist Machines.
-						# give_technology = {
-						#	tech = tech_robotic_workers
-						#	message = no
-						# }
-						# give_technology = {
-						#	tech = tech_droid_workers
-						#	message = no
-						# }
-						# give_technology = {
-						#	tech = tech_synthetic_workers
-						#	message = no
-						# }
-						# give_technology = {
-						#	tech = tech_synthetic_leaders
-						#	message = no
-						# }
+						# give_technology = { tech = tech_robotic_workers message = no }
+						# give_technology = { tech = tech_droid_workers message = no }
+						# give_technology = { tech = tech_synthetic_workers message = no }
+						# give_technology = { tech = tech_synthetic_leaders message = no }
 						copy_techs_from = {
 							target = root
 							except = { # They should not get forbidden techs.

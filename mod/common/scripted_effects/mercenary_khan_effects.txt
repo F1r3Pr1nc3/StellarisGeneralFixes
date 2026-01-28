@@ -163,11 +163,15 @@ create_marauder_fleet = {
 		effect = {
 			random_list = {
 				50 = {
+					modifier = {
+						factor = 0
+						NOT = { exists = event_target:raider_khanate }
+					}
 					set_owner = event_target:raider_khanate
 					if = {
 						limit = {
 							OR = {
-								is_difficulty > 5
+								is_difficulty > 4
 								event_target:global_event_country = {
 									check_variable = { which = CmtVarFleetPower_Khan value > 1.74 }
 								}
@@ -184,6 +188,11 @@ create_marauder_fleet = {
 					}
 				}
 				50 = { # Own ships
+					modifier = {
+						factor = 0
+						exists = event_target:raider_khanate
+						event_target:raider_khanate = { is_same_value = root }
+					}
 					set_owner = root
 					while = {
 						count = 16
@@ -226,7 +235,13 @@ create_marauder_fleet = {
 				distance = 45
 				angle = random
 			}
-			set_home_base = event_target:marauder_rally_point.starbase
+			if = {
+				limit = {
+					exists = event_target:marauder_rally_point.starbase
+					event_target:marauder_rally_point.starbase = { is_owned_by = event_target:raider_khanate }
+				}
+				set_home_base = event_target:marauder_rally_point.starbase
+			}
 		}
 		settings = {
 			uses_naval_capacity = no
@@ -236,7 +251,23 @@ create_marauder_fleet = {
 	}
 
 	last_created_fleet = {
-		set_owner = event_target:raider_khanate
+		if = {
+			limit = {
+				exists = event_target:raider_khanate
+				event_target:raider_khanate = {
+					NOT = { has_country_flag = marauder600_happened }
+				}
+			}
+			set_owner = event_target:raider_khanate
+			last_created_leader = { set_owner = event_target:raider_khanate }
+		}
+		else_if = {
+			limit = {
+				prev = { is_scope_type = country }
+			}
+			set_owner = prev
+			last_created_leader = { set_owner = prevprev }
+		}
 		assign_leader = last_created_leader
 	}
 }

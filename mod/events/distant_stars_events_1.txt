@@ -6518,10 +6518,33 @@ fleet_event = {
 		}
 	}
 
+	# Vfix Patch: Option for Devouring Swarm and EvoPred.
+	option = {
+		name = TASTY
+		exclusive_trigger = {
+			owner = {
+				OR = {
+					has_civic = civic_hive_devouring_swarm
+					has_origin = origin_evolutionary_predators
+				}
+			}
+		}
+	}
+
+	# Vfix Patch: Option for Genocidal Infernals.
+	option = {
+		name = INF_SCUM
+		exclusive_trigger = {
+			owner = { is_genocidal_infernal = yes }
+		}
+	}
+
 	after = {
 		if = {
 			limit = {
-				NOT = { root.solar_system = { has_star_flag = ratling_home_system } }
+				root.solar_system = {
+					NOT = { has_star_flag = ratling_home_system }
+				}
 			}
 			event_target:ratling_capital.solar_system = {
 				root.owner = { set_visited = prev }
@@ -6568,12 +6591,12 @@ ship_event = {
 		}
 	}
 	option = {
-		name = "distar.231.phobe"
+		name = "distar.231.phobe" # Good riddance.
 		exclusive_trigger = {
 			owner = {
 				OR = {
 					is_xenophobe = yes
-					has_civic = civic_machine_terminator
+					is_homicidal = yes # Vfix
 				}
 			}
 		}
@@ -6604,10 +6627,8 @@ country_event = {
 			has_star_flag = ratling_system
 			any_system_planet = {
 				has_planet_flag = ratling_planet
-				NOR = {
-					is_planet_class = "pc_broken"
-					is_planet_class = "pc_shattered"
-				}
+				is_colonizable = yes
+				is_habitable_for_wilderness = yes # Vfix
 			}
 		}
 	}
@@ -6645,16 +6666,12 @@ country_event = {
 			every_system_planet = {
 				limit = {
 					has_planet_flag = ratling_planet
-					NOR = {
-						is_colony = yes
-						is_under_colonization = yes
-						is_planet_class = "pc_broken"
-						is_planet_class = "pc_shattered"
-					}
+					is_colonizable = yes
+					is_habitable_for_wilderness = yes # Vfix
 				}
 				set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 				set_owner = event_target:ratling_pre_space_country
-				add_building = building_junkheap
+				# add_building = building_junkheap # Vfix TODO: Building is auto-destroyed because district_city can't be built by ratlings country.
 				create_pop_group = { species = event_target:ratling_species size = 1000 }
 				while = {
 					count = 4
@@ -6685,7 +6702,7 @@ country_event = {
 		every_playable_country = {
 			establish_communications_no_message = event_target:ratling_pre_space_country
 			establish_contact = {
-				who = event_target:ratling_pre_space_country
+				who = event_target:ratling_pre_space_country # Vfix scope
 				location = this.capital_scope
 			}
 		}
@@ -6871,7 +6888,7 @@ country_event = {
 		exclusive_trigger = {
 			OR = {
 				is_xenophobe = yes
-				has_civic = civic_machine_terminator
+				is_homicidal = yes # Vfix
 			}
 		}
 		event_target:ratling_capital = {
@@ -6977,7 +6994,7 @@ ship_event = {
 			owner = {
 				OR = {
 					is_xenophobe = yes
-					has_civic = civic_machine_terminator
+					is_homicidal = yes # Vfix
 				}
 			}
 		}
@@ -7148,7 +7165,7 @@ country_event = {
 		exclusive_trigger = {
 			OR = {
 				is_xenophobe = yes
-				has_civic = civic_machine_terminator
+				is_homicidal = yes # Vfix
 				has_civic = civic_machine_assimilator
 			}
 		}
@@ -7216,15 +7233,13 @@ country_event = {
 		any_system = {
 			has_star_flag = ratling_system
 			NOT = { any_fleet_in_system = { is_ship_size = constructor is_constructing = starbase } }
-			any_system_colony = {
+			any_system_colony = { # Vfix opt
 				has_owner = yes
 				has_planet_flag = ratling_planet
 				is_owned_by = event_target:ratling_pre_space_country
-				NOR = {
-					has_orbital_bombardment = yes
-					has_ground_combat = yes
-					is_planet_class = "pc_broken"
-				}
+				has_orbital_bombardment = no
+				has_ground_combat = no
+				is_habitable_for_wilderness = yes # Vfix
 			}
 		}
 	}
@@ -7255,12 +7270,12 @@ country_event = {
 			}
 			species = event_target:ratling_species
 			ignore_initial_colony_error = yes
+			day_zero_contact = no # This wasn't needed when added, but I think it should be here just in case.
 			type = default
 			effect = {
-				set_graphical_culture = mammalian_01
+				set_graphical_culture = mammalian_01 # Free ships use reptilian_01 in Vanilla...
 				save_global_event_target_as = ratling_country
 				set_country_flag = ratling_country
-				country_event = { id = distar.20330 days = 1 } # Vfix
 			}
 		}
 		##Prepare the planets
@@ -7274,15 +7289,14 @@ country_event = {
 					has_owner = yes
 					has_planet_flag = ratling_planet
 					is_owned_by = event_target:ratling_pre_space_country
-					NOR = {
-						has_orbital_bombardment = yes
-						has_ground_combat = yes
-						is_planet_class = "pc_broken"
-					}
+					has_orbital_bombardment = no
+					has_ground_combat = no
+					is_habitable_for_wilderness = yes
 				}
+				# Setup ratling colony
 				set_owner = event_target:ratling_country
 				set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-				remove_building = building_junkheap
+				remove_building = building_junkheap # This building gets auto-deleted because ratlings country can't build city districts.
 				clear_blockers = yes
 				remove_all_armies = yes
 				create_pop_group = { species = event_target:ratling_species size = 2500 }
@@ -7310,29 +7324,59 @@ country_event = {
 						district = district_generator
 					}
 				}
-				add_building = building_capital
-				add_building = building_research_lab_1
+				if = {
+					limit = { has_building = building_colony_shelter }
+					remove_building = building_colony_shelter
+				}
+				if = {
+					limit = {
+						NOT = { has_building = building_capital }
+					}
+					add_building = building_capital
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_zone = {
+								zone = zone_research_unity # Replaces building_research_lab_1 and building_bureaucratic_1
+							}
+						}
+					}
+					add_zone = { zone = zone_research_unity replace = yes }
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_zone = {
+								zone = zone_industrial # Replaces building_foundry_1
+							}
+						}
+					}
+					add_zone = { zone = zone_industrial replace = yes }
+				}
+				add_building = { building = building_factory_1 zone = zone_industrial }
 				add_building = building_foundry_1
 				add_building = building_commercial_zone
+				add_building = building_holo_theatres # Vfix patch: Egalitarians get Holo Theatre at game_start.
+				add_building = building_luxury_residence # Vfix patch: Pacifists get Luxury Residences at game_start.
 				add_building = building_food_processing_facility
 				add_building = building_energy_grid
 				add_building = building_mineral_purification_plant
-				add_building = building_bureaucratic_1
+				# add_building = building_bureaucratic_1
 			}
 			##Build Starbases
 			create_starbase = {
 				size = starbase_starhold
 				owner = event_target:ratling_country
 				module = shipyard
+				module = anchorage
+				module = anchorage
+				module = trading_hub
 				building = crew_quarters
-				effect = {
-					set_starbase_module = { slot = 1 module = anchorage }
-					set_starbase_module = { slot = 2 module = anchorage }
-					set_starbase_module = { slot = 3 module = trading_hub }
-				}
+				building = resource_silo
 			}
 		}
-		##Destroy old country
+		##Destroy old country and orphaned pops.
 		event_target:ratling_pre_space_country = { destroy_country = yes }
 		# So we don't get "orphaned" pops with no job categories in case of non-Ketling system owners
 		every_system = {
@@ -7376,10 +7420,9 @@ country_event = {
 						has_owner = yes
 						has_planet_flag = ratling_planet
 						is_owned_by = event_target:ratling_country
-						NOR = {
-							planet_size <= 12
-							is_planet_class = "pc_broken"
-						}
+						planet_size > 12
+						habitable_planet = yes
+						is_habitable_for_wilderness = yes
 					}
 					save_global_event_target_as = ratling_capital
 					set_capital = yes
@@ -7387,6 +7430,111 @@ country_event = {
 			}
 		}
 		event_target:ratling_country = {
+			## Vfix TODO Comapre country_event = { id = distar.20330 days = 1 }
+			## Copy technology
+			if = {
+				limit = {
+					any_neighbor_country = {
+						is_scope_valid = yes
+						is_country_type = default
+						NOT = { has_ascension_perk = ap_enigmatic_engineering } # Vfix
+					}
+				}
+				random_neighbor_country = {
+					limit = {
+						is_country_type = default
+						NOT = { has_ascension_perk = ap_enigmatic_engineering }
+					}
+					save_event_target_as = tech_country
+				}
+			}
+			else_if = {
+				limit = {
+					any_playable_country = {
+						NOR = {
+							is_ai = yes
+							has_ascension_perk = ap_enigmatic_engineering
+						}
+					}
+				}
+				random_playable_country = {
+					limit = {
+						NOR = {
+							is_ai = yes
+							has_ascension_perk = ap_enigmatic_engineering
+						}
+					}
+					save_event_target_as = tech_country
+				}
+			}
+			else = {
+				random_playable_country = {
+					limit = {
+						NOT = { has_ascension_perk = ap_enigmatic_engineering }
+					}
+					save_event_target_as = tech_country
+				}
+			}
+			copy_techs_from = {
+				target = event_target:tech_country
+				except = {
+					# Horizon Signal
+					tech_akx_worm_1
+					tech_akx_worm_2
+					tech_akx_worm_3
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_corvettes }
+				}
+				give_technology = { tech = tech_corvettes }
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_torpedoes_1 }
+					event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
+				}
+				give_technology = { tech = tech_torpedoes_1 }
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_starbase_3 }
+				}
+				give_technology = { tech = tech_starbase_3 }
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_destroyers }
+					# event_target:tech_country = { has_technology = tech_weavers }
+				}
+				give_technology = { tech = tech_destroyers }
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_cruisers }
+					# event_target:tech_country = { has_technology = tech_harbingers }
+				}
+				give_technology = { tech = tech_cruisers }
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_battleships }
+					event_target:tech_country = { has_technology = tech_stingers }
+				}
+				give_technology = { tech = tech_battleships }
+			}
+			##Add some new technologies
+			inverted_switch = {
+				trigger = has_technology
+				tech_starbase_2 = { give_technology = { tech = tech_starbase_2 } }
+				tech_starbase_3 = { give_technology = { tech = tech_starbase_3 } }
+				tech_starbase_4 = { give_technology = { tech = tech_starbase_4 } }
+				tech_starbase_5 = { give_technology = { tech = tech_starbase_5 } }
+				tech_power_plant_4 = { give_technology = { tech = tech_power_plant_4 } }
+				tech_mining_3 = { give_technology = { tech = tech_mining_3 } }
+				tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
+			}
 			##Add resources
 			add_resource = {
 				minerals = 7000
@@ -7397,112 +7545,142 @@ country_event = {
 				influence = 1000
 				unity = 27000
 			}
-			event_target:ratling_country = {
-				##Create Mining Stations
-				# Vfix Ariphaos: Handle with .20330
-				# every_planet_within_border = {
-				#	limit = {
-				#		has_deposit_for = shipclass_mining_station
-				#	}
-				#	create_mining_station = { owner = event_target:ratling_country }
-				# }
-				##Create fleets
-				create_fleet = {
-					effect = {
-						set_owner = event_target:ratling_country
-						while = {
-							count = 5
-							create_ship = {
-								name = random
-								random_existing_design = corvette
-								graphical_culture = "reptilian_01"
-							}
+			## Create Mining Stations
+			every_planet_within_border = {
+				limit = {
+					has_deposit_for = shipclass_mining_station
+					has_any_rare_strategic_resource = no
+					has_mining_station = no
+				}
+				create_mining_station = { owner = prev }
+			}
+			##Create fleets
+			create_leader = {
+				class = commander
+				species = event_target:ratling_species
+				name = random
+				sub_type = subclass_commander_admiral
+				randomize_traits = no
+				skill = 3
+				effect = {
+					set_leader_flag = block_council_traits
+					set_leader_flag = block_army_traits
+					set_leader_flag = block_governor_traits
+					set_leader_flag = block_homeworld_traits
+					set_leader_flag = immune_to_negative_traits
+					set_leader_flag = should_not_have_upkeep
+				}
+			}
+			create_fleet = {
+				effect = {
+					set_owner = prev
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							random_existing_design = corvette
+							graphical_culture = "mammalian_01"
+						}
+					}
+					if = {
+						limit = {
+							prev = { has_technology = tech_destroyers }
 						}
 						while = {
-							limit = {
-								owner = { has_technology = tech_destroyers }
-							}
 							count = 4
 							create_ship = {
 								name = random
 								random_existing_design = destroyer
-								graphical_culture = "reptilian_01"
+								graphical_culture = "mammalian_01"
 							}
+						}
+					}
+					if = {
+						limit = {
+							prev = { has_technology = tech_cruisers }
 						}
 						while = {
 							count = 2
-							limit = {
-								owner = { has_technology = tech_cruisers }
-							}
 							create_ship = {
 								name = random
 								random_existing_design = cruiser
-								graphical_culture = "reptilian_01"
+								graphical_culture = "mammalian_01"
 							}
 						}
-						set_location = {
-							target = event_target:ratling_capital
-							distance = 10
-							angle = random
-						}
+					}
+					set_location = {
+						target = event_target:ratling_capital
+						distance = 10
+						angle = random
+					}
+					assign_leader = last_created_leader
+				}
+			}
+			while = {
+				count = 3
+				create_leader = {
+					class = scientist
+					sub_type = survey
+					species = event_target:ratling_species
+					name = random
+					randomize_traits = no
+					skill = 3
+					effect = {
+						set_leader_flag = block_council_traits
+						set_leader_flag = block_homeworld_traits
+						set_leader_flag = block_governor_traits
+						set_leader_flag = immune_to_negative_traits
+						set_leader_flag = should_not_have_upkeep
 					}
 				}
 				create_fleet = {
 					effect = {
-						set_owner = event_target:ratling_country
-						create_ship = {
-							name = random
-							random_existing_design = constructor
-							graphical_culture = "reptilian_01"
-						}
-						set_location = {
-							target = event_target:ratling_capital
-							distance = 10
-							angle = random
-						}
-					}
-				}
-				create_fleet = {
-					effect = {
-						set_owner = event_target:ratling_country
+						set_owner = prev
 						create_ship = {
 							name = random
 							random_existing_design = science
-							graphical_culture = "reptilian_01"
+							graphical_culture = "mammalian_01"
 						}
 						set_location = {
 							target = event_target:ratling_capital
 							distance = 10
 							angle = random
 						}
+						assign_leader = last_created_leader
 					}
 				}
 			}
-			##Add leaders
-			while = {
-				count = 4
-				create_leader = {
-					class = scientist
-					species = event_target:ratling_species
-					name = random
-					skill = 3
-				}
-			}
-			while = {
-				count = 1
-				create_leader = {
-					class = commander
-					species = event_target:ratling_species
-					name = random
-					skill = 3
+			create_fleet = {
+				effect = {
+					set_owner = event_target:ratling_country
+					create_ship = {
+						name = random
+						random_existing_design = constructor
+						graphical_culture = "mammalian_01"
+					}
+					set_location = {
+						target = event_target:ratling_capital
+						distance = 10
+						angle = random
+					}
 				}
 			}
 			create_leader = {
 				class = official
 				species = event_target:ratling_species
 				name = random
+				randomize_traits = no
 				skill = 3
+				effect = {
+					set_leader_flag = block_federation_traits
+					set_leader_flag = block_galcom_traits
+					set_leader_flag = block_council_traits
+					set_leader_flag = immune_to_negative_traits
+					set_leader_flag = should_not_have_upkeep
+				}
 			}
+			event_target:ratling_capital = { assign_leader = last_created_leader }
+			refresh_leader_pool = yes
 		}
 		set_country_flag = spawned_ratling_country
 	}
@@ -7519,49 +7697,48 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		any_system_within_border = {
-			has_owner = yes
-			is_owned_by = event_target:ratling_country
-			root = {
-				intel_level = { level > none system = prev }
+		event_target:ratling_country = { # Vfix opt
+			any_system_within_border = {
+				has_owner = yes
+				root = {
+					intel_level = { level > none system = prev }
+				}
 			}
 		}
 	}
 
 	immediate = {
 		# Get a target system we have sensors into
-		if = {
-			limit = { # Done this way bc intel_level isn't accepting a chained dotscope target...
-				event_target:ratling_country.capital_scope.solar_system = {
-					root = {
-						intel_level = { level > none system = prev }
+		event_target:ratling_country = { # Vfix opt
+			if = {
+				limit = { # Done this way bc intel_level isn't accepting a chained dotscope target...
+					capital_scope.solar_system = {
+						root = {
+							intel_level = { level > none system = prev }
+						}
 					}
 				}
+				capital_scope.solar_system = { save_event_target_as = sensor_ratling_system }
 			}
-			event_target:ratling_country.capital_scope.solar_system = { save_event_target_as = sensor_ratling_system }
-		}
-		else_if = {
-			limit = {
-				any_system_within_border = {
-					has_owner = yes
-					is_owned_by = event_target:ratling_country
-					root = {
-						intel_level = { level > none system = prev }
-					}
-				}
-			}
-			random_system_within_border = {
+			else_if = {
 				limit = {
-					has_owner = yes
-					is_owned_by = event_target:ratling_country
-					root = {
-						intel_level = { level > none system = prev }
+					any_system_within_border = {
+						has_owner = yes
+						root = {
+							intel_level = { level > none system = prev }
+						}
 					}
 				}
-				save_event_target_as = sensor_ratling_system
+				random_system_within_border = {
+					limit = {
+						has_owner = yes
+						root = {
+							intel_level = { level > none system = prev }
+						}
+					}
+					save_event_target_as = sensor_ratling_system
+				}
 			}
-		}
-		else = {
 		}
 	}
 
@@ -7576,14 +7753,6 @@ country_event = {
 				has_civic = civic_machine_terminator
 			}
 		}
-		hidden_effect = {
-			# Auto-establish comms if we researched Ketlings
-			if = {
-				limit = { has_country_flag = researched_ketlings }
-				establish_communications = event_target:ratling_country
-				establish_contact = { who = root location = event_target:sensor_ratling_system }
-			}
-		}
 	}
 	option = {
 		name = MARVELOUS
@@ -7593,19 +7762,19 @@ country_event = {
 				has_civic = civic_machine_servitor
 			}
 		}
-		hidden_effect = {
-			# Auto-establish comms if we researched Ketlings
-			if = {
-				limit = { has_country_flag = researched_ketlings }
-				establish_communications = event_target:ratling_country
-				establish_contact = { who = root location = event_target:sensor_ratling_system }
-			}
-		}
 	}
 	option = {
 		name = TASTY
-		exclusive_trigger = { has_civic = civic_hive_devouring_swarm }
-		hidden_effect = {
+		exclusive_trigger = {
+			OR = {
+				has_civic = civic_hive_devouring_swarm
+				has_origin = origin_evolutionary_predators
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = { # Vfix: Previously the "INTERESTING" option didn't do this.
 			# Auto-establish comms if we researched Ketlings
 			if = {
 				limit = { has_country_flag = researched_ketlings }

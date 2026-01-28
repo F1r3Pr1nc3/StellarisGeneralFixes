@@ -551,20 +551,20 @@ building_holo_theatres = {
 
 	potential = {
 		has_owner = yes
-		NOR = {
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
 		owner = {
 			is_regular_empire = yes
 			NOT = { has_valid_civic = civic_dystopian_society }
 		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+		NOT = { has_building = building_low_tech_capital }
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
 			owner = { is_ai = no }
 			free_amenities < @amenity_ai_limit
 		}
-		NOT = { has_building = building_low_tech_capital }
 	}
 
 	allow = {
@@ -620,14 +620,18 @@ building_hyper_entertainment_forum = {
 		entertainment
 	}
 
-	allow = {
-		is_occupied_flag = no
+	potential = {
 		has_owner = yes
+	}
+
+	allow = {
+		has_owner = yes
+		is_occupied_flag = no
+		owner = { is_regular_empire = yes }
 		NOR = {
 			has_modifier = slave_colony
 			owner = { has_valid_civic = civic_dystopian_society }
 		}
-		owner = { is_regular_empire = yes }
 	}
 
 	destroy_trigger = {
@@ -677,24 +681,28 @@ building_medical_1 = {
 		medical
 	}
 
-	allow = {
+	potential = { # Vfix opt
 		has_owner = yes
-		NOR = {
-			is_occupied_flag = yes
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-			has_building = building_low_tech_capital
-		}
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
 			owner = { is_ai = no }
 			free_amenities < @amenity_ai_limit
 		}
-		owner = {
-			is_regular_empire = yes
-			NOR = {
-				is_individual_machine = yes
-				has_valid_civic = civic_dystopian_society
+	}
+
+	allow = { # Vfix opt
+		# is_regular_empire = yes
+		NOR = {
+			is_occupied_flag = yes
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			has_building = building_low_tech_capital
+			owner = {
+				OR = {
+					is_gestalt = yes
+					is_individual_machine = yes
+					has_valid_civic = civic_dystopian_society
+				}
 			}
 		}
 	}

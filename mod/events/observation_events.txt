@@ -36,8 +36,8 @@ situation_event = {
 					is_artificial = yes
 					has_anomaly = yes
 				}
-				if = {
-					limit = { has_observation_outpost = yes }
+				OR = { # Vfix opt minor
+					has_observation_outpost = no
 					observation_outpost = { has_mission = passive_observation }
 				}
 			}

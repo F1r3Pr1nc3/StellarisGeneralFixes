@@ -1,0 +1,97 @@
+#################################################
+#												#
+# Machine Age DLC Cyberization Situation Events	#
+# Fixed Cyberization by FirePrince 08/02/2025	#
+#												#
+#################################################
+namespace = cyber_patch
+# Temp save fix (delayed)
+country_event = {
+	id = cyber_patch.18
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		has_country_flag = augmentation_center_needed
+		any_owned_planet = {
+			is_colony = yes
+			is_occupied_flag = no
+			has_building = yes
+			has_active_building = building_augmentation_center
+		}
+	}
+	immediate = {
+		remove_country_flag = augmentation_center_needed
+	}
+}
+
+# Temp save fix
+# TODO: Cause unknown
+event = {
+	id = cyber_patch.19
+	hide_window = yes
+	is_triggered_only = yes
+	# fire_only_once = yes
+	trigger = {
+		any_playable_country = {
+			has_tradition = tr_cybernetics_adopt			# Situation Fired by: tr_cybernetics_adopt
+			has_country_flag = augmentation_center_available
+			has_country_flag = augmentation_center_needed
+			OR = {
+				has_country_flag = situation_cyberization_complete
+				has_country_flag = cybernetics_traditions_unlocked
+				AND = {
+					is_hive_empire = no
+					country_has_situation = {
+						SITUATION = situation_cyberization
+					}
+				}
+				AND = {
+					is_hive_empire = yes
+					country_has_situation = {
+						SITUATION = situation_cyberization_hive
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		random_playable_country = {
+			limit = {
+				has_tradition = tr_cybernetics_adopt
+				has_country_flag = augmentation_center_available
+				has_country_flag = augmentation_center_needed
+				OR = {
+					has_country_flag = situation_cyberization_complete
+					has_country_flag = cybernetics_traditions_unlocked
+					AND = {
+						is_hive_empire = no
+						country_has_situation = {
+							SITUATION = situation_cyberization
+						}
+					}
+					AND = {
+						is_hive_empire = yes
+						country_has_situation = {
+							SITUATION = situation_cyberization_hive
+						}
+					}
+				}
+			}
+			weights = {
+				base = 1
+				modifier = { add = 99 is_ai = no }
+				modifier = {
+					add = 99
+					any_owned_planet = {
+						is_colony = yes
+						is_occupied_flag = no
+						has_building = yes
+						has_active_building = building_augmentation_center
+					}
+				}
+			}
+			country_event = { id = cyber.18 days = 3 }
+		}
+	}
+}

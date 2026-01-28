@@ -13552,8 +13552,117 @@ country_event = {
 			}
 			if = {
 				limit = { exists = event_target:marauder_capital }
+				if = {
+					limit = {
+						count_owned_fleet = {
+							count < 4
+							limit = {
+								is_mobile = yes
+								is_civilian = no
+							}
+						}
+					}
+					event_target:marauder_capital = {
+						prev = { create_marauder_fleet = yes }
+					}
+				}
+				# Reduce owned systems / Move fleets home
+				while = {
+					count = 6
+					limit = {
+						count_system_within_border = {
+							count > 3
+						}
+						any_system_within_border = {
+							exists = starbase
+							NOT = { has_star_flag = marauder_system }
+							NAND = {
+								starbase = {
+									has_starbase_size = starbase_marauder
+								}
+								any_fleet_in_system = {
+									exists = owner
+									OR = {
+										is_ship_size = marauder_void_dwelling
+										AND = {
+											is_mobile = yes
+											is_civilian = no
+											is_owned_by = prevprev
+										}
+									}
+								}
+								count_system_colony = { count = 0 }
+								any_neighbor_system = {
+									has_owner = yes
+									is_owned_by = prevprev
+								}
+							}
+						}
+					}
+					random_system_within_border = {
+						limit = {
+							exists = starbase
+							NOT = { has_star_flag = marauder_system }
+							NAND = {
+								starbase = {
+									has_starbase_size = starbase_marauder
+								}
+								any_fleet_in_system = {
+									exists = owner
+									OR = {
+										is_ship_size = marauder_void_dwelling
+										AND = {
+											is_mobile = yes
+											is_civilian = no
+											is_owned_by = prevprev
+										}
+									}
+								}
+								count_system_colony = { count = 0 }
+								any_neighbor_system = {
+									has_owner = yes
+									is_owned_by = prevprev
+								}
+							}
+						}
+						every_orbital_station = {
+							dismantle = yes
+						}
+						every_starbase_in_system = {
+							destroy_fleet = fleet
+						}
+					}
+				}
 				event_target:marauder_capital = {
-					prev = { create_marauder_fleet = yes }
+					save_event_target_as = marauder_system
+				}
+				every_owned_fleet = {
+					limit = {
+						exists = solar_system
+						is_mobile = yes
+						solar_system = {
+							NAND = {
+								exists = starbase
+								starbase = { is_owned_by = prevprevprev }
+							}
+						}
+					}
+					random = {
+						chance = 50
+						event_target:marauder_system = {
+							random_neighbor_system = {
+								limit = {
+									exists = starbase
+									starbase = { is_owned_by = event_target:restored_marauders }
+								}
+								save_event_target_as = marauder_system
+							}
+						}
+					}
+					auto_move_to_planet = {
+						target = event_target:marauder_system
+						clear_auto_move_on_arrival = yes
+					}
 				}
 			}
 		}

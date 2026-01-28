@@ -3621,59 +3621,73 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		country_event = { id = distar.20330 } # Vfix
+	}
+
+	option = {
+		name = distar.2033.a
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier2researchreward
+			min = @tier2researchmin
+			max = @tier2researchmax
+		}
+	}
+	option = {
+		name = distar.2033.b
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier2researchreward
+			min = @tier2researchmin
+			max = @tier2researchmax
+		}
+	}
+}
+
+## Vfix NEW: by Dux
+# Make sure they at least have the tech of their neighbors.
+country_event = {
+	id = distar.20330
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
 		event_target:time_loop_world = {
 			change_pc = pc_desert
 			set_name = "NAME_Gish"
 			clear_planet_modifiers = yes
-			if = {
-				limit = {
-					NOT = { root = { species_portrait = rep16 } }
+			create_species = {
+				name = "NAME_Prikki"
+				plural = "NAME_Prikki"
+				class = REP
+				portrait = rep12
+				namelist = REP4
+				traits = {
+					ideal_planet_class = pc_desert
+					trait = trait_organic # Species now organic
+					trait = trait_industrious
+					trait = trait_solitary
+					trait = trait_decadent
 				}
-				log = "limit passed"
-				create_species = {
-					name = "NAME_Prikki"
-					plural = "NAME_Prikki"
-					class = REP
-					portrait = rep16
-					namelist = REP4
-					traits = {
-						ideal_planet_class = pc_desert
-						trait = trait_industrious
-						trait = trait_solitary
-						trait = trait_decadent
-					}
-					homeworld = this
-					effect = {
-						save_event_target_as = prikki_species
-					}
+				homeworld = this
+				effect = {
+					save_event_target_as = prikki_species
 				}
 			}
-			else_if = {
+			if = {
 				limit = {
-					root = { species_portrait = rep16 }
-				}
-				create_species = {
-					name = "NAME_Prikki"
-					plural = "NAME_Prikki"
-					class = REP
-					portrait = rep12
-					namelist = REP4
-					traits = {
-						ideal_planet_class = pc_desert
-						trait = trait_industrious
-						trait = trait_solitary
-						trait = trait_decadent
-					}
-					homeworld = this
-					effect = {
-						save_event_target_as = prikki_species
+					root = {
+						NOT = { species_portrait = rep16 }
 					}
 				}
+				log = "Prikki portrait limit passed"
+				last_created_species = { change_species_portrait = rep16 }
 			}
 			create_country = {
 				name = "NAME_Prikkiki_Ti"
 				adjective = "NAME_Prikki"
 				authority = random
+				graphical_culture = "reptilian_01" # To prevent issues with bioships.
 				civics = {
 					civic = civic_fanatic_purifiers
 					civic = civic_cutthroat_politics
@@ -3690,17 +3704,23 @@ country_event = {
 					colors = { "teal" "orange" "null" "null" }
 				}
 				type = default
+				day_zero_contact = no # No first contact with fauna, enclaves, or FEs.
+				exclude_day_zero_contact = root # will not establish contact with this country or its federation allies
+				ignore_initial_colony_error = yes # I have absolutely no idea what this does but I'm adding it.
 				effect = {
+					establish_communications_no_message = root
 					save_global_event_target_as = time_loop_country
 					species = { save_global_event_target_as = time_loop_species }
-					establish_communications_no_message = root
+					root = {
+						every_federation_ally = { establish_communications = event_target:time_loop_country }
+					}
 					##Copy technology
 					if = {
 						limit = {
 							any_neighbor_country = {
 								is_scope_valid = yes
 								is_country_type = default
-								NOT = { has_ascension_perk = ap_enigmatic_engineering }
+								NOT = { has_ascension_perk = ap_enigmatic_engineering } # Vfix
 							}
 						}
 						random_neighbor_country = {
@@ -3709,15 +3729,6 @@ country_event = {
 								NOT = { has_ascension_perk = ap_enigmatic_engineering }
 							}
 							save_event_target_as = tech_country
-						}
-						copy_techs_from = {
-							target = event_target:tech_country
-							except = {
-								# Horizon Signal
-								tech_akx_worm_1
-								tech_akx_worm_2
-								tech_akx_worm_3
-							}
 						}
 					}
 					else_if = {
@@ -3738,15 +3749,6 @@ country_event = {
 							}
 							save_event_target_as = tech_country
 						}
-						copy_techs_from = {
-							target = event_target:tech_country
-							except = {
-								# Horizon Signal
-								tech_akx_worm_1
-								tech_akx_worm_2
-								tech_akx_worm_3
-							}
-						}
 					}
 					else = {
 						random_playable_country = {
@@ -3755,65 +3757,66 @@ country_event = {
 							}
 							save_event_target_as = tech_country
 						}
-						copy_techs_from = {
-							target = event_target:tech_country
-							except = {
-								# Horizon Signal
-								tech_akx_worm_1
-								tech_akx_worm_2
-								tech_akx_worm_3
-							}
+					}
+					copy_techs_from = {
+						target = event_target:tech_country
+						except = {
+							# Horizon Signal
+							tech_akx_worm_1
+							tech_akx_worm_2
+							tech_akx_worm_3
 						}
 					}
 					if = {
 						limit = {
-							from = { has_technology = tech_maulers }
+							NOT = { has_technology = tech_corvettes }
 						}
 						give_technology = { tech = tech_corvettes }
+					}
+					if = {
+						limit = {
+							NOT = { has_technology = tech_torpedoes_1 }
+							event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
+						}
 						give_technology = { tech = tech_torpedoes_1 }
 					}
 					if = {
 						limit = {
-							event_target:tech_country = { has_technology = tech_weavers }
+							NOT = { has_technology = tech_starbase_3 }
+						}
+						give_technology = { tech = tech_starbase_3 }
+					}
+					if = {
+						limit = {
+							NOT = { has_technology = tech_destroyers }
+							# event_target:tech_country = { has_technology = tech_weavers }
 						}
 						give_technology = { tech = tech_destroyers }
 					}
 					if = {
 						limit = {
+							NOT = { has_technology = tech_cruisers }
+							# event_target:tech_country = { has_technology = tech_harbingers }
+						}
+						give_technology = { tech = tech_cruisers }
+					}
+					if = {
+						limit = {
+							NOT = { has_technology = tech_battleships }
 							event_target:tech_country = { has_technology = tech_stingers }
 						}
 						give_technology = { tech = tech_battleships }
 					}
-					if = {
-						limit = {
-							event_target:tech_country = { has_technology = tech_harbingers }
-						}
-						give_technology = { tech = tech_cruisers }
-					}
 					##Add some new technologies
 					inverted_switch = {
 						trigger = has_technology
-						tech_starbase_2 = {
-							give_technology = { tech = tech_starbase_2 }
-						}
-						tech_starbase_3 = {
-							give_technology = { tech = tech_starbase_3 }
-						}
-						tech_starbase_4 = {
-							give_technology = { tech = tech_starbase_4 }
-						}
-						tech_starbase_5 = {
-							give_technology = { tech = tech_starbase_5 }
-						}
-						tech_power_plant_4 = {
-							give_technology = { tech = tech_power_plant_4 }
-						}
-						tech_mining_3 = {
-							give_technology = { tech = tech_mining_3 }
-						}
-						tech_power_hub_1 = {
-							give_technology = { tech = tech_power_hub_1 }
-						}
+						tech_starbase_2 = { give_technology = { tech = tech_starbase_2 } }
+						tech_starbase_3 = { give_technology = { tech = tech_starbase_3 } }
+						tech_starbase_4 = { give_technology = { tech = tech_starbase_4 } }
+						tech_starbase_5 = { give_technology = { tech = tech_starbase_5 } }
+						tech_power_plant_4 = { give_technology = { tech = tech_power_plant_4 } }
+						tech_mining_3 = { give_technology = { tech = tech_mining_3 } }
+						tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
 					}
 					##Add resources
 					add_resource = {
@@ -3900,13 +3903,16 @@ country_event = {
 									graphical_culture = "reptilian_01"
 								}
 							}
+							set_location = {
+								target = event_target:time_loop_world
+								distance = 15
+								angle = random
+							}
 						}
 					}
+					refresh_leader_pool = yes # Fixes them having no recruitable leaders for the first 5 years.
 				}
 			}
-			set_owner = event_target:time_loop_country
-			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-			set_capital = yes
 			create_pop_group = {
 				species = event_target:time_loop_species
 				size = 3500
@@ -3936,26 +3942,39 @@ country_event = {
 				}
 			}
 			while = {
-				count = 5
+				count = 6 # +/-1
 				add_district_and_planet_size_if_needed_effect = {
 					district = district_generator
 				}
 			}
-			add_building = building_system_capital
-			add_building = building_research_lab_1
-			add_building = building_foundry_1
+			set_owner = event_target:time_loop_country
+			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
+			set_capital = yes
+			if = {
+				limit = { has_building = building_colony_shelter }
+				remove_building = building_colony_shelter
+			}
+			if = {
+				limit = {
+					NOT = { has_building = building_system_capital }
+				}
+				add_building = building_system_capital
+			}
+			add_zone = { zone = zone_research_unity replace = yes }
+			add_zone = { zone = zone_industrial replace = yes }
+			add_building = { building = building_factory_1 zone = zone_industrial }
+			add_building = building_stronghold # From Militarist Ethics
+			add_building = building_medical_1 # from Xenophobe Ethics
 			add_building = building_food_processing_facility
 			add_building = building_energy_grid
 			add_building = building_mineral_purification_plant
-			add_building = building_bureaucratic_1
-			add_building = building_bureaucratic_1
 			while = {
 				count = 10
 				create_army = {
 					name = random
 					owner = event_target:time_loop_country
 					species = event_target:time_loop_species
-					type = defense_army
+					type = assault_army
 				}
 			}
 			solar_system = {
@@ -4017,56 +4036,10 @@ country_event = {
 			}
 		}
 		last_created_country = {
-			country_event = { id = distar.20330 days = 1 }
-		}
-		establish_communications_no_message = last_created_country
-	}
-
-	option = {
-		name = distar.2033.a
-		add_monthly_resource_mult = {
-			resource = physics_research
-			value = @tier2researchreward
-			min = @tier2researchmin
-			max = @tier2researchmax
-		}
-	}
-	option = {
-		name = distar.2033.b
-		add_monthly_resource_mult = {
-			resource = physics_research
-			value = @tier2researchreward
-			min = @tier2researchmin
-			max = @tier2researchmax
-		}
-	}
-}
-
-# Make sure they at least have the tech of their neighbors.
-country_event = {
-	id = distar.20330
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		##Copy technology
-		if = {
-			limit = {
-				any_neighbor_country = {
-					is_scope_valid = yes
-					is_country_type = default
-					NOT = { has_ascension_perk = ap_enigmatic_engineering }
-				}
-			}
-			random_neighbor_country = {
-				limit = {
-					is_country_type = default
-					NOT = { has_ascension_perk = ap_enigmatic_engineering }
-				}
-				save_event_target_as = tech_country
-			}
+			prev = { establish_communications_no_message = prev }
+			## Copy technology (again)
 			copy_techs_from = {
-				target = event_target:tech_country
+				target = root
 				except = {
 					# Horizon Signal
 					tech_akx_worm_1
@@ -4074,29 +4047,14 @@ country_event = {
 					tech_akx_worm_3
 				}
 			}
-		}
-		if = {
-			limit = {
-				NOT = { has_technology = tech_starbase_3 }
+			## Create Mining Stations
+			every_planet_within_border = {
+				limit = {
+					has_deposit_for = shipclass_mining_station
+					has_mining_station = no
+				}
+				create_mining_station = { owner = prev }
 			}
-			give_technology = { tech = tech_starbase_3 }
-		}
-		if = {
-			limit = {
-				NOT = { has_technology = tech_destroyers }
-			}
-			give_technology = { tech = tech_destroyers }
-		}
-		if = {
-			limit = {
-				NOT = { has_technology = tech_cruisers }
-			}
-			give_technology = { tech = tech_cruisers }
-		}
-		## Create Mining Stations
-		every_planet_within_border = {
-			limit = { has_deposit_for = shipclass_mining_station }
-			create_mining_station = { owner = root }
 		}
 	}
 }
@@ -4117,375 +4075,7 @@ country_event = {
 	}
 
 	immediate = {
-		event_target:time_loop_world = {
-			change_pc = pc_desert
-			set_name = "NAME_Gish"
-			clear_planet_modifiers = yes
-			create_species = {
-				name = "NAME_Prikki"
-				plural = "NAME_Prikki"
-				class = REP
-				portrait = rep16
-				namelist = REP4
-				traits = {
-					ideal_planet_class = pc_desert
-					trait = trait_industrious
-					trait = trait_solitary
-					trait = trait_decadent
-				}
-				homeworld = this
-			}
-			create_country = {
-				name = "NAME_Prikkiki_Ti"
-				authority = random
-				civics = {
-					civic = civic_fanatic_purifiers
-					civic = civic_cutthroat_politics
-				}
-				species = last_created_species
-				ethos = {
-					ethic = ethic_fanatic_xenophobe
-					ethic = ethic_militarist
-				}
-				flag = {
-					icon = { category = "domination" file = "domination_1.dds" }
-					background = { category = backgrounds file = "v.dds" }
-					colors = { "teal" "orange" "null" "null" }
-				}
-				type = default
-				exclude_day_zero_contact = root # will not establish contact with this country or its federation allies
-				effect = {
-					establish_communications_no_message = root
-					save_global_event_target_as = time_loop_country
-					species = { save_global_event_target_as = time_loop_species }
-					root = {
-						every_federation_ally = { establish_communications = event_target:time_loop_country }
-					}
-					##Copy technology
-					if = {
-						limit = {
-							any_neighbor_country = {
-								is_scope_valid = yes
-								is_country_type = default
-								NOT = { has_ascension_perk = ap_enigmatic_engineering }
-							}
-						}
-						random_neighbor_country = {
-							limit = {
-								is_country_type = default
-								NOT = { has_ascension_perk = ap_enigmatic_engineering }
-							}
-							save_event_target_as = tech_country
-						}
-						copy_techs_from = {
-							target = event_target:tech_country
-							except = {
-								# Horizon Signal
-								tech_akx_worm_1
-								tech_akx_worm_2
-								tech_akx_worm_3
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							any_playable_country = {
-								NOR = {
-									is_ai = yes
-									has_ascension_perk = ap_enigmatic_engineering
-								}
-							}
-						}
-						random_playable_country = {
-							limit = {
-								NOR = {
-									is_ai = yes
-									has_ascension_perk = ap_enigmatic_engineering
-								}
-							}
-							save_event_target_as = tech_country
-						}
-						copy_techs_from = {
-							target = event_target:tech_country
-							except = {
-								# Horizon Signal
-								tech_akx_worm_1
-								tech_akx_worm_2
-								tech_akx_worm_3
-							}
-						}
-					}
-					else = {
-						random_playable_country = {
-							limit = {
-								NOT = { has_ascension_perk = ap_enigmatic_engineering }
-							}
-							save_event_target_as = tech_country
-						}
-						copy_techs_from = {
-							target = event_target:tech_country
-							except = {
-								# Horizon Signal
-								tech_akx_worm_1
-								tech_akx_worm_2
-								tech_akx_worm_3
-							}
-						}
-					}
-					if = {
-						limit = {
-							from = { has_technology = tech_maulers }
-						}
-						give_technology = { tech = tech_corvettes }
-						give_technology = { tech = tech_torpedoes_1 }
-					}
-					if = {
-						limit = {
-							event_target:tech_country = { has_technology = tech_weavers }
-						}
-						give_technology = { tech = tech_destroyers }
-					}
-					if = {
-						limit = {
-							event_target:tech_country = { has_technology = tech_stingers }
-						}
-						give_technology = { tech = tech_battleships }
-					}
-					if = {
-						limit = {
-							event_target:tech_country = { has_technology = tech_harbingers }
-						}
-						give_technology = { tech = tech_cruisers }
-					}
-					##Add some new technologies
-					inverted_switch = {
-						trigger = has_technology
-						tech_starbase_2 = {
-							give_technology = { tech = tech_starbase_2 }
-						}
-						tech_starbase_3 = {
-							give_technology = { tech = tech_starbase_3 }
-						}
-						tech_starbase_4 = {
-							give_technology = { tech = tech_starbase_4 }
-						}
-						tech_starbase_5 = {
-							give_technology = { tech = tech_starbase_5 }
-						}
-						tech_power_plant_4 = {
-							give_technology = { tech = tech_power_plant_4 }
-						}
-						tech_mining_3 = {
-							give_technology = { tech = tech_mining_3 }
-						}
-						tech_power_hub_1 = {
-							give_technology = { tech = tech_power_hub_1 }
-						}
-					}
-					##Add resources
-					add_resource = {
-						minerals = 10000
-						energy = 10000
-						food = 3000
-						consumer_goods = 3000
-						alloys = 7000
-						influence = 1000
-						unity = 27000
-					}
-					##Create fleets
-					if = {
-						limit = { has_technology = tech_destroyers }
-						create_fleet = {
-							effect = {
-								set_owner = event_target:time_loop_country
-								while = {
-									count = 8
-									create_ship = {
-										name = random
-										random_existing_design = destroyer
-										graphical_culture = "reptilian_01"
-									}
-								}
-								set_location = {
-									target = event_target:time_loop_world
-									distance = 10
-									angle = random
-								}
-							}
-						}
-					}
-					if = {
-						limit = { has_technology = tech_cruisers }
-						create_fleet = {
-							effect = {
-								set_owner = event_target:time_loop_country
-								while = {
-									count = 6
-									create_ship = {
-										name = random
-										random_existing_design = cruiser
-										graphical_culture = "reptilian_01"
-									}
-								}
-								set_location = {
-									target = event_target:time_loop_world
-									distance = 10
-									angle = random
-								}
-							}
-						}
-					}
-					if = {
-						limit = { has_technology = tech_battleships }
-						create_fleet = {
-							effect = {
-								set_owner = event_target:time_loop_country
-								while = {
-									count = 2
-									create_ship = {
-										name = random
-										random_existing_design = battleship
-										graphical_culture = "reptilian_01"
-									}
-								}
-								set_location = {
-									target = event_target:time_loop_world
-									distance = 10
-									angle = random
-								}
-							}
-						}
-					}
-					create_fleet = {
-						effect = {
-							set_owner = event_target:time_loop_country
-							while = {
-								count = 10
-								create_ship = {
-									name = random
-									random_existing_design = corvette
-									graphical_culture = "reptilian_01"
-								}
-							}
-						}
-					}
-				}
-			}
-			set_owner = event_target:time_loop_country
-			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-			set_capital = yes
-			create_pop_group = {
-				species = event_target:time_loop_species
-				size = 3500
-				ethos = { ethic = ethic_xenophobe }
-			}
-			create_pop_group = {
-				species = event_target:time_loop_species
-				size = 1700
-				ethos = { ethic = ethic_militarist }
-			}
-			while = {
-				count = 3
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_city
-				}
-			}
-			while = {
-				count = 4
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_farming
-				}
-			}
-			while = {
-				count = 4
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_mining
-				}
-			}
-			while = {
-				count = 6
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_generator
-				}
-			}
-			add_building = building_system_capital
-			add_building = building_research_lab_1
-			add_building = building_foundry_1
-			add_building = building_food_processing_facility
-			add_building = building_energy_grid
-			add_building = building_mineral_purification_plant
-			add_building = building_bureaucratic_1
-			add_building = building_bureaucratic_1
-			while = {
-				count = 10
-				create_army = {
-					name = random
-					owner = event_target:time_loop_country
-					species = event_target:time_loop_species
-					type = defense_army
-				}
-			}
-			solar_system = {
-				event_target:time_loop_country = {
-					inverted_switch = {
-						trigger = has_technology
-						tech_starbase_3 = {
-							prev = {
-								create_starbase = {
-									size = starbase_starport
-									module = shipyard
-									module = shipyard
-									owner = event_target:time_loop_country
-								}
-							}
-						}
-						tech_starbase_4 = {
-							prev = {
-								create_starbase = {
-									size = starbase_starhold
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									owner = event_target:time_loop_country
-								}
-							}
-						}
-						tech_starbase_5 = {
-							prev = {
-								create_starbase = {
-									size = starbase_starfortress
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									owner = event_target:time_loop_country
-								}
-							}
-						}
-						default = {
-							prev = {
-								create_starbase = {
-									size = starbase_citadel
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									module = shipyard
-									owner = event_target:time_loop_country
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		last_created_country = {
-			country_event = { id = distar.20330 days = 1 }
-		}
+		country_event = { id = distar.20330 } # Vfix
 	}
 
 	option = {
