@@ -5580,6 +5580,7 @@ country_event = {
 	fire_only_once = yes
 
 	immediate = {
+		from = { save_event_target_as = tech_country }
 		set_country_type = default
 		remove_country_flag = early_space_age
 		change_country_flag = random
@@ -5595,49 +5596,7 @@ country_event = {
 				civic = civic_idealistic_foundation
 			}
 		}
-		copy_techs_from = {
-			target = from
-			except = {
-				# Horizon Signal
-				tech_akx_worm_1
-				tech_akx_worm_2
-				tech_akx_worm_3
-			}
-		}
-		if = {
-			limit = {
-				from = { has_technology = tech_maulers }
-			}
-			give_technology = { tech = tech_corvettes }
-			give_technology = { tech = tech_torpedoes_1 }
-		}
-		if = {
-			limit = {
-				from = { has_technology = tech_weavers }
-			}
-			give_technology = { tech = tech_destroyers }
-		}
-		if = {
-			limit = {
-				from = { has_technology = tech_stingers }
-			}
-			give_technology = { tech = tech_battleships }
-		}
-		if = {
-			limit = {
-				from = { has_technology = tech_harbingers }
-			}
-			give_technology = { tech = tech_cruisers }
-		}
-		add_resource = {
-			minerals = 10000
-			energy = 10000
-			food = 3000
-			consumer_goods = 3000
-			alloys = 7000
-			influence = 1000
-			unity = 27000
-		}
+		inherit_tech_effect = yes # Copy technologies
 		add_resource = {
 			exotic_gases = 500
 			rare_crystals = 500

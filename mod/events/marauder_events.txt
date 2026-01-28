@@ -13570,31 +13570,26 @@ country_event = {
 				while = {
 					count = 6
 					limit = {
-						count_system_within_border = {
-							count > 3
-						}
+						count_system_within_border = { count > 3 }
 						any_system_within_border = {
 							exists = starbase
-							NOT = { has_star_flag = marauder_system }
-							NAND = {
-								starbase = {
-									has_starbase_size = starbase_marauder
-								}
-								any_fleet_in_system = {
-									exists = owner
-									OR = {
-										is_ship_size = marauder_void_dwelling
-										AND = {
-											is_mobile = yes
-											is_civilian = no
-											is_owned_by = prevprev
+							NOR = {
+								has_star_flag = marauder_system
+								AND = {
+									starbase = { has_starbase_size = starbase_marauder }
+									any_fleet_in_system = {
+										exists = owner
+										OR = {
+											is_ship_size = marauder_void_dwelling
+											AND = {
+												is_mobile = yes
+												is_civilian = no
+												is_owned_by = prevprev
+											}
 										}
 									}
-								}
-								count_system_colony = { count = 0 }
-								any_neighbor_system = {
-									has_owner = yes
-									is_owned_by = prevprev
+									count_system_colony = { count = 0 }
+									any_neighbor_system = { has_owner = yes is_owned_by = prevprev }
 								}
 							}
 						}
@@ -13602,40 +13597,31 @@ country_event = {
 					random_system_within_border = {
 						limit = {
 							exists = starbase
-							NOT = { has_star_flag = marauder_system }
-							NAND = {
-								starbase = {
-									has_starbase_size = starbase_marauder
-								}
-								any_fleet_in_system = {
-									exists = owner
-									OR = {
-										is_ship_size = marauder_void_dwelling
-										AND = {
-											is_mobile = yes
-											is_civilian = no
-											is_owned_by = prevprev
+							NOR = {
+								has_star_flag = marauder_system
+								AND = {
+									starbase = { has_starbase_size = starbase_marauder }
+									any_fleet_in_system = {
+										exists = owner
+										OR = {
+											is_ship_size = marauder_void_dwelling
+											AND = {
+												is_mobile = yes
+												is_civilian = no
+												is_owned_by = prevprev
+											}
 										}
 									}
-								}
-								count_system_colony = { count = 0 }
-								any_neighbor_system = {
-									has_owner = yes
-									is_owned_by = prevprev
+									count_system_colony = { count = 0 }
+									any_neighbor_system = { has_owner = yes is_owned_by = prevprev }
 								}
 							}
 						}
-						every_orbital_station = {
-							dismantle = yes
-						}
-						every_starbase_in_system = {
-							destroy_fleet = fleet
-						}
+						every_orbital_station = { dismantle = yes }
+						every_starbase_in_system = { destroy_fleet = fleet }
 					}
 				}
-				event_target:marauder_capital = {
-					save_event_target_as = marauder_system
-				}
+				event_target:marauder_capital = { save_event_target_as = marauder_system }
 				every_owned_fleet = {
 					limit = {
 						exists = solar_system

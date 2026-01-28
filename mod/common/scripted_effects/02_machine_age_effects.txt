@@ -3282,9 +3282,7 @@ arc_welders_start_effect = {
 				}
 			}
 			max_steps = 3
-			origin_spawn_system_effect = {
-				INITIALIZER = arc_welders_construction_system
-			}
+			origin_spawn_system_effect = { INITIALIZER = arc_welders_construction_system }
 			add_extra_hyperlane_to_spawned_system_effect = yes
 		}
 	}
@@ -3305,9 +3303,7 @@ arc_welders_start_effect = {
 		while = {
 			limit = { has_district = district_mining }
 			remove_district = district_mining
-			add_district_and_planet_size_if_needed_effect = {
-				district = district_generator
-			}
+			add_district_and_planet_size_if_needed_effect = { district = district_generator }
 		}
 	}
 }

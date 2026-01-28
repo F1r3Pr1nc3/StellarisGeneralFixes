@@ -208,15 +208,11 @@ generate_slaver_bonus = {
 	set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 	while = {
 		count = 2
-		add_district_and_planet_size_if_needed_effect = {
-			district = district_city
-		}
+		add_district_and_planet_size_if_needed_effect = { district = district_city }
 	}
 	while = {
 		count = 2
-		add_district_and_planet_size_if_needed_effect = {
-			district = district_mining
-		}
+		add_district_and_planet_size_if_needed_effect = { district = district_mining }
 	}
 	add_district_and_planet_size_if_needed_effect = {
 		district = district_generator
@@ -1296,15 +1292,11 @@ setup_fear_of_the_dark_pre_ftl = {
 	}
 	while = {
 		count = 2
-		add_district_and_planet_size_if_needed_effect = {
-			district = district_city
-		}
+		add_district_and_planet_size_if_needed_effect = { district = district_city }
 	}
 	while = {
 		count = 1
-		add_district_and_planet_size_if_needed_effect = {
-			district = district_farming
-		}
+		add_district_and_planet_size_if_needed_effect = { district = district_farming }
 	}
 
 	remove_building = building_colony_shelter
@@ -1414,9 +1406,7 @@ replace_building_with_district_effect = {
 		}
 		while = {
 			count = $NUM_DISTRICTS$
-			add_district_if_possible_effect = {
-				district = $DISTRICT$
-			}
+			add_district_if_possible_effect = { district = $DISTRICT$ }
 		}
 	}
 }
@@ -1430,15 +1420,11 @@ replace_building_with_multiple_districts_effect = {
 		}
 		while = {
 			count = $NUM_DISTRICTS_1$
-			add_district_if_possible_effect = {
-				district = $DISTRICT_1$
-			}
+			add_district_if_possible_effect = { district = $DISTRICT_1$ }
 		}
 		while = {
 			count = $NUM_DISTRICTS_2$
-			add_district_if_possible_effect = {
-				district = $DISTRICT_2$
-			}
+			add_district_if_possible_effect = { district = $DISTRICT_2$ }
 		}
 	}
 }
@@ -2233,49 +2219,31 @@ asteroid_impact_pre_ftl_effect = {
 			trigger = has_pre_ftl_age
 			stone_age = {  }
 			bronze_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = stone_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = stone_age }
 			}
 			iron_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = bronze_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = bronze_age }
 			}
 			late_medieval_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = iron_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = iron_age }
 			}
 			renaissance_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = late_medieval_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = late_medieval_age }
 			}
 			steam_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = renaissance_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = renaissance_age }
 			}
 			industrial_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = steam_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = steam_age }
 			}
 			machine_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = industrial_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = industrial_age }
 			}
 			atomic_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = machine_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = machine_age }
 			}
 			early_space_age = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = atomic_age
-				}
+				set_pre_ftl_age_effect = { PRE_FTL_AGE = atomic_age }
 			}
 		}
 	}

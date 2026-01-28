@@ -1,3 +1,4 @@
+
 DLAF_create_awoken_robot_species = {
 	save_event_target_as = DLAF_spawning_location # Also new_colony, potential_target, and colonized_planet in Vanilla; I hate this workaround, but I'm not messing with the localisation.
 	if = {
@@ -62,14 +63,12 @@ DLAF_create_awoken_robot_species = {
 			}
 		}
 	}
-	
 	event_target:DLAF_awoken_robot_species = {
 		if = {
-			limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+			limit = { has_synthetic_dawn = yes }
 			change_species_characteristics = { portrait = "sd_fun_robot" }
 		}
 	}
-	
 	if = { # This monstrosity is to prevent Neo/High/Ultra Awoken.
 		limit = {
 			OR = {
@@ -101,9 +100,7 @@ DLAF_create_awoken_robot_species = {
 		}
 	}
 	else_if = {
-		limit = {
-			is_planet_class = pc_volcanic
-		}
+		limit = { is_planet_class = pc_volcanic }
 		event_target:DLAF_awoken_robot_species = {
 			change_species_characteristics = {
 				remove_trait = trait_machine_pc_nuked_preference
@@ -122,7 +119,6 @@ DLAF_create_awoken_robot_species = {
 	}
 }
 
-
 DLAF_create_awoken_robot_country = {
 	create_country = {
 		name = "NAME_Awoken"
@@ -136,20 +132,9 @@ DLAF_create_awoken_robot_country = {
 		authority = random
 		civics = random
 		flag = {
-			icon = {
-				category = "blocky"
-				file = "flag_blocky_21.dds"
-			}
-			background = {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors = {
-				"black"
-				"dark_blue"
-				"null"
-				"null"
-			}
+			icon = { category = "blocky" file = "flag_blocky_21.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "black" "dark_blue" "null" "null" }
 		}
 		graphical_culture = fungoid_01 # Fixes bioship issues.
 		day_zero_contact = no # To prevent instant first contacts with spacefauna, enclaves, and FEs.
@@ -157,9 +142,7 @@ DLAF_create_awoken_robot_country = {
 		effect = {
 			establish_communications_no_message = root
 			root = {
-				every_federation_ally = {
-					establish_communications = prevprev
-				}
+				every_federation_ally = { establish_communications = prevprev }
 			}
 			save_event_target_as = awoken_country
 			set_country_flag = limbo_country
@@ -170,7 +153,7 @@ DLAF_create_awoken_robot_country = {
 			}
 			create_leader = {
 				class = random_ruler
-				species = owner_main_species
+				species = owner_species
 				name = random
 				skill = 5
 			}
@@ -212,7 +195,6 @@ DLAF_create_awoken_robot_country = {
 					tech_akx_worm_3
 				}
 			}
-
 			# Granted resources equivalent to 1/5 of what Pre-FTLs get.
 			add_resource = {
 				energy = 100
@@ -226,17 +208,12 @@ DLAF_create_awoken_robot_country = {
 				rare_crystals = 10
 				mult = trigger:years_passed
 			}
-
 			# They are now grateful you saved them.
-			add_opinion_modifier = {
-				modifier = unique_event_savior_opinion_modifier
-				who = root
-			}
+			add_opinion_modifier = { modifier = unique_event_savior_opinion_modifier who = root }
 			add_trust = { # Vanilla trust not always added. Moved here for clarity.
 				amount = 50
 				who = root
 			}
-
 			if = {
 				limit = {
 					root = { has_technology = tech_maulers }
@@ -262,9 +239,8 @@ DLAF_create_awoken_robot_country = {
 				}
 				give_technology = { tech = tech_cruisers }
 			}
-
 			# If released by an Individualist Machine these techs can't be copied and must be granted manually so the Awoken can have an economy.
-			if = { 
+			if = {
 				limit = {
 					NOT = { has_technology = tech_robotic_workers }
 				}
@@ -288,45 +264,29 @@ DLAF_create_awoken_robot_country = {
 				}
 				give_technology = { tech = tech_synthetic_leaders }
 			}
-
 			# Make spacefauna friendly if Awakener is friendly.
 			if = {
 				limit = {
-					root = {
-						has_modifier = pacified_amoebas
-					}
+					root = { has_modifier = pacified_amoebas }
 				}
 				add_modifier = { modifier = pacified_amoebas days = -1 }
 				every_country = {
-					limit = {
-						is_amoeba_country_type = yes
-					}
-					set_faction_hostility = {
-						set_hostile = no
-						set_neutral = yes
-						target = event_target:awoken_country
-					}
+					limit = { is_amoeba_country_type = yes }
+					set_faction_hostility = { set_neutral = yes target = event_target:awoken_country }
 				}
 			}
 			if = {
 				limit = {
-					root = {
-						has_modifier = pacified_crystals
-					}
+					root = { has_modifier = pacified_crystals }
 				}
 				add_modifier = { modifier = pacified_crystals days = -1 }
 				every_country = {
-					limit = {
-						is_crystal_country_type = yes
-					}
-					set_faction_hostility = {
-						set_hostile = no
-						set_neutral = yes
-						target = event_target:awoken_country
-					}
+					limit = { is_crystal_country_type = yes }
+					set_faction_hostility = { set_neutral = yes target = event_target:awoken_country }
 				}
 			}
 			while = { # These make no sense for synths.
+				count = 5 # Just for safety
 				limit = {
 					OR = {
 						has_civic = civic_genetic_identification
@@ -351,15 +311,12 @@ DLAF_create_awoken_robot_country = {
 	}
 }
 
-
 DLAF_spawn_awoken = {
 	if = {
 		limit = {
 			any_system = {
 				DLAF_is_valid_awoken_country_colony_system_trigger = yes # Exported to scripted trigger for consistency.
-				any_system_planet = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 		}
 		random_galaxy_planet = {
@@ -371,15 +328,8 @@ DLAF_spawn_awoken = {
 			}
 			weights = {
 				base = 1
-				modifier = {
-					factor = 2
-					planet_size > 10
-				}
-				modifier = {
-					factor = 2
-					free_district_slots > 6
-				}
-				
+				modifier = { factor = 2 planet_size > 10 }
+				modifier = { factor = 2 free_district_slots > 6 }
 				# Energy is a priority.
 				modifier = {
 					factor = 2
@@ -397,11 +347,7 @@ DLAF_spawn_awoken = {
 						has_modifier = strong_magnetic_field
 					}
 				}
-				modifier = {
-					factor = 0.5
-					has_modifier = energy_poor
-				}
-				
+				modifier = { factor = 0.5 has_modifier = energy_poor }
 				# Minerals also important.
 				modifier = {
 					factor = 2
@@ -429,16 +375,10 @@ DLAF_spawn_awoken = {
 						has_modifier = volcanic_lavafall
 					}
 				}
-				modifier = {
-					factor = 0.5
-					has_modifier = mineral_poor
-				}
+				modifier = { factor = 0.5 has_modifier = mineral_poor }
 			}
 			save_event_target_as = colonized_planet
-			set_surveyed = {
-				surveyed = yes
-				surveyor = root
-			}
+			set_surveyed = { surveyed = yes surveyor = root }
 			prevent_anomaly = yes
 			DLAF_create_awoken_robot_species = yes
 			DLAF_create_awoken_robot_country = yes
@@ -485,30 +425,17 @@ DLAF_spawn_awoken = {
 			}
 			if = {
 				limit = {
-					NOT = {
-						has_zone = { zone = zone_research_unity }
-					}
+					NOT = { has_zone = { zone = zone_research_unity } }
 				}
-				add_zone = {
-					zone = zone_research_unity
-					replace = yes
-				}
+				add_zone = { zone = zone_research_unity replace = yes }
 			}
 			if = {
 				limit = {
-					NOT = {
-						has_zone = { zone = zone_industrial }
-					}
+					NOT = { has_zone = { zone = zone_industrial } }
 				}
-				add_zone = {
-					zone = zone_industrial
-					replace = yes
-				}
+				add_zone = { zone = zone_industrial replace = yes }
 			}
-			add_building = {
-				building = building_factory_1
-				zone = zone_industrial
-			}
+			add_building = { building = building_factory_1 zone = zone_industrial }
 			add_building = building_robot_assembly_plant
 			validate_planet_buildings_and_districts = yes # This should fix incorrect districts if they happen.
 			solar_system = {
@@ -520,13 +447,159 @@ DLAF_spawn_awoken = {
 					building = crew_quarters
 				}
 			}
-			root = { country_event = { id = anomaly.1196 days = 10 } }
+			root = {
+				country_event = { id = anomaly.1196 days = 10 }
+			}
 		}
 	}
 	else = {
 		# There are no colonizable planets outside the player's borders
 		[[ELSE]
-			country_event = { id = anomaly.1195 days = 40 }
+		country_event = { id = anomaly.1195 days = 40 }
 		]
+	}
+}
+
+inherit_tech_effect = {
+	## Copy technologies
+	if = {
+		limit = {
+			NOT = { exists = event_target:tech_country }
+		}
+		if = {
+			limit = {
+				any_neighbor_country = {
+					is_scope_valid = yes
+					is_country_type = default
+					NOT = { has_ascension_perk = ap_enigmatic_engineering } # Vfix
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					is_country_type = default
+					NOT = { has_ascension_perk = ap_enigmatic_engineering }
+				}
+				weights = {
+					base = 1
+					modifier = {
+						factor = 50
+						NOT = { is_same_value = root }
+					}
+				}
+				save_event_target_as = tech_country
+			}
+		}
+		else_if = {
+			limit = {
+				any_playable_country = {
+					NOR = {
+						is_ai = yes
+						has_ascension_perk = ap_enigmatic_engineering
+					}
+				}
+			}
+			random_playable_country = {
+				limit = {
+					NOR = {
+						is_ai = yes
+						has_ascension_perk = ap_enigmatic_engineering
+					}
+				}
+				weights = {
+					base = 1
+					modifier = {
+						factor = 50
+						NOT = { is_same_value = root }
+					}
+				}
+				save_event_target_as = tech_country
+			}
+		}
+		else = {
+			random_playable_country = {
+				limit = {
+					NOT = { has_ascension_perk = ap_enigmatic_engineering }
+				}
+				weights = {
+					base = 1
+					modifier = {
+						factor = 50
+						NOT = { is_same_value = root }
+					}
+				}
+				save_event_target_as = tech_country
+			}
+		}
+	}
+	copy_techs_from = {
+		target = event_target:tech_country
+		except = {
+			# Horizon Signal
+			tech_akx_worm_1
+			tech_akx_worm_2
+			tech_akx_worm_3
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_corvettes }
+		}
+		give_technology = { tech = tech_corvettes }
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_torpedoes_1 }
+			event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
+		}
+		give_technology = { tech = tech_torpedoes_1 }
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_destroyers }
+			event_target:tech_country = { has_technology = tech_weavers }
+		}
+		give_technology = { tech = tech_destroyers }
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_cruisers }
+			event_target:tech_country = { has_technology = tech_harbingers }
+		}
+		give_technology = { tech = tech_cruisers }
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_battleships }
+			event_target:tech_country = { has_technology = tech_stingers }
+		}
+		give_technology = { tech = tech_battleships }
+	}
+	if = {
+		limit = {
+			NOT = { has_technology = tech_starbase_2 }
+		}
+		give_technology = { tech = tech_starbase_2 }
+	}
+
+	## Add some new technologies
+	inverted_switch = {
+		trigger = has_technology
+		tech_starbase_3 = { give_technology = { tech = tech_starbase_3 } }
+		tech_starbase_4 = { give_technology = { tech = tech_starbase_4 } }
+		tech_starbase_5 = { give_technology = { tech = tech_starbase_5 } }
+		tech_power_plant_4 = { give_technology = { tech = tech_power_plant_4 } }
+		tech_mining_3 = { give_technology = { tech = tech_mining_3 } }
+		tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
+	}
+	## Add resources
+
+	add_resource = {
+		minerals = 10000
+		energy = 10000
+		food = 3000
+		consumer_goods = 3000
+		alloys = 7000
+		influence = 1000
+		unity = 27000
 	}
 }

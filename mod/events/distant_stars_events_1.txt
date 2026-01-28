@@ -7276,6 +7276,8 @@ country_event = {
 				set_graphical_culture = mammalian_01 # Free ships use reptilian_01 in Vanilla...
 				save_global_event_target_as = ratling_country
 				set_country_flag = ratling_country
+				## Comapre country_event = { id = distar.20330 days = 1 }
+				inherit_tech_effect = yes # Copy technologies
 			}
 		}
 		##Prepare the planets
@@ -7430,131 +7432,7 @@ country_event = {
 			}
 		}
 		event_target:ratling_country = {
-			## Vfix TODO Comapre country_event = { id = distar.20330 days = 1 }
-			## Copy technology
-			if = {
-				limit = {
-					any_neighbor_country = {
-						is_scope_valid = yes
-						is_country_type = default
-						NOT = { has_ascension_perk = ap_enigmatic_engineering } # Vfix
-					}
-				}
-				random_neighbor_country = {
-					limit = {
-						is_country_type = default
-						NOT = { has_ascension_perk = ap_enigmatic_engineering }
-					}
-					save_event_target_as = tech_country
-				}
-			}
-			else_if = {
-				limit = {
-					any_playable_country = {
-						NOR = {
-							is_ai = yes
-							has_ascension_perk = ap_enigmatic_engineering
-						}
-					}
-				}
-				random_playable_country = {
-					limit = {
-						NOR = {
-							is_ai = yes
-							has_ascension_perk = ap_enigmatic_engineering
-						}
-					}
-					save_event_target_as = tech_country
-				}
-			}
-			else = {
-				random_playable_country = {
-					limit = {
-						NOT = { has_ascension_perk = ap_enigmatic_engineering }
-					}
-					save_event_target_as = tech_country
-				}
-			}
-			copy_techs_from = {
-				target = event_target:tech_country
-				except = {
-					# Horizon Signal
-					tech_akx_worm_1
-					tech_akx_worm_2
-					tech_akx_worm_3
-				}
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_corvettes }
-				}
-				give_technology = { tech = tech_corvettes }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_torpedoes_1 }
-					event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
-				}
-				give_technology = { tech = tech_torpedoes_1 }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_starbase_3 }
-				}
-				give_technology = { tech = tech_starbase_3 }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_destroyers }
-					# event_target:tech_country = { has_technology = tech_weavers }
-				}
-				give_technology = { tech = tech_destroyers }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_cruisers }
-					# event_target:tech_country = { has_technology = tech_harbingers }
-				}
-				give_technology = { tech = tech_cruisers }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_battleships }
-					event_target:tech_country = { has_technology = tech_stingers }
-				}
-				give_technology = { tech = tech_battleships }
-			}
-			##Add some new technologies
-			inverted_switch = {
-				trigger = has_technology
-				tech_starbase_2 = { give_technology = { tech = tech_starbase_2 } }
-				tech_starbase_3 = { give_technology = { tech = tech_starbase_3 } }
-				tech_starbase_4 = { give_technology = { tech = tech_starbase_4 } }
-				tech_starbase_5 = { give_technology = { tech = tech_starbase_5 } }
-				tech_power_plant_4 = { give_technology = { tech = tech_power_plant_4 } }
-				tech_mining_3 = { give_technology = { tech = tech_mining_3 } }
-				tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
-			}
-			##Add resources
-			add_resource = {
-				minerals = 7000
-				energy = 7000
-				food = 3000
-				consumer_goods = 3000
-				alloys = 2000
-				influence = 1000
-				unity = 27000
-			}
-			## Create Mining Stations
-			every_planet_within_border = {
-				limit = {
-					has_deposit_for = shipclass_mining_station
-					has_any_rare_strategic_resource = no
-					has_mining_station = no
-				}
-				create_mining_station = { owner = prev }
-			}
-			##Create fleets
+			## Create fleets
 			create_leader = {
 				class = commander
 				species = event_target:ratling_species
@@ -7681,6 +7559,26 @@ country_event = {
 			}
 			event_target:ratling_capital = { assign_leader = last_created_leader }
 			refresh_leader_pool = yes
+			prev = { establish_communications_no_message = prev }
+			## Copy technologies (again)
+			copy_techs_from = {
+				target = root
+				except = {
+					# Horizon Signal
+					tech_akx_worm_1
+					tech_akx_worm_2
+					tech_akx_worm_3
+				}
+			}
+			## Create Mining Stations
+			every_planet_within_border = {
+				limit = {
+					has_deposit_for = shipclass_mining_station
+					has_any_rare_strategic_resource = no
+					has_mining_station = no
+				}
+				create_mining_station = { owner = prev }
+			}
 		}
 		set_country_flag = spawned_ratling_country
 	}

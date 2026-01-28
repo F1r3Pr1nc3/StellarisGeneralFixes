@@ -2336,6 +2336,7 @@ country_event = {
 		}
 		# Create the demonic incursion species and country
 		create_demon_species_effect = yes
+		save_event_target_as = tech_country
 		create_country = {
 			name = "NAME_Demon_Incursion"
 			adjective = "NAME_Demon_Refugees"
@@ -2369,51 +2370,7 @@ country_event = {
 				}
 				set_origin = origin_demonic_incursion
 				force_add_civic = civic_psionic_sovereign
-				##Copy technology
-				copy_techs_from = {
-					target = root
-					except = {
-						# Horizon Signal
-						tech_akx_worm_1
-						tech_akx_worm_2
-						tech_akx_worm_3
-					}
-				}
-				if = {
-					limit = {
-						from = { has_technology = tech_maulers }
-					}
-					give_technology = { tech = tech_corvettes }
-					give_technology = { tech = tech_torpedoes_1 }
-				}
-				if = {
-					limit = {
-						root = { has_technology = tech_weavers }
-					}
-					give_technology = { tech = tech_destroyers }
-				}
-				if = {
-					limit = {
-						root = { has_technology = tech_stingers }
-					}
-					give_technology = { tech = tech_battleships }
-				}
-				if = {
-					limit = {
-						root = { has_technology = tech_harbingers }
-					}
-					give_technology = { tech = tech_cruisers }
-				}
-				##Add resources
-				add_resource = {
-					minerals = 10000
-					energy = 10000
-					food = 3000
-					consumer_goods = 3000
-					alloys = 7000
-					influence = 1000
-					unity = 27000
-				}
+				inherit_tech_effect = yes # Copy technologies
 				##Create fleets
 				set_variable = { which = num_demon_fleets value = trigger:max_naval_capacity }
 				divide_variable = { which = num_demon_fleets value = 90 }

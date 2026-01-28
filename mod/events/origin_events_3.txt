@@ -5432,48 +5432,14 @@ country_event = {
 			add_opinion_modifier = { modifier = opinion_fotd_allowed_exploration who = root }
 		}
 		hidden_effect = {
+			save_event_target_as = tech_country
 			from = {
 				set_country_flag = primitives_can_into_space
 				set_country_type = default
 				change_country_flag = random
 				set_species_graphical_culture = yes
 				change_government = { authority = random civics = random }
-				copy_techs_from = {
-					target = root
-					except = {
-						# Horizon Signal
-						tech_akx_worm_1
-						tech_akx_worm_2
-						tech_akx_worm_3
-					}
-				}
-				if = {
-					limit = {
-						root = { has_technology = tech_weavers }
-					}
-					give_technology = { tech = tech_destroyers }
-				}
-				if = {
-					limit = {
-						root = { has_technology = tech_stingers }
-					}
-					give_technology = { tech = tech_battleships }
-				}
-				if = {
-					limit = {
-						root = { has_technology = tech_harbingers }
-					}
-					give_technology = { tech = tech_cruisers }
-				}
-				add_resource = {
-					minerals = 10000
-					energy = 10000
-					food = 3000
-					consumer_goods = 3000
-					alloys = 7000
-					influence = 1000
-					unity = 27000
-				}
+				inherit_tech_effect = yes # Copy technologies
 				if = {
 					limit = { has_technology = tech_destroyers }
 					create_fleet = {

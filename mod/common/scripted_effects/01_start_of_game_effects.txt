@@ -2460,30 +2460,20 @@ imperial_origin_start_effect = {
 			}
 			# Start Spawning Systems
 			set_spawn_system_batch = begin
-			origin_spawn_system_effect = {
-				INITIALIZER = overlord_system_init
-			}
+			origin_spawn_system_effect = { INITIALIZER = overlord_system_init }
 			# Main Empire
 			event_target:origin_imperial_homeland.solar_system = {
-				origin_spawn_system_effect = {
-					INITIALIZER = overlord_system_2_init
-				}
-				origin_spawn_system_effect = {
-					INITIALIZER = overlord_system_3_init
-				}
+				origin_spawn_system_effect = { INITIALIZER = overlord_system_2_init }
+				origin_spawn_system_effect = { INITIALIZER = overlord_system_3_init }
 			}
 			# Vassals
 			event_target:imperial_homeland_2.solar_system = {
-				origin_spawn_system_effect = {
-					INITIALIZER = overlord_system_4_init
-				}
+				origin_spawn_system_effect = { INITIALIZER = overlord_system_4_init }
 			}
 			if = {
 				limit = { NOT = { galaxy_size = tiny } }
 				event_target:imperial_homeland_2.solar_system = {
-					origin_spawn_system_effect = {
-						INITIALIZER = overlord_system_5_init
-					}
+					origin_spawn_system_effect = { INITIALIZER = overlord_system_5_init }
 				}
 			}
 			if = {
@@ -2494,9 +2484,7 @@ imperial_origin_start_effect = {
 					}
 				}
 				event_target:imperial_homeland_3.solar_system = {
-					origin_spawn_system_effect = {
-						INITIALIZER = overlord_system_6_init
-					}
+					origin_spawn_system_effect = { INITIALIZER = overlord_system_6_init }
 				}
 			}
 			if = {
@@ -2508,9 +2496,7 @@ imperial_origin_start_effect = {
 					}
 				}
 				event_target:imperial_homeland_3.solar_system = {
-					origin_spawn_system_effect = {
-						INITIALIZER = overlord_system_7_init
-					}
+					origin_spawn_system_effect = { INITIALIZER = overlord_system_7_init }
 				}
 			}
 			set_spawn_system_batch = end
@@ -2558,12 +2544,8 @@ imperial_origin_start_effect = {
 			}
 		}
 		event_target:origin_imperial_homeland.solar_system = {
-			origin_spawn_system_effect = {
-				INITIALIZER = overlord_system_2_init
-			}
-			origin_spawn_system_effect = {
-				INITIALIZER = overlord_system_3_init
-			}
+			origin_spawn_system_effect = { INITIALIZER = overlord_system_2_init }
+			origin_spawn_system_effect = { INITIALIZER = overlord_system_3_init }
 			imperial_origin_start_hyperlane_effect = {
 				ORIGINAL_STAR_SYSTEM = event_target:imperial_homeland_2.solar_system
 				SECOND_STAR_SYSTEM = event_target:origin_imperial_homeland.solar_system
@@ -2698,9 +2680,7 @@ imperial_origin_vassal_backup_effect = {
 	random_system = {
 		limit = { has_star_flag = $SYSTEM_FLAG$ }
 		save_event_target_as = this_system
-		origin_spawn_system_effect = {
-			INITIALIZER = $INITIALIZER$
-		}
+		origin_spawn_system_effect = { INITIALIZER = $INITIALIZER$ }
 		imperial_origin_start_hyperlane_effect = {
 			ORIGINAL_STAR_SYSTEM = $ORIGINAL_STAR_SYSTEM$
 			SECOND_STAR_SYSTEM = event_target:this_system
@@ -3459,25 +3439,17 @@ unplugged_origin_start_effect = {
 		set_spawn_system_batch = end
 		unplugged_origin_mark_exisiting_tomb_worlds_effect = yes
 		unplugged_origin_system_backup_effect = yes
-		unplugged_origin_find_available_machine_legacy_world_effect = {
-			LOCAL_EVENT_TARGET = maker_planet
-		}
+		unplugged_origin_find_available_machine_legacy_world_effect = { LOCAL_EVENT_TARGET = maker_planet }
 		event_target:maker_planet = { save_global_event_target_as = origin_unplugged_maker_planet }
-		unplugged_origin_find_available_machine_legacy_world_effect = {
-			LOCAL_EVENT_TARGET = taken_planet
-		}
+		unplugged_origin_find_available_machine_legacy_world_effect = { LOCAL_EVENT_TARGET = taken_planet }
 		event_target:taken_planet = { save_global_event_target_as = origin_unplugged_taken_planet }
-		unplugged_origin_find_available_machine_legacy_world_effect = {
-			LOCAL_EVENT_TARGET = creators_planet
-		}
+		unplugged_origin_find_available_machine_legacy_world_effect = { LOCAL_EVENT_TARGET = creators_planet }
 		event_target:creators_planet = {
 			save_global_event_target_as = origin_unplugged_creators_planet
 		}
 		every_country = {
 			limit = { has_origin = origin_unplugged }
-			unplugged_origin_find_available_machine_legacy_world_effect = {
-				LOCAL_EVENT_TARGET = unplugged_homeworld
-			}
+			unplugged_origin_find_available_machine_legacy_world_effect = { LOCAL_EVENT_TARGET = unplugged_homeworld }
 			event_target:unplugged_homeworld = {
 				save_global_event_target_as = origin_unplugged_unplugged_planet_@prev
 			}

@@ -4882,7 +4882,9 @@ ship_event = {
 				}
 			}
 			give_specimen = { key = alien_brain_scans }
-			hidden_effect = { set_country_flag = limbo_downloaded } # This option should include the Neural Patterns.
+			hidden_effect = {
+				set_country_flag = limbo_downloaded
+			} # This option should include the Neural Patterns.
 		}
 		ai_chance = { factor = 15 }
 	}
@@ -4918,9 +4920,7 @@ country_event = {
 
 	immediate = {
 		random_planet_within_border = {
-			limit = {
-				DLAF_is_valid_awoken_colony_trigger = yes
-			}
+			limit = { DLAF_is_valid_awoken_colony_trigger = yes }
 			save_event_target_as = new_colony
 		}
 	}
@@ -4931,15 +4931,11 @@ country_event = {
 		custom_tooltip = anomaly.189.a.tooltip
 		trigger = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_planet_within_border = {
-				DLAF_is_valid_awoken_colony_trigger = yes
-			}
+			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_planet_within_border = {
-				DLAF_is_valid_awoken_colony_trigger = yes
-			}
+			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 		}
 		hidden_effect = {
 			event_target:new_colony = {
@@ -4961,18 +4957,14 @@ country_event = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
 				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-				any_system_planet = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
 				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-				any_system_planet = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 		}
 		hidden_effect = {
@@ -5140,14 +5132,10 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				any_planet_within_border = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 			random_planet_within_border = {
-				limit = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				limit = { DLAF_is_valid_awoken_colony_trigger = yes }
 				save_event_target_as = potential_target
 			}
 		}
@@ -5160,16 +5148,12 @@ country_event = {
 		name = anomaly.189.a
 		custom_tooltip = anomaly.189.a.tooltip
 		trigger = {
-			any_planet_within_border = {
-				DLAF_is_valid_awoken_colony_trigger = yes
-			}
+			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 			NOT = { has_policy_flag = ai_outlawed }
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_planet_within_border = {
-				DLAF_is_valid_awoken_colony_trigger = yes
-			}
+			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 		}
 		hidden_effect = {
 			if = {
@@ -5177,9 +5161,7 @@ country_event = {
 					capital_scope = { is_same_value = event_target:potential_target }
 				}
 				random_planet_within_border = {
-					limit = {
-						DLAF_is_valid_awoken_colony_trigger = yes
-					}
+					limit = { DLAF_is_valid_awoken_colony_trigger = yes }
 					save_event_target_as = potential_target
 				}
 			}
@@ -5234,18 +5216,14 @@ country_event = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
 				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-				any_system_planet = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
 				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-				any_system_planet = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 		}
 		hidden_effect = {

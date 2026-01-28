@@ -3714,120 +3714,7 @@ country_event = {
 					root = {
 						every_federation_ally = { establish_communications = event_target:time_loop_country }
 					}
-					##Copy technology
-					if = {
-						limit = {
-							any_neighbor_country = {
-								is_scope_valid = yes
-								is_country_type = default
-								NOT = { has_ascension_perk = ap_enigmatic_engineering } # Vfix
-							}
-						}
-						random_neighbor_country = {
-							limit = {
-								is_country_type = default
-								NOT = { has_ascension_perk = ap_enigmatic_engineering }
-							}
-							save_event_target_as = tech_country
-						}
-					}
-					else_if = {
-						limit = {
-							any_playable_country = {
-								NOR = {
-									is_ai = yes
-									has_ascension_perk = ap_enigmatic_engineering
-								}
-							}
-						}
-						random_playable_country = {
-							limit = {
-								NOR = {
-									is_ai = yes
-									has_ascension_perk = ap_enigmatic_engineering
-								}
-							}
-							save_event_target_as = tech_country
-						}
-					}
-					else = {
-						random_playable_country = {
-							limit = {
-								NOT = { has_ascension_perk = ap_enigmatic_engineering }
-							}
-							save_event_target_as = tech_country
-						}
-					}
-					copy_techs_from = {
-						target = event_target:tech_country
-						except = {
-							# Horizon Signal
-							tech_akx_worm_1
-							tech_akx_worm_2
-							tech_akx_worm_3
-						}
-					}
-					if = {
-						limit = {
-							NOT = { has_technology = tech_corvettes }
-						}
-						give_technology = { tech = tech_corvettes }
-					}
-					if = {
-						limit = {
-							NOT = { has_technology = tech_torpedoes_1 }
-							event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
-						}
-						give_technology = { tech = tech_torpedoes_1 }
-					}
-					if = {
-						limit = {
-							NOT = { has_technology = tech_starbase_3 }
-						}
-						give_technology = { tech = tech_starbase_3 }
-					}
-					if = {
-						limit = {
-							NOT = { has_technology = tech_destroyers }
-							# event_target:tech_country = { has_technology = tech_weavers }
-						}
-						give_technology = { tech = tech_destroyers }
-					}
-					if = {
-						limit = {
-							NOT = { has_technology = tech_cruisers }
-							# event_target:tech_country = { has_technology = tech_harbingers }
-						}
-						give_technology = { tech = tech_cruisers }
-					}
-					if = {
-						limit = {
-							NOT = { has_technology = tech_battleships }
-							event_target:tech_country = { has_technology = tech_stingers }
-						}
-						give_technology = { tech = tech_battleships }
-					}
-					##Add some new technologies
-					inverted_switch = {
-						trigger = has_technology
-						tech_starbase_2 = { give_technology = { tech = tech_starbase_2 } }
-						tech_starbase_3 = { give_technology = { tech = tech_starbase_3 } }
-						tech_starbase_4 = { give_technology = { tech = tech_starbase_4 } }
-						tech_starbase_5 = { give_technology = { tech = tech_starbase_5 } }
-						tech_power_plant_4 = { give_technology = { tech = tech_power_plant_4 } }
-						tech_mining_3 = { give_technology = { tech = tech_mining_3 } }
-						tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
-					}
-					##Add resources
-					add_resource = {
-						minerals = 10000
-						energy = 10000
-						food = 3000
-						consumer_goods = 3000
-						alloys = 7000
-						influence = 1000
-						unity = 27000
-					}
+					inherit_tech_effect = yes # Copy technologies
 					##Create fleets
 					if = {
 						limit = { has_technology = tech_destroyers }
@@ -4037,7 +3924,18 @@ country_event = {
 		}
 		last_created_country = {
 			prev = { establish_communications_no_message = prev }
-			## Copy technology (again)
+			## Copy technologies (again)
+			root = {
+				if = {
+					limit = {
+						NOR = {
+							is_same_value = event_target:tech_country
+							has_ascension_perk = ap_enigmatic_engineering
+						}
+					}
+					save_event_target_as = tech_country
+				}
+			}
 			copy_techs_from = {
 				target = event_target:tech_country
 				except = {
@@ -4051,6 +3949,7 @@ country_event = {
 			every_planet_within_border = {
 				limit = {
 					has_deposit_for = shipclass_mining_station
+					has_any_rare_strategic_resource = no
 					has_mining_station = no
 				}
 				create_mining_station = { owner = prev }
