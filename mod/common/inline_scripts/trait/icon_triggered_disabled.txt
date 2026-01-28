@@ -1,0 +1,34 @@
+# This code is just a modified version of icon_triggered_glow.txt.
+#inline_script = { # It's never going to be a Council trait.
+#	script = trait/subtitle/council_$COUNCIL$
+#	RARITY = $RARITY$
+#	CLASS = $CLASS$
+#}
+inline_script = { # It's never going to be a Council trait.
+	script = trait/subtitle/$RARITY$_trait
+	CLASS = $CLASS$
+}
+icon = {
+	layer = {
+		icon = "GFX_trait_bg"
+		color = "trait_bg_default"
+	}
+#	inline_script = { # It's never going to be a Council trait.
+#		script = trait/icon_element/council_$COUNCIL$
+#		CLASS = $CLASS$
+#	}
+	inline_script = trait/icon_element/rarity_$RARITY$
+	layer = {
+		icon = $ICON$
+		color = "trait_icon_default"
+	}
+    layer = { # This layer must display after everything except the trait-tier.
+		icon = "GFX_trait_disabled"
+		visible = {
+			NOT = { $TRIGGER$ }
+		}
+	}
+    inline_script = trait/icon_element/tier_$TIER$ # This layer must display after GFX_trait_disabled.
+}
+leader_trait_rarity = $RARITY$
+sorting_priority = @trait_sorting_priority_$RARITY$_$COUNCIL$_$TIER$ # This needs @trait_sorting_priority_paragon_triggered_none to be set for the Paragon traits.

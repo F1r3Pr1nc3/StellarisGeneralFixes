@@ -3910,7 +3910,6 @@ country_event = {
 							}
 						}
 					}
-					refresh_leader_pool = yes # Fixes them having no recruitable leaders for the first 5 years.
 				}
 			}
 			create_pop_group = {
@@ -4032,6 +4031,7 @@ country_event = {
 							}
 						}
 					}
+					refresh_leader_pool = yes # Fixes no recruitable leaders. Must occur after they have >= 1 pop.
 				}
 			}
 		}
@@ -4039,7 +4039,7 @@ country_event = {
 			prev = { establish_communications_no_message = prev }
 			## Copy technology (again)
 			copy_techs_from = {
-				target = root
+				target = event_target:tech_country
 				except = {
 					# Horizon Signal
 					tech_akx_worm_1
