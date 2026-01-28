@@ -1,0 +1,24 @@
+larionessi_resurgence_modifier = {
+    # Reduced free income so they don't face deficit after 10 years.
+	country_base_energy_produces_add = 10 # Was 50.
+	country_base_minerals_produces_add = 10 # Was 50.
+	country_base_food_produces_add = 10 # Was 50.
+    
+    # Added free trade to prevent Trade Deficit while they have insufficient pops to man trade-jobs.
+    country_base_trade_produces_add = 10
+    
+    logistic_growth_mult = 1.5 # Was 1.
+    
+    # Additional modifiers for more pops.
+    # In testing the Larionessi grow to ~6500 pops in 10 years.
+    bonus_pop_growth = 3
+    bonus_pop_growth_mult = 1.5
+    
+    # Reduced cost of early expansion.
+    # In testing they expand to ~7 systems in 10 years.
+    starbase_outpost_cost_mult = -0.5
+    shipsize_starbase_outpost_build_speed_mult = 2
+    planet_building_build_speed_mult = 1
+    shipclass_mining_station_build_speed_mult = 1
+    shipclass_research_station_build_speed_mult = 1
+}
