@@ -1,0 +1,43 @@
+# This is just to check if a planet is viable, their spawning is weighted to prefer better candidates.
+DLAF_is_valid_awoken_colony_trigger = {
+	habitable_planet = yes
+	NOR = {
+		exists = owner
+		exists = controller
+		has_anomaly = yes
+		has_modifier = holy_planet
+		has_planet_flag = hive_planet_larion # No spawning a Unique Empire on top of where another one spawns.
+		has_planet_flag = hatchling_egg # No spawning only to die horribly.
+		is_planet_class = pc_cosmogenesis_world # No Lathe.
+		is_planet_class = pc_hive
+		is_planet_class = pc_machine
+		is_planet_class = pc_nanotech
+		
+		has_planet_flag = DLAF_do_not_spawn_here # Purely for other modders.
+	}
+}
+
+# This is just to check if a system is viable, their spawning is weighted to prefer better candidates.
+DLAF_is_valid_awoken_country_colony_system_trigger = {
+	NOR = {
+		exists = space_owner
+		any_fleet_in_system = {
+			exists = controller
+			controller = {
+				is_default_or_fallen = no # Not empires capable of conventional war.
+				is_hostile = root # Awakener.
+			}
+		}
+		has_star_flag = enclave
+		has_star_flag = primitive_system # No primitives who will steal their capital.
+		has_star_flag = lcluster
+		has_star_flag = starlit_sealed_system
+		has_star_flag = crisis_spawn_exclude # formless_system sealed_system surveillance_supercomputer_system chosen_system
+		any_neighbor_system = {
+			exists = owner
+			owner = { has_ai_personality = fallen_empire_xenophobe }
+		}
+		
+		has_star_flag = DLAF_do_not_spawn_here # Purely for other modders.
+	}
+}

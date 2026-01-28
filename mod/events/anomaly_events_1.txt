@@ -4746,6 +4746,10 @@ ship_event = {
 	trackable = yes
 	is_triggered_only = yes
 
+	immediate = {
+		from = { set_planet_flag = DLAF_awoken_homeworld } # Used to set species homeworld for FE-Awoken-Biologicals and Awoken Synths.
+	}
+
 	option = {
 		name = OK
 		from = {
@@ -4830,6 +4834,7 @@ ship_event = {
 					NOT = { has_technology = tech_synthetic_workers }
 					has_policy_flag = ai_outlawed
 					is_spiritualist = yes
+					has_origin = origin_cybernetic_creed
 				}
 			}
 		}
@@ -4853,14 +4858,16 @@ ship_event = {
 			owner = {
 				NOT = { has_origin = origin_synthetic_fertility }
 				OR = {
-					has_technology = tech_synthetic_workers
 					is_individual_machine = yes
+					AND = {
+						has_technology = tech_synthetic_workers
+						OR = {
+							has_origin = origin_cybernetic_creed
+							is_spiritualist = no
+						}
+					}
 				}
 				NOT = { has_policy_flag = ai_outlawed }
-				OR = {
-					is_individual_machine = yes
-					is_spiritualist = no
-				}
 			}
 		}
 		allow = {
@@ -4875,6 +4882,7 @@ ship_event = {
 				}
 			}
 			give_specimen = { key = alien_brain_scans }
+			hidden_effect = { set_country_flag = limbo_downloaded } # This option should include the Neural Patterns.
 		}
 		ai_chance = { factor = 15 }
 	}
@@ -4890,6 +4898,7 @@ ship_event = {
 		owner = {
 			hidden_effect = {
 				change_variable = { which = num_dead_identities value = 500 }
+				set_country_flag = limbo_downloaded # This option should include the Neural Patterns.
 			}
 			give_specimen = { key = alien_brain_scans }
 		}
@@ -4910,12 +4919,7 @@ country_event = {
 	immediate = {
 		random_planet_within_border = {
 			limit = {
-				habitable_planet = yes
-				NOR = {
-					is_colony = yes
-					has_anomaly = yes
-					is_capital = yes
-				}
+				DLAF_is_valid_awoken_colony_trigger = yes
 			}
 			save_event_target_as = new_colony
 		}
@@ -4928,23 +4932,13 @@ country_event = {
 		trigger = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_planet_within_border = {
-				habitable_planet = yes
-				NOR = {
-					is_colony = yes
-					has_anomaly = yes
-					is_capital = yes
-				}
+				DLAF_is_valid_awoken_colony_trigger = yes
 			}
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_planet_within_border = {
-				habitable_planet = yes
-				NOR = {
-					is_colony = yes
-					has_anomaly = yes
-					is_capital = yes
-				}
+				DLAF_is_valid_awoken_colony_trigger = yes
 			}
 		}
 		hidden_effect = {
@@ -4952,15 +4946,8 @@ country_event = {
 				set_owner = root
 				set_controller = root
 				prevent_anomaly = yes
-				create_species = {
-					name = "NAME_Awoken_Robot"
-					plural = "NAME_Awoken_Robot"
-					class = ROBOT
-					namelist = FUN3
-					portrait = "default_robot"
-					traits = { trait = "trait_mechanical" }
-				}
-				create_pop_group = { species = last_created_species size = 300 }
+				DLAF_create_awoken_robot_species = yes
+				create_pop_group = { species = last_created_species size = 600 }
 			}
 		}
 		ai_chance = { factor = 20 }
@@ -4973,38 +4960,18 @@ country_event = {
 		trigger = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
-				NOR = {
-					exists = space_owner
-					has_star_flag = hostile_system
-					has_star_flag = guardian
-					has_star_flag = enclave
-				}
+				DLAF_is_valid_awoken_country_colony_system_trigger = yes
 				any_system_planet = {
-					habitable_planet = yes
-					NOR = {
-						has_anomaly = yes
-						is_colony = yes
-						is_capital = yes
-					}
+					DLAF_is_valid_awoken_colony_trigger = yes
 				}
 			}
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
-				NOR = {
-					exists = space_owner
-					has_star_flag = hostile_system
-					has_star_flag = guardian
-					has_star_flag = enclave
-				}
+				DLAF_is_valid_awoken_country_colony_system_trigger = yes
 				any_system_planet = {
-					habitable_planet = yes
-					NOR = {
-						has_anomaly = yes
-						is_colony = yes
-						is_capital = yes
-					}
+					DLAF_is_valid_awoken_colony_trigger = yes
 				}
 			}
 		}
@@ -5030,188 +4997,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		if = {
-			limit = {
-				any_system = {
-					NOR = {
-						exists = space_owner
-						has_star_flag = hostile_system
-						has_star_flag = guardian
-						has_star_flag = enclave
-						has_star_flag = primitive_system
-					}
-					any_system_planet = {
-						habitable_planet = yes
-						NOR = {
-							has_anomaly = yes
-							is_colony = yes
-							is_capital = yes
-							exists = owner
-							exists = controller
-						}
-					}
-				}
-			}
-			random_system = {
-				limit = {
-					NOR = {
-						exists = space_owner
-						has_star_flag = hostile_system
-						has_star_flag = guardian
-						has_star_flag = enclave
-						has_star_flag = primitive_system
-					}
-					any_system_planet = {
-						habitable_planet = yes
-						NOR = {
-							has_anomaly = yes
-							is_colony = yes
-							is_capital = yes
-							exists = owner
-							exists = controller
-						}
-					}
-				}
-				random_system_planet = {
-					limit = {
-						has_owner = no
-						is_capital = no
-						habitable_planet = yes
-					}
-					save_event_target_as = colonized_planet
-					set_surveyed = { surveyed = yes surveyor = root }
-					prevent_anomaly = yes
-					create_species = {
-						name = "NAME_Awoken_Robot"
-						plural = "NAME_Awoken_Robot"
-						class = ROBOT
-						namelist = FUN3
-						portrait = "default_robot"
-						traits = { trait = "trait_mechanical" }
-					}
-					create_country = {
-						name = "NAME_Awoken"
-						name_list = FUN3
-						species = last_created_species
-						type = default
-						ethos = {
-							ethic = ethic_fanatic_materialist
-							ethic = ethic_xenophile
-						}
-						authority = random
-						civics = random
-						flag = {
-							icon = { category = "blocky" file = "flag_blocky_21.dds" }
-							background = { category = "backgrounds" file = "new_dawn.dds" }
-							colors = { "black" "dark_blue" "null" "null" }
-						}
-						exclude_day_zero_contact = root
-						effect = {
-							establish_communications_no_message = root
-							root = {
-								every_federation_ally = { establish_communications = prevprev }
-							}
-							set_country_flag = limbo_country
-							set_country_flag = synthetic_empire
-							species = {
-								if = {
-									limit = { has_synthetic_dawn = yes }
-									change_species_characteristics = { portrait = "sd_fun_robot" }
-								}
-							}
-							create_leader = {
-								class = random_ruler
-								species = owner_species
-								name = random
-								skill = 5
-							}
-							set_leader = last_created_leader
-							copy_techs_from = {
-								target = root
-								except = {
-									# Food
-									tech_gene_crops
-									tech_nano_vitality_crops
-									tech_nutrient_replication
-									# Misc
-									tech_frontier_health
-									tech_frontier_hospital
-									tech_telepathy
-									tech_precognition_interface
-									tech_psi_jump_drive_1
-									tech_galactic_markets
-									tech_subdermal_stimulation
-									tech_global_research_initiative
-									tech_neural_implants
-									tech_psionic_theory
-									# Genetics
-									tech_genome_mapping
-									tech_vitality_boosters
-									tech_epigenetic_triggers
-									tech_cloning
-									tech_gene_banks
-									tech_gene_seed_purification
-									tech_morphogenetic_field_mastery
-									tech_gene_tailoring
-									tech_glandular_acclimation
-									tech_gene_expressions
-									tech_selected_lineages
-									tech_capacity_boosters
-									# Horizon Signal
-									tech_akx_worm_1
-									tech_akx_worm_2
-									tech_akx_worm_3
-								}
-							}
-							if = {
-								limit = {
-									from = { has_technology = tech_maulers }
-								}
-								give_technology = { tech = tech_corvettes }
-								give_technology = { tech = tech_torpedoes_1 }
-							}
-							if = {
-								limit = {
-									root = { has_technology = tech_weavers }
-								}
-								give_technology = { tech = tech_destroyers }
-							}
-							if = {
-								limit = {
-									root = { has_technology = tech_stingers }
-								}
-								give_technology = { tech = tech_battleships }
-							}
-							if = {
-								limit = {
-									root = { has_technology = tech_harbingers }
-								}
-								give_technology = { tech = tech_cruisers }
-							}
-						}
-					}
-					set_owner = last_created_country
-					set_capital = yes
-					create_pop_group = { species = last_created_species size = 600 }
-					#					add_building = building_research_lab_1
-					#					add_building = building_foundry_1
-					#					add_building = building_factory_1
-					add_district = district_generator
-					add_district = district_generator
-					add_district = district_mining
-					add_district = district_mining
-					add_district = district_city
-					add_district = district_city
-					root = {
-						country_event = { id = anomaly.1196 days = 10 }
-					}
-				}
-			}
-		}
-		else = { # Vfix minor
-			# There are no colonizable planets outside the player's borders
-			country_event = { id = anomaly.1195 days = 40 }
-		}
+		DLAF_spawn_awoken = { ELSE = 1 }
 	}
 }
 
@@ -5355,26 +5141,12 @@ country_event = {
 		if = {
 			limit = {
 				any_planet_within_border = {
-					habitable_planet = yes
-					NOR = {
-						is_colony = yes
-						has_anomaly = yes
-						is_capital = yes
-						exists = owner
-						exists = controller
-					}
+					DLAF_is_valid_awoken_colony_trigger = yes
 				}
 			}
 			random_planet_within_border = {
 				limit = {
-					habitable_planet = yes
-					NOR = {
-						is_colony = yes
-						has_anomaly = yes
-						is_capital = yes
-						exists = owner
-						exists = controller
-					}
+					DLAF_is_valid_awoken_colony_trigger = yes
 				}
 				save_event_target_as = potential_target
 			}
@@ -5389,28 +5161,14 @@ country_event = {
 		custom_tooltip = anomaly.189.a.tooltip
 		trigger = {
 			any_planet_within_border = {
-				habitable_planet = yes
-				NOR = {
-					is_colony = yes
-					has_anomaly = yes
-					is_capital = yes
-					exists = owner
-					exists = controller
-				}
+				DLAF_is_valid_awoken_colony_trigger = yes
 			}
 			NOT = { has_policy_flag = ai_outlawed }
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_planet_within_border = {
-				habitable_planet = yes
-				NOR = {
-					is_colony = yes
-					has_anomaly = yes
-					is_capital = yes
-					exists = owner
-					exists = controller
-				}
+				DLAF_is_valid_awoken_colony_trigger = yes
 			}
 		}
 		hidden_effect = {
@@ -5420,14 +5178,7 @@ country_event = {
 				}
 				random_planet_within_border = {
 					limit = {
-						habitable_planet = yes
-						NOR = {
-							is_colony = yes
-							has_anomaly = yes
-							is_capital = yes
-							exists = owner
-							exists = controller
-						}
+						DLAF_is_valid_awoken_colony_trigger = yes
 					}
 					save_event_target_as = potential_target
 				}
@@ -5436,15 +5187,8 @@ country_event = {
 				set_owner = root
 				set_controller = root
 				prevent_anomaly = yes
-				create_species = {
-					name = "NAME_Awoken_Robot"
-					plural = "NAME_Awoken_Robot"
-					class = ROBOT
-					namelist = FUN3
-					portrait = "default_robot"
-					traits = { trait = "trait_mechanical" }
-				}
-				create_pop_group = { species = last_created_species size = 300 }
+				DLAF_create_awoken_robot_species = yes
+				create_pop_group = { species = last_created_species size = 600 }
 			}
 		}
 		ai_chance = { factor = 15 }
@@ -5480,7 +5224,7 @@ country_event = {
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_servitude }
+		trigger = { has_policy_flag = ai_outlawed }
 		add_resource = { minerals = 200 }
 	}
 	option = {
@@ -5489,216 +5233,23 @@ country_event = {
 		trigger = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
-				NOR = {
-					exists = space_owner
-					has_star_flag = hostile_system
-					has_star_flag = guardian
-					has_star_flag = enclave
-					has_star_flag = primitive_system
-				}
+				DLAF_is_valid_awoken_country_colony_system_trigger = yes
 				any_system_planet = {
-					habitable_planet = yes
-					# is_colony = no
-					# is_capital = no
-					NOR = {
-						has_anomaly = yes
-						exists = owner
-						exists = controller
-					}
+					DLAF_is_valid_awoken_colony_trigger = yes
 				}
 			}
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
 			any_system = {
-				NOR = {
-					exists = space_owner
-					has_star_flag = hostile_system
-					has_star_flag = guardian
-					has_star_flag = enclave
-					has_star_flag = primitive_system
-				}
+				DLAF_is_valid_awoken_country_colony_system_trigger = yes
 				any_system_planet = {
-					habitable_planet = yes
-					# is_colony = no
-					# is_capital = no
-					NOR = {
-						has_anomaly = yes
-						exists = owner
-						exists = controller
-					}
+					DLAF_is_valid_awoken_colony_trigger = yes
 				}
 			}
 		}
 		hidden_effect = {
-			random_system = {
-				limit = {
-					NOR = {
-						exists = space_owner
-						has_star_flag = hostile_system
-						has_star_flag = guardian
-						has_star_flag = enclave
-						has_star_flag = primitive_system
-					}
-					any_system_planet = {
-						habitable_planet = yes
-						NOR = {
-							has_anomaly = yes
-							is_colony = yes
-							is_capital = yes
-							exists = owner
-							exists = controller
-						}
-					}
-				}
-				random_system_planet = {
-					limit = {
-						habitable_planet = yes
-						NOR = {
-							has_owner = yes
-							has_anomaly = yes
-							is_colony = yes
-							is_capital = yes
-						}
-					}
-					save_event_target_as = colonized_planet
-					set_surveyed = { surveyed = yes surveyor = root }
-					prevent_anomaly = yes
-					create_species = {
-						name = "NAME_Awoken_Robot"
-						plural = "NAME_Awoken_Robot"
-						class = ROBOT
-						namelist = FUN3
-						portrait = "default_robot"
-						traits = { trait = "trait_mechanical" }
-					}
-					create_country = {
-						name = "NAME_Awoken"
-						name_list = FUN3
-						species = last_created_species
-						type = default
-						ethos = {
-							ethic = ethic_fanatic_materialist
-							ethic = ethic_xenophile
-						}
-						authority = random
-						civics = random
-						auto_delete = no
-						flag = {
-							icon = { category = "blocky" file = "flag_blocky_21.dds" }
-							background = { category = "backgrounds" file = "new_dawn.dds" }
-							colors = { "black" "dark_blue" "null" "null" }
-						}
-						exclude_day_zero_contact = root
-						effect = {
-							establish_communications_no_message = root
-							root = {
-								every_federation_ally = { establish_communications = prevprev }
-							}
-							add_trust = { amount = 10 who = root }
-							save_event_target_as = awoken_country
-							set_country_flag = limbo_country
-							set_country_flag = synthetic_empire
-							species = {
-								if = {
-									limit = { has_synthetic_dawn = yes }
-									change_species_characteristics = { portrait = "sd_fun_robot" }
-								}
-							}
-							create_leader = {
-								class = random_ruler
-								species = owner_species
-								name = random
-								skill = 5
-							}
-							set_leader = last_created_leader
-							copy_techs_from = {
-								target = root
-								except = {
-									# Food
-									tech_gene_crops
-									tech_nano_vitality_crops
-									tech_nutrient_replication
-									# Misc
-									tech_frontier_health
-									tech_frontier_hospital
-									tech_telepathy
-									tech_precognition_interface
-									tech_psi_jump_drive_1
-									tech_galactic_markets
-									tech_subdermal_stimulation
-									tech_global_research_initiative
-									tech_neural_implants
-									tech_psionic_theory
-									# Genetics
-									tech_genome_mapping
-									tech_vitality_boosters
-									tech_epigenetic_triggers
-									tech_cloning
-									tech_gene_banks
-									tech_gene_seed_purification
-									tech_morphogenetic_field_mastery
-									tech_gene_tailoring
-									tech_glandular_acclimation
-									tech_gene_expressions
-									tech_selected_lineages
-									tech_capacity_boosters
-									# Horizon Signal
-									tech_akx_worm_1
-									tech_akx_worm_2
-									tech_akx_worm_3
-								}
-							}
-							if = {
-								limit = {
-									from = { has_technology = tech_maulers }
-								}
-								give_technology = { tech = tech_corvettes }
-								give_technology = { tech = tech_torpedoes_1 }
-							}
-							if = {
-								limit = {
-									root = { has_technology = tech_weavers }
-								}
-								give_technology = { tech = tech_destroyers }
-							}
-							if = {
-								limit = {
-									root = { has_technology = tech_stingers }
-								}
-								give_technology = { tech = tech_battleships }
-							}
-							if = {
-								limit = {
-									root = { has_technology = tech_harbingers }
-								}
-								give_technology = { tech = tech_cruisers }
-							}
-						}
-					}
-					set_owner = event_target:awoken_country
-					set_capital = yes
-					create_pop_group = { species = last_created_species size = 600 }
-					#					add_building = building_research_lab_1
-					#					add_building = building_foundry_1
-					#					add_building = building_factory_1
-					add_district = district_generator
-					add_district = district_generator
-					add_district = district_mining
-					add_district = district_mining
-					add_district = district_city
-					add_district = district_city
-					create_army = {
-						name = "NAME_Awoken_Army"
-						owner = event_target:awoken_country
-						species = event_target:awoken_country
-						type = "defense_army"
-					}
-					root = {
-						country_event = { id = anomaly.1196 days = 10 }
-					}
-				}
-			}
+			DLAF_spawn_awoken = yes
 		}
 	}
 }
