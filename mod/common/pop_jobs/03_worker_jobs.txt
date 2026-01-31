@@ -520,8 +520,23 @@ crystal_miner = {
 	resources = {
 		category = planet_sr_miners
 		produces = {
-			NOT = { has_slavery_type = { type = slavery_indentured } }
+			rare_crystals = 2
 		}
+		upkeep = {
+			trigger = {
+				planet = {
+					any_deposit = {
+						is_deposit_type = d_lava_tubes
+					}
+				}
+			}
+			energy = @lava_tubes_mining_job_upkeep
+		}
+	}
+
+	weight = { # Attempted Repairs:
+		weight = @specialist_job_weight # Important job
+		mult = value:job_weights_modifier|JOB|crystal_miner|RESOURCE|rare_crystals|
 		modifier = {
 			factor = 2
 			OR = {
