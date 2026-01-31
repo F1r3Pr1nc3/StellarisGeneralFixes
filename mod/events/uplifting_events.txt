@@ -18,20 +18,22 @@ ship_event = {
 	}
 	desc = {
 		trigger = { # Vfix opt
-			switch = { trigger = is_planet_class
-				pc_continental = { text = uplift.6000.continental.desc }
-				pc_ocean = { text = uplift.6000.ocean.desc }
-				pc_tropical = { text = uplift.6000.tropical.desc }
-				pc_arid = { text = uplift.6000.arid.desc }
-				pc_desert = { text = uplift.6000.desert.desc }
-				pc_savannah = { text = uplift.6000.savannah.desc }
-				pc_tundra = { text = uplift.6000.tundra.desc }
-				pc_arctic = { text = uplift.6000.arctic.desc }
-				pc_alpine = { text = uplift.6000.alpine.desc }
-				pc_nuked = { text = uplift.6000.nuked.desc }
-				pc_gaia = { text = uplift.6000.gaia.desc }
-				pc_relic = { text = uplift.6000.relic.desc }
-				default = { text = uplift.6000.fallback.desc }
+			from = {
+				switch = { trigger = is_planet_class
+					pc_continental = { text = uplift.6000.continental.desc }
+					pc_ocean = { text = uplift.6000.ocean.desc }
+					pc_tropical = { text = uplift.6000.tropical.desc }
+					pc_arid = { text = uplift.6000.arid.desc }
+					pc_desert = { text = uplift.6000.desert.desc }
+					pc_savannah = { text = uplift.6000.savannah.desc }
+					pc_tundra = { text = uplift.6000.tundra.desc }
+					pc_arctic = { text = uplift.6000.arctic.desc }
+					pc_alpine = { text = uplift.6000.alpine.desc }
+					pc_nuked = { text = uplift.6000.nuked.desc }
+					pc_gaia = { text = uplift.6000.gaia.desc }
+					pc_relic = { text = uplift.6000.relic.desc }
+					default = { text = uplift.6000.fallback.desc }
+				}
 			}
 		}
 	}

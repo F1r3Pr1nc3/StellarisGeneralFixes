@@ -7415,17 +7415,10 @@ country_event = {
 			event_target:ratling_capital = { set_capital = yes }
 		}
 		else = { # Otherwise, make a new Capital
-			random_system = {
-				limit = { has_star_flag = ratling_system }
-				random_system_colony = {
-					limit = {
-						has_owner = yes
-						has_planet_flag = ratling_planet
-						is_owned_by = event_target:ratling_country
-						planet_size > 12
-						habitable_planet = yes
-						is_habitable_for_wilderness = yes
-					}
+			event_target:ratling_country = {
+				ordered_owned_planet = { # This seems better than random assignment.
+					position = 0
+					order_by = trigger:planet_size
 					save_global_event_target_as = ratling_capital
 					set_capital = yes
 				}
@@ -7439,7 +7432,6 @@ country_event = {
 				name = random
 				sub_type = subclass_commander_admiral
 				randomize_traits = no
-				skill = 3
 				effect = {
 					set_leader_flag = block_council_traits
 					set_leader_flag = block_army_traits
@@ -7448,6 +7440,7 @@ country_event = {
 					set_leader_flag = immune_to_negative_traits
 					set_leader_flag = should_not_have_upkeep
 				}
+				skill = 3 # Trait-blocking flags should come before level is assigned.
 			}
 			create_fleet = {
 				effect = {
@@ -7502,7 +7495,6 @@ country_event = {
 					species = event_target:ratling_species
 					name = random
 					randomize_traits = no
-					skill = 3
 					effect = {
 						set_leader_flag = block_council_traits
 						set_leader_flag = block_homeworld_traits
@@ -7510,6 +7502,7 @@ country_event = {
 						set_leader_flag = immune_to_negative_traits
 						set_leader_flag = should_not_have_upkeep
 					}
+					skill = 3 # Trait-blocking flags should come before level is assigned.
 				}
 				create_fleet = {
 					effect = {
@@ -7548,7 +7541,6 @@ country_event = {
 				species = event_target:ratling_species
 				name = random
 				randomize_traits = no
-				skill = 3
 				effect = {
 					set_leader_flag = block_federation_traits
 					set_leader_flag = block_galcom_traits
@@ -7556,9 +7548,17 @@ country_event = {
 					set_leader_flag = immune_to_negative_traits
 					set_leader_flag = should_not_have_upkeep
 				}
+				skill = 3 # Trait-blocking flags should come before level is assigned.
 			}
 			event_target:ratling_capital = { assign_leader = last_created_leader }
 			refresh_leader_pool = yes
+			every_owned_leader = { # Leaders spawned by game_start.71 may spawn without Psychic.
+				limit = {
+					species = { is_exact_same_species = event_target:ratling_species } # Not necessary, just precautionary.
+					NOT = { has_trait = leader_trait_psionic }
+				}
+				add_trait = { trait = leader_trait_psionic show_message = no }
+			}
 			prev = { establish_communications_no_message = prev }
 			## Copy technologies (again)
 			copy_techs_from = {
