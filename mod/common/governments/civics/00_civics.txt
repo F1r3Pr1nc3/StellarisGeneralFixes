@@ -216,6 +216,7 @@ civic_beacon_of_liberty = {
 	modifier = {
 		country_unity_produces_mult = 0.10
 		empire_size_pops_mult = -0.10
+		refugee_attraction = 0.25
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 
@@ -665,6 +666,7 @@ civic_idealistic_foundation = {
 	}
 	modifier = {
 		pop_citizen_happiness = 0.10
+		refugee_attraction = 0.10
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 }
@@ -774,6 +776,7 @@ civic_slaver_guilds = {
 	}
 	modifier = {
 		pop_cat_slave_bonus_workforce_mult = 0.15 # This actually applies to jobs in the Slave stratum, see citizenship_slavery for the implemented effects
+		refugee_attraction = -0.25
 		add_attunement_the_instrument_of_desire = @civic_attunement1
 	}
 }
@@ -867,6 +870,7 @@ civic_inwards_perfection = {
 		founder_species_growth_mult  = 0.10
 		country_edict_fund_add = 50
 		pop_citizen_happiness = 0.05
+		refugee_attraction = -0.50
 		envoys_add = -1
 		intel_encryption_add = 1
 		intel_decryption_add = -1
@@ -990,7 +994,7 @@ civic_distinguished_admiralty = {
 	modifier = {
 		ship_fire_rate_mult = 0.10
 		leader_commanders_upkeep_mult = -0.25
-		command_limit_add = 20
+		command_limit_add = 30
 		commander_initial_skill = 2
 		add_attunement_the_eater_of_worlds = @civic_attunement1
 	}
@@ -1052,6 +1056,7 @@ civic_free_haven = {
 	modifier = {
 		planet_resettlement_unemployed_destination_mult = 0.25
 		pop_cat_worker_happiness = 0.05
+		refugee_attraction = 0.50
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 	swap_type = {
@@ -2540,6 +2545,7 @@ civic_pompous_purists = {
 		envoys_add = 1
 		diplo_weight_opposing_mult = 0.15
 		external_leader_pool_add = -1
+		refugee_attraction = -0.25
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 }
@@ -3089,6 +3095,7 @@ civic_dystopian_society = {
 	modifier = {
 		country_commander_cap_add = 1
 		leaders_upkeep_mult = -0.2
+		refugee_attraction = -0.25
 		add_attunement_the_instrument_of_desire = @civic_attunement1
 	}
 
@@ -3873,6 +3880,18 @@ civic_entropy_drinkers = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
 			has_technology = tech_psionic_theory
+			custom_tooltip = {
+				success_text = has_not_begun_non_psionic_ascension_success
+				fail_text = has_not_begun_non_psionic_ascension_fail
+				NOR = {
+					has_genetic_ascension = yes
+					has_ascension_perk = ap_the_flesh_is_weak
+					has_ascension_perk = ap_organo_machine_interfacing
+					has_ascension_perk = ap_organo_machine_interfacing_assimilator
+					has_ascension_perk = ap_synthetic_evolution
+					has_ascension_perk = ap_synthetic_age
+				}
+			}
 		}
 		remove = {
 			custom_tooltip = {
@@ -3886,6 +3905,7 @@ civic_entropy_drinkers = {
 		base = @civic_default_random_weight
 	}
 
+	custom_tooltip_with_modifiers = "civic_entropy_drinkers_psionic_modifier"
 	modifier = {
 		planet_jobs_produces_mult = -0.1
 		all_technology_research_speed = -0.1
@@ -3977,6 +3997,9 @@ civic_twisted_experimenters = {
 	}
 	alternate_civic_version = civic_twisted_experimenters_corporate
 
+	modifier = {
+		refugee_attraction = -0.15
+	}
 	random_weight = {
 		base = @civic_default_random_weight
 	}

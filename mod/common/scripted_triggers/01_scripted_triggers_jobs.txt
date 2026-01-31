@@ -4,11 +4,9 @@ complex_specialist_job_check_trigger = {
 		exists = owner
 		OR = {
 			NOT = { has_trait = trait_mechanical }
-			AND = {
-				owner = { has_technology = tech_droid_workers }
-				owner = {
-					NOT = { has_policy_flag = ai_outlawed }
-				}
+			owner = {
+				has_technology = tech_droid_workers
+				NOT = { has_policy_flag = ai_outlawed }
 			}
 		}
 	}
@@ -96,15 +94,11 @@ soldier_job_check_trigger = {
 
 divinity_right_to_work_job_check_trigger_exempt = {
 	hidden_trigger = {
-		OR = {
-			NAND = {
-				has_global_flag = galactic_community_resolution_divinity_right_to_work
-				is_robotic_species = yes
-			}
-			AND = {
-				exists = owner
-				owner = { is_galactic_community_member = no }
-			}
+		exists = owner
+		NAND = {
+			has_global_flag = galactic_community_resolution_divinity_right_to_work
+			is_robotic_species = yes
+			owner = { is_galactic_community_member = yes }
 		}
 	}
 }
@@ -848,6 +842,7 @@ politician_is_fire_oracle = {
 		owner_species = { # Vfix
 			root = {
 				habitability = { who = prev value <= 0.5 }
+				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
 			}
 		}
 	}
@@ -861,6 +856,7 @@ politician_is_radiant_priest = {
 		owner_species = { # Vfix
 			root = {
 				habitability = { who = prev value <= 0.5 }
+				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
 			}
 		}
 	}
@@ -874,6 +870,7 @@ politician_is_ashbroker = {
 		owner_species = { # Vfix
 			root = {
 				habitability = { who = prev value <= 0.5 }
+				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
 			}
 		}
 	}
@@ -884,12 +881,11 @@ politician_is_blazewright = {
 	owner = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_superstitious_beliefs
-		NOR = {
-			has_valid_civic = civic_aristocratic_elite
-			owner_species = { # Vfix # Vfix
-				root = {
-					habitability = { who = prev value > 0.5 }
-				}
+		NOT = { has_valid_civic = civic_aristocratic_elite }
+		owner_species = { # Vfix
+			root = {
+				habitability = { who = prev value <= 0.5 }
+				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
 			}
 		}
 	}
@@ -900,12 +896,11 @@ politician_is_pyrocrat = {
 	owner = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_aristocratic_elite
-		NOR = {
-			has_valid_civic = civic_superstitious_beliefs
-			owner_species = { # Vfix # Vfix
-				root = {
-					habitability = { who = prev value > 0.5 }
-				}
+		NOT = { has_valid_civic = civic_superstitious_beliefs }
+		owner_species = { # Vfix
+			root = {
+				habitability = { who = prev value <= 0.5 }
+				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
 			}
 		}
 	}
@@ -920,6 +915,7 @@ politician_is_blazing_harbinger = {
 		owner_species = { # Vfix
 			root = {
 				habitability = { who = prev value <= 0.5 }
+				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
 			}
 		}
 	}

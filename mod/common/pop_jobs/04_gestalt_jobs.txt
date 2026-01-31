@@ -115,7 +115,7 @@ spawning_drone = {
 					healthcare_is_genomic_researcher_trigger = yes
 				}
 			}
-			society_research = 3
+			society_research = 4.5
 		}
 		produces = {
 			trigger = {
@@ -128,7 +128,7 @@ spawning_drone = {
 					has_completed_genetic_situation = yes
 				}
 			}
-			society_research = 1.5
+			society_research = 2
 		}
 		upkeep = {
 			trigger = {
@@ -499,8 +499,8 @@ gestation_drone = {
 			alloys = @drone_alloy_upkeep_normal
 		}
 		produces = {
-			society_research = 1
-			engineering_research = 1
+			society_research = 1.5
+			engineering_research = 1.5
 		}
 	}
 
@@ -726,7 +726,7 @@ coordinator = {
 				is_memorialist_empire = yes
 			}
 		}
-		planet_stability_add = 0.2
+		planet_stability_add = 0.4
 	}
 
 	triggered_planet_modifier = {
@@ -933,7 +933,7 @@ calculator_physicist = {
 					physicist_is_extradimensional_research_unit_trigger = no
 				}
 			}
-			physics_research = 3
+			physics_research = 4.5
 		}
 		produces = {
 			trigger = {
@@ -948,7 +948,7 @@ calculator_physicist = {
 					}
 				}
 			}
-			physics_research = 2
+			physics_research = 3
 		}
 		produces = {
 			trigger = {
@@ -959,7 +959,7 @@ calculator_physicist = {
 			}
 			alloys = 2
 			minerals = 4
-			physics_research = 3
+			physics_research = 4.5
 			multiplier = planet.value:materiality_engine_produces_mult
 		}
 		upkeep = {
@@ -1013,7 +1013,7 @@ calculator_physicist = {
 			trigger = {
 				physicist_is_space_time_researcher_trigger = yes
 			}
-			physics_research = 1
+			physics_research = 1.5
 			sr_dark_matter = 0.2
 		}
 		upkeep = {
@@ -1056,7 +1056,7 @@ calculator_physicist = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			physics_research = 1
+			physics_research = 1.5
 		}
 		produces = {
 			trigger = {
@@ -1071,7 +1071,7 @@ calculator_physicist = {
 					}
 				}
 			}
-			physics_research = 0.5
+			physics_research = 0.75
 		}
 	}
 
@@ -1225,7 +1225,7 @@ calculator_biologist = {
 	resources = {
 		category = planet_biologists
 		produces = {
-			society_research = 3
+			society_research = 4.5
 		}
 		produces = {
 			trigger = {
@@ -1301,7 +1301,7 @@ calculator_biologist = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			society_research = 0.5
+			society_research = 0.75
 		}
 	}
 
@@ -2234,6 +2234,53 @@ mote_harvesting_drone = {
 			weight = 10
 		}
 	}
+
+	tags = { strategic_resource volatile_motes }
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+
+	resources = {
+		category = planet_sr_miners
+		produces = {
+			volatile_motes = 2
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_modifier|JOB|mote_harvesting_drone|RESOURCE|volatile_motes|
+		mult = value:scripted_job_weight_shroud_forged_mult
+		modifier = {
+			factor = 1.1
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = complex_drone
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
 }
 
 #Crystals
@@ -2259,6 +2306,53 @@ crystal_mining_drone = {
 			weight = 10
 		}
 	}
+
+	tags = { strategic_resource rare_crystals }
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+
+	resources = {
+		category = planet_sr_miners
+		produces = {
+			rare_crystals = 2
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_modifier|JOB|crystal_mining_drone|RESOURCE|rare_crystals|
+		mult = value:scripted_job_weight_shroud_forged_mult
+		modifier = {
+			factor = 1.1
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = complex_drone
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
 }
 
 #Gases
@@ -2282,6 +2376,53 @@ gas_extraction_drone = {
 			building_icon = churning_stomach
 			condition_string = DRONE_JOB_TRIGGER
 			weight = 10
+		}
+	}
+
+	tags = { strategic_resource exotic_gases }
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
+		is_enslaved = no
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+
+	resources = {
+		category = planet_sr_miners
+		produces = {
+			exotic_gases = 2
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_modifier|JOB|gas_extraction_drone|RESOURCE|exotic_gases|
+		mult = value:scripted_job_weight_shroud_forged_mult
+		modifier = {
+			factor = 1.1
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = complex_drone
+				AMOUNT = local_pop_amount
+			}
 		}
 	}
 }

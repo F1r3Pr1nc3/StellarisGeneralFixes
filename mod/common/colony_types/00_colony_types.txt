@@ -2576,17 +2576,9 @@ col_resort = {
 		}
 	}
 
-	planet_modifier = {
-		planet_jobs_trade_produces_mult = 0.10
-		planet_jobs_unity_produces_mult = 0.05
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner_or_space_owner
-			owner_or_space_owner = { has_tradition = tr_adaptability_finish }
-		}
-		planet_jobs_unity_produces_mult = 0.05
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = influential_jobs_bonus_workforce_mult
 	}
 
 	weight_modifier = {

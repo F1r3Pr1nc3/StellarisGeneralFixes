@@ -78,6 +78,15 @@ civilian = {
 		inline_script = "jobs/ethic_job_resources"
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_tradition = tr_mercantile_trickle_up_economics }
+		}
+		planet_amenities_add = 100
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
 	# Hedonists
 	triggered_planet_modifier = {
 		potential = {

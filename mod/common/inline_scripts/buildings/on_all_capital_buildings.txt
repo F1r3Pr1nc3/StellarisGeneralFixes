@@ -283,29 +283,6 @@ triggered_country_modifier = {
 	mult = owner_species.species_traits_evopred_count
 }
 
-# Machine & Hive Entropy Drinkers
-triggered_country_modifier = {
-	potential = {
-		exists = owner
-		owner = {
-			OR = {
-				AND = {
-					is_hive_empire = yes
-					has_civic = civic_entropy_drinkers_hive_mind
-				}
-				AND = {
-					is_machine_empire = yes
-					has_civic = civic_entropy_drinkers_machine
-				}
-			}
-		}
-	}
-
-	# 0.1% / 100 Pop
-	country_energy_produces_mult = 0.0001
-	mult = value:count_owned_pop_mult
-}
-
 #Storm Chasers get Storm Shelter effects for free
 triggered_planet_modifier = { #basic shelter
 	potential = {

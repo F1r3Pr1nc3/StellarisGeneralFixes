@@ -496,7 +496,7 @@ can_modify_species = {
 							OR = {
 								has_origin = origin_life_seeded
 								has_origin = origin_ocean_machines
-								has_origin = origin_void_machines
+								has_void_dweller_origin = yes
 								has_origin = origin_shattered_ring
 							}
 						}
@@ -951,6 +951,15 @@ can_species_procreate = {
 			NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
 		}
 		has_species_flag = nivlac_no_procreation
+	}
+	if = {
+		limit = { has_trait = trait_necrophage }
+		root = {
+			NOR = {
+				has_active_building = building_necrophage_elevation_chamber
+				has_active_building = building_necrophage_house_of_apotheosis
+			}
+		}
 	}
 }
 

@@ -108,7 +108,7 @@ planet_event = {
 	}
 }
 
-# Purity government: purging pops yields unity
+# Devouring Swarm: purging pops yields society research
 planet_event = {
 	id = utopia.181
 	hide_window = yes
@@ -145,6 +145,16 @@ planet_event = {
 			set_variable = { which = biomass_amount value = local_pop_amount }
 			multiply_variable = { which = biomass_amount value = 0.1 }
 			create_pop_group = { species = owner_species size = biomass_amount }
+		}
+		# grant timed modifiers from cyber hive
+		if = {
+			limit = {
+				owner = { has_tradition = tr_cybernetics_finish }
+			}
+			owner = {
+				add_modifier = { modifier = cyber_hive_node_booster months = 3 }
+			}
+			add_modifier = { modifier = cyber_hive_planet_booster months = 3 }
 		}
 	}
 }

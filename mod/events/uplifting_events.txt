@@ -10,7 +10,6 @@ namespace = uplift
 ship_event = {
 	id = uplift.6000
 	title = uplift.6000.name.2
-
 	desc = {
 		text = uplift.6000.wilderness.desc
 		exclusive_trigger = {
@@ -18,79 +17,23 @@ ship_event = {
 		}
 	}
 	desc = {
-		text = uplift.6000.continental.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_continental }
+		trigger = { # Vfix opt
+			switch = { trigger = is_planet_class
+				pc_continental = { text = uplift.6000.continental.desc }
+				pc_ocean = { text = uplift.6000.ocean.desc }
+				pc_tropical = { text = uplift.6000.tropical.desc }
+				pc_arid = { text = uplift.6000.arid.desc }
+				pc_desert = { text = uplift.6000.desert.desc }
+				pc_savannah = { text = uplift.6000.savannah.desc }
+				pc_tundra = { text = uplift.6000.tundra.desc }
+				pc_arctic = { text = uplift.6000.arctic.desc }
+				pc_alpine = { text = uplift.6000.alpine.desc }
+				pc_nuked = { text = uplift.6000.nuked.desc }
+				pc_gaia = { text = uplift.6000.gaia.desc }
+				pc_relic = { text = uplift.6000.relic.desc }
+				default = { text = uplift.6000.fallback.desc }
+			}
 		}
-	}
-	desc = {
-		text = uplift.6000.ocean.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_ocean }
-		}
-	}
-	desc = {
-		text = uplift.6000.tropical.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_tropical }
-		}
-	}
-	desc = {
-		text = uplift.6000.arid.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_arid }
-		}
-	}
-	desc = {
-		text = uplift.6000.desert.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_desert }
-		}
-	}
-	desc = {
-		text = uplift.6000.savannah.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_savannah }
-		}
-	}
-	desc = {
-		text = uplift.6000.tundra.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_tundra }
-		}
-	}
-	desc = {
-		text = uplift.6000.arctic.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_arctic }
-		}
-	}
-	desc = {
-		text = uplift.6000.alpine.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_alpine }
-		}
-	}
-	desc = {
-		text = uplift.6000.nuked.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_nuked }
-		}
-	}
-	desc = {
-		text = uplift.6000.gaia.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_gaia }
-		}
-	}
-	desc = {
-		text = uplift.6000.relic.desc
-		exclusive_trigger = {
-			from = { is_planet_class = pc_relic }
-		}
-	}
-	desc = {
-		text = uplift.6000.fallback.desc
 	}
 
 	picture = {
@@ -184,55 +127,23 @@ planet_event = {
 	title = uplift.6010.name
 
 	desc = {
-		text = uplift.6010.continental.desc
-		exclusive_trigger = { is_planet_class = pc_continental }
-	}
-	desc = {
-		text = uplift.6010.ocean.desc
-		exclusive_trigger = { is_planet_class = pc_ocean }
-	}
-	desc = {
-		text = uplift.6010.tropical.desc
-		exclusive_trigger = { is_planet_class = pc_tropical }
-	}
-	desc = {
-		text = uplift.6010.arid.desc
-		trigger = { is_planet_class = pc_arid }
-	}
-	desc = {
-		text = uplift.6010.desert.desc
-		exclusive_trigger = { is_planet_class = pc_desert }
-	}
-	desc = {
-		text = uplift.6010.savannah.desc
-		exclusive_trigger = { is_planet_class = pc_savannah }
-	}
-	desc = {
-		text = uplift.6010.tundra.desc
-		exclusive_trigger = { is_planet_class = pc_tundra }
-	}
-	desc = {
-		text = uplift.6010.arctic.desc
-		exclusive_trigger = { is_planet_class = pc_arctic }
-	}
-	desc = {
-		text = uplift.6010.alpine.desc
-		exclusive_trigger = { is_planet_class = pc_alpine }
-	}
-	desc = {
-		text = uplift.6010.nuked.desc
-		exclusive_trigger = { is_planet_class = pc_nuked }
-	}
-	desc = {
-		text = uplift.6010.gaia.desc
-		exclusive_trigger = { is_planet_class = pc_gaia }
-	}
-	desc = {
-		text = uplift.6010.relic.desc
-		exclusive_trigger = { is_planet_class = pc_relic }
-	}
-	desc = {
-		text = uplift.6010.fallback.desc
+		trigger = { # Vfix opt
+			switch = { trigger = is_planet_class
+				pc_continental = { text = uplift.6010.continental.desc }
+				pc_ocean = { text = uplift.6010.ocean.desc }
+				pc_tropical = { text = uplift.6010.tropical.desc }
+				pc_arid = { text = uplift.6010.arid.desc }
+				pc_desert = { text = uplift.6010.desert.desc }
+				pc_savannah = { text = uplift.6010.savannah.desc }
+				pc_tundra = { text = uplift.6010.tundra.desc }
+				pc_arctic = { text = uplift.6010.arctic.desc }
+				pc_alpine = { text = uplift.6010.alpine.desc }
+				pc_nuked = { text = uplift.6010.nuked.desc }
+				pc_gaia = { text = uplift.6010.gaia.desc }
+				pc_relic = { text = uplift.6010.relic.desc }
+				default = { text = uplift.6010.fallback.desc }
+			}
+		}
 	}
 
 	picture = GFX_evt_society_research

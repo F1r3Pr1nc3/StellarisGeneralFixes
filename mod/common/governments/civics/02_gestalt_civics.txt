@@ -1236,6 +1236,18 @@ civic_entropy_drinkers_hive_mind = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
 			has_technology = tech_psionic_theory
+			custom_tooltip = {
+				success_text = has_not_begun_non_psionic_ascension_success
+				fail_text = has_not_begun_non_psionic_ascension_fail
+				NOR = {
+					has_genetic_ascension = yes
+					has_ascension_perk = ap_the_flesh_is_weak
+					has_ascension_perk = ap_organo_machine_interfacing
+					has_ascension_perk = ap_organo_machine_interfacing_assimilator
+					has_ascension_perk = ap_synthetic_evolution
+					has_ascension_perk = ap_synthetic_age
+				}
+			}
 		}
 		remove = {
 			custom_tooltip = {
@@ -1249,7 +1261,7 @@ civic_entropy_drinkers_hive_mind = {
 		base = @civic_default_random_weight
 	}
 
-	custom_tooltip_with_modifiers = "civic_entropy_drinkers_hive_mind_modifier"
+	custom_tooltip_with_modifiers = "civic_entropy_drinkers_psionic_modifier"
 	modifier = {
 		planet_jobs_produces_mult = -0.1
 		all_technology_research_speed = -0.1
@@ -2575,6 +2587,18 @@ civic_entropy_drinkers_machine = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
 			has_technology = tech_psionic_theory
+			custom_tooltip = {
+				success_text = has_not_begun_non_psionic_ascension_success
+				fail_text = has_not_begun_non_psionic_ascension_fail
+				NOR = {
+					has_genetic_ascension = yes
+					has_ascension_perk = ap_the_flesh_is_weak
+					has_ascension_perk = ap_organo_machine_interfacing
+					has_ascension_perk = ap_organo_machine_interfacing_assimilator
+					has_ascension_perk = ap_synthetic_evolution
+					has_ascension_perk = ap_synthetic_age
+				}
+			}
 		}
 		remove = {
 			custom_tooltip = {
@@ -2588,7 +2612,7 @@ civic_entropy_drinkers_machine = {
 		base = @civic_default_random_weight
 	}
 
-	custom_tooltip_with_modifiers = "civic_entropy_drinkers_machine_modifier"
+	custom_tooltip_with_modifiers = "civic_entropy_drinkers_psionic_modifier"
 	modifier = {
 		planet_jobs_produces_mult = -0.1
 		all_technology_research_speed = -0.1

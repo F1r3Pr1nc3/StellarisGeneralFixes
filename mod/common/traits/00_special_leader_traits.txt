@@ -127,9 +127,20 @@ leader_trait_cyborg = {
 
 	# Any Class - Ruler
 	triggered_councilor_modifier = {
-		potential = { is_ruler = yes }
+		potential = {
+			is_ruler = yes
+			owner = { is_gestalt = no }
+		}
 		planet_structures_upkeep_mult = -0.25
 		empire_size_districts_mult = -0.05
+	}
+	triggered_councilor_modifier = {
+		potential = {
+			is_ruler = yes
+			owner = { is_gestalt = yes }
+		}
+		planet_pops_cyborgs_upkeep_mult = -0.35
+		planet_jobs_complex_drone_produces_mult = 0.15
 	}
 
 	# Commander - Fleet Modifier
@@ -172,12 +183,28 @@ leader_trait_cyborg = {
 		planet_jobs_engineering_research_produces_mult = 0.10
 	}
 
+	# Any Class - Planet Modifier for cyber machines
+	triggered_planet_modifier = {
+		potential = {
+			is_ruler = no
+			owner = { is_machine_empire = yes }
+		}
+		pop_replicator_workforce_mult = 0.2
+	}
+
 	# Any Class - Sector Modifier
 	triggered_sector_modifier = {
 		potential = { is_ruler = no }
 		planet_jobs_physics_research_produces_mult = 0.05
 		planet_jobs_society_research_produces_mult = 0.05
 		planet_jobs_engineering_research_produces_mult = 0.05
+	}
+	triggered_sector_modifier = {
+		potential = {
+			is_ruler = no
+			owner = { is_machine_empire = yes }
+		}
+		pop_replicator_workforce_mult = 0.1
 	}
 
 	# Cyborg Oligarchic councilors

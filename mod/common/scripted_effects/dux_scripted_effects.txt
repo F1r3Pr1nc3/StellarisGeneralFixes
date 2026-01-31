@@ -385,16 +385,14 @@ DLAF_spawn_awoken = {
 			set_owner = last_created_country
 			set_capital = yes
 			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-			while = {
-				count = 6
-				if = {
-					limit = { # Have to have this check to stop an error saying they don't exist and then spawning them.
-						exists = event_target:DLAF_awoken_robot_species
-					}
-					create_pop_group = {
-						species = event_target:DLAF_awoken_robot_species
-						category = civilian
-					}
+			if = {
+				limit = { # Have to have this check to stop an error saying they don't exist and then spawning them.
+					exists = event_target:DLAF_awoken_robot_species
+				}
+				create_pop_group = {
+					species = event_target:DLAF_awoken_robot_species
+					category = civilian
+					size = 600
 				}
 			}
 			owner = { refresh_leader_pool = yes } # Must occur after they have at least 1 pop.

@@ -298,32 +298,15 @@ country_event = {
 						is_colony = no
 						has_planet_flag = prescripted_ideal
 					}
-					if = {
-						limit = { root = { is_hive_empire = no } }
-						generate_very_early_pre_ftls_on_planet = yes
-						set_name = random
-						change_colony_foundation_date = -461
-						while = {
-							count = 4
-							create_army = {
-								owner = last_created_country
-								type = primitive_additional_army
-								species = last_created_country
-							}
-						}
-					}
-					else = {
-						set_planet_flag = pre_ftl_hive_mind
-						generate_very_early_pre_ftl_hive_on_planet = yes
-						set_name = random
-						change_colony_foundation_date = -461
-						while = {
-							count = 4
-							create_army = {
-								owner = last_created_country
-								type = primitive_additional_army
-								species = last_created_country
-							}
+					generate_very_early_pre_ftls_on_planet = yes
+					set_name = random
+					change_colony_foundation_date = -461
+					while = {
+						count = 4
+						create_army = {
+							owner = last_created_country
+							type = primitive_additional_army
+							species = last_created_country
 						}
 					}
 				}
@@ -338,32 +321,15 @@ country_event = {
 						is_colony = no
 						has_planet_flag = prescripted_ideal
 					}
-					if = {
-						limit = { root = { is_hive_empire = no } }
-						set_planet_flag = pre_ftl_hive_mind
-						generate_very_early_pre_ftls_on_planet = yes
-						set_name = random
-						change_colony_foundation_date = -1275
-						while = {
-							count = 4
-							create_army = {
-								owner = last_created_country
-								type = primitive_additional_army
-								species = last_created_country
-							}
-						}
-					}
-					else = {
-						generate_very_early_pre_ftl_hive_on_planet = yes
-						set_name = random
-						change_colony_foundation_date = -1275
-						while = {
-							count = 4
-							create_army = {
-								owner = last_created_country
-								type = primitive_additional_army
-								species = last_created_country
-							}
+					generate_very_early_pre_ftls_on_planet = yes
+					set_name = random
+					change_colony_foundation_date = -1275
+					while = {
+						count = 4
+						create_army = {
+							owner = last_created_country
+							type = primitive_additional_army
+							species = last_created_country
 						}
 					}
 				}

@@ -4857,6 +4857,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOT = { has_origin = origin_synthetic_fertility }
+				NOT = { has_policy_flag = ai_outlawed }
 				OR = {
 					is_individual_machine = yes
 					AND = {
@@ -4867,7 +4868,6 @@ ship_event = {
 						}
 					}
 				}
-				NOT = { has_policy_flag = ai_outlawed }
 			}
 		}
 		allow = {

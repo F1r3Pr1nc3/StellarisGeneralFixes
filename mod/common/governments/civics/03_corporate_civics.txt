@@ -116,7 +116,7 @@ civic_media_conglomerate = {
 		}
 	}
 	possible = {
-		civics = { 
+		civics = {
 			NOR = {
 				value = civic_crowdsourcing
 				value = civic_idealistic_foundation
@@ -147,6 +147,7 @@ civic_media_conglomerate = {
 	modifier = {
 		country_war_exhaustion_mult = -0.05
 		pop_citizen_happiness = 0.05
+		refugee_attraction = 0.10
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 	description = "civic_tooltip_media_conglomerate_effects"
@@ -308,8 +309,8 @@ civic_private_prospectors = {
 		}
 	}
 	modifier = {
-		empire_size_systems_mult = -0.25
-		empire_size_colonies_mult = -0.50
+		empire_size_systems_mult = -0.15
+		empire_size_colonies_mult = -0.25
 		add_attunement_the_composer_of_strands = @civic_attunement1
 	}
 
@@ -606,6 +607,7 @@ civic_indentured_assets = {
 	}
 	modifier = {
 		pop_slave_bonus_workforce_mult = 0.15
+		refugee_attraction = -0.25
 		add_attunement_the_instrument_of_desire = @civic_attunement1
 	}
 
@@ -1167,7 +1169,7 @@ civic_corporate_toxic_baths = {
 	}
 	possible = {
 		origin = { NOT = { value = origin_life_seeded } }
-		civics = { 
+		civics = {
 			NOR = {
 				value = civic_environmental_architects
 				value = civic_environmental_architects_megacorp
@@ -1486,6 +1488,7 @@ civic_corporate_dimensional_worship = {
 	}
 	modifier = {
 		country_astral_threads_produces_mult = 0.25
+		planet_bureaucrats_physics_research_produces_add = 1
 		rare_tech_draw_chance_mult = 0.1
 	}
 	custom_tooltip_with_modifiers = "civic_dimensional_worship_effects_additional"
@@ -1689,7 +1692,7 @@ civic_worker_coop = {
 	}
 	modifier = {
 		election_term_years_mult = -0.50
-		pop_unemployment_demotion_time_mult = -0.66
+		# pop_unemployment_demotion_time_mult = -0.66
 		pop_ethic_egalitarian_attraction_mult = 0.5
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
@@ -1853,7 +1856,7 @@ civic_corporate_sovereign_guardianship = {
 		empire_size_colonies_mult = 1
 		empire_size_branch_office_mult = 1
 		empire_size_systems_mult = 1.50
-		empire_size_pops_mult = -0.50
+		empire_size_pops_mult = -0.25
 		empire_size_districts_mult = -0.50
 		diplo_weight_mult = 0.2
 
@@ -2361,6 +2364,18 @@ civic_entropy_drinkers_corporate = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
 			has_technology = tech_psionic_theory
+			custom_tooltip = {
+				success_text = has_not_begun_non_psionic_ascension_success
+				fail_text = has_not_begun_non_psionic_ascension_fail
+				NOR = {
+					has_genetic_ascension = yes
+					has_ascension_perk = ap_the_flesh_is_weak
+					has_ascension_perk = ap_organo_machine_interfacing
+					has_ascension_perk = ap_organo_machine_interfacing_assimilator
+					has_ascension_perk = ap_synthetic_evolution
+					has_ascension_perk = ap_synthetic_age
+				}
+			}
 		}
 		remove = {
 			custom_tooltip = {
@@ -2374,6 +2389,7 @@ civic_entropy_drinkers_corporate = {
 		base = @civic_default_random_weight
 	}
 
+	custom_tooltip_with_modifiers = "civic_entropy_drinkers_psionic_modifier"
 	modifier = {
 		planet_jobs_produces_mult = -0.1
 		all_technology_research_speed = -0.1
@@ -2655,14 +2671,15 @@ civic_tankbound_corporate = {
 
 	modifier = {
 		planet_jobs_upkeep_mult = @civic_tankbound_job_upkeep
-		planet_districts_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_rw_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_rw_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_hab_energy_energy_upkeep_add = @civic_tankbound_district_upkeep
-		planet_districts_hab_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# Removed at v4.3
+		# planet_districts_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_rw_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_rw_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_hab_energy_energy_upkeep_add = @civic_tankbound_district_upkeep
+		# planet_districts_hab_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
 	}
 	hide_modifiers = yes
 
