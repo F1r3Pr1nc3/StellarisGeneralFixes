@@ -10108,8 +10108,11 @@ country_event = {
 	immediate = {
 		random_planet_within_border = {
 			limit = {
-				is_colony = no
 				uninhabitable_regular_planet = yes
+				NOR = {
+					is_colony = yes
+					has_planet_flag = has_arc_furnace # Vfix - prevent it from making Arc Furnaces habitable.
+				}
 			}
 			root = {
 				country_event = { id = shroud.4862 scopes = { from = prev } }
