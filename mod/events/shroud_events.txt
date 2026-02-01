@@ -10108,8 +10108,16 @@ country_event = {
 	immediate = {
 		random_planet_within_border = {
 			limit = {
-				is_colony = no
 				uninhabitable_regular_planet = yes
+				NOR = {
+					is_colony = yes
+					has_megastructure = orbital_arc_furnace_1 # Vfix - prevent it from making Arc Furnaces habitable.
+					has_megastructure = orbital_arc_furnace_2
+					has_megastructure = orbital_arc_furnace_3
+					has_megastructure = orbital_arc_furnace_4
+					has_megastructure = orbital_arc_furnace_destroyed
+					has_megastructure = orbital_arc_furnace_restored
+				}
 			}
 			root = {
 				country_event = { id = shroud.4862 scopes = { from = prev } }
