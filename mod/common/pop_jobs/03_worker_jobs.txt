@@ -275,7 +275,10 @@ miner = {
 		}
 		swap_type = {
 			trigger = {
-				miner_is_mineral_diver_trigger = yes
+				exists = planet
+				planet = {
+					miner_is_mineral_diver_trigger = yes
+				}
 			}
 			name = mineral_diver
 			desc = mineral_diver
@@ -520,13 +523,11 @@ crystal_miner = {
 	resources = {
 		category = planet_sr_miners
 		produces = {
-			NOT = { has_slavery_type = { type = slavery_indentured } }
+			rare_crystals = 2
 		}
-		modifier = {
-			factor = 2
-			OR = {
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
+		upkeep = {
+			trigger = {
+				planet = {
 					any_deposit = {
 						is_deposit_type = d_lava_tubes
 					}
@@ -536,6 +537,22 @@ crystal_miner = {
 		}
 	}
 
+	weight = { # Attempted Repairs:
+		weight = @specialist_job_weight # Important job
+		mult = value:job_weights_modifier|JOB|crystal_miner|RESOURCE|rare_crystals|
+		modifier = {
+			factor = 2
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+				planet = {
+					any_deposit = {
+						is_deposit_type = d_lava_tubes
+					}
+				}
+			}
+			energy = @lava_tubes_mining_job_upkeep
+		}
 		modifier = {
 			factor = 10
 			is_enslaved = yes
