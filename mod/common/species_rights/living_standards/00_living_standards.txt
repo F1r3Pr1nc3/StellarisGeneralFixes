@@ -470,23 +470,6 @@ living_standard_utopian = {
 		factor = 15
 		modifier = {
 			factor = 0
-			# OR = {
-			# 	NAND = {
-			# 		has_citizenship_type = { country = from type = citizenship_full }
-			# 		OR = {
-			# 			has_living_standard = { country = from type = living_standard_utopian }
-			# 			from = {
-			# 				has_monthly_income = { resource = minerals value > 300 }
-			# 			}
-			# 		}
-			# 	}
-			# 	AND = {
-			# 		has_living_standard = { country = from type = living_standard_utopian }
-			# 		from = {
-			# 			has_monthly_income = { resource = minerals value <= 200 }
-			# 		}
-			# 	}
-			# }
 			NAND = { # Vfix opt
 				has_citizenship_type = { country = from type = citizenship_full }
 				from = {
@@ -605,7 +588,7 @@ living_standard_good = {
 				limit = {
 					from = { is_genocidal_infernal = yes }
 				}
-				is_infernal = yes
+				has_trait = trait_infernal
 			}
 		}
 	}
@@ -614,31 +597,6 @@ living_standard_good = {
 		factor = 5
 		modifier = {
 			factor = 0
-			# OR = {
-			# 	NAND = {
-			# 		AND = {
-			# 			has_citizenship_type = { country = from type = citizenship_full }
-			# 			from = {
-			# 				OR = {
-			# 					is_pacifist = yes
-			# 					is_egalitarian = yes
-			# 				}
-			# 			}
-			# 		}
-			# 		OR = {
-			# 			has_living_standard = { country = from type = living_standard_good }
-			# 			from = {
-			# 				has_monthly_income = { resource = minerals value > 150 }
-			# 			}
-			# 		}
-			# 	}
-			# 	AND = {
-			# 		has_living_standard = { country = from type = living_standard_good }
-			# 		from = {
-			# 			has_monthly_income = { resource = minerals value <= 100 }
-			# 		}
-			# 	}
-			# }
 			NAND = { # Vfix opt
 				has_citizenship_type = { country = from type = citizenship_full }
 				from = {
@@ -762,7 +720,7 @@ living_standard_academic_privilege = {
 				limit = {
 					from = { is_genocidal_infernal = yes }
 				}
-				is_infernal = yes
+				has_trait = trait_infernal
 			}
 		}
 	}
@@ -771,23 +729,6 @@ living_standard_academic_privilege = {
 		factor = 10
 		modifier = {
 			factor = 0
-			# OR = {
-			# 	NAND = {
-			# 		has_citizenship_type = { country = from type = citizenship_full }
-			# 		OR = {
-			# 			has_living_standard = { country = from type = living_standard_academic_privilege }
-			# 			from = {
-			# 				has_monthly_income = { resource = minerals value > 300 }
-			# 			}
-			# 		}
-			# 	}
-			# 	AND = {
-			# 		has_living_standard = { country = from type = living_standard_academic_privilege }
-			# 		from = {
-			# 			has_monthly_income = { resource = minerals value <= 200 }
-			# 		}
-			# 	}
-			# }
 			NAND = { # Vfix opt
 				has_citizenship_type = { country = from type = citizenship_full }
 				from = {
@@ -906,7 +847,7 @@ living_standard_normal = {
 				limit = {
 					from = { is_genocidal_infernal = yes }
 				}
-				is_infernal = yes
+				has_trait = trait_infernal
 			}
 		}
 	}
@@ -1237,8 +1178,8 @@ living_standard_decadent = {
 	potential = {
 		has_humanoids = yes
 		exists = from
-		from = { is_pleasure_seeker_empire = yes }
 		from = {
+			is_pleasure_seeker_empire = yes
 			NOR = {
 				has_valid_civic = civic_shared_burden
 				is_worker_coop_empire = yes

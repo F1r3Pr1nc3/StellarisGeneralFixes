@@ -1,3 +1,55 @@
+
+refuge_pop_group = {
+	random_owned_planet = {
+		limit = {
+			planet_has_habitability_and_housing = {
+				[[HABITABILITY] HABITABILITY = $HABITABILITY$ ]
+				[[HOUSING] HOUSING = $HOUSING$ ]
+			}
+		}
+		weights = {
+			base = 100
+			modifier = { # The place gets more attractive the more jobs and housing there is for us refugees
+				add = trigger:free_jobs
+			}
+			modifier = { add = trigger:free_housing }
+		}
+		if = {
+			limit = { is_variable_set = local_pop_amount }
+			resettle_pop_group = {
+				POP_GROUP = event_target:refugee_pop
+				PLANET = this
+				AMOUNT = local_pop_amount
+			}
+		}
+		else = {
+			resettle_pop_group = {
+				POP_GROUP = event_target:refugee_pop
+				PLANET = this
+				PERCENTAGE = 1
+			}
+		}
+		if = {
+			limit = {
+				owner = { # Vfix
+					NOR = {
+						has_country_flag = refugeespecies@event_target:resettled_pop_group.species
+						has_country_flag = refugeecountry@event_target:RefugeeEscapedFrom
+						founder_species = { is_same_species = event_target:resettled_pop_group.species } # You don't get the flavorful event if it's your own species that is fleeing
+					}
+				}
+			}
+			event_target:resettled_pop_group = {
+				pop_group_event = { id = refugees.1 }
+			}
+		}
+		else = {
+			event_target:resettled_pop_group = {
+				pop_group_event = { id = refugees.2 }
+			}
+		}
+	}
+}
 # Must save event_target:refugee_pop before this effect is run on intended pop group
 refugee_pop_effect = {
 	remove_modifier = "pop_recently_conquered"
@@ -249,58 +301,6 @@ refugee_pop_effect = {
 				has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 			}
 			remove_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-		}
-	}
-}
-
-refuge_pop_group = {
-	random_owned_planet = {
-		limit = {
-			planet_has_habitability_and_housing = {
-				[[HABITABILITY] HABITABILITY = $HABITABILITY$ ]
-				[[HOUSING] HOUSING = $HOUSING$ ]
-			}
-		}
-		weights = {
-			base = 100
-			modifier = { # The place gets more attractive the more jobs and housing there is for us refugees
-				add = trigger:free_jobs
-			}
-			modifier = { add = trigger:free_housing }
-		}
-		if = {
-			limit = { is_variable_set = local_pop_amount }
-			resettle_pop_group = {
-				POP_GROUP = event_target:refugee_pop
-				PLANET = this
-				AMOUNT = local_pop_amount
-			}
-		}
-		else = {
-			resettle_pop_group = {
-				POP_GROUP = event_target:refugee_pop
-				PLANET = this
-				PERCENTAGE = 1
-			}
-		}
-		if = {
-			limit = {
-				owner = { # Vfix
-					NOR = {
-						has_country_flag = refugeespecies@event_target:resettled_pop_group.species
-						has_country_flag = refugeecountry@event_target:RefugeeEscapedFrom
-						founder_species = { is_same_species = event_target:resettled_pop_group.species } # You don't get the flavorful event if it's your own species that is fleeing
-					}
-				}
-			}
-			event_target:resettled_pop_group = {
-				pop_group_event = { id = refugees.1 }
-			}
-		}
-		else = {
-			event_target:resettled_pop_group = {
-				pop_group_event = { id = refugees.2 }
-			}
 		}
 	}
 }

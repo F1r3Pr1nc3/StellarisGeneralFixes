@@ -915,7 +915,8 @@ DISTAR_MEDGAS_CAT = {
 	level = 3
 
 	spawn_chance = {
-		modifier = { # Normal chance to spawn if player has completed chain
+		# Normal chance to spawn if player has completed chain
+		modifier = {
 			add = 1
 			is_planet_class = pc_gas_giant
 			has_any_strategic_resource = no
@@ -923,7 +924,8 @@ DISTAR_MEDGAS_CAT = {
 				has_completed_event_chain_counter = { event_chain = l_cluster_chain counter = clues }
 			}
 		}
-		modifier = { # Higher chance to spawn if player has ongoing chain
+		# Higher chance to spawn if player has ongoing chain
+		modifier = {
 			add = 5
 			is_planet_class = pc_gas_giant
 			has_any_strategic_resource = no

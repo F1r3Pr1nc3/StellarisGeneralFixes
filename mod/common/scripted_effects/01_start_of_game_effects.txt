@@ -1650,7 +1650,7 @@ generate_civic_secondary_pops = {
 	else_if = {
 		limit = {
 			owner = {
-				last_created_species = { is_infernal = yes }
+				last_created_species = { has_trait = trait_infernal }
 			}
 		}
 		owner = { set_country_flag = infernal_subspecies }
@@ -1668,9 +1668,9 @@ generate_civic_secondary_pops = {
 					has_valid_civic = civic_machine_servitor
 				}
 				OR = {
-					has_origin = origin_void_machines
-					has_origin = origin_post_apocalyptic_machines
-					has_origin = origin_subterranean_machines
+					has_void_dweller_origin = yes
+					is_apocalyptic_empire = yes
+					is_subterranean_empire = yes
 				}
 			}
 		}
@@ -2013,6 +2013,28 @@ void_dweller_home_planet_setup = {
 		save_event_target_as = void_dweller_owner
 		give_technology = { tech = tech_habitat_1 message = no }
 		add_research_option = tech_habitat_2
+		if = {
+			limit = {
+				OR = {
+					NOR = {
+						is_lithoid_empire = yes
+						is_robotic_species = yes
+						is_infernal_empire = yes
+					}
+					is_catalytic_empire = yes
+					country_uses_bio_ships = yes
+				}
+			}
+			root.solar_system.starbase = {
+				remove_starbase_building = { slot = 1 }
+				set_starbase_building = { slot = 1 building = hydroponics_bay }
+			}
+		}
+		if = {
+			limit = { has_valid_civic = civic_private_healthcare_corporate }
+			give_technology = { message = no tech = tech_frontier_health }
+			add_research_option = tech_subdermal_stimulation
+		}
 	}
 
 	solar_system = {
@@ -2138,31 +2160,6 @@ void_dweller_home_planet_setup = {
 
 	event_target:habitat_1_planet = {
 		set_planet_flag = habitat@PREV
-	}
-
-	owner = {
-		if = {
-			limit = {
-				OR = {
-					NOR = {
-						is_lithoid_empire = yes
-						is_robotic_species = yes
-						is_infernal_empire = yes
-					}
-					is_catalytic_empire = yes
-					country_uses_bio_ships = yes
-				}
-			}
-			root.solar_system.starbase = {
-				remove_starbase_building = { slot = 1 }
-				set_starbase_building = { slot = 1 building = hydroponics_bay }
-			}
-		}
-		if = {
-			limit = { has_valid_civic = civic_private_healthcare_corporate }
-			give_technology = { message = no tech = tech_frontier_health }
-			add_research_option = tech_subdermal_stimulation
-		}
 	}
 	if = { # First we generate pops for empires without strange pop starts
 		limit = {
@@ -2363,6 +2360,7 @@ give_starting_resources_effect = {
 				influence = 100
 				unity = 50
 			}
+			set_country_flag = start_resources_granted
 		}
 		if = {
 			limit = {
@@ -2427,7 +2425,6 @@ give_starting_resources_effect = {
 			}
 			owner = { add_resource = { food = 200 } }
 		}
-		owner = { set_country_flag = start_resources_granted }
 	}
 }
 
@@ -2730,7 +2727,6 @@ create_life_seeded_planet = {
 		33 = { add_deposit = d_prosperous_mesa }
 		33 = { add_deposit = d_fertile_lands }
 	}
-
 	add_deposit = d_dust_desert
 	add_deposit = d_fuming_bog
 	add_deposit = d_crystal_forest
@@ -2769,12 +2765,10 @@ create_ocean_paradise_planet = {
 	add_deposit = d_underwater_vent
 	# Bonus
 	add_deposit = d_crystal_reef
-
 	random_list = {
 		50 = { add_deposit = d_submerged_ore_veins }
 		50 = { add_deposit = d_underwater_vent }
 	}
-
 	# Planetscapers
 	if = {
 		limit = {

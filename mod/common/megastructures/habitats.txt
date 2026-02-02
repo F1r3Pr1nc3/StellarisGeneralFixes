@@ -161,19 +161,18 @@ habitat_central_complex = {
 	ai_weight = {
 		factor = 5
 		modifier = {
-			# AI shouldn't build habitats if they have any uncolonised habitats.
 			factor = 0
-			owner = {
-				any_planet_within_border = { is_planet_class = pc_habitat is_colony = no }
-			}
-		}
-		modifier = {
-			# AI shouldn't build habitats if they don't have starports in the system
-			# unless they have either the Void Dwellers origin or Voidborn AP.
-			factor = 0
-			NOR = {
-				owner = { is_void_dweller_empire = yes }
-				starbase = { has_starbase_size >= starbase_starport }
+			OR = {
+				# AI shouldn't build habitats if they have any uncolonised habitats.
+				owner = {
+					any_planet_within_border = { is_planet_class = pc_habitat is_colony = no }
+				}
+				# AI shouldn't build habitats if they don't have starports in the system
+				# unless they have either the Void Dwellers origin or Voidborn AP.
+				NOR = {
+					owner = { is_void_dweller_empire = yes }
+					starbase = { has_starbase_size >= starbase_starport }
+				}
 			}
 		}
 		modifier = {
@@ -197,21 +196,17 @@ habitat_central_complex = {
 			limit = {
 				fromfrom.planet = { is_star = yes }
 			}
-			spawn_habitat_effect = {
-				DISTANCE = 19.798
-			}
+			spawn_habitat_effect = { DISTANCE = 19.798 }
 		}
 		else = {
-			spawn_habitat_effect = {
-				DISTANCE = 9.899
-			}
+			spawn_habitat_effect = { DISTANCE = 9.899 }
 		}
 		fromfrom.solar_system = { set_star_flag = has_habitat }
-		from = { save_event_target_as = habitat_owner }
-		remove_megastructure = fromfrom
 		from = {
+			save_event_target_as = habitat_owner
 			country_event = { id = megastructures.10 }
 		}
+		remove_megastructure = fromfrom
 	}
 }
 
@@ -305,7 +300,6 @@ habitat_central_complex_restored = {
 			}
 		}
 		fromfrom.solar_system = { set_star_flag = has_habitat }
-		from = { save_event_target_as = habitat_owner }
 		solar_system = {
 			spawn_orbital_effect = {
 				TYPE = major
@@ -313,10 +307,11 @@ habitat_central_complex_restored = {
 				TARGET_PLANET = event_target:target_planet
 			}
 		}
-		remove_megastructure = fromfrom
 		from = {
+			save_event_target_as = habitat_owner
 			country_event = { id = megastructures.10 }
 		}
+		remove_megastructure = fromfrom
 	}
 }
 

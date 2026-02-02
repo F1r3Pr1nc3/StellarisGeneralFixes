@@ -2645,7 +2645,7 @@ aura_emitter = {
 	on_finished = {
 		solar_system = {
 			if = {
-				limit = { is_psionic_aura_suppressed = no }
+				limit = { check_aura_suppressors = no }
 				natural_spawn_psionic_aura = { OWNER = root.owner }
 			}
 		}

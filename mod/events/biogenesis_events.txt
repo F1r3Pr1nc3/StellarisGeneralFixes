@@ -4939,7 +4939,10 @@ country_event = {
 	}
 
 	immediate = {
-		from = { set_leader_flag = leader_got_a_second_chance }
+		from = {
+			set_leader_flag = leader_got_a_second_chance
+			set_leader_flag = leader_death_events_blocked # Vfox opt minor
+		}
 		clone_leader = {
 			target = from
 			effect = {
@@ -4949,7 +4952,6 @@ country_event = {
 				restore_leader_location = yes # TODO AUG-48742 Replace with code support
 			}
 		}
-		from = { set_leader_flag = leader_death_events_blocked }
 	}
 }
 
@@ -7388,7 +7390,6 @@ country_event = {
 	}
 
 	immediate = {
-		event_target:fallen_empire_hive_growth = { save_event_target_as = FallenEmpireTaskOrigin }
 		set_timed_country_flag = { flag = hive_fallen_empire_event_cooldown years = 7 }
 		weighted_random_owned_pop_group = {
 			limit = { has_interesting_species_trait = yes }

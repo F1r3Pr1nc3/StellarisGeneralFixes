@@ -2833,7 +2833,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		solar_system = { is_psionic_aura_suppressed = no }
+		solar_system = { check_aura_suppressors = no }
 	}
 
 	immediate = {
@@ -2888,7 +2888,7 @@ country_event = {
 					has_starbase_building = ring_aura_emitter
 				}
 			}
-			is_psionic_aura_suppressed = no
+			check_aura_suppressors = no
 		}
 	}
 
@@ -2901,7 +2901,7 @@ country_event = {
 						has_starbase_building = ring_aura_emitter
 					}
 				}
-				is_psionic_aura_suppressed = no
+				check_aura_suppressors = no
 			}
 			natural_spawn_psionic_aura = { OWNER = root }
 		}
@@ -12512,10 +12512,7 @@ country_event = {
 				any_system_within_border = { can_spawn_astral_rift = yes }
 			}
 		}
-		shroud_touched_option_cost = {
-			RESOURCE = astral_threads
-			VALUE = 500
-		}
+		shroud_touched_option_cost = { RESOURCE = astral_threads VALUE = 500 }
 		astral_splitting = yes
 		set_country_flag = psionic_rift_help_received
 	}
@@ -13265,9 +13262,7 @@ country_event = {
 					key = NAME_Mindwarden_Fleet
 					variable_string = "[mindwarden_enclave_country.GetName]"
 				}
-				set_fleet_settings = {
-					can_change_leader = no
-				}
+				set_fleet_settings = { can_change_leader = no }
 			}
 		}
 		run_in_ai_mode = yes
@@ -16043,9 +16038,7 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12010.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = {
-				GLOBAL_EVENT_TARGET = ganthuata
-			}
+			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = ganthuata }
 		}
 	}
 }
@@ -16143,9 +16136,7 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12020.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = {
-				GLOBAL_EVENT_TARGET = koborokra
-			}
+			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = koborokra }
 		}
 	}
 }
@@ -16233,9 +16224,7 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12030.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = {
-				GLOBAL_EVENT_TARGET = morr
-			}
+			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = morr }
 		}
 	}
 }
@@ -16321,9 +16310,7 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12040.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = {
-				GLOBAL_EVENT_TARGET = kronen
-			}
+			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = kronen }
 		}
 	}
 }
@@ -16572,9 +16559,7 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12050.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = {
-				GLOBAL_EVENT_TARGET = zulyn
-			}
+			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = zulyn }
 		}
 	}
 }
@@ -16670,9 +16655,7 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12060.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = {
-				GLOBAL_EVENT_TARGET = ouwron
-			}
+			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = ouwron }
 		}
 	}
 }
