@@ -4555,6 +4555,7 @@ country_event = {
 	}
 
 	immediate = {
+		reroll_random = yes # Vfix
 		random_system_within_border = {
 			limit = {
 				closest_system = {
@@ -4787,6 +4788,10 @@ planet_event = {
 	location = root
 	is_triggered_only = yes
 
+	trigger = {
+		NOT = { has_modifier = criminal_gambling } # Vfix
+	}
+
 	option = {
 		name = cara.4120.a
 		add_modifier = { modifier = criminal_gambling years = 5 }
@@ -4801,6 +4806,10 @@ planet_event = {
 	picture = GFX_evt_caravaneers
 	location = root
 	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_modifier = festival_aftermath } # Vfix
+	}
 
 	immediate = {
 		save_event_target_as = pleased_planet
@@ -4851,6 +4860,10 @@ planet_event = {
 	picture = GFX_evt_caravaneers
 	location = root
 	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_modifier = slot_machine_bounty } # Vfix
+	}
 
 	option = {
 		name = EXCELLENT
@@ -4920,6 +4933,19 @@ planet_event = {
 
 	location = root
 	is_triggered_only = yes
+
+	trigger = { # Vfix
+		NOR = {
+			has_modifier = heavy_metal
+			has_deposit = d_crater
+			owner = {
+				OR = {
+					has_specimen = megacorpse_hyperguitar
+					has_special_project = MEGACORPSE_ORIGINS
+				}
+			}
+		}
+	}
 
 	immediate = {
 		if = {

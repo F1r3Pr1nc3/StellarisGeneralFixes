@@ -497,28 +497,25 @@ miner = {
 
 crystal_miner = {
 	category = worker
-	possible = { always = no }
+	possible = {
+		always = no
+		hidden_trigger = { exists = owner }
+		owner = { is_gestalt = no }
+	}
 	swappable_data = {
 		default = {
 			condition_string = WORKER_JOB_TRIGGER
 			building_icon = building_crystal_mines
 		}
 	}
-
 	tags = { strategic_resource rare_crystals }
-
 	possible_pre_triggers = {
 		has_owner = yes
-		is_sapient = yes
-		is_being_assimilated = no
 		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
 	}
-
 	possible_precalc = can_fill_worker_job
-	possible = {
-		hidden_trigger = { exists = owner }
-		owner = { is_gestalt = no }
-	}
 
 	resources = {
 		category = planet_sr_miners
@@ -536,23 +533,9 @@ crystal_miner = {
 			energy = @lava_tubes_mining_job_upkeep
 		}
 	}
-
-	weight = { # Attempted Repairs:
+	weight = {
 		weight = @specialist_job_weight # Important job
 		mult = value:job_weights_modifier|JOB|crystal_miner|RESOURCE|rare_crystals|
-		modifier = {
-			factor = 2
-			OR = {
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-				planet = {
-					any_deposit = {
-						is_deposit_type = d_lava_tubes
-					}
-				}
-			}
-			energy = @lava_tubes_mining_job_upkeep
-		}
 		modifier = {
 			factor = 10
 			is_enslaved = yes
@@ -586,7 +569,6 @@ crystal_miner = {
 			has_trait = trait_cyborg_creed_of_labor
 		}
 	}
-
 	promotion = {
 		time = @standard_promotion_time
 		effect = {
