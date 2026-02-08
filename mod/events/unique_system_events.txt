@@ -492,10 +492,7 @@ country_event = {
 						set_ai_personality = hive_mind_friend # Larionessi have 50% chance of this in vanilla.
 					}
 				}
-				while = { # 300 pops is far too low.
-					count = 6
-					create_pop_group = { species = event_target:larion_species size = 100 }
-				}
+				create_pop_group = { species = event_target:larion_species size = 600 } # 300 pops is far too low.
 				solar_system = {
 					every_system_colony = {
 						limit = {
