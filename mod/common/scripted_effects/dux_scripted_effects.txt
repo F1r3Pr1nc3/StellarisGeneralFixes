@@ -400,25 +400,47 @@ DLAF_spawn_awoken = {
 				count = 2
 				if = {
 					limit = { is_planet_class = pc_volcanic }
-					add_district_if_possible_effect = { district = district_melting }
-					add_district_if_possible_effect = { district = district_geothermal }
-					add_district_if_possible_effect = { district = district_city }
+					add_district_if_possible_effect = {
+						district = district_melting
+					}
+					add_district_if_possible_effect = {
+						district = district_geothermal
+					}
+					add_district_if_possible_effect = {
+						district = district_city
+					}
 				}
 				else_if = {
 					limit = { is_planet_class = pc_habitat }
-					add_district_if_possible_effect = { district = district_hab_mining }
-					add_district_if_possible_effect = { district = district_hab_energy }
-					add_district_if_possible_effect = { district = district_hab_housing }
+					add_district_if_possible_effect = {
+						district = district_hab_mining
+					}
+					add_district_if_possible_effect = {
+						district = district_hab_energy
+					}
+					add_district_if_possible_effect = {
+						district = district_hab_housing
+					}
 				}
 				else_if = {
 					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district_if_possible_effect = { district = district_rw_generator } # Ringword districts add more jobs. No Mining Equivalent.
-					add_district_if_possible_effect = { district = district_rw_city }
+					add_district_if_possible_effect = {
+						district = district_rw_generator
+					} # Ringword districts add more jobs. No Mining Equivalent.
+					add_district_if_possible_effect = {
+						district = district_rw_city
+					}
 				}
 				else = {
-					add_district_if_possible_effect = { district = district_generator }
-					add_district_if_possible_effect = { district = district_mining }
-					add_district_if_possible_effect = { district = district_city }
+					add_district_if_possible_effect = {
+						district = district_generator
+					}
+					add_district_if_possible_effect = {
+						district = district_mining
+					}
+					add_district_if_possible_effect = {
+						district = district_city
+					}
 				}
 			}
 			if = {

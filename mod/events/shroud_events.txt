@@ -2833,7 +2833,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		solar_system = { check_aura_suppressors = no }
+		solar_system = { is_psionic_aura_suppressed = no }
 	}
 
 	immediate = {
@@ -2888,7 +2888,7 @@ country_event = {
 					has_starbase_building = ring_aura_emitter
 				}
 			}
-			check_aura_suppressors = no
+			is_psionic_aura_suppressed = no
 		}
 	}
 
@@ -2901,7 +2901,7 @@ country_event = {
 						has_starbase_building = ring_aura_emitter
 					}
 				}
-				check_aura_suppressors = no
+				is_psionic_aura_suppressed = no
 			}
 			natural_spawn_psionic_aura = { OWNER = root }
 		}
@@ -9807,6 +9807,7 @@ country_event = {
 # 4800 - 4999 Patron Active Accords
 # ==================================
 # The Eater of Worlds - Devour Accord
+# DEPRECATED: relaced by spawn_eater_fleet_effect
 country_event = {
 	id = shroud.4800
 	hide_window = yes
@@ -9860,6 +9861,21 @@ country_event = {
 					set_purge_type = { type = purge_sacrifice country = prev }
 				}
 			}
+		}
+	}
+}
+# on_subject_integrated
+country_event = {
+	id = shroud.4802
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { # Vfix opt
+		any_owned_fleet = { has_fleet_flag = eater_fleet }
+	}
+	immediate = {
+		every_owned_fleet = {
+			limit = { has_fleet_flag = eater_fleet }
+			delete_fleet = this
 		}
 	}
 }
@@ -16038,7 +16054,9 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12010.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = ganthuata }
+			shroud_leader_hire_effect = {
+				GLOBAL_EVENT_TARGET = ganthuata
+			}
 		}
 	}
 }
@@ -16136,7 +16154,9 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12020.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = koborokra }
+			shroud_leader_hire_effect = {
+				GLOBAL_EVENT_TARGET = koborokra
+			}
 		}
 	}
 }
@@ -16224,7 +16244,9 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12030.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = morr }
+			shroud_leader_hire_effect = {
+				GLOBAL_EVENT_TARGET = morr
+			}
 		}
 	}
 }
@@ -16310,7 +16332,9 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12040.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = kronen }
+			shroud_leader_hire_effect = {
+				GLOBAL_EVENT_TARGET = kronen
+			}
 		}
 	}
 }
@@ -16559,7 +16583,9 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12050.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = zulyn }
+			shroud_leader_hire_effect = {
+				GLOBAL_EVENT_TARGET = zulyn
+			}
 		}
 	}
 }
@@ -16655,7 +16681,9 @@ country_event = {
 		tag = hire_leader
 		custom_tooltip = shroud.12060.hire_custom_tooltip
 		hidden_effect = {
-			shroud_leader_hire_effect = { GLOBAL_EVENT_TARGET = ouwron }
+			shroud_leader_hire_effect = {
+				GLOBAL_EVENT_TARGET = ouwron
+			}
 		}
 	}
 }

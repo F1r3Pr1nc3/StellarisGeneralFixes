@@ -390,7 +390,8 @@ planet_event = {
 	}
 }
 
-# Planet Smelter PK
+# Planet Smelter PK (on_destroy_planet)
+# from = fleet that fired
 planet_event = {
 	id = infernals.36
 	hide_window = yes
@@ -503,32 +504,26 @@ planet_event = {
 				set_timed_country_flag = { flag = resolution_breached_terraformed years = 10 }
 			}
 		}
-
-        if = {
+		if = {
 			limit = {
 				exists = owner
-				owner = { is_country_type = primitive }
+				owner = { is_primitive = yes }
 			}
-			every_country = {
+			# modifier for allies + those upset by genocide
+			every_playable_country = {
 				limit = {
 					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
 					}
-					AND = {
-						is_country_type = default
-						NOR = {
-							is_xenophobe = yes
-							is_homicidal = yes
-							is_xenophile = yes
-						}
+					NOR = {
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
 					}
 				}
-				add_opinion_modifier = {
-					modifier = opinion_burned_a_primitive_world
-					who = from.owner
-				}
+				add_opinion_modifier = { modifier = opinion_burned_a_primitive_world who = from.owner }
 			}
 			every_country = {
 				limit = {
@@ -541,8 +536,8 @@ planet_event = {
 						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
 						AND = {
 							is_country_type = default
-							is_homicidal = no # Xenophiles can be homicidal.
 							is_xenophile = yes
+							is_homicidal = no # Vfix: Xenophiles can be homicidal (Dux)
 						}
 					}
 				}
@@ -552,7 +547,7 @@ planet_event = {
 				}
 			}
 		}
-		# Diplo Penalties + Threat
+		# Diplo Penalties + Threat (Vfix mod by Dux)
 		if = {
 			limit = {
 				NOT = { is_planet_class = pc_ai }
@@ -564,6 +559,7 @@ planet_event = {
 			}
 			# Generate threat
 			add_threat = { who = from.owner amount = 3 }
+			# modifier for allies + those upset by robots
 			every_country = {
 				limit = {
 					NOR = {
@@ -665,16 +661,16 @@ planet_event = {
 			every_owned_pop_group = {
 				limit = {
 					NOR = {
-						is_infernal = yes
+						has_trait = trait_infernal
 						is_lithoid = yes
 						is_robotic_species = yes
 					}
 				}
-				while = {
-					count = value:per_100_pop_amount
-					from.owner = {
-						if = {
-							limit = { has_ascension_perk = ap_become_the_crisis }
+				from.owner = {
+					if = {
+						limit = { has_ascension_perk = ap_become_the_crisis }
+						while = { # Vfix (by Dux)
+							count = value:per_100_pop_amount
 							complete_crisis_objective = crisobj_purge_pops
 						}
 					}

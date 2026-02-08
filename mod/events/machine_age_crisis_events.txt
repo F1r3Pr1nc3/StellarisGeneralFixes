@@ -2036,9 +2036,9 @@ planet_event = {
 					}
 				}
 				country_event = { id = crisis.7510 days = 10 }
+				set_country_flag = exodus_ready
 			}
 			remove_planet_flag = cosmogenesis_pickup_planet
-			owner = { set_country_flag = exodus_ready }
 		}
 		else = {
 			if = {
@@ -4259,13 +4259,10 @@ event = {
 
 	trigger = {
 		has_global_flag = synth_queen_speech_2_happened
-		NOT = {
+		NOR = {
 			has_global_flag = synth_queen_side_quests_spawned
-		}
-		# Checks if everyone has finished talking to the Synth Queen
-		count_playable_country = {
-			count = all
-			limit = {
+			# Checks if everyone has finished talking to the Synth Queen
+			any_playable_country = {
 				has_country_flag = speech_2
 				NOT = { has_country_flag = synth_queen_conversation_ongoing }
 			}
@@ -7041,21 +7038,21 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = { # Make sure belligerants were a convoy v playable country
-		OR = {
-			is_country_type = synth_queen_outposts
-			from = { is_country_type = synth_queen_outposts }
+		OR = { # Vfix opt minor
+			AND = {
+				is_country_type = synth_queen_outposts
+				from = { is_country_type = default }
+			}
+			AND = {
+				is_country_type = default
+				from = { is_country_type = synth_queen_outposts }
+			}
 		}
-		OR = {
-			is_country_type = default
-			from = { is_country_type = default }
-		}
-		NOT = {
-			fromfrom = {
-				solar_system = {
-					any_fleet_in_system = {
-						is_mobile = yes
-						owner = { is_hostile = root }
-					}
+		fromfrom.solar_system = {
+			NOT = {
+				any_fleet_in_system = {
+					is_mobile = yes
+					owner = { is_hostile = root }
 				}
 			}
 		}
@@ -7080,7 +7077,7 @@ country_event = {
 			}
 			set_faction_hostility = { target = from set_neutral = yes }
 		}
-		if = { # Outpost won
+		else_if = { # Outpost won
 			limit = { is_country_type = synth_queen_outposts }
 			fromfrom = {
 				random_controlled_ship = {
@@ -7091,23 +7088,16 @@ country_event = {
 			from = {
 				save_event_target_as = playable_country
 				country_event = { id = crisis.8194 days = 7 }
+				event_target:outpost_ship = { # Vfix opt minor
+					enable_special_project = {
+						name = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
+						owner = prev
+						location = this.solar_system
+					}
+				}
 				abort_special_project = {
 					type = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
 					location = event_target:outpost_ship.solar_system
-				}
-			}
-			fromfrom = {
-				random_controlled_ship = {
-					limit = { is_ship_size = big_starbase_synth_queen }
-					event_target:playable_country = {
-						event_target:outpost_ship = {
-							enable_special_project = {
-								name = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
-								owner = prev
-								location = this
-							}
-						}
-					}
 				}
 			}
 			set_faction_hostility = { target = from set_neutral = yes }

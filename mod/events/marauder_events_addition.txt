@@ -844,14 +844,17 @@ planet_event = {
 					fleet_event = { id = marauder.110 days = 14 }
 				}
 			}
-			event_target:raiding_fleet = {
-				if = {
+		}
+	}
+
+	after = {
+		event_target:raiding_fleet = {
+			if = {
+				limit = { is_disabled = yes }
+				set_event_locked = no
+				every_owned_ship = {
 					limit = { is_disabled = yes }
-					set_event_locked = no
-					every_owned_ship = {
-						limit = { is_disabled = yes }
-						set_disabled = no
-					}
+					set_disabled = no
 				}
 			}
 		}

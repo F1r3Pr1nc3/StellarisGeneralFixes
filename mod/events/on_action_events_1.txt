@@ -4595,7 +4595,7 @@ planet_event = {
 				}
 				else_if = {
 					limit = {
-						fromfrom = { is_infernal = yes }
+						fromfrom = { has_trait = trait_infernal }
 					}
 					from = {
 						add_resource = {
@@ -4688,7 +4688,7 @@ planet_event = {
 				}
 				else_if = {
 					limit = {
-						fromfrom = { is_infernal = yes }
+						fromfrom = { has_trait = trait_infernal }
 					}
 					from = {
 						add_resource = {
@@ -4771,7 +4771,7 @@ planet_event = {
 				}
 				else_if = {
 					limit = {
-						fromfrom = { is_infernal = yes }
+						fromfrom = { has_trait = trait_infernal }
 					}
 					from = {
 						add_resource = {
@@ -5161,9 +5161,7 @@ country_event = {
 				# }
 				using_war_goal = { type = wg_restore_the_community owner = root }
 			}
-		}
-		# If all of loser's systems are claimed, action.48 is fired instead
-		fromfrom = {
+			# If all of loser's systems are claimed, action.48 is fired instead
 			OR = {
 				using_war_goal = { type = wg_conquest owner = root }
 				using_war_goal = { type = wg_counterattack owner = root }
@@ -6167,9 +6165,7 @@ country_event = {
 				is_country_type = default
 			}
 			species = {
-				apex_predator_switch = {
-					COUNTRY = event_target:destroyer_country
-				}
+				apex_predator_switch = { COUNTRY = event_target:destroyer_country }
 			}
 		}
 		if = {
@@ -8118,6 +8114,7 @@ planet_event = {
 			limit = { planet_is_ring_world_equivalent = yes }
 			while = {
 				count = owner.modifier:colony_start_urban_districts_add
+				limit = { free_district_slots > 0 } # Vfix
 				add_district = { district_type = district_rw_city type_conversion = yes }
 			}
 		}
@@ -8125,12 +8122,14 @@ planet_event = {
 			limit = { planet_is_habitat_equivalent = yes }
 			while = {
 				count = owner.modifier:colony_start_urban_districts_add
+				limit = { free_district_slots > 0 } # Vfix
 				add_district = { district_type = district_hab_housing type_conversion = yes }
 			}
 		}
 		else = {
 			while = {
 				count = owner.modifier:colony_start_urban_districts_add
+				limit = { free_district_slots > 0 } # Vfix
 				add_district = { district_type = district_city type_conversion = yes }
 			}
 			validate_planet_buildings_and_districts = yes

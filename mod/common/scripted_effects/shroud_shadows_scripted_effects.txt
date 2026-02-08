@@ -2338,8 +2338,14 @@ accept_end_of_the_cycle = {
 		try_start_chain_aura_suppressors = yes
 		disable_shroud_patrons = yes
 		accept_covenant = end_of_the_cycle
-		give_tech_no_error_effect = { MESSAGE = yes TECH = tech_psionic_aura }
-		give_tech_no_error_effect = { MESSAGE = yes TECH = tech_aura_intensification }
+		give_tech_no_error_effect = {
+			MESSAGE = yes
+			TECH = tech_psionic_aura
+		}
+		give_tech_no_error_effect = {
+			MESSAGE = yes
+			TECH = tech_aura_intensification
+		}
 		accept_covenant = end_of_the_cycle
 		set_global_flag = end_of_the_cycle
 		set_global_flag = galactic_crisis_happened
@@ -2625,7 +2631,7 @@ reckoning_spawn = {
 				NOT = { is_owned_by = root }
 			}
 			if = {
-				limit = { check_aura_suppressors = yes }
+				limit = { is_psionic_aura_suppressed = yes }
 				owner = { set_country_flag = eotc_destruction_mitigated }
 			}
 			else = {
@@ -3675,7 +3681,10 @@ create_exiled_country = {
 				set_country_flag = mindwarden_exiled
 				save_event_target_as = current_exiled_country
 				save_global_event_target_as = exiled_country@root
-				root = { save_global_event_target_as = mindwarden_country@prev }
+				root = {
+					save_global_event_target_as = mindwarden_country@prev
+					set_hostile = prev
+				}
 				ruler = {
 					add_trait = { trait = leader_trait_chosen }
 				}
@@ -3690,7 +3699,6 @@ create_exiled_country = {
 				give_technology = { tech = tech_cold_fusion_power }
 				# They're hostile towards their Mindwardens
 				set_hostile = root
-				root = { set_hostile = prev }
 			}
 		}
 	}

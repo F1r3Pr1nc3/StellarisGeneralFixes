@@ -1261,6 +1261,46 @@ country_event = {
 						save_event_target_as = system_owner
 					}
 				}
+				# Flip control of the solar system
+				if = {
+					limit = { exists = starbase }
+					starbase = {
+						set_owner = event_target:current_uprising
+						if = {
+							limit = { has_starbase_size = starbase_outpost }
+							set_starbase_size = starbase_starport
+							set_starbase_module = { slot = 1 module = shipyard }
+							set_starbase_module = { slot = 2 module = shipyard }
+						}
+						else_if = {
+							limit = {
+								NOT = { has_starbase_module = shipyard }
+							}
+							set_starbase_module = { slot = 1 module = shipyard }
+							set_starbase_module = { slot = 2 module = shipyard }
+						}
+					}
+				}
+				else = {
+					create_starbase = {
+						size = starbase_starport
+						module = shipyard
+						module = shipyard
+						owner = event_target:current_uprising
+					}
+				}
+				every_fleet_in_system = {
+					limit = {
+						NOT = { is_owned_by = event_target:current_uprising }
+						is_mobile = yes
+					}
+					set_mia = mia_return_home
+				}
+				add_claims = {
+					who = event_target:system_owner
+					num_of_claims = 1
+					show_notification = no
+				}
 			}
 			# If the solar system owner has an observation post, notify them.
 			if = {
@@ -1359,48 +1399,6 @@ country_event = {
 							}
 						}
 					}
-				}
-			}
-			# Flip control of the solar system
-			solar_system = {
-				if = {
-					limit = { exists = starbase }
-					starbase = {
-						set_owner = event_target:current_uprising
-						if = {
-							limit = { has_starbase_size = starbase_outpost }
-							set_starbase_size = starbase_starport
-							set_starbase_module = { slot = 1 module = shipyard }
-							set_starbase_module = { slot = 2 module = shipyard }
-						}
-						else_if = {
-							limit = {
-								NOT = { has_starbase_module = shipyard }
-							}
-							set_starbase_module = { slot = 1 module = shipyard }
-							set_starbase_module = { slot = 2 module = shipyard }
-						}
-					}
-				}
-				else = {
-					create_starbase = {
-						size = starbase_starport
-						module = shipyard
-						module = shipyard
-						owner = event_target:current_uprising
-					}
-				}
-				every_fleet_in_system = {
-					limit = {
-						NOT = { is_owned_by = event_target:current_uprising }
-						is_mobile = yes
-					}
-					set_mia = mia_return_home
-				}
-				add_claims = {
-					who = event_target:system_owner
-					num_of_claims = 1
-					show_notification = no
 				}
 			}
 		}
@@ -4124,8 +4122,7 @@ situation_event = {
 	}
 	desc = {
 		trigger = {
-			owner = { is_hive_empire = yes }
-			owner = { is_machine_empire = no }
+			owner = { is_hive_empire = yes is_machine_empire = no }
 		}
 		text = preftl.2090.desc.hive
 	}
