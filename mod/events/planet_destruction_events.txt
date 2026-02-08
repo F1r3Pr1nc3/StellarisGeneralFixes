@@ -2942,13 +2942,18 @@ planet_event = {
 		}
 		while = {
 			limit = {
-				any_owned_species = { is_robotic = no is_sapient = yes }
+				any_owned_pop_group = {
+					is_robot_pop_group = no
+					is_sapient = yes
+				}
 			}
-			weighted_random_owned_pop_group = {
+			ordered_owned_pop_group = {
 				limit = {
 					is_robot_pop_group = no
 					is_sapient = yes
 				}
+				order_by = trigger:pop_amount
+				inverse = yes # Devolve from fewest pops upwards.
 				species = { save_event_target_as = species_target }
 				create_devolved_species = yes
 			}
@@ -2961,16 +2966,59 @@ planet_event = {
 				change_species = event_target:devolved_species_target
 			}
 		}
-		weighted_random_owned_pop_group = {
+		random_owned_pop_group = {
 			limit = {
-				is_same_species = event_target:devolved_species_target
+				exists = event_target:devolved_species_target
+				species = { is_same_species = event_target:devolved_species_target } # This will always be the last devolved species.
 			}
-			random_list = {
-				33 = {}
-				33 = {}
-				33 = {}
+			save_event_target_as = devolution_survivors_donor
+		}
+		random_list = {
+			33 = {
+				create_pop_group = {
+					pop_group = event_target:devolution_survivors_donor
+					species = event_target:species_target
+					size = 0
+					effect = {
+						save_event_target_as = devolution_survivors
+						transfer_pop_amount = {
+							source = event_target:devolution_survivors_donor
+							target = event_target:devolution_survivors
+							amount = 100
+						}
+					}
+				}
 			}
-			change_species = event_target:species_target
+			33 = {
+				create_pop_group = {
+					pop_group = event_target:devolution_survivors_donor
+					species = event_target:species_target
+					size = 0
+					effect = {
+						save_event_target_as = devolution_survivors
+						transfer_pop_amount = {
+							source = event_target:devolution_survivors_donor
+							target = event_target:devolution_survivors
+							amount = 200
+						}
+					}
+				}
+			}
+			33 = {
+				create_pop_group = {
+					pop_group = event_target:devolution_survivors_donor
+					species = event_target:species_target
+					size = 0
+					effect = {
+						save_event_target_as = devolution_survivors
+						transfer_pop_amount = {
+							source = event_target:devolution_survivors_donor
+							target = event_target:devolution_survivors
+							amount = 300
+						}
+					}
+				}
+			}
 		}
 		planet = {
 			every_planet_army = {
