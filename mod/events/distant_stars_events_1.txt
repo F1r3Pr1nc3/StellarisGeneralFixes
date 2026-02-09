@@ -6628,7 +6628,8 @@ country_event = {
 			any_system_planet = {
 				has_planet_flag = ratling_planet
 				is_colonizable = yes
-				is_habitable_for_wilderness = yes # Vfix
+				uses_district_set = standard # Compatibility with mods, blocks pc_city/pc_hive/pc_machine/pc_nanotech/pc_volcanic.
+				is_artificial = no
 			}
 		}
 	}
@@ -6667,12 +6668,15 @@ country_event = {
 				limit = {
 					has_planet_flag = ratling_planet
 					is_colonizable = yes
-					is_habitable_for_wilderness = yes # Vfix
+					uses_district_set = standard # Compatibility with mods, blocks pc_city/pc_hive/pc_machine/pc_nanotech/pc_volcanic.
+					is_artificial = no
 				}
 				set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 				set_owner = event_target:ratling_pre_space_country
 				# add_building = building_junkheap # Vfix TODO: Building is auto-destroyed because district_city can't be built by ratlings country.
-				create_pop_group = { species = event_target:ratling_species size = 1000 }
+				create_pop_group = { species = event_target:ratling_species size = 300 ethos = { ethic = ethic_materialist } }
+				create_pop_group = { species = event_target:ratling_species size = 400 ethos = { ethic = ethic_egalitarian } }
+				create_pop_group = { species = event_target:ratling_species size = 300 ethos = { ethic = ethic_pacifist } }
 				while = {
 					count = 4
 					create_army = {
@@ -7239,7 +7243,8 @@ country_event = {
 				is_owned_by = event_target:ratling_pre_space_country
 				has_orbital_bombardment = no
 				has_ground_combat = no
-				is_habitable_for_wilderness = yes # Vfix
+				uses_district_set = standard # Compatibility with mods, blocks pc_city/pc_hive/pc_machine/pc_nanotech/pc_volcanic.
+				is_artificial = no
 			}
 		}
 	}
@@ -7271,9 +7276,9 @@ country_event = {
 			species = event_target:ratling_species
 			ignore_initial_colony_error = yes
 			day_zero_contact = no # This wasn't needed when added, but I think it should be here just in case.
+			graphical_culture = mammalian_01 # Free ships use reptilian_01 in Vanilla, but is this because they weren't the ones to build the free ships?
 			type = default
 			effect = {
-				set_graphical_culture = mammalian_01 # Free ships use reptilian_01 in Vanilla...
 				save_global_event_target_as = ratling_country
 				set_country_flag = ratling_country
 				## Comapre country_event = { id = distar.20330 days = 1 }
@@ -7293,7 +7298,8 @@ country_event = {
 					is_owned_by = event_target:ratling_pre_space_country
 					has_orbital_bombardment = no
 					has_ground_combat = no
-					is_habitable_for_wilderness = yes
+					uses_district_set = standard # Compatibility with mods, blocks pc_city/pc_hive/pc_machine/pc_nanotech/pc_volcanic.
+					is_artificial = no
 				}
 				# Setup ratling colony
 				set_owner = event_target:ratling_country
@@ -7301,30 +7307,18 @@ country_event = {
 				remove_building = building_junkheap # This building gets auto-deleted because ratlings country can't build city districts.
 				clear_blockers = yes
 				remove_all_armies = yes
-				create_pop_group = { species = event_target:ratling_species size = 2500 }
+				create_pop_group = { species = event_target:ratling_species size = 900 ethos = { ethic = ethic_materialist } }
+				create_pop_group = { species = event_target:ratling_species size = 800 ethos = { ethic = ethic_egalitarian } }
+				create_pop_group = { species = event_target:ratling_species size = 800 ethos = { ethic = ethic_pacifist } }
 				while = {
 					count = 4
-					add_district_and_planet_size_if_needed_effect = {
-						district = district_city
-					}
+					add_district_and_planet_size_if_needed_effect = { district = district_city }
 				}
-				while = {
+				while = { # WARNING, if you terraform a Ratling World into a Volcanic World it will mess up their districts!
 					count = 3
-					add_district_and_planet_size_if_needed_effect = {
-						district = district_farming
-					}
-				}
-				while = {
-					count = 3
-					add_district_and_planet_size_if_needed_effect = {
-						district = district_mining
-					}
-				}
-				while = {
-					count = 3
-					add_district_and_planet_size_if_needed_effect = {
-						district = district_generator
-					}
+					add_district_and_planet_size_if_needed_effect = { district = district_farming }
+					add_district_and_planet_size_if_needed_effect = { district = district_mining }
+					add_district_and_planet_size_if_needed_effect = { district = district_generator }
 				}
 				if = {
 					limit = { has_building = building_colony_shelter }
@@ -7339,25 +7333,20 @@ country_event = {
 				if = {
 					limit = {
 						NOT = {
-							has_zone = {
-								zone = zone_research_unity # Replaces building_research_lab_1 and building_bureaucratic_1
-							}
+							has_zone = { zone = zone_research_unity }
 						}
 					}
-					add_zone = { zone = zone_research_unity replace = yes }
+					add_zone = { zone = zone_research_unity replace = yes } # Replaces building_research_lab_1 and building_bureaucratic_1
 				}
 				if = {
 					limit = {
 						NOT = {
-							has_zone = {
-								zone = zone_industrial # Replaces building_foundry_1
-							}
+							has_zone = { zone = zone_industrial }
 						}
 					}
-					add_zone = { zone = zone_industrial replace = yes }
+					add_zone = { zone = zone_industrial replace = yes } # Replaces building_foundry_1
 				}
 				add_building = { building = building_factory_1 zone = zone_industrial }
-				add_building = building_foundry_1
 				add_building = building_commercial_zone
 				add_building = building_holo_theatres # Vfix patch: Egalitarians get Holo Theatre at game_start.
 				add_building = building_luxury_residence # Vfix patch: Pacifists get Luxury Residences at game_start.
@@ -7447,37 +7436,17 @@ country_event = {
 					set_owner = prev
 					while = {
 						count = 5
-						create_ship = {
-							name = random
-							random_existing_design = corvette
-							graphical_culture = "mammalian_01"
-						}
+						create_ship = { name = random random_existing_design = corvette graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
 					}
-					if = {
-						limit = {
-							prev = { has_technology = tech_destroyers }
-						}
-						while = {
-							count = 4
-							create_ship = {
-								name = random
-								random_existing_design = destroyer
-								graphical_culture = "mammalian_01"
-							}
-						}
+					while = {
+						limit = { owner = { has_technology = tech_destroyers } }
+						count = 4
+						create_ship = { name = random random_existing_design = destroyer graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
 					}
-					if = {
-						limit = {
-							prev = { has_technology = tech_cruisers }
-						}
-						while = {
-							count = 2
-							create_ship = {
-								name = random
-								random_existing_design = cruiser
-								graphical_culture = "mammalian_01"
-							}
-						}
+					while = {
+						count = 2
+						limit = { owner = { has_technology = tech_cruisers } }
+						create_ship = { name = random random_existing_design = cruiser graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
 					}
 					set_location = {
 						target = event_target:ratling_capital
@@ -7506,17 +7475,9 @@ country_event = {
 				}
 				create_fleet = {
 					effect = {
-						set_owner = prev
-						create_ship = {
-							name = random
-							random_existing_design = science
-							graphical_culture = "mammalian_01"
-						}
-						set_location = {
-							target = event_target:ratling_capital
-							distance = 10
-							angle = random
-						}
+						set_owner = event_target:ratling_country
+						create_ship = { name = random random_existing_design = science graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
+						set_location = { target = event_target:ratling_capital distance = 10 angle = random }
 						assign_leader = last_created_leader
 					}
 				}
@@ -7524,16 +7485,8 @@ country_event = {
 			create_fleet = {
 				effect = {
 					set_owner = event_target:ratling_country
-					create_ship = {
-						name = random
-						random_existing_design = constructor
-						graphical_culture = "mammalian_01"
-					}
-					set_location = {
-						target = event_target:ratling_capital
-						distance = 10
-						angle = random
-					}
+					create_ship = { name = random random_existing_design = constructor graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
+					set_location = { target = event_target:ratling_capital distance = 10 angle = random }
 				}
 			}
 			create_leader = {
