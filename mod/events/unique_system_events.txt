@@ -494,7 +494,7 @@ country_event = {
 					}
 				}
 				create_pop_group = { species = event_target:larion_species size = 600 } # 300 too low.
-				refresh_leader_pool = yes # Leader Pool Refresh must happen after country has at least 1 pop.
+				event_target:larion_country = { refresh_leader_pool = yes } # Leader Pool Refresh must happen after country has at least 1 pop.
 				set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 				set_capital = yes # 9/2/26 Vanilla Bug no longer observed. This fixes them keeping city districts and being given hive districts until monthly tick.
 				add_building = building_spawning_pool
