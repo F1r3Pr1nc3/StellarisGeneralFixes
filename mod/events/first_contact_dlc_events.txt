@@ -5610,34 +5610,20 @@ country_event = {
 			}
 		}
 		from = {
-			create_fleet_from_naval_cap = 0.7
+			create_fleet_from_naval_cap = from.value:solarpunk_script_value
 			last_created_fleet = {
 				set_owner = root
 				set_location = root.capital_scope
 				every_controlled_ship = {
 					switch = {
 						trigger = is_ship_size
-						corvette = {
-							set_ship_design = { random_existing_design = corvette }
-						}
-						frigate = {
-							set_ship_design = { random_existing_design = frigate }
-						}
-						destroyer = {
-							set_ship_design = { random_existing_design = destroyer }
-						}
-						cruiser = {
-							set_ship_design = { random_existing_design = cruiser }
-						}
-						battleship = {
-							set_ship_design = { random_existing_design = battleship }
-						}
-						titan = {
-							set_ship_design = { random_existing_design = titan }
-						}
-						juggernaut = {
-							set_ship_design = { random_existing_design = juggernaut }
-						}
+						corvette = { set_ship_design = { random_existing_design = corvette } }
+						frigate = { set_ship_design = { random_existing_design = frigate } }
+						destroyer = { set_ship_design = { random_existing_design = destroyer } }
+						cruiser = { set_ship_design = { random_existing_design = cruiser } }
+						battleship = { set_ship_design = { random_existing_design = battleship } }
+						titan = { set_ship_design = { random_existing_design = titan } }
+						juggernaut = { set_ship_design = { random_existing_design = juggernaut } }
 					}
 				}
 			}
@@ -6626,6 +6612,10 @@ country_event = {
 			}
 			event_target:pre_ftl_planet = {
 				add_modifier = { modifier = pre_ftl_distrustful years = 10 }
+				while = {
+					count = 2
+					random_owned_pop_group = { kill_single_pop = yes }
+				}
 			}
 			create_message = {
 				type = MESSAGE_PRE_FTL_DISTRUSTFUL
@@ -6636,12 +6626,6 @@ country_event = {
 					type = name
 					localization = COUNTRY
 					scope = event_target:pre_ftl_country
-				}
-			}
-			event_target:pre_ftl_planet = {
-				while = {
-					count = 2
-					random_owned_pop_group = { kill_single_pop = yes }
 				}
 			}
 		}

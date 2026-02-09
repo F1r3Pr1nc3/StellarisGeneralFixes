@@ -2149,6 +2149,16 @@ roboticist = {
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
+	triggered_planet_pop_group_modifier_for_all = {
+		potential = {
+			exists = owner # Vfix log
+			owner = {
+				has_active_tradition = tr_cybernetics_metabolic_reprocessing
+			}
+		}
+		bonus_pop_growth = 0.5
+	}
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner # Vfix log
@@ -2156,7 +2166,7 @@ roboticist = {
 				has_active_tradition = tr_cybernetics_metabolic_reprocessing
 			}
 		}
-		bonus_pop_growth_mult = 0.05
+		fake_pop_growth_mod = 0.5
 	}
 
 	triggered_planet_modifier = {

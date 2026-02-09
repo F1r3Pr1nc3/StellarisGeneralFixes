@@ -1,6 +1,7 @@
-[h1][b]Stellaris v[4.2-4.3] Error Janitor[/b][/h1]
+[h1][b]Stellaris v[4.2] Error Janitor[/b][/h1]
 [h3][b]Because someone had to.[/b][/h3]
 [p]This is a continuation of [URL=steamcommunity.com/workshop/filedetails/3013030800]Vanilla Fixes v3.11.x[/URL] by [URL=steamcommunity.com/id/renegades-modding-group]RMG[/URL] and even more, it combines some old Vanilla Fixes mods that I found (credits below and in-code).[/p]
+For now, this mod already includes vanilla fixes taken from the [b]v4.3 beta[/b]. It also works with it - only some resource values may differ.
 [hr]
 I initially created these fixes for myself to eliminate the noise and give myself a foundation for actually modding in peace. Since it's well known that PDX sometimes never fixes certain bugs[spoiler]or only fixes them years later[/spoiler]. So, I've now started releasing this collection of general bug fixes for Vanilla[spoiler] and to give Stellaris a little kick in the bottom[/spoiler].
 The plan is to make the mod timeless and to continuously expand and update it. All bug fixes included in all [i]my other mods[/i] will be slowly integrated here.
@@ -14,19 +15,20 @@ The plan is to make the mod timeless and to continuously expand and update it. A
 [*][b]Silences the [i]error.log[/i]:[/b] Fixes spam so you can find *real* errors (like from your other mods).
 [/list]
 Creating these bug fixes is a lot of work, but listing and documenting them is another level of effort. Therefore, due to the sheer amount, each bug is usually self-explanatory in the code and marked with "[b]# Vfix[/b]" (~1000–even not counting minor ones).
-[p]A detailed list of fixes will follow soon[spoiler]–possible, since PDS will integrate the majority of these fixes into the next version, you can read it there[/spoiler].[/p]
+[p]A detailed list of fixes will follow soon[spoiler]–possible, since PDS will integrate the majority of these fixes into the next version, you can read it there – I simply get not paid enough[/spoiler].[/p]
 
 [h1][b]Your Subscription is a Message[/b][/h1]
 By subscribing, liking, and favourite, you help the indie developer (PDX) by showing him exactly where the problems lie[spoiler]–maybe just the symptoms, not the reasons, to be clear[/spoiler]. It also tells other players: [p]"No, the game really isn't just a bundle held together by hope.", "No, you're not crazy. The game really is like this."[/p]
 PDS and Ariphaos and you can take everything from here for free. Credit is appreciated[spoiler]if the bug could be named and was particularly inspiring[/spoiler].
 [p][b]PS: PDS[/b] has already begun to integrate this mod [URL=steamcommunity.com/games/281990/announcements/detail/601919683105391817][b]into Vanilla[/b]–since v4.1.7–as you can see in the CHANGE LOG).[/URL][/p]
-[h2][b]A Special Thanks[/b][/h2][list]
-[*]to [URL=steamcommunity.com/id/WoodenPotatoes/recommended/281990]WP for inspiring me[/URL].
-[*]to [URL=github.com/Ariphaos/StellarisUnofficialPatch/blob/master/Credits.md]Ariphaos for long time maintaining his Patch mod[/URL] (and including my fixes as well).
-[*]to [URL=reddit.com/r/Stellaris/comments/1nodug9/am_i_the_only_one_who_thinks_that_the_40_update/]PDX for making this mod possible[/URL].
-[*]to [b]You[/b], for reading this far[spoiler]or you just like this section; I appreciate essential skills when used at the right time[/spoiler]. Since you've met the prerequisites, you're now predestined for the important stuff.
-[*]to [URL=steamcommunity.com/profiles/76561198007698602]Person012345[/URL] for [URL=ko-fi.com/f1r3pr1nc3]supporting me.[/URL]
-[*]to my girlfriend, who forces me all the time away from Stellaris.
+[h2][b]A Special Thanks[/b] to[/h2][list]
+[*][URL=steamcommunity.com/id/WoodenPotatoes/recommended/281990]WP for inspiring me[/URL]
+[*][URL=github.com/Ariphaos/StellarisUnofficialPatch/blob/master/Credits.md]Ariphaos for long time maintaining his Patch mod[/URL][spoiler]and including my fixes as well[/spoiler]
+[*][URL=reddit.com/r/Stellaris/comments/1nodug9/am_i_the_only_one_who_thinks_that_the_40_update/]PDX for making this mod possible[/URL]
+[*][b]You[/b], for reading this far[spoiler]or you just like this section; I appreciate essential skills when used at the right time[/spoiler]. Since you've met the prerequisites, you're now predestined for the important stuff.
+[*]Person012345 for [URL=ko-fi.com/f1r3pr1nc3]supporting me[/URL]
+[*]tzverg for Russian translation
+[*][b]Dux[/b] for joining the project
 [/list]
 [hr]
 [h2][b]Compatibility[/b][/h2]
@@ -35,18 +37,18 @@ PDS and Ariphaos and you can take everything from here for free. Credit is appre
 [*]Not tutorial compatible[spoiler]yes, we know, and now you know[/spoiler].
 [*]For best results, place this mod near the [b]top[/b] of your load order[spoiler]let my fixes get overwritten by your cool content mods, not the other way around[/spoiler].
 [*]Possible conflicts with other mods that fix the same things. 
-[*]This mod essentially works as an extension to the [URL=steamcommunity.com/workshop/filedetails/1995601384]Unofficial Ariphaos Patch[/URL]. (I've been supporting this mod for a long time and still do). The same instructions apply here. So, my mod must be [b]BELOW[/b] Ariphaos', because all overlaps are included[spoiler]mostly[/spoiler]. 
+[*]This mod essentially works as an extension to the [URL=steamcommunity.com/workshop/filedetails/1995601384]Unofficial Ariphaos Patch[/URL].[spoiler]I've been supporting this mod for a long time and still do[/spoiler] The same instructions apply here. So, my mod must be [b]BELOW[/b] Ariphaos', because all overlaps are included[spoiler]mostly[/spoiler]. 
 [*]Includes all [URL=steamcommunity.com/workshop/filedetails/2871620925]Bug Fixes[/URL] by Dr. Addiction, but less dominant (merged and updated for v4.2 just as it was v4.0)
 [*]Incorporates all [URL=steamcommunity.com/workshop/filedetails/3476603953]Stellaris Fixes[/URL] by SushiDragon.
 [*]Merges all [url=steamcommunity.com/workshop/filedetails/3507171482]Stellaris Reforged: Base Fixes[/url] by v.kihot (only if conflict)
 [/list]
-Special Note: This is [b]NOT[/b] an [u]Unofficial Ariphaos Unofficial Patch Update[/u]… [i]but it can be used as such[/i]. As long as it's not matches your game version, stability isn’t guaranteed.
+Special Note: This can be used now also as an [u]Unofficial Ariphaos Unofficial Patch Update[/u]… at least for v4.2.
 Additional Note: Since some people[spoiler]who haven't read everything completely :) and[/spoiler] are wondering why [i][b]full file overwrite[/b][/i], I have to say ([u]Ariphaos should have already explained this in detail[/u]): [p][i][u][b]TL;DR[/b] LO is crucial![/u][/i][spoiler]it's the only way to keep the vanilla Load Order active, and I don't want to compete with my modding friend Inny MoRe[/spoiler][/p]
 [quote=Ariphaos]This should be compatible with nearly everything as long as this is at the top of your load order. Most changes are independent of each other, and those that are not should work at least as well as in vanilla if one part gets overwritten.[/quote]
 [h3][b]See Also[/b][/h3]
 [list]
 [*][URL=steamcommunity.com/workshop/filedetails/2761714221]PDX next DLC[/URL]
-[*][URL=github.com/F1r3Pr1nc3/StellarisModpackUtility/blob/master/modupdater-3.14.py]Stellaris Mod Downgrader to v3.14[/URL]–The v4.1 REGRESSOR (WIP)
+[*][URL=github.com/F1r3Pr1nc3/StellarisModpackUtility/blob/master/modupdater-3.14.py]Stellaris Mod Downgrader to v3.14[/URL]–the v4.1 REGRESSOR (WIP)
 [*][URL=steamcommunity.com/workshop/filedetails/3589215264]Legacy v4.1.7[/URL]
 [*][URL=marketplace.visualstudio.com/items?itemName=F1r3Pr1nc3.paradox-script-formatter]PDX Script Formatter[/URL]–selfpromotion
 [/list]
@@ -54,16 +56,18 @@ Additional Note: Since some people[spoiler]who haven't read everything completel
 [*][url=steamcommunity.com/workshop/filedetails/3508502505]Stellaris Reforged: AI[/url] by v.kihot
 [/list]
 [hr]
-[IMG]//i.ibb.co/Yc9HsfJ/steam-like-award-favorite-subscribe.gif[/IMG]
-In the end, we will all die, but your like and honoration can stay here forever.
-
-* [URL=github.com/F1r3Pr1nc3/StellarisGeneralFixes]Git Repository[/URL]–for the lulz– I mean for collaboration
-* Please use the discussions threads or comments for reporting.
+* [URL=github.com/F1r3Pr1nc3/StellarisGeneralFixes]Git Repository[/URL][spoiler]–for the lulz– I mean for collaboration[/spoiler]
+* The discussions section can be used.
 
 [quote C. S. Lewis]A sum can be put right: but only by going back till you find the error and working it afresh from that point, never by simply going on.[/quote]
 
-[h3][b]A Note on Ratings and Visibility[/b][/h3]
-[p]We strongly encourage users to report any issues caused by this mod immediately (currently nothing known). Please note that [i]a 'dislike' is not a [b]bug report[/b][/i], and due to the [i]very strange [b]Steam[/b] algorithm, just one 'dislike[/i]' is roughly the effective equivalent of ~500 subscribers less.👊[/p][p]If the amount of [b]negative[/b] rating effort outweighs my mental resilience, I will regrettably be unable to continue providing these free fixes for PDX and the Stellaris community and any enthusiasts.[/p]
+[h2][b]Disclaimer[/b]: Ratings & Reports[/h2]
+[p]This is not backed by a full QA department. Testing time is limited, and the game is large, complex, and occasionally held together by hope. As such, this fix may contain bugs of its own.
+[u]That said, if this mod causes an issue, please report – a [i]'dislike' is not a [b]bug report[/b][/i] – avoiding such problem has absolute highest priority.[/u]
+Thanks to [b]Steam’s[/b] impressively algorithm, even a single 'dislike' can nuke visibility.
+If [b]negative[/b] ratings outweigh my remaining mental stamina, continued maintenance of these free fixes may no longer be sustainable.[/p]
+In the end, we will all die, but your like and honoration can stay here forever.
 Thanks to all supporters and subscribers who actually appreciate this madness. You keep the fixes flowing.😄
 
 [pullquote]Everything is OK in the end. If it’s not OK, it’s not the end.[/pullquote]
+[IMG]//i.ibb.co/Yc9HsfJ/steam-like-award-favorite-subscribe.gif[/IMG]

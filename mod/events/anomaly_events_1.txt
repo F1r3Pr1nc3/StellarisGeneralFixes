@@ -2906,8 +2906,8 @@ ship_event = {
 		hidden_effect = {
 			from = {
 				add_modifier = { modifier = shadow_play days = -1 }
+				add_deposit = d_society_4
 			}
-			from = { add_deposit = d_society_4 }
 		}
 	}
 }
@@ -4856,8 +4856,10 @@ ship_event = {
 		name = "anomaly.186.c"
 		trigger = {
 			owner = {
-				NOT = { has_origin = origin_synthetic_fertility }
-				NOT = { has_policy_flag = ai_outlawed }
+				NOR = {
+					has_origin = origin_synthetic_fertility
+					has_policy_flag = ai_outlawed
+				}
 				OR = {
 					is_individual_machine = yes
 					AND = {

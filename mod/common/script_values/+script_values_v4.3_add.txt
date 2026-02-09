@@ -1,0 +1,63 @@
+
+refugee_attraction_multiplier = {
+	base = 1
+	add = modifier:refugee_attraction # Vfix!?
+
+	modifier = {
+		add = 0.3
+		has_valid_civic = civic_selective_kinship
+		event_target:refugee_pop = { is_same_species_class = prev }
+	}
+	modifier = {
+		add = -0.2
+		has_valid_civic = civic_selective_kinship
+		event_target:refugee_pop = {
+			NOT = { is_same_species_class = prev }
+		}
+	}
+
+	min = 0.01
+}
+
+solarpunk_script_value = {
+	base = 0
+	add = trigger:max_naval_capacity
+	mult = 0.7
+}
+
+capital_tier_minus_1_value = {
+	base = -1
+	add = trigger:capital_tier
+}
+
+imperious_architecture_scaling_value = {
+	base = 2
+	pow = value:capital_tier_minus_1_value
+	mult = 0.5
+	floor = yes
+}
+
+eater_doom_intensity = {
+	base = 3
+	add = eater_fleet_intensity
+	max = 50
+}
+eater_fleet_scaling = {
+	base = 0
+	add = value:eater_doom_intensity
+	mult = 2
+}
+
+# REMOVED in v4.3
+eater_teeth_count_scaling = {
+	base = 3
+
+	modifier = {
+		set = 6
+		mid_game_years_passed > 0
+	}
+	modifier = {
+		set = 10
+		end_game_years_passed > 0
+	}
+}

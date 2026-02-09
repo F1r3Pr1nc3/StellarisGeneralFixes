@@ -1205,9 +1205,11 @@ get_marauder_species = {
 			OR = { # This error log turns me crazy: is_same_species/is_exact_same_species: Unable to resolve species from 'event_target:marauder_species' (no_scope scope)
 				NAND = {
 					exists = event_target:marauder_species
-					event_target:marauder_species = { is_scope_valid = yes }
-					event_target:marauder_species = { is_scope_type = species }
-					event_target:marauder_species = { species_can_be_necrophaged = yes }
+					event_target:marauder_species = {
+						is_scope_valid = yes
+						is_scope_type = species
+						species_can_be_necrophaged = yes
+					}
 				}
 				event_target:marauder_species = {
 					OR = {
@@ -1357,8 +1359,7 @@ get_marauder_species = {
 		limit = { # This error log turns me crazy: is_same_species/is_exact_same_species: Unable to resolve species from 'event_target:marauder_species' (no_scope scope)
 			NAND = {
 				exists = event_target:marauder_species
-				event_target:marauder_species = { is_scope_valid = yes }
-				event_target:marauder_species = { is_scope_type = species }
+				event_target:marauder_species = { is_scope_valid = yes is_scope_type = species }
 				pop_amount_percentage = {
 					percentage > 0.2
 					limit = { is_same_species = prev.owner_species }

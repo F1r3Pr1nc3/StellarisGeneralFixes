@@ -1656,7 +1656,10 @@ planet_event = {
 		custom_tooltip = colony.2006.a.tooltip
 		trigger = { owner = { is_xenophile = yes } }
 		hidden_effect = {
-			owner = { save_event_target_as = "me" }
+			owner = {
+				save_event_target_as = "me"
+				add_modifier = { modifier = streamlined_ship_design days = -1 }
+			}
 			create_fleet = {
 				name = "NAME_Seafallen_Cruiser"
 				effect = {
@@ -1674,9 +1677,6 @@ planet_event = {
 					spawn_debris = no
 				}
 			}
-			owner = {
-				add_modifier = { modifier = streamlined_ship_design days = -1 }
-			}
 		}
 	}
 	option = {
@@ -1686,7 +1686,10 @@ planet_event = {
 			owner = { is_xenophile = no is_materialist = no }
 		}
 		hidden_effect = {
-			owner = { save_event_target_as = "me" }
+			owner = {
+				save_event_target_as = "me"
+				add_modifier = { modifier = streamlined_ship_design days = -1 }
+			}
 			create_fleet = {
 				name = "NAME_Seaborn"
 				effect = {
@@ -1703,9 +1706,6 @@ planet_event = {
 				settings = {
 					spawn_debris = no
 				}
-			}
-			owner = {
-				add_modifier = { modifier = streamlined_ship_design days = -1 }
 			}
 		}
 	}

@@ -2233,19 +2233,6 @@ country_event = {
 						divide_variable = { which = num_transference_jobs_var value = 10 }
 						ceiling_variable = num_transference_jobs_var
 					}
-				}
-				while = {
-					count = owner.num_transference_jobs_var
-					random_owned_pop_job = {
-						limit = { has_job_type = transference_volunteer }
-						kill_assigned_pop_amount = { amount = 1 }
-					}
-					random_owned_pop_job = {
-						limit = { has_job_type = transference_drone }
-						kill_assigned_pop_amount = { amount = 1 }
-					}
-				}
-				owner = {
 					create_message = {
 						type = MESSAGE_POPS_TRANSFERRED
 						localization = MESSAGE_POPS_TRANSFERRED_DESC
@@ -2257,6 +2244,17 @@ country_event = {
 							localization = VALUE
 							scope = capital_scope
 						}
+					}
+				}
+				while = {
+					count = owner.num_transference_jobs_var
+					random_owned_pop_job = {
+						limit = { has_job_type = transference_volunteer }
+						kill_assigned_pop_amount = { amount = 1 }
+					}
+					random_owned_pop_job = {
+						limit = { has_job_type = transference_drone }
+						kill_assigned_pop_amount = { amount = 1 }
 					}
 				}
 			}

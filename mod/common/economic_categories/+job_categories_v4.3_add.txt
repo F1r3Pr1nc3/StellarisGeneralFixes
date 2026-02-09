@@ -1,0 +1,24 @@
+## REMOVEME at v4.4
+## = TRIGGERS shortdocu = ##
+#
+## = ADDED = ##
+planet_mentors = {
+	icon = "job_polytechnic_mentor"
+	parent = planet_researchers
+	generate_mult_modifiers = {
+		upkeep
+	}
+	modifier_category = pop_job
+}
+#
+## = REMOVED = ##
+planet_sr_miners = { #added because we don't want miners_minerals_produces_add to apply to these
+	parent = planet_miners
+	generate_add_modifiers = {
+		upkeep
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+	modifier_category = pop_job
+}
