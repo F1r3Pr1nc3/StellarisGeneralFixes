@@ -6422,16 +6422,14 @@ country_event = {
 		event_target:nivlac_planet = {
 			solar_system = {
 				create_starbase = { size = starbase_outpost owner = event_target:nivlac_country }
+				every_system_planet = {
+					set_surveyed = { surveyed = yes surveyor = root.owner }
+				}
 			}
 			set_owner = event_target:nivlac_country
 			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 			set_capital = yes
 			clear_blockers = yes
-			solar_system = {
-				every_system_planet = {
-					set_surveyed = { surveyed = yes surveyor = root.owner }
-				}
-			}
 			create_pop_group = { species = event_target:nivlac_species size = 2200 }
 			while = {
 				count = 2
@@ -6557,6 +6555,9 @@ country_event = {
 		event_target:nivlac_planet = {
 			solar_system = {
 				create_starbase = { size = starbase_outpost owner = event_target:nivlac_country }
+				every_system_planet = {
+					set_surveyed = { surveyed = yes surveyor = root.owner }
+				}
 			}
 			set_owner = event_target:nivlac_country
 			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
@@ -6592,11 +6593,6 @@ country_event = {
 					owner = event_target:nivlac_country
 					species = event_target:nivlac_species
 					type = defense_army
-				}
-			}
-			solar_system = {
-				every_system_planet = {
-					set_surveyed = { surveyed = yes surveyor = root.owner }
 				}
 			}
 		}

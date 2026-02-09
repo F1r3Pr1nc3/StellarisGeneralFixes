@@ -1,0 +1,80 @@
+## REMOVEME at v4.4
+## = shortdocu = ##
+#
+## = ADDED = ##
+# spawn_eater_fleet_effect
+# refuge_pop_group
+#
+spawn_eater_fleet_effect = {
+	if = {
+		limit = {
+			NOT = { is_variable_set = eater_fleet_intensity }
+		}
+		set_variable = { which = eater_fleet_intensity value = 0 }
+	}
+	if = {
+		limit = {
+			any_owned_fleet = { has_fleet_flag = eater_fleet }
+		}
+		every_owned_fleet = {
+			limit = { has_fleet_flag = eater_fleet }
+			delete_fleet = this
+		}
+	}
+	# if = { v4.3
+	# 	limit = {
+	# 		check_variable_arithmetic = {
+	# 			which = eater_fleet_intensity
+	# 			add = 3
+	# 			value >= 12
+	# 		}
+	# 	}
+	# 	create_random_fleet = {
+	# 		size = value:eater_fleet_scaling
+	# 		can_overflow = yes
+	# 		ship_designs = {
+	# 			NAME_Tooth_Eater
+	# 			NAME_Fang_Eater
+	# 			NAME_Tusk_Eater
+	# 		}
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = {
+	# 		check_variable_arithmetic = {
+	# 			which = eater_fleet_intensity
+	# 			add = 3
+	# 			value >= 6
+	# 		}
+	# 	}
+	# 	create_random_fleet = {
+	# 		size = value:eater_fleet_scaling
+	# 		can_overflow = yes
+	# 		ship_designs = { NAME_Tooth_Eater NAME_Fang_Eater }
+
+	# 	}
+	# }
+	# else = {
+	# 	create_random_fleet = {
+	# 		size = value:eater_fleet_scaling
+	# 		can_overflow = yes
+	# 		ship_designs = { NAME_Tooth_Eater }
+	# 	}
+	# }
+	create_fleet_from_naval_cap = value:eater_fleet_scaling # v4.2-v4.3 beta
+	last_created_fleet = {
+		set_fleet_settings = {
+			can_upgrade = no
+			can_change_composition = no
+			uses_naval_capacity = no
+			spawn_debris = no
+			can_disband = no
+		}
+		set_name = Name_Doom_Eater_Fleet
+		set_owner = root
+		set_location = { target = event_target:eater_planet }
+		set_fleet_flag = eater_fleet
+		save_event_target_as = eater_fleet
+	}
+	set_variable = { which = eater_fleet_intensity value = 0 }
+}

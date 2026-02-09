@@ -239,14 +239,10 @@ country_event = {
 						}
 					}
 				}
-			}
-			save_event_target_as = FallenEmpireTaskOrigin
-			root = {
 				add_opinion_modifier = { who = prev modifier = opinion_fallen_empire_gift }
-			}
-			root = {
 				country_event = { id = fallen_empires_tasks.2 }
 			}
+			save_event_target_as = FallenEmpireTaskOrigin
 		}
 	}
 }
@@ -858,8 +854,6 @@ country_event = {
 					who = root
 					modifier = opinion_accepted_fallen_empire_request
 				}
-			}
-			event_target:FallenEmpireTaskOrigin = {
 				random_owned_planet = {
 					limit = {
 						has_planet_flag = fe_the_preserve
@@ -989,12 +983,12 @@ country_event = {
 				}
 			}
 			any_playable_country = {
-				root = { is_rival = prev }
-				allows_purge = yes
 				has_communications = prev
 				root = {
+					is_rival = prev
 					has_opinion_modifier = { who = prev modifier = opinion_genocidal }
 				}
+				allows_purge = yes
 			}
 		}
 	}
@@ -1012,22 +1006,22 @@ country_event = {
 				has_communications = root
 				NOT = { has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_task } }
 				any_playable_country = {
-					root = { is_rival = prev }
-					allows_purge = yes
 					has_communications = prev
 					root = {
+						is_rival = prev
 						has_opinion_modifier = { who = prev modifier = opinion_genocidal }
 					}
+					allows_purge = yes
 				}
 			}
 			random_playable_country = {
 				limit = {
-					root = { is_rival = prev }
-					allows_purge = yes
 					has_communications = prev
 					root = {
+						is_rival = prev
 						has_opinion_modifier = { who = prev modifier = opinion_genocidal }
 					}
+					allows_purge = yes
 				}
 				save_event_target_as = FallenEmpireTaskTarget
 			}
@@ -2084,8 +2078,6 @@ country_event = {
 					who = root
 					modifier = opinion_accepted_fallen_empire_request
 				}
-			}
-			event_target:FallenEmpireTaskOrigin = {
 				random_owned_planet = {
 					limit = {
 						has_planet_flag = fe_the_preserve

@@ -779,6 +779,7 @@ ship_event = {
 			solar_system = {
 				set_star_flag = current_system
 				star = { save_event_target_as = anomaly_star }
+				remove_star_flag = current_system
 			}
 			random_system = {
 				limit = {
@@ -831,7 +832,6 @@ ship_event = {
 				event_chain = star_power_chain
 				location = event_target:some_system_2
 			}
-			solar_system = { remove_star_flag = current_system }
 		}
 	}
 	option = {

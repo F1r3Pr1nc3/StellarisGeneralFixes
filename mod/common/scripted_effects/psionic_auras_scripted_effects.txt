@@ -13,7 +13,7 @@ setup_aura_clashing = {
 			aura_owner = {
 				NOT = { is_same_value = root.aura_owner }
 			}
-			check_aura_suppressors = no
+			is_psionic_aura_suppressed = no
 		}
 		[[PRE_LOOP_EFFECTS]
 		$PRE_LOOP_EFFECTS$
@@ -179,7 +179,7 @@ spread_aura_endlessly = {
 		random_neighbor_system = {
 			limit = {
 				has_psionic_aura = no
-				check_aura_suppressors = no
+				is_psionic_aura_suppressed = no
 			}
 			spawn_psionic_aura = { owner = prev.aura_owner }
 			weights = {
@@ -527,62 +527,22 @@ souls_aura_max_intensity_effect = {
 }
 
 eater_aura_max_intensity_effect = {
-	create_fleet = {
-		name = "tooth_eater_plural"
-		effect = {
-			set_owner = root.aura_owner
-			while = {
-				count = value:eater_teeth_count_scaling
-				create_ship = {
-					design = "NAME_Tooth_Eater"
-					prefix = no
-					upgradable = no
-				}
-			}
-			set_location = {
-				target = prev
-				distance = 120
-				angle = random
-			}
-			set_fleet_flag = tooth_eater_fleet
-			save_event_target_as = eater_fleet
-		}
-		settings = {
-			can_upgrade = no
-			uses_naval_capacity = no
-			spawn_debris = no
-		}
-	}
-
 	root.aura_owner = {
-		ordered_owned_fleet = {
-			limit = {
-				has_fleet_flag = tooth_eater_fleet
-				exists = event_target:eater_fleet
-				NOT = { is_same_value = event_target:eater_fleet }
-			}
-			position = 0
-			order_by = value:distance_to_target|TARGET|event_target:eater_fleet|
-			inverse = yes
-			save_event_target_as = teeth_to_merge
-		}
-	}
-
-	event_target:eater_fleet = {
 		if = {
-			limit = { exists = event_target:teeth_to_merge }
-			queue_actions = { merge_fleet = event_target:teeth_to_merge }
+			limit = {
+				NOT = { is_variable_set = eater_fleet_intensity }
+			}
+			set_variable = { which = eater_fleet_intensity value = 1 }
 		}
 		else = {
-			queue_actions = { move_to = root.aura_owner.capital_scope.solar_system }
+			change_variable = { which = eater_fleet_intensity value = 1 }
 		}
 	}
-
 	create_message = {
 		type = MESSAGE_PSIONIC_AURA_the_eater_of_worlds
 		localization = MESSAGE_PSIONIC_AURA_MAX_INTENSITY_the_eater_of_worlds_DESC
 		days = 30
-		target = event_target:eater_fleet
+		target = root.aura_owner
 		variable = {
 			type = name
 			localization = SYSTEM

@@ -3457,7 +3457,7 @@ building_psionic_offices = {
 		solar_system = {
 			set_star_flag = building_psionic_offices_emitting@root.branch_office_owner
 			if = {
-				limit = { check_aura_suppressors = no }
+				limit = { is_psionic_aura_suppressed = no }
 				natural_spawn_psionic_aura = { OWNER = root.branch_office_owner }
 			}
 		}

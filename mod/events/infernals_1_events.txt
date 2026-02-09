@@ -390,7 +390,8 @@ planet_event = {
 	}
 }
 
-# Planet Smelter PK
+# Planet Smelter PK (on_destroy_planet)
+# from = fleet that fired
 planet_event = {
 	id = infernals.36
 	hide_window = yes
@@ -631,6 +632,86 @@ planet_event = {
 				}
 			}
 		}
+		# Diplo Penalties + Threat (Vfix mod by Dux)
+		if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
+				owner = {
+					NOT = { is_same_value = from.owner }
+					is_default_or_fallen = yes
+				}
+			}
+			# Generate threat
+			add_threat = { who = from.owner amount = 3 }
+			# modifier for allies + those upset by robots
+			every_country = {
+				limit = {
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = root.owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
+						}
+						NAND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
+						}
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = root.owner
+						}
+						is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_burned_a_world who = from.owner }
+			}
+			# modifiers for victim
+			owner = {
+				add_opinion_modifier = { modifier = opinion_burned_my_world who = from.owner }
+				if = {
+					limit = { is_gestalt = no }
+					add_modifier = { modifier = colossus_victim years = 30 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_burned_my_world who = from.owner }
+					}
+				}
+			}
+		}
 		# Add war exhaustion to planet owner
 		if = {
 			limit = {
@@ -665,16 +746,16 @@ planet_event = {
 			every_owned_pop_group = {
 				limit = {
 					NOR = {
-						is_infernal = yes
+						has_trait = trait_infernal
 						is_lithoid = yes
 						is_robotic_species = yes
 					}
 				}
-				while = {
-					count = value:per_100_pop_amount
-					from.owner = {
-						if = {
-							limit = { has_ascension_perk = ap_become_the_crisis }
+				from.owner = {
+					if = {
+						limit = { has_ascension_perk = ap_become_the_crisis }
+						while = { # Vfix (by Dux)
+							count = value:per_100_pop_amount
 							complete_crisis_objective = crisobj_purge_pops
 						}
 					}

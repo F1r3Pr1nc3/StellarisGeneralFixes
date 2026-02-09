@@ -238,10 +238,14 @@ salvage_ships_from_debris = {
 				limit = {
 					root = { country_uses_bio_ships = no }
 				}
-				salvage_mechanical_ships_effect = { CHANCE = $CHANCE$ }
+				salvage_mechanical_ships_effect = {
+					CHANCE = $CHANCE$
+				}
 			}
 			else = {
-				salvage_biological_ships_effect = { CHANCE = $CHANCE$ }
+				salvage_biological_ships_effect = {
+					CHANCE = $CHANCE$
+				}
 			}
 		}
 	}
@@ -2374,13 +2378,17 @@ add_expertise_trait_to_leader_or_research_node_effect = {
 		owner = {
 			random_owned_leader = {
 				limit = { is_councilor_type = councilor_gestalt_cognitive }
-				add_expertise_trait_effect = { TRAIT = $TRAIT$ }
+				add_expertise_trait_effect = {
+					TRAIT = $TRAIT$
+				}
 			}
 		}
 	}
 	else = {
 		leader = {
-			add_expertise_trait_effect = { TRAIT = $TRAIT$ }
+			add_expertise_trait_effect = {
+				TRAIT = $TRAIT$
+			}
 		}
 	}
 }
@@ -2424,14 +2432,20 @@ set_random_scientist_background_effect = {
 assign_governor_effect = {
 	if = {
 		limit = { prefers_scientist_governors = yes }
-		set_starting_governor_effect = { GOVERNOR = scientist }
+		set_starting_governor_effect = {
+			GOVERNOR = scientist
+		}
 	}
 	else_if = {
 		limit = { prefers_commander_governors = yes }
-		set_starting_governor_effect = { GOVERNOR = commander }
+		set_starting_governor_effect = {
+			GOVERNOR = commander
+		}
 	}
 	else = {
-		set_starting_governor_effect = { GOVERNOR = official }
+		set_starting_governor_effect = {
+			GOVERNOR = official
+		}
 	}
 }
 

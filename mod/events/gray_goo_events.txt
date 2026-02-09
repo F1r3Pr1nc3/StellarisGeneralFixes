@@ -40,6 +40,7 @@ country_event = {
 				}
 				effect = {
 					save_global_event_target_as = graygoo_country # Vfix sync
+					every_country = { establish_communications_no_message = prev }
 				}
 			}
 			create_fleet = {
@@ -57,9 +58,6 @@ country_event = {
 					}
 					save_global_event_target_as = nanite_factory
 				}
-			}
-			every_country = {
-				establish_communications_no_message = event_target:graygoo_country
 			}
 			create_fleet = {
 				name = "NAME_Tempest_Fleet"
@@ -807,6 +805,7 @@ country_event = {
 
 ### Gray Goo Fallen Empire
 # Set up Empire
+# Root = lcluster_opener
 country_event = {
 	id = graygoo.100
 	hide_window = yes
@@ -857,28 +856,26 @@ country_event = {
 						energy = 5000
 						influence = 5000
 					}
+					every_country = { establish_communications_no_message = prev }
 				}
-			}
-			create_fleet = {
-				effect = {
-					set_owner = event_target:graygoo_country
-					create_ship = {
-						name = random
-						design = "NAME_Nanite_Factory"
-						graphical_culture = "pirate_01"
-					}
-					set_location = {
-						target = event_target:main_star
-						distance = 55
-						angle = 270
-					}
-					save_global_event_target_as = nanite_factory
-				}
-			}
-			every_country = {
-				establish_communications_no_message = event_target:graygoo_country
 			}
 			event_target:graygoo_country = {
+				create_fleet = {
+					effect = {
+						set_owner = prev
+						create_ship = {
+							name = random
+							design = "NAME_Nanite_Factory"
+							graphical_culture = "pirate_01"
+						}
+						set_location = {
+							target = event_target:main_star
+							distance = 55
+							angle = 270
+						}
+						save_global_event_target_as = nanite_factory
+					}
+				}
 				create_ship_design = { design = "NAME_Gatebuilder_Starbase" }
 				add_ship_design = last_created_design
 				create_leader = {
@@ -889,29 +886,28 @@ country_event = {
 					leader_age_min = 25
 					leader_age_max = 45
 				}
-			}
-			create_fleet = {
-				name = "NAME_Dessanu_Fleet"
-				effect = {
-					set_owner = event_target:graygoo_country
-					create_dessanu_ships_1 = yes
-					set_formation_scale = 2
-					set_fleet_stance = aggressive
-					set_aggro_range_measure_from = self
-					set_aggro_range = 250
-					set_location = {
-						target = event_target:nanite_factory
-						distance = 80
-						angle = 0
+				# Vfix opt: needless global scope hopping
+				create_fleet = {
+					name = "NAME_Dessanu_Fleet"
+					effect = {
+						set_owner = prev
+						create_dessanu_ships_1 = yes
+						set_formation_scale = 2
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = self
+						set_aggro_range = 250
+						set_location = {
+							target = event_target:nanite_factory
+							distance = 80
+							angle = 0
+						}
+						assign_leader = last_created_leader
 					}
-					assign_leader = last_created_leader
+					settings = {
+						garrison = yes
+						uses_naval_capacity = no
+					}
 				}
-				settings = {
-					garrison = yes
-					uses_naval_capacity = no
-				}
-			}
-			event_target:graygoo_country = {
 				create_leader = {
 					class = commander
 					species = owner_species
@@ -920,29 +916,27 @@ country_event = {
 					leader_age_min = 25
 					leader_age_max = 45
 				}
-			}
-			create_fleet = {
-				name = "NAME_Dessanu_Fleet"
-				effect = {
-					set_owner = event_target:graygoo_country
-					create_dessanu_ships_1 = yes
-					set_formation_scale = 2
-					set_fleet_stance = aggressive
-					set_aggro_range_measure_from = self
-					set_aggro_range = 250
-					set_location = {
-						target = event_target:nanite_factory
-						distance = 80
-						angle = 90
+				create_fleet = {
+					name = "NAME_Dessanu_Fleet"
+					effect = {
+						set_owner = prev
+						create_dessanu_ships_1 = yes
+						set_formation_scale = 2
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = self
+						set_aggro_range = 250
+						set_location = {
+							target = event_target:nanite_factory
+							distance = 80
+							angle = 90
+						}
+						assign_leader = last_created_leader
 					}
-					assign_leader = last_created_leader
+					settings = {
+						garrison = yes
+						uses_naval_capacity = no
+					}
 				}
-				settings = {
-					garrison = yes
-					uses_naval_capacity = no
-				}
-			}
-			event_target:graygoo_country = {
 				create_leader = {
 					class = commander
 					species = owner_species
@@ -951,29 +945,27 @@ country_event = {
 					leader_age_min = 25
 					leader_age_max = 45
 				}
-			}
-			create_fleet = {
-				name = "NAME_Dessanu_Fleet"
-				effect = {
-					set_owner = event_target:graygoo_country
-					create_dessanu_ships_1 = yes
-					set_formation_scale = 2
-					set_fleet_stance = aggressive
-					set_aggro_range_measure_from = self
-					set_aggro_range = 250
-					set_location = {
-						target = event_target:nanite_factory
-						distance = 80
-						angle = 180
+				create_fleet = {
+					name = "NAME_Dessanu_Fleet"
+					effect = {
+						set_owner = prev
+						create_dessanu_ships_1 = yes
+						set_formation_scale = 2
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = self
+						set_aggro_range = 250
+						set_location = {
+							target = event_target:nanite_factory
+							distance = 80
+							angle = 180
+						}
+						assign_leader = last_created_leader
 					}
-					assign_leader = last_created_leader
+					settings = {
+						garrison = yes
+						uses_naval_capacity = no
+					}
 				}
-				settings = {
-					garrison = yes
-					uses_naval_capacity = no
-				}
-			}
-			event_target:graygoo_country = {
 				create_leader = {
 					class = commander
 					species = owner_species
@@ -982,26 +974,26 @@ country_event = {
 					leader_age_min = 25
 					leader_age_max = 45
 				}
-			}
-			create_fleet = {
-				name = "NAME_Dessanu_Fleet"
-				effect = {
-					set_owner = event_target:graygoo_country
-					create_dessanu_ships_1 = yes
-					set_formation_scale = 2
-					set_fleet_stance = aggressive
-					set_aggro_range_measure_from = self
-					set_aggro_range = 250
-					set_location = {
-						target = event_target:nanite_factory
-						distance = 80
-						angle = 270
+				create_fleet = {
+					name = "NAME_Dessanu_Fleet"
+					effect = {
+						set_owner = prev
+						create_dessanu_ships_1 = yes
+						set_formation_scale = 2
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = self
+						set_aggro_range = 250
+						set_location = {
+							target = event_target:nanite_factory
+							distance = 80
+							angle = 270
+						}
+						assign_leader = last_created_leader
 					}
-					assign_leader = last_created_leader
-				}
-				settings = {
-					garrison = yes
-					uses_naval_capacity = no
+					settings = {
+						garrison = yes
+						uses_naval_capacity = no
+					}
 				}
 			}
 			every_system = {

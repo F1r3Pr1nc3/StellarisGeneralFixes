@@ -9479,15 +9479,16 @@ country_event = {
 									}
 								}
 							}
-							# FIXME Disabled due "Malformed token: prev claim
+
 							# queue_actions = {
 							# 	wait = { duration = 1 }
 							# 	move_to = prev
 							# 	wait = { duration = 1 }
-							# 	merge_fleet = {
-							# 		target = event_target:great_khan.fleet # prev
-							# 		allow_ftl = yes
-							# 	}
+							# 	# merge_fleet = { # FIXME Disabled due "Malformed token: prev claim
+							# 	# 	target = event_target:great_khan.fleet # prev
+							# 	# 	allow_ftl = yes
+							# 	# }
+							# 	merge_fleet = event_target:great_khan.fleet
 							# }
 							auto_follow_fleet = { target = prev }
 						}
@@ -10140,14 +10141,14 @@ planet_event = {
 				owner = { num_owned_planets < 2 }
 			}
 			## Complete takeover
-			from = { save_event_target_as = new_khanate }
-			owner = { country_event = { id = marauder.609 } } # Fully handover
 			from = {
+				save_event_target_as = new_khanate
 				country_event = {
 					id = marauder.503
 					scopes = { from = root.owner fromfrom = root }
 				}
 			}
+			owner = { country_event = { id = marauder.609 } } # Fully handover
 		}
 		else = {
 			from = {

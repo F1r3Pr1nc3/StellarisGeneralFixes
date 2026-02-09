@@ -613,6 +613,7 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
+				exists = fromfrom.target # Vfix log
 				can_copy_random_tech_from = { who = fromfrom.target }
 			}
 			fromfrom = { set_espionage_operation_flag = reward_tech }
@@ -746,6 +747,7 @@ country_event = {
 			}
 		}
 		allow = {
+			exists = fromfrom.target # Vfix log
 			custom_tooltip = {
 				fail_text = "requires_not_espionage_research_backdoor"
 				NOT = { has_modifier = espionage_research_backdoor } # Not stackable
@@ -788,6 +790,7 @@ country_event = {
 		}
 		custom_tooltip = operation.1026.d.tooltip
 		trigger = {
+			exists = fromfrom.target # Vfix log
 			fromfrom = {
 				has_espionage_operation_flag = reward_extra # Also requires "smooth_exit" and an Asset
 			}
@@ -824,6 +827,7 @@ country_event = {
 		}
 		if = {
 			limit = {
+				exists = fromfrom.target # Vfix log
 				can_copy_random_tech_from = { who = fromfrom.target }
 			}
 			locked_random_list = {
