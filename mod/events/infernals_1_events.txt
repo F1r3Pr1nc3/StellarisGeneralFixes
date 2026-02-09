@@ -504,26 +504,32 @@ planet_event = {
 				set_timed_country_flag = { flag = resolution_breached_terraformed years = 10 }
 			}
 		}
-		if = {
+
+        if = {
 			limit = {
 				exists = owner
-				owner = { is_primitive = yes }
+				owner = { is_country_type = primitive }
 			}
-			# modifier for allies + those upset by genocide
-			every_playable_country = {
+			every_country = {
 				limit = {
 					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
 					}
-					NOR = {
-						is_xenophobe = yes
-						is_homicidal = yes
-						is_xenophile = yes
+					AND = {
+						is_country_type = default
+						NOR = {
+							is_xenophobe = yes
+							is_homicidal = yes
+							is_xenophile = yes
+						}
 					}
 				}
-				add_opinion_modifier = { modifier = opinion_burned_a_primitive_world who = from.owner }
+				add_opinion_modifier = {
+					modifier = opinion_burned_a_primitive_world
+					who = from.owner
+				}
 			}
 			every_country = {
 				limit = {
@@ -536,14 +542,93 @@ planet_event = {
 						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
 						AND = {
 							is_country_type = default
+							is_homicidal = no # Xenophiles can be homicidal.
 							is_xenophile = yes
-							is_homicidal = no # Vfix: Xenophiles can be homicidal (Dux)
 						}
 					}
 				}
 				add_opinion_modifier = {
 					modifier = opinion_burned_a_primitive_world_phile
 					who = from.owner
+				}
+			}
+		}
+		# Diplo Penalties + Threat
+		if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
+				owner = {
+					NOT = { is_same_value = from.owner }
+					is_default_or_fallen = yes
+				}
+			}
+			# Generate threat
+			add_threat = { who = from.owner amount = 3 }
+			every_country = {
+				limit = {
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = root.owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
+						}
+						NAND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
+						}
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = root.owner
+						}
+						is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_burned_a_world who = from.owner }
+			}
+			# modifiers for victim
+			owner = {
+				add_opinion_modifier = { modifier = opinion_burned_my_world who = from.owner }
+				if = {
+					limit = { is_gestalt = no }
+					add_modifier = { modifier = colossus_victim years = 30 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_burned_my_world who = from.owner }
+					}
 				}
 			}
 		}

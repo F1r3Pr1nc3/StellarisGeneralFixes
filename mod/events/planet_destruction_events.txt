@@ -116,116 +116,234 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
+				owner = { is_country_type = primitive }
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					NOR = {
+						is_same_value = from.owner
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner # Only the Observation Outpost Owner should have active comms with them.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_a_primitive_world who = from.owner }
+			}
+			every_country = {
+				limit = {
+					NOT = { is_same_value = from.owner }
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
+						AND = {
+							is_country_type = default
+							is_xenophile = yes
+							is_homicidal = no # Xenophiles can be homicidal.
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_a_primitive_world_phile who = from.owner }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
 				owner = {
 					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
 			# Generate threat
-			if = {
-				limit = { is_colony = yes }
-				add_threat = { who = from.owner amount = 3 }
-				# modifier for allies + those upset by genocide
-				every_country = {
-					limit = {
-						NOR = {
-							is_same_value = from.owner
-							is_same_value = root.owner
-							AND = {
-								has_federation = yes
-								is_in_federation_with = from.owner
-							}
-						}
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
-						}
-						OR = {
-							AND = {
-								has_federation = yes
-								is_in_federation_with = root.owner
-							}
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
-								OR = {
-									is_egalitarian = yes
-									is_xenophile = yes
-								}
-							}
-						}
-					}
-					if = {
-						limit = { root = { is_colony = no } }
-						add_opinion_modifier = { modifier = opinion_cracked_an_uninhabited_world who = from.owner }
-					}
-					else = {
-						add_opinion_modifier = { modifier = opinion_cracked_a_world who = from.owner }
-					}
-				}
-			}
-			else = {
-				add_threat = { who = from.owner amount = 1 }
-			}
-			# modifiers for victim
-			owner = {
-				if = {
-					limit = { root = { is_colony = no } }
-					add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
-				}
-				else = {
-					add_opinion_modifier = { modifier = opinion_cracked_my_world who = from.owner }
-				}
-				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
-				}
-			}
-			if = {
+			add_threat = { who = from.owner amount = 3 }
+			every_country = {
 				limit = {
-					exists = owner
-					owner = { is_primitive = yes }
-				}
-				# modifier for allies + those upset by genocide
-				every_country = {
-					limit = {
-						NOT = { is_same_value = from.owner }
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = root.owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
 						}
-						OR = {
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
-								NOR = {
-									is_xenophobe = yes
-									is_homicidal = yes
-									is_xenophile = yes
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
 								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
 							}
 						}
 					}
-					add_opinion_modifier = { modifier = opinion_cracked_a_primitive_world who = from.owner }
-				}
-				every_country = {
-					limit = {
-						NOT = { is_same_value = from.owner }
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = root.owner
 						}
-						OR = {
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
+						has_ai_personality = awakened_fallen_empire_xenophile
+						AND = {
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+							OR = {
+								is_egalitarian = yes
 								is_xenophile = yes
 							}
 						}
 					}
-					add_opinion_modifier = {
-						modifier = opinion_cracked_a_primitive_world_phile
-						who = from.owner
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_a_world who = from.owner }
+			}
+
+			# modifiers for victim
+			owner = {
+				add_opinion_modifier = { modifier = opinion_cracked_my_world who = from.owner }
+				if = {
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_cracked_my_world who = from.owner }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { exists = owner }
+				exists = space_owner
+				space_owner = {
+					NOT = { is_same_value = from.owner }
+					is_default_or_fallen = yes
+				}
+				OR = {
+					is_colonizable = yes
+					has_modifier = terraforming_candidate
+					AND = {
+						has_modifier = toxic_terraforming_candidate # has_ascension_for_terraforming_candidate
+						space_owner = {
+							OR = {
+								has_ascension_perk = ap_detox
+								has_origin = origin_fallen_empire_hive
+								has_country_flag = knights_detox
+							}
+						}
+					}
+					AND = {
+						has_modifier = frozen_terraforming_candidate
+						space_owner = {
+							OR = {
+								has_ascension_perk = ap_hydrocentric
+								has_origin = origin_fallen_empire_hive
+							}
+						}
+					}
+				}
+			}
+			space_owner = { save_event_target_as = DCWF_victim_space_owner }
+			add_threat = { who = from.owner amount = 1 }
+			# Add Threat
+			every_country = {
+				limit = {
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = event_target:DCWF_victim_space_owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
+						}
+						if = {
+							limit = {
+								event_target:DCWF_victim_space_owner = {
+									OR = {
+										is_same_value = event_target:fallen_empire_hive_war			# We.
+										is_same_value = event_target:fallen_empire_hive_growth		# Are.
+										is_same_value = event_target:fallen_empire_hive_control		# One.
+									}
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
+						}
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = event_target:DCWF_victim_space_owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = event_target:DCWF_victim_space_owner
+						}
+						has_ai_personality = awakened_fallen_empire_xenophile
+						AND = {
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+							OR = {
+								is_egalitarian = yes
+								is_xenophile = yes
+							}
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_an_uninhabited_world who = from.owner }
+			}
+
+			# modifiers for victim
+			space_owner = {
+				add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = prev }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+						add_modifier = { modifier = colossus_victim days = 10800 }
 					}
 				}
 			}
@@ -522,6 +640,7 @@ planet_event = {
 		}
 		if = {
 			limit = {
+				NOT = { is_planet_class = pc_ai }
 				exists = owner
 				owner = {
 					NOT = { is_same_value = from.owner }
@@ -530,7 +649,6 @@ planet_event = {
 			}
 			# Generate threat
 			add_threat = { who = from.owner amount = 3 }
-			# modifier for allies + those upset by the shield
 			every_country = {
 				limit = {
 					NOR = {
@@ -539,6 +657,20 @@ planet_event = {
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
+						}
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
 						}
 					}
 					OR = {
@@ -552,7 +684,7 @@ planet_event = {
 						}
 						has_ai_personality = awakened_fallen_empire_xenophile
 						AND = {
-							is_country_type = default
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
 							OR = {
 								is_egalitarian = yes
 								is_xenophile = yes
@@ -567,8 +699,28 @@ planet_event = {
 			owner = {
 				add_opinion_modifier = { modifier = opinion_shielded_my_world who = from.owner }
 				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_shielded_my_world who = from.owner }
+					}
 				}
 			}
 		}
@@ -746,6 +898,47 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
+				owner = { is_country_type = primitive }
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					NOR = {
+						is_same_value = from.owner
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner # Only the Observation Outpost Owner should have active comms with them.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_swept_a_primitive_world who = from.owner }
+			}
+			every_country = {
+				limit = {
+					NOT = { is_same_value = from.owner }
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
+						AND = {
+							is_country_type = default
+							is_xenophile = yes
+							is_homicidal = no # Xenophiles can be homicidal.
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_swept_a_primitive_world_phile who = from.owner }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
 				owner = {
 					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
@@ -753,7 +946,6 @@ planet_event = {
 			}
 			# Generate threat
 			add_threat = { who = from.owner amount = 3 }
-			# modifier for allies + those upset by genocide
 			every_country = {
 				limit = {
 					NOR = {
@@ -762,6 +954,20 @@ planet_event = {
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
+						}
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
 						}
 					}
 					OR = {
@@ -775,7 +981,7 @@ planet_event = {
 						}
 						has_ai_personality = awakened_fallen_empire_xenophile
 						AND = {
-							is_country_type = default
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
 							OR = {
 								is_egalitarian = yes
 								is_xenophile = yes
@@ -786,54 +992,33 @@ planet_event = {
 				}
 				add_opinion_modifier = { modifier = opinion_swept_a_world who = from.owner }
 			}
+
 			# modifiers for victim
 			owner = {
 				add_opinion_modifier = { modifier = opinion_swept_my_world who = from.owner }
 				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
 				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = owner
-				owner = { is_primitive = yes }
-			}
-			# modifier for allies + those upset by genocide
-			every_playable_country = {
-				limit = {
-					NOT = { is_same_value = from.owner }
-					OR = {
-						has_communications = from.owner
-						has_communications = root.owner
-					}
-					NOR = {
-						is_xenophobe = yes
-						is_homicidal = yes
-						is_xenophile = yes
-					}
-				}
-				add_opinion_modifier = { modifier = opinion_swept_a_primitive_world who = from.owner }
-			}
-			every_country = {
-				limit = {
-					NOT = { is_same_value = from.owner }
-					OR = {
-						has_communications = from.owner
-						has_communications = root.owner
-					}
-					OR = {
-						has_ai_personality = awakened_fallen_empire_xenophile
-						AND = {
-							is_country_type = default
-							is_xenophile = yes
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
 						}
 					}
-				}
-				add_opinion_modifier = {
-					modifier = opinion_swept_a_primitive_world_phile
-					who = from.owner
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_swept_my_world who = from.owner }
+					}
 				}
 			}
 		}
@@ -1082,7 +1267,6 @@ planet_event = {
 			}
 			# Generate threat
 			add_threat = { who = from.owner amount = 3 }
-			# modifier for allies + those upset by conversion
 			every_country = {
 				limit = {
 					NOR = {
@@ -1091,6 +1275,20 @@ planet_event = {
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
+						}
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
 						}
 					}
 					OR = {
@@ -1104,7 +1302,7 @@ planet_event = {
 						}
 						has_ai_personality = awakened_fallen_empire_materialist
 						AND = {
-							is_country_type = default
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
 							OR = {
 								is_materialist = yes
 								is_egalitarian = yes
@@ -1115,20 +1313,48 @@ planet_event = {
 				}
 				add_opinion_modifier = { modifier = opinion_converted_a_world who = from.owner }
 			}
+
 			# modifiers for victim
 			owner = {
 				add_opinion_modifier = { modifier = opinion_converted_my_world who = from.owner }
 				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
 				}
-				# Add war exhaustion to planet owner
 				if = {
-					limit = {	# isn't the case when the crisis bombards planets, for instance
-						is_at_war_with = from.fleet.owner
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_converted_my_world who = from.owner }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = owner
+				owner = { NOT = { is_same_value = from.owner } }
+			}
+			owner = {
+				if = {
+					limit = { #isn't the case when the crisis bombards planets, for instance
+						is_at_war_with = from.owner
 					}
 					add_static_war_exhaustion = {
-						attacker = from.fleet.owner
+						attacker = from.owner
 						location = root
 						value_for_planet_destruction = 1.0
 					}
@@ -1243,6 +1469,47 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
+				owner = { is_country_type = primitive }
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					NOR = {
+						is_same_value = from.owner
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner # Only the Observation Outpost Owner should have active comms with them.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_assimilated_a_primitive_world who = from.owner }
+				set_timed_country_flag = { flag = DCWF_this_is_here_purely_to_stop_an_empty_every_country_error days = 1 }
+			}
+			every_country = {
+				limit = {
+					NOT = { is_same_value = from.owner }
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
+						AND = {
+							is_country_type = default
+							is_xenophile = yes
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_assimilated_a_primitive_world_phile who = from.owner } # Unsure why this gets treated as Xenocide when Divine Enforcer doesn't.
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
 				owner = {
 					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
@@ -1250,7 +1517,6 @@ planet_event = {
 			}
 			# Generate threat
 			add_threat = { who = from.owner amount = 3 }
-			# modifier for allies + those upset by robots
 			every_country = {
 				limit = {
 					NOR = {
@@ -1259,6 +1525,20 @@ planet_event = {
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
+						}
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
 						}
 					}
 					OR = {
@@ -1272,7 +1552,7 @@ planet_event = {
 						}
 						has_ai_personality = awakened_fallen_empire_spiritualist
 						AND = {
-							is_country_type = default
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
 							OR = {
 								is_egalitarian = yes
 								is_spiritualist = yes
@@ -1282,57 +1562,33 @@ planet_event = {
 				}
 				add_opinion_modifier = { modifier = opinion_assimilated_a_world who = from.owner }
 			}
+
 			# modifiers for victim
 			owner = {
 				add_opinion_modifier = { modifier = opinion_assimilated_my_world who = from.owner }
 				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
 				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = owner
-				owner = { is_primitive = yes }
-			}
-			# modifier for allies + those upset by genocide
-			every_playable_country = {
-				limit = {
-					NOR = {
-						is_same_value = from.owner
-						is_xenophobe = yes
-						is_homicidal = yes
-						is_xenophile = yes
-					}
-					OR = {
-						has_communications = from.owner
-						has_communications = root.owner
-					}
-				}
-				add_opinion_modifier = {
-					modifier = opinion_assimilated_a_primitive_world
-					who = from.owner
-				}
-			}
-			every_country = {
-				limit = {
-					NOT = { is_same_value = from.owner }
-					OR = {
-						has_communications = from.owner
-						has_communications = root.owner
-					}
-					OR = {
-						has_ai_personality = awakened_fallen_empire_xenophile
-						AND = {
-							is_country_type = default
-							is_xenophile = yes
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
 						}
 					}
-				}
-				add_opinion_modifier = {
-					modifier = opinion_assimilated_a_primitive_world_phile
-					who = from.owner
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_assimilated_my_world who = from.owner }
+					}
 				}
 			}
 		}
@@ -1372,6 +1628,15 @@ planet_event = {
 				OR = {
 					has_trait = trait_hive_mind
 					is_robotic_species = yes
+				}
+			}
+			while = {
+				count = value:per_100_pop_amount #For every 100 pops iterate through this loop once
+				from.owner = {
+					if = {
+						limit = { has_ascension_perk = ap_become_the_crisis }
+						complete_crisis_objective = crisobj_purge_pops
+					}
 				}
 			}
 			kill_all_pop = yes
@@ -1743,77 +2008,23 @@ planet_event = {
 				set_timed_country_flag = { flag = resolution_breached_fired_deluge years = 10 }
 			}
 		}
-		if = {	# you've basically shortcutted terraforming. Yep, that's a breach
-			limit = {
-				exists = space_owner
-				space_owner = { is_same_value = from.owner }
-				OR = {
-					NOT = { exists = owner }
-					is_owned_by = from.owner
-				}
-				OR = {
-					is_active_resolution = "resolution_ecology_environmental_control_board"
-					is_active_resolution = "resolution_ecology_paradise_initiative"
-				}
-			}
-			from.owner = {
-				set_timed_country_flag = { flag = resolution_breached_terraformed years = 10 }
-			}
-		}
 		if = {
 			limit = {
 				exists = owner
-				owner = {
-					NOT = { is_same_value = from.owner }
-					is_default_or_fallen = yes
-				}
+				owner = { is_country_type = primitive }
 			}
-			# Generate threat
-			add_threat = { who = from.owner amount = 3 }
-			# modifier for allies + those upset by robots
 			every_country = {
 				limit = {
+					is_country_type = default
 					NOR = {
 						is_same_value = from.owner
-						is_same_value = root.owner
-						AND = {
-							has_federation = yes
-							is_in_federation_with = from.owner
-						}
-					}
-					OR = {
-						has_communications = from.owner
-						has_communications = root.owner
-					}
-				}
-				add_opinion_modifier = { modifier = opinion_drenched_a_world who = from.owner }
-			}
-			# modifiers for victim
-			owner = {
-				add_opinion_modifier = { modifier = opinion_drenched_my_world who = from.owner }
-				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
-				}
-			}
-		}
-		else_if = {
-			limit = {
-				exists = owner
-				owner = { is_primitive = yes }
-			}
-			# modifier for allies + those upset by genocide
-			every_playable_country = {
-				limit = {
-					NOT = { is_same_value = from.owner }
-					OR = {
-						has_communications = from.owner
-						has_communications = root.owner
-					}
-					NOR = {
 						is_xenophobe = yes
 						is_homicidal = yes
 						is_xenophile = yes
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner # Only the Observation Outpost Owner should have active comms with them.
 					}
 				}
 				add_opinion_modifier = { modifier = opinion_drenched_a_primitive_world who = from.owner }
@@ -1826,16 +2037,94 @@ planet_event = {
 						has_communications = root.owner
 					}
 					OR = {
-						has_ai_personality = awakened_fallen_empire_xenophile
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
 						AND = {
 							is_country_type = default
 							is_xenophile = yes
+							is_homicidal = no # Xenophiles can be homicidal.
 						}
 					}
 				}
-				add_opinion_modifier = {
-					modifier = opinion_drenched_a_primitive_world_phile
-					who = from.owner
+				add_opinion_modifier = { modifier = opinion_drenched_a_primitive_world_phile who = from.owner }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
+				owner = {
+					NOT = { is_same_value = from.owner }
+					is_default_or_fallen = yes
+				}
+			}
+			# Generate threat
+			add_threat = { who = from.owner amount = 3 }
+			every_country = {
+				limit = {
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = root.owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
+						}
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
+						}
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = root.owner
+						}
+						has_ai_personality = awakened_fallen_empire_xenophile
+						is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_drenched_a_world who = from.owner }
+			}
+
+			# modifiers for victim
+			owner = {
+				add_opinion_modifier = { modifier = opinion_drenched_my_world who = from.owner }
+				if = {
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_drenched_my_world who = from.owner }
+					}
 				}
 			}
 		}
@@ -2076,122 +2365,233 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
+				owner = { is_country_type = primitive }
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					NOR = {
+						is_same_value = from.owner
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner # Only the Observation Outpost Owner should have active comms with them.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_toxified_a_primitive_world who = from.owner }
+			}
+			every_country = {
+				limit = {
+					NOT = { is_same_value = from.owner }
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
+						AND = {
+							is_country_type = default
+							is_xenophile = yes
+							is_homicidal = no # Xenophiles can be homicidal.
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_toxified_a_primitive_world_phile who = from.owner }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
 				owner = {
 					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
 			# Generate threat
-			if = {
-				limit = { is_colony = yes }
-				add_threat = { who = from.owner amount = 3 }
-				# modifier for allies + those upset by genocide
-				every_country = {
-					limit = {
-						NOR = {
-							is_same_value = from.owner
-							is_same_value = root.owner
-							AND = {
-								has_federation = yes
-								is_in_federation_with = from.owner
-							}
-						}
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
-						}
-						OR = {
-							AND = {
-								has_federation = yes
-								is_in_federation_with = root.owner
-							}
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
-								OR = {
-									is_egalitarian = yes
-									is_xenophile = yes
-								}
-							}
-						}
-					}
-					if = {
-						limit = { root = { is_colony = no } }
-						add_opinion_modifier = {
-							modifier = opinion_toxified_an_uninhabited_world
-							who = from.owner
-						}
-					}
-					else = {
-						add_opinion_modifier = { modifier = opinion_toxified_a_world who = from.owner }
-					}
-				}
-			}
-			else = {
-				add_threat = { who = from.owner amount = 1 }
-			}
-			# modifiers for victim
-			owner = {
-				if = {
-					limit = { root = { is_colony = no } }
-					add_opinion_modifier = {
-						modifier = opinion_toxified_my_uninhabited_world
-						who = from.owner
-					}
-				}
-				else = {
-					add_opinion_modifier = { modifier = opinion_toxified_my_world who = from.owner }
-				}
-				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
-				}
-			}
-			if = {
+			add_threat = { who = from.owner amount = 3 }
+			every_country = {
 				limit = {
-					exists = owner
-					owner = { is_primitive = yes }
-				}
-				# modifier for allies + those upset by genocide
-				every_country = {
-					limit = {
-						NOT = { is_same_value = from.owner }
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = root.owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
 						}
-						OR = {
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
-								NOR = {
-									is_xenophobe = yes
-									is_homicidal = yes
-									is_xenophile = yes
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
 								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
 							}
 						}
 					}
-					add_opinion_modifier = { modifier = opinion_toxified_a_primitive_world who = from.owner }
-				}
-				every_country = {
-					limit = {
-						NOT = { is_same_value = from.owner }
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = root.owner
 						}
-						OR = {
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
+						has_ai_personality = awakened_fallen_empire_xenophile
+						AND = {
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+							OR = {
+								is_egalitarian = yes
 								is_xenophile = yes
 							}
 						}
 					}
-					add_opinion_modifier = {
-						modifier = opinion_toxified_a_primitive_world_phile
-						who = from.owner
+				}
+				add_opinion_modifier = { modifier = opinion_toxified_a_world who = from.owner }
+			}
+
+			# modifiers for victim
+			owner = {
+				add_opinion_modifier = { modifier = opinion_toxified_my_world who = from.owner }
+				if = {
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_toxified_my_world who = from.owner }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { exists = owner }
+				exists = space_owner
+				space_owner = {
+					NOT = { is_same_value = from.owner }
+					is_default_or_fallen = yes
+				}
+				OR = {
+					is_colonizable = yes
+					has_modifier = terraforming_candidate
+					AND = {
+						has_modifier = toxic_terraforming_candidate # has_ascension_for_terraforming_candidate
+						space_owner = {
+							OR = {
+								has_ascension_perk = ap_detox
+								has_origin = origin_fallen_empire_hive
+								has_country_flag = knights_detox
+							}
+						}
+					}
+					AND = {
+						has_modifier = frozen_terraforming_candidate
+						space_owner = {
+							OR = {
+								has_ascension_perk = ap_hydrocentric
+								has_origin = origin_fallen_empire_hive
+							}
+						}
+					}
+				}
+			}
+			space_owner = { save_event_target_as = DCWF_victim_space_owner }
+			add_threat = { who = from.owner amount = 1 }
+			# Add Threat
+			every_country = {
+				limit = {
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = event_target:DCWF_victim_space_owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
+						}
+						if = {
+							limit = {
+								event_target:DCWF_victim_space_owner = {
+									OR = {
+										is_same_value = event_target:fallen_empire_hive_war			# We.
+										is_same_value = event_target:fallen_empire_hive_growth		# Are.
+										is_same_value = event_target:fallen_empire_hive_control		# One.
+									}
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
+						}
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = event_target:DCWF_victim_space_owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = event_target:DCWF_victim_space_owner
+						}
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares about unowned worlds.
+						AND = {
+							is_country_type = default
+							OR = {
+								is_egalitarian = yes
+								is_xenophile = yes
+							}
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_toxified_an_uninhabited_world who = from.owner }
+			}
+
+			# modifiers for victim
+			space_owner = {
+				add_opinion_modifier = { modifier = opinion_toxified_my_uninhabited_world who = from.owner }
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = prev }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_toxified_my_uninhabited_world who = from.owner }
 					}
 				}
 			}
@@ -2403,7 +2803,6 @@ planet_event = {
 			}
 			# Generate threat
 			add_threat = { who = from.owner amount = 3 }
-			# modifier for allies + those upset by conversion
 			every_country = {
 				limit = {
 					NOR = {
@@ -2412,6 +2811,20 @@ planet_event = {
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
+						}
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
 						}
 					}
 					OR = {
@@ -2423,9 +2836,9 @@ planet_event = {
 							has_federation = yes
 							is_in_federation_with = root.owner
 						}
-						has_ai_personality = awakened_fallen_empire_spiritualist
+						has_ai_personality = awakened_fallen_empire_spiritualist # Nanobot Disperser / Devolution Beam isn't Xenocide and should not upset the awakened_fallen_empire_xenophile
 						AND = {
-							is_country_type = default
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
 							OR = {
 								is_spiritualist = yes
 								is_xenophile = yes
@@ -2436,20 +2849,48 @@ planet_event = {
 				}
 				add_opinion_modifier = { modifier = opinion_devolved_a_world who = from.owner }
 			}
+
 			# modifiers for victim
 			owner = {
 				add_opinion_modifier = { modifier = opinion_devolved_my_world who = from.owner }
 				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
 				}
-				# Add war exhaustion to planet owner
 				if = {
-					limit = {	# isn't the case when the crisis bombards planets, for instance
-						is_at_war_with = from.fleet.owner
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_devolved_my_world who = from.owner }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = owner
+				owner = { NOT = { is_same_value = from.owner } }
+			}
+			owner = {
+				if = {
+					limit = { #isn't the case when the crisis bombards planets, for instance
+						is_at_war_with = from.owner
 					}
 					add_static_war_exhaustion = {
-						attacker = from.fleet.owner
+						attacker = from.owner
 						location = root
 						value_for_planet_destruction = 1.0
 					}
@@ -2501,13 +2942,18 @@ planet_event = {
 		}
 		while = {
 			limit = {
-				any_owned_species = { is_robotic = no is_sapient = yes }
+				any_owned_pop_group = {
+					is_robot_pop_group = no
+					is_sapient = yes
+				}
 			}
-			weighted_random_owned_pop_group = {
+			ordered_owned_pop_group = {
 				limit = {
 					is_robot_pop_group = no
 					is_sapient = yes
 				}
+				order_by = trigger:pop_amount
+				inverse = yes # Devolve from fewest pops upwards.
 				species = { save_event_target_as = species_target }
 				create_devolved_species = yes
 			}
@@ -2520,17 +2966,57 @@ planet_event = {
 				change_species = event_target:devolved_species_target
 			}
 		}
-		weighted_random_owned_pop_group = { change_species = event_target:species_target }
+		random_owned_pop_group = {
+			limit = {
+				exists = event_target:devolved_species_target
+				species = { is_same_species = event_target:devolved_species_target } # This will always be the last devolved species.
+			}
+			save_event_target_as = devolution_survivors_donor
+		}
 		random_list = {
-			33 = {  }
-			33 = { weighted_random_owned_pop_group = { change_species = event_target:species_target } }
 			33 = {
-				weighted_random_owned_pop_group = { change_species = event_target:species_target }
-				random_owned_pop_group = {
-					limit = {	# Vfix
-						NOT = { is_exact_same_species = event_target:species_target }
+				create_pop_group = {
+					pop_group = event_target:devolution_survivors_donor
+					species = event_target:species_target
+					size = 0
+					effect = {
+						save_event_target_as = devolution_survivors
+						transfer_pop_amount = {
+							source = event_target:devolution_survivors_donor
+							target = event_target:devolution_survivors
+							amount = 100
+						}
 					}
-					change_species = event_target:species_target
+				}
+			}
+			33 = {
+				create_pop_group = {
+					pop_group = event_target:devolution_survivors_donor
+					species = event_target:species_target
+					size = 0
+					effect = {
+						save_event_target_as = devolution_survivors
+						transfer_pop_amount = {
+							source = event_target:devolution_survivors_donor
+							target = event_target:devolution_survivors
+							amount = 200
+						}
+					}
+				}
+			}
+			33 = {
+				create_pop_group = {
+					pop_group = event_target:devolution_survivors_donor
+					species = event_target:species_target
+					size = 0
+					effect = {
+						save_event_target_as = devolution_survivors
+						transfer_pop_amount = {
+							source = event_target:devolution_survivors_donor
+							target = event_target:devolution_survivors
+							amount = 300
+						}
+					}
 				}
 			}
 		}
@@ -2807,116 +3293,233 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
+				owner = { is_country_type = primitive }
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					NOR = {
+						is_same_value = from.owner
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner # Only the Observation Outpost Owner should have active comms with them.
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_a_primitive_world who = from.owner }
+			}
+			every_country = {
+				limit = {
+					NOT = { is_same_value = from.owner }
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares enough about Primitives.
+						AND = {
+							is_country_type = default
+							is_xenophile = yes
+							is_homicidal = no # Xenophiles can be homicidal.
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_a_primitive_world_phile who = from.owner }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { is_planet_class = pc_ai }
+				exists = owner
 				owner = {
 					NOT = { is_same_value = from.owner }
 					is_default_or_fallen = yes
 				}
 			}
 			# Generate threat
-			if = {
-				limit = { is_colony = yes }
-				add_threat = { who = from.owner amount = 3 }
-				# modifier for allies + those upset by genocide
-				every_country = {
-					limit = {
-						NOR = {
-							is_same_value = from.owner
-							is_same_value = root.owner
-							AND = {
-								has_federation = yes
-								is_in_federation_with = from.owner
-							}
-						}
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
-						}
-						OR = {
-							AND = {
-								has_federation = yes
-								is_in_federation_with = root.owner
-							}
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
-								OR = {
-									is_egalitarian = yes
-									is_xenophile = yes
-								}
-							}
-						}
-					}
-					if = {
-						limit = { root = { is_colony = no } }
-						add_opinion_modifier = { modifier = opinion_cracked_an_uninhabited_world who = from.owner }
-					}
-					else = {
-						add_opinion_modifier = { modifier = opinion_cracked_a_world who = from.owner }
-					}
-				}
-			}
-			else = {
-				add_threat = { who = from.owner amount = 1 }
-			}
-			# modifiers for victim
-			owner = {
-				if = {
-					limit = { root = { is_colony = no } }
-					add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
-				}
-				else = {
-					add_opinion_modifier = { modifier = opinion_cracked_my_world who = from.owner }
-				}
-				if = {
-					limit = { is_gestalt = no }
-					add_modifier = { modifier = colossus_victim years = 30 }
-				}
-			}
-			if = {
+			add_threat = { who = from.owner amount = 3 }
+			every_country = {
 				limit = {
-					exists = owner
-					owner = { is_primitive = yes }
-				}
-				# modifier for allies + those upset by genocide
-				every_country = {
-					limit = {
-						NOT = { is_same_value = from.owner }
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = root.owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
 						}
-						OR = {
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
-								NOR = {
-									is_xenophobe = yes
-									is_homicidal = yes
-									is_xenophile = yes
+						AND = {
+							root.owner = {
+								OR = {
+									is_same_value = event_target:fallen_empire_hive_war			# We.
+									is_same_value = event_target:fallen_empire_hive_growth		# Are.
+									is_same_value = event_target:fallen_empire_hive_control		# One.
 								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
 							}
 						}
 					}
-					add_opinion_modifier = { modifier = opinion_cracked_a_primitive_world who = from.owner }
-				}
-				every_country = {
-					limit = {
-						NOT = { is_same_value = from.owner }
-						OR = {
-							has_communications = from.owner
-							has_communications = root.owner
+					OR = {
+						has_communications = from.owner
+						has_communications = root.owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = root.owner
 						}
-						OR = {
-							has_ai_personality = awakened_fallen_empire_xenophile
-							AND = {
-								is_country_type = default
+						has_ai_personality = awakened_fallen_empire_xenophile
+						AND = {
+							is_country_type = default # This disabled all FEs/AEs from hating DELUGE / SMELT, but all regular empires still do.
+							OR = {
+								is_egalitarian = yes
 								is_xenophile = yes
 							}
 						}
 					}
-					add_opinion_modifier = {
-						modifier = opinion_cracked_a_primitive_world_phile
-						who = from.owner
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_a_world who = from.owner }
+			}
+
+			# modifiers for victim
+			owner = {
+				add_opinion_modifier = { modifier = opinion_cracked_my_world who = from.owner }
+				if = {
+					limit = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+					add_modifier = { modifier = colossus_victim days = 10800 }
+				}
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = root.owner }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_cracked_my_world who = from.owner }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { exists = owner }
+				exists = space_owner
+				space_owner = {
+					NOT = { is_same_value = from.owner }
+					is_default_or_fallen = yes
+				}
+				OR = {
+					is_colonizable = yes
+					has_modifier = terraforming_candidate
+					AND = {
+						has_modifier = toxic_terraforming_candidate # has_ascension_for_terraforming_candidate
+						space_owner = {
+							OR = {
+								has_ascension_perk = ap_detox
+								has_origin = origin_fallen_empire_hive
+								has_country_flag = knights_detox
+							}
+						}
+					}
+					AND = {
+						has_modifier = frozen_terraforming_candidate
+						space_owner = {
+							OR = {
+								has_ascension_perk = ap_hydrocentric
+								has_origin = origin_fallen_empire_hive
+							}
+						}
+					}
+				}
+			}
+			space_owner = { save_event_target_as = DCWF_victim_space_owner }
+			add_threat = { who = from.owner amount = 1 }
+			# Add Threat
+			every_country = {
+				limit = {
+					NOR = {
+						is_same_value = from.owner
+						is_same_value = event_target:DCWF_victim_space_owner
+						AND = {
+							has_federation = yes
+							is_in_federation_with = from.owner
+						}
+						if = {
+							limit = {
+								event_target:DCWF_victim_space_owner = {
+									OR = {
+										is_same_value = event_target:fallen_empire_hive_war			# We.
+										is_same_value = event_target:fallen_empire_hive_growth		# Are.
+										is_same_value = event_target:fallen_empire_hive_control		# One.
+									}
+								}
+							}
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war			# We.
+								is_same_value = event_target:fallen_empire_hive_growth		# Are.
+								is_same_value = event_target:fallen_empire_hive_control		# One.
+							}
+						}
+					}
+					OR = {
+						has_communications = from.owner
+						has_communications = event_target:DCWF_victim_space_owner
+					}
+					OR = {
+						AND = {
+							has_federation = yes
+							is_in_federation_with = event_target:DCWF_victim_space_owner
+						}
+						has_ai_personality = awakened_fallen_empire_xenophile # Only the Awakened Xenophile cares about unowned worlds.
+						AND = {
+							is_country_type = default
+							OR = {
+								is_egalitarian = yes
+								is_xenophile = yes
+							}
+						}
+					}
+				}
+				add_opinion_modifier = { modifier = opinion_cracked_an_uninhabited_world who = from.owner }
+			}
+
+			# modifiers for victim
+			space_owner = {
+				add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+				if = {
+					limit = {
+						OR = {
+							is_same_value = event_target:fallen_empire_hive_war
+							is_same_value = event_target:fallen_empire_hive_growth
+							is_same_value = event_target:fallen_empire_hive_control
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = prev }
+							OR = {
+								is_same_value = event_target:fallen_empire_hive_war
+								is_same_value = event_target:fallen_empire_hive_growth
+								is_same_value = event_target:fallen_empire_hive_control
+							}
+						}
+						add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
 					}
 				}
 			}
@@ -2938,6 +3541,15 @@ planet_event = {
 			}
 		}
 		every_owned_pop_group = {
+			while = {
+				count = value:per_100_pop_amount #For every 100 pops iterate through this loop once
+				from.owner = {
+					if = {
+						limit = { has_ascension_perk = ap_become_the_crisis }
+						complete_crisis_objective = crisobj_purge_pops
+					}
+				}
+			}
 			kill_pop_group = { pop_group = this percentage = 1 }
 		}
 		if = {
