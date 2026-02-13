@@ -892,11 +892,7 @@ create_fallen_empire_titan = {
 		limit = {
 			owner = {
 				is_country_type = fallen_empire
-				OR = {
-					has_country_flag = fallen_empire_hive_war
-					has_country_flag = fallen_empire_hive_growth
-					has_country_flag = fallen_empire_hive_control
-				}
+				count_as_split_fallen_empire = yes # Vfix opt
 			}
 		}
 		while = {
@@ -911,11 +907,7 @@ create_fallen_empire_titan = {
 				OR = {
 					AND = {
 						is_country_type = awakened_fallen_empire
-						OR = {
-							has_country_flag = fallen_empire_hive_war
-							has_country_flag = fallen_empire_hive_growth
-							has_country_flag = fallen_empire_hive_control
-						}
+						count_as_split_fallen_empire = yes # Vfix opt
 					}
 					AND = {
 						country_uses_bio_ships = yes
@@ -1051,11 +1043,7 @@ create_fallen_empire_large_ship = {
 				OR = {
 					AND = {
 						is_country_type = awakened_fallen_empire
-						OR = {
-							has_country_flag = fallen_empire_hive_war
-							has_country_flag = fallen_empire_hive_growth
-							has_country_flag = fallen_empire_hive_control
-						}
+						count_as_split_fallen_empire = yes # Vfix opt
 					}
 					AND = {
 						country_uses_bio_ships = yes
@@ -1215,11 +1203,7 @@ create_fallen_empire_small_ship = {
 				OR = {
 					AND = {
 						is_country_type = awakened_fallen_empire
-						OR = {
-							has_country_flag = fallen_empire_hive_war
-							has_country_flag = fallen_empire_hive_growth
-							has_country_flag = fallen_empire_hive_control
-						}
+						count_as_split_fallen_empire = yes # Vfix opt
 					}
 					AND = {
 						country_uses_bio_ships = yes

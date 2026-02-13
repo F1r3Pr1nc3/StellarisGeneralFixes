@@ -3,6 +3,7 @@
 # Workaround: as is_overlord_to is not working for Khan.
 # This = Satrapy
 is_subject_of_khan = {
+	optimize_memory
 	is_subject = yes
 	has_global_flag = marauder_crisis_started
 	is_country_type = default
@@ -27,9 +28,22 @@ is_subject_of_khan = {
 # Workaround: As 'is_pirate' is bugged (only shorthand for is_country_type = pirate)
 # Was fixed in v3.4 but is again only a shorthand since v3.8 (or earlier)
 is_pirate_country = {
+	optimize_memory
 	OR = {
 		is_country_type = dormant_marauders
 		is_country_type = ruined_marauders
 		is_pirate = yes # is_country_type = pirate
+	}
+}
+
+# this = country
+# all countries which pass this rule only add 1 to num_fallen_empires
+count_as_split_fallen_empire = {
+	optimize_memory
+	# is_fallen_empire = yes
+	OR = {
+		has_country_flag = fallen_empire_hive_war			# We.
+		has_country_flag = fallen_empire_hive_growth		# Are.
+		has_country_flag = fallen_empire_hive_control		# One.
 	}
 }

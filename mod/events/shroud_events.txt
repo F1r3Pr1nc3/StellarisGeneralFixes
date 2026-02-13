@@ -9864,14 +9864,17 @@ country_event = {
 		}
 	}
 }
+
 # on_subject_integrated
 country_event = {
 	id = shroud.4802
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = { # Vfix opt
 		any_owned_fleet = { has_fleet_flag = eater_fleet }
 	}
+
 	immediate = {
 		every_owned_fleet = {
 			limit = { has_fleet_flag = eater_fleet }

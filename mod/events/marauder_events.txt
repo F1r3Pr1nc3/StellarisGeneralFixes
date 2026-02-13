@@ -9479,17 +9479,16 @@ country_event = {
 									}
 								}
 							}
-
-							# queue_actions = {
-							# 	wait = { duration = 1 }
-							# 	move_to = prev
-							# 	wait = { duration = 1 }
-							# 	# merge_fleet = { # FIXME Disabled due "Malformed token: prev claim
-							# 	# 	target = event_target:great_khan.fleet # prev
-							# 	# 	allow_ftl = yes
-							# 	# }
-							# 	merge_fleet = event_target:great_khan.fleet
-							# }
+							queue_actions = {
+								wait = { duration = 1 }
+								move_to = prev
+								wait = { duration = 1 }
+								# merge_fleet = { # FIXME Disabled due "Malformed token" error, but should be working in theory.
+								# 	target = event_target:khan_fleet
+								# 	allow_ftl = yes
+								# }
+								# merge_fleet = event_target:khan_fleet
+							}
 							auto_follow_fleet = { target = prev }
 						}
 					}

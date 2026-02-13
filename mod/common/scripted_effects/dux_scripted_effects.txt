@@ -572,7 +572,7 @@ inherit_tech_effect = {
 		}
 		if = {
 			limit = {
-				NOR = { has_technology = tech_torpedoes_1 }
+				NOT = { has_technology = tech_torpedoes_1 }
 				event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
 			}
 			give_technology = { tech = tech_torpedoes_1 }
