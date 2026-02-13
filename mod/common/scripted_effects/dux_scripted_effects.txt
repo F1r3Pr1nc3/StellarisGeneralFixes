@@ -562,38 +562,73 @@ inherit_tech_effect = {
 	}
 	if = {
 		limit = {
-			NOT = { has_technology = tech_corvettes }
+			NOT = { uses_ship_category = bio_ship }
 		}
-		give_technology = { tech = tech_corvettes }
-	}
-	if = {
-		limit = {
-			NOT = { has_technology = tech_torpedoes_1 }
-			event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
+		if = {
+			limit = {
+				NOT = { has_technology = tech_corvettes }
+			}
+			give_technology = { tech = tech_corvettes }
 		}
-		give_technology = { tech = tech_torpedoes_1 }
-	}
-	if = {
-		limit = {
-			NOT = { has_technology = tech_destroyers }
-			event_target:tech_country = { has_technology = tech_weavers }
+		if = {
+			limit = {
+				NOR = { has_technology = tech_torpedoes_1 }
+				event_target:tech_country = { has_technology = tech_maulers } # Vfix scope
+			}
+			give_technology = { tech = tech_torpedoes_1 }
 		}
-		give_technology = { tech = tech_destroyers }
-	}
-	if = {
-		limit = {
-			NOT = { has_technology = tech_cruisers }
-			event_target:tech_country = { has_technology = tech_harbingers }
+		if = {
+			limit = {
+				NOT = { has_technology = tech_destroyers }
+				event_target:tech_country = { has_technology = tech_weavers }
+			}
+			give_technology = { tech = tech_destroyers }
 		}
-		give_technology = { tech = tech_cruisers }
-	}
-	if = {
-		limit = {
-			NOT = { has_technology = tech_battleships }
-			event_target:tech_country = { has_technology = tech_stingers }
+		if = {
+			limit = {
+				NOT = { has_technology = tech_cruisers }
+				event_target:tech_country = { has_technology = tech_harbingers }
+			}
+			give_technology = { tech = tech_cruisers }
 		}
-		give_technology = { tech = tech_battleships }
+		if = {
+			limit = {
+				NOT = { has_technology = tech_battleships }
+				event_target:tech_country = { has_technology = tech_stingers }
+			}
+			give_technology = { tech = tech_battleships }
+		}
 	}
+	else = {
+		if = {
+			limit = {
+				NOT = { has_technology = tech_maulers }
+			}
+			give_technology = { tech = tech_maulers }
+		}
+		if = {
+			limit = {
+				NOT = { has_technology = tech_weavers }
+				event_target:tech_country = { has_technology = tech_destroyers }
+			}
+			give_technology = { tech = tech_weavers }
+		}
+		if = {
+			limit = {
+				NOT = { has_technology = tech_harbingers }
+				event_target:tech_country = { has_technology = tech_cruisers }
+			}
+			give_technology = { tech = tech_harbingers }
+		}
+		if = {
+			limit = {
+				NOT = { has_technology = tech_stingers }
+				event_target:tech_country = { has_technology = tech_battleships }
+			}
+			give_technology = { tech = tech_stingers }
+		}
+	}
+	
 	if = {
 		limit = {
 			NOT = { has_technology = tech_starbase_2 }
