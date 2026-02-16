@@ -3043,21 +3043,19 @@ country_event = {
 	}
 
 	immediate = {
-		random_list = {
-			5 = {
-				random_owned_planet = {
-					limit = {
-						NOR = {
-							num_districts = { type = district_mining value <= 1 }
-							exists = archaeological_site
-							has_planet_flag = suppress_archaeological_sites
-						}
+		random = {
+			chance = 5
+			random_owned_planet = {
+				limit = {
+					NOR = {
+						num_districts = { type = district_mining value <= 1 }
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
 					}
-					planet_event = { id = ancrel.4000 days = 30 random = 90 }
 				}
-				set_country_flag = discovered_lithoids_arc_site
+				planet_event = { id = ancrel.4000 days = 30 random = 90 }
 			}
-			95 = {  }
+			set_country_flag = discovered_lithoids_arc_site
 		}
 	}
 }

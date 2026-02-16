@@ -2790,19 +2790,17 @@ event = {
 					}
 				}
 			}
-			random_list = {
-				20 = {
-					random_galaxy_planet = {
-						limit = {
-							has_owner = yes
-							has_planet_flag = azizian_pet_planet
-							has_deposit = d_alien_pets_deposit
-						}
-						planet_event = { id = distar.1083 }
-						set_planet_flag = azizians_escape_zoo
+			random = {
+				chance = 20
+				random_galaxy_planet = {
+					limit = {
+						has_owner = yes
+						has_planet_flag = azizian_pet_planet
+						has_deposit = d_alien_pets_deposit
 					}
+					planet_event = { id = distar.1083 }
+					set_planet_flag = azizians_escape_zoo
 				}
-				80 = {  }
 			}
 		}
 		# pops
@@ -2815,19 +2813,17 @@ event = {
 					}
 				}
 			}
-			random_list = {
-				20 = {
-					random_galaxy_planet = {
-						limit = {
-							has_owner = yes
-							has_planet_flag = azizian_pops_planet
-							any_owned_species = { has_species_flag = azizans_@prev.owner }
-						}
-						planet_event = { id = distar.1084 }
-						set_planet_flag = azizians_burrow
+			random = {
+				chance = 20
+				random_galaxy_planet = {
+					limit = {
+						has_owner = yes
+						has_planet_flag = azizian_pops_planet
+						any_owned_species = { has_species_flag = azizans_@prev.owner }
 					}
+					planet_event = { id = distar.1084 }
+					set_planet_flag = azizians_burrow
 				}
-				80 = {  }
 			}
 		}
 	}
@@ -4201,11 +4197,7 @@ planet_event = {
 		name = distar.5057.a
 		# planet/owner project, best start in country scope, instead of location scope
 		owner = {
-			enable_special_project = {
-				name = "ENIGMATIC_CACHE_PROJECT"
-				location = root
-				owner = root.owner
-			}
+			enable_special_project = { name = "ENIGMATIC_CACHE_PROJECT" location = root }
 		}
 	}
 	option = {

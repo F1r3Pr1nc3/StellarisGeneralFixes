@@ -319,6 +319,16 @@ fleet_event = {
 	}
 
 	immediate = {
+		if = {
+			limit = {
+				NAND = {
+					exists = solar_system
+					is_fleet_idle = yes
+				}
+			}
+			fleet_event = { id = marauder.29 days = 25 scopes = { from = from } }
+			break = yes
+		}
 		log = "Try raid fallback routing"
 		# First try to find alternate path (new raid target)
 		closest_system = {
@@ -343,55 +353,39 @@ fleet_event = {
 					is_planet_eligible_for_treasure_planet = yes
 				}
 				save_event_target_as = attacked_planet
-				root = {
-					clear_orders = yes
-					remove_auto_move_target = yes
-					clear_fleet_actions = this
-					auto_move_to_planet = {
-						target = event_target:attacked_planet
-						clear_auto_move_on_arrival = no
-					}
-					log = "Take new raid target [This.System.GetName]"
-					break = yes
-				}
 			}
 		}
 		if = {
-			limit = { exists = event_target:attacked_planet }
-			break = yes
-		}
-		# Try destroy FTL inhibitors
-		closest_system = {
-			min_steps = 1
-			max_steps = 10
-			use_bypasses = yes
 			limit = {
-				is_owned_by = from
-				exists = starbase
-				starbase = {
-					has_starbase_size > starbase_outpost
-					fleet = { is_disabled = no }
-				}
-				prev = { can_access_system = prev }
+				NOT = { exists = event_target:attacked_planet }
 			}
-			star = {
-				save_event_target_as = attacked_planet
-				root = {
-					clear_orders = yes
-					remove_auto_move_target = yes
-					clear_fleet_actions = this
-					auto_move_to_planet = {
-						target = event_target:attacked_planet
-						clear_auto_move_on_arrival = no
-						arrival_effect = marauder_path_attack
+			# Try destroy FTL inhibitors
+			closest_system = {
+				min_steps = 1
+				max_steps = 10
+				use_bypasses = yes
+				limit = {
+					is_owned_by = from
+					exists = starbase
+					starbase = {
+						has_starbase_size > starbase_outpost
+						fleet = { is_disabled = no }
 					}
-					log = "Take new raid target [This.System.GetName]"
-					break = yes
+					prev = { can_access_system = prev }
 				}
+				star = { save_event_target_as = attacked_planet }
 			}
 		}
 		if = {
 			limit = { exists = event_target:attacked_planet }
+			clear_orders = yes
+			remove_auto_move_target = yes
+			clear_fleet_actions = this
+			auto_move_to_planet = {
+				target = event_target:attacked_planet
+				clear_auto_move_on_arrival = no
+			}
+			log = "Vfix: Take new raid target [This.System.GetName]"
 			break = yes
 		}
 		# TODO # Get (max) distance (export works but not import so search must be step for step)
@@ -529,14 +523,14 @@ fleet_event = {
 							}
 						}
 						fleet_event = { id = marauder.29 days = 100 random = 25 scopes = { from = from } }
+						log = "Vfix: \\[This.Owner.GetName] take new raid target \\[Prev.GetName]"
 					}
-					log = "\\[Root.Owner.GetName] take new raid target [This.GetName]"
 				}
 			}
 		}
 		else = {
 			fleet_event = { id = marauder.27 days = 100 random = 25 scopes = { from = from } }
-			log = "Fallback jump marauder fleet [This.GetName]"
+			log = "Vfix: Fallback jump marauder fleet \\[This.GetName]"
 		}
 	}
 }

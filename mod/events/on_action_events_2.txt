@@ -2095,24 +2095,22 @@ country_event = {
 					num_favors = { target = prev.envoy_location_country value < 10 }
 				}
 			}
-			random_list = {
-				1 = {
-					root = {
-						add_favors = { target = prev.envoy_location_country value = 1 }
-						create_message = {
-							type = MESSAGE_FAVOR_GAINED_TRADITION
-							localization = MESSAGE_FAVOR_GAINED_TRADITION_DESC
-							days = 30
-							target = prev.envoy_location_country.capital_scope
-							variable = {
-								type = name
-								localization = WHO
-								scope = prev.envoy_location_country
-							}
+			random = {
+				chance = 1
+				root = {
+					add_favors = { target = prev.envoy_location_country value = 1 }
+					create_message = {
+						type = MESSAGE_FAVOR_GAINED_TRADITION
+						localization = MESSAGE_FAVOR_GAINED_TRADITION_DESC
+						days = 30
+						target = prev.envoy_location_country.capital_scope
+						variable = {
+							type = name
+							localization = WHO
+							scope = prev.envoy_location_country
 						}
 					}
 				}
-				99 = {  }
 			}
 		}
 	}
@@ -2175,13 +2173,11 @@ country_event = {
 
 	immediate = {
 		from = {
-			random_list = {
-				90 = {  }
-				10 = {
-					add_trait = { trait = random_common show_message = no }
-					add_trait = { trait = random_negative show_message = no }
-					# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
-				}
+			random = {
+				chance = 10
+				add_trait = { trait = random_common show_message = no }
+				add_trait = { trait = random_negative show_message = no }
+				# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
 			}
 			random_list = {
 				900 = {  }

@@ -275,10 +275,7 @@ miner = {
 		}
 		swap_type = {
 			trigger = {
-				exists = planet
-				planet = {
-					miner_is_mineral_diver_trigger = yes
-				}
+				miner_is_mineral_diver_trigger = yes
 			}
 			name = mineral_diver
 			desc = mineral_diver
@@ -399,10 +396,7 @@ miner = {
 		}
 		upkeep = {
 			trigger = {
-				exists = planet
-				planet = {
-					miner_is_thermoforger_trigger = yes
-				}
+				miner_is_thermoforger_trigger = yes
 			}
 			energy = 1
 		}
@@ -524,10 +518,8 @@ crystal_miner = {
 		}
 		upkeep = {
 			trigger = {
-				planet = {
-					any_deposit = {
-						is_deposit_type = d_lava_tubes
-					}
+				any_deposit = {
+					is_deposit_type = d_lava_tubes
 				}
 			}
 			energy = @lava_tubes_mining_job_upkeep
@@ -1553,9 +1545,7 @@ foundry_prison_worker = {
 		}
 		upkeep = {
 			trigger = {
-				planet = {
-					has_planet_flag = has_material_requisitorium
-				}
+				has_planet_flag = has_material_requisitorium
 			}
 			minerals = 2
 		}
@@ -1643,9 +1633,7 @@ catalytic_technician_prison_worker = {
 
 		upkeep = {
 			trigger = {
-				planet = {
-					has_planet_flag = has_material_requisitorium
-				}
+				has_planet_flag = has_material_requisitorium
 			}
 			food = 3
 		}
@@ -1731,11 +1719,9 @@ artisan_prison_worker = {
 		}
 		upkeep = {
 			trigger = {
-				planet = {
-					has_planet_flag = has_produce_requisitorium
-					exists = owner.overlord
-					owner.overlord = { country_uses_consumer_goods = yes }
-				}
+				has_planet_flag = has_produce_requisitorium
+				exists = owner.overlord
+				owner.overlord = { country_uses_consumer_goods = yes }
 			}
 			minerals = 1
 		}
@@ -1839,11 +1825,9 @@ artificer_prison_worker = {
 		}
 		upkeep = {
 			trigger = {
-				planet = {
-					has_planet_flag = has_produce_requisitorium
-					exists = owner.overlord
-					owner.overlord = { country_uses_consumer_goods = yes }
-				}
+				has_planet_flag = has_produce_requisitorium
+				exists = owner.overlord
+				owner.overlord = { country_uses_consumer_goods = yes }
 			}
 			minerals = 1
 		}

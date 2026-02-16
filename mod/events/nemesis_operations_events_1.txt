@@ -4555,45 +4555,41 @@ country_event = {
 		custom_tooltip = operation.5045.b.tooltip
 		add_modifier = { modifier = spynetwork_rigorous_screening years = 1 }
 		hidden_effect = {
-			random_list = { # Note that these odds are described in operation.5045.b.tooltip. Update that string if necessary.
-				1 = {
-					from = {
-						if = {
-							limit = {
-								OR = {
-									has_espionage_category = op_cat_provocation
-									has_espionage_category = op_cat_sabotage
-								}
-								no_scope = { # makes any_spynetwork check any in the game
-									any_spynetwork = {
-										is_owned_by = from.target
-										target = { is_same_value = root }
-									}
-								}
+			random = { # Note that these odds are described in operation.5045.b.tooltip. Update that string if necessary.
+				chance = 50
+				from = {
+					if = {
+						limit = {
+							OR = {
+								has_espionage_category = op_cat_provocation
+								has_espionage_category = op_cat_sabotage
 							}
-							owner = { save_event_target_as = insidious_plot_country }
-							target = {
-								country_event = { id = espionage.1070 days = 10 } # Hostile Infiltration Detected
+							no_scope = { # makes any_spynetwork check any in the game
+								any_spynetwork = {
+									is_owned_by = from.target
+									target = { is_same_value = root }
+								}
 							}
 						}
-						else_if = {
-							limit = {
-								no_scope = { # makes any_spynetwork check any in the game
-									any_spynetwork = {
-										is_owned_by = from.target
-										target = { is_same_value = root }
-									}
-								}
-							}
-							owner = { save_event_target_as = insidious_plot_country }
-							target = {
-								country_event = { id = espionage.1080 days = 10 } # Insidious Plot Uncovered
-							}
+						owner = { save_event_target_as = insidious_plot_country }
+						target = {
+							country_event = { id = espionage.1070 days = 10 } # Hostile Infiltration Detected
 						}
 					}
-				}
-				1 = {
-					# No further consequences
+					else_if = {
+						limit = {
+							no_scope = { # makes any_spynetwork check any in the game
+								any_spynetwork = {
+									is_owned_by = from.target
+									target = { is_same_value = root }
+								}
+							}
+						}
+						owner = { save_event_target_as = insidious_plot_country }
+						target = {
+							country_event = { id = espionage.1080 days = 10 } # Insidious Plot Uncovered
+						}
+					}
 				}
 			}
 		}

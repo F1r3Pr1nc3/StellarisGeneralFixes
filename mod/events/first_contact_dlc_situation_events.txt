@@ -5316,18 +5316,16 @@ situation_event = {
 					kill_leader = { show_notification = no }
 				}
 				add_pre_ftl_buildings = yes
-				random_list = {
-					20 = {
-						if = {
-							limit = {
-								NOT = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
-							}
-							change_government = {
-								civics = { civic = civic_hive_devouring_swarm }
-							}
+				random = {
+					chance = 20
+					if = {
+						limit = {
+							NOT = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
+						}
+						change_government = {
+							civics = { civic = civic_hive_devouring_swarm }
 						}
 					}
-					80 = {  }
 				}
 			}
 		}

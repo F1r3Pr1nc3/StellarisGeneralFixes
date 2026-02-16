@@ -5348,18 +5348,16 @@ country_event = {
 	}
 
 	immediate = {
-		random_list = { # 70% of the time leader doesn't get trait
-			70 = {  }
-			30 = {
-				from = {
-					switch = {
-						trigger = leader_class
-						commander = {
-							add_trait = { trait = leader_trait_fotd_commander }
-						}
-						scientist = {
-							add_trait = { trait = leader_trait_fotd_scientist }
-						}
+		random = { # 70% of the time leader doesn't get trait
+			chance = 30
+			from = {
+				switch = {
+					trigger = leader_class
+					commander = {
+						add_trait = { trait = leader_trait_fotd_commander }
+					}
+					scientist = {
+						add_trait = { trait = leader_trait_fotd_scientist }
 					}
 				}
 			}

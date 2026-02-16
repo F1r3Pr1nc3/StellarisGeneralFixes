@@ -3135,18 +3135,16 @@ ship_event = {
 	}
 
 	immediate = {
-		random_list = {
-			80 = {
-				owner = { set_country_flag = astral_scar_instability_found }
-				from = {
-					prevent_anomaly = yes
-					solar_system = {
-						add_modifier = { modifier = instable_astral_scar_modifier }
-					}
+		random = {
+			chance = 80
+			owner = { set_country_flag = astral_scar_instability_found }
+			from = {
+				prevent_anomaly = yes
+				solar_system = {
+					add_modifier = { modifier = instable_astral_scar_modifier }
 				}
-				enable_special_project = { name = ASTRAL_SCAR_INSTABILITY location = from }
 			}
-			20 = {  }
+			enable_special_project = { name = ASTRAL_SCAR_INSTABILITY location = from }
 		}
 	}
 }
@@ -4207,12 +4205,10 @@ country_event = {
 	immediate = {
 		if = {
 			limit = { is_ai = yes }
-			random_list = {
-				1 = {
-					set_global_flag = mercedes_spawned
-					country_event = { id = astral_planes.6100 days = 1 }
-				}
-				20 = {  }
+			random = {
+				chance = 4.8
+				set_global_flag = mercedes_spawned
+				country_event = { id = astral_planes.6100 days = 1 }
 			}
 		}
 		else = {

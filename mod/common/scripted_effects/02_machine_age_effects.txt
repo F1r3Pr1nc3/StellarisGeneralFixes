@@ -1729,7 +1729,7 @@ synth_queen_create_convoy_fleet = {
 synth_queen_create_outpost = {
 	create_country = { # Every Outpost is its own country so you can't aggro them all in one raid
 		name = "NAME_Cetana_Outpost"
-		type = synth_queen_outposts
+		type = synth_queen # Vfix: later synth_queen_outposts
 		name_list = "CETANA"
 		flag = {
 			icon = { category = "special" file = "synth_queen.dds" }
@@ -1750,21 +1750,20 @@ synth_queen_create_outpost = {
 	}
 
 	create_starbase = {
-		size = big_starbase_synth_queen
 		owner = event_target:synth_queen_outpost_country
+		size = big_starbase_synth_queen
+		design = "NAME_Synth_Queen_Starbase_Big"
 		effect = {
-			solar_system = {
-				star = { save_event_target_as = sq_outpost }
-			}
+			star = { save_event_target_as = sq_outpost }
 		}
 	}
 
 	create_fleet = {
+		name = "NAME_Outpost_Defenders"
 		settings = {
 		}
 		effect = {
 			set_owner = event_target:synth_queen_outpost_country
-			set_name = NAME_Outpost_Defenders
 			while = {
 				count = 6
 				create_ship = { name = random design = "NAME_Synth_Queen_Harrier" }
@@ -1778,6 +1777,10 @@ synth_queen_create_outpost = {
 			set_aggro_range_measure_from = self
 			set_location = { target = event_target:sq_outpost }
 		}
+	}
+
+	event_target:synth_queen_outpost_country = {
+		set_country_type = synth_queen_outposts
 	}
 
 	set_star_flag = synth_queen_outpost
@@ -1894,7 +1897,7 @@ synth_queen_debuff = {
 synth_queen_create_mini_outpost = {
 	create_country = { # Every Outpost is its own country so you can't aggro them all in one raid
 		name = "NAME_Cetana_Outpost"
-		type = synth_queen_outposts
+		type = synth_queen # Vfix: later synth_queen_outposts
 		name_list = "CETANA"
 		flag = {
 			icon = { category = "special" file = "synth_queen.dds" }
@@ -1914,21 +1917,20 @@ synth_queen_create_mini_outpost = {
 	}
 
 	create_starbase = {
-		size = big_starbase_synth_queen
 		owner = event_target:synth_queen_outpost_country
+		size = big_starbase_synth_queen
+		design = "NAME_Synth_Queen_Starbase_Big"
 		effect = {
-			solar_system = {
-				star = { save_event_target_as = sq_outpost }
-			}
+			star = { save_event_target_as = sq_outpost }
 		}
 	}
 
 	create_fleet = {
+		name = "NAME_Outpost_Defenders"
 		settings = {
 		}
 		effect = {
 			set_owner = event_target:synth_queen_outpost_country
-			set_name = NAME_Outpost_Defenders
 			while = {
 				count = 12
 				create_ship = { name = random design = "NAME_Synth_Queen_Harrier" }
@@ -1938,6 +1940,10 @@ synth_queen_create_mini_outpost = {
 			set_aggro_range_measure_from = self
 			set_location = { target = event_target:sq_outpost }
 		}
+	}
+
+	event_target:synth_queen_outpost_country = {
+		set_country_type = synth_queen_outposts
 	}
 
 	set_star_flag = synth_queen_outpost

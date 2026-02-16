@@ -2311,22 +2311,18 @@ subtract_age_based_awareness_effect = {
 	}
 	else_if = {
 		limit = { pre_ftl_medieval_era = yes }
-		random_list = {
-			75 = {
-				add_awareness = -$AWARENESS$
-				set_timed_country_flag = { flag = recent_awareness_decay months = 3 }
-			}
-			25 = {  }
+		random = {
+			chance = 75
+			add_awareness = -$AWARENESS$
+			set_timed_country_flag = { flag = recent_awareness_decay months = 3 }
 		}
 	}
 	else_if = {
 		limit = { pre_ftl_victorian_era = yes }
-		random_list = {
-			50 = {
-				add_awareness = -$AWARENESS$
-				set_timed_country_flag = { flag = recent_awareness_decay months = 6 }
-			}
-			50 = {  }
+		random = {
+			chance = 50
+			add_awareness = -$AWARENESS$
+			set_timed_country_flag = { flag = recent_awareness_decay months = 6 }
 		}
 	}
 	else_if = {

@@ -2360,10 +2360,11 @@ grant_fe_building = {
 	change_variable = { which = $BUILDING$_upgrade_count value = 1 }
 
 	set_country_flag = $BUILDING$_can_build
-	set_timed_country_flag = { flag = recently_got_$BUILDING$ days = 10 }
+	set_timed_country_flag = { flag = recently_got_$BUILDING$ days = 30 }
 	create_message = {
 		type = FALLEN_EMPIRE_BUILDING_GAINED
 		localization = MESSAGE_FALLEN_EMPIRE_BUILDING_GAINED
+		# target = root # Vfix not always valid
 		days = 30
 	}
 }

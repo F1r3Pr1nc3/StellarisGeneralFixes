@@ -3021,17 +3021,15 @@ leader_event = {
 			}
 			custom_tooltip = paragon.41310.a.custom_tooltip
 			hidden_effect = {
-				random_list = {
-					25 = {
-						every_country = {
-							limit = { has_communications = prev }
-							add_opinion_modifier = {
-								who = prev
-								modifier = opinion_has_sensitive_information_about_us
-							}
+				random = {
+					chance = 25
+					every_country = {
+						limit = { has_communications = prev }
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_has_sensitive_information_about_us
 						}
 					}
-					75 = {  }
 				}
 			}
 		}

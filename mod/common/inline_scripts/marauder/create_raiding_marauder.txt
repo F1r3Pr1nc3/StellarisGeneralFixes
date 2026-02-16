@@ -53,28 +53,30 @@ event_target:marauder_raiding_country = {
 	set_faction_hostility = { target = event_target:marauder_target set_hostile = yes } # Has full effect only after 1 day
 	last_created_fleet = {
 		set_owner = prev # Real owner
-		closest_system = {
-			min_steps = 1
-			max_steps = 40
-			use_bypasses = yes
-			limit = {
-				has_owner = yes
-				is_owned_by = event_target:marauder_target
-				any_system_colony = {
+		event_target:raid_source = {
+			closest_system = {
+				min_steps = 1
+				max_steps = 40
+				use_bypasses = yes
+				limit = {
 					has_owner = yes
 					is_owned_by = event_target:marauder_target
-					is_planet_eligible_for_treasure_planet = yes
-					sapient_pop_amount > 200
+					any_system_colony = {
+						has_owner = yes
+						is_owned_by = event_target:marauder_target
+						is_planet_eligible_for_treasure_planet = yes
+						sapient_pop_amount > 200
+					}
+					prevprev = { can_access_system = prev } # performance-intensive trigger!
 				}
-				prev = { can_access_system = prev } # performance-intensive trigger!
-			}
-			random_system_colony = {
-				limit = { # has_owner = yes
-					is_owned_by = event_target:marauder_target
-					is_planet_eligible_for_treasure_planet = yes
-					sapient_pop_amount > 200
+				random_system_colony = {
+					limit = { # has_owner = yes
+						is_owned_by = event_target:marauder_target
+						is_planet_eligible_for_treasure_planet = yes
+						sapient_pop_amount > 200
+					}
+					save_event_target_as = raid_planet
 				}
-				save_event_target_as = raid_planet
 			}
 		}
 		set_event_locked = no

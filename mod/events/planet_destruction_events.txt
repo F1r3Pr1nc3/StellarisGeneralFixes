@@ -482,13 +482,11 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		random_list = {
-			50 = {  }
-			50 = {
-				solar_system = { save_event_target_as = sol_sys }
-				from.owner = {
-					country_event = { id = planet_destruction.111 }
-				}
+		random = {
+			chance = 50
+			solar_system = { save_event_target_as = sol_sys }
+			from.owner = {
+				country_event = { id = planet_destruction.111 }
 			}
 		}
 	}
@@ -2071,7 +2069,8 @@ planet_event = {
 			limit = {
 				NOT = { is_planet_class = pc_broken }
 			}
-			change_pc = pc_ocean
+			start_terraform_process = pc_ocean
+			finish_terraformation = yes
 		}
 		# from = { #feedback suggests this isn't fun, but leaving it here in case we need it
 		# 	ice_mining_depletion_effect = yes

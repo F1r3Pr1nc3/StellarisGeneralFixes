@@ -6672,9 +6672,21 @@ country_event = {
 				set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 				set_owner = event_target:ratling_pre_space_country
 				# add_building = building_junkheap # Vfix TODO: Building is auto-destroyed because district_city can't be built by ratlings country.
-				create_pop_group = { species = event_target:ratling_species size = 300 ethos = { ethic = ethic_materialist } }
-				create_pop_group = { species = event_target:ratling_species size = 400 ethos = { ethic = ethic_egalitarian } }
-				create_pop_group = { species = event_target:ratling_species size = 300 ethos = { ethic = ethic_pacifist } }
+				create_pop_group = {
+					species = event_target:ratling_species
+					size = 300
+					ethos = { ethic = ethic_materialist }
+				}
+				create_pop_group = {
+					species = event_target:ratling_species
+					size = 400
+					ethos = { ethic = ethic_egalitarian }
+				}
+				create_pop_group = {
+					species = event_target:ratling_species
+					size = 300
+					ethos = { ethic = ethic_pacifist }
+				}
 				while = {
 					count = 4
 					create_army = {
@@ -7305,18 +7317,38 @@ country_event = {
 				remove_building = building_junkheap # This building gets auto-deleted because ratlings country can't build city districts.
 				clear_blockers = yes
 				remove_all_armies = yes
-				create_pop_group = { species = event_target:ratling_species size = 900 ethos = { ethic = ethic_materialist } }
-				create_pop_group = { species = event_target:ratling_species size = 800 ethos = { ethic = ethic_egalitarian } }
-				create_pop_group = { species = event_target:ratling_species size = 800 ethos = { ethic = ethic_pacifist } }
+				create_pop_group = {
+					species = event_target:ratling_species
+					size = 900
+					ethos = { ethic = ethic_materialist }
+				}
+				create_pop_group = {
+					species = event_target:ratling_species
+					size = 800
+					ethos = { ethic = ethic_egalitarian }
+				}
+				create_pop_group = {
+					species = event_target:ratling_species
+					size = 800
+					ethos = { ethic = ethic_pacifist }
+				}
 				while = {
 					count = 4
-					add_district_and_planet_size_if_needed_effect = { district = district_city }
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_city
+					}
 				}
 				while = { # WARNING, if you terraform a Ratling World into a Volcanic World it will mess up their districts!
 					count = 3
-					add_district_and_planet_size_if_needed_effect = { district = district_farming }
-					add_district_and_planet_size_if_needed_effect = { district = district_mining }
-					add_district_and_planet_size_if_needed_effect = { district = district_generator }
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_farming
+					}
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_mining
+					}
+					add_district_and_planet_size_if_needed_effect = {
+						district = district_generator
+					}
 				}
 				if = {
 					limit = { has_building = building_colony_shelter }
@@ -7330,17 +7362,13 @@ country_event = {
 				}
 				if = {
 					limit = {
-						NOT = {
-							has_zone = { zone = zone_research_unity }
-						}
+						NOT = { has_zone = { zone = zone_research_unity } }
 					}
 					add_zone = { zone = zone_research_unity replace = yes } # Replaces building_research_lab_1 and building_bureaucratic_1
 				}
 				if = {
 					limit = {
-						NOT = {
-							has_zone = { zone = zone_industrial }
-						}
+						NOT = { has_zone = { zone = zone_industrial } }
 					}
 					add_zone = { zone = zone_industrial replace = yes } # Replaces building_foundry_1
 				}
@@ -7426,25 +7454,41 @@ country_event = {
 					set_leader_flag = block_homeworld_traits
 					set_leader_flag = immune_to_negative_traits
 					set_leader_flag = should_not_have_upkeep
+					add_skill = 2 # Trait-blocking flags should come before level is assigned.
 				}
-				skill = 3 # Trait-blocking flags should come before level is assigned.
 			}
 			create_fleet = {
 				effect = {
 					set_owner = prev
 					while = {
 						count = 5
-						create_ship = { name = random random_existing_design = corvette graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
+						create_ship = {
+							name = random
+							random_existing_design = corvette
+							graphical_culture = "reptilian_01"
+						} # Ketlings aren't the original owners.
 					}
 					while = {
-						limit = { owner = { has_technology = tech_destroyers } }
+						limit = {
+							owner = { has_technology = tech_destroyers }
+						}
 						count = 4
-						create_ship = { name = random random_existing_design = destroyer graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
+						create_ship = {
+							name = random
+							random_existing_design = destroyer
+							graphical_culture = "reptilian_01"
+						} # Ketlings aren't the original owners.
 					}
 					while = {
 						count = 2
-						limit = { owner = { has_technology = tech_cruisers } }
-						create_ship = { name = random random_existing_design = cruiser graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
+						limit = {
+							owner = { has_technology = tech_cruisers }
+						}
+						create_ship = {
+							name = random
+							random_existing_design = cruiser
+							graphical_culture = "reptilian_01"
+						} # Ketlings aren't the original owners.
 					}
 					set_location = {
 						target = event_target:ratling_capital
@@ -7468,14 +7512,22 @@ country_event = {
 						set_leader_flag = block_governor_traits
 						set_leader_flag = immune_to_negative_traits
 						set_leader_flag = should_not_have_upkeep
+						add_skill = 2 # Trait-blocking flags should come before level is assigned.
 					}
-					skill = 3 # Trait-blocking flags should come before level is assigned.
 				}
 				create_fleet = {
 					effect = {
 						set_owner = event_target:ratling_country
-						create_ship = { name = random random_existing_design = science graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
-						set_location = { target = event_target:ratling_capital distance = 10 angle = random }
+						create_ship = {
+							name = random
+							random_existing_design = science
+							graphical_culture = "reptilian_01"
+						} # Ketlings aren't the original owners.
+						set_location = {
+							target = event_target:ratling_capital
+							distance = 10
+							angle = random
+						}
 						assign_leader = last_created_leader
 					}
 				}
@@ -7483,8 +7535,16 @@ country_event = {
 			create_fleet = {
 				effect = {
 					set_owner = event_target:ratling_country
-					create_ship = { name = random random_existing_design = constructor graphical_culture = "reptilian_01" } # Ketlings aren't the original owners.
-					set_location = { target = event_target:ratling_capital distance = 10 angle = random }
+					create_ship = {
+						name = random
+						random_existing_design = constructor
+						graphical_culture = "reptilian_01"
+					} # Ketlings aren't the original owners.
+					set_location = {
+						target = event_target:ratling_capital
+						distance = 10
+						angle = random
+					}
 				}
 			}
 			create_leader = {
@@ -7498,8 +7558,8 @@ country_event = {
 					set_leader_flag = block_council_traits
 					set_leader_flag = immune_to_negative_traits
 					set_leader_flag = should_not_have_upkeep
+					add_skill = 2 # Trait-blocking flags should come before level is assigned.
 				}
-				skill = 3 # Trait-blocking flags should come before level is assigned.
 			}
 			event_target:ratling_capital = { assign_leader = last_created_leader }
 			refresh_leader_pool = yes

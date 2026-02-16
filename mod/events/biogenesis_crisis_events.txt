@@ -442,25 +442,23 @@ planet_event = {
 	}
 
 	immediate = {
-		random_list = {
-			97 = {  }
-			3 = {
-				create_army = {
-					name = "NAME_Behemoth_Army"
-					owner = from
-					type = "behemoth_army"
+		random = {
+			chance = 3
+			create_army = {
+				name = "NAME_Behemoth_Army"
+				owner = from
+				type = "behemoth_army"
+			}
+			random_fleet_in_orbit = {
+				limit = {
+					exists = controller
+					controller = { is_hostile = root.owner }
+					any_owned_ship = { has_ship_flag = behemoth_hatchling_ship }
 				}
-				random_fleet_in_orbit = {
-					limit = {
-						exists = controller
-						controller = { is_hostile = root.owner }
-						any_owned_ship = { has_ship_flag = behemoth_hatchling_ship }
-					}
-					random_owned_ship = {
-						limit = { has_ship_flag = behemoth_hatchling_ship }
-						add_growth = 1
-						set_timed_ship_flag = { flag = recently_fed months = 6 }
-					}
+				random_owned_ship = {
+					limit = { has_ship_flag = behemoth_hatchling_ship }
+					add_growth = 1
+					set_timed_ship_flag = { flag = recently_fed months = 6 }
 				}
 			}
 		}

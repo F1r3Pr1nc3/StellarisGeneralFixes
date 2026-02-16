@@ -2214,15 +2214,13 @@ event = {
 	}
 
 	immediate = {
-		random_list = {
-			50 = {
-				event_target:feral_prethoryn = {
-					random_system_within_border = {
-						random_system_planet = { feral_prethoryn_roaming_1 = yes }
-					}
+		random = {
+			chance = 50
+			event_target:feral_prethoryn = {
+				random_system_within_border = {
+					random_system_planet = { feral_prethoryn_roaming_1 = yes }
 				}
 			}
-			50 = {  }
 		}
 	}
 }
@@ -2241,14 +2239,12 @@ event = {
 	}
 
 	immediate = {
-		random_list = {
-			10 = {
-				random_country = {
-					limit = { is_country_type = feral_prethoryn }
-					country_event = { id = crisis.124 }
-				}
+		random = {
+			chance = 10
+			random_country = {
+				limit = { is_country_type = feral_prethoryn }
+				country_event = { id = crisis.124 }
 			}
-			90 = {  }
 		}
 	}
 }

@@ -919,53 +919,51 @@ country_event = {
 			country_event = { id = crisis.6151 }
 		}
 		every_system = {
-			random_list = {
-				95 = {  }
-				5 = {
-					if = {
-						limit = {
-							NOT = { exists = event_target:shroud_country }
-						}
-						create_country = {
-							name = "NAME_Creatures_of_the_Shroud"
-							type = shroud_spirits
-							flag = {
-								icon = { category = "special" file = "the_shroud.dds" }
-								background = { category = "backgrounds" file = "00_solid.dds" }
-								colors = { "dark_purple" "black" "null" "null" }
-							}
-						}
-						last_created_country = { save_global_event_target_as = shroud_country }
+			random = {
+				chance = 5
+				if = {
+					limit = {
+						NOT = { exists = event_target:shroud_country }
 					}
-					create_fleet = {
-						name = "NAME_Psionic_Entity"
-						effect = {
-							set_owner = event_target:shroud_country
-							set_fleet_flag = crisis_shroud_entity
-							create_ship = { name = "NAME_Psionic_Entity" design = "NAME_Corrupted_Avatar" }
-							set_location = {
-								target = prev.star
-								distance = 100
-								angle = random
-							}
-							set_fleet_stance = aggressive
-							set_aggro_range_measure_from = return_point
-							set_aggro_range = 2000
-						}
-						settings = {
-							spawn_debris = no
-							is_boss = yes
+					create_country = {
+						name = "NAME_Creatures_of_the_Shroud"
+						type = shroud_spirits
+						flag = {
+							icon = { category = "special" file = "the_shroud.dds" }
+							background = { category = "backgrounds" file = "00_solid.dds" }
+							colors = { "dark_purple" "black" "null" "null" }
 						}
 					}
-					star = {
-						create_ambient_object = { type = "psi_storm_1" location = this }
-						last_created_ambient_object = {
-							set_ambient_object_flag = psi_storm_object
-							set_location = {
-								target = prev
-								distance = 0
-								angle = random
-							}
+					last_created_country = { save_global_event_target_as = shroud_country }
+				}
+				create_fleet = {
+					name = "NAME_Psionic_Entity"
+					effect = {
+						set_owner = event_target:shroud_country
+						set_fleet_flag = crisis_shroud_entity
+						create_ship = { name = "NAME_Psionic_Entity" design = "NAME_Corrupted_Avatar" }
+						set_location = {
+							target = prev.star
+							distance = 100
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = return_point
+						set_aggro_range = 2000
+					}
+					settings = {
+						spawn_debris = no
+						is_boss = yes
+					}
+				}
+				star = {
+					create_ambient_object = { type = "psi_storm_1" location = this }
+					last_created_ambient_object = {
+						set_ambient_object_flag = psi_storm_object
+						set_location = {
+							target = prev
+							distance = 0
+							angle = random
 						}
 					}
 				}
@@ -1043,42 +1041,40 @@ country_event = {
 			country_event = { id = crisis.6161 }
 		}
 		every_system = {
-			random_list = {
-				95 = {  }
-				10 = {
-					if = {
-						limit = {
-							NOT = { exists = event_target:shroud_country }
-						}
-						create_country = {
-							name = "NAME_Creatures_of_the_Shroud"
-							type = shroud_spirits
-							flag = {
-								icon = { category = "special" file = "the_shroud.dds" }
-								background = { category = "backgrounds" file = "00_solid.dds" }
-								colors = { "dark_purple" "black" "null" "null" }
-							}
-						}
-						last_created_country = { save_global_event_target_as = shroud_country }
+			random = {
+				chance = 9.5
+				if = {
+					limit = {
+						NOT = { exists = event_target:shroud_country }
 					}
-					create_fleet = {
-						name = "NAME_Psionic_Entity"
-						effect = {
-							set_owner = event_target:shroud_country
-							create_ship = { name = "NAME_Psionic_Entity" design = "NAME_Corrupted_Avatar" }
-							set_location = {
-								target = prev.star
-								distance = 100
-								angle = random
-							}
-							set_fleet_stance = aggressive
-							set_aggro_range_measure_from = return_point
-							set_aggro_range = 2000
+					create_country = {
+						name = "NAME_Creatures_of_the_Shroud"
+						type = shroud_spirits
+						flag = {
+							icon = { category = "special" file = "the_shroud.dds" }
+							background = { category = "backgrounds" file = "00_solid.dds" }
+							colors = { "dark_purple" "black" "null" "null" }
 						}
-						settings = {
-							spawn_debris = no
-							is_boss = yes
+					}
+					last_created_country = { save_global_event_target_as = shroud_country }
+				}
+				create_fleet = {
+					name = "NAME_Psionic_Entity"
+					effect = {
+						set_owner = event_target:shroud_country
+						create_ship = { name = "NAME_Psionic_Entity" design = "NAME_Corrupted_Avatar" }
+						set_location = {
+							target = prev.star
+							distance = 100
+							angle = random
 						}
+						set_fleet_stance = aggressive
+						set_aggro_range_measure_from = return_point
+						set_aggro_range = 2000
+					}
+					settings = {
+						spawn_debris = no
+						is_boss = yes
 					}
 				}
 			}

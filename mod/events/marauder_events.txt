@@ -7731,22 +7731,20 @@ country_event = {
 						has_trait = leader_trait_butcher
 					}
 				}
-				random_list = {
-					1 = {  }
-					5 = {
-						set_council_position = councilor_defense
-						# FIXME for [reason] councilor_trait_not_allowed
-						# if = {
-						# 	limit = {
-						# 		NOT = { has_trait = subclass_commander_councilor }
-						# 	}
-						# 	if = {
-						# 		limit = { has_trait = subclass_commander_admiral }
-						# 		remove_trait = subclass_commander_admiral
-						# 	}
-						# 	add_trait = { trait = subclass_commander_councilor show_message = no }
-						# }
-					}
+				random = {
+					chance = 83.3
+					set_council_position = councilor_defense
+					# FIXME for [reason] councilor_trait_not_allowed
+					# if = {
+					# 	limit = {
+					# 		NOT = { has_trait = subclass_commander_councilor }
+					# 	}
+					# 	if = {
+					# 		limit = { has_trait = subclass_commander_admiral }
+					# 		remove_trait = subclass_commander_admiral
+					# 	}
+					# 	add_trait = { trait = subclass_commander_councilor show_message = no }
+					# }
 					# 1 = { modifier = { factor = 0 prev = { NOT = { has_civic = civic_crusader_spirit } } } set_council_position = councilor_crusader_spirit }
 					# 1 = { modifier = { factor = 0 prev = { NOT = { has_civic = civic_barbaric_despoilers } } } set_council_position = councilor_barbaric_despoilers }
 					# 1 = { modifier = { factor = 0 prev = { NOT = { has_civic = civic_inwards_perfection } } } set_council_position = councilor_inwards_perfection }

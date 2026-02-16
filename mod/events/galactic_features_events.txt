@@ -2204,30 +2204,28 @@ event = {
 	}
 
 	immediate = {
-		random_list = {
-			5 = {
-				event_target:tiyanki_spawn_system = {
-					random_system_planet = {
-						limit = {
-							OR = {
-								has_planet_flag = tiyanki_giant1
-								has_planet_flag = tiyanki_giant2
-								has_planet_flag = tiyanki_giant3
-								has_planet_flag = tiyanki_giant4
-							}
+		random = {
+			chance = 3.3
+			event_target:tiyanki_spawn_system = {
+				random_system_planet = {
+					limit = {
+						OR = {
+							has_planet_flag = tiyanki_giant1
+							has_planet_flag = tiyanki_giant2
+							has_planet_flag = tiyanki_giant3
+							has_planet_flag = tiyanki_giant4
 						}
-						save_event_target_as = giant
 					}
-				}
-				random_list = {
-					10 = { create_tiyanki_fleet_1 = yes }
-					10 = { create_tiyanki_fleet_2 = yes }
-					10 = { create_tiyanki_fleet_3 = yes }
-					10 = { create_tiyanki_fleet_4 = yes }
-					10 = { create_tiyanki_fleet_5 = yes }
+					save_event_target_as = giant
 				}
 			}
-			150 = {  }
+			random_list = {
+				10 = { create_tiyanki_fleet_1 = yes }
+				10 = { create_tiyanki_fleet_2 = yes }
+				10 = { create_tiyanki_fleet_3 = yes }
+				10 = { create_tiyanki_fleet_4 = yes }
+				10 = { create_tiyanki_fleet_5 = yes }
+			}
 		}
 	}
 }
