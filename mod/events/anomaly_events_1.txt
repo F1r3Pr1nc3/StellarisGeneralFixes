@@ -5032,41 +5032,6 @@ country_event = {
 	}
 }
 
-# on_policy_changed
-country_event = {
-	id = anomaly.1192 # DLAF.2
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		last_changed_policy = artificial_intelligence_policy
-		has_country_flag = limbo_downloaded # Got the Brainscans.
-		NOR = {
-			has_country_flag = DLAF_2_fired
-			has_country_flag = limbo_uploaded_robots # Haven't researched this project.
-			has_special_project = LIMBO_2_PROJECT # Don't already have the project.
-			has_policy_flag = ai_outlawed # Don't have AI Outlawed.
-		}
-		OR = { # Same trigger as "Upload the neural patterns."
-			is_individual_machine = yes
-			has_origin = origin_cybernetic_creed # Cybernetic Creed overrides tech requirement, they know how to handle machine spirits.
-			AND = {
-				has_technology = tech_synthetic_workers
-				OR = {
-					is_spiritualist = no # Prevent Spiritualists unless one of the following:
-					has_country_flag = synthetic_empire
-					has_origin = origin_mechanists
-				}
-			}
-		}
-	}
-
-	immediate = {
-		set_country_flag = DLAF_2_fired
-		country_event = { id = anomaly.1194 days = 20 random = 20 }
-	}
-}
-
 # Triggers event chain when players who previously didn't have the synth/droid tech gets it.
 country_event = {
 	id = anomaly.1193
@@ -5275,5 +5240,70 @@ country_event = {
 			}
 		}
 		hidden_effect = { DLAF_spawn_awoken = yes }
+	}
+}
+
+
+# on_policy_changed
+country_event = {
+	id = anomaly.1200 # DLAF.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		last_changed_policy = artificial_intelligence_policy
+		has_country_flag = limbo_downloaded # Got the Brainscans.
+		NOR = {
+			has_country_flag = DLAF_2_fired
+			has_country_flag = limbo_uploaded_robots # Haven't researched this project.
+			has_special_project = LIMBO_2_PROJECT # Don't already have the project.
+			has_policy_flag = ai_outlawed # Don't have AI Outlawed.
+		}
+		OR = { # Same trigger as "Upload the neural patterns."
+			is_individual_machine = yes
+			has_origin = origin_cybernetic_creed # Cybernetic Creed overrides tech requirement, they know how to handle machine spirits.
+			AND = {
+				has_technology = tech_synthetic_workers
+				OR = {
+					is_spiritualist = no # Prevent Spiritualists unless one of the following:
+					has_country_flag = synthetic_empire
+					has_origin = origin_mechanists
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_country_flag = DLAF_2_fired
+		country_event = { id = anomaly.1194 days = 20 random = 20 }
+	}
+}
+
+# Delayed event to simulate full synthetic ascension.
+country_event = {
+	id = anomaly.1201 # DLAF.3
+	hide_window = yes
+	#is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = limbo_country
+		OR = {
+			NOT = { has_country_flag = DLAF_synthesization_timer }
+			has_global_flag = DLAF_debugging
+		}
+		NOT = { has_country_flag = DLAF_3_fired }
+	}
+
+	mean_time_to_happen = {
+		years = 5
+		modifier = {
+			factor = 0.01
+			has_global_flag = DLAF_debugging
+		}
+	}
+
+	immediate = {
+		set_country_flag = DLAF_3_fired
+		DLAF_make_full_synths = yes
 	}
 }
