@@ -1,17 +1,28 @@
 # This is just to check if a planet is viable, their spawning is weighted to prefer better candidates.
 DLAF_is_valid_awoken_colony_trigger = {
-	habitable_planet = yes
+	is_colonizable = yes
+	OR = {
+		uses_district_set = standard # Better compatibility with mods.
+		uses_district_set = city_world
+		uses_district_set = volcanic_world
+		uses_district_set = habitat
+		uses_district_set = ring_world
+		uses_district_set = shattered_ring_world
+		AND = { # If it's within your borders, you are IM, and it's a machine world. This is for when they just colonise one of your systems.
+			exists = space_owner
+			space_owner = { is_individual_machine = yes }
+			uses_district_set = machine_world
+		}
+	}
 	NOR = {
 		exists = owner
 		exists = controller
 		has_anomaly = yes
 		has_modifier = holy_planet
 		has_planet_flag = hive_planet_larion # No spawning a Unique Empire on top of where another one spawns.
+		has_planet_flag = ratling_planet # No spawning a Unique Empire on top of where another one spawns.
 		has_planet_flag = hatchling_egg # No spawning only to die horribly.
-		is_planet_class = pc_cosmogenesis_world # No Lathe.
-		is_planet_class = pc_hive
-		is_planet_class = pc_machine
-		is_planet_class = pc_nanotech
+		
 		has_planet_flag = DLAF_do_not_spawn_here # Purely for other modders.
 	}
 }

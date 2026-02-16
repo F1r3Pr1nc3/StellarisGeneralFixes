@@ -1976,12 +1976,10 @@ country_event = {
 		NOR = {
 			is_homicidal = yes
 			is_at_war = yes
-		}
-		has_country_flag = limbo_downloaded
-		NOR = {
 			has_global_flag = fe_xenophile_asked_brain_scans
 			has_country_flag = limbo_uploaded_robots
 		}
+		has_country_flag = limbo_downloaded
 		any_country = {
 			is_valid_fallen_empire_for_task = yes
 			has_ethic = ethic_fanatic_xenophile
@@ -1996,15 +1994,6 @@ country_event = {
 
 	immediate = {
 		set_global_flag = fe_xenophile_asked_brain_scans
-		if = {
-			limit = {
-				NOT = { exists = event_target:DLAF_awoken_homeworld }
-			}
-			random_galaxy_planet = {
-				limit = { has_planet_flag = DLAF_awoken_homeworld }
-				save_event_target_as = DLAF_awoken_homeworld
-			}
-		}
 		create_species = {
 			name = random
 			class = FUN # Changed from random_non_machine
@@ -2017,7 +2006,7 @@ country_event = {
 				set_species_flag = DLAF_awoken_biological
 				if = {
 					limit = {
-						any_galaxy_planet = { has_planet_flag = DLAF_awoken_homeworld }
+						any_galaxy_planet = { has_planet_flag = DLAF_awoken_homeworld } # Locate the homeworld.
 					}
 					random_galaxy_planet = {
 						limit = { has_planet_flag = DLAF_awoken_homeworld }

@@ -1,4 +1,6 @@
 
+# Must be called from colony scope.
+# This version doesn't make the AI build robots instead of their main species.
 DLAF_create_awoken_robot_species = {
 	save_event_target_as = DLAF_spawning_location # Also new_colony, potential_target, and colonized_planet in Vanilla; I hate this workaround, but I'm not messing with the localisation.
 	if = {
@@ -7,115 +9,422 @@ DLAF_create_awoken_robot_species = {
 		}
 		random_galaxy_species = {
 			limit = { has_species_flag = DLAF_awoken_biological }
-			create_species = {
-				is_mod = yes
-				mod_name_affix = "Name_DLAF_no_prefix1" # "A"
-				name = "Name_DLAF_no_prefix2" # "woken" This is to fix "Neo/High/Ultra Awoken"
-				plural = "Name_DLAF_no_prefix2"
-				class = ROBOT
-				namelist = FUN3
-				portrait = "default_robot"
-				traits = {
-					trait = "trait_mechanical"
-					trait = "trait_machine_pc_nuked_preference" # This is only here block a random habitability trait.
+			save_event_target_as = DLAF_species_resurrected_by_fallen_xenophile
+		}
+	}
+	create_species = {
+		name = "NAME_Awoken_Robot"
+		plural = "NAME_Awoken_Robot"
+		class = ROBOT
+		namelist = FUN3
+		portrait = "default_robot"
+		traits = { # Traits preset becuase they can robomod strategic resource traits and suffer deficits since they get no production.
+			trait = "trait_mechanical"
+			trait = "trait_robot_enhanced_memory"
+			trait = "trait_robot_recycled"
+			trait = "trait_robot_mass_produced"
+			trait = "trait_robot_wasteful"
+		}
+		homeworld = event_target:DLAF_spawning_location # This assigns a habitability trait.
+		effect = {
+			set_species_flag = DLAF_awoken_robot
+			save_event_target_as = DLAF_awoken_robot_species
+			if = {
+				limit = { exists = event_target:DLAF_species_resurrected_by_fallen_xenophile }
+				set_species_identity = event_target:DLAF_species_resurrected_by_fallen_xenophile
+			}
+			if = {
+				limit = {
+					any_galaxy_planet = { has_planet_flag = DLAF_awoken_homeworld }
 				}
-				effect = {
-					set_species_flag = DLAF_awoken_robot
-					save_event_target_as = DLAF_awoken_robot_species
-					if = {
-						limit = {
-							any_galaxy_planet = { has_planet_flag = DLAF_awoken_homeworld }
-						}
-						random_galaxy_planet = {
-							limit = { has_planet_flag = DLAF_awoken_homeworld }
-							save_event_target_as = DLAF_awoken_homeworld
-						}
-						set_species_homeworld = event_target:DLAF_awoken_homeworld
+				random_galaxy_planet = {
+					limit = { has_planet_flag = DLAF_awoken_homeworld }
+					save_event_target_as = DLAF_awoken_homeworld
+				}
+				set_species_homeworld = event_target:DLAF_awoken_homeworld # This overwrites their homeworld but does not change species traits.
+			}
+			if = {
+				limit = { host_has_dlc = "Synthetic Dawn Story Pack" }
+				change_species_characteristics = { portrait = "sd_fun_robot" }
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_trait = trait_dry_planet_preference
+						has_trait = trait_cold_planet_preference
+						has_trait = trait_volcanic_planet_preference
+						has_trait = trait_wet_planet_preference
 					}
 				}
+				set_habitability_trait = { trait = trait_wet_planet_preference } # Ensure habitability trait is something plain.
 			}
 		}
 	}
-	else = {
-		create_species = {
-			name = "NAME_Awoken_Robot"
-			plural = "NAME_Awoken_Robot"
-			class = ROBOT
-			namelist = FUN3
-			portrait = "default_robot"
-			traits = {
-				trait = "trait_mechanical"
-				trait = "trait_machine_pc_nuked_preference" # This is only here block a random habitability trait.
+}
+
+DLAF_build_awoken_government = {
+	if = {
+		limit = {
+			root = { has_authority = auth_corporate }
+			has_authority = auth_corporate
+		}
+		change_government = { authority = random } # You get one reroll.
+	}
+	while = {
+		limit = { civics_count > 0 }
+		force_remove_civic = 1
+	}
+	while = {
+		limit = { has_unused_civic_points > 0 }
+		random_list = {
+			30 = { # Remember the fallen.
+				modifier = { # Favoured because lore.
+					factor = 0
+					OR = {
+						has_civic = civic_memory_vault
+						has_civic = civic_memory_vault_corporate
+						has_civic = civic_memorialist
+						has_civic = civic_heroic_tales
+						has_civic = civic_task_delegation_corporate
+					}
+				}
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { host_has_dlc = "Galactic Paragons" }
+						}
+						if = {
+							limit = { has_authority = auth_corporate }
+							force_add_civic = civic_memory_vault_corporate
+						}
+						else = { force_add_civic = civic_memory_vault }
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							OR = {
+								has_authority = auth_corporate
+								NOT = { host_has_dlc = "Necroids Species Pack" }
+							}
+						}
+						force_add_civic = civic_memorialist
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { host_has_dlc = "Galactic Paragons" }
+						}
+						if = {
+							limit = { has_authority = auth_corporate }
+							force_add_civic = civic_task_delegation_corporate
+						}
+						else = { force_add_civic = civic_heroic_tales }
+					}
+				}
 			}
-			effect = {
-				set_species_flag = DLAF_awoken_robot
-				save_event_target_as = DLAF_awoken_robot_species
+			15 = { # They destroyed their planet.
+				modifier = { # Did they ruin their planet?
+					factor = 0
+					OR = {
+						has_civic = civic_relentless_industrialists
+						has_civic = civic_corporate_relentless_industrialists
+						has_civic = civic_memorialist
+						has_toxoids = no
+					}
+				}
 				if = {
+					limit = { has_authority = auth_corporate }
+					force_add_civic = civic_corporate_relentless_industrialists
+				}
+				else = { force_add_civic = civic_relentless_industrialists }
+			}
+			20 = { # They either fought hard or worked hard for their place in the bunker.
+				modifier = { 
+					factor = 0
+					OR = {
+						has_civic = civic_ruthless_competition
+						has_civic = civic_meritocracy
+						has_civic = civic_cutthroat_politics
+					}
+				}
+				if = {
+					limit = { has_authority = auth_corporate }
+					force_add_civic = civic_ruthless_competition
+				}
+				else_if = {
 					limit = {
-						any_galaxy_planet = { has_planet_flag = DLAF_awoken_homeworld }
+						OR = {
+							has_authority = auth_democratic
+							has_authority = auth_oligarchic
+						}
 					}
-					random_galaxy_planet = {
-						limit = { has_planet_flag = DLAF_awoken_homeworld }
-						save_event_target_as = DLAF_awoken_homeworld
+					force_add_civic = civic_meritocracy
+				}
+				else = { force_add_civic = civic_cutthroat_politics }
+			}
+			10 = {
+				modifier = { # Perhaps Politicians and Bureaucrats were the ones digitised into the bunker.
+					factor = 0
+					OR = {
+						has_civic = civic_efficient_bureaucracy
+						has_authority = auth_corporate
 					}
-					set_species_homeworld = event_target:DLAF_awoken_homeworld
+				}
+				force_add_civic = civic_efficient_bureaucracy
+			}
+			15 = {
+				modifier = { # Better expansion. They probably build a really good bunker for it to survive so long.
+					factor = 0
+					OR = {
+						has_civic = civic_functional_architecture
+						has_authority = auth_corporate
+					}
+				}
+				force_add_civic = civic_functional_architecture
+			}
+			15 = { # Only the elite/powerful got digitised.
+				modifier = {
+					factor = 0
+					OR = {
+						has_civic = civic_aristocratic_elite
+						has_civic = civic_philosopher_king
+						has_civic = civic_shadow_council
+						has_civic = civic_technocracy
+						has_civic = civic_merchant_guilds
+						has_civic = civic_mining_guilds
+						has_civic = civic_crafters
+						has_civic = civic_corporate_crafters
+						has_civic = civic_diplomatic_corps
+						has_civic = civic_public_relations_specialists
+					}
+				}
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOR = {
+								has_authority = auth_oligarchic
+								has_authority = auth_imperial
+							}
+						}
+						force_add_civic = civic_aristocratic_elite # Only the Aristocrats.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOR = {
+								has_authority = auth_dictatorial
+								has_authority = auth_imperial
+							}
+						}
+						force_add_civic = civic_philosopher_king # Only the Royalty and Philosopher-elite.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOR = {
+								has_authority = auth_democratic
+								has_authority = auth_oligarchic
+								has_authority = auth_dictatorial
+							}
+						}
+						force_add_civic = civic_shadow_council # Only the Shadow-Council's chosen.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_authority = auth_corporate
+						}
+						force_add_civic = civic_technocracy # Only the best and brightest.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							OR = {
+								has_authority = auth_corporate
+								NOT = { host_has_dlc = "Megacorp" }
+							}
+						}
+						force_add_civic = civic_merchant_guilds # Only the wealthy.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_authority = auth_corporate
+						}
+						force_add_civic = civic_mining_guilds # Only the ones who dug the bunker.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { host_has_dlc = "Humanoids Species Pack" }
+						}
+						if = {
+							limit = { has_authority = auth_corporate }
+							force_add_civic = civic_corporate_crafters
+						}
+						else = { force_add_civic = civic_crafters } # Only the Artisans and Craftsmen.
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { host_has_dlc = "Federations" }
+						}
+						if = {
+							limit = { has_authority = auth_corporate }
+							force_add_civic = civic_public_relations_specialists
+						}
+						else = { force_add_civic = civic_diplomatic_corps } # Only those who could make friends with their saviours the easiest.
+					}
 				}
 			}
-		}
-	}
-	event_target:DLAF_awoken_robot_species = {
-		if = {
-			limit = { has_synthetic_dawn = yes }
-			change_species_characteristics = { portrait = "sd_fun_robot" }
-		}
-	}
-	if = { # This monstrosity is to prevent Neo/High/Ultra Awoken.
-		limit = {
-			OR = {
-				is_planet_class = pc_desert
-				is_planet_class = pc_arid
-				is_planet_class = pc_savannah
+			15 = {
+				modifier = { 
+					factor = 0
+					OR = {
+						has_civic = civic_corvee_system
+						has_civic = civic_free_haven
+						has_authority = auth_corporate
+					}
+				}
+				random_list = {
+					1 = { force_add_civic = civic_corvee_system } # Was it the state's right to digitise pops? Also they can spawn really really far away.
+					1 = { force_add_civic = civic_free_haven } # They escaped to a better future through digitisation, now they embrace others seeking a better life.
+				}
 			}
-		}
-		event_target:DLAF_awoken_robot_species = {
-			change_species_characteristics = {
-				remove_trait = trait_machine_pc_nuked_preference
-				add_trait = trait_dry_planet_preference
+			10 = {
+				modifier = { # Perhaps only the leaders and their enforcers were digitised in this bunker.
+					factor = 0
+					OR = {
+						has_civic = civic_police_state
+						has_authority = auth_corporate
+					}
+				}
+				force_add_civic = civic_police_state
 			}
-		}
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_planet_class = pc_arctic
-				is_planet_class = pc_tundra
-				is_planet_class = pc_alpine
-			}
-		}
-		event_target:DLAF_awoken_robot_species = {
-			change_species_characteristics = {
-				remove_trait = trait_machine_pc_nuked_preference
-				add_trait = trait_cold_planet_preference
-			}
-		}
-	}
-	else_if = {
-		limit = { is_planet_class = pc_volcanic }
-		event_target:DLAF_awoken_robot_species = {
-			change_species_characteristics = {
-				remove_trait = trait_machine_pc_nuked_preference
-				add_trait = trait_volcanic_planet_preference
+			10 = {
+				modifier = { # Perhaps the crooks had the best plans for survival, but not for environmentalism.
+					factor = 0
+					OR = {
+						has_civic = civic_criminal_heritage
+						NOT = { has_authority = auth_corporate }
+					}
+				}
+				force_add_civic = civic_criminal_heritage
 			}
 		}
 	}
-	else = {
-		# pc_continental / pc_tropical / pc_ocean / artificial / modded.
-		event_target:DLAF_awoken_robot_species = {
-			change_species_characteristics = {
-				remove_trait = trait_machine_pc_nuked_preference
-				add_trait = trait_wet_planet_preference
+}
+
+DLAF_make_full_synths = {
+	add_ascension_perk = ap_synthetic_evolution # Let them be better synths. Ignore DLC requirement.
+	add_tradition = tr_synthetics_adopt # Starts Digitisation Situation.
+	add_tradition = tr_synthetics_maintenance_protocols
+	add_tradition = tr_synthetics_optimization_algorithms
+	add_tradition = tr_synthetics_transubstatiation_synthesis
+	add_tradition = tr_synthetics_power_systems
+	add_tradition = tr_synthetics_prefabricated_components
+	add_tradition = tr_synthetics_finish
+	random_list = {
+		1 = { set_country_flag = synth_unscheduled_updates }
+		1 = { set_country_flag = synth_safe_updates }
+	}
+	set_country_flag = synth_assimilation # So they can assimilate.
+	random_situation = { # They are already Synths, skip this.
+		limit = { is_situation_type = situation_digitization }
+		destroy_situation = this
+	}
+	set_country_flag = identity_complex_available # so we can instantly grant the building.
+	capital_scope = { add_building = building_identity_complex } # Speed them up.
+	random_list = {
+		10 = {
+			modifier = {
+				factor = 2
+				OR = {
+					has_civic = civic_aristocratic_elite
+					has_civic = civic_philosopher_king
+					has_civic = civic_shadow_council
+					has_civic = civic_technocracy
+					has_civic = civic_merchant_guilds
+					has_authority = auth_oligarchic
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_authority = auth_democratic
+			}
+			set_country_flag = synth_focus_rulers
+		}
+		10 = {
+			modifier = {
+				factor = 2
+				OR = {
+					has_civic = civic_crafters
+					has_civic = civic_corporate_crafters
+					has_civic = civic_meritocracy
+					has_authority = auth_corporate
+				}
+			}
+			set_country_flag = synth_focus_specialists
+		}
+		10 = {
+			modifier = {
+				factor = 2
+				OR = {
+					has_civic = civic_mining_guilds
+					has_authority = auth_dictatorial
+					has_authority = auth_imperial
+				}
+			}
+			set_country_flag = synth_focus_workers
+		}
+		10 = {
+			modifier = {
+				factor = 2
+				OR = {
+					has_authority = auth_democratic
+				}
+			}
+			set_country_flag = synth_focus_upkeep
+		}
+	}
+	set_country_flag = edict_subsidized_identity_backups
+	give_technology = { tech = tech_identity_copy }
+	set_country_flag = edict_optimized_identity_creation
+	set_country_flag = advanced_identity_creation
+	add_research_option = tech_identity_fusion
+	add_research_option = tech_identity_initialization
+	random_list = {
+		12 = {
+			set_country_flag = synth_physical
+			advanced_authority_refresh = yes
+			if = {
+				limit = { has_authority = auth_corporate }
+				set_policy = { policy = computation_core_allocation option = computation_core_production cooldown = no }
 			}
 		}
+		12 = {
+			set_country_flag = synth_virtual
+			species = {
+				change_species_characteristics = { add_trait = trait_robot_digital_1 }
+			}
+			refresh_portraits = character
+			advanced_authority_refresh = yes
+			every_owned_leader = {
+				remove_trait = leader_trait_synthetic
+				add_trait = { trait = leader_trait_virtual show_message = no }
+			}
+			every_pool_leader = {
+				remove_trait = leader_trait_synthetic
+				add_trait = { trait = leader_trait_virtual show_message = no }
+			}
+			if = {
+				limit = { has_authority = auth_corporate }
+				set_policy = { policy = computation_core_allocation option = computation_core_research cooldown = no }
+			}
+		}
+		1 = {}
 	}
 }
 
@@ -146,18 +455,26 @@ DLAF_create_awoken_robot_country = {
 			}
 			save_event_target_as = awoken_country
 			set_country_flag = limbo_country
+			set_country_flag = voidworms_bombardment_disabled
+			set_timed_country_flag = { flag = DLAF_synthesization_timer years = 5 } # Event to "fully synthesize" the country. Cannot finish in 5 years, after 5 there's another mean_time_to_happen set for 5 years.
 			set_country_flag = synthetic_empire
-			set_policy = { # This policy must be set before pops are spawned in order to prevent them being pop_category robot_servant.
-				policy = artificial_intelligence_policy
-				option = ai_full_rights
-			}
+			set_policy = { policy = artificial_intelligence_policy option = ai_full_rights } # This policy must be set before pops are spawned to prevent them being pop_category robot_servant.
 			create_leader = {
 				class = random_ruler
-				species = owner_species
+				species = owner_main_species
 				name = random
-				skill = 5
+				effect = {
+					set_leader_flag = block_homeworld_traits # No Homeworld traits, it's no longer habitable.
+					set_leader_flag = should_not_have_upkeep # Unity issues.
+				}
+				skill = 5 # Levels must come after trait-blocking flags.
+				skip_background_generation = yes
 			}
 			set_leader = last_created_leader
+			give_technology = { tech = tech_robotic_workers } # These techs are required for their country to function. Cannot be copied from Individualist Machines / countries that don't have them yet.
+			give_technology = { tech = tech_droid_workers }
+			give_technology = { tech = tech_synthetic_workers }
+			give_technology = { tech = tech_synthetic_leaders }
 			copy_techs_from = {
 				target = root
 				except = {
@@ -195,6 +512,7 @@ DLAF_create_awoken_robot_country = {
 					tech_akx_worm_3
 				}
 			}
+
 			# Granted resources equivalent to 1/5 of what Pre-FTLs get.
 			add_resource = {
 				energy = 100
@@ -208,12 +526,11 @@ DLAF_create_awoken_robot_country = {
 				rare_crystals = 10
 				mult = trigger:years_passed
 			}
+
 			# They are now grateful you saved them.
 			add_opinion_modifier = { modifier = unique_event_savior_opinion_modifier who = root }
-			add_trust = { # Vanilla trust not always added. Moved here for clarity.
-				amount = 50
-				who = root
-			}
+			add_trust = { amount = 50 who = root } # Vanilla trust not always added. Trust increased to 50.
+
 			if = {
 				limit = {
 					root = { has_technology = tech_maulers }
@@ -239,31 +556,7 @@ DLAF_create_awoken_robot_country = {
 				}
 				give_technology = { tech = tech_cruisers }
 			}
-			# If released by an Individualist Machine these techs can't be copied and must be granted manually so the Awoken can have an economy.
-			if = {
-				limit = {
-					NOT = { has_technology = tech_robotic_workers }
-				}
-				give_technology = { tech = tech_robotic_workers }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_droid_workers }
-				}
-				give_technology = { tech = tech_droid_workers }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_synthetic_workers }
-				}
-				give_technology = { tech = tech_synthetic_workers }
-			}
-			if = {
-				limit = {
-					NOT = { has_technology = tech_synthetic_leaders }
-				}
-				give_technology = { tech = tech_synthetic_leaders }
-			}
+
 			# Make spacefauna friendly if Awakener is friendly.
 			if = {
 				limit = {
@@ -272,7 +565,7 @@ DLAF_create_awoken_robot_country = {
 				add_modifier = { modifier = pacified_amoebas days = -1 }
 				every_country = {
 					limit = { is_amoeba_country_type = yes }
-					set_faction_hostility = { set_neutral = yes target = event_target:awoken_country }
+					set_faction_hostility = { set_hostile = no set_neutral = yes target = event_target:awoken_country }
 				}
 			}
 			if = {
@@ -282,30 +575,81 @@ DLAF_create_awoken_robot_country = {
 				add_modifier = { modifier = pacified_crystals days = -1 }
 				every_country = {
 					limit = { is_crystal_country_type = yes }
-					set_faction_hostility = { set_neutral = yes target = event_target:awoken_country }
+					set_faction_hostility = { set_hostile = no set_neutral = yes target = event_target:awoken_country }
 				}
 			}
-			while = { # These make no sense for synths.
-				count = 5 # Just for safety
+			DLAF_build_awoken_government = yes
+			#DLAF_reroll_civics = yes # Horrible while-loop.
+			while = {
 				limit = {
 					OR = {
-						has_civic = civic_genetic_identification
-						has_civic = civic_corporate_genetic_identification
-						has_civic = civic_catalytic_processing
-						has_civic = civic_corporate_catalytic_processing
-						has_civic = civic_toxic_baths
-						has_civic = civic_corporate_toxic_baths
-						has_civic = civic_permanent_employment
-						has_civic = civic_private_healthcare_corporate
-						has_civic = civic_environmental_architects
-						has_civic = civic_environmental_architects_megacorp
-						has_civic = civic_beastmasters
-						has_civic = civic_corporate_beastmasters
-						has_civic = civic_entropy_drinkers
-						has_civic = civic_entropy_drinkers_corporate
+						AND = {
+							mid_game_years_passed > 0
+							count_owned_ship = {
+								count < 3
+								limit = { is_ship_class = shipclass_science_ship }
+							}
+						}
+						count_owned_ship = {
+							count < 2
+							limit = { is_ship_class = shipclass_science_ship }
+						}
 					}
 				}
-				change_government = { civics = random }
+				create_fleet = {
+					effect = {
+						set_owner = prev
+						create_ship = { name = random random_existing_design = science }
+						set_fleet_stance = evasive
+						set_location = event_target:colonized_planet
+						owner = {
+							create_leader = {
+								class = scientist
+								sub_type = survey
+								name = random
+								species = event_target:DLAF_awoken_robot_species
+								randomize_traits = no
+								effect = {
+									set_leader_flag = block_council_traits
+									set_leader_flag = block_governor_traits
+									set_leader_flag = block_homeworld_traits
+									set_leader_flag = should_not_have_upkeep
+								}
+								traits = { # Trait-blocking flags must be set before giving them levels or random traits.
+									trait = leader_trait_adaptable
+									trait = random_common
+								}
+								skip_background_generation = yes
+							}
+						}
+						set_leader = last_created_leader
+					}
+				}
+			}
+			while = {
+				limit = {
+					OR = {
+						AND = {
+							mid_game_years_passed > 0
+							count_owned_ship = {
+								count < 2
+								limit = { is_ship_class = shipclass_constructor }
+							}
+						}
+						count_owned_ship = {
+							count < 1
+							limit = { is_ship_class = shipclass_constructor }
+						}
+					}
+				}
+				create_fleet = {
+					effect = {
+						set_owner = prev
+						create_ship = { name = random random_existing_design = constructor }
+						set_fleet_stance = evasive
+						set_location = event_target:colonized_planet
+					}
+				}
 			}
 		}
 	}
@@ -316,7 +660,9 @@ DLAF_spawn_awoken = {
 		limit = {
 			any_system = {
 				DLAF_is_valid_awoken_country_colony_system_trigger = yes # Exported to scripted trigger for consistency.
-				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
+				any_system_planet = {
+					DLAF_is_valid_awoken_colony_trigger = yes
+				}
 			}
 		}
 		random_galaxy_planet = {
@@ -328,13 +674,20 @@ DLAF_spawn_awoken = {
 			}
 			weights = {
 				base = 1
-				modifier = { factor = 2 planet_size > 10 }
-				modifier = { factor = 2 free_district_slots > 6 }
+				modifier = {
+					factor = 2
+					planet_size > 10
+				}
+				modifier = {
+					factor = 2
+					free_district_slots > 6
+				}
+				
 				# Energy is a priority.
 				modifier = {
 					factor = 2
 					OR = {
-						num_free_districts = { type = district_generator value > 2 }
+						num_free_districts = { type = district_generator value > 2 } # Standard worlds and Shattered Ring.
 						num_free_districts = { type = district_geothermal value > 2 } # These are always uncapped.
 						num_free_districts = { type = district_hab_energy value > 2 }
 						num_free_districts = { type = district_rw_generator value > 2 }
@@ -347,12 +700,16 @@ DLAF_spawn_awoken = {
 						has_modifier = strong_magnetic_field
 					}
 				}
-				modifier = { factor = 0.5 has_modifier = energy_poor }
+				modifier = {
+					factor = 0.5
+					has_modifier = energy_poor
+				}
+				
 				# Minerals also important.
 				modifier = {
 					factor = 2
 					OR = {
-						num_free_districts = { type = district_mining value > 2 }
+						num_free_districts = { type = district_mining value > 2 } # Standard worlds and Shattered Ring.
 						num_free_districts = { type = district_melting value > 2 }
 						num_free_districts = { type = district_hab_mining value > 2 }
 					}
@@ -375,24 +732,25 @@ DLAF_spawn_awoken = {
 						has_modifier = volcanic_lavafall
 					}
 				}
-				modifier = { factor = 0.5 has_modifier = mineral_poor }
+				modifier = {
+					factor = 0.5
+					has_modifier = mineral_poor
+				}
 			}
 			save_event_target_as = colonized_planet
 			set_surveyed = { surveyed = yes surveyor = root }
 			prevent_anomaly = yes
+			set_planet_flag = colony_event # Blocks random colony events.
 			DLAF_create_awoken_robot_species = yes
 			DLAF_create_awoken_robot_country = yes
 			set_owner = last_created_country
 			set_capital = yes
 			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-			if = {
-				limit = { # Have to have this check to stop an error saying they don't exist and then spawning them.
-					exists = event_target:DLAF_awoken_robot_species
-				}
-				create_pop_group = {
-					species = event_target:DLAF_awoken_robot_species
-					category = civilian
-					size = 600
+			while = {
+				count = 6
+				if = {
+					limit = { exists = event_target:DLAF_awoken_robot_species } # Have to have this check to stop an error saying they don't exist and then spawning them.
+					create_pop_group = { species = event_target:DLAF_awoken_robot_species category = civilian }
 				}
 			}
 			owner = { refresh_leader_pool = yes } # Must occur after they have at least 1 pop.
@@ -400,62 +758,43 @@ DLAF_spawn_awoken = {
 				count = 2
 				if = {
 					limit = { is_planet_class = pc_volcanic }
-					add_district_if_possible_effect = {
-						district = district_melting
-					}
-					add_district_if_possible_effect = {
-						district = district_geothermal
-					}
-					add_district_if_possible_effect = {
-						district = district_city
-					}
+					add_district_if_possible_effect = { district = district_melting }
+					add_district_if_possible_effect = { district = district_geothermal }
+					# add_district_if_possible_effect = { district = district_city } # Makes too many Specialists.
 				}
 				else_if = {
 					limit = { is_planet_class = pc_habitat }
-					add_district_if_possible_effect = {
-						district = district_hab_mining
-					}
-					add_district_if_possible_effect = {
-						district = district_hab_energy
-					}
-					add_district_if_possible_effect = {
-						district = district_hab_housing
-					}
+					add_district_if_possible_effect = { district = district_hab_mining }
+					add_district_if_possible_effect = { district = district_hab_energy }
+					# add_district_if_possible_effect = { district = district_hab_housing } # Makes too many Specialists.
 				}
 				else_if = {
 					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district_if_possible_effect = {
-						district = district_rw_generator
-					} # Ringword districts add more jobs. No Mining Equivalent.
-					add_district_if_possible_effect = {
-						district = district_rw_city
-					}
+					add_district_if_possible_effect = { district = district_rw_generator } # Ringword districts add more jobs. No Mining Equivalent.
+					# add_district_if_possible_effect = { district = district_rw_city }
 				}
 				else = {
-					add_district_if_possible_effect = {
-						district = district_generator
-					}
-					add_district_if_possible_effect = {
-						district = district_mining
-					}
-					add_district_if_possible_effect = {
-						district = district_city
-					}
+					add_district_if_possible_effect = { district = district_generator }
+					add_district_if_possible_effect = { district = district_mining }
+					# add_district_if_possible_effect = { district = district_city } # Makes too many Specialists.
 				}
 			}
 			if = {
 				limit = {
-					NOT = { has_zone = { zone = zone_research_unity } }
+					NOT = {
+						has_zone = { zone = zone_research_unity }
+					}
 				}
 				add_zone = { zone = zone_research_unity replace = yes }
 			}
 			if = {
 				limit = {
-					NOT = { has_zone = { zone = zone_industrial } }
+					NOT = {
+						has_zone = { zone = zone_industrial }
+					}
 				}
 				add_zone = { zone = zone_industrial replace = yes }
 			}
-			add_building = { building = building_factory_1 zone = zone_industrial }
 			add_building = building_robot_assembly_plant
 			validate_planet_buildings_and_districts = yes # This should fix incorrect districts if they happen.
 			solar_system = {
@@ -467,15 +806,19 @@ DLAF_spawn_awoken = {
 					building = crew_quarters
 				}
 			}
-			root = {
-				country_event = { id = anomaly.1196 days = 10 }
+			if = {
+				limit = { has_global_flag = DLAF_debugging }
+				root = { country_event = { id = anomaly.1196 } }
+			}
+			else = {
+				root = { country_event = { id = anomaly.1196 days = 10 } }
 			}
 		}
 	}
 	else = {
 		# There are no colonizable planets outside the player's borders
 		[[ELSE]
-		country_event = { id = anomaly.1195 days = 40 }
+			country_event = { id = anomaly.1195 days = 40 }
 		]
 	}
 }

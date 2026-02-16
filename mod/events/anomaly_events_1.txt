@@ -4831,10 +4831,14 @@ ship_event = {
 					is_individual_machine = yes
 				}
 				OR = {
-					NOT = { has_technology = tech_synthetic_workers }
+					NOT = { has_technology = tech_synthetic_workers } # You don't have the tech yet. anomaly.1193 later grants Project.
 					has_policy_flag = ai_outlawed
-					is_spiritualist = yes
-					has_origin = origin_cybernetic_creed
+				}
+				OR = {
+					is_spiritualist = no # Prevent Spiritualists unless one of the following:
+					has_origin = origin_cybernetic_creed # Cybernetic Creed know how to handle machine spirits. Backup option if ai_outlawed.
+					has_country_flag = synthetic_empire
+					has_origin = origin_mechanists
 				}
 			}
 		}
@@ -4846,6 +4850,13 @@ ship_event = {
 				max = @tier3researchmax
 			}
 			give_specimen = { key = alien_brain_scans }
+			if = {
+				limit = {
+					has_technology = tech_synthetic_workers # The only way to get this project after this event is by researching this tech.
+					has_policy_flag = ai_outlawed
+				}
+				set_country_flag = DLAF_limbo_awaiting_ai_rights # Flag for backup event.
+			}
 		}
 		hidden_effect = {
 			fromfrom = { set_planet_flag = limbo_planet }
@@ -4862,11 +4873,13 @@ ship_event = {
 				}
 				OR = {
 					is_individual_machine = yes
+					has_origin = origin_cybernetic_creed # Cybernetic Creed overrides tech requirement, they know how to handle machine spirits.
 					AND = {
 						has_technology = tech_synthetic_workers
 						OR = {
-							has_origin = origin_cybernetic_creed
-							is_spiritualist = no
+							is_spiritualist = no # Prevent Spiritualists unless one of the following:
+							has_country_flag = synthetic_empire
+							has_origin = origin_mechanists
 						}
 					}
 				}
@@ -4884,9 +4897,7 @@ ship_event = {
 				}
 			}
 			give_specimen = { key = alien_brain_scans }
-			hidden_effect = {
-				set_country_flag = limbo_downloaded
-			} # This option should include the Neural Patterns.
+			hidden_effect = { set_country_flag = limbo_downloaded } # This option should include the Neural Patterns.
 		}
 		ai_chance = { factor = 15 }
 	}
@@ -4979,7 +4990,7 @@ country_event = {
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_servitude }
+		trigger = { has_policy_flag = ai_outlawed } # There must be at least one option if AI is Outlawed.
 		add_resource = { minerals = 200 }
 	}
 }
@@ -5190,7 +5201,7 @@ country_event = {
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_servitude }
+		trigger = { has_policy_flag = ai_outlawed } # Wrong AI rights.
 		add_resource = { minerals = 200 }
 	}
 }
@@ -5228,8 +5239,71 @@ country_event = {
 				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 			}
 		}
-		hidden_effect = {
-			DLAF_spawn_awoken = yes
+		hidden_effect = { DLAF_spawn_awoken = yes }
+	}
+}
+
+
+# on_policy_changed
+country_event = {
+	id = anomaly.1200 # DLAF.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		last_changed_policy = artificial_intelligence_policy
+		has_country_flag = limbo_downloaded # Got the Brainscans.
+		NOR = {
+			has_country_flag = DLAF_2_fired
+			has_country_flag = limbo_uploaded_robots # Haven't researched this project.
+			has_special_project = LIMBO_2_PROJECT # Don't already have the project.
+			has_policy_flag = ai_outlawed # Don't have AI Outlawed.
 		}
+		OR = { # Same trigger as "Upload the neural patterns."
+			is_individual_machine = yes
+			has_origin = origin_cybernetic_creed # Cybernetic Creed overrides tech requirement, they know how to handle machine spirits.
+			AND = {
+				has_technology = tech_synthetic_workers
+				OR = {
+					is_spiritualist = no # Prevent Spiritualists unless one of the following:
+					has_country_flag = synthetic_empire
+					has_origin = origin_mechanists
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_country_flag = DLAF_2_fired
+		country_event = { id = anomaly.1194 days = 20 random = 20 }
+	}
+}
+
+# Delayed event to simulate full synthetic ascension.
+country_event = {
+	id = anomaly.1201 # DLAF.3
+	hide_window = yes
+	#is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = limbo_country
+		OR = {
+			NOT = { has_country_flag = DLAF_synthesization_timer }
+			has_global_flag = DLAF_debugging
+		}
+		NOT = { has_country_flag = DLAF_3_fired }
+	}
+
+	mean_time_to_happen = {
+		years = 5
+		modifier = {
+			factor = 0.01
+			has_global_flag = DLAF_debugging
+		}
+	}
+
+	immediate = {
+		set_country_flag = DLAF_3_fired
+		DLAF_make_full_synths = yes
 	}
 }
