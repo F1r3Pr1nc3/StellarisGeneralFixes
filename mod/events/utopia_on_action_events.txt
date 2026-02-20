@@ -798,19 +798,28 @@ country_event = {
 		}
 		give_technology = { tech = tech_bio_reactor message = no }
 		create_synth_species_effect = yes
+		if = { # Vfix compat
+			limit = {
+				NOT = { exists = event_target:current_synthspecies }
+				exists = event_target:synthspecies@root
+			}
+			event_target:synthspecies@root = {
+				save_event_target_as = current_synthspecies
+			}
+		}
 		every_owned_pop_group = {
 			limit = {
 				is_being_purged = no
 				species = { is_robotic = no is_livestock = no }
 			}
-			change_species = event_target:current_synthspecies # Vfix
+			change_species = event_target:current_synthspecies # Vfix opt
 		}
 		every_controlled_ship = {
 			limit = {
 				is_ship_class = shipclass_colonizer
 				species = { is_robotic = no is_livestock = no }
 			}
-			change_species = event_target:current_synthspecies # Vfix
+			change_species = event_target:current_synthspecies # Vfix opt
 		}
 		# Vfix merge
 		every_owned_army = {
