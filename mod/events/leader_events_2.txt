@@ -483,16 +483,15 @@ leader_event = {
 		add_trait = { trait = trait_imperial_heir show_message = no }
 		add_trait = { trait = random_common show_message = no }
 		# Chance for a negative trait.
-		random_list = {
-			95 = {  }
-			5 = {
+		# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
+		if = {
+			limit = {
+				NOT = { owner = { has_valid_civic = civic_philosopher_king } }
+			}
+			random = {
+				chance = 5
 				add_trait = { trait = random_common show_message = no }
 				add_trait = { trait = random_negative show_message = no }
-				# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
-				modifier = {
-					factor = 0
-					owner = { has_valid_civic = civic_philosopher_king }
-				}
 			}
 		}
 		# Champions of the Empire

@@ -58,16 +58,31 @@ is_psionic_aura_suppressed = {
 # 01_scripted_triggers_refugees.txt
 country_has_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		planet_has_habitability_and_housing = {
-			[[HABITABILITY] HABITABILITY = $HABITABILITY$ ]
-			[[HOUSING] HOUSING = $HOUSING$ ]
+			[[HABITABILITY]
+			HABITABILITY = $HABITABILITY$
+			]
+			[[HOUSING]
+			HOUSING = $HOUSING$
+			]
 		}
 	}
 }
+
 planet_has_habitability_and_housing = {
-	[[HABITABILITY] habitability = { who = event_target:refugee_pop value >= $HABITABILITY$ } ]
-	[[HOUSING] free_housing >= $HOUSING$ ]
+	[[HABITABILITY]
+
+	habitability = {
+		who = event_target:refugee_pop
+		value >= $HABITABILITY$
+	}
+
+	]
+	[[HOUSING]
+	free_housing >= $HOUSING$
+	]
 	NOR = { # Vfix opt
 		is_occupied_flag = yes
 		is_under_colonization = yes
@@ -118,6 +133,7 @@ check_aura_suppressors = {
 		check_variable_arithmetic = { which = value:count_neighbor_shroud_seals value > 0 }
 	}
 }
+
 # 01_scripted_triggers_jobs.txt
 miner_is_mineral_diver_trigger = {
 	has_deposit = d_mineral_seabed
@@ -125,8 +141,10 @@ miner_is_mineral_diver_trigger = {
 
 # 01_scripted_triggers_refugees.txt
 ### TODO REMOVEME in v4.4 (Old v4.2 triggers)
+
 has_good_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.7 }
 		free_housing >= 100
@@ -135,8 +153,10 @@ has_good_habitability_and_housing = {
 		has_orbital_bombardment = no
 	}
 }
+
 has_good_habitability = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.7 }
 		is_under_colonization = no
@@ -144,8 +164,10 @@ has_good_habitability = {
 		has_orbital_bombardment = no
 	}
 }
+
 has_decent_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.5 }
 		free_housing >= 100
@@ -154,8 +176,10 @@ has_decent_habitability_and_housing = {
 		has_orbital_bombardment = no
 	}
 }
+
 has_decent_habitability = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.5 }
 		is_under_colonization = no
@@ -163,8 +187,10 @@ has_decent_habitability = {
 		has_orbital_bombardment = no
 	}
 }
+
 has_some_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.2 }
 		free_housing >= 100
@@ -173,8 +199,10 @@ has_some_habitability_and_housing = {
 		has_orbital_bombardment = no
 	}
 }
+
 has_some_habitability = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.2 }
 		is_under_colonization = no
@@ -182,8 +210,10 @@ has_some_habitability = {
 		has_orbital_bombardment = no
 	}
 }
+
 has_any_habitability_and_housing = {
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
+
 	any_owned_planet = {
 		NOR = {
 			free_housing < 100

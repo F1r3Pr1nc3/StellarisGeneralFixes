@@ -192,7 +192,7 @@ update_every_leader_from_psionic_countries = {
 }
 
 reckoning_consume_world = {
-	export_trigger_value_to_variable = { trigger = pop_amount variable = consumed_pops_planet }
+	export_trigger_value_to_variable = { trigger = count_owned_pop_amount variable = consumed_pops_planet }
 	if = {
 		limit = {
 			check_variable = { which = consumed_pops_planet value > 0 }

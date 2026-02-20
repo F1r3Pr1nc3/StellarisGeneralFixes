@@ -251,7 +251,7 @@ country_event = {
 							owner = { is_default_or_fallen = yes }
 						}
 						position = 0
-						order_by = trigger:sapient_pop_amount
+						order_by = trigger:pop_amount
 						log = "Give system \\[Prev.GetName] back to \\[This.Owner.GetName]"
 						owner = { save_event_target_as = planet_owner }
 						prev = {
@@ -994,7 +994,7 @@ country_event = {
 					exists = starbase
 				}
 				position = 0
-				order_by = trigger:sapient_pop_amount
+				order_by = trigger:pop_amount
 				set_capital = yes
 				starbase = { inline_script = "marauder/create_marauder_shipyard" }
 				save_event_target_as = new_diadochi_capital
@@ -1141,7 +1141,7 @@ country_event = {
 				add_intel = { amount = 100 who = prev }
 				add_opinion_modifier = { modifier = opinion_traitor_to_empire who = prev }
 				add_opinion_modifier = { modifier = opinion_flavors_down who = prev }
-				set_variable = { which = var_sapient_pop_amount value = trigger:sapient_pop_amount }
+				set_variable = { which = var_sapient_pop_amount value = trigger:pop_amount }
 				save_event_target_as = planet_owner_2
 				## Prevent extreme balcanization
 				# Potential system
@@ -1468,7 +1468,7 @@ country_event = {
 									limit = {
 										NOT = { is_variable_set = var_sapient_pop_amount }
 									}
-									set_variable = { which = var_sapient_pop_amount value = trigger:sapient_pop_amount }
+									set_variable = { which = var_sapient_pop_amount value = trigger:pop_amount }
 								}
 								capital_scope.solar_system = {
 									closest_system = {
@@ -1579,7 +1579,7 @@ country_event = {
 			order_by = trigger:pop_amount
 			position = 0
 			ordered_owned_planet = {
-				order_by = trigger:sapient_pop_amount
+				order_by = trigger:pop_amount
 				position = 0
 				set_capital = yes
 				save_event_target_as = new_diadochi_capital

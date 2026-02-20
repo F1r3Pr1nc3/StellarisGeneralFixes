@@ -397,3 +397,16 @@ triggered_planet_modifier = {
 	job_coordinator_add = 150
 	mult = value:imperious_architecture_scaling_value
 }
+
+# Vfix: https://forum.paradoxplaza.com/forum/threads/amenities-affect-pop-happines-in-gestalt-consciousness-empires-instead-of-affecting-stability.1899827/#post-31124769
+triggered_planet_modifier = {
+	potential = {
+		exists = owner #messo per habitat
+		owner = {
+			is_gestalt = yes
+		}
+		# free_amenities > 0
+	}
+	modifier = { planet_stability_add = 1 }
+	mult = value:stability_bonus_gestalt
+}

@@ -970,14 +970,21 @@ planet_event = {
 				}
 			}
 		}
-		while = {
-			count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
-			from.owner = {
-				if = {
-					limit = { has_ascension_perk = ap_become_the_crisis }
-					complete_crisis_objective = crisobj_purge_pops
-				}
+		if = { # Vfix opt
+			limit = {
+				from.owner = { has_ascension_perk = ap_become_the_crisis }
 			}
+			every_owned_pop_group = {
+				limit = {  }
+				while = {
+					count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
+					from.owner = { complete_crisis_objective = crisobj_purge_pops }
+				}
+				kill_all_pop = yes
+			}
+		}
+		else = {
+			every_owned_pop_group = { kill_all_pop = yes }
 		}
 		destroy_colony = yes
 		add_modifier = { modifier = neutron_bombarded years = 10 }
@@ -1096,9 +1103,11 @@ planet_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = { is_planet_class = pc_ai }
 				exists = owner
-				NOT = { is_owned_by = from.owner }
+				NOR = {
+					is_planet_class = pc_ai
+					is_owned_by = from.owner
+				}
 			}
 			from.owner = {
 				country_event = { id = planet_destruction.401 }
@@ -1281,18 +1290,24 @@ planet_event = {
 				}
 			}
 		}
-		every_owned_pop_group = {
-			limit = { has_any_ethic = no }
-			while = {
-				count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
-				from.owner = {
-					if = {
-						limit = { has_ascension_perk = ap_become_the_crisis }
-						complete_crisis_objective = crisobj_purge_pops
-					}
-				}
+		if = {
+			limit = {
+				from.owner = { has_ascension_perk = ap_become_the_crisis }
 			}
-			kill_all_pop = yes
+			every_owned_pop_group = {
+				limit = { has_any_ethic = no }
+				while = {
+					count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
+					from.owner = { complete_crisis_objective = crisobj_purge_pops }
+				}
+				kill_all_pop = yes
+			}
+		}
+		else = {
+			every_owned_pop_group = {
+				limit = { has_any_ethic = no }
+				kill_all_pop = yes
+			}
 		}
 		every_owned_pop_group = {
 			limit = { has_any_ethic = yes }
@@ -1531,23 +1546,34 @@ planet_event = {
 				change_scoped_species = yes
 			}
 		}
-		every_owned_pop_group = {
+		if = { # Vfix opt
 			limit = {
-				OR = {
-					has_trait = trait_hive_mind
-					is_robotic_species = yes
-				}
+				from.owner = { has_ascension_perk = ap_become_the_crisis }
 			}
-			while = {
-				count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
-				from.owner = {
-					if = {
-						limit = { has_ascension_perk = ap_become_the_crisis }
-						complete_crisis_objective = crisobj_purge_pops
+			every_owned_pop_group = {
+				limit = {
+					OR = {
+						has_trait = trait_hive_mind
+						is_robotic_species = yes
 					}
 				}
+				while = {
+					count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
+					from.owner = { complete_crisis_objective = crisobj_purge_pops }
+				}
+				kill_all_pop = yes
 			}
-			kill_all_pop = yes
+		}
+		else = {
+			every_owned_pop_group = {
+				limit = {
+					OR = {
+						has_trait = trait_hive_mind
+						is_robotic_species = yes
+					}
+				}
+				kill_all_pop = yes
+			}
 		}
 		every_owned_pop_group = {
 			limit = { has_modifier = pop_recently_conquered }
@@ -2040,23 +2066,34 @@ planet_event = {
 				}
 			}
 		}
-		every_owned_pop_group = {
+		if = { # Vfix opt
 			limit = {
-				NOR = {
-					has_trait = trait_aquatic
-					has_trait = trait_robot_aquatic
-				}
+				from.owner = { has_ascension_perk = ap_become_the_crisis }
 			}
-			while = {
-				count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
-				from.owner = {
-					if = {
-						limit = { has_ascension_perk = ap_become_the_crisis }
-						complete_crisis_objective = crisobj_purge_pops
+			every_owned_pop_group = {
+				limit = {
+					NOR = {
+						has_trait = trait_aquatic
+						has_trait = trait_robot_aquatic
 					}
 				}
+				while = {
+					count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
+					from.owner = { complete_crisis_objective = crisobj_purge_pops }
+				}
+				kill_all_pop = yes
 			}
-			kill_all_pop = yes
+		}
+		else = {
+			every_owned_pop_group = {
+				limit = {
+					NOR = {
+						has_trait = trait_aquatic
+						has_trait = trait_robot_aquatic
+					}
+				}
+				kill_all_pop = yes
+			}
 		}
 		if = {
 			limit = {	# were there any Aquatic pops? If so, the ownership needs to be flipped
@@ -2753,21 +2790,29 @@ planet_event = {
 				}
 			}
 		}
-		every_owned_pop_group = {
+		if = { # Vfix opt
 			limit = {
 				from.owner = { has_ascension_perk = ap_archaeoengineers }
-				is_robotic_species = yes
 			}
-			while = {
-				count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
-				from.owner = {
-					if = {
-						limit = { has_ascension_perk = ap_become_the_crisis }
-						complete_crisis_objective = crisobj_purge_pops
+			if = { # Vfix opt
+				limit = {
+					from.owner = { has_ascension_perk = ap_become_the_crisis }
+				}
+				every_owned_pop_group = {
+					limit = { is_robotic_species = yes }
+					while = {
+						count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
+						from.owner = { complete_crisis_objective = crisobj_purge_pops }
 					}
+					kill_all_pop = yes
 				}
 			}
-			kill_all_pop = yes
+			else = {
+				every_owned_pop_group = {
+					limit = { is_robotic_species = yes }
+					kill_all_pop = yes
+				}
+			}
 		}
 		if = {
 			limit = {
@@ -2802,21 +2847,21 @@ planet_event = {
 			}
 			ordered_owned_pop_group = {
 				limit = {
-					is_robot_pop_group = no
 					is_sapient = yes
+					is_robot_pop_group = no
 				}
-				order_by = trigger:pop_amount
+				position = 0
+				order_by = trigger:pop_amount # Vfix: TODO this should not work
 				inverse = yes # Devolve from fewest pops upwards.
 				species = { save_event_target_as = species_target }
-				create_devolved_species = yes
 			}
-			every_owned_pop_group = {
+			random_owned_species = { # Vfix opt
 				limit = {
-					is_robot_pop_group = no
-					is_same_species = event_target:species_target
 					is_sapient = yes
+					is_robotic = no
+					is_exact_same_species = event_target:species_target
 				}
-				change_species = event_target:devolved_species_target
+				create_devolved_species = yes
 			}
 		}
 		random_owned_pop_group = {
@@ -3361,17 +3406,23 @@ planet_event = {
 				}
 			}
 		}
-		every_owned_pop_group = {
-			while = {
-				count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
-				from.owner = {
-					if = {
-						limit = { has_ascension_perk = ap_become_the_crisis }
-						complete_crisis_objective = crisobj_purge_pops
-					}
-				}
+		if = { # Vfix opt
+			limit = {
+				from.owner = { has_ascension_perk = ap_become_the_crisis }
 			}
-			kill_pop_group = { pop_group = this percentage = 1 }
+			every_owned_pop_group = {
+				limit = {  }
+				while = {
+					count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
+					from.owner = { complete_crisis_objective = crisobj_purge_pops }
+				}
+				kill_pop_group = { pop_group = this percentage = 1 }
+			}
+		}
+		else = {
+			every_owned_pop_group = {
+				kill_pop_group = { pop_group = this percentage = 1 }
+			}
 		}
 		if = {
 			limit = { exists = orbital_defence }

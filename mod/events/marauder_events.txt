@@ -7361,6 +7361,7 @@ country_event = {
 			leader_age_min = 22
 			leader_age_max = 34 # Traits can add to age so start it low
 			randomize_traits = no
+			sub_type = subclass_commander_councilor
 			traits = {
 				# trait = subclass_commander_councilor
 				# trait = subclass_commander_admiral
@@ -7406,10 +7407,11 @@ country_event = {
 			target = event_target:great_khan_ruler
 			class = commander
 			tier = leader_tier_legendary
-			skill = 10
+			# skill = 10
 			event_leader = yes
 			can_manually_change_location = no
 			hide_leader = yes
+			sub_type = subclass_commander_admiral
 			randomize_traits = no # Traits are cleared if yes
 			can_assign_to_council = no
 			# Cloning messes with traits, so don't start with them
@@ -7870,7 +7872,7 @@ country_event = {
 				}
 				set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 				### Create Defense Armies (for some job reasons common armies get deleted)
-				set_variable = { which = CmtVarTemp value = trigger:sapient_pop_amount }
+				set_variable = { which = CmtVarTemp value = trigger:pop_amount }
 				multiply_variable = { which = CmtVarTemp value = 0.25 } # ~25%
 				ceiling_variable = CmtVarTemp
 				while = {
@@ -8090,7 +8092,7 @@ country_event = {
 					}
 				}
 				### Create Defense Armies (for some job reasons common armies get deleted)
-				set_variable = { which = CmtVarTemp value = trigger:sapient_pop_amount }
+				set_variable = { which = CmtVarTemp value = trigger:pop_amount }
 				multiply_variable = { which = CmtVarTemp value = 0.2 }
 				round_variable = CmtVarTemp
 				if = {
@@ -10705,7 +10707,7 @@ country_event = {
 			ordered_owned_planet = {
 				limit = { is_planet_eligible_for_treasure_planet = yes }
 				position = 0
-				order_by = trigger:sapient_pop_amount
+				order_by = trigger:pop_amount
 				save_event_target_as = capital_planet
 				solar_system = { save_event_target_as = capital_system }
 			}
@@ -11797,7 +11799,7 @@ country_event = {
 						set_country_flag = has_encountered_other_empire
 						force_add_civic = civic_diadochi
 						shift_ethic = ethic_fanatic_militarist
-						set_variable = { which = var_sapient_pop_amount value = trigger:sapient_pop_amount }
+						set_variable = { which = var_sapient_pop_amount value = trigger:pop_amount }
 						if = {
 							limit = {
 								NOT = { any_playable_country = { has_country_flag = diadochi_2 } }

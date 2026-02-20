@@ -2688,6 +2688,7 @@ country_event = {
 			country_event = { id = leviathans.2111 }
 		}
 		trigger = { is_gestalt = no }
+		ai_chance = { factor = 2 }
 	}
 	option = {
 		name = "leviathans.2101.b"
@@ -2700,9 +2701,22 @@ country_event = {
 	# Added in v3.12
 	option = {
 		name = "leviathans.2101.c"
-		trigger = { can_harvest_parts = yes }
+		trigger = {
+			can_harvest_parts = yes
+			NOT = { has_country_flag = harvested_fortress_parts }
+		}
 		set_country_flag = harvested_fortress_parts
 		add_research_option = tech_leviathan_techgenesis
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_technology = tech_leviathan_techgenesis
+					has_tech_option = tech_leviathan_techgenesis
+				}
+			}
+		}
 	}
 	option = {
 		name = leviathans.2101.c.gesta
@@ -2732,6 +2746,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = leviathans.2108 } # End Chain with Reward
 		}
+		ai_chance = { factor = 10 }
 	}
 
 	after = {

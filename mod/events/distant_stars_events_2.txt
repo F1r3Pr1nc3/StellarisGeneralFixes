@@ -5094,24 +5094,23 @@ country_event = {
 
 	immediate = {
 		country_event = { id = distar.5067 days = 60 random = 20 }
-		random_list = {
-			50 = { # if players are unintelligent things may go poorly
-				modifier = {
-					factor = 0
-					owner_species = {
-						OR = {
-							has_trait = trait_intelligent
-							has_trait = trait_erudite
-							has_trait = trait_artificial_intelligence
-							has_trait = trait_quick_learners
-							has_trait = trait_elevated_synapses # Vfix
-							has_trait = trait_gene_mentorship # Vfix
-						}
+		if = {
+			limit = {
+				owner_species = {
+					NOR = {
+						has_trait = trait_intelligent
+						has_trait = trait_erudite
+						has_trait = trait_artificial_intelligence
+						has_trait = trait_quick_learners
+						has_trait = trait_elevated_synapses # Vfix
+						has_trait = trait_gene_mentorship # Vfix
 					}
 				}
+			}
+			random = {
+				chance = 50 # if players are unintelligent things may go poorly
 				set_country_flag = enigmatically_unlucky
 			}
-			50 = {  }
 		}
 	}
 }

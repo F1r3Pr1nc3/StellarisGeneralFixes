@@ -46,15 +46,28 @@ country_has_habitability_and_housing = {
 
 	any_owned_planet = {
 		planet_has_habitability_and_housing = {
-			[[HABITABILITY] HABITABILITY = $HABITABILITY$ ]
-			[[HOUSING] HOUSING = $HOUSING$ ]
+			[[HABITABILITY]
+			HABITABILITY = $HABITABILITY$
+			]
+			[[HOUSING]
+			HOUSING = $HOUSING$
+			]
 		}
 	}
 }
 
 planet_has_habitability_and_housing = {
-	[[HABITABILITY] habitability = { who = event_target:refugee_pop value >= $HABITABILITY$ } ]
-	[[HOUSING] free_housing >= $HOUSING$ ]
+	[[HABITABILITY]
+
+	habitability = {
+		who = event_target:refugee_pop
+		value >= $HABITABILITY$
+	}
+
+	]
+	[[HOUSING]
+	free_housing >= $HOUSING$
+	]
 	NOR = { # Vfix opt
 		is_occupied_flag = yes
 		is_under_colonization = yes
@@ -81,6 +94,7 @@ has_any_habitability = {
 			prev = { has_policy_flag = robots_allowed }
 		}
 	}
+
 	any_owned_planet = {
 		NOR = {
 			is_under_colonization = yes

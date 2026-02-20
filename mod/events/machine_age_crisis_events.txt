@@ -353,18 +353,12 @@ country_event = {
 				}
 				add_opinion_modifier = { modifier = opinion_cosmogenesis_thesis who = root }
 			}
-			random_list = {
-				99 = {  }
-				1 = {
-					modifier = {
-						factor = 0
-						OR = {
-							any_country = { has_country_flag = guardians_of_the_galaxy }
-							NOT = { any_country = { is_fallen_empire = yes } }
-						}
-					}
-					awaken_guardians_of_the_galaxy = yes
+			if = {
+				limit = {
+					any_country = { is_fallen_empire = yes }
+					NOT = { any_country = { has_country_flag = guardians_of_the_galaxy } }
 				}
+				random = { chance = 1 awaken_guardians_of_the_galaxy = yes }
 			}
 			save_event_target_as = materialist_fe
 		}
@@ -6365,20 +6359,6 @@ event = {
 				40 = {  }
 				60 = {
 					modifier = {
-						factor = 3
-						count_country = {
-							count <= 5
-							limit = { is_country_type = synth_queen_convoys }
-						}
-					}
-					modifier = { # Galaxy size ponderation.
-						factor = 0.5
-						galaxy_size = tiny
-					}
-					modifier = { factor = 0.75 galaxy_size = small }
-					modifier = { factor = 1.5 galaxy_size = large }
-					modifier = { factor = 2 galaxy_size = huge }
-					modifier = {
 						factor = 0
 						OR = {
 							AND = {
@@ -6418,6 +6398,20 @@ event = {
 							}
 						}
 					}
+					modifier = {
+						factor = 3
+						count_country = {
+							count <= 5
+							limit = { is_country_type = synth_queen_convoys }
+						}
+					}
+					modifier = { # Galaxy size ponderation.
+						factor = 0.5
+						galaxy_size = tiny
+					}
+					modifier = { factor = 0.75 galaxy_size = small }
+					modifier = { factor = 1.5 galaxy_size = large }
+					modifier = { factor = 2 galaxy_size = huge }
 					synth_queen_create_convoy_fleet = yes
 				}
 			}
@@ -6432,7 +6426,33 @@ ship_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		solar_system = {
+		if = { # Vfix "ghost target" bug
+			limit = { NOT = { exists = solar_system } }
+			if = {
+				limit = {
+					exists = fleet
+					exists = fleet.solar_system
+				}
+				fleet.solar_system = {
+					log = "Crisis Vfix: Special Raid Project Target Fleet Fallback at [This.GetName]"
+					save_event_target_as = solar_system
+				}
+			}
+			else_if = {
+				limit = {
+					exists = fromfrom
+					fromfrom = { is_scope_type = galactic_object }
+				}
+				fromfrom = {
+					log = "Crisis Vfix: Special Raid Project Target System Fallback at [This.GetName]"
+					save_event_target_as = solar_system
+				}
+			}
+		}
+		else = {
+			solar_system = { save_event_target_as = solar_system }
+		}
+		event_target:solar_system = {
 			every_fleet_in_system = {
 				limit = {
 					owner = {
@@ -6965,19 +6985,19 @@ country_event = {
 		else = {
 			random_system = {
 				limit = {
-					has_owner = yes
-					owner = { is_country_type = synth_queen_outposts }
 					has_star_flag = synth_queen_outpost
+					exists = owner_or_space_owner
+					owner_or_space_owner = { is_country_type = synth_queen_outposts }
 					NOT = { has_star_flag = incoming_patrol }
 				}
 				set_timed_star_flag = { flag = incoming_patrol years = 1 }
 				star = { save_event_target_as = patrol_target }
-			}
-			from = {
-				set_fleet_flag = patroller
-				auto_move_to_planet = {
-					target = event_target:patrol_target
-					clear_auto_move_on_arrival = yes
+				from = { # Vfix log
+					set_fleet_flag = patroller
+					auto_move_to_planet = {
+						target = event_target:patrol_target
+						clear_auto_move_on_arrival = yes
+					}
 				}
 			}
 		}
@@ -7019,9 +7039,8 @@ country_event = {
 			}
 		}
 		else = { # Else return to capital
-			random_system_within_border = {
-				limit = { has_star_flag = synth_queen_capital }
-				star = { save_event_target_as = patrol_destination }
+			event_target:synth_queen_capital_system.star = { # Vfix
+				save_event_target_as = patrol_destination
 			}
 		}
 		from = {
@@ -7575,6 +7594,7 @@ country_event = {
 		response_text = crisis.8195.3.reply
 		sound = crisis_8195_3_reply
 		is_dialog_only = yes
+		ai_chance = { factor = 10 } # Vfix
 	}
 	option = {
 		name = GOODBYE
@@ -7585,9 +7605,7 @@ country_event = {
 				has_country_flag = crisis.8195.3.flag
 			}
 		}
-		hidden_effect = {
-			remove_country_flag = synth_queen_conversation_ongoing
-		}
+		ai_chance = { factor = 2 } # Vfix
 	}
 
 	after = {
@@ -7595,6 +7613,7 @@ country_event = {
 			remove_country_flag = crisis.8195.1.flag
 			remove_country_flag = crisis.8195.2.flag
 			remove_country_flag = crisis.8195.3.flag
+			remove_country_flag = synth_queen_conversation_ongoing
 			set_timed_country_flag = { flag = synth_queen_raid_scolding years = 5 }
 		}
 	}
@@ -7708,6 +7727,7 @@ country_event = {
 		response_text = crisis.8195.3.reply
 		sound = crisis_8195_3_reply
 		is_dialog_only = yes
+		ai_chance = { factor = 10 } # Vfix
 	}
 	option = {
 		name = GOODBYE
@@ -7718,9 +7738,7 @@ country_event = {
 				has_country_flag = crisis.8195.3.flag
 			}
 		}
-		hidden_effect = {
-			remove_country_flag = synth_queen_conversation_ongoing
-		}
+		ai_chance = { factor = 2 } # Vfix
 	}
 
 	after = {
@@ -7729,6 +7747,7 @@ country_event = {
 			remove_country_flag = crisis.8195.2.flag
 			remove_country_flag = crisis.8195.3.flag
 			set_timed_country_flag = { flag = synth_queen_raid_scolding years = 5 }
+			remove_country_flag = synth_queen_conversation_ongoing
 		}
 	}
 }
@@ -12605,8 +12624,8 @@ country_event = {
 		name = crisis.24250.a
 		hidden_effect = {
 			save_global_event_target_as = psi_defeated_synth_queen
-			random_system = {
-				limit = { has_star_flag = synth_queen_capital }
+			# random_system = { limit = { has_star_flag = synth_queen_capital }
+			event_target:synth_queen_capital_system = { # Vfix opt
 				every_ship_in_system = {
 					limit = { is_ship_size = synth_queen_titan }
 					fleet = { set_owner = root }

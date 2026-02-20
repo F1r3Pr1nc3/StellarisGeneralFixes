@@ -3820,111 +3820,108 @@ event = {
 	immediate = {
 		random_playable_country = {
 			limit = { has_modifier = galatron_modifier }
-			random_list = {
-				# Null
-				60 = {  }
-				40 = {
-					random_list = {
-						# Energy
-						1 = {
-							add_resource = { energy = 1000 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_ENERGY
-								days = 30
-								target = capital_scope
-							}
+			random = {
+				chance = 40
+				random_list = {
+					# Energy
+					1 = {
+						add_resource = { energy = 1000 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_ENERGY
+							days = 30
+							target = capital_scope
 						}
-						# Minerals
-						1 = {
-							add_resource = { minerals = 1000 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_MINERALS
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Minerals
+					1 = {
+						add_resource = { minerals = 1000 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_MINERALS
+							days = 30
+							target = capital_scope
 						}
-						# Alloys
-						1 = {
-							add_resource = { alloys = 1000 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_ALLOYS
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Alloys
+					1 = {
+						add_resource = { alloys = 1000 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_ALLOYS
+							days = 30
+							target = capital_scope
 						}
-						# Consumer Goods
-						1 = {
-							add_resource = { consumer_goods = 800 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_CONSUMER_GOODS
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Consumer Goods
+					1 = {
+						add_resource = { consumer_goods = 800 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_CONSUMER_GOODS
+							days = 30
+							target = capital_scope
 						}
-						# Influence
-						1 = {
-							add_resource = { influence = 500 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_INFLUENCE
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Influence
+					1 = {
+						add_resource = { influence = 500 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_INFLUENCE
+							days = 30
+							target = capital_scope
 						}
-						# Unity
-						1 = {
-							add_resource = { unity = 800 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_UNITY
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Unity
+					1 = {
+						add_resource = { unity = 800 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_UNITY
+							days = 30
+							target = capital_scope
 						}
-						# Society Research
-						1 = {
-							add_resource = { society_research = 1000 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_SOCIETY
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Society Research
+					1 = {
+						add_resource = { society_research = 1000 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_SOCIETY
+							days = 30
+							target = capital_scope
 						}
-						# Physics Research
-						1 = {
-							add_resource = { physics_research = 1000 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_PHYSICS
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Physics Research
+					1 = {
+						add_resource = { physics_research = 1000 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_PHYSICS
+							days = 30
+							target = capital_scope
 						}
-						# Engineering Research
-						1 = {
-							add_resource = { engineering_research = 1000 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_ENGINEERING
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Engineering Research
+					1 = {
+						add_resource = { engineering_research = 1000 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_ENGINEERING
+							days = 30
+							target = capital_scope
 						}
-						# Naval Capacity +10
-						1 = {
-							modifier = { factor = 0 has_modifier = galatron_naval_cap1 }
-							add_modifier = { modifier = galatron_naval_cap1 days = -1 }
-							create_message = {
-								type = MESSAGE_TYPE_GALPULSE
-								localization = MESSAGE_GALPULSE_NAVAL_CAP1
-								days = 30
-								target = capital_scope
-							}
+					}
+					# Naval Capacity +10
+					1 = {
+						modifier = { factor = 0 has_modifier = galatron_naval_cap1 }
+						add_modifier = { modifier = galatron_naval_cap1 days = -1 }
+						create_message = {
+							type = MESSAGE_TYPE_GALPULSE
+							localization = MESSAGE_GALPULSE_NAVAL_CAP1
+							days = 30
+							target = capital_scope
 						}
 					}
 				}

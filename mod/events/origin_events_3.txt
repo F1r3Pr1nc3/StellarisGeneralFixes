@@ -5146,14 +5146,14 @@ country_event = {
 
 	immediate = {
 		capital_scope = {
-			export_trigger_value_to_variable = { trigger = pop_amount variable = seperatist_pops }
+			export_trigger_value_to_variable = { trigger = count_owned_pop_amount variable = seperatist_pops }
 			change_variable = { # Makes it so that they are at least always 500 pops behind the player
 				which = seperatist_pops
 				value = 500
 			}
 		}
 		home_planet = {
-			export_trigger_value_to_variable = { trigger = pop_amount variable = fotd_pops }
+			export_trigger_value_to_variable = { trigger = count_owned_pop_amount variable = fotd_pops }
 		}
 		if = {
 			limit = {

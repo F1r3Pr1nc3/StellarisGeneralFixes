@@ -636,14 +636,15 @@ event = {
 						planet_size >= 31
 					}
 				}
-				random = {
-					chance = 1
-					 # about 20 on a huge galaxy with default settings.
-					add_modifier = { modifier = terraforming_candidate }
-					complex_trigger_modifier = {
-						trigger = check_galaxy_setup_value
-						parameters = { setting = habitable_worlds_scale }
-						mode = factor
+				random_list = {
+					100 = {  }
+					1 = { # about 20 on a huge galaxy with default settings.
+						add_modifier = { modifier = terraforming_candidate }
+						complex_trigger_modifier = {
+							trigger = check_galaxy_setup_value
+							parameters = { setting = habitable_worlds_scale }
+							mode = factor
+						}
 					}
 				}
 			}
@@ -660,14 +661,15 @@ event = {
 							planet_size >= 31
 						}
 					}
-					random = {
-						chance = 1
-						 # Not very common, Hydrocentric gives you lots of other things
-						add_modifier = { modifier = frozen_terraforming_candidate }
-						complex_trigger_modifier = {
-							trigger = check_galaxy_setup_value
-							parameters = { setting = habitable_worlds_scale }
-							mode = factor
+					random_list = {
+						100 = {  }
+						1 = { # Not very common, Hydrocentric gives you lots of other things
+							add_modifier = { modifier = frozen_terraforming_candidate }
+							complex_trigger_modifier = {
+								trigger = check_galaxy_setup_value
+								parameters = { setting = habitable_worlds_scale }
+								mode = factor
+							}
 						}
 					}
 				}
@@ -685,15 +687,16 @@ event = {
 							planet_size >= 31
 						}
 					}
-					random = {
-						chance = 13
-						 # Detox only gives you this. About 50 planets in a huge galaxy
-						add_modifier = { modifier = toxic_terraforming_candidate }
-						set_planet_flag = toxic_terraforming_candidate
-						complex_trigger_modifier = {
-							trigger = check_galaxy_setup_value
-							parameters = { setting = habitable_worlds_scale }
-							mode = factor
+					random_list = {
+						100 = {  }
+						15 = { # Detox only gives you this. About 50 planets in a huge galaxy
+							add_modifier = { modifier = toxic_terraforming_candidate }
+							set_planet_flag = toxic_terraforming_candidate
+							complex_trigger_modifier = {
+								trigger = check_galaxy_setup_value
+								parameters = { setting = habitable_worlds_scale }
+								mode = factor
+							}
 						}
 					}
 				}

@@ -2846,12 +2846,11 @@ fleet_event = {
 	immediate = {
 		set_leader = leader_eaten_by_cutholoid@controller
 		controller = {
-			random_list = {
-				1 = {
-					modifier = { factor = 0 has_country_flag = captured_hiding_cutholoid }
-					set_country_flag = leader_digested_by_cutholoid
+			if = {
+				limit = {
+					NOT = { has_country_flag = captured_hiding_cutholoid }
 				}
-				1 = {  }
+				random = { chance = 50 set_country_flag = leader_digested_by_cutholoid }
 			}
 		}
 		fleet_event = { id = grand_archive.3016 }

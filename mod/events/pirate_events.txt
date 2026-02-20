@@ -1275,22 +1275,20 @@ country_event = {
 	}
 
 	immediate = {
-		random_list = {
-			200 = {  }
-			10 = {
-				set_timed_country_flag = { flag = pirates_spawned years = 10 }
-				if = {
-					limit = { is_gestalt = no }
-					country_event = { id = pirate.50 }
-				}
-				else_if = { # Vfix opt minor
-					limit = { is_hive_empire = yes }
-					country_event = { id = pirate.52 }
-				}
-				else_if = { # Vfix opt minor
-					limit = { is_machine_empire = yes }
-					country_event = { id = pirate.55 }
-				}
+		random = {
+			chance = 4.8
+			set_timed_country_flag = { flag = pirates_spawned years = 10 }
+			if = {
+				limit = { is_gestalt = no }
+				country_event = { id = pirate.50 }
+			}
+			else_if = { # Vfix opt minor
+				limit = { is_hive_empire = yes }
+				country_event = { id = pirate.52 }
+			}
+			else_if = { # Vfix opt minor
+				limit = { is_machine_empire = yes }
+				country_event = { id = pirate.55 }
 			}
 		}
 	}
@@ -1675,14 +1673,13 @@ event = {
 	immediate = {
 		if = {
 			limit = { end_game_years_passed > -1 }
-			random_list = {
-				1 = { # Bemat Thalassocracy
-					event_target:global_event_country = {
-						country_event = { id = pirate.150 days = 550 }
-					}
+			random = {
+				chance = 14.3
+				# Bemat Thalassocracy
+				event_target:global_event_country = {
+					country_event = { id = pirate.150 days = 550 }
 				}
 				# More pirate encounters can be added here
-				6 = {  }
 			}
 		}
 		else_if = {

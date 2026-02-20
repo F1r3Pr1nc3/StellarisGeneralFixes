@@ -5769,7 +5769,7 @@ country_event = {
 		}
 		else = {
 			# Fetch pop_amount as a variable, then multiply by salvager_insight_cost_mult
-			export_trigger_value_to_variable = { trigger = pop_amount variable = salvager_insight_pop_value_var }
+			export_trigger_value_to_variable = { trigger = count_owned_pop_amount variable = salvager_insight_pop_value_var }
 			multiply_variable = { which = salvager_insight_pop_value_var value = salvager_insight_cost_mult }
 			divide_variable = {
 				which = salvager_insight_pop_value_var # Correction from old pop_amount to pop_amount
@@ -6745,7 +6745,7 @@ country_event = {
 		}
 		else = {
 			# Fetch pop_amount as a variable, then multiply by divination_cost_mult
-			export_trigger_value_to_variable = { trigger = pop_amount variable = divination_pop_value_var }
+			export_trigger_value_to_variable = { trigger = count_owned_pop_amount variable = divination_pop_value_var }
 			multiply_variable = { which = divination_pop_value_var value = divination_cost_mult }
 			divide_variable = { which = divination_pop_value_var value = 2 }
 			divide_variable = {

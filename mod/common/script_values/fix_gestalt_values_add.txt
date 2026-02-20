@@ -1,0 +1,42 @@
+
+pop_amenities_no_happiness_usage = {
+	base = 0
+	add = modifier:planet_amenities_no_happiness_add
+	add = modifier:planet_amenities_add
+	subtract = trigger:free_amenities
+	# mult = modifier:planet_amenities_no_happiness_mult
+}
+
+stability_bonus_gestalt = {
+	base = 20
+	mult = trigger:free_amenities
+	divide = value:pop_amenities_no_happiness_usage
+	max = 20
+	min = -50
+}
+
+# stability_malus_gestalt = {
+# 	base = 200
+# 	divide = 3
+# 	mult = trigger:free_amenities
+# 	divide = value:pop_amenities_no_happiness_usage
+# 	min = -50
+# }
+# pop_amenities_no_happiness_v = {
+# 	base = 0
+# 	#add = owner.modifier:pop_amenities_usage_no_happiness_base
+# 	add = value:total_planet_amenities_no_happiness_add
+# 	mult = modifier:planet_amenities_no_happiness_mult
+# }
+# sfg_planet_amenities_mult = {
+# 	base = 1
+# 	add = modifier:planet_amenities_no_happiness_mult
+# 	add = modifier:planet_amenities_mult
+# }
+# pop_amenities_no_happiness_usage = {
+# 	base = 0.5
+# 	#add = owner.modifier:pop_amenities_usage_no_happiness_base
+# 	add = modifier:planet_amenities_no_happiness_add
+# 	mult = modifier:planet_amenities_no_happiness_mult
+# 	mult = trigger:pop_amount
+# }

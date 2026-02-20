@@ -2177,7 +2177,6 @@ country_event = {
 				chance = 10
 				add_trait = { trait = random_common show_message = no }
 				add_trait = { trait = random_negative show_message = no }
-				# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
 			}
 			random_list = {
 				900 = {  }
@@ -2488,17 +2487,14 @@ country_event = {
 				rounded = yes
 			}
 			add_age = ruler_age_mod
-			random_list = {
-				95 = {  }
-				5 = {
+			if = { # Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
+				limit = { # Vfix opt
+					NOT = { root = { has_valid_civic = civic_philosopher_king } }
+				}
+				random = {
+					chance = 5
 					add_trait = { trait = random_common show_message = no }
 					add_trait = { trait = random_negative show_message = no }
-					# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
-					modifier = {
-						factor = 0
-						exists = owner
-						owner = { has_valid_civic = civic_philosopher_king }
-					}
 				}
 			}
 		}

@@ -1740,7 +1740,7 @@ country_event = {
 			ordered_owned_planet = {
 				limit = { is_planet_eligible_for_treasure_planet = yes }
 				position = 0
-				order_by = trigger:sapient_pop_amount
+				order_by = trigger:pop_amount
 				save_event_target_as = capital_planet
 			}
 		}
@@ -2131,7 +2131,7 @@ country_event = {
 					owner = { is_default_or_fallen = yes }
 				}
 				position = 0
-				order_by = trigger:sapient_pop_amount
+				order_by = trigger:pop_amount
 				log = "Give system \\[Prev.GetName] back to \\[This.Owner.GetName]"
 				owner = { save_event_target_as = planet_owner }
 				prev = { # commit_system_to = { EMPIRE = prevprev.planet_owner } # The target scope is solved there (so add 1 more prev)
@@ -2461,7 +2461,7 @@ country_event = {
 				}
 			}
 			position = 0
-			order_by = trigger:sapient_pop_amount
+			order_by = trigger:pop_amount
 			set_capital = yes
 			save_event_target_as = new_diadochi_capital
 		}

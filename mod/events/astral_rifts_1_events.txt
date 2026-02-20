@@ -366,7 +366,7 @@ system_event = {
 		}
 		spawn_natural_wormhole = {
 			bypass_type = strange_wormhole
-			in_place_of = from
+			in_place_of = from # Astral rift
 			graphics_entity_name = strange_wormhole_entity
 			init_effect = {
 				link_wormholes = event_target:strange_wormhole_bypass
@@ -1264,7 +1264,7 @@ astral_rift_event = {
 		name = GOOD
 		explorer = {
 			if = {
-				limit = { # Vfix
+				limit = { # Vfix log
 					hidden_trigger = {
 						NOT = { has_relic = r_plasmic_core }
 					}
@@ -2975,7 +2975,14 @@ astral_rift_event = {
 	option = {
 		name = astral_rift.1565.a
 		explorer = {
-			add_relic = r_time_crystal
+			if = {
+				limit = { # Vfix log
+					hidden_trigger = {
+						NOT = { has_relic = r_time_crystal }
+					}
+				}
+				add_relic = r_time_crystal
+			}
 			if = {
 				limit = {
 					check_variable = { which = time_left value = 1 }
