@@ -552,7 +552,10 @@ building_holo_theatres = {
 	potential = {
 		has_owner = yes
 		owner = {
-			is_regular_empire = yes
+			OR = {
+				is_regular_empire = yes
+				is_country_type = gate_builders # So they may keep this building.
+			}
 			NOT = { has_valid_civic = civic_dystopian_society }
 		}
 		NOR = {

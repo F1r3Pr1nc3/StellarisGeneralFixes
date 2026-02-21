@@ -954,9 +954,11 @@ col_capital = {
 			exists = owner_or_space_owner
 			owner_or_space_owner = {
 				OR = {
-					NOT = { is_country_type = default }
+					NOR = {
+						is_country_type = default
+						is_country_type = gate_builders # So the Dessanu have 1 valid designation for their capital.
+					}
 					is_gestalt = yes
-					is_country_type = gate_builders # So the Dessanu have 1 valid designation for their capital.
 				}
 			}
 		}
