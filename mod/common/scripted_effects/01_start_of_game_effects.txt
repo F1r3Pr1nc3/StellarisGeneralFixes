@@ -2079,6 +2079,7 @@ void_dweller_home_planet_setup = {
 				limit = {
 					is_colonizable = no
 					has_deposit = no
+					can_have_mineral_deposits = yes
 				}
 				add_deposit = d_minerals_4
 				set_planet_flag = mining_planet
@@ -2160,6 +2161,31 @@ void_dweller_home_planet_setup = {
 
 	event_target:habitat_1_planet = {
 		set_planet_flag = habitat@PREV
+	}
+
+	owner = {
+		if = {
+			limit = {
+				OR = {
+					NOR = {
+						is_lithoid_empire = yes
+						is_robotic_species = yes
+						is_infernal_empire = yes
+					}
+					is_catalytic_empire = yes
+					country_uses_bio_ships = yes
+				}
+			}
+			root.solar_system.starbase = {
+				remove_starbase_building = { slot = 1 }
+				set_starbase_building = { slot = 1 building = hydroponics_bay }
+			}
+		}
+		if = {
+			limit = { has_valid_civic = civic_private_healthcare_corporate }
+			give_technology = { message = no tech = tech_frontier_health }
+			add_research_option = tech_subdermal_stimulation
+		}
 	}
 	if = { # First we generate pops for empires without strange pop starts
 		limit = {

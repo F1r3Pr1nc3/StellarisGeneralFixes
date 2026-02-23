@@ -386,3 +386,29 @@ living_standard_psi_assimilation_cyborg = {
 		factor = 100
 	}
 }
+
+living_standard_shroud_inoculation = {
+	pop_group_modifier = {
+		pop_happiness = -0.25
+	}
+
+	potential = {
+		has_shroud_dlc = yes
+		has_psionic_species_trait = yes
+		is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes
+		exists = from
+		from = { has_modifier = destroyers_of_the_lost_modifier }
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = SPECIES_MUST_BE_ASSIMILATING
+			has_citizenship_type = { type = citizenship_assimilation country = from }
+		}
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}

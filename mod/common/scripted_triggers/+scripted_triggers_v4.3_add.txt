@@ -1,7 +1,7 @@
 ## REMOVEME at v4.4
 ## = TRIGGERS shortdocu = ##
 #
-## = ADDED 10 = ##
+## = ADDED = ##
 # trader_is_subterranean
 # is_psionic_aura_suppressed
 # country_has_habitability_and_housing
@@ -29,6 +29,7 @@
 ##
 
 trader_is_subterranean = {
+	optimize_memory
 	exists = planet
 	planet = {
 		has_deposit = d_underground_contact_zone
@@ -36,6 +37,7 @@ trader_is_subterranean = {
 }
 
 is_psionic_aura_suppressed = {
+	optimize_memory
 	OR = {
 		check_aura_suppression_buildings = yes
 		any_system_colony = {
@@ -57,6 +59,7 @@ is_psionic_aura_suppressed = {
 
 # 01_scripted_triggers_refugees.txt
 country_has_habitability_and_housing = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -72,6 +75,7 @@ country_has_habitability_and_housing = {
 }
 
 planet_has_habitability_and_housing = {
+	optimize_memory
 	[[HABITABILITY]
 
 	habitability = {
@@ -91,9 +95,47 @@ planet_has_habitability_and_housing = {
 	}
 }
 
-### REMOVED at v4.3
+is_gestalt_ruler = {
+	optimize_memory
+	OR = {
+		is_councilor_type = councilor_ruler_hive_mind
+		is_councilor_type = councilor_ruler_machine_intelligence
+	}
+}
+
+is_toxic_baths_empire = {
+	optimize_memory
+	OR = {
+		has_valid_civic = civic_toxic_baths
+		has_valid_civic = civic_corporate_toxic_baths
+		has_valid_civic = civic_hive_toxic_baths
+		has_valid_civic = civic_machine_toxic_baths
+		has_valid_civic = civic_toxic_baths_individual_machine
+		has_valid_civic = civic_corporate_toxic_baths_individual_machine
+	}
+}
+
+has_toxic_baths_building = {
+	optimize_memory
+	OR = {
+		has_active_building = building_toxic_bath
+		has_active_building = building_toxic_bath_hive
+		has_active_building = building_toxic_bath_machine
+	}
+}
+
+has_anti_psionic_assimilation_living_standard = {
+	optimize_memory
+	has_living_standard = {
+		type = living_standard_shroud_inoculation
+		country = $COUNTRY$
+	}
+}
+
+### REMOVED at v4.3 ###
 # 05_scripted_triggers_traits.txt
 can_assemble_bio_pop = {
+	optimize_memory
 	planet = {
 		NAND = {
 			exists = assembling_species
@@ -103,6 +145,7 @@ can_assemble_bio_pop = {
 }
 
 can_assemble_hive_pop = {
+	optimize_memory
 	planet = {
 		OR = {
 			NOT = { exists = assembling_species }
@@ -117,6 +160,7 @@ can_assemble_hive_pop = {
 }
 
 can_assemble_robot = {
+	optimize_memory
 	planet = {
 		OR = {
 			NOT = { exists = assembling_species }
@@ -125,9 +169,14 @@ can_assemble_robot = {
 	}
 }
 
+has_toxic_baths = {
+	is_toxic_baths_empire = yes
+}
+
 # 08_scripted_triggers_shroud.txt
 # scope = system
 check_aura_suppressors = {
+	optimize_memory
 	OR = {
 		check_aura_suppression_buildings = yes
 		check_variable_arithmetic = { which = value:count_neighbor_shroud_seals value > 0 }
@@ -136,6 +185,7 @@ check_aura_suppressors = {
 
 # 01_scripted_triggers_jobs.txt
 miner_is_mineral_diver_trigger = {
+	optimize_memory
 	has_deposit = d_mineral_seabed
 }
 
@@ -143,6 +193,7 @@ miner_is_mineral_diver_trigger = {
 ### TODO REMOVEME in v4.4 (Old v4.2 triggers)
 
 has_good_habitability_and_housing = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -155,6 +206,7 @@ has_good_habitability_and_housing = {
 }
 
 has_good_habitability = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -166,6 +218,7 @@ has_good_habitability = {
 }
 
 has_decent_habitability_and_housing = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -178,6 +231,7 @@ has_decent_habitability_and_housing = {
 }
 
 has_decent_habitability = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -189,6 +243,7 @@ has_decent_habitability = {
 }
 
 has_some_habitability_and_housing = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -201,6 +256,7 @@ has_some_habitability_and_housing = {
 }
 
 has_some_habitability = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -212,6 +268,7 @@ has_some_habitability = {
 }
 
 has_any_habitability_and_housing = {
+	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
 
 	any_owned_planet = {
@@ -223,4 +280,19 @@ has_any_habitability_and_housing = {
 			is_planet_class = pc_cosmogenesis_world
 		}
 	}
+}
+
+roboticist_is_bath_attendant_individual_machine = {
+	optimize_memory
+	has_active_building = building_toxic_bath_machine
+}
+
+replicator_is_bath_attendant_machine = {
+	optimize_memory
+	has_active_building = building_toxic_bath_machine
+}
+
+spawning_drone_is_bath_attendant_hive_trigger = {
+	optimize_memory
+	has_active_building = building_toxic_bath_hive
 }

@@ -395,10 +395,12 @@ col_nexus = {
 	icon = GFX_colony_type_urban
 
 	potential = {
-		NOR = {
-			uses_district_set = machine_world
-			uses_district_set = ring_world
-			uses_district_set = habitat
+		NOT = {
+			# Vfix https://forum.paradoxplaza.com/forum/threads/stellaris-machine-nexus-district-not-available.1759683/
+			# Vfix https://forum.paradoxplaza.com/forum/threads/cetus-open-beta-v4-3-0-b571-missing-colony-designations-on-machine-worlds-habitats-ring-segments-nanite-worlds-for-machine-intelligence-empires.1896834/
+			# uses_district_set = machine_world
+			# uses_district_set = ring_world
+			# uses_district_set = habitat
 			uses_district_set = cosmogenesis_world
 		}
 		exists = owner_or_space_owner
@@ -956,7 +958,7 @@ col_capital = {
 				OR = {
 					NOR = {
 						is_country_type = default
-						is_country_type = gate_builders # So the Dessanu have 1 valid designation for their capital.
+						is_country_type = gate_builders # Vfix by Dux: So the Dessanu have 1 valid designation for their capital.
 					}
 					is_gestalt = yes
 				}

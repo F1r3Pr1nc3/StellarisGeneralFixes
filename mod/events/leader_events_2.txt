@@ -20,10 +20,10 @@ country_event = {
 	}
 
 	immediate = {
-		# Champions of the Empire
+		# Aptitude Traditions
 		# Adds a random common trait
 		if = {
-			limit = { has_tradition = tr_aptitude_champions_of_the_empire }
+			limit = { has_tradition = tr_aptitude_finish }
 			from = {
 				add_trait = { trait = random_common show_message = no }
 			}
@@ -260,6 +260,14 @@ country_event = {
 				}
 			}
 		}
+		# Mutagenic Spas/Toxic Baths
+		# Adds the Substance Abuser trait
+		if = {
+			limit = { is_toxic_baths_empire = yes }
+			from = {
+				add_trait = { trait = leader_trait_substance_abuser show_message = no }
+			}
+		}
 	}
 }
 
@@ -402,6 +410,20 @@ country_event = {
 				add_trait = { trait = leader_trait_psionic show_message = no }
 			}
 		}
+		# Mutagenic Spas/Toxic Baths
+		# Adds the Substance Abuser trait
+		if = {
+			limit = { is_toxic_baths_empire = yes }
+			every_owned_leader = {
+				limit = {
+					NOR = {
+						leader_class = envoy
+						is_gestalt_node = yes
+					}
+				}
+				give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser }
+			}
+		}
 	}
 }
 
@@ -494,11 +516,11 @@ leader_event = {
 				add_trait = { trait = random_negative show_message = no }
 			}
 		}
-		# Champions of the Empire
+		# Aptitude Traditions
 		# Adds a random common trait
 		if = {
 			limit = {
-				owner = { has_tradition = tr_aptitude_champions_of_the_empire }
+				owner = { has_tradition = tr_aptitude_finish }
 			}
 			add_trait = { trait = random_common show_message = no }
 		}
@@ -608,6 +630,14 @@ leader_event = {
 				}
 				25 = { add_trait = { trait = leader_trait_has_backup_clone show_message = no } }
 			}
+		}
+		# Mutagenic Spas/Toxic Baths
+		# Adds the Substance Abuser trait
+		if = {
+			limit = {
+				owner = { is_toxic_baths_empire = yes }
+			}
+			give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser }
 		}
 	}
 }

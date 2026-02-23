@@ -2005,17 +2005,6 @@ roboticist = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_robot_assembly_plant
 		}
-		swap_type = {
-			trigger = {
-				roboticist_is_bath_attendant_individual_machine = yes
-			}
-			name = bath_attendant_individual_machine
-			desc = bath_attendant_individual_machine
-			icon = bath_attendant_individual_machine
-			building_icon = building_toxic_bath
-			condition_string = SPECIALIST_JOB_TRIGGER
-			weight = 20
-		}
 	}
 	tags = { pop_assembly }
 
@@ -2044,12 +2033,6 @@ roboticist = {
 		}
 		upkeep = {
 			trigger = {
-				roboticist_is_bath_attendant_individual_machine = yes
-			}
-			alloys = 0.5
-		}
-		upkeep = {
-			trigger = {
 				owner = {
 					has_active_tradition = tr_cybernetics_metabolic_reprocessing
 				}
@@ -2060,15 +2043,6 @@ roboticist = {
 
 	triggered_planet_modifier = {
 		planet_pop_assembly_add = 2
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			roboticist_is_bath_attendant_individual_machine = yes
-		}
-		planet_pop_assembly_mult = 0.0075
-		pop_amenities_usage_mult = 0.03
-		mult = planet.value:toxic_attendant_growth
 	}
 
 	triggered_planet_modifier = {
@@ -2192,18 +2166,6 @@ healthcare = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_medical_2
 		}
-		# Mutagenic Spa Attendant
-		swap_type = {
-			trigger = {
-				healthcare_is_mutagenic_trigger = yes
-			}
-			name = bath_attendant
-			desc = bath_attendant
-			icon = bath_attendant
-			building_icon = building_toxic_bath
-			condition_string = SPECIALIST_JOB_TRIGGER
-			weight = 5
-		}
 		# Genomic Researchers
 		swap_type = {
 			trigger = {
@@ -2233,12 +2195,6 @@ healthcare = {
 		category = planet_doctors
 		# Base Upkeep
 		upkeep = {
-			consumer_goods = 1
-		}
-		upkeep = {
-			trigger = {
-				healthcare_is_mutagenic_trigger = yes
-			}
 			consumer_goods = 1
 		}
 		# Job Swap - Genomic Researcher
@@ -3135,24 +3091,97 @@ bath_attendant = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_toxic_bath
 		}
+		swap_type = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_individual_machine = yes
+				}
+			}
+			name = bath_attendant_individual_machine
+			desc = bath_attendant_individual_machine
+			icon = bath_attendant_individual_machine
+			weight = 5
+		}
 	}
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_assimilated = no
+		is_being_purged = no
+	}
+
+	possible_precalc = can_fill_specialist_job
 	possible = {
-		always = no
+		hidden_trigger = { exists = owner }
+		owner = {
+			is_gestalt = no
+		}
+	}
+
+	resources = {
+		category = planet_bath_attendants
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_megacorp = yes
+				}
+			}
+			trade = 1
+		}
+		upkeep = {
+			consumer_goods = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					is_worker_coop_empire = yes
+				}
+			}
+		}
+		pop_cat_ruler_bonus_workforce_mult = 0.05
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_worker_coop_empire = yes
+			}
+		}
+		pop_cat_worker_bonus_workforce_mult = 0.025
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_megacorp = no
+			}
+		}
+		planet_amenities_add = 100
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	weight = {
+		weight = @specialist_job_weight
 	}
 }
 
 bath_attendant_individual_machine = {
 	category = specialist
-
+	possible = {
+		always = no
+	}
 	swappable_data = {
 		default = {
 			condition_string = SPECIALIST_JOB_TRIGGER
 			building_icon = building_toxic_bath
 		}
-	}
-
-	possible = {
-		always = no
 	}
 }
 

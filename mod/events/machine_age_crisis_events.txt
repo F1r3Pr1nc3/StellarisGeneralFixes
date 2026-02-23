@@ -12237,6 +12237,17 @@ country_event = {
 			}
 			stop_crisis_sound = yes
 			end_crisis = yes
+			remove_global_flag = galactic_crisis_recently_fired
+			if = {
+				limit = { has_global_flag = galactic_crisis_early_defeat_tracker_1 }
+				remove_global_flag = galactic_crisis_early_defeat_tracker_1
+				multiply_crisis_strength = 1.5
+			}
+			else_if = {
+				limit = { has_global_flag = galactic_crisis_early_defeat_tracker_2 }
+				remove_global_flag = galactic_crisis_early_defeat_tracker_2
+				multiply_crisis_strength = 1.25
+			}
 			from = { set_country_flag = with_great_power_achievement }
 			remove_global_flag = synth_queen_ongoing
 			set_global_flag = synth_queen_defeated
@@ -12647,6 +12658,17 @@ country_event = {
 			}
 			stop_crisis_sound = yes
 			end_crisis = yes
+			remove_global_flag = galactic_crisis_recently_fired
+			if = {
+				limit = { has_global_flag = galactic_crisis_early_defeat_tracker_1 }
+				remove_global_flag = galactic_crisis_early_defeat_tracker_1
+				multiply_crisis_strength = 1.5
+			}
+			else_if = {
+				limit = { has_global_flag = galactic_crisis_early_defeat_tracker_2 }
+				remove_global_flag = galactic_crisis_early_defeat_tracker_2
+				multiply_crisis_strength = 1.25
+			}
 			from = { set_country_flag = with_great_power_achievement }
 			remove_global_flag = synth_queen_ongoing
 			set_global_flag = synth_queen_defeated

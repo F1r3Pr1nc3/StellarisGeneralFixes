@@ -994,7 +994,7 @@ civic_distinguished_admiralty = {
 	modifier = {
 		ship_fire_rate_mult = 0.10
 		leader_commanders_upkeep_mult = -0.25
-		command_limit_add = 30
+		command_limit_mult = 0.20
 		commander_initial_skill = 2
 		add_attunement_the_eater_of_worlds = @civic_attunement1
 	}
@@ -2881,7 +2881,18 @@ civic_eager_explorers = {
 
 	description = "civic_eager_explorers_effects"
 	negative_description = "civic_eager_explorers_negative_effects"
-
+	possible = {
+		origin = {
+			NOT = {
+				value = origin_unplugged
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_beastmasters
+			}
+		}
+	}
 	modification = {
 		add = {
 			has_technology = tech_subspace_drive

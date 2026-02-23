@@ -11,18 +11,6 @@ spawning_drone = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_spawning_pool
 		}
-		# Permutation Attendance Drone
-		swap_type = {
-			trigger = {
-				spawning_drone_is_bath_attendant_hive_trigger = yes
-			}
-			name = bath_attendant_hive
-			desc = bath_attendant_hive
-			icon = bath_attendant_hive
-			building_icon = building_toxic_bath_hive
-			condition_string = DRONE_JOB_TRIGGER
-			weight = 5
-		}
 		# Offspring Drone
 		swap_type = {
 			trigger = {
@@ -160,36 +148,6 @@ spawning_drone = {
 			}
 			alloys = 2
 		}
-		upkeep = {
-			trigger = {
-				spawning_drone_is_bath_attendant_hive_trigger = yes
-				exists = owner
-				owner = {
-					is_lithoid_or_infernal_empire = no
-				}
-			}
-			food = 5
-		}
-		upkeep = {
-			trigger = {
-				spawning_drone_is_bath_attendant_hive_trigger = yes
-				exists = owner
-				owner = {
-					is_lithoid_empire = yes
-				}
-			}
-			minerals = 5
-		}
-		upkeep = {
-			trigger = {
-				spawning_drone_is_bath_attendant_hive_trigger = yes
-				exists = owner
-				owner = {
-					is_infernal_empire = yes
-				}
-			}
-			alloys = 2
-		}
 	}
 
 	triggered_planet_pop_group_modifier_for_species = {
@@ -221,15 +179,6 @@ spawning_drone = {
 			spawning_drone_is_offspring_drone_trigger = yes
 		}
 		planet_jobs_simple_drone_produces_mult = 0.1
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			spawning_drone_is_bath_attendant_hive_trigger = yes
-		}
-		bonus_pop_growth_mult = 0.01
-		pop_environment_tolerance = -0.015
-		mult = planet.value:toxic_attendant_growth
 	}
 
 	triggered_planet_modifier = {
@@ -308,17 +257,6 @@ replicator = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_robot_assembly_plant
 		}
-		swap_type = {
-			trigger = {
-				replicator_is_bath_attendant_machine = yes
-			}
-			name = bath_attendant_machine
-			desc = bath_attendant_machine
-			icon = bath_attendant_machine
-			building_icon = building_toxic_bath
-			condition_string = SPECIALIST_JOB_TRIGGER
-			weight = 20
-		}
 	}
 
 	tags = { pop_assembly }
@@ -348,25 +286,10 @@ replicator = {
 		planet_pop_assembly_add = 0.5 # If this changes, update tr_modularity_2_modifier_desc
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			replicator_is_bath_attendant_machine = yes
-		}
-		planet_pop_assembly_mult = 0.0075
-		pop_amenities_usage_mult = 0.03
-		mult = planet.value:toxic_attendant_growth
-	}
-
 	resources = {
 		category = planet_pop_assemblers
 		upkeep = {
 			alloys = 1
-		}
-		upkeep = {
-			trigger = {
-				replicator_is_bath_attendant_machine = yes
-			}
-			alloys = 0.5
 		}
 	}
 
@@ -3292,23 +3215,112 @@ warrior_drone = {
 ##Toxic Bath Jobs
 #Machine (Deafult Gestalt)
 bath_attendant_machine = {
-	category = complex_drone
+	category = simple_drone
 
 	swappable_data = {
 		default = {
 			condition_string = DRONE_JOB_TRIGGER
 			building_icon = building_toxic_bath
 		}
+		#Hive Version
+		swap_type = {
+			trigger = {
+				owner = {
+					is_hive_empire = yes
+				}
+			}
+			name = bath_attendant_hive
+			icon = bath_attendant_hive
+			desc = bath_attendant_hive
+			building_icon = building_toxic_bath
+			condition_string = DRONE_JOB_TRIGGER
+			weight = 2
+		}
+		# Rogue Servitor Version
+		swap_type = {
+			trigger = {
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+			name = bath_attendant
+			icon = bath_attendant
+			desc = bath_attendant
+			building_icon = building_toxic_bath
+			condition_string = DRONE_JOB_TRIGGER
+			weight = 5
+		}
 	}
 
-	possible = {
-		always = no
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_assimilated = no
+		is_being_purged = no
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+
+	resources = {
+		category = planet_bath_attendants_machine
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					NOT = {
+						has_valid_civic = civic_machine_servitor
+					}
+				}
+			}
+			minerals = 4
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+			consumer_goods = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+		pop_cat_complex_drone_bonus_workforce_mult = 0.05
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		pop_bio_trophy_bonus_workforce_mult = 0.05
+	}
+
+	triggered_planet_modifier = {
+		planet_amenities_no_happiness_add = 100
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	weight = {
+		weight = @specialist_job_weight
 	}
 }
 
 #Swap for auth_hive
 bath_attendant_hive = {
-	category = complex_drone
+	category = simple_drone
 
 	swappable_data = {
 		default = {

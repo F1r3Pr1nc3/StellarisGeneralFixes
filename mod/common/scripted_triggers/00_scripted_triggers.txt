@@ -4289,6 +4289,13 @@ is_gestalt_node = {
 	}
 }
 
+is_gestalt_ruler = {
+	OR = {
+		is_councilor_type = councilor_ruler_hive_mind
+		is_councilor_type = councilor_ruler_machine_intelligence
+	}
+}
+
 has_special_star_flag_trigger = {
 	OR = {
 		# Start System Flags
@@ -4411,7 +4418,7 @@ has_specialist_subject_leader_trait = {
 	}
 }
 
-has_toxic_baths = {
+is_toxic_baths_empire = {
 	OR = {
 		has_valid_civic = civic_toxic_baths
 		has_valid_civic = civic_corporate_toxic_baths
@@ -4419,6 +4426,14 @@ has_toxic_baths = {
 		has_valid_civic = civic_machine_toxic_baths
 		has_valid_civic = civic_toxic_baths_individual_machine
 		has_valid_civic = civic_corporate_toxic_baths_individual_machine
+	}
+}
+
+has_toxic_baths_building = {
+	OR = {
+		has_active_building = building_toxic_bath
+		has_active_building = building_toxic_bath_hive
+		has_active_building = building_toxic_bath_machine
 	}
 }
 

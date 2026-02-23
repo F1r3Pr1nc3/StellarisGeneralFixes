@@ -1896,6 +1896,17 @@ planet_event = {
 			destroy_country = yes # Destroy the Contingency
 			# should end their purges too
 		}
+		remove_global_flag = galactic_crisis_recently_fired
+		if = {
+			limit = { has_global_flag = galactic_crisis_early_defeat_tracker_1 }
+			remove_global_flag = galactic_crisis_early_defeat_tracker_1
+			multiply_crisis_strength = 1.5
+		}
+		else_if = {
+			limit = { has_global_flag = galactic_crisis_early_defeat_tracker_2 }
+			remove_global_flag = galactic_crisis_early_defeat_tracker_2
+			multiply_crisis_strength = 1.25
+		}
 		end_crisis = yes
 		event_target:final_machine_world_destroyer = { set_country_flag = final_machine_world_destroyed }
 		# Cybrex
@@ -1980,6 +1991,14 @@ planet_event = {
 	immediate = {
 		owner = { save_global_event_target_as = AI_crisis }
 		create_ai_fleet = yes
+		if = {
+			limit = { is_difficulty > 3 }
+			create_ai_fleet = yes
+		}
+		if = {
+			limit = { is_difficulty > 5 }
+			create_ai_fleet = yes
+		}
 		create_ai_constructors = yes
 		planet_event = { id = crisis.2050 }
 	}

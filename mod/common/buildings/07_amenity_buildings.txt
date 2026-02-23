@@ -554,7 +554,7 @@ building_holo_theatres = {
 		owner = {
 			OR = {
 				is_regular_empire = yes
-				is_country_type = gate_builders # So they may keep this building.
+				is_country_type = gate_builders # Vfix by Dux: So they may keep this building.
 			}
 			NOT = { has_valid_civic = civic_dystopian_society }
 		}
@@ -1162,12 +1162,88 @@ building_toxic_bath = {
 		has_owner = yes
 		NOT = { has_modifier = slave_colony }
 		owner = {
-			is_regular_empire = yes
+			is_toxic_baths_empire = yes
 			OR = {
-				has_valid_civic = civic_toxic_baths
-				has_valid_civic = civic_corporate_toxic_baths
+				AND = {
+					is_regular_empire = yes
+					is_individual_machine = no
+				}
+				has_valid_civic = civic_machine_servitor
 			}
-			is_individual_machine = no
+		}
+	}
+
+	destroy_trigger = {
+		has_owner = yes
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_toxic_baths_empire = no
+					is_individual_machine = yes
+					AND = {
+						is_gestalt = yes
+						NOT = { has_valid_civic = civic_machine_servitor }
+					}
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_toxic_bath_hive
+		building_toxic_bath_machine
+	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
+	planet_modifier = {
+		habitability_floor_add = -0.10
+		habitability_ceil_add = -0.10
+		pop_environment_tolerance = -0.10
+	}
+
+	inline_script = {
+		script = jobs/bath_attendant_add
+		AMOUNT = @building_static_jobs
+	}
+
+	triggered_desc = {
+		text = building_toxic_bath_tt
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+}
+
+building_toxic_bath_hive = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+	icon = building_toxic_bath_hive
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		industrial
+		foundry
+		factory
+	}
+
+	potential = {
+		owner = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+			is_toxic_baths_empire = yes
 		}
 	}
 
@@ -1177,30 +1253,96 @@ building_toxic_bath = {
 
 	destroy_trigger = {
 		has_owner = yes
-		OR = {
-			has_modifier = slave_colony
-			owner = {
-				NAND = {
-					is_regular_empire = yes
-					OR = {
-						has_valid_civic = civic_toxic_baths
-						has_valid_civic = civic_corporate_toxic_baths
-					}
-				}
+		owner = {
+			NAND = {
+				is_hive_empire = yes
+				has_valid_civic = civic_hive_toxic_baths
 			}
 		}
 	}
 
-	triggered_desc = {
-		text = healthcare_is_mutagenic_tt
-	}
-	triggered_desc = {
-		text = NEW_LINE
+	planet_modifier = {
+		habitability_floor_add = -0.10
+		habitability_ceil_add = -0.10
+		pop_environment_tolerance = -0.10
 	}
 
 	inline_script = {
-		script = jobs/healthcare_add
+		script = jobs/bath_attendant_add
 		AMOUNT = @building_static_jobs
+	}
+
+	triggered_desc = {
+		text = building_toxic_bath_tt
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+}
+
+building_toxic_bath_machine = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+	icon = building_toxic_bath_machine
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		industrial
+		foundry
+		factory
+	}
+
+	potential = {
+		has_owner = yes
+		owner = {
+			is_toxic_baths_empire = yes
+			is_synthetic_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	}
+
+	destroy_trigger = {
+		has_owner = yes
+		owner = {
+			OR = {
+				is_synthetic_empire = no
+				has_valid_civic = civic_machine_servitor
+				is_toxic_baths_empire = no
+			}
+		}
+	}
+
+	convert_to = {
+		building_toxic_bath
+		building_toxic_bath_hive
+	}
+
+	allow = {
+		is_occupied_flag = no
+	}
+
+	planet_modifier = {
+		habitability_floor_add = -0.10
+		habitability_ceil_add = -0.10
+		pop_environment_tolerance = -0.10
+	}
+
+	inline_script = {
+		script = jobs/bath_attendant_add
+		AMOUNT = @building_static_jobs
+	}
+
+	triggered_desc = {
+		text = building_toxic_bath_tt
 	}
 
 	resources = {

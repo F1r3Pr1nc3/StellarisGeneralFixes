@@ -2799,7 +2799,7 @@ planet_event = {
 					from.owner = { has_ascension_perk = ap_become_the_crisis }
 				}
 				every_owned_pop_group = {
-					limit = { is_robotic_species = yes }
+					limit = { is_robot_pop_group = yes }
 					while = {
 						count = value:per_100_pop_amount # For every 100 pops iterate through this loop once
 						from.owner = { complete_crisis_objective = crisobj_purge_pops }
@@ -2809,7 +2809,7 @@ planet_event = {
 			}
 			else = {
 				every_owned_pop_group = {
-					limit = { is_robotic_species = yes }
+					limit = { is_robot_pop_group = yes }
 					kill_all_pop = yes
 				}
 			}
