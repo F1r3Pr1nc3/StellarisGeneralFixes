@@ -487,7 +487,8 @@ job_weights_research_modifier = {
 	add = value:job_weights_manual_corrections|JOB|$JOB$|
 	add = 1
 	min = 0
-	pow = 3 # we need it to have a bit more impact
+	# Vfix https://forum.paradoxplaza.com/forum/threads/experimental-engineers-will-all-unemploy-themselves-for-some-reason.1903663/
+	mult = 3 # we need it to have a bit more impact
 }
 
 job_weights_modifier = {
@@ -504,7 +505,7 @@ job_weights_modifier = {
 	add = value:job_weights_manual_corrections|JOB|$JOB$|
 	add = 1
 	min = 0
-	pow = 3 # we need it to have a bit more impact
+	pow = 2 # we need it to have a bit more impact
 
 	modifier = {
 		owner = {
@@ -530,7 +531,7 @@ job_weights_multiple_resources_modifier = {
 	add = value:job_weights_manual_corrections|JOB|$JOB$|
 	add = 1
 	min = 0
-	pow = 3 # we need it to have a bit more impact
+	pow = 2 # we need it to have a bit more impact
 
 	modifier = {
 		owner = {
@@ -1240,7 +1241,7 @@ scripted_modifier_job_weight_mult = {
 	base = 1
 	add = modifier:$MODIFIER$
 	min = 0.1
-	pow = 3 # we need it to have a bit more impact
+	pow = 2 # we need it to have a bit more impact
 }
 
 bailout_scaling_factor = {

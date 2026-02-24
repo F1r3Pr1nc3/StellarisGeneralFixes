@@ -1298,24 +1298,58 @@ astral_rift_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		# Vfix
+		# Vfix ghosttarget
+		if = {
+			limit = { exists = explorer }
+			explorer = { save_event_target_as = astral_rift_explorer }
+		}
+		else_if = {
+			limit = { exists = owner }
+			owner = { save_event_target_as = astral_rift_explorer }
+		}
+		else_if = {
+			limit = { exists = solar_system.space_owner }
+			solar_system.space_owner = { save_event_target_as = astral_rift_explorer }
+		}
 		if = {
 			limit = { exists = fleet }
 			fleet = { save_event_target_as = astral_rift_fleet }
 		}
-		else = {
+		else_if = {
+			limit = { exists = from.fleet }
 			from.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else_if = {
+			limit = { exists = leader }
+			leader.fleet = { save_event_target_as = astral_rift_fleet }
+		}
+		else_if = { # Vfix: very last fallback
+			limit = { exists = solar_system }
+			solar_system = {
+				random_fleet_in_system = {
+					limit = {
+						is_civilian = yes
+						is_ship_class = shipclass_science_ship
+						exists = leader
+						is_owned_by = event_target:astral_rift_explorer
+					}
+					save_event_target_as = astral_rift_fleet
+				}
+			}
+		}
+		if = { # Vfix: very last fallback
+			limit = { NOT = { exists = event_target:astral_rift_explorer }}
+			event_target:astral_rift_fleet.owner = { save_event_target_as = astral_rift_explorer }
 		}
 	}
 
 	option = {
 		name = UNFORTUNATE
-		# explorer = {
-		event_target:astral_rift_fleet.owner = { # Vfix
+		event_target:astral_rift_explorer = { # Vfix for some reason
 			add_modifier = { modifier = rift_samples_biology_modifier years = 10 }
 			astral_thread_large_reward = yes
 		}
-		event_target:astral_rift_fleet = { # Vfix
+		event_target:astral_rift_fleet = { # Vfix for some reason
 			kill_leader = { show_notification = yes }
 			destroy_fleet = this
 		}

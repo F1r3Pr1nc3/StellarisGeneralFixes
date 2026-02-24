@@ -299,58 +299,13 @@ fleet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		event_target:extradimensionals = {
-			create_leader = {
-				class = commander
-				species = event_target:extradimensional_species
-				name = random
-				skill = 3
-				effect = {
-					random_list = {
-						25 = { add_trait = { trait = leader_trait_ethereal } }
-						25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-						50 = {  }
-					}
-				}
-			}
-			create_fleet = {
-				effect = {
-					set_owner = prev
-					while = {
-						count = 9
-						create_ship = {
-							name = random
-							design = "NAME_Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-					}
-					while = {
-						count = 12
-						create_ship = {
-							name = random
-							design = "NAME_Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-					}
-					while = {
-						count = 20
-						create_ship = {
-							name = random
-							design = "NAME_Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-					}
-					set_location = {
-						target = root
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
-					set_fleet_bombardment_stance = armageddon
-					assign_leader = last_created_leader
-				}
+		create_unbidden_fleet = yes
+		if = {
+			limit = { is_difficulty > 3 }
+			create_unbidden_fleet = yes
+			if = {
+				limit = { is_difficulty > 5 }
+				create_unbidden_fleet = yes
 			}
 		}
 	}
@@ -1398,58 +1353,13 @@ fleet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		event_target:extradimensional_hunters = {
-			create_leader = {
-				class = commander
-				species = event_target:extradimensional_hunters_species
-				name = random
-				skill = 3
-				effect = {
-					random_list = {
-						25 = { add_trait = { trait = leader_trait_ethereal } }
-						25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-						50 = {  }
-					}
-				}
-			}
-			create_fleet = {
-				effect = {
-					set_owner = prev
-					while = {
-						count = 9
-						create_ship = {
-							name = random
-							design = "NAME_Huntress"
-							graphical_culture = "extra_dimensional_02"
-						}
-					}
-					while = {
-						count = 12
-						create_ship = {
-							name = random
-							design = "NAME_Assassin"
-							graphical_culture = "extra_dimensional_02"
-						}
-					}
-					while = {
-						count = 20
-						create_ship = {
-							name = random
-							design = "NAME_Predator"
-							graphical_culture = "extra_dimensional_02"
-						}
-					}
-					set_location = {
-						target = root
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
-					set_fleet_bombardment_stance = armageddon
-					assign_leader = last_created_leader
-				}
+		create_aberrant_fleet = yes
+		if = {
+			limit = { is_difficulty > 3 }
+			create_aberrant_fleet = yes
+			if = {
+				limit = { is_difficulty > 5 }
+				create_aberrant_fleet = yes
 			}
 		}
 	}
@@ -1903,58 +1813,13 @@ fleet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		event_target:extradimensional_trespassers = {
-			create_leader = {
-				class = commander
-				species = event_target:extradimensional_trespassers_species
-				name = random
-				skill = 3
-				effect = {
-					random_list = {
-						25 = { add_trait = { trait = leader_trait_ethereal } }
-						25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-						50 = {  }
-					}
-				}
-			}
-			create_fleet = {
-				effect = {
-					set_owner = prev
-					while = {
-						count = 9
-						create_ship = {
-							name = random
-							design = "NAME_Eradicator"
-							graphical_culture = "extra_dimensional_03"
-						}
-					}
-					while = {
-						count = 12
-						create_ship = {
-							name = random
-							design = "NAME_Annihilator"
-							graphical_culture = "extra_dimensional_03"
-						}
-					}
-					while = {
-						count = 20
-						create_ship = {
-							name = random
-							design = "NAME_Obliterator"
-							graphical_culture = "extra_dimensional_03"
-						}
-					}
-					set_location = {
-						target = root
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
-					set_fleet_bombardment_stance = armageddon
-					assign_leader = last_created_leader
-				}
+		create_vehement_fleet = yes
+		if = {
+			limit = { is_difficulty > 3 }
+			create_vehement_fleet = yes
+			if = {
+				limit = { is_difficulty > 5 }
+				create_vehement_fleet = yes
 			}
 		}
 	}
@@ -2393,132 +2258,35 @@ country_event = {
 				}
 			}
 		}
-		owner_species = { save_event_target_as = extradimensional_species }
+		# owner_species = { save_event_target_as = extradimensional_species }
 		country_event = { id = crisis.1260 } # Restart spawn cycle
-		# Create Admiral
-		create_leader = {
-			class = commander
-			species = event_target:extradimensional_species
-			name = random
-			skill = 3
-			effect = {
-				random_list = {
-					25 = { add_trait = { trait = leader_trait_ethereal } }
-					25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-					50 = {  }
-				}
-			}
-		}
+		# Create Fleet
 		switch = { # Vfix opt
 			trigger = is_country_type
 			# Extradimensionals 1
-			extradimensional = {	# Create Fleet
-				create_fleet = {
-					effect = {
-						set_owner = root
-						while = {
-							count = 6
-							create_ship = {
-								name = random
-								design = "NAME_Revenant"
-								graphical_culture = "extra_dimensional_01"
-							}
-						}
-						while = {
-							count = 8
-							create_ship = {
-								name = random
-								design = "NAME_Phantom"
-								graphical_culture = "extra_dimensional_01"
-							}
-						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Wraith"
-								graphical_culture = "extra_dimensional_01"
-							}
-						}
-					}
+			extradimensional = {
+				create_unbidden_fleet = yes
+				if = {
+					limit = { is_difficulty >= 5 }
+					create_unbidden_fleet = yes
 				}
 			}
 			# Extradimensionals 2
-			extradimensional_2 = {	# Create Fleet
-				create_fleet = {
-					effect = {
-						set_owner = root
-						while = {
-							count = 6
-							create_ship = {
-								name = random
-								design = "NAME_Huntress"
-								graphical_culture = "extra_dimensional_02"
-							}
-						}
-						while = {
-							count = 8
-							create_ship = {
-								name = random
-								design = "NAME_Assassin"
-								graphical_culture = "extra_dimensional_02"
-							}
-						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Predator"
-								graphical_culture = "extra_dimensional_02"
-							}
-						}
-					}
+			extradimensional_2 = {
+				create_aberrant_fleet = yes
+				if = {
+					limit = { is_difficulty >= 5 }
+					create_aberrant_fleet = yes
 				}
 			}
 			# Extradimensionals 3
-			extradimensional_3 = {	# Create Fleet
-				create_fleet = {
-					effect = {
-						set_owner = root
-						while = {
-							count = 6
-							create_ship = {
-								name = random
-								design = "NAME_Eradicator"
-								graphical_culture = "extra_dimensional_03"
-							}
-						}
-						while = {
-							count = 8
-							create_ship = {
-								name = random
-								design = "NAME_Annihilator"
-								graphical_culture = "extra_dimensional_03"
-							}
-						}
-						while = {
-							count = 15
-							create_ship = {
-								name = random
-								design = "NAME_Obliterator"
-								graphical_culture = "extra_dimensional_03"
-							}
-						}
-					}
+			extradimensional_3 = {
+				create_vehement_fleet = yes
+				if = {
+					limit = { is_difficulty >= 5 }
+					create_vehement_fleet = yes
 				}
 			}
-		}
-		last_created_fleet = {
-			set_location = {
-				target = event_target:dimensional_portal
-				distance = 5
-				angle = random
-			}
-			set_fleet_stance = aggressive
-			set_aggro_range = 500
-			set_aggro_range_measure_from = self
-			set_fleet_bombardment_stance = armageddon
-			assign_leader = last_created_leader
 		}
 	}
 }
@@ -2563,6 +2331,58 @@ country_event = {
 			if = {
 				limit = { NOT = { exists = starbase } }
 				create_starbase = { owner = root size = starbase_exd }
+			}
+		}
+		# Vfix: Re-assing idle Admirals (there are a lot)
+		if = {
+			limit = {
+				any_owned_fleet = {
+					is_mobile = yes
+					NOR = {
+						is_civilian = yes
+						exists = leader
+						fleet_power < 10000
+						num_ships < 3
+					}
+				}
+				any_owned_leader = {
+					leader_class = commander
+					is_idle = yes
+					NOR = {
+						is_councilor = yes
+						is_ruler = yes
+						exists = fleet
+						has_trait = subclass_commander_general
+						has_trait = leader_trait_butcher
+					}
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					is_mobile = yes
+					NOR = {
+						is_civilian = yes
+						exists = leader
+						fleet_power < 10000
+						num_ships < 3
+					}
+				}
+				root = {
+					random_owned_leader = {
+						limit = {
+							leader_class = commander
+							is_idle = yes
+							NOR = {
+								is_councilor = yes
+								is_ruler = yes
+								exists = fleet
+								has_trait = subclass_commander_general
+								has_trait = leader_trait_butcher
+							}
+						}
+						prevprev = { assign_leader = prev }
+					}
+				}
 			}
 		}
 		switch = { # Vfix opt
@@ -2668,163 +2488,34 @@ ship_event = {
 					}
 				}
 			}
-			owner_species = { save_event_target_as = extradimensional_species }
-			# Create Admiral
-			# Vfix patch: old admirals often survive the fleet kill, so there are more and more idling leaders in the pool
-			if = {
-				limit = {
-					any_owned_leader = {
-						leader_class = commander
-						is_idle = yes
-						NOR = {
-							is_ruler = yes
-							exists = fleet
-						}
-					}
-				}
-				if = {
-					limit = {
-						count_owned_leader = { count < 20 }
-					}
-					create_leader = {
-						class = commander
-						species = event_target:extradimensional_species
-						name = random
-						skill = 3
-						effect = {
-							random_list = {
-								25 = { add_trait = { trait = leader_trait_ethereal } }
-								25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-								50 = {  }
-							}
-							save_event_target_as = exd_leader
-						}
-					}
-				}
-				else = {
-					random_owned_leader = {
-						limit = {
-							leader_class = commander
-							is_idle = yes
-							NOR = {
-								is_ruler = yes
-								exists = fleet
-							}
-						}
-						save_event_target_as = exd_leader
-					}
-				}
-			}
+			# owner_species = { save_event_target_as = extradimensional_species }
+			# Create Fleet
 			switch = { # Vfix opt
 				trigger = is_country_type
 				# Extradimensionals 1
-				extradimensional = {	# Create Fleet
-					create_fleet = {
-						effect = {
-							set_owner = root.owner
-							while = {
-								count = 6
-								create_ship = {
-									name = random
-									design = "NAME_Revenant"
-									graphical_culture = "extra_dimensional_01"
-								}
-							}
-							while = {
-								count = 8
-								create_ship = {
-									name = random
-									design = "NAME_Phantom"
-									graphical_culture = "extra_dimensional_01"
-								}
-							}
-							while = {
-								count = 15
-								create_ship = {
-									name = random
-									design = "NAME_Wraith"
-									graphical_culture = "extra_dimensional_01"
-								}
-							}
-						}
+				extradimensional = {
+					create_unbidden_fleet = yes
+					if = {
+						limit = { is_difficulty >= 5 }
+						create_unbidden_fleet = yes
 					}
 				}
 				# Extradimensionals 2
-				extradimensional_2 = {	# Create Fleet
-					create_fleet = {
-						effect = {
-							set_owner = root.owner
-							while = {
-								count = 6
-								create_ship = {
-									name = random
-									design = "NAME_Huntress"
-									graphical_culture = "extra_dimensional_02"
-								}
-							}
-							while = {
-								count = 8
-								create_ship = {
-									name = random
-									design = "NAME_Assassin"
-									graphical_culture = "extra_dimensional_02"
-								}
-							}
-							while = {
-								count = 15
-								create_ship = {
-									name = random
-									design = "NAME_Predator"
-									graphical_culture = "extra_dimensional_02"
-								}
-							}
-						}
+				extradimensional_2 = {
+					create_aberrant_fleet = yes
+					if = {
+						limit = { is_difficulty >= 5 }
+						create_aberrant_fleet = yes
 					}
 				}
 				# Extradimensionals 3
-				extradimensional_3 = {	# Create Fleet
-					create_fleet = {
-						effect = {
-							set_owner = root.owner
-							while = {
-								count = 6
-								create_ship = {
-									name = random
-									design = "NAME_Eradicator"
-									graphical_culture = "extra_dimensional_03"
-								}
-							}
-							while = {
-								count = 8
-								create_ship = {
-									name = random
-									design = "NAME_Annihilator"
-									graphical_culture = "extra_dimensional_03"
-								}
-							}
-							while = {
-								count = 15
-								create_ship = {
-									name = random
-									design = "NAME_Obliterator"
-									graphical_culture = "extra_dimensional_03"
-								}
-							}
-						}
+				extradimensional_3 = {
+					create_vehement_fleet = yes
+					if = {
+						limit = { is_difficulty >= 5 }
+						create_vehement_fleet = yes
 					}
 				}
-			}
-			last_created_fleet = {
-				set_location = {
-					target = event_target:dimensional_portal
-					distance = 5
-					angle = random
-				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
-				set_fleet_bombardment_stance = armageddon
-				assign_leader = event_target:exd_leader
 			}
 		}
 	}

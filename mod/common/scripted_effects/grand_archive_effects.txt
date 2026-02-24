@@ -1167,67 +1167,67 @@ create_treasure_trove_pirate_fleet = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.0 }
 					}
-					create_pirate_ships_0 = yes
+					create_dyn_pirate_fleet = { Reaver = 5 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.1 }
 					}
-					create_pirate_ships_1 = yes
+					create_dyn_pirate_fleet = { Reaver = 5 Brigand = 2 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.2 }
 					}
-					create_pirate_ships_2 = yes
+					create_dyn_pirate_fleet = { Reaver = 3 Brigand = 3 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.3 }
 					}
-					create_pirate_ships_3 = yes
+					create_dyn_pirate_fleet = { Skull = 3 Brigand = 3 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.4 }
 					}
-					create_pirate_ships_4 = yes
+					create_dyn_pirate_fleet = { Skull = 4 Brigand = 2 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.5 }
 					}
-					create_pirate_ships_5 = yes
+					create_dyn_pirate_fleet = { Skull = 3 Brigand = 3 Marauder = 2 Corsair = 1 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.6 }
 					}
-					create_pirate_ships_6 = yes
+					create_dyn_pirate_fleet = { Skull = 3 Brigand = 3 Marauder = 2 Corsair = 2 Black_Earl = 1 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.7 }
 					}
-					create_pirate_ships_7 = yes
+					create_dyn_pirate_fleet = { Skull = 3 Brigand = 3 Marauder = 2 Corsair = 2 Black_Earl = 1 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.8 }
 					}
-					create_pirate_ships_8 = yes
+					create_dyn_pirate_fleet = { Skull = 4 Brigand = 3 Marauder = 2 Corsair = 2 Black_Earl = 2 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 0.9 }
 					}
-					create_pirate_ships_9 = yes
+					create_dyn_pirate_fleet = { Black_Earl = 1 Pirate_Galleon = 1 }
 				}
 				if = {
 					limit = {
 						check_variable = { which = local_percent_game_years_passed value >= 1 }
 					}
-					create_pirate_ships_10 = yes
+					create_dyn_pirate_fleet = { Skull = 3 Brigand = 3 Pirate_Galleon = 1 }
 				}
 				assign_leader = last_created_leader
 				set_location = event_target:pirate_home

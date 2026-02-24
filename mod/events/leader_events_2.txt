@@ -265,7 +265,16 @@ country_event = {
 		if = {
 			limit = { is_toxic_baths_empire = yes }
 			from = {
-				add_trait = { trait = leader_trait_substance_abuser show_message = no }
+				if = { # Vfix
+					limit = {
+						NOT = { has_trait_tier1or2 = { TRAIT = leader_trait_substance_abuser } }
+					}
+					give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser }
+				}
+				else_if = {
+					limit = { has_trait = leader_trait_substance_abuser }
+					give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser_2 }
+				}
 			}
 		}
 	}

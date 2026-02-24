@@ -27,6 +27,7 @@ on_monthly_pulse = {
 on_yearly_pulse = {
 	events = {
 		cara.4102 # Fix for Caravaneers
+		base_fix.2 # AI Shroud Enter
 	}
 }
 
@@ -60,5 +61,15 @@ on_starbase_destroyed = {
 	events = {
 		crisis.1312 # Extradimensionals
 		crisis.1284 # Extradimensionals Anchor Destroyed (replaces .1281)
+	}
+}
+
+# Fired whenever a new owner is set for a planet, following a war or through trade
+# This = Planet scope
+# From = Country scope (new owner)
+# FromFrom = Country scope (previous owner, if any)
+on_planet_transfer = {
+	events = {
+		base_fix.3 # Vfix AI gestalt economic 
 	}
 }
