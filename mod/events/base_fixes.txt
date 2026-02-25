@@ -7,7 +7,7 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
-		every_playable_country = {
+		random_playable_country = {
 			limit = {
 				is_ai = yes
 				is_country_type_with_subjects = yes
@@ -16,7 +16,7 @@ event = {
 					has_country_flag = shroud_fallen_empire
 				}
 				NOR = {
-					resource_stockpile_compare = { resource = energy value < 1000 }
+					resource_stockpile_compare = { resource = energy value < 5000 }
 					has_country_flag = shroud_diplomacy_engaged
 					has_modifier = shroud_cooldown
 					has_modifier = shroud_precog_cooldown
@@ -24,6 +24,48 @@ event = {
 			}
 			add_resource = { energy = -1000 }
 			country_event = { id = utopia.3002 days = 10 }
+		}
+	}
+}
+
+# Vfix AI: https://forum.paradoxplaza.com/forum/threads/stellaris-4-0-ai-economy.1902580/
+# WARNING: CAN CAUSE CTD!
+# on_planet_transfer
+planet_event = {
+	id = base_fix.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	pre_triggers = {
+		has_owner = yes
+		is_ai = yes
+		is_occupied_flag = no
+	}
+
+	trigger = {
+		is_colony = yes
+		is_under_colonization = no
+		from = { is_ai = yes is_hive_empire = yes }
+		exists = fromfrom
+		fromfrom = { is_hive_empire = no }
+	}
+
+	immediate = {
+		# log = "Transfer planet \\[This.GetName] to \\[from.GetName]"
+		if = {
+			limit = { has_district = yes }
+			if = {
+				limit = {
+					has_building = yes
+					# num_buildings = { type = any value > 0 }
+				}
+				remove_all_buildings = yes
+			}
+			remove_all_districts = yes
+			if = {
+				limit = { num_species > 0 }
+				check_planet_employment = yes
+			}
 		}
 	}
 }

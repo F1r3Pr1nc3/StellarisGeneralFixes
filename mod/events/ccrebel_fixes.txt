@@ -323,7 +323,7 @@ country_event = {
 					change_species = event_target:syncretic_species
 				}
 			}
-			log = "FIX: Changed rebelling syncretic species \\[Root.owner_species.GetName] from \\[Root.GetName]!"
+			# log = "FIX: Changed rebelling syncretic species \\[Root.owner_species.GetName] from \\[Root.GetName]!"
 			clear_variable = syncretic_pops
 			every_owned_species = {
 				limit = {
@@ -1903,6 +1903,7 @@ country_event = {
 	}
 }
 
+# FIXME sometimes: change_government effect failed to calculate configuration
 country_event = {
 	id = rebellionfix.364
 	hide_window = yes
@@ -1914,7 +1915,7 @@ country_event = {
 
 	immediate = {
 		set_timed_country_flag = { flag = cc_rebel_ethic_sorted days = 14 }
-		# FIXME sometimes: change_government effect failed to calculate configuration
+		set_government_cooldown = no
 		# Ethics result invalid: [ethic_gestalt_consciousness] cannot be added
 		if = {
 			limit = { is_gestalt = no }
@@ -1928,14 +1929,12 @@ country_event = {
 			change_government = random
 		}
 		fire_on_action = { on_action = empire_init_create_ships }
-	}
-
-	after = { # set_name = random # Because sometimes native didn't work?
+		# set_name = random # Because sometimes native didn't work?
 	}
 }
 
 # VFIX NEW by FirePrince: TODO already exclude on war goal!?
-# War is starting, remove war participant, which already fight each other, like rebels
+# War is starting; (remove) war participant, which already fight each other, like rebels, subjects, etc.
 country_event = {
 	id = rebellionfix.411
 	hide_window = yes
