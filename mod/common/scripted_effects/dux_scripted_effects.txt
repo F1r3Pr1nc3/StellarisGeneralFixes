@@ -1001,3 +1001,263 @@ inherit_tech_effect = {
 		unity = 27000
 	}
 }
+
+DNCF_create_nivlac_country = {
+    create_country = {
+        name = NAME_Nivlac_Circle
+        authority = random
+        civics = random
+        species = event_target:nivlac_species
+        ignore_initial_colony_error = yes
+        type = default
+        ethos = random
+        flag = random
+        graphical_culture = fungoid_01 # Fixes bioship issues.
+        day_zero_contact = no
+        effect = {
+            save_global_event_target_as = nivlac_country
+            
+            establish_communications_no_message = root
+            root = {
+                every_federation_ally = { establish_communications = prevprev }
+            }
+            
+            add_resource = {
+                energy = 100
+                minerals = 100
+                food = 100
+                consumer_goods = 50
+                alloys = 25
+                influence = 10
+                unity = 50
+                volatile_motes = 10
+                exotic_gases = 10
+                rare_crystals = 10
+                mult = trigger:years_passed
+            }
+        }
+    }
+}
+
+DNCF_select_nivlac_planet = {
+    if = {
+        limit = {
+            any_galaxy_planet = {
+                DNCF_is_valid_nivlac_planet = yes
+                solar_system = {
+                    DNCF_solar_system_has_valid_nivlac_planet = yes
+                }
+            }
+        }
+        random_galaxy_planet = {
+            limit = {
+                DNCF_is_valid_nivlac_planet = yes
+                solar_system = {
+                    DNCF_solar_system_has_valid_nivlac_planet = yes
+                }
+            }
+            weights = {
+                base = 1
+                modifier = {
+                    factor = 2
+                    planet_size > 10
+                }
+                modifier = {
+                    factor = 2
+                    free_district_slots > 6
+                }
+                
+                # Basic resources are important.
+                modifier = {
+                    factor = 2
+                    num_free_districts = { type = district_farming value > 2 }
+                }
+                modifier = {
+                    factor = 3
+                    has_modifier = lush_planet
+                }
+                modifier = {
+                    factor = 0.5
+                    OR = {
+                        has_modifier = bleak_planet
+                        has_modifier = unbalanced_ecosystem
+                        has_modifier = irradiated_planet
+                    }
+                }
+                
+                # Basic resources are important.
+                modifier = {
+                    factor = 2
+                    num_free_districts = { type = district_generator value > 2 }
+                }
+                modifier = {
+                    factor = 3
+                    OR = {
+                        has_modifier = hazardous_weather
+                        has_modifier = strong_magnetic_field
+                    }
+                }
+                modifier = {
+                    factor = 0.5
+                    has_modifier = energy_poor
+                }
+                
+                # Basic resources are important.
+                modifier = {
+                    factor = 2
+                    num_free_districts = { type = district_mining value > 2 }
+                }
+                modifier = {
+                    factor = 1.5
+                    OR = {
+                        has_modifier = asteroid_belt
+                        has_modifier = mineral_rich
+                        has_modifier = ultra_rich
+                        has_modifier = extensive_moon_system
+                        has_modifier = asteroid_impacts
+                        has_modifier = carbon_world
+                    }
+                }
+                modifier = {
+                    factor = 0.5
+                    has_modifier = mineral_poor
+                }
+            }
+            save_global_event_target_as = nivlac_planet
+            save_event_target_as = nivlac_joint_planet
+        }
+    }
+}
+
+DNCF_setup_nivlac_planet = {
+    event_target:nivlac_planet = {
+        solar_system = {
+            every_system_planet = {
+                set_surveyed = {
+                    surveyed = yes
+                    surveyor = root.owner
+                }
+            }
+            create_starbase = {
+                size = starbase_starport
+                module = shipyard
+                module = shipyard
+                building = crew_quarters
+                owner = event_target:nivlac_country
+            }
+        }
+        set_owner = event_target:nivlac_country
+        set_timed_planet_flag = {
+            flag = ignore_ai_building_limitations
+            days = 1
+        }
+        set_capital = yes
+        clear_blockers = yes
+        if = {
+            limit = { exists = event_target:nivlac_species } # This removes an error in the log.
+            while = {
+                count = 22
+                create_pop_group = {
+                    species = event_target:nivlac_species
+                }
+            }
+        }
+
+        while = {
+            count = 2
+            add_district_and_planet_size_if_needed_effect = { district = district_city }
+            add_district_and_planet_size_if_needed_effect = { district = district_generator }
+            add_district_and_planet_size_if_needed_effect = { district = district_mining }
+        }
+        while = {
+            count = 3
+            add_district_and_planet_size_if_needed_effect = { district = district_farming }
+        }
+        if = {
+            limit = { has_building = building_colony_shelter }
+            remove_building = building_colony_shelter
+        }
+        if = {
+            limit = {
+                NOT = { has_building = building_capital }
+            }
+            add_building = building_capital
+        }
+        
+        if = {
+            limit = {
+                NOT = {
+                    has_zone = { zone = zone_research_unity } # Replaces building_research_lab_1 and building_bureaucratic_1
+                }
+            }
+            add_zone = { zone = zone_research_unity replace = yes }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_zone = { zone = zone_industrial } # Replaces building_foundry_1
+                }
+            }
+            add_zone = { zone = zone_industrial replace = yes }
+        }
+        add_building = { building = building_factory_1 zone = zone_industrial }
+        add_building = building_luxury_residence # Because they get an amenity deficit.
+    }
+}
+
+DNCF_replace_misfit_civics = {
+    while = {
+        limit = {
+            OR = {
+                has_civic = civic_beastmasters # Messes with shipyards.
+                has_civic = civic_corporate_beastmasters
+                has_civic = civic_environmentalist # All blockers are cleared when spawning them.
+                has_civic = civic_entropy_drinkers # Doesn't make starting leaders psychic.
+                has_valid_civic = civic_entropy_drinkers_corporate
+                AND = {
+                    has_opinion_modifier = { modifier = opinion_nurtured }
+                    OR = {
+                        has_civic = civic_inwards_perfection
+                        has_civic = civic_fanatic_purifiers
+                        has_civic = civic_pompous_purists
+                    }
+                }
+                AND = {
+                    root.species = {
+                        NOT = { is_species_class = FUN }
+                    }
+                    has_opinion_modifier = { modifier = opinion_nurtured }
+                    has_civic = civic_selective_kinship
+                }
+            }
+        }
+        change_government = { civics = random }
+    }
+}
+
+DNCF_spawn_nivlac_circle = {
+    DNCF_select_nivlac_planet = yes
+    
+    create_nivlac_effect = yes
+    
+    DNCF_create_nivlac_country = yes
+    
+    last_created_country = {
+        refresh_leader_pool = yes
+        [[FRIENDLY]
+            add_opinion_modifier = { who = root modifier = opinion_nurtured }
+            add_trust = { amount = 50 who = root }
+            #set_subject_of = {
+            #    who = root
+            #    preset = preset_protectorate
+            #}
+        ]
+        [[UNFRIENDLY]
+            add_opinion_modifier = { who = root modifier = opinion_discarded }
+            add_trust = { amount = -50 who = root }
+        ]
+        DNCF_replace_misfit_civics = yes
+    }
+    
+    DNCF_setup_nivlac_planet = yes
+}

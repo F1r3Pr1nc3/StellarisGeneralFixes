@@ -6346,118 +6346,14 @@ country_event = {
 
 	trigger = {
 		any_system = {
-			NOR = { # Vfix opt
-				exists = starbase
-				exists = owner_or_space_owner
-				has_star_flag = hostile_system
-			}
 			any_system_planet = {
-				is_colonizable = yes
-				NOR = {
-					has_owner = yes
-					is_colony = yes
-					has_anomaly = yes
-					has_modifier = "holy_planet"
-				}
-				habitable_planet = yes
-				distance = {
-					source = root.owner.capital_scope
-					max_distance <= 300
-					min_distance >= 50
-				}
-			}
+                DNCF_is_valid_nivlac_planet = yes
+            }
 		}
 	}
 
 	immediate = {
-		random_galaxy_planet = {
-			limit = {
-				is_colonizable = yes
-				has_owner = no
-				is_colony = no
-				habitable_planet = yes
-				NOR = {
-					has_anomaly = yes
-					has_modifier = "holy_planet"
-					solar_system = { has_star_flag = hostile_system }
-				}
-				distance = {
-					source = root.owner.capital_scope
-					max_distance <= 300
-					min_distance >= 50
-				}
-				NOT = { solar_system = { exists = starbase } }
-			}
-			save_global_event_target_as = nivlac_planet
-		}
-		create_nivlac_effect = yes
-		create_country = {
-			name = NAME_Nivlac_Circle
-			authority = random
-			civics = random
-			species = event_target:nivlac_species
-			ignore_initial_colony_error = yes
-			type = default
-			ethos = random
-			flag = random
-			effect = {
-				save_global_event_target_as = nivlac_country
-				add_resource = {
-					minerals = 1000
-					energy = 1000
-					food = 100
-					influence = 50
-				}
-			}
-		}
-		event_target:nivlac_planet = {
-			solar_system = {
-				create_starbase = { size = starbase_outpost owner = event_target:nivlac_country }
-				every_system_planet = {
-					set_surveyed = { surveyed = yes surveyor = root.owner }
-				}
-			}
-			set_owner = event_target:nivlac_country
-			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-			set_capital = yes
-			clear_blockers = yes
-			create_pop_group = { species = event_target:nivlac_species size = 2200 }
-			while = {
-				count = 2
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_city
-				}
-			}
-			while = {
-				count = 3
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_farming
-				}
-			}
-			while = {
-				count = 2
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_generator
-				}
-			}
-			add_building = building_capital
-			add_building = building_research_lab_1
-			add_building = building_foundry_1
-			add_building = building_bureaucratic_1
-			while = {
-				count = 2
-				create_army = {
-					name = random
-					owner = event_target:nivlac_country
-					species = event_target:nivlac_species
-					type = defense_army
-				}
-			}
-		}
-		event_target:nivlac_country = {
-			establish_communications_no_message = root
-			add_opinion_modifier = { who = root modifier = opinion_discarded }
-		}
+        DNCF_spawn_nivlac_circle = { UNFRIENDLY = yes }
 	}
 
 	option = {
@@ -6473,123 +6369,21 @@ country_event = {
 	picture = GFX_evt_alien_city
 	show_sound = event_scanner
 	location = event_target:nivlac_planet
+
 	is_triggered_only = yes
+
 	specimen = declaration_of_friendship
 
 	trigger = {
 		any_system = {
-			NOR = { # Vfix opt
-				exists = starbase
-				exists = owner_or_space_owner
-				has_star_flag = hostile_system
-			}
 			any_system_planet = {
-				is_colonizable = yes
-				NOR = {
-					has_owner = yes
-					is_colony = yes
-					has_anomaly = yes
-					has_modifier = "holy_planet"
-				}
-				habitable_planet = yes
-				distance = {
-					source = root.owner.capital_scope
-					max_distance <= 300
-					min_distance >= 50
-				}
+				DNCF_is_valid_nivlac_planet = yes
 			}
 		}
 	}
 
 	immediate = {
-		random_galaxy_planet = {
-			limit = {
-				is_colonizable = yes
-				has_owner = no
-				is_colony = no
-				habitable_planet = yes
-				NOR = {
-					has_anomaly = yes
-					has_modifier = "holy_planet"
-					solar_system = { has_star_flag = hostile_system }
-				}
-				distance = {
-					source = root.owner.capital_scope
-					max_distance <= 300
-					min_distance >= 50
-				}
-				NOT = { solar_system = { exists = starbase } }
-			}
-			save_global_event_target_as = nivlac_planet
-		}
-		create_nivlac_effect = yes
-		create_country = {
-			name = NAME_Nivlac_Circle
-			authority = random
-			civics = random
-			species = event_target:nivlac_species
-			ignore_initial_colony_error = yes
-			type = default
-			ethos = random
-			flag = random
-			effect = {
-				save_global_event_target_as = nivlac_country
-				add_resource = {
-					minerals = 1000
-					energy = 1000
-					food = 100
-					influence = 50
-				}
-				establish_communications_no_message = root
-			}
-		}
-		event_target:nivlac_planet = {
-			solar_system = {
-				create_starbase = { size = starbase_outpost owner = event_target:nivlac_country }
-				every_system_planet = {
-					set_surveyed = { surveyed = yes surveyor = root.owner }
-				}
-			}
-			set_owner = event_target:nivlac_country
-			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-			set_capital = yes
-			clear_blockers = yes
-			create_pop_group = { species = event_target:nivlac_species size = 2200 }
-			while = {
-				count = 2
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_city
-				}
-			}
-			while = {
-				count = 3
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_farming
-				}
-			}
-			while = {
-				count = 2
-				add_district_and_planet_size_if_needed_effect = {
-					district = district_mining
-				}
-			}
-			add_building = building_capital
-			add_building = building_research_lab_1
-			add_building = building_foundry_1
-			add_building = building_bureaucratic_1
-			while = {
-				count = 2
-				create_army = {
-					name = random
-					owner = event_target:nivlac_country
-					species = event_target:nivlac_species
-					type = defense_army
-				}
-			}
-		}
-		event_target:nivlac_country = {
-			add_opinion_modifier = { who = root modifier = opinion_nurtured }
-		}
+		DNCF_spawn_nivlac_circle = { FRIENDLY = yes }
 	}
 
 	option = {
