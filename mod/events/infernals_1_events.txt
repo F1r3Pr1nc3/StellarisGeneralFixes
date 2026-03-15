@@ -599,20 +599,12 @@ planet_event = {
 				}
 				if = {
 					limit = {
-						OR = {
-							is_same_value = event_target:fallen_empire_hive_war
-							is_same_value = event_target:fallen_empire_hive_growth
-							is_same_value = event_target:fallen_empire_hive_control
-						}
+						count_as_split_fallen_empire = yes # Vfix opt
 					}
 					every_country = {
 						limit = {
 							NOT = { is_same_value = root.owner }
-							OR = {
-								is_same_value = event_target:fallen_empire_hive_war
-								is_same_value = event_target:fallen_empire_hive_growth
-								is_same_value = event_target:fallen_empire_hive_control
-							}
+							count_as_split_fallen_empire = yes # Vfix opt
 						}
 						add_opinion_modifier = { modifier = opinion_burned_my_world who = from.owner }
 					}
