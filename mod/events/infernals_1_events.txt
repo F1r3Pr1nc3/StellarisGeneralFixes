@@ -569,19 +569,11 @@ planet_event = {
 							has_federation = yes
 							is_in_federation_with = from.owner
 						}
-						NAND = {
+						AND = {
 							root.owner = {
-								OR = {
-									is_same_value = event_target:fallen_empire_hive_war			# We.
-									is_same_value = event_target:fallen_empire_hive_growth		# Are.
-									is_same_value = event_target:fallen_empire_hive_control		# One.
-								}
+								count_as_split_fallen_empire = yes # Vfix opt
 							}
-							OR = {
-								is_same_value = event_target:fallen_empire_hive_war			# We.
-								is_same_value = event_target:fallen_empire_hive_growth		# Are.
-								is_same_value = event_target:fallen_empire_hive_control		# One.
-							}
+							count_as_split_fallen_empire = yes # Vfix opt
 						}
 					}
 					OR = {
