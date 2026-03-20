@@ -1815,13 +1815,16 @@ situation_event = {
 
 	trigger = {
 		has_situation_flag = cyberization_ongoing
-		NOR = {
-			has_situation_flag = hive_cyberization_ongoing_limited
-			owner = {
-				num_buildings = {
-					type = building_augmentation_center
-					disabled = no
-					value <= 0
+		NOT = { has_situation_flag = hive_cyberization_ongoing_limited }
+		owner = {
+			OR = {
+				check_variable_arithmetic = {
+					which = value:num_active_buildings|BUILDING|building_augmentation_center|
+					value > 0
+				}
+				check_variable_arithmetic = {
+					which = value:num_active_buildings|BUILDING|building_augmentation_bazaars|
+					value > 0
 				}
 				# check_variable_arithmetic = {
 				# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|
@@ -1930,10 +1933,15 @@ situation_event = {
 	trigger = {
 		has_situation_flag = cyberization_ongoing_limited
 		owner = {
-			num_buildings = {
-				type = building_augmentation_center
-				disabled = no
-				value > 0
+			OR = {
+				check_variable_arithmetic = {
+					which = value:num_active_buildings|BUILDING|building_augmentation_center|
+					value > 0
+				}
+				check_variable_arithmetic = {
+					which = value:num_active_buildings|BUILDING|building_augmentation_bazaars|
+					value > 0
+				}
 			}
 			# check_variable_arithmetic = {
 			# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|
@@ -2061,10 +2069,15 @@ situation_event = {
 	trigger = {
 		has_situation_flag = cyberization_ongoing_forced
 		owner = {
-			num_buildings = {
-				type = building_augmentation_center
-				disabled = no
-				value > 0
+			OR = {
+				check_variable_arithmetic = {
+					which = value:num_active_buildings|BUILDING|building_augmentation_center|
+					value > 0
+				}
+				check_variable_arithmetic = {
+					which = value:num_active_buildings|BUILDING|building_augmentation_bazaars|
+					value > 0
+				}
 			}
 			# check_variable_arithmetic = {
 			# 	which = value:num_active_buildings|BUILDING|building_augmentation_center|

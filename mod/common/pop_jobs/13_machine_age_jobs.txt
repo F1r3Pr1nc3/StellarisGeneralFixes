@@ -52,7 +52,12 @@ haruspex = {
 
 	triggered_planet_modifier = { # Common to all Priests
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -61,6 +66,12 @@ haruspex = {
 	triggered_planet_modifier = { # Common to all Priests
 		potential = {
 			has_active_building = building_league_offices
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 100
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -164,7 +175,12 @@ technophant = {
 
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 500
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -461,7 +477,12 @@ augmentor = { # Normal empire
 
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 500
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -670,6 +691,14 @@ identity_designer = {
 	possible_precalc = can_fill_specialist_job
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 500
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
@@ -711,6 +740,9 @@ identity_designer = {
 				ruler = {
 					has_trait = leader_trait_legendary_great_inventor
 				}
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
 			}
 		}
 		planet_amenities_add = 100
@@ -724,6 +756,9 @@ identity_designer = {
 				exists = ruler
 				ruler = {
 					has_trait = leader_trait_legendary_great_inventor_2
+				}
+				NOT = {
+					has_valid_civic = civic_dystopian_society
 				}
 			}
 		}
@@ -739,6 +774,9 @@ identity_designer = {
 				ruler = {
 					has_trait = leader_trait_legendary_great_inventor_3
 				}
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
 			}
 		}
 		planet_amenities_add = 300
@@ -750,10 +788,46 @@ identity_designer = {
 			exists = owner
 			owner = {
 				has_active_tradition = tr_synthetics_prefabricated_components
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
 			}
 		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = computation_core_production
+			}
+		}
+		foundry_jobs_bonus_workforce_mult = 0.025
+		artisan_jobs_bonus_workforce_mult = 0.025
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = computation_core_stability
+			}
+		}
+		bureaucrat_jobs_bonus_workforce_mult = 0.025
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_policy_flag = computation_core_research
+			}
+		}
+		physicist_jobs_bonus_workforce_mult = 0.025
+		biologist_jobs_bonus_workforce_mult = 0.025
+		engineer_jobs_bonus_workforce_mult = 0.025
 	}
 
 	triggered_planet_modifier = {
@@ -809,7 +883,12 @@ cyberdome_duelist = {
 
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 1000
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|

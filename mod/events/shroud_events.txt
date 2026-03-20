@@ -9807,7 +9807,7 @@ country_event = {
 # 4800 - 4999 Patron Active Accords
 # ==================================
 # The Eater of Worlds - Devour Accord
-# DEPRECATED: relaced by spawn_eater_fleet_effect
+# DEPRECATED: replaced by spawn_eater_fleet_effect
 country_event = {
 	id = shroud.4800
 	hide_window = yes
@@ -17012,5 +17012,25 @@ country_event = {
 
 	option = {
 		name = shroud.12160.a
+	}
+}
+
+# Shroud Incursion
+country_event = {
+	id = shroud.13000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_deficit = sr_zro
+		NOT = { has_country_flag = shroud_incursion }
+	}
+
+	immediate = {
+		random = {
+			chance = 2
+			set_timed_country_flag = { flag = shroud_incursion years = 2 }
+			country_event = { id = utopia.3024 }
+		}
 	}
 }

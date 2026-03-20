@@ -275,8 +275,26 @@ leader_trait_shroudshaper = {
 		mult = value:transcended_psionic_multiplier
 	}
 	triggered_planet_modifier = {
-		potential = { is_ruler = no trait_is_gestalt_check = no }
+		potential = {
+			is_ruler = no
+			trait_is_gestalt_check = no
+			exists = owner
+			owner = {
+				NOT = { has_valid_civic = civic_dystopian_society }
+			}
+		}
 		job_telepath_add = 20			# This means a level 10 Shroudshaper provides as many Telepaths as a Psi-Corps building
+		mult = trigger:has_total_skill
+		# Bonus jobs are explicitly not increased by transcended authorities, since they scale by leader level
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_ruler = no
+			trait_is_gestalt_check = no
+			exists = owner
+			owner = { has_valid_civic = civic_dystopian_society }
+		}
+		job_dystopian_telepath_add = 20			# This means a level 10 Shroudshaper provides as many Telepaths as a Psi-Corps building
 		mult = trigger:has_total_skill
 		# Bonus jobs are explicitly not increased by transcended authorities, since they scale by leader level
 	}
@@ -294,8 +312,26 @@ leader_trait_shroudshaper = {
 		mult = value:transcended_psionic_multiplier
 	}
 	triggered_sector_modifier = {
-		potential = { is_ruler = no trait_is_gestalt_check = no }
+		potential = {
+			is_ruler = no
+			trait_is_gestalt_check = no
+			exists = owner
+			owner = {
+				NOT = { has_valid_civic = civic_dystopian_society }
+			}
+		}
 		job_telepath_add = 10
+		mult = trigger:has_total_skill
+		# Bonus jobs are explicitly not increased by transcended authorities, since they scale by leader level
+	}
+	triggered_sector_modifier = {
+		potential = {
+			is_ruler = no
+			trait_is_gestalt_check = no
+			exists = owner
+			owner = { has_valid_civic = civic_dystopian_society }
+		}
+		job_dystopian_telepath_add = 10
 		mult = trigger:has_total_skill
 		# Bonus jobs are explicitly not increased by transcended authorities, since they scale by leader level
 	}

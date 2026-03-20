@@ -2363,18 +2363,21 @@ civic_entropy_drinkers_corporate = {
 	modification = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
-			has_technology = tech_psionic_theory
-			custom_tooltip = {
-				success_text = has_not_begun_non_psionic_ascension_success
-				fail_text = has_not_begun_non_psionic_ascension_fail
-				NOR = {
-					has_genetic_ascension = yes
-					has_ascension_perk = ap_the_flesh_is_weak
-					has_ascension_perk = ap_organo_machine_interfacing
-					has_ascension_perk = ap_organo_machine_interfacing_assimilator
-					has_ascension_perk = ap_synthetic_evolution
-					has_ascension_perk = ap_synthetic_age
+			OR = {
+				has_technology = tech_psionic_theory
+				custom_tooltip = {
+					success_text = has_not_begun_non_psionic_ascension_success
+					fail_text = has_not_begun_non_psionic_ascension_fail
+					NOR = {
+						has_genetic_ascension = yes
+						has_ascension_perk = ap_the_flesh_is_weak
+						has_ascension_perk = ap_organo_machine_interfacing
+						has_ascension_perk = ap_organo_machine_interfacing_assimilator
+						has_ascension_perk = ap_synthetic_evolution
+						has_ascension_perk = ap_synthetic_age
+					}
 				}
+				has_civic = civic_entropy_drinkers
 			}
 		}
 		remove = {
@@ -2670,18 +2673,8 @@ civic_tankbound_corporate = {
 	}
 
 	modifier = {
-		planet_jobs_upkeep_mult = @civic_tankbound_job_upkeep
-		# Removed at v4.3
-		# planet_districts_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_rw_generator_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_rw_farming_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_hab_energy_energy_upkeep_add = @civic_tankbound_district_upkeep
-		# planet_districts_hab_mining_energy_upkeep_add = @civic_tankbound_district_upkeep
+		planet_automated_jobs_upkeep_mult = @civic_tankbound_job_upkeep
 	}
-	hide_modifiers = yes
 
 	random_weight = { base = @civic_default_random_weight }
 }

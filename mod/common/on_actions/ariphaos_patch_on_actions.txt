@@ -19,15 +19,19 @@ on_single_player_save_game_load = {
 		ariphaos_patch.1 # Event for version tracking.
 		# ariphaos_patch.10001 # Game and galaxy evaluation
 		# ariphaos_patch.459 # Troop counts
+		general_patch_active.99
 	}
 }
 
 # No scope, like on_game_start
-# on_monthly_pulse = {
-# 	events = {
-# 		# Accelerated murder if a planet with purging has many pops.
-# 	}
-# }
+on_monthly_pulse = {
+	events = {
+		crisis.106 # Queen Breeds
+		crisis.230 # Prethoryn crisis sound
+		crisis.1230 # Extradimensionals crisis sound
+		crisis.2230 # Contingency crisis sound
+	}
+}
 
 # No scope, like on_game_start
 # on_yearly_pulse = {
@@ -54,6 +58,13 @@ on_bi_yearly_pulse = {
 # 		leviathans.3208  # Replaces variable MTTH event for hiver spawn.
 # 	}
 # }
+
+# No scope, like on_game_start
+on_five_year_pulse = {
+	events = {
+		crisis.233 # Sentinel Reinforcements
+	}
+}
 
 # VFIX WRONG DOCU
 # This = construction ship
@@ -123,3 +134,11 @@ on_survey_planet = {
 # 		ariphaos_patch.451
 # 	}
 # }
+# This = starbase being destroyed (not ship!)
+# From = fleet that destroyed the starbase
+on_starbase_destroyed = {
+	events = {
+		crisis.1312 # Extradimensionals
+		crisis.1284 # Extradimensionals Anchor Destroyed (replaces .1281)
+	}
+}

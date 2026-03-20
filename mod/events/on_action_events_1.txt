@@ -4909,7 +4909,7 @@ country_event = {
 						OR = {
 							has_ethic = ethic_fanatic_materialist
 							has_ethic = ethic_fanatic_spiritualist
-							event_target:rsfo = { has_ethic = ethic_fanatic_materialist }
+							event_target:rsfo = { is_fanatic_materialist = yes }
 						}
 					}
 				}
@@ -4920,7 +4920,7 @@ country_event = {
 						OR = {
 							has_ethic = ethic_fanatic_spiritualist
 							has_ethic = ethic_fanatic_materialist
-							event_target:rsfo = { has_ethic = ethic_fanatic_spiritualist }
+							event_target:rsfo = { is_fanatic_spiritualist = yes }
 						}
 					}
 				}
@@ -4975,7 +4975,7 @@ country_event = {
 						OR = {
 							has_ethic = ethic_fanatic_egalitarian
 							has_ethic = ethic_fanatic_authoritarian
-							event_target:rsfo = { has_ethic = ethic_fanatic_egalitarian }
+							event_target:rsfo = { is_fanatic_egalitarian = yes }
 						}
 					}
 				}
@@ -4986,7 +4986,7 @@ country_event = {
 						OR = {
 							has_ethic = ethic_fanatic_authoritarian
 							has_ethic = ethic_fanatic_egalitarian
-							event_target:rsfo = { has_ethic = ethic_fanatic_authoritarian }
+							event_target:rsfo = { is_fanatic_authoritarian = yes }
 						}
 					}
 				}
@@ -6489,6 +6489,9 @@ planet_event = {
 			remove_modifier = "terraforming_candidate"
 			remove_modifier = "frozen_terraforming_candidate"
 			remove_modifier = "toxic_terraforming_candidate"
+			remove_modifier = "pm_wenkwort_gardens"
+			remove_modifier = "pm_wenkwort_zen"
+			remove_modifier = "pm_wenkwort_custodian"
 			set_planet_flag = colony_event # Make it so that colony events don't fire on terraformed worlds
 		}
 		if = {

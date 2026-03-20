@@ -1163,11 +1163,56 @@ building_identity_repository = {
 				has_owner = yes
 				owner = { has_origin = origin_synthetic_fertility }
 			}
-			physics_research = 0.015
-			society_research = 0.015
-			engineering_research = 0.015
-			unity = 0.015
-			trade = 0.015
+			physics_research = 0.008
+			society_research = 0.008
+			engineering_research = 0.008
+			unity = 0.008
+			trade = 0.008
+			mult = owner.value:identity_repository_scaling_mult
+		}
+		produces = {
+			trigger = {
+				has_owner = yes
+				owner = {
+					has_origin = origin_synthetic_fertility
+					has_technology = tech_administrative_ai
+				}
+			}
+			physics_research = 0.0025
+			society_research = 0.0025
+			engineering_research = 0.0025
+			unity = 0.0025
+			trade = 0.0025
+			mult = owner.value:identity_repository_scaling_mult
+		}
+		produces = {
+			trigger = {
+				has_owner = yes
+				owner = {
+					has_origin = origin_synthetic_fertility
+					has_technology = tech_self_aware_logic
+				}
+			}
+			physics_research = 0.0025
+			society_research = 0.0025
+			engineering_research = 0.0025
+			unity = 0.0025
+			trade = 0.0025
+			mult = owner.value:identity_repository_scaling_mult
+		}
+		produces = {
+			trigger = {
+				has_owner = yes
+				owner = {
+					has_origin = origin_synthetic_fertility
+					has_technology = tech_sapient_ai
+				}
+			}
+			physics_research = 0.0025
+			society_research = 0.0025
+			engineering_research = 0.0025
+			unity = 0.0025
+			trade = 0.0025
 			mult = owner.value:identity_repository_scaling_mult
 		}
 	}

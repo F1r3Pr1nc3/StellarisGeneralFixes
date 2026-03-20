@@ -443,11 +443,26 @@ test_subject = {
 			physics_research = 0.5
 			society_research = 1
 		}
+		upkeep = {
+			consumer_goods = 1
+		}
 	}
 
 	planet_modifier = {
-		planet_amenities_add = 300
 		branch_office_criminal_syndicate_value_add = 7.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
+		planet_amenities_add = 300
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
 	triggered_planet_modifier = {
@@ -500,8 +515,17 @@ test_subject_drone = {
 		}
 	}
 
-	planet_modifier = {
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 300
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
 	weight = {
@@ -554,9 +578,9 @@ experiment_engineer = {
 			trigger = {
 				exists = planet
 			}
-			physics_research = 0.5
-			engineering_research = 0.5
-			society_research = 0.5
+			physics_research = @experiment_engineer_crime_research_output
+			engineering_research = @experiment_engineer_crime_research_output
+			society_research = @experiment_engineer_crime_research_output
 			multiplier = planet.value:experiment_engineer_crime_research_output
 		}
 		produces = {
@@ -566,6 +590,10 @@ experiment_engineer = {
 		}
 		upkeep = {
 			consumer_goods = 2
+		}
+		upkeep = {
+			consumer_goods = @experiment_engineer_crime_research_output
+			multiplier = planet.value:experiment_engineer_crime_research_output
 		}
 		upkeep = {
 			trigger = {
@@ -652,9 +680,9 @@ experiment_engineer_drone = {
 			trigger = {
 				exists = planet
 			}
-			physics_research = 0.5
-			engineering_research = 0.5
-			society_research = 0.5
+			physics_research = @experiment_engineer_crime_research_output
+			engineering_research = @experiment_engineer_crime_research_output
+			society_research = @experiment_engineer_crime_research_output
 			multiplier = planet.value:experiment_engineer_crime_research_output
 		}
 		produces = {
@@ -664,6 +692,10 @@ experiment_engineer_drone = {
 		}
 		upkeep = {
 			minerals = 6
+		}
+		upkeep = {
+			minerals = @experiment_engineer_drone_crime_upkeep
+			multiplier = planet.value:experiment_engineer_crime_research_output
 		}
 		upkeep = {
 			trigger = {
@@ -743,23 +775,22 @@ slave_orderly = {
 	resources = {}
 
 	planet_modifier = {
-		planet_experiment_engineer_produces_mult = 0.025
-		planet_test_subjects_produces_mult = 0.025
+		pop_experiment_engineer_bonus_workforce_mult = 0.025
+		pop_test_subject_bonus_workforce_mult = 0.025
 	}
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 500
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
-
-	# --
-	# VFix (by fs_nanamedou)
-	# Remove housing usage bonus bug.
-	# But added housing usage bonus desc in pop category - slave.
-	# --
-	# 	triggered_planet_pop_group_modifier_for_all = {
-	#	pop_housing_usage_base = -0.5
-	# }
 
 	weight = {
 		weight = @special_job_weight
@@ -804,6 +835,14 @@ production_overseer = {
 	}
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
@@ -871,5 +910,135 @@ extradimensional_research_unit = {
 
 	possible = {
 		always = no
+	}
+}
+
+#=======================
+# Psionic Traders
+#=======================
+
+shroud_trader = {
+	category = specialist
+
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_psi_corps
+			icon = telepath
+		}
+	}
+
+	tags = { trade amenities }
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_sapient = yes
+		is_being_assimilated = no
+		is_being_purged = no
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	resources = {
+		category = planet_traders
+		produces = {
+			trade = 6
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_breached_shroud = yes
+				}
+			}
+			unity = 2
+		}
+		upkeep = {
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_breached_shroud = yes
+				}
+			}
+			consumer_goods = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_tradition = tr_mercantile_commercial_enterprise
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
+		planet_amenities_add = 200
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = orbital_defence
+			orbital_defence = {
+				exists = starbase
+				starbase = {
+					has_starbase_building = ring_trade_hub
+				}
+			}
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
+		planet_amenities_add = 100
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	country_modifier = {
+		category_psionics_draw_chance_mult = 0.01
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+		mult = value:job_weights_modifier|JOB|trader|RESOURCE|trade|
+		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			exists = planet
+			exists = planet.controller
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
+				}
+			}
+		}
+	}
+
+	inline_script = "jobs/automodding_priority_trade"
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = specialist
+				AMOUNT = local_pop_amount
+			}
+		}
 	}
 }

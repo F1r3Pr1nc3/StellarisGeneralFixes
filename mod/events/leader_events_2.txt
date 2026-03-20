@@ -31,10 +31,7 @@ country_event = {
 		# Optimized Neurology
 		# Adds a random common trait
 		if = {
-			limit = {
-				has_country_flag = genetic_ascension_stage_1_purity
-				has_genetic_stage_1_tradition = yes
-			}
+			limit = { has_optimized_neurology_tradition = yes }
 			from = {
 				add_trait = { trait = random_common show_message = no }
 			}
@@ -260,23 +257,6 @@ country_event = {
 				}
 			}
 		}
-		# Mutagenic Spas/Toxic Baths
-		# Adds the Substance Abuser trait
-		if = {
-			limit = { is_toxic_baths_empire = yes }
-			from = {
-				if = { # Vfix
-					limit = {
-						NOT = { has_trait_tier1or2 = { TRAIT = leader_trait_substance_abuser } }
-					}
-					give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser }
-				}
-				else_if = {
-					limit = { has_trait = leader_trait_substance_abuser }
-					give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser_2 }
-				}
-			}
-		}
 	}
 }
 
@@ -419,20 +399,6 @@ country_event = {
 				add_trait = { trait = leader_trait_psionic show_message = no }
 			}
 		}
-		# Mutagenic Spas/Toxic Baths
-		# Adds the Substance Abuser trait
-		if = {
-			limit = { is_toxic_baths_empire = yes }
-			every_owned_leader = {
-				limit = {
-					NOR = {
-						leader_class = envoy
-						is_gestalt_node = yes
-					}
-				}
-				give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser }
-			}
-		}
 	}
 }
 
@@ -537,10 +503,7 @@ leader_event = {
 		# Adds a random common trait
 		if = {
 			limit = {
-				owner = {
-					has_country_flag = genetic_ascension_stage_1_purity
-					has_genetic_stage_1_tradition = yes
-				}
+				owner = { has_optimized_neurology_tradition = yes }
 			}
 			add_trait = { trait = random_common }
 		}
@@ -639,14 +602,6 @@ leader_event = {
 				}
 				25 = { add_trait = { trait = leader_trait_has_backup_clone show_message = no } }
 			}
-		}
-		# Mutagenic Spas/Toxic Baths
-		# Adds the Substance Abuser trait
-		if = {
-			limit = {
-				owner = { is_toxic_baths_empire = yes }
-			}
-			give_trait_no_notify_ignore_autocracy_restriction = { TRAIT = leader_trait_substance_abuser }
 		}
 	}
 }

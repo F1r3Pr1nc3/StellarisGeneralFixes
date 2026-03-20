@@ -2182,7 +2182,11 @@ artificial_intelligence_policy = {
 		}
 		AI_weight = {
 			modifier = { factor = 0 is_materialist = yes }
-			modifier = { factor = 5 is_spiritualist = yes }
+			modifier = {
+				factor = 5
+				is_spiritualist = yes
+				NOT = { has_origin = origin_cybernetic_creed }
+			}
 			modifier = {
 				factor = 0.1
 				has_valid_ai_personality = yes
@@ -2223,6 +2227,7 @@ artificial_intelligence_policy = {
 				factor = 0
 				is_spiritualist = yes
 				NOR = {
+					has_origin = origin_cybernetic_creed
 					has_valid_ai_personality = yes
 					is_ai = yes
 					is_galactic_community_member = yes
@@ -2241,7 +2246,12 @@ artificial_intelligence_policy = {
 					fail_text = is_a_synthetic_empire
 					has_country_flag = synthetic_empire
 				}
-				is_spiritualist = no
+				if = {
+					limit = {
+						NOT = { has_origin = origin_cybernetic_creed }
+					}
+					is_spiritualist = no
+				}
 				is_individual_machine = yes
 			}
 			NOT = { has_policy_flag = robots_outlawed }
@@ -2264,7 +2274,11 @@ artificial_intelligence_policy = {
 				has_valid_ai_personality = yes
 				has_ai_personality_behaviour = robot_liberator
 			}
-			modifier = { factor = 0 is_spiritualist = yes }
+			modifier = {
+				factor = 0
+				is_spiritualist = yes
+				NOT = { has_origin = origin_cybernetic_creed }
+			}
 		}
 	}
 }

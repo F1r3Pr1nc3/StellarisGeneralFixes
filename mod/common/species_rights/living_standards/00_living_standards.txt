@@ -203,12 +203,7 @@ living_standard_dystopian_society = {
 		pop_amenities_usage_mult = 0.45
 	}
 	triggered_pop_group_modifier = {
-		potential = {
-			NOR = {
-				is_pop_category = dystopian_specialist
-				is_elite_category = yes
-			}
-		}
+		potential = { is_elite_category = no }
 		pop_happiness = -2
 	}
 	triggered_pop_group_modifier = {
@@ -275,7 +270,7 @@ living_standard_dystopian_society = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high_decadent
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_low_decadent
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_low
-		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_very_high_decadent
+		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_low
 		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_none
 		pop_cat_ruler_political_power = 10
 		pop_cat_specialist_political_power = -0.25
@@ -342,6 +337,7 @@ living_standard_worker_ownership = {
 			}
 		}
 		pop_happiness = 0.05
+		pop_bonus_workforce_mult = 0.05
 	}
 
 	allow = {
@@ -503,11 +499,11 @@ living_standard_good = {
 				owner = { has_deficit = consumer_goods }
 			}
 		}
-		pop_happiness = 0.10
+		pop_happiness = 0.05
 	}
 	triggered_pop_group_modifier = {
 		potential = { is_pop_category = civilian }
-		pop_category_civilians_unity_produces_add = 1
+		pop_category_civilians_unity_produces_add = 0.5
 	}
 	triggered_pop_group_modifier = {
 		# Triggered to hide from the auto-generated tooltip
@@ -1261,7 +1257,7 @@ living_standard_decadent = {
 		pop_category_rulers_consumer_goods_upkeep_add = @living_standard_luxuries_very_high_decadent
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high_decadent
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_normal_decadent
-		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_low_decadent
+		pop_category_civilians_consumer_goods_upkeep_add = @living_standard_luxuries_very_high_decadent
 		pop_amenities_usage_base = 0.5
 		pop_cat_ruler_political_power = 7
 		pop_cat_specialist_political_power = 2

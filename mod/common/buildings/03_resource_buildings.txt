@@ -144,7 +144,7 @@ building_food_processing_facility = {
 	}
 
 	planet_modifier = {
-		planet_farmers_produces_mult = 0.20
+		planet_farmers_food_produces_add = 0.5
 	}
 
 	upgrades = {
@@ -231,13 +231,12 @@ building_food_processing_center = {
 	}
 
 	planet_modifier = {
-		planet_farmers_produces_mult = 0.20
-		planet_farmers_food_produces_add = 2
+		planet_farmers_food_produces_add = 1.0
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_farmers_food_produces_add = 2
+		planet_farmers_food_produces_add = 0.5
 	}
 
 	prerequisites = {
@@ -696,7 +695,7 @@ building_mineral_purification_plant = {
 	}
 
 	planet_modifier = {
-		planet_miners_produces_mult = 0.20
+		planet_miners_minerals_produces_add = 0.5
 	}
 
 	upgrades = {
@@ -802,16 +801,16 @@ building_mineral_purification_hub = {
 		potential = {
 			NOT = { is_planet_class = pc_shattered_ring_habitable }
 		}
-		planet_miners_minerals_produces_add = 2
+		planet_miners_minerals_produces_add = 1.0
 	}
 	triggered_planet_modifier = {
 		potential = { is_planet_class = pc_shattered_ring_habitable }
-		planet_miners_minerals_produces_add = 1
-		planet_miners_alloys_produces_add = 0.5
+		planet_miners_minerals_produces_add = 0.5
+		planet_miners_alloys_produces_add = 0.2
 	}
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_miners_minerals_produces_add = 2
+		planet_miners_minerals_produces_add = 0.5
 	}
 
 	prerequisites = {
@@ -1147,7 +1146,7 @@ building_energy_grid = {
 	}
 
 	planet_modifier = {
-		planet_technician_produces_mult = 0.20
+		planet_technician_energy_produces_add = 0.5
 	}
 
 	prerequisites = {
@@ -1229,13 +1228,12 @@ building_energy_nexus = {
 	}
 
 	planet_modifier = {
-		planet_technician_produces_mult = 0.20
-		planet_technician_energy_produces_add = 2
+		planet_technician_energy_produces_add = 1.0
 	}
 
 	triggered_planet_modifier = {
 		potential = { has_ringworld_output_boost = yes }
-		planet_technician_energy_produces_add = 2
+		planet_technician_energy_produces_add = 0.5
 	}
 
 	prerequisites = {

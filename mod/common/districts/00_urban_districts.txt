@@ -813,15 +813,9 @@ district_prison = {
 		planet_housing_add = 200
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = no
-				is_fallen_empire_spiritualist = no
-			}
-		}
-		job_enforcer_add = @base_district_jobs
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = @base_district_jobs
 	}
 
 	triggered_planet_modifier = {

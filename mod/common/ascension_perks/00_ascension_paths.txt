@@ -602,6 +602,13 @@ ap_mind_over_matter = {
 			factor = @ascension_path_anti_synergy_weight
 			has_mind_over_matter_anti_synergy = yes
 		}
+		modifier = {
+			factor = value:psionic_offices_mind_over_matter_mult
+			any_owned_planet = {
+				exists = branch_office_owner
+				has_holding = { holding = building_psionic_offices owner = branch_office_owner }
+			}
+		}
 		modifier = { factor = 0 has_origin = origin_mindwardens }
 		modifier = { factor = 10 has_ethic = ethic_fanatic_spiritualist }
 		modifier = { factor = 0 has_ethic = ethic_fanatic_materialist }

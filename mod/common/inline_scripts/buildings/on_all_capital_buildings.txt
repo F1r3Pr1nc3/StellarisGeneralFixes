@@ -128,6 +128,20 @@ triggered_planet_modifier = {
 	planet_augmentors_upkeep_mult = 0.10
 }
 
+# Cyber Oligarchic Individualist
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = {
+			is_oligarchic_authority = yes
+			has_country_flag = cyber_individualist
+		}
+	}
+	key = auth_cyber_oligarchic_individualist
+	planet_jobs_ruler_produces_mult = 0.01
+	mult = planet.value:count_specialists
+}
+
 # Cyber Imperial Jobs
 triggered_planet_modifier = {
 	potential = {
@@ -334,6 +348,9 @@ triggered_planet_modifier = {
 				has_technology = tech_industrial_storm_protection
 			}
 		}
+		solar_system = {
+			has_star_flag = storm_system
+		}
 	}
 	modifier = {
 		planet_miners_produces_mult = 1
@@ -396,6 +413,18 @@ triggered_planet_modifier = {
 	planet_housing_add = 150
 	job_coordinator_add = 150
 	mult = value:imperious_architecture_scaling_value
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = leader
+		exists = owner
+		owner = {
+			has_active_tradition = tr_aptitude_specialist_training
+		}
+	}
+	specialist_and_complex_drone_cat_bonus_workforce_mult = 0.02
+	mult = leader.trigger:has_total_skill
 }
 
 # # TODO Vfix: https://forum.paradoxplaza.com/forum/threads/amenities-affect-pop-happines-in-gestalt-consciousness-empires-instead-of-affecting-stability.1899827/#post-31124769

@@ -489,6 +489,8 @@ civic_technocracy = {
 	}
 	modifier = {
 		num_tech_alternatives_add = 1
+		country_scientist_cap_add = 1
+		country_official_cap_add = -1
 	}
 	random_weight = { base = @civic_default_random_weight }
 	ai_weight = {
@@ -3891,18 +3893,21 @@ civic_entropy_drinkers = {
 	modification = {
 		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
 		add = {
-			has_technology = tech_psionic_theory
-			custom_tooltip = {
-				success_text = has_not_begun_non_psionic_ascension_success
-				fail_text = has_not_begun_non_psionic_ascension_fail
-				NOR = {
-					has_genetic_ascension = yes
-					has_ascension_perk = ap_the_flesh_is_weak
-					has_ascension_perk = ap_organo_machine_interfacing
-					has_ascension_perk = ap_organo_machine_interfacing_assimilator
-					has_ascension_perk = ap_synthetic_evolution
-					has_ascension_perk = ap_synthetic_age
+			OR = {
+				has_technology = tech_psionic_theory
+				custom_tooltip = {
+					success_text = has_not_begun_non_psionic_ascension_success
+					fail_text = has_not_begun_non_psionic_ascension_fail
+					NOR = {
+						has_genetic_ascension = yes
+						has_ascension_perk = ap_the_flesh_is_weak
+						has_ascension_perk = ap_organo_machine_interfacing
+						has_ascension_perk = ap_organo_machine_interfacing_assimilator
+						has_ascension_perk = ap_synthetic_evolution
+						has_ascension_perk = ap_synthetic_age
+					}
 				}
+				has_civic = civic_entropy_drinkers_corporate
 			}
 		}
 		remove = {
@@ -4194,9 +4199,8 @@ civic_tankbound = {
 		trait = trait_tankbound
 	}
 	modifier = {
-		planet_jobs_upkeep_mult = @civic_tankbound_job_upkeep
+		planet_automated_jobs_upkeep_mult = @civic_tankbound_job_upkeep
 	}
-	hide_modifiers = yes
 
 	random_weight = { base = @civic_default_random_weight }
 }

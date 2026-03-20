@@ -1526,7 +1526,12 @@ country_event = {
 					}
 					every_system_colony = {
 						limit = {
-							owner = { is_infernal_empire = no }
+							owner = {
+								NOR = {
+									is_infernal_empire = yes
+									has_ascension_perk = ap_galactic_hyperthermia
+								}
+							}
 						}
 						add_planet_devastation = @inf_conduit_col_damage
 						random_owned_pop_group = {

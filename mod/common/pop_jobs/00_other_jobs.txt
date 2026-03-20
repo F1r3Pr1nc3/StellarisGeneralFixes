@@ -93,6 +93,9 @@ civilian = {
 			exists = owner
 			owner = {
 				is_pleasure_seeker_empire = no
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
 			}
 		}
 		planet_amenities_add = 50
@@ -105,39 +108,6 @@ civilian = {
 			owner = { has_modifier = paragon_origin_strengthened_government_iii }
 		}
 		country_edict_fund_add = 1
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_policy_flag = computation_core_production
-			}
-		}
-		foundry_jobs_bonus_workforce_mult = 0.005
-		artisan_jobs_bonus_workforce_mult = 0.005
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_policy_flag = computation_core_stability
-			}
-		}
-		bureaucrat_jobs_bonus_workforce_mult = 0.005
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_policy_flag = computation_core_research
-			}
-		}
-		physicist_jobs_bonus_workforce_mult = 0.005
-		biologist_jobs_bonus_workforce_mult = 0.005
-		engineer_jobs_bonus_workforce_mult = 0.005
 	}
 
 	inline_script = "jobs/ethic_job_modifiers"
@@ -324,7 +294,12 @@ servant = {
 
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 400
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -400,7 +375,12 @@ slave_toiler = {
 
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -591,6 +571,14 @@ livestock_zoo_animal = {
 	}
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 100
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
@@ -658,6 +646,14 @@ livestock_zoo_beast = {
 	}
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 100
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
@@ -1385,6 +1381,14 @@ livestock_zoo_animal_lithoid = {
 	}
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 100
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
@@ -1448,6 +1452,14 @@ livestock_zoo_beast_lithoid = {
 	}
 
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 100
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}

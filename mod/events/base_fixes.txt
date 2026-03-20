@@ -48,24 +48,115 @@ planet_event = {
 		from = { is_ai = yes is_hive_empire = yes }
 		exists = fromfrom
 		fromfrom = { is_hive_empire = no }
+		has_district = yes
 	}
 
 	immediate = {
 		# log = "Transfer planet \\[This.GetName] to \\[from.GetName]"
 		if = {
-			limit = { has_district = yes }
-			if = {
-				limit = {
-					has_building = yes
-					# num_buildings = { type = any value > 0 }
+			limit = {
+				has_building = yes
+				# num_buildings = { type = any value > 0 }
+			}
+			remove_all_buildings = yes
+		}
+		remove_all_districts = yes
+		if = {
+			limit = { pop_amount > 300 }
+			check_planet_employment = yes
+		}
+	}
+}
+
+# End dead war
+event = {
+	id = base_fix.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_playable_country = {
+			is_at_war = yes
+			is_war_leader = yes
+			NOR = {
+				fleet_power >= 500
+				any_controlled_planet = {  }
+			}
+		}
+	}
+
+	immediate = {
+		random_playable_country = {
+			limit = {
+				is_at_war = yes
+				is_war_leader = yes
+				NOR = {
+					fleet_power >= 500
+					any_controlled_planet = {  }
 				}
-				remove_all_buildings = yes
 			}
-			remove_all_districts = yes
-			if = {
-				limit = { num_species > 0 }
-				check_planet_employment = yes
+			country_event = { id = base_fix.6 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = base_fix.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { # double check
+		is_at_war = yes
+		is_war_leader = yes
+		NOR = {
+			fleet_power >= 500
+			any_controlled_planet = {  }
+		}
+	}
+
+	immediate = {
+		random_war = {
+			limit = { prev = { is_war_leader = yes } }
+			random_war_participant = {
+				limit = {
+					is_war_leader = yes
+					NOT = { is_same_empire = prevprev }
+				}
+				save_event_target_as = war_opponent
 			}
+		}
+		add_static_war_exhaustion = {
+			attacker = event_target:war_opponent
+			location = capital_scope
+			value_for_planet_destruction = 1
+		}
+	}
+}
+
+# Check war exhaustion
+# From = Planet Owner
+# fromfrom = Planet Controller (the one occupying)
+planet_event = {
+	id = base_fix.7
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = {
+		has_owner = yes
+		is_ai = yes
+	}
+	trigger = {
+		from = {
+			is_at_war = yes
+			is_war_leader = yes
+			NOR = {
+				fleet_power >= 500
+				any_controlled_planet = {  }
+			}
+		}
+	}
+	immediate = {
+		from = {
+			country_event = { id = base_fix.6 days = 1 }
 		}
 	}
 }

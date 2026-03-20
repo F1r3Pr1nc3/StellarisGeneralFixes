@@ -14,7 +14,7 @@ system_event = {
 	trigger = {
 		has_owner = yes
 		NOR = {
-			owner = { has_modifier = sr_zro_deficit }
+			owner = { has_deficit = sr_zro }
 			has_modifier = zroni_storm
 		}
 		exists = starbase # Vfix: double check due caching issue
@@ -59,7 +59,7 @@ system_event = {
 
 	trigger = {
 		exists = owner
-		NOT = { owner = { has_modifier = sr_zro_deficit } }
+		owner = { NOT = { has_deficit = sr_zro } }
 		has_modifier = zroni_storm
 		any_ship_in_system = {
 			is_ship_class = shipclass_starbase
@@ -93,10 +93,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		OR = {
-			has_monthly_income = { resource = sr_zro value > 0 }
-			resource_stockpile_compare = { resource = sr_zro value > 0 }
-		}
+		NOT = { has_deficit = sr_zro }
 		any_system_within_border = {
 			has_owner = yes
 			NOT = { has_modifier = zroni_storm }
@@ -186,8 +183,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_monthly_income = { resource = sr_zro value < 0 }
-		resource_stockpile_compare = { resource = sr_zro value = 0 }
+		has_deficit = sr_zro
 		any_system_within_border = { has_modifier = zroni_storm }
 	}
 

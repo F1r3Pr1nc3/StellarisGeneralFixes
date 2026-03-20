@@ -2835,6 +2835,7 @@ count_specialists = {
 		}
 		mode = add
 	}
+	divide = 100
 	max = 20
 }
 
@@ -3166,15 +3167,30 @@ psionic_workforce_basic_value = {
 }
 
 psionic_workforce_from_telepaths = {
-	set = value:psionic_workforce_basic_value
+	base = 0
 	complex_trigger_modifier = {
 		trigger = num_assigned_jobs
 		parameters = {
 			job = telepath
 		}
-		mode = mult # Scale with Telepath jobs
+		mode = add		# Scale with Telepath jobs
 	}
-	divide = 100 # Renormalise to "per 100 jobs"
+	complex_trigger_modifier = {
+		trigger = num_assigned_jobs
+		parameters = {
+			job = dystopian_telepath
+		}
+		mode = add		# Scale with Telepath jobs
+	}
+	complex_trigger_modifier = {
+		trigger = num_assigned_jobs
+		parameters = {
+			job = telepath_drone
+		}
+		mode = add		# Scale with Telepath drone jobs as well
+	}
+	divide = 100		# Renormalise to "per 100 jobs"
+	mult = value:psionic_workforce_basic_value
 }
 
 maxed_years_passed = {
@@ -3193,18 +3209,6 @@ gh_critical_mass_value = {
 	}
 	mult = 0.20 # Adjust unlocks_conduit_boost if this changes
 	round = yes
-}
-
-psionic_workforce_from_telepath_drones = {
-	set = value:psionic_workforce_basic_value
-	complex_trigger_modifier = {
-		trigger = num_assigned_jobs
-		parameters = {
-			job = telepath_drone
-		}
-		mode = mult # Scale with Telepath drone jobs as well
-	}
-	divide = 100 # Renormalise to "per 100 jobs"
 }
 
 max_shroud_vegetation = {
@@ -3246,4 +3250,31 @@ mentor_scale_value = {
 	}
 	divide = 100
 	max = 40 # Caps at 4k jobs per category
+}
+
+solarpunk_script_value = {
+	base = 0
+	add = trigger:max_naval_capacity
+	mult = 0.7
+}
+
+capital_tier_minus_1_value = {
+	base = -1
+	add = trigger:capital_tier
+}
+
+imperious_architecture_scaling_value = {
+	base = 2
+	pow = value:capital_tier_minus_1_value
+	mult = 0.5
+	floor = yes
+}
+
+bath_attendant_skill = {
+	base = 0
+	add = value:councilor_level|TYPE|councilor_toxic_baths|
+	add = value:councilor_level|TYPE|councilor_toxic_baths_individual_machine|
+	add = value:councilor_level|TYPE|councilor_corporate_toxic_baths|
+	add = value:councilor_level|TYPE|councilor_corporate_toxic_baths_individual_machine|
+	mult = $MULT$
 }

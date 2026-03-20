@@ -4262,6 +4262,17 @@ has_councilor = {
 	}
 }
 
+has_councilor_with_trait_tier1or2 = {
+	exists = owner
+	owner = {
+		any_owned_leader = {
+			is_councilor = yes
+			is_councilor_type = $COUNCILOR$
+			has_trait_tier1or2 = { TRAIT = $TRAIT$ }
+		}
+	}
+}
+
 has_enclave_councilor = {
 	OR = {
 		has_councilor = { COUNCILOR = councilor_shroudwalker_teacher }
@@ -5264,6 +5275,5 @@ is_specialist_category = {
 	OR = {
 		is_pop_category = specialist
 		is_pop_category = specialist_unemployment # Vfix?
-		is_pop_category = dystopian_specialist
 	}
 }

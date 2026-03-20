@@ -49,7 +49,14 @@ clerk = {
 	}
 
 	triggered_planet_modifier = {
-		potential = { always = yes }
+		potential = {
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
 		planet_amenities_add = 300
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
@@ -889,7 +896,12 @@ farmer = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_agrarian_idyll }
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -1283,7 +1295,12 @@ mortal_initiate = {
 
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -1411,7 +1428,12 @@ squire = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			always = yes
+			exists = owner
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 		}
 		planet_amenities_add = 200
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
@@ -1514,6 +1536,7 @@ foundry_prison_worker = {
 
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
@@ -1598,6 +1621,7 @@ catalytic_technician_prison_worker = {
 
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
@@ -1686,6 +1710,7 @@ artisan_prison_worker = {
 
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
@@ -1793,6 +1818,7 @@ artificer_prison_worker = {
 
 	possible_pre_triggers = {
 		has_owner = yes
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}

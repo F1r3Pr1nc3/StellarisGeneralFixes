@@ -91,11 +91,8 @@ get_num_empires_percent = {
 
 # Planet scope
 experiment_engineer_crime_research_output = {
-	base = @experiment_engineer_crime_research_output
-	complex_trigger_modifier = {
-		trigger = pop_group_crime
-		mode = mult
-	}
+	base = 1
+	mult = trigger:planet_crime
 }
 
 # Planet scope
@@ -1210,4 +1207,27 @@ fractalization_accord_effect_value = {
 	base = 1
 	mult = fractalization_accord_activation
 	mult = 100
+}
+
+num_holdings_in_empire = {
+	base = 0
+	complex_trigger_modifier = {
+		trigger = count_owned_planet
+		mode = add
+		parameters = {
+			limit = {
+				has_holding = {
+					holding = $HOLDING$
+					owner = $OWNER$
+				}
+			}
+		}
+	}
+}
+
+psionic_offices_mind_over_matter_mult = {
+	base = 0
+	add = value:num_holdings_in_empire|HOLDING|building_psionic_offices|OWNER|branch_office_owner|
+	mult = 0.1
+	add = 1
 }

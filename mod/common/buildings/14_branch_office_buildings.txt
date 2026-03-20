@@ -1267,16 +1267,61 @@ building_private_security = {
 
 	triggered_planet_modifier = {
 		potential = {
-			branch_office_owner = { is_legit_or_legal_criminal = yes }
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+			branch_office_owner = {
+				is_legit_or_legal_criminal = yes
+			}
 		}
 		job_enforcer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
+			owner = {
+				has_valid_civic = civic_dystopian_society
+			}
+			branch_office_owner = {
+				is_legit_or_legal_criminal = yes
+			}
+		}
+		job_dystopian_enforcer_add = 200
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_criminal_add = 100
 		job_enforcer_add = 100
+		planet_crime_add = 25 #offsets the enforcer job. >:)
+		#mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				has_valid_civic = civic_dystopian_society
+			}
+			branch_office_owner = { is_illegal_criminal = yes }
+		}
+		job_criminal_add = 100
+		job_dystopian_enforcer_add = 100
+		planet_crime_add = 25 #offsets the enforcer job. >:)
+		#mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_valid_civic = civic_dystopian_society }
+			branch_office_owner = { is_illegal_criminal = yes }
+		}
+		job_criminal_add = 100
+		job_dystopian_enforcer_add = 100
 		planet_crime_add = 25 # offsets the enforcer job. >:)
 		# mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
 	}
@@ -3365,8 +3410,12 @@ building_carceral_test_facility = {
 	}
 
 	planet_modifier = {
-		job_enforcer_add = 100
 		job_slave_orderly_add = 50
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 100
 	}
 
 	resources = {
@@ -3403,23 +3452,42 @@ building_psionic_offices = {
 
 	potential = {
 		has_branch_office = yes
-		branch_office_owner = { is_megacorp = yes is_corporeal_authority = yes }
+		branch_office_owner = {
+			has_breached_shroud = yes
+			has_tradition = tr_psionics_shroud_psi_corps
+			NOT = { has_origin = origin_endbringers }
+		}
 	}
 
-	inline_script = {
-		script = jobs/telepaths_add
-		AMOUNT = 200
+	allow = {
+		is_occupied_flag = no
 	}
 
-	custom_tooltip = building_psionic_offices_tt
-
-	country_modifier = {
-		psionic_aura_effectiveness_mult = 0.02
+	planet_modifier = {
+		job_shroud_trader_add = 200
 	}
 
 	triggered_planet_modifier = {
-		planet_jobs_trade_produces_mult = 0.02
-		mult = value:num_jobs_with_tag|TAG|telepath|
+		potential = {
+			branch_office_owner = { is_criminal_syndicate = yes }
+		}
+		planet_crime_add = 25
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
+	}
+
+	# Crims cause crime even with deal
+	triggered_planet_modifier = {
+		potential = {
+			branch_office_owner = { is_criminal_syndicate = yes }
+		}
+		planet_crime_floor_add = @crime_floor_from_legal_crime
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			branch_office_owner = { is_megacorp = yes is_corporeal_authority = yes }
+		}
+		psionic_aura_effectiveness_mult = 0.02
 	}
 
 	# Trade from civics
@@ -3427,7 +3495,7 @@ building_psionic_offices = {
 		potential = {
 			branch_office_owner = { has_valid_civic = civic_corporate_chosen }
 		}
-		planet_telepaths_trade_produces_add = @high_trade_from_jobs
+		planet_traders_trade_produces_add = @low_trade_from_jobs
 	}
 
 	# Trader Jobs from civics
@@ -3438,6 +3506,8 @@ building_psionic_offices = {
 		job_capital_trader_add = @traders_from_civic
 	}
 
+	custom_tooltip = building_psionic_offices_tt
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -3445,7 +3515,7 @@ building_psionic_offices = {
 			minerals = 800
 		}
 		produces = {
-			energy = 10
+			unity = 5
 			mult = value:branch_office_value_for_buildings
 		}
 		upkeep = {

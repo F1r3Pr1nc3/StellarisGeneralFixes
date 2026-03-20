@@ -418,32 +418,12 @@ building_empyrean_shrine = {
 			owner = { is_fallen_empire = yes }
 		}
 		job_fe_augur_add = 300
+		job_fe_augur_automated_workforce_mult = @fe_automation_specialist_2
 	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				OR = {
-					has_tradition = tr_psionics_psi_corps
-					has_tradition = tr_psionics_shroud_psi_corps
-				}
-				is_gestalt = no
-			}
-		}
-		job_telepath_add = @fe_jobs
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				OR = {
-					has_tradition = tr_psionics_psi_corps
-					has_tradition = tr_psionics_shroud_psi_corps
-				}
-				is_gestalt = yes
-			}
-		}
-		job_telepath_drone_add = @fe_jobs
+
+	inline_script = {
+		script = jobs/telepaths_add
+		AMOUNT = @fe_jobs
 	}
 
 	triggered_country_modifier = {
@@ -466,12 +446,7 @@ building_empyrean_shrine = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = {
-				NOR = {
-					has_tradition = tr_psionics_psi_corps
-					has_tradition = tr_psionics_shroud_psi_corps
-				}
-			}
+			owner = { has_psi_corps_tradition = no }
 		}
 		planet_bureaucrats_produces_mult = 0.25
 	}
@@ -4222,13 +4197,7 @@ building_fe_clinic_1 = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = {
-				OR = {
-					has_purity_heightened_attributes_tradition = yes
-					has_cloning_artificial_population_tradition = yes
-					has_mutation_somatic_subversiveness_tradition = yes
-				}
-			}
+			owner = { has_purity_heightened_attributes_tradition = yes }
 		}
 		organic_pop_bonus_workforce_mult = @medical_workforce_mult
 	}
@@ -4402,13 +4371,7 @@ building_fe_clinic_2 = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = {
-				OR = {
-					has_purity_heightened_attributes_tradition = yes
-					has_cloning_artificial_population_tradition = yes
-					has_mutation_somatic_subversiveness_tradition = yes
-				}
-			}
+			owner = { has_purity_heightened_attributes_tradition = yes }
 		}
 		organic_pop_bonus_workforce_mult = @medical_workforce_mult
 		mult = 2
@@ -4547,24 +4510,14 @@ building_fe_security_1 = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = {
-				# Vfix by Dux: allowed FEs and AEs to get both Enforcers and FE Protectors at the same time, instead of the jobs being a job-type swap.
-				is_gestalt = no
-				is_fallen_empire = no
-			}
-		}
-		job_enforcer_add = @fe_jobs
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				# Vfix now vanilla v4.3 (by Dux: Copied from tier 2. This part was added because the base version of this building added no FE jobs to FEs/AEs.)
-				is_gestalt = no
-				is_fallen_empire = yes
-			}
+			owner = { is_gestalt = no is_fallen_empire = yes }
 		}
 		job_fe_protector_add = @fe_jobs
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = @fe_jobs
 	}
 
 	triggered_desc = {
@@ -4726,16 +4679,10 @@ building_fe_security_2 = {
 		}
 		job_fe_protector_add = @fe_jobs
 	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = {
-				# Vfix by Dux: allowed FEs and AEs to get both Enforcers and FE Protectors at the same time, instead of the jobs being a job-type swap.
-				is_gestalt = no
-				is_fallen_empire = no
-			}
-		}
-		job_enforcer_add = @fe_jobs
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = @fe_jobs
 	}
 
 	triggered_desc = {

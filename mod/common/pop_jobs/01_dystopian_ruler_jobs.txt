@@ -1,0 +1,163 @@
+dystopian_enforcer = {
+	category = ruler
+
+	swappable_data = {
+		default = {
+			condition_string = BATTLE_THRALL_JOB_TRIGGER
+			building_icon = building_precinct_house
+			icon = enforcer
+		}
+		swap_type = {
+			trigger = {
+				enforcer_is_educator_trigger = yes
+			}
+			name = educator
+			desc = educator
+			icon = educator
+			building_icon = building_state_academy
+			condition_string = BATTLE_THRALL_JOB_TRIGGER
+			weight = 10
+		}
+	}
+
+	tags = { crime enforcer }
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible = {
+		battle_thrall_job_check_trigger = yes
+	}
+
+	inline_script = "jobs/job_enforcer"
+
+	weight = {
+		weight = @specialist_job_weight
+
+		modifier = {
+			mult = value:job_weights_modifier|JOB|enforcer|RESOURCE|unity|FACTOR|0.25|
+			owner = { has_active_tradition = tr_domination_judgment_corps }
+		}
+		modifier = {
+			factor = 50
+		}
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_resilient
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_very_strong
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_strong
+		}
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_military }
+		}
+		modifier = {
+			factor = 0.50
+			has_trait = trait_weak
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_cybernetic
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_presapient_earthbound
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_limited_regeneration
+		}
+		modifier = {
+			factor = 0.8
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_indentured }
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_lithoid
+		}
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = ruler
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
+}
+
+dystopian_telepath = {
+	category = ruler
+	can_be_automated = no
+
+	swappable_data = {
+		default = {
+			condition_string = RULER_JOB_TRIGGER
+			building_icon = building_psi_corps
+			icon = telepath
+		}
+		swap_type = {
+			trigger = {
+				enforcer_is_educator_trigger = yes
+			}
+			name = educator_telepath
+			desc = educator_telepath
+			icon = telepath
+			building_icon = building_psi_corps
+			condition_string = RULER_JOB_TRIGGER
+			weight = 10
+		}
+	}
+
+	inline_script = "jobs/job_telepath"
+
+	possible_precalc = can_fill_ruler_job
+
+	weight = {
+		weight = @specialist_job_weight
+		mult = 2
+		mult = value:job_weights_modifier|JOB|telepath|RESOURCE|unity|
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+		}
+		modifier = {
+			factor = 0.1
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_indentured }
+		}
+	}
+
+	promotion = {
+		time = @standard_promotion_time
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = ruler
+				AMOUNT = local_pop_amount
+			}
+		}
+	}
+}

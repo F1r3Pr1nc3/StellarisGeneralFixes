@@ -4625,12 +4625,7 @@ country_event = {
 			}
 			1 = {
 				if = {
-					limit = {
-						OR = {
-							is_gestalt = no
-							is_individual_machine = yes
-						}
-					}
+					limit = { is_gestalt = no }
 					event_target:cara_border_planet = {
 						planet_event = { id = cara.4160 }
 					}
@@ -4812,6 +4807,7 @@ planet_event = {
 		save_event_target_as = pleased_planet
 	}
 
+
 	option = {
 		name = cara.4130.a
 		add_modifier = { modifier = festival_aftermath years = 5 }
@@ -4931,7 +4927,12 @@ planet_event = {
 	location = root
 	is_triggered_only = yes
 
-	trigger = { # Vfix
+	trigger = {
+		has_owner = yes
+		owner = {
+			NOT = { has_country_flag = megacorpse_concert }
+		}
+		# Vfix
 		NOR = {
 			has_modifier = heavy_metal
 			has_deposit = d_crater
@@ -4945,6 +4946,9 @@ planet_event = {
 	}
 
 	immediate = {
+		owner = {
+			set_timed_country_flag = { flag = megacorpse_concert years = 10 }
+		}
 		if = {
 			limit = {
 				has_moon = yes

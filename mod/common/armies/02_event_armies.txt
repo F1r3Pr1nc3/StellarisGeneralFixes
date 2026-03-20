@@ -543,26 +543,13 @@ imperial_legion = {
 		is_active_resolution = resolution_emperor_imperial_legions
 	}
 	allow = {
-		custom_tooltip = {
-			fail_text = troop_limit_tooltip
-			owner = { has_available_imperial_legion_capacity = yes }
-		}
-		custom_tooltip = imperial_legion_limit_tooltip
 	}
 	on_queued = {
-		owner = { change_variable = { which = imperial_legion_soldier_queued_count value = 1 } }
 	}
 	on_unqueued = {
-		owner = {
-			if = {
-				limit = { check_variable = { which = imperial_legion_soldier_queued_count value > 0 } }
-				subtract_variable = { which = imperial_legion_soldier_queued_count value = 1 }
-			}
-		}
 	}
 	ai_weight = {
 		base = 500
-		modifier = { set = 0 has_available_imperial_legion_capacity = no }
 	}
 }
 

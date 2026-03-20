@@ -285,6 +285,18 @@ species_has_uncapped_habitability_on_planet = {
 			has_trait = trait_auto_hab_preference
 			root.owner = { has_mutation_environmental_integration_tradition = yes }
 		}
+		AND = {
+			root = { is_wet = yes }
+			has_trait = trait_cyborg_climate_adjustment_wet
+		}
+		AND = {
+			root = { is_dry = yes }
+			has_trait = trait_cyborg_climate_adjustment_dry
+		}
+		AND = {
+			root = { is_cold = yes }
+			has_trait = trait_cyborg_climate_adjustment_cold
+		}
 	}
 }
 
@@ -2968,7 +2980,7 @@ council_agenda_early_activation_cost = {
 # and the number of civilians is less than building_automation_civilians_threshold.
 # this = planet scope
 building_automation_unemployment_threshold = {
-	base = 0
+	base = 50
 }
 
 # The planet automation doesn't attempt to build new buildings while the number of unemployed pops (excluding civilians)
@@ -2976,7 +2988,7 @@ building_automation_unemployment_threshold = {
 # is less than this threshold.
 # this = planet scope
 building_automation_civilians_threshold = {
-	base = 0
+	base = 100
 }
 
 shroud_delve_cooldown_days = {

@@ -1,3 +1,11 @@
+# Active fixes for general_active_fix_patch_saves
+on_single_player_save_game_load = {
+	events = {
+		khan.300
+	}
+}
+
+
 # A planets controller becomes a country not the same as the owner.
 # Root = Planet
 # From = Planet Owner
@@ -45,5 +53,15 @@ on_ship_enabled = {
 on_capital_changed = {
 	events = {
 		khan.320
+	}
+}
+
+# This = owner of fleet 1 (destroyed)
+# From = owner of fleet 2 (combatant)
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
+on_fleet_destroyed_victim = {
+	events = {
+		khan.525 # May Horde Triggered
 	}
 }

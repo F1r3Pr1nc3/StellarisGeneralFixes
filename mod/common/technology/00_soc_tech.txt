@@ -1741,10 +1741,8 @@ tech_terrestrial_sculpting = {
 	weight_modifier = {
 		factor = 1.5	# terraforming needs to be a bit more common
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
-		modifier = { # if you're a fish, you're definitely gonna prioritise finding out how to make more oceans
-			factor = 1.25
-			has_trait = trait_aquatic
-		}
+		# if you're a fish, you're definitely gonna prioritise finding out how to make more oceans
+		modifier = { factor = 1.25 has_trait = trait_aquatic }
 		modifier = { factor = 1.25 has_trait = trait_robot_aquatic }
 		modifier = { factor = 1.25 has_origin = origin_life_seeded }
 		modifier = { add = 5 has_origin = origin_wilderness }
@@ -1785,10 +1783,8 @@ tech_terrestrial_sculpting = {
 				habitability = { who = root value < 0.5 }
 			}
 		}
-		modifier = { # Hydrocentric is really good and needs this
-			factor = 1000
-			has_trait = trait_aquatic
-		}
+		# Hydrocentric is really good and needs this
+		modifier = { factor = 1000 has_trait = trait_aquatic }
 		modifier = { factor = 1000 has_trait = trait_robot_aquatic }
 		modifier = { factor = 100 has_origin = origin_life_seeded }
 		modifier = {

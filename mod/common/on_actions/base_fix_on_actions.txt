@@ -1,0 +1,47 @@
+# Active fixes for general_active_fix_patch_saves
+on_single_player_save_game_load = {
+	events = {
+		base_fix.5	# Check war exhaustion.
+	}
+}
+
+# No scope, like on_game_start
+# on_bi_monthly_pulse = {
+# 	events = {
+# 		crisis.106 # Queen Breeds
+# 	}
+# }
+
+# No scope, like on_game_start
+on_yearly_pulse = {
+	events = {
+		base_fix.2 # AI Shroud Enter
+	}
+}
+
+# this = country
+on_five_year_pulse_country = {
+	events = {
+		leader.150
+	}
+}
+
+# Fired whenever a new owner is set for a planet, following a war or through trade
+# This = Planet scope
+# From = Country scope (new owner)
+# FromFrom = Country scope (previous owner, if any)
+on_planet_transfer = {
+	events = {
+		base_fix.3 # Vfix AI gestalt economic
+	}
+}
+
+# A planets controller becomes a country not the same as the owner.
+# Root = Planet
+# From = Planet Owner
+# fromfrom = Planet Controller (the one occupying)
+on_planet_occupied = {
+	events = {
+		base_fix.7 # Check war exhaustion.
+	}
+}

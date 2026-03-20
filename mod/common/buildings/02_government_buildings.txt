@@ -187,8 +187,9 @@ building_precinct_house = {
 		}
 	}
 
-	planet_modifier = {
-		job_enforcer_add = 200
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 200
 	}
 
 	resources = {
@@ -259,8 +260,9 @@ building_hall_judgment = {
 		is_occupied_flag = no
 	}
 
-	planet_modifier = {
-		job_enforcer_add = 500
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 500
 	}
 
 	resources = {
@@ -315,11 +317,15 @@ building_state_academy = {
 	}
 
 	planet_modifier = {
-		job_enforcer_add = 200
-		planet_civilians_physics_research_produces_add = 0.5
-		planet_civilians_society_research_produces_add = 0.5
-		planet_civilians_engineering_research_produces_add = 0.5
-		planet_civilians_consumer_goods_upkeep_add = 1
+		planet_civilians_physics_research_produces_add = 0.1
+		planet_civilians_society_research_produces_add = 0.1
+		planet_civilians_engineering_research_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.25
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 200
 	}
 
 	resources = {
@@ -376,11 +382,15 @@ building_center_of_guidance = {
 	}
 
 	planet_modifier = {
-		job_enforcer_add = 500
-		planet_civilians_physics_research_produces_add = 1
-		planet_civilians_society_research_produces_add = 1
-		planet_civilians_engineering_research_produces_add = 1
-		planet_civilians_consumer_goods_upkeep_add = 2
+		planet_civilians_physics_research_produces_add = 0.2
+		planet_civilians_society_research_produces_add = 0.2
+		planet_civilians_engineering_research_produces_add = 0.2
+		planet_civilians_consumer_goods_upkeep_add = 0.5
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 500
 	}
 
 	resources = {
@@ -629,10 +639,7 @@ building_psi_corps = {
 	potential = {
 		has_owner = yes
 		owner = {
-			OR = {
-				has_tradition = tr_psionics_psi_corps
-				has_tradition = tr_psionics_shroud_psi_corps
-			}
+			has_psi_corps_tradition = yes
 			NOT = { has_origin = origin_endbringers }
 		}
 		OR = {
@@ -665,12 +672,7 @@ building_psi_corps = {
 
 	destroy_trigger = {
 		has_owner = yes
-		owner = {
-			NOR = {
-				has_tradition = tr_psionics_psi_corps
-				has_tradition = tr_psionics_shroud_psi_corps
-			}
-		}
+		owner = { has_psi_corps_tradition = no }
 	}
 
 	inline_script = {
@@ -684,18 +686,14 @@ building_psi_corps = {
 
 	triggered_planet_modifier = {
 		potential = {
-			num_assigned_jobs = { job = telepath value > 0 }
+			OR = {
+				num_assigned_jobs = { job = telepath value > 0 }
+				num_assigned_jobs = { job = dystopian_telepath value > 0 }
+				num_assigned_jobs = { job = telepath_drone value > 0 }
+			}
 		}
 		psionic_pop_bonus_workforce_mult = 1
 		mult = value:psionic_workforce_from_telepaths
-		# This is on the building instead of the jobs to prevent an infinite workforce loop
-	}
-	triggered_planet_modifier = {
-		potential = {
-			num_assigned_jobs = { job = telepath_drone value > 0 }
-		}
-		psionic_pop_bonus_workforce_mult = 1
-		mult = value:psionic_workforce_from_telepath_drones
 		# This is on the building instead of the jobs to prevent an infinite workforce loop
 	}
 
@@ -710,15 +708,6 @@ building_psi_corps = {
 	}
 
 	triggered_desc = {
-		trigger = {
-			has_owner = yes
-			owner = {
-				NAND = {
-					is_imperial_authority = yes
-					is_corporeal_authority = yes
-				}
-			}
-		}
 		text = psionic_bonus_workforce_from_telepaths_tt
 	}
 

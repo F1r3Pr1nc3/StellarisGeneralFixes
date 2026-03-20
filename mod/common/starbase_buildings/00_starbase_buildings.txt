@@ -304,13 +304,8 @@ offworld_trading_company = {
 		cost = {
 			alloys = 100
 		}
-		produces = {
-			trigger = {
-				hidden_trigger = { is_scope_valid = yes }
-				has_starbase_module = trading_hub
-			}
-			trade = 2
-			mult = value:num_starbase_modules_of_type|TYPE|trading_hub|
+		upkeep = {
+			energy = 1
 		}
 	}
 
@@ -1658,15 +1653,15 @@ warp_fluctuator = {
 			alloys = 100
 		}
 		produces = {
-			trade = 2
+			trade = 4
 		}
 		upkeep = {
 			energy = 2
 		}
 	}
 
-	station_modifier = {
-	}
+	equipped_component = "SHIP_AURA_HYPERLANE"
+	custom_tooltip = warp_fluctuator_tt
 
 	triggered_system_modifier = {
 		# Gives some Stability per "Hyperspace Specialty" Councilor level.
