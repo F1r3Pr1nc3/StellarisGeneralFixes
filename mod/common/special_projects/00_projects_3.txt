@@ -1,19 +1,18 @@
-#Derelict Ship
+# Derelict Ship
 special_project = {
 	key = "DERELICT_SHIP_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 20
 	tech_department = society_technology # DOES NOTHING OTHER THAN SHOWING AN ICON
 	timelimit = -1
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 2
+		# skill = 2
 	}
 
 	on_success = {
@@ -42,33 +41,33 @@ special_project = {
 	}
 }
 
-#AI Admiral
+# AI Admiral
 special_project = {
 	key = "AI_ADMIRAL_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 30
 	tech_department = society_technology
 	timelimit = 1080
 	picture = GFX_evt_sapient_AI
 	icon = "gfx/interface/icons/situation_log/situation_log_ai.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 2
+		# skill = 2
 	}
 
 	on_success = {
 		ship_event = { id = anomaly.4031 }
 	}
+
 	on_fail = {
 		country_event = { id = anomaly_failure.4031 }
 	}
 }
 
-#special_project = {
+# special_project = {
 #	key = "TESTING_PROJECT"
 #	#cost = 0
 #	days_to_research = 10
@@ -89,23 +88,22 @@ special_project = {
 #			fromfrom = { planet_event = { id = anomaly.4032 } }
 #		}
 #	}
-#}
+# }
 # Odd Star
 special_project = {
 	key = "ODD_STAR_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 60
 	tech_department = society_technology
 	timelimit = -1
 	picture = GFX_evt_star_yellow
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 2
+		# skill = 2
 	}
 
 	on_success = {
@@ -113,30 +111,27 @@ special_project = {
 	}
 }
 
-#Improbable Teapot
+# Improbable Teapot
 special_project = {
 	key = "IMPROBABLE_TEAPOT_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 720
 	tech_department = society_technology
 	timelimit = -1
 	picture = GFX_evt_star_yellow
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 2
+		# skill = 2
 	}
 
 	on_success = {
 		if = {
 			limit = {
-				owner = {
-					is_spiritualist = no
-				}
+				owner = { is_spiritualist = no }
 			}
 			random_list = {
 				60 = { ship_event = { id = anomaly.4061 } }
@@ -145,9 +140,7 @@ special_project = {
 		}
 		if = {
 			limit = {
-				owner = {
-					is_spiritualist = yes
-				}
+				owner = { is_spiritualist = yes }
 			}
 			random_list = {
 				20 = { ship_event = { id = anomaly.4061 } }
@@ -160,13 +153,12 @@ special_project = {
 # Mining Gear
 special_project = {
 	key = "MINING_GEAR_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 60
 	tech_department = engineering_technology
 	timelimit = 1080
 	picture = GFX_evt_mining_station
 	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
-
 	event_scope = ship_event
 
 	requirements = {
@@ -176,6 +168,7 @@ special_project = {
 	on_success = {
 		ship_event = { id = anomaly.4066 }
 	}
+
 	on_fail = {
 		country_event = { id = anomaly_failure.4066 }
 	}
@@ -184,17 +177,16 @@ special_project = {
 # Abandoned Array
 special_project = {
 	key = "ABANDONED_ARRAY_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 90
 	tech_department = engineering_technology
 	timelimit = -1
 	picture = GFX_evt_star_chart
 	icon = "gfx/interface/icons/situation_log/situation_log_radar.dds"
-
 	event_scope = ship_event
 
 	requirements = {
-		#shipclass_constructor = 1
+		# shipclass_constructor = 1
 		shipclass_science_ship = 1
 	}
 
@@ -209,13 +201,12 @@ special_project = {
 # Alien Speed Ship
 special_project = {
 	key = "ALIEN_RACER_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 45
 	tech_department = engineering_technology
 	timelimit = 1080
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
-
 	event_scope = ship_event
 
 	requirements = {
@@ -225,9 +216,10 @@ special_project = {
 	on_success = {
 		random_list = {
 			60 = { ship_event = { id = anomaly.4086 } }
-			#40 = { ship_event = { id = anomaly.4087 } }
+			# 40 = { ship_event = { id = anomaly.4087 } }
 		}
 	}
+
 	on_fail = {
 		country_event = { id = anomaly_failure.4086 }
 	}
@@ -236,19 +228,18 @@ special_project = {
 # Psionic Horses
 special_project = {
 	key = "PSIONIC_HORSES_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 30
 	tech_department = society_technology
 	timelimit = -1
 	picture = GFX_evt_alien_nature
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 2
+		# skill = 2
 	}
 
 	on_success = {
@@ -286,13 +277,12 @@ special_project = {
 # Giant Roombas
 special_project = {
 	key = "ROBOT_CLEANERS_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 90
 	tech_department = engineering_technology
 	timelimit = -1
 	picture = GFX_evt_robot_assembly_plant
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
-
 	event_scope = ship_event
 
 	requirements = {
@@ -307,18 +297,17 @@ special_project = {
 # Monsters on a Ship
 special_project = {
 	key = "ALIEN_MONSTER_ON_SHIP"
-	#cost = 0
+	# cost = 0
 	days_to_research = 7
 	tech_department = society_technology
 	timelimit = 1080
 	picture = GFX_evt_ship_under_attack
 	icon = "gfx/interface/icons/situation_log/situation_log_extradimensional.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_military = 2
-		#leader = commander
+		# leader = commander
 		##skill = 2
 	}
 
@@ -328,6 +317,7 @@ special_project = {
 			30 = { ship_event = { id = anomaly.4117 } }
 		}
 	}
+
 	on_fail = {
 		country_event = { id = anomaly_failure.4116 }
 	}
@@ -336,19 +326,18 @@ special_project = {
 # Tree of Life
 special_project = {
 	key = "TREE_OF_LIFE"
-	#cost = 0
+	# cost = 0
 	days_to_research = 60
 	tech_department = society_technology
 	timelimit = -1
 	picture = GFX_evt_physics_research
 	icon = "gfx/interface/icons/situation_log/situation_log_extradimensional.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 3
+		# skill = 3
 	}
 
 	on_success = {
@@ -364,9 +353,7 @@ special_project = {
 	timelimit = -1
 	picture = GFX_evt_star_chart
 	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
-
 	location = no
-
 	event_scope = planet_event
 
 	requirements = {
@@ -401,9 +388,7 @@ special_project = {
 	timelimit = -1
 	picture = GFX_evt_star_chart
 	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
-
 	location = no
-
 	event_scope = planet_event
 
 	requirements = {
@@ -438,9 +423,7 @@ special_project = {
 	timelimit = -1
 	picture = GFX_evt_star_chart
 	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
-
 	location = no
-
 	event_scope = planet_event
 
 	requirements = {
@@ -475,9 +458,7 @@ special_project = {
 	timelimit = -1
 	picture = GFX_evt_small_space_battle
 	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
-
 	location = no
-
 	event_scope = planet_event
 
 	requirements = {
@@ -507,21 +488,20 @@ special_project = {
 # Getting into a vault guarded by beasts
 special_project = {
 	key = "CRYOPOD_FOUND_PROJECT"
-	#cost = 0
+	# cost = 0
 	days_to_research = 100
 	tech_department = society_technology
 	timelimit = -1
 	picture = GFX_evt_alien_ruins
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_military = 3
-		#shipclass_science_ship = 1
-		#leader = commander
+		# shipclass_science_ship = 1
+		# leader = commander
 		##skill = 2
-		#has_trait = leader_trait_trickster
+		# has_trait = leader_trait_trickster
 	}
 
 	on_success = {
@@ -541,7 +521,6 @@ special_project = {
 	location = no
 	picture = GFX_evt_engineering_research
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	requirements = {
@@ -579,7 +558,6 @@ special_project = {
 	location = no
 	picture = GFX_evt_ocean
 	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
-
 	event_scope = planet_event
 
 	requirements = {
@@ -612,22 +590,17 @@ special_project = {
 	tech_department = engineering_technology
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
-
 	event_scope = planet_event
 
 	on_success = {
 		random_list = {
-			75 = {
-				planet_event = { id = colony_mod.10 }
-			}
-			25 = {
-				planet_event = { id = colony_mod.11 }
-			}
+			75 = { planet_event = { id = colony_mod.10 } }
+			25 = { planet_event = { id = colony_mod.11 } }
 		}
 	}
 }
 
-#special_project = {
+# special_project = {
 #	key = "impact_defence_system"
 #	cost = 5000
 #	tech_department = engineering_technology
@@ -639,84 +612,68 @@ special_project = {
 #	on_success = {
 #		planet_event = { id = colony_mod.13 }
 #	}
-#}
-#Titanic life study
-#This is the default version which has a middling cost and a fairly good chance for a good outcome
+# }
+# Titanic life study
+# This is the default version which has a middling cost and a fairly good chance for a good outcome
 special_project = {
 	key = "titanic_life_study_normal"
 	cost = 3500
 	tech_department = society_technology
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
-
 	event_scope = planet_event
 
 	on_success = {
 		random_list = {
-			70 = {
-				planet_event = { id = colony_mod.101 }
-			}
-			30 = {
-				planet_event = { id = colony_mod.102 }
-			}
+			70 = { planet_event = { id = colony_mod.101 } }
+			30 = { planet_event = { id = colony_mod.102 } }
 		}
 	}
 }
 
-#Titanic life study
-#This is the Xenophobe version of the study, which is cheaper but has a worse chance of a good outcome. The event choice leading to this also gives a good planet modifier though
+# Titanic life study
+# This is the Xenophobe version of the study, which is cheaper but has a worse chance of a good outcome. The event choice leading to this also gives a good planet modifier though
 special_project = {
 	key = "titanic_life_study_mean"
 	cost = 2500
 	tech_department = society_technology
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
-
 	event_scope = planet_event
 
 	on_success = {
 		random_list = {
-			50 = {
-				planet_event = { id = colony_mod.101 }
-			}
-			50 = {
-				planet_event = { id = colony_mod.102 }
-			}
+			50 = { planet_event = { id = colony_mod.101 } }
+			50 = { planet_event = { id = colony_mod.102 } }
 		}
 	}
 }
 
-#Titanic life study
-#This is the Xenophile version, which has a higher cost but better chance for good outcome. The event choice leading to this also gives a good planet effect.
+# Titanic life study
+# This is the Xenophile version, which has a higher cost but better chance for good outcome. The event choice leading to this also gives a good planet effect.
 special_project = {
 	key = "titanic_life_study_nice"
 	cost = 5000
 	tech_department = society_technology
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
-
 	event_scope = planet_event
 
 	on_success = {
 		random_list = {
-			90 = {
-				planet_event = { id = colony_mod.101 }
-			}
-			10 = {
-				planet_event = { id = colony_mod.102 }
-			}
+			90 = { planet_event = { id = colony_mod.101 } }
+			10 = { planet_event = { id = colony_mod.102 } }
 		}
 	}
 }
 
-#Magnetic planet study
+# Magnetic planet study
 special_project = {
 	key = "MAGNETIC_PLANET_RESEARCH_PROJECT"
 	cost = 5000
 	tech_department = physics_technology
 	picture = GFX_evt_ship_in_orbit
 	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -731,7 +688,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_genetic_modification
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = ship_event
 
 	requirements = {
@@ -753,7 +709,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = ship_event
 
 	requirements = {
@@ -775,7 +730,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = ship_event
 
 	requirements = {
@@ -788,6 +742,7 @@ special_project = {
 		}
 	}
 }
+
 # Ageless
 special_project = {
 	key = "mystery_cream_project"
@@ -796,19 +751,23 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	on_success = {
 		if = {
 			limit = { is_same_value = from }	# compatibility code
-			owner = { country_event = { id = utopia.103 } }
+			owner = {
+				country_event = { id = utopia.103 }
+			}
 		}
 		else = {
-			from = { country_event = { id = utopia.103 } }
+			from = {
+				country_event = { id = utopia.103 }
+			}
 		}
 	}
 }
+
 # Cream Origin
 special_project = {
 	key = "cream_origin_project"
@@ -817,16 +776,19 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	on_success = {
 		if = {
 			limit = { is_same_value = from }	# compatibility code
-			owner = { country_event = { id = utopia.104 } }
+			owner = {
+				country_event = { id = utopia.104 }
+			}
 		}
 		else = {
-			from = { country_event = { id = utopia.104 } }
+			from = {
+				country_event = { id = utopia.104 }
+			}
 		}
 	}
 }
@@ -837,7 +799,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -854,7 +815,6 @@ special_project = {
 	tech_department = physics_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_physics.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -899,7 +859,6 @@ special_project = {
 	tech_department = physics_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_physics.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -913,7 +872,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -927,7 +885,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -941,7 +898,6 @@ special_project = {
 	tech_department = engineering_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -955,7 +911,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_shattered_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -969,7 +924,6 @@ special_project = {
 	tech_department = engineering_technology
 	picture = GFX_evt_wormhole
 	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
-
 	event_scope = planet_event
 
 	on_success = {
@@ -984,60 +938,48 @@ special_project = {
 	timelimit = -1
 	picture = GFX_evt_sapient_AI
 	location = no
-
 	event_scope = planet_event
-
-	#requirements = {
-		#shipclass_science_ship = 1
-		#leader = scientist
-		##skill = 3
-	#}
+	# requirements = {
+	# shipclass_science_ship = 1
+	# leader = scientist
+	##skill = 3
+	# }
 	on_success = {
 		if = {
 			limit = { is_same_value = from }
 			owner = {	# compatibility code
 				set_country_flag = limbo_uploaded_robots
-			# there are colonizable planets inside and outside borders
+				# there are colonizable planets inside and outside borders
 				if = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
-						any_planet_within_border = {
-							DLAF_is_valid_awoken_colony_trigger = yes
-						}
+						any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 						any_system = {
 							DLAF_is_valid_awoken_country_colony_system_trigger = yes
-							any_system_planet = {
-								DLAF_is_valid_awoken_colony_trigger = yes
-							}
 						}
 					}
 					country_event = { id = anomaly.189 }
 				}
-			# There are colonizable planets inside borders only
+				# There are colonizable planets inside borders only
 				else_if = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
-						any_planet_within_border = {
-							DLAF_is_valid_awoken_colony_trigger = yes
-						}
+						any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 					}
 					country_event = { id = anomaly.1198 }
 				}
-			# There are colonizable planets outside borders only
+				# There are colonizable planets outside borders only
 				else_if = {
 					limit = {
-						#has_technology = tech_droid_workers # This was preventing Individualist Machines but they are now accounted for later on.
+						# has_technology = tech_droid_workers # This was preventing Individualist Machines but they are now accounted for later on.
 						NOT = { has_policy_flag = ai_outlawed }
 						any_system = {
 							DLAF_is_valid_awoken_country_colony_system_trigger = yes
-							any_system_planet = {
-								DLAF_is_valid_awoken_colony_trigger = yes
-							}
 						}
 					}
 					country_event = { id = anomaly.1199 }
 				}
-			# There are no colonizable planets
+				# There are no colonizable planets
 				else = { # Vfix minor
 					country_event = { id = anomaly.1190 }
 				}
@@ -1050,14 +992,9 @@ special_project = {
 				if = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
-						any_planet_within_border = {
-							DLAF_is_valid_awoken_colony_trigger = yes
-						}
+						any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 						any_system = {
 							DLAF_is_valid_awoken_country_colony_system_trigger = yes
-							any_system_planet = {
-								DLAF_is_valid_awoken_colony_trigger = yes
-							}
 						}
 					}
 					country_event = { id = anomaly.189 }
@@ -1066,22 +1003,17 @@ special_project = {
 				else_if = {
 					limit = {
 						NOT = { has_policy_flag = ai_outlawed }
-						any_planet_within_border = {
-							DLAF_is_valid_awoken_colony_trigger = yes
-						}
+						any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 					}
 					country_event = { id = anomaly.1198 }
 				}
 				# There are colonizeable planets outside borders only
 				else_if = {
 					limit = {
-						#has_technology = tech_droid_workers # This was preventing Individualist Machines but they are now accounted for later on.
+						# has_technology = tech_droid_workers # This was preventing Individualist Machines but they are now accounted for later on.
 						NOT = { has_policy_flag = ai_outlawed }
 						any_system = {
 							DLAF_is_valid_awoken_country_colony_system_trigger = yes
-							any_system_planet = {
-								DLAF_is_valid_awoken_colony_trigger = yes
-							}
 						}
 					}
 					country_event = { id = anomaly.1199 }
@@ -1094,7 +1026,8 @@ special_project = {
 		}
 	}
 
-	on_fail = { }
+	on_fail = {
+	}
 }
 
 special_project = {
@@ -1103,7 +1036,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_decryption
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
-
 	event_scope = country_event
 
 	on_success = {
@@ -1117,7 +1049,6 @@ special_project = {
 	tech_department = society_technology
 	picture = GFX_evt_necromancy
 	timelimit = 1080
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1146,6 +1077,7 @@ special_project = {
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
 	event_scope = planet_event
+
 	on_success = {
 		planet_event = { id = colony.9015 }
 	}
@@ -1160,6 +1092,7 @@ special_project = {
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
 	event_scope = planet_event
+
 	on_success = {
 		planet_event = { id = colony.9030 }
 	}
@@ -1174,6 +1107,7 @@ special_project = {
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
 	event_scope = planet_event
+
 	on_success = {
 		planet_event = { id = colony.9040 }
 	}
@@ -1188,6 +1122,7 @@ special_project = {
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
 	event_scope = planet_event
+
 	on_success = {
 		planet_event = { id = colony.9045 }
 	}
@@ -1202,6 +1137,7 @@ special_project = {
 	picture = GFX_evt_alien_planet
 	icon = "gfx/interface/icons/situation_log/situation_log_scanning_beam.dds"
 	event_scope = planet_event
+
 	on_success = {
 		planet_event = { id = colony.9010 }
 	}
@@ -1214,14 +1150,14 @@ special_project = {
 	tech_department = physics_technology
 	timelimit = -1
 	picture = "GFX_evt_gray_goo"
-	icon ="gfx/interface/icons/situation_log/situation_log_ai.dds"
-
+	icon = "gfx/interface/icons/situation_log/situation_log_ai.dds"
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
 	}
+
 	on_success = {
 		ship_event = { id = anomaly.6705 }
 		owner = { set_country_flag = machine_age_nanites_studied } # Familiarity with nanites gained for Machine Ascension
@@ -1236,12 +1172,12 @@ special_project = {
 	timelimit = -1
 	picture = "GFX_evt_gray_goo"
 	icon = "gfx/interface/icons/situation_log/situation_log_ai.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		fleet_power >= 2000
 	}
+
 	on_success = {
 		ship_event = { id = anomaly.6720 }
 	}
@@ -1254,22 +1190,27 @@ special_project = {
 	timelimit = -1
 	picture = "GFX_evt_gray_goo"
 	icon = "gfx/interface/icons/situation_log/situation_log_ai.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
 	}
+
 	on_success = {
 		ship_event = { id = anomaly.6715 }
 	}
+
 	desc = {
-		trigger = { owner.capital_scope = { is_artificial = yes }  }
+		trigger = {
+			owner.capital_scope = { is_artificial = yes }
+		}
 		text = TAME_THE_SWARM_DESC_ARTIFICIAL
 	}
 	desc = {
-		trigger = { owner.capital_scope = { is_artificial = no }  }
+		trigger = {
+			owner.capital_scope = { is_artificial = no }
+		}
 		text = TAME_THE_SWARM_DESC
 	}
 }
@@ -1282,7 +1223,9 @@ special_project = {
 	picture = GFX_evt_astral_rift_research_lab_specimen
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
 
-	same_option_group_as = { CLONE_SOLDIER_UNLOCK_POTENTIAL }
+	same_option_group_as = {
+		CLONE_SOLDIER_UNLOCK_POTENTIAL
+	}
 
 	event_scope = country_event
 
@@ -1290,6 +1233,7 @@ special_project = {
 		country_event = { id = clones.22 }
 		owner = { end_event_chain = "clone_fertility_chain" }
 	}
+
 	desc = {
 		trigger = {
 			has_utopia = no
@@ -1305,9 +1249,7 @@ special_project = {
 		text = CLONE_SOLDIER_UNLOCK_FERTILITY_UTOPIA_DESC
 	}
 	desc = {
-		trigger = {
-			has_biogenesis_dlc = yes
-		}
+		trigger = { has_biogenesis_dlc = yes }
 		text = CLONE_SOLDIER_UNLOCK_FERTILITY_BIOGENESIS_DESC
 	}
 }
@@ -1320,7 +1262,9 @@ special_project = {
 	picture = GFX_evt_clones
 	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
 
-	same_option_group_as = { CLONE_SOLDIER_UNLOCK_FERTILITY }
+	same_option_group_as = {
+		CLONE_SOLDIER_UNLOCK_FERTILITY
+	}
 
 	event_scope = country_event
 
@@ -1328,6 +1272,7 @@ special_project = {
 		country_event = { id = clones.23 }
 		owner = { end_event_chain = "clone_fertility_chain" }
 	}
+
 	desc = {
 		trigger = {
 			has_utopia = no
@@ -1343,21 +1288,18 @@ special_project = {
 		text = CLONE_SOLDIER_UNLOCK_POTENTIAL_UTOPIA_DESC
 	}
 	desc = {
-		trigger = {
-			has_biogenesis_dlc = yes
-		}
+		trigger = { has_biogenesis_dlc = yes }
 		text = CLONE_SOLDIER_UNLOCK_POTENTIAL_BIOGENESIS_DESC
 	}
 }
 
-#FOLLOWING_FUNGI
+# FOLLOWING_FUNGI
 special_project = {
 	key = "FOLLOWING_FUNGI_PROJECT"
 	cost = 0
 	days_to_research = 360
 	tech_department = society_technology
 	picture = GFX_evt_landing_ship
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1388,14 +1330,13 @@ special_project = {
 	}
 }
 
-#MUSHROOMING_NETWORK
+# MUSHROOMING_NETWORK
 special_project = {
 	key = "MUSHROOMING_NETWORK_PROJECT"
 	cost = 2000
 	tech_department = society_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	picture = GFX_evt_alien_nature
-
 	event_scope = country_event
 
 	requirements = {
@@ -1411,14 +1352,13 @@ special_project = {
 	}
 }
 
-#ORIGIN DRAGON MATERIAL STUDY
+# ORIGIN DRAGON MATERIAL STUDY
 special_project = {
 	key = "DRAGON_MATERIAL_STUDY"
 	days_to_research = 90
 	tech_department = society_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_space_creature.dds"
 	picture = GFX_evt_here_be_dragons
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1436,70 +1376,53 @@ special_project = {
 				ship_event = { id = aquatics.200 } # fail (ship destroyed)
 				modifier = {
 					factor = 4
-					owner = {
-						has_country_flag = dragon_displeased
-					}
+					owner = { has_country_flag = dragon_displeased }
 				}
 				modifier = {
 					factor = 0
-					owner = {
-						has_country_flag = dragon_materials_attempted
-					}
+					owner = { has_country_flag = dragon_materials_attempted }
 				}
 			}
 			4 = {
 				ship_event = { id = aquatics.205 } # fail (no consequences)
 				modifier = {
 					factor = 0
-					owner = {
-						has_country_flag = dragon_materials_attempted
-					}
+					owner = { has_country_flag = dragon_materials_attempted }
 				}
 			}
 			3 = { # generally higher chance of success second time. You'll probably succeed if you pleased the dragon before
 				ship_event = { id = aquatics.210 } # fail (planet damaged)
 				modifier = {
 					factor = 0
-					NOT = {
-						owner = {
-							has_country_flag = dragon_materials_attempted
-						}
-					}
+					NOT = { owner = { has_country_flag = dragon_materials_attempted } }
 				}
 				modifier = {
 					factor = 0.33
-					owner = {
-						has_country_flag = dragon_pleased
-					}
+					owner = { has_country_flag = dragon_pleased }
 				}
 			}
 			1 = {
 				ship_event = { id = aquatics.215 } # success
 				modifier = {
 					factor = 2
-					owner = {
-						has_country_flag = dragon_pleased
-					}
+					owner = { has_country_flag = dragon_pleased }
 				}
 				modifier = {
 					factor = 0.5
-					owner = {
-						has_country_flag = dragon_displeased
-					}
+					owner = { has_country_flag = dragon_displeased }
 				}
 			}
 		}
 	}
 }
 
-#ORIGIN DRAGON REMOTE SCAN
+# ORIGIN DRAGON REMOTE SCAN
 special_project = {
 	key = "DRAGON_REMOTE_SCANS"
 	days_to_research = 90
 	tech_department = society_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_space_creature.dds"
 	picture = GFX_evt_here_be_dragons
-
 	event_scope = ship_event
 
 	abort_trigger = {
@@ -1525,7 +1448,6 @@ special_project = {
 	tech_department = society_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	picture = GFX_evt_tomb_world
-
 	event_scope = country_event
 
 	on_success = {
@@ -1542,7 +1464,6 @@ special_project = {
 	tech_department = physics_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	picture = GFX_evt_gas_giant
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1564,7 +1485,6 @@ special_project = {
 	tech_department = physics_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	picture = GFX_evt_gas_giant
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1586,7 +1506,6 @@ special_project = {
 	tech_department = physics_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	picture = GFX_evt_hive
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1608,7 +1527,6 @@ special_project = {
 	days_to_research = 360
 	tech_department = physics_technology
 	picture = GFX_evt_junkheap
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1624,7 +1542,7 @@ special_project = {
 	}
 }
 
-#special_project = {
+# special_project = {
 #	key = SNEK_SCIENCE_PROJECT
 #	cost = 1000
 #	tech_department = society_technology
@@ -1637,9 +1555,9 @@ special_project = {
 #		planet_event = { id = colony.9101 }
 #		set_planet_flag = snake_peace
 #	}
-#}
+# }
 #
-#special_project = {
+# special_project = {
 #	key = SNEK_WAR_PROJECT
 #	cost = 1000
 #	tech_department = engineering_technology
@@ -1652,14 +1570,14 @@ special_project = {
 #		planet_event = { id = colony.9102 }
 #		set_planet_flag = snake_war
 #	}
-#}
+# }
+
 special_project = {
 	key = "CRACK_THE_EGG"
 	days_to_research = 720
 	tech_department = society_technology
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	picture = GFX_evt_hive
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1684,7 +1602,6 @@ special_project = {
 	days_to_research = 360
 	tech_department = physics_technology
 	picture = GFX_evt_mining_station
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1702,7 +1619,6 @@ special_project = {
 	cost = 2000
 	tech_department = physics_technology
 	picture = GFX_evt_mining_station
-
 	event_scope = country_event
 
 	on_success = {
@@ -1718,7 +1634,6 @@ special_project = {
 	icon = "gfx/interface/icons/situation_log/situation_log_quest.dds"
 	picture = GFX_evt_atmospheric_flight
 	location = yes
-
 	event_scope = ship_event
 
 	requirements = {
@@ -1726,7 +1641,9 @@ special_project = {
 	}
 
 	on_success = {
-		owner = { country_event = { id = galactic_features.389 } }
+		owner = {
+			country_event = { id = galactic_features.389 }
+		}
 	}
 
 	on_fail = {
@@ -1749,7 +1666,6 @@ special_project = {
 	picture = GFX_evt_robot_assembly_plant
 	icon = "gfx/interface/icons/situation_log/situation_log_ai.dds"
 	event_chain = "machine_uprising_chain"
-
 	event_scope = country_event
 
 	on_success = {
@@ -1765,7 +1681,9 @@ special_project = {
 	icon = "gfx/interface/icons/situation_log/situation_log_ai.dds"
 	event_chain = "machine_uprising_chain"
 
-	same_option_group_as = { PROJECT_MACHINE_UPRISING_PATCH }	# Can't do both.
+	same_option_group_as = {
+		PROJECT_MACHINE_UPRISING_PATCH
+	}	# Can't do both.
 
 	event_scope = country_event
 
@@ -1821,7 +1739,7 @@ special_project = {
 	}
 
 	on_success = {
-		from  = {
+		from = {
 			ship_event = { id = anomaly.3150 }
 		}
 	}
@@ -1834,17 +1752,18 @@ special_project = {
 	timelimit = -1
 	picture = GFX_evt_physics_research
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
-
 	event_scope = ship_event
 
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
-		#skill = 3
+		# skill = 3
 	}
 
 	on_success = {
-		from = { planet_event = { id = colony.9910 } }
+		from = {
+			planet_event = { id = colony.9910 }
+		}
 	}
 }
 
@@ -1860,8 +1779,11 @@ special_project = {
 	on_success = {
 		planet_event = { id = colony.9320 }
 	}
+
 	on_fail = {
-		from = { planet_event = { id = colony.9325 } }
+		from = {
+			planet_event = { id = colony.9325 }
+		}
 	}
 }
 
@@ -1877,8 +1799,11 @@ special_project = {
 	on_success = {
 		planet_event = { id = colony.9335 }
 	}
+
 	on_fail = {
-		from = { planet_event = { id = colony.9325 } }
+		from = {
+			planet_event = { id = colony.9325 }
+		}
 	}
 }
 
@@ -1899,13 +1824,12 @@ special_project = {
 				is_planet_class = pc_broken
 				NAND = {
 					exists = owner
-					owner = {
-						has_country_flag = myrmeku_flag@prev
-					}
+					owner = { has_country_flag = myrmeku_flag@prev }
 				}
 			}
 		}
 	}
+
 	on_success = {
 		planet_event = { id = colony.9380 }
 	}
@@ -1920,6 +1844,7 @@ special_project = {
 	picture = GFX_evt_alien_nature
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	event_scope = planet_event
+
 	on_success = {
 		planet_event = { id = colony.9955 }
 	}
@@ -1947,8 +1872,11 @@ special_project = {
 	on_success = {
 		planet_event = { id = colony.7235 }
 	}
+
 	on_fail = {
-		from = { planet_event = { id = colony.7245 } }
+		from = {
+			planet_event = { id = colony.7245 }
+		}
 	}
 }
 
@@ -1994,9 +1922,11 @@ special_project = {
 			}
 		}
 	}
+
 	on_success = {
 		country_event = { id = anomaly.7140 }
 	}
+
 	on_fail = {
 		country_event = { id = anomaly.7146 }
 	}
@@ -2025,6 +1955,7 @@ special_project = {
 			}
 		}
 	}
+
 	on_success = {
 		country_event = { id = anomaly.7150 }
 	}
@@ -2035,20 +1966,19 @@ special_project = {
 	days_to_research = 30
 	picture = GFX_evt_desert
 	event_scope = ship_event
+
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
 	}
+
 	on_success = {
 		random_list = {
-			60 = {
-				ship_event = { id = anomaly.2005 }
-			}
-			40 = {
-				ship_event = { id = anomaly.2006 }
-			}
+			60 = { ship_event = { id = anomaly.2005 } }
+			40 = { ship_event = { id = anomaly.2006 } }
 		}
 	}
+
 	on_fail = {
 	}
 }
@@ -2058,20 +1988,19 @@ special_project = {
 	days_to_research = 180
 	picture = GFX_evt_astral_rift_tropical_habitat
 	event_scope = ship_event
+
 	requirements = {
 		shipclass_science_ship = 1
 		leader = scientist
 	}
+
 	on_success = {
 		random_list = {
-			50 = {
-				ship_event = { id = anomaly.2015 }
-			}
-			50 = {
-				ship_event = { id = anomaly.2020 }
-			}
+			50 = { ship_event = { id = anomaly.2015 } }
+			50 = { ship_event = { id = anomaly.2020 } }
 		}
 	}
+
 	on_fail = {
 	}
 }
@@ -2082,7 +2011,6 @@ special_project = {
 	cost = 1500
 	tech_department = society_technology
 	picture = GFX_evt_blue_lava
-
 	event_scope = ship_event
 
 	requirements = {
@@ -2091,7 +2019,9 @@ special_project = {
 	}
 
 	on_success = {
-		from = { planet_event = { id = colony.10035 } }
+		from = {
+			planet_event = { id = colony.10035 }
+		}
 	}
 
 	on_fail = {
@@ -2105,7 +2035,6 @@ special_project = {
 	cost = 3000
 	tech_department = society_technology
 	picture = GFX_evt_blue_lava
-
 	event_scope = ship_event
 
 	requirements = {
@@ -2114,7 +2043,9 @@ special_project = {
 	}
 
 	on_success = {
-		from = { planet_event = { id = colony.10035 } }
+		from = {
+			planet_event = { id = colony.10035 }
+		}
 	}
 
 	on_fail = {

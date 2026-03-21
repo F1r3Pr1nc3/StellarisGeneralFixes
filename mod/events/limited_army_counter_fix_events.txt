@@ -70,21 +70,21 @@ planet_event = {
 						}
 					}
 				}
-				imperial_legion = {
-					owner = {
-						if = {
-							limit = { check_variable = { which = imperial_legion_soldier_queued_count value > 0 } }
-							subtract_variable = { which = imperial_legion_soldier_queued_count value = 1 }
-						}
-						if = {
-							limit = { has_available_imperial_legion_capacity = yes }
-							change_variable = { which = imperial_legion_soldier_count value = 1 }
-						}
-						else = {
-							country_event = { id = limited_army_counter_fix.8 days = 1 scopes = { from = prev } }
-						}
-					}
-				}
+				# imperial_legion = { Removed in v4.3
+				# 	owner = {
+				# 		if = {
+				# 			limit = { check_variable = { which = imperial_legion_soldier_queued_count value > 0 } }
+				# 			subtract_variable = { which = imperial_legion_soldier_queued_count value = 1 }
+				# 		}
+				# 		if = {
+				# 			limit = { has_available_imperial_legion_capacity = yes }
+				# 			change_variable = { which = imperial_legion_soldier_count value = 1 }
+				# 		}
+				# 		else = {
+				# 			country_event = { id = limited_army_counter_fix.8 days = 1 scopes = { from = prev } }
+				# 		}
+				# 	}
+				# }
 			}
 		}
 	}
@@ -167,32 +167,32 @@ event = {
 					clear_variable = titanic_azizian_soldier_queued_count
 				}
 			}
-			if = {
-				limit = {
-					is_galactic_emperor = yes
-					is_variable_set = imperial_legion_soldier_count
-				}
-				if = {
-					limit = { is_active_resolution = resolution_emperor_imperial_legions }
-					if = {
-						limit = {
-							NOT = { is_variable_set = imperial_legion_soldier_queued_count }
-						}
-						set_variable = { which = imperial_legion_soldier_queued_count value = 0 }
-					}
-					set_variable = { which = imperial_legion_soldier_count value = 0 }
-					every_owned_army = {
-						limit = { army_type = imperial_legion }
-						prev = {
-							change_variable = { which = imperial_legion_soldier_count value = 1 }
-						}
-					}
-				}
-				else = {
-					clear_variable = imperial_legion_soldier_count
-					clear_variable = imperial_legion_soldier_queued_count
-				}
-			}
+			# if = { Removed in v4.3
+			# 	limit = {
+			# 		is_galactic_emperor = yes
+			# 		is_variable_set = imperial_legion_soldier_count
+			# 	}
+			# 	if = {
+			# 		limit = { is_active_resolution = resolution_emperor_imperial_legions }
+			# 		if = {
+			# 			limit = {
+			# 				NOT = { is_variable_set = imperial_legion_soldier_queued_count }
+			# 			}
+			# 			set_variable = { which = imperial_legion_soldier_queued_count value = 0 }
+			# 		}
+			# 		set_variable = { which = imperial_legion_soldier_count value = 0 }
+			# 		every_owned_army = {
+			# 			limit = { army_type = imperial_legion }
+			# 			prev = {
+			# 				change_variable = { which = imperial_legion_soldier_count value = 1 }
+			# 			}
+			# 		}
+			# 	}
+			# 	else = {
+			# 		clear_variable = imperial_legion_soldier_count
+			# 		clear_variable = imperial_legion_soldier_queued_count
+			# 	}
+			# }
 		}
 	}
 }

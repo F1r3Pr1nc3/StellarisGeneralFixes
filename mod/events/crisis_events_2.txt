@@ -2061,7 +2061,7 @@ event = {
 						is_country_type = extradimensional_3
 					}
 					NOR = {
-						num_ships > 5
+						num_ships >= 20
 						# any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 						event_target:portal_holder_1 = {
 							any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
@@ -2562,6 +2562,17 @@ country_event = {
 		remove_global_flag = extradimensional_first_portal_destroyed
 		remove_global_flag = extradimensional_second_portal_destroyed
 		remove_global_flag = extradimensional_third_portal_destroyed
+		remove_global_flag = galactic_crisis_recently_fired
+		if = {
+			limit = { has_global_flag = galactic_crisis_early_defeat_tracker_1 }
+			remove_global_flag = galactic_crisis_early_defeat_tracker_1
+			multiply_crisis_strength = 1.5
+		}
+		else_if = {
+			limit = { has_global_flag = galactic_crisis_early_defeat_tracker_2 }
+			remove_global_flag = galactic_crisis_early_defeat_tracker_2
+			multiply_crisis_strength = 1.25
+		}
 		end_crisis = yes
 	}
 }

@@ -48,64 +48,62 @@ DLAF_is_valid_awoken_country_colony_system_trigger = {
 		}
 		has_star_flag = DLAF_do_not_spawn_here # Purely for other modders.
 	}
+	any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
 }
 
 DNCF_is_valid_nivlac_planet = {
-    is_colonizable = yes
-    habitable_planet = yes
+	is_colonizable = yes
+	habitable_planet = yes
 	uses_district_set = standard # Standard districts, better mod compatibility.
-    NOR = {
+	NOR = {
 		has_owner = yes
 		is_colony = yes
 		has_anomaly = yes
-        has_modifier = holy_planet
-        has_planet_flag = hatchling_egg # No Voidspawn
-        has_planet_flag = hive_planet_larion # No spawning on other Unique-Empire-Planets.
-        
-        has_planet_flag = DNCF_do_not_spawn_here # Purely for other modders.
-    }
-    distance = {
-        source = root.owner.capital_scope
-        max_distance <= 300
-        min_distance >= 50
-    }
+		has_modifier = holy_planet
+		has_planet_flag = hatchling_egg # No Voidspawn
+		has_planet_flag = hive_planet_larion # No spawning on other Unique-Empire-Planets.
+		has_planet_flag = DNCF_do_not_spawn_here # Purely for other modders.
+	}
+	distance = {
+		source = root.owner.capital_scope
+		max_distance <= 300
+		min_distance >= 50
+	}
 }
 
 DNCF_solar_system_has_valid_nivlac_planet = {
-    NOR = {
-        exists = starbase
-        exists = owner_or_space_owner
-        any_fleet_in_system = { # These are to ignore hostile fleets if they're from a conventional war.
-            exists = controller
-            controller = {
-                NOR = {
-                    is_country_type = default
-                    is_country_type = fallen_empire
-                    is_country_type = awakened_fallen_empire
-                }
-                is_hostile = root.owner # Awakener.
-            }
-        }
-        has_star_flag = enclave
-        has_star_flag = primitive_system # No primitives who will steal their capital.
+	NOR = {
+		exists = starbase
+		exists = owner_or_space_owner
+		any_fleet_in_system = { # These are to ignore hostile fleets if they're from a conventional war.
+			exists = controller
+			controller = {
+				NOR = {
+					is_country_type = default
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+				is_hostile = root.owner # Awakener.
+			}
+		}
+		has_star_flag = enclave
+		has_star_flag = primitive_system # No primitives who will steal their capital.
 		has_star_flag = ratling_system
-        has_star_flag = chosen_system
-        has_star_flag = surveillance_supercomputer_system
-        has_star_flag = lcluster
-        has_star_flag = sealed_system
-        has_star_flag = starlit_sealed_system
-        has_star_flag = formless_system
-        has_star_flag = crisis_spawn_exclude
-        any_neighbor_system = {
-            exists = owner
-            owner = {
-                has_ai_personality = fallen_empire_xenophobe
-            }
-        }
-        
-        has_star_flag = DNCF_do_not_spawn_here # Purely for other modders.
-    }
-    any_system_planet = {
-        DNCF_is_valid_nivlac_planet = yes
-    }
+		has_star_flag = chosen_system
+		has_star_flag = surveillance_supercomputer_system
+		has_star_flag = lcluster
+		has_star_flag = sealed_system
+		has_star_flag = starlit_sealed_system
+		has_star_flag = formless_system
+		has_star_flag = crisis_spawn_exclude
+		# has_star_flag = hostile_system TODO check
+		any_neighbor_system = {
+			exists = owner
+			owner = { has_ai_personality = fallen_empire_xenophobe }
+		}
+		has_star_flag = DNCF_do_not_spawn_here # Purely for other modders.
+	}
+	any_system_planet = {
+		DNCF_is_valid_nivlac_planet = yes
+	}
 }

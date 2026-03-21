@@ -21,10 +21,10 @@ is_limited_army_country = {
 			has_country_flag = titanic_azizian_soldiers
 			is_variable_set = titanic_azizian_soldier_count
 		}
-		AND = {
-			is_galactic_emperor = yes
-			is_variable_set = imperial_legion_soldier_count
-		}
+		# AND = { Removed in v4.3
+		# 	is_galactic_emperor = yes
+		# 	is_variable_set = imperial_legion_soldier_count
+		# }
 	}
 }
 
@@ -70,21 +70,22 @@ has_available_titanic_azizian_capacity = {
 	}
 }
 
+# Removed in v4.3
 # Works because we can assume that the first variable (imperial_legion_soldier_count) is the minimum requirement (for any deeper check)
 # this = country
-has_available_imperial_legion_capacity = {
-	NOR = {
-		AND = {
-			is_variable_set = imperial_legion_soldier_count
-			check_variable = { which = imperial_legion_soldier_count value >= @imperial_legion_soldier_maximum }
-		}
-		AND = {
-			is_variable_set = imperial_legion_soldier_queued_count
-			check_variable_arithmetic = {
-				which = imperial_legion_soldier_count
-				add = imperial_legion_soldier_queued_count
-				value >= @imperial_legion_soldier_maximum
-			}
-		}
-	}
-}
+# has_available_imperial_legion_capacity = {
+# 	NOR = {
+# 		AND = {
+# 			is_variable_set = imperial_legion_soldier_count
+# 			check_variable = { which = imperial_legion_soldier_count value >= @imperial_legion_soldier_maximum }
+# 		}
+# 		AND = {
+# 			is_variable_set = imperial_legion_soldier_queued_count
+# 			check_variable_arithmetic = {
+# 				which = imperial_legion_soldier_count
+# 				add = imperial_legion_soldier_queued_count
+# 				value >= @imperial_legion_soldier_maximum
+# 			}
+# 		}
+# 	}
+# }

@@ -11768,81 +11768,89 @@ country_event = {
 # ==================================
 # 5200-5299 Tankbound
 # ==================================
-country_event = {
-	id = shroud.5200
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		is_tankbound_empire = yes
-	}
-
-	immediate = {
-		if = {
-			limit = {
-				NOT = { has_technology = tech_assembly_pattern }
-			}
-			add_research_option = tech_assembly_pattern
-			add_tech_progress = { tech = tech_assembly_pattern progress = 0.5 }
-		}
-		if = {
-			limit = { is_megacorp = yes }
-			add_modifier = { modifier = tankbound_corporate_efficiency_malus days = -1 }
-		}
-		else = {
-			add_modifier = { modifier = tankbound_efficiency_malus days = -1 }
-		}
-	}
-}
-
-country_event = {
-	id = shroud.5210
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		is_tankbound_empire = yes
-		OR = {
-			last_increased_tech = tech_assembly_pattern
-			last_increased_tech = tech_construction_templates
-		}
-	}
-
-	immediate = {
-		if = {
-			limit = { has_modifier = tankbound_efficiency_malus }
-			remove_modifier = tankbound_efficiency_malus
-		}
-		if = {
-			limit = { has_modifier = tankbound_corporate_efficiency_malus }
-			remove_modifier = tankbound_corporate_efficiency_malus
-		}
-		if = {
-			limit = {
-				NAND = {
-					has_technology = tech_assembly_pattern
-					has_technology = tech_construction_templates
-				}
-			}
-			if = {
-				limit = { is_megacorp = yes }
-				add_modifier = {
-					modifier = tankbound_corporate_efficiency_malus
-					days = -1
-					mult = 0.5 # Both technologies are needed to compensate the malus
-				}
-			}
-			else = {
-				add_modifier = {
-					modifier = tankbound_efficiency_malus
-					days = -1
-					mult = 0.5
-				}
-			}
-		}
-	}
-}
-
+# Tankbound penalty has been removed as of 4.3.
+# country_event = {
+# 	id = shroud.5200
+# 	hide_window = yes
+# 	is_triggered_only = yes
+#
+# 	trigger = {
+# 		is_tankbound_empire = yes
+# 	}
+#
+# 	immediate = {
+# 		if = {
+# 			limit = { NOT = { has_technology = tech_assembly_pattern } }
+# 			add_research_option = tech_assembly_pattern
+# 			add_tech_progress = {
+# 				tech = tech_assembly_pattern
+# 				progress = 0.5
+# 			}
+# 		}
+#
+# 		if = {
+# 			limit = { is_megacorp = yes }
+# 			add_modifier = {
+# 				modifier = tankbound_corporate_efficiency_malus
+# 				days = -1
+# 			}
+# 		}
+# 		else = {
+# 			add_modifier = {
+# 				modifier = tankbound_efficiency_malus
+# 				days = -1
+# 			}
+# 		}
+# 	}
+# }
+#
+# country_event = {
+# 	id = shroud.5210
+# 	hide_window = yes
+# 	is_triggered_only = yes
+#
+# 	trigger = {
+# 		is_tankbound_empire = yes
+# 		OR = {
+# 			last_increased_tech = tech_assembly_pattern
+# 			last_increased_tech = tech_construction_templates
+# 		}
+# 	}
+#
+# 	immediate = {
+# 		if = {
+# 			limit = { has_modifier = tankbound_efficiency_malus }
+# 			remove_modifier = tankbound_efficiency_malus
+# 		}
+# 		if = {
+# 			limit = { has_modifier = tankbound_corporate_efficiency_malus }
+# 			remove_modifier = tankbound_corporate_efficiency_malus
+# 		}
+# 		if = {
+# 			limit = {
+# 				NAND = {
+# 					has_technology = tech_assembly_pattern
+# 					has_technology = tech_construction_templates
+# 				}
+# 			}
+# 			if = {
+# 				limit = { is_megacorp = yes }
+# 				add_modifier = {
+# 					modifier = tankbound_corporate_efficiency_malus
+# 					days = -1
+# 					mult = 0.5 # Both technologies are needed to compensate the malus
+# 				}
+# 			}
+# 			else = {
+# 				add_modifier = {
+# 					modifier = tankbound_efficiency_malus
+# 					days = -1
+# 					mult = 0.5
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 # ==================================
 # 5300-5399 Shroud-Touched Enclave
 # ==================================

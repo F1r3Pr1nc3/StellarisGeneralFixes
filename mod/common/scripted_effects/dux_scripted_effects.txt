@@ -662,156 +662,157 @@ DLAF_spawn_awoken = {
 	if = {
 		limit = {
 			any_system = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes # Exported to scripted trigger for consistency.
-				any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
+				DLAF_is_valid_awoken_country_colony_system_trigger = yes
 			}
 		}
-		random_galaxy_planet = {
+		random_system = {
 			limit = {
-				DLAF_is_valid_awoken_colony_trigger = yes
+				DLAF_is_valid_awoken_country_colony_system_trigger = yes
+			}
+			random_system_planet = {
+				limit = {
+					DLAF_is_valid_awoken_colony_trigger = yes
+				}
+				weights = {
+					base = 1
+					modifier = { factor = 2 planet_size > 10 }
+					modifier = { factor = 2 free_district_slots > 6 }
+					# Energy is a priority.
+					modifier = {
+						factor = 2
+						OR = {
+							num_free_districts = { type = district_generator value > 2 } # Standard worlds and Shattered Ring.
+							num_free_districts = { type = district_geothermal value > 2 } # These are always uncapped.
+							num_free_districts = { type = district_hab_energy value > 2 }
+							num_free_districts = { type = district_rw_generator value > 2 }
+						}
+					}
+					modifier = {
+						factor = 3
+						OR = {
+							has_modifier = hazardous_weather
+							has_modifier = strong_magnetic_field
+						}
+					}
+					modifier = { factor = 0.5 has_modifier = energy_poor }
+					# Minerals also important.
+					modifier = {
+						factor = 2
+						OR = {
+							num_free_districts = { type = district_mining value > 2 } # Standard worlds and Shattered Ring.
+							num_free_districts = { type = district_melting value > 2 }
+							num_free_districts = { type = district_hab_mining value > 2 }
+						}
+					}
+					modifier = {
+						factor = 1.5
+						OR = {
+							has_modifier = asteroid_belt
+							has_modifier = mineral_rich
+							has_modifier = ultra_rich
+							has_modifier = extensive_moon_system
+							has_modifier = asteroid_impacts
+							has_modifier = carbon_world
+							# Volcanic Worlds
+							has_modifier = volcanic_mineral_rich
+							has_modifier = volcanic_ultra_rich
+							has_modifier = volcanic_subterranean
+							has_modifier = volcanic_asteroid_impacts
+							has_modifier = volcanic_hollow_planet
+							has_modifier = volcanic_lavafall
+						}
+					}
+					modifier = { factor = 0.5 has_modifier = mineral_poor }
+				}
+				save_event_target_as = colonized_planet
+				set_surveyed = { surveyed = yes surveyor = root }
+				prevent_anomaly = yes
+				set_planet_flag = colony_event # Blocks random colony events.
+				DLAF_create_awoken_robot_species = yes
+				DLAF_create_awoken_robot_country = yes
+				while = {
+					count = 6
+					if = {
+						limit = { exists = event_target:DLAF_awoken_robot_species } # Have to have this check to stop an error saying they don't exist and then spawning them.
+						create_pop_group = {
+							species = event_target:DLAF_awoken_robot_species
+							category = civilian
+						}
+					}
+				}
+				owner = { refresh_leader_pool = yes } # Must occur after they have at least 1 pop.
+				while = { # District swaps based on planet type.
+					count = 2
+					if = {
+						limit = { is_planet_class = pc_volcanic }
+						add_district_if_possible_effect = {
+							district = district_melting
+						}
+						add_district_if_possible_effect = {
+							district = district_geothermal
+						}
+						# add_district_if_possible_effect = { district = district_city } # Makes too many Specialists.
+					}
+					else_if = {
+						limit = { is_planet_class = pc_habitat }
+						add_district_if_possible_effect = {
+							district = district_hab_mining
+						}
+						add_district_if_possible_effect = {
+							district = district_hab_energy
+						}
+						# add_district_if_possible_effect = { district = district_hab_housing } # Makes too many Specialists.
+					}
+					else_if = {
+						limit = { is_planet_class = pc_ringworld_habitable }
+						add_district_if_possible_effect = {
+							district = district_rw_generator
+						} # Ringword districts add more jobs. No Mining Equivalent.
+						# add_district_if_possible_effect = { district = district_rw_city }
+					}
+					else = {
+						add_district_if_possible_effect = {
+							district = district_generator
+						}
+						add_district_if_possible_effect = {
+							district = district_mining
+						}
+						# add_district_if_possible_effect = { district = district_city } # Makes too many Specialists.
+					}
+				}
+				if = {
+					limit = {
+						NOT = { has_zone = { zone = zone_research_unity } }
+					}
+					add_zone = { zone = zone_research_unity replace = yes }
+				}
+				if = {
+					limit = {
+						NOT = { has_zone = { zone = zone_industrial } }
+					}
+					add_zone = { zone = zone_industrial replace = yes }
+				}
+				add_building = building_robot_assembly_plant
+				validate_planet_buildings_and_districts = yes # This should fix incorrect districts if they happen.
 				solar_system = {
-					DLAF_is_valid_awoken_country_colony_system_trigger = yes # Exported to scripted trigger for consistency.
-				}
-			}
-			weights = {
-				base = 1
-				modifier = { factor = 2 planet_size > 10 }
-				modifier = { factor = 2 free_district_slots > 6 }
-				# Energy is a priority.
-				modifier = {
-					factor = 2
-					OR = {
-						num_free_districts = { type = district_generator value > 2 } # Standard worlds and Shattered Ring.
-						num_free_districts = { type = district_geothermal value > 2 } # These are always uncapped.
-						num_free_districts = { type = district_hab_energy value > 2 }
-						num_free_districts = { type = district_rw_generator value > 2 }
+					create_starbase = {
+						owner = event_target:awoken_country
+						size = starbase_starport
+						module = shipyard
+						module = shipyard
+						building = crew_quarters
 					}
 				}
-				modifier = {
-					factor = 3
-					OR = {
-						has_modifier = hazardous_weather
-						has_modifier = strong_magnetic_field
-					}
-				}
-				modifier = { factor = 0.5 has_modifier = energy_poor }
-				# Minerals also important.
-				modifier = {
-					factor = 2
-					OR = {
-						num_free_districts = { type = district_mining value > 2 } # Standard worlds and Shattered Ring.
-						num_free_districts = { type = district_melting value > 2 }
-						num_free_districts = { type = district_hab_mining value > 2 }
-					}
-				}
-				modifier = {
-					factor = 1.5
-					OR = {
-						has_modifier = asteroid_belt
-						has_modifier = mineral_rich
-						has_modifier = ultra_rich
-						has_modifier = extensive_moon_system
-						has_modifier = asteroid_impacts
-						has_modifier = carbon_world
-						# Volcanic Worlds
-						has_modifier = volcanic_mineral_rich
-						has_modifier = volcanic_ultra_rich
-						has_modifier = volcanic_subterranean
-						has_modifier = volcanic_asteroid_impacts
-						has_modifier = volcanic_hollow_planet
-						has_modifier = volcanic_lavafall
-					}
-				}
-				modifier = { factor = 0.5 has_modifier = mineral_poor }
-			}
-			save_event_target_as = colonized_planet
-			set_surveyed = { surveyed = yes surveyor = root }
-			prevent_anomaly = yes
-			set_planet_flag = colony_event # Blocks random colony events.
-			DLAF_create_awoken_robot_species = yes
-			DLAF_create_awoken_robot_country = yes
-			while = {
-				count = 6
 				if = {
-					limit = { exists = event_target:DLAF_awoken_robot_species } # Have to have this check to stop an error saying they don't exist and then spawning them.
-					create_pop_group = {
-						species = event_target:DLAF_awoken_robot_species
-						category = civilian
+					limit = { has_global_flag = DLAF_debugging }
+					root = {
+						country_event = { id = anomaly.1196 }
 					}
-				}
-			}
-			owner = { refresh_leader_pool = yes } # Must occur after they have at least 1 pop.
-			while = { # District swaps based on planet type.
-				count = 2
-				if = {
-					limit = { is_planet_class = pc_volcanic }
-					add_district_if_possible_effect = {
-						district = district_melting
-					}
-					add_district_if_possible_effect = {
-						district = district_geothermal
-					}
-					# add_district_if_possible_effect = { district = district_city } # Makes too many Specialists.
-				}
-				else_if = {
-					limit = { is_planet_class = pc_habitat }
-					add_district_if_possible_effect = {
-						district = district_hab_mining
-					}
-					add_district_if_possible_effect = {
-						district = district_hab_energy
-					}
-					# add_district_if_possible_effect = { district = district_hab_housing } # Makes too many Specialists.
-				}
-				else_if = {
-					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district_if_possible_effect = {
-						district = district_rw_generator
-					} # Ringword districts add more jobs. No Mining Equivalent.
-					# add_district_if_possible_effect = { district = district_rw_city }
 				}
 				else = {
-					add_district_if_possible_effect = {
-						district = district_generator
+					root = {
+						country_event = { id = anomaly.1196 days = 10 }
 					}
-					add_district_if_possible_effect = {
-						district = district_mining
-					}
-					# add_district_if_possible_effect = { district = district_city } # Makes too many Specialists.
-				}
-			}
-			if = {
-				limit = {
-					NOT = { has_zone = { zone = zone_research_unity } }
-				}
-				add_zone = { zone = zone_research_unity replace = yes }
-			}
-			if = {
-				limit = {
-					NOT = { has_zone = { zone = zone_industrial } }
-				}
-				add_zone = { zone = zone_industrial replace = yes }
-			}
-			add_building = building_robot_assembly_plant
-			validate_planet_buildings_and_districts = yes # This should fix incorrect districts if they happen.
-			solar_system = {
-				create_starbase = {
-					owner = event_target:awoken_country
-					size = starbase_starport
-					module = shipyard
-					module = shipyard
-					building = crew_quarters
-				}
-			}
-			if = {
-				limit = { has_global_flag = DLAF_debugging }
-				root = {
-					country_event = { id = anomaly.1196 }
-				}
-			}
-			else = {
-				root = {
-					country_event = { id = anomaly.1196 days = 10 }
 				}
 			}
 		}
@@ -1002,262 +1003,215 @@ inherit_tech_effect = {
 	}
 }
 
-DNCF_create_nivlac_country = {
-    create_country = {
-        name = NAME_Nivlac_Circle
-        authority = random
-        civics = random
-        species = event_target:nivlac_species
-        ignore_initial_colony_error = yes
-        type = default
-        ethos = random
-        flag = random
-        graphical_culture = fungoid_01 # Fixes bioship issues.
-        day_zero_contact = no
-        effect = {
-            save_global_event_target_as = nivlac_country
-            
-            establish_communications_no_message = root
-            root = {
-                every_federation_ally = { establish_communications = prevprev }
-            }
-            
-            add_resource = {
-                energy = 100
-                minerals = 100
-                food = 100
-                consumer_goods = 50
-                alloys = 25
-                influence = 10
-                unity = 50
-                volatile_motes = 10
-                exotic_gases = 10
-                rare_crystals = 10
-                mult = trigger:years_passed
-            }
-        }
-    }
-}
-
-DNCF_select_nivlac_planet = {
-    if = {
-        limit = {
-            any_galaxy_planet = {
-                DNCF_is_valid_nivlac_planet = yes
-                solar_system = {
-                    DNCF_solar_system_has_valid_nivlac_planet = yes
-                }
-            }
-        }
-        random_galaxy_planet = {
-            limit = {
-                DNCF_is_valid_nivlac_planet = yes
-                solar_system = {
-                    DNCF_solar_system_has_valid_nivlac_planet = yes
-                }
-            }
-            weights = {
-                base = 1
-                modifier = {
-                    factor = 2
-                    planet_size > 10
-                }
-                modifier = {
-                    factor = 2
-                    free_district_slots > 6
-                }
-                
-                # Basic resources are important.
-                modifier = {
-                    factor = 2
-                    num_free_districts = { type = district_farming value > 2 }
-                }
-                modifier = {
-                    factor = 3
-                    has_modifier = lush_planet
-                }
-                modifier = {
-                    factor = 0.5
-                    OR = {
-                        has_modifier = bleak_planet
-                        has_modifier = unbalanced_ecosystem
-                        has_modifier = irradiated_planet
-                    }
-                }
-                
-                # Basic resources are important.
-                modifier = {
-                    factor = 2
-                    num_free_districts = { type = district_generator value > 2 }
-                }
-                modifier = {
-                    factor = 3
-                    OR = {
-                        has_modifier = hazardous_weather
-                        has_modifier = strong_magnetic_field
-                    }
-                }
-                modifier = {
-                    factor = 0.5
-                    has_modifier = energy_poor
-                }
-                
-                # Basic resources are important.
-                modifier = {
-                    factor = 2
-                    num_free_districts = { type = district_mining value > 2 }
-                }
-                modifier = {
-                    factor = 1.5
-                    OR = {
-                        has_modifier = asteroid_belt
-                        has_modifier = mineral_rich
-                        has_modifier = ultra_rich
-                        has_modifier = extensive_moon_system
-                        has_modifier = asteroid_impacts
-                        has_modifier = carbon_world
-                    }
-                }
-                modifier = {
-                    factor = 0.5
-                    has_modifier = mineral_poor
-                }
-            }
-            save_global_event_target_as = nivlac_planet
-            save_event_target_as = nivlac_joint_planet
-        }
-    }
-}
-
-DNCF_setup_nivlac_planet = {
-    event_target:nivlac_planet = {
-        solar_system = {
-            every_system_planet = {
-                set_surveyed = {
-                    surveyed = yes
-                    surveyor = root.owner
-                }
-            }
-            create_starbase = {
-                size = starbase_starport
-                module = shipyard
-                module = shipyard
-                building = crew_quarters
-                owner = event_target:nivlac_country
-            }
-        }
-        set_owner = event_target:nivlac_country
-        set_timed_planet_flag = {
-            flag = ignore_ai_building_limitations
-            days = 1
-        }
-        set_capital = yes
-        clear_blockers = yes
-        if = {
-            limit = { exists = event_target:nivlac_species } # This removes an error in the log.
-            while = {
-                count = 22
-                create_pop_group = {
-                    species = event_target:nivlac_species
-                }
-            }
-        }
-
-        while = {
-            count = 2
-            add_district_and_planet_size_if_needed_effect = { district = district_city }
-            add_district_and_planet_size_if_needed_effect = { district = district_generator }
-            add_district_and_planet_size_if_needed_effect = { district = district_mining }
-        }
-        while = {
-            count = 3
-            add_district_and_planet_size_if_needed_effect = { district = district_farming }
-        }
-        if = {
-            limit = { has_building = building_colony_shelter }
-            remove_building = building_colony_shelter
-        }
-        if = {
-            limit = {
-                NOT = { has_building = building_capital }
-            }
-            add_building = building_capital
-        }
-        
-        if = {
-            limit = {
-                NOT = {
-                    has_zone = { zone = zone_research_unity } # Replaces building_research_lab_1 and building_bureaucratic_1
-                }
-            }
-            add_zone = { zone = zone_research_unity replace = yes }
-        }
-        if = {
-            limit = {
-                NOT = {
-                    has_zone = { zone = zone_industrial } # Replaces building_foundry_1
-                }
-            }
-            add_zone = { zone = zone_industrial replace = yes }
-        }
-        add_building = { building = building_factory_1 zone = zone_industrial }
-        add_building = building_luxury_residence # Because they get an amenity deficit.
-    }
-}
-
-DNCF_replace_misfit_civics = {
-    while = {
-        limit = {
-            OR = {
-                has_civic = civic_beastmasters # Messes with shipyards.
-                has_civic = civic_corporate_beastmasters
-                has_civic = civic_environmentalist # All blockers are cleared when spawning them.
-                has_civic = civic_entropy_drinkers # Doesn't make starting leaders psychic.
-                has_valid_civic = civic_entropy_drinkers_corporate
-                AND = {
-                    has_opinion_modifier = { modifier = opinion_nurtured }
-                    OR = {
-                        has_civic = civic_inwards_perfection
-                        has_civic = civic_fanatic_purifiers
-                        has_civic = civic_pompous_purists
-                    }
-                }
-                AND = {
-                    root.species = {
-                        NOT = { is_species_class = FUN }
-                    }
-                    has_opinion_modifier = { modifier = opinion_nurtured }
-                    has_civic = civic_selective_kinship
-                }
-            }
-        }
-        change_government = { civics = random }
-    }
-}
-
 DNCF_spawn_nivlac_circle = {
-    DNCF_select_nivlac_planet = yes
-    
-    create_nivlac_effect = yes
-    
-    DNCF_create_nivlac_country = yes
-    
-    last_created_country = {
-        refresh_leader_pool = yes
-        [[FRIENDLY]
-            add_opinion_modifier = { who = root modifier = opinion_nurtured }
-            add_trust = { amount = 50 who = root }
-            #set_subject_of = {
-            #    who = root
-            #    preset = preset_protectorate
-            #}
-        ]
-        [[UNFRIENDLY]
-            add_opinion_modifier = { who = root modifier = opinion_discarded }
-            add_trust = { amount = -50 who = root }
-        ]
-        DNCF_replace_misfit_civics = yes
-    }
-    
-    DNCF_setup_nivlac_planet = yes
+	# DNCF_select_nivlac_planet (just used once)
+	if = {
+		limit = {
+			any_system = {
+				DNCF_solar_system_has_valid_nivlac_planet = yes
+			}
+		}
+		random_system = {
+			limit = { DNCF_solar_system_has_valid_nivlac_planet = yes }
+			random_system_planet = {
+				limit = { DNCF_is_valid_nivlac_planet = yes }
+				weights = {
+					base = 1
+					modifier = { factor = 2 planet_size > 10 }
+					modifier = { factor = 2 free_district_slots > 6 }
+					# Basic resources are important.
+					modifier = {
+						factor = 2
+						num_free_districts = { type = district_farming value > 2 }
+					}
+					modifier = { factor = 3 has_modifier = lush_planet }
+					modifier = {
+						factor = 0.5
+						OR = {
+							has_modifier = bleak_planet
+							has_modifier = unbalanced_ecosystem
+							has_modifier = irradiated_planet
+						}
+					}
+					# Basic resources are important.
+					modifier = {
+						factor = 2
+						num_free_districts = { type = district_generator value > 2 }
+					}
+					modifier = {
+						factor = 3
+						OR = {
+							has_modifier = hazardous_weather
+							has_modifier = strong_magnetic_field
+						}
+					}
+					modifier = { factor = 0.5 has_modifier = energy_poor }
+					# Basic resources are important.
+					modifier = {
+						factor = 2
+						num_free_districts = { type = district_mining value > 2 }
+					}
+					modifier = {
+						factor = 1.5
+						OR = {
+							has_modifier = asteroid_belt
+							has_modifier = mineral_rich
+							has_modifier = ultra_rich
+							has_modifier = extensive_moon_system
+							has_modifier = asteroid_impacts
+							has_modifier = carbon_world
+						}
+					}
+					modifier = { factor = 0.5 has_modifier = mineral_poor }
+				}
+				save_global_event_target_as = nivlac_planet
+				save_event_target_as = nivlac_joint_planet
+			}
+		}
+	}
+	create_nivlac_effect = yes
+	# DNCF_create_nivlac_country (just used once)
+	create_country = {
+		name = NAME_Nivlac_Circle
+		authority = random
+		civics = random
+		species = event_target:nivlac_species
+		ignore_initial_colony_error = yes
+		type = default
+		ethos = random
+		flag = random
+		graphical_culture = fungoid_01 # Fixes bioship issues.
+		day_zero_contact = no
+		effect = {
+			save_global_event_target_as = nivlac_country
+			establish_communications_no_message = root
+			root = {
+				every_federation_ally = { establish_communications = prevprev }
+			}
+			add_resource = {
+				energy = 100
+				minerals = 100
+				food = 100
+				consumer_goods = 50
+				alloys = 25
+				influence = 10
+				unity = 50
+				volatile_motes = 10
+				exotic_gases = 10
+				rare_crystals = 10
+				mult = trigger:years_passed
+			}
+		}
+	}
+
+	last_created_country = {
+		refresh_leader_pool = yes
+		[[FRIENDLY]
+		add_opinion_modifier = { who = root modifier = opinion_nurtured }
+		add_trust = { amount = 50 who = root }
+		# set_subject_of = { who = root preset = preset_protectorate }
+		]
+		[[UNFRIENDLY]
+		add_opinion_modifier = { who = root modifier = opinion_discarded }
+		add_trust = { amount = -50 who = root }
+		]
+		# DNCF_replace_misfit_civics (just used once)
+		while = {
+			limit = {
+				OR = {
+					has_civic = civic_beastmasters # Messes with shipyards.
+					has_civic = civic_corporate_beastmasters
+					has_civic = civic_environmentalist # All blockers are cleared when spawning them.
+					has_civic = civic_entropy_drinkers # Doesn't make starting leaders psychic.
+					has_valid_civic = civic_entropy_drinkers_corporate
+					[[FRIENDLY]
+					AND = {
+						# has_opinion_modifier = { who = root modifier = opinion_nurtured }
+						OR = {
+							has_civic = civic_inwards_perfection
+							has_civic = civic_fanatic_purifiers
+							has_civic = civic_pompous_purists
+						}
+					}
+					AND = {
+						root.species = {
+							NOT = { is_species_class = FUN }
+						}
+						# has_opinion_modifier = { who = root modifier = opinion_nurtured }
+						has_civic = civic_selective_kinship
+					}
+					]
+				}
+			}
+			change_government = { civics = random }
+		}
+	}
+	# DNCF_setup_nivlac_planet (just used once)
+	event_target:nivlac_planet = {
+		solar_system = {
+			every_system_planet = {
+				set_surveyed = { surveyed = yes surveyor = root.owner }
+			}
+			create_starbase = {
+				size = starbase_starport
+				module = shipyard
+				module = shipyard
+				building = crew_quarters
+				owner = event_target:nivlac_country
+			}
+		}
+		set_owner = event_target:nivlac_country
+		set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
+		set_capital = yes
+		clear_blockers = yes
+		if = {
+			limit = { exists = event_target:nivlac_species } # This removes an error in the log.
+			while = {
+				count = 22
+				create_pop_group = { species = event_target:nivlac_species }
+			}
+		}
+		while = {
+			count = 2
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_city
+			}
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_generator
+			}
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_mining
+			}
+		}
+		while = {
+			count = 3
+			add_district_and_planet_size_if_needed_effect = {
+				district = district_farming
+			}
+		}
+		if = {
+			limit = { has_building = building_colony_shelter }
+			remove_building = building_colony_shelter
+		}
+		if = {
+			limit = {
+				NOT = { has_building = building_capital }
+			}
+			add_building = building_capital
+		}
+		if = {
+			limit = {
+				NOT = { has_zone = { zone = zone_research_unity } } # Replaces building_research_lab_1 and building_bureaucratic_1
+			}
+			add_zone = { zone = zone_research_unity replace = yes }
+		}
+		if = {
+			limit = {
+				NOT = { has_zone = { zone = zone_industrial } } # Replaces building_foundry_1
+			}
+			add_zone = { zone = zone_industrial replace = yes }
+		}
+		add_building = { building = building_factory_1 zone = zone_industrial }
+		add_building = building_luxury_residence # Because they get an amenity deficit.
+	}
 }

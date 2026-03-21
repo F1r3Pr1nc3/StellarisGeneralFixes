@@ -2760,8 +2760,11 @@ event = {
 				exists = event_target:prethoryn
 				event_target:prethoryn = {
 					num_owned_planets > 0
-					num_ships < 2000
 					any_system_within_border = { exists = starbase }
+					OR = { # Vfix opt
+						AND = { is_difficulty > 3 num_ships < 2000 }
+						AND = { is_difficulty <= 3 num_ships < 750 } # Vfix is_difficulty = 3
+					}
 				}
 			}
 			event_target:prethoryn = {
@@ -2900,28 +2903,27 @@ event = {
 	}
 
 	immediate = {
-		if = {
-			limit = {
-				event_target:prethoryn = {
+		event_target:prethoryn = {
+			if = {
+				limit = { # Vfix opt
 					NOR = {
-						num_ships >= 2
-						any_system = {
-							has_owner = yes
-							any_system_colony = {
-								exists = controller
-								controller = { is_country_type = swarm }
-							}
-						}
-						any_system = {
+						num_ships >= 20
+						any_system = { # Vfix opt
 							any_system_colony = {
 								has_owner = yes
-								owner = { is_country_type = swarm }
+								OR = {
+									is_owned_by = prevprev
+									AND = {
+										is_occupied_flag = yes
+										is_controlled_by = prevprev
+									}
+								}
 							}
 						}
 					}
 				}
+				destroy_country = yes
 			}
-			event_target:prethoryn = { destroy_country = yes }
 		}
 	}
 }

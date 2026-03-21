@@ -21,15 +21,15 @@ decrement_army_count = {
 				}
 			}
 		}
-		imperial_legion = {
-			prev = {
-				if = {
-					limit = { check_variable = { which = imperial_legion_soldier_count value > 0 } }
-					set_timed_country_flag = { flag = army_counter_decremented@prev days = 7 }
-					subtract_variable = { which = imperial_legion_soldier_count value = 1 }
-				}
-			}
-		}
+		# imperial_legion = { Removed in v4.3
+		# 	prev = {
+		# 		if = {
+		# 			limit = { check_variable = { which = imperial_legion_soldier_count value > 0 } }
+		# 			set_timed_country_flag = { flag = army_counter_decremented@prev days = 7 }
+		# 			subtract_variable = { which = imperial_legion_soldier_count value = 1 }
+		# 		}
+		# 	}
+		# }
 	}
 }
 
