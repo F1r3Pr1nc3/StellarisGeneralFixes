@@ -885,7 +885,18 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1255_fired }
+			NOR = {
+				has_country_flag = fircon_1255_fired
+				AND = {
+					species = { has_trait = trait_organic }
+					capital_scope = { # PDX: "Event target workaround as 'observation_outpost_owner' is not supported by dynamic scope tags (@ID)" no idea why this worked.
+						has_observation_outpost = yes
+						observation_outpost = {
+							owner = { country_uses_food = no } # If Observer doesn't use food don't fire the event if it would give food.
+						}
+					}
+				}
+			}
 			pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = passive_observation }
 		}
 	}
@@ -950,7 +961,15 @@ country_event = {
 			VALUE = 10
 			OUTPOST = event_target:pre_ftl_planet.observation_outpost
 		}
-		add_resource = { food = 50 }
+		event_target:pre_ftl_species = { # Options for minerals and alloys.
+			switch = {
+				trigger = has_trait
+				trait_infernal = { event_target:observing_empire = { add_resource = { alloys = 12.5 } } }
+				trait_lithoid = { event_target:observing_empire = { add_resource = { minerals = 50 } } }
+				trait_organic = { event_target:observing_empire = { add_resource = { food = 50 } } }
+				default = {}
+			}
+		}
 		hidden_effect = {
 			country_event = { id = fircon.1257 days = 360 }
 		}
@@ -987,14 +1006,14 @@ country_event = {
 			VALUE = 10
 			OUTPOST = event_target:pre_ftl_planet.observation_outpost
 		}
-		if = {
-			limit = {
-				event_target:pre_ftl_species = { is_lithoid = no }
+		event_target:pre_ftl_species = { # Options for minerals and alloys.
+			switch = {
+				trigger = has_trait
+				trait_infernal = { event_target:observing_empire = { add_modifier = { modifier = DPFF_alloy_abundance days = 360 } } } # This has to be really low.
+				trait_lithoid = { event_target:observing_empire = { add_modifier = { modifier = rock_abundance days = 360 } } }
+				trait_organic = { event_target:observing_empire = { add_modifier = { modifier = food_abundance days = 360 } } }
+				default = {}
 			}
-			add_modifier = { modifier = food_abundance years = 1 }
-		}
-		else = {
-			add_modifier = { modifier = rock_abundance years = 1 }
 		}
 	}
 
@@ -1012,7 +1031,10 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1260_fired }
+			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				has_country_flag = fircon_1260_fired
+			}
 			pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = passive_observation }
 		}
 	}
@@ -1074,19 +1096,22 @@ country_event = {
 		}
 		add_modifier = { modifier = show_some_restraint years = 1 }
 		hidden_effect = {
-			from.owner = {
-				random_owned_pop_group = { kill_single_pop = yes }
-				if = {
-					limit = {
-						event_target:pre_ftl_species = { is_lithoid = no }
-					}
-					add_modifier = { modifier = food_crisis years = 1 }
-				}
-				else = {
-					add_modifier = { modifier = rock_crisis years = 1 }
-				}
-			}
 			event_target:pre_ftl_country = {
+				random_owned_pop_group = {
+					limit = {
+						NOT = { has_trait = trait_mechanical } # In case Mechanist Pre-FTLs get nuked prevent robots from starving to death.
+					}
+					kill_single_pop = yes
+				}
+				event_target:pre_ftl_species = { # Option for alloys.
+					switch = {
+						trigger = has_trait
+						trait_infernal = { event_target:pre_ftl_country = { add_modifier = { modifier = DPFF_alloy_crisis days = 360 } } } # Infernals.
+						trait_lithoid = { event_target:pre_ftl_country = { add_modifier = { modifier = rock_crisis days = 360 } } }
+						trait_organic = { event_target:pre_ftl_country = { add_modifier = { modifier = food_crisis days = 360 } } }
+						default = {}
+					}
+				}
 				random_situation = {
 					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
@@ -1113,26 +1138,24 @@ country_event = {
 			}
 		}
 		allow = {
-			owner = {
-				if = {
-					limit = {
-						event_target:pre_ftl_species = { is_lithoid = no }
-					}
-					resource_stockpile_compare = { resource = food value >= 50 }
-				}
-				else = {
-					resource_stockpile_compare = { resource = minerals value >= 50 }
+			event_target:pre_ftl_species = { # Option for alloys.
+				switch = {
+					trigger = has_trait
+					trait_infernal = { event_target:observing_empire = { resource_stockpile_compare = { resource = alloys value >= 12.5 } } } # Infernals.
+					trait_lithoid = { event_target:observing_empire = { resource_stockpile_compare = { resource = minerals value >= 50 } } }
+					trait_organic = { event_target:observing_empire = { resource_stockpile_compare = { resource = food value >= 50 } } }
+					default = {}
 				}
 			}
 		}
-		if = {
-			limit = {
-				event_target:pre_ftl_species = { is_lithoid = no }
+		event_target:pre_ftl_species = { # Option for alloys.
+			switch = {
+				trigger = has_trait
+				trait_infernal = { event_target:observing_empire = { add_resource = { alloys = -12.5 } } } # Infernals.
+				trait_lithoid = { event_target:observing_empire = { add_resource = { minerals = -50 } } }
+				trait_organic = { event_target:observing_empire = { add_resource = { food = -50 } } }
+				default = {}
 			}
-			add_resource = { food = -50 }
-		}
-		else = {
-			add_resource = { minerals = -50 }
 		}
 	}
 	option = {
@@ -1145,17 +1168,22 @@ country_event = {
 			}
 			values_others = no # This check is here because Evolutionary Predators can be xenophilic
 		}
-		from.owner = {
-			random_owned_pop_group = { kill_single_pop = yes }
-		}
-		if = {
-			limit = {
-				event_target:pre_ftl_species = { is_lithoid = no }
+		event_target:pre_ftl_country = {
+			random_owned_pop_group = {
+				limit = {
+					NOT = { has_trait = trait_mechanical } # In case Mechanist Pre-FTLs get nuked prevent robots from being killed to reduce food consumption.
+				}
+				kill_single_pop = yes
 			}
-			add_resource = { food = 100 }
 		}
-		else = {
-			add_resource = { minerals = 100 }
+		event_target:pre_ftl_species = { # Option for alloys.
+			switch = {
+				trigger = has_trait
+				trait_infernal = { event_target:observing_empire = { add_resource = { alloys = 25 } } } # Option for Infernals.
+				trait_lithoid = { event_target:observing_empire = { add_resource = { minerals = 100 } } }
+				trait_organic = { event_target:observing_empire = { add_resource = { food = 100 } } }
+				default = {}
+			}
 		}
 		if = {
 			limit = { has_origin = origin_evolutionary_predators }
@@ -1206,14 +1234,14 @@ country_event = {
 			VALUE = 10
 			OUTPOST = event_target:pre_ftl_planet.observation_outpost
 		}
-		if = {
-			limit = {
-				event_target:pre_ftl_species = { is_lithoid = no }
+		event_target:pre_ftl_species = { # Option for alloys.
+			switch = {
+				trigger = has_trait
+				trait_infernal = { event_target:observing_empire = { add_resource = { alloys = 25 } } } # Option for Infernals.
+				trait_lithoid = { event_target:observing_empire = { add_resource = { minerals = 100 } } }
+				trait_organic = { event_target:observing_empire = { add_resource = { food = 100 } } }
+				default = {}
 			}
-			add_resource = { food = 100 }
-		}
-		else = {
-			add_resource = { minerals = 100 }
 		}
 	}
 
@@ -1231,7 +1259,11 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1270_fired }
+			NOR = {
+				capital_scope = { is_artificial = yes } # Blocked Habitats, Ringworlds.
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				has_country_flag = fircon_1270_fired
+			}
 			pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = specimen_collection }
 		}
 	}
@@ -1345,8 +1377,9 @@ situation_event = {
 		has_first_contact_dlc = yes
 		owner = {
 			NOR = {
-				has_country_flag = fircon_1280_fired
+				capital_scope = { is_artificial = yes } # Blocked Artificial Worlds.
 				is_gestalt = yes
+				has_country_flag = fircon_1280_fired
 			}
 			OR = {
 				pre_ftl_in_age_is_observed_with = { AGE = bronze_age MISSION = passive_observation }
@@ -1546,12 +1579,15 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1295_fired }
+			NOR = {
+				is_gestalt = yes
+				has_country_flag = fircon_1295_fired
+				capital_scope.observation_outpost_owner = { is_gestalt = yes } # Blocked for Gestalt Observor.
+			}
 			OR = {
 				pre_ftl_in_age_is_observed_with = { AGE = bronze_age MISSION = passive_observation }
 				pre_ftl_in_age_is_observed_with = { AGE = iron_age MISSION = passive_observation }
 			}
-			is_gestalt = no
 		}
 	}
 
@@ -1637,12 +1673,15 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1305_fired }
+			NOR = {
+				capital_scope = { is_planet_class = pc_habitat } # Blocked Habitats.
+				is_gestalt = yes
+				has_country_flag = fircon_1305_fired
+			}
 			OR = {
 				pre_ftl_in_age_is_observed_with = { AGE = bronze_age MISSION = specimen_collection }
 				pre_ftl_in_age_is_observed_with = { AGE = iron_age MISSION = specimen_collection }
 			}
-			is_gestalt = no
 		}
 	}
 
@@ -1822,7 +1861,10 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1325_fired }
+			NOR = {
+				is_gestalt = yes # Blocked Gestalt Pre-FTLs.
+				has_country_flag = fircon_1325_fired
+			}
 			OR = {
 				pre_ftl_in_age_is_observed_with = { AGE = late_medieval_age MISSION = passive_observation }
 				pre_ftl_in_age_is_observed_with = { AGE = renaissance_age MISSION = passive_observation }
@@ -1907,6 +1949,7 @@ situation_event = {
 		has_first_contact_dlc = yes
 		owner = {
 			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
 				has_country_flag = fircon_1335_fired
 				has_country_flag = fircon_1355_fired # blocks this event if 'Ignorance is Contagious' has already happened
 			}
@@ -2061,12 +2104,15 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_1355_fired }
+			NOR = {
+				is_gestalt = yes
+				has_country_flag = fircon_1355_fired
+				capital_scope.observation_outpost_owner = { is_gestalt = yes } # Blocked for Gestalt Observor.
+			}
 			OR = {
 				pre_ftl_in_age_is_observed_with = { AGE = late_medieval_age MISSION = specimen_collection }
 				pre_ftl_in_age_is_observed_with = { AGE = renaissance_age MISSION = specimen_collection }
 			}
-			is_gestalt = no
 		}
 	}
 
@@ -2388,13 +2434,16 @@ country_event = {
 
 	option = {
 		name = "ACKNOWLEDGED"
-		fromfromfrom.owner = {
-			while = {
-				count = 2
-				random_owned_pop_group = { kill_single_pop = yes }
-			}
-		}
+		custom_tooltip = fircon.7510.a.tt # Reused.
 		hidden_effect = {
+			event_target:pre_ftl_planet = { # Fixes tooltip showing 100 pops killed because it can't read while-loops.
+				while = {
+					count = 2
+					random_owned_pop_group = {
+						kill_single_pop = yes
+					}
+				}
+			}
 			event_target:pre_ftl_country = { advance_pre_ftl_tech = yes }
 		}
 		event_target:pre_ftl_country = { shift_ethic = ethic_fanatic_xenophobe }
@@ -3173,6 +3222,7 @@ situation_event = {
 		has_first_contact_dlc = yes
 		owner = {
 			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
 				has_country_flag = fircon_1495_fired
 				has_blocked_random_devastating_pre_ftl_events = yes
 			}
@@ -3387,9 +3437,7 @@ country_event = {
 		trigger = { values_others = yes }
 		hidden_effect = {
 			event_target:pre_ftl_country = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = atomic_age
-				}
+				pre_ftl_regresses_one_age = yes # Guarantees regression, pre-ftl will not progress to age if reduced below it.
 			}
 		}
 		custom_tooltip = unadavance_tech_tt
@@ -3399,9 +3447,7 @@ country_event = {
 		trigger = { values_others = no }
 		hidden_effect = {
 			event_target:pre_ftl_country = {
-				set_pre_ftl_age_effect = {
-					PRE_FTL_AGE = atomic_age
-				}
+				pre_ftl_regresses_one_age = yes
 			}
 		}
 		custom_tooltip = unadavance_tech_tt
@@ -3511,6 +3557,7 @@ country_event = {
 					every_fleet_in_system = {
 						limit = {
 							owner = {
+								is_default_or_fallen = yes # Do not set Tiyanki MIA.
 								NOT = { is_same_value = event_target:pre_ftl_country }
 							}
 							is_mobile = yes
@@ -3555,9 +3602,15 @@ situation_event = {
 		has_first_contact_dlc = yes
 		owner = {
 			NOR = {
+				is_gestalt = yes # Blocked for Gestalts.
 				has_country_flag = fircon_2000_fired
-				is_lithoid_empire = yes
-				is_machine_empire = yes
+				owner_species = {
+					OR = {
+						has_trait = trait_lithoid
+						has_trait = trait_infernal # Presumably both Infernals and Lithoids are immune to these skin-ailments.
+					}
+				}
+				is_robot_empire = yes # Pre-FTL Robots/Machine/Synths don't exist yet but expanded check anyway.
 			}
 			pre_ftl_is_observed_with = { MISSION = specimen_collection }
 		}
@@ -3626,9 +3679,14 @@ country_event = {
 	option = { # target practice
 		name = "fircon.2001.c"
 		add_laser_tech = yes
-		from.owner = {
+		event_target:pre_ftl_country = {
 			add_awareness = 10
-			random_owned_pop_group = { kill_single_pop = yes }
+			random_owned_pop_group = {
+				limit = {
+					NOT = { has_trait = trait_mechanical } # In case of Mechanist Pre-FTLs prevent robots from suffering from lethal boils.
+				}
+				kill_single_pop = yes
+			}
 		}
 	}
 }
@@ -3643,6 +3701,12 @@ situation_event = {
 		has_first_contact_dlc = yes
 		owner = {
 			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				has_origin = origin_subterranean # Blocked for Subterraneans.
+				AND = {
+					species = { has_trait = trait_aquatic }
+					capital_scope = { is_planet_class = pc_ocean } # Blocked for Aquatics.
+				}
 				has_country_flag = fircon_2010_fired
 				has_country_flag = ongoing_preftl_chain
 			}
@@ -3673,13 +3737,33 @@ country_event = {
 
 	desc = {
 		trigger = {
-			event_target:pre_ftl_species = { is_species_class = AVI }
+			event_target:pre_ftl_species = {
+				OR = {
+					is_species_class = AVI
+					is_species_class = ART # Arthropoids can have wings.
+					species_portrait = mam1 # From Flight's portrait_override, exempted regardless of flight trait.
+					species_portrait = rep17 # From Flight's portrait_override, exempted regardless of flight trait.
+					species_portrait = bio10 # From Flight's portrait_override, exempted regardless of flight trait.
+					has_trait = trait_flight # They can fly. Future-proofing in case any of the floating portraits get this trait.
+					has_trait = trait_spatial_mastery # They can fly. Future-proofing in case any of the floating portraits get this trait.
+				}
+			}
 		}
 		text = "fircon.2011.avian.desc"
 	}
 	desc = {
 		trigger = {
-			NOT = { event_target:pre_ftl_species = { is_species_class = AVI } }
+			event_target:pre_ftl_species = {
+				NOR = {
+					is_species_class = AVI
+					is_species_class = ART # Arthropoids can have wings.
+					species_portrait = mam1 # From Flight's portrait_override, exempted regardless of flight trait.
+					species_portrait = rep17 # From Flight's portrait_override, exempted regardless of flight trait.
+					species_portrait = bio10 # From Flight's portrait_override, exempted regardless of flight trait.
+					has_trait = trait_flight # They can fly. Future-proofing in case any of the floating portraits get this trait.
+					has_trait = trait_spatial_mastery # They can fly. Future-proofing in case any of the floating portraits get this trait.
+				}
+			}
 		}
 		text = "fircon.2011.noavian.desc"
 	}
@@ -3697,7 +3781,7 @@ country_event = {
 	}
 
 	immediate = {
-		from.owner = { add_awareness = 10 }
+		event_target:pre_ftl_country = { add_awareness = 10 }
 		set_timed_country_flag = {
 			flag = fircon_2010_fired
 			years = 5 # 10 years
@@ -3838,7 +3922,22 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_2510_fired }
+			NOR = {
+				capital_scope = {
+					OR = {
+						is_artificial = yes # Blocked Artificial Worlds.
+						AND = {
+							is_planet_class = pc_ocean
+							owner_species = { has_trait = trait_aquatic } # Blocked for Aquatics.
+						}
+						AND = {
+							is_planet_class = pc_volcanic
+							owner_species = { has_trait = trait_infernal } # Blocked for Infernals.
+						}
+					}
+				}
+				has_country_flag = fircon_2510_fired
+			}
 			is_gestalt = yes
 			OR = {
 				pre_ftl_is_observed_with = { MISSION = passive_observation }
@@ -3996,7 +4095,9 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = fires_of_industry years = 20 }
+		event_target:pre_ftl_planet = {
+			add_modifier = { modifier = fires_of_industry days = 7200 } # Modifier was applied to observer, not planet.
+		}
 		set_country_flag = engineering_insights
 		set_predictive_observation_insight = { VALUE = 10 }
 	}
@@ -4160,10 +4261,24 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			NOT = { has_country_flag = fircon_2540_fired }
+			NOR = {
+				capital_scope = {
+					OR = {
+						has_planet_flag = organic_singularity_communion
+						solar_system = {
+							OR = {
+								has_megastructure = shroud_seal # No psionics please.
+								any_neighbor_system = { has_megastructure = shroud_seal }
+							}
+						}
+						observation_outpost_owner = { has_origin = origin_mindwardens } # No Psionic Theory for you.
+					}
+				}
+				has_country_flag = fircon_2540_fired
+			}
 			is_gestalt = yes
 			pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = passive_observation }
-			NOT = { capital_scope = { has_planet_flag = organic_singularity_communion } }
+
 		}
 	}
 
@@ -4251,7 +4366,7 @@ country_event = {
 				66 = { country_event = { id = fircon.2546 days = 30 } }
 				33 = {
 					country_event = { id = fircon.2547 days = 30 }
-					modifier = { factor = 0 is_machine_empire = yes }
+					modifier = { factor = 0 is_robot_empire = yes }
 				}
 			}
 		}
@@ -4447,6 +4562,14 @@ situation_event = {
 					is_moon = no
 					is_colony = no # So they don't go to your planet or their homeworld
 				}
+			}
+			OR = {
+				any_situation = {
+					is_situation_type = pre_ftl_tech_progress_situation
+					situation_progress >= 384 # Make sure they have at least 20% to be deducted, outcomes may deduct 20% or 50%, or add 20%.
+					situation_progress <= 1728 # Make sure they aren't about to reach spacefaring before the event concludes.
+				}
+				capital_scope = { is_planet_class = pc_habitat } # Habitat Pre-FTLs have their tech frozen, and rely solely on events to advance.
 			}
 		}
 	}
@@ -4751,15 +4874,17 @@ country_event = {
 	option = { # Keep Them
 		name = fircon.2625.a
 		custom_tooltip = fircon.2625.a.tt
-		hidden_effect = {
-			delete_fleet = fromfrom
-			remove_global_flag = inteplanetary_flight_ongoing
-			fromfrom.owner = {
-				random_situation = {
-					limit = { is_situation_type = pre_ftl_tech_progress_situation }
-					add_situation_progress = -960 # 50%
+		hidden_effect = { # Wasn't removing tech progress.
+			fromfrom = {
+				owner = {
+					random_situation = {
+						limit = { is_situation_type = pre_ftl_tech_progress_situation }
+						add_situation_progress = -960 #50%
+					}
 				}
+				delete_fleet = this
 			}
+			remove_global_flag = inteplanetary_flight_ongoing
 		}
 		if = {
 			limit = { values_others = yes }
@@ -5806,21 +5931,41 @@ country_event = {
 			has_country_flag = recent_preftl_diplomatic_event
 		}
 		any_observed_pre_ftl_within_border = {
+			OR = { # They are either fully aware or some of them remember meeting aliens but their planet got nuked so most of them forgot.
+				current_awareness_level = full
+				has_country_flag = reached_full_awareness_once
+			}
 			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
 				is_subterranean_empire = yes
 				has_civic = civic_flat_world_theory
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				capital_scope = { is_artificial = yes } # Blocked Artificial Worlds.
+				has_pre_ftl_age = stone_age # subterranean_defense_army is stronger than postatomic_army, also Stone Age may have too few pops to survive the Volcano outcome.
+				has_pre_ftl_age = bronze_age
+				has_pre_ftl_age = early_space_age # Not Early-Space-Age becuase if they have satellites and still think the world is flat then this makes no sense.
+				# Remaining ages: Industrial, Machine, Atomic.
 			}
 		}
 	}
 
 	immediate = {
-		random_observed_pre_ftl_within_border = {
+		random_observed_pre_ftl_within_border = { # Trigger here should match event-trigger.
 			limit = {
+				OR = { # They are either fully aware or some of them remember meeting aliens but their planet got nuked so most of them forgot.
+					current_awareness_level = full
+					has_country_flag = reached_full_awareness_once
+				}
 				NOR = {
-					has_civic = civic_flat_world_theory
+					is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
 					is_subterranean_empire = yes
+					has_civic = civic_flat_world_theory
 					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+					capital_scope = { is_artificial = yes } # Blocked Artificial Worlds.
+					has_pre_ftl_age = stone_age # subterranean_defense_army is stronger than postatomic_army, also Stone Age may have too few pops to survive the Volcano outcome.
+					has_pre_ftl_age = bronze_age
+					has_pre_ftl_age = early_space_age # Not Early-Space-Age becuase if they have satellites and still think the world is flat then this makes no sense.
+					# Remaining ages: Industrial, Machine, Atomic.
 				}
 			}
 			capital_scope = { save_event_target_as = non_believers_planet }
@@ -6028,7 +6173,7 @@ country_event = {
 					owner = event_target:subterranean_nation
 					species = event_target:subterranean_species
 					type = "subterranean_industrial_army"
-					leader = last_created_leader
+					# leader = last_created_leader # What leader?
 				}
 			}
 		}
@@ -6075,14 +6220,19 @@ country_event = {
 
 	option = {
 		name = fircon.6032.a
-		if = { # if you did not help them, people die
-			limit = {
-				NOT = { has_country_flag = helped_non_believers }
-			}
-			event_target:non_believers_country = {
-				while = {
-					count = 3
-					random_owned_pop_group = { kill_single_pop = yes }
+		custom_tooltip = DPFF_pops_killed_300.tt # This fixes vanilla tooltip only displaying 100 pops killed because it can't read while-loops.
+		hidden_effect = {
+			if = { # if you did not help them, people die
+				limit = {
+					NOT = { has_country_flag = helped_non_believers }
+				}
+				event_target:non_believers_country = {
+					while = {
+						count = 3
+						random_owned_pop_group = {
+							kill_single_pop = yes
+						}
+					}
 				}
 			}
 		}
@@ -6159,10 +6309,20 @@ country_event = {
 			success_text = {
 				text = fircon.6035.desc.water
 				event_target:non_believers_planet = { has_climate = wet }
+				NAND = {
+					event_target:non_believers_planet = { is_planet_class = pc_ocean } # Blocked Aquatic Species believing you come from the Ocean when they do too.
+					event_target:non_believers_species = { has_trait = trait_aquatic }
+				}
 			}
 			success_text = {
 				text = fircon.6035.desc.sun
-				NOT = { event_target:non_believers_planet = { has_climate = wet } }
+				OR = {
+					NOT = { event_target:non_believers_planet = { has_climate = wet } }
+					AND = {
+						event_target:non_believers_planet = { is_planet_class = pc_ocean } # Blocked Aquatic Species believing you come from the Ocean when they do too.
+						event_target:non_believers_species = { has_trait = trait_aquatic }
+					}
+				}
 			}
 			text = newline
 			text = fircon.6035.desc.end
@@ -6332,23 +6492,34 @@ country_event = {
 		has_active_observation_post = yes
 		any_observed_pre_ftl_within_border = {
 			NOR = {
-				is_hive_empire = yes
+				is_gestalt = yes # Future-proofing for Machine Pre-FTLs.
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				has_pre_ftl_age = stone_age # Too young for cities/common stuffed toys/plushie_tariff of 10 energy.
+				has_pre_ftl_age = bronze_age
+				has_pre_ftl_age = iron_age
+				has_pre_ftl_age = late_medieval_age
 			}
-			current_awareness_level = full
+			OR = {
+				current_awareness_level = full
+				has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
+			}
 		}
 	}
 
 	immediate = {
-		random_planet_within_border = {
+		random_observed_pre_ftl_within_border = { # Pre-FTL Trigger should match event-trigger.
 			limit = {
-				has_observation_outpost = yes
-				exists = observation_outpost_owner
-				owner = {
-					NOR = {
-						is_hive_empire = yes
-						is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
-					}
+				NOR = {
+					is_gestalt = yes # Future-proofing for Machine Pre-FTLs.
+					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+					has_pre_ftl_age = stone_age # Too young for cities/common stuffed toys/plushie_tariff of 10 energy.
+					has_pre_ftl_age = bronze_age
+					has_pre_ftl_age = iron_age
+					has_pre_ftl_age = late_medieval_age
+				}
+				OR = {
+					current_awareness_level = full
+					has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
 				}
 			}
 			save_event_target_as = pre_ftl_planet
@@ -6365,6 +6536,7 @@ country_event = {
 				NOR = {
 					has_trait = trait_repugnant
 					has_trait = trait_robot_uncanny
+					has_trait = trait_cyborg_welded_countenance # Cyborgs now have an option.
 				}
 			}
 		}
@@ -6386,6 +6558,7 @@ country_event = {
 				OR = {
 					has_trait = trait_repugnant
 					has_trait = trait_robot_uncanny
+					has_trait = trait_cyborg_welded_countenance # Cyborgs now have an option.
 				}
 			}
 		}
@@ -6400,8 +6573,17 @@ country_event = {
 	option = { # What a waste of time
 		trigger = { values_others = no }
 		name = fircon.7500.d
-		from = {
-			pop_group_transfer_ethic = { ETHOS = ethic_xenophobe AMOUNT = 100 }
+		event_target:pre_ftl_planet = { # Fixed scoping?
+			random_owned_pop_group = {
+				limit = {
+					NOT = { has_trait = trait_mechanical } # Mechanist's robots aren't advanced enough to have ethics.
+				}
+				pop_group_transfer_ethic = {
+					POP_GROUP = this # Fixed scoping?
+					ETHOS = ethic_xenophobe
+					AMOUNT = 100
+				}
+			}
 		}
 	}
 	option = { # Can we have some of those plushies?
@@ -6443,25 +6625,29 @@ country_event = {
 		}
 		any_observed_pre_ftl_within_border = {
 			NOR = {
-				is_hive_empire = yes
+				is_gestalt = yes # Future-proofing for Machine Pre-FTLs.
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 			}
-			current_awareness_level = full
+			OR = {
+				current_awareness_level = full
+				has_country_flag = reached_full_awareness_once
+			}
 			is_under_open_technological_enlightenment = root
 		}
 	}
 
 	immediate = {
-		random_planet_within_border = {
+		random_observed_pre_ftl_within_border = {
 			limit = {
-				has_observation_outpost = yes
-				exists = observation_outpost_owner
-				owner = {
-					NOR = {
-						is_hive_empire = yes
-						is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
-					}
+				NOR = {
+					is_gestalt = yes # Future-proofing for Machine Pre-FTLs.
+					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 				}
+				OR = {
+					current_awareness_level = full
+					has_country_flag = reached_full_awareness_once
+				}
+				is_under_open_technological_enlightenment = root
 			}
 			save_event_target_as = pre_ftl_planet
 			owner = { save_event_target_as = pre_ftl_country }
@@ -6553,7 +6739,7 @@ country_event = {
 	}
 }
 
-# All is One
+# All is One (actually Teach a Hive How to Craft)
 country_event = {
 	id = fircon.7510
 	title = fircon.7510.name
@@ -6583,17 +6769,37 @@ country_event = {
 		has_active_observation_post = yes
 		any_observed_pre_ftl_within_border = {
 			is_gestalt = yes
-			current_awareness_level = full
-			is_under_open_technological_enlightenment = root
+			OR = {
+				current_awareness_level = full
+				has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
+			}
+			is_under_open_technological_enlightenment = root # Getting nuked doesn't remove pacts.
+			NOR = {
+				has_pre_ftl_age = stone_age # May have too few pops to survive.
+				has_pre_ftl_age = industrial_age # Presumably they understand "basic chemistry" from this age onwards.
+				has_pre_ftl_age = machine_age
+				has_pre_ftl_age = atomic_age
+				has_pre_ftl_age = early_space_age
+			}
 		}
 	}
 
 	immediate = {
-		random_planet_within_border = {
+		random_observed_pre_ftl_within_border = {
 			limit = {
-				has_observation_outpost = yes
-				exists = observation_outpost_owner
-				owner = { is_gestalt = yes }
+				is_gestalt = yes
+				OR = {
+					current_awareness_level = full
+					has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
+				}
+				is_under_open_technological_enlightenment = root # Getting nuked doesn't remove pacts.
+				NOR = {
+					has_pre_ftl_age = stone_age # May have too few pops to survive.
+					has_pre_ftl_age = industrial_age # Presumably they understand "basic chemistry" from this age onwards.
+					has_pre_ftl_age = machine_age
+					has_pre_ftl_age = atomic_age
+					has_pre_ftl_age = early_space_age
+				}
 			}
 			save_event_target_as = pre_ftl_planet
 			owner = { save_event_target_as = pre_ftl_country }
@@ -6675,28 +6881,33 @@ country_event = {
 		has_active_observation_post = yes
 		any_observed_pre_ftl_within_border = {
 			NOR = {
-				is_hive_empire = yes
+				has_ethic = ethic_fanatic_xenophobe # No Xenophiliac Fanatic Xenophobes.
+				is_gestalt = yes
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 			}
-			current_awareness_level = full
+			OR = {
+				current_awareness_level = full
+				has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
+			}
 		}
 	}
 
 	immediate = {
-		random_planet_within_border = {
-			limit = {
-				has_observation_outpost = yes
-				exists = observation_outpost_owner
-				owner = {
-					NOR = {
-						is_hive_empire = yes
-						is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
-					}
+		random_observed_pre_ftl_within_border = {
+            limit = {
+                NOR = {
+					has_ethic = ethic_fanatic_xenophobe # No Xenophiliac Fanatic Xenophobes.
+					is_gestalt = yes
+					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 				}
-			}
-			save_event_target_as = pre_ftl_planet
-			owner = { save_event_target_as = pre_ftl_country }
-		}
+				OR = {
+					current_awareness_level = full
+					has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
+				}
+            }
+            save_event_target_as = pre_ftl_planet
+            owner = { save_event_target_as = pre_ftl_country }
+        }
 		set_country_flag = fircon_8000_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event days = @PreFTLDiplomacyEventTimer }
 	}
@@ -6939,15 +7150,16 @@ country_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		is_country_type = default
-		has_pre_ftl_trade_agreement = yes
+		has_pre_ftl_trade_agreement_no_gestalt = yes # Don't target agreements with Gestalts.
 		NOR = {
+			is_gestalt = yes
 			has_country_flag = fircon_8025_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement = { EVENT = freeport }
+		get_random_pre_ftl_trade_agreement_advanced = { EVENT = freeport NOGESTALT = yes } # We don't want Gestalts to get this event.
 		set_country_flag = fircon_8025_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -6958,12 +7170,12 @@ country_event = {
 			resource_stockpile_compare = { resource = influence value >= 50 }
 		}
 		add_resource = { influence = -50 }
-		event_target:freeport_planet = { add_deposit = d_freeports }
+		event_target:freeport_planet = { add_deposit = d_freeports } # Trader Jobs.
 	}
 	option = {
 		name = fircon.8025.b
 		event_target:freeport_planet = {
-			add_modifier = { modifier = freeport_smuggling years = 20 }
+			add_modifier = { modifier = freeport_smuggling years = 20 } # Criminal Jobs.
 		}
 	}
 	option = {
@@ -6985,13 +7197,18 @@ country_event = {
 
 	desc = {
 		trigger = {
-			event_target:sweet_species = { is_lithoid = no }
+			event_target:sweet_species = { has_trait = trait_organic }
 		}
 		text = fircon.8030.desc
 	}
 	desc = {
 		trigger = {
-			event_target:sweet_species = { is_lithoid = yes }
+			event_target:sweet_species = {
+				OR = {
+					has_trait = trait_lithoid
+					has_trait = trait_infernal # Infernals will use this option. Localisation might be fine.
+				}
+			}
 		}
 		text = fircon.8030.desc.lith
 	}
@@ -7003,18 +7220,27 @@ country_event = {
 
 	trigger = {
 		has_first_contact_dlc = yes
-		has_pre_ftl_trade_agreement = yes
 		NOR = {
+			is_gestalt = yes # Blocked for Gestalt Observer.
 			has_country_flag = fircon_8030_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+			}
+			OR = {
+				has_pre_ftl_age = machine_age # So building_primitive_clinic can be added.
+				has_pre_ftl_age = atomic_age
+				has_pre_ftl_age = early_space_age
+			}
+			has_pre_ftl_trade = root # has_pre_ftl_trade_agreement.
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = sweet }
+		get_random_pre_ftl_trade_agreement_advanced = { EVENT = sweet NOBROKENSHACKLES = yes NOGESTALT = yes MINERA = MACHINE_AGE }
 		set_country_flag = fircon_8030_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7035,13 +7261,18 @@ country_event = {
 	}
 	option = {
 		name = fircon.8030.c
-		add_resource = { energy = 1000 }
+		add_resource = { trade = 1000 } # Changed resource.
 		custom_tooltip = fircon.8030.c.tt
 		hidden_effect = {
 			event_target:sweet_planet = {
 				while = { # Vfix mod
 					count = 3
-					random_owned_pop_group = { kill_single_pop = yes }
+					random_owned_pop_group = {
+						limit = {
+							NOT = { has_trait = trait_mechanical } # Mechanist Robots should not die from addiction.
+						}
+						kill_single_pop = yes
+					}
 				}
 			}
 		}
@@ -7060,15 +7291,16 @@ country_event = {
 
 	trigger = {
 		has_first_contact_dlc = yes
-		has_pre_ftl_trade_agreement = yes
+		has_pre_ftl_trade_agreement_no_gestalt = yes # No Gestalts.
 		NOR = {
+			is_gestalt = yes # Blocked for Gestalts.
 			has_country_flag = fircon_8035_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement = { EVENT = landgrab }
+		get_random_pre_ftl_trade_agreement_advanced = { EVENT = landgrab NOGESTALT = yes }
 		set_country_flag = fircon_8035_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7080,7 +7312,7 @@ country_event = {
 		}
 		add_resource = {
 			influence = -100
-			energy = 500
+			trade = 500
 		}
 	}
 	option = {
@@ -7090,9 +7322,9 @@ country_event = {
 	option = {
 		name = fircon.8035.c
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 1500 }
+			resource_stockpile_compare = { resource = trade value >= 1500 }
 		}
-		add_resource = { energy = -1500 }
+		add_resource = { trade = -1500 }
 		event_target:landgrab_planet = { add_deposit = d_landgrab_blocker }
 		capital_scope = { add_deposit = d_landgrab_foreign_holdings }
 	}
@@ -7112,6 +7344,7 @@ country_event = {
 		has_first_contact_dlc = yes
 		has_pre_ftl_trade_agreement = yes
 		NOR = {
+			is_gestalt = yes # Blocked for Gestalts.
 			has_country_flag = fircon_8040_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
@@ -7151,24 +7384,36 @@ country_event = {
 
 	trigger = {
 		has_first_contact_dlc = yes
-		has_pre_ftl_trade_agreement = yes
 		NOR = {
 			has_country_flag = fircon_8045_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
-		any_country = {
+		any_playable_country = { # Default empires only, no FEs/AEs/Other.
 			is_ai = yes
 			is_authoritarian = yes
 			is_primitive = no
 		}
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				AND = {
+					is_gestalt = yes
+					has_biogenesis_dlc = no # Disconnected Drones.
+				}
+			}
+			has_pre_ftl_trade = root # has_pre_ftl_trade_agreement
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = space_slavers }
-		random_country = {
+		if = {
+			limit = { has_biogenesis_dlc = yes }
+			get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = space_slavers }
+		}
+		else = {
+			get_random_pre_ftl_trade_agreement_advanced = { EVENT = space_slavers NOBROKENSHACKLES = yes NOGESTALT = yes }
+		}
+		random_playable_country = { # Default empires only, no FEs/AEs/Other.
 			limit = {
 				is_ai = yes
 				is_authoritarian = yes
@@ -7185,11 +7430,11 @@ country_event = {
 		name = fircon.8045.a
 		allow = {
 			resource_stockpile_compare = { resource = influence value >= 100 }
-			resource_stockpile_compare = { resource = energy value >= 5000 }
+			resource_stockpile_compare = { resource = trade value >= 5000 }
 		}
 		add_resource = {
 			influence = -100
-			energy = -5000
+			trade = -5000
 		}
 	}
 	option = {
@@ -7197,7 +7442,12 @@ country_event = {
 		custom_tooltip = fircon.8045.b.tt
 		hidden_effect = {
 			event_target:space_slavers_country = {
-				random_owned_pop_group = { kill_single_pop = yes }
+				random_owned_pop_group = {
+					limit = {
+						NOT = { has_trait = trait_mechanical } # No kidnapping Mechanist Robots only for them to magically turn into biological pops.
+					}
+					kill_single_pop = yes
+				}
 			}
 			event_target:space_slavers_capital = {
 				create_pop_group = { species = event_target:space_slavers_species }
@@ -7207,11 +7457,16 @@ country_event = {
 	option = {
 		name = fircon.8045.c
 		trigger = { allows_slavery = yes }
-		add_resource = { energy = 3000 }
+		add_resource = { trade = 3000 }
 		custom_tooltip = fircon.8045.b.tt
 		hidden_effect = {
 			event_target:space_slavers_country = {
-				random_owned_pop_group = { kill_single_pop = yes }
+				random_owned_pop_group = {
+					limit = {
+						NOT = { has_trait = trait_mechanical } # No kidnapping Mechanist Robots only for them to magically turn into biological pops.
+					}
+					kill_single_pop = yes
+				}
 			}
 			event_target:space_slavers_capital = {
 				create_pop_group = { species = event_target:space_slavers_species }
@@ -7232,18 +7487,28 @@ country_event = {
 
 	trigger = {
 		has_first_contact_dlc = yes
-		has_pre_ftl_trade_agreement = yes
 		NOR = {
+			AND = { # Blocked for Gestalts unless Biogenesis.
+				is_gestalt = yes
+				has_biogenesis_dlc = no
+			}
 			has_country_flag = fircon.8050_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				is_gestalt = yes # Blocked for Gestalts.
+				has_pre_ftl_age = stone_age # We don't want stone-age primitives making smugglers mine before the primitives establish mines. Too few pops, Retaliation-Strike would be xenocide.
+				has_pre_ftl_age = bronze_age # Localisation talks about authorities and criminals suggesting civilised government.
+				capital_scope = { is_artificial = yes }
+			}
+			has_pre_ftl_trade = root # has_pre_ftl_trade_agreement
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = preftl_slavers }
+		get_random_pre_ftl_trade_agreement_advanced = { EVENT = preftl_slavers NOBROKENSHACKLES = yes NOGESTALT = yes MINERA = IRON_AGE }
 		set_country_flag = fircon.8050_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7271,7 +7536,23 @@ country_event = {
 			event_target:preftl_slavers_planet = {
 				while = { # Vfix mod
 					count = 3
-					random_owned_pop_group = { kill_single_pop = yes }
+					if = {
+						limit = {
+							count_owned_pop_amount = { # No Xenocide, or leaving a planet solely populated by Mechanist Robots.
+								count > 200
+								limit = {
+									NOT = { has_trait = trait_mechanical }
+								}
+							}
+						}
+						random_owned_pop_group = {
+							limit = {
+								NOT = { has_trait = trait_mechanical }
+							}
+							kill_single_pop = yes
+						}
+					}
+					
 				}
 				ruin_building = random_no_capital
 				ruin_building = random_no_capital
@@ -7297,14 +7578,45 @@ country_event = {
 			has_country_flag = fircon.8055_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
-		has_pre_ftl_trade_agreement = yes
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				AND = {
+					is_hive_empire = yes
+					root = { is_hive_empire = no } # Blocked unless both or neither are Gestalt.
+				}
+				AND = {
+					is_hive_empire = no
+					root = { is_hive_empire = yes }
+				}
+			}
+			has_pre_ftl_trade = root # has_pre_ftl_trade_agreement
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = preftl_hagglers }
+		random_observed_pre_ftl_within_border = {
+			limit = {
+				NOR = {
+					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+					AND = {
+						is_hive_empire = yes
+						root = { is_hive_empire = no } # Blocked unless both or neither are Gestalt.
+					}
+					AND = {
+						is_hive_empire = no
+						root = { is_hive_empire = yes }
+					}
+				}
+				has_pre_ftl_trade = root # has_pre_ftl_trade_agreement
+			}
+			save_event_target_as = preftl_hagglers_country
+			set_country_flag = preftl_hagglers_flag
+			species = { save_event_target_as = preftl_hagglers_species }
+			home_planet = {
+				save_event_target_as = preftl_hagglers_planet
+			}
+		}
 		set_country_flag = fircon.8055_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7312,29 +7624,35 @@ country_event = {
 	option = {
 		name = fircon.8055.a
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 6000 }
+			resource_stockpile_compare = { resource = trade value >= 6000 }
 		}
-		add_resource = { energy = -6000 }
+		add_resource = { trade = -6000 }
 		add_modifier = { modifier = preftl_hagglers_mod }
 	}
 	option = {
 		name = fircon.8055.b
 		custom_tooltip = fircon.8055.b.tt
 		allow = {
-			resource_stockpile_compare = { resource = energy value >= 100 }
+			resource_stockpile_compare = { resource = trade value >= 100 }
 		}
-		add_resource = { energy = -100 }
+		add_resource = { trade = -100 }
 		create_leader = {
 			name = random
 			species = event_target:preftl_hagglers_species
 			class = official
 			skill = 4
-			traits = { 1 = leader_trait_preftl_haggler }
+			randomize_traits = no
+			traits = {
+				1 = leader_trait_preftl_haggler
+			}
+			skip_background_generation = yes
+			background_planet = event_target:preftl_hagglers_planet
+			event_leader = yes
 		}
 	}
 	option = {
 		name = fircon.8055.c
-		add_resource = { energy = 100 }
+		add_resource = { trade = 100 }
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
@@ -7369,12 +7687,8 @@ country_event = {
 	}
 
 	immediate = {
-		random_planet_within_border = {
-			limit = {
-				has_observation_outpost = yes
-				exists = observation_outpost_owner
-				owner = { is_hive_empire = no pre_ftl_ancient_era = no }
-			}
+		random_observed_pre_ftl_within_border = {
+			limit = { is_gestalt = no pre_ftl_ancient_era = no }
 			save_event_target_as = pre_ftl_planet
 			owner = { save_event_target_as = pre_ftl_country }
 		}
@@ -7585,17 +7899,25 @@ country_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		NOR = {
+			is_gestalt = yes # Blocked for Gestalts.
 			has_country_flag = fircon.8500_fired
 			has_country_flag = recent_preftl_diplomatic_event
 		}
-		has_pre_ftl_trade_agreement = yes
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_gestalt = yes
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				has_pre_ftl_age = stone_age
+				has_pre_ftl_age = bronze_age
+				has_pre_ftl_age = iron_age
+				has_pre_ftl_age = late_medieval_age # Too young to make sense. Not technologically advanced enough to MacGuyver a matter-disassembler from a replicator.
+			}
+			has_pre_ftl_trade = root # has_pre_ftl_trade_agreement
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = preftl_misusers }
+		get_random_pre_ftl_trade_agreement_advanced = { EVENT = preftl_misusers NOBROKENSHACKLES = yes NOGESTALT = yes MINERA = RENAISSANCE_AGE }
 		set_country_flag = fircon.8500_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7614,7 +7936,7 @@ country_event = {
 		name = fircon.8500.b
 		country_event = { id = fircon.8510 days = 180 random = 20 }
 		event_target:preftl_misusers_country = {
-			add_opinion_modifier = { who = root.owner modifier = opinion_tech_abusers_pro }
+			add_opinion_modifier = { who = root modifier = opinion_tech_abusers_pro } # Root, not root.owner.
 		}
 	}
 }
@@ -7763,10 +8085,15 @@ country_event = {
 			name = random
 			class = scientist
 			skill = 3
+			randomize_traits = no
 			traits = { 1 = leader_trait_meticulous }
 			effect = {
 				save_event_target_as = lone_drone_leader
 			}
+			skip_background_generation = yes
+			background_planet = event_target:preftl_lone_drone_planet
+			background_ethic = ethic_xenophile
+			event_leader = yes
 		}
 	}
 }
@@ -7793,18 +8120,30 @@ country_event = {
 		NOR = {
 			has_country_flag = fircon.8565_fired
 			has_country_flag = recent_preftl_diplomatic_event
-			is_hive_empire = yes
+			is_gestalt = yes
 		}
-		has_pre_ftl_trade_agreement = yes
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				is_gestalt = yes # Not suitable for Gestalt Pre-FTLs.
+				AND = { # Localisation not suitable for Aquatic Pre-FTLs.
+					species = { has_trait = trait_aquatic }
+					capital_scope = { is_planet_class = pc_ocean }
+				}
+				has_pre_ftl_age = stone_age
+				has_pre_ftl_age = bronze_age
+				has_pre_ftl_age = iron_age
+				has_pre_ftl_age = late_medieval_age # Too young for "cruelty free pest repellent"/"decontamination processes"/"conferences".
+			}
+			has_pre_ftl_trade = root # has_pre_ftl_trade_agreement
 		}
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = preftl_invasives }
+		get_random_pre_ftl_trade_agreement_advanced = { EVENT = preftl_invasives NOBROKENSHACKLES = yes NOGESTALT = yes NOAQUATICS = yes MINERA = RENAISSANCE_AGE }
 		set_country_flag = fircon.8565_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
+		event_target:preftl_invasives_country = { save_event_target_as = pre_ftl_country }
 		set_observation_events_locked = yes
 	}
 
@@ -7890,7 +8229,6 @@ country_event = {
 
 	trigger = {
 		has_first_contact_dlc = yes
-		has_pre_ftl_societal_enlightenment_agreement = yes
 		NOR = {
 			has_country_flag = fircon.8530_fired
 			has_country_flag = recent_preftl_diplomatic_event
@@ -7898,7 +8236,11 @@ country_event = {
 			is_gestalt = yes
 		}
 		any_observed_pre_ftl_within_border = {
-			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+			NOR = {
+				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				is_gestalt = yes # Not suitable for the one organic_singularity_communion Gestalt Pre-FTL that could get this. Can shift ethics. Applies individualist pop-category modifier.
+			}
+			is_under_societal_enlightenment = root # has_pre_ftl_societal_enlightenment_agreement
 		}
 	}
 
@@ -7906,7 +8248,10 @@ country_event = {
 		random_observed_pre_ftl_within_border = {
 			limit = {
 				is_under_societal_enlightenment = root
-				NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
+				NOR = {
+					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+					is_gestalt = yes
+				}
 			}
 			save_event_target_as = preftl_different_flavors_country
 			set_country_flag = preftl_different_flavors_flag

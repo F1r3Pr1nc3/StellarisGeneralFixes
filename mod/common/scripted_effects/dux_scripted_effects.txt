@@ -1215,3 +1215,24 @@ DNCF_spawn_nivlac_circle = {
 		add_building = building_luxury_residence # Because they get an amenity deficit.
 	}
 }
+
+get_random_pre_ftl_trade_agreement_advanced = {
+	random_observed_pre_ftl_within_border = {
+		limit = {
+			[[NOBROKENSHACKLES] NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } } ]
+			[[NOGESTALT] is_gestalt = no ]
+			[[NOAQUATICS]
+				NAND = {
+					species = { has_trait = trait_aquatic }
+					capital_scope = { is_planet_class = pc_ocean }
+				}
+			]
+			[[MINERA] DPFF_has_pre_ftl_age_minimum = { $MINERA$ = yes } ]
+			has_pre_ftl_trade = root
+		}
+		save_event_target_as = $EVENT$_country
+		set_country_flag = $EVENT$_flag
+		species = { save_event_target_as = $EVENT$_species }
+		home_planet = { save_event_target_as = $EVENT$_planet }
+	}
+}
