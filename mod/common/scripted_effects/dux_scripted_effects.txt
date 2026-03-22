@@ -1236,3 +1236,94 @@ get_random_pre_ftl_trade_agreement_advanced = {
 		home_planet = { save_event_target_as = $EVENT$_planet }
 	}
 }
+
+DPFF_set_age_civics_hive = {
+	switch = {
+		trigger = has_country_flag
+		stone_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_secret_of_fire CIVIC2 = civic_hive_the_wheel }
+		}
+		bronze_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_secret_of_fire CIVIC2 = civic_hive_the_wheel }
+		}
+		iron_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_burgeoning_nodes CIVIC2 = civic_hive_flat_world_theory }
+		}
+		late_medieval_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_burgeoning_nodes CIVIC2 = civic_hive_flat_world_theory }
+		}
+		renaissance_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_burgeoning_nodes CIVIC2 = civic_hive_flat_world_theory }
+		}
+		steam_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_burgeoning_nodes CIVIC2 = civic_hive_flat_world_theory }
+		}
+		industrial_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_centralized_consciousness CIVIC2 = civic_hive_atmospheric_pollution }
+		}
+		machine_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_centralized_consciousness CIVIC2 = civic_hive_atmospheric_pollution }
+		}
+		atomic_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_centralized_consciousness CIVIC2 = civic_hive_atmospheric_pollution }
+		}
+		early_space_age = {
+			DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = civic_hive_centralized_consciousness CIVIC2 = civic_hive_atmospheric_pollution }
+		}
+	}
+}
+
+# This will let Pre-FTL hives keep certain civics when advancing to other PRE-FTL ages.
+# FTL sold separately.
+# DPFF_roll_keep_unique_preftl_civics_hive = { CIVIC1 = X CIVIC2 = Y }
+DPFF_roll_keep_unique_preftl_civics_hive = {
+	if = {
+		limit = {
+			AND = {
+				has_civic = civic_hive_devouring_swarm
+				has_civic = civic_hive_strength_of_legions
+			}
+		}
+		# Do not change their civics.
+	}
+	else_if = {
+		limit = { has_civic = civic_hive_devouring_swarm }
+		change_government = {
+			civics = {
+				civic = civic_hive_devouring_swarm
+				civic = $CIVIC1$
+				civic = $CIVIC2$
+			}
+		}
+		random_list = {
+			45 = { force_remove_civic = $CIVIC1$ }
+			45 = { force_remove_civic = $CIVIC2$ }
+			5 = { force_remove_civic = civic_hive_devouring_swarm }
+			5 = {} # Keep all three.
+		}
+	}
+	else_if = {
+		limit = { has_civic = civic_hive_strength_of_legions }
+		change_government = {
+			civics = {
+				civic = civic_hive_strength_of_legions
+				civic = $CIVIC1$
+				civic = $CIVIC2$
+			}
+		}
+		random_list = {
+			45 = { force_remove_civic = $CIVIC1$ }
+			45 = { force_remove_civic = $CIVIC2$ }
+			5 = { force_remove_civic = civic_hive_strength_of_legions }
+			5 = {} # Keep all three.
+		}
+	}
+	else = {
+		change_government = {
+			civics = {
+				civic = $CIVIC1$
+				civic = $CIVIC2$
+			}
+		}
+	}
+}

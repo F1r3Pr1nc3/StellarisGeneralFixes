@@ -1,0 +1,1465 @@
+#####################
+# Pre-FTL Buildings #
+#####################
+
+building_crude_huts = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	position_priority = 0
+	capital_tier = 0
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			has_country_flag = stone_age
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 500
+		planet_housing_add = 400
+		planet_crime_add = -10
+	}
+
+	upgrades = {
+	}
+}
+
+building_primitive_dwellings = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050 may ruin primitive buildings.
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 600
+	}
+
+	upgrades = {
+	}
+}
+
+building_stone_palace = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	position_priority = 0
+	capital_tier = 0
+
+	category = government
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+		building_colony_shelter
+		building_hab_capital
+		building_hab_fe_capital
+		building_colony_shelter_wilderness
+	}
+
+	planet_modifier = {
+		job_primitive_noble_add = 100
+		job_primitive_warrior_add = 100
+		job_primitive_researcher_add = 100
+		job_primitive_priest_add = 100
+		planet_housing_add = 300
+		planet_amenities_add = 2500
+		planet_crime_add = -10
+	}
+
+	upgrades = {
+	}
+}
+
+building_primitive_factory = {
+	can_build = no
+	# planet_limit = 1 # Hive version has no planet limit, not sure why this was set.
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = manufacturing
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		always = yes
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_primitive_laborer_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_fabricator_add = @building_static_jobs
+	}
+
+#	upgrades = {
+#		building_foundry_1
+#		building_factory_1
+#	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+}
+
+building_primitive_offices = {
+	can_build = no
+	# planet_limit = 1 # Hive version has no planet limit, not sure why this was set.
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = unity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		always = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_primitive_administrator_add = @building_static_jobs
+	}
+}
+
+building_primitive_research = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+	# planet_limit = 1 # Hive version has no planet limit, not sure why this was set.
+	category = research
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		always = yes
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		job_primitive_researcher_2_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_calculator_physicist_add = 60
+		job_calculator_biologist_add = 60
+		job_calculator_engineer_add = 60
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+}
+
+building_primitive_mine = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = resource
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_miner_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+		}
+
+		job_primitive_miner_add = 800
+	}
+
+	upgrades = {
+	}
+}
+
+building_primitive_power_plant = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = resource
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_technician_add = 200
+	}
+
+	upgrades = {
+	}
+}
+
+building_primitive_farm = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = resource
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	convert_to = {
+		building_primitive_mine
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_farmer_add = 1000
+	}
+
+	upgrades = {
+	}
+}
+
+building_primitive_capital = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	position_priority = 0
+	capital_tier = 0
+
+	category = government
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_machine_capital
+		building_capital
+		building_hive_capital
+		building_hab_capital
+		building_hab_fe_capital
+		building_capital_wilderness
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_primitive = yes
+				OR = {
+					has_country_flag = machine_age
+					has_country_flag = industrial_age
+				}
+			}
+		}
+		job_primitive_bureaucrat_add = 200
+		job_primitive_warrior_2_add = 200
+		job_primitive_researcher_2_add = 200
+		job_primitive_priest_2_add = 200
+		planet_housing_add = 500
+		planet_amenities_add = 2500
+		planet_crime_add = -20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_primitive = yes
+				OR = {
+					has_country_flag = atomic_age
+					has_country_flag = early_space_age
+				}
+			}
+		}
+		job_primitive_bureaucrat_add = 200
+		job_primitive_warrior_2_add = 200
+		job_primitive_researcher_2_add = 200
+		job_primitive_priest_2_add = 200
+		job_primitive_entertainer_add = 200
+		planet_housing_add = 500
+		planet_amenities_add = 2500
+		planet_crime_add = -20
+		planet_max_branch_office_buildings_add = 1
+	}
+}
+
+building_urban_dwellings = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+	icon = building_residence
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = no
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2400
+	}
+
+	upgrades = {
+	}
+}
+
+building_pre_ftl_radio_telescope = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+	planet_limit = 1
+
+	category = research
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			OR = {
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+
+		job_primitive_researcher_2_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+
+		job_primitive_hive_brain_drone_add = 200
+
+	}
+
+	triggered_desc = {
+		text = awareness_gain_desc
+	}
+}
+
+###############################
+# Pre-FTL Hive-Mind Buildings #
+###############################
+
+building_hive_crude_huts = {
+	icon = building_crude_huts
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	position_priority = 0
+	capital_tier = 0
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			has_country_flag = stone_age
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_no_happiness_add = 500
+		planet_housing_add = 400
+		planet_crime_no_happiness_add = -10
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_dwellings = {
+	icon = building_primitive_dwellings
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 600
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_stone_palace = {
+	icon = building_stone_palace
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	position_priority = 0
+	capital_tier = 0
+
+	category = government
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+		building_colony_shelter
+		building_hab_capital
+		building_hab_fe_capital
+		building_colony_shelter_wilderness
+	}
+
+	planet_modifier = {
+		job_primitive_hive_synapse_drone_add = 100
+		job_primitive_hive_warrior_add = 100
+		job_primitive_hive_cerebellum_drone_add = 100
+		job_primitive_hive_spawning_drone_add = 100
+		planet_housing_add = 300
+		planet_amenities_no_happiness_add = 2500
+		planet_crime_no_happiness_add = -10
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_factory = {
+	icon = building_primitive_factory
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = manufacturing
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_hive_factory_drone_add = 200
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_mine = {
+	icon = building_primitive_mine
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = resource
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_hive_miner_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+		}
+
+		job_primitive_hive_miner_add = 800
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_power_plant = {
+	icon = building_primitive_power_plant
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = resource
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_hive_technician_add = 200
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_farm = {
+	icon = building_primitive_farm
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = resource
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+			is_lithoid_empire = no
+		}
+	}
+
+	convert_to = {
+		building_hive_primitive_mine
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+				is_lithoid_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_primitive_hive_farmer_add = 1000
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_capital = {
+	icon = building_primitive_capital
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	position_priority = 0
+	capital_tier = 0
+
+	category = government
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	convert_to = {
+		building_machine_capital
+		building_capital
+		building_hive_capital
+		building_hab_capital
+		building_hab_fe_capital
+		building_capital_wilderness
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_primitive = yes
+				OR = {
+					has_country_flag = machine_age
+					has_country_flag = industrial_age
+				}
+			}
+		}
+		job_primitive_hive_synapse_drone_2_add = 200
+		job_primitive_hive_warrior_2_add = 200
+		job_primitive_hive_brain_drone_add = 200
+		job_primitive_hive_spawning_drone_add = 200
+		planet_housing_add = 500
+		planet_amenities_no_happiness_add = 2500
+		planet_crime_no_happiness_add = -20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_primitive = yes
+				OR = {
+					has_country_flag = atomic_age
+					has_country_flag = early_space_age
+				}
+			}
+		}
+		job_primitive_hive_synapse_drone_2_add = 200
+		job_primitive_hive_warrior_2_add = 200
+		job_primitive_hive_brain_drone_add = 200
+		job_primitive_hive_spawning_drone_add = 100
+		planet_housing_add = 500
+		planet_amenities_no_happiness_add = 2500
+		planet_crime_no_happiness_add = -20
+	}
+}
+
+building_hive_urban_dwellings = {
+	icon = building_residence
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_hive_empire = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_hive_empire = no
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2400
+	}
+
+	upgrades = {
+	}
+}
+
+building_hive_primitive_node = {
+	icon = building_hive_node
+	can_build = no
+	planet_limit = 1
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050, but building never used.
+
+	category = unity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		always = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+			}
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+}
+
+building_machine_primitive_node = {
+	icon = building_autochthon_monument
+	can_build = no
+	planet_limit = 1
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050, but building never used.
+
+	category = unity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		always = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+}
+
+building_primitive_clinic = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = yes # fircon.8050
+	icon = building_medical_1
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+			is_gestalt = no # This building is for individualist biologicals only.
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_primitive = no
+				is_gestalt = yes # This building is for individualist biologicals only.
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_healthcare_add = 200
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	prerequisites = {
+	}
+
+	upgrades = {
+	}
+
+	convert_to = {
+		building_medical_1
+	}
+
+	on_destroy = {
+
+	}
+
+	on_repaired = {
+
+	}
+}
+
+building_solarpunk_gaiaseeder = {
+	icon = building_gaiaseeders_4
+	base_buildtime = @b1_time
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	planet_modifier = {
+		job_solarpunk_anarchist_add = 1000
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	prerequisites = {
+	}
+
+	upgrades = {
+	}
+
+	on_destroy = {
+
+	}
+
+	on_repaired = {
+
+	}
+}
+
+building_solarpunk_ranger_lodge = {
+	icon = building_paradise_dome
+	base_buildtime = @b1_time
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	planet_modifier = {
+		job_solarpunk_anarchist_add = 500
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	prerequisites = {
+	}
+
+	upgrades = {
+	}
+
+	on_destroy = {
+
+	}
+
+	on_repaired = {
+
+	}
+}
+
+building_solarpunk_sapling = {
+	icon = holding_tree_of_life_sapling
+	base_buildtime = @b1_time
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	planet_modifier = {
+		job_solarpunk_anarchist_add = 500
+		planet_farmers_food_produces_add = 2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	prerequisites = {
+	}
+
+	upgrades = {
+	}
+
+	on_destroy = {
+
+	}
+
+	on_repaired = {
+
+	}
+}
+
+building_solarpunk_organic_paradise = {
+	icon = building_paradise_dome
+	base_buildtime = @b1_time
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+
+	category = amenity
+
+	building_sets = {
+		pre_ftl
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_primitive = yes
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	planet_modifier = {
+		job_solarpunk_anarchist_add = 500
+		planet_housing_add = 2000
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @b1_minerals
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	prerequisites = {
+	}
+
+	upgrades = {
+	}
+
+	on_destroy = {
+
+	}
+
+	on_repaired = {
+
+	}
+}
