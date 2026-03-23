@@ -477,6 +477,23 @@ situation_event = {
 						has_country_flag = missing_scientist_chain
 					}
 				}
+				NOR = {
+					is_planet_class = pc_habitat # Blocked Habitats.
+					AND = {
+						is_planet_class = pc_ocean
+						owner_species = { has_trait = trait_aquatic }
+						observation_outpost_owner.species = {
+							NOR = { # Missing Scientist must be Aquatic to lead Aquatic Pre-FTLs.
+								has_trait = trait_aquatic
+								has_trait = trait_robot_aquatic
+							}
+						}
+					}
+					AND = {
+						observation_outpost_owner = { is_robot_empire = yes } # If you're a Machine they cannot be Fanatic Spiritualist.
+						owner = { is_fanatic_spiritualist = yes }
+					}
+				}
 			}
 		}
 	}
@@ -760,7 +777,7 @@ country_event = {
 
 	after = {
 		custom_tooltip = advance_to_age_tt
-		tooltip = { add_awareness = 100 }
+		tooltip = { set_awareness = 90 } # Tooltip now matches the effect in immediate = {}
 		hidden_effect = {
 			event_target:pre_ftl_country = { remove_country_flag = new_machine_age }
 		}
@@ -1184,6 +1201,7 @@ situation_event = {
 						has_country_flag = shuttle_intercepted
 					}
 				}
+				NOT = { is_planet_class = pc_habitat } # Blocked Habitats.
 			}
 		}
 	}
@@ -1375,12 +1393,12 @@ country_event = {
 
 	picture = GFX_evt_society_research
 	show_sound = event_radio_chatter
-	location = fromfrom
+	location = event_target:pre_ftl_planet # Scoping issue with fromfrom
 	is_triggered_only = yes
 
 	immediate = {
-		fromfrom = {
-			save_event_target_as = pre_ftl_planet
+		event_target:pre_ftl_planet = { # Scoping issue with fromfrom
+			save_event_target_as = pre_ftl_planet # Completely pointless.
 			owner = { save_event_target_as = pre_ftl_country }
 		}
 	}
@@ -1447,12 +1465,12 @@ country_event = {
 	desc = observation.3210.desc
 	picture = GFX_evt_society_research
 	show_sound = event_air_raid_siren
-	location = fromfromfrom
+	location = event_target:pre_ftl_planet # Scoping issue.
 	is_triggered_only = yes
 
 	immediate = {
-		fromfromfrom = {
-			save_event_target_as = pre_ftl_planet
+		event_target:pre_ftl_planet = {
+			save_event_target_as = pre_ftl_planet # Completely pointless.
 			owner = { save_event_target_as = pre_ftl_country }
 			set_country_flag = scientists_captured_chain
 		}
@@ -1902,7 +1920,7 @@ situation_event = {
 					NOR = {
 						is_ai = yes
 						is_gestalt = yes
-						has_country_flag = smuggler_outpost_chain
+						has_country_flag = smuggler_outpost_chain # Flags should match.
 					}
 					any_owned_planet = { planet_crime >= 10 }
 				}
@@ -1919,7 +1937,7 @@ situation_event = {
 				set_planet_flag = smuggler_outpost_planet
 				observation_outpost_owner = {
 					country_event = { id = observation.301 }
-					set_country_flag = smuggler_outpost
+					set_country_flag = smuggler_outpost_chain # Flags should match.
 				}
 			}
 		}
@@ -2063,6 +2081,10 @@ situation_event = {
 				pre_ftl_modern_era = yes
 			}
 			capital_scope = {
+				NAND = { # Not localised well for Aquatics.
+					is_planet_class = pc_ocean
+					owner_species = { has_trait = trait_aquatic }
+				}
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
 				observation_outpost_owner = {
@@ -2070,6 +2092,8 @@ situation_event = {
 						is_ai = yes
 						is_gestalt = yes
 						has_relation_flag = { who = root.owner flag = scientist_abduction }
+						is_homicidal = yes # Homicidals should not value Sobak.
+						has_special_project = ABDUCT_SCIENTIST_PROJECT # You must finish your Sobak abduction before you're allowed another one.
 					}
 				}
 			}
@@ -2111,14 +2135,74 @@ country_event = {
 			species = event_target:pre_ftl_country.species
 			name = "NAME_Sobak"
 			skill = 6
+			randomize_traits = no
 			traits = { 1 = leader_trait_spark_of_genius }
 			custom_description = Sobak_Background
+			background_planet = event_target:pre_ftl_planet # Sobak does not say they're from one of your planets.
 			skip_background_generation = yes
 			event_leader = yes	# prevents this leader from leading factions and winning elections
 			effect = {
 				exile_leader_as = abducted_scientist
 				save_event_target_as = abducted_scientist
 				save_global_event_target_as = abducted_scientist@event_target:pre_ftl_country
+				random_list = { # Set Sobak's ethic to one of the Pre-FTL's instead of yours.
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_xenophile = yes }
+						}
+						change_background_ethic = ethic_xenophile
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_xenophobe = yes }
+						}
+						change_background_ethic = ethic_xenophobe
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_militarist = yes }
+						}
+						change_background_ethic = ethic_militarist
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_pacifist = yes }
+						}
+						change_background_ethic = ethic_pacifist
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_egalitarian = yes }
+						}
+						change_background_ethic = ethic_egalitarian
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_authoritarian = yes }
+						}
+						change_background_ethic = ethic_authoritarian
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_spiritualist = yes }
+						}
+						change_background_ethic = ethic_spiritualist
+					}
+					0 = {
+						modifier = {
+							add = 1
+							event_target:pre_ftl_country = { is_materialist = yes }
+						}
+						change_background_ethic = ethic_materialist
+					}
+				}
 			}
 		}
 		event_target:pre_ftl_planet.observation_outpost = { set_event_locked = yes }
@@ -2288,13 +2372,17 @@ situation_event = {
 	trigger = {
 		exists = owner
 		owner = {
-			NOT = { has_country_flag = observation_1100_fired }
+			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				has_country_flag = observation_1100_fired
+			}
 			pre_ftl_modern_era = yes
 			current_awareness_level >= medium
 			capital_scope = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
 				observation_outpost_owner = { is_ai = no }
+				NOT = { is_planet_class = pc_habitat } # Blocked for Habitats.
 			}
 		}
 	}
@@ -2711,13 +2799,19 @@ country_event = {
 		trigger = { is_xenophile = no }
 		name = "observation.1201.b"
 		add_resource = { influence = 50 }
-		event_target:pre_ftl_planet = {
-			while = {
-				count = 2
-				random_owned_pop_group = { kill_single_pop = yes }
-			}
-		}
+		custom_tooltip = fircon.7510.a.tt # "200 pops die."
 		hidden_effect = {
+			event_target:pre_ftl_planet = {
+				while = {
+					count = 2
+					random_owned_pop_group = {
+						limit = {
+							NOT = { has_trait = trait_mechanical } # Mechanist robots should not be killed by brain implants.
+						}
+						kill_single_pop = yes
+					}
+				}
+			}
 			country_event = {
 				# Pre-FTL Cybernetic Gatekeeper
 				id = observation.1204
@@ -2766,10 +2860,8 @@ ship_event = {
 		owner = {
 			if = {
 				limit = {
-					NOR = {
-						is_machine_empire = yes
-						has_technology = tech_integrated_cybernetics
-					}
+					can_research_technology = tech_integrated_cybernetics
+					NOT = { has_technology = tech_integrated_cybernetics }
 				}
 				add_research_option = tech_integrated_cybernetics
 				add_tech_progress = { tech = tech_integrated_cybernetics progress = 0.10 }
@@ -2805,13 +2897,19 @@ country_event = {
 
 	option = {
 		name = "observation.1203.a"
-		event_target:pre_ftl_planet = {
-			while = {
-				count = 2
-				random_owned_pop_group = { kill_single_pop = yes }
-			}
-		}
+		custom_tooltip = fircon.7510.a.tt # "200 pops die."
 		hidden_effect = {
+			event_target:pre_ftl_planet = {
+				while = {
+					count = 2
+					random_owned_pop_group = { # Using a while loop here messes with the tooltip. Displays 100 pops, not 200.
+						limit = {
+							NOT = { has_trait = trait_mechanical } # Mechanist robots should not be killed by brain implants.
+						}
+						kill_single_pop = yes
+					}
+				}
+			}
 			country_event = {
 				# Pre-FTL Cybernetic Gatekeeper
 				id = observation.1204
@@ -2893,9 +2991,153 @@ country_event = {
 		name = "observation.1205.a"
 		custom_tooltip = observation.1205.tt
 		hidden_effect = {
-			event_target:pre_ftl_country = {
+			event_target:pre_ftl_country = { # Fully Cyberise Them, this event already takes years for this outcome.
+				give_technology = { tech = tech_integrated_cybernetics message = no }
+				add_ascension_perk = ap_the_flesh_is_weak
+				set_country_flag = cybernetics_traditions_unlocked
+				set_country_flag = augmentation_center_available
 				add_tradition = tr_cybernetics_adopt
-				complete_special_project = { type = FLESH_IS_WEAK_PROJECT }
+				country_event = { id = utopia.2501 }
+				random_situation = {
+					limit = { is_situation_type = situation_cyberization } # Skip it.
+					destroy_situation = this
+				}
+				if = {
+					limit = { is_gestalt = no }
+					random_list = {
+						1 = {
+							set_country_flag = cyber_control_government
+							set_country_flag = cyber_augmentation_center_government  # Unity
+						}
+						1 = {
+							set_country_flag = cyber_control_corporate
+							set_country_flag = cyber_augmentation_center_corporate # Consumer Goods
+						}
+						1 = {
+							set_country_flag = cyber_control_independent
+							set_country_flag = cyber_augmentation_center_independent # Pop upkeep
+						}
+					}
+					random_list = {
+						1 = {
+							modifier = { factor = 0.5 is_spiritualist = yes }
+							add_modifier = { modifier = AI_control days = -1 }
+						}
+						1 = {
+							modifier = { factor = 0 is_materialist = no }
+							add_modifier = { modifier = moderate_AI_control days = -1 }
+						}
+						1 = {
+							modifier = { factor = 0 is_authoritarian = no }
+							add_modifier = { modifier = AI_forced_control days = -1 }
+						}
+					}
+					random_list = {
+						1 = { set_country_flag = cyber_focus_rulers } # 10% workforce
+						1 = { set_country_flag = cyber_focus_specialists } # 10% workforce
+						1 = { set_country_flag = cyber_focus_workers } # 10% workforce
+						1 = { set_country_flag = cyber_focus_everyone } # 5% production
+					}
+					random_list = {
+						1 = { set_country_flag = cyber_force_objectors }
+						1 = { set_country_flag = cyber_allow_objectors }
+					}
+					set_policy = { policy = cyberization_standards option = cyberization_standards_full cooldown = yes }
+					random_list = {
+						1 = {
+							add_modifier = { modifier = cyber_birth_implants days = -1 }
+							set_country_flag = cyber_birth_implants
+						}
+						1 = { add_modifier = { modifier = cyber_natural_childhood days = -1 } }
+					}
+					random = {
+						chance = 5
+						add_modifier = { modifier = artificial_pain_relief days = -1 } # TODO, make this empire have civic_private_healthcare_corporate somehow.
+					}
+					random = {
+						chance = 50
+						add_modifier = { modifier = cyber_implant_taxes days = -1 } # Less pop growth, more energy.
+					}
+					random_list = {
+						1 = { add_modifier = { modifier = cyber_subscription_ban days = -1 } } # Collectivist
+						1 = { set_country_flag = cyber_subscription_model } # Individualist
+						1 = { add_modifier = { modifier = cyber_subscription_limited days = -1 } } # Neutral
+						1 = { set_country_flag = cyber_subscription_model_megacorp } # Corporate
+					}
+					# Ideally this would be for oppressive governments.
+					if = {
+						limit = {
+							NOT = { has_country_flag = cyber_control_independent }
+						}
+						random = {
+							chance = 10
+							add_modifier = { modifier = worse_parts days = -1 } # Fewer automodded pops, but they produce trade.
+						}
+					}
+					if = {
+						limit = {
+							capital_scope = { is_cold = no }
+						}
+						random = {
+							chance = 5
+							set_country_flag = cold_metal_chain # -20 habitability in cold places, set in trait_cybernetic
+						}
+					}
+					random_list = {
+						1 = { add_modifier = { modifier = cyber_athletes days = -1 } } # Entertainers produce 2 engineering.
+						1 = { add_modifier = { modifier = cyber_athlete_leagues days = -1 } } # 5% faction approval.
+						1 = { add_modifier = { modifier = limited_cyber_athletes days = -1 } } # Entertainers +1 Unity.
+					}
+					random_list = { # Rework this, and the 15 billboards so that Pre-FTLs can sell their airspace through commercial pact.
+						1 = { add_modifier = { modifier = sold_sky_1 days = -1 } } # +20 energy, -5% happiness
+						1 = { add_modifier = { modifier = sold_sky_1_mega days = -1 } } # +40 energy, -5% happiness
+						1 = { add_modifier = { modifier = sold_sky_2 days = -1 } } # +40 trade, -10 stability
+						1 = { add_modifier = { modifier = sold_sky_2_mega days = -1 } } # +80 trade, -10 stability
+					}
+					random_list = {
+						1 = { add_modifier = { modifier = endorsed_entertainment } } # Not every Cyberised empire gets this, but all Pre-FTLs will if they're not Spiritualist.
+						1 = {
+							modifier = { factor = 0 is_spiritualist = no }
+							add_modifier = { modifier = deadly_entertainment } # Supposed to be for Death Cults, but I'm loosening it a bit.
+						}
+					}
+					random_list = {
+						1 = { add_modifier = { modifier = cyber_censure_total } } # +15% happiness, +1 Crime per 20 pops.
+						1 = { add_modifier = { modifier = cyber_censure_partial } } # +5% happiness.
+						1 = {
+							modifier = { factor = 0 is_authoritarian = no }
+							add_modifier = { modifier = cyber_censure_authoritarian } # +5 stability, +50% governing ethics, +20% amenities usage.
+						}
+					}
+					random_list = {
+						1 = { add_modifier = { modifier = cyber_subliminhack_allowed } } # +15% trade, -5% happiness.
+						1 = { add_modifier = { modifier = cyber_subliminhack_licensed } } # +5% trade.
+						1 = {
+							modifier = { factor = 0 is_spiritualist = no }
+							add_modifier = { modifier = cyber_subliminhack_hallowed } # +50% Spiritualist Ethics attraction.
+						}
+					}
+					random_list = {
+						1 = { set_country_flag = cyber_collectivist }
+						1 = { set_country_flag = cyber_individualist }
+					}
+				}
+				else_if = {
+					limit = { is_hive_empire = yes }
+					random = {
+						chance = 50
+						add_modifier = { modifier = cyber_hive_imperfect_drones }
+					}
+					random_list = {
+						1 = { set_country_flag = nice_hive_envoys }
+						1 = { set_country_flag = scary_hive_envoys }
+					}
+					random_list = {
+						1 = { set_country_flag = cyber_hive_volitional }
+						1 = { set_country_flag = cyber_hive_integrated }
+					}
+				}
+				else = { set_country_flag = DPFF_cyberize_dud }
 			}
 		}
 	}
@@ -2916,6 +3158,14 @@ situation_event = {
 			capital_scope = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
+				NOR = {
+					is_planet_class = pc_habitat # No Habitats or Volcanic Worlds.
+					is_planet_class = pc_volcanic
+					AND = {
+						is_planet_class = pc_ocean
+						owner_species = { has_trait = trait_aquatic } # Blocked for Aquatic Pre-FTLs.
+					}
+				}
 			}
 		}
 	}
@@ -3471,7 +3721,13 @@ situation_event = {
 		exists = owner
 		owner = {
 			NOT = { has_country_flag = observation_1500_fired }
-			# pre_ftl_modern_era = yes
+			OR = {
+				has_pre_ftl_age = steam_age
+				has_pre_ftl_age = industrial_age
+				has_pre_ftl_age = machine_age
+				has_pre_ftl_age = atomic_age
+				has_pre_ftl_age = early_space_age
+			}
 			capital_scope = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
@@ -3481,6 +3737,10 @@ situation_event = {
 						has_country_flag = research_proposal_country
 						is_ai = yes
 					}
+				}
+				NAND = {
+					is_planet_class = pc_ocean
+					owner_species = { has_trait = trait_aquatic } # Blocked for Aquatics.
 				}
 			}
 		}
@@ -3605,6 +3865,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		is_gestalt = no # Blocked for Gestalt Observer.
 		any_observed_pre_ftl_within_border = {
 			is_under_open_technological_enlightenment = root
 			is_xenophobe = yes
@@ -3657,13 +3918,22 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		is_gestalt = no # Blocked for Gestalt Observor.
 		any_observed_pre_ftl_within_border = {
 			OR = {
 				is_under_open_technological_enlightenment = root
 				has_country_flag = espionage_operation_targeted_by@root
 			}
-			species = { has_trait = trait_quick_learners }
-			NOT = { has_country_flag = quick_learners_development }
+			species = {
+				OR = {
+					has_trait = trait_quick_learners
+					has_trait = trait_uncanny_intuition
+				}
+			}
+			NOR = {
+				is_gestalt = yes # Blocked for Gestalts.
+				has_country_flag = quick_learners_development
+			}
 		}
 	}
 
@@ -3674,8 +3944,16 @@ country_event = {
 					is_under_open_technological_enlightenment = root
 					has_country_flag = espionage_operation_targeted_by@root
 				}
-				species = { has_trait = trait_quick_learners }
-				NOT = { has_country_flag = quick_learners_development }
+				species = {
+					OR = {
+						has_trait = trait_quick_learners
+						has_trait = trait_uncanny_intuition
+					}
+				}
+				NOR = {
+					is_gestalt = yes
+					has_country_flag = quick_learners_development
+				}
 			}
 			save_event_target_as = pre_ftl_country
 			set_variable = { which = TechProgressPercentage value = 20 }
@@ -3712,6 +3990,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		is_gestalt = no # Blocked for Gestalt Observor.
 		any_observed_pre_ftl_within_border = {
 			NOR = {
 				has_country_flag = slow_learners_development
@@ -3721,7 +4000,12 @@ country_event = {
 				is_under_open_technological_enlightenment = root
 				has_country_flag = espionage_operation_targeted_by@root
 			}
-			species = { has_trait = trait_slow_learners }
+			species = {
+				OR = {
+					has_trait = trait_slow_learners
+					has_trait = trait_haunting_visions
+				}
+			}
 			any_situation = {
 				is_situation_type = pre_ftl_tech_progress_situation
 				situation_progress > 400
@@ -3740,7 +4024,12 @@ country_event = {
 					is_under_open_technological_enlightenment = root
 					has_country_flag = espionage_operation_targeted_by@root
 				}
-				species = { has_trait = trait_slow_learners }
+				species = {
+					OR = {
+						has_trait = trait_slow_learners
+						has_trait = trait_haunting_visions
+					}
+				}
 				any_situation = {
 					is_situation_type = pre_ftl_tech_progress_situation
 					situation_progress > 400
@@ -3774,6 +4063,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		is_gestalt = no # Blocked for Gestalt Observor.
 		any_observed_pre_ftl_within_border = {
 			NOR = {
 				has_country_flag = repugnant_learners_development
@@ -3783,7 +4073,12 @@ country_event = {
 				is_under_open_technological_enlightenment = root
 				has_country_flag = espionage_operation_targeted_by@root
 			}
-			species = { has_trait = trait_repugnant }
+			species = {
+				OR = {
+					has_trait = trait_repugnant
+					has_trait = trait_noxious
+				}
+			}
 			any_situation = {
 				is_situation_type = pre_ftl_tech_progress_situation
 				situation_progress > 400
@@ -3802,7 +4097,13 @@ country_event = {
 					is_under_open_technological_enlightenment = root
 					has_country_flag = espionage_operation_targeted_by@root
 				}
-				species = { has_trait = trait_repugnant }
+				species = {
+					OR = {
+						has_trait = trait_repugnant
+						has_trait = trait_noxious
+					}
+				}
+				any_situation = { is_situation_type = pre_ftl_tech_progress_situation situation_progress > 400 }
 			}
 			save_event_target_as = pre_ftl_country
 			species = { save_event_target_as = pre_ftl_species }
@@ -3841,10 +4142,15 @@ country_event = {
 				OR = {
 					has_trait = trait_natural_engineers
 					has_trait = trait_natural_physicists
+					has_trait = trait_camouflage
+					has_trait = trait_chromalogs
 					has_trait = trait_natural_sociologists
 				}
 			}
-			NOT = { has_country_flag = scientists_development }
+			NOR = {
+				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				has_country_flag = scientists_development
+			}
 		}
 	}
 
@@ -3859,10 +4165,15 @@ country_event = {
 					OR = {
 						has_trait = trait_natural_engineers
 						has_trait = trait_natural_physicists
+						has_trait = trait_camouflage
+						has_trait = trait_chromalogs
 						has_trait = trait_natural_sociologists
 					}
 				}
-				NOT = { has_country_flag = scientists_development }
+				NOR = {
+					is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+					has_country_flag = scientists_development
+				}
 			}
 			save_event_target_as = pre_ftl_country
 			species = { save_event_target_as = pre_ftl_species }
@@ -3894,6 +4205,7 @@ country_event = {
 	trigger = {
 		any_observed_pre_ftl_within_border = {
 			NOR = {
+				is_gestalt = yes # Blocked for Gestalts.
 				has_country_flag = intelligent_learners_development
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 			}
@@ -3901,7 +4213,13 @@ country_event = {
 				is_under_open_technological_enlightenment = root
 				has_country_flag = espionage_operation_targeted_by@root
 			}
-			species = { has_trait = trait_intelligent }
+			species = {
+				OR = {
+					has_trait = trait_intelligent
+					has_trait = trait_cranial_hypertrophy
+					has_trait = trait_cranial_megatrophy
+				}
+			}
 		}
 	}
 
@@ -3909,6 +4227,7 @@ country_event = {
 		random_observed_pre_ftl_within_border = {
 			limit = {
 				NOR = {
+					is_gestalt = yes # Blocked for Gestalts.
 					has_country_flag = intelligent_learners_development
 					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 				}
@@ -3916,7 +4235,13 @@ country_event = {
 					is_under_open_technological_enlightenment = root
 					has_country_flag = espionage_operation_targeted_by@root
 				}
-				species = { has_trait = trait_intelligent }
+				species = {
+					OR = {
+						has_trait = trait_intelligent
+						has_trait = trait_cranial_hypertrophy
+						has_trait = trait_cranial_megatrophy
+					}
+				}
 			}
 			save_event_target_as = pre_ftl_country
 			species = { save_event_target_as = pre_ftl_species }
