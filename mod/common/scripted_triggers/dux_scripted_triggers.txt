@@ -48,7 +48,9 @@ DLAF_is_valid_awoken_country_colony_system_trigger = {
 		}
 		has_star_flag = DLAF_do_not_spawn_here # Purely for other modders.
 	}
-	any_system_planet = { DLAF_is_valid_awoken_colony_trigger = yes }
+	any_system_planet = {
+		DLAF_is_valid_awoken_colony_trigger = yes
+	}
 }
 
 DNCF_is_valid_nivlac_planet = {
@@ -78,11 +80,7 @@ DNCF_solar_system_has_valid_nivlac_planet = {
 		any_fleet_in_system = { # These are to ignore hostile fleets if they're from a conventional war.
 			exists = controller
 			controller = {
-				NOR = {
-					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
-				}
+				is_default_or_fallen = no
 				is_hostile = root.owner # Awakener.
 			}
 		}
@@ -98,7 +96,7 @@ DNCF_solar_system_has_valid_nivlac_planet = {
 		has_star_flag = crisis_spawn_exclude
 		# has_star_flag = hostile_system TODO check
 		any_neighbor_system = {
-			exists = owner
+			has_owner = yes
 			owner = { has_ai_personality = fallen_empire_xenophobe }
 		}
 		has_star_flag = DNCF_do_not_spawn_here # Purely for other modders.

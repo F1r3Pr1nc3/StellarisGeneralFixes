@@ -1268,52 +1268,40 @@ building_private_security = {
 	triggered_planet_modifier = {
 		potential = {
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
-			branch_office_owner = {
-				is_legit_or_legal_criminal = yes
-			}
+			branch_office_owner = { is_legit_or_legal_criminal = yes }
 		}
 		job_enforcer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
-			owner = {
-				has_valid_civic = civic_dystopian_society
-			}
-			branch_office_owner = {
-				is_legit_or_legal_criminal = yes
-			}
+			owner = { has_valid_civic = civic_dystopian_society }
+			branch_office_owner = { is_legit_or_legal_criminal = yes }
 		}
 		job_dystopian_enforcer_add = 200
 	}
 	triggered_planet_modifier = {
 		potential = {
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_criminal_add = 100
 		job_enforcer_add = 100
-		planet_crime_add = 25 #offsets the enforcer job. >:)
-		#mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
+		planet_crime_add = 25 # offsets the enforcer job. >:)
+		# mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
 	}
 	triggered_planet_modifier = {
 		potential = {
-			owner = {
-				has_valid_civic = civic_dystopian_society
-			}
+			owner = { has_valid_civic = civic_dystopian_society }
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_criminal_add = 100
 		job_dystopian_enforcer_add = 100
-		planet_crime_add = 25 #offsets the enforcer job. >:)
-		#mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
+		planet_crime_add = 25 # offsets the enforcer job. >:)
+		# mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult| let's not mult criminal jobs.
 	}
 	triggered_planet_modifier = {
 		potential = {

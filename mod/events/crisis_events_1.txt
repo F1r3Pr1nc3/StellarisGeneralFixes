@@ -2762,8 +2762,18 @@ event = {
 					num_owned_planets > 0
 					any_system_within_border = { exists = starbase }
 					OR = { # Vfix opt
-						AND = { is_difficulty > 3 num_ships < 2000 }
-						AND = { is_difficulty <= 3 num_ships < 750 } # Vfix is_difficulty = 3
+						AND = {
+							is_difficulty > 3
+							num_ships < 2000
+						}
+						AND = { # Vfix missing
+							is_difficulty = 3
+							num_ships < 1050
+						}
+						AND = {
+							is_difficulty < 3
+							num_ships < 750
+						}
 					}
 				}
 			}

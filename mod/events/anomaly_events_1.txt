@@ -4944,13 +4944,9 @@ country_event = {
 	option = {
 		name = anomaly.189.a
 		custom_tooltip = anomaly.189.a.tooltip
-		trigger = {
-			NOT = { has_policy_flag = ai_outlawed }
-			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
-		}
+		trigger = { exists = event_target:new_colony }
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 		}
 		hidden_effect = {
 			event_target:new_colony = {
@@ -4969,16 +4965,10 @@ country_event = {
 		name = anomaly.189.b
 		custom_tooltip = anomaly.189.b.tooltip
 		trigger = {
-			NOT = { has_policy_flag = ai_outlawed }
-			any_system = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-			}
+			any_system = { DLAF_is_valid_awoken_country_colony_system_trigger = yes }
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_system = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-			}
 		}
 		hidden_effect = {
 			country_event = { id = anomaly.1197 }
@@ -4990,8 +4980,9 @@ country_event = {
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_outlawed } # There must be at least one option if AI is Outlawed.
+		exclusive_trigger = { has_policy_flag = ai_outlawed } # There must be at least one option if AI is Outlawed.
 		add_resource = { minerals = 200 }
+		default_hide_option = yes
 	}
 }
 
@@ -5161,12 +5152,11 @@ country_event = {
 		name = anomaly.189.a
 		custom_tooltip = anomaly.189.a.tooltip
 		trigger = {
+			exists = event_target:potential_target
 			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
-			NOT = { has_policy_flag = ai_outlawed }
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_planet_within_border = { DLAF_is_valid_awoken_colony_trigger = yes }
 		}
 		hidden_effect = {
 			if = {
@@ -5186,7 +5176,7 @@ country_event = {
 				create_pop_group = { species = last_created_species size = 600 }
 			}
 		}
-		ai_chance = { factor = 15 }
+		ai_chance = { factor = 20 }
 	}
 	option = {
 		name = anomaly.1198.a
@@ -5195,13 +5185,13 @@ country_event = {
 			country_event = { id = anomaly.1195 days = 40 }
 		}
 		ai_chance = { factor = 10 }
+		default_hide_option = yes
 	}
-
 	# dismantle the robots for parts
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_outlawed } # Wrong AI rights.
+		trigger = { has_policy_flag = ai_outlawed }
 		add_resource = { minerals = 200 }
 	}
 }
@@ -5219,23 +5209,18 @@ country_event = {
 	option = {
 		name = anomaly.189.c
 		custom_tooltip = anomaly.186.a.alt.tooltip
-		trigger = { has_policy_flag = ai_outlawed }
+		exclusive_trigger = { has_policy_flag = ai_outlawed } # There must be at least one option if AI is Outlawed.
 		add_resource = { minerals = 200 }
+		default_hide_option = yes
 	}
 	option = {
 		name = anomaly.1199.a
 		custom_tooltip = anomaly.189.b.tooltip
 		trigger = {
-			NOT = { has_policy_flag = ai_outlawed }
-			any_system = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-			}
+			any_system = { DLAF_is_valid_awoken_country_colony_system_trigger = yes }
 		}
 		allow = {
 			NOT = { has_policy_flag = ai_outlawed }
-			any_system = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-			}
 		}
 		hidden_effect = {
 			DLAF_spawn_awoken = yes

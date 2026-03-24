@@ -1338,7 +1338,9 @@ astral_rift_event = {
 			}
 		}
 		if = { # Vfix: very last fallback
-			limit = { NOT = { exists = event_target:astral_rift_explorer }}
+			limit = {
+				NOT = { exists = event_target:astral_rift_explorer }
+			}
 			event_target:astral_rift_fleet.owner = { save_event_target_as = astral_rift_explorer }
 		}
 	}

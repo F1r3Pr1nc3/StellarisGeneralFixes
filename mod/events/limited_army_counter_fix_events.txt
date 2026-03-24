@@ -333,11 +333,11 @@ country_event = {
 	}
 
 	immediate = {
-		log = "\\[This.GetName] LIMITED ARMY was over cap, refund it!?"
+		log = "\\[This.GetName] LIMITED ARMY was over cap, refund it."
 		set_timed_country_flag = { flag = army_counter_decremented@from days = 7 }
 		from = {
 			switch = { trigger = army_type
-				imperial_legion					= { root = { add_resource = { minerals = 300 } } }
+				# imperial_legion					= { root = { add_resource = { minerals = 300 } } }
 				titanic_assault_army			= { root = { add_resource = { minerals = 300 } } }
 				titanic_azizian_assault_army	= { root = { add_resource = { minerals = 250 energy = 50 } } }
 			}
