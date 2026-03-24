@@ -4807,7 +4807,6 @@ planet_event = {
 		save_event_target_as = pleased_planet
 	}
 
-
 	option = {
 		name = cara.4130.a
 		add_modifier = { modifier = festival_aftermath years = 5 }
@@ -4929,19 +4928,17 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		owner = {
-			NOT = { has_country_flag = megacorpse_concert }
-		}
-		# Vfix
 		NOR = {
-			has_modifier = heavy_metal
-			has_deposit = d_crater
 			owner = {
 				OR = {
+					has_country_flag = megacorpse_concert
+					# Vfix
 					has_specimen = megacorpse_hyperguitar
 					has_special_project = MEGACORPSE_ORIGINS
 				}
 			}
+			has_modifier = heavy_metal
+			has_deposit = d_crater
 		}
 	}
 
