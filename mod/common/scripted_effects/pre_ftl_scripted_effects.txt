@@ -1406,8 +1406,13 @@ set_pre_ftl_age_effect = {
 		set_country_flag = $PRE_FTL_AGE$
 		set_country_flag = recently_advanced
 		#capital_scope = { remove_all_buildings = yes } # Now handled in add_pre_ftl_buildings.
-		start_situation = {
-			type = pre_ftl_tech_progress_situation
+		if = {
+			limit = {
+				NOT = {
+					any_situation = { is_situation_type = pre_ftl_tech_progress_situation }
+				}
+			}
+			start_situation = { type = pre_ftl_tech_progress_situation } # Only Start if not already there.
 		}
 		if = {
 			limit = {
@@ -3810,6 +3815,19 @@ add_pre_ftl_buildings = {
 				}
 			}
 			add_building = building_primitive_clinic
+		}
+		if = { # Pre-FTL Cyberization for Machine Age DLC.
+			limit = {
+				has_machine_age_dlc = yes
+				owner = {
+					has_tradition = tr_cybernetics_adopt
+					OR = {
+						has_country_flag = atomic_age # Let them keep the Augmentation Center if they get nuked back an age.
+						has_country_flag = early_space_age
+					}
+				}
+			}
+			add_building = building_augmentation_center
 		}
 	}
 }

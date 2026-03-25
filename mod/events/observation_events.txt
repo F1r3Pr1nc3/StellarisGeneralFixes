@@ -2992,152 +2992,164 @@ country_event = {
 		custom_tooltip = observation.1205.tt
 		hidden_effect = {
 			event_target:pre_ftl_country = { # Fully Cyberise Them, this event already takes years for this outcome.
-				give_technology = { tech = tech_integrated_cybernetics message = no }
-				add_ascension_perk = ap_the_flesh_is_weak
-				set_country_flag = cybernetics_traditions_unlocked
-				set_country_flag = augmentation_center_available
-				add_tradition = tr_cybernetics_adopt
-				country_event = { id = utopia.2501 }
-				random_situation = {
-					limit = { is_situation_type = situation_cyberization } # Skip it.
-					destroy_situation = this
-				}
 				if = {
-					limit = { is_gestalt = no }
-					random_list = {
-						1 = {
-							set_country_flag = cyber_control_government
-							set_country_flag = cyber_augmentation_center_government  # Unity
-						}
-						1 = {
-							set_country_flag = cyber_control_corporate
-							set_country_flag = cyber_augmentation_center_corporate # Consumer Goods
-						}
-						1 = {
-							set_country_flag = cyber_control_independent
-							set_country_flag = cyber_augmentation_center_independent # Pop upkeep
-						}
+					limit = {
+						has_machine_age_dlc = yes
 					}
-					random_list = {
-						1 = {
-							modifier = { factor = 0.5 is_spiritualist = yes }
-							add_modifier = { modifier = AI_control days = -1 }
-						}
-						1 = {
-							modifier = { factor = 0 is_materialist = no }
-							add_modifier = { modifier = moderate_AI_control days = -1 }
-						}
-						1 = {
-							modifier = { factor = 0 is_authoritarian = no }
-							add_modifier = { modifier = AI_forced_control days = -1 }
-						}
-					}
-					random_list = {
-						1 = { set_country_flag = cyber_focus_rulers } # 10% workforce
-						1 = { set_country_flag = cyber_focus_specialists } # 10% workforce
-						1 = { set_country_flag = cyber_focus_workers } # 10% workforce
-						1 = { set_country_flag = cyber_focus_everyone } # 5% production
-					}
-					random_list = {
-						1 = { set_country_flag = cyber_force_objectors }
-						1 = { set_country_flag = cyber_allow_objectors }
-					}
-					set_policy = { policy = cyberization_standards option = cyberization_standards_full cooldown = yes }
-					random_list = {
-						1 = {
-							add_modifier = { modifier = cyber_birth_implants days = -1 }
-							set_country_flag = cyber_birth_implants
-						}
-						1 = { add_modifier = { modifier = cyber_natural_childhood days = -1 } }
-					}
-					random = {
-						chance = 5
-						add_modifier = { modifier = artificial_pain_relief days = -1 } # TODO, make this empire have civic_private_healthcare_corporate somehow.
-					}
-					random = {
-						chance = 50
-						add_modifier = { modifier = cyber_implant_taxes days = -1 } # Less pop growth, more energy.
-					}
-					random_list = {
-						1 = { add_modifier = { modifier = cyber_subscription_ban days = -1 } } # Collectivist
-						1 = { set_country_flag = cyber_subscription_model } # Individualist
-						1 = { add_modifier = { modifier = cyber_subscription_limited days = -1 } } # Neutral
-						1 = { set_country_flag = cyber_subscription_model_megacorp } # Corporate
-					}
-					# Ideally this would be for oppressive governments.
-					if = {
-						limit = {
-							NOT = { has_country_flag = cyber_control_independent }
-						}
-						random = {
-							chance = 10
-							add_modifier = { modifier = worse_parts days = -1 } # Fewer automodded pops, but they produce trade.
-						}
+					give_technology = { tech = tech_integrated_cybernetics message = no }
+					add_ascension_perk = ap_the_flesh_is_weak
+					set_country_flag = cybernetics_traditions_unlocked
+					set_country_flag = augmentation_center_available
+					add_tradition = tr_cybernetics_adopt
+					country_event = { id = utopia.2501 }
+					random_situation = {
+						limit = { is_situation_type = situation_cyberization } # Skip it.
+						destroy_situation = this
 					}
 					if = {
-						limit = {
-							capital_scope = { is_cold = no }
+						limit = { is_gestalt = no }
+						random_list = {
+							1 = {
+								set_country_flag = cyber_control_government
+								set_country_flag = cyber_augmentation_center_government  # Unity
+							}
+							1 = {
+								set_country_flag = cyber_control_corporate
+								set_country_flag = cyber_augmentation_center_corporate # Consumer Goods
+							}
+							1 = {
+								set_country_flag = cyber_control_independent
+								set_country_flag = cyber_augmentation_center_independent # Pop upkeep
+							}
+						}
+						random_list = {
+							1 = {
+								modifier = { factor = 0.5 is_spiritualist = yes }
+								add_modifier = { modifier = AI_control days = -1 }
+							}
+							1 = {
+								modifier = { factor = 0 is_materialist = no }
+								add_modifier = { modifier = moderate_AI_control days = -1 }
+							}
+							1 = {
+								modifier = { factor = 0 is_authoritarian = no }
+								add_modifier = { modifier = AI_forced_control days = -1 }
+							}
+						}
+						random_list = {
+							1 = { set_country_flag = cyber_focus_rulers } # 10% workforce
+							1 = { set_country_flag = cyber_focus_specialists } # 10% workforce
+							1 = { set_country_flag = cyber_focus_workers } # 10% workforce
+							1 = { set_country_flag = cyber_focus_everyone } # 5% production
+						}
+						random_list = {
+							1 = { set_country_flag = cyber_force_objectors }
+							1 = { set_country_flag = cyber_allow_objectors }
+						}
+						set_policy = { policy = cyberization_standards option = cyberization_standards_full cooldown = yes }
+						random_list = {
+							1 = {
+								add_modifier = { modifier = cyber_birth_implants days = -1 }
+								set_country_flag = cyber_birth_implants
+							}
+							1 = { add_modifier = { modifier = cyber_natural_childhood days = -1 } }
 						}
 						random = {
 							chance = 5
-							set_country_flag = cold_metal_chain # -20 habitability in cold places, set in trait_cybernetic
+							add_modifier = { modifier = artificial_pain_relief days = -1 } # TODO, make this empire have civic_private_healthcare_corporate somehow.
+						}
+						random = {
+							chance = 50
+							add_modifier = { modifier = cyber_implant_taxes days = -1 } # Less pop growth, more energy.
+						}
+						random_list = {
+							1 = { add_modifier = { modifier = cyber_subscription_ban days = -1 } } # Collectivist
+							1 = { set_country_flag = cyber_subscription_model } # Individualist
+							1 = { add_modifier = { modifier = cyber_subscription_limited days = -1 } } # Neutral
+							1 = { set_country_flag = cyber_subscription_model_megacorp } # Corporate
+						}
+						# Ideally this would be for oppressive governments.
+						if = {
+							limit = {
+								NOT = { has_country_flag = cyber_control_independent }
+							}
+							random = {
+								chance = 10
+								add_modifier = { modifier = worse_parts days = -1 } # Fewer automodded pops, but they produce trade.
+							}
+						}
+						if = {
+							limit = {
+								capital_scope = { is_cold = no }
+							}
+							random = {
+								chance = 5
+								set_country_flag = cold_metal_chain # -20 habitability in cold places, set in trait_cybernetic
+							}
+						}
+						random_list = {
+							1 = { add_modifier = { modifier = cyber_athletes days = -1 } } # Entertainers produce 2 engineering.
+							1 = { add_modifier = { modifier = cyber_athlete_leagues days = -1 } } # 5% faction approval.
+							1 = { add_modifier = { modifier = limited_cyber_athletes days = -1 } } # Entertainers +1 Unity.
+						}
+						random_list = { # Rework this, and the 15 billboards so that Pre-FTLs can sell their airspace through commercial pact.
+							1 = { add_modifier = { modifier = sold_sky_1 days = -1 } } # +20 energy, -5% happiness
+							1 = { add_modifier = { modifier = sold_sky_1_mega days = -1 } } # +40 energy, -5% happiness
+							1 = { add_modifier = { modifier = sold_sky_2 days = -1 } } # +40 trade, -10 stability
+							1 = { add_modifier = { modifier = sold_sky_2_mega days = -1 } } # +80 trade, -10 stability
+						}
+						random_list = {
+							1 = { add_modifier = { modifier = endorsed_entertainment } } # Not every Cyberised empire gets this, but all Pre-FTLs will if they're not Spiritualist.
+							1 = {
+								modifier = { factor = 0 is_spiritualist = no }
+								add_modifier = { modifier = deadly_entertainment } # Supposed to be for Death Cults, but I'm loosening it a bit.
+							}
+						}
+						random_list = {
+							1 = { add_modifier = { modifier = cyber_censure_total } } # +15% happiness, +1 Crime per 20 pops.
+							1 = { add_modifier = { modifier = cyber_censure_partial } } # +5% happiness.
+							1 = {
+								modifier = { factor = 0 is_authoritarian = no }
+								add_modifier = { modifier = cyber_censure_authoritarian } # +5 stability, +50% governing ethics, +20% amenities usage.
+							}
+						}
+						random_list = {
+							1 = { add_modifier = { modifier = cyber_subliminhack_allowed } } # +15% trade, -5% happiness.
+							1 = { add_modifier = { modifier = cyber_subliminhack_licensed } } # +5% trade.
+							1 = {
+								modifier = { factor = 0 is_spiritualist = no }
+								add_modifier = { modifier = cyber_subliminhack_hallowed } # +50% Spiritualist Ethics attraction.
+							}
+						}
+						random_list = {
+							1 = { set_country_flag = cyber_collectivist }
+							1 = { set_country_flag = cyber_individualist }
 						}
 					}
-					random_list = {
-						1 = { add_modifier = { modifier = cyber_athletes days = -1 } } # Entertainers produce 2 engineering.
-						1 = { add_modifier = { modifier = cyber_athlete_leagues days = -1 } } # 5% faction approval.
-						1 = { add_modifier = { modifier = limited_cyber_athletes days = -1 } } # Entertainers +1 Unity.
-					}
-					random_list = { # Rework this, and the 15 billboards so that Pre-FTLs can sell their airspace through commercial pact.
-						1 = { add_modifier = { modifier = sold_sky_1 days = -1 } } # +20 energy, -5% happiness
-						1 = { add_modifier = { modifier = sold_sky_1_mega days = -1 } } # +40 energy, -5% happiness
-						1 = { add_modifier = { modifier = sold_sky_2 days = -1 } } # +40 trade, -10 stability
-						1 = { add_modifier = { modifier = sold_sky_2_mega days = -1 } } # +80 trade, -10 stability
-					}
-					random_list = {
-						1 = { add_modifier = { modifier = endorsed_entertainment } } # Not every Cyberised empire gets this, but all Pre-FTLs will if they're not Spiritualist.
-						1 = {
-							modifier = { factor = 0 is_spiritualist = no }
-							add_modifier = { modifier = deadly_entertainment } # Supposed to be for Death Cults, but I'm loosening it a bit.
+					else_if = {
+						limit = { is_hive_empire = yes }
+						random = {
+							chance = 50
+							add_modifier = { modifier = cyber_hive_imperfect_drones }
+						}
+						random_list = {
+							1 = { set_country_flag = nice_hive_envoys }
+							1 = { set_country_flag = scary_hive_envoys }
+						}
+						random_list = {
+							1 = { set_country_flag = cyber_hive_volitional }
+							1 = { set_country_flag = cyber_hive_integrated }
 						}
 					}
-					random_list = {
-						1 = { add_modifier = { modifier = cyber_censure_total } } # +15% happiness, +1 Crime per 20 pops.
-						1 = { add_modifier = { modifier = cyber_censure_partial } } # +5% happiness.
-						1 = {
-							modifier = { factor = 0 is_authoritarian = no }
-							add_modifier = { modifier = cyber_censure_authoritarian } # +5 stability, +50% governing ethics, +20% amenities usage.
-						}
-					}
-					random_list = {
-						1 = { add_modifier = { modifier = cyber_subliminhack_allowed } } # +15% trade, -5% happiness.
-						1 = { add_modifier = { modifier = cyber_subliminhack_licensed } } # +5% trade.
-						1 = {
-							modifier = { factor = 0 is_spiritualist = no }
-							add_modifier = { modifier = cyber_subliminhack_hallowed } # +50% Spiritualist Ethics attraction.
-						}
-					}
-					random_list = {
-						1 = { set_country_flag = cyber_collectivist }
-						1 = { set_country_flag = cyber_individualist }
+					else = { set_country_flag = DPFF_cyberize_dud }
+				}
+				else = {
+					add_ascension_perk = ap_the_flesh_is_weak # Block other ascensions.
+					add_tradition = tr_cybernetics_adopt # Fires utopia.2500, adds FLESH_IS_WEAK_PROJECT.
+					complete_special_project = { # All pops become Cybernetic.
+						type = FLESH_IS_WEAK_PROJECT
 					}
 				}
-				else_if = {
-					limit = { is_hive_empire = yes }
-					random = {
-						chance = 50
-						add_modifier = { modifier = cyber_hive_imperfect_drones }
-					}
-					random_list = {
-						1 = { set_country_flag = nice_hive_envoys }
-						1 = { set_country_flag = scary_hive_envoys }
-					}
-					random_list = {
-						1 = { set_country_flag = cyber_hive_volitional }
-						1 = { set_country_flag = cyber_hive_integrated }
-					}
-				}
-				else = { set_country_flag = DPFF_cyberize_dud }
 			}
 		}
 	}
