@@ -2997,7 +2997,7 @@ country_event = {
 						has_machine_age_dlc = yes
 					}
 					give_technology = { tech = tech_integrated_cybernetics message = no }
-					add_ascension_perk = ap_the_flesh_is_weak
+					add_ascension_perk = ap_the_flesh_is_weak # Block ascensions not blocked by Cybernetic trait.
 					set_country_flag = cybernetics_traditions_unlocked
 					set_country_flag = augmentation_center_available
 					add_tradition = tr_cybernetics_adopt
@@ -3146,7 +3146,7 @@ country_event = {
 				else = {
 					add_ascension_perk = ap_the_flesh_is_weak # Block other ascensions.
 					add_tradition = tr_cybernetics_adopt # Fires utopia.2500, adds FLESH_IS_WEAK_PROJECT.
-					complete_special_project = { # All pops become Cybernetic.
+					complete_special_project = { # All pops instantly become Cybernetic.
 						type = FLESH_IS_WEAK_PROJECT
 					}
 				}

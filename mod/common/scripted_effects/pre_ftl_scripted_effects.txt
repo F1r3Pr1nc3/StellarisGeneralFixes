@@ -1406,14 +1406,11 @@ set_pre_ftl_age_effect = {
 		set_country_flag = $PRE_FTL_AGE$
 		set_country_flag = recently_advanced
 		#capital_scope = { remove_all_buildings = yes } # Now handled in add_pre_ftl_buildings.
-		if = {
-			limit = {
-				NOT = {
-					any_situation = { is_situation_type = pre_ftl_tech_progress_situation }
-				}
-			}
-			start_situation = { type = pre_ftl_tech_progress_situation } # Only Start if not already there.
+		every_situation = {
+			limit = { is_situation_type = pre_ftl_tech_progress_situation }
+			destroy_situation = this # There can be only one.
 		}
+		start_situation = { type = pre_ftl_tech_progress_situation }
 		if = {
 			limit = {
 				is_gestalt = no
