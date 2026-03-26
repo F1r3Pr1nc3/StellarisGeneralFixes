@@ -2839,10 +2839,12 @@ planet_event = {
 	immediate = {
 		if = { # Psionic pops takes priority over Psionic Offices
 			limit = {
-				has_global_flag = end_of_the_cycle # Vfix opt
 				owner = {
 					OR = { # Vfix opt
-						has_covenant_with_end_of_the_cycle = yes
+						AND = {
+							has_global_flag = end_of_the_cycle # Vfix opt
+							has_covenant_with_end_of_the_cycle = yes
+						}
 						AND = {
 							is_ai = no
 							has_technology = tech_psionic_aura
