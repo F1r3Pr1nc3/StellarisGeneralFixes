@@ -134,6 +134,7 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_primitive = yes
+			is_gestalt = no # Do not shift gestalts back to Individualist.
 			# check if it's under Societal Guidance or has been the target of an espionage op
 			OR = {
 				has_country_flag = preftl_societal_enlightenment_pact
@@ -792,9 +793,7 @@ country_event = {
 		}
 		set_graphical_culture = industrial_01
 		capital_scope = {
-			clear_blockers = yes
-			add_deposit = d_decrepit_dwellings
-			add_deposit = d_failing_infrastructure
+			# Blockers no longer handled in advancement events, there is no reason to double-up here.
 			if = {
 				limit = {
 					exists = observation_outpost_owner
@@ -1067,6 +1066,7 @@ situation_event = {
 
 	trigger = {
 		has_synthetic_dawn = yes
+		has_first_contact_dlc = yes # preftl.1015 cannot fire without this.
 		NOR = {
 			situation_progress < 960
 			has_situation_flag = has_ongoing_observation_event_chain
@@ -1075,6 +1075,7 @@ situation_event = {
 			has_country_flag = early_space_age
 			NOR = {
 				capital_scope = { is_artificial = yes }
+				is_gestalt = yes # preftl.1015 cannot fire for hives.
 				has_origin = origin_mechanists
 				has_country_flag = had_pre_ftl_uprising
 				has_country_flag = unplugged_pre_ftl_empire_flag
@@ -1099,7 +1100,7 @@ country_event = {
 
 	trigger = {
 		has_country_flag = early_space_age
-		is_hive_empire = no
+		is_gestalt = no # Changed from hive to gestalt.
 		has_first_contact_dlc = yes
 		has_synthetic_dawn = yes
 	}
@@ -1227,12 +1228,15 @@ country_event = {
 				trait = trait_machine_unit
 				trait = random_traits
 			}
-			immortal = yes
+			# immortal = yes # Machines are no longer immortal by default.
 		}
 		# create machine country
 		random_list = {
 			1 = { # exterminator
 				create_terminator_country = yes
+			}
+			10 = {
+				create_individual_machine_country = yes  # Individualist Machine option.
 			}
 			30 = { # assimilator
 				create_assimilator_country = yes
@@ -1291,6 +1295,7 @@ country_event = {
 				}
 				every_fleet_in_system = {
 					limit = {
+						owner = { is_default_or_fallen = yes } # Do not set Tiyanki MIA.
 						NOT = { is_owned_by = event_target:current_uprising }
 						is_mobile = yes
 					}
@@ -1378,7 +1383,7 @@ country_event = {
 					# Prevent bankruptcy from food.
 					if = {
 						limit = {
-							any_owned_species = { is_archetype = BIOLOGICAL }
+							any_owned_species = { has_trait = trait_organic }
 						}
 						add_resource = { food = 100 }
 						prev = {
@@ -1390,7 +1395,7 @@ country_event = {
 					# Prevent bankruptcy from minerals.
 					else_if = {
 						limit = {
-							any_owned_species = { is_archetype = LITHOID } # Vfix
+							any_owned_species = { has_trait = trait_lithoid } # Vfix
 						}
 						add_resource = { minerals = 100 }
 						prev = {
@@ -1399,6 +1404,7 @@ country_event = {
 							}
 						}
 					}
+					# No exception needed for Infernals.
 				}
 			}
 		}
@@ -1710,6 +1716,12 @@ country_event = {
 					}
 					set_subject_of = { who = root preset = preset_satellite }
 				}
+				if = {
+					limit = {
+						root = { has_country_flag = fallen_empire_hive_control }
+					}
+					set_subject_of = { who = root preset = preset_political_client } # Control Fragment now included.
+				}
 			}
 			random_agreement = {
 				limit = {
@@ -1731,6 +1743,15 @@ country_event = {
 							if = {
 								limit = { has_starbase_size = starbase_outpost }
 								set_starbase_size = starbase_starport
+								set_starbase_module = { slot = 1 module = shipyard } # Now gets some shipyards.
+								set_starbase_module = { slot = 2 module = shipyard }
+							}
+							else_if = {
+								limit = {
+									NOT = { has_starbase_module = shipyard }
+								}
+								set_starbase_module = { slot = 1 module = shipyard }
+								set_starbase_module = { slot = 2 module = shipyard }
 							}
 						}
 					}
@@ -1756,36 +1777,6 @@ country_event = {
 		name = "observation.2000.a"
 		custom_tooltip = observation.2000.a.tt
 		set_country_flag = vassalized_the_pre_ftl
-		if = {
-			limit = {
-				root = { is_country_type = awakened_fallen_empire }
-			}
-			if = {
-				limit = {
-					root = { has_ethic = ethic_fanatic_xenophobe }
-				}
-				set_subject_of = { who = root preset = preset_thrall }
-			}
-			if = {
-				limit = {
-					root = { has_ethic = ethic_fanatic_xenophile }
-				}
-				set_subject_of = { who = root preset = preset_signatory }
-			}
-			if = {
-				limit = {
-					root = { has_ethic = ethic_fanatic_spiritualist }
-				}
-				set_subject_of = { who = root preset = preset_dominion }
-				shift_ethic = ethic_fanatic_spiritualist
-			}
-			if = {
-				limit = {
-					root = { has_ethic = ethic_fanatic_materialist }
-				}
-				set_subject_of = { who = root preset = preset_satellite }
-			}
-		}
 	}
 	option = {
 		name = observation.2000.b
@@ -1942,6 +1933,7 @@ country_event = {
 				is_xenophobe = yes
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
+				is_genocidal_infernal = yes # No homicidal infernals.
 			}
 		}
 		custom_tooltip = preftl.1115.recognize.tooltip
@@ -1963,6 +1955,7 @@ country_event = {
 			NOR = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
+				is_genocidal_infernal = yes
 			}
 		}
 		allow = {
@@ -1986,6 +1979,7 @@ country_event = {
 				is_xenophile = yes
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
+				is_genocidal_infernal = yes
 			}
 		}
 		custom_tooltip = preftl.1115.claim.tooltip
@@ -2009,6 +2003,7 @@ country_event = {
 			NOR = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
+				is_genocidal_infernal = yes
 			}
 		}
 		allow = {
@@ -2036,7 +2031,10 @@ country_event = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
 				is_genocidal_infernal = yes
-				is_spiritualist = yes
+				AND = {
+					is_spiritualist = yes # Allow Individualist Machine Spiritualists to subjugate other Machines.
+					is_robot_empire = no
+				}
 			}
 			OR = {
 				is_machine_empire = yes
@@ -2076,7 +2074,11 @@ country_event = {
 			NOR = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
-				is_spiritualist = yes
+				is_genocidal_infernal = yes
+				AND = {
+					is_spiritualist = yes # Allow Individualist Machine Spiritualists to subjugate other Machines.
+					is_robot_empire = no
+				}
 				event_target:current_uprising = {
 					OR = {
 						has_valid_civic = civic_machine_terminator
@@ -2147,6 +2149,10 @@ country_event = {
 	option = {
 		name = SCUM # Xeno Scum
 		trigger = { has_valid_civic = civic_fanatic_purifiers }
+	}
+	option = {
+		name = INF_SCUM # Infernal: Xeno Scum
+		trigger = { is_genocidal_infernal = yes }
 	}
 }
 
@@ -2292,7 +2298,22 @@ country_event = {
 					PRE_FTL = root.from
 					OWNER = root
 				}
-				capital_scope.starbase = { set_owner = root.from }
+				capital_scope.starbase = {
+					set_owner = root.from
+					if = {
+						limit = { has_starbase_size = starbase_outpost } # Guaranteed shipyards.
+						set_starbase_size = starbase_starport
+						set_starbase_module = { slot = 1 module = shipyard }
+						set_starbase_module = { slot = 2 module = shipyard }
+					}
+					else_if = {
+						limit = {
+							NOT = { has_starbase_module = shipyard }
+						}
+						set_starbase_module = { slot = 1 module = shipyard }
+						set_starbase_module = { slot = 2 module = shipyard }
+					}
+				}
 				add_opinion_modifier = { modifier = opinion_ceded_starbase who = root }
 			}
 		}
@@ -2307,7 +2328,7 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { is_xenophile = yes }
+			limit = { values_others = yes } # Trigger should be consistent. Xenophiles may also be homicidal.
 			add_resource = { influence = -100 }
 		}
 		custom_tooltip = preftl.180.b.tooltip
@@ -2353,12 +2374,12 @@ country_event = {
 		}
 		allow = {
 			NAND = {
-				is_xenophile = yes
+				values_others = yes
 				resource_stockpile_compare = { resource = influence value < 200 }
 			}
 		}
 		if = {
-			limit = { is_xenophile = yes }
+			limit = { values_others = yes }
 			add_resource = { influence = -200 }
 		}
 		from.capital_scope = {
@@ -2515,6 +2536,7 @@ situation_event = {
 				is_gestalt = yes
 				current_awareness_level = full
 				has_blocked_random_devastating_pre_ftl_events = yes
+				has_country_flag = preftl_2000_fired # Do not fire this event if it can't do anything.
 			}
 			exists = capital_scope
 		}
@@ -3007,12 +3029,15 @@ situation_event = {
 			}
 			set_country_flag = rampant_contagion
 		}
+		custom_tooltip = fircon.7510.a.tt # "Kills some pops"
 		target.owner = {
-			while = {
-				count = 2
-				weighted_random_owned_pop_group = {
-					limit = { is_robot_pop_group = no }
-					kill_single_pop = yes
+			hidden_effect = { # Tooltip can't read while loops, shows 100, not 200.
+				while = {
+					count = 2
+					weighted_random_owned_pop_group = {
+						limit = { is_robot_pop_group = no }
+						kill_single_pop = yes
+					}
 				}
 			}
 			capital_scope = {
@@ -3023,7 +3048,7 @@ situation_event = {
 	option = {
 		name = preftl.2010.a
 		owner = {
-			add_resource = { energy = -1000 }
+			add_resource = { trade = -1000 } # Changed resource.
 			set_country_flag = eyes_wide_open
 		}
 		custom_tooltip = tt_end_the_suffering
@@ -3110,7 +3135,7 @@ situation_event = {
 	option = {
 		name = preftl.2020.a
 		owner = {
-			add_resource = { energy = -500 }
+			add_resource = { trade = -500 } # Changed resource.
 			add_observation_insight_effect = {
 				VALUE = 10
 				OUTPOST = root.target.observation_outpost
@@ -3158,7 +3183,7 @@ situation_event = {
 	option = {
 		name = preftl.2020.a
 		owner = {
-			add_resource = { energy = -500 }
+			add_resource = { trade = -500 } # Changed resource.
 			add_observation_insight_effect = {
 				VALUE = 10
 				OUTPOST = root.target.observation_outpost
@@ -3308,8 +3333,12 @@ situation_event = {
 				species = root.target.owner_species
 				name = random
 				skill = 5
+				randomize_traits = no
 				traits = { trait = leader_trait_zealot }
 				event_leader = yes
+				skip_background_generation = yes
+				background_ethic = ethic_spiritualist
+				background_planet = target.capital_scope
 				effect = {
 					set_leader_flag = true_prophet
 				}
@@ -3393,8 +3422,11 @@ situation_event = {
 				species = root.target.owner_species
 				name = random
 				skill = 5
-				traits = { 1 = leader_trait_plague_hardened }
+				traits = { trait = leader_trait_plague_hardened }
 				event_leader = yes
+				skip_background_generation = yes
+				background_ethic = ethic_militarist
+				background_planet = target.capital_scope
 			}
 			add_observation_insight_effect = {
 				VALUE = 10
@@ -4229,6 +4261,7 @@ situation_event = {
 			is_gestalt = no
 			current_awareness_level < full
 			has_blocked_random_devastating_pre_ftl_events = no
+			NOT = { has_country_flag = preftl_2100_fired } # Do not fire if cannot fire subsequent event.
 		}
 	}
 
@@ -4605,7 +4638,12 @@ situation_event = {
 		target.owner = {
 			if = {
 				limit = {
-					any_owned_species = { is_archetype = LITHOID }
+					any_owned_species = {
+						OR = {
+							has_trait = trait_lithoid # No ARCHETYPE weirdness.
+							has_trait = trait_infernal # Option for infernals.
+						}
+					}
 				}
 				capital_scope = {
 					add_modifier = { modifier = singularity_situation_01 days = -1 }
@@ -4614,7 +4652,7 @@ situation_event = {
 			else_if = {
 				limit = {
 					any_owned_species = {
-						NOT = { is_archetype = LITHOID }
+						has_trait = trait_organic # No ARCHETYPE weirdness.
 					}
 				}
 				capital_scope = {
@@ -4901,6 +4939,7 @@ situation_event = {
 					}
 					every_fleet_in_system = {
 						limit = {
+							owner = { is_default_or_fallen = yes } # Do not set Tiyanki MIA.
 							NOT = { is_owned_by = event_target:thriving_preftls }
 							is_mobile = yes
 						}
@@ -5154,7 +5193,12 @@ situation_event = {
 			if = {
 				limit = {
 					owner = {
-						any_owned_species = { is_archetype = LITHOID }
+						any_owned_species = {
+							OR = {
+								has_trait = trait_lithoid # No ARCHETYPE weirdness.
+								has_trait = trait_infernal # Option for infernals.
+							}
+						}
 					}
 				}
 				owner.capital_scope = { # showcases location in tooltip
@@ -5282,7 +5326,7 @@ situation_event = {
 				remove_modifier = singularity_situation_02
 				remove_modifier = singularity_situation_05
 				remove_modifier = singularity_situation_06
-				remove_all_buildings = yes
+				# remove_all_buildings = yes # Gestalts should keep the unique Radio Telescope.
 				set_planet_flag = organic_singularity_communion # To avoid clash with observation event Nascent Collective
 			}
 			target.owner = {
@@ -5307,10 +5351,26 @@ situation_event = {
 						}
 					}
 				}
-				set_country_flag = organic_singularity_communion # To identify this country in 'abort' blocks, such as for Espionage Operations
+				set_timed_country_flag = { flag = organic_singularity_communion days = 7 } # To identify this country in 'abort' blocks, such as for Espionage Operations ### IT SHOULD TIME OUT! It forces Plant Technology to fail, but does not prevent it from being started.
 				every_owned_pop_group = {
 					limit = { is_robot_pop_group = no }
-					change_species = event_target:convert_to_species
+					save_event_target_as = DPFF_new_hive_pop_group
+					planet = { # Fixes unemployment.
+						create_pop_group = {
+							pop_group = event_target:DPFF_new_hive_pop_group
+							category = maintenance_drone
+							size = 0
+							effect = {
+								transfer_pop_amount = {
+									source = event_target:DPFF_new_hive_pop_group
+									target = this
+									percentage = 1
+									growth_category = "GROWTH_CAT_PROMOTION"
+								}
+								change_species = event_target:convert_to_species
+							}
+						}
+					}
 				}
 				ruler = {
 					kill_leader = { show_notification = no }
@@ -5322,11 +5382,10 @@ situation_event = {
 						limit = {
 							NOT = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
 						}
-						change_government = {
-							civics = { civic = civic_hive_devouring_swarm }
-						}
+						force_add_civic = civic_hive_devouring_swarm # Add the civic, don't replace the entire government with it.
 					}
 				}
+				DPFF_set_age_civics_hive = yes # Resets them to Pre-FTL civics.
 			}
 		}
 	}
@@ -5574,7 +5633,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = energy value >= 500 }
+				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
 			}
 		}
 		name = preftl.2170.a
@@ -5583,7 +5642,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				energy = -500
+				trade = -500 # Changed resource.
 			}
 		}
 		tooltip = {
@@ -5597,7 +5656,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = energy value >= 500 }
+				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
 			}
 		}
 		name = preftl.2170.b
@@ -5605,7 +5664,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				energy = -500
+				trade = -500 # Changed resource.
 			}
 		}
 		set_situation_flag = aid_leader_01
@@ -5648,7 +5707,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = energy value >= 500 }
+				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
 			}
 		}
 		name = preftl.2175.a
@@ -5657,7 +5716,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				energy = -500
+				trade = -500 # Changed resource.
 			}
 		}
 		tooltip = {
@@ -5672,7 +5731,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = energy value >= 500 }
+				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
 			}
 		}
 		set_situation_flag = aid_leader_02
@@ -5680,7 +5739,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				energy = -500
+				trade = -500 # Changed resource.
 			}
 		}
 		tooltip = {
@@ -5973,11 +6032,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = energy value >= 1000 }
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { energy = -1000 }
+			add_resource = { trade = -1000 } # Changed resource.
 		}
 	}
 	option = {
@@ -5990,11 +6049,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = energy value >= 1000 }
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { energy = -1000 }
+			add_resource = { trade = -1000 } # Changed resource.
 		}
 	}
 }
@@ -6076,11 +6135,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = energy value >= 1000 }
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { energy = -1000 }
+			add_resource = { trade = -1000 } # Changed resource.
 		}
 	}
 	option = {
@@ -6093,11 +6152,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = energy value >= 1000 }
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { energy = -1000 }
+			add_resource = { trade = -1000 } # Changed resource.
 		}
 	}
 }
@@ -6470,7 +6529,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { energy = -5000 }
+		add_resource = { trade = -5000 } # Changed resource.
 	}
 }
 
@@ -6506,7 +6565,7 @@ country_event = {
 
 	option = {
 		name = UNDERSTOOD
-		add_resource = { energy = -2500 }
+		add_resource = { trade = -2500 } # Changed resource.
 	}
 }
 
@@ -6602,7 +6661,12 @@ country_event = {
 					}
 				}
 			}
-			any_pre_ftl_within_border = { has_country_flag = violation_of_non_interference@root }
+			any_pre_ftl_within_border = {
+				OR = {
+					has_country_flag = violation_of_non_interference@root
+					capital_scope = { has_branch_office = root } # Having a branch office on a Pre-FTL is Interference.
+				}
+			}
 		}
 		is_galactic_community_formed = yes
 		is_galactic_community_member = yes
@@ -6617,6 +6681,7 @@ country_event = {
 			limit = {
 				OR = {
 					has_country_flag = violation_of_non_interference@root
+					capital_scope = { has_branch_office = root }
 					AND = {
 						capital_scope = { has_observation_outpost = yes }
 						OR = {
@@ -6644,7 +6709,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { energy = -5000 }
+		add_resource = { trade = -5000 } # Changed resource.
 	}
 }
 
@@ -6680,7 +6745,7 @@ country_event = {
 
 	option = {
 		name = UNDERSTOOD
-		add_resource = { energy = -2500 }
+		add_resource = { trade = -2500 } # Changed resource.
 	}
 }
 
@@ -6744,7 +6809,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { energy = -5000 }
+		add_resource = { trade = -5000 } # Changed resource.
 	}
 }
 
@@ -6808,7 +6873,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { energy = -5000 }
+		add_resource = { trade = -5000 } # Changed resource.
 	}
 }
 
@@ -6931,7 +6996,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { energy = -5000 }
+		add_resource = { trade = -5000 } # Changed resource.
 	}
 }
 

@@ -1,0 +1,35 @@
+namespace = DPFF
+
+# Timer for Pre-FTL buildings to repair.
+planet_event = {
+	id = DPFF.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = { is_primitive = yes }
+	}
+
+	immediate = {
+		planet_event = {
+			id = DPFF.3
+			months = 12
+			random = 6
+		}
+	}
+}
+
+# Building repair event.
+planet_event = {
+	id = DPFF.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = { is_primitive = yes }
+	}
+
+	immediate = {
+		repair_all_buildings = yes
+	}
+}
