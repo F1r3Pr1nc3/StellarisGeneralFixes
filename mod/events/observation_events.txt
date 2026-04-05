@@ -301,13 +301,15 @@ country_event = {
 	}
 
 	immediate = {
-		random_galaxy_planet = {
-			limit = { has_planet_flag = asteroid_sighted_planet }
-			remove_planet_flag = asteroid_sighted_planet
-			save_event_target_as = pre_ftl_planet
-			if = {
-				limit = { exists = observation_outpost }
-				observation_outpost = { set_event_locked = no }
+		solar_system = {
+			random_system_planet = { # Check the system for the target, do not switch to another random pre-FTL that also has an asteroid.
+				limit = { has_planet_flag = asteroid_sighted_planet }
+				remove_planet_flag = asteroid_sighted_planet
+				save_event_target_as = pre_ftl_planet
+				if = {
+					limit = { exists = observation_outpost }
+					observation_outpost = { set_event_locked = no }
+				}
 			}
 		}
 		event_target:pre_ftl_planet = {
@@ -773,6 +775,7 @@ country_event = {
 	}
 	option = { # Deny Operation
 		name = "observation.105.b"
+		remove_country_flag = missing_scientist_chain # Properly end the event chain.
 	}
 
 	after = {
@@ -1162,6 +1165,10 @@ country_event = {
 	location = event_target:pre_ftl_planet
 	is_triggered_only = yes
 
+	immediate = {
+		remove_country_flag = missing_scientist_chain # Properly end the event chain.
+	}
+
 	option = {
 		name = "DISCONCERTING"
 		event_target:pre_ftl_planet.observation_outpost = { dismantle = yes }
@@ -1472,7 +1479,9 @@ country_event = {
 		event_target:pre_ftl_planet = {
 			save_event_target_as = pre_ftl_planet # Completely pointless.
 			owner = { save_event_target_as = pre_ftl_country }
-			set_country_flag = scientists_captured_chain
+			observation_outpost_owner = {
+				set_country_flag = scientists_captured_chain
+			}
 		}
 	}
 
@@ -2942,9 +2951,9 @@ country_event = {
 				modifier = {
 					factor = 0
 					event_target:pre_ftl_country = {
-						NOR = {
-							has_pre_ftl_age = early_space_age
+						NAND = {
 							has_utopia = yes
+							has_pre_ftl_age = early_space_age
 						}
 					}
 				}
@@ -3900,6 +3909,10 @@ country_event = {
 				NOR = {
 					has_country_flag = xenophobe_development
 					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
+				}
+				any_situation = {
+					is_situation_type = pre_ftl_tech_progress_situation
+					situation_progress > 400
 				}
 			}
 			save_event_target_as = pre_ftl_country
