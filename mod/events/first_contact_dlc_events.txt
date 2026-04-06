@@ -3436,9 +3436,7 @@ country_event = {
 		name = "fircon.1510.a"
 		trigger = { values_others = yes }
 		hidden_effect = {
-			event_target:pre_ftl_country = {
-				pre_ftl_regresses_one_age = yes # Guarantees regression, pre-ftl will not progress to age if reduced below it.
-			}
+			event_target:pre_ftl_country = { pre_ftl_regresses_one_age = yes } # Guarantee regression.
 		}
 		custom_tooltip = unadavance_tech_tt
 	}
@@ -3446,9 +3444,7 @@ country_event = {
 		name = "fircon.1510.b"
 		trigger = { values_others = no }
 		hidden_effect = {
-			event_target:pre_ftl_country = {
-				pre_ftl_regresses_one_age = yes
-			}
+			event_target:pre_ftl_country = { pre_ftl_regresses_one_age = yes }
 		}
 		custom_tooltip = unadavance_tech_tt
 	}
@@ -3647,10 +3643,7 @@ country_event = {
 	}
 
 	immediate = {
-		set_timed_country_flag = {
-			flag = fircon_2000_fired
-			years = 5 # 10 years
-		}
+		set_timed_country_flag = { flag = fircon_2000_fired days = 1800 } # 5 years
 	}
 
 	option = { # kidnap them again
@@ -3661,7 +3654,7 @@ country_event = {
 			min = @tier2researchmin
 			max = @tier2researchmax
 		}
-		from.owner = { add_awareness = 10 }
+		event_target:pre_ftl_country = { add_awareness = 10 }
 	}
 	option = { # fix defective tractor beams
 		name = "fircon.2001.b"
@@ -3782,10 +3775,7 @@ country_event = {
 
 	immediate = {
 		event_target:pre_ftl_country = { add_awareness = 10 }
-		set_timed_country_flag = {
-			flag = fircon_2010_fired
-			years = 5 # 10 years
-		}
+		set_timed_country_flag = { flag = fircon_2010_fired years = 5 } # 5 years
 	}
 
 	option = { # fix beams
@@ -3809,7 +3799,7 @@ country_event = {
 	}
 	option = { # keep going
 		name = "fircon.2011.c"
-		from.owner = { add_awareness = 10 }
+		event_target:pre_ftl_country = { add_awareness = 10 }
 		add_monthly_resource_mult = {
 			resource = consumer_goods
 			value = @tier1materialreward
@@ -4277,8 +4267,10 @@ situation_event = {
 				has_country_flag = fircon_2540_fired
 			}
 			is_gestalt = yes
-			pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = passive_observation }
-
+			OR = {
+				pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = passive_observation }
+				pre_ftl_in_age_is_observed_with = { AGE = stone_age MISSION = specimen_collection } # You collect the Prime to study, this should be set already.
+			}
 		}
 	}
 
@@ -5938,12 +5930,12 @@ country_event = {
 			NOR = {
 				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
 				is_subterranean_empire = yes
-				has_civic = civic_flat_world_theory
+				has_civic = civic_flat_world_theory # blocks event firing for Iron Age/Medieval Age/Renaissance Age/Steam Age pre-FTLs.
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 				capital_scope = { is_artificial = yes } # Blocked Artificial Worlds.
 				has_pre_ftl_age = stone_age # subterranean_defense_army is stronger than postatomic_army, also Stone Age may have too few pops to survive the Volcano outcome.
 				has_pre_ftl_age = bronze_age
-				has_pre_ftl_age = early_space_age # Not Early-Space-Age becuase if they have satellites and still think the world is flat then this makes no sense.
+				has_pre_ftl_age = early_space_age # Satellites and rocketry makes no sense if they think the world is flat.
 				# Remaining ages: Industrial, Machine, Atomic.
 			}
 		}
@@ -5964,7 +5956,7 @@ country_event = {
 					capital_scope = { is_artificial = yes } # Blocked Artificial Worlds.
 					has_pre_ftl_age = stone_age # subterranean_defense_army is stronger than postatomic_army, also Stone Age may have too few pops to survive the Volcano outcome.
 					has_pre_ftl_age = bronze_age
-					has_pre_ftl_age = early_space_age # Not Early-Space-Age becuase if they have satellites and still think the world is flat then this makes no sense.
+					has_pre_ftl_age = early_space_age
 					# Remaining ages: Industrial, Machine, Atomic.
 				}
 			}
@@ -5992,7 +5984,7 @@ country_event = {
 		}
 		country_event = { id = fircon.6015 days = 15 random = 15 }
 	}
-	option = { # Bring them to space
+	option = { # Admit we are subterranean invaders.
 		name = fircon.6000.c
 		event_target:non_believers_country = {
 			add_modifier = { modifier = pre_ftl_distrustful }
@@ -6739,7 +6731,7 @@ country_event = {
 	}
 }
 
-# All is One (actually Teach a Hive How to Craft)
+# Teach a Hive How to Craft
 country_event = {
 	id = fircon.7510
 	title = fircon.7510.name

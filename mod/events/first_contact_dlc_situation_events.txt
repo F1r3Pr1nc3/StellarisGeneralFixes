@@ -1579,23 +1579,41 @@ country_event = {
 		else_if = { # if we helped them through espionage or they got FTL alone, they ask to become independent
 			limit = {
 				pre_ftl_is_observed_by_system_owner = yes
-				NOT = { has_country_flag = open_technological_enlightenment_pact }
+				NOR = {
+					has_country_flag = open_technological_enlightenment_pact
+					has_valid_civic = civic_hive_devouring_swarm # A Devouring Swarm would not ask nicely.
+				}
 			}
 			capital_scope.observation_outpost_owner = {
 				country_event = { id = preftl.1100 }
 			}
 		}
 		else_if = { # if we have no observation post but a starbase, they ask for control of it
-			limit = { pre_ftl_not_observed_by_system_owner = yes }
+			limit = {
+				pre_ftl_not_observed_by_system_owner = yes
+				NOT = {
+					has_valid_civic = civic_hive_devouring_swarm # A Devouring Swarm would not ask nicely.
+				}
+			}
 			capital_scope.solar_system.owner = {
 				country_event = { id = preftl.180 days = 1 }
 			}
 		}
 		else = { # if nobody is in the system, they become an empire
-			achieve_ftl_effect = {
-				PRE_FTL = root
-				OWNER = root
+			if = { # Or if Pre-FTL is Devouring Swarm you will not be asked for the starbase.
+				limit = {
+					AND = {
+						has_valid_civic = civic_hive_devouring_swarm
+						capital_scope.solar_system = {
+							has_owner = yes
+						}
+					}
+				}
+				capital_scope.solar_system.starbase = {
+					set_owner = root
+				}
 			}
+			achieve_ftl_effect = { PRE_FTL = root OWNER = root }
 		}
 	}
 }
@@ -1708,7 +1726,10 @@ country_event = {
 						root = { has_ethic = ethic_fanatic_spiritualist }
 					}
 					set_subject_of = { who = root preset = preset_dominion }
-					shift_ethic = ethic_fanatic_spiritualist
+					if = {
+						limit = { is_gestalt = no }
+						shift_ethic = ethic_fanatic_spiritualist
+					}
 				}
 				if = {
 					limit = {
@@ -5334,7 +5355,13 @@ situation_event = {
 				change_government = {
 					authority = auth_hive_mind
 					remove_invalid_civics = yes
-					civics = random
+					civics = random # They roll for FTL-hive civics.
+				}
+				clear_relations = {
+					target = capital_scope.observation_outpost_owner
+					relations = {
+						is_under_societal_enlightenment
+					}
 				}
 				species = {
 					modify_species = {

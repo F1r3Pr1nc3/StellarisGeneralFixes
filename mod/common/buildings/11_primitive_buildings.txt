@@ -322,7 +322,7 @@ building_primitive_mine = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_lithoid_empire = yes }
+			owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
 		}
 
 		job_primitive_miner_add = 800
@@ -411,7 +411,7 @@ building_primitive_farm = {
 			OR = {
 				is_primitive = no
 				is_hive_empire = yes
-				is_lithoid_empire = yes
+				owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
 			}
 		}
 	}
@@ -858,7 +858,7 @@ building_hive_primitive_mine = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_lithoid_empire = yes }
+			owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
 		}
 
 		job_primitive_hive_miner_add = 800
@@ -936,7 +936,9 @@ building_hive_primitive_farm = {
 				has_country_flag = atomic_age
 				has_country_flag = early_space_age
 			}
-			is_lithoid_empire = no
+			NOT = {
+				owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
+			}
 		}
 	}
 
@@ -950,7 +952,7 @@ building_hive_primitive_farm = {
 			OR = {
 				is_primitive = no
 				is_hive_empire = no
-				is_lithoid_empire = yes
+				owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
 			}
 		}
 	}
