@@ -66,12 +66,16 @@ sshipyard = {
 
 	ai_design = {
 		min = {
-			base = 0
-			modifier = {
-				add = 1
-				exists = owner
-				owner = { uses_standard_ship_sizes = yes }
-			}
+			base = 1 # Vfix double: meaningless!?
+			# modifier = {
+			# 	add = 1
+			# 	exists = owner
+			# 	owner = { uses_standard_ship_sizes = yes }
+			# }
+			# modifier = {
+			# 	add = 1
+			# 	owner = { country_uses_bio_ships = yes }
+			# }
 		}
 		ratio = {
 			base = 0.20
@@ -85,11 +89,11 @@ sshipyard = {
 				exists = owner
 				owner = { has_ethic = ethic_fanatic_militarist }
 			}
-			modifier = {
-				factor = 0
-				exists = owner
-				owner = { uses_standard_ship_sizes = no }
-			}
+			# modifier = { # Vfix double: meaningless!?
+			# 	factor = 0
+			# 	exists = owner
+			# 	owner = { uses_standard_ship_sizes = no country_uses_bio_ships = no }
+			# }
 		}
 		# token followed by priority
 		buildings = {

@@ -2950,15 +2950,15 @@ country_event = {
 	}
 
 	immediate = {
-		# Vfix
-		every_galaxy_planet = {
-			limit = {
-				has_owner = yes
-				is_occupied_flag = yes
-				controller = { is_country_type = swarm }
-				NOT = { is_planet_class = pc_infested }
+		every_controlled_planet = {
+			limit = { NOT = { is_planet_class = pc_infested } } # Vfix?
+			if = {
+				limit = { is_planet_class = pc_cosmogenesis_world }
+				set_planet_purge_type = purge_cosmogenesis
 			}
-			clear_planet_purge_type = yes
+			else = {
+				clear_planet_purge_type = yes
+			}
 		}
 		clear_global_event_target = prethoryn
 		stop_crisis_sound = yes

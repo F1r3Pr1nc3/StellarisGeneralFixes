@@ -3786,6 +3786,25 @@ country_event = {
 					}
 				}
 			}
+			else_if = { # The capital wasn't hit
+				limit = {
+					is_custom_capital_location = no
+					owner = {
+						any_controlled_fleet = { has_fleet_flag = artist_enclave_station }
+					}
+				}
+				# Announce the change to all but the attacking empire
+				every_playable_country = {
+					limit = {
+						has_communications = root
+						NOT = { is_same_value = root.from }
+					}
+					country_event = { id = leviathans.352 }
+				}
+				random_playable_country = {
+					observer_event = { id = observer.11 }
+				}
+			}
 			# Announce the change to all but the attacking empire
 			every_playable_country = {
 				limit = {
