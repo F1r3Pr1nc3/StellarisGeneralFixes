@@ -344,17 +344,31 @@ add_psionic_aura_level_visual = {
 		2 = {
 			if = {
 				limit = {
-					NOT = { any_system_ambient_object = { has_ambient_object_flag = psionic_aura_level2_entity } }
+					NOT = {
+						any_system_ambient_object = {
+							has_ambient_object_flag = psionic_aura_level2_entity
+						}
+					}
 				}
-				spawn_psionic_aura_object = { TYPE = $TYPE$ LEVEL = 2 }
+				spawn_psionic_aura_object = {
+					TYPE = $TYPE$
+					LEVEL = 2
+				}
 			}
 		}
 		3 = {
 			if = {
 				limit = {
-					NOT = { any_system_ambient_object = { has_ambient_object_flag = psionic_aura_level3_entity } }
+					NOT = {
+						any_system_ambient_object = {
+							has_ambient_object_flag = psionic_aura_level3_entity
+						}
+					}
 				}
-				spawn_psionic_aura_object = { TYPE = $TYPE$ LEVEL = 3 }
+				spawn_psionic_aura_object = {
+					TYPE = $TYPE$
+					LEVEL = 3
+				}
 			}
 		}
 	}
@@ -550,6 +564,106 @@ eater_aura_max_intensity_effect = {
 			scope = this
 		}
 	}
+}
+
+spawn_eater_fleet_effect = {
+	if = {
+		limit = {
+			NOT = { is_variable_set = eater_fleet_intensity }
+		}
+		set_variable = { which = eater_fleet_intensity value = 0 }
+	}
+	if = {
+		limit = {
+			any_owned_fleet = { has_fleet_flag = eater_fleet }
+		}
+		every_owned_fleet = {
+			limit = { has_fleet_flag = eater_fleet }
+			delete_fleet = { target = this kill_leader = no }
+		}
+	}
+	if = {
+		limit = {
+			check_variable_arithmetic = {
+				which = eater_fleet_intensity
+				add = 3
+				value >= 12
+			}
+		}
+		create_random_fleet = {
+			name = Name_Doom_Eater_Fleet
+			size = value:eater_fleet_scaling
+			can_overflow = yes
+			ship_designs = {
+				NAME_Tooth_Eater
+				NAME_Fang_Eater
+				NAME_Tusk_Eater
+			}
+			effect = {
+				set_fleet_settings = {
+					can_upgrade = no
+					can_change_composition = no
+					uses_naval_capacity = no
+					spawn_debris = no
+					can_disband = no
+				}
+				set_owner = root
+				set_location = { target = event_target:eater_planet }
+				set_fleet_flag = eater_fleet
+				save_event_target_as = eater_fleet
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable_arithmetic = {
+				which = eater_fleet_intensity
+				add = 3
+				value >= 6
+			}
+		}
+		create_random_fleet = {
+			name = Name_Doom_Eater_Fleet
+			size = value:eater_fleet_scaling
+			can_overflow = yes
+			ship_designs = { NAME_Tooth_Eater NAME_Fang_Eater }
+			effect = {
+				set_fleet_settings = {
+					can_upgrade = no
+					can_change_composition = no
+					uses_naval_capacity = no
+					spawn_debris = no
+					can_disband = no
+				}
+				set_owner = root
+				set_location = { target = event_target:eater_planet }
+				set_fleet_flag = eater_fleet
+				save_event_target_as = eater_fleet
+			}
+		}
+	}
+	else = {
+		create_random_fleet = {
+			name = Name_Doom_Eater_Fleet
+			size = value:eater_fleet_scaling
+			can_overflow = yes
+			ship_designs = { NAME_Tooth_Eater }
+			effect = {
+				set_fleet_settings = {
+					can_upgrade = no
+					can_change_composition = no
+					uses_naval_capacity = no
+					spawn_debris = no
+					can_disband = no
+				}
+				set_owner = root
+				set_location = { target = event_target:eater_planet }
+				set_fleet_flag = eater_fleet
+				save_event_target_as = eater_fleet
+			}
+		}
+	}
+	set_variable = { which = eater_fleet_intensity value = 0 }
 }
 
 whisperers_aura_max_intensity_effect = {

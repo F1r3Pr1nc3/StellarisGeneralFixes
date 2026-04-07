@@ -566,9 +566,21 @@ create_fe_spiritualist_fringe_colony = {
 		zone = zone_industrial
 	}
 
-	create_pop_group = {
-		size = 2000
-		species = owner_species
+	add_building = {
+		zone = zone_unity_spiritualist
+		building = building_fe_temple_1
+	}
+	add_building = {
+		zone = zone_industrial
+		building = building_micro_forge
+	}
+	add_building = {
+		zone = zone_industrial
+		building = building_affluence_emporium
+	}
+	add_building = {
+		zone = zone_industrial
+		building = building_dimensional_replicator
 	}
 }
 
@@ -2364,7 +2376,6 @@ grant_fe_building = {
 	create_message = {
 		type = FALLEN_EMPIRE_BUILDING_GAINED
 		localization = MESSAGE_FALLEN_EMPIRE_BUILDING_GAINED
-		# target = root # Vfix not always valid
 		days = 30
 	}
 }

@@ -194,17 +194,22 @@ the_eater_of_worlds = {
 			hidden_effect = {
 				if = {
 					limit = {
-						any_owned_planet = { has_active_building = building_eater_sanctum }
+						any_owned_planet = {
+							has_active_building = building_eater_sanctum
+						}
 					}
 					random_owned_planet = {
-						limit = { has_active_building = building_eater_sanctum }
+						limit = {
+							has_active_building = building_eater_sanctum
+						}
 						save_event_target_as = eater_planet
 					}
 				}
 				else = {
-					capital_scope = { save_event_target_as = eater_planet }
+					capital_scope = {
+						save_event_target_as = eater_planet
+					}
 				}
-				country_event = { id = shroud.4800 }
 				spawn_eater_fleet_effect = yes
 			}
 		}

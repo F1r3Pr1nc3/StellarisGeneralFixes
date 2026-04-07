@@ -285,24 +285,30 @@ country_event = {
 	}
 }
 
-# Asteroid Destroyed (HIDDEN)
+# Asteroid Destroyed (HIDDEN - on_fleet_destroyed_perp)
+# VFIX OPT: scan every galaxy planet on every fleet kill is a kind of performance thing.
 country_event = {
 	id = observation.6
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		any_galaxy_planet = {
-			has_planet_flag = asteroid_sighted_planet
-			NOT = { has_planet_flag = impacted_asteroid }
-		}
 		exists = from
-		from = { has_country_flag = incoming_asteroid_pre_ftl }
+		from = {
+			has_country_flag = incoming_asteroid_pre_ftl
+			exists = solar_system
+			solar_system = { # Vfix opt
+				any_system_planet = {
+					has_planet_flag = asteroid_sighted_planet
+					NOT = { has_planet_flag = impacted_asteroid }
+				}
+			}
+		}
 	}
 
 	immediate = {
-		solar_system = {
-			random_system_planet = { # Check the system for the target, do not switch to another random pre-FTL that also has an asteroid.
+		from.solar_system = {
+			random_system_planet = { # Vfix Dux: Check the system for the target, do not switch to another random pre-FTL that also has an asteroid.
 				limit = { has_planet_flag = asteroid_sighted_planet }
 				remove_planet_flag = asteroid_sighted_planet
 				save_event_target_as = pre_ftl_planet
@@ -328,8 +334,13 @@ country_event = {
 		}
 		else = {
 			country_event = { id = observation.8 }
-			random_country = {
-				limit = { has_country_flag = asteroid_sighted_pre_ftl_country }
+			random_playable_country = { # Vfix opt: observer
+				limit = {
+					has_country_flag = asteroid_sighted_pre_ftl_country
+					event_target:pre_ftl_planet = { # Vfix double: more proper observer
+						is_surveyed = { who = prevprev status = yes }
+					}
+				}
 				country_event = { id = observation.9 }
 				remove_country_flag = asteroid_sighted_pre_ftl_country
 			}
@@ -480,19 +491,19 @@ situation_event = {
 					}
 				}
 				NOR = {
-					is_planet_class = pc_habitat # Blocked Habitats.
+					is_planet_class = pc_habitat # Vfix Dux: Blocked Habitats.
 					AND = {
 						is_planet_class = pc_ocean
 						owner_species = { has_trait = trait_aquatic }
 						observation_outpost_owner.species = {
-							NOR = { # Missing Scientist must be Aquatic to lead Aquatic Pre-FTLs.
+							NOR = { # Vfix Dux: Missing Scientist must be Aquatic to lead Aquatic Pre-FTLs.
 								has_trait = trait_aquatic
 								has_trait = trait_robot_aquatic
 							}
 						}
 					}
 					AND = {
-						observation_outpost_owner = { is_robot_empire = yes } # If you're a Machine they cannot be Fanatic Spiritualist.
+						observation_outpost_owner = { is_robot_empire = yes } # Vfix Dux: If you're a Machine they cannot be Fanatic Spiritualist.
 						owner = { is_fanatic_spiritualist = yes }
 					}
 				}
@@ -559,7 +570,7 @@ country_event = {
 				75 = {
 					country_event = {
 						id = observation.103
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -657,7 +668,7 @@ country_event = {
 				observation_outpost_owner = {
 					country_event = {
 						id = observation.104
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -700,7 +711,7 @@ country_event = {
 			observation_outpost_owner = {
 				country_event = {
 					id = observation.105
-					# 5 ± 2.5 years
+					# Vfix Dux: 5 ± 2.5 years
 					days = 900
 					random = 1800
 				}
@@ -775,12 +786,12 @@ country_event = {
 	}
 	option = { # Deny Operation
 		name = "observation.105.b"
-		remove_country_flag = missing_scientist_chain # Properly end the event chain.
+		remove_country_flag = missing_scientist_chain # Vfix Dux: Properly end the event chain.
 	}
 
 	after = {
 		custom_tooltip = advance_to_age_tt
-		tooltip = { set_awareness = 90 } # Tooltip now matches the effect in immediate = {}
+		tooltip = { set_awareness = 90 } # Vfix Dux: Tooltip now matches the effect in immediate = {}
 		hidden_effect = {
 			event_target:pre_ftl_country = { remove_country_flag = new_machine_age }
 		}
@@ -809,7 +820,7 @@ ship_event = {
 							# This used to immediately call observation.107 which ends in devastation.
 							# Now there is an extra event which gives the player one last chance to avert catastrophe.
 							id = observation.3205
-							# 5 ± 2.5 years
+							# Vfix Dux: 5 ± 2.5 years
 							days = 900
 							random = 1800
 						}
@@ -823,7 +834,7 @@ ship_event = {
 						event_target:pre_ftl_planet = { set_planet_flag = extraction_regression }
 						country_event = {
 							id = observation.108
-							# 5 ± 2.5 years
+							# Vfix Dux: 5 ± 2.5 years
 							days = 900
 							random = 1800
 						}
@@ -834,7 +845,7 @@ ship_event = {
 						event_target:pre_ftl_planet = { set_planet_flag = extraction_continued_development }
 						country_event = {
 							id = observation.109
-							# 5 ± 2.5 years
+							# Vfix Dux: 5 ± 2.5 years
 							days = 900
 							random = 1800
 						}
@@ -1166,7 +1177,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		remove_country_flag = missing_scientist_chain # Properly end the event chain.
+		remove_country_flag = missing_scientist_chain # Vfix Dux: Properly end the event chain.
 	}
 
 	option = {
@@ -1208,7 +1219,7 @@ situation_event = {
 						has_country_flag = shuttle_intercepted
 					}
 				}
-				NOT = { is_planet_class = pc_habitat } # Blocked Habitats.
+				NOT = { is_planet_class = pc_habitat } # Vfix Dux: Blocked Habitats.
 			}
 		}
 	}
@@ -1400,12 +1411,12 @@ country_event = {
 
 	picture = GFX_evt_society_research
 	show_sound = event_radio_chatter
-	location = event_target:pre_ftl_planet # Scoping issue with fromfrom
+	location = event_target:pre_ftl_planet # Vfix Dux: Scoping issue with fromfrom
 	is_triggered_only = yes
 
 	immediate = {
-		event_target:pre_ftl_planet = { # Scoping issue with fromfrom
-			save_event_target_as = pre_ftl_planet # Completely pointless.
+		event_target:pre_ftl_planet = { # Vfix Dux: Scoping issue with fromfrom
+			save_event_target_as = pre_ftl_planet # Vfix Dux: Completely pointless.
 			owner = { save_event_target_as = pre_ftl_country }
 		}
 	}
@@ -1421,7 +1432,7 @@ country_event = {
 							country_event = {
 								# This used fire planet event observation.204, but now there is a last chance to save pre-FTLs from destruction.
 								id = observation.3210
-								# 5 ± 2.5 years
+								# Vfix Dux: 5 ± 2.5 years
 								days = 900
 								random = 1800
 							}
@@ -1439,7 +1450,7 @@ country_event = {
 					33 = {
 						planet_event = {
 							id = observation.208
-							# 5 ± 2.5 years
+							# Vfix Dux: 5 ± 2.5 years
 							days = 900
 							random = 1800
 						}
@@ -1447,7 +1458,7 @@ country_event = {
 					33 = {
 						planet_event = {
 							id = observation.210
-							# 5 ± 2.5 years
+							# Vfix Dux: 5 ± 2.5 years
 							days = 900
 							random = 1800
 						}
@@ -1472,12 +1483,12 @@ country_event = {
 	desc = observation.3210.desc
 	picture = GFX_evt_society_research
 	show_sound = event_air_raid_siren
-	location = event_target:pre_ftl_planet # Scoping issue.
+	location = event_target:pre_ftl_planet # Vfix Dux: Scoping issue.
 	is_triggered_only = yes
 
 	immediate = {
 		event_target:pre_ftl_planet = {
-			save_event_target_as = pre_ftl_planet # Completely pointless.
+			save_event_target_as = pre_ftl_planet # Vfix Dux: Completely pointless.
 			owner = { save_event_target_as = pre_ftl_country }
 			observation_outpost_owner = {
 				set_country_flag = scientists_captured_chain
@@ -1929,7 +1940,7 @@ situation_event = {
 					NOR = {
 						is_ai = yes
 						is_gestalt = yes
-						has_country_flag = smuggler_outpost_chain # Flags should match.
+						has_country_flag = smuggler_outpost_chain # Vfix Dux: Flags should match.
 					}
 					any_owned_planet = { planet_crime >= 10 }
 				}
@@ -1946,7 +1957,7 @@ situation_event = {
 				set_planet_flag = smuggler_outpost_planet
 				observation_outpost_owner = {
 					country_event = { id = observation.301 }
-					set_country_flag = smuggler_outpost_chain # Flags should match.
+					set_country_flag = smuggler_outpost_chain # Vfix Dux: Flags should match.
 				}
 			}
 		}
@@ -2090,7 +2101,7 @@ situation_event = {
 				pre_ftl_modern_era = yes
 			}
 			capital_scope = {
-				NAND = { # Not localised well for Aquatics.
+				NAND = { # Vfix Dux: Not localised well for Aquatics.
 					is_planet_class = pc_ocean
 					owner_species = { has_trait = trait_aquatic }
 				}
@@ -2101,8 +2112,8 @@ situation_event = {
 						is_ai = yes
 						is_gestalt = yes
 						has_relation_flag = { who = root.owner flag = scientist_abduction }
-						is_homicidal = yes # Homicidals should not value Sobak.
-						has_special_project = ABDUCT_SCIENTIST_PROJECT # You must finish your Sobak abduction before you're allowed another one.
+						is_homicidal = yes # Vfix Dux: Homicidals should not value Sobak.
+						has_special_project = ABDUCT_SCIENTIST_PROJECT # Vfix Dux: You must finish your Sobak abduction before you're allowed another one.
 					}
 				}
 			}
@@ -2147,14 +2158,14 @@ country_event = {
 			randomize_traits = no
 			traits = { 1 = leader_trait_spark_of_genius }
 			custom_description = Sobak_Background
-			background_planet = event_target:pre_ftl_planet # Sobak does not say they're from one of your planets.
+			background_planet = event_target:pre_ftl_planet # Vfix Dux: Sobak does not say they're from one of your planets.
 			skip_background_generation = yes
 			event_leader = yes	# prevents this leader from leading factions and winning elections
 			effect = {
 				exile_leader_as = abducted_scientist
 				save_event_target_as = abducted_scientist
 				save_global_event_target_as = abducted_scientist@event_target:pre_ftl_country
-				random_list = { # Set Sobak's ethic to one of the Pre-FTL's instead of yours.
+				random_list = { # Vfix Dux: Set Sobak's ethic to one of the Pre-FTL's instead of yours.
 					0 = {
 						modifier = {
 							add = 1
@@ -2230,7 +2241,7 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = observation.1004
-				# 5 ± 2.5 years
+				# Vfix Dux: 5 ± 2.5 years
 				days = 900
 				random = 1800
 			}
@@ -2382,7 +2393,7 @@ situation_event = {
 		exists = owner
 		owner = {
 			NOR = {
-				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				is_gestalt = yes # Vfix Dux: Blocked for Gestalt Pre-FTLs.
 				has_country_flag = observation_1100_fired
 			}
 			pre_ftl_modern_era = yes
@@ -2391,7 +2402,7 @@ situation_event = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
 				observation_outpost_owner = { is_ai = no }
-				NOT = { is_planet_class = pc_habitat } # Blocked for Habitats.
+				NOT = { is_planet_class = pc_habitat } # Vfix Dux: Blocked for Habitats.
 			}
 		}
 	}
@@ -2442,7 +2453,7 @@ country_event = {
 			country_event = {
 				# Interceptions
 				id = observation.1102
-				# 5 ± 2.5 years
+				# Vfix Dux: 5 ± 2.5 years
 				days = 900
 				random = 1800
 			}
@@ -2489,7 +2500,7 @@ country_event = {
 					country_event = {
 						# Observation Post Destroyed
 						id = observation.1103
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -2498,7 +2509,7 @@ country_event = {
 					country_event = {
 						# Surgical Strike Proposed
 						id = observation.1105
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -2516,7 +2527,7 @@ country_event = {
 					country_event = {
 						# Task Force Disbanded
 						id = observation.1104
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -2641,7 +2652,7 @@ country_event = {
 					country_event = {
 						# Observation Post Destroyed
 						id = observation.1103
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -2659,7 +2670,7 @@ country_event = {
 					country_event = {
 						# Task Force Disbanded
 						id = observation.1104
-						# 5 ± 2.5 years
+						# Vfix Dux: 5 ± 2.5 years
 						days = 900
 						random = 1800
 					}
@@ -2808,14 +2819,14 @@ country_event = {
 		trigger = { is_xenophile = no }
 		name = "observation.1201.b"
 		add_resource = { influence = 50 }
-		custom_tooltip = fircon.7510.a.tt # "200 pops die."
+		custom_tooltip = fircon.7510.a.tt # Vfix Dux: "200 pops die."
 		hidden_effect = {
 			event_target:pre_ftl_planet = {
 				while = {
 					count = 2
 					random_owned_pop_group = {
 						limit = {
-							NOT = { has_trait = trait_mechanical } # Mechanist robots should not be killed by brain implants.
+							NOT = { has_trait = trait_mechanical } # Vfix Dux: Mechanist robots should not be killed by brain implants.
 						}
 						kill_single_pop = yes
 					}
@@ -2824,7 +2835,7 @@ country_event = {
 			country_event = {
 				# Pre-FTL Cybernetic Gatekeeper
 				id = observation.1204
-				# 5 ± 2.5 years
+				# Vfix Dux: 5 ± 2.5 years
 				days = 900
 				random = 1800
 			}
@@ -2906,14 +2917,14 @@ country_event = {
 
 	option = {
 		name = "observation.1203.a"
-		custom_tooltip = fircon.7510.a.tt # "200 pops die."
+		custom_tooltip = fircon.7510.a.tt # Vfix Dux: "200 pops die."
 		hidden_effect = {
 			event_target:pre_ftl_planet = {
 				while = {
 					count = 2
-					random_owned_pop_group = { # Using a while loop here messes with the tooltip. Displays 100 pops, not 200.
+					random_owned_pop_group = { # Vfix Dux: Using a while loop here messes with the tooltip. Displays 100 pops, not 200.
 						limit = {
-							NOT = { has_trait = trait_mechanical } # Mechanist robots should not be killed by brain implants.
+							NOT = { has_trait = trait_mechanical } # Vfix Dux: Mechanist robots should not be killed by brain implants.
 						}
 						kill_single_pop = yes
 					}
@@ -2922,7 +2933,7 @@ country_event = {
 			country_event = {
 				# Pre-FTL Cybernetic Gatekeeper
 				id = observation.1204
-				# 5 ± 2.5 years
+				# Vfix Dux: 5 ± 2.5 years
 				days = 900
 				random = 1800
 			}
@@ -3000,19 +3011,19 @@ country_event = {
 		name = "observation.1205.a"
 		custom_tooltip = observation.1205.tt
 		hidden_effect = {
-			event_target:pre_ftl_country = { # Fully Cyberise Them, this event already takes years for this outcome.
+			event_target:pre_ftl_country = { # Vfix Dux: Fully Cyberise Them, this event already takes years for this outcome.
 				if = {
 					limit = {
 						has_machine_age_dlc = yes
 					}
 					give_technology = { tech = tech_integrated_cybernetics message = no }
-					add_ascension_perk = ap_the_flesh_is_weak # Block ascensions not blocked by Cybernetic trait.
+					add_ascension_perk = ap_the_flesh_is_weak # Vfix Dux: Block ascensions not blocked by Cybernetic trait.
 					set_country_flag = cybernetics_traditions_unlocked
 					set_country_flag = augmentation_center_available
 					add_tradition = tr_cybernetics_adopt
 					country_event = { id = utopia.2501 }
 					random_situation = {
-						limit = { is_situation_type = situation_cyberization } # Skip it.
+						limit = { is_situation_type = situation_cyberization } # Vfix Dux: Skip it.
 						destroy_situation = this
 					}
 					if = {
@@ -3020,15 +3031,15 @@ country_event = {
 						random_list = {
 							1 = {
 								set_country_flag = cyber_control_government
-								set_country_flag = cyber_augmentation_center_government  # Unity
+								set_country_flag = cyber_augmentation_center_government  # Vfix Dux: Unity
 							}
 							1 = {
 								set_country_flag = cyber_control_corporate
-								set_country_flag = cyber_augmentation_center_corporate # Consumer Goods
+								set_country_flag = cyber_augmentation_center_corporate # Vfix Dux: Consumer Goods
 							}
 							1 = {
 								set_country_flag = cyber_control_independent
-								set_country_flag = cyber_augmentation_center_independent # Pop upkeep
+								set_country_flag = cyber_augmentation_center_independent # Vfix Dux: Pop upkeep
 							}
 						}
 						random_list = {
@@ -3046,10 +3057,10 @@ country_event = {
 							}
 						}
 						random_list = {
-							1 = { set_country_flag = cyber_focus_rulers } # 10% workforce
-							1 = { set_country_flag = cyber_focus_specialists } # 10% workforce
-							1 = { set_country_flag = cyber_focus_workers } # 10% workforce
-							1 = { set_country_flag = cyber_focus_everyone } # 5% production
+							1 = { set_country_flag = cyber_focus_rulers } # Vfix Dux: 10% workforce
+							1 = { set_country_flag = cyber_focus_specialists } # Vfix Dux: 10% workforce
+							1 = { set_country_flag = cyber_focus_workers } # Vfix Dux: 10% workforce
+							1 = { set_country_flag = cyber_focus_everyone } # Vfix Dux: 5% production
 						}
 						random_list = {
 							1 = { set_country_flag = cyber_force_objectors }
@@ -3065,26 +3076,26 @@ country_event = {
 						}
 						random = {
 							chance = 5
-							add_modifier = { modifier = artificial_pain_relief days = -1 } # TODO, make this empire have civic_private_healthcare_corporate somehow.
+							add_modifier = { modifier = artificial_pain_relief days = -1 } # Vfix Dux: TODO, make this empire have civic_private_healthcare_corporate somehow.
 						}
 						random = {
 							chance = 50
-							add_modifier = { modifier = cyber_implant_taxes days = -1 } # Less pop growth, more energy.
+							add_modifier = { modifier = cyber_implant_taxes days = -1 } # Vfix Dux: Less pop growth, more energy.
 						}
 						random_list = {
-							1 = { add_modifier = { modifier = cyber_subscription_ban days = -1 } } # Collectivist
-							1 = { set_country_flag = cyber_subscription_model } # Individualist
-							1 = { add_modifier = { modifier = cyber_subscription_limited days = -1 } } # Neutral
-							1 = { set_country_flag = cyber_subscription_model_megacorp } # Corporate
+							1 = { add_modifier = { modifier = cyber_subscription_ban days = -1 } } # Vfix Dux: Collectivist
+							1 = { set_country_flag = cyber_subscription_model } # Vfix Dux: Individualist
+							1 = { add_modifier = { modifier = cyber_subscription_limited days = -1 } } # Vfix Dux: Neutral
+							1 = { set_country_flag = cyber_subscription_model_megacorp } # Vfix Dux: Corporate
 						}
-						# Ideally this would be for oppressive governments.
+						# Vfix Dux: Ideally this would be for oppressive governments.
 						if = {
 							limit = {
 								NOT = { has_country_flag = cyber_control_independent }
 							}
 							random = {
 								chance = 10
-								add_modifier = { modifier = worse_parts days = -1 } # Fewer automodded pops, but they produce trade.
+								add_modifier = { modifier = worse_parts days = -1 } # Vfix Dux: Fewer automodded pops, but they produce trade.
 							}
 						}
 						if = {
@@ -3093,41 +3104,41 @@ country_event = {
 							}
 							random = {
 								chance = 5
-								set_country_flag = cold_metal_chain # -20 habitability in cold places, set in trait_cybernetic
+								set_country_flag = cold_metal_chain # Vfix Dux: -20 habitability in cold places, set in trait_cybernetic
 							}
 						}
 						random_list = {
-							1 = { add_modifier = { modifier = cyber_athletes days = -1 } } # Entertainers produce 2 engineering.
-							1 = { add_modifier = { modifier = cyber_athlete_leagues days = -1 } } # 5% faction approval.
-							1 = { add_modifier = { modifier = limited_cyber_athletes days = -1 } } # Entertainers +1 Unity.
+							1 = { add_modifier = { modifier = cyber_athletes days = -1 } } # Vfix Dux: Entertainers produce 2 engineering.
+							1 = { add_modifier = { modifier = cyber_athlete_leagues days = -1 } } # Vfix Dux: 5% faction approval.
+							1 = { add_modifier = { modifier = limited_cyber_athletes days = -1 } } # Vfix Dux: Entertainers +1 Unity.
 						}
-						random_list = { # Rework this, and the 15 billboards so that Pre-FTLs can sell their airspace through commercial pact.
-							1 = { add_modifier = { modifier = sold_sky_1 days = -1 } } # +20 energy, -5% happiness
-							1 = { add_modifier = { modifier = sold_sky_1_mega days = -1 } } # +40 energy, -5% happiness
-							1 = { add_modifier = { modifier = sold_sky_2 days = -1 } } # +40 trade, -10 stability
-							1 = { add_modifier = { modifier = sold_sky_2_mega days = -1 } } # +80 trade, -10 stability
+						random_list = { # Vfix Dux: Rework this, and the 15 billboards so that Pre-FTLs can sell their airspace through commercial pact.
+							1 = { add_modifier = { modifier = sold_sky_1 days = -1 } } # Vfix Dux: +20 energy, -5% happiness
+							1 = { add_modifier = { modifier = sold_sky_1_mega days = -1 } } # Vfix Dux: +40 energy, -5% happiness
+							1 = { add_modifier = { modifier = sold_sky_2 days = -1 } } # Vfix Dux: +40 trade, -10 stability
+							1 = { add_modifier = { modifier = sold_sky_2_mega days = -1 } } # Vfix Dux: +80 trade, -10 stability
 						}
 						random_list = {
-							1 = { add_modifier = { modifier = endorsed_entertainment } } # Not every Cyberised empire gets this, but all Pre-FTLs will if they're not Spiritualist.
+							1 = { add_modifier = { modifier = endorsed_entertainment } } # Vfix Dux: Not every Cyberised empire gets this, but all Pre-FTLs will if they're not Spiritualist.
 							1 = {
 								modifier = { factor = 0 is_spiritualist = no }
-								add_modifier = { modifier = deadly_entertainment } # Supposed to be for Death Cults, but I'm loosening it a bit.
+								add_modifier = { modifier = deadly_entertainment } # Vfix Dux: Supposed to be for Death Cults, but I'm loosening it a bit.
 							}
 						}
 						random_list = {
-							1 = { add_modifier = { modifier = cyber_censure_total } } # +15% happiness, +1 Crime per 20 pops.
-							1 = { add_modifier = { modifier = cyber_censure_partial } } # +5% happiness.
+							1 = { add_modifier = { modifier = cyber_censure_total } } # Vfix Dux: +15% happiness, +1 Crime per 20 pops.
+							1 = { add_modifier = { modifier = cyber_censure_partial } } # Vfix Dux: +5% happiness.
 							1 = {
 								modifier = { factor = 0 is_authoritarian = no }
-								add_modifier = { modifier = cyber_censure_authoritarian } # +5 stability, +50% governing ethics, +20% amenities usage.
+								add_modifier = { modifier = cyber_censure_authoritarian } # Vfix Dux: +5 stability, +50% governing ethics, +20% amenities usage.
 							}
 						}
 						random_list = {
-							1 = { add_modifier = { modifier = cyber_subliminhack_allowed } } # +15% trade, -5% happiness.
-							1 = { add_modifier = { modifier = cyber_subliminhack_licensed } } # +5% trade.
+							1 = { add_modifier = { modifier = cyber_subliminhack_allowed } } # Vfix Dux: +15% trade, -5% happiness.
+							1 = { add_modifier = { modifier = cyber_subliminhack_licensed } } # Vfix Dux: +5% trade.
 							1 = {
 								modifier = { factor = 0 is_spiritualist = no }
-								add_modifier = { modifier = cyber_subliminhack_hallowed } # +50% Spiritualist Ethics attraction.
+								add_modifier = { modifier = cyber_subliminhack_hallowed } # Vfix Dux: +50% Spiritualist Ethics attraction.
 							}
 						}
 						random_list = {
@@ -3153,9 +3164,9 @@ country_event = {
 					else = { set_country_flag = DPFF_cyberize_dud }
 				}
 				else = {
-					add_ascension_perk = ap_the_flesh_is_weak # Block other ascensions.
-					add_tradition = tr_cybernetics_adopt # Fires utopia.2500, adds FLESH_IS_WEAK_PROJECT.
-					complete_special_project = { # All pops instantly become Cybernetic.
+					add_ascension_perk = ap_the_flesh_is_weak # Vfix Dux: Block other ascensions.
+					add_tradition = tr_cybernetics_adopt # Vfix Dux: Fires utopia.2500, adds FLESH_IS_WEAK_PROJECT.
+					complete_special_project = { # Vfix Dux: All pops instantly become Cybernetic.
 						type = FLESH_IS_WEAK_PROJECT
 					}
 				}
@@ -3180,11 +3191,11 @@ situation_event = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
 				NOR = {
-					is_planet_class = pc_habitat # No Habitats or Volcanic Worlds.
+					is_planet_class = pc_habitat # Vfix Dux: No Habitats or Volcanic Worlds.
 					is_planet_class = pc_volcanic
 					AND = {
 						is_planet_class = pc_ocean
-						owner_species = { has_trait = trait_aquatic } # Blocked for Aquatic Pre-FTLs.
+						owner_species = { has_trait = trait_aquatic } # Vfix Dux: Blocked for Aquatic Pre-FTLs.
 					}
 				}
 			}
@@ -3761,7 +3772,7 @@ situation_event = {
 				}
 				NAND = {
 					is_planet_class = pc_ocean
-					owner_species = { has_trait = trait_aquatic } # Blocked for Aquatics.
+					owner_species = { has_trait = trait_aquatic } # Vfix Dux: Blocked for Aquatics.
 				}
 			}
 		}
@@ -3886,7 +3897,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_gestalt = no # Blocked for Gestalt Observer.
+		is_gestalt = no # Vfix Dux: Blocked for Gestalt Observer.
 		any_observed_pre_ftl_within_border = {
 			is_under_open_technological_enlightenment = root
 			is_xenophobe = yes
@@ -3943,7 +3954,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_gestalt = no # Blocked for Gestalt Observor.
+		is_gestalt = no # Vfix Dux: Blocked for Gestalt Observor.
 		any_observed_pre_ftl_within_border = {
 			OR = {
 				is_under_open_technological_enlightenment = root
@@ -3956,7 +3967,7 @@ country_event = {
 				}
 			}
 			NOR = {
-				is_gestalt = yes # Blocked for Gestalts.
+				is_gestalt = yes # Vfix Dux: Blocked for Gestalts.
 				has_country_flag = quick_learners_development
 			}
 		}
@@ -4015,7 +4026,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_gestalt = no # Blocked for Gestalt Observor.
+		is_gestalt = no # Vfix Dux: Blocked for Gestalt Observor.
 		any_observed_pre_ftl_within_border = {
 			NOR = {
 				has_country_flag = slow_learners_development
@@ -4088,7 +4099,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_gestalt = no # Blocked for Gestalt Observor.
+		is_gestalt = no # Vfix Dux: Blocked for Gestalt Observor.
 		any_observed_pre_ftl_within_border = {
 			NOR = {
 				has_country_flag = repugnant_learners_development
@@ -4173,7 +4184,7 @@ country_event = {
 				}
 			}
 			NOR = {
-				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+				is_gestalt = yes # Vfix Dux: Blocked for Gestalt Pre-FTLs.
 				has_country_flag = scientists_development
 			}
 		}
@@ -4196,7 +4207,7 @@ country_event = {
 					}
 				}
 				NOR = {
-					is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
+					is_gestalt = yes # Vfix Dux: Blocked for Gestalt Pre-FTLs.
 					has_country_flag = scientists_development
 				}
 			}
@@ -4230,7 +4241,7 @@ country_event = {
 	trigger = {
 		any_observed_pre_ftl_within_border = {
 			NOR = {
-				is_gestalt = yes # Blocked for Gestalts.
+				is_gestalt = yes # Vfix Dux: Blocked for Gestalts.
 				has_country_flag = intelligent_learners_development
 				is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 			}
@@ -4252,7 +4263,7 @@ country_event = {
 		random_observed_pre_ftl_within_border = {
 			limit = {
 				NOR = {
-					is_gestalt = yes # Blocked for Gestalts.
+					is_gestalt = yes # Vfix Dux: Blocked for Gestalts.
 					has_country_flag = intelligent_learners_development
 					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
 				}

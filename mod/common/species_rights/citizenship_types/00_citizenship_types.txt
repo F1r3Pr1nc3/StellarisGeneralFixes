@@ -233,18 +233,17 @@ citizenship_assimilation = {
 					is_machine_empire = no
 				}
 				AND = {
+					is_individual_machine = yes
+					root = { is_robotic = yes }
+				}
+				AND = {
+					is_machine_empire = no
+					is_individual_machine = no
+					root = { is_robotic = no }
 					OR = {
 						has_active_tradition = tr_psionics_psionic_assimilation # psionic assimilation
 						has_active_tradition = tr_psionics_shroud_great_awakening # psionic assimilation (shroud)
 					}
-					OR = {
-						is_machine_empire = no
-						root = { is_robotic = yes }
-					}
-				}
-				AND = {
-					is_individual_machine = yes
-					root = { is_robotic = yes }
 				}
 				AND = {	# Mindwarden Anti-Psionics
 					has_modifier = destroyers_of_the_lost_modifier
@@ -423,6 +422,7 @@ citizenship_assimilation = {
 		modifier = {
 			factor = 0
 			OR = {
+
 				from = {
 					OR = {
 						is_homicidal = yes
@@ -432,6 +432,7 @@ citizenship_assimilation = {
 						}
 					}
 				}
+
 				AND = {
 					from = { is_machine_empire = yes }
 					has_trait = trait_machine_unit # Vfix by Dr. Addiction
@@ -972,6 +973,7 @@ citizenship_purge = {
 					has_trait = trait_machine_unit
 					from = { is_machine_empire = yes }
 				}
+
 				from = {
 					OR = {
 						NOR = {

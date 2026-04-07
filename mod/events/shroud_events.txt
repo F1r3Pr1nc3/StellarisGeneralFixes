@@ -9809,63 +9809,95 @@ country_event = {
 # 4800 - 4999 Patron Active Accords
 # ==================================
 # The Eater of Worlds - Devour Accord
-# DEPRECATED: replaced by spawn_eater_fleet_effect
-country_event = {
-	id = shroud.4800
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		has_shroud_dlc = yes
-	}
-
-	immediate = {
-		# Find country with worse relation
-		set_variable = { which = lowest_relation_score value = 10000 }
-		every_neighbor_country = {
-			limit = { can_declare_devour_war = yes }
-			set_variable = { which = current_relation_score value = value:opinion_with_root }
-			if = {
-				limit = {
-					check_variable = { which = current_relation_score value < prev.lowest_relation_score }
-				}
-				prev = {
-					set_variable = { which = lowest_relation_score value = prev.current_relation_score }
-				}
-				save_event_target_as = devour_accord_target@root
-			}
-		}
-		clear_variable = lowest_relation_score
-		# Declare war
-		if = {
-			limit = { exists = event_target:devour_accord_target@root }
-			set_country_flag = devour_war_active
-			refresh_species_rights = yes
-			declare_war = {
-				target = event_target:devour_accord_target@root
-				attacker_war_goal = wg_devour_total_war
-			}
-			event_target:devour_accord_target@root = {
-				every_owned_species = {
-					limit = {
-						NOR = {
-							is_archetype = PRESAPIENT
-							root.species = { is_same_species = prevprev }
-						}
-					}
-					if = {
-						limit = { is_machine_species = yes }
-						set_citizenship_type = { country = root type = citizenship_purge_machine }
-					}
-					else = {
-						set_citizenship_type = { country = root type = citizenship_purge }
-					}
-					set_purge_type = { type = purge_sacrifice country = prev }
-				}
-			}
-		}
-	}
-}
+# Vfix DEPRECATED: replaced by spawn_eater_fleet_effect
+# country_event = {
+# 	id = shroud.4800
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		has_shroud_dlc = yes
+# 	}
+# 	immediate = {
+# 		# Find country with worse relation
+# 		set_variable = {
+# 			which = lowest_relation_score
+# 			value = 10000
+# 		}
+# 		every_neighbor_country = {
+# 			limit = {
+# 				can_declare_devour_war = yes
+# 			}
+# 			set_variable = {
+# 				which = current_relation_score
+# 				value = value:opinion_with_root
+# 			}
+# 			if = {
+# 				limit = {
+# 					check_variable = {
+# 						which = current_relation_score
+# 						value < prev.lowest_relation_score
+# 					}
+# 				}
+# 				prev = {
+# 					set_variable = {
+# 						which = lowest_relation_score
+# 						value = prev.current_relation_score
+# 					}
+# 				}
+# 				save_event_target_as = devour_accord_target@root
+# 			}
+# 		}
+# 		clear_variable = lowest_relation_score
+# 		# Declare war
+# 		if = {
+# 			limit = {
+# 				exists = event_target:devour_accord_target@root
+# 			}
+# 			set_country_flag = devour_war_active
+# 			refresh_species_rights = yes
+# 			declare_war = {
+# 				target = event_target:devour_accord_target@root
+# 				attacker_war_goal = wg_devour_total_war
+# 			}
+# 			event_target:devour_accord_target@root = {
+# 				every_owned_species = {
+# 					limit = {
+# 						NOT = { is_archetype = PRESAPIENT }
+# 						root.species = {
+# 							NOT = { is_same_species = prevprev }
+# 						}
+# 					}
+# 					if = {
+# 						limit = { is_machine_species = yes }
+# 						set_citizenship_type = {
+# 							country = root
+# 							type = citizenship_purge_machine
+# 						}
+# 					}
+# 					else = {
+# 						set_citizenship_type = {
+# 							country = root
+# 							type = citizenship_purge
+# 						}
+# 					}
+# 					set_purge_type = {
+# 						type = purge_sacrifice
+# 						country = prev
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# }
+# # Destroy Eater Fleet
+# fleet_event = {
+# 	id = shroud.4801
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		delete_fleet = this
+# 	}
+# }
 
 # on_subject_integrated
 country_event = {
@@ -14406,16 +14438,28 @@ country_event = {
 		switch = {
 			trigger = last_resolution_category_changed
 			resolution_category_commerce = {
-				add_patron_objective_counter = { counter = po_pass_commerce_resolution amount = 1 }
+				add_patron_objective_counter = {
+					counter = po_pass_commerce_resolution
+					amount = 1
+				}
 			}
 			resolution_category_industry = {
-				add_patron_objective_counter = { counter = po_pass_industry_resolution amount = 1 }
+				add_patron_objective_counter = {
+					counter = po_pass_industry_resolution
+					amount = 1
+				}
 			}
 			resolution_category_ecology = {
-				add_patron_objective_counter = { counter = po_pass_ecology_resolution amount = 1 }
+				add_patron_objective_counter = {
+					counter = po_pass_ecology_resolution
+					amount = 1
+				}
 			}
 			resolution_category_divinity = {
-				add_patron_objective_counter = { counter = po_pass_divinity_resolution amount = 1 }
+				add_patron_objective_counter = {
+					counter = po_pass_divinity_resolution
+					amount = 1
+				}
 			}
 		}
 	}

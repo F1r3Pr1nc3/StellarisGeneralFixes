@@ -78,15 +78,6 @@ civilian = {
 		inline_script = "jobs/ethic_job_resources"
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_tradition = tr_mercantile_trickle_up_economics }
-		}
-		planet_amenities_add = 100
-		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
-	}
-
 	# Hedonists
 	triggered_planet_modifier = {
 		potential = {
@@ -716,7 +707,7 @@ bio_trophy = {
 	resources = {
 		category = planet_bio_trophies
 		produces = {
-			unity = 2
+			unity = 1
 		}
 	}
 
@@ -1285,7 +1276,7 @@ organic_exhibit = {
 	resources = {
 		category = planet_bio_trophies
 		produces = {
-			unity = 1
+			unity = 0.5
 		}
 		upkeep = {
 			food = 1
@@ -1527,14 +1518,14 @@ purge_lithoid = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 	}
 
@@ -1624,14 +1615,14 @@ purge_robot = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 	}
 
@@ -1715,14 +1706,14 @@ purge_processing = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 		produces = {
 			trigger = {
@@ -1837,14 +1828,14 @@ purge_processing_lithoid = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 		produces = {
 			trigger = {
@@ -1953,7 +1944,7 @@ purge_processing_infernal = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
@@ -2065,14 +2056,14 @@ purge_processing_robot = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 		produces = {
 			trigger = {
@@ -2170,14 +2161,14 @@ purge_labor_camps = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 		produces = {
 			trigger = {
@@ -2288,14 +2279,14 @@ purge_matrix = {
 				exists = owner
 				owner = { has_valid_civic = civic_fanatic_purifiers }
 			}
-			unity = 2
+			unity = 1
 		}
 		produces = {
 			trigger = {
 				exists = owner
 				owner = { has_valid_civic = civic_hive_devouring_swarm }
 			}
-			society_research = 2
+			society_research = 1
 		}
 		produces = {
 			trigger = {
@@ -2384,7 +2375,7 @@ purge_sacrifice = {
 	resources = {
 		category = pop_category_purge
 		produces = {
-			unity = 5
+			unity = 2.5
 		}
 		produces = {
 			trigger = {

@@ -91,17 +91,23 @@ add_augmentation_bazaars_cyborg_traits = {
 			trigger = has_country_flag
 			augmentation_bazaars_power_drills = {
 				event_target:cyborg_pop = {
-					modify_species = { add_trait = trait_cyborg_power_drills }
+					modify_species = {
+						add_trait = trait_cyborg_power_drills
+					}
 				}
 			}
 			augmentation_bazaars_harvesters = {
 				event_target:cyborg_pop = {
-					modify_species = { add_trait = trait_cyborg_harvesters }
+					modify_species = {
+						add_trait = trait_cyborg_harvesters
+					}
 				}
 			}
 			augmentation_bazaars_superconductive = {
 				event_target:cyborg_pop = {
-					modify_species = { add_trait = trait_cyborg_superconductive }
+					modify_species = {
+						add_trait = trait_cyborg_superconductive
+					}
 				}
 			}
 		}
@@ -1393,11 +1399,11 @@ synth_queen_create_war_fleet = {
 		effect = {
 			set_owner = prev
 			while = {
-				count = 18
+				count = 9
 				create_ship = { name = random design = "NAME_Synth_Queen_Harrier" }
 			}
 			while = {
-				count = 3
+				count = 2
 				create_ship = { name = random design = "NAME_Synth_Queen_Royal_Guard" }
 			}
 			set_location = {
@@ -1651,7 +1657,7 @@ synth_queen_create_convoy_fleet = {
 			set_owner = event_target:synth_queen_convoy_country
 			set_name = NAME_Synth_Queen_Convoy
 			while = {
-				count = 6
+				count = 3
 				create_ship = { name = random design = "NAME_Synth_Queen_Harrier" }
 			}
 			while = {
@@ -1765,7 +1771,7 @@ synth_queen_create_outpost = {
 		effect = {
 			set_owner = event_target:synth_queen_outpost_country
 			while = {
-				count = 6
+				count = 3
 				create_ship = { name = random design = "NAME_Synth_Queen_Harrier" }
 			}
 			while = {
@@ -1931,7 +1937,7 @@ synth_queen_create_mini_outpost = {
 		effect = {
 			set_owner = event_target:synth_queen_outpost_country
 			while = {
-				count = 12
+				count = 6
 				create_ship = { name = random design = "NAME_Synth_Queen_Harrier" }
 			}
 			set_fleet_stance = passive
@@ -3520,46 +3526,74 @@ get_cetana_face = {
 		switch = {
 			trigger = is_species_class
 			MAM = {
-				event_target:cetana_mammalian = { save_event_target_as = cetana_face }
+				event_target:cetana_mammalian = {
+					save_event_target_as = cetana_face
+				}
 			}
 			HUM = {
-				event_target:cetana_mammalian = { save_event_target_as = cetana_face }
+				event_target:cetana_mammalian = {
+					save_event_target_as = cetana_face
+				}
 			}
 			REP = {
-				event_target:cetana_reptilian = { save_event_target_as = cetana_face }
+				event_target:cetana_reptilian = {
+					save_event_target_as = cetana_face
+				}
 			}
 			AVI = {
-				event_target:cetana_avian = { save_event_target_as = cetana_face }
+				event_target:cetana_avian = {
+					save_event_target_as = cetana_face
+				}
 			}
 			ART = {
-				event_target:cetana_molluscoid = { save_event_target_as = cetana_face }
+				event_target:cetana_molluscoid = {
+					save_event_target_as = cetana_face
+				}
 			}
 			MOL = {
-				event_target:cetana_molluscoid = { save_event_target_as = cetana_face }
+				event_target:cetana_molluscoid = {
+					save_event_target_as = cetana_face
+				}
 			}
 			TOX = {
-				event_target:cetana_molluscoid = { save_event_target_as = cetana_face }
+				event_target:cetana_molluscoid = {
+					save_event_target_as = cetana_face
+				}
 			}
 			FUN = {
-				event_target:cetana_plantoid = { save_event_target_as = cetana_face }
+				event_target:cetana_plantoid = {
+					save_event_target_as = cetana_face
+				}
 			}
 			PLANT = {
-				event_target:cetana_plantoid = { save_event_target_as = cetana_face }
+				event_target:cetana_plantoid = {
+					save_event_target_as = cetana_face
+				}
 			}
 			LITHOID = {
-				event_target:cetana_lithoid = { save_event_target_as = cetana_face }
+				event_target:cetana_lithoid = {
+					save_event_target_as = cetana_face
+				}
 			}
 			AQUATIC = {
-				event_target:cetana_aquatic = { save_event_target_as = cetana_face }
+				event_target:cetana_aquatic = {
+					save_event_target_as = cetana_face
+				}
 			}
 			MACHINE = {
-				event_target:cetana_robot = { save_event_target_as = cetana_face }
+				event_target:cetana_robot = {
+					save_event_target_as = cetana_face
+				}
 			}
 			ROBOT = {
-				event_target:cetana_robot = { save_event_target_as = cetana_face }
+				event_target:cetana_robot = {
+					save_event_target_as = cetana_face
+				}
 			}
 			default = {
-				event_target:cetana_mammalian = { save_event_target_as = cetana_face }
+				event_target:cetana_mammalian = {
+					save_event_target_as = cetana_face
+				}
 			}
 		}
 	}

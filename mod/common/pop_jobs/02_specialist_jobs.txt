@@ -1465,6 +1465,56 @@ telepath = {
 	inline_script = "jobs/job_telepath"
 
 	possible_precalc = can_fill_specialist_job
+	possible = {
+		has_psionic_species_trait = yes
+	}
+
+	resources = {
+		category = planet_telepaths
+		inline_script = "jobs/job_enforcer_triggered_resources"
+		produces = {
+			unity = 9
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_active_tradition = tr_domination_judgment_corps }
+			}
+			unity = 1
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_country_flag = whisperers_covenant_confirmed }
+			}
+			physics_research = 1.5
+			engineering_research = 1.5
+			society_research = 1.5
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_country_flag = whisperers_covenant_rank_1 }
+			}
+			physics_research = 1.5
+			engineering_research = 1.5
+			society_research = 1.5
+		}
+		# Update @telepath_whisperers_research for covenant custom_tooltip
+		upkeep = {
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				exists = planet
+				planet = { has_modifier = anticrime_campaign }
+			}
+			energy = 2
+		}
+	}
+
+	inline_script = "jobs/job_enforcer_additional_modifiers"
+	inline_script = "jobs/job_telepath_additional_modifiers"
 
 	weight = {
 		weight = @specialist_job_weight
@@ -3659,7 +3709,7 @@ soldier = {
 	tags = { soldier }
 
 	country_modifier = {
-		country_naval_cap_add = 2
+		country_naval_cap_add = 4
 	}
 
 	resources = {
@@ -3778,7 +3828,7 @@ battle_thrall = {
 	tags = { soldier }
 
 	country_modifier = {
-		country_naval_cap_add = 2
+		country_naval_cap_add = 4
 	}
 
 	resources = {

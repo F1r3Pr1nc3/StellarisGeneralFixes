@@ -377,12 +377,20 @@ food_expenditure_ships = {
 	weight = {
 		weight = 0.6
 		# spend more food building ships while at war
-		modifier = { factor = 2 is_at_war = yes }
+		modifier = {
+			factor = 3
+			is_at_war = yes
+		}
+
 		# spend less food on ships if over capacity
-		modifier = { factor = 0.5 used_naval_capacity_percent >= 1.0 }
+		modifier = {
+			factor = 0.75
+			used_naval_capacity_percent >= 1.0
+		}
+
 		modifier = {
 			factor = 5
-			used_naval_capacity_percent < 1.0
+			used_naval_capacity_percent < 1.5
 			OR = {
 				any_neighbor_country = { has_ascension_perk = ap_become_the_crisis }
 				any_country = { is_crisis_faction = yes }
@@ -457,7 +465,7 @@ food_expenditure_megastructures = {
 		is_country_type = default
 		NAND = {
 			is_at_war = yes
-			used_naval_capacity_percent <= 0.95
+			used_naval_capacity_percent <= 0.90
 		}
 		OR = {
 			country_uses_bio_ships = yes

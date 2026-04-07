@@ -118,12 +118,19 @@ civic_media_conglomerate = {
 	possible = {
 		civics = {
 			NOR = {
+				text = civic_tooltip_not_crowdsourcing
+				value = civic_corporate_crowdsourcing
 				value = civic_crowdsourcing
-				value = civic_idealistic_foundation
-				value = civic_parliamentary_system
-				value = civic_secret_societies
 			}
-		 }
+			NOR = {
+				value = civic_secret_societies
+				value = civic_secret_societies_corporate
+				value = civic_parliamentary_system
+			}
+			NOT = {
+				value = civic_idealistic_foundation
+			}
+		}
 		origin = {
 			NOT = {
 				value = origin_unplugged
@@ -145,8 +152,8 @@ civic_media_conglomerate = {
 		}
 	}
 	modifier = {
-		country_war_exhaustion_mult = -0.05
-		pop_citizen_happiness = 0.05
+		faction_demands_met_mult = 0.25
+		faction_demands_unmet_mult = 0.50
 		refugee_attraction = 0.10
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
@@ -1635,6 +1642,7 @@ civic_memory_vault_corporate = {
 	modifier = {
 		councilor_skill_add = 1
 		leader_initial_skill = 1
+		leader_trait_selection_options_add = 1
 	}
 }
 
@@ -1692,7 +1700,6 @@ civic_worker_coop = {
 	}
 	modifier = {
 		election_term_years_mult = -0.50
-		# pop_unemployment_demotion_time_mult = -0.66
 		pop_ethic_egalitarian_attraction_mult = 0.5
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
@@ -1778,6 +1785,7 @@ civic_augmentation_bazaars = {
 				value = civic_hive_chosen
 				value = civic_machine_chosen
 				value = civic_corporate_chosen
+				value = civic_entropy_drinkers_corporate
 			}
 		}
 		species_archetype = { NOT = { value = MACHINE } }
@@ -2297,6 +2305,7 @@ civic_corporate_crowdsourcing = {
 			NOR = {
 				value = civic_crowdsourcing
 				value = civic_parliamentary_system
+				value = civic_media_conglomerate
 				value = civic_secret_societies
 				value = civic_secret_societies_corporate
 			}
@@ -2346,6 +2355,7 @@ civic_entropy_drinkers_corporate = {
 				value = civic_memorialist
 				value = civic_natural_design
 				value = civic_entropy_drinkers
+				value = civic_augmentation_bazaars
 			}
 		}
 		origin = {
@@ -2392,7 +2402,7 @@ civic_entropy_drinkers_corporate = {
 		base = @civic_default_random_weight
 	}
 
-	custom_tooltip_with_modifiers = "civic_entropy_drinkers_psionic_modifier"
+	custom_tooltip_with_modifiers = civic_entropy_drinkers_psionic_modifier
 	modifier = {
 		planet_jobs_produces_mult = -0.1
 		all_technology_research_speed = -0.1
@@ -2489,6 +2499,10 @@ civic_twisted_experimenters_corporate = {
 	}
 	alternate_civic_version = civic_twisted_experimenters
 
+	modifier = {
+		refugee_attraction = -0.15
+	}
+
 	random_weight = {
 		base = @civic_default_random_weight
 	}
@@ -2509,6 +2523,7 @@ civic_secret_societies_corporate = {
 	possible = {
 		civics = {
 			NOR = {
+				value = civic_media_conglomerate
 				value = civic_corporate_crowdsourcing
 				value = civic_crowdsourcing
 				value = civic_parliamentary_system

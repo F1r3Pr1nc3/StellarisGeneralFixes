@@ -581,6 +581,7 @@ civic_police_state = {
 	modifier = {
 		planet_stability_add = 3
 		planet_enforcers_unity_produces_add = 1
+		enforcer_jobs_bonus_workforce_mult = 0.10
 		add_attunement_the_instrument_of_desire = @civic_attunement1
 	}
 	random_weight = { base = @civic_default_random_weight }
@@ -777,7 +778,7 @@ civic_slaver_guilds = {
 		}
 	}
 	modifier = {
-		pop_cat_slave_bonus_workforce_mult = 0.15 # This actually applies to jobs in the Slave stratum, see citizenship_slavery for the implemented effects
+		pop_slave_bonus_workforce_mult = 0.15
 		refugee_attraction = -0.25
 		add_attunement_the_instrument_of_desire = @civic_attunement1
 	}
@@ -1123,8 +1124,8 @@ civic_cutthroat_politics = {
 
 # Disable this civic if host has MegaCorp as it's replaced by the Corporate authority
 civic_corporate_dominion = {
-	playable = { has_megacorp = no }
-	ai_playable = { has_megacorp = no }
+	playable = { NOT = { has_megacorp = yes } }
+	ai_playable = { NOT = { has_megacorp = yes } }
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
@@ -1420,8 +1421,8 @@ civic_parliamentary_system = {
 	}
 	description = "civic_tooltip_parliamentary_system_effects"
 	modifier = {
-		pop_factions_produces_mult = 0.25
-		# faction_demands_unmet_mult = 0.50 # v4.3
+		pop_factions_produces_mult = 0.20
+		faction_demands_unmet_mult = 0.50
 		add_attunement_the_cradle_of_souls = @civic_attunement1
 	}
 }
@@ -1732,7 +1733,7 @@ civic_fanatic_purifiers = {
 		base = 1000
 		modifier = {
 			factor = 0
-			has_utopia = no
+			NOT = { has_utopia = yes }
 		}
 		modifier = {
 			factor = 0
@@ -1814,7 +1815,7 @@ civic_barbaric_despoilers = {
 		base = @civic_uncommon_random_weight
 		modifier = {
 			factor = 0
-			has_apocalypse_dlc = no
+			NOT = { has_apocalypse_dlc = yes }
 		}
 		modifier = {
 			# civic has no effect after galaxy generation, disable for random generation
@@ -2818,6 +2819,7 @@ civic_memory_vault = {
 	modifier = {
 		councilor_skill_add = 1
 		leader_initial_skill = 1
+		leader_trait_selection_options_add = 1
 	}
 }
 
@@ -3922,7 +3924,7 @@ civic_entropy_drinkers = {
 		base = @civic_default_random_weight
 	}
 
-	custom_tooltip_with_modifiers = "civic_entropy_drinkers_psionic_modifier"
+	custom_tooltip_with_modifiers = civic_entropy_drinkers_psionic_modifier
 	modifier = {
 		planet_jobs_produces_mult = -0.1
 		all_technology_research_speed = -0.1

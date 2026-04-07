@@ -203,23 +203,14 @@ planet_event = {
 			portrait = random
 			traits = random
 		}
-		create_army = {
-			name = "NAME_Rampaging_Forest"
-			owner = last_created_country
-			species = last_created_species
-			type = "tree_army"
-		}
-		create_army = {
-			name = "NAME_Rampaging_Forest"
-			owner = last_created_country
-			species = last_created_species
-			type = "tree_army"
-		}
-		create_army = {
-			name = "NAME_Rampaging_Forest"
-			owner = last_created_country
-			species = last_created_species
-			type = "tree_army"
+		while = { # Vfix opt
+			count = 3
+			create_army = {
+				name = "NAME_Rampaging_Forest"
+				owner = last_created_country
+				species = last_created_species
+				type = "tree_army"
+			}
 		}
 		set_planet_purge_type = purge_displacement
 	}
@@ -947,9 +938,6 @@ country_event = {
 				save_event_target_as = subterranean_empire
 				owner_species = { save_event_target_as = subterranean_species }
 			}
-		}
-		from = { destroy_country = yes }
-		fromfrom = {
 			remove_planet_flag = subterranean_invasion_planet
 			save_event_target_as = conquered_planet
 			set_owner = event_target:subterranean_empire
@@ -984,7 +972,11 @@ country_event = {
 			}
 		}
 	}
-
+	after = {
+		hidden_effect = {
+			from = { destroy_country = yes } # Vfix
+		}
+	}
 	option = {
 		name = "ONSCREEN"
 		end_event_chain = "subterranean_civilization_chain"
@@ -1107,61 +1099,15 @@ planet_event = {
 			limit = {
 				NOT = { event_target:subterranean_nation = { has_country_flag = tech_request_approved } }
 			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "industrial_army"
-				leader = last_created_leader
+			while = { # Vfix opt
+				count = 8
+				create_army = {
+					name = "NAME_Invading_Horde"
+					owner = event_target:subterranean_nation
+					species = event_target:subterranean_species
+					type = "industrial_army"
+					leader = last_created_leader
+				}
 			}
 			break = yes
 		}
@@ -1169,61 +1115,15 @@ planet_event = {
 			limit = {
 				event_target:subterranean_nation = { has_country_flag = tech_request_approved }
 			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
-			}
-			create_army = {
-				name = "NAME_Invading_Horde"
-				owner = event_target:subterranean_nation
-				species = event_target:subterranean_species
-				type = "postatomic_army"
-				leader = last_created_leader
+			while = { # Vfix opt
+				count = 8
+				create_army = {
+					name = "NAME_Invading_Horde"
+					owner = event_target:subterranean_nation
+					species = event_target:subterranean_species
+					type = "postatomic_army"
+					leader = last_created_leader
+				}
 			}
 			break = yes
 		}
@@ -3228,24 +3128,17 @@ planet_event = {
 			effect = {
 				establish_communications_no_message = root.owner
 				establish_contact = { who = root.owner location = root.solar_system }
+				save_global_event_target_as = mutant_horror_country # Vfix opt
 			}
 		}
-		last_created_country = { save_global_event_target_as = mutant_horror_country }
 		set_planet_purge_type = purge_displacement
-		create_army = {
-			name = "NAME_Mutant_Horrors"
-			owner = event_target:mutant_horror_country
-			type = "mutant_army"
-		}
-		create_army = {
-			name = "NAME_Mutant_Horrors"
-			owner = event_target:mutant_horror_country
-			type = "mutant_army"
-		}
-		create_army = {
-			name = "NAME_Mutant_Horrors"
-			owner = event_target:mutant_horror_country
-			type = "mutant_army"
+		while = { # Vfix opt
+			count = 3
+			create_army = {
+				name = "NAME_Mutant_Horrors"
+				owner = event_target:mutant_horror_country
+				type = "mutant_army"
+			}
 		}
 	}
 
@@ -4199,12 +4092,12 @@ planet_event = {
 	immediate = {
 		owner = {
 			country_event = { id = colony.184 days = 1 }
+			end_event_chain = "asteroid_sighted_chain"
 		}
 		remove_global_flag = asteroid_sighted_global
 		remove_planet_flag = asteroid_sighted
 		set_planet_flag = asteroid_collision
 		add_deposit = d_crater
-		owner = { end_event_chain = "asteroid_sighted_chain" }
 	}
 
 	option = {

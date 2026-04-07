@@ -1165,18 +1165,18 @@ eotc_lvl3_end = {
 		galaxy_size = huge
 	}
 }
-# REMOVED in v4.3
-# eater_teeth_count_scaling = {
-# 	base = 3
-# 	modifier = {
-# 		set = 6
-# 		mid_game_years_passed > 0
-# 	}
-# 	modifier = {
-# 		set = 10
-# 		end_game_years_passed > 0
-# 	}
-# }
+
+eater_doom_intensity = {
+	base = 3
+	add = eater_fleet_intensity
+	max = 50
+}
+
+eater_fleet_scaling = {
+	base = 0
+	add = value:eater_doom_intensity
+	mult = 10
+}
 
 distance_to_target = {
 	base = 0

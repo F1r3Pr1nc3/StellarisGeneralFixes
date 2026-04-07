@@ -101,7 +101,7 @@ spawning_drone = {
 					healthcare_is_genomic_researcher_trigger = yes
 				}
 			}
-			society_research = 4.5
+			society_research = 1.75
 		}
 		produces = {
 			trigger = {
@@ -390,8 +390,8 @@ gestation_drone = {
 			alloys = @drone_alloy_upkeep_normal
 		}
 		produces = {
-			society_research = 1.5
-			engineering_research = 1.5
+			society_research = 1
+			engineering_research = 1
 		}
 	}
 
@@ -460,7 +460,7 @@ evaluator = {
 	resources = {
 		category = planet_evaluators
 		produces = {
-			unity = 4
+			unity = 2
 		}
 		upkeep = {
 			energy = 2
@@ -566,7 +566,7 @@ coordinator = {
 	resources = {
 		category = planet_bureaucrats
 		produces = {
-			unity = 4
+			unity = 3
 		}
 		produces = {
 			trigger = {
@@ -575,7 +575,7 @@ coordinator = {
 					is_memorialist_empire = yes
 				}
 			}
-			unity = 1
+			unity = 0.5
 		}
 		upkeep = {
 			trigger = {
@@ -617,7 +617,7 @@ coordinator = {
 				is_memorialist_empire = yes
 			}
 		}
-		planet_stability_add = 0.4
+		planet_stability_add = 0.2
 	}
 
 	triggered_planet_modifier = {
@@ -824,7 +824,7 @@ calculator_physicist = {
 					physicist_is_extradimensional_research_unit_trigger = no
 				}
 			}
-			physics_research = 4.5
+			physics_research = 3
 		}
 		produces = {
 			trigger = {
@@ -839,7 +839,7 @@ calculator_physicist = {
 					}
 				}
 			}
-			physics_research = 3
+			physics_research = 2
 		}
 		produces = {
 			trigger = {
@@ -959,7 +959,7 @@ calculator_physicist = {
 					}
 				}
 			}
-			physics_research = 0.75
+			physics_research = 0.5
 		}
 	}
 
@@ -1113,7 +1113,7 @@ calculator_biologist = {
 	resources = {
 		category = planet_biologists
 		produces = {
-			society_research = 4.5
+			society_research = 3
 		}
 		produces = {
 			trigger = {
@@ -1187,7 +1187,7 @@ calculator_biologist = {
 					has_planet_flag = has_science_ministry
 				}
 			}
-			society_research = 0.75
+			society_research = 0.5
 		}
 	}
 
@@ -2035,7 +2035,7 @@ patrol_drone = {
 	resources = {
 		category = planet_jobs
 		produces = {
-			unity = 1
+			unity = 0.5
 		}
 	}
 
@@ -3101,7 +3101,7 @@ wilderness_maintenance_drone = {
 
 ##Solider Jobs
 warrior_drone = {
-	category = simple_drone
+	category = complex_drone
 
 	swappable_data = {
 		default = {
@@ -3130,6 +3130,8 @@ warrior_drone = {
 	}
 	resources = {
 		category = planet_soldiers
+
+		upkeep = { alloys = 1.0 }
 	}
 
 	inline_script = "output/soldier_triggered_modifiers"
@@ -3143,7 +3145,7 @@ warrior_drone = {
 	}
 
 	possible_precalc = can_fill_drone_job
-	possible = { simple_drone_trigger = yes }
+	possible = { can_think = yes }
 
 	weight = {
 		weight = @simple_drone_job_weight
@@ -3203,7 +3205,7 @@ warrior_drone = {
 		time = @standard_promotion_time
 		effect = {
 			pop_amount_change_category = {
-				CATEGORY = simple_drone
+				CATEGORY = complex_drone
 				AMOUNT = local_pop_amount
 			}
 		}
@@ -3354,7 +3356,7 @@ polytechnic_drone = {
 	possible = { simple_drone_trigger = yes } # Vfix by jtlane16
 
 	resources = {
-		category = planet_bureaucrats
+		category = planet_mentors
 		upkeep = { minerals = 7 }
 		produces = {
 			unity = @polytechnic_base_output
@@ -3416,7 +3418,7 @@ offworld_prospector_drone = {
 	possible = { simple_drone_trigger = yes } # Vfix by jtlane16
 
 	resources = {
-		category = planet_sr_miners
+		category = planet_metallurgists
 		upkeep = {
 			energy = @offworld_prospector_upkeep
 		}

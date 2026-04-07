@@ -5431,6 +5431,7 @@ country_event = {
 	immediate = {
 		event_target:sentinels_planet = {
 			remove_planet_flag = sentinels_won
+			clear_planet_purge_type = yes
 			create_pop_group = {
 				species = owner_species
 				category = civilian
@@ -5514,6 +5515,7 @@ country_event = {
 
 	immediate = {
 		remove_country_flag = sentinels_invade_country
+		event_target:sentinels_planet = { clear_planet_purge_type = yes }
 	}
 
 	option = {

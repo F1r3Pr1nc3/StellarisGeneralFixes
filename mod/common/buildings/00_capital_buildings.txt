@@ -1030,9 +1030,10 @@ building_hab_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
 		job_coordinator_add = 200
+		job_patrol_drone_add = 100
 		planet_amenities_add = 300
 	}
 	triggered_planet_modifier = {
@@ -1040,10 +1041,8 @@ building_hab_capital = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		job_coordinator_add = 100
+		job_coordinator_add = -100
 		job_replicator_add = 100
-		job_logistics_drone_add = 200
-		planet_amenities_add = 300
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -1166,9 +1165,10 @@ building_hab_major_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
 		job_coordinator_add = 300
+		job_patrol_drone_add = 200
 		planet_amenities_add = 300
 	}
 	triggered_planet_modifier = {
@@ -1176,10 +1176,8 @@ building_hab_major_capital = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		job_coordinator_add = 200
+		job_coordinator_add = -100
 		job_replicator_add = 100
-		job_logistics_drone_add = 300
-		planet_amenities_add = 300
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -1219,6 +1217,14 @@ building_hab_major_capital = {
 		job_knight_commander_add = 1
 		job_knight_add = 100
 	}
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { is_gestalt = no } # Vfix opt
+		}
+		job_enforcer_add = 100
+	}
+
 	inline_script = {
 		script = jobs/enforcers_add
 		AMOUNT = 100
@@ -1310,9 +1316,10 @@ building_hab_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { is_hive_empire = yes }
+			owner = { is_gestalt = yes }
 		}
 		job_coordinator_add = 400
+		job_patrol_drone_add = 300
 		planet_amenities_add = 300
 	}
 	triggered_planet_modifier = {
@@ -1320,10 +1327,8 @@ building_hab_system_capital = {
 			has_owner = yes
 			owner = { is_machine_empire = yes }
 		}
-		job_coordinator_add = 300
+		job_coordinator_add = -100
 		job_replicator_add = 100
-		job_logistics_drone_add = 300
-		planet_amenities_add = 300
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -1363,6 +1368,14 @@ building_hab_system_capital = {
 		job_knight_commander_add = 1
 		job_knight_add = 200
 	}
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { is_gestalt = no } # Vfix opt
+		}
+		job_enforcer_add = 200
+	}
+
 	inline_script = {
 		script = jobs/enforcers_add
 		AMOUNT = 200

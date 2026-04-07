@@ -19,41 +19,43 @@ country_event = {
 
 	immediate = {
 		if = {
-			limit = {
-				is_world_forger_empire = yes
-				# Some origins alter nearby planets
-				NOR = {
-					has_origin = origin_doomsday
-					has_origin = origin_shattered_ring
-					has_origin = origin_necrophage
-					has_void_dweller_origin = yes
-					has_origin = origin_common_ground
-					has_origin = origin_hegemon
-					has_origin = origin_life_seeded
-				}
-			}
+			limit = { is_world_forger_empire = yes }
 			add_research_option = tech_volcanic_forge
-			capital_scope = { # Guaranteed dry worlds
-				closest_system = {
-					min_steps = 1
-					max_steps = 3
-					limit = { has_star_flag = neighbor_t1_first_colony }
-					random_system_planet = {
-						limit = { has_planet_flag = prescripted_ideal }
-						change_pc = pc_arid
-						reroll_planet = yes
-						clear_blockers = yes
+			# Some origins alter nearby planets
+			if = {
+				limit = {
+					NOR = {
+						has_origin = origin_doomsday
+						has_origin = origin_shattered_ring
+						has_origin = origin_necrophage
+						has_void_dweller_origin = yes
+						has_origin = origin_common_ground
+						has_origin = origin_hegemon
+						has_origin = origin_life_seeded
 					}
 				}
-				closest_system = {
-					min_steps = 1
-					max_steps = 3
-					limit = { has_star_flag = neighbor_t2_second_colony }
-					random_system_planet = {
-						limit = { has_planet_flag = prescripted_ideal }
-						change_pc = pc_desert
-						reroll_planet = yes
-						clear_blockers = yes
+				capital_scope = { # Guaranteed dry worlds
+					closest_system = {
+						min_steps = 1
+						max_steps = 3
+						limit = { has_star_flag = neighbor_t1_first_colony }
+						random_system_planet = {
+							limit = { has_planet_flag = prescripted_ideal }
+							change_pc = pc_arid
+							reroll_planet = yes
+							clear_blockers = yes
+						}
+					}
+					closest_system = {
+						min_steps = 1
+						max_steps = 3
+						limit = { has_star_flag = neighbor_t2_second_colony }
+						random_system_planet = {
+							limit = { has_planet_flag = prescripted_ideal }
+							change_pc = pc_desert
+							reroll_planet = yes
+							clear_blockers = yes
+						}
 					}
 				}
 			}

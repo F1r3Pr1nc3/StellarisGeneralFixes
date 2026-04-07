@@ -611,6 +611,16 @@ planet_event = {
 		}
 		clear_assimilation_variables = yes			# Clears variables
 		set_update_modifiers_batch = end			# Unfreeze modifier calculation for performance
+		# grant timed modifiers from cyber hive
+		if = {
+			limit = {
+				owner = { has_tradition = tr_cybernetics_finish }
+			}
+			owner = {
+				add_modifier = { modifier = cyber_hive_node_booster months = 3 }
+			}
+			add_modifier = { modifier = cyber_hive_planet_booster months = 3 }
+		}
 	}
 }
 

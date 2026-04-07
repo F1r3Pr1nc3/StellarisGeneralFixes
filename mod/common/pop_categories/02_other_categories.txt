@@ -20,9 +20,8 @@ civilian = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy
-	}
+	inline_script = "pop_categories/resettlement_costs"
+
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -137,9 +136,7 @@ purge = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy_reduced
-	}
+	inline_script = "pop_categories/resettlement_costs_low"
 
 	pop_group_modifier = {
 		pop_political_power = -1
@@ -168,9 +165,7 @@ robot_servant = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy_reduced
-	}
+	inline_script = "pop_categories/resettlement_costs_low"
 
 	# Implemented in vanilla v4.1.7
 	# Patch (by fs_nanamedou)
@@ -207,9 +202,7 @@ slave = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy_reduced
-	}
+	inline_script = "pop_categories/resettlement_costs_low"
 
 	triggered_pop_group_modifier = {
 		potential = {
@@ -253,6 +246,7 @@ slave = {
 		pop_bonus_workforce_mult = -0.5
 		mult = planet.modifier:pop_slave_bonus_workforce_mult
 	}
+	inline_script = "pop_categories/social_classes_triggered_modifiers_no_happiness"
 
 	resources = {
 		category = pop_category_slave
@@ -299,9 +293,7 @@ slave_unemployment = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy_reduced
-	}
+	inline_script = "pop_categories/resettlement_costs_low"
 
 	# Triggered Modifiers
 	inline_script = "pop_categories/social_classes_triggered_modifiers"
@@ -353,9 +345,7 @@ slave_unemployment2 = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy_reduced
-	}
+	inline_script = "pop_categories/resettlement_costs_low"
 
 	# Triggered Modifiers
 	inline_script = "pop_categories/social_classes_triggered_modifiers"
@@ -404,10 +394,7 @@ bio_trophy = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy
-		unity = @resettlement_unity_high
-	}
+	inline_script = "pop_categories/resettlement_costs"
 
 	# Triggered Modifiers
 	inline_script = "pop_categories/social_classes_triggered_modifiers"
@@ -461,10 +448,7 @@ bio_trophy_unemployment = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy
-		unity = @resettlement_unity_high
-	}
+	inline_script = "pop_categories/resettlement_costs"
 
 	# Triggered Modifiers
 	inline_script = "pop_categories/social_classes_triggered_modifiers"
@@ -554,9 +538,7 @@ assimilation = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy
-	}
+	inline_script = "pop_categories/resettlement_costs"
 
 	pop_group_modifier = {
 		pop_political_power = -1
@@ -641,9 +623,7 @@ precursor = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy
-	}
+	inline_script = "pop_categories/resettlement_costs"
 
 	resources = {
 		category = pop_category_precursor
@@ -792,9 +772,7 @@ chip_slave = {
 		always = yes
 	}
 
-	resettlement_cost = {
-		energy = @resettlement_energy_reduced
-	}
+	inline_script = "pop_categories/resettlement_costs_low"
 
 	resources = {
 		category = pop_category_slave

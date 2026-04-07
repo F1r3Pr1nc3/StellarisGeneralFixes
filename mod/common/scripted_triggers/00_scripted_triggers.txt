@@ -2290,6 +2290,7 @@ can_have_physics_deposits = {
 		is_planet_class = pc_neutron_star
 		is_planet_class = pc_pulsar
 		is_planet_class = pc_black_hole
+		has_planet_flag = can_have_physics_deposits
 	}
 }
 
@@ -5275,5 +5276,14 @@ is_specialist_category = {
 	OR = {
 		is_pop_category = specialist
 		is_pop_category = specialist_unemployment # Vfix?
+	}
+}
+
+has_unity_blocker = {
+	OR = {
+		has_deposit = d_shroudstone
+		has_deposit = d_aura_blocker
+		has_deposit = d_shroudfall
+		has_deposit = d_ruined_sanctum_of_the_lost
 	}
 }

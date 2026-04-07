@@ -1,11 +1,9 @@
-name="~~Stellaris v[4.2-4.3] General Fixes"
-version="4.3.2.1"
+name="~~Stellaris [v4.3] General Fixes"
+version="4.3.4.0"
 tags={
 	"Fixes"
 	"Fix"
-}
-dependencies={
-	"~~Ariphaos Unofficial Patch (4.1)"
+	"4.3"
 }
 supported_version="v4.3.*"
-remote_file_id="3615026960"
+remote_file_id="3701747681"

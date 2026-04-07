@@ -1,49 +1,41 @@
 @gaiaCost = 7500
 @gaiaTime = 3600
 @gaiaBiomassCost = 3500
-
 @nukedCost = 10000
 @nukedTime = 7200
 @nukedBiomassCost = 5000
-
 @highestCost = 12500
 @highestTime = 9000
 @highestBiomassCost = 6000
-
 @barrenCostCheap = 5000
 @barrenTimeShort = 3600
 @barrenBiomassCostCheap = 2500
-
 @barrenCostExpensive = 10000
 @barrenTimeLong = 5400
 @barrenBiomassCostExpensive = 5000
-
 @barrenCostExtreme = 15000
 @barrenTimeExtreme = 7200
 @barrenBiomassCostExtreme = 7500
-
 @machineCost = 10000
 @machineTime = 7200
-@machineBiomassCost = 8000 #Intentionally larger
-
+@machineBiomassCost = 8000 # Intentionally larger
 @hiveCost = 10000
 @hiveTime = 7200
-@hiveBiomassCost = 2500 #Intentionally smaller
-
+@hiveBiomassCost = 2500 # Intentionally smaller
 @lClusterCost = 1000
-@lClusterBiomassCost = 2000 #Intentionally larger
+@lClusterBiomassCost = 2000 # Intentionally larger
 @lClusterTime = 360
 
 ################
 ## Tomb World ##
 ################
+
 terraform_link = {
 	from = "pc_nuked"
 	to = "pc_desert"
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -65,10 +57,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_desert
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_desert }
 		}
 	}
 }
@@ -79,7 +68,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -101,10 +89,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_arid
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_arid }
 		}
 	}
 }
@@ -115,7 +100,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -137,10 +121,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_savannah
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_savannah }
 		}
 	}
 }
@@ -151,7 +132,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -173,10 +153,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_arctic
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_arctic }
 		}
 	}
 }
@@ -187,7 +164,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -209,10 +185,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_tundra
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_tundra }
 		}
 	}
 }
@@ -223,7 +196,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -245,10 +217,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_alpine
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_alpine }
 		}
 	}
 }
@@ -259,7 +228,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -281,10 +249,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_continental
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_continental }
 		}
 	}
 }
@@ -295,7 +260,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -317,10 +281,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_tropical
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_tropical }
 		}
 	}
 }
@@ -331,7 +292,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -353,33 +313,23 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_ocean
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_ocean }
 		}
-		modifier = {
-			factor = 4
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 4 has_trait = trait_aquatic }
+		modifier = { factor = 4 has_trait = trait_robot_aquatic }
 	}
 }
 
 ################
 ## Gaia World ##
 ################
-#These are always a good idea if the AI has taken the perk. So the AI will always want it, to a degree.
+# These are always a good idea if the AI has taken the perk. So the AI will always want it, to a degree.
 terraform_link = {
 	from = "pc_desert"
 	to = "pc_gaia"
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -414,7 +364,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -449,7 +398,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -460,6 +408,7 @@ terraform_link = {
 	inline_script = {
 		script = terraform/wilderness_biomass
 	}
+
 	duration = @gaiaTime
 
 	potential = {
@@ -483,7 +432,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -518,7 +466,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -553,7 +500,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -588,7 +534,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -599,6 +544,7 @@ terraform_link = {
 	inline_script = {
 		script = terraform/wilderness_biomass
 	}
+
 	duration = @gaiaTime
 
 	potential = {
@@ -622,7 +568,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -657,7 +602,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @gaiaCost
@@ -683,7 +627,7 @@ terraform_link = {
 
 	ai_weight = {
 		weight = 1
-		modifier = { #Ocean Worlds are Aquatic species' paradises
+		modifier = { # Ocean Worlds are Aquatic species' paradises
 			factor = 0
 			from = {
 				is_colony = yes
@@ -707,7 +651,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @highestCost
@@ -751,7 +694,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @highestCost
@@ -795,7 +737,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @highestCost
@@ -842,7 +783,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -880,7 +820,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -918,7 +857,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -956,7 +894,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExpensive
@@ -994,7 +931,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExpensive
@@ -1032,7 +968,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExpensive
@@ -1061,14 +996,8 @@ terraform_link = {
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 4
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 4 has_trait = trait_aquatic }
+		modifier = { factor = 4 has_trait = trait_robot_aquatic }
 	}
 }
 
@@ -1078,7 +1007,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExtreme
@@ -1116,7 +1044,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExtreme
@@ -1154,7 +1081,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExtreme
@@ -1192,7 +1118,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -1230,7 +1155,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -1268,7 +1192,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -1306,7 +1229,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExpensive
@@ -1344,7 +1266,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExpensive
@@ -1382,7 +1303,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExpensive
@@ -1411,14 +1331,8 @@ terraform_link = {
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 4
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 4 has_trait = trait_aquatic }
+		modifier = { factor = 4 has_trait = trait_robot_aquatic }
 	}
 }
 
@@ -1428,7 +1342,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostCheap
@@ -1444,7 +1357,7 @@ terraform_link = {
 
 	potential = {
 		exists = owner
-		OR  = {
+		OR = {
 			has_trait = trait_aquatic
 			has_trait = trait_robot_aquatic
 		}
@@ -1462,14 +1375,8 @@ terraform_link = {
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 4
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 4 has_trait = trait_aquatic }
+		modifier = { factor = 4 has_trait = trait_robot_aquatic }
 	}
 }
 
@@ -1479,7 +1386,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExtreme
@@ -1517,7 +1423,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExtreme
@@ -1555,7 +1460,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @barrenCostExtreme
@@ -1590,13 +1494,13 @@ terraform_link = {
 ###################
 ## Machine World ##
 ###################
+
 terraform_link = {
 	to = "pc_machine"
 	from = "pc_barren"
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1611,15 +1515,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 20
-		#It's a barren world!
+		# It's a barren world!
 	}
 }
 
@@ -1629,7 +1530,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1644,15 +1544,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 20
-		#It's a barren world!
+		# It's a barren world!
 	}
 }
 
@@ -1662,7 +1559,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1679,12 +1575,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1697,7 +1599,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1723,12 +1624,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1741,7 +1648,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1758,12 +1664,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1776,7 +1688,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1793,12 +1704,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1811,7 +1728,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1828,12 +1744,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1846,7 +1768,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1863,12 +1784,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1881,7 +1808,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1898,12 +1824,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1916,7 +1848,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1933,12 +1864,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1951,7 +1888,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -1968,12 +1904,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -1986,7 +1928,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -2003,12 +1944,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -2021,7 +1968,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -2038,12 +1984,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -2056,7 +2008,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -2073,12 +2024,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -2091,7 +2048,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2111,18 +2067,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2132,7 +2082,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2152,18 +2101,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2173,7 +2116,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2193,18 +2135,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2214,7 +2150,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2234,18 +2169,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2255,7 +2184,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2275,18 +2203,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2296,7 +2218,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2316,18 +2237,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2337,7 +2252,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2357,18 +2271,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2378,7 +2286,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2398,18 +2305,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -2419,7 +2320,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @machineCost
@@ -2439,39 +2339,27 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
+		modifier = { factor = 4 has_trait = trait_aquatic }
+		modifier = { factor = 4 has_trait = trait_robot_aquatic }
 	}
 }
 
 ###################
 ## Hive World ##
 ###################
+
 terraform_link = {
 	to = "pc_hive"
 	from = "pc_barren"
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2504,7 +2392,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2537,7 +2424,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2554,11 +2440,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2571,7 +2470,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2597,11 +2495,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2614,7 +2525,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2631,11 +2541,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2648,7 +2571,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2665,13 +2587,22 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = { # Vfix opt
-				OR = {
-					is_colony = no
-					any_owned_species = {
-						NOT = {
-							has_trait = trait_hive_mind
+			OR = {
+				from = { # Vfix opt
+					OR = {
+						is_colony = no
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
 						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
 				}
 			}
@@ -2685,7 +2616,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2702,11 +2632,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2719,7 +2662,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2736,11 +2678,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2753,7 +2708,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2770,11 +2724,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2787,7 +2754,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2804,11 +2770,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2821,7 +2800,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2838,11 +2816,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2855,7 +2846,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2872,11 +2862,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2889,7 +2892,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2906,11 +2908,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2923,7 +2938,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -2940,11 +2954,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -2957,7 +2984,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -2977,10 +3003,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -2990,10 +3013,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3003,7 +3023,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3023,10 +3042,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3036,10 +3052,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3049,7 +3062,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3069,10 +3081,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3082,10 +3091,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3095,7 +3101,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3115,10 +3120,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3128,10 +3130,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3141,7 +3140,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3161,10 +3159,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3174,10 +3169,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3187,7 +3179,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3207,10 +3198,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3220,10 +3208,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3233,7 +3218,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3253,10 +3237,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3266,10 +3247,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3279,7 +3257,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3299,10 +3276,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3312,10 +3286,7 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
@@ -3325,7 +3296,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @hiveCost
@@ -3345,10 +3315,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
@@ -3358,25 +3325,24 @@ terraform_link = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
 		}
-		modifier = {
-			factor = 100
-			is_wilderness_empire = yes
-		}
+		modifier = { factor = 100 is_wilderness_empire = yes }
 	}
 }
 
 #############
 # L-Cluster #
 #############
+
 terraform_link = {
 	from = pc_gray_goo
 	to = pc_desert
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3391,8 +3357,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3403,11 +3374,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_arid
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3422,8 +3394,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3434,11 +3411,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_savannah
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3453,8 +3431,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3465,11 +3448,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_ocean
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3484,19 +3468,18 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
-		modifier = {
-			factor = 2
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 2 has_trait = trait_aquatic }
+		modifier = { factor = 2 has_trait = trait_robot_aquatic }
 	}
 }
 
@@ -3504,11 +3487,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_continental
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3523,8 +3507,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3535,11 +3524,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_tropical
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3554,8 +3544,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3566,11 +3561,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_arctic
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3585,8 +3581,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3597,11 +3598,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_alpine
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3616,8 +3618,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3628,11 +3635,12 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_tundra
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -3647,8 +3655,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-	exists = owner from = { has_modifier = terraforming_candidate } }
-	effect = { from = { remove_modifier = terraforming_candidate } }
+		exists = owner
+		from = { has_modifier = terraforming_candidate }
+	}
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -3656,13 +3669,13 @@ terraform_link = {
 }
 
 ## Tombworlding
+
 terraform_link = {
 	from = "pc_desert"
 	to = "pc_nuked"
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3678,7 +3691,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3689,7 +3702,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3705,7 +3717,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3716,7 +3728,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3732,7 +3743,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3743,7 +3754,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3759,7 +3769,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3770,7 +3780,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3786,7 +3795,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3797,7 +3806,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3813,7 +3821,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3824,7 +3832,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3840,7 +3847,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3851,7 +3858,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3867,7 +3873,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3878,7 +3884,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -3894,7 +3899,7 @@ terraform_link = {
 		has_country_flag = relentless_industrialists_study_completed
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3905,8 +3910,7 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
-		cost = { #It takes real effort to destroy something so perfect
+		cost = { # It takes real effort to destroy something so perfect
 			energy = 2500
 			exotic_gases = 200
 			volatile_motes = 200
@@ -3925,7 +3929,7 @@ terraform_link = {
 		has_technology = tech_climate_restoration
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -3936,7 +3940,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @highestCost
 		}
@@ -3967,13 +3970,13 @@ terraform_link = {
 ################
 ## Toxic World ##
 ################
+
 terraform_link = {
 	from = "pc_toxic"
 	to = "pc_desert"
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -3991,6 +3994,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4000,7 +4004,7 @@ terraform_link = {
 	}
 
 	effect = {
-		from  = { detox_hangover = yes }
+		from = { detox_hangover = yes }
 	}
 
 	ai_weight = {
@@ -4014,7 +4018,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4032,6 +4035,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4055,7 +4059,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4073,6 +4076,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4096,7 +4100,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4114,6 +4117,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4137,7 +4141,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4155,6 +4158,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4178,7 +4182,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4196,6 +4199,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4210,14 +4214,8 @@ terraform_link = {
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 4
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 4 has_trait = trait_aquatic }
+		modifier = { factor = 4 has_trait = trait_robot_aquatic }
 	}
 }
 
@@ -4227,7 +4225,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4245,6 +4242,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4268,7 +4266,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4286,6 +4283,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4309,7 +4307,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4327,6 +4324,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4350,7 +4348,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @nukedCost
@@ -4368,6 +4365,7 @@ terraform_link = {
 		exists = owner
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		OR = {
 			has_ascension_perk = ap_detox
@@ -4392,7 +4390,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 10000
 		}
@@ -4405,6 +4402,7 @@ terraform_link = {
 		owner = { has_origin = origin_fallen_empire_hive }
 		from = { has_modifier = toxic_terraforming_candidate }
 	}
+
 	condition = {
 		has_technology = "tech_climate_restoration"
 	}
@@ -4419,15 +4417,17 @@ terraform_link = {
 }
 
 ##Nanotech Links
+
 terraform_link = {
 	from = pc_nanotech
 	to = pc_desert
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4442,9 +4442,7 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
 
 	ai_weight = {
@@ -4456,11 +4454,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_arid
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4475,9 +4474,7 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
 
 	ai_weight = {
@@ -4489,11 +4486,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_savannah
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4508,10 +4506,9 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4521,11 +4518,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_ocean
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming_ocean
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4540,20 +4538,13 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
-		modifier = {
-			factor = 2
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_robot_aquatic
-		}
+		modifier = { factor = 2 has_trait = trait_aquatic }
+		modifier = { factor = 2 has_trait = trait_robot_aquatic }
 	}
 }
 
@@ -4561,11 +4552,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_continental
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4580,10 +4572,9 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4593,11 +4584,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_tropical
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4612,10 +4604,9 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4625,11 +4616,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_arctic
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4644,10 +4636,9 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4657,11 +4648,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_alpine
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4676,10 +4668,9 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4689,11 +4680,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_tundra
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4708,10 +4700,9 @@ terraform_link = {
 	duration = @lClusterTime
 
 	potential = {
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4721,11 +4712,12 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_gaia
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		inline_script = {
 			script = terraform/triggered_costs
 			ENERGY_COST = @lClusterCost
@@ -4741,10 +4733,9 @@ terraform_link = {
 
 	potential = {
 		has_ascension_perk = "ap_world_shaper"
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4754,23 +4745,24 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_machine
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
 	}
 
 	duration = @machineTime
+
 	potential = {
 		has_ascension_perk = ap_machine_worlds
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4780,23 +4772,24 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_hive
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
 	}
 
 	duration = @hiveTime
+
 	potential = {
 		has_ascension_perk = ap_hive_worlds
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
+
 	ai_weight = {
 		weight = 10
 	}
@@ -4809,7 +4802,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4835,7 +4827,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4861,7 +4852,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4887,7 +4877,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4913,7 +4902,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4939,7 +4927,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4965,7 +4952,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -4991,7 +4977,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5017,7 +5002,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5043,7 +5027,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5069,7 +5052,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5095,7 +5077,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5121,7 +5102,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5147,7 +5127,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5177,7 +5156,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5206,7 +5184,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5235,7 +5212,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5264,7 +5240,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5293,7 +5268,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5322,7 +5296,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5351,7 +5324,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5380,7 +5352,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5409,7 +5380,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5438,7 +5408,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			biomass = @wildernessCost
 		}
@@ -5459,6 +5428,7 @@ terraform_link = {
 		script = terraform/wilderness_biomass_special
 	}
 }
+
 ##############
 ## VOLCANIC ##
 ##############
@@ -5469,7 +5439,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -5481,6 +5450,7 @@ terraform_link = {
 		exists = owner
 		has_ascension_perk = ap_machine_worlds
 	}
+
 	condition = {
 		has_technology = "tech_volcanic_terraforming"
 	}
@@ -5489,12 +5459,18 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			from = {
-				any_owned_species = {
-					NOR = {
-						is_robotic = yes
+			OR = {
+				from = {
+					any_owned_species = { is_robotic = no is_sapient = yes }
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
 					}
-					is_sapient = yes
 				}
 			}
 		}
@@ -5507,7 +5483,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 5000
 		}
@@ -5540,7 +5515,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 10000
 		}
@@ -5552,6 +5526,7 @@ terraform_link = {
 		exists = owner
 		has_country_flag = allow_terraforming_into_volcanic
 	}
+
 	condition = {
 		has_technology = "tech_climate_restoration"
 	}
@@ -5560,10 +5535,7 @@ terraform_link = {
 		weight = 0
 		modifier = {
 			weight = 5
-			should_terraform_trigger = {
-				CLASS_FROM = pc_nuked
-				CLASS_TO = pc_volcanic
-			}
+			should_terraform_trigger = { CLASS_FROM = pc_nuked CLASS_TO = pc_volcanic }
 		}
 	}
 }
@@ -5574,7 +5546,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @machineCost
 		}
@@ -5589,18 +5560,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_machine_empire = yes
-		}
+		modifier = { factor = 0 is_machine_empire = yes }
 	}
 }
 
@@ -5610,8 +5575,7 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
-		cost = { #It takes real effort to destroy something so perfect
+		cost = { # It takes real effort to destroy something so perfect
 			energy = 2500
 			exotic_gases = 200
 			volatile_motes = 200
@@ -5624,11 +5588,12 @@ terraform_link = {
 		exists = owner
 		has_country_flag = allow_terraforming_into_volcanic
 	}
+
 	condition = {
 		has_technology = tech_climate_restoration
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to volcanic world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to volcanic world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -5637,22 +5602,28 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_volcanic
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @lClusterCost
 		}
 	}
+
 	duration = 360
+
 	potential = {
 		exists = owner
 		from = { has_modifier = terraforming_candidate }
 		has_country_flag = allow_terraforming_into_volcanic
 	}
-	effect = { from = { remove_modifier = terraforming_candidate } }
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -5665,7 +5636,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -5677,6 +5647,7 @@ terraform_link = {
 		exists = owner
 		has_ascension_perk = ap_hive_worlds
 	}
+
 	condition = {
 		has_technology = "tech_volcanic_terraforming"
 	}
@@ -5685,11 +5656,24 @@ terraform_link = {
 		weight = 10
 		modifier = {
 			factor = 0
-			NOT = { has_origin = origin_necrophage }
-			from = {
-				any_owned_species = {
-					NOT = { has_trait = trait_hive_mind }
-					is_sapient = yes
+			OR = {
+				AND = {
+					NOT = { has_origin = origin_necrophage }
+					from = {
+						any_owned_species = {
+							NOT = { has_trait = trait_hive_mind }
+							is_sapient = yes
+						}
+					}
+				}
+				owner = {
+					OR = {
+						any_owned_planet = { is_terraforming = yes }
+						has_deficit = energy
+						has_deficit = minerals
+						has_deficit = food
+						has_deficit = consumer_goods
+					}
 				}
 			}
 		}
@@ -5702,7 +5686,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 10000
 		}
@@ -5715,13 +5698,14 @@ terraform_link = {
 		from = { has_modifier = toxic_terraforming_candidate }
 		has_country_flag = allow_terraforming_into_volcanic
 	}
+
 	condition = {
 		has_ascension_perk = "ap_detox"
 		has_technology = "tech_climate_restoration"
 	}
 
 	effect = {
-		from  = { detox_hangover = yes }
+		from = { detox_hangover = yes }
 	}
 
 	ai_weight = {
@@ -5735,7 +5719,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 0
 		}
@@ -5759,21 +5742,22 @@ terraform_link = {
 	from = pc_nanotech
 	to = pc_volcanic
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @lClusterCost
 		}
 	}
+
 	duration = 360
+
 	potential = {
 		has_country_flag = allow_terraforming_into_volcanic
-		NOT = {
-			has_tradition = tr_nanotech_adopt
-		}
+		NOT = { has_tradition = tr_nanotech_adopt }
 	}
 
 	ai_weight = {
@@ -5785,22 +5769,28 @@ terraform_link = {
 	from = pc_gray_goo
 	to = pc_volcanic
 
-	condition = { has_technology = "tech_climate_restoration" }
+	condition = {
+		has_technology = "tech_climate_restoration"
+	}
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @lClusterCost
 		}
 	}
+
 	duration = 360
+
 	potential = {
 		exists = owner
 		from = { has_modifier = terraforming_candidate }
 		has_country_flag = allow_terraforming_into_volcanic
 	}
-	effect = { from = { remove_modifier = terraforming_candidate } }
+
+	effect = {
+		from = { remove_modifier = terraforming_candidate }
+	}
 
 	ai_weight = {
 		weight = 10
@@ -5813,7 +5803,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @hiveCost
 		}
@@ -5828,18 +5817,12 @@ terraform_link = {
 	}
 
 	effect = {
-		from = {
-			reroll_deposits = yes
-			clear_blockers = yes
-		}
+		from = { reroll_deposits = yes clear_blockers = yes }
 	}
 
 	ai_weight = {
 		weight = 5
-		modifier = {
-			factor = 0
-			is_hive_empire = yes
-		}
+		modifier = { factor = 0 is_hive_empire = yes }
 	}
 }
 
@@ -5849,7 +5832,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = 1000
 			exotic_gases = 100
@@ -5864,11 +5846,12 @@ terraform_link = {
 		has_policy_flag = relentless_industrialists_study
 		has_country_flag = relentless_industrialists_study_completed
 	}
+
 	condition = {
 		has_technology = "tech_volcanic_terraforming"
 	}
 
-	ai_weight = { #If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
+	ai_weight = { # If we ever enable this: make sure the AI doesn't loop (terraform to tomb world and then back). And also check ai_budgets
 		weight = 0
 	}
 }
@@ -5879,7 +5862,6 @@ terraform_link = {
 
 	resources = {
 		category = terraforming
-
 		cost = {
 			energy = @gaiaCost
 		}

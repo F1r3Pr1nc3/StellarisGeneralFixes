@@ -1282,7 +1282,7 @@ create_ai_planet_defense = {
 		effect = {
 			set_owner = event_target:AI_crisis
 			while = {
-				count = 25
+				count = 16
 				create_ship = {
 					name = random
 					design = "NAME_Euthanizer"
@@ -1291,7 +1291,7 @@ create_ai_planet_defense = {
 			}
 			assign_leader = event_target:contingency_fleet_leader
 			while = {
-				count = 50
+				count = 35
 				create_ship = {
 					name = random
 					design = "NAME_Sterilizer"
@@ -1447,7 +1447,7 @@ create_ai_fleet = {
 		effect = {
 			set_owner = event_target:AI_crisis
 			while = {
-				count = 10
+				count = 5
 				create_ship = {
 					name = random
 					design = "NAME_Euthanizer"
@@ -1456,7 +1456,7 @@ create_ai_fleet = {
 			}
 			assign_leader = event_target:contingency_fleet_leader
 			while = {
-				count = 20
+				count = 10
 				create_ship = {
 					name = random
 					design = "NAME_Sterilizer"
@@ -1469,6 +1469,241 @@ create_ai_fleet = {
 				angle = random
 			}
 			set_fleet_bombardment_stance = armageddon
+		}
+	}
+}
+
+create_unbidden_fleet = {
+	event_target:extradimensionals = {
+		random_list = {
+			25 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+					traits = { trait = leader_trait_ethereal }
+				}
+			}
+			25 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+					traits = { trait = leader_trait_dimensional_stutter }
+				}
+			}
+			50 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+				}
+			}
+		}
+		create_fleet = {
+			effect = {
+				set_owner = prev
+				create_ship = {
+					name = random
+					design = "NAME_Revenant"
+					graphical_culture = "extra_dimensional_01"
+				}
+				assign_leader = last_created_leader
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						design = "NAME_Revenant"
+						graphical_culture = "extra_dimensional_01"
+					}
+				}
+				while = {
+					count = 5
+					create_ship = {
+						name = random
+						design = "NAME_Phantom"
+						graphical_culture = "extra_dimensional_01"
+					}
+				}
+				while = {
+					count = 9
+					create_ship = {
+						name = random
+						design = "NAME_Wraith"
+						graphical_culture = "extra_dimensional_01"
+					}
+				}
+				set_location = {
+					target = root
+					distance = 5
+					angle = random
+				}
+				set_fleet_stance = aggressive
+				set_aggro_range = 500
+				set_aggro_range_measure_from = self
+				set_fleet_bombardment_stance = armageddon
+			}
+		}
+	}
+}
+
+create_aberrant_fleet = {
+	event_target:extradimensionals2 = {
+		# Create Admiral
+		random_list = {
+			25 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+					traits = { trait = leader_trait_ethereal }
+				}
+			}
+			25 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+					traits = { trait = leader_trait_dimensional_stutter }
+				}
+			}
+			50 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+				}
+			}
+		}
+		# Create Fleet
+		create_fleet = {
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					design = "NAME_Huntress"
+					graphical_culture = "extra_dimensional_02"
+				}
+				assign_leader = last_created_leader
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						design = "NAME_Huntress"
+						graphical_culture = "extra_dimensional_02"
+					}
+				}
+				while = {
+					count = 5
+					create_ship = {
+						name = random
+						design = "NAME_Assassin"
+						graphical_culture = "extra_dimensional_02"
+					}
+				}
+				while = {
+					count = 10
+					create_ship = {
+						name = random
+						design = "NAME_Predator"
+						graphical_culture = "extra_dimensional_02"
+					}
+				}
+				set_location = {
+					target = event_target:dimensional_portal
+					distance = 5
+					angle = random
+				}
+				set_fleet_stance = aggressive
+				set_aggro_range = 500
+				set_aggro_range_measure_from = self
+				set_fleet_bombardment_stance = armageddon
+			}
+		}
+	}
+}
+
+create_vehement_fleet = {
+	event_target:extradimensionals3 = {
+		# Create Admiral
+		random_list = {
+			25 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+					traits = { trait = leader_trait_ethereal }
+				}
+			}
+			25 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+					traits = { trait = leader_trait_dimensional_stutter }
+				}
+			}
+			50 = {
+				create_leader = {
+					class = commander
+					species = event_target:extradimensional_species
+					name = random
+					skill = 3
+				}
+			}
+		}
+		# Create Fleet
+		create_fleet = {
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					design = "NAME_Eradicator"
+					graphical_culture = "extra_dimensional_03"
+				}
+				assign_leader = last_created_leader
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						design = "NAME_Eradicator"
+						graphical_culture = "extra_dimensional_03"
+					}
+				}
+				while = {
+					count = 5
+					create_ship = {
+						name = random
+						design = "NAME_Annihilator"
+						graphical_culture = "extra_dimensional_03"
+					}
+				}
+				while = {
+					count = 10
+					create_ship = {
+						name = random
+						design = "NAME_Obliterator"
+						graphical_culture = "extra_dimensional_03"
+					}
+				}
+				set_location = {
+					target = event_target:dimensional_portal
+					distance = 5
+					angle = random
+				}
+				set_fleet_stance = aggressive
+				set_aggro_range = 500
+				set_aggro_range_measure_from = self
+				set_fleet_bombardment_stance = armageddon
+			}
 		}
 	}
 }
@@ -2250,10 +2485,14 @@ update_leader_after_modification = {
 							}
 							if = {
 								limit = {
-									owner = { has_country_flag = firewall_built }
-									NOT = { has_trait = leader_trait_firewalled }
+									owner = {
+										has_country_flag = firewall_built
+									}
 								}
-								add_trait = { trait = leader_trait_firewalled show_message = no }
+								add_trait = {
+									trait = leader_trait_firewalled
+									show_message = no
+								}
 							}
 						}
 					}
@@ -3979,10 +4218,6 @@ destroy_star_system = {
 			}
 		}
 		if = {
-			limit = { is_planet_class = pc_habitat } # uncolonized
-			spawn_habitat_cracker_effect = yes
-		}
-		if = {
 			limit = { is_colony = yes }
 			if = {
 				limit = { exists = orbital_defence }
@@ -3993,6 +4228,10 @@ destroy_star_system = {
 			if = {
 				limit = { is_planet_class = pc_habitat }
 				spawn_habitat_cracker_effect = yes
+			}
+			else_if = {
+				limit = { is_planet_class = pc_cosmogenesis_world }
+				spawn_lathe_cracker_effect = yes
 			}
 			else_if = {
 				limit = { has_ringworld_output_boost = yes }
@@ -4012,7 +4251,15 @@ destroy_star_system = {
 			}
 		}
 		else_if = {
-			limit = { has_ringworld_output_boost = yes }
+			limit = { is_planet_class = pc_habitat } # uncolonized
+			spawn_habitat_cracker_effect = yes
+		}
+		else_if = {
+			limit = { is_planet_class = pc_cosmogenesis_world } # uncolonized
+			spawn_lathe_cracker_effect = yes
+		}
+		else_if = {
+			limit = { has_ringworld_output_boost = yes } # uncolonized
 			spawn_ringworld_cracker_effect = yes
 			change_pc = pc_ringworld_habitable_damaged
 		}
@@ -4960,7 +5207,9 @@ reduce_unity_celebration = {
 			set_situation_flag = standard_unity_reward
 		}
 		small_unity_reward = {
-			owner = { add_resource = { unity = -200 } }
+			owner = {
+				add_resource = { unity = -200 }
+			}
 		}
 	}
 }
@@ -5136,7 +5385,9 @@ set_celebration_modifier = {
 			target = {
 				add_modifier = { modifier = stellar_devourer_trophy }
 			}
-			owner = { set_country_flag = stellar_performance_achievement }
+			owner = {
+				set_country_flag = stellar_performance_achievement
+			}
 		}
 	}
 }
@@ -5920,6 +6171,7 @@ create_zombie_pop_group = {
 		pop_group = event_target:old_pop_group
 		species = event_target:target_species
 		size = $SIZE$
+		category = worker
 	}
 }
 
@@ -7249,37 +7501,59 @@ set_earth_entity = {
 		switch = {
 			trigger = is_planet_class
 			pc_desert = {
-				set_planet_entity = { entity = desert_planet_earth_entity }
+				set_planet_entity = {
+					entity = desert_planet_earth_entity
+				}
 			}
 			pc_arid = {
-				set_planet_entity = { entity = arid_planet_earth_entity }
+				set_planet_entity = {
+					entity = arid_planet_earth_entity
+				}
 			}
 			pc_savannah = {
-				set_planet_entity = { entity = savannah_planet_earth_entity }
+				set_planet_entity = {
+					entity = savannah_planet_earth_entity
+				}
 			}
 			pc_tropical = {
-				set_planet_entity = { entity = tropical_planet_earth_entity }
+				set_planet_entity = {
+					entity = tropical_planet_earth_entity
+				}
 			}
 			pc_ocean = {
-				set_planet_entity = { entity = ocean_planet_earth_entity }
+				set_planet_entity = {
+					entity = ocean_planet_earth_entity
+				}
 			}
 			pc_continental = {
-				set_planet_entity = { entity = continental_planet_earth_entity }
+				set_planet_entity = {
+					entity = continental_planet_earth_entity
+				}
 			}
 			pc_tundra = {
-				set_planet_entity = { entity = tundra_planet_earth_entity }
+				set_planet_entity = {
+					entity = tundra_planet_earth_entity
+				}
 			}
 			pc_arctic = {
-				set_planet_entity = { entity = arctic_planet_earth_entity }
+				set_planet_entity = {
+					entity = arctic_planet_earth_entity
+				}
 			}
 			pc_alpine = {
-				set_planet_entity = { entity = alpine_planet_earth_entity }
+				set_planet_entity = {
+					entity = alpine_planet_earth_entity
+				}
 			}
 			pc_volcanic = {
-				set_planet_entity = { entity = volcanic_planet_earth_entity }
+				set_planet_entity = {
+					entity = volcanic_planet_earth_entity
+				}
 			}
 			default = {
-				set_planet_entity = { entity = continental_planet_earth_entity }
+				set_planet_entity = {
+					entity = continental_planet_earth_entity
+				}
 			}
 		}
 	}
@@ -7291,37 +7565,59 @@ set_mars_entity = {
 		switch = {
 			trigger = is_planet_class
 			pc_desert = {
-				set_planet_entity = { entity = desert_planet_mars_entity }
+				set_planet_entity = {
+					entity = desert_planet_mars_entity
+				}
 			}
 			pc_arid = {
-				set_planet_entity = { entity = arid_planet_mars_entity }
+				set_planet_entity = {
+					entity = arid_planet_mars_entity
+				}
 			}
 			pc_savannah = {
-				set_planet_entity = { entity = savannah_planet_mars_entity }
+				set_planet_entity = {
+					entity = savannah_planet_mars_entity
+				}
 			}
 			pc_tropical = {
-				set_planet_entity = { entity = tropical_planet_mars_entity }
+				set_planet_entity = {
+					entity = tropical_planet_mars_entity
+				}
 			}
 			pc_ocean = {
-				set_planet_entity = { entity = ocean_planet_mars_entity }
+				set_planet_entity = {
+					entity = ocean_planet_mars_entity
+				}
 			}
 			pc_continental = {
-				set_planet_entity = { entity = continental_planet_mars_entity }
+				set_planet_entity = {
+					entity = continental_planet_mars_entity
+				}
 			}
 			pc_tundra = {
-				set_planet_entity = { entity = tundra_planet_mars_entity }
+				set_planet_entity = {
+					entity = tundra_planet_mars_entity
+				}
 			}
 			pc_arctic = {
-				set_planet_entity = { entity = arctic_planet_mars_entity }
+				set_planet_entity = {
+					entity = arctic_planet_mars_entity
+				}
 			}
 			pc_alpine = {
-				set_planet_entity = { entity = alpine_planet_mars_entity }
+				set_planet_entity = {
+					entity = alpine_planet_mars_entity
+				}
 			}
 			pc_volcanic = {
-				set_planet_entity = { entity = volcanic_planet_mars_entity }
+				set_planet_entity = {
+					entity = volcanic_planet_mars_entity
+				}
 			}
 			default = {
-				set_planet_entity = { entity = arid_planet_mars_entity }
+				set_planet_entity = {
+					entity = arid_planet_mars_entity
+				}
 			}
 		}
 	}

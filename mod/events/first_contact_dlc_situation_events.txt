@@ -134,7 +134,7 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_primitive = yes
-			is_gestalt = no # Do not shift gestalts back to Individualist.
+			is_gestalt = no # Vfix Dux: Do not shift gestalts back to Individualist.
 			# check if it's under Societal Guidance or has been the target of an espionage op
 			OR = {
 				has_country_flag = preftl_societal_enlightenment_pact
@@ -793,7 +793,7 @@ country_event = {
 		}
 		set_graphical_culture = industrial_01
 		capital_scope = {
-			# Blockers no longer handled in advancement events, there is no reason to double-up here.
+			# Vfix Dux: Blockers no longer handled in advancement events, there is no reason to double-up here.
 			if = {
 				limit = {
 					exists = observation_outpost_owner
@@ -1066,7 +1066,7 @@ situation_event = {
 
 	trigger = {
 		has_synthetic_dawn = yes
-		has_first_contact_dlc = yes # preftl.1015 cannot fire without this.
+		has_first_contact_dlc = yes # Vfix Dux: preftl.1015 cannot fire without this.
 		NOR = {
 			situation_progress < 960
 			has_situation_flag = has_ongoing_observation_event_chain
@@ -1075,7 +1075,7 @@ situation_event = {
 			has_country_flag = early_space_age
 			NOR = {
 				capital_scope = { is_artificial = yes }
-				is_gestalt = yes # preftl.1015 cannot fire for hives.
+				is_gestalt = yes # Vfix Dux: preftl.1015 cannot fire for hives.
 				has_origin = origin_mechanists
 				has_country_flag = had_pre_ftl_uprising
 				has_country_flag = unplugged_pre_ftl_empire_flag
@@ -1100,7 +1100,7 @@ country_event = {
 
 	trigger = {
 		has_country_flag = early_space_age
-		is_gestalt = no # Changed from hive to gestalt.
+		is_gestalt = no # Vfix Dux: Changed from hive to gestalt.
 		has_first_contact_dlc = yes
 		has_synthetic_dawn = yes
 	}
@@ -1228,7 +1228,7 @@ country_event = {
 				trait = trait_machine_unit
 				trait = random_traits
 			}
-			# immortal = yes # Machines are no longer immortal by default.
+			# Vfix Dux: immortal = yes # Machines are no longer immortal by default.
 		}
 		# create machine country
 		random_list = {
@@ -1236,7 +1236,7 @@ country_event = {
 				create_terminator_country = yes
 			}
 			10 = {
-				create_individual_machine_country = yes  # Individualist Machine option.
+				create_individual_machine_country = yes  # Vfix Dux: Individualist Machine option.
 			}
 			30 = { # assimilator
 				create_assimilator_country = yes
@@ -1295,7 +1295,7 @@ country_event = {
 				}
 				every_fleet_in_system = {
 					limit = {
-						owner = { is_default_or_fallen = yes } # Do not set Tiyanki MIA.
+						owner = { is_default_or_fallen = yes } # Vfix Dux: Do not set Tiyanki MIA.
 						NOT = { is_owned_by = event_target:current_uprising }
 						is_mobile = yes
 					}
@@ -1404,7 +1404,7 @@ country_event = {
 							}
 						}
 					}
-					# No exception needed for Infernals.
+					# Vfix Dux: No exception needed for Infernals.
 				}
 			}
 		}
@@ -1581,7 +1581,7 @@ country_event = {
 				pre_ftl_is_observed_by_system_owner = yes
 				NOR = {
 					has_country_flag = open_technological_enlightenment_pact
-					has_valid_civic = civic_hive_devouring_swarm # A Devouring Swarm would not ask nicely.
+					has_valid_civic = civic_hive_devouring_swarm # Vfix Dux: A Devouring Swarm would not ask nicely.
 				}
 			}
 			capital_scope.observation_outpost_owner = {
@@ -1592,7 +1592,7 @@ country_event = {
 			limit = {
 				pre_ftl_not_observed_by_system_owner = yes
 				NOT = {
-					has_valid_civic = civic_hive_devouring_swarm # A Devouring Swarm would not ask nicely.
+					has_valid_civic = civic_hive_devouring_swarm # Vfix Dux: A Devouring Swarm would not ask nicely.
 				}
 			}
 			capital_scope.solar_system.owner = {
@@ -1600,7 +1600,7 @@ country_event = {
 			}
 		}
 		else = { # if nobody is in the system, they become an empire
-			if = { # Or if Pre-FTL is Devouring Swarm you will not be asked for the starbase.
+			if = { # Vfix Dux: Or if Pre-FTL is Devouring Swarm you will not be asked for the starbase.
 				limit = {
 					AND = {
 						has_valid_civic = civic_hive_devouring_swarm
@@ -1741,7 +1741,7 @@ country_event = {
 					limit = {
 						root = { has_country_flag = fallen_empire_hive_control }
 					}
-					set_subject_of = { who = root preset = preset_political_client } # Control Fragment now included.
+					set_subject_of = { who = root preset = preset_political_client } # Vfix Dux: Control Fragment now included.
 				}
 			}
 			random_agreement = {
@@ -1764,7 +1764,7 @@ country_event = {
 							if = {
 								limit = { has_starbase_size = starbase_outpost }
 								set_starbase_size = starbase_starport
-								set_starbase_module = { slot = 1 module = shipyard } # Now gets some shipyards.
+								set_starbase_module = { slot = 1 module = shipyard } # Vfix Dux: Now gets some shipyards.
 								set_starbase_module = { slot = 2 module = shipyard }
 							}
 							else_if = {
@@ -1954,7 +1954,7 @@ country_event = {
 				is_xenophobe = yes
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_fanatic_purifiers
-				is_genocidal_infernal = yes # No homicidal infernals.
+				is_genocidal_infernal = yes # Vfix Dux: No homicidal infernals.
 			}
 		}
 		custom_tooltip = preftl.1115.recognize.tooltip
@@ -2053,7 +2053,7 @@ country_event = {
 				has_valid_civic = civic_fanatic_purifiers
 				is_genocidal_infernal = yes
 				AND = {
-					is_spiritualist = yes # Allow Individualist Machine Spiritualists to subjugate other Machines.
+					is_spiritualist = yes # Vfix Dux: Allow Individualist Machine Spiritualists to subjugate other Machines.
 					is_robot_empire = no
 				}
 			}
@@ -2097,7 +2097,7 @@ country_event = {
 				has_valid_civic = civic_fanatic_purifiers
 				is_genocidal_infernal = yes
 				AND = {
-					is_spiritualist = yes # Allow Individualist Machine Spiritualists to subjugate other Machines.
+					is_spiritualist = yes # Vfix Dux: Allow Individualist Machine Spiritualists to subjugate other Machines.
 					is_robot_empire = no
 				}
 				event_target:current_uprising = {
@@ -2172,7 +2172,7 @@ country_event = {
 		trigger = { has_valid_civic = civic_fanatic_purifiers }
 	}
 	option = {
-		name = INF_SCUM # Infernal: Xeno Scum
+		name = INF_SCUM # Vfix Dux: Infernal: Xeno Scum
 		trigger = { is_genocidal_infernal = yes }
 	}
 }
@@ -2322,7 +2322,7 @@ country_event = {
 				capital_scope.starbase = {
 					set_owner = root.from
 					if = {
-						limit = { has_starbase_size = starbase_outpost } # Guaranteed shipyards.
+						limit = { has_starbase_size = starbase_outpost } # Vfix Dux: Guaranteed shipyards.
 						set_starbase_size = starbase_starport
 						set_starbase_module = { slot = 1 module = shipyard }
 						set_starbase_module = { slot = 2 module = shipyard }
@@ -2349,7 +2349,7 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { values_others = yes } # Trigger should be consistent. Xenophiles may also be homicidal.
+			limit = { values_others = yes } # Vfix Dux: Trigger should be consistent. Xenophiles may also be homicidal.
 			add_resource = { influence = -100 }
 		}
 		custom_tooltip = preftl.180.b.tooltip
@@ -2557,7 +2557,7 @@ situation_event = {
 				is_gestalt = yes
 				current_awareness_level = full
 				has_blocked_random_devastating_pre_ftl_events = yes
-				has_country_flag = preftl_2000_fired # Do not fire this event if it can't do anything.
+				has_country_flag = preftl_2000_fired # Vfix Dux: Do not fire this event if it can't do anything.
 			}
 			exists = capital_scope
 		}
@@ -3050,9 +3050,9 @@ situation_event = {
 			}
 			set_country_flag = rampant_contagion
 		}
-		custom_tooltip = fircon.7510.a.tt # "Kills some pops"
+		custom_tooltip = fircon.7510.a.tt # Vfix Dux: "Kills some pops"
 		target.owner = {
-			hidden_effect = { # Tooltip can't read while loops, shows 100, not 200.
+			hidden_effect = { # Vfix Dux: Tooltip can't read while loops, shows 100, not 200.
 				while = {
 					count = 2
 					weighted_random_owned_pop_group = {
@@ -3069,7 +3069,7 @@ situation_event = {
 	option = {
 		name = preftl.2010.a
 		owner = {
-			add_resource = { trade = -1000 } # Changed resource.
+			add_resource = { trade = -1000 } # Vfix Dux: Changed resource.
 			set_country_flag = eyes_wide_open
 		}
 		custom_tooltip = tt_end_the_suffering
@@ -3156,7 +3156,7 @@ situation_event = {
 	option = {
 		name = preftl.2020.a
 		owner = {
-			add_resource = { trade = -500 } # Changed resource.
+			add_resource = { trade = -500 } # Vfix Dux: Changed resource.
 			add_observation_insight_effect = {
 				VALUE = 10
 				OUTPOST = root.target.observation_outpost
@@ -3204,7 +3204,7 @@ situation_event = {
 	option = {
 		name = preftl.2020.a
 		owner = {
-			add_resource = { trade = -500 } # Changed resource.
+			add_resource = { trade = -500 } # Vfix Dux: Changed resource.
 			add_observation_insight_effect = {
 				VALUE = 10
 				OUTPOST = root.target.observation_outpost
@@ -4282,7 +4282,7 @@ situation_event = {
 			is_gestalt = no
 			current_awareness_level < full
 			has_blocked_random_devastating_pre_ftl_events = no
-			NOT = { has_country_flag = preftl_2100_fired } # Do not fire if cannot fire subsequent event.
+			NOT = { has_country_flag = preftl_2100_fired } # Vfix Dux: Do not fire if cannot fire subsequent event.
 		}
 	}
 
@@ -4661,8 +4661,8 @@ situation_event = {
 				limit = {
 					any_owned_species = {
 						OR = {
-							has_trait = trait_lithoid # No ARCHETYPE weirdness.
-							has_trait = trait_infernal # Option for infernals.
+							has_trait = trait_lithoid # Vfix Dux: No ARCHETYPE weirdness.
+							has_trait = trait_infernal # Vfix Dux: Option for infernals.
 						}
 					}
 				}
@@ -4673,7 +4673,7 @@ situation_event = {
 			else_if = {
 				limit = {
 					any_owned_species = {
-						has_trait = trait_organic # No ARCHETYPE weirdness.
+						has_trait = trait_organic # Vfix Dux: No ARCHETYPE weirdness.
 					}
 				}
 				capital_scope = {
@@ -4960,7 +4960,7 @@ situation_event = {
 					}
 					every_fleet_in_system = {
 						limit = {
-							owner = { is_default_or_fallen = yes } # Do not set Tiyanki MIA.
+							owner = { is_default_or_fallen = yes } # Vfix Dux: Do not set Tiyanki MIA.
 							NOT = { is_owned_by = event_target:thriving_preftls }
 							is_mobile = yes
 						}
@@ -5216,8 +5216,8 @@ situation_event = {
 					owner = {
 						any_owned_species = {
 							OR = {
-								has_trait = trait_lithoid # No ARCHETYPE weirdness.
-								has_trait = trait_infernal # Option for infernals.
+								has_trait = trait_lithoid # Vfix Dux: No ARCHETYPE weirdness.
+								has_trait = trait_infernal # Vfix Dux: Option for infernals.
 							}
 						}
 					}
@@ -5347,7 +5347,7 @@ situation_event = {
 				remove_modifier = singularity_situation_02
 				remove_modifier = singularity_situation_05
 				remove_modifier = singularity_situation_06
-				# remove_all_buildings = yes # Gestalts should keep the unique Radio Telescope.
+				# Vfix Dux: remove_all_buildings = yes # Gestalts should keep the unique Radio Telescope.
 				set_planet_flag = organic_singularity_communion # To avoid clash with observation event Nascent Collective
 			}
 			target.owner = {
@@ -5355,7 +5355,7 @@ situation_event = {
 				change_government = {
 					authority = auth_hive_mind
 					remove_invalid_civics = yes
-					civics = random # They roll for FTL-hive civics.
+					civics = random # Vfix Dux: They roll for FTL-hive civics.
 				}
 				clear_relations = {
 					target = capital_scope.observation_outpost_owner
@@ -5378,11 +5378,11 @@ situation_event = {
 						}
 					}
 				}
-				set_timed_country_flag = { flag = organic_singularity_communion days = 7 } # To identify this country in 'abort' blocks, such as for Espionage Operations ### IT SHOULD TIME OUT! It forces Plant Technology to fail, but does not prevent it from being started.
+				set_timed_country_flag = { flag = organic_singularity_communion days = 7 } # Vfix Dux: To identify this country in 'abort' blocks, such as for Espionage Operations ### IT SHOULD TIME OUT! It forces Plant Technology to fail, but does not prevent it from being started.
 				every_owned_pop_group = {
 					limit = { is_robot_pop_group = no }
 					save_event_target_as = DPFF_new_hive_pop_group
-					planet = { # Fixes unemployment.
+					planet = { # Vfix Dux: Fixes unemployment.
 						create_pop_group = {
 							pop_group = event_target:DPFF_new_hive_pop_group
 							category = maintenance_drone
@@ -5409,10 +5409,11 @@ situation_event = {
 						limit = {
 							NOT = { owner = { has_valid_civic = civic_hive_devouring_swarm } }
 						}
-						force_add_civic = civic_hive_devouring_swarm # Add the civic, don't replace the entire government with it.
+						# change_government = { civics = { civic = civic_hive_devouring_swarm } }
+						force_add_civic = civic_hive_devouring_swarm # Vfix Dux: Add the civic, don't replace the entire government with it.
 					}
 				}
-				DPFF_set_age_civics_hive = yes # Resets them to Pre-FTL civics.
+				DPFF_set_age_civics_hive = yes # Vfix Dux: Resets them to Pre-FTL civics.
 			}
 		}
 	}
@@ -5660,7 +5661,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 500 } # Vfix Dux: Changed resource.
 			}
 		}
 		name = preftl.2170.a
@@ -5669,7 +5670,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				trade = -500 # Changed resource.
+				trade = -500 # Vfix Dux: Changed resource.
 			}
 		}
 		tooltip = {
@@ -5683,7 +5684,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 500 } # Vfix Dux: Changed resource.
 			}
 		}
 		name = preftl.2170.b
@@ -5691,7 +5692,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				trade = -500 # Changed resource.
+				trade = -500 # Vfix Dux: Changed resource.
 			}
 		}
 		set_situation_flag = aid_leader_01
@@ -5734,7 +5735,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 500 } # Vfix Dux: Changed resource.
 			}
 		}
 		name = preftl.2175.a
@@ -5743,7 +5744,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				trade = -500 # Changed resource.
+				trade = -500 # Vfix Dux: Changed resource.
 			}
 		}
 		tooltip = {
@@ -5758,7 +5759,7 @@ situation_event = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
 				resource_stockpile_compare = { resource = minerals value >= 500 }
-				resource_stockpile_compare = { resource = trade value >= 500 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 500 } # Vfix Dux: Changed resource.
 			}
 		}
 		set_situation_flag = aid_leader_02
@@ -5766,7 +5767,7 @@ situation_event = {
 			add_resource = {
 				alloys = -200
 				minerals = -500
-				trade = -500 # Changed resource.
+				trade = -500 # Vfix Dux: Changed resource.
 			}
 		}
 		tooltip = {
@@ -6059,11 +6060,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Vfix Dux: Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { trade = -1000 } # Changed resource.
+			add_resource = { trade = -1000 } # Vfix Dux: Changed resource.
 		}
 	}
 	option = {
@@ -6076,11 +6077,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Vfix Dux: Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { trade = -1000 } # Changed resource.
+			add_resource = { trade = -1000 } # Vfix Dux: Changed resource.
 		}
 	}
 }
@@ -6162,11 +6163,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Vfix Dux: Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { trade = -1000 } # Changed resource.
+			add_resource = { trade = -1000 } # Vfix Dux: Changed resource.
 		}
 	}
 	option = {
@@ -6179,11 +6180,11 @@ situation_event = {
 		custom_tooltip = arm_them_tt
 		allow = {
 			owner = {
-				resource_stockpile_compare = { resource = trade value >= 1000 } # Changed resource.
+				resource_stockpile_compare = { resource = trade value >= 1000 } # Vfix Dux: Changed resource.
 			}
 		}
 		owner = {
-			add_resource = { trade = -1000 } # Changed resource.
+			add_resource = { trade = -1000 } # Vfix Dux: Changed resource.
 		}
 	}
 }
@@ -6556,7 +6557,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { trade = -5000 } # Changed resource.
+		add_resource = { trade = -5000 } # Vfix Dux: Changed resource.
 	}
 }
 
@@ -6592,7 +6593,7 @@ country_event = {
 
 	option = {
 		name = UNDERSTOOD
-		add_resource = { trade = -2500 } # Changed resource.
+		add_resource = { trade = -2500 } # Vfix Dux: Changed resource.
 	}
 }
 
@@ -6691,7 +6692,7 @@ country_event = {
 			any_pre_ftl_within_border = {
 				OR = {
 					has_country_flag = violation_of_non_interference@root
-					capital_scope = { has_branch_office = root } # Having a branch office on a Pre-FTL is Interference.
+					capital_scope = { has_branch_office = root } # Vfix Dux: Having a branch office on a Pre-FTL is Interference.
 				}
 			}
 		}
@@ -6736,7 +6737,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { trade = -5000 } # Changed resource.
+		add_resource = { trade = -5000 } # Vfix Dux: Changed resource.
 	}
 }
 
@@ -6772,7 +6773,7 @@ country_event = {
 
 	option = {
 		name = UNDERSTOOD
-		add_resource = { trade = -2500 } # Changed resource.
+		add_resource = { trade = -2500 } # Vfix Dux: Changed resource.
 	}
 }
 
@@ -6836,7 +6837,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { trade = -5000 } # Changed resource.
+		add_resource = { trade = -5000 } # Vfix Dux: Changed resource.
 	}
 }
 
@@ -6900,7 +6901,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { trade = -5000 } # Changed resource.
+		add_resource = { trade = -5000 } # Vfix Dux: Changed resource.
 	}
 }
 
@@ -7023,7 +7024,7 @@ country_event = {
 
 	option = {
 		name = CURSES
-		add_resource = { trade = -5000 } # Changed resource.
+		add_resource = { trade = -5000 } # Vfix Dux: Changed resource.
 	}
 }
 

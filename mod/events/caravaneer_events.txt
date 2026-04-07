@@ -4506,26 +4506,36 @@ country_event = {
 	}
 }
 
-# DEPRECATED in v4.2: replaced by cara.4102
-# REPLACEME in v4.3
-# Vfix by https://forum.paradoxplaza.com/forum/threads/are-the-caravaneer-neighbor-events-working-these-days.1894052/#post-31040088
-country_event = {
+# Vfix by FirePrince https://forum.paradoxplaza.com/forum/threads/are-the-caravaneer-neighbor-events-working-these-days.1894052/#post-31040088
+event = {
 	id = cara.4101
 	hide_window = yes
 	is_triggered_only = yes
-	is_test_event = yes
-	fire_only_once = yes
-
 	trigger = {
-		is_ai = no
 		exists = event_target:caravaneer_home_country
-		# is_country_type = default
-		is_homicidal = no
-		any_neighbor_country = { is_country_type = caravaneer_home has_communications = root }
+		event_target:caravaneer_home_country = {
+			any_system_within_border = {
+				any_neighbor_system = {
+					has_owner = yes
+					owner_or_space_owner = { is_ai = no is_homicidal = no } # Vfix opt
+				}
+			}
+		}
 	}
-
 	immediate = {
-		country_event = { id = cara.4100 }
+		event_target:caravaneer_home_country = {
+			random_system_within_border = {
+				every_neighbor_system = {
+					limit = {
+						has_owner = yes
+						owner_or_space_owner = { is_ai = no is_homicidal = no } # Vfix opt
+					}
+					owner_or_space_owner = {
+						country_event = { id = cara.4100 }
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -4582,9 +4592,7 @@ country_event = {
 			}
 		}
 		random_list = {
-			90 = {
-				# no effect
-			}
+			90 = { } # no effect
 			2 = { country_event = { id = cara.4110 } }
 			2 = { # No factor 0 modifier as I don't want the remaining option to be more common.
 				if = {
