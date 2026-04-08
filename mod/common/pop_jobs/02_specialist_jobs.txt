@@ -871,7 +871,7 @@ bureaucrat = {
 		category = planet_bureaucrats
 		# PRODUCES
 		produces = {
-			unity = 4
+			unity = 3
 		}
 		upkeep = {
 			consumer_goods = 2
@@ -891,26 +891,19 @@ bureaucrat = {
 		}
 		produces = {
 			trigger = {
-				bureaucrat_is_preacher = yes
-			}
-			unity = -0.5
-			trade = 2
-		}
-		produces = {
-			trigger = {
 				OR = {
 					bureaucrat_is_death_priest = yes
 					bureaucrat_is_cremator = yes
 				}
 			}
-			unity = -0.5
+			unity = -1
 			society_research = 0.5
 		}
 		produces = {
 			trigger = {
 				bureaucrat_is_haruspex = yes
 			}
-			unity = -0.5
+			unity = -1
 			engineering_research = 1
 		}
 		##Broken Shackles
@@ -975,7 +968,7 @@ bureaucrat = {
 					bureaucrat_is_numistic_priest = yes
 				}
 			}
-			unity = -2
+			unity = -1
 			trade = 6
 		}
 		upkeep = {
@@ -983,14 +976,6 @@ bureaucrat = {
 				bureaucrat_is_numistic_priest = yes
 			}
 			consumer_goods = -1
-			trade = 2
-		}
-		# Job Swap - Superstitious Beliefs
-		produces = {
-			trigger = {
-				bureaucrat_is_superstitious_beliefs_priest_corporate = yes
-			}
-			unity = -0.5		# You're getting bonus unity from Galatic Dowsing
 			trade = 2
 		}
 		# Job Swap - Superstitions Beliefs and Death Cult
@@ -1162,7 +1147,7 @@ bureaucrat = {
 		potential = {
 			bureaucrat_is_memorialist = yes
 		}
-		planet_stability_add = 0.25 # v4.3 = 0.2
+		planet_stability_add = 0.2
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -1197,7 +1182,7 @@ bureaucrat = {
 				bureaucrat_is_superstitious_beliefs_priest_corporate = yes
 			}
 		}
-		planet_stability_add = 0.25 # v4.3 = 0.2
+		planet_stability_add = 0.2
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -1314,7 +1299,6 @@ bureaucrat = {
 
 enforcer = {
 	category = specialist
-	can_be_automated = no
 
 	swappable_data = {
 		default = {
@@ -1465,56 +1449,6 @@ telepath = {
 	inline_script = "jobs/job_telepath"
 
 	possible_precalc = can_fill_specialist_job
-	possible = {
-		has_psionic_species_trait = yes
-	}
-
-	resources = {
-		category = planet_telepaths
-		inline_script = "jobs/job_enforcer_triggered_resources"
-		produces = {
-			unity = 9
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = { has_active_tradition = tr_domination_judgment_corps }
-			}
-			unity = 1
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = { has_country_flag = whisperers_covenant_confirmed }
-			}
-			physics_research = 1.5
-			engineering_research = 1.5
-			society_research = 1.5
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = { has_country_flag = whisperers_covenant_rank_1 }
-			}
-			physics_research = 1.5
-			engineering_research = 1.5
-			society_research = 1.5
-		}
-		# Update @telepath_whisperers_research for covenant custom_tooltip
-		upkeep = {
-			energy = 1
-		}
-		upkeep = {
-			trigger = {
-				exists = planet
-				planet = { has_modifier = anticrime_campaign }
-			}
-			energy = 2
-		}
-	}
-
-	inline_script = "jobs/job_enforcer_additional_modifiers"
-	inline_script = "jobs/job_telepath_additional_modifiers"
 
 	weight = {
 		weight = @specialist_job_weight
@@ -1587,6 +1521,19 @@ entertainer = {
 			condition_string = BATTLE_THRALL_JOB_TRIGGER
 			weight = 20
 		}
+		# Vfix Reenactor
+		swap_type = {
+			trigger = {
+				entertainer_is_duelist_trigger = yes
+				entertainer_is_curator_trigger = yes
+			}
+			name = reenactor
+			desc = reenactor
+			icon = duelist
+			building_icon = aesthetic_wonders_holomuseum
+			condition_string = BATTLE_THRALL_JOB_TRIGGER
+			weight = 20
+		}
 	}
 
 	tags = { amenities unity }
@@ -1613,7 +1560,7 @@ entertainer = {
 	resources = {
 		category = planet_entertainers
 		produces = {
-			unity = 1
+			unity = 0.5
 		}
 		upkeep = {
 			trigger = {
@@ -1621,12 +1568,32 @@ entertainer = {
 			}
 			consumer_goods = 1
 		}
+		# Vfix Job Swap - Curator
+		produces = {
+			trigger = {
+				entertainer_is_curator_trigger = yes
+			}
+			society_research = 0.5
+		}
+		upkeep = {
+			trigger = {
+				entertainer_is_curator_trigger = yes
+				entertainer_is_duelist_trigger = no
+			}
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = {
+				entertainer_is_curator_trigger = yes
+				entertainer_is_duelist_trigger = yes
+			}
+		}
 		# Job Swap - Duelist
 		produces = {
 			trigger = {
 				entertainer_is_duelist_trigger = yes
 			}
-			unity = 1
+			unity = 0.5
 		}
 		upkeep = {
 			trigger = {
@@ -1640,7 +1607,7 @@ entertainer = {
 			trigger = {
 				entertainer_is_storm_dancer_trigger = yes
 			}
-			unity = 3
+			unity = 1.5
 		}
 		upkeep = {
 			trigger = {
@@ -1671,34 +1638,11 @@ entertainer = {
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
-	## Duelist
-	triggered_planet_modifier = {
-		potential = {
-			entertainer_is_duelist_trigger = yes
-			exists = owner
-			owner = {
-				has_councilor = { COUNCILOR = "councilor_warrior_culture" }
-			}
-		}
-		planet_amenities_add = 100
-		mult = value:scripted_modifier_councilor_level_mult|MODIFIER|pop_job_amenities_mult|TYPE|councilor_warrior_culture|
-	}
-
 	triggered_country_modifier = {
 		potential = {
 			entertainer_is_duelist_trigger = yes
 		}
 		country_naval_cap_add = 2
-	}
-
-	triggered_country_modifier = {
-		potential = {
-			entertainer_is_duelist_trigger = yes
-			has_councilor = { COUNCILOR = "councilor_warrior_culture" }
-		}
-
-		country_naval_cap_add = 1
-		mult = value:councilor_level|TYPE|councilor_warrior_culture|
 	}
 
 	triggered_planet_modifier = {
@@ -2197,7 +2141,7 @@ roboticist = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner # Vfix log
+			exists = owner
 			owner = {
 				has_active_tradition = tr_cybernetics_metabolic_reprocessing
 			}
@@ -2462,7 +2406,7 @@ trader = {
 					has_planet_flag = has_franchise_headquarters
 				}
 			}
-			unity = 1
+			unity = 0.5
 		}
 	}
 
@@ -2702,7 +2646,7 @@ necro_apprentice = {
 	resources = {
 		category = planet_necro_apprentices
 		produces = {
-			unity = 1.5
+			unity = 0.75
 		}
 		upkeep = {
 			trigger = {
@@ -2816,7 +2760,7 @@ foundry = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_sapient = yes # Vfix
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
@@ -2888,7 +2832,7 @@ catalytic_technician = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_sapient = yes # Vfix
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
@@ -2951,7 +2895,7 @@ artisan = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_sapient = yes # Vfix
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 	}
@@ -3340,7 +3284,7 @@ knight = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_sapient = yes # Vfix
+		is_sapient = yes
 		is_being_assimilated = no
 		is_being_purged = no
 		is_enslaved = no
@@ -3358,7 +3302,7 @@ knight = {
 		category = planet_knights
 		produces = {
 			trigger = { exists = owner }
-			unity = 2
+			unity = 1
 			mult = value:knights_unity_output_modifier
 		}
 		produces = {
@@ -3375,7 +3319,7 @@ knight = {
 					has_country_flag = cosmogenesis_knights
 				}
 			}
-			advanced_logic = 1
+			advanced_logic = 0.5
 			mult = value:knights_research_output_modifier
 		}
 		upkeep = {
@@ -3410,9 +3354,7 @@ knight = {
 	weight = {
 		weight = @high_prio_specialist_job_weight
 		factor = 1.2
-		add = 5 # Somehow pops preferred to work as squires than as knights. No more.
-		mult = value:job_weights_modifier|JOB|bureaucrat|RESOURCE|unity|
-		mult = value:job_weights_research_modifier|JOB|knight|
+		add = 5 #Somehow pops preferred to work as squires than as knights. No more.
 	}
 
 	inline_script = "jobs/automodding_priority_unity"
@@ -3490,7 +3432,7 @@ resort_worker = {
 	resources = {
 		category = planet_entertainers
 		produces = {
-			unity = 2
+			unity = 1
 			trade = 4
 		}
 		upkeep = {
@@ -3574,7 +3516,7 @@ polytechnic_mentor = {
 	possible = { complex_specialist_job_check_trigger = yes }
 
 	resources = {
-		category = planet_bureaucrats
+		category = planet_mentors
 		upkeep = { consumer_goods = 3 }
 		produces = {
 			unity = @polytechnic_base_output
@@ -3600,16 +3542,8 @@ polytechnic_mentor = {
 		}
 	}
 
-	planet_modifier = {
-		planet_miners_engineering_research_produces_add = @polytechnic_output
-		planet_technician_physics_research_produces_add = @polytechnic_output
-		planet_metallurgists_engineering_research_produces_add = @polytechnic_output
-		planet_artisans_society_research_produces_add = @polytechnic_output
-	}
-
 	weight = {
 		weight = @specialist_job_weight
-		# TODO: Add suitable AI weight
 		mult = value:job_weights_research_modifier|JOB|polytechnic_mentor|
 		modifier = {
 			factor = 0.2
@@ -3624,10 +3558,6 @@ polytechnic_mentor = {
 			factor = 0.1
 			can_take_servant_job = yes
 		}
-#		modifier = {
-#			factor = 1.5
-#			has_job = polytechnic_mentor
-#		}
 		modifier = {
 			factor = 0.8
 			is_enslaved = yes

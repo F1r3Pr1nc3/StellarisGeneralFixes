@@ -1009,9 +1009,9 @@ country_event = {
 		event_target:pre_ftl_species = { # Options for minerals and alloys.
 			switch = {
 				trigger = has_trait
-				trait_infernal = { event_target:observing_empire = { add_modifier = { modifier = DPFF_alloy_abundance days = 360 } } } # This has to be really low.
-				trait_lithoid = { event_target:observing_empire = { add_modifier = { modifier = rock_abundance days = 360 } } }
-				trait_organic = { event_target:observing_empire = { add_modifier = { modifier = food_abundance days = 360 } } }
+				trait_infernal = { event_target:observing_empire = { add_modifier = { modifier = DPFF_alloy_abundance years = 1 } } } # This has to be really low.
+				trait_lithoid = { event_target:observing_empire = { add_modifier = { modifier = rock_abundance years = 1 } } }
+				trait_organic = { event_target:observing_empire = { add_modifier = { modifier = food_abundance years = 1 } } }
 				default = {}
 			}
 		}
@@ -1106,9 +1106,9 @@ country_event = {
 				event_target:pre_ftl_species = { # Option for alloys.
 					switch = {
 						trigger = has_trait
-						trait_infernal = { event_target:pre_ftl_country = { add_modifier = { modifier = DPFF_alloy_crisis days = 360 } } } # Infernals.
-						trait_lithoid = { event_target:pre_ftl_country = { add_modifier = { modifier = rock_crisis days = 360 } } }
-						trait_organic = { event_target:pre_ftl_country = { add_modifier = { modifier = food_crisis days = 360 } } }
+						trait_infernal = { event_target:pre_ftl_country = { add_modifier = { modifier = DPFF_alloy_crisis years = 1 } } } # Infernals.
+						trait_lithoid = { event_target:pre_ftl_country = { add_modifier = { modifier = rock_crisis years = 1 } } }
+						trait_organic = { event_target:pre_ftl_country = { add_modifier = { modifier = food_crisis years = 1 } } }
 						default = {}
 					}
 				}
@@ -2439,9 +2439,7 @@ country_event = {
 			event_target:pre_ftl_planet = { # Fixes tooltip showing 100 pops killed because it can't read while-loops.
 				while = {
 					count = 2
-					random_owned_pop_group = {
-						kill_single_pop = yes
-					}
+					random_owned_pop_group = { kill_single_pop = yes }
 				}
 			}
 			event_target:pre_ftl_country = { advance_pre_ftl_tech = yes }
@@ -3643,7 +3641,7 @@ country_event = {
 	}
 
 	immediate = {
-		set_timed_country_flag = { flag = fircon_2000_fired days = 1800 } # 5 years
+		set_timed_country_flag = { flag = fircon_2000_fired years = 5 }
 	}
 
 	option = { # kidnap them again
@@ -3695,7 +3693,7 @@ situation_event = {
 		owner = {
 			NOR = {
 				is_gestalt = yes # Blocked for Gestalt Pre-FTLs.
-				has_origin = origin_subterranean # Blocked for Subterraneans.
+				is_subterranean_empire = yes # Blocked for Subterraneans.
 				AND = {
 					species = { has_trait = trait_aquatic }
 					capital_scope = { is_planet_class = pc_ocean } # Blocked for Aquatics.
@@ -3775,7 +3773,7 @@ country_event = {
 
 	immediate = {
 		event_target:pre_ftl_country = { add_awareness = 10 }
-		set_timed_country_flag = { flag = fircon_2010_fired years = 5 } # 5 years
+		set_timed_country_flag = { flag = fircon_2010_fired years = 5 }
 	}
 
 	option = { # fix beams
@@ -4086,7 +4084,7 @@ country_event = {
 
 	immediate = {
 		event_target:pre_ftl_planet = {
-			add_modifier = { modifier = fires_of_industry days = 7200 } # Modifier was applied to observer, not planet.
+			add_modifier = { modifier = fires_of_industry years = 20 } # Modifier was applied to observer, not planet.
 		}
 		set_country_flag = engineering_insights
 		set_predictive_observation_insight = { VALUE = 10 }
@@ -4871,7 +4869,7 @@ country_event = {
 				owner = {
 					random_situation = {
 						limit = { is_situation_type = pre_ftl_tech_progress_situation }
-						add_situation_progress = -960 #50%
+						add_situation_progress = -960 # 50%
 					}
 				}
 				delete_fleet = this
@@ -6221,9 +6219,7 @@ country_event = {
 				event_target:non_believers_country = {
 					while = {
 						count = 3
-						random_owned_pop_group = {
-							kill_single_pop = yes
-						}
+						random_owned_pop_group = { kill_single_pop = yes }
 					}
 				}
 			}
@@ -6886,8 +6882,8 @@ country_event = {
 
 	immediate = {
 		random_observed_pre_ftl_within_border = {
-            limit = {
-                NOR = {
+			limit = {
+				NOR = {
 					has_ethic = ethic_fanatic_xenophobe # No Xenophiliac Fanatic Xenophobes.
 					is_gestalt = yes
 					is_broken_shackles_pre_ftl_to_scope = { SCOPE = root }
@@ -6896,10 +6892,10 @@ country_event = {
 					current_awareness_level = full
 					has_country_flag = reached_full_awareness_once # Some may remember meeting aliens before, even if their planet is not fully aware.
 				}
-            }
-            save_event_target_as = pre_ftl_planet
-            owner = { save_event_target_as = pre_ftl_country }
-        }
+			}
+			save_event_target_as = pre_ftl_planet
+			owner = { save_event_target_as = pre_ftl_country }
+		}
 		set_country_flag = fircon_8000_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event days = @PreFTLDiplomacyEventTimer }
 	}
@@ -7233,7 +7229,12 @@ country_event = {
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_advanced = { EVENT = sweet NOBROKENSHACKLES = yes NOGESTALT = yes MINERA = MACHINE_AGE }
+		get_random_pre_ftl_trade_agreement_advanced = {
+			EVENT = sweet
+			NOBROKENSHACKLES = yes
+			NOGESTALT = yes
+			MINERA = MACHINE_AGE
+		}
 		set_country_flag = fircon_8030_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7404,7 +7405,11 @@ country_event = {
 			get_random_pre_ftl_trade_agreement_no_broken_shackles = { EVENT = space_slavers }
 		}
 		else = {
-			get_random_pre_ftl_trade_agreement_advanced = { EVENT = space_slavers NOBROKENSHACKLES = yes NOGESTALT = yes }
+			get_random_pre_ftl_trade_agreement_advanced = {
+				EVENT = space_slavers
+				NOBROKENSHACKLES = yes
+				NOGESTALT = yes
+			}
 		}
 		random_playable_country = { # Default empires only, no FEs/AEs/Other.
 			limit = {
@@ -7501,7 +7506,12 @@ country_event = {
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_advanced = { EVENT = preftl_slavers NOBROKENSHACKLES = yes NOGESTALT = yes MINERA = IRON_AGE }
+		get_random_pre_ftl_trade_agreement_advanced = {
+			EVENT = preftl_slavers
+			NOBROKENSHACKLES = yes
+			NOGESTALT = yes
+			MINERA = IRON_AGE
+		}
 		set_country_flag = fircon.8050_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -7545,7 +7555,6 @@ country_event = {
 							kill_single_pop = yes
 						}
 					}
-					
 				}
 				ruin_building = random_no_capital
 				ruin_building = random_no_capital
@@ -7606,9 +7615,7 @@ country_event = {
 			save_event_target_as = preftl_hagglers_country
 			set_country_flag = preftl_hagglers_flag
 			species = { save_event_target_as = preftl_hagglers_species }
-			home_planet = {
-				save_event_target_as = preftl_hagglers_planet
-			}
+			home_planet = { save_event_target_as = preftl_hagglers_planet }
 		}
 		set_country_flag = fircon.8055_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
@@ -7635,9 +7642,7 @@ country_event = {
 			class = official
 			skill = 4
 			randomize_traits = no
-			traits = {
-				1 = leader_trait_preftl_haggler
-			}
+			traits = { 1 = leader_trait_preftl_haggler }
 			skip_background_generation = yes
 			background_planet = event_target:preftl_hagglers_planet
 			event_leader = yes
@@ -7681,7 +7686,10 @@ country_event = {
 
 	immediate = {
 		random_observed_pre_ftl_within_border = {
-			limit = { is_gestalt = no pre_ftl_ancient_era = no }
+			limit = {
+				is_gestalt = no
+				pre_ftl_ancient_era = no
+			}
 			save_event_target_as = pre_ftl_planet
 			owner = { save_event_target_as = pre_ftl_country }
 		}
@@ -7910,7 +7918,12 @@ country_event = {
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_advanced = { EVENT = preftl_misusers NOBROKENSHACKLES = yes NOGESTALT = yes MINERA = RENAISSANCE_AGE }
+		get_random_pre_ftl_trade_agreement_advanced = {
+			EVENT = preftl_misusers
+			NOBROKENSHACKLES = yes
+			NOGESTALT = yes
+			MINERA = RENAISSANCE_AGE
+		}
 		set_country_flag = fircon.8500_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 	}
@@ -8133,7 +8146,13 @@ country_event = {
 	}
 
 	immediate = {
-		get_random_pre_ftl_trade_agreement_advanced = { EVENT = preftl_invasives NOBROKENSHACKLES = yes NOGESTALT = yes NOAQUATICS = yes MINERA = RENAISSANCE_AGE }
+		get_random_pre_ftl_trade_agreement_advanced = {
+			EVENT = preftl_invasives
+			NOBROKENSHACKLES = yes
+			NOGESTALT = yes
+			NOAQUATICS = yes
+			MINERA = RENAISSANCE_AGE
+		}
 		set_country_flag = fircon.8565_fired
 		set_timed_country_flag = { flag = recent_preftl_diplomatic_event years = 15 }
 		event_target:preftl_invasives_country = { save_event_target_as = pre_ftl_country }

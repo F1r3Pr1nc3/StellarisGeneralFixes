@@ -2705,10 +2705,10 @@ country_event = {
 	}
 
 	trigger = {
+		any_relation = { is_country_type = default has_communications = prev }
 		NOR = {
 			is_homicidal = yes
 			has_country_flag = shroud_770_triggered
-			NOT = { any_relation = { is_country_type = default has_communications = prev } }
 		}
 	}
 
@@ -9898,7 +9898,6 @@ country_event = {
 # 		delete_fleet = this
 # 	}
 # }
-
 # on_subject_integrated
 country_event = {
 	id = shroud.4802

@@ -25,9 +25,7 @@ building_hydroponics_farm = {
 		}
 	}
 
-	# Vfix Ariphaos
 	allow = {
-		is_occupied_flag = no
 		has_owner = yes
 		OR = {
 			owner = { is_ai = no }
@@ -40,6 +38,7 @@ building_hydroponics_farm = {
 		}
 	}
 
+	# Vfix Ariphaos
 	destroy_trigger = {
 		has_owner = yes
 		OR = {
@@ -109,7 +108,6 @@ building_food_processing_facility = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -180,7 +178,6 @@ building_food_processing_center = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_owner = yes
 		has_upgraded_capital = yes
 	}
@@ -269,7 +266,6 @@ building_farming_districts_1 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -319,7 +315,6 @@ building_farming_districts_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -371,7 +366,6 @@ building_farming_districts_3 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -423,7 +417,6 @@ building_farming_districts_4 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -473,7 +466,6 @@ building_baol_organic_plant = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -586,7 +578,6 @@ building_mine_generic = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -647,7 +638,7 @@ building_mineral_purification_plant = {
 	}
 
 	potential = {
-		has_owner = yes
+		has_owner = yes # Vfix
 		NOR = {
 			owner = { is_wilderness_empire = yes } # see 'building_churning_tunnels_3'
 			has_modifier = resort_colony
@@ -666,7 +657,6 @@ building_mineral_purification_plant = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -753,7 +743,6 @@ building_mineral_purification_hub = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		NOT = { has_modifier = resort_colony }
 	}
@@ -846,7 +835,6 @@ building_mining_districts_1 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -896,7 +884,6 @@ building_mining_districts_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -948,7 +935,6 @@ building_mining_districts_3 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1000,7 +986,6 @@ building_mining_districts_4 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1049,7 +1034,6 @@ building_generator_generic = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1116,11 +1100,10 @@ building_energy_grid = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		has_owner = yes # Vfix opt
 		OR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes }
@@ -1183,12 +1166,11 @@ building_energy_nexus = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		has_owner = yes # Vfix opt
 		OR = {
 			has_modifier = resort_colony
 			AND = {
@@ -1262,7 +1244,6 @@ building_generator_districts_1 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1312,7 +1293,6 @@ building_generator_districts_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1364,7 +1344,6 @@ building_generator_districts_3 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1416,7 +1395,6 @@ building_generator_districts_4 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1469,7 +1447,6 @@ building_resource_silo = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_owner = yes
 		hidden_trigger = {
 			OR = {
@@ -1558,7 +1535,6 @@ building_bio_reactor = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1621,7 +1597,6 @@ building_bio_reactor_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 

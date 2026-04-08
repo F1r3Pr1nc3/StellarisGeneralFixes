@@ -483,14 +483,14 @@ situation_event = {
 			capital_scope = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = passive_observation }
-				observation_outpost_owner = {
-					NOR = {
-						is_ai = yes
-						is_gestalt = yes
-						has_country_flag = missing_scientist_chain
-					}
-				}
 				NOR = {
+					observation_outpost_owner = {
+						OR = {
+							is_ai = yes
+							is_gestalt = yes
+							has_country_flag = missing_scientist_chain
+						}
+					}
 					is_planet_class = pc_habitat # Vfix Dux: Blocked Habitats.
 					AND = {
 						is_planet_class = pc_ocean
@@ -504,7 +504,7 @@ situation_event = {
 					}
 					AND = {
 						observation_outpost_owner = { is_robot_empire = yes } # Vfix Dux: If you're a Machine they cannot be Fanatic Spiritualist.
-						owner = { is_fanatic_spiritualist = yes }
+						owner = { has_ethic = ethic_fanatic_spiritualist }
 					}
 				}
 			}
@@ -1213,13 +1213,15 @@ situation_event = {
 			capital_scope = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = passive_observation }
-				observation_outpost_owner = {
-					NOR = {
-						is_ai = yes
-						has_country_flag = shuttle_intercepted
+				NOR = {
+					observation_outpost_owner = {
+						OR = {
+							is_ai = yes
+							has_country_flag = shuttle_intercepted
+						}
 					}
+					is_planet_class = pc_habitat
 				}
-				NOT = { is_planet_class = pc_habitat } # Vfix Dux: Blocked Habitats.
 			}
 		}
 	}
@@ -1490,9 +1492,7 @@ country_event = {
 		event_target:pre_ftl_planet = {
 			save_event_target_as = pre_ftl_planet # Vfix Dux: Completely pointless.
 			owner = { save_event_target_as = pre_ftl_country }
-			observation_outpost_owner = {
-				set_country_flag = scientists_captured_chain
-			}
+			observation_outpost_owner = { set_country_flag = scientists_captured_chain }
 		}
 	}
 
@@ -2401,8 +2401,10 @@ situation_event = {
 			capital_scope = {
 				has_observation_outpost = yes
 				observation_outpost = { has_mission = specimen_collection }
-				observation_outpost_owner = { is_ai = no }
-				NOT = { is_planet_class = pc_habitat } # Vfix Dux: Blocked for Habitats.
+				NOR = {
+					observation_outpost_owner = { is_ai = yes }
+					is_planet_class = pc_habitat
+				}
 			}
 		}
 	}
@@ -3013,9 +3015,7 @@ country_event = {
 		hidden_effect = {
 			event_target:pre_ftl_country = { # Vfix Dux: Fully Cyberise Them, this event already takes years for this outcome.
 				if = {
-					limit = {
-						has_machine_age_dlc = yes
-					}
+					limit = { has_machine_age_dlc = yes }
 					give_technology = { tech = tech_integrated_cybernetics message = no }
 					add_ascension_perk = ap_the_flesh_is_weak # Vfix Dux: Block ascensions not blocked by Cybernetic trait.
 					set_country_flag = cybernetics_traditions_unlocked
@@ -3066,7 +3066,11 @@ country_event = {
 							1 = { set_country_flag = cyber_force_objectors }
 							1 = { set_country_flag = cyber_allow_objectors }
 						}
-						set_policy = { policy = cyberization_standards option = cyberization_standards_full cooldown = yes }
+						set_policy = {
+							policy = cyberization_standards
+							option = cyberization_standards_full
+							cooldown = yes
+						}
 						random_list = {
 							1 = {
 								add_modifier = { modifier = cyber_birth_implants days = -1 }
@@ -3161,7 +3165,9 @@ country_event = {
 							1 = { set_country_flag = cyber_hive_integrated }
 						}
 					}
-					else = { set_country_flag = DPFF_cyberize_dud }
+					else = {
+						set_country_flag = DPFF_cyberize_dud
+					}
 				}
 				else = {
 					add_ascension_perk = ap_the_flesh_is_weak # Vfix Dux: Block other ascensions.
@@ -4139,7 +4145,10 @@ country_event = {
 						has_trait = trait_noxious
 					}
 				}
-				any_situation = { is_situation_type = pre_ftl_tech_progress_situation situation_progress > 400 }
+				any_situation = {
+					is_situation_type = pre_ftl_tech_progress_situation
+					situation_progress > 400
+				}
 			}
 			save_event_target_as = pre_ftl_country
 			species = { save_event_target_as = pre_ftl_species }

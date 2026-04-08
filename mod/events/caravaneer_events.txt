@@ -4511,6 +4511,7 @@ event = {
 	id = cara.4101
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		exists = event_target:caravaneer_home_country
 		event_target:caravaneer_home_country = {
@@ -4522,6 +4523,7 @@ event = {
 			}
 		}
 	}
+
 	immediate = {
 		event_target:caravaneer_home_country = {
 			random_system_within_border = {
@@ -4592,7 +4594,7 @@ country_event = {
 			}
 		}
 		random_list = {
-			90 = { } # no effect
+			90 = {  } # no effect
 			2 = { country_event = { id = cara.4110 } }
 			2 = { # No factor 0 modifier as I don't want the remaining option to be more common.
 				if = {

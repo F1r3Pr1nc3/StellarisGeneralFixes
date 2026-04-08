@@ -289,8 +289,7 @@ country_event = {
 				solar_system = {
 					has_owner = yes
 					is_owned_by = event_target:integrated_empire # Note: caching is quite funky at a time like this when many borders are changing hands. The starbase ownership is checked to be extra sure, since it is not cached (unlike system ownership - though that probably would have worked too)
-					OR = {
-						# Just double check
+					OR = { # Just double check
 						owner = { is_ai = yes }
 						is_capital_system = no
 					}
@@ -672,8 +671,7 @@ country_event = {
 						exists = starbase
 						starbase = { is_owned_by = event_target:new_khanate }
 					}
-					OR = {
-						# Just double check
+					OR = { # Just double check
 						owner = { is_ai = yes }
 						is_capital = no
 					}

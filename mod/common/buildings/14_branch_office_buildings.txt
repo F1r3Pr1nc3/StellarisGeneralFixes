@@ -110,7 +110,6 @@ building_private_mining_consortium = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -228,13 +227,12 @@ building_food_conglomerate = {
 		building_bio_reprocessing_facilities
 	}
 
+	allow = {
+	}
+
 	ai_weight = {
 		factor = 1
 	} # AI has many other sources for this resource
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_virtual_entertainment_studios = {
@@ -336,6 +334,9 @@ building_virtual_entertainment_studios = {
 		building_underground_chemists
 	}
 
+	allow = {
+	}
+
 	ai_weight = {
 		weight = 3
 		modifier = {
@@ -350,10 +351,6 @@ building_virtual_entertainment_studios = {
 				has_monthly_income = { resource = consumer_goods value >= 10 }
 			}
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -444,12 +441,11 @@ building_private_shipyards = {
 		building_wrecking_yards
 	}
 
-	ai_weight = {
-		weight = 1
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -572,12 +568,11 @@ building_military_contractors = {
 		building_pirate_haven
 	}
 
-	ai_weight = {
-		factor = 10
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		factor = 10
 	}
 }
 
@@ -598,6 +593,9 @@ building_industrial_subsidiary = {
 				}
 			}
 		}
+	}
+
+	allow = {
 	}
 
 	inline_script = {
@@ -677,10 +675,6 @@ building_industrial_subsidiary = {
 
 	ai_weight = {
 		factor = 10
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -781,12 +775,11 @@ building_public_relations_office = {
 		building_syndicate_outreach_office
 	}
 
-	ai_weight = {
-		weight = 2
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 2
 	}
 }
 
@@ -898,12 +891,11 @@ building_private_research_initiative = {
 		building_illicit_research_labs
 	}
 
-	ai_weight = {
-		weight = 10
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 10
 	}
 }
 
@@ -1006,6 +998,9 @@ building_amusement_megaplex = {
 		building_underground_clubs
 	}
 
+	allow = {
+	}
+
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -1014,10 +1009,6 @@ building_amusement_megaplex = {
 				has_monthly_income = { resource = energy value > 50 }
 			}
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -1114,12 +1105,11 @@ building_commercial_forum = {
 		building_smuggling_rings
 	}
 
-	ai_weight = {
-		weight = 50
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 50
 	}
 }
 
@@ -1132,11 +1122,6 @@ building_corporate_embassy = {
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
 	}
 
 	prerequisites = {
@@ -1246,6 +1231,10 @@ building_corporate_embassy = {
 		building_disinformation_center
 	}
 
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
 	ai_weight = {
 		weight = 50
 		modifier = {
@@ -1263,6 +1252,9 @@ building_private_security = {
 
 	potential = {
 		has_branch_office = yes
+	}
+
+	allow = {
 	}
 
 	triggered_planet_modifier = {
@@ -1390,10 +1382,6 @@ building_private_security = {
 	ai_weight = {
 		factor = 10
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 ## CRIME MEGACORP ##
@@ -1488,12 +1476,11 @@ building_wildcat_miners = {
 		building_private_mining_consortium
 	}
 
-	ai_weight = {
-		factor = 1
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		factor = 1
 	}
 }
 
@@ -1584,12 +1571,11 @@ building_bio_reprocessing_facilities = {
 		building_food_conglomerate
 	}
 
-	ai_weight = {
-		factor = 1
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		factor = 1
 	}
 }
 
@@ -1692,6 +1678,9 @@ building_underground_chemists = {
 		building_virtual_entertainment_studios
 	}
 
+	allow = {
+	}
+
 	ai_weight = {
 		weight = 3
 		modifier = {
@@ -1706,10 +1695,6 @@ building_underground_chemists = {
 				has_monthly_income = { resource = consumer_goods value >= 10 }
 			}
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -1798,12 +1783,11 @@ building_wrecking_yards = {
 		building_private_shipyards
 	}
 
-	ai_weight = {
-		factor = 1
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		factor = 1
 	}
 }
 
@@ -1925,12 +1909,11 @@ building_pirate_haven = {
 		building_military_contractors
 	}
 
-	ai_weight = {
-		factor = 15
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		factor = 15
 	}
 }
 
@@ -2014,6 +1997,9 @@ building_underground_clubs = {
 		building_knightly_theme_park
 	}
 
+	allow = {
+	}
+
 	ai_weight = {
 		weight = 5
 		modifier = {
@@ -2028,10 +2014,6 @@ building_underground_clubs = {
 				has_monthly_income = { resource = energy value > 50 }
 			}
 		}
-	}
-
-	allow = {
-		is_occupied_flag = no
 	}
 }
 
@@ -2120,12 +2102,11 @@ building_syndicate_outreach_office = {
 		building_public_relations_office
 	}
 
-	ai_weight = {
-		weight = 5
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 5
 	}
 }
 
@@ -2222,12 +2203,11 @@ building_illicit_research_labs = {
 		building_private_research_initiative
 	}
 
-	ai_weight = {
-		weight = 10
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 10
 	}
 }
 
@@ -2306,12 +2286,11 @@ building_smuggling_rings = {
 		building_commercial_forum
 	}
 
-	ai_weight = {
-		weight = 100
+	allow = {
 	}
 
-	allow = {
-		is_occupied_flag = no
+	ai_weight = {
+		weight = 100
 	}
 }
 
@@ -2324,11 +2303,6 @@ building_disinformation_center = {
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { is_illegal_criminal = yes }
-	}
-
-	allow = {
-		is_occupied_flag = no
-		has_major_upgraded_capital = yes
 	}
 
 	prerequisites = {
@@ -2427,6 +2401,10 @@ building_disinformation_center = {
 		building_corporate_embassy
 	}
 
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
 	ai_weight = {
 		weight = 50
 	}
@@ -2444,6 +2422,9 @@ building_subversive_shrine = {
 			has_valid_civic = civic_gospel_of_the_masses
 			is_illegal_criminal = yes
 		}
+	}
+
+	allow = {
 	}
 
 	triggered_planet_modifier = {
@@ -2490,10 +2471,6 @@ building_subversive_shrine = {
 	ai_weight = {
 		weight = 250
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 ## GOSPEL MEGACORP ##
@@ -2510,6 +2487,9 @@ building_temple_of_prosperity = {
 			has_valid_civic = civic_gospel_of_the_masses
 			is_legit_or_legal_criminal = yes
 		}
+	}
+
+	allow = {
 	}
 
 	triggered_planet_modifier = {
@@ -2552,10 +2532,6 @@ building_temple_of_prosperity = {
 	ai_weight = {
 		weight = 250
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 ## SPECIAL ##
@@ -2576,7 +2552,6 @@ building_executive_retreat = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		pop_amount >= 2500
 	}
 
@@ -2692,7 +2667,6 @@ building_xeno_tourism_agency = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		pop_amount >= 2500
 	}
 
@@ -2784,6 +2758,9 @@ building_imperial_concession_port = {
 		}
 	}
 
+	allow = {
+	}
+
 	country_modifier = {
 		diplo_weight_economy_mult = 0.05
 	}
@@ -2827,10 +2804,6 @@ building_imperial_concession_port = {
 	ai_weight = {
 		weight = 100
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 ## TOXIC KNIGHTS ##
@@ -2851,7 +2824,6 @@ building_knightly_theme_park = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		pop_amount >= 5000
 	}
 
@@ -2945,6 +2917,9 @@ building_corporate_clinics = {
 				has_valid_civic = civic_corporate_toxic_baths_individual_machine
 			}
 		}
+	}
+
+	allow = {
 	}
 
 	on_built = {
@@ -3054,10 +3029,6 @@ building_corporate_clinics = {
 	ai_weight = {
 		weight = 120
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 # Augmentation Bazaars    #
@@ -3074,7 +3045,6 @@ building_augmentation_bazaars_branch = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -3188,7 +3158,6 @@ building_ai_emporium = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		custom_tooltip = {
 			fail_text = building_ai_emporium_fail_tt
 			owner = {
@@ -3269,6 +3238,9 @@ building_clear_thought_clinic = {
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { is_synth_corporate = yes has_country_flag = synth_virtual }
+	}
+
+	allow = {
 	}
 
 	triggered_planet_modifier = {
@@ -3366,10 +3338,6 @@ building_clear_thought_clinic = {
 			}
 		}
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 ############
@@ -3385,6 +3353,9 @@ building_carceral_test_facility = {
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { has_valid_civic = civic_twisted_experimenters_corporate }
+	}
+
+	allow = {
 	}
 
 	planet_modifier = {
@@ -3415,10 +3386,6 @@ building_carceral_test_facility = {
 	ai_weight = {
 		weight = 10
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 building_psionic_offices = {
@@ -3438,7 +3405,6 @@ building_psionic_offices = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -3520,10 +3486,6 @@ building_psionic_offices = {
 	ai_weight = {
 		weight = 10
 	}
-
-	allow = {
-		is_occupied_flag = no
-	}
 }
 
 ## INFERNALS MEGACORP - LIVING METAL ##
@@ -3540,7 +3502,6 @@ building_living_metal_clinic = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		owner = { is_gestalt = no }
 	}
 

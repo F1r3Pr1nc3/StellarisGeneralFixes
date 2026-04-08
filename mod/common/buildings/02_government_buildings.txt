@@ -20,7 +20,6 @@ building_noble_estates = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		if = {
 			limit = { exists = orbital_defence }
@@ -84,7 +83,6 @@ building_slave_processing = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		if = {
 			limit = { exists = orbital_defence }
@@ -104,8 +102,8 @@ building_slave_processing = {
 		has_owner = yes
 		OR = {
 			owner = {
+				is_gestalt = yes # Vfix opt minor
 				NOR = {
-					is_regular_empire = yes
 					has_policy_flag = slavery_allowed
 					has_exploited_disconnected_drones = yes
 				}
@@ -162,7 +160,7 @@ building_precinct_house = {
 		OR = {
 			owner = {
 				OR = {
-					is_gestalt = yes # Vfix opt
+					is_gestalt = yes # Vfix opt minor
 					has_valid_civic = civic_civil_education
 				}
 			}
@@ -175,7 +173,6 @@ building_precinct_house = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		hidden_trigger = {
 			NAND = {
 				owner = { is_ai = yes }
@@ -207,8 +204,10 @@ building_precinct_house = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
-		NOT = { has_valid_civic = civic_civil_education }
+		NOR = {
+			is_gestalt = yes # Vfix opt minor
+			has_valid_civic = civic_civil_education
+		}
 	}
 
 	upgrades = {
@@ -246,7 +245,7 @@ building_hall_judgment = {
 		has_owner = yes
 		owner = {
 			OR = {
-				is_gestalt = yes # Vfix opt
+				is_gestalt = yes # Vfix opt minor
 				has_valid_civic = civic_civil_education
 			}
 		}
@@ -257,7 +256,6 @@ building_hall_judgment = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	inline_script = {
@@ -282,8 +280,10 @@ building_hall_judgment = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
-		NOT = { has_valid_civic = civic_civil_education }
+		NOR = {
+			is_gestalt = yes # Vfix opt minor
+			has_valid_civic = civic_civil_education
+		}
 	}
 }
 
@@ -313,7 +313,6 @@ building_state_academy = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -343,7 +342,7 @@ building_state_academy = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
+		is_gestalt = no # Vfix opt minor
 		has_valid_civic = civic_civil_education
 	}
 
@@ -378,7 +377,6 @@ building_center_of_guidance = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -410,7 +408,7 @@ building_center_of_guidance = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
+		is_gestalt = no # Vfix opt minor
 		has_valid_civic = civic_civil_education
 	}
 }
@@ -430,7 +428,6 @@ building_sentinel_posts = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		hidden_trigger = {
 			NAND = {
 				owner = { is_ai = yes }
@@ -494,11 +491,10 @@ building_order_keep = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
-		NOR = {
+		NAND = {
 			has_owner = yes
 			owner = { has_origin = origin_toxic_knights }
 		}
@@ -590,7 +586,6 @@ building_order_castle = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -655,7 +650,6 @@ building_psi_corps = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		if = {
 			limit = { exists = orbital_defence }
 			orbital_defence = {
@@ -737,7 +731,6 @@ building_embassy = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		if = {
 			limit = { exists = orbital_defence }
@@ -787,7 +780,7 @@ building_embassy = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
+		is_gestalt = no # Vfix opt minor
 	}
 
 	prerequisites = {
@@ -816,7 +809,6 @@ building_grand_embassy = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 		if = {
 			limit = { exists = orbital_defence }
@@ -866,7 +858,7 @@ building_grand_embassy = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
+		is_gestalt = no # Vfix opt minor
 	}
 }
 
@@ -900,7 +892,6 @@ building_gaiaseeders_1 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
@@ -981,7 +972,6 @@ building_gaiaseeders_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		can_build_gaiaseeder = yes
 	}
 
@@ -1043,7 +1033,6 @@ building_gaiaseeders_3 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		can_build_gaiaseeder = yes
 	}
 
@@ -1082,7 +1071,6 @@ building_gaiaseeders_4 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1191,7 +1179,6 @@ building_gaiaseeders_pc_gaia = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		can_build_gaiaseeder = yes
 	}
@@ -1246,7 +1233,6 @@ building_volcanic_forge_1 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		num_uncleared_blockers = 0
 	}
 
@@ -1340,7 +1326,6 @@ building_volcanic_forge_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 

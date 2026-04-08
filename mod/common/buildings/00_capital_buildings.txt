@@ -51,7 +51,6 @@ building_colony_shelter = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -162,7 +161,6 @@ building_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 1000
 	}
 
@@ -175,7 +173,7 @@ building_capital = {
 	}
 
 	show_tech_unlock_if = {
-		is_gestalt = no # Vfix opt
+		is_gestalt = no # Vfix opt minor
 	}
 
 	planet_modifier = {
@@ -252,7 +250,6 @@ building_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 2500
 	}
 
@@ -261,7 +258,7 @@ building_major_capital = {
 	}
 
 	show_tech_unlock_if = {
-		is_gestalt = no # Vfix opt
+		is_gestalt = no # Vfix opt minor
 	}
 
 	planet_modifier = {
@@ -342,7 +339,6 @@ building_system_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 5000
 	}
 
@@ -351,7 +347,7 @@ building_system_capital = {
 	}
 
 	show_tech_unlock_if = {
-		is_gestalt = no # Vfix opt
+		is_gestalt = no # Vfix opt minor
 	}
 
 	planet_modifier = {
@@ -432,7 +428,6 @@ building_deployment_post = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -523,7 +518,6 @@ building_machine_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 1000
 	}
 
@@ -618,7 +612,6 @@ building_machine_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 2500
 	}
 
@@ -714,7 +707,6 @@ building_machine_system_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 5000
 	}
 
@@ -834,7 +826,6 @@ building_hive_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	upgrades = {
@@ -911,7 +902,6 @@ building_hive_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 2500
 	}
 
@@ -984,7 +974,6 @@ building_hab_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	prerequisites = {
@@ -1114,7 +1103,6 @@ building_hab_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 1000
 	}
 
@@ -1217,13 +1205,6 @@ building_hab_major_capital = {
 		job_knight_commander_add = 1
 		job_knight_add = 100
 	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = { is_gestalt = no } # Vfix opt
-		}
-		job_enforcer_add = 100
-	}
 
 	inline_script = {
 		script = jobs/enforcers_add
@@ -1265,7 +1246,6 @@ building_hab_system_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 2500
 	}
 
@@ -1368,13 +1348,6 @@ building_hab_system_capital = {
 		job_knight_commander_add = 1
 		job_knight_add = 200
 	}
-	triggered_planet_modifier = {
-		potential = {
-			has_owner = yes
-			owner = { is_gestalt = no } # Vfix opt
-		}
-		job_enforcer_add = 200
-	}
 
 	inline_script = {
 		script = jobs/enforcers_add
@@ -1421,7 +1394,6 @@ building_resort_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1500,7 +1472,6 @@ building_resort_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 2000
 	}
 
@@ -1580,7 +1551,6 @@ building_slave_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1642,7 +1612,6 @@ building_slave_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 2000
 	}
 
@@ -1708,7 +1677,6 @@ building_imperial_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 5000
 	}
 
@@ -1792,7 +1760,6 @@ building_imperial_machine_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 5000
 	}
 
@@ -1892,7 +1859,6 @@ building_imperial_hive_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		sapient_pop_amount >= 5000
 	}
 

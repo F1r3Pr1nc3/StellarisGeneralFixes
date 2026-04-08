@@ -133,8 +133,7 @@ situation_event = {
 	trigger = {
 		exists = owner
 		owner = {
-			is_primitive = yes
-			is_gestalt = no # Vfix Dux: Do not shift gestalts back to Individualist.
+			is_regular_pre_ftl = yes # Vfix Dux: Do not shift gestalts back to Individualist.
 			# check if it's under Societal Guidance or has been the target of an espionage op
 			OR = {
 				has_country_flag = preftl_societal_enlightenment_pact
@@ -1602,18 +1601,15 @@ country_event = {
 		else = { # if nobody is in the system, they become an empire
 			if = { # Vfix Dux: Or if Pre-FTL is Devouring Swarm you will not be asked for the starbase.
 				limit = {
-					AND = {
-						has_valid_civic = civic_hive_devouring_swarm
-						capital_scope.solar_system = {
-							has_owner = yes
-						}
-					}
+					has_valid_civic = civic_hive_devouring_swarm
+					capital_scope.solar_system = { has_owner = yes }
 				}
-				capital_scope.solar_system.starbase = {
-					set_owner = root
-				}
+				capital_scope.solar_system.starbase = { set_owner = root }
 			}
-			achieve_ftl_effect = { PRE_FTL = root OWNER = root }
+			achieve_ftl_effect = {
+				PRE_FTL = root
+				OWNER = root
+			}
 		}
 	}
 }
@@ -4279,10 +4275,12 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
-			is_gestalt = no
-			current_awareness_level < full
-			has_blocked_random_devastating_pre_ftl_events = no
-			NOT = { has_country_flag = preftl_2100_fired } # Vfix Dux: Do not fire if cannot fire subsequent event.
+			NOR = {
+				is_gestalt = yes
+				current_awareness_level >= full
+				has_blocked_random_devastating_pre_ftl_events = yes
+				has_country_flag = preftl_2100_fired
+			}
 		}
 	}
 
@@ -5359,9 +5357,7 @@ situation_event = {
 				}
 				clear_relations = {
 					target = capital_scope.observation_outpost_owner
-					relations = {
-						is_under_societal_enlightenment
-					}
+					relations = { is_under_societal_enlightenment }
 				}
 				species = {
 					modify_species = {

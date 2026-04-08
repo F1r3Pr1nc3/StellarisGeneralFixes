@@ -27,7 +27,6 @@ building_military_academy = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_owner = yes
 		OR = {
 			has_major_upgraded_capital = yes
@@ -142,7 +141,6 @@ building_dread_encampment = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
@@ -211,6 +209,7 @@ building_stronghold = {
 	}
 
 	allow = {
+		has_owner = yes
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
 			owner = { is_ai = no }
@@ -221,9 +220,6 @@ building_stronghold = {
 				num_buildings = { type = building_fortress value < 2 }
 			}
 		}
-	}
-	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -278,7 +274,6 @@ building_fortress = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
@@ -326,7 +321,6 @@ building_planetary_shield_generator = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		if = {
 			limit = { exists = orbital_defence }
