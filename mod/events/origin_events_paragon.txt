@@ -1709,7 +1709,6 @@ situation_event = {
 				country_event = { id = paragon.5060 days = 30 random = 30 }
 			}
 		}
-		destroy_situation = this
 		custom_tooltip = paragon.5057.a.tt
 	}
 	option = { # Negotiate a deal
@@ -1721,7 +1720,6 @@ situation_event = {
 				country_event = { id = paragon.5060 days = 30 random = 30 }
 			}
 		}
-		destroy_situation = this
 		custom_tooltip = paragon.5057.b.tt
 	}
 	option = { # Execute leaders
@@ -1739,8 +1737,12 @@ situation_event = {
 				country_event = { id = paragon.5060 days = 30 random = 30 }
 			}
 		}
-		destroy_situation = this
 		custom_tooltip = paragon.5057.c.tt
+	}
+	after = {
+		hidden_effect = { # Vfix opt
+			destroy_situation = this
+		}
 	}
 }
 

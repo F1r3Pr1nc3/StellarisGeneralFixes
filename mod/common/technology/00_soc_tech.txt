@@ -4372,10 +4372,8 @@ tech_global_production_strategy = {
 		factor = 1.5
 		modifier = {
 			factor = 0
-			NOR = {
-				has_technology = "tech_luxuries_1"
-				country_uses_consumer_goods = no
-			}
+			country_uses_consumer_goods = yes
+			NOT = { has_technology = "tech_luxuries_1" }
 		}
 		modifier = {
 			factor = 1.5

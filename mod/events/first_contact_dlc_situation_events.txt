@@ -3355,7 +3355,7 @@ situation_event = {
 				event_leader = yes
 				skip_background_generation = yes
 				background_ethic = ethic_spiritualist
-				background_planet = target.capital_scope
+				background_planet = root.target.capital_scope # Vfix scope
 				effect = {
 					set_leader_flag = true_prophet
 				}
@@ -3365,8 +3365,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -3393,7 +3393,7 @@ situation_event = {
 		name = UNFORTUNATE
 		target.owner.capital_scope = {
 			add_planet_devastation = 30
-			add_modifier = { modifier = plague_05 }
+			add_modifier = { modifier = plague_05 years = 10 }
 		}
 		owner = {
 			add_observation_insight_effect = {
@@ -3443,7 +3443,7 @@ situation_event = {
 				event_leader = yes
 				skip_background_generation = yes
 				background_ethic = ethic_militarist
-				background_planet = target.capital_scope
+				background_planet = root.target.capital_scope # Vfix scope
 			}
 			add_observation_insight_effect = {
 				VALUE = 10
@@ -3461,8 +3461,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -3555,8 +3555,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -3586,7 +3586,6 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		hidden_effect = {
 			owner = { remove_country_flag = apocalypse_now }
 			target = {
@@ -3596,6 +3595,7 @@ situation_event = {
 				observation_outpost = { dismantle = yes }
 			}
 		}
+		destroy_situation = this
 	}
 }
 
@@ -3726,11 +3726,11 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = {
 			remove_planet_flag = has_on_going_observation_situation
 			observation_outpost = { dismantle = yes }
 		}
+		destroy_situation = this
 	}
 }
 
@@ -3780,8 +3780,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -3868,8 +3868,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -4027,8 +4027,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -4079,8 +4079,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -4155,8 +4155,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -4260,8 +4260,8 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -5028,12 +5028,12 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		owner = {
 			remove_country_flag = had_observation_situation
 			set_timed_country_flag = { flag = had_observation_situation years = 20 }
 		}
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -5109,12 +5109,12 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		owner = {
 			remove_country_flag = had_observation_situation
 			set_timed_country_flag = { flag = had_observation_situation years = 20 }
 		}
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -5233,12 +5233,12 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		owner = {
 			remove_country_flag = had_observation_situation
 			set_timed_country_flag = { flag = had_observation_situation years = 20 }
 		}
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -5289,9 +5289,9 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		owner = { remove_country_flag = had_observation_situation }
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -5415,7 +5415,6 @@ situation_event = {
 	}
 
 	after = {
-		destroy_situation = this
 		target = {
 			check_planet_employment = yes
 			remove_planet_flag = has_on_going_observation_situation
@@ -5424,6 +5423,7 @@ situation_event = {
 			remove_country_flag = had_observation_situation
 			set_timed_country_flag = { flag = had_observation_situation years = 20 }
 		}
+		destroy_situation = this
 	}
 }
 
@@ -6289,9 +6289,9 @@ situation_event = {
 				max = @tier3researchmax
 			}
 		}
-		destroy_situation = this
 		remove_global_flag = ongoing_nwo_situation
 		target = { remove_planet_flag = has_on_going_observation_situation }
+		destroy_situation = this
 	}
 }
 
@@ -6402,7 +6402,6 @@ situation_event = {
 				max = @tier3researchmax
 			}
 		}
-		destroy_situation = this
 		remove_global_flag = ongoing_nwo_situation
 		target = {
 			remove_planet_flag = has_on_going_observation_situation
@@ -6428,6 +6427,7 @@ situation_event = {
 				}
 			}
 		}
+		destroy_situation = this
 	}
 }
 

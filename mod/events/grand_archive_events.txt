@@ -3682,21 +3682,30 @@ country_event = {
 				create_message = {
 					type = MESSAGE_SPECIMEN_ACQUIRED
 					days = @toast_message_days
-					variable = { key = "border" value = "GFX_border_rare" }
+					variable = {
+						key = "border"
+						value = "GFX_border_rare"
+					}
 				}
 			}
 			epic = {
 				create_message = {
 					type = MESSAGE_SPECIMEN_ACQUIRED
 					days = @toast_message_days
-					variable = { key = "border" value = "GFX_border_veteran" }
+					variable = {
+						key = "border"
+						value = "GFX_border_veteran"
+					}
 				}
 			}
 			exceptional = {
 				create_message = {
 					type = MESSAGE_SPECIMEN_ACQUIRED
 					days = @toast_message_days
-					variable = { key = "border" value = "GFX_border_legendary" }
+					variable = {
+						key = "border"
+						value = "GFX_border_legendary"
+					}
 				}
 			}
 			default = {
@@ -3706,112 +3715,125 @@ country_event = {
 	}
 }
 
-country_event = {
-	id = grand_archive.4005
-	hide_window = yes
-	is_triggered_only = yes
 
-	trigger = {
-		has_grand_archive_dlc = yes
-		NOR = {
-			acquired_specimen_count = 0
-			has_country_flag = first_specimen_acquired_event_occured
-		}
-	}
 
-	immediate = {
-		set_country_flag = first_specimen_acquired_event_occured
-		country_event = { # Recursive check
-			id = grand_archive.4010
-			days = 30
-		}
-	}
-}
 
-country_event = {
-	id = grand_archive.4006
-	title = "grand_archive.4006.name"
-
-	desc = {
-		trigger = { acquired_specimen_count > 0 }
-		text = grand_archive.4006.desc.default
-	}
-	desc = {
-		trigger = { acquired_specimen_count = 0 }
-		text = grand_archive.4006.desc.no_specimen
-	}
-
-	picture = GFX_evt_specimen_archive
-	show_sound = ga_event_grand_archive
-	is_triggered_only = yes
-
-	trigger = {
-		OR = {
-			NOR = {
-				has_technology = tech_galactic_archivism
-				has_country_flag = grand_archive_kickstart_proposed
-			}
-			AND = {
-				is_beastmasters_empire = yes
-				NOT = { any_owned_megastructure = { is_megastructure_type = grand_archive_0 } }
-			}
-		}
-	}
-
-	immediate = {
-		set_country_flag = grand_archive_kickstart_proposed
-	}
-
-	option = {
-		allow = {
-			has_resource = { type = energy amount >= 1000 }
-		}
-		name = grand_archive.4006.a
-		add_resource = { energy = -1000 }
-		add_tech_option_or_research_effect = {
-			TECH = tech_galactic_archivism
-			PROGRESS = 0.5
-			CATEGORY = society_research
-		}
-		capital_scope = {
-			enable_special_project = {
-				name = "TREASURE_HUNTERS_BUILD_GRAND_ARCHIVE"
-				location = this
-				owner = root
-			}
-		}
-		ai_chance = {
-			modifier = {
-				add = 10
-				has_resource = { type = energy amount >= 5000 }
-			}
-		}
-	}
-	option = {
-		name = grand_archive.4006.b
-	}
-}
-
-country_event = {
-	id = grand_archive.4010
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		if = {
-			limit = {
-				OR = {
-					has_resource = { type = energy amount > 1000 }
-					has_technology = tech_galactic_archivism
-				}
-			}
-			country_event = { id = grand_archive.4006 }
-		}
-		else = {
-			country_event = { id = grand_archive.4010 days = 120 }
-		}
-	}
-}
+# country_event = {
+#	id = grand_archive.4005
+#	hide_window = yes
+#
+#	is_triggered_only = yes
+#
+#	trigger = {
+#		has_grand_archive_dlc = yes
+#		acquired_specimen_count > 0
+#		NOT = { has_country_flag = first_specimen_acquired_event_occured }
+#	}
+#
+#	immediate = {
+#		set_country_flag = first_specimen_acquired_event_occured
+#		country_event = { # Recursive check
+#			id = grand_archive.4010
+#			days = 30
+#		}
+#	}
+# }
+# country_event = {
+# 	id = grand_archive.4006
+# 	title = "grand_archive.4006.name"
+# 	desc = {
+# 		trigger = {
+# 			acquired_specimen_count > 0
+# 		}
+# 		text = grand_archive.4006.desc.default
+# 	}
+# 	desc = {
+# 		trigger = {
+# 			acquired_specimen_count <= 0
+# 		}
+# 		text = grand_archive.4006.desc.no_specimen
+# 	}
+# 	picture = GFX_evt_specimen_archive
+# 	show_sound = ga_event_grand_archive
+#
+# 	is_triggered_only = yes
+#
+# 	trigger = {
+# 		OR = {
+# 			NOR = {
+# 				has_technology = tech_galactic_archivism
+# 				has_country_flag = grand_archive_kickstart_proposed
+# 			}
+# 			AND = {
+# 				is_beastmasters_empire = yes
+# 				NOT = {
+# 					any_owned_megastructure = {
+# 						is_megastructure_type = grand_archive_0
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+#
+# 	immediate = {
+# 		set_country_flag = grand_archive_kickstart_proposed
+# 	}
+#
+# 	option = {
+# 		allow = {
+# 			has_resource = { type = energy amount >= 1000 }
+# 		}
+# 		name = grand_archive.4006.a
+# 		add_resource = {
+# 			energy = -1000
+# 		}
+# 		add_tech_option_or_research_effect = {
+# 			TECH = tech_galactic_archivism
+# 			PROGRESS = 0.5
+# 			CATEGORY = society_research
+# 		}
+# 		capital_scope = {
+# 			enable_special_project = {
+# 				name = "TREASURE_HUNTERS_BUILD_GRAND_ARCHIVE"
+# 				location = this
+# 				owner = root
+# 			}
+# 		}
+# 		ai_chance = {
+# 			modifier = {
+# 				add = 10
+# 				has_resource = { type = energy amount >= 5000 }
+# 			}
+# 		}
+# 	}
+#
+# 	option = {
+# 		name = grand_archive.4006.b
+# 	}
+# }
+# country_event = {
+#	id = grand_archive.4010
+#	hide_window = yes
+#	is_triggered_only = yes
+#
+#	immediate = {
+#		if = {
+#			limit = {
+#				OR = {
+#					has_resource = { type = energy amount > 1000 }
+#					has_technology = tech_galactic_archivism
+#				}
+#			}
+#			country_event = { id = grand_archive.4006 }
+#		}
+#		else = {
+#			country_event = {
+#				id = grand_archive.4010
+#				days = 120
+#			}
+#		}
+#	}
+# }
 
 country_event = {
 	id = grand_archive.4100

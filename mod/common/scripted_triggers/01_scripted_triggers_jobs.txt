@@ -821,13 +821,14 @@ politician_is_fire_oracle = {
 	exists = owner
 	owner = {
 		has_valid_civic = civic_pyrolatry
-		owner_species = { # Vfix
-			root = {
-				habitability = { who = prev value <= 0.5 }
-				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
-			}
-		}
+		# owner_species = { # Vfix TODO: the whole shebang makes no sence without pop
+		# 	root = {
+		# 		habitability = { who = prev value <= 0.5 }
+		# 		any_owned_species = { is_same_species = prevprev }
+		# 	}
+		# }
 	}
+	habitability = { who = owner_species value <= 0.5 }
 }
 
 politician_is_radiant_priest = {
@@ -835,13 +836,14 @@ politician_is_radiant_priest = {
 	owner = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_exalted_priesthood
-		owner_species = { # Vfix
-			root = {
-				habitability = { who = prev value <= 0.5 }
-				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
-			}
-		}
+		# owner_species = { # Vfix TODO: the whole shebang makes no sence without pop
+		# 	root = {
+		# 		habitability = { who = prev value <= 0.5 }
+		# 		any_owned_species = { is_same_species = prevprev }
+		# 	}
+		# }
 	}
+	habitability = { who = owner_species value <= 0.5 }
 }
 
 politician_is_ashbroker = {
@@ -849,13 +851,14 @@ politician_is_ashbroker = {
 	owner = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_merchant_guilds
-		owner_species = { # Vfix
-			root = {
-				habitability = { who = prev value <= 0.5 }
-				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
-			}
-		}
+		# owner_species = { # Vfix TODO: the whole shebang makes no sence without pop
+		# 	root = {
+		# 		habitability = { who = prev value <= 0.5 }
+		# 		any_owned_species = { is_same_species = prevprev }
+		# 	}
+		# }
 	}
+	habitability = { who = owner_species value <= 0.5 }
 }
 
 politician_is_blazewright = {
@@ -864,13 +867,14 @@ politician_is_blazewright = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_superstitious_beliefs
 		NOT = { has_valid_civic = civic_aristocratic_elite }
-		owner_species = { # Vfix
-			root = {
-				habitability = { who = prev value <= 0.5 }
-				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
-			}
-		}
+		# owner_species = { # Vfix TODO: the whole shebang makes no sence without pop
+		# 	root = {
+		# 		habitability = { who = prev value <= 0.5 }
+		# 		any_owned_species = { is_same_species = prevprev }
+		# 	}
+		# }
 	}
+	habitability = { who = owner_species value <= 0.5 }
 }
 
 politician_is_pyrocrat = {
@@ -879,13 +883,14 @@ politician_is_pyrocrat = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_aristocratic_elite
 		NOT = { has_valid_civic = civic_superstitious_beliefs }
-		owner_species = { # Vfix
-			root = {
-				habitability = { who = prev value <= 0.5 }
-				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
-			}
-		}
+		# owner_species = { # Vfix TODO: the whole shebang makes no sence without pop
+		# 	root = {
+		# 		habitability = { who = prev value <= 0.5 }
+		# 		any_owned_species = { is_same_species = prevprev }
+		# 	}
+		# }
 	}
+	habitability = { who = owner_species value <= 0.5 }
 }
 
 politician_is_blazing_harbinger = {
@@ -894,13 +899,14 @@ politician_is_blazing_harbinger = {
 		has_valid_civic = civic_pyrolatry
 		has_valid_civic = civic_aristocratic_elite
 		has_valid_civic = civic_superstitious_beliefs
-		owner_species = { # Vfix
-			root = {
-				habitability = { who = prev value <= 0.5 }
-				any_owned_pop_group = { is_same_species = prevprev pop_group_size > 100 } # Vfix
-			}
-		}
+		# owner_species = { # Vfix TODO: the whole shebang makes no sence without pop
+		# 	root = {
+		# 		habitability = { who = prev value <= 0.5 }
+		# 		any_owned_species = { is_same_species = prevprev }
+		# 	}
+		# }
 	}
+	habitability = { who = owner_species value <= 0.5 }
 }
 
 politician_is_augmentation_merchant = {

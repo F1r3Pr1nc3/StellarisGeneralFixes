@@ -401,6 +401,7 @@ can_release_vassal = {
 can_release_vassal_from_species = {
 	root = {
 		is_sapient = yes
+		can_think = yes
 		NOR = {
 			AND = {
 				has_trait = trait_machine_unit
@@ -415,7 +416,6 @@ can_release_vassal_from_species = {
 				prev.this = { is_hive_empire = yes }
 			}
 			has_trait = trait_mechanical
-			can_think = no
 			has_infertile_clone_soldier_trait = yes
 		}
 	}
@@ -907,6 +907,7 @@ pop_group_has_random_ethics = {
 # From = Country
 # This = Species
 species_has_happiness = {
+	can_think = yes
 	NOR = {
 		AND = {
 			has_trait = trait_machine_unit
@@ -914,7 +915,6 @@ species_has_happiness = {
 			from = { is_machine_empire = yes }
 		}
 		has_trait = trait_hive_mind
-		can_think = no
 		AND = {
 			has_trait = trait_mechanical
 			OR = {
@@ -2524,37 +2524,34 @@ can_fill_worker_job = {
 	custom_tooltip = WORKER_JOB_TRIGGER
 
 	hidden_trigger = {
-		if = {
-			limit = {
-				planet = {
-					is_planet_class = pc_cosmogenesis_world # Everyone can become a chip slave
+		OR = { # Vfix opt minor
+			planet = {
+				is_planet_class = pc_cosmogenesis_world # Everyone can become a chip slave
+			}
+			AND = {
+				exists = owner
+				NOR = {
+					pop_group_has_ethic = ethic_gestalt_consciousness # Vfix opt minor
+					pop_group_has_trait = trait_tankbound
+					is_being_purged = yes
+					is_being_assimilated = yes
+					has_citizenship_type = { type = citizenship_organic_trophy country = owner }
+					AND = {
+						has_citizenship_type = { type = citizenship_slavery }
+						OR = {
+							has_slavery_type = { type = slavery_livestock }
+							has_slavery_type = { type = slavery_matrix }
+						}
+					}
 				}
-			}
-			always = yes
-		}
-		else = {
-			NOR = {
-				is_gestalt = yes
-				pop_group_has_trait = trait_tankbound
-			}
-			exists = owner
-			is_being_purged = no
-			is_being_assimilated = no
-			NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
-			NAND = {
-				has_citizenship_type = { type = citizenship_slavery }
-				OR = {
-					has_slavery_type = { type = slavery_livestock }
-					has_slavery_type = { type = slavery_matrix }
+				OR = { # Vfix opt minor
+					has_disconnected_drone_citizenship_type = no
+					disconnected_drone_can_be_worker = yes
 				}
-			}
-			if = {
-				limit = { has_disconnected_drone_citizenship_type = yes }
-				disconnected_drone_can_be_worker = yes
-			}
-			if = {
-				limit = { divinity_right_to_work_job_check_trigger_exempt = no }
-				divinity_right_to_work_job_check_trigger_worker = yes
+				OR = { # Vfix opt minor
+					divinity_right_to_work_job_check_trigger_exempt = yes
+					divinity_right_to_work_job_check_trigger_worker = yes
+				}
 			}
 		}
 	}
@@ -3695,11 +3692,13 @@ can_voidworms_bombard_country = {
 		always = yes
 	}
 	else = {
-		NOT = { has_technology = tech_voidworm_immunity }
-		event_target:voidworms_country = {
-			check_variable_arithmetic = {
-				which = value:voidworm_ships_owned
-				value < value:voidworm_maximum_population
+		NOR = {
+			has_technology = tech_voidworm_immunity
+			event_target:voidworms_country = {
+				check_variable_arithmetic = {
+					which = value:voidworm_ships_owned
+					value >= value:voidworm_maximum_population
+				}
 			}
 		}
 	}

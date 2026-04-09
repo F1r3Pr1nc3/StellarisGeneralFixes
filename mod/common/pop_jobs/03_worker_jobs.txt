@@ -486,74 +486,6 @@ crystal_miner = {
 			building_icon = building_crystal_mines
 		}
 	}
-	tags = { strategic_resource rare_crystals }
-	possible_pre_triggers = {
-		has_owner = yes
-		is_sapient = yes
-		is_being_assimilated = no
-		is_being_purged = no
-	}
-	possible_precalc = can_fill_worker_job
-
-	resources = {
-		category = planet_sr_miners
-		produces = {
-			rare_crystals = 2
-		}
-		upkeep = {
-			trigger = {
-				any_deposit = {
-					is_deposit_type = d_lava_tubes
-				}
-			}
-			energy = @lava_tubes_mining_job_upkeep
-		}
-	}
-	weight = {
-		weight = @specialist_job_weight # Important job
-		mult = value:job_weights_modifier|JOB|crystal_miner|RESOURCE|rare_crystals|
-		modifier = {
-			factor = 10
-			is_enslaved = yes
-			can_take_servant_job = no
-			NOT = { has_slavery_type = { type = slavery_indentured } }
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-			owner = { has_technology = tech_droid_workers }
-		}
-		modifier = {
-			factor = 200
-			OR = {
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-			owner = { NOT = { has_technology = tech_droid_workers } }
-		}
-		modifier = {
-			factor = 0.1
-			can_take_servant_job = yes
-		}
-		modifier = {
-			factor = 5
-			has_trait = trait_cyborg_creed_of_labor
-		}
-	}
-	promotion = {
-		time = @standard_promotion_time
-		effect = {
-			pop_amount_change_category = {
-				CATEGORY = worker
-				AMOUNT = local_pop_amount
-			}
-		}
-	}
 }
 
 gas_extractor = {
@@ -671,7 +603,7 @@ farmer = {
 				farmer_is_titan_hunter_trigger = yes
 			}
 			food = 2
-			trade = 6 # 8 Vfix balance
+			trade = 8
 		}
 		# Job Swap - Puddle Technician
 		produces = {
@@ -745,7 +677,7 @@ farmer = {
 				is_shackled_robot = yes
 			}
 			can_take_servant_job = no
-			NOT = { owner = { has_technology = tech_droid_workers } }
+			owner = { NOT = { has_technology = tech_droid_workers } }
 		}
 		modifier = {
 			factor = 0.25
@@ -874,6 +806,7 @@ mortal_initiate = {
 		modifier = {
 			factor = 0.2
 			has_citizenship_rights = no
+			# NOT = { has_trait = trait_mechanical }
 		}
 		modifier = {
 			factor = 0.1

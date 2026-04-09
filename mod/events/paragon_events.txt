@@ -4016,10 +4016,10 @@ leader_event = {
 
 	trigger = {
 		leader_class = official
+		is_pacifist = yes
 		NOR = {
 			has_trait_tier1or2 = { TRAIT = leader_trait_corrupt }
 			has_trait_tier1or2 = { TRAIT = leader_trait_embezzler }
-			is_pacifist = no
 		}
 		exists = planet
 		planet = {
@@ -4275,8 +4275,7 @@ leader_event = {
 			has_trait = leader_trait_army_veteran
 			has_trait = leader_trait_retired_fleet_officer
 		}
-		# Vfix opt
-		is_robotic_species = no
+		species = { is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes }
 	}
 
 	immediate = {

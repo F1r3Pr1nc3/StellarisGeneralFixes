@@ -2494,12 +2494,9 @@ country_event = {
 							federation = { is_same_value = root.federation }
 						}
 						event_target:smear_campaign_instigator = {
-							NOR = {
-								has_federation = no
-								AND = {
-									has_federation = yes
-									federation = { is_same_value = root.federation }
-								}
+							NAND = { # Vfix logic conflict
+								has_federation = yes
+								federation = { is_same_value = root.federation }
 							}
 						}
 					}
