@@ -514,15 +514,15 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_playable_country = {
 				limit = {
-					NOR = {
-						is_same_value = from.owner
-						is_xenophobe = yes
-						is_homicidal = yes
-						is_xenophile = yes
-					}
+					NOT = { is_same_value = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
+					}
+					NOR = {
+						is_xenophobe = yes
+						is_homicidal = yes
+						is_xenophile = yes
 					}
 				}
 				add_opinion_modifier = { modifier = opinion_burned_a_primitive_world who = from.owner }
@@ -1005,7 +1005,6 @@ situation_event = {
 
 	after = {
 		clear_global_event_target = red_giant_homeworld_tmp
-		destroy_situation = this
 		hidden_effect = {
 			owner = {
 				country_event = { id = infernals.2160 months = 12 }
@@ -1015,6 +1014,7 @@ situation_event = {
 			set_country_flag = starfire_cannon_unlocked
 			add_research_option = tech_starfire_cannon
 		}
+		destroy_situation = this
 	}
 }
 
@@ -1248,7 +1248,6 @@ situation_event = {
 		target = {
 			set_planet_entity = { entity = m_star_class_star_entity } # remove subspace portal
 		}
-		destroy_situation = this
 		hidden_effect = {
 			owner = {
 				country_event = { id = infernals.2160 months = 12 }
@@ -1258,6 +1257,7 @@ situation_event = {
 			set_country_flag = starfire_cannon_unlocked
 			add_research_option = tech_starfire_cannon
 		}
+		destroy_situation = this
 	}
 }
 
@@ -5086,7 +5086,6 @@ situation_event = {
 		target = {
 			set_planet_entity = { entity = m_star_class_star_entity } # remove subspace portal
 		}
-		destroy_situation = this
 		hidden_effect = {
 			owner = {
 				country_event = { id = infernals.2160 months = 12 }
@@ -5096,6 +5095,7 @@ situation_event = {
 			set_country_flag = starfire_cannon_unlocked
 			add_research_option = tech_starfire_cannon
 		}
+		destroy_situation = this
 	}
 }
 
@@ -5540,7 +5540,6 @@ fleet_event = {
 		}
 		large_artifact_reward = yes
 	}
-
 	# In case the primitives have been resettled to the afterlife
 	option = {
 		name = infernals.2735.c

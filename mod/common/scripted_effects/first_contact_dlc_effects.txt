@@ -236,7 +236,6 @@ generate_slaver_bonus = {
 		limit = { pop_amount > 3600 }
 		random_owned_pop_group = { kill_single_pop = yes }
 	}
-
 	# Checking if there are any other pre-ftls to abduct
 	while = {
 		limit = { pop_amount < 5200 }
@@ -1895,7 +1894,6 @@ integrate_country_effect = {
 	every_owned_fleet = {
 		set_owner = $OWNER$
 	}
-
 	# Don't inherit gestalt nodes
 	if = {
 		limit = { is_gestalt = yes }
@@ -2057,7 +2055,6 @@ pre_ftl_indoctrinate_operation_result = {
 # (Instigating) country scope | from = Espionage Operation
 shift_pre_ftl_pop_ethic = {
 	set_country_flag = shifting_pre_ftl_ethic_to_$ETHIC$
-
 	hidden_effect = {
 		from.target = {
 			set_timed_country_flag = {
@@ -2969,7 +2966,6 @@ payback_resolution_counters_check = {
 		}
 		country_event = { id = origin.4052 }
 	}
-
 	# if you passed everything, celebrate more!!!
 	if = {
 		limit = {
@@ -3016,7 +3012,6 @@ payback_words_chain_counters_check_joining_galcom = {
 			amount = 1
 		}
 	}
-
 	# Equal standing/non-interference
 	if = {
 		limit = {

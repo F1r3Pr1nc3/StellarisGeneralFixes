@@ -91,7 +91,6 @@ setup_aura_clashing_monthly = {
 clear_aura_clashing_flags = {
 	remove_star_flag = aura_is_clashing_against_@root
 	remove_star_flag = aura_clash_winning_against_@root
-
 	root = {
 		remove_star_flag = aura_is_clashing_against_@prev
 		remove_star_flag = aura_clash_winning_against_@prev
@@ -204,7 +203,6 @@ on_psionic_aura_spawned = {
 
 	[[!NO_IMMUNE]
 	set_timed_star_flag = { flag = newly_spawned_psionic_aura months = 6 }
-
 	]
 }
 
@@ -229,7 +227,6 @@ check_psionic_suppression_eligibility = {
 		}
 		owner = { set_psionic_aura_encounter = yes }
 	}
-
 	# check neighbor systems
 	every_neighbor_system = {
 		limit = {

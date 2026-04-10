@@ -327,14 +327,12 @@ DLAF_make_full_synths = {
 	}
 
 	set_country_flag = synth_assimilation # So they can assimilate.
-
 	random_situation = { # They are already Synths, skip this.
 		limit = { is_situation_type = situation_digitization }
 		destroy_situation = this
 	}
 
 	set_country_flag = identity_complex_available # so we can instantly grant the building.
-
 	random_list = {
 		10 = {
 			modifier = {
@@ -973,7 +971,6 @@ inherit_tech_effect = {
 		}
 		give_technology = { tech = tech_starbase_2 }
 	}
-
 	## Add some new technologies
 	inverted_switch = {
 		trigger = has_technology

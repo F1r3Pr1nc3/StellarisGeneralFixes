@@ -74,8 +74,8 @@ add_random_trait_evopred = {
 		set_country_flag = smorgasblorg_$TAG$
 		change_variable = { which = smorgasblorg_phenotypes value = 1 }
 	}
-
 	]
+
 	[[!SPECIES]
 
 	modify_species = {
@@ -123,7 +123,6 @@ add_random_trait_evopred = {
 			}
 		}
 	}
-
 	]
 }
 
@@ -139,6 +138,7 @@ give_evolutionary_predator_situation_progress_and_dna = {
 
 	custom_tooltip = evopred_$AMOUNT$_progress
 	# If the TYPE is set this will set a country flag, if it's not set it will do nothing
+
 	[[TYPE]
 	set_country_flag = consumed_$TYPE$_dna
 	custom_tooltip = evopred_$TYPE$_extracted
@@ -704,7 +704,6 @@ starlit_citadel_start_effect = {
 	set_country_flag = Story5
 	# Number of times hatchery fleets visited you
 	set_variable = { which = hatchery_fleet_visits value = 3 }
-
 	# Number of times you defeated them
 	set_variable = { which = hatchery_fleet_defeats value = 0 }
 	give_technology = { tech = tech_deep_space_citadel message = no }
@@ -725,7 +724,6 @@ starlit_citadel_start_effect = {
 		set_name = NAME_Starlit_Citadel
 		every_owned_ship = { set_name = NAME_Starlit_Citadel }
 	}
-
 	# Spawn Bioship system wormhole and link with player home system
 	if = {
 		limit = {
@@ -965,29 +963,24 @@ give_all_biogenesis_techs_effect = {
 	give_technology = { tech = tech_mauler_build_speed message = no }
 	give_technology = { tech = tech_mauler_growth_1 message = no }
 	give_technology = { tech = tech_mauler_growth_2 message = no }
-
 	# Weavers
 	give_technology = { tech = tech_weavers message = no }
 	give_technology = { tech = tech_weaver_build_speed message = no }
 	give_technology = { tech = tech_weaver_growth_1 message = no }
 	give_technology = { tech = tech_weaver_growth_2 message = no }
-
 	# Harbingers
 	give_technology = { tech = tech_harbingers message = no }
 	give_technology = { tech = tech_harbinger_build_speed message = no }
 	give_technology = { tech = tech_harbinger_growth_1 message = no }
 	give_technology = { tech = tech_harbinger_growth_2 message = no }
-
 	# Stingers
 	give_technology = { tech = tech_stingers message = no }
 	give_technology = { tech = tech_stinger_build_speed message = no }
 	give_technology = { tech = tech_stinger_growth_1 message = no }
 	give_technology = { tech = tech_stinger_growth_2 message = no }
-
 	# Starbase Buildings
 	give_technology = { tech = tech_growth_chamber_1 message = no }
 	give_technology = { tech = tech_growth_chamber_2 message = no }
-
 	# Weapons
 	give_technology = { tech = tech_mandibles_2 message = no }
 	give_technology = { tech = tech_mandibles_3 message = no }
@@ -2009,7 +2002,6 @@ activate_behemoth_superweapon = {
 		limit = { exists = orbital_station }
 		orbital_station = { dismantle = yes }
 	}
-
 	# Reset all habitable planets into tomb worlds
 	every_system_planet = {
 		limit = { habitable_planet_not_urban = yes }
@@ -2019,7 +2011,6 @@ activate_behemoth_superweapon = {
 		tomb_world_modifier_cleanup = yes
 		validate_planet_buildings_and_districts = yes
 	}
-
 	# Reset all ecus into relic worlds
 	every_system_planet = {
 		limit = { is_planet_class = pc_city }
@@ -2027,7 +2018,6 @@ activate_behemoth_superweapon = {
 		relic_world_deposits = yes
 		validate_planet_buildings_and_districts = yes
 	}
-
 	# Destroy habitats
 	every_system_planet = {
 		limit = {
@@ -2046,7 +2036,6 @@ activate_behemoth_superweapon = {
 		destroy_colony = yes
 		spawn_habitat_cracker_effect = yes
 	}
-
 	# Add 100 devastation to all remaining colonies
 	# and kill pops
 	every_system_colony = {
@@ -2104,7 +2093,6 @@ activate_behemoth_superweapon = {
 		}
 		destroy_fleet = this
 	}
-
 	# Deal massive damage to the Elder Voidspawn
 	# and disable regen for 1 year
 	every_fleet_in_system = {

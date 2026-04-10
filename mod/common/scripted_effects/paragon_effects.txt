@@ -28,13 +28,11 @@ salvage_mechanical_ships_effect = {
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = cruiser GIVES = cruiser }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = battleship GIVES = battleship }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = titan GIVES = titan }
-
 	# Offspring Ships
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = offspring_corvette GIVES = corvette }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = offspring_destroyer GIVES = destroyer }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = offspring_cruiser GIVES = cruiser }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = offspring_battleship GIVES = battleship }
-
 	# Pirate/Marauder/Galactic Nemesis Ships
 	if = {
 		limit = {
@@ -82,7 +80,6 @@ salvage_mechanical_ships_effect = {
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = crisis_cruiser GIVES = cruiser }
 	}
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = marauder_galleon GIVES = battleship }
-
 	# Fallen Empire/Cosmogenesis ships
 	if = {
 		limit = {
@@ -117,7 +114,6 @@ salvage_mechanical_ships_effect = {
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = massive_ship_fallen_empire GIVES = titan }
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = cosmo_crisis_titan GIVES = titan }
 	}
-
 	# Nanotech Ships
 	if = {
 		limit = {
@@ -160,7 +156,6 @@ salvage_biological_ships_effect = {
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = offspring_stinger_stage_2 GIVES = stinger_stage_2 }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = offspring_stinger_stage_3 GIVES = stinger_stage_3 }
 	add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = titan GIVES = titan }
-
 	# Fallen Empire/Cosmogenesis ships
 	if = {
 		limit = {
@@ -183,7 +178,6 @@ salvage_biological_ships_effect = {
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = massive_ship_fallen_empire GIVES = cosmo_crisis_titan }
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = cosmo_crisis_titan GIVES = cosmo_crisis_titan }
 	}
-
 	# Pirate/Marauder/Galactic Nemesis Ships
 	if = {
 		limit = {
@@ -212,7 +206,6 @@ salvage_biological_ships_effect = {
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = marauder_cruiser GIVES = crisis_cruiser }
 		add_ship_type_from_debris = { CHANCE = $CHANCE$ USES = crisis_cruiser GIVES = crisis_cruiser }
 	}
-
 	# Nanotech Ships
 	if = {
 		limit = {
@@ -316,7 +309,6 @@ update_modifier_amount_if_needed = {
 		limit = { has_modifier = $MODIFIER$ }
 		remove_modifier = $MODIFIER$
 	}
-
 	# Keep track of multiplier amount applied so we only need to update the
 	# modifier if the amount is changed.
 	if = {
@@ -409,7 +401,6 @@ ethic_leader_hire_effect = {
 
 	lower_leader_chance = yes
 	set_country_flag = spawning_renowned_leader
-
 	clone_leader = {
 		target = event_target:ethic_leader
 		skip_background_generation = yes
@@ -421,7 +412,6 @@ ethic_leader_hire_effect = {
 	}
 
 	remove_country_flag = spawning_renowned_leader
-
 	create_message = {
 		type = MESSAGE_RECRUITED_LEADER
 		localization = MESSAGE_RECRUITED_LEADER_DESC

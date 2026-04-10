@@ -63,7 +63,7 @@ edicts = {
 }
 
 edicts_unscaled = {
-	use_for_ai_budget = yes # Vfix patch
+	use_for_ai_budget = yes
 	parent = edicts
 	add_unscaled_value_to_tooltip = no
 }
@@ -1400,6 +1400,9 @@ country_storms = {
 planet_buildings_storm_tech = {
 	parent = planet_buildings
 
+	generate_mult_modifiers = {
+		upkeep
+	}
 	modifier_category = planet
 }
 

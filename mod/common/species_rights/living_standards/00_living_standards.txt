@@ -593,15 +593,26 @@ living_standard_good = {
 		factor = 5
 		modifier = {
 			factor = 0
-			NAND = { # Vfix opt
-				has_citizenship_type = { country = from type = citizenship_full }
-				from = {
-					has_monthly_income = { resource = minerals value > 100 }
+			OR = { # VFIX TODO OPT
+				NAND = {
+					has_citizenship_type = { country = from type = citizenship_full }
+					from = {
+						OR = {
+							is_pacifist = yes
+							is_egalitarian = yes
+						}
+					}
+					OR = {
+						has_living_standard = { country = from type = living_standard_good }
+						from = {
+							has_monthly_income = { resource = minerals value > 150 }
+						}
+					}
 				}
-				OR = {
+				AND = {
 					has_living_standard = { country = from type = living_standard_good }
 					from = {
-						has_monthly_income = { resource = minerals value > 150 }
+						has_monthly_income = { resource = minerals value <= 100 }
 					}
 				}
 			}

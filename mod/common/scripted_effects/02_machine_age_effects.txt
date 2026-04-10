@@ -349,7 +349,6 @@ cyberize_pops_effect = {
 			}
 		}
 	}
-
 	# else = {
 	# 	log_error = "Fail cyberize_pops_effect: No current cyberspecies found for \\[This.GetName]"
 	# }
@@ -1431,7 +1430,6 @@ synth_queen_spawn_history_projects = {
 			save_global_event_target_as = synth_queen_capital_system
 		}
 	}
-
 	# Set flags to spawn 5 projects (4 lore + one empty one)
 	random_system = {
 		limit = {
@@ -1570,6 +1568,7 @@ synth_queen_spawn_history_projects = {
 	}
 
 	# Set flags to spawn additional, "fake" projects if playing on bigger galaxy sizes
+
 	[[NUM_EXTRA_PROJECTS]
 	while = {
 		count = $NUM_EXTRA_PROJECTS$
@@ -1601,7 +1600,6 @@ synth_queen_spawn_history_projects = {
 			}
 		}
 	}
-
 	]
 }
 
@@ -1833,7 +1831,6 @@ synth_queen_fleet_patrol = {
 
 synth_queen_fleet_convoys_patrol = {
 	set_fleet_flag = mobile_convoy
-
 	queue_actions = {
 		repeat = {
 			wait = { duration = 80 random = 80 }
@@ -3366,7 +3363,6 @@ synth_queen_give_storm_project = {
 		}
 		enable_special_project = { name = "THE_SYNTH_QUEENS_STORM_2" owner = root }
 	}
-
 	# If you are still researching the first project, you will get the second one after that
 }
 

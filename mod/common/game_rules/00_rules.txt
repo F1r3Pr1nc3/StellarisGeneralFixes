@@ -450,7 +450,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Organic Species
 	if = {
 		limit = {
@@ -471,7 +470,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Clone Army
 	if = {
 		limit = { has_infertile_clone_soldier_trait = yes }
@@ -483,7 +481,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Robots & Machines
 	else_if = {
 		limit = {
@@ -526,7 +523,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Self-Modified
 	custom_tooltip = {
 		fail_text = "CANNOT_MODIFY_SELF_MODIFIED_SPECIES"
@@ -534,7 +530,6 @@ can_modify_species = {
 			has_trait = trait_self_modified
 		}
 	}
-
 	# Malleable Genes
 	custom_tooltip = {
 		fail_text = "CANNOT_MODIFY_MALLEABLE_GENES_SPECIES"
@@ -1387,7 +1382,6 @@ ai_should_restrict_system = {
 # Used by regular empires, fallen empires & crises
 ai_should_not_restrict_system = {
 	has_star_flag = starlit_sealed_system
-
 	root = {
 		has_origin = origin_starlit_citadel
 	}
@@ -1512,7 +1506,6 @@ can_resettle_pop_group = {
 		fail_text = "self_modified_refuse"
 		NOT = { has_trait = trait_self_modified }
 	}
-
 	# Pathogenic Pops Can't Resettle
 	custom_tooltip = {
 		fail_text = "pathogenic_genes_warning"
@@ -1772,7 +1765,6 @@ can_support_branch_offices = {
 		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
 		is_fallen_empire = no
 	}
-
 	# custom_tooltip = {
 	#	fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
 	#	NOR = {
@@ -2833,7 +2825,6 @@ can_get_external_leader_pool_candidate = {
 		is_in_federation_with = from
 		is_overlord_to = from
 	}
-
 	# Both empires must be regular empires, machine intelligences or hive-minds.
 	OR = {
 		AND = {
@@ -2877,7 +2868,6 @@ can_trade_leader = {
 			}
 		}
 	}
-
 	# The subject and overlord must both be regular empires, machine intelligences or hive-minds.
 	OR = {
 		AND = {
@@ -2907,7 +2897,6 @@ can_trade_leader = {
 			}
 		}
 	}
-
 	# Can't trade gestalt nodes
 	NOR = {
 		is_gestalt_node = yes
@@ -2947,7 +2936,8 @@ is_country_psionic = {
 
 # this = species
 is_psionic_species = {
-	has_psionic_species_trait = yes # Vfix TODO: performance intense, is_psionic_species trigger would be better
+	# has_psionic_species_trait = yes # Vfix: performance intense somehow, so take is_psionic_species
+	is_psionic_species = yes
 }
 
 chance_for_external_leader_pool = {
@@ -3057,7 +3047,6 @@ leader_election_weight = {
 		}
 		add = species.value:species_purity_times_ten
 	}
-
 	# Multiply by Faction support.
 	modifier = {
 		custom_tooltip = {
@@ -3066,7 +3055,6 @@ leader_election_weight = {
 		}
 		add = value:leader_faction_support_election_bonus
 	}
-
 	# If no Factions formed, fake faction support based on if it's an Empire ethic or not.
 	modifier = {
 		custom_tooltip = {
@@ -3086,13 +3074,11 @@ leader_election_weight = {
 		}
 		add = 25
 	}
-
 	# Not changing Ruler should be slightly preferred.
 	modifier = {
 		is_ruler = yes
 		mult = 1.1
 	}
-
 	# Bonus if Leader was Councilor when election started. Or if no Election, is a Councilor now.
 	modifier = {
 		custom_tooltip = {
@@ -3110,7 +3096,6 @@ leader_election_weight = {
 		}
 		mult = 1.05
 	}
-
 	# Governments (based on Ethics and Civics) might prefer certain Leader classes. Hide if +/- 0%.
 	modifier = {
 		custom_tooltip = {
@@ -3122,7 +3107,6 @@ leader_election_weight = {
 		}
 		mult = value:leader_class_government_match_bonus_mult
 	}
-
 	# Extra bonus for Councilor Subclass (which is a Trait).
 	modifier = {
 		custom_tooltip = {
@@ -3131,7 +3115,6 @@ leader_election_weight = {
 		}
 		mult = 1.2
 	}
-
 	# Penalty for Non-Councilor Subclass (which is a Trait).
 	modifier = {
 		custom_tooltip = {
@@ -3140,7 +3123,6 @@ leader_election_weight = {
 		}
 		mult = 0.8
 	}
-
 	# Bonus/penalty from Traits.
 	modifier = {
 		custom_tooltip = {
@@ -3149,7 +3131,6 @@ leader_election_weight = {
 		}
 		mult = value:leader_traits_election_bonus_mult
 	}
-
 	# Bonus from Skill level.
 	modifier = {
 		custom_tooltip = {
@@ -3158,7 +3139,6 @@ leader_election_weight = {
 		}
 		mult = value:leader_skill_election_bonus_mult
 	}
-
 	# Penalty from old Age, unless already ruler or immortal.
 	modifier = {
 		custom_tooltip = {
@@ -3169,7 +3149,6 @@ leader_election_weight = {
 		}
 		mult = 0.5
 	}
-
 	# Titanic reduction if you are fanatic xenophobic and the candidate is a xeno
 	modifier = {
 		custom_tooltip = {
@@ -3187,7 +3166,6 @@ leader_election_weight = {
 		}
 		mult = 0.001
 	}
-
 	# Huge Reduction if you are a xenophobe and the candidate is a xeno
 	modifier = {
 		custom_tooltip = {
@@ -3205,7 +3183,6 @@ leader_election_weight = {
 		}
 		mult = 0.01
 	}
-
 	# Halve the chance if you are neither a xenophobe or xenophile
 	modifier = {
 		custom_tooltip = {
@@ -3224,7 +3201,6 @@ leader_election_weight = {
 		}
 		mult = 0.5
 	}
-
 	# No modifiers for regular xenophiles or selective kinship empires
 	# Fanatic Xenophiles prefer electing aliens that are not the same species as the current one in charge.
 	modifier = {
@@ -3412,7 +3388,6 @@ can_interact_with_astral_rift = {
 # FROM = Astral Rift checked
 can_explore_astral_rift = {
 	has_technology = tech_rift_sphere
-
 	hidden_trigger = {
 		OR = {
 			is_astral_rift_pool_empty = no
@@ -3556,7 +3531,6 @@ has_breached_shroud_storm = {
 	is_scope_valid = yes
 	exists = from
 	has_country_flag = breached_shroud
-
 	from = {
 		is_storm_type = shroud_storm
 	}
@@ -3683,7 +3657,6 @@ can_voidworms_bombard_country = {
 		is_country_type = default
 		is_primitive = yes
 	}
-
 	# During crisis, they should bombard no matter what, otherwise check tech and max voidworms
 	if = {
 		limit = {
