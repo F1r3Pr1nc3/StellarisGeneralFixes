@@ -565,7 +565,6 @@ create_fe_spiritualist_fringe_colony = {
 		district = district_city
 		zone = zone_industrial
 	}
-
 }
 
 awaken_fallen_machine_empire = {
@@ -2022,14 +2021,13 @@ generate_new_species_and_pop = {
 			save_event_target_as = new_pop_species
 		}
 	}
-
 	]
+
 	[[CITIZEN_COUNTRY]
 
 	event_target:new_pop_species = {
 		set_citizenship_type = { country = $CITIZEN_COUNTRY$ type = citizenship_full }
 	}
-
 	]
 }
 
@@ -2304,8 +2302,8 @@ grant_random_fe_building = {
 		1 = {
 			modifier = {
 				factor = 0
+				has_country_flag = fe_clinic_1_can_build
 				NOR = {
-					NOT = { has_country_flag = fe_clinic_1_can_build }
 					is_regular_empire = yes
 					is_hive_empire = yes
 				}

@@ -1277,7 +1277,6 @@ situation_event = {
 			add_resource = { influence = -100 }
 		}
 	}
-
 	# Gestalts can decide to witness the event,
 	# with potentially horrific consequences.
 	option = {
@@ -3550,7 +3549,6 @@ situation_event = {
 
 	after = {
 		set_global_flag = kaleidoscope_finished # just in case we need it in the future
-		destroy_situation = this
 		hidden_effect = {
 			every_playable_country = {
 				limit = {
@@ -3560,6 +3558,7 @@ situation_event = {
 				country_event = { id = situation.2042 }
 			}
 		}
+		destroy_situation = this
 	}
 }
 
@@ -3605,7 +3604,6 @@ situation_event = {
 
 	after = {
 		set_global_flag = kaleidoscope_finished # just in case we need it in the future
-		destroy_situation = this
 		every_playable_country = {
 			limit = {
 				intel_level = { level > low system = event_target:kaleidoscope_system }
@@ -3613,6 +3611,7 @@ situation_event = {
 			}
 			country_event = { id = situation.2044 }
 		}
+		destroy_situation = this
 	}
 }
 
@@ -4375,7 +4374,6 @@ situation_event = {
 		name = situation.1070.c
 		custom_tooltip = situation.1070.c.tooltip
 		hidden_effect = {
-			destroy_situation = this
 			target = {
 				solar_system = {
 					spawn_planet = {
@@ -4393,6 +4391,7 @@ situation_event = {
 					}
 				}
 			}
+			destroy_situation = this
 		}
 	}
 }

@@ -327,14 +327,12 @@ DLAF_make_full_synths = {
 	}
 
 	set_country_flag = synth_assimilation # So they can assimilate.
-
 	random_situation = { # They are already Synths, skip this.
 		limit = { is_situation_type = situation_digitization }
 		destroy_situation = this
 	}
 
 	set_country_flag = identity_complex_available # so we can instantly grant the building.
-
 	random_list = {
 		10 = {
 			modifier = {
@@ -661,18 +659,12 @@ DLAF_create_awoken_robot_country = {
 DLAF_spawn_awoken = {
 	if = {
 		limit = {
-			any_system = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-			}
+			any_system = { DLAF_is_valid_awoken_country_colony_system_trigger = yes }
 		}
 		random_system = {
-			limit = {
-				DLAF_is_valid_awoken_country_colony_system_trigger = yes
-			}
+			limit = { DLAF_is_valid_awoken_country_colony_system_trigger = yes }
 			random_system_planet = {
-				limit = {
-					DLAF_is_valid_awoken_colony_trigger = yes
-				}
+				limit = { DLAF_is_valid_awoken_colony_trigger = yes }
 				weights = {
 					base = 1
 					modifier = { factor = 2 planet_size > 10 }
@@ -979,7 +971,6 @@ inherit_tech_effect = {
 		}
 		give_technology = { tech = tech_starbase_2 }
 	}
-
 	## Add some new technologies
 	inverted_switch = {
 		trigger = has_technology
@@ -1007,9 +998,7 @@ DNCF_spawn_nivlac_circle = {
 	# DNCF_select_nivlac_planet (just used once)
 	if = {
 		limit = {
-			any_system = {
-				DNCF_solar_system_has_valid_nivlac_planet = yes
-			}
+			any_system = { DNCF_solar_system_has_valid_nivlac_planet = yes }
 		}
 		random_system = {
 			limit = { DNCF_solar_system_has_valid_nivlac_planet = yes }
@@ -1069,6 +1058,7 @@ DNCF_spawn_nivlac_circle = {
 			}
 		}
 	}
+
 	create_nivlac_effect = yes
 	# DNCF_create_nivlac_country (just used once)
 	create_country = {
@@ -1125,14 +1115,10 @@ DNCF_spawn_nivlac_circle = {
 					has_civic = civic_entropy_drinkers # Doesn't make starting leaders psychic.
 					has_valid_civic = civic_entropy_drinkers_corporate
 					[[FRIENDLY]
-					AND = {
-						# has_opinion_modifier = { who = root modifier = opinion_nurtured }
-						OR = {
-							has_civic = civic_inwards_perfection
-							has_civic = civic_fanatic_purifiers
-							has_civic = civic_pompous_purists
-						}
-					}
+					# has_opinion_modifier = { who = root modifier = opinion_nurtured }
+					has_civic = civic_inwards_perfection
+					has_civic = civic_fanatic_purifiers
+					has_civic = civic_pompous_purists
 					AND = {
 						root.species = {
 							NOT = { is_species_class = FUN }
@@ -1146,6 +1132,7 @@ DNCF_spawn_nivlac_circle = {
 			change_government = { civics = random }
 		}
 	}
+
 	# DNCF_setup_nivlac_planet (just used once)
 	event_target:nivlac_planet = {
 		solar_system = {
@@ -1219,15 +1206,21 @@ DNCF_spawn_nivlac_circle = {
 get_random_pre_ftl_trade_agreement_advanced = {
 	random_observed_pre_ftl_within_border = {
 		limit = {
-			[[NOBROKENSHACKLES] NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } } ]
-			[[NOGESTALT] is_gestalt = no ]
-			[[NOAQUATICS]
-				NAND = {
-					species = { has_trait = trait_aquatic }
-					capital_scope = { is_planet_class = pc_ocean }
-				}
+			[[NOBROKENSHACKLES]
+			NOT = { is_broken_shackles_pre_ftl_to_scope = { SCOPE = root } }
 			]
-			[[MINERA] DPFF_has_pre_ftl_age_minimum = { $MINERA$ = yes } ]
+			[[NOGESTALT]
+			is_gestalt = no
+			]
+			[[NOAQUATICS]
+			NAND = {
+				species = { has_trait = trait_aquatic }
+				capital_scope = { is_planet_class = pc_ocean }
+			}
+			]
+			[[MINERA]
+			DPFF_has_pre_ftl_age_minimum = { $MINERA$ = yes }
+			]
 			has_pre_ftl_trade = root
 		}
 		save_event_target_as = $EVENT$_country
@@ -1279,10 +1272,8 @@ DPFF_set_age_civics_hive = {
 DPFF_roll_keep_unique_preftl_civics_hive = {
 	if = {
 		limit = {
-			AND = {
-				has_civic = civic_hive_devouring_swarm
-				has_civic = civic_hive_strength_of_legions
-			}
+			has_civic = civic_hive_devouring_swarm
+			has_civic = civic_hive_strength_of_legions
 		}
 		# Do not change their civics.
 	}
@@ -1299,7 +1290,7 @@ DPFF_roll_keep_unique_preftl_civics_hive = {
 			45 = { force_remove_civic = $CIVIC1$ }
 			45 = { force_remove_civic = $CIVIC2$ }
 			5 = { force_remove_civic = civic_hive_devouring_swarm }
-			5 = {} # Keep all three.
+			5 = {  } # Keep all three.
 		}
 	}
 	else_if = {
@@ -1315,7 +1306,7 @@ DPFF_roll_keep_unique_preftl_civics_hive = {
 			45 = { force_remove_civic = $CIVIC1$ }
 			45 = { force_remove_civic = $CIVIC2$ }
 			5 = { force_remove_civic = civic_hive_strength_of_legions }
-			5 = {} # Keep all three.
+			5 = {  } # Keep all three.
 		}
 	}
 	else = {

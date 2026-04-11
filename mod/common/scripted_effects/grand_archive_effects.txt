@@ -934,7 +934,6 @@ setup_treasure_trove_reward = {
 			set_$TREASURE_TROVE_SCOPE_TYPE$_flag = treasure_trove_technology
 		}
 	}
-
 	# For Treasure Hunters origin, specimen is given in addition to another reward
 	if = {
 		limit = {
@@ -1115,7 +1114,6 @@ give_treasure_trove_reward = {
 	}
 
 	remove_$TREASURE_TROVE_SCOPE_TYPE$_flag = treasure_trove_active
-
 	solar_system = {
 		if = {
 			limit = { has_star_flag = pirates_spawn_rolled }
@@ -1774,7 +1772,6 @@ select_suitable_spawn_system = {
 			}
 		}
 	}
-
 	# Select capital if there is no other solution
 	if = {
 		limit = {
@@ -1794,7 +1791,6 @@ spawn_treasure_hidden_system = {
 			target = this
 		}
 	}
-
 	# First spawn has different rules than subsequent spawns
 	capital_scope.solar_system = {
 		random_neighbor_system = { save_event_target_as = suitable_spawn_system }
@@ -2639,7 +2635,6 @@ get_frenzied_voidworms_target = {
 cleanup_sabotage_flags = {
 	remove_country_flag = periodic_spawn_block
 	remove_country_flag = destroyed_fleet_spawn_cooldown
-
 	every_system_within_border = {
 		limit = { has_star_flag = available_for_sabotage }
 		remove_star_flag = available_for_sabotage
@@ -2649,12 +2644,10 @@ cleanup_sabotage_flags = {
 # Scope = Planet
 plant_fruitful_seeds = {
 	set_planet_flag = seeds_planted_by@$SEEDS_OWNER$
-
 	set_surveyed = {
 		surveyed = yes
 		surveyor = $SEEDS_OWNER$
 	}
-
 	# If the planet has an owner:
 	# YOU
 	# - Get a positive opinion modifier
@@ -2709,7 +2702,6 @@ plant_fruitful_seeds = {
 			}
 		}
 	}
-
 	# If the planet has no owner:
 	# YOU
 	# - Get a planet modifier (dormant seed pod)

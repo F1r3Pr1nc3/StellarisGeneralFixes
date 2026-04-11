@@ -23,7 +23,6 @@ building_augmentation_bazaars = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -103,7 +102,6 @@ building_transcendental_retreat = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -173,7 +171,6 @@ building_hive_transcendental_retreat = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -274,7 +271,6 @@ building_amphitheater_of_the_mind = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_owner = yes
 		has_upgraded_capital = yes
 		hidden_trigger = {
@@ -357,7 +353,6 @@ building_grand_concert_hall_of_the_mind = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -468,7 +463,6 @@ building_battlement_of_steel = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -540,7 +534,6 @@ building_grand_battlements_of_steel = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -643,7 +636,6 @@ building_sanctuary_of_toil = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -713,7 +705,6 @@ building_grand_cathedral_of_toil = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -814,7 +805,6 @@ building_forge_of_the_fellowship = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		hidden_trigger = {
 			owner = { has_origin = origin_cybernetic_creed }
@@ -891,7 +881,6 @@ building_grand_forge_of_the_fellowship = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -991,7 +980,6 @@ building_the_sanctum_of_augmentation = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -1057,7 +1045,6 @@ building_the_united_sanctum_of_augmentation = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_major_upgraded_capital = yes
 		hidden_trigger = {
 			has_owner = yes
@@ -1145,7 +1132,6 @@ building_identity_repository = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		owner = { has_origin = origin_synthetic_fertility }
 	}
 
@@ -1247,7 +1233,6 @@ building_abandoned_gene_clinic = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		owner = { has_origin = origin_synthetic_fertility }
 	}
 
@@ -1286,7 +1271,6 @@ building_lathe_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1340,7 +1324,6 @@ building_lathe_major_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1412,7 +1395,6 @@ building_lathe_super_capital = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	resources = {
@@ -1483,7 +1465,6 @@ building_lathe_resonator = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = resource
@@ -1538,7 +1519,6 @@ building_lathe_stabilisator = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = government
@@ -1580,7 +1560,6 @@ building_lathe_overclocker = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = resource
@@ -1636,7 +1615,6 @@ building_lathe_preserver = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = amenity
@@ -1682,7 +1660,6 @@ building_lathe_reactor = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = resource
@@ -1725,7 +1702,6 @@ building_lathe_life_support = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = amenity
@@ -1772,7 +1748,6 @@ building_lathe_cogitator = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = army
@@ -1830,7 +1805,6 @@ building_lathe_validator = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	category = research
@@ -1882,8 +1856,8 @@ building_augmentation_center = {
 		trigger = {
 			has_owner = yes
 			owner = {
-				is_regular_empire = yes
 				NOR = {
+					is_gestalt = yes
 					has_origin = origin_cybernetic_creed
 					has_country_flag = cyber_control_government
 					has_country_flag = cyber_control_corporate
@@ -1897,8 +1871,10 @@ building_augmentation_center = {
 		trigger = {
 			has_owner = yes
 			owner = {
-				is_regular_empire = yes
-				NOT = { has_origin = origin_cybernetic_creed }
+				NOR = {
+					is_gestalt = yes
+					has_origin = origin_cybernetic_creed
+				}
 				has_country_flag = cyber_control_government
 			}
 		}
@@ -1908,8 +1884,10 @@ building_augmentation_center = {
 		trigger = {
 			has_owner = yes
 			owner = {
-				is_regular_empire = yes
-				NOT = { has_origin = origin_cybernetic_creed }
+				NOR = {
+					is_gestalt = yes
+					has_origin = origin_cybernetic_creed
+				}
 				has_country_flag = cyber_control_corporate
 			}
 		}
@@ -1919,8 +1897,10 @@ building_augmentation_center = {
 		trigger = {
 			has_owner = yes
 			owner = {
-				is_regular_empire = yes
-				NOT = { has_origin = origin_cybernetic_creed }
+				NOR = {
+					is_gestalt = yes
+					has_origin = origin_cybernetic_creed
+				}
 				has_country_flag = cyber_control_independent
 			}
 		}
@@ -1965,7 +1945,6 @@ building_augmentation_center = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1995,7 +1974,7 @@ building_augmentation_center = {
 	triggered_planet_modifier = {
 		potential = {
 			has_owner = yes
-			owner = { is_regular_empire = yes }
+			owner = { is_gestalt = no }
 		}
 		job_augmentor_add = 200
 	}
@@ -2020,7 +1999,6 @@ building_augmentation_center = {
 		}
 		job_augmentor_drone_add = 200
 	}
-
 	### CONTROLLING SECTOR MODIFIERS ###
 	triggered_planet_modifier = { # Government control, after Cyberization
 		potential = {
@@ -2043,7 +2021,6 @@ building_augmentation_center = {
 		}
 		planet_jobs_upkeep_mult = -0.05
 	}
-
 	### JOB STRATA FOCUS MODIFIERS ###
 	triggered_planet_modifier = { # Ruler focus
 		potential = {
@@ -2110,7 +2087,6 @@ building_cyberdome = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -2186,7 +2162,6 @@ building_identity_complex = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -2233,7 +2208,6 @@ building_nanolab_1 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_owner = yes
 		owner = { has_tradition = tr_nanotech_adopt }
 	}
@@ -2302,7 +2276,6 @@ building_nanolab_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
@@ -2372,7 +2345,6 @@ building_nanotech_cauldron = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {

@@ -1742,8 +1742,13 @@ tech_terrestrial_sculpting = {
 		factor = 1.5	# terraforming needs to be a bit more common
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		# if you're a fish, you're definitely gonna prioritise finding out how to make more oceans
-		modifier = { factor = 1.25 has_trait = trait_aquatic }
-		modifier = { factor = 1.25 has_trait = trait_robot_aquatic }
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_trait = trait_aquatic
+				has_trait = trait_robot_aquatic
+			}
+		}
 		modifier = { factor = 1.25 has_origin = origin_life_seeded }
 		modifier = { add = 5 has_origin = origin_wilderness }
 		modifier = { factor = 0 is_lithoid_devouring_swarm = yes }
@@ -1784,8 +1789,13 @@ tech_terrestrial_sculpting = {
 			}
 		}
 		# Hydrocentric is really good and needs this
-		modifier = { factor = 1000 has_trait = trait_aquatic }
-		modifier = { factor = 1000 has_trait = trait_robot_aquatic }
+		modifier = {
+			factor = 1000
+			OR = {
+				has_trait = trait_aquatic
+				has_trait = trait_robot_aquatic
+			}
+		}
 		modifier = { factor = 100 has_origin = origin_life_seeded }
 		modifier = {
 			factor = 2
@@ -4076,7 +4086,6 @@ tech_planetary_unification = {
 	weight = @tier1weight1
 	gateway = capital
 	feature_flags = { campaign_edicts }
-
 	# also unlocks planet-happiness edict and gives a one time Unity award
 	modifier = {
 		country_unity_produces_mult = 0.025
@@ -4372,10 +4381,8 @@ tech_global_production_strategy = {
 		factor = 1.5
 		modifier = {
 			factor = 0
-			NOR = {
-				has_technology = "tech_luxuries_1"
-				country_uses_consumer_goods = no
-			}
+			country_uses_consumer_goods = yes
+			NOT = { has_technology = "tech_luxuries_1" }
 		}
 		modifier = {
 			factor = 1.5

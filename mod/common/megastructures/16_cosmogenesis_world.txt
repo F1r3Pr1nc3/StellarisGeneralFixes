@@ -132,9 +132,7 @@ cosmogenesis_world_0 = {
 		modifier = {
 			factor = 0
 			OR = {
-				starbase = {
-					NOT = { has_starbase_size >= starbase_starport }
-				}
+				starbase = { has_starbase_size < starbase_starport }
 				any_system_planet = { is_planet_class = pc_habitat is_colony = no }
 			}
 		}
@@ -217,7 +215,6 @@ cosmogenesis_world_ruined = {
 	show_in_outliner = no
 	place_entity_on_planet_plane = yes
 	plane_offset = @plane_offset
-
 	potential = {
 		always = no
 	}

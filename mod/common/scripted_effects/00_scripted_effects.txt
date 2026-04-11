@@ -462,7 +462,6 @@ make_intelligent = {
 			add_trait = trait_intelligent
 		}
 	}
-
 	# add machine trait
 	if = {
 		limit = { pop_group_has_trait = trait_robot_logic_engines }
@@ -491,7 +490,6 @@ make_resilient = {
 			add_trait = trait_resilient
 		}
 	}
-
 	# add machine trait
 	if = {
 		limit = { pop_group_has_trait = trait_robot_durable }
@@ -3522,7 +3520,6 @@ set_assimilation_counter_variable = {
 	change_variable = { which = assimilation_counter value = assimilation_counter_2 }
 	change_variable = { which = assimilation_counter value = assimilation_counter_3 }
 	change_variable = { which = assimilation_counter value = assimilation_counter_4 }
-
 	# Divide by 5 and round as we assimilate in batches of 5
 	divide_variable = { which = assimilation_counter value = 5 }
 	round_variable_to_closest = {
@@ -3658,7 +3655,6 @@ setup_baol_colony_1 = {
 	}
 
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			is_planet_class = pc_barren
@@ -3678,7 +3674,6 @@ setup_baol_colony_2 = {
 	}
 
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			is_planet_class = pc_asteroid
@@ -3698,7 +3693,6 @@ setup_baol_colony_3 = {
 	}
 
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			habitable_planet = yes
@@ -3724,7 +3718,6 @@ setup_baol_colony_3_fallback = {
 	}
 
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			habitable_planet = yes
@@ -3895,7 +3888,6 @@ add_imp_concession_ports = {
 
 can_build_crisis_star_eater = {
 	set_country_flag = can_build_crisis_star_eater
-
 	create_ship_design = {
 		design = "NAME_Crisis_Star_Eater"
 	}
@@ -3945,7 +3937,6 @@ destroy_star_system = {
 		}
 		change_pc = pc_black_hole
 	}
-
 	# Handle Contingency Machine Worlds
 	every_system_planet = {
 		limit = {
@@ -4475,7 +4466,6 @@ death_cult_sacrifice_effect = {
 			change_variable = { which = sacrifice_result_mult value = prev.sacrifice_vassal_amount_drone }
 		}
 	}
-
 	# We do some maths here to calculate the effective percentage of your population sacrificed
 	# and cap the bonus to 15% as if you'd sacrificed 15% of your population if it is greater.
 	divide_variable = { which = sacrifice_result_mult value = trigger:pop_amount }
@@ -4504,14 +4494,12 @@ death_cult_sacrifice_effect = {
 		which = sacrifice_result_mult
 		value = 0.1
 	}
-
 	# We also need the edicts length multiplier for the modifiers
 	export_modifier_to_variable = { modifier = edict_length_mult variable = edict_length_modifiers }
 	change_variable = { # Needs to be 1 + mult
 		which = edict_length_modifiers
 		value = 1
 	}
-
 	# Now we do the sacrifice
 	every_owned_pop_job = {
 		limit = { has_job_type = mortal_initiate }
@@ -4538,7 +4526,6 @@ death_cult_sacrifice_effect = {
 			kill_assigned_pop_amount = { percentage = 1 }
 		}
 	}
-
 	# Scale result by the level of any death_cult councilor.
 	multiply_variable = {
 		which = sacrifice_result_mult
@@ -5371,7 +5358,6 @@ country_defaulted_effect = {
 count_robots_to_recycle = {
 	set_variable = { which = alloys_for_robot value = $ALLOYS$ }
 	set_variable = { which = recycled_robots value = 0 }
-
 	# if machine empire, get half of the population
 	if = {
 		limit = {
@@ -5387,7 +5373,6 @@ count_robots_to_recycle = {
 		divide_variable = { which = recycled_robots value = 2 }
 		round_variable = recycled_robots
 	}
-
 	# if normal empire, get all robots
 	else = {
 		export_trigger_value_to_variable = {
@@ -6264,31 +6249,26 @@ set_origin_effect = {
 		limit = { has_trait = trait_necrophage }
 		set_origin = origin_necrophage
 	}
-
 	# Subterranean
 	else_if = {
 		limit = { has_trait = trait_cave_dweller }
 		set_origin = origin_subterranean
 	}
-
 	# Subterranean Machines
 	else_if = {
 		limit = { has_trait = trait_robot_cave_dweller }
 		set_origin = origin_subterranean_machines
 	}
-
 	# Void Dwellers
 	else_if = {
 		limit = { has_trait = trait_void_dweller_1 }
 		set_origin = origin_void_dwellers
 	}
-
 	# Void Machines
 	else_if = {
 		limit = { has_trait = trait_void_dweller_2 }
 		set_origin = origin_void_machines
 	}
-
 	# Calamitous Birth
 	else_if = {
 		limit = {
@@ -6297,7 +6277,6 @@ set_origin_effect = {
 		}
 		set_origin = origin_lithoid
 	}
-
 	# Liberated
 	else_if = {
 		limit = { has_country_flag = released_empire }
@@ -6306,7 +6285,6 @@ set_origin_effect = {
 	else = {
 		set_origin = origin_default
 	}
-
 	# Fix hive/machine
 	if = {
 		limit = {
@@ -7499,7 +7477,6 @@ tomb_world_modifier_cleanup = {
 initialize_kaleidoscope = {
 	optimize_memory
 	set_global_flag = kaleidoscope_started
-
 	event_target:global_event_country = {
 		if = {
 			limit = {
@@ -7799,8 +7776,8 @@ pop_group_transfer_ethic = {
 	$POP_GROUP$ = {
 		save_event_target_as = source_pop_group
 	}
-
 	]
+
 	[[!POP_GROUP]
 
 	weighted_random_owned_pop_group = {
@@ -7814,7 +7791,6 @@ pop_group_transfer_ethic = {
 		}
 		save_event_target_as = source_pop_group
 	}
-
 	]
 	if = { # Vfix
 		limit = { exists = event_target:source_pop_group }
@@ -8156,7 +8132,6 @@ declare_malevolent_aura_focus = {
 			side = event_target:community_war_leader
 		}
 	}
-
 	# Vfix forgot? https://forum.paradoxplaza.com/forum/threads/stellaris-galactic-community-repeatedly-declaring-war.1859716/#post-30911060
 	set_global_flag = galactic_focus_crisis_malevolent_aura
 }

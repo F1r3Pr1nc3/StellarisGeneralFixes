@@ -1,3 +1,4 @@
+
 generate_pre_ftls_on_planet = {
 	optimize_memory
 	select_pre_ftl_origin = yes
@@ -45,7 +46,7 @@ generate_subterranean_pre_ftls_on_planet = {
 
 generate_chosen_pre_ftls_on_planet = {
 	set_planet_flag = pre_ftl_default
-	#Don't create species. Last created species is already correct
+	# Don't create species. Last created species is already correct
 	create_very_early_pre_ftl_empire = yes
 	setup_pre_ftl_planet = yes
 	pre_ftl_clean_up_effect = yes
@@ -59,15 +60,11 @@ select_pre_ftl_origin = {
 		}
 		# Void Dwellers
 		if = {
-			limit = {
-				is_planet_class = pc_habitat
-			}
+			limit = { is_planet_class = pc_habitat }
 			set_planet_flag = pre_ftl_void_dwellers
 		}
 		else_if = {
-			limit = {
-				is_planet_class = pc_ringworld_habitable
-			}
+			limit = { is_planet_class = pc_ringworld_habitable }
 			# Do nothing!
 			set_planet_flag = pre_ftl_default # So that they don't appear as Prosperous Unification on a Ringworld.
 		}
@@ -80,7 +77,6 @@ select_pre_ftl_origin = {
 				# Default pre-ftl origin
 				# All other origins require First Contact.
 				100 = { set_planet_flag = pre_ftl_default }
-
 				# Mechanists (requires Utopia)
 				5 = {
 					modifier = {
@@ -89,65 +85,42 @@ select_pre_ftl_origin = {
 							has_first_contact_dlc = no
 							has_utopia = no
 							has_planet_flag = pre_ftl_hive_mind
-							any_galaxy_planet = {
-								has_planet_flag = pre_ftl_mechanists
-							}
+							any_galaxy_planet = { has_planet_flag = pre_ftl_mechanists }
 						}
 					}
 					set_planet_flag = pre_ftl_mechanists
 				}
-
 				# Life-Seeded (requires Apocalypse)
 				5 = {
-					modifier = {
-						factor = 0
-						is_planet_class = pc_volcanic
-					}
-					modifier = {
-						factor = 0
-						NOT = {
-							host_has_dlc = "Apocalypse"
-						}
-					}
+					modifier = { factor = 0 is_planet_class = pc_volcanic }
+					modifier = { factor = 0 has_apocalypse_dlc = no }
 					modifier = {
 						factor = 0
 						OR = {
 							has_first_contact_dlc = no
-							any_galaxy_planet = {
-								has_planet_flag = pre_ftl_life_seeded
-							}
-							any_country = {
-								has_origin = origin_life_seeded
-							}
+							any_galaxy_planet = { has_planet_flag = pre_ftl_life_seeded }
+							any_country = { has_origin = origin_life_seeded }
 						}
 					}
 					set_planet_flag = pre_ftl_life_seeded
 					change_pc = pc_gaia
 					create_life_seeded_planet = yes
 				}
-
 				# Ocean Paradise (Requires Aquatics)
 				5 = {
+					modifier = { factor = 0 is_planet_class = pc_volcanic }
 					modifier = {
 						factor = 0
-						is_planet_class = pc_volcanic
-					}
-					modifier = {
-						factor = 0
-						OR = {
-							has_aquatics = no
-							has_first_contact_dlc = no
+						NAND = {
+							has_aquatics = yes
+							has_first_contact_dlc = yes
 						}
 					}
 					modifier = {
 						factor = 0
 						OR = {
-							any_galaxy_planet = {
-								has_planet_flag = pre_ftl_ocean_paradise
-							}
-							any_country = {
-								has_origin = origin_ocean_paradise
-							}
+							any_galaxy_planet = { has_planet_flag = pre_ftl_ocean_paradise }
+							any_country = { has_origin = origin_ocean_paradise }
 						}
 					}
 					set_planet_flag = pre_ftl_ocean_paradise
@@ -155,22 +128,18 @@ select_pre_ftl_origin = {
 					set_planet_size = 30
 					create_ocean_paradise_planet = yes
 				}
-
 				# Subterranean (requires Overlord)
 				5 = {
 					modifier = {
 						factor = 0
-						OR = {
-							has_overlord_dlc = no
-							has_first_contact_dlc = no
+						NAND = {
+							has_overlord_dlc = yes
+							has_first_contact_dlc = yes
 						}
-
 					}
 					modifier = {
 						factor = 0
-						any_galaxy_planet = {
-							has_planet_flag = pre_ftl_subterranean
-						}
+						any_galaxy_planet = { has_planet_flag = pre_ftl_subterranean }
 					}
 					set_planet_flag = pre_ftl_subterranean
 				}
@@ -179,7 +148,7 @@ select_pre_ftl_origin = {
 	}
 }
 
-#This option is here for things like Necrophages where we don't want your guaranteed pre-FTLs to start with a size 30 ocean world
+# This option is here for things like Necrophages where we don't want your guaranteed pre-FTLs to start with a size 30 ocean world
 set_default_origin = {
 	set_planet_flag = pre_ftl_default
 }
@@ -232,40 +201,21 @@ set_pre_ftl_origin = {
 pre_ftl_clean_up_effect = {
 	owner = {
 		if = {
-			limit = {
-				is_subterranean_empire = yes
-			}
+			limit = { is_subterranean_empire = yes }
 			# If you're not in the industrial age, we'll accelerate your progress.
 			if = {
-				limit = {
-					is_pre_industrial = yes
-				}
+				limit = { is_pre_industrial = yes }
 				remove_pre_ftl_flags = yes
 				set_pre_ftl_age = industrial_age
 				set_country_flag = industrial_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_industrial_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"beige"
-						"yellow"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_industrial_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "beige" "yellow" "null" "null" }
 				}
-				capital_scope = {
-					remove_all_buildings = yes
-				}
+				capital_scope = { remove_all_buildings = yes }
 				if = {
-					limit = {
-						is_hive_empire = no
-					}
+					limit = { is_hive_empire = no }
 					change_government = {
 						civics = {
 							civic = civic_increasing_urbanization
@@ -297,66 +247,38 @@ pre_ftl_clean_up_effect = {
 						add_building = building_hive_urban_dwellings
 					}
 				}
-
 				capital_scope = {
 					if = {
-						limit = {
-							pop_amount > @industrial_age_pops
-						}
+						limit = { pop_amount > @industrial_age_pops }
 						while = {
-							limit = {
-								pop_amount > @industrial_age_pops
-							}
-							random_owned_pop_group = {
-								remove_pop_amount = 100
-							}
+							limit = { pop_amount > @industrial_age_pops }
+							random_owned_pop_group = { remove_pop_amount = 100 }
 						}
 					}
 					else_if = {
 						limit = { pop_amount < @industrial_age_pops }
 						while = {
-							limit = {
-								pop_amount < @industrial_age_pops
-							}
-							create_pop_group = {
-								species = owner_main_species
-							}
+							limit = { pop_amount < @industrial_age_pops }
+							create_pop_group = { species = owner_species }
 						}
 					}
 				}
 			}
 		}
 		if = {
-			limit = {
-				has_origin = origin_mechanists
-			}
+			limit = { has_origin = origin_mechanists }
 			# If you're not in the industrial age, we'll accelerate your progress.
 			if = {
-				limit = {
-					is_pre_industrial = yes
-				}
+				limit = { is_pre_industrial = yes }
 				remove_pre_ftl_flags = yes
 				set_pre_ftl_age = industrial_age
 				set_country_flag = industrial_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_industrial_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"beige"
-						"yellow"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_industrial_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "beige" "yellow" "null" "null" }
 				}
-				capital_scope = {
-					remove_all_buildings = yes
-				}
+				capital_scope = { remove_all_buildings = yes }
 				change_government = {
 					civics = {
 						civic = civic_increasing_urbanization
@@ -372,40 +294,26 @@ pre_ftl_clean_up_effect = {
 					add_building = building_urban_dwellings
 				}
 			}
-
 			create_built_robot_species = yes
 			last_created_species = { save_global_event_target_as = pre_ftl_mechanist_robot }
 			set_country_flag = created_robots
-
 			capital_scope = {
 				while = {
 					count = 4
-					create_pop_group = {
-						species = event_target:pre_ftl_mechanist_robot
-					}
+					create_pop_group = { species = event_target:pre_ftl_mechanist_robot }
 				}
 				if = {
-					limit = {
-						pop_amount > @industrial_age_pops
-					}
+					limit = { pop_amount > @industrial_age_pops }
 					while = {
-						limit = {
-							pop_amount > @industrial_age_pops
-						}
-						random_owned_pop_group = {
-							remove_pop_amount = 100
-						}
+						limit = { pop_amount > @industrial_age_pops }
+						random_owned_pop_group = { remove_pop_amount = 100 }
 					}
 				}
 				else_if = {
 					limit = { pop_amount < @industrial_age_pops }
 					while = {
-						limit = {
-							pop_amount < @industrial_age_pops
-						}
-						create_pop_group = {
-							species = owner_main_species
-						}
+						limit = { pop_amount < @industrial_age_pops }
+						create_pop_group = { species = owner_species }
 					}
 				}
 			}
@@ -415,14 +323,12 @@ pre_ftl_clean_up_effect = {
 
 create_pre_ftl_species = {
 	if = {
-		limit = {
-			has_planet_flag = pre_ftl_ocean_paradise
-		}
+		limit = { has_planet_flag = pre_ftl_ocean_paradise }
 		create_species = {
 			name = random
 			class = random_pre_ftl
 			portrait = random
-			homeworld = THIS
+			homeworld = this
 			traits = {
 				trait = trait_aquatic
 				trait = random_traits
@@ -430,14 +336,12 @@ create_pre_ftl_species = {
 		}
 	}
 	else_if = {
-		limit = {
-			has_planet_flag = pre_ftl_subterranean
-		}
+		limit = { has_planet_flag = pre_ftl_subterranean }
 		create_species = {
 			name = random
 			class = random_pre_ftl
 			portrait = random
-			homeworld = THIS
+			homeworld = this
 			traits = {
 				trait = trait_cave_dweller
 				trait = random_traits
@@ -445,14 +349,12 @@ create_pre_ftl_species = {
 		}
 	}
 	else_if = {
-		limit = {
-			has_planet_flag = pre_ftl_void_dwellers
-		}
+		limit = { has_planet_flag = pre_ftl_void_dwellers }
 		create_species = {
 			name = random
 			class = random_pre_ftl
 			portrait = random
-			homeworld = THIS
+			homeworld = this
 			traits = {
 				trait = trait_void_dweller_1
 				trait = random_traits
@@ -466,10 +368,8 @@ create_pre_ftl_species = {
 					name = random
 					class = random_pre_ftl
 					portrait = random
-					homeworld = THIS
-					traits = {
-						trait = random_traits
-					}
+					homeworld = this
+					traits = { trait = random_traits }
 				}
 			}
 			1 = {
@@ -478,7 +378,7 @@ create_pre_ftl_species = {
 					name = random
 					class = random_pre_ftl
 					portrait = random
-					homeworld = THIS
+					homeworld = this
 					traits = {
 						trait = random_traits
 						trait = "trait_presapient_forcefully_devolved"
@@ -498,7 +398,6 @@ create_very_early_pre_ftl_empire = {
 		name = random
 		authority = random
 		day_zero_contact = no
-
 		civics = {
 			civic = civic_landed_nobility
 			civic = civic_flat_world_theory
@@ -506,20 +405,9 @@ create_very_early_pre_ftl_empire = {
 		species = last_created_species
 		ethos = random
 		flag = {
-			icon = {
-				category = "pre_ftl"
-				file = "preftl_stone_age.dds"
-			}
-			background= {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors={
-				"turquoise"
-				"green"
-				"null"
-				"null"
-			}
+			icon = { category = "pre_ftl" file = "preftl_stone_age.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "turquoise" "green" "null" "null" }
 		}
 		origin = "origin_default"
 		type = primitive
@@ -548,45 +436,24 @@ create_very_early_pre_ftl_empire = {
 						}
 					}
 					change_country_flag = {
-						icon = {
-							category = "pre_ftl"
-							file = "preftl_bronze_age.dds"
-						}
-						background= {
-							category = "backgrounds"
-							file = "new_dawn.dds"
-						}
-						colors={
-							"green"
-							"dark_green"
-							"null"
-							"null"
-						}
+						icon = { category = "pre_ftl" file = "preftl_bronze_age.dds" }
+						background = { category = "backgrounds" file = "new_dawn.dds" }
+						colors = { "green" "dark_green" "null" "null" }
 					}
 				}
 				1 = {
 					set_country_flag = iron_age
 					set_pre_ftl_age = iron_age
 					change_country_flag = {
-						icon = {
-							category = "pre_ftl"
-							file = "preftl_iron_age.dds"
-						}
-						background= {
-							category = "backgrounds"
-							file = "new_dawn.dds"
-						}
-						colors={
-							"purple"
-							"dark_purple"
-							"null"
-							"null"
-						}
+						icon = { category = "pre_ftl" file = "preftl_iron_age.dds" }
+						background = { category = "backgrounds" file = "new_dawn.dds" }
+						colors = { "purple" "dark_purple" "null" "null" }
 					}
 				}
 			}
 		}
 	}
+
 	set_pre_ftl_origin = yes
 }
 
@@ -601,24 +468,14 @@ create_early_pre_ftl_empire = {
 		species = last_created_species
 		ethos = random
 		flag = {
-			icon = {
-				category = "pre_ftl"
-				file = "preftl_stone_age.dds"
-			}
-			background= {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors={
-				"turquoise"
-				"green"
-				"null"
-				"null"
-			}
+			icon = { category = "pre_ftl" file = "preftl_stone_age.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "turquoise" "green" "null" "null" }
 		}
 		origin = "origin_default"
 		type = primitive
 	}
+
 	last_created_country = {
 		set_graphical_culture = preindustrial_01
 		random_list = {
@@ -644,104 +501,50 @@ create_early_pre_ftl_empire = {
 					}
 				}
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_bronze_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"green"
-						"dark_green"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_bronze_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "green" "dark_green" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = iron_age
 				set_pre_ftl_age = iron_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_iron_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"purple"
-						"dark_purple"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_iron_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "purple" "dark_purple" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = late_medieval_age
 				set_pre_ftl_age = late_medieval_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_medieval_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"light_blue"
-						"blue"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_medieval_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "light_blue" "blue" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = renaissance_age
 				set_pre_ftl_age = renaissance_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_renaissance_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"pink"
-						"burgundy"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_renaissance_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "pink" "burgundy" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = steam_age
 				set_pre_ftl_age = steam_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_steam_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"orange"
-						"red"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_steam_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "orange" "red" "null" "null" }
 				}
 			}
 		}
 	}
+
 	set_pre_ftl_origin = yes
 }
 
@@ -756,24 +559,14 @@ create_late_pre_ftl_empire = {
 		species = last_created_species
 		ethos = random
 		flag = {
-			icon = {
-				category = "pre_ftl"
-				file = "preftl_industrial_age.dds"
-			}
-			background= {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors={
-				"turquoise"
-				"green"
-				"null"
-				"null"
-			}
+			icon = { category = "pre_ftl" file = "preftl_industrial_age.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "turquoise" "green" "null" "null" }
 		}
 		origin = "origin_default"
 		type = primitive
 	}
+
 	last_created_country = {
 		set_graphical_culture = industrial_01
 		random_list = {
@@ -781,123 +574,65 @@ create_late_pre_ftl_empire = {
 				set_country_flag = industrial_age
 				set_pre_ftl_age = industrial_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_industrial_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"beige"
-						"yellow"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_industrial_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "beige" "yellow" "null" "null" }
 				}
 			}
 			25 = {
 				set_country_flag = machine_age
 				set_pre_ftl_age = machine_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_machine_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"yellow"
-						"orange"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_machine_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "yellow" "orange" "null" "null" }
 				}
 			}
 			25 = {
 				set_country_flag = atomic_age
 				set_pre_ftl_age = atomic_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_atomic_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"beige"
-						"brown"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_atomic_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "beige" "brown" "null" "null" }
 				}
 			}
 			25 = {
 				set_country_flag = early_space_age
 				set_pre_ftl_age = early_space_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_early_space_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"grey"
-						"dark_grey"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_early_space_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "grey" "dark_grey" "null" "null" }
 				}
 			}
 		}
 	}
+
 	set_pre_ftl_origin = yes
 }
 
 create_pre_ftl_empire = {
 	random_list = {
 		# Industrial Civilization
-		35 = {
-			create_late_pre_ftl_empire = yes
-		}
+		35 = { create_late_pre_ftl_empire = yes }
 		# Medieval Civilization
-		65 = {
-			create_early_pre_ftl_empire = yes
-		}
+		65 = { create_early_pre_ftl_empire = yes }
 	}
 }
 
 add_tech_progress_situation = {
 	if = {
 		limit = {
-			NOT = {
-				any_situation = {
-					is_situation_type = pre_ftl_tech_progress_situation
-				}
-			}
+			NOT = { any_situation = { is_situation_type = pre_ftl_tech_progress_situation } }
 		}
-		start_situation = {
-			type = pre_ftl_tech_progress_situation
-		}
+		start_situation = { type = pre_ftl_tech_progress_situation }
 		# Early Space Age Pre-FTLs are capped at 50% progress.
 		if = {
-			limit = {
-				has_country_flag = early_space_age
-			}
+			limit = { has_country_flag = early_space_age }
 			random_situation = {
 				limit = { is_situation_type = pre_ftl_tech_progress_situation }
-				set_variable = {
-					which = initial_tech_progress
-					value = 0
-				}
+				set_variable = { which = initial_tech_progress value = 0 }
 				set_variable_to_random_value = {
 					which = initial_tech_progress
 					min = 0
@@ -911,10 +646,7 @@ add_tech_progress_situation = {
 		else = {
 			random_situation = {
 				limit = { is_situation_type = pre_ftl_tech_progress_situation }
-				set_variable = {
-					which = initial_tech_progress
-					value = 0
-				}
+				set_variable = { which = initial_tech_progress value = 0 }
 				set_variable_to_random_value = {
 					which = initial_tech_progress
 					min = 0
@@ -931,8 +663,8 @@ add_tech_progress_situation = {
 setup_pre_ftl_planet = {
 	set_owner = last_created_country
 	set_capital = yes
-
 	remove_building = building_colony_shelter
+
 	last_created_country = {
 		switch = {
 			trigger = has_country_flag
@@ -1156,7 +888,6 @@ setup_pre_ftl_planet = {
 			}
 		}
 	}
-
 	if = {
 		limit = {
 			last_created_country = {
@@ -1174,23 +905,16 @@ setup_pre_ftl_planet = {
 setup_pre_ftl_broken_shackles_planet = {
 	set_owner = event_target:broken_shackles_parent
 	set_capital = yes
-
 	remove_building = building_colony_shelter
+
 	event_target:broken_shackles_parent = {
-		start_situation = {
-			type = pre_ftl_tech_progress_situation
-		}
+		start_situation = { type = pre_ftl_tech_progress_situation }
 		# Early Space Age Pre-FTLs are capped at 50% progress.
 		if = {
-			limit = {
-				has_country_flag = early_space_age
-			}
+			limit = { has_country_flag = early_space_age }
 			random_situation = {
 				limit = { is_situation_type = pre_ftl_tech_progress_situation }
-				set_variable = {
-					which = initial_tech_progress
-					value = 0
-				}
+				set_variable = { which = initial_tech_progress value = 0 }
 				set_variable_to_random_value = {
 					which = initial_tech_progress
 					min = 0
@@ -1204,10 +928,7 @@ setup_pre_ftl_broken_shackles_planet = {
 		else = {
 			random_situation = {
 				limit = { is_situation_type = pre_ftl_tech_progress_situation }
-				set_variable = {
-					which = initial_tech_progress
-					value = 0
-				}
+				set_variable = { which = initial_tech_progress value = 0 }
 				set_variable_to_random_value = {
 					which = initial_tech_progress
 					min = 0
@@ -1223,7 +944,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			stone_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @stone_age_pops
 					}
 					add_building = building_crude_huts
@@ -1233,7 +954,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			bronze_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @bronze_age_pops
 					}
 					add_building = building_stone_palace
@@ -1244,7 +965,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			iron_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @iron_age_pops
 					}
 					add_building = building_stone_palace
@@ -1255,7 +976,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			late_medieval_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @late_medieval_age_pops
 					}
 					add_building = building_stone_palace
@@ -1267,7 +988,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			renaissance_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @renaissance_age_pops
 					}
 					add_building = building_stone_palace
@@ -1279,7 +1000,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			steam_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @steam_age_pops
 					}
 					add_building = building_stone_palace
@@ -1292,7 +1013,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			industrial_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @industrial_age_pops
 					}
 					add_building = building_primitive_capital
@@ -1307,7 +1028,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			machine_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @machine_age_pops
 					}
 					add_building = building_primitive_capital
@@ -1322,7 +1043,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			atomic_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @atomic_age_pops
 					}
 					add_building = building_primitive_capital
@@ -1337,7 +1058,7 @@ setup_pre_ftl_broken_shackles_planet = {
 			early_space_age = {
 				prev = {
 					create_pop_group = {
-						species = owner_main_species
+						species = owner_species
 						size = @early_space_age_pops
 					}
 					add_building = building_primitive_capital
@@ -1350,7 +1071,6 @@ setup_pre_ftl_broken_shackles_planet = {
 			}
 		}
 	}
-
 	if = {
 		limit = {
 			event_target:broken_shackles_parent = {
@@ -1406,16 +1126,14 @@ set_pre_ftl_age_effect = {
 		set_pre_ftl_age = $PRE_FTL_AGE$
 		set_country_flag = $PRE_FTL_AGE$
 		set_country_flag = recently_advanced
-		#capital_scope = { remove_all_buildings = yes } # Now handled in add_pre_ftl_buildings.
+		# capital_scope = { remove_all_buildings = yes } # Now handled in add_pre_ftl_buildings.
 		every_situation = {
 			limit = { is_situation_type = pre_ftl_tech_progress_situation }
 			destroy_situation = this # There can be only one.
 		}
 		start_situation = { type = pre_ftl_tech_progress_situation }
 		if = {
-			limit = {
-				is_gestalt = no
-			}
+			limit = { is_gestalt = no }
 			switch = {
 				trigger = has_country_flag
 				stone_age = {
@@ -1683,7 +1401,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @ancient_or_medieval_era_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 				}
@@ -1693,7 +1411,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @ancient_or_medieval_era_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 				}
@@ -1703,7 +1421,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @ancient_or_medieval_era_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 				}
@@ -1713,7 +1431,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @ancient_or_medieval_era_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 				}
@@ -1723,7 +1441,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @victorian_era_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 				}
@@ -1758,7 +1476,7 @@ increase_pre_ftl_pops_by_age_effect = {
 						while = {
 							count = @victorian_era_growth
 							create_pop_group = {
-								species = owner_main_species
+								species = owner_species
 							}
 						}
 					}
@@ -1769,7 +1487,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @machine_age_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 					random_list = {
@@ -1788,7 +1506,7 @@ increase_pre_ftl_pops_by_age_effect = {
 						25 = {
 							# One extra pop gained
 							create_pop_group = {
-								species = owner_main_species
+								species = owner_species
 							}
 						}
 					}
@@ -1826,7 +1544,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @atomic_age_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 					random_list = {
@@ -1845,7 +1563,7 @@ increase_pre_ftl_pops_by_age_effect = {
 						25 = {
 							# One extra pop gained
 							create_pop_group = {
-								species = owner_main_species
+								species = owner_species
 							}
 						}
 					}
@@ -1883,7 +1601,7 @@ increase_pre_ftl_pops_by_age_effect = {
 					while = {
 						count = @early_space_age_growth
 						create_pop_group = {
-							species = owner_main_species
+							species = owner_species
 						}
 					}
 					random_list = {
@@ -1902,7 +1620,7 @@ increase_pre_ftl_pops_by_age_effect = {
 						25 = {
 							# One extra pop gained
 							create_pop_group = {
-								species = owner_main_species
+								species = owner_species
 							}
 						}
 					}
@@ -1937,32 +1655,25 @@ increase_pre_ftl_pops_by_age_effect = {
 			}
 		}
 	}
+
 	remove_country_flag = $PRE_FTL_AGE$_pops
 }
 
 create_pre_ftl_blockers = {
 	if = {
-		limit = {
-			owner = { is_gestalt = no }
-		}
+		limit = { owner = { is_gestalt = no } }
 		if = {
 			limit = {
-				NOT = {
-					any_deposit = { is_deposit_type = d_decrepit_dwellings }
-				}
+				NOT = { any_deposit = { is_deposit_type = d_decrepit_dwellings } }
 			}
 			add_deposit = d_decrepit_dwellings
 		}
 	}
 	else_if = {
-		limit = {
-			owner = { is_gestalt = yes }
-		}
+		limit = { owner = { is_gestalt = yes } }
 		if = {
 			limit = {
-				NOT = {
-					any_deposit = { is_deposit_type = d_collapsed_burrows }
-				}
+				NOT = { any_deposit = { is_deposit_type = d_collapsed_burrows } }
 			}
 			add_deposit = d_collapsed_burrows
 		}
@@ -1973,9 +1684,7 @@ create_pre_ftl_blockers = {
 	}
 	if = {
 		limit = {
-			NOT = {
-				any_deposit = { is_deposit_type = d_failing_infrastructure }
-			}
+			NOT = { any_deposit = { is_deposit_type = d_failing_infrastructure } }
 		}
 		add_deposit = d_failing_infrastructure
 	}
@@ -1999,10 +1708,10 @@ spawn_presapient_species_randomizer_effect = {
 			modifier = { factor = 0 has_lithoids = no }
 			create_generic_presapient_species = { UPLIFT_TO = LITHOID }
 		}
-		#1 = {
+		# 1 = {
 		#	modifier = { factor = 0 has_necroids = no }
 		#	create_generic_presapient_species = { UPLIFT_TO = NECROID }
-		#}
+		# }
 		1 = {
 			modifier = { factor = 0 has_aquatics = no }
 			create_generic_presapient_species = { UPLIFT_TO = AQUATIC }
@@ -2022,6 +1731,7 @@ create_generic_presapient_species = {
 	solar_system = {
 		set_star_flag = pre_sapient_system
 	}
+
 	create_species = {
 		name = random
 		class = PRE_$UPLIFT_TO$
@@ -2032,41 +1742,28 @@ create_generic_presapient_species = {
 		effect = {
 			save_event_target_as = latest_presapient
 			if = {
-				limit = {
-					is_species_class = PRE_LITHOID
-				}
-				change_species_characteristics = {
-					add_trait = trait_lithoid
-				}
+				limit = { is_species_class = PRE_LITHOID }
+				change_species_characteristics = { add_trait = trait_lithoid }
 			}
 			else_if = {
-				limit = {
-					is_species_class = PRE_INF
-				}
-				change_species_characteristics = {
-					add_trait = trait_infernal
-				}
+				limit = { is_species_class = PRE_INF }
+				change_species_characteristics = { add_trait = trait_infernal }
 			}
 			else = {
-				change_species_characteristics = {
-					add_trait = trait_organic
-				}
+				change_species_characteristics = { add_trait = trait_organic }
 			}
 		}
 	}
 	while = {
 		count = 3
-		create_pop_group = {
-			category = pre_sapients
-			species = event_target:latest_presapient
-		}
+		create_pop_group = { category = pre_sapients species = event_target:latest_presapient }
 	}
 	event_target:pre_sapient_planet = {
 		set_planet_flag = pre_sapient_planet
 	}
 }
 
-#Homeworld for Genesis Guides
+# Homeworld for Genesis Guides
 spawn_presapient_species_randomizer_homeworld_effect = {
 	random_list = {
 		1 = { create_generic_presapient_species_homeworld = { UPLIFT_TO = MAM } }
@@ -2083,10 +1780,10 @@ spawn_presapient_species_randomizer_homeworld_effect = {
 			modifier = { factor = 0 has_lithoids = no }
 			create_generic_presapient_species_homeworld = { UPLIFT_TO = LITHOID }
 		}
-		#1 = {
+		# 1 = {
 		#	modifier = { factor = 0 has_necroids = no }
 		#	create_generic_presapient_species = { UPLIFT_TO = NECROID }
-		#}
+		# }
 		1 = {
 			modifier = { factor = 0 has_aquatics = no }
 			create_generic_presapient_species_homeworld = { UPLIFT_TO = AQUATIC }
@@ -2106,6 +1803,7 @@ create_generic_presapient_species_homeworld = {
 	solar_system = {
 		set_star_flag = pre_sapient_system
 	}
+
 	create_species = {
 		name = random
 		class = PRE_$UPLIFT_TO$
@@ -2115,34 +1813,21 @@ create_generic_presapient_species_homeworld = {
 		sapient = no
 		effect = {
 			if = {
-				limit = {
-					is_species_class = PRE_LITHOID
-				}
-				change_species_characteristics = {
-					add_trait = trait_lithoid
-				}
+				limit = { is_species_class = PRE_LITHOID }
+				change_species_characteristics = { add_trait = trait_lithoid }
 			}
 			else_if = {
-				limit = {
-					is_species_class = PRE_INF
-				}
-				change_species_characteristics = {
-					add_trait = trait_infernal
-				}
+				limit = { is_species_class = PRE_INF }
+				change_species_characteristics = { add_trait = trait_infernal }
 			}
 			else = {
-				change_species_characteristics = {
-					add_trait = trait_organic
-				}
+				change_species_characteristics = { add_trait = trait_organic }
 			}
 		}
 	}
 	while = {
 		count = 3
-		create_pop_group = {
-			category = pre_sapients
-			species = last_created_species
-		}
+		create_pop_group = { category = pre_sapients species = last_created_species }
 	}
 }
 
@@ -2164,14 +1849,12 @@ generate_very_early_pre_ftl_hive_on_planet = {
 
 create_pre_ftl_hive_species = {
 	if = {
-		limit = {
-			has_planet_flag = pre_ftl_ocean_paradise
-		}
+		limit = { has_planet_flag = pre_ftl_ocean_paradise }
 		create_species = {
 			name = random
 			class = random_pre_ftl
 			portrait = random
-			homeworld = THIS
+			homeworld = this
 			traits = {
 				trait = trait_hive_mind
 				trait = trait_aquatic
@@ -2180,14 +1863,12 @@ create_pre_ftl_hive_species = {
 		}
 	}
 	else_if = {
-		limit = {
-			has_planet_flag = pre_ftl_subterranean
-		}
+		limit = { has_planet_flag = pre_ftl_subterranean }
 		create_species = {
 			name = random
 			class = random_pre_ftl
 			portrait = random
-			homeworld = THIS
+			homeworld = this
 			traits = {
 				trait = trait_hive_mind
 				trait = trait_cave_dweller
@@ -2200,7 +1881,7 @@ create_pre_ftl_hive_species = {
 			name = random
 			class = random_pre_ftl
 			portrait = random
-			homeworld = THIS
+			homeworld = this
 			traits = {
 				trait = trait_hive_mind
 				trait = random_traits
@@ -2212,13 +1893,9 @@ create_pre_ftl_hive_species = {
 create_pre_ftl_hive_empire = {
 	random_list = {
 		# Industrial Civilization
-		35 = {
-			create_late_pre_ftl_hive_empire = yes
-		}
+		35 = { create_late_pre_ftl_hive_empire = yes }
 		# Medieval Civilization
-		65 = {
-			create_early_pre_ftl_hive_empire = yes
-		}
+		65 = { create_early_pre_ftl_hive_empire = yes }
 	}
 }
 
@@ -2231,28 +1908,16 @@ create_early_pre_ftl_hive_empire = {
 			civic = civic_hive_flat_world_theory
 		}
 		species = last_created_species
-		ethos = {
-			ethic = ethic_gestalt_consciousness
-		}
+		ethos = { ethic = ethic_gestalt_consciousness }
 		flag = {
-			icon = {
-				category = "pre_ftl"
-				file = "preftl_stone_age.dds"
-			}
-			background= {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors={
-				"turquoise"
-				"green"
-				"null"
-				"null"
-			}
+			icon = { category = "pre_ftl" file = "preftl_stone_age.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "turquoise" "green" "null" "null" }
 		}
 		origin = "origin_default"
 		type = primitive
 	}
+
 	last_created_country = {
 		set_graphical_culture = preindustrial_01
 		random_list = {
@@ -2278,104 +1943,50 @@ create_early_pre_ftl_hive_empire = {
 					}
 				}
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_bronze_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"green"
-						"dark_green"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_bronze_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "green" "dark_green" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = iron_age
 				set_pre_ftl_age = iron_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_iron_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"purple"
-						"dark_purple"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_iron_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "purple" "dark_purple" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = late_medieval_age
 				set_pre_ftl_age = late_medieval_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_medieval_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"light_blue"
-						"blue"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_medieval_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "light_blue" "blue" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = renaissance_age
 				set_pre_ftl_age = renaissance_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_renaissance_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"pink"
-						"burgundy"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_renaissance_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "pink" "burgundy" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = steam_age
 				set_pre_ftl_age = steam_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_steam_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"orange"
-						"red"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_steam_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "orange" "red" "null" "null" }
 				}
 			}
 		}
 	}
+
 	set_pre_ftl_origin = yes
 }
 
@@ -2388,28 +1999,16 @@ create_late_pre_ftl_hive_empire = {
 			civic = civic_hive_atmospheric_pollution
 		}
 		species = last_created_species
-		ethos = {
-			ethic = ethic_gestalt_consciousness
-		}
+		ethos = { ethic = ethic_gestalt_consciousness }
 		flag = {
-			icon = {
-				category = "pre_ftl"
-				file = "preftl_industrial_age.dds"
-			}
-			background= {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors={
-				"turquoise"
-				"green"
-				"null"
-				"null"
-			}
+			icon = { category = "pre_ftl" file = "preftl_industrial_age.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "turquoise" "green" "null" "null" }
 		}
 		origin = "origin_default"
 		type = primitive
 	}
+
 	last_created_country = {
 		set_graphical_culture = industrial_01
 		random_list = {
@@ -2417,84 +2016,41 @@ create_late_pre_ftl_hive_empire = {
 				set_country_flag = industrial_age
 				set_pre_ftl_age = industrial_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_industrial_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"beige"
-						"yellow"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_industrial_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "beige" "yellow" "null" "null" }
 				}
 			}
 			25 = {
 				set_country_flag = machine_age
 				set_pre_ftl_age = machine_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_machine_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"yellow"
-						"orange"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_machine_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "yellow" "orange" "null" "null" }
 				}
 			}
 			25 = {
 				set_country_flag = atomic_age
 				set_pre_ftl_age = atomic_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_atomic_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"beige"
-						"brown"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_atomic_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "beige" "brown" "null" "null" }
 				}
 			}
 			25 = {
 				set_country_flag = early_space_age
 				set_pre_ftl_age = early_space_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_early_space_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"grey"
-						"dark_grey"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_early_space_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "grey" "dark_grey" "null" "null" }
 				}
 			}
 		}
 	}
+
 	set_pre_ftl_origin = yes
 }
 
@@ -2507,28 +2063,16 @@ create_very_early_pre_ftl_hive_empire = {
 			civic = civic_hive_flat_world_theory
 		}
 		species = last_created_species
-		ethos = {
-			ethic = ethic_gestalt_consciousness
-		}
+		ethos = { ethic = ethic_gestalt_consciousness }
 		flag = {
-			icon = {
-				category = "pre_ftl"
-				file = "preftl_stone_age.dds"
-			}
-			background= {
-				category = "backgrounds"
-				file = "new_dawn.dds"
-			}
-			colors={
-				"turquoise"
-				"green"
-				"null"
-				"null"
-			}
+			icon = { category = "pre_ftl" file = "preftl_stone_age.dds" }
+			background = { category = "backgrounds" file = "new_dawn.dds" }
+			colors = { "turquoise" "green" "null" "null" }
 		}
 		origin = "origin_default"
 		type = primitive
 	}
+
 	last_created_country = {
 		set_graphical_culture = preindustrial_01
 		random_list = {
@@ -2554,53 +2098,31 @@ create_very_early_pre_ftl_hive_empire = {
 					}
 				}
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_bronze_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"green"
-						"dark_green"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_bronze_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "green" "dark_green" "null" "null" }
 				}
 			}
 			20 = {
 				set_country_flag = iron_age
 				set_pre_ftl_age = iron_age
 				change_country_flag = {
-					icon = {
-						category = "pre_ftl"
-						file = "preftl_iron_age.dds"
-					}
-					background= {
-						category = "backgrounds"
-						file = "new_dawn.dds"
-					}
-					colors={
-						"purple"
-						"dark_purple"
-						"null"
-						"null"
-					}
+					icon = { category = "pre_ftl" file = "preftl_iron_age.dds" }
+					background = { category = "backgrounds" file = "new_dawn.dds" }
+					colors = { "purple" "dark_purple" "null" "null" }
 				}
 			}
 		}
 	}
+
 	set_pre_ftl_origin = yes
 }
-
 
 setup_pre_ftl_hive_planet = {
 	set_owner = last_created_country
 	set_capital = yes
-
 	remove_building = building_colony_shelter
+
 	last_created_country = {
 		switch = {
 			trigger = has_country_flag
@@ -2725,7 +2247,6 @@ setup_pre_ftl_hive_planet = {
 			}
 		}
 	}
-
 	if = {
 		limit = {
 			last_created_country = {
@@ -2742,6 +2263,7 @@ setup_pre_ftl_hive_planet = {
 
 achieve_ftl_effect = {
 	country_event = { id = game_start.8 }
+
 	remove_country_flag = early_space_age
 	set_country_flag = primitives_can_into_space
 	set_country_type = default
@@ -2749,19 +2271,13 @@ achieve_ftl_effect = {
 	set_species_graphical_culture = yes
 	if = {
 		limit = {
-			AND = {
-				has_valid_civic = civic_hive_devouring_swarm # Preserve the Civics deliberately added by events.
-				has_valid_civic = civic_hive_strength_of_legions
-			}
+			has_valid_civic = civic_hive_devouring_swarm # Preserve the Civics deliberately added by events.
+			has_valid_civic = civic_hive_strength_of_legions
 		}
-		change_government = {
-			authority = random
-		}
+		change_government = { authority = random }
 	}
 	else_if = {
-		limit = {
-			has_valid_civic = civic_hive_devouring_swarm
-		}
+		limit = { has_valid_civic = civic_hive_devouring_swarm }
 		change_government = {
 			authority = random
 			civics = {
@@ -2771,9 +2287,7 @@ achieve_ftl_effect = {
 		}
 	}
 	else_if = {
-		limit = {
-			has_valid_civic = civic_hive_strength_of_legions
-		}
+		limit = { has_valid_civic = civic_hive_strength_of_legions }
 		change_government = {
 			authority = random
 			civics = {
@@ -2783,13 +2297,10 @@ achieve_ftl_effect = {
 		}
 	}
 	else = {
-		change_government = {
-			authority = random
-			civics = random
-		}
+		change_government = { authority = random civics = random }
 	}
-	set_name = random
 
+	set_name = random
 	if = {
 		limit = {
 			has_country_flag = was_enlightened
@@ -2800,35 +2311,27 @@ achieve_ftl_effect = {
 		}
 		set_origin = origin_enlightened
 	}
-
 	if = {
-		limit = {
-			has_origin = origin_default_pre_ftl
-		}
+		limit = { has_origin = origin_default_pre_ftl }
 		set_origin = origin_default
 		if = {
-			limit = {
-				is_gestalt = no
-			}
+			limit = { is_gestalt = no }
 			capital_scope = {
-				add_modifier = { modifier = prosp_uni_mod days = 7200 }
+				add_modifier = { modifier = prosp_uni_mod years = 20 }
 			}
 		}
 		else = {
 			capital_scope = {
-				add_modifier = { modifier = prosp_uni_mod_gestalt days = 7200 }
+				add_modifier = { modifier = prosp_uni_mod_gestalt years = 20 }
 			}
 		}
 		capital_scope = {
 			while = {
 				count = 4
-				create_pop_group = {
-					species = owner
-				}
+				create_pop_group = { species = owner }
 			}
 		}
 	}
-
 	add_resource = {
 		energy = 500
 		minerals = 500
@@ -2842,9 +2345,7 @@ achieve_ftl_effect = {
 		mult = trigger:years_passed
 	}
 	if = {
-		limit = {
-			is_hive_empire = no
-		}
+		limit = { is_hive_empire = no }
 		add_resource = {
 			consumer_goods = 250
 			mult = trigger:years_passed
@@ -2879,51 +2380,35 @@ achieve_ftl_effect = {
 			mult = trigger:years_passed
 		}
 	}
-
 	create_fleet = {
 		effect = {
 			set_owner = prev
-
-			create_ship = {
-				name = random
-				random_existing_design = science
-			}
-
+			create_ship = { name = random random_existing_design = science }
 			set_fleet_stance = evasive
-			set_location = prev.capital_scope.star
-
+			set_location = prev.capital_star
 			owner = {
 				create_leader = {
 					class = scientist
 					sub_type = survey
 					name = random
-					species = owner_main_species
+					species = owner_species
 				}
 			}
 			set_leader = last_created_leader
 		}
 	}
-
 	if = {
-		limit = {
-			is_gestalt = yes
-		}
-		country_event = { id = game_start.70 } #Sets up gestalt council
+		limit = { is_gestalt = yes }
+		country_event = { id = game_start.70 } # Sets up gestalt council
 	}
 	else = {
-		country_event = { id = game_start.72 } #Sets up regular council
+		country_event = { id = game_start.72 } # Sets up regular council
 	}
 	country_event = { id = game_start.71 } # Sets up planet governor
-
 	create_fleet = {
 		effect = {
 			set_owner = prev
-
-			create_ship = {
-				name = random
-				random_existing_design = constructor
-			}
-
+			create_ship = { name = random random_existing_design = constructor }
 			set_fleet_stance = evasive
 			set_location = prev.capital_star
 		}
@@ -2943,14 +2428,9 @@ achieve_ftl_effect = {
 			generate_start_buildings_and_districts = yes
 		}
 		else_if = {
-			limit = {
-				is_planet_class = pc_habitat
-			}
+			limit = { is_planet_class = pc_habitat }
 			owner = {
-				give_technology = {
-					tech = tech_habitat_1
-					message = no
-				}
+				give_technology = { tech = tech_habitat_1 message = no }
 				add_research_option = tech_habitat_2
 			}
 			add_building = building_hab_major_capital
@@ -3045,9 +2525,7 @@ achieve_ftl_effect = {
 			}
 			if = {
 				limit = {
-					owner_main_species = {
-						has_trait = trait_organic
-					}
+					owner_species = { has_trait = trait_organic }
 				}
 				add_district = district_hive_3
 				add_zone = {
@@ -3059,17 +2537,13 @@ achieve_ftl_effect = {
 			}
 			else_if = {
 				limit = {
-					owner_main_species = {
-						has_trait = trait_lithoid
-					}
+					owner_species = { has_trait = trait_lithoid }
 				}
 				add_district = district_hive_2
 			}
 			else_if = {
 				limit = {
-					owner_main_species = {
-						has_trait = trait_infernal
-					}
+					owner_species = { has_trait = trait_infernal }
 				}
 				add_district = district_hive_3
 				add_zone = {
@@ -3143,7 +2617,6 @@ achieve_ftl_effect = {
 				zone_slot = 0
 				replace = yes
 			}
-			
 			add_district = district_rw_urban_2
 			add_zone = {
 				district = district_rw_urban_2
@@ -3152,31 +2625,22 @@ achieve_ftl_effect = {
 				replace = yes
 			}
 		}
-
 		while = {
 			limit = {
 				pop_amount < 800
-				#free_housing > 0
+				# free_housing > 0
 			}
-			create_pop_group = {
-				species = owner
-			}
+			create_pop_group = { species = owner }
 		}
 		remove_all_armies = yes
 		solar_system = {
 			save_event_target_as = enlightened_system
 			if = {
-				limit = {
-					exists = owner
-				}
-				owner = {
-					save_event_target_as = previous_system_owner
-				}
+				limit = { exists = owner }
+				owner = { save_event_target_as = previous_system_owner }
 			}
 			if = {
-				limit = {
-					NOT = { exists = starbase }
-				}
+				limit = { NOT = { exists = starbase } }
 				create_starbase = {
 					size = starbase_starport
 					module = shipyard
@@ -3186,10 +2650,12 @@ achieve_ftl_effect = {
 			}
 		}
 	}
+
 	random_controlled_ship = {
 		limit = { is_ship_size = primitive_space_station }
-		fleet = { destroy_fleet = THIS }
+		fleet = { destroy_fleet = this }
 	}
+
 	# countries with intel on this system get a notification and establish communications
 	every_country = {
 		limit = {
@@ -3202,26 +2668,19 @@ achieve_ftl_effect = {
 				}
 				is_same_value = $OWNER$
 			}
-			intel_level = {
-				level > medium
-				system = event_target:enlightened_system
-			}
+			intel_level = { level > medium system = event_target:enlightened_system }
 		}
 		country_event = { id = preftl.1111 days = 1 scopes = { from = $PRE_FTL$ } }
 	}
 	if = {
-		limit  = {
-			exists = event_target:previous_system_owner
-		}
+		limit = { exists = event_target:previous_system_owner }
 		establish_communications_no_message = event_target:previous_system_owner
 	}
 }
 
 spawn_old_foes_effect = {
 	random_system_planet = {
-		limit = {
-			has_planet_flag = czyrni_planet
-		}
+		limit = { has_planet_flag = czyrni_planet }
 		random_list = {
 			1 = { change_pc = pc_tropical }
 			1 = { change_pc = pc_arid }
@@ -3262,20 +2721,9 @@ spawn_old_foes_effect = {
 			ethos = random
 			origin = "origin_post_apocalyptic"
 			flag = {
-				icon = {
-					category = "pre_ftl"
-					file = "preftl_bronze_age.dds"
-				}
-				background= {
-					category = "backgrounds"
-					file = "new_dawn.dds"
-				}
-				colors={
-					"turquoise"
-					"green"
-					"null"
-					"null"
-				}
+				icon = { category = "pre_ftl" file = "preftl_bronze_age.dds" }
+				background = { category = "backgrounds" file = "new_dawn.dds" }
+				colors = { "turquoise" "green" "null" "null" }
 			}
 			type = primitive
 		}
@@ -3286,17 +2734,12 @@ spawn_old_foes_effect = {
 		}
 		set_owner = last_created_country
 		set_capital = yes
-		create_pop_group = {
-			species = last_created_species
-			size = @bronze_age_pops
-		}
+		create_pop_group = { species = last_created_species size = @bronze_age_pops }
 		add_building = building_primitive_dwellings
 		add_building = building_stone_palace
 	}
 	random_system_planet = {
-		limit = {
-			has_planet_flag = pyorun_planet
-		}
+		limit = { has_planet_flag = pyorun_planet }
 		random_list = {
 			1 = { change_pc = pc_tropical }
 			1 = { change_pc = pc_arid }
@@ -3336,20 +2779,9 @@ spawn_old_foes_effect = {
 			ethos = random
 			origin = "origin_post_apocalyptic"
 			flag = {
-				icon = {
-					category = "pre_ftl"
-					file = "preftl_bronze_age.dds"
-				}
-				background= {
-					category = "backgrounds"
-					file = "new_dawn.dds"
-				}
-				colors={
-					"turquoise"
-					"green"
-					"null"
-					"null"
-				}
+				icon = { category = "pre_ftl" file = "preftl_bronze_age.dds" }
+				background = { category = "backgrounds" file = "new_dawn.dds" }
+				colors = { "turquoise" "green" "null" "null" }
 			}
 			type = primitive
 		}
@@ -3360,10 +2792,7 @@ spawn_old_foes_effect = {
 		}
 		set_owner = last_created_country
 		set_capital = yes
-		create_pop_group = {
-			species = last_created_species
-			size = @bronze_age_pops
-		}
+		create_pop_group = { species = last_created_species size = @bronze_age_pops }
 		add_building = building_primitive_dwellings
 		add_building = building_stone_palace
 	}
@@ -3384,11 +2813,7 @@ add_pre_ftl_buildings = {
 		remove_all_buildings = yes
 	}
 	if = {
-		limit = {
-			owner = {
-				is_hive_empire = no
-			}
-		}
+		limit = { owner = { is_hive_empire = no } }
 		switch = {
 			trigger = has_country_flag
 			stone_age = {
@@ -3583,9 +3008,7 @@ add_pre_ftl_buildings = {
 					AND = {
 						has_observation_outpost = yes
 						exists = observation_outpost_owner
-						observation_outpost_owner = {
-							has_pre_ftl_trade = prev.owner
-						}
+						observation_outpost_owner = { has_pre_ftl_trade = prev.owner }
 					}
 					owner = { # They may only keep the building if they are advanced enough to maintain it, or the Observing Empire is there to maintain it.
 						OR = {
@@ -3618,19 +3041,13 @@ add_pre_ftl_buildings = {
 add_primitive_farm_or_mine = {
 	if = {
 		limit = {
-			owner = {
-				is_infernal_empire = yes
-				is_hive_empire = no
-			}
+			owner = { is_infernal_empire = yes is_hive_empire = no }
 		}
 		add_building = building_primitive_factory
 	}
 	else_if = {
 		limit = {
-			owner = {
-				is_infernal_empire = yes
-				is_hive_empire = yes
-			}
+			owner = { is_infernal_empire = yes is_hive_empire = yes }
 		}
 		add_building = building_hive_primitive_factory
 	}
@@ -3666,17 +3083,13 @@ add_primitive_farm_or_mine = {
 	}
 	else_if = {
 		limit = {
-			owner = {
-				is_lithoid_empire = yes
-				is_hive_empire = yes
-			}
+			owner = { is_lithoid_empire = yes is_hive_empire = yes }
 		}
 		add_building = building_hive_primitive_mine
 	}
 }
 
 # Volcanic World pre-ftls
-
 generate_pre_ftls_on_volcanic = {
 	optimize_memory
 	select_pre_ftl_origin = yes
@@ -3705,7 +3118,7 @@ create_pre_ftl_species_inf = {
 				class = INF
 				set_pre_ftl = yes
 				portrait = random
-				homeworld = THIS
+				homeworld = this
 				traits = {
 					trait = trait_hive_mind
 					trait = trait_infernal
@@ -3723,7 +3136,7 @@ create_pre_ftl_species_inf = {
 				class = INF
 				set_pre_ftl = yes
 				portrait = random
-				homeworld = THIS
+				homeworld = this
 				traits = {
 					trait = trait_hive_mind
 					trait = trait_infernal
@@ -3744,7 +3157,7 @@ create_pre_ftl_species_inf = {
 				class = INF
 				set_pre_ftl = yes
 				portrait = random
-				homeworld = THIS
+				homeworld = this
 				traits = {
 					trait = trait_infernal
 					trait = trait_cave_dweller
@@ -3763,7 +3176,7 @@ create_pre_ftl_species_inf = {
 						class = INF
 						set_pre_ftl = yes
 						portrait = random
-						homeworld = THIS
+						homeworld = this
 						traits = {
 							trait = trait_infernal
 							trait = random_traits
@@ -3784,7 +3197,7 @@ create_pre_ftl_species_inf = {
 						class = INF
 						set_pre_ftl = yes
 						portrait = random
-						homeworld = THIS
+						homeworld = this
 						traits = {
 							trait = trait_infernal
 							trait = random_traits

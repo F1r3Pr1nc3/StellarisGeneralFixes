@@ -1247,11 +1247,11 @@ country_event = {
 		event_target:wm_storm_shelter_planet = {
 			random_system = {
 				limit = {
-					NOT = { has_star_flag = precursor_system }
 					has_star_flag = precursor_inetian
-					NOR = {
+					is_fe_cluster = yes
+					NOR = { # Vfix opt
 						exists = space_owner
-						is_fe_cluster = no
+						has_star_flag = precursor_system
 						has_star_flag = hostile_system
 					}
 					distance = {

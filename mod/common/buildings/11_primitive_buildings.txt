@@ -9,7 +9,6 @@ building_crude_huts = {
 	can_be_ruined = no
 	position_priority = 0
 	capital_tier = 0
-
 	category = amenity
 
 	building_sets = {
@@ -17,7 +16,7 @@ building_crude_huts = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -26,7 +25,7 @@ building_crude_huts = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -49,7 +48,6 @@ building_primitive_dwellings = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050 may ruin primitive buildings.
-
 	category = amenity
 
 	building_sets = {
@@ -57,7 +55,7 @@ building_primitive_dwellings = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -72,7 +70,7 @@ building_primitive_dwellings = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -96,7 +94,6 @@ building_stone_palace = {
 	can_be_ruined = no
 	position_priority = 0
 	capital_tier = 0
-
 	category = government
 
 	building_sets = {
@@ -104,7 +101,7 @@ building_stone_palace = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -119,7 +116,7 @@ building_stone_palace = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -156,7 +153,6 @@ building_primitive_factory = {
 	# planet_limit = 1 # Hive version has no planet limit, not sure why this was set.
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = manufacturing
 
 	building_sets = {
@@ -169,34 +165,26 @@ building_primitive_factory = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = no
-			}
+			has_owner = yes
+			owner = { is_gestalt = no }
 		}
 		job_primitive_laborer_add = @building_static_jobs
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-			}
+			has_owner = yes
+			owner = { is_gestalt = yes }
 		}
 		job_fabricator_add = @building_static_jobs
 	}
 
-#	upgrades = {
-#		building_foundry_1
-#		building_factory_1
-#	}
-
+	#	upgrades = {
+	#		building_foundry_1
+	#		building_factory_1
+	#	}
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 }
 
@@ -205,7 +193,6 @@ building_primitive_offices = {
 	# planet_limit = 1 # Hive version has no planet limit, not sure why this was set.
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = unity
 
 	building_sets = {
@@ -217,18 +204,14 @@ building_primitive_offices = {
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = no
-			}
+			has_owner = yes
+			owner = { is_gestalt = no }
 		}
 		job_primitive_administrator_add = @building_static_jobs
 	}
@@ -251,20 +234,15 @@ building_primitive_research = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = no
-			}
+			has_owner = yes
+			owner = { is_gestalt = no }
 		}
 		job_primitive_researcher_2_add = @building_static_jobs
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-			}
+			has_owner = yes
+			owner = { is_gestalt = yes }
 		}
 		job_calculator_physicist_add = 60
 		job_calculator_biologist_add = 60
@@ -272,10 +250,8 @@ building_primitive_research = {
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 }
 
@@ -283,7 +259,6 @@ building_primitive_mine = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = resource
 
 	building_sets = {
@@ -291,7 +266,7 @@ building_primitive_mine = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -306,7 +281,7 @@ building_primitive_mine = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -321,10 +296,9 @@ building_primitive_mine = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
 		}
-
 		job_primitive_miner_add = 800
 	}
 
@@ -336,7 +310,6 @@ building_primitive_power_plant = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = resource
 
 	building_sets = {
@@ -344,7 +317,7 @@ building_primitive_power_plant = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -359,7 +332,7 @@ building_primitive_power_plant = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -380,7 +353,6 @@ building_primitive_farm = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = resource
 
 	building_sets = {
@@ -388,7 +360,7 @@ building_primitive_farm = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -406,7 +378,7 @@ building_primitive_farm = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -431,7 +403,6 @@ building_primitive_capital = {
 	can_be_ruined = no
 	position_priority = 0
 	capital_tier = 0
-
 	category = government
 
 	building_sets = {
@@ -439,7 +410,7 @@ building_primitive_capital = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -453,7 +424,7 @@ building_primitive_capital = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -473,7 +444,7 @@ building_primitive_capital = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = {
 				is_primitive = yes
 				OR = {
@@ -490,10 +461,9 @@ building_primitive_capital = {
 		planet_amenities_add = 2500
 		planet_crime_add = -20
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = {
 				is_primitive = yes
 				OR = {
@@ -519,7 +489,6 @@ building_urban_dwellings = {
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
 	icon = building_residence
-
 	category = amenity
 
 	building_sets = {
@@ -527,7 +496,7 @@ building_urban_dwellings = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = no
@@ -542,7 +511,7 @@ building_urban_dwellings = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -564,7 +533,6 @@ building_pre_ftl_radio_telescope = {
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
 	planet_limit = 1
-
 	category = research
 
 	building_sets = {
@@ -572,7 +540,7 @@ building_pre_ftl_radio_telescope = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			OR = {
@@ -583,29 +551,23 @@ building_pre_ftl_radio_telescope = {
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = { is_gestalt = no }
 		}
-
 		job_primitive_researcher_2_add = 200
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = { is_gestalt = yes }
 		}
-
 		job_primitive_hive_brain_drone_add = 200
-
 	}
 
 	triggered_desc = {
@@ -625,7 +587,6 @@ building_hive_crude_huts = {
 	can_be_ruined = no
 	position_priority = 0
 	capital_tier = 0
-
 	category = amenity
 
 	building_sets = {
@@ -633,7 +594,7 @@ building_hive_crude_huts = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -642,11 +603,11 @@ building_hive_crude_huts = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -666,7 +627,6 @@ building_hive_primitive_dwellings = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = amenity
 
 	building_sets = {
@@ -674,7 +634,7 @@ building_hive_primitive_dwellings = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -689,11 +649,11 @@ building_hive_primitive_dwellings = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -714,7 +674,6 @@ building_hive_stone_palace = {
 	can_be_ruined = no
 	position_priority = 0
 	capital_tier = 0
-
 	category = government
 
 	building_sets = {
@@ -722,7 +681,7 @@ building_hive_stone_palace = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -737,11 +696,11 @@ building_hive_stone_palace = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -774,7 +733,6 @@ building_hive_primitive_factory = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = manufacturing
 
 	building_sets = {
@@ -782,7 +740,7 @@ building_hive_primitive_factory = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -797,11 +755,11 @@ building_hive_primitive_factory = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -819,7 +777,6 @@ building_hive_primitive_mine = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = resource
 
 	building_sets = {
@@ -827,7 +784,7 @@ building_hive_primitive_mine = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -842,11 +799,11 @@ building_hive_primitive_mine = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -857,10 +814,9 @@ building_hive_primitive_mine = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
 		}
-
 		job_primitive_hive_miner_add = 800
 	}
 
@@ -873,7 +829,6 @@ building_hive_primitive_power_plant = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = resource
 
 	building_sets = {
@@ -881,7 +836,7 @@ building_hive_primitive_power_plant = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -896,11 +851,11 @@ building_hive_primitive_power_plant = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -918,7 +873,6 @@ building_hive_primitive_farm = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = resource
 
 	building_sets = {
@@ -926,7 +880,7 @@ building_hive_primitive_farm = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -936,9 +890,7 @@ building_hive_primitive_farm = {
 				has_country_flag = atomic_age
 				has_country_flag = early_space_age
 			}
-			NOT = {
-				owner_species = { has_trait = trait_lithoid } # No Archetypes, use trait.
-			}
+			NOT = { owner_species = { has_trait = trait_lithoid } } # No Archetypes, use trait.
 		}
 	}
 
@@ -947,7 +899,7 @@ building_hive_primitive_farm = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -973,7 +925,6 @@ building_hive_primitive_capital = {
 	can_be_ruined = no
 	position_priority = 0
 	capital_tier = 0
-
 	category = government
 
 	building_sets = {
@@ -981,7 +932,7 @@ building_hive_primitive_capital = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -995,11 +946,11 @@ building_hive_primitive_capital = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -1015,7 +966,7 @@ building_hive_primitive_capital = {
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = {
 				is_primitive = yes
 				OR = {
@@ -1032,10 +983,9 @@ building_hive_primitive_capital = {
 		planet_amenities_no_happiness_add = 2500
 		planet_crime_no_happiness_add = -20
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			has_owner = yes
 			owner = {
 				is_primitive = yes
 				OR = {
@@ -1059,7 +1009,6 @@ building_hive_urban_dwellings = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
-
 	category = amenity
 
 	building_sets = {
@@ -1067,7 +1016,7 @@ building_hive_urban_dwellings = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_hive_empire = yes
@@ -1082,11 +1031,11 @@ building_hive_urban_dwellings = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
-			OR = {
-				is_primitive = no
-				is_hive_empire = no
+			NAND = {
+				is_primitive = yes
+				is_hive_empire = yes
 			}
 		}
 	}
@@ -1105,7 +1054,6 @@ building_hive_primitive_node = {
 	planet_limit = 1
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050, but building never used.
-
 	category = unity
 
 	building_sets = {
@@ -1117,18 +1065,14 @@ building_hive_primitive_node = {
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_hive_empire = yes
-			}
+			has_owner = yes
+			owner = { is_hive_empire = yes }
 		}
 		job_coordinator_add = @building_static_jobs
 	}
@@ -1140,7 +1084,6 @@ building_machine_primitive_node = {
 	planet_limit = 1
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050, but building never used.
-
 	category = unity
 
 	building_sets = {
@@ -1152,18 +1095,14 @@ building_machine_primitive_node = {
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = {
-				is_machine_empire = yes
-			}
+			has_owner = yes
+			owner = { is_machine_empire = yes }
 		}
 		job_coordinator_add = @building_static_jobs
 	}
@@ -1176,7 +1115,6 @@ building_primitive_clinic = {
 	can_demolish = yes
 	can_be_ruined = yes # fircon.8050
 	icon = building_medical_1
-
 	category = amenity
 
 	building_sets = {
@@ -1184,7 +1122,7 @@ building_primitive_clinic = {
 	}
 
 	potential = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			is_primitive = yes
 			is_gestalt = no # This building is for individualist biologicals only.
@@ -1198,7 +1136,7 @@ building_primitive_clinic = {
 	}
 
 	destroy_trigger = {
-		exists = owner
+		has_owner = yes
 		owner = {
 			OR = {
 				is_primitive = no
@@ -1232,11 +1170,9 @@ building_primitive_clinic = {
 	}
 
 	on_destroy = {
-
 	}
 
 	on_repaired = {
-
 	}
 }
 
@@ -1246,7 +1182,6 @@ building_solarpunk_gaiaseeder = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = no
-
 	category = amenity
 
 	building_sets = {
@@ -1254,17 +1189,13 @@ building_solarpunk_gaiaseeder = {
 	}
 
 	potential = {
-		exists = owner
-		owner = {
-			is_primitive = yes
-		}
+		has_owner = yes
+		owner = { is_primitive = yes }
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	planet_modifier = {
@@ -1288,11 +1219,9 @@ building_solarpunk_gaiaseeder = {
 	}
 
 	on_destroy = {
-
 	}
 
 	on_repaired = {
-
 	}
 }
 
@@ -1302,7 +1231,6 @@ building_solarpunk_ranger_lodge = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = no
-
 	category = amenity
 
 	building_sets = {
@@ -1310,17 +1238,13 @@ building_solarpunk_ranger_lodge = {
 	}
 
 	potential = {
-		exists = owner
-		owner = {
-			is_primitive = yes
-		}
+		has_owner = yes
+		owner = { is_primitive = yes }
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	planet_modifier = {
@@ -1344,11 +1268,9 @@ building_solarpunk_ranger_lodge = {
 	}
 
 	on_destroy = {
-
 	}
 
 	on_repaired = {
-
 	}
 }
 
@@ -1358,7 +1280,6 @@ building_solarpunk_sapling = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = no
-
 	category = amenity
 
 	building_sets = {
@@ -1366,17 +1287,13 @@ building_solarpunk_sapling = {
 	}
 
 	potential = {
-		exists = owner
-		owner = {
-			is_primitive = yes
-		}
+		has_owner = yes
+		owner = { is_primitive = yes }
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	planet_modifier = {
@@ -1401,11 +1318,9 @@ building_solarpunk_sapling = {
 	}
 
 	on_destroy = {
-
 	}
 
 	on_repaired = {
-
 	}
 }
 
@@ -1415,7 +1330,6 @@ building_solarpunk_organic_paradise = {
 	can_build = no
 	can_demolish = yes
 	can_be_ruined = no
-
 	category = amenity
 
 	building_sets = {
@@ -1423,17 +1337,13 @@ building_solarpunk_organic_paradise = {
 	}
 
 	potential = {
-		exists = owner
-		owner = {
-			is_primitive = yes
-		}
+		has_owner = yes
+		owner = { is_primitive = yes }
 	}
 
 	destroy_trigger = {
-		exists = owner
-		owner = {
-			is_primitive = no
-		}
+		has_owner = yes
+		owner = { is_primitive = no }
 	}
 
 	planet_modifier = {
@@ -1458,10 +1368,8 @@ building_solarpunk_organic_paradise = {
 	}
 
 	on_destroy = {
-
 	}
 
 	on_repaired = {
-
 	}
 }

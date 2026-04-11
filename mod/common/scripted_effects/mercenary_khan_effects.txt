@@ -570,7 +570,6 @@ create_marauder_successor_fleet = {
 			can_change_composition = no
 		}
 	}
-
 	# Fix unlimited leader creation
 	if = {
 		limit = {
@@ -629,7 +628,6 @@ get_marauder_raid_source = {
 		}
 		save_event_target_as = raid_source
 	}
-
 	### Rally Point Fallback
 	if = {
 		limit = {
@@ -681,7 +679,6 @@ get_marauder_raid_source = {
 			}
 		}
 	}
-
 	### Strong Fallback
 	if = {
 		limit = {
@@ -710,7 +707,6 @@ get_marauder_raid_source = {
 			}
 		}
 	}
-
 	### Very Strong Fallback
 	if = {
 		limit = {
@@ -736,7 +732,6 @@ get_marauder_raid_source = {
 			}
 		}
 	}
-
 	### Very Last Fallback
 	if = {
 		limit = {
@@ -1060,7 +1055,6 @@ commit_system_to = {
 			set_owner = $EMPIRE$
 		}
 	}
-
 	# SLOW SAVE METHOD - just double check to omit wired caching behavior (aka: don't change the major loop condition in the loop itself)
 	export_trigger_value_to_variable = {
 		trigger = count_system_colony
@@ -1198,7 +1192,6 @@ get_marauder_species = {
 			event_target:marauder_country_3.owner_species = { save_event_target_as = marauder_species }
 		}
 	}
-
 	]
 	if = {
 		limit = {
@@ -1470,7 +1463,6 @@ get_marauder_species = {
 			save_event_target_as = marauder_species
 		}
 	}
-
 	# Common Fallback
 	if = {
 		limit = { # This error log turns me crazy: is_same_species/is_exact_same_species: Unable to resolve species from 'event_target:marauder_species' (no_scope scope)

@@ -61,7 +61,6 @@ is_psionic_aura_suppressed = {
 country_has_habitability_and_housing = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		planet_has_habitability_and_housing = {
 			[[HABITABILITY]
@@ -76,14 +75,15 @@ country_has_habitability_and_housing = {
 
 planet_has_habitability_and_housing = {
 	optimize_memory
+
 	[[HABITABILITY]
 
 	habitability = {
 		who = event_target:refugee_pop
 		value >= $HABITABILITY$
 	}
-
 	]
+
 	[[HOUSING]
 	free_housing >= $HOUSING$
 	]
@@ -195,7 +195,6 @@ miner_is_mineral_diver_trigger = {
 has_good_habitability_and_housing = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.7 }
 		free_housing >= 100
@@ -208,7 +207,6 @@ has_good_habitability_and_housing = {
 has_good_habitability = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.7 }
 		is_under_colonization = no
@@ -220,7 +218,6 @@ has_good_habitability = {
 has_decent_habitability_and_housing = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.5 }
 		free_housing >= 100
@@ -233,7 +230,6 @@ has_decent_habitability_and_housing = {
 has_decent_habitability = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.5 }
 		is_under_colonization = no
@@ -245,7 +241,6 @@ has_decent_habitability = {
 has_some_habitability_and_housing = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.2 }
 		free_housing >= 100
@@ -258,7 +253,6 @@ has_some_habitability_and_housing = {
 has_some_habitability = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		habitability = { who = event_target:refugee_pop value >= 0.2 }
 		is_under_colonization = no
@@ -270,7 +264,6 @@ has_some_habitability = {
 has_any_habitability_and_housing = {
 	optimize_memory
 	has_country_flag = valid_refugee_destination_for_@event_target:refugee_pop
-
 	any_owned_planet = {
 		NOR = {
 			free_housing < 100

@@ -56,12 +56,19 @@ building_luxury_residence = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
 		planet_housing_add = 1500
 		planet_amenities_add = 1500
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { has_active_tradition = tr_domination_imperious_architecture }
+		}
+		planet_housing_add = 100
 	}
 
 	resources = {
@@ -129,7 +136,6 @@ building_paradise_dome = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
@@ -155,9 +161,9 @@ building_paradise_dome = {
 	}
 
 	show_tech_unlock_if = {
-		owner = {
-			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_shared_burden }
+		NOR = {
+			is_gestalt = yes
+			has_valid_civic = civic_shared_burden
 		}
 	}
 
@@ -199,7 +205,7 @@ building_communal_housing = {
 		has_owner = yes
 		OR = {
 			has_modifier = slave_colony
-			NOT = { owner = { is_regular_empire = yes has_valid_civic = civic_shared_burden } }
+			NOT = { owner = { is_gestalt = no has_valid_civic = civic_shared_burden } }
 		}
 	}
 
@@ -210,12 +216,19 @@ building_communal_housing = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
 		planet_housing_add = 2000
 		planet_amenities_add = 2500
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { has_active_tradition = tr_domination_imperious_architecture }
+		}
+		planet_housing_add = 100
 	}
 
 	resources = {
@@ -266,12 +279,13 @@ building_communal_housing_large = {
 		has_owner = yes
 		OR = {
 			has_modifier = slave_colony
-			NOT = { owner = { is_regular_empire = yes has_valid_civic = civic_shared_burden } }
+			NOT = { owner = { is_gestalt = no has_valid_civic = civic_shared_burden } }
 		}
 	}
 
 	show_tech_unlock_if = {
-		owner = { is_regular_empire = yes has_valid_civic = civic_shared_burden }
+		is_gestalt = no
+		has_valid_civic = civic_shared_burden
 	}
 
 	convert_to = {
@@ -281,13 +295,20 @@ building_communal_housing_large = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
 	planet_modifier = {
 		planet_housing_add = 4000
 		planet_amenities_add = 5000
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { has_active_tradition = tr_domination_imperious_architecture }
+		}
+		planet_housing_add = 100
 	}
 
 	resources = {
@@ -342,7 +363,6 @@ building_drone_storage = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -393,13 +413,20 @@ building_drone_megastorage = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
 	planet_modifier = {
 		planet_housing_add = 3000
 		planet_amenities_no_happiness_add = 3000
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { has_active_tradition = tr_domination_imperious_architecture }
+		}
+		planet_housing_add = 100
 	}
 
 	resources = {
@@ -454,7 +481,6 @@ building_hive_warren = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -501,7 +527,7 @@ building_expanded_warren = {
 	}
 
 	show_tech_unlock_if = {
-		owner = { is_hive_empire = yes }
+		is_hive_empire = yes
 	}
 
 	convert_to = {
@@ -511,13 +537,20 @@ building_expanded_warren = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 		has_upgraded_capital = yes
 	}
 
 	planet_modifier = {
 		planet_housing_add = 3000
 		planet_amenities_no_happiness_add = 3000
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_owner = yes
+			owner = { has_active_tradition = tr_domination_imperious_architecture }
+		}
+		planet_housing_add = 100
 	}
 
 	resources = {
@@ -571,7 +604,6 @@ building_holo_theatres = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -630,7 +662,6 @@ building_hyper_entertainment_forum = {
 	allow = {
 		owner = { is_regular_empire = yes }
 		NOR = {
-			is_occupied_flag = yes
 			has_modifier = slave_colony
 			owner = { has_valid_civic = civic_dystopian_society }
 		}
@@ -695,7 +726,6 @@ building_medical_1 = {
 	allow = { # Vfix opt
 		# is_regular_empire = yes
 		NOR = {
-			is_occupied_flag = yes
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			has_building = building_low_tech_capital
@@ -813,7 +843,6 @@ building_medical_2 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1002,7 +1031,6 @@ building_medical_3 = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1079,7 +1107,7 @@ building_medical_3 = {
 	}
 
 	show_tech_unlock_if = {
-		is_regular_empire = yes
+		is_gestalt = no
 	}
 }
 
@@ -1098,13 +1126,12 @@ building_overseer_homes = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
 		has_owner = yes
 		NAND = {
-			owner = { is_regular_empire = yes }
+			owner = { is_gestalt = no }
 			has_modifier = slave_colony
 		}
 	}
@@ -1180,7 +1207,6 @@ building_toxic_bath = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {
@@ -1235,7 +1261,6 @@ building_toxic_bath_hive = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	destroy_trigger = {
@@ -1317,7 +1342,6 @@ building_toxic_bath_machine = {
 	}
 
 	allow = {
-		is_occupied_flag = no
 	}
 
 	planet_modifier = {

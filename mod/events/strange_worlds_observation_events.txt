@@ -3,7 +3,6 @@
 #####################################
 
 namespace = strange_worlds
-
 # Suspicious Prophet
 situation_event = {
 	id = strange_worlds.3000
@@ -12,9 +11,7 @@ situation_event = {
 
 	trigger = {
 		has_biogenesis_dlc = yes
-		NOT = {
-			has_situation_flag = has_ongoing_observation_event_chain
-		}
+		NOT = { has_situation_flag = has_ongoing_observation_event_chain }
 		owner = {
 			is_gestalt = no # Dux: Localised for individualist Pre-FTLs, can shift ethics.
 			OR = {
@@ -26,8 +23,10 @@ situation_event = {
 			}
 			capital_scope = {
 				observation_outpost_owner = {
-					is_homicidal = no
-					NOT = { has_country_flag = triggered_suspicious_prophet  }
+					NOR = {
+						is_homicidal = yes
+						has_country_flag = triggered_suspicious_prophet
+					}
 					OR = {
 						AND = {
 							has_megacorp = no
@@ -36,19 +35,15 @@ situation_event = {
 						AND = {
 							has_megacorp = yes
 							exists = event_target:caravaneer_fleet3_country
-							event_target:caravaneer_fleet3_country ={
-								has_communications = prev
-							}
-
+							event_target:caravaneer_fleet3_country = { has_communications = prev }
 						}
 					}
 				}
 			}
 			NOT = { has_country_flag = triggered_suspicious_prophet }
 		}
-
-
 	}
+
 	immediate = {
 		owner = {
 			save_event_target_as = pre_ftl_country
@@ -77,14 +72,12 @@ country_event = {
 
 	trigger = {
 		exists = event_target:pre_ftl_country
-		NOT = { has_country_flag = triggered_suspicious_prophet  }
+		NOT = { has_country_flag = triggered_suspicious_prophet }
 	}
 
 	immediate = {
 		set_country_flag = triggered_suspicious_prophet
-		event_target:pre_ftl_country = {
-			set_country_flag = triggered_suspicious_prophet
-		}
+		event_target:pre_ftl_country = { set_country_flag = triggered_suspicious_prophet }
 	}
 
 	option = {
@@ -96,10 +89,7 @@ country_event = {
 			max = @tier1researchmax
 		}
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3010
-				days = 180
-			}
+			country_event = { id = strange_worlds.3010 days = 180 }
 		}
 	}
 }
@@ -107,27 +97,25 @@ country_event = {
 country_event = {
 	id = strange_worlds.3010
 	title = strange_worlds.3010.name
+
 	desc = {
 		trigger = {
 			text = strange_worlds.3010.desc_intro
 			success_text = {
 				text = strange_worlds.3010.desc_no_megacorp
-				AND = {
-					has_megacorp = no
-					has_country_flag = nomads_contacted
-				}
+				has_megacorp = no
+				has_country_flag = nomads_contacted
 			}
 			success_text = {
 				text = strange_worlds.3010.desc_megacorp
 				has_megacorp = yes
 				exists = event_target:caravaneer_fleet3_country
-				event_target:caravaneer_fleet3_country ={
-					has_communications = root
-				}
+				event_target:caravaneer_fleet3_country = { has_communications = root }
 			}
 			text = strange_worlds.3010.desc_outro
 		}
 	}
+
 	picture = GFX_evt_enlightenment_failure
 	show_sound = event_coronation
 	is_triggered_only = yes
@@ -143,21 +131,16 @@ country_event = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3015
-				days = 180
-			}
+			country_event = { id = strange_worlds.3015 days = 180 }
 		}
 	}
 	option = {
 		name = strange_worlds.3010.b
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3020
-				days = 180
-			}
+			country_event = { id = strange_worlds.3020 days = 180 }
 		}
 	}
+
 	after = {
 		add_monthly_resource_mult = {
 			resource = society_research
@@ -171,25 +154,19 @@ country_event = {
 country_event = {
 	id = strange_worlds.3015
 	title = strange_worlds.3015.name
+
 	desc = {
 		trigger = {
 			success_text = {
 				text = strange_worlds.3015.desc_no_megacorp
-				OR = {
-					AND = {
-						has_megacorp = no
-						has_country_flag = nomads_contacted
-					}
-
-				}
+				has_megacorp = no
+				has_country_flag = nomads_contacted
 			}
-			success_text = {
-				text = strange_worlds.3015.desc_megacorp
-				has_megacorp = yes
-			}
+			success_text = { text = strange_worlds.3015.desc_megacorp has_megacorp = yes }
 			text = strange_worlds.3015.desc_outro
 		}
 	}
+
 	picture = GFX_evt_enlightenment_failure
 	show_sound = event_coronation
 	is_triggered_only = yes
@@ -225,47 +202,33 @@ country_event = {
 					has_megacorp = no
 					has_country_flag = nomads_contacted
 				}
-				country_event = {
-					id = strange_worlds.3025
-					days = 90
-				}
+				country_event = { id = strange_worlds.3025 days = 90 }
 			}
 			else_if = {
-				limit = {
-					has_megacorp = yes
-				}
-				country_event = {
-					id = strange_worlds.3030
-					days = 90
-				}
+				limit = { has_megacorp = yes }
+				country_event = { id = strange_worlds.3030 days = 90 }
 			}
 		}
 	}
 }
 
-
 country_event = {
 	id = strange_worlds.3020
 	title = strange_worlds.3020.name
+
 	desc = {
 		trigger = {
 			text = strange_worlds.3020.desc_intro
 			success_text = {
 				text = strange_worlds.3020.desc_no_megacorp
-				OR = {
-					AND = {
-						has_megacorp = no
-						has_country_flag = nomads_contacted
-					}
-				}
+				has_megacorp = no
+				has_country_flag = nomads_contacted
 			}
-			success_text = {
-				text = strange_worlds.3020.desc_megacorp
-				has_megacorp = yes
-			}
+			success_text = { text = strange_worlds.3020.desc_megacorp has_megacorp = yes }
 			text = strange_worlds.3020.desc_outro
 		}
 	}
+
 	picture = GFX_evt_atmospheric_flight
 	show_sound = event_public_unrest
 	is_triggered_only = yes
@@ -277,9 +240,7 @@ country_event = {
 
 	option = {
 		name = strange_worlds.3020.a
-		event_target:pre_ftl_country = {
-			pre_ftl_regresses_one_age = yes
-		}
+		event_target:pre_ftl_country = { pre_ftl_regresses_one_age = yes }
 		custom_tooltip = pre_ftl_regresses_one_age_effect
 		add_monthly_resource_mult = {
 			resource = energy
@@ -288,9 +249,7 @@ country_event = {
 			max = @tier3materialmax
 		}
 		if = {
-			limit = {
-				is_gestalt = no
-			}
+			limit = { is_gestalt = no }
 			add_monthly_resource_mult = {
 				resource = consumer_goods
 				value = @tier3materialreward
@@ -309,7 +268,6 @@ country_event = {
 	}
 }
 
-
 country_event = {
 	id = strange_worlds.3025
 	title = strange_worlds.3025.name
@@ -318,10 +276,12 @@ country_event = {
 	diplomatic = yes
 	custom_gui = "enclave_caravaneer_window"
 	custom_gui_option = "enclave_caravaneer_option"
+
 	picture_event_data = {
 		portrait = event_target:nomad_speaker
 		room = default_room
 	}
+
 	location = event_target:pre_ftl_planet
 
 	trigger = {
@@ -353,14 +313,10 @@ country_event = {
 		hidden_effect = {
 			event_target:pre_ftl_country = {
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
 				}
-				capital_scope.observation_outpost = {
-					set_event_locked = no
-				}
+				capital_scope.observation_outpost = { set_event_locked = no }
 			}
 		}
 	}
@@ -375,6 +331,7 @@ country_event = {
 	location = event_target:pre_ftl_planet
 	custom_gui = "enclave_caravaneer_window"
 	custom_gui_option = "enclave_caravaneer_option"
+
 	picture_event_data = {
 		portrait = event_target:caravaneer_fleet3_country
 		room = ethic_spaceship_room
@@ -403,14 +360,10 @@ country_event = {
 		hidden_effect = {
 			event_target:pre_ftl_country = {
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
 				}
-				capital_scope.observation_outpost = {
-					set_event_locked = no
-				}
+				capital_scope.observation_outpost = { set_event_locked = no }
 			}
 		}
 	}
@@ -423,9 +376,7 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
-			has_situation_flag = has_ongoing_observation_event_chain
-		}
+		NOT = { has_situation_flag = has_ongoing_observation_event_chain }
 		owner = {
 			is_gestalt = no # Dux: This event is localised for individualist Pre-FTLs, can shift ethics.
 			species = { has_trait = trait_organic } # Dux: Lithoids and Infernals don't want food.
@@ -455,9 +406,7 @@ situation_event = {
 				observation_outpost = {
 					set_event_locked = yes
 					owner = {
-						country_event = {
-							id = strange_worlds.3040
-						}
+						country_event = { id = strange_worlds.3040 }
 					}
 				}
 			}
@@ -481,17 +430,12 @@ country_event = {
 
 	immediate = {
 		set_country_flag = triggered_crate_expectations
-		event_target:pre_ftl_country = {
-			set_country_flag = triggered_crate_expectations
-		}
+		event_target:pre_ftl_country = { set_country_flag = triggered_crate_expectations }
 	}
 
 	option = {
 		name = strange_worlds.3040.a
-
-		event_target:pre_ftl_country = {
-			add_awareness = 10
-		}
+		event_target:pre_ftl_country = { add_awareness = 10 }
 		if = {
 			limit = {
 				OR = {
@@ -499,20 +443,13 @@ country_event = {
 					is_machine_empire = yes
 				}
 			}
-			add_resource = {
-				energy = -10
-			}
+			add_resource = { energy = -10 }
 		}
 		else = {
-			add_resource = {
-				food = -10
-			}
+			add_resource = { food = -10 }
 		}
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3045
-				days = 180
-			}
+			country_event = { id = strange_worlds.3045 days = 180 }
 		}
 	}
 }
@@ -520,19 +457,15 @@ country_event = {
 country_event = {
 	id = strange_worlds.3045
 	title = strange_worlds.3045.name
+
 	desc = {
 		trigger = {
 			text = strange_worlds.3045.desc_common
-			success_text = {
-				text = strange_worlds.3045.desc_non_homicidal
-				is_homicidal = no
-			}
-			success_text = {
-				text = strange_worlds.3045.desc_homicidal
-				is_homicidal = yes
-			}
+			success_text = { text = strange_worlds.3045.desc_non_homicidal is_homicidal = no }
+			success_text = { text = strange_worlds.3045.desc_homicidal is_homicidal = yes }
 		}
 	}
+
 	picture = GFX_evt_alien_cavemen
 	show_sound = event_pre_ftl_civilization
 	is_triggered_only = yes
@@ -541,73 +474,46 @@ country_event = {
 	trigger = {
 		exists = event_target:pre_ftl_country
 		event_target:pre_ftl_country = {
-			capital_scope = {
-				has_observation_outpost = yes
-			}
+			capital_scope = { has_observation_outpost = yes }
 		}
 	}
 
 	option = {
-		trigger = {
-			is_homicidal = no
-		}
+		trigger = { is_homicidal = no }
 		name = {
 			trigger = {
-				success_text = {
-					text = strange_worlds.3045.a_normal
-					is_megacorp = no
-				}
-				success_text = {
-					text = strange_worlds.3045.a_megacorp
-					is_megacorp = yes
-				}
+				success_text = { text = strange_worlds.3045.a_normal is_megacorp = no }
+				success_text = { text = strange_worlds.3045.a_megacorp is_megacorp = yes }
 			}
 		}
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3050
-				days = 180
-			}
+			country_event = { id = strange_worlds.3050 days = 180 }
 		}
 	}
 	option = {
-		trigger = {
-			is_homicidal = no
-		}
+		trigger = { is_homicidal = no }
 		name = {
 			trigger = {
-				success_text = {
-					text = strange_worlds.3045.b_normal
-					is_megacorp = no
-				}
-				success_text = {
-					text = strange_worlds.3045.b_megacorp
-					is_megacorp = yes
-				}
+				success_text = { text = strange_worlds.3045.b_normal is_megacorp = no }
+				success_text = { text = strange_worlds.3045.b_megacorp is_megacorp = yes }
 			}
 		}
 		observation_breach_effect = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
-		add_resource = {
-			food = -500
-		}
+		add_resource = { food = -500 }
 		event_target:pre_ftl_country = {
 			hidden_effect = {
 				set_country_flag = trigger_canceled_service
 				capital_scope = {
-					observation_outpost = {
-						set_fleet_flag = crate_expectation_production
-					}
+					observation_outpost = { set_fleet_flag = crate_expectation_production }
 				}
 			}
 			custom_tooltip = strange_worlds.3045.ct
 		}
 	}
 	option = {
-		trigger = {
-			is_homicidal = yes
-		}
+		trigger = { is_homicidal = yes }
 		name = strange_worlds.3045.c
 		event_target:pre_ftl_country = {
 			shift_ethic = ethic_xenophobe
@@ -618,13 +524,10 @@ country_event = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
 	}
+
 	after = {
-		add_resource = {
-			minerals = 500
-		}
-		event_target:pre_ftl_country = {
-			add_awareness = 10
-		}
+		add_resource = { minerals = 500 }
+		event_target:pre_ftl_country = { add_awareness = 10 }
 	}
 }
 
@@ -640,9 +543,7 @@ country_event = {
 	trigger = {
 		exists = event_target:pre_ftl_country
 		event_target:pre_ftl_country = {
-			capital_scope = {
-				has_observation_outpost = yes
-			}
+			capital_scope = { has_observation_outpost = yes }
 		}
 	}
 
@@ -653,14 +554,10 @@ country_event = {
 			add_awareness = 10
 			hidden_effect = {
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
 				}
-				capital_scope.observation_outpost = {
-					set_event_locked = no
-				}
+				capital_scope.observation_outpost = { set_event_locked = no }
 			}
 		}
 		add_monthly_resource_mult = {
@@ -681,9 +578,7 @@ country_event = {
 	trigger = {
 		has_pre_ftl_age = renaissance_age
 		has_country_flag = trigger_canceled_service
-		capital_scope = {
-			has_observation_outpost = yes
-		}
+		capital_scope = { has_observation_outpost = yes }
 	}
 
 	immediate = {
@@ -693,10 +588,7 @@ country_event = {
 			save_event_target_as = pre_ftl_planet
 			observation_outpost = {
 				owner = {
-					country_event = {
-						id = strange_worlds.3060
-						days = 180
-					}
+					country_event = { id = strange_worlds.3060 days = 180 }
 				}
 			}
 		}
@@ -706,7 +598,7 @@ country_event = {
 country_event = {
 	id = strange_worlds.3060
 	title = strange_worlds.3060.name
-	desc =  strange_worlds.3060.desc
+	desc = strange_worlds.3060.desc
 	picture = GFX_evt_medieval_alien_civilization
 	show_sound = event_pre_ftl_civilization
 	location = event_target:pre_ftl_planet
@@ -714,9 +606,7 @@ country_event = {
 
 	trigger = {
 		exists = event_target:pre_ftl_country
-		event_target:pre_ftl_planet = {
-			has_observation_outpost = yes
-		}
+		event_target:pre_ftl_planet = { has_observation_outpost = yes }
 	}
 
 	option = {
@@ -725,19 +615,13 @@ country_event = {
 			add_awareness = 10
 			hidden_effect = {
 				capital_scope = {
-					observation_outpost = {
-						remove_fleet_flag = crate_expectation_production
-					}
+					observation_outpost = { remove_fleet_flag = crate_expectation_production }
 				}
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
 				}
-				capital_scope.observation_outpost = {
-					set_event_locked = no
-				}
+				capital_scope.observation_outpost = { set_event_locked = no }
 			}
 			custom_tooltip = strange_worlds.3060.ct
 		}
@@ -757,9 +641,7 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = {
-			has_situation_flag = has_ongoing_observation_event_chain
-		}
+		NOT = { has_situation_flag = has_ongoing_observation_event_chain }
 		owner = {
 			pre_ftl_victorian_era = yes
 			NOR = {
@@ -795,7 +677,7 @@ situation_event = {
 country_event = {
 	id = strange_worlds.3070
 	title = strange_worlds.3070.name
-	desc =  strange_worlds.3070.desc
+	desc = strange_worlds.3070.desc
 	picture = GFX_evt_spy_orb
 	show_sound = event_yellow_alert
 	location = event_target:pre_ftl_planet
@@ -807,21 +689,14 @@ country_event = {
 
 	immediate = {
 		set_country_flag = triggered_heaven_ladder
-		event_target:pre_ftl_country = {
-			set_country_flag = triggered_heaven_ladder
-		}
+		event_target:pre_ftl_country = { set_country_flag = triggered_heaven_ladder }
 	}
 
 	option = {
 		name = strange_worlds.3070.a
-		event_target:pre_ftl_country = {
-			add_awareness = 10
-		}
+		event_target:pre_ftl_country = { add_awareness = 10 }
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3075
-				days = 360
-			}
+			country_event = { id = strange_worlds.3075 days = 360 }
 		}
 	}
 }
@@ -829,19 +704,15 @@ country_event = {
 country_event = {
 	id = strange_worlds.3075
 	title = strange_worlds.3075.name
+
 	desc = {
 		trigger = {
 			text = strange_worlds.3075.desc_common
-			success_text = {
-				text = strange_worlds.3075.desc_non_homicidal
-				is_homicidal = no
-			}
-			success_text = {
-				text = strange_worlds.3075.desc_homicidal
-				is_homicidal = yes
-			}
+			success_text = { text = strange_worlds.3075.desc_non_homicidal is_homicidal = no }
+			success_text = { text = strange_worlds.3075.desc_homicidal is_homicidal = yes }
 		}
 	}
+
 	picture = GFX_evt_stairway_to_heavens
 	show_sound = event_planetary_riot
 	location = event_target:pre_ftl_planet
@@ -859,14 +730,9 @@ country_event = {
 		observation_breach_effect = {
 			RESOLUTION = resolution_pre_ftl_stances_non_interference
 		}
-		event_target:pre_ftl_country = {
-			add_awareness = 20
-		}
+		event_target:pre_ftl_country = { add_awareness = 20 }
 		hidden_effect = {
-			country_event = {
-				id = strange_worlds.3080
-				days = 360
-			}
+			country_event = { id = strange_worlds.3080 days = 360 }
 		}
 	}
 	option = {
@@ -880,12 +746,10 @@ country_event = {
 					}
 				}
 			}
-			country_event = {
-				id = strange_worlds.3085
-				days = 360
-			}
+			country_event = { id = strange_worlds.3085 days = 360 }
 		}
 	}
+
 	after = {
 		add_monthly_resource_mult = {
 			resource = society_research
@@ -899,7 +763,7 @@ country_event = {
 country_event = {
 	id = strange_worlds.3080
 	title = strange_worlds.3080.name
-	desc =  strange_worlds.3080.desc
+	desc = strange_worlds.3080.desc
 	picture = GFX_evt_spy_orb
 	show_sound = event_yellow_alert
 	location = event_target:pre_ftl_planet
@@ -914,9 +778,7 @@ country_event = {
 		hidden_effect = {
 			event_target:pre_ftl_country = {
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					add_situation_progress = 960
 				}
 				shift_ethic = ethic_materialist
@@ -932,14 +794,10 @@ country_event = {
 		hidden_effect = {
 			event_target:pre_ftl_country = {
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
 				}
-				capital_scope.observation_outpost = {
-					set_event_locked = no
-				}
+				capital_scope.observation_outpost = { set_event_locked = no }
 			}
 		}
 	}
@@ -948,7 +806,7 @@ country_event = {
 country_event = {
 	id = strange_worlds.3085
 	title = strange_worlds.3085.name
-	desc =  strange_worlds.3085.desc
+	desc = strange_worlds.3085.desc
 	picture = GFX_evt_open_revolt
 	show_sound = event_death_cult
 	location = event_target:pre_ftl_planet
@@ -963,13 +821,9 @@ country_event = {
 		event_target:pre_ftl_country = {
 			if = {
 				limit = {
-					root = {
-						has_first_contact_dlc = yes
-					}
+					root = { has_first_contact_dlc = yes }
 				}
-				add_modifier = {
-					modifier = ladder_wars_pre_ftl
-				}
+				add_modifier = { modifier = ladder_wars_pre_ftl }
 			}
 			shift_ethic = ethic_xenophobe
 			pre_ftl_regresses_one_age = yes
@@ -983,9 +837,7 @@ country_event = {
 					}
 				}
 				random_situation = {
-					limit = {
-						is_situation_type = pre_ftl_tech_progress_situation
-					}
+					limit = { is_situation_type = pre_ftl_tech_progress_situation }
 					remove_situation_flag = has_ongoing_observation_event_chain
 				}
 			}

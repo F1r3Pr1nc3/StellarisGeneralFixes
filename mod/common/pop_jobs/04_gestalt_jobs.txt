@@ -165,7 +165,7 @@ spawning_drone = {
 			owner = { has_origin = origin_necrophage }
 			exists = planet.growing_species
 			planet.growing_species = {
-				is_hive_species = no
+				NOT = { has_trait = trait_hive_mind }
 			}
 		}
 		logistic_growth_mult = 0.1

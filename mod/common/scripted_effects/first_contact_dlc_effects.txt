@@ -236,7 +236,6 @@ generate_slaver_bonus = {
 		limit = { pop_amount > 3600 }
 		random_owned_pop_group = { kill_single_pop = yes }
 	}
-
 	# Checking if there are any other pre-ftls to abduct
 	while = {
 		limit = { pop_amount < 5200 }
@@ -1895,7 +1894,6 @@ integrate_country_effect = {
 	every_owned_fleet = {
 		set_owner = $OWNER$
 	}
-
 	# Don't inherit gestalt nodes
 	if = {
 		limit = { is_gestalt = yes }
@@ -2057,7 +2055,6 @@ pre_ftl_indoctrinate_operation_result = {
 # (Instigating) country scope | from = Espionage Operation
 shift_pre_ftl_pop_ethic = {
 	set_country_flag = shifting_pre_ftl_ethic_to_$ETHIC$
-
 	hidden_effect = {
 		from.target = {
 			set_timed_country_flag = {
@@ -2233,42 +2230,42 @@ asteroid_impact_pre_ftl_effect = {
 		switch = {
 			trigger = has_pre_ftl_age
 			stone_age = {
-				set_timed_country_flag = { flag = new_stone_age days = 360 } # Used to correct observation.4.a.tt which always stated they reveted to Stone Age when they only revert to the previous age.
+				set_timed_country_flag = { flag = new_stone_age years = 1 } # Used to correct observation.4.a.tt which always stated they reveted to Stone Age when they only revert to the previous age.
 			}
 			bronze_age = {
-				set_timed_country_flag = { flag = new_stone_age days = 360 }
+				set_timed_country_flag = { flag = new_stone_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = stone_age }
 			}
 			iron_age = {
-				set_timed_country_flag = { flag = new_bronze_age days = 360 }
+				set_timed_country_flag = { flag = new_bronze_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = bronze_age }
 			}
 			late_medieval_age = {
-				set_timed_country_flag = { flag = new_iron_age days = 360 }
+				set_timed_country_flag = { flag = new_iron_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = iron_age }
 			}
 			renaissance_age = {
-				set_timed_country_flag = { flag = new_late_medieval_age days = 360 }
+				set_timed_country_flag = { flag = new_late_medieval_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = late_medieval_age }
 			}
 			steam_age = {
-				set_timed_country_flag = { flag = new_renaissance_age days = 360 }
+				set_timed_country_flag = { flag = new_renaissance_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = renaissance_age }
 			}
 			industrial_age = {
-				set_timed_country_flag = { flag = new_steam_age days = 360 }
+				set_timed_country_flag = { flag = new_steam_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = steam_age }
 			}
 			machine_age = {
-				set_timed_country_flag = { flag = new_industrial_age days = 360 }
+				set_timed_country_flag = { flag = new_industrial_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = industrial_age }
 			}
 			atomic_age = {
-				set_timed_country_flag = { flag = new_machine_age days = 360 }
+				set_timed_country_flag = { flag = new_machine_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = machine_age }
 			}
 			early_space_age = {
-				set_timed_country_flag = { flag = new_atomic_age days = 360 }
+				set_timed_country_flag = { flag = new_atomic_age years = 1 }
 				set_pre_ftl_age_effect = { PRE_FTL_AGE = atomic_age }
 			}
 		}
@@ -2969,7 +2966,6 @@ payback_resolution_counters_check = {
 		}
 		country_event = { id = origin.4052 }
 	}
-
 	# if you passed everything, celebrate more!!!
 	if = {
 		limit = {
@@ -3016,7 +3012,6 @@ payback_words_chain_counters_check_joining_galcom = {
 			amount = 1
 		}
 	}
-
 	# Equal standing/non-interference
 	if = {
 		limit = {

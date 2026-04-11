@@ -36,7 +36,6 @@ country_event = {
 			from = { is_country_type = caravaneer_home }
 		}
 	}
-
 	# Clicked on fleet shield
 	desc = {
 		text = cara_home_redirect1
@@ -65,7 +64,6 @@ country_event = {
 			}
 		}
 	}
-
 	# Looping back from another menu
 	desc = {
 		text = "cara_home_menureturn1"
@@ -4517,15 +4515,31 @@ country_event = {
 	fire_only_once = yes
 
 	trigger = {
-		is_ai = no
 		exists = event_target:caravaneer_home_country
-		# is_country_type = default
-		is_homicidal = no
-		any_neighbor_country = { is_country_type = caravaneer_home has_communications = root }
+		event_target:caravaneer_home_country = {
+			any_system_within_border = {
+				any_neighbor_system = {
+					has_owner = yes
+					owner_or_space_owner = { is_ai = no is_homicidal = no } # Vfix opt
+				}
+			}
+		}
 	}
 
 	immediate = {
-		country_event = { id = cara.4100 }
+		event_target:caravaneer_home_country = {
+			random_system_within_border = {
+				every_neighbor_system = {
+					limit = {
+						has_owner = yes
+						owner_or_space_owner = { is_ai = no is_homicidal = no } # Vfix opt
+					}
+					owner_or_space_owner = {
+						country_event = { id = cara.4100 }
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -4582,9 +4596,7 @@ country_event = {
 			}
 		}
 		random_list = {
-			90 = {
-				# no effect
-			}
+			90 = {  } # no effect
 			2 = { country_event = { id = cara.4110 } }
 			2 = { # No factor 0 modifier as I don't want the remaining option to be more common.
 				if = {

@@ -3030,7 +3030,6 @@ country_event = {
 			country_event = { id = paragon.552 scopes = { from = from } }
 		}
 	}
-
 	# A public funeral
 	option = {
 		name = paragon.550.a
@@ -3046,7 +3045,6 @@ country_event = {
 			country_event = { id = paragon.551 scopes = { from = from } }
 		}
 	}
-
 	# Negative traits
 	option = {
 		name = paragon.550.c
@@ -3057,7 +3055,6 @@ country_event = {
 			country_event = { id = paragon.553 scopes = { from = from } }
 		}
 	}
-
 	# Materialist
 	option = {
 		name = paragon.550.d
@@ -3069,7 +3066,6 @@ country_event = {
 			country_event = { id = paragon.554 scopes = { from = from } }
 		}
 	}
-
 	# Spiritualist
 	option = {
 		name = paragon.550.e
@@ -3081,7 +3077,6 @@ country_event = {
 			country_event = { id = paragon.555 scopes = { from = from } }
 		}
 	}
-
 	# Militarist
 	option = {
 		name = paragon.550.f
@@ -3098,7 +3093,6 @@ country_event = {
 			country_event = { id = paragon.556 scopes = { from = from } }
 		}
 	}
-
 	# Pacifist
 	option = {
 		name = paragon.550.g
@@ -3115,7 +3109,6 @@ country_event = {
 			country_event = { id = paragon.557 scopes = { from = from } }
 		}
 	}
-
 	# Xenophobe
 	option = {
 		name = paragon.550.h
@@ -3132,7 +3125,6 @@ country_event = {
 			country_event = { id = paragon.558 scopes = { from = from } }
 		}
 	}
-
 	# Xenophile
 	option = {
 		name = paragon.550.i
@@ -3149,7 +3141,6 @@ country_event = {
 			country_event = { id = paragon.559 scopes = { from = from } }
 		}
 	}
-
 	# Authoritarian
 	option = {
 		name = paragon.550.j
@@ -3166,7 +3157,6 @@ country_event = {
 			country_event = { id = paragon.560 scopes = { from = from } }
 		}
 	}
-
 	# Egalitarian
 	option = {
 		name = paragon.550.k
@@ -3178,7 +3168,6 @@ country_event = {
 			country_event = { id = paragon.561 scopes = { from = from } }
 		}
 	}
-
 	# Megacorporation
 	option = {
 		name = paragon.550.l
@@ -3192,7 +3181,6 @@ country_event = {
 			country_event = { id = paragon.562 scopes = { from = from } }
 		}
 	}
-
 	# Plantoid/Fungoid
 	option = {
 		name = paragon.550.m
@@ -3203,7 +3191,6 @@ country_event = {
 			country_event = { id = paragon.563 scopes = { from = from } }
 		}
 	}
-
 	# Imperial EvoPred
 	option = {
 		name = paragon.550.evopred
@@ -4016,10 +4003,10 @@ leader_event = {
 
 	trigger = {
 		leader_class = official
+		is_pacifist = yes
 		NOR = {
 			has_trait_tier1or2 = { TRAIT = leader_trait_corrupt }
 			has_trait_tier1or2 = { TRAIT = leader_trait_embezzler }
-			is_pacifist = no
 		}
 		exists = planet
 		planet = {
@@ -4230,7 +4217,7 @@ leader_event = {
 	fire_only_once = yes
 
 	trigger = {
-		species = { is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes } # Vfix
+		species = { is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes }
 	}
 
 	immediate = {
@@ -4275,8 +4262,7 @@ leader_event = {
 			has_trait = leader_trait_army_veteran
 			has_trait = leader_trait_retired_fleet_officer
 		}
-		# Vfix opt
-		is_robotic_species = no
+		species = { is_valid_pop_for_PLANET_KILLER_NANOBOTS = yes }
 	}
 
 	immediate = {

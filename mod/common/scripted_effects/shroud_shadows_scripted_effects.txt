@@ -1,7 +1,6 @@
 # Shadows of the Shroud scripted effects #
 breach_shroud = {
 	set_country_flag = breached_shroud
-
 	fire_on_action = {
 		on_action = on_shroud_breached
 	}
@@ -176,7 +175,6 @@ update_every_leader_from_psionic_countries = {
 			}
 		}
 	}
-
 	# Notify rest of the galaxy about it
 	observer_event = { id = observer.6 }
 	every_playable_country = {
@@ -633,7 +631,6 @@ roll_secret_factions = {
 
 bestow_modifier_and_flag = {
 	set_country_flag = bestow_$MODIFIER$
-
 	add_modifier = {
 		modifier = $MODIFIER$
 		days = 1800
@@ -1962,7 +1959,6 @@ whisperers_in_the_void_replace_patron = {
 	remove_country_flag = contacting_great_patron
 	clear_covenant_flags = yes
 	set_country_flag = $PATRON$_betrayal
-
 	set_attunement = {
 		patron = whisperers_in_the_void
 		value = @attunement_first_accord
@@ -2184,7 +2180,6 @@ update_eotc_accords = {
 			owner = { remove_country_flag = unlock_accord_annihilation }
 		}
 	}
-
 	# Fractalization accord
 	if = {
 		limit = {
@@ -2202,7 +2197,6 @@ update_eotc_accords = {
 		}
 		owner = { remove_country_flag = unlock_accord_fractalization }
 	}
-
 	# Extermination accord
 	if = {
 		limit = {
@@ -2225,7 +2219,6 @@ update_eotc_accords = {
 			owner = { remove_country_flag = unlock_accord_extermination }
 		}
 	}
-
 	# Distortion accord
 	if = {
 		limit = {
@@ -2243,7 +2236,6 @@ update_eotc_accords = {
 		}
 		owner = { remove_country_flag = unlock_accord_distortion }
 	}
-
 	# Destruction accord
 	if = {
 		limit = {
@@ -2266,7 +2258,6 @@ update_eotc_accords = {
 			owner = { remove_country_flag = unlock_accord_destruction }
 		}
 	}
-
 	# Intensification accord
 	if = {
 		limit = {
@@ -2284,7 +2275,6 @@ update_eotc_accords = {
 		}
 		owner = { remove_country_flag = unlock_accord_intensification }
 	}
-
 	# Eradication accord
 	if = {
 		limit = {
@@ -2870,7 +2860,6 @@ create_enclave_with_country = {
 			}
 		}
 	}
-
 	# Create the Enclave country, and assign a flavour ethic. Note that these are applied in priority order, so a patron who is Xenophilic, Authoritarian *and* Materialistic will found an enclave which is Fanatic Militarist and Materialist, as Materialism is listed first.
 	if = {
 		limit = {
@@ -2897,7 +2886,6 @@ create_enclave_with_country = {
 	else = {
 		$EFFECT$ = { INHERITED_ETHIC = ethic_xenophile }
 	}
-
 	# Give enclave creator's tech, start situation, and set creator flag
 	event_target:$PREFIX$_enclave_country = {
 		if = {
@@ -3196,7 +3184,6 @@ create_mindwarden_raiders = {
 		}
 		set_fleet_flag = mindwarden_raider_fleet_1
 	}
-
 	# 40 years into game, less than 60
 	else_if = {
 		limit = { years_passed < 60 }
@@ -3247,7 +3234,6 @@ create_mindwarden_raiders = {
 		}
 		set_fleet_flag = mindwarden_raider_fleet_2
 	}
-
 	# 60 years into game, less than 80
 	else_if = {
 		limit = { years_passed < 80 }
@@ -3307,7 +3293,6 @@ create_mindwarden_raiders = {
 		}
 		set_fleet_flag = mindwarden_raider_fleet_3
 	}
-
 	# 80 years into game
 	else = {
 		get_max_level_mindwarden_fleet_ships = yes
@@ -4278,7 +4263,6 @@ shroud_leader_creator = {
 shroud_leader_hire_effect = {
 	lower_leader_chance = yes
 	set_country_flag = spawning_renowned_leader
-
 	clone_leader = {
 		target = event_target:shroud_leader
 		skip_background_generation = yes
@@ -4290,7 +4274,6 @@ shroud_leader_hire_effect = {
 	}
 
 	remove_country_flag = spawning_renowned_leader
-
 	create_message = {
 		type = MESSAGE_RECRUITED_LEADER
 		localization = MESSAGE_RECRUITED_LEADER_DESC

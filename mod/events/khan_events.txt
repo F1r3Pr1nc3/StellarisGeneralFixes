@@ -232,8 +232,8 @@ starbase_event = {
 
 	trigger = {
 		NOR = {
-			has_starbase_size <= starbase_outpost
-			has_starbase_size <= starbase_fe_outpost
+			has_starbase_size = starbase_outpost
+			has_starbase_size = starbase_fe_outpost
 			has_starbase_size = starbase_marauder
 		}
 	}
@@ -274,8 +274,8 @@ starbase_event = {
 		}
 		if = {
 			limit = {
-				has_starbase_size > starbase_starport
 				NOR = {
+					has_starbase_size <= starbase_starport
 					count_starbase_modules = { count >= 3 include_being_constructed = yes }
 					has_starbase_module = "gun_battery"
 					is_starbase_building_module = "gun_battery"
@@ -286,8 +286,8 @@ starbase_event = {
 		}
 		if = {
 			limit = {
-				has_starbase_size > starbase_starhold
 				NOR = {
+					has_starbase_size <= starbase_starhold
 					count_starbase_modules = { count >= 4 include_being_constructed = yes }
 					count_starbase_modules = {
 						type = "gun_battery"
@@ -313,8 +313,8 @@ starbase_event = {
 		}
 		if = {
 			limit = {
-				has_starbase_size > starbase_starport
 				NOR = {
+					has_starbase_size <= starbase_starport
 					count_starbase_buildings = { count >= 3 include_being_constructed = yes }
 					has_starbase_building = "resource_silo"
 					is_starbase_building_building = "resource_silo"

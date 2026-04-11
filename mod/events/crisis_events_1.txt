@@ -17,7 +17,6 @@ country_event = {
 	id = crisis.199
 	hide_window = yes
 	is_test_event = yes
-
 	trigger = {
 		always = no
 	}
@@ -291,7 +290,7 @@ country_event = {
 	desc = {
 		text = "crisis.16.c.desc"
 		trigger = {
-			owner_species = { is_hive_species = yes }
+			owner_species = { has_trait = trait_hive_mind }
 		}
 	}
 
@@ -307,13 +306,15 @@ country_event = {
 	option = {
 		name = crisis.16.a
 		trigger = {
-			owner_species = { is_hive_species = no }
+			owner_species = {
+				NOT = { has_trait = trait_hive_mind }
+			}
 		}
 	}
 	option = {
 		name = crisis.16.b
 		trigger = {
-			owner_species = { is_hive_species = yes }
+			owner_species = { has_trait = trait_hive_mind }
 		}
 	}
 }

@@ -401,6 +401,7 @@ can_release_vassal = {
 can_release_vassal_from_species = {
 	root = {
 		is_sapient = yes
+		can_think = yes
 		NOR = {
 			AND = {
 				has_trait = trait_machine_unit
@@ -415,7 +416,6 @@ can_release_vassal_from_species = {
 				prev.this = { is_hive_empire = yes }
 			}
 			has_trait = trait_mechanical
-			can_think = no
 			has_infertile_clone_soldier_trait = yes
 		}
 	}
@@ -450,7 +450,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Organic Species
 	if = {
 		limit = {
@@ -471,7 +470,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Clone Army
 	if = {
 		limit = { has_infertile_clone_soldier_trait = yes }
@@ -483,7 +481,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Robots & Machines
 	else_if = {
 		limit = {
@@ -526,7 +523,6 @@ can_modify_species = {
 			}
 		}
 	}
-
 	# Self-Modified
 	custom_tooltip = {
 		fail_text = "CANNOT_MODIFY_SELF_MODIFIED_SPECIES"
@@ -534,7 +530,6 @@ can_modify_species = {
 			has_trait = trait_self_modified
 		}
 	}
-
 	# Malleable Genes
 	custom_tooltip = {
 		fail_text = "CANNOT_MODIFY_MALLEABLE_GENES_SPECIES"
@@ -907,6 +902,7 @@ pop_group_has_random_ethics = {
 # From = Country
 # This = Species
 species_has_happiness = {
+	can_think = yes
 	NOR = {
 		AND = {
 			has_trait = trait_machine_unit
@@ -914,7 +910,6 @@ species_has_happiness = {
 			from = { is_machine_empire = yes }
 		}
 		has_trait = trait_hive_mind
-		can_think = no
 		AND = {
 			has_trait = trait_mechanical
 			OR = {
@@ -1387,7 +1382,6 @@ ai_should_restrict_system = {
 # Used by regular empires, fallen empires & crises
 ai_should_not_restrict_system = {
 	has_star_flag = starlit_sealed_system
-
 	root = {
 		has_origin = origin_starlit_citadel
 	}
@@ -1512,7 +1506,6 @@ can_resettle_pop_group = {
 		fail_text = "self_modified_refuse"
 		NOT = { has_trait = trait_self_modified }
 	}
-
 	# Pathogenic Pops Can't Resettle
 	custom_tooltip = {
 		fail_text = "pathogenic_genes_warning"
@@ -1772,7 +1765,6 @@ can_support_branch_offices = {
 		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
 		is_fallen_empire = no
 	}
-
 	# custom_tooltip = {
 	#	fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
 	#	NOR = {
@@ -2538,9 +2530,11 @@ can_fill_worker_job = {
 				pop_group_has_trait = trait_tankbound
 			}
 			exists = owner
-			is_being_purged = no
-			is_being_assimilated = no
-			NOT = { has_citizenship_type = { type = citizenship_organic_trophy country = owner } }
+			NOR = {
+				is_being_purged = yes
+				is_being_assimilated = yes
+				has_citizenship_type = { type = citizenship_organic_trophy country = owner }
+			}
 			NAND = {
 				has_citizenship_type = { type = citizenship_slavery }
 				OR = {
@@ -2836,7 +2830,6 @@ can_get_external_leader_pool_candidate = {
 		is_in_federation_with = from
 		is_overlord_to = from
 	}
-
 	# Both empires must be regular empires, machine intelligences or hive-minds.
 	OR = {
 		AND = {
@@ -2880,7 +2873,6 @@ can_trade_leader = {
 			}
 		}
 	}
-
 	# The subject and overlord must both be regular empires, machine intelligences or hive-minds.
 	OR = {
 		AND = {
@@ -2910,7 +2902,6 @@ can_trade_leader = {
 			}
 		}
 	}
-
 	# Can't trade gestalt nodes
 	NOR = {
 		is_gestalt_node = yes
@@ -3060,7 +3051,6 @@ leader_election_weight = {
 		}
 		add = species.value:species_purity_times_ten
 	}
-
 	# Multiply by Faction support.
 	modifier = {
 		custom_tooltip = {
@@ -3069,7 +3059,6 @@ leader_election_weight = {
 		}
 		add = value:leader_faction_support_election_bonus
 	}
-
 	# If no Factions formed, fake faction support based on if it's an Empire ethic or not.
 	modifier = {
 		custom_tooltip = {
@@ -3089,13 +3078,11 @@ leader_election_weight = {
 		}
 		add = 25
 	}
-
 	# Not changing Ruler should be slightly preferred.
 	modifier = {
 		is_ruler = yes
 		mult = 1.1
 	}
-
 	# Bonus if Leader was Councilor when election started. Or if no Election, is a Councilor now.
 	modifier = {
 		custom_tooltip = {
@@ -3113,7 +3100,6 @@ leader_election_weight = {
 		}
 		mult = 1.05
 	}
-
 	# Governments (based on Ethics and Civics) might prefer certain Leader classes. Hide if +/- 0%.
 	modifier = {
 		custom_tooltip = {
@@ -3125,7 +3111,6 @@ leader_election_weight = {
 		}
 		mult = value:leader_class_government_match_bonus_mult
 	}
-
 	# Extra bonus for Councilor Subclass (which is a Trait).
 	modifier = {
 		custom_tooltip = {
@@ -3134,7 +3119,6 @@ leader_election_weight = {
 		}
 		mult = 1.2
 	}
-
 	# Penalty for Non-Councilor Subclass (which is a Trait).
 	modifier = {
 		custom_tooltip = {
@@ -3143,7 +3127,6 @@ leader_election_weight = {
 		}
 		mult = 0.8
 	}
-
 	# Bonus/penalty from Traits.
 	modifier = {
 		custom_tooltip = {
@@ -3152,7 +3135,6 @@ leader_election_weight = {
 		}
 		mult = value:leader_traits_election_bonus_mult
 	}
-
 	# Bonus from Skill level.
 	modifier = {
 		custom_tooltip = {
@@ -3161,7 +3143,6 @@ leader_election_weight = {
 		}
 		mult = value:leader_skill_election_bonus_mult
 	}
-
 	# Penalty from old Age, unless already ruler or immortal.
 	modifier = {
 		custom_tooltip = {
@@ -3172,7 +3153,6 @@ leader_election_weight = {
 		}
 		mult = 0.5
 	}
-
 	# Titanic reduction if you are fanatic xenophobic and the candidate is a xeno
 	modifier = {
 		custom_tooltip = {
@@ -3190,7 +3170,6 @@ leader_election_weight = {
 		}
 		mult = 0.001
 	}
-
 	# Huge Reduction if you are a xenophobe and the candidate is a xeno
 	modifier = {
 		custom_tooltip = {
@@ -3208,7 +3187,6 @@ leader_election_weight = {
 		}
 		mult = 0.01
 	}
-
 	# Halve the chance if you are neither a xenophobe or xenophile
 	modifier = {
 		custom_tooltip = {
@@ -3227,7 +3205,6 @@ leader_election_weight = {
 		}
 		mult = 0.5
 	}
-
 	# No modifiers for regular xenophiles or selective kinship empires
 	# Fanatic Xenophiles prefer electing aliens that are not the same species as the current one in charge.
 	modifier = {
@@ -3415,7 +3392,6 @@ can_interact_with_astral_rift = {
 # FROM = Astral Rift checked
 can_explore_astral_rift = {
 	has_technology = tech_rift_sphere
-
 	hidden_trigger = {
 		OR = {
 			is_astral_rift_pool_empty = no
@@ -3559,7 +3535,6 @@ has_breached_shroud_storm = {
 	is_scope_valid = yes
 	exists = from
 	has_country_flag = breached_shroud
-
 	from = {
 		is_storm_type = shroud_storm
 	}
@@ -3686,7 +3661,6 @@ can_voidworms_bombard_country = {
 		is_country_type = default
 		is_primitive = yes
 	}
-
 	# During crisis, they should bombard no matter what, otherwise check tech and max voidworms
 	if = {
 		limit = {
@@ -3695,11 +3669,13 @@ can_voidworms_bombard_country = {
 		always = yes
 	}
 	else = {
-		NOT = { has_technology = tech_voidworm_immunity }
-		event_target:voidworms_country = {
-			check_variable_arithmetic = {
-				which = value:voidworm_ships_owned
-				value < value:voidworm_maximum_population
+		NOR = {
+			has_technology = tech_voidworm_immunity
+			event_target:voidworms_country = {
+				check_variable_arithmetic = {
+					which = value:voidworm_ships_owned
+					value >= value:voidworm_maximum_population
+				}
 			}
 		}
 	}
