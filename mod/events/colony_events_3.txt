@@ -323,7 +323,7 @@ planet_event = {
 		}
 		random_owned_pop_group = { kill_single_pop = yes }
 		set_planet_purge_type = purge_displacement
-		planet_event = { id = colony_mod.103 days = 64 }
+		planet_event = { id = colony_mod.104 days = 64 }
 	}
 
 	option = {
@@ -332,56 +332,25 @@ planet_event = {
 	}
 }
 
-# Vfix New
-# Victory Titans
-planet_event = {
+# NEW in v4.3.4 - VFIX disabled for now, as it is way inferior to our fix.
+# Titanic Guardian Defeated - fired from on_army_killed_in_combat and on_army_killed_no_combat
+# This = army owner country
+# From = army
+# FromFrom = opponent / planet (respectively)
+country_event = {
 	id = colony_mod.103
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = {
-	# 	is_country_type = faction
-	# 	# has_country_flag = titanic_life_faction # Lets rampage anyway
-	# 	fromfrom = { has_planet_flag = titanic_life_colony_flag }
-	# }
-	immediate = {
-		if = {
-			limit = { has_ground_combat = no }
-			if = {
-				limit = {
-					exists = controller
-					controller = { is_country_type = faction }
-				}
-				set_planet_purge_type = purge_displacement # Vfix only if won
-				if = {
-					limit = {
-						NOT = { has_deposit = d_titanic_life_blocker }
-					}
-					add_deposit = d_titanic_life_blocker
-				}
-				remove_modifier = "eat_the_titans"
-				remove_modifier = "eat_the_titans_evopred"
-				remove_planet_flag = nice_titan_study
-				if = {
-					limit = {
-						NOT = { has_modifier = titanic_life }
-					}
-					add_modifier = { modifier = titanic_life }
-				}
-				create_army = {
-					name = "NAME_Enraged_Guardian"
-					owner = controller
-					species = controller
-					type = "titanic_guardian_army"
-				}
-			}
-			else = {
-				clear_planet_purge_type = yes # Vfix only if lost, gets applied on general event
-			}
-		}
-		else = {
-			planet_event = { id = colony_mod.103 days = 30 }
-		}
+	is_test_event = yes
+	trigger = {
+		always = no
+		# From = { army_type = titanic_guardian_army }
 	}
+	# immediate = {
+	# 	From.planet = {
+	# 		clear_planet_purge_type = yes
+	# 	}
+	# }
 }
 
 planet_event = {

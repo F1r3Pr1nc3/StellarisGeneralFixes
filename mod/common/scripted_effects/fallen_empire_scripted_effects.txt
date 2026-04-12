@@ -2319,10 +2319,12 @@ grant_random_fe_building = {
 		1 = {
 			modifier = {
 				factor = 0
-				has_country_flag = fe_clinic_1_can_build
-				NOR = {
-					is_regular_empire = yes
-					is_hive_empire = yes
+				OR = { # Vfix
+					has_country_flag = fe_clinic_1_can_build
+					NOR = {
+						is_regular_empire = yes
+						is_hive_empire = yes
+					}
 				}
 			}
 			grant_fe_building = { BUILDING = fe_clinic_1 }
@@ -2375,6 +2377,7 @@ grant_fe_building = {
 	create_message = {
 		type = FALLEN_EMPIRE_BUILDING_GAINED
 		localization = MESSAGE_FALLEN_EMPIRE_BUILDING_GAINED
+		# target = root # Vfix not always valid
 		days = 30
 	}
 }

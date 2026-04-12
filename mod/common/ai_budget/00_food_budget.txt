@@ -120,7 +120,7 @@ food_expenditure_starbases = {
 			factor = 1.5
 			OR = {
 				any_owned_starbase = {
-					NOT = { has_starbase_size = starbase_outpost }
+					has_starbase_size > starbase_outpost
 					can_be_upgraded = yes
 				}
 				any_owned_nonprimary_starbase = { can_be_upgraded = yes }
@@ -129,8 +129,38 @@ food_expenditure_starbases = {
 	}
 
 	desired_max = {
-		base = 1000
-		modifier = { add = 5000 has_ascension_perk = ap_cosmogenesis }
+		base = 500
+		modifier = {
+			# Allow saving enough for a Starhold (1750 food)
+			add = 1250
+			has_technology = tech_starbase_3
+			any_owned_starbase = {
+				has_starbase_size = starbase_starport
+				can_be_upgraded = yes
+			}
+		}
+		modifier = {
+			# Allow saving enough for a Starfortress (4375 food)
+			add = 3875
+			has_technology = tech_starbase_4
+			any_owned_starbase = {
+				has_starbase_size = starbase_starhold
+				can_be_upgraded = yes
+			}
+		}
+		modifier = {
+			# Allow saving enough for a Citadel (8750 food)
+			add = 8250
+			has_technology = tech_starbase_5
+			any_owned_starbase = {
+				has_starbase_size = starbase_starfortress
+				can_be_upgraded = yes
+			}
+		}
+		modifier = {
+			add = 8750
+			has_ascension_perk = ap_cosmogenesis
+		}
 	}
 }
 
@@ -379,7 +409,10 @@ food_expenditure_ships = {
 		# spend more food building ships while at war
 		modifier = {
 			factor = 3
-			is_at_war = yes
+			OR = {
+				recently_lost_war = yes
+				is_at_war = yes
+			}
 		}
 
 		# spend less food on ships if over capacity
@@ -485,7 +518,7 @@ food_expenditure_megastructures = {
 	}
 
 	desired_max = {
-		base = 20000 # current max alloy cost for a stage
+		base = 20000 # current max food cost for a megastructure stage
 	}
 }
 

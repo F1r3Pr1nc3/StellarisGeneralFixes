@@ -16,3 +16,56 @@ country_event = {
 		# change_variable = { which = imperial_legion_soldier_count value = -1 }
 	}
 }
+
+namespace = colony_mod
+# Vfix New
+# Victory Titans
+planet_event = {
+	id = colony_mod.104
+	hide_window = yes
+	is_triggered_only = yes
+	# trigger = {
+	# 	is_country_type = faction
+	# 	# has_country_flag = titanic_life_faction # Lets rampage anyway
+	# 	fromfrom = { has_planet_flag = titanic_life_colony_flag }
+	# }
+	immediate = {
+		if = {
+			limit = { has_ground_combat = no }
+			if = {
+				limit = {
+					exists = controller
+					controller = { is_country_type = faction }
+				}
+				set_planet_purge_type = purge_displacement # Vfix only if won
+				if = {
+					limit = {
+						NOT = { has_deposit = d_titanic_life_blocker }
+					}
+					add_deposit = d_titanic_life_blocker
+				}
+				remove_modifier = "eat_the_titans"
+				remove_modifier = "eat_the_titans_evopred"
+				remove_planet_flag = nice_titan_study
+				if = {
+					limit = {
+						NOT = { has_modifier = titanic_life }
+					}
+					add_modifier = { modifier = titanic_life }
+				}
+				create_army = {
+					name = "NAME_Enraged_Guardian"
+					owner = controller
+					species = controller
+					type = "titanic_guardian_army"
+				}
+			}
+			else = {
+				clear_planet_purge_type = yes # Vfix only if lost, gets applied on general event
+			}
+		}
+		else = {
+			planet_event = { id = colony_mod.104 days = 30 }
+		}
+	}
+}

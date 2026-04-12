@@ -59,6 +59,37 @@ country_event = {
 					}
 				}
 			}
+			else_if = { # Vfix opt
+				limit = {
+					has_origin = origin_necrophage
+				}
+				capital_scope = { # Necrophage: fix volcanic pre-FTL worlds without rerolling pops
+					closest_system = {
+						min_steps = 1
+						max_steps = 3
+						limit = { has_star_flag = neighbor_t1_first_colony }
+						random_system_planet = {
+							limit = {
+								has_planet_flag = prescripted_ideal
+								is_planet_class = pc_volcanic
+							}
+							change_pc = pc_arid
+						}
+					}
+					closest_system = {
+						min_steps = 1
+						max_steps = 3
+						limit = { has_star_flag = neighbor_t2_second_colony }
+						random_system_planet = {
+							limit = {
+								has_planet_flag = prescripted_ideal
+								is_planet_class = pc_volcanic
+							}
+							change_pc = pc_desert
+						}
+					}
+				}
+			}
 		}
 		if = {
 			limit = { is_galvanic_empire = yes }
@@ -88,7 +119,7 @@ country_event = {
 			country_event = { id = infernals.45 days = 45 }
 			capital_scope = { save_global_event_target_as = red_giant_homeworld@owner }
 		}
-		if = {
+		else_if = { # Vfix opt minor
 			limit = { has_origin = origin_cosmic_dawn }
 			country_event = { id = infernals.2500 days = 1 }
 			capital_scope = { set_planet_flag = cosmic_dawn_homeworld }

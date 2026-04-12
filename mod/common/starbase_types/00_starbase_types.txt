@@ -14,12 +14,12 @@
 # Shipyard
 sshipyard = {
 	potential = {
+		exists = owner # Vfix
+		has_starbase_size > starbase_outpost
 		NOR = {
-			has_starbase_size = starbase_outpost
 			has_starbase_module = hatchery
 			has_starbase_module = beastport
 		}
-		exists = owner # Vfix
 		owner = {
 			NAND = {
 				is_ai = yes
@@ -127,9 +127,10 @@ shatchery = {
 				is_orbital_ring = yes
 				NOT = { has_starbase_module = orbital_ring_shipyard }
 			}
-			NOR = {
-				has_starbase_size = starbase_outpost
-				has_starbase_module = shipyard
+			AND = {
+				has_starbase_size > starbase_outpost
+				owner = { is_ai = no }
+				NOT = { has_starbase_module = shipyard }
 			}
 		}
 	}
@@ -169,8 +170,8 @@ sbeastport = {
 # Anchorage
 sanchorage = {
 	potential = {
-		NOR = {
-			has_starbase_size = starbase_outpost
+		has_starbase_size > starbase_outpost
+		NOT = {
 			solar_system = { is_same_value = sector.sector_capital.solar_system }
 		}
 	}
@@ -1005,9 +1006,9 @@ sorbital_ring_hatchery = {
 				is_orbital_ring = yes
 				NOT = { has_starbase_module = orbital_ring_shipyard }
 			}
-			NOR = {
-				has_starbase_size = starbase_outpost
-				has_starbase_module = shipyard
+			AND = {
+				has_starbase_size > starbase_outpost
+				NOT = { has_starbase_module = shipyard }
 			}
 		}
 	}

@@ -92,11 +92,11 @@ select_pre_ftl_origin = {
 				}
 				# Life-Seeded (requires Apocalypse)
 				5 = {
-					modifier = { factor = 0 is_planet_class = pc_volcanic }
-					modifier = { factor = 0 has_apocalypse_dlc = no }
-					modifier = {
+					modifier = { # Vfix opt minor
 						factor = 0
 						OR = {
+							is_planet_class = pc_volcanic
+							has_apocalypse_dlc = no
 							has_first_contact_dlc = no
 							any_galaxy_planet = { has_planet_flag = pre_ftl_life_seeded }
 							any_country = { has_origin = origin_life_seeded }
@@ -108,17 +108,12 @@ select_pre_ftl_origin = {
 				}
 				# Ocean Paradise (Requires Aquatics)
 				5 = {
-					modifier = { factor = 0 is_planet_class = pc_volcanic }
-					modifier = {
-						factor = 0
-						NAND = {
-							has_aquatics = yes
-							has_first_contact_dlc = yes
-						}
-					}
-					modifier = {
+					modifier = { # Vfix opt minor
 						factor = 0
 						OR = {
+							is_planet_class = pc_volcanic
+							has_aquatics = no
+							has_first_contact_dlc = no
 							any_galaxy_planet = { has_planet_flag = pre_ftl_ocean_paradise }
 							any_country = { has_origin = origin_ocean_paradise }
 						}
@@ -130,16 +125,15 @@ select_pre_ftl_origin = {
 				}
 				# Subterranean (requires Overlord)
 				5 = {
-					modifier = {
+					modifier = { # Vfix opt minor
 						factor = 0
-						NAND = {
-							has_overlord_dlc = yes
-							has_first_contact_dlc = yes
+						OR = {
+							NAND = {
+								has_overlord_dlc = yes
+								has_first_contact_dlc = yes
+							}
+							any_galaxy_planet = { has_planet_flag = pre_ftl_subterranean }
 						}
-					}
-					modifier = {
-						factor = 0
-						any_galaxy_planet = { has_planet_flag = pre_ftl_subterranean }
 					}
 					set_planet_flag = pre_ftl_subterranean
 				}
@@ -1387,6 +1381,7 @@ set_pre_ftl_age_effect = {
 # increase_pre_ftl_pops_by_age_effect = { PRE_FTL_AGE = stone_age }
 increase_pre_ftl_pops_by_age_effect = {
 	set_country_flag = $PRE_FTL_AGE$_pops
+
 	hidden_effect = {
 		switch = {
 			trigger = has_country_flag
@@ -3132,6 +3127,7 @@ create_pre_ftl_species_inf = {
 			}
 		}
 	}
+
 	# Regular
 	else = {
 		if = {

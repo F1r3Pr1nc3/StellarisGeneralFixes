@@ -3750,19 +3750,6 @@ country_event = {
 					}
 				}
 			}
-			else = { # The capital wasn't hit
-				# Announce the change to all but the attacking empire
-				every_playable_country = {
-					limit = {
-						has_communications = root
-						NOT = { is_same_value = root.from }
-					}
-					country_event = { id = leviathans.352 }
-				}
-				random_playable_country = {
-					observer_event = { id = observer.11 }
-				}
-			}
 			# Announce the change to all but the attacking empire
 			every_playable_country = {
 				limit = {
