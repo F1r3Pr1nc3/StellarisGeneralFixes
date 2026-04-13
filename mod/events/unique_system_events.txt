@@ -1187,7 +1187,7 @@ country_event = {
 				add_building = { zone = zone_industrial building = building_factory_1 } # Extra Consumer Goods generation.
 				add_building = building_machine_assembly_plant # For better pop-growth.
 				if = {
-					limit = { exists = starbase }
+					limit = { exists = starbase } # Vfix
 					starbase = { # Guaranteed shipyards.
 						set_owner = last_created_country
 						if = {
@@ -1206,7 +1206,7 @@ country_event = {
 						}
 					}
 				}
-				else = {
+				else = { # Vfix
 					solar_system = {
 						create_starbase = {
 							size = starbase_starport

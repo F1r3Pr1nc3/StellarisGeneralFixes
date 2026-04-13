@@ -1321,48 +1321,21 @@ create_ai_planet_defense = {
 			}
 		}
 	}
-	create_fleet = {
-		effect = {
-			set_owner = event_target:AI_crisis
-			create_ship = {
-				name = random
-				design = "NAME_AI_Constructor"
-				graphical_culture = "ai_01"
-			}
-			set_location = {
-				target = root
-				distance = 45
-				angle = random
-			}
-		}
-	}
-	create_fleet = {
-		effect = {
-			set_owner = event_target:AI_crisis
-			create_ship = {
-				name = random
-				design = "NAME_AI_Constructor"
-				graphical_culture = "ai_01"
-			}
-			set_location = {
-				target = root
-				distance = 45
-				angle = random
-			}
-		}
-	}
-	create_fleet = {
-		effect = {
-			set_owner = event_target:AI_crisis
-			create_ship = {
-				name = random
-				design = "NAME_AI_Constructor"
-				graphical_culture = "ai_01"
-			}
-			set_location = {
-				target = root
-				distance = 45
-				angle = random
+	while = {
+		count = 3 # Vfix opt
+		create_fleet = {
+			effect = {
+				set_owner = event_target:AI_crisis
+				create_ship = {
+					name = random
+					design = "NAME_AI_Constructor"
+					graphical_culture = "ai_01"
+				}
+				set_location = {
+					target = root
+					distance = 45
+					angle = random
+				}
 			}
 		}
 	}
@@ -1470,48 +1443,69 @@ create_ai_fleet = {
 		}
 	}
 }
-
-create_unbidden_fleet = {
-	event_target:extradimensionals = {
-		random_list = {
-			25 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-					traits = { trait = leader_trait_ethereal }
-				}
-			}
-			25 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-					traits = { trait = leader_trait_dimensional_stutter }
-				}
-			}
-			50 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
+# NEW Vfix patch: old admirals often survive the fleet kill, so there are more and more idling leaders in the pool
+create_exd_admiral = {
+	optimize_memory
+	if = {
+		limit = {
+			count_owned_leader = { count > 20 }
+			any_owned_leader = {
+				leader_class = commander
+				is_idle = yes
+				NOR = {
+					is_ruler = yes
+					exists = fleet
 				}
 			}
 		}
-		create_fleet = {
-			effect = {
-				set_owner = prev
-				create_ship = {
-					name = random
-					design = "NAME_Revenant"
-					graphical_culture = "extra_dimensional_01"
+		random_owned_leader = {
+			limit = {
+				leader_class = commander
+				is_idle = yes
+				NOR = {
+					is_ruler = yes
+					exists = fleet
 				}
-				assign_leader = last_created_leader
+			}
+			save_event_target_as = exd_leader
+		}
+	}
+	else = {
+		create_leader = {
+			class = commander
+			species = event_target:extradimensional_species
+			name = random
+			skill = 3
+			effect = {
+				random_list = {
+					25 = { add_trait = { trait = leader_trait_ethereal } }
+					25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
+					50 = {  }
+				}
+				save_event_target_as = exd_leader
+			}
+		}
+	}
+}
+
+create_unbidden_fleet = {
+	optimize_memory
+	event_target:extradimensionals = {
+		if = { # Vfix patch: reduce fleet amount, as of pre v4.3
+			limit = {
+				exists = last_created_fleet
+				last_created_fleet = {
+					is_owned_by = prev
+					is_civilian = no
+					exists = solar_system # Double-check
+					solar_system = {
+						is_same_value = event_target:dimensional_portal.solar_system
+					}
+				}
+			}
+			last_created_fleet = {
 				while = {
-					count = 3
+					count = 4
 					create_ship = {
 						name = random
 						design = "NAME_Revenant"
@@ -1534,63 +1528,71 @@ create_unbidden_fleet = {
 						graphical_culture = "extra_dimensional_01"
 					}
 				}
-				set_location = {
-					target = root
-					distance = 5
-					angle = random
+			}
+		}
+		else = {
+			create_exd_admiral = yes
+			create_fleet = {
+				effect = {
+					set_owner = prev
+					while = {
+						count = 4
+						create_ship = {
+							name = random
+							design = "NAME_Revenant"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							design = "NAME_Phantom"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 9
+						create_ship = {
+							name = random
+							design = "NAME_Wraith"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					set_location = {
+						target = event_target:dimensional_portal # Vfix
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = armageddon
+					assign_leader = event_target:exd_leader
 				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
-				set_fleet_bombardment_stance = armageddon
 			}
 		}
 	}
 }
 
 create_aberrant_fleet = {
+	optimize_memory
 	event_target:extradimensionals2 = {
-		# Create Admiral
-		random_list = {
-			25 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-					traits = { trait = leader_trait_ethereal }
+		if = { # Vfix patch: reduce fleet amount, as of pre v4.3
+			limit = {
+				exists = last_created_fleet
+				last_created_fleet = {
+					is_owned_by = prev
+					is_civilian = no
+					exists = solar_system # Double-check
+					solar_system = {
+						is_same_value = event_target:dimensional_portal.solar_system
+					}
 				}
 			}
-			25 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-					traits = { trait = leader_trait_dimensional_stutter }
-				}
-			}
-			50 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-				}
-			}
-		}
-		# Create Fleet
-		create_fleet = {
-			effect = {
-				set_owner = root
-				create_ship = {
-					name = random
-					design = "NAME_Huntress"
-					graphical_culture = "extra_dimensional_02"
-				}
-				assign_leader = last_created_leader
+			last_created_fleet = {
 				while = {
-					count = 3
+					count = 4
 					create_ship = {
 						name = random
 						design = "NAME_Huntress"
@@ -1613,63 +1615,71 @@ create_aberrant_fleet = {
 						graphical_culture = "extra_dimensional_02"
 					}
 				}
-				set_location = {
-					target = event_target:dimensional_portal
-					distance = 5
-					angle = random
+			}
+		}
+		else = {
+			create_exd_admiral = yes
+			create_fleet = {
+				effect = {
+					set_owner = root
+					while = {
+						count = 4
+						create_ship = {
+							name = random
+							design = "NAME_Huntress"
+							graphical_culture = "extra_dimensional_02"
+						}
+					}
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							design = "NAME_Assassin"
+							graphical_culture = "extra_dimensional_02"
+						}
+					}
+					while = {
+						count = 10
+						create_ship = {
+							name = random
+							design = "NAME_Predator"
+							graphical_culture = "extra_dimensional_02"
+						}
+					}
+					set_location = {
+						target = event_target:dimensional_portal # Vfix
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = armageddon
+					assign_leader = event_target:exd_leader
 				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
-				set_fleet_bombardment_stance = armageddon
 			}
 		}
 	}
 }
 
 create_vehement_fleet = {
+	optimize_memory
 	event_target:extradimensionals3 = {
-		# Create Admiral
-		random_list = {
-			25 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-					traits = { trait = leader_trait_ethereal }
+		if = { # Vfix patch: reduce fleet amount, as of pre v4.3
+			limit = {
+				exists = last_created_fleet
+				last_created_fleet = {
+					is_owned_by = prev
+					is_civilian = no
+					exists = solar_system # Double-check
+					solar_system = {
+						is_same_value = event_target:dimensional_portal.solar_system
+					}
 				}
 			}
-			25 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-					traits = { trait = leader_trait_dimensional_stutter }
-				}
-			}
-			50 = {
-				create_leader = {
-					class = commander
-					species = event_target:extradimensional_species
-					name = random
-					skill = 3
-				}
-			}
-		}
-		# Create Fleet
-		create_fleet = {
-			effect = {
-				set_owner = root
-				create_ship = {
-					name = random
-					design = "NAME_Eradicator"
-					graphical_culture = "extra_dimensional_03"
-				}
-				assign_leader = last_created_leader
+			last_created_fleet = {
 				while = {
-					count = 3
+					count = 4
 					create_ship = {
 						name = random
 						design = "NAME_Eradicator"
@@ -1692,15 +1702,48 @@ create_vehement_fleet = {
 						graphical_culture = "extra_dimensional_03"
 					}
 				}
-				set_location = {
-					target = event_target:dimensional_portal
-					distance = 5
-					angle = random
+			}
+		}
+		else = {
+			create_exd_admiral = yes
+			create_fleet = {
+				effect = {
+					set_owner = root
+					while = {
+						count = 4
+						create_ship = {
+							name = random
+							design = "NAME_Eradicator"
+							graphical_culture = "extra_dimensional_03"
+						}
+					}
+					while = {
+						count = 5
+						create_ship = {
+							name = random
+							design = "NAME_Annihilator"
+							graphical_culture = "extra_dimensional_03"
+						}
+					}
+					while = {
+						count = 10
+						create_ship = {
+							name = random
+							design = "NAME_Obliterator"
+							graphical_culture = "extra_dimensional_03"
+						}
+					}
+					set_location = {
+						target = event_target:dimensional_portal # Vfix
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
+					set_fleet_bombardment_stance = armageddon
+					assign_leader = event_target:exd_leader
 				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
-				set_fleet_bombardment_stance = armageddon
 			}
 		}
 	}

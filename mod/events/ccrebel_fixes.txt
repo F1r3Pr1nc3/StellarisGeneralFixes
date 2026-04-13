@@ -200,7 +200,12 @@ country_event = {
 			country_add_ethic = ethic_materialist
 		}
 		country_event = { id = rebellionfix.36 }
-		country_event = { id = rebellionfix.364 days = 3 }
+		if = {
+			limit = {
+				is_multiplayer = no # Avoid strange behavior (like OOS/CTD)
+			}
+			country_event = { id = rebellionfix.364 days = 3 }
+		}
 	}
 }
 
@@ -1230,7 +1235,6 @@ country_event = {
 			}
 		}
 		country_event = { id = rebellionfix.361 days = 1 }
-		country_event = { id = rebellionfix.363 days = 2 }
 	}
 }
 
@@ -1252,6 +1256,7 @@ country_event = {
 						limit = { has_any_ethic = yes }
 					}
 				}
+				## Add ethic
 				random_list = {
 					12 = {
 						modifier = {
@@ -1384,6 +1389,7 @@ country_event = {
 				}
 			}
 			else = {
+				## Add ethic
 				random_list = {
 					12 = {
 						modifier = {
@@ -1560,10 +1566,9 @@ country_event = {
 			}
 			country_event = { id = rebellionfix.362 }
 		}
-		country_event = { id = rebellionfix.363 days = 1 }
 		if = {
 			limit = {
-				OR = {
+				NOR = {
 					AND = {
 						num_ethics = 2
 						is_fanatic = yes
@@ -1575,11 +1580,18 @@ country_event = {
 					}
 				}
 			}
+			country_event = { id = rebellionfix.363 days = 1 }
+		}
+		else_if = {
+			limit = {
+				is_multiplayer = no # Avoid strange behavior (like OOS/CTD)
+			}
 			country_event = { id = rebellionfix.364 days = 1 }
 		}
 	}
 }
 
+# Add ethic
 country_event = {
 	id = rebellionfix.362
 	hide_window = yes
@@ -1670,10 +1682,9 @@ country_event = {
 			}
 			country_add_ethic = ethic_materialist
 		}
-		country_event = { id = rebellionfix.363 }
 		if = {
 			limit = {
-				OR = {
+				NOR = {
 					AND = {
 						num_ethics = 2
 						is_fanatic = yes
@@ -1684,6 +1695,12 @@ country_event = {
 						is_fanatic = no
 					}
 				}
+			}
+			country_event = { id = rebellionfix.363 days = 1 }
+		}
+		else_if = {
+			limit = {
+				is_multiplayer = no # Avoid strange behavior (like OOS/CTD)
 			}
 			country_event = { id = rebellionfix.364 days = 1 }
 		}
@@ -1706,10 +1723,12 @@ country_event = {
 				num_ethics = 3
 				is_fanatic = no
 			}
+			has_country_flag = cc_rebel_ethic_sorted
 		}
 	}
 
 	immediate = {
+		set_timed_country_flag = { flag = cc_rebel_ethic_sorted days = 7 }
 		if = {
 			limit = { num_ethics > 3 }
 			if = {
@@ -1745,6 +1764,7 @@ country_event = {
 				country_remove_ethic = ethic_xenophobe
 			}
 		}
+		## Add ethic
 		random_list = {
 			12 = {
 				modifier = {
@@ -1883,10 +1903,9 @@ country_event = {
 				country_add_ethic = ethic_materialist
 			}
 		}
-		country_event = { id = rebellionfix.363 }
 		if = {
 			limit = {
-				OR = {
+				NOR = {
 					AND = {
 						num_ethics = 2
 						is_fanatic = yes
@@ -1897,6 +1916,12 @@ country_event = {
 						is_fanatic = no
 					}
 				}
+			}
+			country_event = { id = rebellionfix.363 days = 1 }
+		}
+		else_if = {
+			limit = {
+				is_multiplayer = no # Avoid strange behavior (like OOS/CTD)
 			}
 			country_event = { id = rebellionfix.364 days = 1 }
 		}
@@ -1911,11 +1936,12 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = { has_country_flag = cc_rebel_ethic_sorted }
+		is_country_type = default
+		NOT = { has_country_flag = cc_rebel_civic_sorted }
 	}
 
 	immediate = {
-		set_timed_country_flag = { flag = cc_rebel_ethic_sorted days = 14 }
+		set_timed_country_flag = { flag = cc_rebel_civic_sorted days = 7 }
 		set_government_cooldown = no
 		if = {
 			limit = { is_gestalt = no }
@@ -1928,10 +1954,7 @@ country_event = {
 		else = {
 			# Vanilla Bug!? Ethics result invalid: [ethic_gestalt_consciousness] cannot be added
 			# change_government = random
-			change_government = {
-				civics = random
-				remove_invalid_civics = yes
-			}
+			change_government = { civics = random remove_invalid_civics = yes }
 		}
 		fire_on_action = { on_action = empire_init_create_ships }
 		# set_name = random # Because sometimes native didn't work?

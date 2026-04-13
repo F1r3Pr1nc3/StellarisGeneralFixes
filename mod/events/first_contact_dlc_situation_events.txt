@@ -1268,7 +1268,7 @@ country_event = {
 				if = {
 					limit = { exists = starbase }
 					starbase = {
-						if = {
+						if = { # Vfix Dux
 							limit = {
 								owner = {
 									OR = {
@@ -1573,7 +1573,7 @@ country_event = {
 			limit = { has_country_flag = ignore_space_age_requirement }
 			capital_scope.solar_system.owner = {
 				if = {
-					limit = { is_crisis_faction = no } # Crises should not cede to Pre-FTLs.
+					limit = { is_crisis_faction = no } # Vfix Dux: Crises should not cede to Pre-FTLs.
 					country_event = { id = preftl.180 days = 1 }
 				}
 			}
@@ -2314,7 +2314,7 @@ country_event = {
 	option = {
 		name = preftl.180.a # Cede
 		trigger = {
-			NOR = {
+			NOR = { # Vfix Dux
 				is_homicidal = yes
 				is_crisis_faction = yes
 				has_ai_personality = fallen_empire_xenophobe # They would purge them anyway.
@@ -4952,7 +4952,7 @@ situation_event = {
 					if = {
 						limit = { exists = starbase }
 						starbase = {
-							if = {
+							if = { # Vfix Dux
 								limit = {
 									owner = {
 										NOR = {
