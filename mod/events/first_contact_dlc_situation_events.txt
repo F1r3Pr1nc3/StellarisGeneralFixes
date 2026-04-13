@@ -1268,6 +1268,17 @@ country_event = {
 				if = {
 					limit = { exists = starbase }
 					starbase = {
+						if = {
+							limit = {
+								owner = {
+									OR = {
+										is_crisis_faction = yes
+										has_ai_personality = fallen_empire_xenophobe
+									}
+								}
+							}
+							break = yes
+						}
 						set_owner = event_target:current_uprising
 						if = {
 							limit = { has_starbase_size = starbase_outpost }
@@ -1561,7 +1572,10 @@ country_event = {
 		if = { # they got FTL due to an event chain.
 			limit = { has_country_flag = ignore_space_age_requirement }
 			capital_scope.solar_system.owner = {
-				country_event = { id = preftl.180 days = 1 }
+				if = {
+					limit = { is_crisis_faction = no } # Crises should not cede to Pre-FTLs.
+					country_event = { id = preftl.180 days = 1 }
+				}
 			}
 		}
 		else_if = { # if they got FTL thanks to us, they become vassals
@@ -1595,7 +1609,10 @@ country_event = {
 				}
 			}
 			capital_scope.solar_system.owner = {
-				country_event = { id = preftl.180 days = 1 }
+				if = {
+					limit = { is_crisis_faction = no }
+					country_event = { id = preftl.180 days = 1 }
+				}
 			}
 		}
 		else = { # if nobody is in the system, they become an empire
@@ -2296,7 +2313,13 @@ country_event = {
 
 	option = {
 		name = preftl.180.a # Cede
-		trigger = { is_homicidal = no }
+		trigger = {
+			NOR = {
+				is_homicidal = yes
+				is_crisis_faction = yes
+				has_ai_personality = fallen_empire_xenophobe # They would purge them anyway.
+			}
+		}
 		if = {
 			limit = { is_xenophobe = yes }
 			add_resource = { influence = -200 }
@@ -4929,19 +4952,29 @@ situation_event = {
 					if = {
 						limit = { exists = starbase }
 						starbase = {
-							set_owner = event_target:thriving_preftls
 							if = {
-								limit = { has_starbase_size = starbase_outpost }
-								set_starbase_size = starbase_starport
-								set_starbase_module = { slot = 1 module = shipyard }
-								set_starbase_module = { slot = 2 module = shipyard }
-							}
-							else_if = {
 								limit = {
-									NOT = { has_starbase_module = shipyard }
+									owner = {
+										NOR = {
+											is_crisis_faction = yes
+											has_ai_personality = fallen_empire_xenophobe
+										}
+									}
 								}
-								set_starbase_module = { slot = 1 module = shipyard }
-								set_starbase_module = { slot = 2 module = shipyard }
+								set_owner = event_target:thriving_preftls
+								if = {
+									limit = { has_starbase_size = starbase_outpost }
+									set_starbase_size = starbase_starport
+									set_starbase_module = { slot = 1 module = shipyard }
+									set_starbase_module = { slot = 2 module = shipyard }
+								}
+								else_if = {
+									limit = {
+										NOT = { has_starbase_module = shipyard }
+									}
+									set_starbase_module = { slot = 1 module = shipyard }
+									set_starbase_module = { slot = 2 module = shipyard }
+								}
 							}
 						}
 					}
@@ -4955,8 +4988,12 @@ situation_event = {
 					}
 					every_fleet_in_system = {
 						limit = {
-							owner = { is_default_or_fallen = yes } # Vfix Dux: Do not set Tiyanki MIA.
-							NOT = { is_owned_by = event_target:thriving_preftls }
+							owner = { is_default_or_fallen = yes } # Vfix Dux: Do not set Tiyanki/Cetana MIA.
+							NOR = {
+								is_owned_by = event_target:thriving_preftls
+								is_in_combat = yes
+								is_cloaked = yes
+							}
 							is_mobile = yes
 						}
 						set_mia = mia_return_home
