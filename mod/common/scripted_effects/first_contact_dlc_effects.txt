@@ -1350,6 +1350,7 @@ uplift_pre_ftl_with_origin_effect = {
 			limit = { is_authoritarian = yes }
 			shift_ethic = ethic_egalitarian
 		}
+		set_origin = $ORIGIN$
 		save_event_target_as = uplifted_country
 		remove_pre_ftl_flags = yes
 		set_country_type = default
@@ -1358,12 +1359,9 @@ uplift_pre_ftl_with_origin_effect = {
 		change_government = { authority = random civics = random }
 		set_name = random
 		capital_scope = {
-			every_deposit = { remove_deposit = yes }
-			remove_all_districts = yes
 			remove_all_buildings = yes
-		}
-		set_origin = $ORIGIN$
-		capital_scope = {
+			remove_all_districts = yes
+			every_deposit = { remove_deposit = yes }
 			solar_system = {
 				generate_home_system_resources = yes
 				create_starbase = {
@@ -1387,6 +1385,7 @@ uplift_pre_ftl_with_origin_effect = {
 				country_event = { id = origin.110 }
 				capital_scope = {
 					while = {
+						count = 9
 						limit = { pop_amount > 2800 }
 						random_owned_pop_group = { kill_single_pop = yes }
 					}
@@ -1396,6 +1395,7 @@ uplift_pre_ftl_with_origin_effect = {
 				country_event = { id = origin.4000 }
 				capital_scope = {
 					while = {
+						count = 14
 						limit = { pop_amount > 1800 }
 						random_owned_pop_group = { kill_single_pop = yes }
 					}

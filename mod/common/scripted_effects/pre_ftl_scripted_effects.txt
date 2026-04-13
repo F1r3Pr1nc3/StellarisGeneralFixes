@@ -245,13 +245,15 @@ pre_ftl_clean_up_effect = {
 					if = {
 						limit = { pop_amount > @industrial_age_pops }
 						while = {
+							count = 20 # Vfix
 							limit = { pop_amount > @industrial_age_pops }
-							random_owned_pop_group = { remove_pop_amount = 100 }
+							random_owned_pop_group = { kill_single_pop = yes }
 						}
 					}
 					else_if = {
 						limit = { pop_amount < @industrial_age_pops }
 						while = {
+							count = 20 # Vfix
 							limit = { pop_amount < @industrial_age_pops }
 							create_pop_group = { species = owner_species }
 						}
@@ -259,7 +261,7 @@ pre_ftl_clean_up_effect = {
 				}
 			}
 		}
-		if = {
+		else_if = { # Vfix minor opt
 			limit = { has_origin = origin_mechanists }
 			# If you're not in the industrial age, we'll accelerate your progress.
 			if = {
@@ -296,13 +298,15 @@ pre_ftl_clean_up_effect = {
 				if = {
 					limit = { pop_amount > @industrial_age_pops }
 					while = {
+						count = 20 # Vfix
 						limit = { pop_amount > @industrial_age_pops }
-						random_owned_pop_group = { remove_pop_amount = 100 }
+						random_owned_pop_group = { kill_single_pop = yes }
 					}
 				}
 				else_if = {
 					limit = { pop_amount < @industrial_age_pops }
 					while = {
+						count = 20 # Vfix
 						limit = { pop_amount < @industrial_age_pops }
 						create_pop_group = { species = owner_species }
 					}
@@ -2570,10 +2574,8 @@ achieve_ftl_effect = {
 			}
 			else_if = {
 				limit = {
-					owner = { is_machine_empire = yes } # Robot Uprising blocked on artificial worlds, but leaving this here.
+					owner = { is_machine_empire = no } # Robot Uprising blocked on artificial worlds
 				}
-			}
-			else = {
 				add_building = building_capital
 				add_district = district_rw_city
 				add_zone = {
@@ -2792,7 +2794,7 @@ add_pre_ftl_buildings = {
 		remove_all_buildings = yes
 	}
 	if = {
-		limit = { owner = { is_hive_empire = no } }
+		limit = { is_hive_empire = no }
 		switch = {
 			trigger = has_country_flag
 			stone_age = {

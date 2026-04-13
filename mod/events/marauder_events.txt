@@ -10,7 +10,7 @@
 
 namespace = marauder
 
-## Vanilla fixes >3.2
+## Vanilla fixes >3.2 - HEAVELY MODDED!
 ## Fleets getting stuck.
 # marauder.31 .33 .101 .103 .150 .21
 # Adding marauder.27 .28 .29
@@ -10393,6 +10393,7 @@ country_event = {
 				is_homicidal = yes
 				is_fallen_empire = yes
 				is_at_war = yes # Added v3.14
+				has_active_event = { marauder.551 }
 			}
 		}
 		allow = {
@@ -10402,10 +10403,11 @@ country_event = {
 					OR = {
 						is_variable_set = "planets_lost_to_marauder"
 						NOT = { from = { has_country_flag = raid_cooldown } }
+						is_ai = no # Vfix to be nice to human players
 						AND = {
 							from = { is_overlord = yes }
 							OR = {
-								is_ai = no
+								# is_ai = no
 								is_neighbor_of = from
 								any_neighbor_country = {
 									any_agreement = { agreement_preset = preset_satrapy }
@@ -10434,7 +10436,7 @@ country_event = {
 								}
 							}
 							NAND = {
-								is_ai = yes
+								# is_ai = yes
 								fleet_power >= 84000
 								num_owned_planets >= 12
 							}
@@ -10442,10 +10444,14 @@ country_event = {
 					}
 				}
 			}
-			NOT = { has_active_event = { marauder.551 } }
 			custom_tooltip = {
 				fail_text = "ACTION_ACTOR_MUST_BE_INDEPENDENT"
-				is_subject = no
+				hidden_trigger = {
+					OR = {
+						is_subject = no
+						is_ai = yes
+					}
+				}
 			}
 		}
 		hidden_effect = {
