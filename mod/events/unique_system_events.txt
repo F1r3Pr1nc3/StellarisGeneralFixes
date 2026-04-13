@@ -1174,36 +1174,52 @@ country_event = {
 					limit = {
 						NOT = { has_zone = { zone = zone_research_unity } }
 					}
-					add_zone = { zone = zone_research_unity replace = yes }
+					add_zone = { zone = zone_research_unity zone_slot = 1 replace = yes }
 				}
 				if = {
 					limit = {
 						NOT = { has_zone = { zone = zone_industrial } }
 					}
-					add_zone = { zone = zone_industrial replace = yes }
+					add_zone = { zone = zone_industrial zone_slot = 2 replace = yes }
 				}
 				add_building = building_holo_theatres
 				add_building = building_commercial_zone
 				add_building = { zone = zone_industrial building = building_factory_1 } # Extra Consumer Goods generation.
 				add_building = building_machine_assembly_plant # For better pop-growth.
-				starbase = { # Guaranteed shipyards.
-					set_owner = last_created_country
-					if = {
-						limit = { has_starbase_size = starbase_outpost }
-						set_starbase_size = starbase_starport
-						set_starbase_module = { slot = 1 module = shipyard }
-						set_starbase_module = { slot = 2 module = shipyard }
-						set_starbase_building = { slot = 1 building = crew_quarters }
-					}
-					else_if = { # Ensure they have at least one shipyard to get them started.
-						limit = {
-							NOT = { has_starbase_module = shipyard }
+				if = {
+					limit = { exists = starbase }
+					starbase = { # Guaranteed shipyards.
+						set_owner = last_created_country
+						if = {
+							limit = { has_starbase_size = starbase_outpost }
+							set_starbase_size = starbase_starport
+							set_starbase_module = { slot = 1 module = shipyard }
+							set_starbase_module = { slot = 2 module = shipyard }
+							set_starbase_building = { slot = 1 building = crew_quarters }
 						}
-						set_starbase_module = { slot = 1 module = shipyard }
-						set_starbase_module = { slot = 2 module = shipyard }
+						else_if = { # Ensure they have at least one shipyard to get them started.
+							limit = {
+								NOT = { has_starbase_module = shipyard }
+							}
+							set_starbase_module = { slot = 1 module = shipyard }
+							set_starbase_module = { slot = 2 module = shipyard }
+						}
 					}
 				}
-				create_pop_group = { species = event_target:mechanical_root_species size = 3500 }
+				else = {
+					solar_system = {
+						create_starbase = {
+							size = starbase_starport
+							module = shipyard
+							module = shipyard
+							building = crew_quarters
+							owner = event_target:new_robot_country
+						}
+					}
+				}
+				create_pop_group = { species = event_target:mechanical_root_species size = 1200 ethos = { ethic = ethic_materialist } category = civilian }
+				create_pop_group = { species = event_target:mechanical_root_species size = 1200 ethos = { ethic = ethic_xenophile } category = civilian }
+				create_pop_group = { species = event_target:mechanical_root_species size = 1100 ethos = { ethic = ethic_egalitarian } category = civilian }
 			}
 			event_target:new_robot_country = { refresh_leader_pool = yes } # Must happen after at least 1 pop exists.
 		}
