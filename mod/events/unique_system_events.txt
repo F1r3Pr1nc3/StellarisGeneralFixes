@@ -1174,13 +1174,21 @@ country_event = {
 					limit = {
 						NOT = { has_zone = { zone = zone_research_unity } }
 					}
-					add_zone = { zone = zone_research_unity zone_slot = 1 replace = yes }
+					add_zone = {
+						zone = zone_research_unity
+						zone_slot = 1
+						replace = yes
+					}
 				}
 				if = {
 					limit = {
 						NOT = { has_zone = { zone = zone_industrial } }
 					}
-					add_zone = { zone = zone_industrial zone_slot = 2 replace = yes }
+					add_zone = {
+						zone = zone_industrial
+						zone_slot = 2
+						replace = yes
+					}
 				}
 				add_building = building_holo_theatres
 				add_building = building_commercial_zone
@@ -1217,9 +1225,24 @@ country_event = {
 						}
 					}
 				}
-				create_pop_group = { species = event_target:mechanical_root_species size = 1200 ethos = { ethic = ethic_materialist } category = civilian }
-				create_pop_group = { species = event_target:mechanical_root_species size = 1200 ethos = { ethic = ethic_xenophile } category = civilian }
-				create_pop_group = { species = event_target:mechanical_root_species size = 1100 ethos = { ethic = ethic_egalitarian } category = civilian }
+				create_pop_group = {
+					species = event_target:mechanical_root_species
+					size = 1200
+					ethos = { ethic = ethic_materialist }
+					category = civilian
+				}
+				create_pop_group = {
+					species = event_target:mechanical_root_species
+					size = 1200
+					ethos = { ethic = ethic_xenophile }
+					category = civilian
+				}
+				create_pop_group = {
+					species = event_target:mechanical_root_species
+					size = 1100
+					ethos = { ethic = ethic_egalitarian }
+					category = civilian
+				}
 			}
 			event_target:new_robot_country = { refresh_leader_pool = yes } # Must happen after at least 1 pop exists.
 		}

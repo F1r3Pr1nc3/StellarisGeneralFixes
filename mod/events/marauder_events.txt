@@ -10402,8 +10402,10 @@ country_event = {
 				hidden_trigger = {
 					OR = {
 						is_variable_set = "planets_lost_to_marauder"
-						NOT = { from = { has_country_flag = raid_cooldown } }
-						is_ai = no # Vfix to be nice to human players
+						NAND = {
+							from = { has_country_flag = raid_cooldown }
+							is_ai = yes # Vfix to be nice to human players
+						}
 						AND = {
 							from = { is_overlord = yes }
 							OR = {

@@ -6892,65 +6892,61 @@ country_event = {
 	option = {
 		name = {
 			trigger = {
-				owner = { is_xenophile = no is_xenophobe = no }
+				is_xenophile = no
+				is_xenophobe = no
 			}
 			text = INTERESTING
 		}
 		name = {
-			trigger = { owner = { is_xenophile = yes } }
+			trigger = { is_xenophile = yes }
 			text = fircon.8000.a
 		}
 		name = {
-			trigger = { owner = { is_xenophobe = yes } }
+			trigger = { is_xenophobe = yes }
 			text = fircon.8000.b
 		}
-		owner = {
-			add_monthly_resource_mult = {
-				resource = society_research
-				value = @tier2researchreward
-				min = @tier2researchmin
-				max = @tier2researchmax
-			}
-			hidden_effect = {
-				country_event = { id = fircon.8001 days = 360 random = 60 }
-			}
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = @tier2researchreward
+			min = @tier2researchmin
+			max = @tier2researchmax
+		}
+		hidden_effect = {
+			country_event = { id = fircon.8001 days = 360 random = 60 }
 		}
 	}
 	option = {
 		name = {
 			trigger = {
-				owner = { is_xenophile = no is_xenophobe = no }
+				is_xenophile = no
+				is_xenophobe = no
 			}
 			text = fircon.8000.c
 		}
 		name = {
-			trigger = { owner = { is_xenophobe = yes } }
+			trigger = { is_xenophobe = yes }
 			text = fircon.8000.d
 		}
 		custom_tooltip = xenophiliacs_tt
 		allow = {
-			owner = {
-				resource_stockpile_compare = { resource = influence value >= 100 }
-			}
+			resource_stockpile_compare = { resource = influence value >= 100 }
 		}
-		owner = {
-			add_monthly_resource_mult = {
-				resource = society_research
-				value = @tier2researchreward
-				min = @tier2researchmin
-				max = @tier2researchmax
-			}
-			add_resource = { influence = -100 }
-			hidden_effect = {
-				random_list = {
-					50 = { country_event = { id = fircon.8002 days = 360 random = 60 } }
-					50 = { country_event = { id = fircon.8003 days = 360 random = 60 } }
-				}
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = @tier2researchreward
+			min = @tier2researchmin
+			max = @tier2researchmax
+		}
+		add_resource = { influence = -100 }
+		hidden_effect = {
+			random_list = {
+				50 = { country_event = { id = fircon.8002 days = 360 random = 60 } }
+				50 = { country_event = { id = fircon.8003 days = 360 random = 60 } }
 			}
 		}
 	}
 }
-
+# VFIX CTD: probably too much for automated tooltip, also double scopes everywere (desc too)
 country_event = {
 	id = fircon.8001
 	title = fircon.8001.name
@@ -6960,11 +6956,8 @@ country_event = {
 	is_triggered_only = yes
 	location = event_target:pre_ftl_planet
 
-	option = {
-		trigger = { owner = { is_xenophile = no } }
-		name = fircon.8001.a
+	immediate = {
 		event_target:pre_ftl_country = {
-			add_modifier = { modifier = pre_ftl_diplomacy_01 years = 5 }
 			every_owned_pop_group = {
 				limit = {
 					has_any_ethic = yes
@@ -6976,28 +6969,12 @@ country_event = {
 					PERCENTAGE = 0.3
 				}
 			}
-		}
-		every_owned_pop_group = {
-			limit = {
-				has_any_ethic = yes
-				NOT = { has_ethic = ethic_xenophile }
-			}
-			pop_group_transfer_ethic = {
-				POP_GROUP = this
-				ETHOS = ethic_xenophile
-				PERCENTAGE = 0.1
-			}
-		}
-		add_resource = {
-			influence = 100
-			unity = 300
 		}
 	}
+
 	option = {
-		trigger = { owner = { is_xenophile = yes } }
 		name = fircon.8001.a
-		event_target:pre_ftl_country = {
-			add_modifier = { modifier = pre_ftl_diplomacy_01 years = 10 }
+		hidden_effect = { # Vfix: probably too much for tooltip
 			every_owned_pop_group = {
 				limit = {
 					has_any_ethic = yes
@@ -7006,24 +6983,28 @@ country_event = {
 				pop_group_transfer_ethic = {
 					POP_GROUP = this
 					ETHOS = ethic_xenophile
-					PERCENTAGE = 0.3
+					PERCENTAGE = 0.1
 				}
 			}
-		}
-		every_owned_pop_group = {
-			limit = {
-				has_any_ethic = yes
-				NOT = { has_ethic = ethic_xenophile }
+			if = {
+				limit = {is_xenophile = yes }
+				event_target:pre_ftl_country = {
+					add_modifier = { modifier = pre_ftl_diplomacy_01 years = 10 }
+				}
+				add_resource = {
+					influence = 200
+					unity = 500
+				}
 			}
-			pop_group_transfer_ethic = {
-				POP_GROUP = this
-				ETHOS = ethic_xenophile
-				PERCENTAGE = 0.1
+			else = {
+				event_target:pre_ftl_country = {
+					add_modifier = { modifier = pre_ftl_diplomacy_01 years = 5 }
+				}
+				add_resource = {
+					influence = 100
+					unity = 300
+				}
 			}
-		}
-		add_resource = {
-			influence = 200
-			unity = 500
 		}
 	}
 }
@@ -7059,15 +7040,17 @@ country_event = {
 				}
 			}
 		}
-		every_owned_pop_group = {
-			limit = {
-				has_any_ethic = yes
-				NOT = { has_ethic = ethic_xenophobe }
-			}
-			pop_group_transfer_ethic = {
-				POP_GROUP = this
-				ETHOS = ethic_xenophobe
-				PERCENTAGE = 0.1
+		hidden_effect = { # Vfix: probably too much for tooltip
+			every_owned_pop_group = {
+				limit = {
+					has_any_ethic = yes
+					NOT = { has_ethic = ethic_xenophobe }
+				}
+				pop_group_transfer_ethic = {
+					POP_GROUP = this
+					ETHOS = ethic_xenophobe
+					PERCENTAGE = 0.1
+				}
 			}
 		}
 	}
@@ -7098,15 +7081,17 @@ country_event = {
 				}
 			}
 		}
-		every_owned_pop_group = {
-			limit = {
-				has_any_ethic = yes
-				NOT = { has_ethic = ethic_xenophobe }
-			}
-			pop_group_transfer_ethic = {
-				POP_GROUP = this
-				ETHOS = ethic_xenophobe
-				PERCENTAGE = 0.1
+		hidden_effect = { # Vfix: probably too much for tooltip
+			every_owned_pop_group = {
+				limit = {
+					has_any_ethic = yes
+					NOT = { has_ethic = ethic_xenophobe }
+				}
+				pop_group_transfer_ethic = {
+					POP_GROUP = this
+					ETHOS = ethic_xenophobe
+					PERCENTAGE = 0.1
+				}
 			}
 		}
 		add_resource = { unity = 500 }
@@ -7751,10 +7736,7 @@ country_event = {
 				}
 				shift_ethic = "ethic_xenophile"
 				hidden_effect = {
-					while = {
-						count = 3
-						pop_group_transfer_ethic = { ETHOS = ethic_xenophile AMOUNT = 100 }
-					}
+					pop_group_transfer_ethic = { ETHOS = ethic_xenophile AMOUNT = 300 } # Vfix opt
 				}
 			}
 			add_opinion_modifier = { who = root.owner modifier = opinion_pre_ftl_diplomacy_02 }
@@ -7772,10 +7754,7 @@ country_event = {
 					}
 					shift_ethic = "ethic_xenophile"
 					hidden_effect = {
-						while = {
-							count = 3
-							pop_group_transfer_ethic = { ETHOS = ethic_xenophile AMOUNT = 100 }
-						}
+						pop_group_transfer_ethic = { ETHOS = ethic_xenophile AMOUNT = 300 } # Vfix opt
 					}
 				}
 				add_modifier = { modifier = pre_ftl_diplomatic_04 years = 15 }

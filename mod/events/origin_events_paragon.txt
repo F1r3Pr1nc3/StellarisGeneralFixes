@@ -3238,9 +3238,7 @@ country_event = {
 	after = {
 		owner = {
 			random_owned_starbase = {
-				limit = {
-					has_starbase_size > starbase_outpost
-				}
+				limit = { has_starbase_size > starbase_outpost }
 				if = {
 					limit = { has_starbase_size = starbase_starport }
 					set_starbase_size = starbase_starhold
