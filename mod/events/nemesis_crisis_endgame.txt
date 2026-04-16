@@ -50,7 +50,9 @@ country_event = {
 		text = "crisis.6000.c.desc"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "crisis.6000.d.desc"
 	}
 	desc = {
@@ -118,7 +120,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.6000.d
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		custom_tooltip = crisis.6000.tooltip
 		hidden_effect = {
 			country_event = { id = crisis.6001 days = 5 }
@@ -530,11 +534,15 @@ country_event = {
 		text = "crisis.6010.a.desc.gestalt"
 	}
 	desc = {
-		trigger = { has_country_flag = crisis_psionic_alert }
+		trigger = {
+			has_country_flag = crisis_psionic_alert
+		}
 		text = "crisis.6010.b.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = built_crisis_sphere }
+		trigger = {
+			has_country_flag = built_crisis_sphere
+		}
 		text = "crisis.6010.c.desc"
 	}
 
@@ -591,7 +599,9 @@ country_event = {
 		text = "crisis.6015.b.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = crisis_general_alert }
+		trigger = {
+			has_country_flag = crisis_general_alert
+		}
 		text = "crisis.6015.c.desc"
 	}
 
@@ -619,7 +629,9 @@ country_event = {
 	title = "crisis.6050.name"
 
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = "crisis.6050.a.desc"
 	}
 	desc = {
@@ -842,7 +854,9 @@ country_event = {
 		text = "crisis.6102.a.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = built_crisis_sphere }
+		trigger = {
+			has_country_flag = built_crisis_sphere
+		}
 		text = "crisis.6102.b.desc"
 	}
 
@@ -864,7 +878,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.6102.b
-		trigger = { has_country_flag = built_crisis_sphere }
+		trigger = {
+			has_country_flag = built_crisis_sphere
+		}
 		add_resource = {
 			sr_dark_matter = 10000
 			mult = crisis_sphere_destroy_reward
@@ -896,7 +912,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.6103.b
-		trigger = { has_country_flag = built_crisis_sphere }
+		trigger = {
+			has_country_flag = built_crisis_sphere
+		}
 	}
 }
 
@@ -990,11 +1008,15 @@ country_event = {
 
 	option = {
 		name = crisis.6151.a
-		trigger = { NOT = { is_same_value = from } }
+		trigger = {
+			NOT = { is_same_value = from }
+		}
 	}
 	option = {
 		name = crisis.6151.b
-		trigger = { is_same_value = from }
+		trigger = {
+			is_same_value = from
+		}
 	}
 }
 
@@ -1091,11 +1113,15 @@ country_event = {
 	title = "crisis.6161.name"
 
 	desc = {
-		trigger = { NOT = { is_same_value = from } }
+		trigger = {
+			NOT = { is_same_value = from }
+		}
 		text = "crisis.6161.a.desc"
 	}
 	desc = {
-		trigger = { is_same_value = from }
+		trigger = {
+			is_same_value = from
+		}
 		text = "crisis.6161.b.desc"
 	}
 
@@ -1109,11 +1135,15 @@ country_event = {
 
 	option = {
 		name = crisis.6161.a
-		trigger = { NOT = { is_same_value = from } }
+		trigger = {
+			NOT = { is_same_value = from }
+		}
 	}
 	option = {
 		name = crisis.6161.b
-		trigger = { is_same_value = from }
+		trigger = {
+			is_same_value = from
+		}
 	}
 }
 
@@ -1217,7 +1247,9 @@ country_event = {
 				}
 			}
 		}
-		trigger = { NOT = { is_same_value = from } }
+		trigger = {
+			NOT = { is_same_value = from }
+		}
 		# While loop messes up tooltip so doing it old school
 		random_owned_pop_group = {
 			limit = { is_psionic_species = yes }
@@ -1260,7 +1292,9 @@ country_event = {
 	}
 	option = {
 		name = GOOD
-		trigger = { is_same_value = from }
+		trigger = {
+			is_same_value = from
+		}
 	}
 }
 

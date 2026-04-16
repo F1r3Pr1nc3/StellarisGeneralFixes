@@ -82,11 +82,15 @@ situation_event = {
 
 	desc = {
 		text = situation.10.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = situation.10.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_news_room
@@ -510,7 +514,9 @@ situation_event = {
 	}
 	option = {
 		name = situation.165.A
-		trigger = { current_situation_approach = situation_snow_observation }
+		trigger = {
+			current_situation_approach = situation_snow_observation
+		}
 		# No effect
 	}
 	option = {
@@ -527,7 +533,9 @@ situation_event = {
 	}
 	option = {
 		name = situation.165.B
-		trigger = { current_situation_approach = situation_snow_hostile }
+		trigger = {
+			current_situation_approach = situation_snow_hostile
+		}
 		# No effect
 	}
 
@@ -1237,7 +1245,9 @@ situation_event = {
 	}
 	desc = {
 		text = situation.590.desc.normal
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 
 	picture = GFX_evt_black_hole
@@ -1265,11 +1275,15 @@ situation_event = {
 	# normal empires get nothing
 	option = {
 		name = {
-			trigger = { owner = { is_gestalt = no } }
+			trigger = {
+				owner = { is_gestalt = no }
+			}
 			text = UNFORTUNATE
 		}
 		name = {
-			trigger = { owner = { is_gestalt = yes } }
+			trigger = {
+				owner = { is_gestalt = yes }
+			}
 			text = situation.590.a
 		}
 		tooltip = { destroy_situation = this }
@@ -3800,7 +3814,9 @@ situation_event = {
 	}
 
 	option = {
-		trigger = { has_situation_flag = small_unity_reward }
+		trigger = {
+			has_situation_flag = small_unity_reward
+		}
 		set_celebration_modifier = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -3813,7 +3829,9 @@ situation_event = {
 		name = situation.1000.a
 	}
 	option = {
-		trigger = { has_situation_flag = standard_unity_reward }
+		trigger = {
+			has_situation_flag = standard_unity_reward
+		}
 		set_celebration_modifier = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -3826,7 +3844,9 @@ situation_event = {
 		name = situation.1000.b
 	}
 	option = {
-		trigger = { has_situation_flag = large_unity_reward }
+		trigger = {
+			has_situation_flag = large_unity_reward
+		}
 		set_celebration_modifier = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -3870,7 +3890,9 @@ situation_event = {
 	}
 
 	option = {
-		trigger = { has_situation_flag = small_unity_reward }
+		trigger = {
+			has_situation_flag = small_unity_reward
+		}
 		set_celebration_modifier = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -3883,7 +3905,9 @@ situation_event = {
 		name = situation.1005.a
 	}
 	option = {
-		trigger = { has_situation_flag = standard_unity_reward }
+		trigger = {
+			has_situation_flag = standard_unity_reward
+		}
 		set_celebration_modifier = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -3896,7 +3920,9 @@ situation_event = {
 		name = situation.1005.b
 	}
 	option = {
-		trigger = { has_situation_flag = large_unity_reward }
+		trigger = {
+			has_situation_flag = large_unity_reward
+		}
 		set_celebration_modifier = yes
 		owner = {
 			add_monthly_resource_mult = {
@@ -4146,7 +4172,9 @@ situation_event = {
 		ai_chance = { weight = 10 }
 	}
 	option = { # Burn it
-		trigger = { owner = { is_xenophile = no } }
+		trigger = {
+			owner = { is_xenophile = no }
+		}
 		name = situation.1060.c
 		set_situation_flag = burnt_flagella
 		if = {
@@ -4220,7 +4248,9 @@ situation_event = {
 	}
 
 	option = { # Kill the whelps
-		trigger = { owner = { values_others = no } }
+		trigger = {
+			owner = { values_others = no }
+		}
 		name = situation.1065.a
 		hidden_effect = {
 			event_target:clutch_of_whelps = {
@@ -4319,7 +4349,9 @@ situation_event = {
 		}
 	}
 	option = { # Drive them off
-		trigger = { owner = { is_homicidal = no } }
+		trigger = {
+			owner = { is_homicidal = no }
+		}
 		name = situation.1065.d
 		add_situation_progress = -10
 		hidden_effect = {
@@ -4526,11 +4558,15 @@ planet_event = {
 	location = this
 
 	desc = {
-		trigger = { has_modifier = horror_study_trophy }
+		trigger = {
+			has_modifier = horror_study_trophy
+		}
 		text = situation.1085.desc.study
 	}
 	desc = {
-		trigger = { has_modifier = horror_deify_trophy }
+		trigger = {
+			has_modifier = horror_deify_trophy
+		}
 		text = situation.1085.desc.deify
 	}
 
@@ -4538,7 +4574,9 @@ planet_event = {
 	is_triggered_only = yes
 
 	option = {
-		trigger = { has_modifier = horror_study_trophy }
+		trigger = {
+			has_modifier = horror_study_trophy
+		}
 		name = situation.1085.a
 		remove_modifier = horror_study_trophy
 		add_modifier = { modifier = horror_study_trophy2 }
@@ -4559,7 +4597,9 @@ planet_event = {
 				NOT = { owner = { has_country_flag = spiritualist_accept } }
 			}
 		}
-		trigger = { has_modifier = horror_deify_trophy }
+		trigger = {
+			has_modifier = horror_deify_trophy
+		}
 		remove_modifier = horror_deify_trophy
 		add_modifier = { modifier = horror_deify_trophy2 }
 		hidden_effect = {
@@ -4584,11 +4624,15 @@ planet_event = {
 	location = this
 
 	desc = {
-		trigger = { has_modifier = horror_study_trophy2 }
+		trigger = {
+			has_modifier = horror_study_trophy2
+		}
 		text = situation.1090.desc.study
 	}
 	desc = {
-		trigger = { has_modifier = horror_deify_trophy2 }
+		trigger = {
+			has_modifier = horror_deify_trophy2
+		}
 		text = situation.1090.desc.deify
 	}
 
@@ -4596,7 +4640,9 @@ planet_event = {
 	is_triggered_only = yes
 
 	option = {
-		trigger = { has_modifier = horror_study_trophy2 }
+		trigger = {
+			has_modifier = horror_study_trophy2
+		}
 		name = situation.1090.a
 		remove_modifier = horror_study_trophy2
 		add_modifier = { modifier = horror_too_late }
@@ -4610,7 +4656,9 @@ planet_event = {
 		add_planet_devastation = 10
 	}
 	option = {
-		trigger = { has_modifier = horror_deify_trophy2 }
+		trigger = {
+			has_modifier = horror_deify_trophy2
+		}
 		name = situation.1090.b
 		remove_modifier = horror_deify_trophy2
 		add_modifier = { modifier = horror_too_late }
@@ -4747,7 +4795,9 @@ situation_event = {
 		}
 		name = {
 			text = situation.1100.c.gestalt
-			trigger = { owner = { is_gestalt = yes } }
+			trigger = {
+				owner = { is_gestalt = yes }
+			}
 		}
 		target = {
 			weighted_random_owned_pop_group = { kill_single_pop = yes }
@@ -4792,7 +4842,9 @@ situation_event = {
 		text = situation.1110.desc.reg
 	}
 	desc = {
-		trigger = { owner = { is_lithoid = yes } }
+		trigger = {
+			owner = { is_lithoid = yes }
+		}
 		text = situation.1110.desc.lithoid
 	}
 	desc = {
@@ -5012,7 +5064,9 @@ country_event = {
 	title = situation.1145.name
 
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = situation.1145.desc.regular
 	}
 	desc = {
@@ -5023,7 +5077,9 @@ country_event = {
 		text = situation.1145.desc.gestalt
 	}
 	desc = {
-		trigger = { is_wilderness_empire = yes }
+		trigger = {
+			is_wilderness_empire = yes
+		}
 		text = situation.1145.desc.wilderness
 	}
 
@@ -5171,11 +5227,15 @@ situation_event = {
 	location = target
 
 	desc = {
-		trigger = { has_situation_flag = knows_who_did_it }
+		trigger = {
+			has_situation_flag = knows_who_did_it
+		}
 		text = situation.1170.desc.knows
 	}
 	desc = {
-		trigger = { has_situation_flag = dont_know_who_did_it }
+		trigger = {
+			has_situation_flag = dont_know_who_did_it
+		}
 		text = situation.1170.desc.notknows
 	}
 
@@ -5212,11 +5272,15 @@ situation_event = {
 	}
 
 	option = {
-		trigger = { has_situation_flag = dont_know_who_did_it }
+		trigger = {
+			has_situation_flag = dont_know_who_did_it
+		}
 		name = situation.1170.a
 	}
 	option = {
-		trigger = { has_situation_flag = knows_who_did_it }
+		trigger = {
+			has_situation_flag = knows_who_did_it
+		}
 		name = situation.1170.b
 		owner = { set_country_flag = knows_who_infested_star }
 		event_target:star_infesters = {

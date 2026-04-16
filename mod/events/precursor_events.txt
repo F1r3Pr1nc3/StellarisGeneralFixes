@@ -5693,11 +5693,15 @@ country_event = {
 		text = precursor.301.d.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = precursor.301.e.desc
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = precursor.301.f.desc
 	}
 
@@ -6609,7 +6613,9 @@ country_event = {
 	option = {
 		name = "precursor.311.b"
 		response_text = precursor.311.b.reply
-		trigger = { has_valid_civic = civic_corporate_dominion }
+		trigger = {
+			has_valid_civic = civic_corporate_dominion
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 500 }
 		}
@@ -6624,7 +6630,9 @@ country_event = {
 	}
 	option = {
 		name = "precursor.311.c"
-		trigger = { has_valid_civic = civic_warrior_culture }
+		trigger = {
+			has_valid_civic = civic_warrior_culture
+		}
 		hidden_effect = {
 			random_list = {
 				10 = { # Refuses

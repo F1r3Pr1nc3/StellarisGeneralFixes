@@ -515,11 +515,15 @@ planet_event = {
 		text = factions.3005.desc.1
 	}
 	desc = {
-		trigger = { has_planet_flag = frontier_egalitarianism }
+		trigger = {
+			has_planet_flag = frontier_egalitarianism
+		}
 		text = factions.3005.desc.2
 	}
 	desc = {
-		trigger = { has_planet_flag = frontier_alternatives }
+		trigger = {
+			has_planet_flag = frontier_alternatives
+		}
 		text = factions.3005.desc.3
 	}
 
@@ -639,11 +643,15 @@ planet_event = {
 	# Political deviance: perhaps it's okay?
 	option = {
 		name = {
-			trigger = { has_planet_flag = frontier_egalitarianism }
+			trigger = {
+				has_planet_flag = frontier_egalitarianism
+			}
 			text = factions.3005.b
 		}
 		name = {
-			trigger = { has_planet_flag = frontier_alternatives }
+			trigger = {
+				has_planet_flag = frontier_alternatives
+			}
 			text = factions.3005.c
 		}
 		trigger = {
@@ -692,11 +700,15 @@ planet_event = {
 		text = factions.3010.desc.1
 	}
 	desc = {
-		trigger = { has_planet_flag = frontier_authoritarianism }
+		trigger = {
+			has_planet_flag = frontier_authoritarianism
+		}
 		text = factions.3010.desc.2
 	}
 	desc = {
-		trigger = { has_planet_flag = frontier_discourse }
+		trigger = {
+			has_planet_flag = frontier_discourse
+		}
 		text = factions.3010.desc.3
 	}
 
@@ -707,7 +719,9 @@ planet_event = {
 		picture = GFX_evt_civil_action
 	}
 	picture = {
-		trigger = { has_planet_flag = frontier_authoritarianism }
+		trigger = {
+			has_planet_flag = frontier_authoritarianism
+		}
 		picture = GFX_evt_space_monster # tendrils
 	}
 
@@ -794,11 +808,15 @@ planet_event = {
 	# Diverse politics OR Authoritarianism taking root: too risky
 	option = {
 		name = {
-			trigger = { has_planet_flag = frontier_authoritarianism }
+			trigger = {
+				has_planet_flag = frontier_authoritarianism
+			}
 			text = factions.3010.c
 		}
 		name = {
-			trigger = { has_planet_flag = frontier_discourse }
+			trigger = {
+				has_planet_flag = frontier_discourse
+			}
 			text = factions.3010.d
 		}
 		trigger = {
@@ -1187,7 +1205,9 @@ planet_event = {
 	}
 	option = { # Disrupt planet wide communications
 		name = manifesti.5.e
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		allow = {
 			owner = {
 				has_resource = { type = influence amount > 50 }
@@ -1241,31 +1261,45 @@ planet_event = {
 	title = manifesti.10.name
 
 	desc = {
-		trigger = { has_planet_flag = manifesti_militarist_successful }
+		trigger = {
+			has_planet_flag = manifesti_militarist_successful
+		}
 		text = manifesti.10.desc_militarist
 	}
 	desc = {
-		trigger = { has_planet_flag = manifesti_materialist_successful }
+		trigger = {
+			has_planet_flag = manifesti_materialist_successful
+		}
 		text = manifesti.10.desc_materialist
 	}
 	desc = {
-		trigger = { has_planet_flag = manifesti_spiritualist_successful }
+		trigger = {
+			has_planet_flag = manifesti_spiritualist_successful
+		}
 		text = manifesti.10.desc_spiritualist
 	}
 	desc = {
-		trigger = { has_planet_flag = manifesti_xenophobe_successful }
+		trigger = {
+			has_planet_flag = manifesti_xenophobe_successful
+		}
 		text = manifesti.10.desc_xenophobe
 	}
 	desc = {
-		trigger = { has_planet_flag = manifesti_authoritarian_successful }
+		trigger = {
+			has_planet_flag = manifesti_authoritarian_successful
+		}
 		text = manifesti.10.desc_authoritarian
 	}
 	desc = {
-		trigger = { has_planet_flag = manifesti_dismantled_exhibition }
+		trigger = {
+			has_planet_flag = manifesti_dismantled_exhibition
+		}
 		text = manifesti.10.desc_dismantled_exhibition
 	}
 	desc = {
-		trigger = { has_planet_flag = manifesti_violent_protests }
+		trigger = {
+			has_planet_flag = manifesti_violent_protests
+		}
 		text = manifesti.10.desc_violent_protests
 	}
 
@@ -1359,7 +1393,9 @@ planet_event = {
 	}
 	option = {
 		name = manifesti.10.b
-		trigger = { has_planet_flag = manifesti_violent_protests }
+		trigger = {
+			has_planet_flag = manifesti_violent_protests
+		}
 		remove_modifier = planet_manifesti_joy
 		add_planet_devastation = 75
 		owner = { end_event_chain = manifesti_chain }
@@ -1449,7 +1485,9 @@ planet_event = {
 	}
 	option = { # Celebrate linguistic diversity
 		name = manifesti.15.d
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		hidden_effect = {
 			event_target:manifesti_world = {
 				planet_event = { id = manifesti.20 days = 145 }
@@ -1458,7 +1496,9 @@ planet_event = {
 	}
 	option = { # Foster dialogue, not division
 		name = manifesti.15.e
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		hidden_effect = {
 			event_target:manifesti_world = {
 				planet_event = { id = manifesti.20 days = 145 }

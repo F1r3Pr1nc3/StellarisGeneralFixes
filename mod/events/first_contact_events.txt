@@ -125,39 +125,57 @@ first_contact_event = {
 	title = first_contact.5.name
 
 	desc = {
-		trigger = { first_contact_default_desc = yes }
+		trigger = {
+			first_contact_default_desc = yes
+		}
 		text = first_contact.5.desc
 	}
 	desc = {
-		trigger = { first_contact_militarist_desc = yes }
+		trigger = {
+			first_contact_militarist_desc = yes
+		}
 		text = first_contact.5.militarist.desc
 	}
 	desc = {
-		trigger = { first_contact_pacifist_desc = yes }
+		trigger = {
+			first_contact_pacifist_desc = yes
+		}
 		text = first_contact.5.pacifist.desc
 	}
 	desc = {
-		trigger = { first_contact_spiritualist_desc = yes }
+		trigger = {
+			first_contact_spiritualist_desc = yes
+		}
 		text = first_contact.5.spiritualist.desc
 	}
 	desc = {
-		trigger = { first_contact_materialist_desc = yes }
+		trigger = {
+			first_contact_materialist_desc = yes
+		}
 		text = first_contact.5.materialist.desc
 	}
 	desc = {
-		trigger = { first_contact_xenophobe_desc = yes }
+		trigger = {
+			first_contact_xenophobe_desc = yes
+		}
 		text = first_contact.5.xenophobe.desc
 	}
 	desc = {
-		trigger = { first_contact_xenophile_desc = yes }
+		trigger = {
+			first_contact_xenophile_desc = yes
+		}
 		text = first_contact.5.xenophile.desc
 	}
 	desc = {
-		trigger = { first_contact_authoritarian_desc = yes }
+		trigger = {
+			first_contact_authoritarian_desc = yes
+		}
 		text = first_contact.5.authoritarian.desc
 	}
 	desc = {
-		trigger = { first_contact_egalitarian_desc = yes }
+		trigger = {
+			first_contact_egalitarian_desc = yes
+		}
 		text = first_contact.5.egalitarian.desc
 	}
 
@@ -760,11 +778,15 @@ first_contact_event = {
 	}
 	option = {
 		name = {
-			trigger = { owner = { is_xenophile = yes } }
+			trigger = {
+				owner = { is_xenophile = yes }
+			}
 			text = FASCINATING
 		}
 		name = {
-			trigger = { owner = { is_xenophobe = yes } }
+			trigger = {
+				owner = { is_xenophobe = yes }
+			}
 			text = WORRYING
 		}
 		name = {
@@ -1145,7 +1167,9 @@ first_contact_event = {
 	}
 	desc = {
 		text = first_contact.101.desc.2
-		trigger = { has_first_contact_flag = hostile_first_contact_attempted }
+		trigger = {
+			has_first_contact_flag = hostile_first_contact_attempted
+		}
 	}
 
 	picture = GFX_evt_hand_shake
@@ -1177,11 +1201,15 @@ first_contact_event = {
 	}
 	option = {
 		name = first_contact.101.C
-		trigger = { has_first_contact_flag = hostile_first_contact_attempted }
+		trigger = {
+			has_first_contact_flag = hostile_first_contact_attempted
+		}
 	}
 	option = {
 		name = first_contact.101.D
-		trigger = { owner = { is_homicidal = yes } }
+		trigger = {
+			owner = { is_homicidal = yes }
+		}
 	}
 }
 
@@ -1318,13 +1346,19 @@ first_contact_event = {
 	option = {
 		name = {
 			text = first_contact.103.C1
-			trigger = { owner = { is_homicidal = yes } }
+			trigger = {
+				owner = { is_homicidal = yes }
+			}
 		}
 		name = {
 			text = DISGUSTING
-			trigger = { owner = { is_homicidal = no } }
+			trigger = {
+				owner = { is_homicidal = no }
+			}
 		}
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 	}
 	option = {
 		name = ON_SCREEN
@@ -1576,7 +1610,9 @@ country_event = {
 	title = first_contact.206.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = first_contact.206.desc.normal
 	}
 	desc = {
@@ -1668,7 +1704,9 @@ country_event = {
 	title = first_contact.216.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = first_contact.216.desc.normal
 	}
 	desc = {
@@ -2865,7 +2903,9 @@ first_contact_event = {
 	option = {
 		name = first_contact.270.B
 		custom_tooltip = first_contact.270.B.tooltip
-		trigger = { first_contact_can_see_their_system = yes }
+		trigger = {
+			first_contact_can_see_their_system = yes
+		}
 		hidden_effect = {
 			contact_country = {
 				random_system_within_border = {
@@ -2937,7 +2977,9 @@ first_contact_event = {
 		text = first_contact.280.desc.just_left
 	}
 	desc = {
-		trigger = { exists = event_target:fleet_to_seize }
+		trigger = {
+			exists = event_target:fleet_to_seize
+		}
 		text = first_contact.280.desc.failed
 	}
 
@@ -2948,7 +2990,9 @@ first_contact_event = {
 		picture = GFX_evt_wormhole
 	}
 	picture = {
-		trigger = { exists = event_target:fleet_to_seize }
+		trigger = {
+			exists = event_target:fleet_to_seize
+		}
 		picture = GFX_evt_face_off_in_space
 	}
 
@@ -3015,7 +3059,9 @@ first_contact_event = {
 		else = {
 			custom_tooltip = first_contact.280.B.tooltip
 		}
-		trigger = { first_contact_can_see_their_system = yes }
+		trigger = {
+			first_contact_can_see_their_system = yes
+		}
 		hidden_effect = {
 			contact_country = {
 				random_system_within_border = {
@@ -3039,11 +3085,15 @@ country_event = {
 
 	desc = {
 		text = first_contact.282.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = first_contact.282.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_face_off_in_space
@@ -3356,7 +3406,9 @@ first_contact_event = {
 	}
 	desc = {
 		text = first_contact.295.desc.no_ship
-		trigger = { has_first_contact_flag = no_vessel }
+		trigger = {
+			has_first_contact_flag = no_vessel
+		}
 	}
 
 	picture = GFX_evt_ancient_databank
@@ -3495,7 +3547,9 @@ first_contact_event = {
 
 	picture = {
 		picture = GFX_evt_alien_abduction
-		trigger = { exists = event_target:abduction_planet }
+		trigger = {
+			exists = event_target:abduction_planet
+		}
 	}
 	picture = {
 		picture = GFX_evt_unidentified_ship
@@ -3818,7 +3872,9 @@ country_event = {
 
 	picture = {
 		picture = GFX_evt_alien_abduction
-		trigger = { exists = event_target:abduction_planet }
+		trigger = {
+			exists = event_target:abduction_planet
+		}
 	}
 	picture = {
 		picture = GFX_evt_unidentified_ship
@@ -3938,7 +3994,9 @@ first_contact_event = {
 
 	picture = {
 		picture = GFX_evt_alien_abduction
-		trigger = { exists = event_target:abduction_planet }
+		trigger = {
+			exists = event_target:abduction_planet
+		}
 	}
 	picture = {
 		picture = GFX_evt_unidentified_ship
@@ -4109,7 +4167,9 @@ country_event = {
 
 	picture = {
 		picture = GFX_evt_alien_abduction
-		trigger = { exists = event_target:abduction_planet }
+		trigger = {
+			exists = event_target:abduction_planet
+		}
 	}
 	picture = {
 		picture = GFX_evt_unidentified_ship
@@ -4182,11 +4242,15 @@ first_contact_event = {
 
 	desc = {
 		text = first_contact.355.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = first_contact.355.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_mysterious_signal
@@ -4309,11 +4373,15 @@ first_contact_event = {
 
 	option = {
 		name = {
-			trigger = { owner = { is_xenophobe = no } }
+			trigger = {
+				owner = { is_xenophobe = no }
+			}
 			text = first_contact.357.A
 		}
 		name = {
-			trigger = { owner = { is_xenophobe = yes } }
+			trigger = {
+				owner = { is_xenophobe = yes }
+			}
 			text = first_contact.357.B
 		}
 		contact_country = {
@@ -4540,7 +4608,9 @@ first_contact_event = {
 		}
 		name = {
 			text = first_contact.375.A.xenophobe
-			trigger = { owner = { is_xenophobe = yes } }
+			trigger = {
+				owner = { is_xenophobe = yes }
+			}
 		}
 		name = {
 			text = first_contact.375.A.materialist
@@ -4585,7 +4655,9 @@ first_contact_event = {
 			text = first_contact.376.A.mil
 		}
 		name = {
-			trigger = { owner = { is_pacifist = yes } }
+			trigger = {
+				owner = { is_pacifist = yes }
+			}
 			text = first_contact.376.A.pac
 		}
 		name = {
@@ -4637,7 +4709,9 @@ first_contact_event = {
 
 	option = {
 		name = first_contact.377.A
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		contact_country = {
 			add_opinion_modifier = {
 				who = root.owner
@@ -4650,7 +4724,9 @@ first_contact_event = {
 	}
 	option = {
 		name = first_contact.377.B
-		trigger = { owner = { is_xenophile = no } }
+		trigger = {
+			owner = { is_xenophile = no }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -4693,7 +4769,9 @@ first_contact_event = {
 			text = first_contact.378.A.mil
 		}
 		name = {
-			trigger = { owner = { is_militarist = no } }
+			trigger = {
+				owner = { is_militarist = no }
+			}
 			text = first_contact.378.A.other
 		}
 		contact_country = {
@@ -5254,11 +5332,15 @@ first_contact_event = {
 	title = first_contact.400.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = first_contact.400.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = first_contact.400.desc.gestalt
 	}
 
@@ -5334,11 +5416,15 @@ first_contact_event = {
 
 	option = {
 		name = {
-			trigger = { owner = { is_pacifist = no } }
+			trigger = {
+				owner = { is_pacifist = no }
+			}
 			text = first_contact.405.A
 		}
 		name = {
-			trigger = { owner = { is_pacifist = yes } }
+			trigger = {
+				owner = { is_pacifist = yes }
+			}
 			text = first_contact.405.A.pacifist
 		}
 		owner = {
@@ -5396,7 +5482,9 @@ first_contact_event = {
 			text = first_contact.406.A
 		}
 		name = {
-			trigger = { owner = { is_xenophobe = yes } }
+			trigger = {
+				owner = { is_xenophobe = yes }
+			}
 			text = first_contact.406.A.xenophobe
 		}
 		name = {
@@ -5460,7 +5548,9 @@ first_contact_event = {
 		}
 		name = {
 			text = first_contact.410.A.other
-			trigger = { owner = { is_militarist = no } }
+			trigger = {
+				owner = { is_militarist = no }
+			}
 		}
 		contact_country = {
 			add_opinion_modifier = { who = root.owner modifier = opinion_first_contact_cowardly }
@@ -5490,11 +5580,15 @@ first_contact_event = {
 
 	option = {
 		name = {
-			trigger = { owner = { is_homicidal = no } }
+			trigger = {
+				owner = { is_homicidal = no }
+			}
 			text = first_contact.411.A
 		}
 		name = {
-			trigger = { owner = { is_homicidal = yes } }
+			trigger = {
+				owner = { is_homicidal = yes }
+			}
 			text = first_contact.411.A.homicidal
 		}
 		owner = {
@@ -5810,7 +5904,9 @@ first_contact_event = {
 				}
 			}
 		}
-		trigger = { owner = { is_pacifist = no } }
+		trigger = {
+			owner = { is_pacifist = no }
+		}
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -5841,7 +5937,9 @@ first_contact_event = {
 				first_contact_event = { id = first_contact.472 }
 			}
 		}
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -6186,11 +6284,15 @@ first_contact_event = {
 
 	desc = {
 		text = first_contact.5071.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = first_contact.5071.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_mysterious_signal
@@ -6264,11 +6366,15 @@ first_contact_event = {
 
 	desc = {
 		text = first_contact.5072.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = first_contact.5072.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_mysterious_signal
@@ -6300,11 +6406,15 @@ first_contact_event = {
 
 	desc = {
 		text = first_contact.5073.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = first_contact.5073.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_mysterious_signal
@@ -6828,27 +6938,39 @@ first_contact_event = {
 	title = first_contact.5095.name
 
 	desc = {
-		trigger = { has_first_contact_flag = fc_event_trial_combat_good }
+		trigger = {
+			has_first_contact_flag = fc_event_trial_combat_good
+		}
 		text = first_contact.5095.desc.combat_good
 	}
 	desc = {
-		trigger = { has_first_contact_flag = fc_event_trial_combat_bad }
+		trigger = {
+			has_first_contact_flag = fc_event_trial_combat_bad
+		}
 		text = first_contact.5095.desc.combat_bad
 	}
 	desc = {
-		trigger = { has_first_contact_flag = fc_event_trial_speech_good }
+		trigger = {
+			has_first_contact_flag = fc_event_trial_speech_good
+		}
 		text = first_contact.5095.desc.speech_good
 	}
 	desc = {
-		trigger = { has_first_contact_flag = fc_event_trial_speech_bad }
+		trigger = {
+			has_first_contact_flag = fc_event_trial_speech_bad
+		}
 		text = first_contact.5095.desc.speech_bad
 	}
 	desc = {
-		trigger = { has_first_contact_flag = fc_event_trial_song_good }
+		trigger = {
+			has_first_contact_flag = fc_event_trial_song_good
+		}
 		text = first_contact.5095.desc.song_good
 	}
 	desc = {
-		trigger = { has_first_contact_flag = fc_event_trial_song_bad }
+		trigger = {
+			has_first_contact_flag = fc_event_trial_song_bad
+		}
 		text = first_contact.5095.desc.song_bad
 	}
 
@@ -7436,7 +7558,9 @@ first_contact_event = {
 	# Spy option
 	option = {
 		name = first_contact.1130.c
-		trigger = { has_first_contact_flag = xeno_dinner_party_spy_attempted }
+		trigger = {
+			has_first_contact_flag = xeno_dinner_party_spy_attempted
+		}
 		custom_tooltip = first_contact.1130.c.tooltip
 		hidden_effect = {
 			random_list = {
@@ -7684,7 +7808,9 @@ first_contact_event = {
 	title = aquatic_events.250.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = aquatic_events.250.desc
 	}
 	desc = {
@@ -7751,11 +7877,15 @@ first_contact_event = {
 	title = first_contact.3000.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = first_contact.3000.desc.gestalt
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = first_contact.3000.desc
 	}
 

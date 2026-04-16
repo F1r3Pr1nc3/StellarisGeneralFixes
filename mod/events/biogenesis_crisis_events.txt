@@ -747,7 +747,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_country_flag = kaiju_dissection }
+		trigger = {
+			has_country_flag = kaiju_dissection
+		}
 		name = biocrisis.105.b
 	}
 }
@@ -927,7 +929,9 @@ situation_event = {
 		text = biocrisis.150.desc
 	}
 	desc = {
-		trigger = { has_global_flag = voidspawn_boss_spawned }
+		trigger = {
+			has_global_flag = voidspawn_boss_spawned
+		}
 		text = biocrisis.150.desc.b
 	}
 
@@ -1260,7 +1264,9 @@ country_event = {
 		text = biocrisis.175.desc
 	}
 	desc = {
-		trigger = { has_menace_perk = menp_behemoth_ever_hungry }
+		trigger = {
+			has_menace_perk = menp_behemoth_ever_hungry
+		}
 		text = biocrisis.175.desc.kaiju
 	}
 
@@ -1285,7 +1291,9 @@ country_event = {
 		text = biocrisis.180.desc
 	}
 	desc = {
-		trigger = { has_menace_perk = menp_behemoth_ever_hungry }
+		trigger = {
+			has_menace_perk = menp_behemoth_ever_hungry
+		}
 		text = biocrisis.180.desc.kaiju
 	}
 
@@ -1301,7 +1309,9 @@ country_event = {
 	}
 	option = {
 		name = biocrisis.180.b
-		trigger = { has_menace_perk = menp_behemoth_ever_hungry }
+		trigger = {
+			has_menace_perk = menp_behemoth_ever_hungry
+		}
 	}
 
 	after = {
@@ -1468,7 +1478,9 @@ country_event = {
 	option = { # Go confront the [REDACTED]
 		name = biocrisis.191.c
 		custom_tooltip = biocrisis.191.b.tt
-		trigger = { has_country_flag = learned_about_redacted }
+		trigger = {
+			has_country_flag = learned_about_redacted
+		}
 		hidden_effect = {
 			every_playable_country = {
 				limit = { NOT = { is_same_value = root } }
@@ -1808,12 +1820,16 @@ country_event = {
 	}
 	option = {
 		name = FASCINATING
-		trigger = { has_ascension_perk = ap_cosmogenesis }
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+		}
 		add_resource = { advanced_logic = 1000 }
 	}
 	option = {
 		name = biocrisis.197.b
-		trigger = { has_relic = r_prethoryn_queen }
+		trigger = {
+			has_relic = r_prethoryn_queen
+		}
 	}
 }
 
@@ -2415,7 +2431,9 @@ country_event = {
 	}
 	option = {
 		name = biocrisis.280.psi
-		trigger = { has_adopted_psionic_tradition = yes }
+		trigger = {
+			has_adopted_psionic_tradition = yes
+		}
 		icon = {
 			icon = GFX_tradition_category_icon_tradition_psionics
 			text = tradition_psionics
@@ -2445,7 +2463,9 @@ country_event = {
 	}
 	option = {
 		name = biocrisis.280.cyber
-		trigger = { has_tradition = tr_cybernetics_adopt }
+		trigger = {
+			has_tradition = tr_cybernetics_adopt
+		}
 		icon = {
 			icon = GFX_tradition_category_icon_tradition_cybernetics
 			text = tradition_cybernetics
@@ -2458,7 +2478,9 @@ country_event = {
 	}
 	option = {
 		name = biocrisis.280.synth
-		trigger = { has_tradition = tr_synthetics_adopt }
+		trigger = {
+			has_tradition = tr_synthetics_adopt
+		}
 		icon = {
 			icon = GFX_tradition_category_icon_tradition_synthetics
 			text = tradition_synthetics
@@ -2467,7 +2489,9 @@ country_event = {
 	}
 	option = {
 		name = biocrisis.280.corp
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		add_modifier = {
 			modifier = behemoth_mutation_corpo
 			days = -1

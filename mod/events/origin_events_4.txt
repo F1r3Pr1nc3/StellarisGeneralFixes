@@ -279,21 +279,27 @@ first_contact_event = {
 	}
 	option = {
 		name = origin.4200.b.paci
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		hidden_effect = {
 			set_first_contact_stage = slavers_stage_2
 		}
 	}
 	option = {
 		name = origin.4200.c.phobe
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		hidden_effect = {
 			set_first_contact_stage = slavers_stage_2
 		}
 	}
 	option = {
 		name = origin.4200.c.phile
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		hidden_effect = {
 			set_first_contact_stage = slavers_stage_2
 		}
@@ -911,19 +917,27 @@ country_event = {
 
 	desc = {
 		text = "origin.4030.desc.energy"
-		trigger = { has_country_flag = debt_collectors_pay_energy }
+		trigger = {
+			has_country_flag = debt_collectors_pay_energy
+		}
 	}
 	desc = {
 		text = "origin.4030.desc.consumer_goods"
-		trigger = { has_country_flag = debt_collectors_pay_consumer_goods }
+		trigger = {
+			has_country_flag = debt_collectors_pay_consumer_goods
+		}
 	}
 	desc = {
 		text = "origin.4030.desc.alloys"
-		trigger = { has_country_flag = debt_collectors_pay_alloys }
+		trigger = {
+			has_country_flag = debt_collectors_pay_alloys
+		}
 	}
 	desc = {
 		text = "origin.4030.desc.pops"
-		trigger = { has_country_flag = debt_collectors_pay_slaves }
+		trigger = {
+			has_country_flag = debt_collectors_pay_slaves
+		}
 	}
 	desc = {
 		text = "origin.4030.desc.defeated"
@@ -964,7 +978,9 @@ country_event = {
 	}
 	option = { # Pay with energy
 		name = "origin.4030.b"
-		trigger = { has_country_flag = debt_collectors_pay_energy }
+		trigger = {
+			has_country_flag = debt_collectors_pay_energy
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 5000 }
 		}
@@ -975,7 +991,9 @@ country_event = {
 	}
 	option = { # Pay with consumer goods
 		name = "origin.4030.b"
-		trigger = { has_country_flag = debt_collectors_pay_consumer_goods }
+		trigger = {
+			has_country_flag = debt_collectors_pay_consumer_goods
+		}
 		allow = {
 			resource_stockpile_compare = { resource = consumer_goods value >= 2500 }
 		}
@@ -986,7 +1004,9 @@ country_event = {
 	}
 	option = { # Pay with alloys
 		name = "origin.4030.b"
-		trigger = { has_country_flag = debt_collectors_pay_alloys }
+		trigger = {
+			has_country_flag = debt_collectors_pay_alloys
+		}
 		allow = {
 			resource_stockpile_compare = { resource = alloys value >= 1250 }
 		}
@@ -997,7 +1017,9 @@ country_event = {
 	}
 	option = { # Pay with your own people
 		name = "origin.4030.c"
-		trigger = { has_country_flag = debt_collectors_pay_slaves }
+		trigger = {
+			has_country_flag = debt_collectors_pay_slaves
+		}
 		allow = {
 			count_owned_pop_amount = {
 				count >= 600
@@ -1023,7 +1045,9 @@ country_event = {
 	}
 	option = { # Pay with slaves
 		name = "origin.4030.d"
-		trigger = { has_country_flag = debt_collectors_pay_slaves }
+		trigger = {
+			has_country_flag = debt_collectors_pay_slaves
+		}
 		allow = {
 			count_owned_pop_amount = {
 				count >= 200
@@ -1222,7 +1246,9 @@ country_event = {
 	}
 	desc = {
 		text = "origin.4037.desc.defeated"
-		trigger = { has_country_flag = fought_debt_collectors_last_time }
+		trigger = {
+			has_country_flag = fought_debt_collectors_last_time
+		}
 	}
 
 	option = { # fight!
@@ -1300,7 +1326,9 @@ country_event = {
 
 	desc = {
 		text = origin.4042.desc.nogalcom
-		trigger = { is_galactic_community_formed = no }
+		trigger = {
+			is_galactic_community_formed = no
+		}
 	}
 	desc = {
 		text = origin.4042.desc.galcom
@@ -1549,7 +1577,9 @@ country_event = {
 
 	desc = {
 		text = origin.4055.desc.msi
-		trigger = { exists = event_target:MSI_country }
+		trigger = {
+			exists = event_target:MSI_country
+		}
 	}
 	desc = {
 		text = origin.4055.desc.nomsi
@@ -1782,7 +1812,9 @@ country_event = {
 	}
 	option = {
 		name = origin.4060.b
-		trigger = { allows_slavery = no }
+		trigger = {
+			allows_slavery = no
+		}
 		custom_tooltip = origin.4060.b.tooltip
 		set_country_flag = payback_punish_slavers
 	}
@@ -1826,7 +1858,9 @@ country_event = {
 	}
 	option = {
 		name = origin.4060.b
-		trigger = { allows_slavery = no }
+		trigger = {
+			allows_slavery = no
+		}
 		custom_tooltip = origin.4060.b.tooltip
 		set_country_flag = payback_punish_slavers
 	}
@@ -2015,11 +2049,15 @@ country_event = {
 	option = {
 		name = {
 			text = origin.4110.a.phile
-			trigger = { is_xenophobe = no }
+			trigger = {
+				is_xenophobe = no
+			}
 		}
 		name = {
 			text = origin.4110.a.phobe
-			trigger = { is_xenophobe = yes }
+			trigger = {
+				is_xenophobe = yes
+			}
 		}
 		add_monthly_resource_mult = {
 			resource = unity

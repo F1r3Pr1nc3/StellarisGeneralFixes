@@ -239,7 +239,9 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { has_origin = origin_evolutionary_predators } } # This is not an exclusive trigger since we will need to add a bio ship variant to this event
+		trigger = {
+			owner = { has_origin = origin_evolutionary_predators }
+		} # This is not an exclusive trigger since we will need to add a bio ship variant to this event
 		name = anomaly.2521.b.evopred
 		hidden_effect = {
 			fromfrom = {
@@ -1061,7 +1063,9 @@ ship_event = {
 
 	option = {
 		name = anomaly.3010.a
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = influence
@@ -1140,7 +1144,9 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		name = anomaly.3015.b.pacifist
 		owner = {
 			add_monthly_resource_mult = {
@@ -1266,7 +1272,9 @@ ship_event = {
 
 	option = {
 		name = anomaly.3030.a
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		custom_tooltip = anomaly.3030.a.tooltip
 		hidden_effect = {
 			owner = {
@@ -1291,7 +1299,9 @@ ship_event = {
 	}
 	option = {
 		name = anomaly.3030.b.phobe
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = influence
@@ -2105,7 +2115,9 @@ country_event = {
 	}
 	option = {
 		name = anomaly.3088.c
-		trigger = { has_civic = civic_machine_terminator }
+		trigger = {
+			has_civic = civic_machine_terminator
+		}
 		country_event = { id = anomaly.3089 }
 		ai_chance = { factor = 15 }
 	}
@@ -2139,7 +2151,9 @@ country_event = {
 	}
 	option = {
 		name = anomaly.3089.b
-		trigger = { has_civic = civic_machine_terminator }
+		trigger = {
+			has_civic = civic_machine_terminator
+		}
 		event_target:book_writer = {
 			add_opinion_modifier = { who = root modifier = opinion_book_burner }
 		}
@@ -3166,7 +3180,9 @@ country_event = {
 	}
 	option = {
 		name = anomaly.3120.b
-		trigger = { has_country_flag = goodies }
+		trigger = {
+			has_country_flag = goodies
+		}
 		add_monthly_resource_mult = {
 			resource = minerals
 			value = @tier2materialreward
@@ -3233,7 +3249,9 @@ ship_event = {
 
 	option = {
 		name = anomaly.3125.a
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_resource = { influence = 100 }
 		}
@@ -3251,7 +3269,9 @@ ship_event = {
 	}
 	option = {
 		name = anomaly.3125.c
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 	}
 }
 

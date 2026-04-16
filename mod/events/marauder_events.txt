@@ -2284,7 +2284,9 @@ country_event = {
 
 	option = {
 		name = marauder.31.a
-		trigger = { exists = event_target:raid_target_1 }
+		trigger = {
+			exists = event_target:raid_target_1
+		}
 		# allow = { # Test accessibility
 		# 	exists = event_target:random_marauder_fleet
 		# 	event_target:raid_target_1 = {
@@ -2300,49 +2302,63 @@ country_event = {
 	}
 	option = {
 		name = marauder.31.b
-		trigger = { exists = event_target:raid_target_2 }
+		trigger = {
+			exists = event_target:raid_target_2
+		}
 		hidden_effect = {
 			event_target:raid_target_2 = { save_event_target_as = preliminary_target }
 		}
 	}
 	option = {
 		name = marauder.31.c
-		trigger = { exists = event_target:raid_target_3 }
+		trigger = {
+			exists = event_target:raid_target_3
+		}
 		hidden_effect = {
 			event_target:raid_target_3 = { save_event_target_as = preliminary_target }
 		}
 	}
 	option = {
 		name = marauder.31.d
-		trigger = { exists = event_target:raid_target_4 }
+		trigger = {
+			exists = event_target:raid_target_4
+		}
 		hidden_effect = {
 			event_target:raid_target_4 = { save_event_target_as = preliminary_target }
 		}
 	}
 	option = {
 		name = marauder.31.k
-		trigger = { exists = event_target:raid_target_5 }
+		trigger = {
+			exists = event_target:raid_target_5
+		}
 		hidden_effect = {
 			event_target:raid_target_5 = { save_event_target_as = preliminary_target }
 		}
 	}
 	option = {
 		name = marauder.31.g
-		trigger = { exists = event_target:raid_target_6 }
+		trigger = {
+			exists = event_target:raid_target_6
+		}
 		hidden_effect = {
 			event_target:raid_target_6 = { save_event_target_as = preliminary_target }
 		}
 	}
 	option = {
 		name = marauder.31.h
-		trigger = { exists = event_target:raid_target_7 }
+		trigger = {
+			exists = event_target:raid_target_7
+		}
 		hidden_effect = {
 			event_target:raid_target_7 = { save_event_target_as = preliminary_target }
 		}
 	}
 	option = {
 		name = marauder.31.i
-		trigger = { exists = event_target:raid_target_8 }
+		trigger = {
+			exists = event_target:raid_target_8
+		}
 		hidden_effect = {
 			event_target:raid_target_8 = { save_event_target_as = preliminary_target }
 		}
@@ -7758,11 +7774,15 @@ country_event = {
 
 	option = {
 		name = marauder.502.a
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 	}
 	option = {
 		name = marauder.502.b
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 	}
 }
 
@@ -8678,7 +8698,9 @@ country_event = {
 		text = "marauder.508.desc.2"
 	}
 	desc = {
-		trigger = { is_homicidal = yes }
+		trigger = {
+			is_homicidal = yes
+		}
 		text = "marauder.508.desc.3"
 	}
 
@@ -10284,19 +10306,27 @@ country_event = {
 		text = "marauder.550.q.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = rebelling_satrapy }
+		trigger = {
+			has_country_flag = rebelling_satrapy
+		}
 		text = "marauder.550.r.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = rebelling_satrapy }
+		trigger = {
+			has_country_flag = rebelling_satrapy
+		}
 		text = "marauder.550.s.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = rebelling_satrapy }
+		trigger = {
+			has_country_flag = rebelling_satrapy
+		}
 		text = "marauder.550.t.desc"
 	}
 	desc = {
-		trigger = { has_country_flag = rebelling_satrapy }
+		trigger = {
+			has_country_flag = rebelling_satrapy
+		}
 		text = "marauder.550.u.desc"
 	}
 	desc = {
@@ -10472,7 +10502,9 @@ country_event = {
 	option = { # Submit? Already rebelled
 		name = marauder.550.a
 		sound = no_tut_advior_05
-		trigger = { has_country_flag = rebelling_satrapy }
+		trigger = {
+			has_country_flag = rebelling_satrapy
+		}
 		allow = {
 			OR = {
 				custom_tooltip = {
@@ -14145,12 +14177,16 @@ country_event = {
 	}
 	option = {
 		name = marauder.703.c
-		trigger = { has_valid_civic = civic_machine_terminator }
+		trigger = {
+			has_valid_civic = civic_machine_terminator
+		}
 		add_resource = { influence = 50 }
 	}
 	option = {
 		name = marauder.703.d
-		trigger = { has_valid_civic = civic_hive_devouring_swarm }
+		trigger = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
 		add_resource = {
 			food = 1
 			influence = 50
@@ -14158,12 +14194,16 @@ country_event = {
 	}
 	option = {
 		name = marauder.703.e
-		trigger = { has_valid_civic = civic_fanatic_purifiers }
+		trigger = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
 		add_resource = { influence = 50 }
 	}
 	option = {
 		name = marauder.703.f
-		trigger = { is_genocidal_infernal = yes }
+		trigger = {
+			is_genocidal_infernal = yes
+		}
 		add_resource = {
 			influence = 50
 			alloys = 1

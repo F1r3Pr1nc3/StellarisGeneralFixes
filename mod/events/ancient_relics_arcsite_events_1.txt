@@ -1716,14 +1716,18 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { is_xenophile = yes }
+		trigger = {
+			is_xenophile = yes
+		}
 		name = "ancrel.2018.a.phile"
 		hidden_effect = {
 			country_event = { id = ancrel.2020 }
 		}
 	}
 	option = {
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		name = "ancrel.2018.a.phobe"
 		hidden_effect = {
 			country_event = { id = ancrel.2019 }
@@ -1771,7 +1775,9 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.2019.c"
-		trigger = { is_xenophobe = no }
+		trigger = {
+			is_xenophobe = no
+		}
 		hidden_effect = {
 			country_event = { id = ancrel.2021 }
 		}
@@ -1779,7 +1785,9 @@ country_event = {
 	}
 	option = {
 		name = "ancrel.2019.d"
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		hidden_effect = {
 			country_event = { id = ancrel.2021 }
 		}
@@ -1815,7 +1823,9 @@ country_event = {
 	title = "ancrel.2017.name"
 
 	desc = {
-		trigger = { is_xenophobe = no }
+		trigger = {
+			is_xenophobe = no
+		}
 		text = "ancrel.2021.desc"
 	}
 	desc = {
@@ -2025,7 +2035,9 @@ planet_event = {
 		ai_chance = { factor = 5 }
 	}
 	option = {
-		trigger = { owner = { allows_purge = yes } }
+		trigger = {
+			owner = { allows_purge = yes }
+		}
 		name = ancrel.2025.b
 		ai_chance = { factor = 2 }
 	}
@@ -2133,7 +2145,9 @@ planet_event = {
 		name = ancrel.2025.a
 	}
 	option = {
-		trigger = { owner = { allows_purge = yes } }
+		trigger = {
+			owner = { allows_purge = yes }
+		}
 		name = ancrel.2025.b
 	}
 	option = {
@@ -2622,7 +2636,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_civic = civic_machine_terminator }
+		trigger = {
+			has_civic = civic_machine_terminator
+		}
 		name = "ancrel.2059.a.exter"
 		hidden_effect = {
 			country_event = { id = ancrel.2060 }
@@ -2641,7 +2657,9 @@ country_event = {
 		text = "ancrel.2060.desc"
 	}
 	desc = {
-		trigger = { has_civic = civic_machine_terminator }
+		trigger = {
+			has_civic = civic_machine_terminator
+		}
 		text = "ancrel.2060.desc.exter"
 	}
 
@@ -3939,7 +3957,9 @@ country_event = {
 
 	option = {
 		name = OK
-		trigger = { exists = event_target:rubricator_planet }
+		trigger = {
+			exists = event_target:rubricator_planet
+		}
 		enable_special_project = {
 			name = "SHARD_DESTROYED_BY_NON_DEFAULT_EMPIRE"
 			location = event_target:rubricator_planet
@@ -3999,12 +4019,16 @@ country_event = {
 
 	option = {
 		name = "ancrel.4020.a"
-		trigger = { can_harvest_dna = no }
+		trigger = {
+			can_harvest_dna = no
+		}
 		add_relic = r_rubricator
 	}
 	option = {
 		name = galactic_features.385.reanimated
-		trigger = { is_reanimator = yes }
+		trigger = {
+			is_reanimator = yes
+		}
 		enable_special_project = {
 			name = "REANIMATE_SHARD_DRAGON"
 			location = fromfromfrom.solar_system.star
@@ -4015,7 +4039,9 @@ country_event = {
 	}
 	option = {
 		name = aquatics.105.A
-		trigger = { can_harvest_dna = yes }
+		trigger = {
+			can_harvest_dna = yes
+		}
 		add_relic = r_rubricator
 		set_country_flag = harvested_dragon_dna
 		custom_tooltip = aquatics.105.A.tooltip
@@ -4412,27 +4438,39 @@ planet_event = {
 	title = "ancrel.4031.name"
 
 	desc = {
-		trigger = { has_planet_flag = oracle_d_dense_jungle }
+		trigger = {
+			has_planet_flag = oracle_d_dense_jungle
+		}
 		text = ancrel.4031.desc_jungle
 	}
 	desc = {
-		trigger = { has_planet_flag = oracle_d_toxic_kelp }
+		trigger = {
+			has_planet_flag = oracle_d_toxic_kelp
+		}
 		text = ancrel.4031.desc_kelp
 	}
 	desc = {
-		trigger = { has_planet_flag = oracle_d_deep_sinkhole }
+		trigger = {
+			has_planet_flag = oracle_d_deep_sinkhole
+		}
 		text = ancrel.4031.desc_sinkhole
 	}
 	desc = {
-		trigger = { has_planet_flag = oracle_d_quicksand_basin }
+		trigger = {
+			has_planet_flag = oracle_d_quicksand_basin
+		}
 		text = ancrel.4031.desc_basin
 	}
 	desc = {
-		trigger = { has_planet_flag = oracle_d_noxious_swamp }
+		trigger = {
+			has_planet_flag = oracle_d_noxious_swamp
+		}
 		text = ancrel.4031.desc_swamp
 	}
 	desc = {
-		trigger = { has_planet_flag = oracle_d_massive_glacier }
+		trigger = {
+			has_planet_flag = oracle_d_massive_glacier
+		}
 		text = ancrel.4031.desc_glacier
 	}
 
@@ -4658,11 +4696,15 @@ country_event = {
 			}
 		}
 		name = {
-			trigger = { is_machine_empire = no }
+			trigger = {
+				is_machine_empire = no
+			}
 			text = "ancrel.4036.d"
 		}
 		name = {
-			trigger = { is_machine_empire = yes }
+			trigger = {
+				is_machine_empire = yes
+			}
 			text = "ancrel.4036.e"
 		}
 		custom_tooltip = ancrel.4036.d.tooltip
@@ -4697,7 +4739,9 @@ country_event = {
 	}
 
 	option = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		name = ancrel.4038.dismiss
 		custom_tooltip = "ancrel.4038.c"
 		add_resource = {
@@ -4714,7 +4758,9 @@ country_event = {
 		ai_chance = { factor = 10 }
 	}
 	option = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		name = ancrel.4038.dismiss
 		custom_tooltip = "ancrel.4038.b"
 		add_resource = {
@@ -4738,11 +4784,15 @@ country_event = {
 			}
 		}
 		name = {
-			trigger = { is_machine_empire = no }
+			trigger = {
+				is_machine_empire = no
+			}
 			text = "ancrel.4038.a"
 		}
 		name = {
-			trigger = { is_machine_empire = yes }
+			trigger = {
+				is_machine_empire = yes
+			}
 			text = "ancrel.4038.e"
 		}
 		tag = hire_leader
@@ -5073,19 +5123,27 @@ planet_event = {
 	title = ancrel.4051.name
 
 	desc = {
-		trigger = { has_planet_flag = sentinels_d_dense_jungle }
+		trigger = {
+			has_planet_flag = sentinels_d_dense_jungle
+		}
 		text = ancrel.4051.desc_jungle
 	}
 	desc = {
-		trigger = { has_planet_flag = sentinels_d_toxic_kelp }
+		trigger = {
+			has_planet_flag = sentinels_d_toxic_kelp
+		}
 		text = ancrel.4051.desc_kelp
 	}
 	desc = {
-		trigger = { has_planet_flag = sentinels_d_noxious_swamp }
+		trigger = {
+			has_planet_flag = sentinels_d_noxious_swamp
+		}
 		text = ancrel.4051.desc_swamp
 	}
 	desc = {
-		trigger = { has_planet_flag = sentinels_d_massive_glacier }
+		trigger = {
+			has_planet_flag = sentinels_d_massive_glacier
+		}
 		text = ancrel.4051.desc_glacier
 	}
 
@@ -5181,7 +5239,9 @@ fleet_event = {
 
 	option = { # Investigate Sentinels
 		name = ancrel.4054.a
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		small_artifact_reward = yes
 		event_target:sentinels_planet = {
 			set_planet_flag = investigate_sentinels
@@ -5195,7 +5255,9 @@ fleet_event = {
 	option = { # Leave the Sentinels
 		name = ancrel.4054.b
 		custom_tooltip = ancrel.4054.b.tooltip
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		small_artifact_reward = yes
 		event_target:sentinels_planet = {
 			add_modifier = { modifier = sentinels_planet_modifier }
@@ -5205,7 +5267,9 @@ fleet_event = {
 	}
 	option = { # Destroy Sentinels
 		name = ancrel.4054.c
-		trigger = { owner = { is_xenophile = no } }
+		trigger = {
+			owner = { is_xenophile = no }
+		}
 		event_target:sentinels_planet = {
 			set_planet_flag = destroy_sentinels
 			enable_special_project = {
@@ -5242,11 +5306,15 @@ planet_event = {
 	title = ancrel.4055.name
 
 	desc = {
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		text = ancrel.4055.desc.phobe
 	}
 	desc = {
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		text = ancrel.4055.desc.other
 	}
 
@@ -6172,11 +6240,15 @@ country_event = {
 	picture = GFX_evt_psionics
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 

@@ -160,7 +160,9 @@ country_event = {
 	}
 	option = {
 		name = paragon.4.b
-		trigger = { is_spiritualist = no }
+		trigger = {
+			is_spiritualist = no
+		}
 		hidden_effect = {
 			random_list = {
 				60 = { # Success
@@ -175,7 +177,9 @@ country_event = {
 	}
 	option = {
 		name = paragon.4.b
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 		hidden_effect = {
 			random_list = {
 				80 = { # Success
@@ -1048,11 +1052,15 @@ country_event = {
 	title = "paragon.210.name"
 
 	desc = {
-		trigger = { has_country_flag = flag_azaryn_option_virus }
+		trigger = {
+			has_country_flag = flag_azaryn_option_virus
+		}
 		text = paragon.210.desc
 	}
 	desc = {
-		trigger = { has_country_flag = flag_azaryn_option_invaluable }
+		trigger = {
+			has_country_flag = flag_azaryn_option_invaluable
+		}
 		text = paragon.210.desc_alt
 	}
 
@@ -1100,7 +1108,9 @@ country_event = {
 		text = paragon.212.desc
 	}
 	desc = {
-		trigger = { has_country_flag = flag_azaryn_option_intro_done }
+		trigger = {
+			has_country_flag = flag_azaryn_option_intro_done
+		}
 		text = paragon.212.desc_alt
 	}
 
@@ -1223,7 +1233,9 @@ country_event = {
 	title = "paragon.218.name"
 
 	desc = {
-		trigger = { has_country_flag = flag_azaryn_option_take_life }
+		trigger = {
+			has_country_flag = flag_azaryn_option_take_life
+		}
 		text = paragon.218.desc_yes
 	}
 	desc = {
@@ -1328,7 +1340,9 @@ country_event = {
 	title = "paragon.224.name"
 
 	desc = {
-		trigger = { has_country_flag = flag_azaryn_option_sacrifice }
+		trigger = {
+			has_country_flag = flag_azaryn_option_sacrifice
+		}
 		text = paragon.224.desc_yes
 	}
 	desc = {
@@ -1383,7 +1397,9 @@ country_event = {
 	title = "paragon.226.name"
 
 	desc = {
-		trigger = { has_country_flag = flag_azaryn_option_hesitate }
+		trigger = {
+			has_country_flag = flag_azaryn_option_hesitate
+		}
 		text = paragon.226.desc_no # switched places with desc_yes below, as they are mixed up in loc
 	}
 	desc = {
@@ -1541,7 +1557,9 @@ country_event = {
 		response_text = paragon.228.a.response
 	}
 	option = { # What exactly is astrocreation?
-		trigger = { has_country_flag = flag_azaryn_what_is_astrocreation }
+		trigger = {
+			has_country_flag = flag_azaryn_what_is_astrocreation
+		}
 		name = paragon.228.a
 		is_dialog_only = yes
 		response_text = paragon_astrocreation_is
@@ -3171,7 +3189,9 @@ country_event = {
 	# Megacorporation
 	option = {
 		name = paragon.550.l
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		inline_script = {
 			script = events/resource_cost_with_allow
 			RESOURCE = energy

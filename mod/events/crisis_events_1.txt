@@ -17,9 +17,9 @@ country_event = {
 	id = crisis.199
 	hide_window = yes
 	is_test_event = yes
-	trigger = {
-		always = no
-	}
+	# trigger = {
+	# 	always = no
+	# }
 
 	immediate = {
 		set_global_flag = prethoryn_invasion_happened
@@ -279,7 +279,9 @@ country_event = {
 	# desc = "crisis.16.desc"
 	desc = {
 		text = "crisis.16.desc"
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = "crisis.16.b.desc"
@@ -741,19 +743,27 @@ country_event = {
 	}
 	option = {
 		name = crisis.18.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
 	}
 	option = {
 		name = crisis.18.h
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophile"
+		}
 	}
 	option = {
 		name = crisis.18.i
-		trigger = { has_ethic = "ethic_fanatic_authoritarian" }
+		trigger = {
+			has_ethic = "ethic_fanatic_authoritarian"
+		}
 	}
 	option = {
 		name = crisis.18.j
-		trigger = { has_ethic = "ethic_fanatic_egalitarian" }
+		trigger = {
+			has_ethic = "ethic_fanatic_egalitarian"
+		}
 	}
 
 	# Risa fix: support alternate government types.
@@ -1206,27 +1216,39 @@ country_event = {
 
 	desc = {
 		text = crisis.30.desc_01
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = crisis.30.desc_02
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = crisis.30.desc_03
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = crisis.30.desc_07
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 	}
 	desc = {
 		text = crisis.30.desc_08
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 	}
 	desc = {
 		text = crisis.30.desc_09
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 	}
 
 	diplomatic = yes
@@ -1244,7 +1266,9 @@ country_event = {
 
 	option = {
 		name = crisis.30.a
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 		response_text = crisis.30.a.response
 	}
 	option = {
@@ -1289,13 +1313,17 @@ country_event = {
 	}
 	option = {
 		name = crisis.30.g
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.g.response
 		is_dialog_only = yes
 	}
 	option = {
 		name = crisis.30.h
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.h.response
 		is_dialog_only = yes
 		hidden_effect = {
@@ -1304,13 +1332,17 @@ country_event = {
 	}
 	option = {
 		name = crisis.30.i
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.i.response
 		is_dialog_only = yes
 	}
 	option = {
 		name = crisis.30.j
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.j.response
 		is_dialog_only = yes
 		hidden_effect = {
@@ -1319,7 +1351,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.30.a
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.k.response
 	}
 }
@@ -1419,7 +1453,9 @@ country_event = {
 
 	option = {
 		name = crisis.52.a
-		trigger = { exists = event_target:sentinel_fallen_empire }
+		trigger = {
+			exists = event_target:sentinel_fallen_empire
+		}
 		response_text = crisis.52.a.response
 		is_dialog_only = yes
 	}
@@ -1433,7 +1469,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.52.b
-		trigger = { exists = event_target:sentinel_fallen_empire }
+		trigger = {
+			exists = event_target:sentinel_fallen_empire
+		}
 		response_text = crisis.52.new.b.response
 		is_dialog_only = yes
 	}
@@ -3079,11 +3117,15 @@ country_event = {
 	}
 	option = { # Xenophobe Response
 		name = crisis.211.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
 	}
 	option = { # Xenophile Response
 		name = crisis.211.h
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophile"
+		}
 	}
 
 	# Risa fix: Support other government types.

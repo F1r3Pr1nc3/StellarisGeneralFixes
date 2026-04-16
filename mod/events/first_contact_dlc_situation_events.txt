@@ -1483,7 +1483,9 @@ country_event = {
 			}
 		}
 		name = {
-			trigger = { has_technology = tech_robotic_workers }
+			trigger = {
+				has_technology = tech_robotic_workers
+			}
 			text = preftl.1035.a.robot
 		}
 		name = {
@@ -1935,7 +1937,9 @@ country_event = {
 	}
 	option = {
 		name = preftl.1110.b.machine.servitor
-		trigger = { has_valid_civic = civic_machine_servitor }
+		trigger = {
+			has_valid_civic = civic_machine_servitor
+		}
 		add_observation_insight_effect = {
 			VALUE = 20
 			OUTPOST = from.capital_scope.observation_outpost
@@ -2175,15 +2179,21 @@ country_event = {
 	}
 	option = {
 		name = TASTY # Prey...
-		trigger = { has_valid_civic = civic_hive_devouring_swarm }
+		trigger = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
 	}
 	option = {
 		name = SCUM # Xeno Scum
-		trigger = { has_valid_civic = civic_fanatic_purifiers }
+		trigger = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
 	}
 	option = {
 		name = INF_SCUM # Vfix Dux: Infernal: Xeno Scum
-		trigger = { is_genocidal_infernal = yes }
+		trigger = {
+			is_genocidal_infernal = yes
+		}
 	}
 }
 
@@ -2357,7 +2367,9 @@ country_event = {
 	}
 	option = {
 		name = preftl.180.b # Don't cede
-		trigger = { is_homicidal = no }
+		trigger = {
+			is_homicidal = no
+		}
 		allow = {
 			NAND = {
 				values_others = yes
@@ -2426,7 +2438,9 @@ country_event = {
 	}
 	option = {
 		name = EXTERMINATE
-		trigger = { has_valid_civic = civic_machine_terminator }
+		trigger = {
+			has_valid_civic = civic_machine_terminator
+		}
 		from.capital_scope = {
 			set_owner = root
 			add_modifier = { modifier = culture_shock_early_space_age years = 10 }
@@ -2447,7 +2461,9 @@ country_event = {
 	}
 	option = {
 		name = SCUM # Xeno Scum
-		trigger = { has_valid_civic = civic_fanatic_purifiers }
+		trigger = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
 		from.capital_scope = {
 			set_owner = root
 			add_modifier = { modifier = culture_shock_early_space_age years = 10 }
@@ -2455,7 +2471,9 @@ country_event = {
 	}
 	option = {
 		name = INF_SCUM
-		trigger = { is_genocidal_infernal = yes }
+		trigger = {
+			is_genocidal_infernal = yes
+		}
 		from.capital_scope = {
 			set_owner = root
 			add_modifier = { modifier = culture_shock_early_space_age years = 10 }
@@ -2614,7 +2632,9 @@ country_event = {
 		text = preftl.2001.can_help.desc
 	}
 	desc = {
-		trigger = { has_country_flag = outbreak_perpetrator }
+		trigger = {
+			has_country_flag = outbreak_perpetrator
+		}
 		text = preftl.2001.perpetrator.desc
 	}
 
@@ -3919,7 +3939,9 @@ situation_event = {
 	}
 
 	option = {
-		trigger = { owner = { is_militarist = no } }
+		trigger = {
+			owner = { is_militarist = no }
+		}
 		name = UNDERSTOOD
 		owner = {
 			add_observation_insight_effect = {
@@ -4186,7 +4208,9 @@ situation_event = {
 	title = preftl.2090.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = preftl.2090.desc
 	}
 	desc = {
@@ -4323,7 +4347,9 @@ country_event = {
 	title = preftl.2101.name
 
 	desc = {
-		trigger = { has_policy_flag = interference_not_allowed }
+		trigger = {
+			has_policy_flag = interference_not_allowed
+		}
 		text = preftl.2101.can_not_help.desc
 	}
 	desc = {
@@ -5105,11 +5131,15 @@ situation_event = {
 
 	option = {
 		name = {
-			trigger = { owner = { is_gestalt = yes } }
+			trigger = {
+				owner = { is_gestalt = yes }
+			}
 			text = preftl.2140.a
 		}
 		name = {
-			trigger = { owner = { is_gestalt = no } }
+			trigger = {
+				owner = { is_gestalt = no }
+			}
 			text = FASCINATING
 		}
 		target.owner = {
@@ -5566,7 +5596,9 @@ country_event = {
 	title = preftl.2167.name
 
 	desc = {
-		trigger = { has_policy_flag = interference_not_allowed }
+		trigger = {
+			has_policy_flag = interference_not_allowed
+		}
 		text = preftl.2167.can_not_help.desc
 	}
 	desc = {
@@ -5686,7 +5718,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
@@ -5709,7 +5743,9 @@ situation_event = {
 		custom_tooltip = increase_aid_tt
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
@@ -5760,7 +5796,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 200 }
@@ -5783,7 +5821,9 @@ situation_event = {
 		custom_tooltip = increase_aid_tt
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = preftl.2175.b
 		allow = {
 			owner = {
@@ -5813,11 +5853,15 @@ situation_event = {
 	title = preftl.2180.name
 
 	desc = {
-		trigger = { has_situation_flag = consolidation_nwo }
+		trigger = {
+			has_situation_flag = consolidation_nwo
+		}
 		text = preftl.2180.a.desc
 	}
 	desc = {
-		trigger = { has_situation_flag = war_crimes_nwo }
+		trigger = {
+			has_situation_flag = war_crimes_nwo
+		}
 		text = preftl.2180.b.desc
 	}
 
@@ -5875,7 +5919,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		name = preftl.2180.a
 		set_situation_flag = aid_rebels_03
 		tooltip = {
@@ -5892,7 +5938,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = preftl.2180.b
 		set_situation_flag = aid_leader_03
 		tooltip = {
@@ -5916,11 +5964,15 @@ situation_event = {
 	title = preftl.2185.name
 
 	desc = {
-		trigger = { has_situation_flag = consolidation_nwo }
+		trigger = {
+			has_situation_flag = consolidation_nwo
+		}
 		text = preftl.2185.a.desc
 	}
 	desc = {
-		trigger = { has_situation_flag = war_crimes_nwo }
+		trigger = {
+			has_situation_flag = war_crimes_nwo
+		}
 		text = preftl.2185.b.desc
 	}
 
@@ -5978,7 +6030,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		name = preftl.2185.a
 		set_situation_flag = aid_rebels_04
 		tooltip = {
@@ -5995,7 +6049,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = preftl.2185.a
 		set_situation_flag = aid_leader_04
 		tooltip = {
@@ -6019,11 +6075,15 @@ situation_event = {
 	title = preftl.2190.name
 
 	desc = {
-		trigger = { has_situation_flag = fat_and_happy_nwo }
+		trigger = {
+			has_situation_flag = fat_and_happy_nwo
+		}
 		text = preftl.2190.a.desc
 	}
 	desc = {
-		trigger = { has_situation_flag = suppress_destroy_nwo }
+		trigger = {
+			has_situation_flag = suppress_destroy_nwo
+		}
 		text = preftl.2190.b.desc
 	}
 
@@ -6081,7 +6141,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		name = preftl.2190.a
 		set_situation_flag = aid_rebels_05
 		tooltip = {
@@ -6098,7 +6160,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = preftl.2195.a
 		set_situation_flag = aid_leader_05
 		tooltip = {
@@ -6122,11 +6186,15 @@ situation_event = {
 	title = preftl.2195.name
 
 	desc = {
-		trigger = { has_situation_flag = fat_and_happy_nwo }
+		trigger = {
+			has_situation_flag = fat_and_happy_nwo
+		}
 		text = preftl.2195.a.desc
 	}
 	desc = {
-		trigger = { has_situation_flag = suppress_destroy_nwo }
+		trigger = {
+			has_situation_flag = suppress_destroy_nwo
+		}
 		text = preftl.2195.b.desc
 	}
 
@@ -6184,7 +6252,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		name = preftl.2190.a
 		set_situation_flag = aid_rebels_06
 		tooltip = {
@@ -6201,7 +6271,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = preftl.2195.a
 		set_situation_flag = aid_leader_06
 		tooltip = {
@@ -6256,7 +6328,9 @@ situation_event = {
 	}
 
 	option = {
-		trigger = { current_situation_approach = approach_watch_nwo }
+		trigger = {
+			current_situation_approach = approach_watch_nwo
+		}
 		name = UNDERSTOOD
 		if = {
 			limit = {
@@ -6273,7 +6347,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = EXCELLENT
 		owner = {
 			add_modifier = { modifier = nwo_situation_01 years = 10 }
@@ -6293,7 +6369,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		name = preftl.2200.a
 		if = {
 			limit = {
@@ -6335,11 +6413,15 @@ situation_event = {
 	title = preftl.2205.name
 
 	desc = {
-		trigger = { has_situation_flag = power_plays_nwo }
+		trigger = {
+			has_situation_flag = power_plays_nwo
+		}
 		text = preftl.2205.a.desc
 	}
 	desc = {
-		trigger = { has_situation_flag = total_revolution_nwo }
+		trigger = {
+			has_situation_flag = total_revolution_nwo
+		}
 		text = preftl.2205.b.desc
 	}
 
@@ -6369,7 +6451,9 @@ situation_event = {
 	}
 
 	option = {
-		trigger = { current_situation_approach = approach_watch_nwo }
+		trigger = {
+			current_situation_approach = approach_watch_nwo
+		}
 		name = UNDERSTOOD
 		if = {
 			limit = {
@@ -6386,7 +6470,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_rebels }
+		trigger = {
+			current_situation_approach = approach_aid_rebels
+		}
 		name = EXCELLENT
 		owner = {
 			add_modifier = { modifier = nwo_situation_02 years = 10 }
@@ -6406,7 +6492,9 @@ situation_event = {
 		}
 	}
 	option = {
-		trigger = { current_situation_approach = approach_aid_leader }
+		trigger = {
+			current_situation_approach = approach_aid_leader
+		}
 		name = preftl.2205.a
 		if = {
 			limit = {

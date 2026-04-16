@@ -206,7 +206,9 @@ country_event = {
 	desc = war_in_heaven.2.desc
 
 	picture = {
-		trigger = { from = { is_hive_empire = no } }
+		trigger = {
+			from = { is_hive_empire = no }
+		}
 		picture = GFX_evt_fallen_empire
 	}
 	picture = {
@@ -711,12 +713,16 @@ country_event = {
 	}
 	option = {
 		name = war_in_heaven.4.c.2
-		trigger = { is_subject = no }
+		trigger = {
+			is_subject = no
+		}
 		ai_chance = { factor = 0 }
 	}
 	option = {
 		name = war_in_heaven.4.d
-		trigger = { is_subject = yes }
+		trigger = {
+			is_subject = yes
+		}
 		if = {
 			limit = {
 				overlord = { is_country_type = awakened_fallen_empire }
@@ -834,7 +840,9 @@ country_event = {
 
 	option = {
 		name = war_in_heaven.7.a
-		trigger = { is_galactic_emperor = yes }
+		trigger = {
+			is_galactic_emperor = yes
+		}
 		add_imperial_authority = 100
 		custom_tooltip = war_in_heaven.7.tooltip
 		hidden_effect = {
@@ -865,7 +873,9 @@ country_event = {
 	}
 	option = {
 		name = war_in_heaven.7.b
-		trigger = { is_galactic_emperor = no }
+		trigger = {
+			is_galactic_emperor = no
+		}
 		custom_tooltip = war_in_heaven.7.tooltip
 	}
 }
@@ -1236,7 +1246,9 @@ country_event = {
 	}
 	desc = {
 		text = war_in_heaven.13.desc3
-		trigger = { is_galactic_custodian = yes }
+		trigger = {
+			is_galactic_custodian = yes
+		}
 	}
 
 	picture = {
@@ -1750,7 +1762,9 @@ country_event = {
 
 	desc = {
 		text = war_in_heaven.19.desc
-		trigger = { from = { has_federation = no } }
+		trigger = {
+			from = { has_federation = no }
+		}
 	}
 	desc = {
 		text = war_in_heaven.19.desc3
@@ -1761,7 +1775,9 @@ country_event = {
 	}
 	desc = {
 		text = war_in_heaven.19.desc2
-		trigger = { is_in_federation_with = from }
+		trigger = {
+			is_in_federation_with = from
+		}
 	}
 
 	picture = {
@@ -1797,7 +1813,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { is_in_federation_with = from }
+		trigger = {
+			is_in_federation_with = from
+		}
 		name = war_in_heaven.19.a2
 		hidden_effect = {
 			from = { # this weird scoping is necessary for the scopes in the scripted effect
@@ -1882,7 +1900,9 @@ country_event = {
 
 	desc = {
 		text = war_in_heaven.22.desc
-		trigger = { from = { has_federation = no } }
+		trigger = {
+			from = { has_federation = no }
+		}
 	}
 	desc = {
 		text = war_in_heaven.22.desc2

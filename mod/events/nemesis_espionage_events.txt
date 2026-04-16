@@ -486,11 +486,15 @@ country_event = {
 
 	desc = {
 		text = espionage.1001.desc.network
-		trigger = { has_active_spynetwork = yes }
+		trigger = {
+			has_active_spynetwork = yes
+		}
 	}
 	desc = {
 		text = espionage.1001.desc.nonetwork
-		trigger = { has_active_spynetwork = no }
+		trigger = {
+			has_active_spynetwork = no
+		}
 	}
 
 	picture = GFX_evt_intelligence_report
@@ -671,7 +675,9 @@ country_event = {
 
 	desc = {
 		text = espionage.1012.desc.official
-		trigger = { exists = event_target:disavowed_agent_official }
+		trigger = {
+			exists = event_target:disavowed_agent_official
+		}
 	}
 	desc = {
 		text = espionage.1012.desc
@@ -809,11 +815,15 @@ country_event = {
 
 	desc = {
 		text = espionage.1016.desc.network
-		trigger = { has_active_spynetwork = yes }
+		trigger = {
+			has_active_spynetwork = yes
+		}
 	}
 	desc = {
 		text = espionage.1016.desc.nonetwork
-		trigger = { has_active_spynetwork = no }
+		trigger = {
+			has_active_spynetwork = no
+		}
 	}
 
 	picture = GFX_evt_operative_chase
@@ -1143,11 +1153,15 @@ country_event = {
 		}
 		name = {
 			text = espionage.1030.b.hive
-			trigger = { is_hive_empire = yes }
+			trigger = {
+				is_hive_empire = yes
+			}
 		}
 		name = {
 			text = espionage.1030.b.machine
-			trigger = { is_machine_empire = yes }
+			trigger = {
+				is_machine_empire = yes
+			}
 		}
 		root = { add_resource = { energy = -600 } }
 		ai_chance = { factor = 3 }
@@ -1184,11 +1198,15 @@ country_event = {
 	}
 	desc = {
 		text = espionage.1040.desc.caughtspies
-		trigger = { has_country_flag = espionage_caught_spies }
+		trigger = {
+			has_country_flag = espionage_caught_spies
+		}
 	}
 	desc = {
 		text = espionage.1040.desc.caught
-		trigger = { has_country_flag = espionage_caught_saboteurs }
+		trigger = {
+			has_country_flag = espionage_caught_saboteurs
+		}
 	}
 
 	picture = GFX_evt_acquire_asset
@@ -1395,11 +1413,15 @@ country_event = {
 	title = espionage.1060.name
 
 	desc = {
-		trigger = { is_megacorp = no }
+		trigger = {
+			is_megacorp = no
+		}
 		text = espionage.1060.desc
 	}
 	desc = {
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		text = espionage.1060.desc.corp
 	}
 
@@ -1642,7 +1664,9 @@ country_event = {
 
 	option = { # Keep quiet (known infiltrator)
 		name = espionage.1070.a
-		trigger = { has_country_flag = hostile_infiltrator_identified@from }
+		trigger = {
+			has_country_flag = hostile_infiltrator_identified@from
+		}
 		add_intel_report = {
 			category = military
 			level = 1
@@ -1692,7 +1716,9 @@ country_event = {
 	}
 	option = { # Protest (known infiltrator)
 		name = espionage.1070.b
-		trigger = { has_country_flag = hostile_infiltrator_identified@from }
+		trigger = {
+			has_country_flag = hostile_infiltrator_identified@from
+		}
 		add_resource = { influence = 20 }
 		root = {
 			add_opinion_modifier = { who = event_target:hostile_infiltration_country modifier = opinion_smear_campaign_espionage }
@@ -2340,7 +2366,9 @@ country_event = {
 	}
 	desc = {
 		text = espionage.1081.desc.samecountry
-		trigger = { has_country_flag = insidious_plot_samecountry }
+		trigger = {
+			has_country_flag = insidious_plot_samecountry
+		}
 	}
 
 	picture = GFX_evt_decryption
@@ -2485,7 +2513,9 @@ country_event = {
 	}
 	desc = {
 		text = espionage.1082.desc.samecountry
-		trigger = { has_country_flag = insidious_plot_samecountry }
+		trigger = {
+			has_country_flag = insidious_plot_samecountry
+		}
 	}
 
 	picture = GFX_evt_decryption
@@ -2602,7 +2632,9 @@ country_event = {
 	}
 	desc = {
 		text = espionage.1085.desc.neverspied
-		trigger = { has_country_flag = insidious_plot_samecountry }
+		trigger = {
+			has_country_flag = insidious_plot_samecountry
+		}
 	}
 
 	picture = GFX_evt_decryption

@@ -86,11 +86,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 }
@@ -117,7 +121,9 @@ country_event = {
 	title = shroud.10.name
 
 	desc = {
-		trigger = { has_country_flag = has_met_animator_of_clay }
+		trigger = {
+			has_country_flag = has_met_animator_of_clay
+		}
 		text = shroud.10.desc.1
 	}
 	desc = {
@@ -1060,7 +1066,9 @@ country_event = {
 
 	option = {
 		name = HOW_FORTUITOUS
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		custom_tooltip = shroud.500.tt
 		hidden_effect = {
 			add_random_research_option = {
@@ -1155,11 +1163,15 @@ planet_event = {
 	is_triggered_only = yes
 
 	desc = {
-		trigger = { is_anglers_newfound_fertility = yes }
+		trigger = {
+			is_anglers_newfound_fertility = yes
+		}
 		text = shroud.512.desc_anglers
 	}
 	desc = {
-		trigger = { is_anglers_newfound_fertility = no }
+		trigger = {
+			is_anglers_newfound_fertility = no
+		}
 		text = shroud.512.desc
 	}
 
@@ -1477,7 +1489,9 @@ country_event = {
 
 	option = {
 		name = shroud.543.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		custom_tooltip = shroud.543.tt
 		create_fleet = {
 			effect = {
@@ -1501,11 +1515,15 @@ country_event = {
 	is_triggered_only = yes
 
 	desc = {
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		text = shroud.545.desc_gestalt
 	}
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = shroud.545.desc
 	}
 
@@ -1519,7 +1537,9 @@ country_event = {
 
 	option = {
 		name = shroud.545.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		if = {
 			limit = { is_gestalt = yes }
 			add_modifier = { modifier = unilateral_cohesion years = @sb_cycles_duration_years }
@@ -1646,7 +1666,9 @@ country_event = {
 
 	option = {
 		name = HOW_FORTUITOUS
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		add_modifier = {
 			modifier = auspicious_planet_alignment
 			years = @sb_cycles_duration_years
@@ -1673,7 +1695,9 @@ country_event = {
 
 	option = {
 		name = shroud.560.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		add_modifier = { modifier = elemental_harmony years = @sb_cycles_duration_years }
 	}
 }
@@ -1788,7 +1812,9 @@ country_event = {
 
 	option = {
 		name = shroud.570.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		add_modifier = { modifier = councilor_harmony years = @sb_cycles_duration_years }
 	}
 }
@@ -1816,7 +1842,9 @@ country_event = {
 
 	option = {
 		name = shroud.575.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		add_monthly_resource_mult = {
 			resource = minor_artifacts
 			value = @tier2materialreward
@@ -1836,11 +1864,15 @@ country_event = {
 	is_triggered_only = yes
 
 	desc = {
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		text = shroud.700.desc_gestalt
 	}
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = shroud.700.desc
 	}
 
@@ -1855,7 +1887,9 @@ country_event = {
 
 	option = {
 		name = HOW_UNFORTUNATE
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		tooltip = {
 			add_modifier = { modifier = discordance years = @sb_cycles_duration_years }
 		}
@@ -1923,11 +1957,15 @@ country_event = {
 
 	desc = {
 		text = shroud.710.desc_default
-		trigger = { exists = event_target:silo_fire_planet_targeted }
+		trigger = {
+			exists = event_target:silo_fire_planet_targeted
+		}
 	}
 	desc = {
 		text = shroud.710.desc_starbase
-		trigger = { exists = event_target:silo_fire_starbase_targeted }
+		trigger = {
+			exists = event_target:silo_fire_starbase_targeted
+		}
 	}
 	desc = {
 		text = shroud.710.desc
@@ -2027,7 +2065,9 @@ country_event = {
 
 	option = {
 		name = shroud.715.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		tooltip = {
 			add_modifier = { modifier = diplomatic_faux_pas years = @sb_cycles_duration_years }
 		}
@@ -2095,7 +2135,9 @@ country_event = {
 
 	option = {
 		name = HOW_UNFORTUNATE
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		custom_tooltip = shroud.720.tt
 		tooltip = {
 			if = {
@@ -2168,11 +2210,15 @@ leader_event = {
 	is_triggered_only = yes
 
 	desc = {
-		trigger = { is_machine_species = yes }
+		trigger = {
+			is_machine_species = yes
+		}
 		text = shroud.725.desc_killed_machine
 	}
 	desc = {
-		trigger = { is_organic_species = yes }
+		trigger = {
+			is_organic_species = yes
+		}
 		text = shroud.725.desc_killed
 	}
 	desc = {
@@ -2546,7 +2592,9 @@ country_event = {
 
 	option = {
 		name = UNFORTUNATE
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		tooltip = {
 			add_modifier = { modifier = planet_in_retrograde years = @sb_cycles_duration_years }
 		}
@@ -2573,7 +2621,9 @@ country_event = {
 
 	option = {
 		name = shroud.755.a
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		tooltip = {
 			add_modifier = { modifier = elemental_imbalance years = @sb_cycles_duration_years }
 		}
@@ -2672,7 +2722,9 @@ country_event = {
 
 	option = {
 		name = HOW_UNFORTUNATE
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		tooltip = {
 			add_modifier = { modifier = discordant_council years = @sb_cycles_duration_years }
 		}
@@ -2688,11 +2740,15 @@ country_event = {
 	is_triggered_only = yes
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = shroud.770.desc_machine
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = shroud.770.desc_hive
 	}
 	desc = {
@@ -2725,7 +2781,9 @@ country_event = {
 
 	option = {
 		name = HOW_UNFORTUNATE
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		tooltip = {
 			event_target:careless_talk_empire = {
 				add_opinion_modifier = { who = prev modifier = opinion_careless_talk }
@@ -2769,7 +2827,9 @@ country_event = {
 
 	option = {
 		name = HOW_UNFORTUNATE
-		trigger = { is_superstitious_beliefs_empire = yes }
+		trigger = {
+			is_superstitious_beliefs_empire = yes
+		}
 		custom_tooltip = shroud.775.tt
 	}
 }
@@ -3597,7 +3657,9 @@ country_event = {
 			}
 		}
 		custom_tooltip = attunement_choice_tt
-		trigger = { is_homicidal = yes }
+		trigger = {
+			is_homicidal = yes
+		}
 		hidden_effect = {
 			country_event = { id = shroud.3023 }
 		}
@@ -4128,7 +4190,9 @@ country_event = {
 	option = {
 		name = shroud.3035.b # push it back
 		custom_tooltip = attunement_choice_tt
-		trigger = { is_homicidal = no }
+		trigger = {
+			is_homicidal = no
+		}
 		hidden_effect = {
 			country_event = { id = shroud.3037 }
 		}
@@ -4139,7 +4203,9 @@ country_event = {
 	option = {
 		name = shroud.3035.b # push it back
 		custom_tooltip = attunement_choice_tt
-		trigger = { is_homicidal = yes }
+		trigger = {
+			is_homicidal = yes
+		}
 		hidden_effect = {
 			country_event = { id = shroud.3037 }
 		}
@@ -6827,11 +6893,15 @@ country_event = {
 	picture = GFX_evt_shroudwalker_enclave
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -6919,7 +6989,9 @@ country_event = {
 	}
 	option = { # Ruler 3
 		name = shroud.3510.c
-		trigger = { exists = event_target:leader_3 }
+		trigger = {
+			exists = event_target:leader_3
+		}
 		hidden_effect = {
 			event_target:leader_3 = { save_event_target_as = chosen_leader }
 			country_event = { id = utopia.2682 }
@@ -6927,7 +6999,9 @@ country_event = {
 	}
 	option = { # Ruler 4
 		name = shroud.3510.d
-		trigger = { exists = event_target:leader_4 }
+		trigger = {
+			exists = event_target:leader_4
+		}
 		hidden_effect = {
 			event_target:leader_4 = { save_event_target_as = chosen_leader }
 			country_event = { id = utopia.2682 }
@@ -6942,11 +7016,15 @@ country_event = {
 	picture = GFX_evt_chosen_leader
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7093,11 +7171,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7176,11 +7258,15 @@ country_event = {
 	diplomatic_title = shroud.3.diplo_title
 
 	desc = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		text = shroud.4046.desc.robot
 	}
 	desc = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		text = shroud.4046.desc.organic
 	}
 
@@ -7193,11 +7279,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7275,11 +7365,15 @@ country_event = {
 	is_triggered_only = yes
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7340,11 +7434,15 @@ country_event = {
 	is_triggered_only = yes
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7450,11 +7548,15 @@ country_event = {
 	is_triggered_only = yes
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7517,11 +7619,15 @@ country_event = {
 	is_triggered_only = yes
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7558,11 +7664,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -7599,7 +7709,9 @@ country_event = {
 			text = shroud.4135.b
 		}
 		name = {
-			trigger = { has_country_flag = forging_our_own_path }
+			trigger = {
+				has_country_flag = forging_our_own_path
+			}
 			text = shroud.4135.b.forging_our_own_path
 		}
 		custom_tooltip = shroud.reject_covenant.tt
@@ -8136,7 +8248,9 @@ country_event = {
 	}
 	option = {
 		name = shroud.4205.h
-		trigger = { has_global_flag = end_of_the_cycle_complete }
+		trigger = {
+			has_global_flag = end_of_the_cycle_complete
+		}
 		hidden_effect = {
 			country_event = { id = shroud.4290 }
 		}
@@ -8290,7 +8404,9 @@ country_event = {
 	}
 	option = {
 		name = shroud.4240.b
-		trigger = { exists = event_target:raid_target_1 }
+		trigger = {
+			exists = event_target:raid_target_1
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @raidhighallow }
 			resource_stockpile_compare = { resource = influence value >= 50 }
@@ -8326,7 +8442,9 @@ country_event = {
 	}
 	option = {
 		name = shroud.4240.c
-		trigger = { exists = event_target:raid_target_2 }
+		trigger = {
+			exists = event_target:raid_target_2
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @raidhighallow }
 			resource_stockpile_compare = { resource = influence value >= 50 }
@@ -8362,7 +8480,9 @@ country_event = {
 	}
 	option = {
 		name = shroud.4240.d
-		trigger = { exists = event_target:raid_target_3 }
+		trigger = {
+			exists = event_target:raid_target_3
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @raidhighallow }
 			resource_stockpile_compare = { resource = influence value >= 50 }
@@ -8398,7 +8518,9 @@ country_event = {
 	}
 	option = {
 		name = shroud.4240.e
-		trigger = { exists = event_target:raid_target_4 }
+		trigger = {
+			exists = event_target:raid_target_4
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= @raidhighallow }
 			resource_stockpile_compare = { resource = influence value >= 50 }
@@ -9127,11 +9249,15 @@ leader_event = {
 
 	desc = {
 		text = shroud.4286.desc.councilor
-		trigger = { is_councilor = yes }
+		trigger = {
+			is_councilor = yes
+		}
 	}
 	desc = {
 		text = shroud.4286.desc
-		trigger = { is_councilor = no }
+		trigger = {
+			is_councilor = no
+		}
 	}
 
 	show_sound = event_default
@@ -9441,7 +9567,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.26.a
-		trigger = { exists = event_target:enclave_owner }
+		trigger = {
+			exists = event_target:enclave_owner
+		}
 	}
 }
 
@@ -9519,17 +9647,23 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
 	option = {
 		name = shroud.4505.a.default
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		random_owned_planet = {
 			random_owned_pop_group = {
 				limit = { pop_group_size >= 100 }
@@ -10273,7 +10407,9 @@ country_event = {
 	}
 
 	option = {
-		trigger = { exists = event_target:hindsight_planet_candidate_1 }
+		trigger = {
+			exists = event_target:hindsight_planet_candidate_1
+		}
 		name = shroud.4890.a
 		event_target:hindsight_planet_candidate_1 = { save_event_target_as = selected_hindsight_planet }
 		ai_chance = {
@@ -10298,7 +10434,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { exists = event_target:hindsight_planet_candidate_2 }
+		trigger = {
+			exists = event_target:hindsight_planet_candidate_2
+		}
 		name = shroud.4890.b
 		event_target:hindsight_planet_candidate_2 = { save_event_target_as = selected_hindsight_planet }
 		ai_chance = {
@@ -10323,7 +10461,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { exists = event_target:hindsight_planet_candidate_3 }
+		trigger = {
+			exists = event_target:hindsight_planet_candidate_3
+		}
 		name = shroud.4890.c
 		event_target:hindsight_planet_candidate_3 = { save_event_target_as = selected_hindsight_planet }
 		ai_chance = {
@@ -10348,7 +10488,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { exists = event_target:hindsight_planet_candidate_4 }
+		trigger = {
+			exists = event_target:hindsight_planet_candidate_4
+		}
 		name = shroud.4890.d
 		event_target:hindsight_planet_candidate_4 = { save_event_target_as = selected_hindsight_planet }
 		ai_chance = {
@@ -10827,11 +10969,15 @@ country_event = {
 	picture = GFX_evt_surreal_visions
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -11660,20 +11806,28 @@ country_event = {
 	title = shroud.5110.title
 
 	desc = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		text = shroud.5110.desc_robot
 	}
 	desc = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		text = shroud.5110.desc_organic
 	}
 
 	picture = {
-		trigger = { has_country_flag = the_eater_of_worlds_as_chosen_patron }
+		trigger = {
+			has_country_flag = the_eater_of_worlds_as_chosen_patron
+		}
 		picture = GFX_evt_shroud_eater_of_worlds
 	}
 	picture = {
-		trigger = { has_country_flag = the_cradle_of_souls_as_chosen_patron }
+		trigger = {
+			has_country_flag = the_cradle_of_souls_as_chosen_patron
+		}
 		picture = GFX_evt_shroud_cradle_of_souls
 	}
 	picture = {
@@ -11683,7 +11837,9 @@ country_event = {
 		picture = GFX_evt_shroud_instrument_of_desire
 	}
 	picture = {
-		trigger = { has_country_flag = the_composer_of_strands_as_chosen_patron }
+		trigger = {
+			has_country_flag = the_composer_of_strands_as_chosen_patron
+		}
 		picture = GFX_evt_shroud_composer_of_strands
 	}
 
@@ -11737,15 +11893,21 @@ country_event = {
 	}
 
 	desc = {
-		trigger = { has_country_flag = the_composer_of_strands_as_chosen_patron }
+		trigger = {
+			has_country_flag = the_composer_of_strands_as_chosen_patron
+		}
 		text = shroud.5115.desc.composer
 	}
 	desc = {
-		trigger = { has_country_flag = the_eater_of_worlds_as_chosen_patron }
+		trigger = {
+			has_country_flag = the_eater_of_worlds_as_chosen_patron
+		}
 		text = shroud.5115.desc.eater
 	}
 	desc = {
-		trigger = { has_country_flag = the_cradle_of_souls_as_chosen_patron }
+		trigger = {
+			has_country_flag = the_cradle_of_souls_as_chosen_patron
+		}
 		text = shroud.5115.desc.cradle
 	}
 	desc = {
@@ -13764,11 +13926,15 @@ country_event = {
 
 	option = {
 		name = {
-			trigger = { is_gestalt = yes }
+			trigger = {
+				is_gestalt = yes
+			}
 			text = shroud.7120.a.gestalt
 		}
 		name = {
-			trigger = { is_gestalt = no }
+			trigger = {
+				is_gestalt = no
+			}
 			text = shroud.7120.a.default
 		}
 		custom_tooltip = shroud.7120.a.tt
@@ -13790,11 +13956,15 @@ country_event = {
 	}
 	option = {
 		name = {
-			trigger = { is_robot_empire = yes }
+			trigger = {
+				is_robot_empire = yes
+			}
 			text = shroud.7120.b.machine
 		}
 		name = {
-			trigger = { is_robot_empire = no }
+			trigger = {
+				is_robot_empire = no
+			}
 			text = shroud.7120.b.default
 		}
 	}
@@ -13828,11 +13998,15 @@ country_event = {
 	}
 	option = {
 		name = {
-			trigger = { is_robot_empire = yes }
+			trigger = {
+				is_robot_empire = yes
+			}
 			text = shroud.7120.b.machine
 		}
 		name = {
-			trigger = { is_robot_empire = no }
+			trigger = {
+				is_robot_empire = no
+			}
 			text = shroud.7120.b.default
 		}
 	}
@@ -15255,11 +15429,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -15655,11 +15833,15 @@ country_event = {
 	picture = GFX_evt_unspeakable_horror
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -15724,11 +15906,15 @@ country_event = {
 	picture = GFX_evt_ship_travel
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -15985,11 +16171,15 @@ country_event = {
 	desc = shroud.12010.desc
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16077,20 +16267,28 @@ country_event = {
 	title = shroud.12020.name
 
 	desc = {
-		trigger = { has_covenant_with_the_eater_of_worlds = yes }
+		trigger = {
+			has_covenant_with_the_eater_of_worlds = yes
+		}
 		text = shroud.12020.desc.covenant
 	}
 	desc = {
-		trigger = { has_covenant_with_the_eater_of_worlds = no }
+		trigger = {
+			has_covenant_with_the_eater_of_worlds = no
+		}
 		text = shroud.12020.desc.no_covenant
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16178,11 +16376,15 @@ country_event = {
 	desc = shroud.12030.desc
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16268,11 +16470,15 @@ country_event = {
 	desc = shroud.12040.desc
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16374,11 +16580,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16511,11 +16721,15 @@ country_event = {
 	desc = shroud.12050.desc
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16620,11 +16834,15 @@ country_event = {
 	}
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 
@@ -16922,11 +17140,15 @@ country_event = {
 	desc = shroud.12155.desc
 
 	show_sound = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		sound = event_psionic
 	}
 

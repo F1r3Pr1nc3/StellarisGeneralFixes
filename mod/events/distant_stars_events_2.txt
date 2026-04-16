@@ -1117,7 +1117,9 @@ country_event = {
 	}
 	option = {
 		name = distar.1006.c
-		trigger = { is_species_class = FUN }
+		trigger = {
+			is_species_class = FUN
+		}
 		hidden_effect = {
 			country_event = { id = distar.1009 }
 			country_event = { id = distar.1011 days = 60 random = 20 }
@@ -2141,7 +2143,9 @@ ship_event = {
 
 	option = {
 		name = distar.1060.a
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		owner = {
 			add_modifier = { modifier = a_hitchikers_guide_to_the_galaxy years = 10 }
 			add_monthly_resource_mult = {
@@ -2154,7 +2158,9 @@ ship_event = {
 	}
 	option = {
 		name = distar.1060.b
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_modifier = { modifier = littering_loitering_liability years = 10 }
 			add_monthly_resource_mult = {
@@ -5122,7 +5128,9 @@ country_event = {
 		text = distar.5067.desc.a
 	}
 	desc = {
-		trigger = { has_country_flag = enigmatically_unlucky }
+		trigger = {
+			has_country_flag = enigmatically_unlucky
+		}
 		text = distar.5067.desc.b
 	}
 
@@ -5145,7 +5153,9 @@ country_event = {
 	option = {
 		name = distar.5067.a
 		custom_tooltip = distar.5067.a.tooltip
-		trigger = { has_country_flag = enigmatically_unlucky }
+		trigger = {
+			has_country_flag = enigmatically_unlucky
+		}
 		hidden_effect = {
 			set_country_flag = enigmatic_fatigue
 			while = {
@@ -5180,7 +5190,9 @@ country_event = {
 	}
 	option = {
 		name = distar.5067.b
-		trigger = { has_country_flag = enigmatically_unlucky }
+		trigger = {
+			has_country_flag = enigmatically_unlucky
+		}
 		hidden_effect = {
 			set_country_flag = aborted_enigmatic_uplift
 		}
@@ -6122,7 +6134,9 @@ country_event = {
 
 	option = { # Amazing. Proceed.
 		name = distar.3011.a
-		trigger = { is_xenophobe = no }
+		trigger = {
+			is_xenophobe = no
+		}
 		enable_special_project = {
 			name = "impossible_organism_project_2"
 			location = root.owner.capital_scope
@@ -6131,7 +6145,9 @@ country_event = {
 	}
 	option = { # Phobe
 		name = distar.3011.a.phobe
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		enable_special_project = {
 			name = "impossible_organism_project_2"
 			location = root.owner.capital_scope
@@ -6210,7 +6226,9 @@ country_event = {
 	}
 
 	option = { # Astonishing. Every species-X should have one!
-		trigger = { is_xenophile = yes }
+		trigger = {
+			is_xenophile = yes
+		}
 		allow = {
 			# any_owned_planet = {
 			#	free_housing > 0
@@ -6253,7 +6271,9 @@ country_event = {
 		}
 	}
 	option = { # Servitor
-		trigger = { has_civic = civic_machine_servitor }
+		trigger = {
+			has_civic = civic_machine_servitor
+		}
 		allow = {
 			# any_owned_planet = {
 			#	free_housing > 0
@@ -6273,7 +6293,9 @@ country_event = {
 		}
 	}
 	option = { # Assimilator
-		trigger = { has_civic = civic_machine_assimilator }
+		trigger = {
+			has_civic = civic_machine_assimilator
+		}
 		allow = {
 			# any_owned_planet = {
 			#	free_housing > 0
@@ -6298,7 +6320,9 @@ country_event = {
 	option = { # No room, Assimilator
 		name = "distar.3013.b.no_room.kill"
 		custom_tooltip = "distar.3013.b.no_room.kill.tooltip"
-		trigger = { has_civic = civic_machine_assimilator }
+		trigger = {
+			has_civic = civic_machine_assimilator
+		}
 		add_monthly_resource_mult = {
 			resource = influence
 			value = @tier3influencereward
@@ -6391,7 +6415,9 @@ country_event = {
 		text = "distar.3017.desc"
 	}
 	desc = {
-		trigger = { has_civic = civic_machine_assimilator }
+		trigger = {
+			has_civic = civic_machine_assimilator
+		}
 		text = "distar.3017.desc.assim"
 	}
 
@@ -7217,7 +7243,9 @@ country_event = {
 		}
 	}
 	option = { # Sell it.
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		name = distar.3056.b
 		custom_tooltip = distar.3056.b.tooltip
 		add_monthly_resource_mult = {
@@ -7241,7 +7269,9 @@ country_event = {
 		}
 	}
 	option = { # Irradiate it.
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		name = distar.3056.c
 		custom_tooltip = distar.3056.c.tooltip
 		add_monthly_resource_mult = {

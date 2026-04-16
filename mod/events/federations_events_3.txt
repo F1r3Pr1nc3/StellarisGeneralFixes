@@ -876,43 +876,63 @@ country_event = {
 
 	desc = {
 		text = "federations3.2010.red.desc"
-		trigger = { has_country_flag = discloud_red }
+		trigger = {
+			has_country_flag = discloud_red
+		}
 	}
 	desc = {
 		text = "federations3.2010.yellow.desc"
-		trigger = { has_country_flag = discloud_yellow }
+		trigger = {
+			has_country_flag = discloud_yellow
+		}
 	}
 	desc = {
 		text = "federations3.2010.green.desc"
-		trigger = { has_country_flag = discloud_green }
+		trigger = {
+			has_country_flag = discloud_green
+		}
 	}
 	desc = {
 		text = "federations3.2010.blue.desc"
-		trigger = { has_country_flag = discloud_blue }
+		trigger = {
+			has_country_flag = discloud_blue
+		}
 	}
 	desc = {
 		text = "federations3.2010.indigo.desc"
-		trigger = { has_country_flag = discloud_indigo }
+		trigger = {
+			has_country_flag = discloud_indigo
+		}
 	}
 	desc = {
 		text = "federations3.2010.pink.desc"
-		trigger = { has_country_flag = discloud_pink }
+		trigger = {
+			has_country_flag = discloud_pink
+		}
 	}
 	desc = {
 		text = "federations3.2010.gray.desc"
-		trigger = { has_country_flag = discloud_gray }
+		trigger = {
+			has_country_flag = discloud_gray
+		}
 	}
 	desc = {
 		text = "federations3.2010.orange.desc"
-		trigger = { has_country_flag = discloud_orange }
+		trigger = {
+			has_country_flag = discloud_orange
+		}
 	}
 	desc = {
 		text = "federations3.2010.brown.desc"
-		trigger = { has_country_flag = discloud_brown }
+		trigger = {
+			has_country_flag = discloud_brown
+		}
 	}
 	desc = {
 		text = "federations3.2010.cyan.desc"
-		trigger = { has_country_flag = discloud_cyan }
+		trigger = {
+			has_country_flag = discloud_cyan
+		}
 	}
 
 	location = capital_scope
@@ -2130,7 +2150,9 @@ country_event = {
 	}
 	option = { # Refuse to send a delegation
 		name = federations3.2205.b
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		hidden_effect = {
 			event_target:ecumenical_council_host = {
 				change_variable = { which = ecumenical_council_conciliation value = -3 }
@@ -2173,7 +2195,9 @@ country_event = {
 	}
 	option = { # We're gestalt, this does not concern us.
 		name = federations3.2205.d
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 }
 
@@ -2247,7 +2271,9 @@ country_event = {
 	}
 	option = { # Pompous Purist option. Be the biggest d*ck ever for an increased reward.
 		name = federations3.2215.c
-		trigger = { has_civic = civic_pompous_purists }
+		trigger = {
+			has_civic = civic_pompous_purists
+		}
 		add_resource = { influence = 100 }
 		add_monthly_resource_mult = {
 			resource = unity
@@ -2305,7 +2331,9 @@ country_event = {
 	}
 	option = { # Gospel of the Masses. Bribe people until they agree with you.
 		name = federations3.2220.c
-		trigger = { has_civic = civic_gospel_of_the_masses }
+		trigger = {
+			has_civic = civic_gospel_of_the_masses
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 5000 }
 		}
@@ -2366,7 +2394,9 @@ country_event = {
 	}
 	option = { # Exalted Priesthood. Devise a wise solution
 		name = federations3.2225.c
-		trigger = { has_civic = civic_exalted_priesthood }
+		trigger = {
+			has_civic = civic_exalted_priesthood
+		}
 		hidden_effect = {
 			event_target:ecumenical_council_host = {
 				change_variable = { which = ecumenical_council_conciliation value = 2 }
@@ -2453,7 +2483,9 @@ country_event = {
 	}
 	option = { # Imperial Cult. Send them Imperial toenails as a relic. Surely they'll like them.
 		name = federations3.2235.c
-		trigger = { has_civic = civic_imperial_cult }
+		trigger = {
+			has_civic = civic_imperial_cult
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
@@ -2513,7 +2545,9 @@ country_event = {
 	}
 	option = { # Death Cult. Grant your envoy a fast track to sacrifice
 		name = federations3.2240.c
-		trigger = { is_death_cult_empire = yes }
+		trigger = {
+			is_death_cult_empire = yes
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier1unityreward
@@ -2574,7 +2608,9 @@ country_event = {
 	}
 	option = { # Memorialist. Offer to send the culprits on a meditative retreat on tomb worlds
 		name = federations3.2245.c
-		trigger = { has_civic = civic_memorialist }
+		trigger = {
+			has_civic = civic_memorialist
+		}
 		add_resource = { influence = 50 }
 		hidden_effect = {
 			event_target:ecumenical_council_host = {

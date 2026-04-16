@@ -463,7 +463,9 @@ astral_rift_event = {
 	}
 	option = {
 		name = astral_rift.15.d
-		trigger = { has_astral_rift_flag = militants_first_choice }
+		trigger = {
+			has_astral_rift_flag = militants_first_choice
+		}
 		set_next_astral_rift_event = { id = astral_rift.16 }
 		ai_chance = {
 			inline_script = astral_rift/rift_difficulty_ai_weight
@@ -1277,11 +1279,15 @@ astral_rift_event = {
 	title = astral_rift.115.name
 
 	desc = {
-		trigger = { has_astral_rift_flag = drill_through_floor }
+		trigger = {
+			has_astral_rift_flag = drill_through_floor
+		}
 		text = astral_rift.115.desc.glass
 	}
 	desc = {
-		trigger = { has_astral_rift_flag = deconstruct_wall }
+		trigger = {
+			has_astral_rift_flag = deconstruct_wall
+		}
 		text = astral_rift.115.desc.walls
 	}
 
@@ -1947,7 +1953,9 @@ astral_rift_event = {
 	title = astral_rift.515.name
 
 	desc = {
-		trigger = { explorer = { is_gestalt = no } }
+		trigger = {
+			explorer = { is_gestalt = no }
+		}
 		text = astral_rift.515.desc.aquatic
 	}
 	desc = {
@@ -3168,11 +3176,15 @@ fleet_event = {
 	title = astral_rift.840.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = astral_rift.840.desc.default
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = astral_rift.840.desc.gestalt
 	}
 
@@ -3226,43 +3238,59 @@ country_event = {
 	title = astral_rift.845.name
 
 	desc = {
-		trigger = { is_tutorial_level = 0 }
+		trigger = {
+			is_tutorial_level = 0
+		}
 		text = astral_rift.845.desc.disabled
 	}
 	desc = {
-		trigger = { is_tutorial_level != 0 }
+		trigger = {
+			is_tutorial_level != 0
+		}
 		text = astral_rift.845.desc.enabled
 	}
 
 	show_sound = {
 		sound = tut_evil_vir_assistance_mode_on
-		trigger = { is_tutorial_level = 0 }
+		trigger = {
+			is_tutorial_level = 0
+		}
 	}
 	show_sound = {
 		sound = tut_evil_vir_asistance_shut_down
-		trigger = { is_tutorial_level != 0 }
+		trigger = {
+			is_tutorial_level != 0
+		}
 	}
 
 	is_triggered_only = yes
 	is_advisor_event = yes
 	option = {
 		name = astral_rift.845.shutdown
-		trigger = { is_tutorial_level = 0 }
+		trigger = {
+			is_tutorial_level = 0
+		}
 	}
 	option = {
 		name = astral_rift.845.b
-		trigger = { is_tutorial_level = 0 }
+		trigger = {
+			is_tutorial_level = 0
+		}
 		hidden_effect = {
 			set_tutorial_level = 2
 		}
 	}
 	option = {
 		name = astral_rift.845.c
-		trigger = { is_tutorial_level != 0 }
+		trigger = {
+			is_tutorial_level != 0
+		}
 	}
 	option = {
 		name = astral_rift.845.shutdown
-		trigger = { is_tutorial_level != 0 }
+		trigger = {
+			is_tutorial_level != 0
+		}
 		hidden_effect = {
 			set_tutorial_level = 0
 		}

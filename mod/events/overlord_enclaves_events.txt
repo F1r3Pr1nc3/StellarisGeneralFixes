@@ -23,11 +23,15 @@ ship_event = {
 	title = "enclave.100.name"
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.100a.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.100b.desc
 	}
 
@@ -321,7 +325,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.26.a
-		trigger = { has_country_flag = merc_enclave_founder@root }
+		trigger = {
+			has_country_flag = merc_enclave_founder@root
+		}
 	}
 }
 
@@ -572,7 +578,9 @@ country_event = {
 		text = enclave.205.desc
 	}
 	desc = {
-		trigger = { is_hostile = event_target:mercenary_enclave_country }
+		trigger = {
+			is_hostile = event_target:mercenary_enclave_country
+		}
 		text = enclave.205.desc.hostile
 	}
 
@@ -3242,7 +3250,9 @@ country_event = {
 	}
 	option = {
 		name = DEAL
-		trigger = { max_naval_capacity < 76 }
+		trigger = {
+			max_naval_capacity < 76
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 1000 }
 		}
@@ -3315,7 +3325,9 @@ country_event = {
 	}
 	option = {
 		name = DEAL
-		trigger = { max_naval_capacity > 450 }
+		trigger = {
+			max_naval_capacity > 450
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 6000 }
 		}
@@ -3342,7 +3354,9 @@ country_event = {
 
 	option = {
 		name = DEAL
-		trigger = { max_naval_capacity < 76 }
+		trigger = {
+			max_naval_capacity < 76
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 1000 }
 		}
@@ -3415,7 +3429,9 @@ country_event = {
 	}
 	option = {
 		name = DEAL
-		trigger = { max_naval_capacity > 450 }
+		trigger = {
+			max_naval_capacity > 450
+		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 6000 }
 		}
@@ -4371,7 +4387,9 @@ country_event = {
 		text = enclave.310.desc
 	}
 	desc = {
-		trigger = { has_country_flag = has_organic_scrappable_fleet }
+		trigger = {
+			has_country_flag = has_organic_scrappable_fleet
+		}
 		text = enclave.310.organic.desc
 	}
 	desc = {
@@ -4475,7 +4493,9 @@ country_event = {
 	# Choose a fleet to scrap (fleet 1)
 	option = {
 		name = enclave.310.b
-		trigger = { exists = event_target:scrappable_fleet_1 }
+		trigger = {
+			exists = event_target:scrappable_fleet_1
+		}
 		allow = {
 			resource_stockpile_compare = {
 				resource = energy
@@ -4553,7 +4573,9 @@ country_event = {
 	# Choose a fleet to scrap (fleet 2)
 	option = {
 		name = enclave.310.c
-		trigger = { exists = event_target:scrappable_fleet_2 }
+		trigger = {
+			exists = event_target:scrappable_fleet_2
+		}
 		allow = {
 			resource_stockpile_compare = {
 				resource = energy
@@ -4631,7 +4653,9 @@ country_event = {
 	# Choose a fleet to scrap (fleet 3)
 	option = {
 		name = enclave.310.d
-		trigger = { exists = event_target:scrappable_fleet_3 }
+		trigger = {
+			exists = event_target:scrappable_fleet_3
+		}
 		allow = {
 			resource_stockpile_compare = {
 				resource = energy
@@ -4709,7 +4733,9 @@ country_event = {
 	# Choose a fleet to scrap (fleet 4)
 	option = {
 		name = enclave.310.e
-		trigger = { exists = event_target:scrappable_fleet_4 }
+		trigger = {
+			exists = event_target:scrappable_fleet_4
+		}
 		allow = {
 			resource_stockpile_compare = {
 				resource = energy
@@ -4924,7 +4950,9 @@ country_event = {
 		text = enclave.320.desc
 	}
 	desc = {
-		trigger = { has_country_flag = salvager_enclave_recently_reclaimed_all }
+		trigger = {
+			has_country_flag = salvager_enclave_recently_reclaimed_all
+		}
 		text = enclave.320.timeout.desc
 	}
 
@@ -5983,7 +6011,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_country_flag = salvager_scrap_bonus_engineering }
+		trigger = {
+			has_country_flag = salvager_scrap_bonus_engineering
+		}
 		name = EXCELLENT
 		add_resource = {
 			alloys = 1
@@ -6003,7 +6033,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { has_country_flag = salvager_scrap_bonus_physics }
+		trigger = {
+			has_country_flag = salvager_scrap_bonus_physics
+		}
 		name = EXCELLENT
 		add_resource = {
 			alloys = 1
@@ -6067,7 +6099,9 @@ country_event = {
 	}
 	option = {
 		name = CURIOUS
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 	option = {
 		name = enclave.365.d
@@ -6410,7 +6444,9 @@ country_event = {
 	# Purchase Divination
 	option = {
 		name = enclave.405.a
-		trigger = { shroudwalker_no_dialog = no }
+		trigger = {
+			shroudwalker_no_dialog = no
+		}
 		allow = {
 			custom_tooltip = {
 				fail_text = shroudwalker_divination_cooldown
@@ -6428,7 +6464,9 @@ country_event = {
 	# Purchase their aid
 	option = {
 		name = enclave.405.b
-		trigger = { shroudwalker_no_dialog = no }
+		trigger = {
+			shroudwalker_no_dialog = no
+		}
 		allow = {
 			custom_tooltip = {
 				fail_text = shroudwalker_teacher_cooldown_tt
@@ -6606,7 +6644,9 @@ country_event = {
 	# Cease dialog
 	option = {
 		name = GOODBYE
-		trigger = { shroudwalker_no_dialog = no }
+		trigger = {
+			shroudwalker_no_dialog = no
+		}
 		default_hide_option = yes
 	}
 	# No dialog
@@ -7326,7 +7366,9 @@ fleet_event = {
 	}
 	option = {
 		name = "enclave.4250.d"
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 	}
 }
 
@@ -8093,7 +8135,9 @@ planet_event = {
 	}
 	option = {
 		name = enclave.5090.c
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		hidden_effect = {
 			planet_event = { id = enclave.5100 days = 60 }
 			event_target:shroudwalker_enclave_country = {
@@ -9060,11 +9104,15 @@ planet_event = {
 	title = enclave.5501.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.5501.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.5501.gestalt.desc
 	}
 
@@ -9082,11 +9130,15 @@ planet_event = {
 
 	option = {
 		name = CURSES
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	option = {
 		name = WORRYING
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 	option = {
 		name = CURIOUS
@@ -9115,20 +9167,28 @@ planet_event = {
 	title = enclave.5502.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.5502.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.5502.gestalt.desc
 	}
 
 	picture = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		picture = GFX_evt_burning_city
 	}
 	picture = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		picture = GFX_evt_sabotaged_ship
 	}
 
@@ -9147,18 +9207,24 @@ planet_event = {
 	# Wait it out
 	option = {
 		name = enclave.5502.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		custom_tooltip = enclave.5502.a.tt
 	}
 	option = {
 		name = enclave.5502.gestalt.a
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		custom_tooltip = enclave.5502.gestalt.a.tt
 	}
 	# Wait, but apply social benefits
 	option = {
 		name = enclave.5502.b
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = consumer_goods value >= 800 }
@@ -9173,13 +9239,17 @@ planet_event = {
 	# Sceptical lockdown
 	option = {
 		name = enclave.5502.c
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		remove_modifier = shattered_frontier_looting
 		add_modifier = { modifier = shattered_frontier_lockdown years = 2 }
 	}
 	option = {
 		name = enclave.5502.gestalt.c
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = influence value >= 15 }
@@ -9240,7 +9310,9 @@ planet_event = {
 
 	option = {
 		name = GOOD
-		trigger = { has_modifier = shattered_frontier_looting }
+		trigger = {
+			has_modifier = shattered_frontier_looting
+		}
 		remove_modifier = shattered_frontier_looting
 		custom_tooltip = POPS_ON_ROOT
 		tooltip = {
@@ -9255,27 +9327,37 @@ planet_event = {
 	}
 	option = {
 		name = DOTDOTDOT
-		trigger = { has_modifier = shattered_frontier_deviancy }
+		trigger = {
+			has_modifier = shattered_frontier_deviancy
+		}
 		remove_modifier = shattered_frontier_deviancy
 	}
 	option = {
 		name = GOOD
-		trigger = { has_modifier = shattered_frontier_benefits }
+		trigger = {
+			has_modifier = shattered_frontier_benefits
+		}
 		remove_modifier = shattered_frontier_benefits
 	}
 	option = {
 		name = enclave.5503.d
-		trigger = { has_modifier = shattered_frontier_lockdown }
+		trigger = {
+			has_modifier = shattered_frontier_lockdown
+		}
 		remove_modifier = shattered_frontier_lockdown
 	}
 	option = {
 		name = GOOD
-		trigger = { has_modifier = shattered_frontier_lockdown_hive }
+		trigger = {
+			has_modifier = shattered_frontier_lockdown_hive
+		}
 		remove_modifier = shattered_frontier_lockdown_hive
 	}
 	option = {
 		name = GOOD
-		trigger = { has_modifier = shattered_frontier_lockdown_machine }
+		trigger = {
+			has_modifier = shattered_frontier_lockdown_machine
+		}
 		remove_modifier = shattered_frontier_lockdown_machine
 	}
 }
@@ -9286,11 +9368,15 @@ planet_event = {
 	title = enclave.5504.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.5504.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.5504.gestalt.desc
 	}
 
@@ -9349,11 +9435,15 @@ planet_event = {
 	title = enclave.5505.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.5505.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.5505.gestalt.desc
 	}
 
@@ -9410,7 +9500,9 @@ planet_event = {
 	# Continue investigating
 	option = {
 		name = enclave.5505.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		add_modifier = { modifier = shattered_frontier_storm_mod days = -1 }
 		hidden_effect = {
 			planet_event = { id = enclave.5510 days = 40 random = 20 }
@@ -9418,7 +9510,9 @@ planet_event = {
 	}
 	option = {
 		name = enclave.5505.gestalt.a
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		add_modifier = { modifier = shattered_frontier_storm_mod days = -1 }
 		hidden_effect = {
 			planet_event = { id = enclave.5510 days = 40 random = 20 }
@@ -9427,7 +9521,9 @@ planet_event = {
 	# Cease prodding!
 	option = {
 		name = enclave.5505.b
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		add_modifier = { modifier = shattered_frontier_storm_mod days = -1 }
 		hidden_effect = {
 			planet_event = { id = enclave.5506 days = 20 random = 20 }
@@ -9435,7 +9531,9 @@ planet_event = {
 	}
 	option = {
 		name = enclave.5505.b
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		add_modifier = { modifier = shattered_frontier_storm_gestalt_mod days = -1 }
 		hidden_effect = {
 			planet_event = { id = enclave.5506 days = 20 random = 20 }
@@ -9449,11 +9547,15 @@ planet_event = {
 	title = enclave.5506.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.5506.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.5506.gestalt.desc
 	}
 
@@ -9487,12 +9589,16 @@ planet_event = {
 
 	option = {
 		name = enclave.5506.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		add_modifier = { modifier = shattered_frontier_uncertain_future years = 30 }
 	}
 	option = {
 		name = DOTDOTDOT
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		add_modifier = {
 			modifier = shattered_frontier_uncertain_future_gestalt
 			years = 15
@@ -9517,11 +9623,15 @@ planet_event = {
 	title = enclave.5510.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = enclave.5510.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = enclave.5510.gestalt.desc
 	}
 
@@ -9742,7 +9852,9 @@ country_event = {
 	option = {
 		name = enclave.5516.c
 		icon = { icon = GFX_option_icon_hostile text = dialog_hostile_tt }
-		trigger = { has_country_flag = shattered_frontier_dialog_hostile }
+		trigger = {
+			has_country_flag = shattered_frontier_dialog_hostile
+		}
 		hidden_effect = {
 			country_event = { id = enclave.5530 } # 'Hostile' path
 		}
@@ -9764,7 +9876,9 @@ country_event = {
 	is_triggered_only = yes
 
 	desc = {
-		trigger = { has_country_flag = shattered_frontier_dialog_friendly }
+		trigger = {
+			has_country_flag = shattered_frontier_dialog_friendly
+		}
 		text = enclave.5520.friendly.desc
 	}
 	desc = {
@@ -9782,7 +9896,9 @@ country_event = {
 	option = {
 		name = enclave.5520.a
 		icon = { icon = GFX_option_icon_friendly text = dialog_friendly_tt }
-		trigger = { has_country_flag = shattered_frontier_dialog_friendly }
+		trigger = {
+			has_country_flag = shattered_frontier_dialog_friendly
+		}
 		event_target:shattered_frontier_colony_ship = { set_owner = root }
 		hidden_effect = {
 			country_event = { id = enclave.5521 }
@@ -9920,11 +10036,15 @@ country_event = {
 	# Begone!
 	option = {
 		name = {
-			trigger = { is_spiritualist = no }
+			trigger = {
+				is_spiritualist = no
+			}
 			text = enclave.5530.a
 		}
 		name = {
-			trigger = { is_spiritualist = yes }
+			trigger = {
+				is_spiritualist = yes
+			}
 			text = enclave.5530.a.spirit
 		}
 		icon = { icon = GFX_option_icon_isolationist text = dialog_wary_tt }
@@ -10089,7 +10209,9 @@ country_event = {
 	option = {
 		name = enclave.5536.a
 		icon = { icon = GFX_option_icon_hostile text = dialog_hostile_tt }
-		trigger = { has_country_flag = shattered_frontier_dialog_hostile }
+		trigger = {
+			has_country_flag = shattered_frontier_dialog_hostile
+		}
 		hidden_effect = {
 			country_event = { id = enclave.5550 } # 'Hostile' path
 		}
@@ -11025,7 +11147,9 @@ country_event = {
 
 	option = {
 		name = enclave.7005.a
-		trigger = { is_xenophobe = no }
+		trigger = {
+			is_xenophobe = no
+		}
 		add_monthly_resource_mult = {
 			resource = alloys
 			value = @tier2materialreward
@@ -11035,7 +11159,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7005.b
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		add_monthly_resource_mult = {
 			resource = alloys
 			value = @tier2materialreward
@@ -11085,7 +11211,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7050.a
-		trigger = { exists = event_target:spynetwork_country_1 }
+		trigger = {
+			exists = event_target:spynetwork_country_1
+		}
 		allow = {
 			shroudwalker_insight_purchasing_trigger = { TARGET = event_target:spynetwork_country_1 }
 		}
@@ -11095,7 +11223,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7050.b
-		trigger = { exists = event_target:spynetwork_country_2 }
+		trigger = {
+			exists = event_target:spynetwork_country_2
+		}
 		allow = {
 			shroudwalker_insight_purchasing_trigger = { TARGET = event_target:spynetwork_country_2 }
 		}
@@ -11105,7 +11235,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7050.c
-		trigger = { exists = event_target:spynetwork_country_3 }
+		trigger = {
+			exists = event_target:spynetwork_country_3
+		}
 		allow = {
 			shroudwalker_insight_purchasing_trigger = { TARGET = event_target:spynetwork_country_3 }
 		}
@@ -11115,7 +11247,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7050.d
-		trigger = { exists = event_target:spynetwork_country_4 }
+		trigger = {
+			exists = event_target:spynetwork_country_4
+		}
 		allow = {
 			shroudwalker_insight_purchasing_trigger = { TARGET = event_target:spynetwork_country_4 }
 		}
@@ -11125,7 +11259,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7050.e
-		trigger = { exists = event_target:spynetwork_country_5 }
+		trigger = {
+			exists = event_target:spynetwork_country_5
+		}
 		allow = {
 			shroudwalker_insight_purchasing_trigger = { TARGET = event_target:spynetwork_country_5 }
 		}
@@ -11135,7 +11271,9 @@ country_event = {
 	}
 	option = {
 		name = enclave.7050.f
-		trigger = { exists = event_target:spynetwork_country_6 }
+		trigger = {
+			exists = event_target:spynetwork_country_6
+		}
 		allow = {
 			shroudwalker_insight_purchasing_trigger = { TARGET = event_target:spynetwork_country_6 }
 		}
@@ -11475,7 +11613,9 @@ leader_event = {
 
 	picture = {
 		picture = GFX_evt_shroudwalker_enclave
-		trigger = { has_leader_flag = shroudwalker_teacher }
+		trigger = {
+			has_leader_flag = shroudwalker_teacher
+		}
 	}
 
 	desc = {
@@ -11495,7 +11635,9 @@ leader_event = {
 
 	picture = {
 		picture = GFX_evt_salvager_enclave_disassembly
-		trigger = { has_leader_flag = master_salvager }
+		trigger = {
+			has_leader_flag = master_salvager
+		}
 	}
 
 	desc = {
@@ -11515,7 +11657,9 @@ leader_event = {
 
 	picture = {
 		picture = GFX_evt_physics_research
-		trigger = { has_leader_flag = curator_archivist }
+		trigger = {
+			has_leader_flag = curator_archivist
+		}
 	}
 
 	desc = {
@@ -11535,7 +11679,9 @@ leader_event = {
 
 	picture = {
 		picture = GFX_evt_cargoship_caravan
-		trigger = { has_leader_flag = trader_leader }
+		trigger = {
+			has_leader_flag = trader_leader
+		}
 	}
 
 	desc = {

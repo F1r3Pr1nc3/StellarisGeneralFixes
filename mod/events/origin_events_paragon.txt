@@ -1797,15 +1797,21 @@ country_event = {
 	title = "paragon.5060.name"
 
 	desc = {
-		trigger = { has_country_flag = forgotten_negotiated }
+		trigger = {
+			has_country_flag = forgotten_negotiated
+		}
 		text = paragon.5060.desc.negotiated
 	}
 	desc = {
-		trigger = { has_country_flag = forgotten_imprisoned }
+		trigger = {
+			has_country_flag = forgotten_imprisoned
+		}
 		text = paragon.5060.desc.imprisioned
 	}
 	desc = {
-		trigger = { has_country_flag = forgotten_destroyed }
+		trigger = {
+			has_country_flag = forgotten_destroyed
+		}
 		text = paragon.5060.desc.destroyed
 	}
 
@@ -2191,7 +2197,9 @@ situation_event = {
 
 	option = {
 		name = paragon.5071.a
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		add_situation_progress = 4
 		owner = {
 			add_resource = { alloys = 500 }
@@ -2200,7 +2208,9 @@ situation_event = {
 	}
 	option = {
 		name = paragon.5071.b
-		trigger = { owner = { is_xenophile = no } }
+		trigger = {
+			owner = { is_xenophile = no }
+		}
 		add_situation_progress = -6
 		owner = {
 			add_resource = { unity = 100 }
@@ -2521,7 +2531,9 @@ country_event = {
 	}
 	desc = {
 		text = paragon.5202.synth
-		trigger = { has_country_flag = synthetic_empire }
+		trigger = {
+			has_country_flag = synthetic_empire
+		}
 	}
 
 	picture = GFX_evt_legendary_leader
@@ -2728,7 +2740,9 @@ country_event = {
 	}
 	option = {
 		name = paragon.5211.b
-		trigger = { is_xenophobe = no }
+		trigger = {
+			is_xenophobe = no
+		}
 		switch = {
 			trigger = has_ethic
 			ethic_xenophile = { shift_ethic = ethic_xenophobe }
@@ -2777,32 +2791,44 @@ country_event = {
 
 	option = {
 		name = paragon.5213.a
-		trigger = { is_xenophile = yes }
+		trigger = {
+			is_xenophile = yes
+		}
 		add_modifier = { modifier = paragon_origin_rebel_xenophile days = -1 }
 	}
 	option = {
 		name = paragon.5213.b
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		add_modifier = { modifier = paragon_origin_rebel_xenophobe days = -1 }
 	}
 	option = {
 		name = paragon.5213.c
-		trigger = { is_militarist = yes }
+		trigger = {
+			is_militarist = yes
+		}
 		add_modifier = { modifier = paragon_origin_rebel_militarist days = -1 }
 	}
 	option = {
 		name = paragon.5213.d
-		trigger = { is_pacifist = yes }
+		trigger = {
+			is_pacifist = yes
+		}
 		add_modifier = { modifier = paragon_origin_rebel_pacifist days = -1 }
 	}
 	option = {
 		name = paragon.5213.e
-		trigger = { is_materialist = yes }
+		trigger = {
+			is_materialist = yes
+		}
 		add_modifier = { modifier = paragon_origin_rebel_materialist days = -1 }
 	}
 	option = {
 		name = paragon.5213.f
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 		add_modifier = { modifier = paragon_origin_rebel_spiritualist days = -1 }
 	}
 
@@ -3734,7 +3760,9 @@ country_event = {
 		text = paragon.5900.desc.50years
 	}
 	desc = {
-		trigger = { has_modifier = paragon_origin_strengthened_government_iii }
+		trigger = {
+			has_modifier = paragon_origin_strengthened_government_iii
+		}
 		text = paragon.5900.desc.100years
 	}
 
@@ -3793,7 +3821,9 @@ country_event = {
 	}
 	option = {
 		name = paragon.5900.a.100years
-		trigger = { has_modifier = paragon_origin_strengthened_government_iii }
+		trigger = {
+			has_modifier = paragon_origin_strengthened_government_iii
+		}
 		add_modifier = { modifier = paragon_origin_fresh_start days = -1 }
 		set_origin = origin_legendary_leader_death
 		hidden_effect = {
@@ -4098,15 +4128,21 @@ country_event = {
 	}
 	desc = {
 		text = paragon.6000.desc.ap_mind_over_matter
-		trigger = { has_finished_psionic_tradition = yes }
+		trigger = {
+			has_finished_psionic_tradition = yes
+		}
 	}
 	desc = {
 		text = paragon.6000.desc.ap_the_flesh_is_weak
-		trigger = { has_tradition = tr_cybernetics_finish }
+		trigger = {
+			has_tradition = tr_cybernetics_finish
+		}
 	}
 	desc = {
 		text = paragon.6000.desc.ap_synthetic_evolution
-		trigger = { has_country_flag = synthetic_empire }
+		trigger = {
+			has_country_flag = synthetic_empire
+		}
 	}
 	desc = {
 		text = paragon.6000.desc.ap_engineered_evolution
@@ -4160,7 +4196,9 @@ country_event = {
 	option = {
 		name = paragon.6000.b
 		custom_tooltip = paragon.6000.b.tooltip
-		trigger = { has_tradition = tr_cybernetics_finish }
+		trigger = {
+			has_tradition = tr_cybernetics_finish
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = energy value >= 1000 }
@@ -4180,7 +4218,9 @@ country_event = {
 	option = {
 		name = paragon.6000.c
 		custom_tooltip = paragon.6000.c.tooltip
-		trigger = { has_finished_psionic_tradition = yes }
+		trigger = {
+			has_finished_psionic_tradition = yes
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = sr_zro value >= 250 }
@@ -4196,7 +4236,9 @@ country_event = {
 	option = {
 		name = paragon.6000.d
 		custom_tooltip = paragon.6000.d.tooltip
-		trigger = { has_country_flag = synthetic_empire }
+		trigger = {
+			has_country_flag = synthetic_empire
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = alloys value >= 500 }
@@ -4238,11 +4280,15 @@ country_event = {
 	}
 	option = {
 		name = {
-			trigger = { founder_species_is_machine = yes }
+			trigger = {
+				founder_species_is_machine = yes
+			}
 			text = paragon.6000.f.machine
 		}
 		name = {
-			trigger = { founder_species_is_machine = no }
+			trigger = {
+				founder_species_is_machine = no
+			}
 			text = paragon.6000.f.default
 		}
 		if = {
@@ -4472,11 +4518,15 @@ country_event = {
 	title = "paragon.6030.name"
 
 	desc = {
-		trigger = { founder_species_is_machine = yes }
+		trigger = {
+			founder_species_is_machine = yes
+		}
 		text = paragon.6030.desc.machine
 	}
 	desc = {
-		trigger = { founder_species_is_machine = no }
+		trigger = {
+			founder_species_is_machine = no
+		}
 		text = paragon.6030.desc.organic
 	}
 

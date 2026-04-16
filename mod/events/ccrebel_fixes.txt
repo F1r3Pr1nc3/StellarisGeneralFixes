@@ -2,9 +2,10 @@
 #
 # Fix to the no ethics problem
 # by Caligula Caesar in 2017-2022
-# Revised in 2025-2026 by FirePrince
+# Revised/optimized by FirePrince in 2025-2026
 #
 #################################
+
 namespace = rebellionfix
 
 ## Add ethic (on_rebels_take_planet_owner_switched)
@@ -199,6 +200,7 @@ country_event = {
 			}
 		}
 		country_event = { id = rebellionfix.36 days = 1 }
+		country_event = { id = rebellionfix.364 days = 4 }
 	}
 }
 
@@ -332,23 +334,17 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { num_ethics > 2 }
-			if = {
-				limit = { is_gestalt = yes }
-				clear_ethos = yes
-				shift_ethic = ethic_gestalt_consciousness
-				country_event = { id = rebellionfix.364 days = 4 }
-				break = yes
+			limit = {
+				is_gestalt = yes
+				num_ethics > 1
 			}
+			clear_ethos = yes
+			shift_ethic = ethic_gestalt_consciousness
+			break = yes
 		}
-		else_if = {
+		if = {
 			limit = { num_ethics = 2 }
 			if = {
-				limit = { is_gestalt = yes }
-				clear_ethos = yes
-				shift_ethic = ethic_gestalt_consciousness
-			}
-			else_if = {
 				limit = {
 					has_ethic = ethic_authoritarian
 					has_ethic = ethic_pacifist
@@ -1718,6 +1714,7 @@ country_event = {
 	}
 }
 
+# Final ethic fix
 country_event = {
 	id = rebellionfix.363
 	hide_window = yes
@@ -1725,6 +1722,7 @@ country_event = {
 
 	trigger = {
 		NOR = {
+			has_country_flag = cc_rebel_ethic_sorted
 			AND = {
 				num_ethics = 2
 				is_fanatic = yes
@@ -1734,7 +1732,6 @@ country_event = {
 				num_ethics = 3
 				is_fanatic = no
 			}
-			has_country_flag = cc_rebel_ethic_sorted
 		}
 	}
 
@@ -1929,9 +1926,9 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		NOR = {
-			has_unused_civic_points = 0
 			has_country_flag = cc_rebel_civic_sorted
 			is_multiplayer = yes # Avoid strange behavior (like OOS/CTD)
+			has_unused_civic_points = 0
 		}
 	}
 

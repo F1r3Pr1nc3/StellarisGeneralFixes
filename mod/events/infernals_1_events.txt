@@ -395,11 +395,15 @@ planet_event = {
 
 	option = {
 		name = EXCELLENT
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	option = {
 		name = ACKNOWLEDGED
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	after = {
@@ -734,11 +738,15 @@ country_event = {
 
 	desc = {
 		text = infernals.45.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = infernals.45.desc.gestalt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	immediate = {
@@ -754,7 +762,9 @@ country_event = {
 
 	option = {
 		name = infernals.45.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -785,7 +795,9 @@ country_event = {
 	}
 	option = {
 		name = infernals.45.c
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -801,7 +813,9 @@ country_event = {
 	}
 	option = {
 		name = infernals.45.d
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = energy value >= 200 }
@@ -1772,7 +1786,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.110.a
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		FromFromFromFrom.Target = { add_deposit = d_energy_5 }
 		owner = {
 			add_monthly_resource_mult = {
@@ -2030,7 +2046,9 @@ ship_event = {
 
 	option = {
 		name = "infernals.1002.a"
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		from = {
 			add_modifier = { modifier = crystal_lava_resort }
 		}
@@ -2113,14 +2131,18 @@ ship_event = {
 
 	option = {
 		name = infernals.505.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		from = {
 			add_modifier = { modifier = volcanic_oasis }
 		}
 	}
 	option = {
 		name = FASCINATING
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		from = {
 			add_modifier = { modifier = volcanic_oasis }
 		}
@@ -2194,7 +2216,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.3210.b
-		trigger = { owner = { is_homicidal = no } }
+		trigger = {
+			owner = { is_homicidal = no }
+		}
 		owner = {
 			create_species = {
 				name = random
@@ -2269,11 +2293,15 @@ country_event = {
 	title = infernals.2505.name
 
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = infernals.2505.desc.a
 	}
 	desc = {
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		text = infernals.2505.desc.b
 	}
 
@@ -2303,7 +2331,9 @@ country_event = {
 	}
 	option = {
 		name = infernals.2505.c
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		start_situation = { type = situation_cosmic_dawn target = root.capital_scope } # Vfix
 		hidden_effect = {
 			random_situation = {
@@ -2326,11 +2356,15 @@ situation_event = {
 	title = infernals.2510.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = infernals.2510.desc.a
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = infernals.2510.desc.b
 	}
 
@@ -2680,7 +2714,9 @@ ship_event = {
 
 	option = {
 		name = infernals.2525.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		owner = {
 			capital_scope = {
 				create_pop_group = { species = owner size = 200 }
@@ -2695,7 +2731,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.2525.b
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = minerals
@@ -2707,7 +2745,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.2525.c
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		owner = {
 			capital_scope = {
 				create_pop_group = { species = owner size = 200 }
@@ -2841,7 +2881,9 @@ ship_event = {
 	option = {
 		name = infernals.2530.b
 		custom_tooltip = infernals.2530.b.tt
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		owner = {
 			hidden_effect = {
 				capital_scope = {
@@ -2853,7 +2895,9 @@ ship_event = {
 	option = {
 		name = infernals.2530.c
 		custom_tooltip = infernals.2530.b.tt
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		owner = {
 			hidden_effect = {
 				capital_scope = {
@@ -3420,7 +3464,9 @@ country_event = {
 		text = infernals.2570.desc.a
 	}
 	desc = {
-		trigger = { has_country_flag = has_infernals_2545 }
+		trigger = {
+			has_country_flag = has_infernals_2545
+		}
 		text = infernals.2570.desc.b
 	}
 
@@ -3431,7 +3477,9 @@ country_event = {
 	option = {
 		name = infernals.2570.a
 		custom_tooltip = infernals.2570.a.tt
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		add_resource = {
 			unity = 35
 			mult = value:maxed_years_passed
@@ -3445,7 +3493,9 @@ country_event = {
 	option = {
 		name = infernals.2570.b
 		custom_tooltip = infernals.2570.b.tt
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		add_monthly_resource_mult = {
 			resource = society_research
 			value = @tier3researchreward
@@ -3461,7 +3511,9 @@ country_event = {
 	option = {
 		name = infernals.2570.c
 		custom_tooltip = infernals.2570.c.tt
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		hidden_effect = {
 			capital_scope = {
 				create_pop_group = { species = owner size = 400 }
@@ -3481,7 +3533,9 @@ country_event = {
 
 	option = {
 		name = infernals.2575.a
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
@@ -3491,7 +3545,9 @@ country_event = {
 	}
 	option = {
 		name = infernals.2575.b
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		add_monthly_resource_mult = {
 			resource = unity
 			value = @tier2unityreward
@@ -4254,7 +4310,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.2115.f	# Purge
-		trigger = { owner = { is_homicidal = yes } }
+		trigger = {
+			owner = { is_homicidal = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -4468,7 +4526,9 @@ ship_event = {
 	picture = GFX_evt_astral_rift_desert_ruins_third_chamber
 
 	option = {
-		trigger = { owner = { is_homicidal = no } }
+		trigger = {
+			owner = { is_homicidal = no }
+		}
 		name = infernals.2125.a
 		owner = {
 			add_monthly_resource_mult = {
@@ -4542,7 +4602,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.2125.c # Vent them
-		trigger = { owner = { allows_purge = yes } }
+		trigger = {
+			owner = { allows_purge = yes }
+		}
 		owner = {
 			if = {
 				limit = { is_gestalt = no }
@@ -4558,7 +4620,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.2125.d
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		ship_event = { id = infernals.2135 days = 30 }
 	}
 }
@@ -4741,7 +4805,9 @@ ship_event = {
 	}
 	option = {
 		name = infernals.2115.f	# Purge
-		trigger = { owner = { is_homicidal = yes } }
+		trigger = {
+			owner = { is_homicidal = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -5485,12 +5551,16 @@ fleet_event = {
 
 	option = {
 		name = infernals.2725.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		small_artifact_reward = yes
 	}
 	option = {
 		name = infernals.2725.b
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		small_artifact_reward = yes
 	}
 

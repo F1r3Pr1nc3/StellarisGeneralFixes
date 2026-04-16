@@ -205,7 +205,9 @@ planet_event = {
 	title = shroud_forged.39.title
 
 	desc = {
-		trigger = { has_planet_flag = materiality_engine_construction }
+		trigger = {
+			has_planet_flag = materiality_engine_construction
+		}
 		text = shroud_forged.39.desc_construction
 	}
 	desc = {
@@ -1144,7 +1146,9 @@ country_event = {
 	}
 	option = {
 		name = shroud_forged.300.b
-		trigger = { has_country_flag = last_zroni_system }
+		trigger = {
+			has_country_flag = last_zroni_system
+		}
 		custom_tooltip = begin_shroud_forged_chain_tt
 		hidden_effect = {
 			country_event = { id = shroud_forged.302 }
@@ -1631,12 +1635,16 @@ country_event = {
 	}
 
 	picture_event_data = {
-		trigger = { has_breached_shroud = no }
+		trigger = {
+			has_breached_shroud = no
+		}
 		portrait = shroud1
 		room = no_video_feed_room
 	}
 	picture_event_data = {
-		trigger = { has_breached_shroud = yes }
+		trigger = {
+			has_breached_shroud = yes
+		}
 		portrait = shroud1
 		room = shroud_room
 	}
@@ -1665,7 +1673,9 @@ country_event = {
 		text = shroud_forged.400.desc.default.inactive
 	}
 	desc = {
-		trigger = { has_breached_shroud = yes }
+		trigger = {
+			has_breached_shroud = yes
+		}
 		text = shroud_forged.400.desc.breached
 	}
 
@@ -1839,7 +1849,9 @@ country_event = {
 	}
 	option = {
 		name = shroud_forged.400.d
-		trigger = { has_breached_shroud = yes }
+		trigger = {
+			has_breached_shroud = yes
+		}
 		allow = {
 			resource_stockpile_compare = { resource = sr_zro value >= value:animator_planets_cost }
 			custom_tooltip = {
@@ -1869,7 +1881,9 @@ country_event = {
 	}
 	option = {
 		name = shroud_forged.400.e
-		trigger = { has_breached_shroud = yes }
+		trigger = {
+			has_breached_shroud = yes
+		}
 		allow = {
 			resource_stockpile_compare = { resource = sr_zro value >= 500 }
 			custom_tooltip = {
@@ -1909,7 +1923,9 @@ country_event = {
 	}
 	option = {
 		name = shroud_forged.400.f
-		trigger = { has_breached_shroud = yes }
+		trigger = {
+			has_breached_shroud = yes
+		}
 		hidden_effect = {
 			country_event = { id = shroud_forged.460 }
 		}
@@ -2514,7 +2530,9 @@ situation_event = {
 	}
 	option = {
 		name = shroud_forged.510.d
-		trigger = { situation_progress > 2100 }
+		trigger = {
+			situation_progress > 2100
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = { resource = energy value >= 2000 }
@@ -2568,7 +2586,9 @@ situation_event = {
 	}
 	option = {
 		name = shroud_forged.510.b
-		trigger = { situation_progress >= 900 }
+		trigger = {
+			situation_progress >= 900
+		}
 		shroud_forged_situation_event_negative_1 = { FLAG = shroud_forged_510_negative_1 }
 		event_target:target_planet = {
 			add_modifier = { modifier = pm_shroud_forged_denied_ceremony years = 2 }

@@ -256,7 +256,9 @@ country_event = {
 		text = utopia.2500.desc
 	}
 	desc = {
-		trigger = { has_origin = origin_unplugged }
+		trigger = {
+			has_origin = origin_unplugged
+		}
 		text = utopia.2500.desc.unplugged
 	}
 
@@ -557,7 +559,9 @@ country_event = {
 
 	desc = {
 		text = utopia.2505.1.desc
-		trigger = { is_spiritualist = no }
+		trigger = {
+			is_spiritualist = no
+		}
 	}
 	desc = {
 		text = utopia.2505.2.desc
@@ -580,11 +584,15 @@ country_event = {
 
 	option = {
 		name = "DISCONCERTING"
-		trigger = { is_spiritualist = no }
+		trigger = {
+			is_spiritualist = no
+		}
 	}
 	option = {
 		name = "utopia.2505.b"
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 	}
 }
 
@@ -931,11 +939,15 @@ country_event = {
 	}
 
 	option = {
-		trigger = { is_homicidal = no }
+		trigger = {
+			is_homicidal = no
+		}
 		name = "utopia.2551.a"
 	}
 	option = {
-		trigger = { is_homicidal = yes }
+		trigger = {
+			is_homicidal = yes
+		}
 		name = "utopia.2551.a"
 	}
 }
@@ -947,11 +959,15 @@ country_event = {
 
 	desc = {
 		text = utopia.2555.1.desc
-		trigger = { is_spiritualist = no }
+		trigger = {
+			is_spiritualist = no
+		}
 	}
 	desc = {
 		text = utopia.2555.2.desc
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 	}
 
 	picture = GFX_evt_cybernetics
@@ -960,11 +976,15 @@ country_event = {
 
 	option = {
 		name = "utopia.2555.a"
-		trigger = { is_spiritualist = no }
+		trigger = {
+			is_spiritualist = no
+		}
 	}
 	option = {
 		name = "utopia.2555.b"
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 	}
 }
 
@@ -997,7 +1017,9 @@ country_event = {
 	}
 	option = {
 		name = utopia.2556.c
-		trigger = { is_at_war_with = from }
+		trigger = {
+			is_at_war_with = from
+		}
 	}
 	option = {
 		name = utopia.2556.d
@@ -1091,7 +1113,9 @@ country_event = {
 		text = utopia.2600.desc
 	}
 	desc = {
-		trigger = { has_origin = origin_unplugged }
+		trigger = {
+			has_origin = origin_unplugged
+		}
 		text = utopia.2600.desc.unplugged
 	}
 
@@ -1116,7 +1140,9 @@ country_event = {
 	}
 	option = {
 		name = "utopia.2600.a"
-		trigger = { has_origin = origin_shroudwalker_apprentice }
+		trigger = {
+			has_origin = origin_shroudwalker_apprentice
+		}
 	}
 }
 
@@ -1377,20 +1403,28 @@ country_event = {
 	desc = utopia.2605.desc.machine_non_gestalt
 
 	picture = {
-		trigger = { has_shroud_dlc = yes }
+		trigger = {
+			has_shroud_dlc = yes
+		}
 		picture = GFX_evt_machine_sapience
 	}
 	picture = {
-		trigger = { has_shroud_dlc = no }
+		trigger = {
+			has_shroud_dlc = no
+		}
 		picture = GFX_evt_psionics
 	}
 
 	show_sound = {
-		trigger = { has_shroud_dlc = yes }
+		trigger = {
+			has_shroud_dlc = yes
+		}
 		sound = event_psionic_robot
 	}
 	show_sound = {
-		trigger = { has_shroud_dlc = no }
+		trigger = {
+			has_shroud_dlc = no
+		}
 		sound = event_psionic
 	}
 
@@ -1856,7 +1890,9 @@ country_event = {
 
 	option = { # Confirm Composer of Strands
 		name = "utopia.2658.a"
-		trigger = { has_modifier = covenant_composer_of_strands_0 }
+		trigger = {
+			has_modifier = covenant_composer_of_strands_0
+		}
 		custom_tooltip = composer_covenant_chain_begin
 		hidden_effect = {
 			begin_event_chain = { event_chain = "composer_covenant_chain" target = this }
@@ -1866,7 +1902,9 @@ country_event = {
 	}
 	option = { # Confirm Eater of Worlds
 		name = "utopia.2658.a"
-		trigger = { has_modifier = covenant_eater_of_worlds_0 }
+		trigger = {
+			has_modifier = covenant_eater_of_worlds_0
+		}
 		custom_tooltip = eater_covenant_chain_begin
 		hidden_effect = {
 			begin_event_chain = { event_chain = "eater_covenant_chain" target = this }
@@ -1890,7 +1928,9 @@ country_event = {
 	}
 	option = { # Confirm Instrument of Desire
 		name = "utopia.2658.a"
-		trigger = { has_modifier = covenant_instrument_of_desire_0 }
+		trigger = {
+			has_modifier = covenant_instrument_of_desire_0
+		}
 		custom_tooltip = instrument_covenant_chain_begin
 		hidden_effect = {
 			begin_event_chain = { event_chain = "instrument_covenant_chain" target = this }
@@ -1900,7 +1940,9 @@ country_event = {
 	}
 	option = { # Confirm Whisperers in the Void
 		name = "utopia.2658.a"
-		trigger = { has_modifier = covenant_whisperers_in_the_void_0 }
+		trigger = {
+			has_modifier = covenant_whisperers_in_the_void_0
+		}
 		custom_tooltip = whisperers_covenant_chain_begin
 		hidden_effect = {
 			begin_event_chain = { event_chain = "whisperers_covenant_chain" target = this }
@@ -2415,22 +2457,30 @@ country_event = {
 	option = { # Composer of Strands
 		name = "utopia.2671.a"
 		custom_tooltip = "utopia.2671.a.tt"
-		trigger = { has_country_flag = composer_covenant_rank_1 }
+		trigger = {
+			has_country_flag = composer_covenant_rank_1
+		}
 	}
 	option = { # Eater of Worlds
 		name = "utopia.2671.b"
 		custom_tooltip = "utopia.2671.b.tt"
-		trigger = { has_country_flag = eater_covenant_rank_1 }
+		trigger = {
+			has_country_flag = eater_covenant_rank_1
+		}
 	}
 	option = { # Instrument of Desire
 		name = "utopia.2671.c"
 		custom_tooltip = "utopia.2671.c.tt"
-		trigger = { has_country_flag = instrument_covenant_rank_1 }
+		trigger = {
+			has_country_flag = instrument_covenant_rank_1
+		}
 	}
 	option = { # Whisperers in the Void
 		name = "utopia.2671.d"
 		custom_tooltip = "utopia.2671.d.tt"
-		trigger = { has_country_flag = whisperers_covenant_rank_1 }
+		trigger = {
+			has_country_flag = whisperers_covenant_rank_1
+		}
 	}
 }
 
@@ -2522,7 +2572,9 @@ country_event = {
 
 	option = { # Composer of Strands
 		name = "utopia.2676.a"
-		trigger = { has_country_flag = composer_covenant_rank_2 }
+		trigger = {
+			has_country_flag = composer_covenant_rank_2
+		}
 		add_modifier = { modifier = covenant_composer_of_strands days = -1 }
 		hidden_effect = {
 			remove_modifier = covenant_composer_of_strands_0
@@ -2530,7 +2582,9 @@ country_event = {
 	}
 	option = { # Eater of Worlds
 		name = "utopia.2676.b"
-		trigger = { has_country_flag = eater_covenant_rank_2 }
+		trigger = {
+			has_country_flag = eater_covenant_rank_2
+		}
 		add_modifier = { modifier = covenant_eater_of_worlds days = -1 }
 		hidden_effect = {
 			remove_modifier = covenant_eater_of_worlds_0
@@ -2538,7 +2592,9 @@ country_event = {
 	}
 	option = { # Instrument of Desire
 		name = "utopia.2676.c"
-		trigger = { has_country_flag = instrument_covenant_rank_2 }
+		trigger = {
+			has_country_flag = instrument_covenant_rank_2
+		}
 		add_modifier = { modifier = covenant_instrument_of_desire days = -1 }
 		hidden_effect = {
 			remove_modifier = covenant_instrument_of_desire_0
@@ -2546,7 +2602,9 @@ country_event = {
 	}
 	option = { # Whisperers in the Void
 		name = "utopia.2676.d"
-		trigger = { has_country_flag = whisperers_covenant_rank_2 }
+		trigger = {
+			has_country_flag = whisperers_covenant_rank_2
+		}
 		add_modifier = { modifier = covenant_whisperers_in_the_void days = -1 }
 		if = {
 			limit = { has_first_contact_dlc = yes }
@@ -2806,7 +2864,9 @@ country_event = {
 	}
 	option = { # Ruler 2
 		name = utopia.2681.b
-		trigger = { exists = event_target:leader_2 }
+		trigger = {
+			exists = event_target:leader_2
+		}
 		hidden_effect = {
 			event_target:leader_2 = { save_event_target_as = chosen_leader }
 			country_event = { id = utopia.2682 }
@@ -2814,7 +2874,9 @@ country_event = {
 	}
 	option = { # Ruler 3
 		name = utopia.2681.c
-		trigger = { exists = event_target:leader_3 }
+		trigger = {
+			exists = event_target:leader_3
+		}
 		hidden_effect = {
 			event_target:leader_3 = { save_event_target_as = chosen_leader }
 			country_event = { id = utopia.2682 }
@@ -2822,7 +2884,9 @@ country_event = {
 	}
 	option = { # Ruler 4
 		name = utopia.2681.d
-		trigger = { exists = event_target:leader_4 }
+		trigger = {
+			exists = event_target:leader_4
+		}
 		hidden_effect = {
 			event_target:leader_4 = { save_event_target_as = chosen_leader }
 			country_event = { id = utopia.2682 }
@@ -3100,22 +3164,30 @@ country_event = {
 
 	option = { # Composer of Strands
 		name = "utopia.2686.a"
-		trigger = { has_country_flag = composer_covenant_rank_4 }
+		trigger = {
+			has_country_flag = composer_covenant_rank_4
+		}
 		give_technology = { tech = tech_covenant_composer message = yes }
 	}
 	option = { # Eater of Worlds
 		name = "utopia.2686.b"
-		trigger = { has_country_flag = eater_covenant_rank_4 }
+		trigger = {
+			has_country_flag = eater_covenant_rank_4
+		}
 		give_technology = { tech = tech_covenant_eater message = yes }
 	}
 	option = { # Instrument of Desire
 		name = "utopia.2686.c"
-		trigger = { has_country_flag = instrument_covenant_rank_4 }
+		trigger = {
+			has_country_flag = instrument_covenant_rank_4
+		}
 		give_technology = { tech = tech_covenant_instrument message = yes }
 	}
 	option = { # Whisperers in the Void
 		name = "utopia.2686.d"
-		trigger = { has_country_flag = whisperers_covenant_rank_4 }
+		trigger = {
+			has_country_flag = whisperers_covenant_rank_4
+		}
 		give_technology = { tech = tech_covenant_whisperers message = yes }
 	}
 }

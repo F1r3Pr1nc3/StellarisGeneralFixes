@@ -105,7 +105,9 @@ situation_event = {
 
 	option = {
 		name = "cyber.100.a"
-		trigger = { owner = { is_megacorp = no } }
+		trigger = {
+			owner = { is_megacorp = no }
+		}
 		custom_tooltip = cyber.100.a.tt
 		owner = {
 			set_country_flag = cyber_control_government
@@ -114,7 +116,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.100.a.megacorp"
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		custom_tooltip = cyber.100.a.tt
 		owner = {
 			set_country_flag = cyber_control_government
@@ -123,7 +127,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.100.b"
-		trigger = { owner = { is_megacorp = no } }
+		trigger = {
+			owner = { is_megacorp = no }
+		}
 		custom_tooltip = cyber.100.b.tt
 		owner = {
 			set_country_flag = cyber_control_corporate
@@ -132,7 +138,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.100.b.megacorp"
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		custom_tooltip = cyber.100.b.tt
 		owner = {
 			set_country_flag = cyber_control_corporate
@@ -152,11 +160,15 @@ situation_event = {
 	title = "cyber.105.name"
 
 	desc = {
-		trigger = { owner = { is_megacorp = no } }
+		trigger = {
+			owner = { is_megacorp = no }
+		}
 		text = "cyber.105.desc"
 	}
 	desc = {
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		text = "cyber.105.desc.megacorp"
 	}
 
@@ -183,13 +195,17 @@ situation_event = {
 
 	option = {
 		name = "cyber.105.a"
-		trigger = { owner = { is_megacorp = no } }
+		trigger = {
+			owner = { is_megacorp = no }
+		}
 		custom_tooltip = "cyber.105.a.tt"
 		owner = { set_country_flag = cyber_rival_independent }
 	}
 	option = {
 		name = "cyber.105.a.megacorp"
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		custom_tooltip = "cyber.105.a.tt"
 		owner = { set_country_flag = cyber_rival_independent }
 	}
@@ -250,7 +266,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.105.b.megacorp"
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		owner = {
 			if = {
 				limit = { # Controller becomes rival
@@ -737,7 +755,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.220.d"
-		trigger = { owner = { is_megacorp = yes } }
+		trigger = {
+			owner = { is_megacorp = yes }
+		}
 		owner = {
 			add_modifier = { modifier = branching_out years = 2 }
 		}
@@ -1467,12 +1487,16 @@ situation_event = {
 	option = {
 		name = "cyber.420.b"
 		custom_tooltip = "cyber.420.b.tt"
-		trigger = { owner = { is_pacifist = no } }
+		trigger = {
+			owner = { is_pacifist = no }
+		}
 		set_situation_flag = cyber_ban_implant_weapons
 	}
 	option = {
 		name = "cyber.420.b_pacifist"
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		custom_tooltip = "cyber.420.b.tt"
 		custom_tooltip = "cyber.420.b.tt_pacifist"
 		owner = {
@@ -1551,7 +1575,9 @@ situation_event = {
 	title = "cyber.430.name"
 
 	desc = {
-		trigger = { has_situation_flag = cyber_ransom_paid }
+		trigger = {
+			has_situation_flag = cyber_ransom_paid
+		}
 		text = "cyber.430.desc.demands"
 	}
 	desc = {
@@ -1592,7 +1618,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.430.b"
-		trigger = { has_situation_flag = cyber_ransom_paid }
+		trigger = {
+			has_situation_flag = cyber_ransom_paid
+		}
 		owner = {
 			add_modifier = { modifier = cyber_implant_hacks years = 5 }
 		}
@@ -1608,7 +1636,9 @@ situation_event = {
 	}
 	option = {
 		name = "cyber.430.c.demands"
-		trigger = { has_situation_flag = cyber_ransom_paid }
+		trigger = {
+			has_situation_flag = cyber_ransom_paid
+		}
 		owner = {
 			add_modifier = { modifier = cyber_counter_hacking years = 1 }
 		}
@@ -2862,7 +2892,9 @@ country_event = {
 	}
 	option = { # Individualist
 		name = cyber.625.b
-		trigger = { is_megacorp = no }
+		trigger = {
+			is_megacorp = no
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		custom_tooltip = cyber_subscription
 		hidden_effect = {
@@ -2883,7 +2915,9 @@ country_event = {
 	}
 	option = { # Individualist Corporate
 		name = cyber.625.d
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		custom_tooltip = cyber_subscription_megacorp
 		hidden_effect = {
@@ -2958,7 +2992,9 @@ country_event = {
 	}
 	option = { # Individualist
 		name = cyber.655.c
-		trigger = { is_egalitarian = no }
+		trigger = {
+			is_egalitarian = no
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		add_monthly_resource_mult = {
 			resource = energy
@@ -3007,13 +3043,17 @@ country_event = {
 		remove_modifier = worse_parts
 	}
 	option = {
-		trigger = { is_megacorp = no }
+		trigger = {
+			is_megacorp = no
+		}
 		name = cyber.660.b
 		add_modifier = { modifier = discontent years = 5 }
 		ai_chance = { factor = 1 }
 	}
 	option = {
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		allow = {
 			resource_stockpile_compare = { resource = unity value >= 500 }
 		}
@@ -3245,11 +3285,15 @@ country_event = {
 	desc = cyber.820.desc
 
 	picture = {
-		trigger = { is_xenophobe = no }
+		trigger = {
+			is_xenophobe = no
+		}
 		picture = GFX_evt_cybernetics
 	}
 	picture = {
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		picture = GFX_evt_vivisection
 	}
 
@@ -3649,7 +3693,9 @@ country_event = {
 	}
 	option = { # Sell anti-tracking devices
 		name = cyber.840.c
-		trigger = { is_megacorp = yes }
+		trigger = {
+			is_megacorp = yes
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		add_resource = { energy = 2000 }
 		add_modifier = { modifier = cyber_wanderers_tracked years = 5 }
@@ -3689,7 +3735,9 @@ country_event = {
 	title = cyber.855.name
 
 	desc = {
-		trigger = { has_country_flag = cyber_control_government }
+		trigger = {
+			has_country_flag = cyber_control_government
+		}
 		text = cyber.855.gov.desc
 	}
 	desc = {
@@ -3710,7 +3758,9 @@ country_event = {
 
 	option = {
 		name = cyber.855.a
-		trigger = { has_country_flag = cyber_control_government }
+		trigger = {
+			has_country_flag = cyber_control_government
+		}
 		hidden_effect = {
 			country_event = { id = cyber.865 days = 180 random = 90 }
 		}
@@ -3736,7 +3786,9 @@ country_event = {
 	}
 	option = {
 		name = cyber.855.b
-		trigger = { has_country_flag = cyber_control_government }
+		trigger = {
+			has_country_flag = cyber_control_government
+		}
 		add_modifier = { modifier = cyber_education days = -1 }
 		custom_tooltip = cyber_education.tt
 		hidden_effect = {
@@ -3838,7 +3890,9 @@ country_event = {
 		picture = GFX_evt_arena
 	}
 	picture = {
-		trigger = { has_valid_civic = civic_warrior_culture }
+		trigger = {
+			has_valid_civic = civic_warrior_culture
+		}
 		picture = GFX_evt_gladiators
 	}
 
@@ -4205,7 +4259,9 @@ country_event = {
 	}
 	option = { # Individualist - Pleasure Seekers
 		name = cyber.1030.d
-		trigger = { has_civic = civic_pleasure_seekers }
+		trigger = {
+			has_civic = civic_pleasure_seekers
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		custom_tooltip = cyber.1030.d.tt
 		add_modifier = { modifier = decadent_entertainment years = 10 }
@@ -4216,7 +4272,9 @@ country_event = {
 	}
 	option = { # Collectivist - Death Cult
 		name = cyber.1030.e
-		trigger = { is_death_cult_empire = yes }
+		trigger = {
+			is_death_cult_empire = yes
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		custom_tooltip = cyber.1030.e.tt
 		add_modifier = { modifier = deadly_entertainment }
@@ -4324,7 +4382,9 @@ country_event = {
 	}
 	option = { # Neutral Subterfuge
 		name = cyber.1055.d
-		trigger = { has_tradition = tr_subterfuge_finish }
+		trigger = {
+			has_tradition = tr_subterfuge_finish
+		}
 		icon = {
 			icon = GFX_tradition_category_icon_tradition_subterfuge
 			text = has_tradition_subterfuge_tt
@@ -4375,7 +4435,9 @@ country_event = {
 	option = { # Collectivist
 		name = cyber.1205.a
 		custom_tooltip = cyber.social_consequences.tt
-		trigger = { is_authoritarian = no }
+		trigger = {
+			is_authoritarian = no
+		}
 		add_modifier = { modifier = cyber_censure_truth years = 5 }
 		hidden_effect = {
 			change_variable = { which = "cyber_collectivist_society" value = 1 }
@@ -4398,7 +4460,9 @@ country_event = {
 	}
 	option = { # Collectivist Auhtoritarian
 		name = cyber.1205.d
-		trigger = { is_authoritarian = yes }
+		trigger = {
+			is_authoritarian = yes
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		add_modifier = { modifier = cyber_censure_authoritarian days = -1 }
 		hidden_effect = {
@@ -4453,7 +4517,9 @@ country_event = {
 	}
 	option = { # Collectivist - Spiritualist
 		name = cyber.1210.d
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 		custom_tooltip = cyber.social_consequences.tt
 		add_modifier = { modifier = cyber_subliminhack_hallowed days = -1 }
 		hidden_effect = {
@@ -4486,7 +4552,9 @@ country_event = {
 		text = cyber.1255.gov.desc
 	}
 	desc = {
-		trigger = { has_country_flag = cyber_control_independent }
+		trigger = {
+			has_country_flag = cyber_control_independent
+		}
 		text = cyber.1255.hack.desc
 	}
 
@@ -4578,7 +4646,9 @@ country_event = {
 		ai_chance = { factor = 1 }
 	}
 	option = {
-		trigger = { has_civic = civic_shadow_council }
+		trigger = {
+			has_civic = civic_shadow_council
+		}
 		name = cyber.1265.c
 		hidden_effect = {
 			country_event = { id = cyber.1275 days = 360 random = 60 }
@@ -4782,7 +4852,9 @@ country_event = {
 		name = cyber.1505.c
 		end_event_chain = futureshock_chain
 		custom_tooltip = cyber.1505.c.tt
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 }
 
@@ -4857,7 +4929,9 @@ country_event = {
 		name = cyber.1510.c
 		end_event_chain = futureshock_chain
 		custom_tooltip = cyber.1510.c.tt
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 }
 
@@ -4985,7 +5059,9 @@ country_event = {
 	option = {
 		name = cyber.1515.c
 		custom_tooltip = cyber.1515.c.tt
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 
 	after = {
@@ -5059,7 +5135,9 @@ country_event = {
 		name = cyber.1520.c
 		end_event_chain = futureshock_chain
 		custom_tooltip = cyber.1520.c.tt
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 }
 
@@ -5192,7 +5270,9 @@ country_event = {
 		name = cyber.1525.c
 		end_event_chain = futureshock_chain
 		custom_tooltip = cyber.1525.c.tt
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 }
 
@@ -5987,7 +6067,9 @@ country_event = {
 	option = {
 		name = cyber.2015.c
 		custom_tooltip = cyber.2015.c.tt
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 	}
 
 	after = {

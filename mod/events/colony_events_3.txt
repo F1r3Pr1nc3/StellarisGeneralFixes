@@ -191,7 +191,9 @@ planet_event = {
 	}
 	option = {
 		name = colony_mod.2.c
-		trigger = { owner = { is_xenophile = yes } } # nice, for xenophiles
+		trigger = {
+			owner = { is_xenophile = yes }
+		} # nice, for xenophiles
 		# study them, bad outcome less likely but takes longer.
 		# Remove blockers in success result
 		enable_special_project = { name = "titanic_life_study_nice" owner = root }
@@ -261,7 +263,9 @@ planet_event = {
 	}
 	option = {
 		name = EXCELLENT
-		trigger = { has_planet_flag = nice_titan_study }
+		trigger = {
+			has_planet_flag = nice_titan_study
+		}
 		hidden_effect = {
 			every_deposit = {
 				limit = { is_deposit_type = d_titanic_life_blocker }
@@ -3053,11 +3057,15 @@ planet_event = {
 	title = colony_fed.105.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = colony_fed.105.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = colony_fed.105.gestalt.desc
 	}
 
@@ -3068,7 +3076,9 @@ planet_event = {
 
 	option = { # Gestalt embrace option
 		name = colony_fed.105.a
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		add_deposit = d_bluelotus
 		hidden_effect = {
 			planet_event = { id = colony_fed.110 days = 40 }
@@ -3076,7 +3086,9 @@ planet_event = {
 	}
 	option = { # Embrace option
 		name = colony_fed.105.b
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		owner = {
 			add_resource = { energy = -420 }
 		}
@@ -3087,14 +3099,18 @@ planet_event = {
 	}
 	option = { # Cease
 		name = colony_fed.105.c
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		hidden_effect = {
 			planet_event = { id = colony_fed.106 days = 40 }
 		}
 	}
 	option = { # Gestalt purge
 		name = colony_fed.105.d
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		random_owned_pop_job = {
 			limit = { has_job_type = fabricator }
 			kill_assigned_pop_amount = { amount = @building_static_jobs_low }
@@ -3159,11 +3175,15 @@ planet_event = {
 	title = colony_fed.110.name
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = colony_fed.110.desc
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = colony_fed.110.gestalt.desc
 	}
 
@@ -3350,11 +3370,15 @@ planet_event = {
 	title = "colony.9005.name"
 
 	desc = {
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		text = "colony.9005.desc"
 	}
 	desc = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		text = "colony.9005.desc.gestalt"
 	}
 
@@ -3371,11 +3395,15 @@ planet_event = {
 	}
 	option = { # Leave the Nemmas alone
 		name = {
-			trigger = { owner = { is_gestalt = no } }
+			trigger = {
+				owner = { is_gestalt = no }
+			}
 			text = "colony.9005.b"
 		}
 		name = {
-			trigger = { owner = { is_gestalt = yes } }
+			trigger = {
+				owner = { is_gestalt = yes }
+			}
 			text = "colony.9005.b.gestalt"
 		}
 		owner = { end_event_chain = nemma_world_chain }
@@ -3442,7 +3470,9 @@ planet_event = {
 	}
 	option = {
 		name = colony.9010.d
-		trigger = { owner = { is_homicidal = yes } }
+		trigger = {
+			owner = { is_homicidal = yes }
+		}
 		enable_special_project = { name = "kill_turtle_world_project" owner = root }
 	}
 }
@@ -3518,11 +3548,15 @@ planet_event = {
 	}
 	option = {
 		name = {
-			trigger = { owner = { is_gestalt = no } }
+			trigger = {
+				owner = { is_gestalt = no }
+			}
 			text = "colony.9020.b"
 		}
 		name = {
-			trigger = { owner = { is_gestalt = yes } }
+			trigger = {
+				owner = { is_gestalt = yes }
+			}
 			text = "colony.9020.b.gestalt"
 		}
 		trigger = {
@@ -4666,7 +4700,9 @@ planet_event = {
 	option = { # casual
 		name = colony.9210.a
 		custom_tooltip = colony.9210.a.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		hidden_effect = {
 			planet_event = { id = colony.9211 days = 180 random = 360 }
 		}
@@ -4694,7 +4730,9 @@ planet_event = {
 	option = { # gestalt - pop dies
 		name = colony.9210.d
 		custom_tooltip = colony.9210.d.desc
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		hidden_effect = {
 			planet_event = { id = colony.9214 days = 100 random = 100 }
 		}
@@ -5120,7 +5158,9 @@ planet_event = {
 	option = { # casual1 - pop death
 		name = colony.9240.a
 		custom_tooltip = colony.9240.a.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		hidden_effect = {
 			planet_event = { id = colony.9241 days = 60 random = 60 }
 		}
@@ -5128,7 +5168,9 @@ planet_event = {
 	option = { # casual2 - less produce
 		name = colony.9240.b
 		custom_tooltip = colony.9240.b.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		set_planet_flag = manufactorium_guardians_produce
 		hidden_effect = {
 			planet_event = { id = colony.9242 days = 30 random = 30 }
@@ -5157,7 +5199,9 @@ planet_event = {
 	option = { # gestalt - managed to avert the bad situation
 		name = colony.9240.e
 		custom_tooltip = colony.9240.e.desc
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		hidden_effect = {
 			planet_event = { id = colony.9245 days = 60 random = 60 }
 		}
@@ -5461,7 +5505,9 @@ planet_event = {
 	option = { # casual1 - bad outcome, lowered happiness
 		name = colony.9260.a
 		custom_tooltip = colony.9260.a.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		set_planet_flag = manufactorium_work_happiness
 		hidden_effect = {
 			planet_event = { id = colony.9270 days = 360 random = 360 }
@@ -5470,7 +5516,9 @@ planet_event = {
 	option = { # casual2 - bad outcome, lowered production
 		name = colony.9260.b
 		custom_tooltip = colony.9260.b.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		set_planet_flag = manufactorium_work_production
 		hidden_effect = {
 			planet_event = { id = colony.9270 days = 360 random = 360 }
@@ -5504,7 +5552,9 @@ planet_event = {
 	option = { # gestalt - bad outcome only - increased amenities usage
 		name = colony.9260.e
 		custom_tooltip = colony.9260.e.desc
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		set_planet_flag = manufactorium_work_gestalt
 		hidden_effect = {
 			planet_event = { id = colony.9270 days = 360 random = 360 }
@@ -5676,7 +5726,9 @@ planet_event = {
 
 	option = { # casual - timed happiness boost
 		name = colony.9290.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		owner = {
 			add_modifier = { modifier = media_coverage_positive_medium years = 2 }
 		}
@@ -5721,7 +5773,9 @@ planet_event = {
 	}
 	option = { # casual - gestalt, nothing
 		name = colony.9290.e
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		remove_deposit = d_ancient_manufactorium_vaultexploration
 		add_deposit = d_ancient_manufactorium_working
 	}
@@ -6336,11 +6390,15 @@ planet_event = {
 	title = colony.9365.desc
 
 	desc = {
-		trigger = { has_modifier = "planet_myrmeku_seal_colony" }
+		trigger = {
+			has_modifier = "planet_myrmeku_seal_colony"
+		}
 		text = colony.9365.desc.seal_colony
 	}
 	desc = {
-		trigger = { has_modifier = "planet_myrmeku_upgrade_robots" }
+		trigger = {
+			has_modifier = "planet_myrmeku_upgrade_robots"
+		}
 		text = colony.9365.desc.upgrade_robots
 	}
 	desc = {
@@ -6596,15 +6654,21 @@ country_event = {
 	title = "colony.9810.name"
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9810.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9810.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9810.desc"
 	}
 
@@ -6673,15 +6737,21 @@ country_event = {
 	title = "colony.9815.name"
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9815.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9815.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9815.desc"
 	}
 
@@ -6773,15 +6843,21 @@ country_event = {
 	title = "colony.9820.name"
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9820.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9820.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9820.desc"
 	}
 
@@ -6802,14 +6878,18 @@ country_event = {
 	}
 
 	option = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		name = ONSCREEN
 		hidden_effect = {
 			country_event = { id = colony.9821 }
 		}
 	}
 	option = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		name = colony.9820.a.robot
 		hidden_effect = {
 			country_event = { id = colony.9821 }
@@ -6823,15 +6903,21 @@ country_event = {
 	title = colony.9821.name
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9821.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9821.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9821.desc"
 	}
 
@@ -6849,41 +6935,55 @@ country_event = {
 	option = {
 		name = colony.9821.a
 		response_text = colony.9821.a.response
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		is_dialog_only = yes
 	}
 	option = {
 		name = colony.9821.a.robot
 		response_text = colony.9821.a.response.robot
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		is_dialog_only = yes
 	}
 	option = {
 		name = colony.9821.a
 		response_text = colony.9821.a.response.hive
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		is_dialog_only = yes
 	}
 	option = {
 		name = colony.9821.b
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		response_text = colony.9821.b.response
 		is_dialog_only = yes
 	}
 	option = {
 		name = colony.9821.b.robot
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		response_text = colony.9821.b.response.robot
 		is_dialog_only = yes
 	}
 	option = {
 		name = colony.9821.b
 		response_text = colony.9821.b.response.hive
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		is_dialog_only = yes
 	}
 	option = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		name = colony.9821.c
 		hidden_effect = {
 			country_event = { id = colony.9822 }
@@ -6891,7 +6991,9 @@ country_event = {
 		ai_chance = { factor = 2 }
 	}
 	option = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		name = colony.9821.c.robot
 		hidden_effect = {
 			country_event = { id = colony.9822 }
@@ -6906,15 +7008,21 @@ country_event = {
 	title = colony.9821.name
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9822.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9822.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9822.desc"
 	}
 
@@ -6930,21 +7038,27 @@ country_event = {
 	}
 
 	option = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		name = colony.9822.a
 		hidden_effect = {
 			country_event = { id = colony.9840 days = 360 random = 20 }
 		}
 	}
 	option = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		name = colony.9822.a.robot
 		hidden_effect = {
 			country_event = { id = colony.9840 days = 360 random = 20 }
 		}
 	}
 	option = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		name = colony.9822.a.hive
 		hidden_effect = {
 			country_event = { id = colony.9840 days = 360 random = 20 }
@@ -6958,15 +7072,21 @@ country_event = {
 	title = "colony.9840.name"
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9840.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9840.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9840.desc"
 	}
 
@@ -7007,15 +7127,21 @@ country_event = {
 			text = colony.9840.b
 		}
 		name = {
-			trigger = { is_xenophobe = yes }
+			trigger = {
+				is_xenophobe = yes
+			}
 			text = colony.9840.b.phobe
 		}
 		name = {
-			trigger = { has_valid_civic = civic_hive_devouring_swarm }
+			trigger = {
+				has_valid_civic = civic_hive_devouring_swarm
+			}
 			text = colony.9840.b.swarm
 		}
 		name = {
-			trigger = { has_valid_civic = civic_machine_terminator }
+			trigger = {
+				has_valid_civic = civic_machine_terminator
+			}
 			text = colony.9840.b.exterminator
 		}
 		custom_tooltip = colony.9840.b.tooltip
@@ -7049,15 +7175,21 @@ country_event = {
 	}
 	option = { # Save them
 		name = {
-			trigger = { is_machine_empire = yes }
+			trigger = {
+				is_machine_empire = yes
+			}
 			text = colony.9840.c.exterminator
 		}
 		name = {
-			trigger = { is_hive_empire = yes }
+			trigger = {
+				is_hive_empire = yes
+			}
 			text = colony.9840.c.swarm
 		}
 		name = {
-			trigger = { is_xenophobe = yes }
+			trigger = {
+				is_xenophobe = yes
+			}
 			text = colony.9840.c.phobe
 		}
 		name = {
@@ -7136,15 +7268,21 @@ country_event = {
 	title = "colony.9850.name"
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "colony.9850.desc.robot"
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = "colony.9850.desc.hive"
 	}
 	desc = {
-		trigger = { is_regular_empire = yes }
+		trigger = {
+			is_regular_empire = yes
+		}
 		text = "colony.9850.desc"
 	}
 
@@ -7489,7 +7627,9 @@ situation_event = {
 	situation = this
 
 	desc = {
-		trigger = { current_situation_approach = approach_save_b_world }
+		trigger = {
+			current_situation_approach = approach_save_b_world
+		}
 		text = colony.9870.desc.helped
 	}
 	desc = {
@@ -7508,7 +7648,9 @@ situation_event = {
 	}
 
 	option = { # Redouble efforts
-		trigger = { current_situation_approach = approach_save_b_world }
+		trigger = {
+			current_situation_approach = approach_save_b_world
+		}
 		name = colony.9870.a
 		custom_tooltip = colony.9870.a.tooltip
 		set_situation_flag = redoubled_efforts
@@ -7798,11 +7940,15 @@ country_event = {
 	title = colony.9821.name
 
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = colony.9885.desc.hive
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = colony.9885.desc.machine
 	}
 
@@ -7827,12 +7973,16 @@ country_event = {
 	}
 
 	option = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		name = colony.9885.a.hive
 		custom_tooltip = colony.9885.a.hive.tooltip
 	}
 	option = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		name = colony.9885.a.machine
 		custom_tooltip = colony.9885.a.machine.tooltip
 	}
@@ -8009,11 +8159,15 @@ planet_event = {
 	title = "colony.9905.name"
 
 	desc = {
-		trigger = { has_modifier = reassured_tracking }
+		trigger = {
+			has_modifier = reassured_tracking
+		}
 		text = colony.9905.desc.a
 	}
 	desc = {
-		trigger = { has_modifier = collective_autophobia }
+		trigger = {
+			has_modifier = collective_autophobia
+		}
 		text = colony.9905.desc.b
 	}
 
@@ -8078,7 +8232,9 @@ planet_event = {
 	}
 	option = {
 		name = colony.9915.b
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		custom_tooltip = colony.9915.b.tooltip
 		owner = {
 			add_monthly_resource_mult = {
@@ -8375,7 +8531,9 @@ planet_event = {
 
 	option = { # TOURISM
 		name = colony.9955.a
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		add_modifier = { modifier = "stratovent_world_modifier_tourism" }
 		hidden_effect = {
 			planet_event = { id = colony.9960 days = 700 random = 100 }
@@ -9671,7 +9829,9 @@ planet_event = {
 
 	option = {
 		name = colony.10040.a
-		trigger = { owner = { is_militarist = no } }
+		trigger = {
+			owner = { is_militarist = no }
+		}
 		hidden_effect = {
 			random_list = {
 				70 = { planet_event = { id = colony.10045 days = 1 random = 3 } } # Success
