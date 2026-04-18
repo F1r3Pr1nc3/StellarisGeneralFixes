@@ -1980,12 +1980,23 @@ country_event = {
 				}
 				any_war = {
 					NOT = { is_same_value = from }
-					root = {
-						is_war_participant = { war = prev side = attackers }
-					}
+					any_attacker = { is_same_value = root }
 				}
 			}
-			from = { remove_war_participant = root }
+			country_event = { id = rebellionfix.412 days = 1 }
 		}
+	}
+}
+
+country_event = {
+	id = rebellionfix.412
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = fromfrom
+		fromfrom = { is_scope_type = war }
+	}
+	immediate = {
+		fromfrom = { remove_war_participant = root }
 	}
 }
