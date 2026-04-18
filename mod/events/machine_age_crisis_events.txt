@@ -1813,6 +1813,12 @@ country_event = {
 		}
 		hidden_effect = {
 			every_controlled_ship = {
+				limit = {
+					OR = { # Vfix: critical because quests, e.g. https://forum.paradoxplaza.com/forum/threads/1916588/
+						is_designable = yes
+						NOT = { is_ship_class = shipclass_military_special }
+					}
+				}
 				random_list = {
 					1 = { reduce_hp_percent = 95 }
 					1 = { reduce_hp_percent = 80 }

@@ -2795,9 +2795,13 @@ trait_plantoid_budding = {
 	custom_tooltip = TRAIT_PLANTOID_BUDDING_EFFECT
 
 	triggered_planet_pop_group_modifier_for_species = {
-		potential = { has_budding_trait = yes }
+		potential = {
+			exists = planet
+			# has_budding_trait = yes Vfix triggers itself???
+		}
 		divide_over_pop_groups = no
 		bonus_pop_growth = @plantoid_budding_rate
+		mult = value:budding_multiplier # Vfix
 	}
 
 	slave_cost = {
@@ -2976,20 +2980,22 @@ trait_lithoid_budding = {
 
 	triggered_planet_pop_group_modifier_for_species = {
 		potential = {
-			has_budding_trait = yes
+			# has_budding_trait = yes Vfix triggers itself???
 			exists = planet
 			NOT = { planet = { has_deposit = d_lithoid_crater } }
 		}
 		divide_over_pop_groups = no
 		bonus_pop_growth = @plantoid_budding_rate
+		mult = value:budding_multiplier # Vfix
 	}
 	triggered_planet_pop_group_modifier_for_species = {
 		potential = {
-			has_budding_trait = yes
+			# has_budding_trait = yes Vfix triggers itself???
 			exists = planet
 			planet = { has_deposit = d_lithoid_crater }
 		}
 		bonus_pop_growth = @lithoid_crater_budding_rate
+		mult = value:budding_multiplier # Vfix
 	}
 
 	slave_cost = {
