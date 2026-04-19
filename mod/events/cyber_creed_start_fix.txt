@@ -34,59 +34,130 @@ country_event = {
 		every_owned_leader = {
 			limit = {
 				NOR = {
-					has_ethic = ethic_spiritualist
+					is_spiritualist = yes
 					is_ruler = yes
 				}
 				has_trait = leader_trait_ritualistic_implants_cyborg
 			}
 			remove_trait = leader_trait_ritualistic_implants_cyborg
+			if = {
+				limit = {
+					species = { has_trait = trait_cyborg_ritualistic_implants }
+				}
+				prev = {
+					random_owned_species = {
+						limit = {
+							is_same_species = prevprev.species
+							NOT = { has_trait = trait_cyborg_ritualistic_implants }
+						}
+						weights = {
+							base = 1
+							modifier = { add = 1000 has_cybernetic_creed_trait = yes }
+						}
+						prevprev = { change_species = prev update_leader_after_modification = yes }
+					}
+				}
+			}
 		}
 		every_pool_leader = {
 			limit = {
-				NOT = { has_ethic = ethic_spiritualist }
+				is_spiritualist = no
 				has_trait = leader_trait_ritualistic_implants_cyborg
 			}
 			remove_trait = leader_trait_ritualistic_implants_cyborg
+			if = {
+				limit = {
+					species = { has_trait = trait_cyborg_ritualistic_implants }
+				}
+				prev = {
+					random_owned_species = {
+						limit = {
+							is_same_species = prevprev.species
+							NOT = { has_trait = trait_cyborg_ritualistic_implants }
+						}
+						weights = {
+							base = 1
+							modifier = { add = 1000 has_cybernetic_creed_trait = yes }
+						}
+						prevprev = { change_species = prev update_leader_after_modification = yes }
+					}
+				}
+			}
 		}
 		# Add
 		every_owned_leader = {
 			limit = {
 				OR = {
-					has_ethic = ethic_spiritualist
+					is_spiritualist = yes
 					is_ruler = yes
 				}
-				NOT = { has_trait = leader_trait_ritualistic_implants_cyborg }
+				NOR = {
+					has_trait = leader_trait_ritualistic_implants_cyborg
+					has_trait = leader_trait_psionic
+					has_trait = leader_trait_chosen
+					has_trait = leader_trait_cyborg
+				}
 			}
 			add_trait = {
 				trait = leader_trait_ritualistic_implants_cyborg
 				show_message = no
 			}
-			prev = {
-				random_owned_species = {
-					limit = {
-						is_same_species = prevprev.species
-						has_cybernetic_creed_trait = yes
-					}
-					save_event_target_as = cybercreed_species
-				}
-			}
 			if = {
 				limit = {
-					exists = event_target:cybercreed_species
 					species = { has_cybernetic_creed_trait = no }
 				}
-				change_species = event_target:cybercreed_species
-				update_leader_after_modification = yes
+				prev = {
+					random_owned_species = {
+						limit = {
+							is_same_species = prevprev.species
+							has_cybernetic_creed_trait = yes
+						}
+						weights = {
+							base = 1
+							modifier = {
+								add = 1000
+								has_trait = leader_trait_ritualistic_implants_cyborg
+							}
+						}
+						prevprev = { change_species = prev update_leader_after_modification = yes }
+					}
+				}
 			}
 		}
 		every_pool_leader = {
 			limit = {
-				has_ethic = ethic_spiritualist
-				NOT = { has_trait = leader_trait_ritualistic_implants_cyborg }
+				is_spiritualist = yes
+				NOR = {
+					has_trait = leader_trait_ritualistic_implants_cyborg
+					has_trait = leader_trait_psionic
+					has_trait = leader_trait_chosen
+					has_trait = leader_trait_cyborg
+				}
 			}
 			add_trait = {
 				trait = leader_trait_ritualistic_implants_cyborg
 				show_message = no
+			}
+			if = {
+				limit = {
+					species = { has_cybernetic_creed_trait = no }
+				}
+				prev = {
+					random_owned_species = {
+						limit = {
+							is_same_species = prevprev.species
+							has_cybernetic_creed_trait = yes
+						}
+						weights = {
+							base = 1
+							modifier = {
+								add = 1000
+								has_trait = leader_trait_ritualistic_implants_cyborg
+							}
+						}
+						prevprev = { change_species = prev update_leader_after_modification = yes }
+					}
+				}
 			}
 		}
 	}

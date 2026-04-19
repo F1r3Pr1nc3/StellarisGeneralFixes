@@ -58,7 +58,9 @@ citizenship_full = {
 		custom_tooltip = {
 			fail_text = "SCORCHED_HERALDS_ONLY_INF"
 			if = {
-				limit = { from = { is_genocidal_infernal = yes } }
+				limit = {
+					from = { is_genocidal_infernal = yes }
+				}
 				has_trait = trait_infernal
 			}
 		}
@@ -192,22 +194,24 @@ citizenship_assimilation = {
 				}
 			}
 			OR = {
-				AND = { # machine cyborg assimilator
+				AND = {
+					# machine cyborg assimilator
+					# machine synthetic assimilator
 					is_machine_empire = yes
-					has_civic = civic_machine_assimilator
-					root = {
-						OR = {
-							is_robotic = yes
-							NOT = { has_trait = trait_cybernetic }
+					OR = { # Vfix opt
+						root = { is_robotic = yes }
+						AND = {
+							has_civic = civic_machine_assimilator
+							root = {
+								NOT = { has_trait = trait_cybernetic }
+							}
 						}
 					}
 				}
-				# Vfix double
+				# Vfix merged
 				# AND = { # machine synthetic assimilator
 				# 	is_machine_empire = yes
-				# 	root = {
-				# 		is_robotic = yes
-				# 	}
+				# 	root = { is_robotic = yes }
 				# }
 				AND = {
 					OR = {
@@ -247,7 +251,7 @@ citizenship_assimilation = {
 				}
 				AND = {	# Mindwarden Anti-Psionics
 					has_modifier = destroyers_of_the_lost_modifier
-					ROOT = { has_psionic_species_trait = yes }
+					root = { has_psionic_species_trait = yes }
 				}
 			}
 		}
@@ -418,11 +422,9 @@ citizenship_assimilation = {
 
 	ai_will_do = {
 		factor = 100
-
 		modifier = {
 			factor = 0
 			OR = {
-
 				from = {
 					OR = {
 						is_homicidal = yes
@@ -432,7 +434,6 @@ citizenship_assimilation = {
 						}
 					}
 				}
-
 				AND = {
 					from = { is_machine_empire = yes }
 					has_trait = trait_machine_unit # Vfix by Dr. Addiction
@@ -588,7 +589,9 @@ citizenship_limited = {
 		custom_tooltip = {
 			fail_text = "SCORCHED_HERALDS_ONLY_INF"
 			if = {
-				limit = { from = { is_genocidal_infernal = yes } }
+				limit = {
+					from = { is_genocidal_infernal = yes }
+				}
 				has_trait = trait_infernal
 			}
 		}
@@ -629,7 +632,7 @@ citizenship_limited = {
 				}
 			}
 		}
-			}
+	}
 }
 
 citizenship_slavery = {
@@ -776,7 +779,6 @@ citizenship_slavery = {
 
 	ai_will_do = {
 		factor = 15
-
 		modifier = {
 			factor = 0
 			from = {
@@ -973,7 +975,6 @@ citizenship_purge = {
 					has_trait = trait_machine_unit
 					from = { is_machine_empire = yes }
 				}
-
 				from = {
 					OR = {
 						NOR = {

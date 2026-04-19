@@ -1884,11 +1884,15 @@ country_event = {
 	title = "observation.212.name"
 
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = observation.212.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = observation.212.desc.mach
 	}
 
@@ -2818,7 +2822,9 @@ country_event = {
 		}
 	}
 	option = {
-		trigger = { is_xenophile = no }
+		trigger = {
+			is_xenophile = no
+		}
 		name = "observation.1201.b"
 		add_resource = { influence = 50 }
 		custom_tooltip = fircon.7510.a.tt # Vfix Dux: "200 pops die."

@@ -1,0 +1,73 @@
+[h1][b]群星 [b]v4.3[/b] 错误清洁工 (Error Janitor)[/b][/h1]
+[h3][b]因为总得有人来干这活。[/b][/h3]
+[p]本项目是 [url=steamcommunity.com/workshop/filedetails/3615026960]Stellaris v[4.2-4.3beta] General Fixes[/url] 的延续。它集成了我们发现的所有旧版原版修复（致谢名单见下文及代码注释）。[/p]
+[hr]
+最初我制作这些修复是为了自用，好消除那些烦人的日志噪音，给自己创造一个能清静写 Mod 的基础。毕竟众所周知，PDX 有时永远不会修复某些 Bug[spoiler]或者几年后才修[/spoiler]。所以，我现在开始发布这个原版综合 Bug 修复合集[spoiler]顺便给群星的屁股上来那么一脚[/spoiler]。
+我的计划是让这个 Mod 保持长青，并持续扩展和更新。我[i]其他 Mod[/i] 中包含的所有 Bug 修复也会慢慢整合到这里。
+
+[h2][b]功能介绍[/b][/h2]
+[list]
+[][b]修复“特性”：[/b] 修正了大量由我们或其他玩家发现的各类 Bug。
+[][b]性能提升：[/b] 提升高达 10%！(未使用触发器黑科技或计时器微调，即便我们添加了更多 on_action 元素并面临极其恶心的 Mod 叠加 Bug 的情况下)[spoiler]——通过优化脚本逻辑、清理（合并）AI 权重（AI_weights）和修正符、按预期使用现代语法、以及根据优先级排列触发器实现。[/spoiler]
+[][b]本地化：[/b] 包含了一些已公开报告的修复（适用于所有语言）。
+[][b]打造 Mod 基础：[/b] 让你在一个不会整天对着你尖叫的代码基础上进行创作。
+[*][b]清空 [i]error.log[/i]：[/b] 修复报错刷屏，让你能找回“真正”的错误（比如你自己 Mod 里的那些）。
+[/list]
+制作这些 Bug 修复是一项巨大的工程，但要把它们一一列出并记录下来则是另一个维度的折磨。因此，由于数量过于庞大，每个 Bug 的修复通常在代码中都有自我说明，并标记为“[b]# Vfix[/b]”（约 2000 处——这还没算那些小修小补）。
+[p]详细的修复列表稍后送上[spoiler]——很有可能，由于 PDS 会在下个版本集成其中的大部分修复，你到时候直接看官方更新日志就行——我拿的薪水可不包含写文档。[/spoiler][/p]
+
+[h2][b]免责声明[/b]：评分与反馈[/h2]
+[b]第一[/b]：我们没时间玩[b]多人模式[/b]（说得委婉点）。
+[b]第二[/b]：如果我们的成果没能达到你的个人预期，请停止用恶意差评轰炸这个项目。除了发泄还能为了什么？
+[p]本项目没有庞大的 QA 部门支持。测试时间有限，而游戏本身庞大、复杂，偶尔还只是靠着“希望”在维持运转。因此，这个修复补丁本身也可能带有 Bug。
+[u]也就是说，如果这个 Mod 导致了问题，请进行反馈——[i]“差评”不是[b] Bug 报告[/b][/i]——避免此类问题具有最高优先级。[/u]
+多亏了 [b]Steam[/b] 那令人印象深刻的算法，哪怕一个差评都能让曝光率归零。如果负面评分超过了我残存的心理承受能力，那么继续维护这些免费修复可能就难以为继了。[/p]
+生命终将消逝，但你的点赞和好评可以永存。
+感谢所有理解这份疯狂的支持者和订阅者。你们是修复工作持续产出的动力。😄
+
+[h1][b]你的订阅就是一份宣言[/b][/h1]
+通过订阅、点赞和收藏，你实际上是在告诉这家独立开发商 (PDX) 问题到底出在哪里，从而帮了他们大忙[spoiler]——说白了，可能只是治标不治本[/spoiler]。这也是在告诉其他玩家：[p]“不，这游戏真的不只是靠希望支撑的一捆乱麻。”，“不，你没疯，这游戏原来真的是这样。”[/p]
+PDS、Ariphaos 以及在座的各位可以免费取用这里的任何内容。如果能给个致谢说明[spoiler]如果那个 Bug 确实有名或者特别有启发性的话[/spoiler]，我将不胜感激。
+[p][b]备注：PDS[/b] 已经开始将本 Mod 整合进[url=steamcommunity.com/games/281990/announcements/detail/601919683105391817][b]原版游戏[/b]（如你所见，自 v4.1.7 起）。[/url][/p]
+
+[h2][b]特别感谢[/b][/h2][list]
+[][url=steamcommunity.com/id/WoodenPotatoes/recommended/281990]WP 给了我灵感[/url]
+[][url=steamcommunity.com/id/renegades-modding-group]RMG 给了我动力[/url]
+[][url=github.com/Ariphaos/StellarisUnofficialPatch/blob/master/Credits.md]Ariphaos 长期维护他的 Mod[/url][spoiler]并集成了我的修复[/spoiler]
+[][url=reddit.com/r/Stellaris/comments/1nodug9/am_i_the_only_one_who_thinks_that_the_40_update/]PDX 给了我做这个 Mod 的机会[/url]
+[][b]你[/b]，感谢读到这里[spoiler]或者你只是单纯喜欢这个部分；我非常欣赏在正确的时间使用核心技能的人[/spoiler]。既然你已经满足了前提条件，你现在注定要去做更重要的事了。
+[][b]Dux[/b] 加入本项目并让我保持动力
+[/list]
+[hr]
+[h2][b]兼容性[/b][/h2]
+[list]
+[]不兼容成就[spoiler]显而易见，我们想把你从无谓的痛苦中解救出来[/spoiler]。
+[]不兼容教程[spoiler]是的，我们知道，现在你也知道了[/spoiler]。
+[]为了获得最佳效果，请将此 Mod 置于载入列表的[b]顶部[/b][spoiler]让我的修复被你那些酷炫的内容 Mod 覆盖，而不是反过来[/spoiler]。
+[]可能与修复相同内容的其他 Mod 冲突。
+[]Unofficial Ariphaos Patch
+[]集成了 Dr. Addiction 的 [url=steamcommunity.com/workshop/filedetails/2871620925]Bug Fixes[/url]，但权重较低（针对 v4.2 进行了集成，就像 v4.0 那样）
+[]集成了 SushiDragon 的 [url=steamcommunity.com/workshop/filedetails/3476603953]Stellaris Fixes[/url]。
+[]合并了 v.kihot 的 [url=steamcommunity.com/workshop/filedetails/3507171482]Stellaris Reforged: Base Fixes[/url]（仅在冲突时）。
+[/list]
+补充说明：既然有些人[spoiler]没把内容看完 :) 并且[/spoiler]在疑惑为什么要[i][b]全文件覆盖[/b][/i]，我不得不说（[u]Ariphaos 应该已经详细解释过了[/u]）：[p][i][u][b]太长不看版：[/b]载入顺序（LO）至关重要！[/u][/i][spoiler]这是保持原版载入顺序激活的唯一方法，我可不想和我做 Mod 的好哥们 Inny MoRe 竞争。[/spoiler][/p]
+[quote=Ariphaos]只要将此 Mod 放在载入列表的最顶端，它应该能兼容几乎所有内容。大多数更改彼此独立，即使其中一部分被覆盖，其他部分也至少能像在原版中一样正常工作。[/quote]
+
+[h3][b]另请参阅[/b][/h3]
+[list]
+[][url=steamcommunity.com/workshop/filedetails/2761714221]PDX 的下一个 DLC[/url]
+[][url=github.com/F1r3Pr1nc3/StellarisModpackUtility/blob/master/modupdater-3.14.py]群星 Mod 降级工具至 v3.14[/url] —— v4.1 退化器（开发中）
+[][url=steamcommunity.com/workshop/filedetails/3589215264]遗产版本 v4.1.7[/url]
+[][url=marketplace.visualstudio.com/items?itemName=F1r3Pr1nc3.paradox-script-formatter]PDX 脚本格式化工具[/url] —— 自我推广
+[/list]
+[h3][b]轻微推荐[/b][/h3][list]
+[*][url=steamcommunity.com/workshop/filedetails/3508502505]Stellaris Reforged: AI[/url] (作者：v.kihot)
+[/list]
+[hr]
+
+[url=github.com/F1r3Pr1nc3/StellarisGeneralFixes]Git 仓库[/url][spoiler]——为了乐子——我是说为了协作[/spoiler]
+
+欢迎使用讨论区。
+[quote C. S. Lewis]算错的账可以改对：但只能通过回头找到错误并从那一点重新算起，而不能只是糊涂地继续算下去。[/quote]
+[pullquote]一切到最后都会好起来的。如果还没好起来，那说明还没到最后。[/pullquote]
+[img]//i.ibb.co/Yc9HsfJ/steam-like-award-favorite-subscribe.gif[/img]

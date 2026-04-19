@@ -115,7 +115,9 @@ fleet_event = {
 	option = {
 		name = {
 			text = unique.10.a
-			trigger = { owner = { is_homicidal = no } }
+			trigger = {
+				owner = { is_homicidal = no }
+			}
 		}
 		name = {
 			text = PREY
@@ -1174,20 +1176,28 @@ country_event = {
 					limit = {
 						NOT = { has_zone = { zone = zone_research_unity } }
 					}
-					add_zone = { zone = zone_research_unity zone_slot = 1 replace = yes }
+					add_zone = {
+						zone = zone_research_unity
+						zone_slot = 1
+						replace = yes
+					}
 				}
 				if = {
 					limit = {
 						NOT = { has_zone = { zone = zone_industrial } }
 					}
-					add_zone = { zone = zone_industrial zone_slot = 2 replace = yes }
+					add_zone = {
+						zone = zone_industrial
+						zone_slot = 2
+						replace = yes
+					}
 				}
 				add_building = building_holo_theatres
 				add_building = building_commercial_zone
 				add_building = { zone = zone_industrial building = building_factory_1 } # Extra Consumer Goods generation.
 				add_building = building_machine_assembly_plant # For better pop-growth.
 				if = {
-					limit = { exists = starbase }
+					limit = { exists = starbase } # Vfix
 					starbase = { # Guaranteed shipyards.
 						set_owner = last_created_country
 						if = {
@@ -1206,7 +1216,7 @@ country_event = {
 						}
 					}
 				}
-				else = {
+				else = { # Vfix
 					solar_system = {
 						create_starbase = {
 							size = starbase_starport
@@ -1217,9 +1227,24 @@ country_event = {
 						}
 					}
 				}
-				create_pop_group = { species = event_target:mechanical_root_species size = 1200 ethos = { ethic = ethic_materialist } category = civilian }
-				create_pop_group = { species = event_target:mechanical_root_species size = 1200 ethos = { ethic = ethic_xenophile } category = civilian }
-				create_pop_group = { species = event_target:mechanical_root_species size = 1100 ethos = { ethic = ethic_egalitarian } category = civilian }
+				create_pop_group = {
+					species = event_target:mechanical_root_species
+					size = 1200
+					ethos = { ethic = ethic_materialist }
+					category = civilian
+				}
+				create_pop_group = {
+					species = event_target:mechanical_root_species
+					size = 1200
+					ethos = { ethic = ethic_xenophile }
+					category = civilian
+				}
+				create_pop_group = {
+					species = event_target:mechanical_root_species
+					size = 1100
+					ethos = { ethic = ethic_egalitarian }
+					category = civilian
+				}
 			}
 			event_target:new_robot_country = { refresh_leader_pool = yes } # Must happen after at least 1 pop exists.
 		}

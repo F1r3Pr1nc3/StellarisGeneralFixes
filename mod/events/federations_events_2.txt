@@ -58,14 +58,18 @@ ship_event = {
 
 	option = {
 		name = federations2.1.A
-		trigger = { owner = { is_xenophile = no } }
+		trigger = {
+			owner = { is_xenophile = no }
+		}
 		owner = {
 			add_modifier = { modifier = supremacy_reaffirmed_by_gift years = 5 }
 		}
 	}
 	option = {
 		name = federations2.1.B
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		if = {
 			limit = {
 				owner = {
@@ -98,7 +102,9 @@ ship_event = {
 	}
 	option = {
 		name = federations2.1.C
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -110,7 +116,9 @@ ship_event = {
 	}
 	option = {
 		name = federations2.1.D
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		owner = {
 			add_modifier = { modifier = gift_from_mysterious_benefactors years = 5 }
 		}
@@ -209,12 +217,16 @@ fleet_event = {
 
 	option = {
 		name = federations2.4.A
-		trigger = { owner = { is_pacifist = no } }
+		trigger = {
+			owner = { is_pacifist = no }
+		}
 		small_artifact_reward = yes
 	}
 	option = {
 		name = federations2.4.B
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		small_artifact_reward = yes
 	}
 }
@@ -1194,11 +1206,15 @@ country_event = {
 
 	desc = {
 		text = federations2.54.desc.said_yes
-		trigger = { has_country_flag = hegemony_joint_operation_yes }
+		trigger = {
+			has_country_flag = hegemony_joint_operation_yes
+		}
 	}
 	desc = {
 		text = federations2.54.desc.said_no
-		trigger = { has_country_flag = hegemony_joint_operation_no }
+		trigger = {
+			has_country_flag = hegemony_joint_operation_no
+		}
 	}
 
 	picture = GFX_evt_arguing_senate
@@ -1208,11 +1224,15 @@ country_event = {
 	option = {
 		name = {
 			text = federations2.54.A.yes
-			trigger = { has_country_flag = hegemony_joint_operation_yes }
+			trigger = {
+				has_country_flag = hegemony_joint_operation_yes
+			}
 		}
 		name = {
 			text = federations2.54.A.no
-			trigger = { has_country_flag = hegemony_joint_operation_no }
+			trigger = {
+				has_country_flag = hegemony_joint_operation_no
+			}
 		}
 		tooltip = {
 			federation = { add_cohesion = -100 }
@@ -1284,11 +1304,15 @@ country_event = {
 
 	desc = {
 		text = federations2.56.desc.said_yes
-		trigger = { has_country_flag = hegemony_joint_operation_yes }
+		trigger = {
+			has_country_flag = hegemony_joint_operation_yes
+		}
 	}
 	desc = {
 		text = federations2.56.desc.said_no
-		trigger = { has_country_flag = hegemony_joint_operation_no }
+		trigger = {
+			has_country_flag = hegemony_joint_operation_no
+		}
 	}
 	desc = {
 		text = federations2.56.desc.invalid
@@ -1303,7 +1327,9 @@ country_event = {
 
 	option = {
 		name = federations2.56.A
-		trigger = { has_country_flag = hegemony_joint_operation_yes }
+		trigger = {
+			has_country_flag = hegemony_joint_operation_yes
+		}
 		custom_tooltip = hegemon_join_operation_happens_tooltip
 		custom_tooltip = the_following_nations_will_participate
 		country_list_tooltip = {
@@ -1326,7 +1352,9 @@ country_event = {
 	option = {
 		name = {
 			text = federations2.56.B.no
-			trigger = { has_country_flag = hegemony_joint_operation_no }
+			trigger = {
+				has_country_flag = hegemony_joint_operation_no
+			}
 		}
 		name = {
 			text = INTERESTING
@@ -2429,11 +2457,15 @@ country_event = {
 
 	desc = {
 		text = federations2.104.desc.said_yes
-		trigger = { has_country_flag = militarist_joint_operation_yes }
+		trigger = {
+			has_country_flag = militarist_joint_operation_yes
+		}
 	}
 	desc = {
 		text = federations2.104.desc.said_no
-		trigger = { has_country_flag = militarist_joint_operation_no }
+		trigger = {
+			has_country_flag = militarist_joint_operation_no
+		}
 	}
 
 	picture = GFX_evt_arguing_senate
@@ -2443,11 +2475,15 @@ country_event = {
 	option = {
 		name = {
 			text = federations2.104.A.yes
-			trigger = { has_country_flag = militarist_joint_operation_yes }
+			trigger = {
+				has_country_flag = militarist_joint_operation_yes
+			}
 		}
 		name = {
 			text = federations2.104.A.no
-			trigger = { has_country_flag = militarist_joint_operation_no }
+			trigger = {
+				has_country_flag = militarist_joint_operation_no
+			}
 		}
 		tooltip = {
 			federation = { add_cohesion = -100 }
@@ -2590,11 +2626,15 @@ country_event = {
 
 	desc = {
 		text = federations2.106.desc.said_yes
-		trigger = { has_country_flag = militarist_joint_operation_yes }
+		trigger = {
+			has_country_flag = militarist_joint_operation_yes
+		}
 	}
 	desc = {
 		text = federations2.106.desc.said_no
-		trigger = { has_country_flag = militarist_joint_operation_no }
+		trigger = {
+			has_country_flag = militarist_joint_operation_no
+		}
 	}
 
 	picture = GFX_evt_fleet_from_surface
@@ -2671,7 +2711,9 @@ country_event = {
 
 	option = {
 		name = federations2.106.A
-		trigger = { has_country_flag = militarist_joint_operation_yes }
+		trigger = {
+			has_country_flag = militarist_joint_operation_yes
+		}
 		event_target:military_exercises_target = {
 			enable_special_project = {
 				name = military_joint_project

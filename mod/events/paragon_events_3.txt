@@ -61,11 +61,15 @@ country_event = {
 
 	option = {
 		name = {
-			trigger = { is_gestalt = no }
+			trigger = {
+				is_gestalt = no
+			}
 			text = "paragon.3001.a"
 		}
 		name = {
-			trigger = { is_gestalt = yes }
+			trigger = {
+				is_gestalt = yes
+			}
 			text = "paragon.3001.b"
 		}
 		hidden_effect = {
@@ -199,11 +203,15 @@ country_event = {
 
 	desc = {
 		text = paragon.3003.desc
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	desc = { # Gestalt
 		text = paragon.3003.desc_gestalt
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_sabotaged_ship
@@ -342,7 +350,9 @@ country_event = {
 	title = "paragon.3004.name"
 
 	desc = {
-		trigger = { has_country_flag = found_skravird }
+		trigger = {
+			has_country_flag = found_skravird
+		}
 		text = paragon.3004.a.desc
 	}
 	desc = {
@@ -1739,42 +1749,58 @@ country_event = {
 
 	option = {
 		name = paragon.3114.a
-		trigger = { is_xenophile = yes }
+		trigger = {
+			is_xenophile = yes
+		}
 		set_global_flag = leader_raised_xenophile
 	}
 	option = {
 		name = paragon.3114.b
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		set_global_flag = leader_raised_xenophobe
 	}
 	option = {
 		name = paragon.3114.c
-		trigger = { is_pacifist = yes }
+		trigger = {
+			is_pacifist = yes
+		}
 		set_global_flag = leader_raised_pacifist
 	}
 	option = {
 		name = paragon.3114.d
-		trigger = { is_militarist = yes }
+		trigger = {
+			is_militarist = yes
+		}
 		set_global_flag = leader_raised_militarist
 	}
 	option = {
 		name = paragon.3114.e
-		trigger = { is_egalitarian = yes }
+		trigger = {
+			is_egalitarian = yes
+		}
 		set_global_flag = leader_raised_egalitarian
 	}
 	option = {
 		name = paragon.3114.f
-		trigger = { is_authoritarian = yes }
+		trigger = {
+			is_authoritarian = yes
+		}
 		set_global_flag = leader_raised_authoritarian
 	}
 	option = {
 		name = paragon.3114.g
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 		set_global_flag = leader_raised_spiritualist
 	}
 	option = {
 		name = paragon.3114.h
-		trigger = { is_materialist = yes }
+		trigger = {
+			is_materialist = yes
+		}
 		set_global_flag = leader_raised_materialist
 	}
 
@@ -2993,7 +3019,9 @@ country_event = {
 	}
 	option = { # What of the Key?
 		name = paragon.3160.b
-		trigger = { has_relic = r_wormhole_key }
+		trigger = {
+			has_relic = r_wormhole_key
+		}
 		response_text = paragon.3160.b.response
 		is_dialog_only = yes
 	}
@@ -3140,14 +3168,18 @@ country_event = {
 
 	option = {
 		name = "paragon.3902.a"
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		hidden_effect = {
 			country_event = { id = paragon.3002 days = 60 random = 60 }
 		}
 	}
 	option = {
 		name = "paragon.3001.b"
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		hidden_effect = {
 			country_event = { id = paragon.3002 days = 60 random = 60 }
 		}

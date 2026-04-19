@@ -17,9 +17,10 @@ country_event = {
 	id = crisis.199
 	hide_window = yes
 	is_test_event = yes
-	trigger = {
-		always = no
-	}
+	is_triggered_only = yes
+	# trigger = {
+	# 	always = no
+	# }
 
 	immediate = {
 		set_global_flag = prethoryn_invasion_happened
@@ -279,7 +280,9 @@ country_event = {
 	# desc = "crisis.16.desc"
 	desc = {
 		text = "crisis.16.desc"
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = "crisis.16.b.desc"
@@ -423,16 +426,16 @@ country_event = {
 					swarm_vanguard = yes
 					swarm_vanguard = yes
 					if = {
-						limit = { is_difficulty = 3 }
+						limit = { is_difficulty >= 3 }
 						swarm_vanguard = yes
-					}
-					if = {
-						limit = { is_difficulty = 5 }
-						swarm_vanguard = yes
-					}
-					if = {
-						limit = { is_difficulty = 6 }
-						swarm_vanguard = yes
+						if = {
+							limit = { is_difficulty >= 5 }
+							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 6 }
+								swarm_vanguard = yes
+							}
+						}
 					}
 					# Constructor
 					create_fleet = {
@@ -469,16 +472,16 @@ country_event = {
 						swarm_vanguard = yes
 						swarm_vanguard = yes
 						if = {
-							limit = { is_difficulty = 3 }
+							limit = { is_difficulty >= 3 }
 							swarm_vanguard = yes
-						}
-						if = {
-							limit = { is_difficulty = 5 }
-							swarm_vanguard = yes
-						}
-						if = {
-							limit = { is_difficulty = 6 }
-							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 5 }
+								swarm_vanguard = yes
+								if = {
+									limit = { is_difficulty >= 6 }
+									swarm_vanguard = yes
+								}
+							}
 						}
 						# Constructor
 						create_fleet = {
@@ -520,16 +523,16 @@ country_event = {
 						swarm_vanguard = yes
 						swarm_vanguard = yes
 						if = {
-							limit = { is_difficulty = 3 }
+							limit = { is_difficulty >= 3 }
 							swarm_vanguard = yes
-						}
-						if = {
-							limit = { is_difficulty = 5 }
-							swarm_vanguard = yes
-						}
-						if = {
-							limit = { is_difficulty = 6 }
-							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 5 }
+								swarm_vanguard = yes
+								if = {
+									limit = { is_difficulty >= 6 }
+									swarm_vanguard = yes
+								}
+							}
 						}
 						# Constructor
 						create_fleet = {
@@ -572,16 +575,16 @@ country_event = {
 						swarm_vanguard = yes
 						swarm_vanguard = yes
 						if = {
-							limit = { is_difficulty = 3 }
+							limit = { is_difficulty >= 3 }
 							swarm_vanguard = yes
-						}
-						if = {
-							limit = { is_difficulty = 5 }
-							swarm_vanguard = yes
-						}
-						if = {
-							limit = { is_difficulty = 6 }
-							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 5 }
+								swarm_vanguard = yes
+								if = {
+									limit = { is_difficulty >= 6 }
+									swarm_vanguard = yes
+								}
+							}
 						}
 						# Constructor
 						create_fleet = {
@@ -741,19 +744,27 @@ country_event = {
 	}
 	option = {
 		name = crisis.18.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = ethic_fanatic_xenophobe
+		}
 	}
 	option = {
 		name = crisis.18.h
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = ethic_fanatic_xenophile
+		}
 	}
 	option = {
 		name = crisis.18.i
-		trigger = { has_ethic = "ethic_fanatic_authoritarian" }
+		trigger = {
+			has_ethic = ethic_fanatic_authoritarian
+		}
 	}
 	option = {
 		name = crisis.18.j
-		trigger = { has_ethic = "ethic_fanatic_egalitarian" }
+		trigger = {
+			has_ethic = ethic_fanatic_egalitarian
+		}
 	}
 
 	# Risa fix: support alternate government types.
@@ -872,16 +883,16 @@ country_event = {
 					swarm_brood = yes
 					swarm_brood = yes
 					if = {
-						limit = { is_difficulty = 3 }
-						swarm_brood = yes
-					}
-					if = {
-						limit = { is_difficulty = 5 }
-						swarm_brood = yes
-					}
-					if = {
-						limit = { is_difficulty = 6 }
-						swarm_brood = yes
+						limit = { is_difficulty >= 3 }
+						swarm_vanguard = yes
+						if = {
+							limit = { is_difficulty >= 5 }
+							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 6 }
+								swarm_vanguard = yes
+							}
+						}
 					}
 					# Infestors
 					while = {
@@ -946,16 +957,16 @@ country_event = {
 						swarm_brood = yes
 						swarm_brood = yes
 						if = {
-							limit = { is_difficulty = 3 }
-							swarm_brood = yes
-						}
-						if = {
-							limit = { is_difficulty = 5 }
-							swarm_brood = yes
-						}
-						if = {
-							limit = { is_difficulty = 6 }
-							swarm_brood = yes
+							limit = { is_difficulty >= 3 }
+							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 5 }
+								swarm_vanguard = yes
+								if = {
+									limit = { is_difficulty >= 6 }
+									swarm_vanguard = yes
+								}
+							}
 						}
 						# Infestors
 						while = {
@@ -1021,16 +1032,16 @@ country_event = {
 						swarm_brood = yes
 						swarm_brood = yes
 						if = {
-							limit = { is_difficulty = 3 }
-							swarm_brood = yes
-						}
-						if = {
-							limit = { is_difficulty = 5 }
-							swarm_brood = yes
-						}
-						if = {
-							limit = { is_difficulty = 6 }
-							swarm_brood = yes
+							limit = { is_difficulty >= 3 }
+							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 5 }
+								swarm_vanguard = yes
+								if = {
+									limit = { is_difficulty >= 6 }
+									swarm_vanguard = yes
+								}
+							}
 						}
 						# Infestors
 						while = {
@@ -1117,16 +1128,16 @@ country_event = {
 						swarm_brood = yes
 						swarm_brood = yes
 						if = {
-							limit = { is_difficulty = 3 }
-							swarm_brood = yes
-						}
-						if = {
-							limit = { is_difficulty = 5 }
-							swarm_brood = yes
-						}
-						if = {
-							limit = { is_difficulty = 6 }
-							swarm_brood = yes
+							limit = { is_difficulty >= 3 }
+							swarm_vanguard = yes
+							if = {
+								limit = { is_difficulty >= 5 }
+								swarm_vanguard = yes
+								if = {
+									limit = { is_difficulty >= 6 }
+									swarm_vanguard = yes
+								}
+							}
 						}
 						# Infestors
 						while = {
@@ -1206,27 +1217,39 @@ country_event = {
 
 	desc = {
 		text = crisis.30.desc_01
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = crisis.30.desc_02
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = crisis.30.desc_03
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 	}
 	desc = {
 		text = crisis.30.desc_07
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 	}
 	desc = {
 		text = crisis.30.desc_08
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 	}
 	desc = {
 		text = crisis.30.desc_09
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 	}
 
 	diplomatic = yes
@@ -1244,7 +1267,9 @@ country_event = {
 
 	option = {
 		name = crisis.30.a
-		trigger = { can_talk_to_prethoryn = no }
+		trigger = {
+			can_talk_to_prethoryn = no
+		}
 		response_text = crisis.30.a.response
 	}
 	option = {
@@ -1289,13 +1314,17 @@ country_event = {
 	}
 	option = {
 		name = crisis.30.g
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.g.response
 		is_dialog_only = yes
 	}
 	option = {
 		name = crisis.30.h
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.h.response
 		is_dialog_only = yes
 		hidden_effect = {
@@ -1304,13 +1333,17 @@ country_event = {
 	}
 	option = {
 		name = crisis.30.i
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.i.response
 		is_dialog_only = yes
 	}
 	option = {
 		name = crisis.30.j
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.j.response
 		is_dialog_only = yes
 		hidden_effect = {
@@ -1319,7 +1352,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.30.a
-		trigger = { can_talk_to_prethoryn = yes }
+		trigger = {
+			can_talk_to_prethoryn = yes
+		}
 		response_text = crisis.30.k.response
 	}
 }
@@ -1419,7 +1454,9 @@ country_event = {
 
 	option = {
 		name = crisis.52.a
-		trigger = { exists = event_target:sentinel_fallen_empire }
+		trigger = {
+			exists = event_target:sentinel_fallen_empire
+		}
 		response_text = crisis.52.a.response
 		is_dialog_only = yes
 	}
@@ -1433,7 +1470,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.52.b
-		trigger = { exists = event_target:sentinel_fallen_empire }
+		trigger = {
+			exists = event_target:sentinel_fallen_empire
+		}
 		response_text = crisis.52.new.b.response
 		is_dialog_only = yes
 	}
@@ -2772,7 +2811,7 @@ event = {
 							num_ships < 1050
 						}
 						AND = {
-							is_difficulty < 3
+							is_difficulty <= 3
 							num_ships < 750
 						}
 					}
@@ -2799,18 +2838,8 @@ country_event = {
 			save_global_event_target_as = prethoryn
 		}
 		owner_species = { save_event_target_as = prethoryn_species }
-		random_system_within_border = {
-			limit = { exists = starbase }
-			starbase = { save_event_target_as = spawn_location }
-		}
-		swarm_brood = yes
-		random_system_within_border = {
-			limit = { exists = starbase }
-			starbase = { save_event_target_as = spawn_location }
-		}
-		swarm_brood = yes
-		if = {
-			limit = { is_difficulty <= 3 }
+		while = {
+			count = 2
 			random_system_within_border = {
 				limit = { exists = starbase }
 				starbase = { save_event_target_as = spawn_location }
@@ -2818,12 +2847,20 @@ country_event = {
 			swarm_brood = yes
 		}
 		if = {
-			limit = { is_difficulty <= 5 }
+			limit = { is_difficulty >= 3 }
 			random_system_within_border = {
 				limit = { exists = starbase }
 				starbase = { save_event_target_as = spawn_location }
 			}
 			swarm_brood = yes
+			if = {
+				limit = { is_difficulty >= 5 }
+				random_system_within_border = {
+					limit = { exists = starbase }
+					starbase = { save_event_target_as = spawn_location }
+				}
+				swarm_brood = yes
+			}
 		}
 		if = {
 			limit = { galaxy_percentage > 0.20 }
@@ -2832,14 +2869,14 @@ country_event = {
 				starbase = { save_event_target_as = spawn_location }
 			}
 			swarm_brood = yes
-		}
-		if = {
-			limit = { galaxy_percentage > 0.40 }
-			random_system_within_border = {
-				limit = { exists = starbase }
-				starbase = { save_event_target_as = spawn_location }
+			if = { # Vfix opt
+				limit = { galaxy_percentage > 0.40 }
+				random_system_within_border = {
+					limit = { exists = starbase }
+					starbase = { save_event_target_as = spawn_location }
+				}
+				swarm_brood = yes
 			}
-			swarm_brood = yes
 		}
 		if = {
 			limit = {
@@ -3079,11 +3116,15 @@ country_event = {
 	}
 	option = { # Xenophobe Response
 		name = crisis.211.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = ethic_fanatic_xenophobe
+		}
 	}
 	option = { # Xenophile Response
 		name = crisis.211.h
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = ethic_fanatic_xenophile
+		}
 	}
 
 	# Risa fix: Support other government types.

@@ -19,12 +19,7 @@ sshipyard = {
 		NOR = {
 			has_starbase_module = hatchery
 			has_starbase_module = beastport
-		}
-		owner = {
-			NAND = {
-				is_ai = yes
-				is_beastmasters_empire = yes
-			}
+			owner = { is_ai = yes is_beastmasters_empire = yes }
 		}
 		OR = {
 			has_starbase_module = shipyard
@@ -129,8 +124,10 @@ shatchery = {
 			}
 			AND = {
 				has_starbase_size > starbase_outpost
-				owner = { is_ai = no }
-				NOT = { has_starbase_module = shipyard }
+				NOR = {
+					owner = { is_ai = yes }
+					has_starbase_module = shipyard
+				}
 			}
 		}
 	}
@@ -171,9 +168,7 @@ sbeastport = {
 sanchorage = {
 	potential = {
 		has_starbase_size > starbase_outpost
-		NOT = {
-			solar_system = { is_same_value = sector.sector_capital.solar_system }
-		}
+		NOT = { solar_system = { is_same_value = sector.sector_capital.solar_system } }
 	}
 
 	weight_modifier = {

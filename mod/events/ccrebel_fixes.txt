@@ -1,6 +1,14 @@
-# Fix to the no ethics problem.
+#################################
+#
+# Fix to the no ethics problem
+# by Caligula Caesar in 2017-2022
+# Revised/optimized by FirePrince in 2025-2026
+#
+#################################
+
 namespace = rebellionfix
-# (on_rebels_take_planet_owner_switched)
+
+## Add ethic (on_rebels_take_planet_owner_switched)
 # Initial rebels manage to take control of the planet, happens after the new owner is set, after the war is created.
 # This = Rebel Country
 # From = Planet
@@ -12,195 +20,187 @@ country_event = {
 
 	trigger = {
 		num_ethics = 0
+		is_multiplayer = no # Bug: not sure
 	}
 
 	immediate = {
-		if = {
-			limit = {
-				from = {
+		from = {
+			if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_authoritarian }
+						limit = { pop_group_has_ethic = ethic_gestalt_consciousness }
 					}
 				}
+				root = {
+					clear_ethos = yes
+					shift_ethic = ethic_gestalt_consciousness
+					break = yes
+				}
 			}
-			country_add_ethic = ethic_fanatic_authoritarian
-		}
-		else_if = {
-			limit = {
-				from = {
+			if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_authoritarian }
 					}
 				}
-				is_egalitarian = no
-			}
-			country_add_ethic = ethic_authoritarian
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_egalitarian }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_authoritarian }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_authoritarian }
+				}
+				else = {
+					root = { country_add_ethic = ethic_authoritarian }
 				}
 			}
-			country_add_ethic = ethic_fanatic_egalitarian
-		}
-		else_if = {
-			limit = {
-				from = {
+			else_if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_egalitarian }
 					}
 				}
-				is_authoritarian = no
-			}
-			country_add_ethic = ethic_egalitarian
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_pacifist }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_egalitarian }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_egalitarian }
+				}
+				else = {
+					root = { country_add_ethic = ethic_egalitarian }
 				}
 			}
-			country_add_ethic = ethic_fanatic_pacifist
-		}
-		else_if = {
-			limit = {
-				from = {
+			if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_pacifist }
 					}
 				}
-				is_militarist = no
-			}
-			country_add_ethic = ethic_pacifist
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_militarist }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_pacifist }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_pacifist }
+				}
+				else = {
+					root = { country_add_ethic = ethic_pacifist }
 				}
 			}
-			country_add_ethic = ethic_fanatic_militarist
-		}
-		else_if = {
-			limit = {
-				from = {
+			else_if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_militarist }
 					}
 				}
-				is_pacifist = no
-			}
-			country_add_ethic = ethic_militarist
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_xenophile }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_militarist }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_militarist }
+				}
+				else = {
+					root = { country_add_ethic = ethic_militarist }
 				}
 			}
-			country_add_ethic = ethic_fanatic_xenophile
-		}
-		else_if = {
-			limit = {
-				from = {
+			if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_xenophile }
 					}
 				}
-				is_xenophobe = no
-			}
-			country_add_ethic = ethic_xenophile
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_xenophobe }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_xenophile }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_xenophile }
+				}
+				else = {
+					root = { country_add_ethic = ethic_xenophile }
 				}
 			}
-			country_add_ethic = ethic_fanatic_xenophobe
-		}
-		else_if = {
-			limit = {
-				from = {
+			else_if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_xenophobe }
 					}
 				}
-				is_xenophile = no
-			}
-			country_add_ethic = ethic_xenophobe
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_spiritualist }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_xenophobe }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_xenophobe }
+				}
+				else = {
+					root = { country_add_ethic = ethic_xenophobe }
 				}
 			}
-			country_add_ethic = ethic_fanatic_spiritualist
-		}
-		else_if = {
-			limit = {
-				from = {
+			if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_spiritualist }
 					}
 				}
-				is_materialist = no
-			}
-			country_add_ethic = ethic_spiritualist
-		}
-		else_if = {
-			limit = {
-				from = {
-					pop_amount_percentage = {
-						percentage > 0.5
-						limit = { pop_group_has_ethic = ethic_materialist }
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_spiritualist }
+						}
 					}
+					root = { country_add_ethic = ethic_fanatic_spiritualist }
+				}
+				else = {
+					root = { country_add_ethic = ethic_spiritualist }
 				}
 			}
-			country_add_ethic = ethic_fanatic_materialist
-		}
-		else_if = {
-			limit = {
-				from = {
+			else_if = {
+				limit = {
 					pop_amount_percentage = {
 						percentage > 0.25
 						limit = { pop_group_has_ethic = ethic_materialist }
 					}
 				}
-				is_spiritualist = no
+				if = {
+					limit = {
+						pop_amount_percentage = {
+							percentage > 0.5
+							limit = { pop_group_has_ethic = ethic_materialist }
+						}
+					}
+					root = { country_add_ethic = ethic_fanatic_materialist }
+				}
+				else = {
+					root = { country_add_ethic = ethic_materialist }
+				}
 			}
-			country_add_ethic = ethic_materialist
 		}
-		country_event = { id = rebellionfix.36 }
-		country_event = { id = rebellionfix.364 days = 3 }
+		country_event = { id = rebellionfix.36 days = 1 }
+		country_event = { id = rebellionfix.364 days = 4 }
 	}
 }
 
@@ -334,22 +334,17 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { num_ethics > 2 }
-			if = {
-				limit = { is_gestalt = yes }
-				clear_ethos = yes
-				shift_ethic = ethic_gestalt_consciousness
+			limit = {
+				is_gestalt = yes
+				num_ethics > 1
 			}
+			clear_ethos = yes
+			shift_ethic = ethic_gestalt_consciousness
 			break = yes
 		}
-		else_if = {
+		if = {
 			limit = { num_ethics = 2 }
 			if = {
-				limit = { is_gestalt = yes }
-				clear_ethos = yes
-				shift_ethic = ethic_gestalt_consciousness
-			}
-			else_if = {
 				limit = {
 					has_ethic = ethic_authoritarian
 					has_ethic = ethic_pacifist
@@ -1131,9 +1126,10 @@ country_event = {
 					}
 				}
 				if = {
-					limit = {
-						NOT = { exists = capital_scope }
-					}
+					limit = { exists = capital_scope }
+					country_event = { id = rebellionfix.35 scopes = { from = capital_scope } }
+				}
+				else = {
 					ordered_owned_planet = {
 						order_by = trigger:pop_amount
 						position = 0
@@ -1141,9 +1137,6 @@ country_event = {
 							country_event = { id = rebellionfix.35 scopes = { from = prev } }
 						}
 					}
-				}
-				else = {
-					country_event = { id = rebellionfix.35 scopes = { from = capital_scope } }
 				}
 			}
 			else = {
@@ -1230,10 +1223,10 @@ country_event = {
 			}
 		}
 		country_event = { id = rebellionfix.361 days = 1 }
-		country_event = { id = rebellionfix.363 days = 2 }
 	}
 }
 
+# Fix ethic for non-gestalt
 country_event = {
 	id = rebellionfix.361
 	hide_window = yes
@@ -1252,6 +1245,7 @@ country_event = {
 						limit = { has_any_ethic = yes }
 					}
 				}
+				## Add ethic
 				random_list = {
 					12 = {
 						modifier = {
@@ -1384,6 +1378,7 @@ country_event = {
 				}
 			}
 			else = {
+				## Add ethic
 				random_list = {
 					12 = {
 						modifier = {
@@ -1560,10 +1555,9 @@ country_event = {
 			}
 			country_event = { id = rebellionfix.362 }
 		}
-		country_event = { id = rebellionfix.363 days = 1 }
 		if = {
 			limit = {
-				OR = {
+				NOR = {
 					AND = {
 						num_ethics = 2
 						is_fanatic = yes
@@ -1575,18 +1569,22 @@ country_event = {
 					}
 				}
 			}
+			country_event = { id = rebellionfix.363 days = 1 }
+		}
+		else = {
 			country_event = { id = rebellionfix.364 days = 1 }
 		}
 	}
 }
 
+# Add ethic for non-gestalt
 country_event = {
 	id = rebellionfix.362
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		num_ethics = 0
+		num_ethics < 2
 	}
 
 	immediate = {
@@ -1596,7 +1594,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_authoritarian }
 				}
-				NOT = { has_ethic = ethic_egalitarian }
+				NOR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_authoritarian
+				}
 			}
 			country_add_ethic = ethic_authoritarian
 		}
@@ -1606,7 +1607,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_egalitarian }
 				}
-				NOT = { has_ethic = ethic_authoritarian }
+				NOR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_egalitarian
+				}
 			}
 			country_add_ethic = ethic_egalitarian
 		}
@@ -1616,7 +1620,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_pacifist }
 				}
-				NOT = { has_ethic = ethic_militarist }
+				NOR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_pacifist
+				}
 			}
 			country_add_ethic = ethic_pacifist
 		}
@@ -1626,7 +1633,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_militarist }
 				}
-				NOT = { has_ethic = ethic_pacifist }
+				NOR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_militarist
+				}
 			}
 			country_add_ethic = ethic_militarist
 		}
@@ -1636,7 +1646,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_xenophile }
 				}
-				NOT = { has_ethic = ethic_xenophobe }
+				NOR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_xenophile
+				}
 			}
 			country_add_ethic = ethic_xenophile
 		}
@@ -1646,7 +1659,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_xenophobe }
 				}
-				NOT = { has_ethic = ethic_xenophile }
+				NOR = {
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_xenophobe
+				}
 			}
 			country_add_ethic = ethic_xenophobe
 		}
@@ -1656,7 +1672,10 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_spiritualist }
 				}
-				NOT = { has_ethic = ethic_materialist }
+				NOR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_spiritualist
+				}
 			}
 			country_add_ethic = ethic_spiritualist
 		}
@@ -1666,14 +1685,16 @@ country_event = {
 					percentage > 0.2
 					limit = { pop_group_has_ethic = ethic_materialist }
 				}
-				NOT = { has_ethic = ethic_spiritualist }
+				NOR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_materialist
+				}
 			}
 			country_add_ethic = ethic_materialist
 		}
-		country_event = { id = rebellionfix.363 }
 		if = {
 			limit = {
-				OR = {
+				NOR = {
 					AND = {
 						num_ethics = 2
 						is_fanatic = yes
@@ -1685,11 +1706,15 @@ country_event = {
 					}
 				}
 			}
+			country_event = { id = rebellionfix.363 days = 1 }
+		}
+		else = {
 			country_event = { id = rebellionfix.364 days = 1 }
 		}
 	}
 }
 
+# Final ethic fix
 country_event = {
 	id = rebellionfix.363
 	hide_window = yes
@@ -1697,6 +1722,7 @@ country_event = {
 
 	trigger = {
 		NOR = {
+			has_country_flag = cc_rebel_ethic_sorted
 			AND = {
 				num_ethics = 2
 				is_fanatic = yes
@@ -1710,6 +1736,8 @@ country_event = {
 	}
 
 	immediate = {
+		set_timed_country_flag = { flag = cc_rebel_ethic_sorted days = 7 }
+		## Remove ethic
 		if = {
 			limit = { num_ethics > 3 }
 			if = {
@@ -1745,6 +1773,7 @@ country_event = {
 				country_remove_ethic = ethic_xenophobe
 			}
 		}
+		## Add ethic
 		random_list = {
 			12 = {
 				modifier = {
@@ -1883,23 +1912,7 @@ country_event = {
 				country_add_ethic = ethic_materialist
 			}
 		}
-		country_event = { id = rebellionfix.363 }
-		if = {
-			limit = {
-				OR = {
-					AND = {
-						num_ethics = 2
-						is_fanatic = yes
-						has_any_ethic = yes
-					}
-					AND = {
-						num_ethics = 3
-						is_fanatic = no
-					}
-				}
-			}
-			country_event = { id = rebellionfix.364 days = 1 }
-		}
+		country_event = { id = rebellionfix.364 days = 1 }
 	}
 }
 
@@ -1911,12 +1924,17 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = { has_country_flag = cc_rebel_ethic_sorted }
+		is_country_type = default
+		NOR = {
+			has_country_flag = cc_rebel_civic_sorted
+			is_multiplayer = yes # Avoid strange behavior (like OOS/CTD)
+			has_unused_civic_points = 0
+		}
 	}
 
 	immediate = {
-		set_timed_country_flag = { flag = cc_rebel_ethic_sorted days = 14 }
-		set_government_cooldown = no
+		set_timed_country_flag = { flag = cc_rebel_civic_sorted days = 7 }
+		# set_government_cooldown = no
 		if = {
 			limit = { is_gestalt = no }
 			change_government = {
@@ -1928,13 +1946,10 @@ country_event = {
 		else = {
 			# Vanilla Bug!? Ethics result invalid: [ethic_gestalt_consciousness] cannot be added
 			# change_government = random
-			change_government = {
-				civics = random
-				remove_invalid_civics = yes
-			}
+			change_government = { civics = random remove_invalid_civics = yes }
 		}
 		fire_on_action = { on_action = empire_init_create_ships }
-		# set_name = random # Because sometimes native didn't work?
+		set_name = random # Because sometimes native didn't work?
 	}
 }
 
@@ -1965,12 +1980,23 @@ country_event = {
 				}
 				any_war = {
 					NOT = { is_same_value = from }
-					root = {
-						is_war_participant = { war = prev side = attackers }
-					}
+					any_attacker = { is_same_value = root }
 				}
 			}
-			from = { remove_war_participant = root }
+			country_event = { id = rebellionfix.412 days = 1 }
 		}
+	}
+}
+
+country_event = {
+	id = rebellionfix.412
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = fromfrom
+		fromfrom = { is_scope_type = war }
+	}
+	immediate = {
+		fromfrom = { remove_war_participant = root }
 	}
 }

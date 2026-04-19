@@ -481,23 +481,33 @@ country_event = {
 	}
 	option = {
 		name = crisis.18.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
 	}
 	option = {
 		name = crisis.1007.a
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophile"
+		}
 	}
 	option = {
 		name = crisis.1007.b
-		trigger = { has_ethic = "ethic_fanatic_authoritarian" }
+		trigger = {
+			has_ethic = "ethic_fanatic_authoritarian"
+		}
 	}
 	option = {
 		name = crisis.18.j
-		trigger = { has_ethic = "ethic_fanatic_egalitarian" }
+		trigger = {
+			has_ethic = "ethic_fanatic_egalitarian"
+		}
 	}
 	option = {
 		name = crisis.18.h
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 }
 
@@ -674,23 +684,33 @@ country_event = {
 	}
 	option = {
 		name = crisis.18.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
 	}
 	option = {
 		name = crisis.1007.a
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophile"
+		}
 	}
 	option = {
 		name = crisis.1007.b
-		trigger = { has_ethic = "ethic_fanatic_authoritarian" }
+		trigger = {
+			has_ethic = "ethic_fanatic_authoritarian"
+		}
 	}
 	option = {
 		name = crisis.18.j
-		trigger = { has_ethic = "ethic_fanatic_egalitarian" }
+		trigger = {
+			has_ethic = "ethic_fanatic_egalitarian"
+		}
 	}
 	option = {
 		name = crisis.18.h
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 }
 
@@ -1021,7 +1041,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.1050.b
-		trigger = { is_pacifist = yes }
+		trigger = {
+			is_pacifist = yes
+		}
 		response_text = crisis.1050.b.response
 	}
 	option = {
@@ -1036,7 +1058,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.1050.d
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		response_text = crisis.1050.d.response
 	}
 	option = {
@@ -1559,7 +1583,9 @@ country_event = {
 
 	desc = {
 		text = "crisis.1116.desc.a"
-		trigger = { has_communications = event_target:portal_killer }
+		trigger = {
+			has_communications = event_target:portal_killer
+		}
 	}
 	desc = {
 		text = "crisis.1116.desc.b"
@@ -1973,7 +1999,9 @@ country_event = {
 
 	desc = {
 		text = "crisis.1216.desc.a"
-		trigger = { has_communications = event_target:portal_killer }
+		trigger = {
+			has_communications = event_target:portal_killer
+		}
 	}
 	desc = {
 		text = "crisis.1216.desc.b"
@@ -2218,10 +2246,7 @@ country_event = {
 			}
 			country_event = { id = crisis.1265 days = 200 random = 50 }
 		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value > 9 }
-			}
+		else = { # Vfix opt minor
 			country_event = { id = crisis.1265 days = 150 random = 50 }
 		}
 	}
@@ -2674,12 +2699,16 @@ country_event = {
 	}
 	option = { # Xenophobe Response
 		name = crisis.1271.g
-		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
 		add_monthly_resource_mult = { resource = unity value = @tier5unityreward }
 	}
 	option = { # Xenophile Response
 		name = crisis.1271.h
-		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophile"
+		}
 		add_monthly_resource_mult = { resource = unity value = @tier5unityreward }
 	}
 

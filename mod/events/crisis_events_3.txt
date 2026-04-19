@@ -12,9 +12,10 @@ country_event = {
 	id = crisis.2000
 	hide_window = yes
 	is_test_event = yes
-	trigger = {
-		always = no
-	}
+	is_triggered_only = yes
+	# trigger = {
+	# 	always = no
+	# }
 
 	immediate = {
 		set_global_flag = ai_invasion_happened
@@ -291,11 +292,15 @@ country_event = {
 	title = "crisis.2010.name"
 
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = crisis.2010.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = crisis.2010.desc.b
 	}
 
@@ -429,19 +434,27 @@ country_event = {
 	title = "crisis.2020.name"
 
 	desc = {
-		trigger = { is_synthetic_empire = no }
+		trigger = {
+			is_synthetic_empire = no
+		}
 		text = crisis.2020.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = crisis.2020.desc.b
 	}
 	desc = {
-		trigger = { has_country_flag = synthetic_empire }
+		trigger = {
+			has_country_flag = synthetic_empire
+		}
 		text = crisis.2020.desc.c
 	}
 	desc = {
-		trigger = { is_individual_machine = yes }
+		trigger = {
+			is_individual_machine = yes
+		}
 		text = crisis.2020.desc.d
 	}
 
@@ -464,11 +477,15 @@ country_event = {
 	title = "crisis.2021.name"
 
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = crisis.2021.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = crisis.2021.desc.b
 	}
 
@@ -491,11 +508,15 @@ country_event = {
 	title = "crisis.2022.name"
 
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = crisis.2022.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = crisis.2022.desc.b
 	}
 
@@ -609,11 +630,15 @@ country_event = {
 	title = "TRANSMISSION"
 
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = crisis.2023.desc
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = crisis.2023.desc.b
 	}
 
@@ -2339,22 +2364,30 @@ country_event = {
 	}
 	desc = {
 		text = crisis.2300.desc_02
-		trigger = { is_synthetic_empire = no }
+		trigger = {
+			is_synthetic_empire = no
+		}
 	}
 	desc = {
 		text = crisis.2300.desc_03
-		trigger = { is_synthetic_empire = no }
+		trigger = {
+			is_synthetic_empire = no
+		}
 	}
 	desc = {
 		text = crisis.2300.desc_04
 	}
 	desc = {
 		text = crisis.2300.desc_05
-		trigger = { is_synthetic_empire = yes }
+		trigger = {
+			is_synthetic_empire = yes
+		}
 	}
 	desc = {
 		text = crisis.2300.desc_06
-		trigger = { is_synthetic_empire = yes }
+		trigger = {
+			is_synthetic_empire = yes
+		}
 	}
 
 	diplomatic = yes
@@ -2387,7 +2420,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.2300.b
-		trigger = { is_synthetic_empire = yes }
+		trigger = {
+			is_synthetic_empire = yes
+		}
 		is_dialog_only = yes
 		response_text = crisis.2300.b.response
 	}
@@ -2403,7 +2438,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.2300.e
-		trigger = { is_materialist = yes }
+		trigger = {
+			is_materialist = yes
+		}
 		is_dialog_only = yes
 		response_text = crisis.2300.e.response
 	}
@@ -2985,11 +3022,15 @@ country_event = {
 	title = "crisis.2085.name"
 
 	desc = {
-		trigger = { is_wilderness_empire = no }
+		trigger = {
+			is_wilderness_empire = no
+		}
 		text = crisis.2086.desc
 	}
 	desc = {
-		trigger = { is_wilderness_empire = yes }
+		trigger = {
+			is_wilderness_empire = yes
+		}
 		text = crisis.2086.wilderness.desc
 	}
 
@@ -3017,11 +3058,15 @@ country_event = {
 	title = "crisis.2085.name"
 
 	desc = {
-		trigger = { is_robot_empire = no }
+		trigger = {
+			is_robot_empire = no
+		}
 		text = crisis.2087.desc.organic
 	}
 	desc = {
-		trigger = { is_robot_empire = yes }
+		trigger = {
+			is_robot_empire = yes
+		}
 		text = crisis.2087.desc.machine
 	}
 
@@ -3659,7 +3704,9 @@ country_event = {
 	desc = "crisis.2403.desc_05"
 
 	desc = {
-		trigger = { has_relic = r_war_forge }
+		trigger = {
+			has_relic = r_war_forge
+		}
 		text = "crisis.2403.desc_06"
 	}
 
@@ -3698,19 +3745,25 @@ country_event = {
 	}
 	option = {
 		name = crisis.2403.d
-		trigger = { has_valid_civic = civic_fanatic_purifiers }
+		trigger = {
+			has_valid_civic = civic_fanatic_purifiers
+		}
 		is_dialog_only = yes
 		response_text = crisis.2403.d.response
 	}
 	option = {
 		name = crisis.2403.e
-		trigger = { has_valid_civic = civic_hive_devouring_swarm }
+		trigger = {
+			has_valid_civic = civic_hive_devouring_swarm
+		}
 		is_dialog_only = yes
 		response_text = crisis.2403.e.response
 	}
 	option = {
 		name = crisis.2403.f
-		trigger = { has_valid_civic = civic_machine_terminator }
+		trigger = {
+			has_valid_civic = civic_machine_terminator
+		}
 		is_dialog_only = yes
 		response_text = crisis.2403.f.response
 	}
@@ -3760,7 +3813,9 @@ country_event = {
 	}
 	option = {
 		name = crisis.2405.b
-		trigger = { is_same_value = event_target:killer }
+		trigger = {
+			is_same_value = event_target:killer
+		}
 	}
 }
 

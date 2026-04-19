@@ -788,7 +788,9 @@ country_event = {
 	option = {
 		ai_chance = { factor = 100 }
 		name = galactic_features.385.reanimated
-		trigger = { is_reanimator = yes }
+		trigger = {
+			is_reanimator = yes
+		}
 		event_target:hatchling_egg = {
 			enable_special_project = {
 				name = "REANIMATE_VOIDSPAWN"
@@ -834,7 +836,9 @@ country_event = {
 		text = "distar.5016.desc.hive"
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "distar.5016.desc.machine"
 	}
 
@@ -842,11 +846,15 @@ country_event = {
 	is_triggered_only = yes
 
 	picture = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		picture = GFX_evt_necromancy
 	}
 	picture = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		picture = GFX_evt_mechromancy
 	}
 
@@ -888,11 +896,15 @@ country_event = {
 
 	desc = {
 		text = distar.5012.desc
-		trigger = { can_harvest_dna = no }
+		trigger = {
+			can_harvest_dna = no
+		}
 	}
 	desc = {
 		text = distar.5012.genetics.desc
-		trigger = { can_harvest_dna = yes }
+		trigger = {
+			can_harvest_dna = yes
+		}
 	}
 
 	picture = GFX_evt_voidspawn
@@ -901,19 +913,25 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
-		trigger = { can_harvest_dna = no }
+		trigger = {
+			can_harvest_dna = no
+		}
 		name = EXCELLENT
 		add_research_option = tech_gargantuan_evolution
 		add_tech_progress = { tech = tech_gargantuan_evolution progress = 0.3 }
 	}
 	option = {
-		trigger = { can_harvest_dna = yes }
+		trigger = {
+			can_harvest_dna = yes
+		}
 		name = distar.5012.a
 		add_research_option = tech_gargantuan_evolution
 		add_tech_progress = { tech = tech_gargantuan_evolution progress = 0.3 }
 	}
 	option = {
-		trigger = { can_harvest_dna = yes }
+		trigger = {
+			can_harvest_dna = yes
+		}
 		name = distar.5012.b
 		set_country_flag = harvested_voidspawn_dna
 		custom_tooltip = distar.5012.b.tooltip
@@ -984,19 +1002,27 @@ country_event = {
 	title = distar.9000.name
 
 	desc = {
-		trigger = { has_country_flag = lcluster_clue_sonic }
+		trigger = {
+			has_country_flag = lcluster_clue_sonic
+		}
 		text = distar.9000.lcluster_clue_sonic
 	}
 	desc = {
-		trigger = { has_country_flag = lcluster_clue_desc_1 }
+		trigger = {
+			has_country_flag = lcluster_clue_desc_1
+		}
 		text = distar.9000.lcluster_clue_desc_1
 	}
 	desc = {
-		trigger = { has_country_flag = lcluster_clue_desc_2 }
+		trigger = {
+			has_country_flag = lcluster_clue_desc_2
+		}
 		text = distar.9000.lcluster_clue_desc_2
 	}
 	desc = {
-		trigger = { has_country_flag = lcluster_clue_desc_3 }
+		trigger = {
+			has_country_flag = lcluster_clue_desc_3
+		}
 		text = distar.9000.lcluster_clue_desc_3
 	}
 
@@ -1748,11 +1774,15 @@ country_event = {
 
 	desc = {
 		text = distar.13010.desc.IOpened
-		trigger = { has_country_flag = lcluster_opener }
+		trigger = {
+			has_country_flag = lcluster_opener
+		}
 	}
 	desc = {
 		text = distar.13010.desc.OtherOpened
-		trigger = { NOT = { is_same_value = from } }
+		trigger = {
+			NOT = { is_same_value = from }
+		}
 	}
 
 	picture = GFX_evt_space_dragon
@@ -1805,7 +1835,9 @@ country_event = {
 
 	desc = {
 		text = distar.13020.desc.LDragonKnown
-		trigger = { has_country_flag = ldragon_known }
+		trigger = {
+			has_country_flag = ldragon_known
+		}
 	}
 	desc = {
 		text = distar.13020.desc.LDragonUnknown
@@ -1843,7 +1875,9 @@ country_event = {
 	}
 	option = {
 		name = distar.13020.a
-		trigger = { has_country_flag = ldragon_known }
+		trigger = {
+			has_country_flag = ldragon_known
+		}
 		add_monthly_resource_mult = {
 			resource = influence
 			value = @tier4materialreward
@@ -2095,7 +2129,9 @@ country_event = {
 	}
 	desc = {
 		text = apoc.1.b.desc
-		trigger = { has_country_flag = encountered_first_lgate }
+		trigger = {
+			has_country_flag = encountered_first_lgate
+		}
 	}
 
 	picture = GFX_evt_drifting_gateway
@@ -2137,7 +2173,9 @@ country_event = {
 	}
 	desc = {
 		text = apoc.3.b.desc
-		trigger = { has_country_flag = encountered_first_gateway }
+		trigger = {
+			has_country_flag = encountered_first_gateway
+		}
 	}
 
 	picture = GFX_evt_drifting_gateway

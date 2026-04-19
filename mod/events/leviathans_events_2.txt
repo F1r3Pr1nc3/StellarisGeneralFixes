@@ -754,11 +754,15 @@ country_event = {
 
 	desc = {
 		text = leviathans.1016.desc
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	desc = {
 		text = leviathans.1016.desc.gesta
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_stellarites
@@ -879,11 +883,15 @@ ship_event = {
 
 	desc = {
 		text = leviathans.1017.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = leviathans.1017.desc.gesta
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_star_yellow
@@ -1474,7 +1482,9 @@ country_event = {
 	}
 	option = {
 		name = leviathans.1040.d
-		trigger = { can_harvest_parts = yes }
+		trigger = {
+			can_harvest_parts = yes
+		}
 		set_country_flag = harvested_sphere_parts
 		add_research_option = tech_leviathan_techgenesis
 	}
@@ -1598,19 +1608,25 @@ country_event = {
 
 	option = {
 		name = leviathans.1051.a
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		hidden_effect = {
 			country_event = { id = leviathans.1055 }
 		}
 	}
 	option = {
 		name = leviathans.1051.c # praise it as your god
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 		add_modifier = { modifier = technosphere_praising days = -1 }
 	}
 	option = {
 		name = leviathans.1051.b # hack it
-		trigger = { is_materialist = yes }
+		trigger = {
+			is_materialist = yes
+		}
 		enable_special_project = {
 			name = TECHNOSPHERE_HACKING
 			location = event_target:technosphere_ship
@@ -1620,7 +1636,9 @@ country_event = {
 	option = {
 		name = leviathans.1051.d # sabotage it
 		# custom_tooltip = leviathans.1051.d.tooltip
-		trigger = { is_militarist = yes }
+		trigger = {
+			is_militarist = yes
+		}
 		hidden_effect = {
 			set_country_flag = technosphere_sabotaged
 		}
@@ -1634,7 +1652,9 @@ country_event = {
 	}
 	option = {
 		name = leviathans.1051.e # hack it - Gestalt Consciousness
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		enable_special_project = {
 			name = TECHNOSPHERE_HACKING
 			location = event_target:technosphere_ship
@@ -1649,11 +1669,15 @@ country_event = {
 	title = leviathans.1050.name
 
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = leviathans.1052.desc
 	}
 	desc = {
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		text = leviathans.1052.gestalt.desc
 	}
 
@@ -2184,11 +2208,15 @@ ship_event = {
 
 	desc = {
 		text = leviathans.2010.desc
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 	}
 	desc = {
 		text = leviathans.2010.desc.gesta
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 	}
 
 	picture = GFX_evt_star_pulsar
@@ -2337,11 +2365,15 @@ country_event = {
 
 	desc = {
 		text = leviathans.2012.desc
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	desc = {
 		text = leviathans.2012.desc.gesta
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_wraith
@@ -2395,11 +2427,15 @@ country_event = {
 
 	desc = {
 		text = leviathans.2014.desc
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	desc = {
 		text = leviathans.2014.desc.gesta
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_wraith
@@ -2636,11 +2672,15 @@ country_event = {
 
 	desc = {
 		text = "leviathans.2101.desc"
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	desc = {
 		text = "leviathans.2101.desc.gesta"
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_enigmatic_fortress
@@ -2686,7 +2726,9 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = leviathans.2111 }
 		}
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		ai_chance = { factor = 2 }
 	}
 	option = {
@@ -2694,7 +2736,9 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = leviathans.2160 days = 360 }
 		}
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	# Added in v3.12
 	option = {
@@ -2718,7 +2762,9 @@ country_event = {
 	}
 	option = {
 		name = leviathans.2101.c.gesta
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		add_monthly_resource_mult = {
 			resource = engineering_research
 			value = 24
@@ -4077,7 +4123,9 @@ country_event = {
 	}
 	option = {
 		name = "leviathans.3102.c"
-		trigger = { can_harvest_parts = yes }
+		trigger = {
+			can_harvest_parts = yes
+		}
 		set_country_flag = harvested_dreadnought_parts
 		add_research_option = tech_leviathan_techgenesis
 	}
@@ -4513,7 +4561,9 @@ country_event = {
 		text = "leviathans.3201.desc"
 	}
 	desc = {
-		trigger = { has_valid_civic = civic_void_hive }
+		trigger = {
+			has_valid_civic = civic_void_hive
+		}
 		text = "leviathans.3201.desc.void_hive"
 	}
 

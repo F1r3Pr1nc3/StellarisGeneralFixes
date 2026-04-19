@@ -33,7 +33,9 @@ fleet_event = {
 	title = akx.9000.name
 
 	desc = {
-		trigger = { text = akx.9000.desc }
+		trigger = {
+			text = akx.9000.desc
+		}
 	}
 
 	picture = GFX_evt_black_hole
@@ -265,7 +267,9 @@ country_event = {
 	option = {
 		name = akx.9010.a.collective
 		custom_tooltip = akx.9010.a.tooltip
-		trigger = { is_authoritarian = yes }
+		trigger = {
+			is_authoritarian = yes
+		}
 		# Update event chain with PoI
 		hidden_effect = {
 			set_country_flag = secondleader_sent
@@ -276,7 +280,9 @@ country_event = {
 	option = {
 		name = akx.9010.a.notcollective
 		custom_tooltip = akx.9010.a.tooltip
-		trigger = { is_authoritarian = no }
+		trigger = {
+			is_authoritarian = no
+		}
 		# Update event chain with PoI
 		hidden_effect = {
 			set_country_flag = secondleader_sent
@@ -287,7 +293,9 @@ country_event = {
 	option = {
 		name = akx.9010.b.collective
 		custom_tooltip = akx.9010.a.tooltip
-		trigger = { is_authoritarian = yes }
+		trigger = {
+			is_authoritarian = yes
+		}
 		# Update event chain with PoI
 		hidden_effect = {
 			set_country_flag = secondleader_bomb
@@ -298,7 +306,9 @@ country_event = {
 	option = {
 		name = akx.9010.b.notcollective
 		custom_tooltip = akx.9010.a.tooltip
-		trigger = { is_authoritarian = no }
+		trigger = {
+			is_authoritarian = no
+		}
 		# Update event chain with PoI
 		hidden_effect = {
 			set_country_flag = secondleader_bomb
@@ -825,7 +835,9 @@ country_event = {
 	option = {
 		name = akx.9201.militarist.a
 		# custom_tooltip = 9201.militarist.a.tooltip
-		trigger = { is_militarist = yes }
+		trigger = {
+			is_militarist = yes
+		}
 		capital_scope = {
 			enable_special_project = {
 				name = MESSENGER_POD_PROJECT_2_UNLEASHED
@@ -1003,7 +1015,9 @@ country_event = {
 	option = {
 		name = akx.9211.b
 		custom_tooltip = akx.9211.b.tooltip
-		trigger = { is_authoritarian = yes }
+		trigger = {
+			is_authoritarian = yes
+		}
 		hidden_effect = {
 			capital_scope = {
 				while = {
@@ -1168,7 +1182,9 @@ country_event = {
 	option = {
 		name = akx.9221.b
 		custom_tooltip = akx.9221.b.tooltip
-		trigger = { is_authoritarian = yes }
+		trigger = {
+			is_authoritarian = yes
+		}
 		hidden_effect = {
 			capital_scope = {
 				while = {
@@ -1376,7 +1392,9 @@ country_event = {
 		name = akx.9310.d.notpacifist
 		# is_dialog_only = yes
 		response_text = akx.9310.d.notpacifist.response
-		trigger = { is_pacifist = no }
+		trigger = {
+			is_pacifist = no
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1392,7 +1410,9 @@ country_event = {
 		# custom_tooltip = akx.9310.d.fanaticpacifist.tooltip
 		# is_dialog_only = yes
 		response_text = akx.9310.d.fanaticpacifist.response
-		trigger = { has_ethic = ethic_fanatic_pacifist }
+		trigger = {
+			has_ethic = ethic_fanatic_pacifist
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1434,7 +1454,9 @@ country_event = {
 	option = {
 		name = akx.9310.e.materialistic
 		response_text = akx.9310.e.materialistic.response
-		trigger = { is_materialist = yes }
+		trigger = {
+			is_materialist = yes
+		}
 		add_monthly_resource_mult = {
 			resource = physics_research
 			value = 6
@@ -1454,7 +1476,9 @@ country_event = {
 	option = {
 		name = akx.9310.e.spiritual
 		response_text = akx.9310.e.spiritual.response
-		trigger = { is_spiritualist = yes }
+		trigger = {
+			is_spiritualist = yes
+		}
 		add_monthly_resource_mult = {
 			resource = society_research
 			value = 6
@@ -1474,7 +1498,9 @@ country_event = {
 	option = {
 		name = akx.9310.e.militarist
 		response_text = akx.9310.e.militarist.response
-		trigger = { is_militarist = yes }
+		trigger = {
+			is_militarist = yes
+		}
 		add_monthly_resource_mult = {
 			resource = influence
 			value = 6
@@ -1494,7 +1520,9 @@ country_event = {
 	option = {
 		name = akx.9310.e
 		# response_text = akx.9310.e.fanaticauthoritarian.response
-		trigger = { has_ethic = ethic_fanatic_authoritarian }
+		trigger = {
+			has_ethic = ethic_fanatic_authoritarian
+		}
 		hidden_effect = {
 			if = {
 				limit = {

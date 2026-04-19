@@ -1725,11 +1725,15 @@ country_event = {
 	title = NAME_Formless
 
 	desc = {
-		trigger = { NOT = { is_hostile = from } }
+		trigger = {
+			NOT = { is_hostile = from }
+		}
 		text = astral_planes.3050.desc
 	}
 	desc = {
-		trigger = { is_hostile = from }
+		trigger = {
+			is_hostile = from
+		}
 		text = astral_planes.3102.desc.fail
 	}
 
@@ -2263,13 +2267,17 @@ country_event = {
 	}
 	option = {
 		name = astral_planes.3110.h
-		trigger = { has_country_flag = formless_leader_died }
+		trigger = {
+			has_country_flag = formless_leader_died
+		}
 		response_text = astral_planes.3110.h.desc
 		is_dialog_only = yes
 	}
 	option = {
 		name = astral_planes.3110.a
-		trigger = { has_country_flag = formless_reward_available }
+		trigger = {
+			has_country_flag = formless_reward_available
+		}
 		custom_tooltip = astral_planes.3110.a.tt
 		hidden_effect = {
 			create_fleet = {
@@ -2301,7 +2309,9 @@ country_event = {
 	}
 	option = {
 		name = astral_planes.3110.b
-		trigger = { has_country_flag = formless_reward_available }
+		trigger = {
+			has_country_flag = formless_reward_available
+		}
 		custom_tooltip = astral_planes.3110.b.tt
 		hidden_effect = {
 			add_random_research_option = {
@@ -2321,7 +2331,9 @@ country_event = {
 	}
 	option = {
 		name = astral_planes.3110.c
-		trigger = { has_country_flag = formless_reward_available }
+		trigger = {
+			has_country_flag = formless_reward_available
+		}
 		add_resource = { astral_threads = 100 }
 		schedule_next_formless_reward = yes
 		ai_chance = {
@@ -3279,7 +3291,9 @@ ship_event = {
 	}
 	option = {
 		name = astral_planes.6010.b
-		trigger = { owner = { is_gestalt = no } }
+		trigger = {
+			owner = { is_gestalt = no }
+		}
 		solar_system = {
 			find_closest_player_planet_local = {
 				OWNER_SCOPE = owner
@@ -3297,7 +3311,9 @@ ship_event = {
 	}
 	option = {
 		name = astral_planes.6010.c
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		ship_event = { id = astral_planes.6013 scopes = { from = from } }
 	}
 }
@@ -4254,11 +4270,15 @@ country_event = {
 	title = "NAME_Mercedes"
 
 	desc = {
-		trigger = { is_human_species = no }
+		trigger = {
+			is_human_species = no
+		}
 		text = "astral_planes.6105.desc.reg"
 	}
 	desc = {
-		trigger = { is_human_species = yes }
+		trigger = {
+			is_human_species = yes
+		}
 		text = "astral_planes.6105.desc.human"
 	}
 

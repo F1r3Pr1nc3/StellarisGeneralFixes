@@ -52,15 +52,21 @@ ship_event = {
 			REGULAR_PICTURE = GFX_evt_landing_ship
 			BIOSHIP_PICTURE = GFX_evt_bioship_landing
 		}
-		trigger = { from = { is_dry = yes } }
+		trigger = {
+			from = { is_dry = yes }
+		}
 	}
 	picture = {
 		picture = GFX_evt_big_landing_ship
-		trigger = { from = { is_wet = yes } }
+		trigger = {
+			from = { is_wet = yes }
+		}
 	}
 	picture = {
 		picture = GFX_evt_landing_ship_2
-		trigger = { from = { is_cold = yes } }
+		trigger = {
+			from = { is_cold = yes }
+		}
 	}
 	picture = {
 		picture = GFX_evt_relic_world_building
@@ -590,7 +596,9 @@ planet_event = {
 	option = {
 		name = uplift.7510.b
 		custom_tooltip = uplift.7510.b.tooltip
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -603,7 +611,9 @@ planet_event = {
 	}
 	option = {
 		name = uplift.7510.c
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = society_research
@@ -667,7 +677,9 @@ planet_event = {
 
 	option = {
 		name = uplift.7520.a
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -680,7 +692,9 @@ planet_event = {
 	option = {
 		name = uplift.7520.b
 		custom_tooltip = uplift.7520.b.tooltip
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_monthly_resource_mult = {
 				resource = influence
@@ -692,7 +706,9 @@ planet_event = {
 	}
 	option = {
 		name = uplift.7520.c
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		hidden_effect = {
 			planet_event = { id = uplift.7525 days = 5 }
 		}

@@ -83,11 +83,15 @@ espionage_operation_event = {
 	espionage_operation = yes
 
 	picture = {
-		trigger = { target = { is_gestalt = no } }
+		trigger = {
+			target = { is_gestalt = no }
+		}
 		picture = GFX_evt_acquire_asset
 	}
 	picture = {
-		trigger = { target = { is_gestalt = yes } }
+		trigger = {
+			target = { is_gestalt = yes }
+		}
 		picture = GFX_evt_hive_mind
 	}
 
@@ -285,19 +289,27 @@ espionage_operation_event = {
 	}
 	desc = {
 		text = operation.1020.desc.conf_hosted
-		trigger = { has_espionage_operation_flag = steal_tech_conference }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_conference
+		}
 	}
 	desc = {
 		text = operation.1020.desc.lecture
-		trigger = { has_espionage_operation_flag = steal_tech_lecture }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_lecture
+		}
 	}
 	desc = {
 		text = operation.1020.desc.outreach
-		trigger = { has_espionage_operation_flag = steal_tech_outreach }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_outreach
+		}
 	}
 	desc = {
 		text = operation.1020.desc.theft
-		trigger = { has_espionage_operation_flag = steal_tech_theft }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_theft
+		}
 	}
 	desc = {
 		text = operation.1020.desc.enigmatic
@@ -317,7 +329,9 @@ espionage_operation_event = {
 		picture = GFX_evt_voting
 	}
 	picture = {
-		trigger = { has_espionage_operation_flag = steal_tech_theft }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_theft
+		}
 		picture = GFX_evt_smugglers_in_bar
 	}
 
@@ -418,7 +432,9 @@ espionage_operation_event = {
 		}
 	}
 	desc = {
-		trigger = { has_espionage_operation_flag = steal_tech_theft }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_theft
+		}
 		text = operation.1021.desc.theft
 	}
 
@@ -451,7 +467,9 @@ espionage_operation_event = {
 		text = operation.1022.desc.invited
 	}
 	desc = {
-		trigger = { has_espionage_operation_flag = steal_tech_theft }
+		trigger = {
+			has_espionage_operation_flag = steal_tech_theft
+		}
 		text = operation.1022.desc.theft
 	}
 
@@ -920,11 +938,15 @@ country_event = {
 	title = operation.1030.name
 
 	desc = {
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 		text = operation.1030.desc.regular
 	}
 	desc = {
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 		text = operation.1030.desc.gestalt
 	}
 
@@ -1549,7 +1571,9 @@ country_event = {
 
 	desc = {
 		text = operation.2010.desc.phobe
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 	}
 	desc = {
 		text = operation.2010.desc.regular
@@ -1560,7 +1584,9 @@ country_event = {
 	}
 	desc = {
 		text = operation.2010.desc.gestalt
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_archaeologists_escaping
@@ -1843,7 +1869,9 @@ espionage_operation_event = {
 	}
 	option = {
 		name = operation.3000.b
-		trigger = { exists = event_target:smear_option_2 }
+		trigger = {
+			exists = event_target:smear_option_2
+		}
 		hidden_effect = {
 			event_target:smear_option_2 = {
 				set_timed_country_flag = { flag = smear_campaign_recipient@root years = 10 }
@@ -1853,7 +1881,9 @@ espionage_operation_event = {
 	}
 	option = {
 		name = operation.3000.c
-		trigger = { exists = event_target:smear_option_3 }
+		trigger = {
+			exists = event_target:smear_option_3
+		}
 		hidden_effect = {
 			event_target:smear_option_3 = {
 				set_timed_country_flag = { flag = smear_campaign_recipient@root years = 10 }
@@ -2669,7 +2699,9 @@ espionage_operation_event = {
 	}
 	option = {
 		name = operation.4000.b
-		trigger = { exists = event_target:crisis_beacon_option_2 }
+		trigger = {
+			exists = event_target:crisis_beacon_option_2
+		}
 		hidden_effect = {
 			event_target:crisis_beacon_option_2 = {
 				set_timed_country_flag = { flag = crisis_beacon_from@root.owner days = @CrisisBeaconTimer }
@@ -2679,7 +2711,9 @@ espionage_operation_event = {
 	}
 	option = {
 		name = operation.4000.c
-		trigger = { exists = event_target:crisis_beacon_option_3 }
+		trigger = {
+			exists = event_target:crisis_beacon_option_3
+		}
 		hidden_effect = {
 			event_target:crisis_beacon_option_3 = {
 				set_timed_country_flag = { flag = crisis_beacon_from@root.owner days = @CrisisBeaconTimer }
@@ -3512,20 +3546,28 @@ country_event = {
 	title = operation.5011.name
 
 	desc = {
-		trigger = { is_hive_empire = no }
+		trigger = {
+			is_hive_empire = no
+		}
 		text = operation.5011.desc
 	}
 	desc = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		text = operation.5011.desc.hive
 	}
 
 	picture = {
-		trigger = { is_hive_empire = no }
+		trigger = {
+			is_hive_empire = no
+		}
 		picture = GFX_evt_spymaster
 	}
 	picture = {
-		trigger = { is_hive_empire = yes }
+		trigger = {
+			is_hive_empire = yes
+		}
 		picture = GFX_evt_synth_organic_relations
 	}
 
@@ -4438,11 +4480,15 @@ country_event = {
 
 	desc = {
 		text = operation.5045.desc.culture
-		trigger = { has_country_flag = operative_defects_culture }
+		trigger = {
+			has_country_flag = operative_defects_culture
+		}
 	}
 	desc = {
 		text = operation.5045.desc.turned
-		trigger = { has_country_flag = operative_defects_turned }
+		trigger = {
+			has_country_flag = operative_defects_turned
+		}
 	}
 
 	picture = GFX_evt_operative_chase
@@ -4749,11 +4795,15 @@ country_event = {
 
 	desc = {
 		text = operation.5055.desc.regular
-		trigger = { is_gestalt = no }
+		trigger = {
+			is_gestalt = no
+		}
 	}
 	desc = {
 		text = operation.5055.desc.gestalt
-		trigger = { is_gestalt = yes }
+		trigger = {
+			is_gestalt = yes
+		}
 	}
 
 	picture = GFX_evt_spymaster

@@ -1336,7 +1336,9 @@ planet_event = {
 	option = {
 		name = colony.2001.a
 		custom_tooltip = colony.2001.a.military.tooltip
-		trigger = { owner = { is_pacifist = yes } }
+		trigger = {
+			owner = { is_pacifist = yes }
+		}
 		hidden_effect = {
 			weighted_random_owned_pop_group = {
 				limit = {
@@ -1477,7 +1479,9 @@ planet_event = {
 	# Salvage the Ship
 	option = {
 		name = colony.2005.a
-		trigger = { owner = { is_scavenger = no } }
+		trigger = {
+			owner = { is_scavenger = no }
+		}
 		enable_special_project = {
 			name = "ANCIENT_OCEAN_SHIP"
 			owner = root
@@ -1652,7 +1656,9 @@ planet_event = {
 	option = {
 		name = colony.2006.a.phile
 		custom_tooltip = colony.2006.a.tooltip
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		hidden_effect = {
 			owner = {
 				save_event_target_as = "me"
@@ -1722,7 +1728,9 @@ planet_event = {
 	option = {
 		name = colony.2007.a.phobe
 		custom_tooltip = colony.2007.a
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		hidden_effect = {
 			owner = {
 				add_modifier = { modifier = streamlined_ship_design days = -1 }
@@ -2592,7 +2600,9 @@ planet_event = {
 	option = {
 		name = colony.2025.a.phobe
 		custom_tooltip = colony.2025.a.tooltip
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		owner = {
 			add_modifier = { modifier = immigrants_protection years = 2 }
 			add_monthly_resource_mult = {
@@ -2615,7 +2625,9 @@ planet_event = {
 	option = {
 		name = colony.2025.a.phile
 		custom_tooltip = colony.2025.a.phile.tooltip
-		trigger = { owner = { is_xenophile = yes } }
+		trigger = {
+			owner = { is_xenophile = yes }
+		}
 		owner = {
 			add_modifier = { modifier = immigrants_protection years = 2 }
 			add_monthly_resource_mult = {

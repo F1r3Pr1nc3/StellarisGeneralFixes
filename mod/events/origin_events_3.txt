@@ -1274,7 +1274,9 @@ fleet_event = {
 	title = "origin.5615.name"
 
 	desc = {
-		trigger = { has_fleet_flag = used_shroud_tunnel }
+		trigger = {
+			has_fleet_flag = used_shroud_tunnel
+		}
 		text = origin.5620.b.desc
 	}
 	desc = {
@@ -1325,7 +1327,9 @@ country_event = {
 		text = "origin.5625.a.desc"
 	}
 	desc = {
-		trigger = { exists = event_target:shroudwalker_system_owner_closed }
+		trigger = {
+			exists = event_target:shroudwalker_system_owner_closed
+		}
 		text = "origin.5625.b.desc"
 	}
 
@@ -1367,7 +1371,9 @@ country_event = {
 		name = "origin.5625.a.option"
 	}
 	option = {
-		trigger = { exists = event_target:shroudwalker_system_owner_closed }
+		trigger = {
+			exists = event_target:shroudwalker_system_owner_closed
+		}
 		name = UNDERSTOOD
 	}
 }
@@ -1507,15 +1513,21 @@ country_event = {
 	title = TRANSMISSION
 
 	desc = {
-		trigger = { has_country_flag = imperial_fiefdom_harsh_response }
+		trigger = {
+			has_country_flag = imperial_fiefdom_harsh_response
+		}
 		text = origin.5705.desc.harsh
 	}
 	desc = {
-		trigger = { has_country_flag = imperial_fiefdom_grateful_response }
+		trigger = {
+			has_country_flag = imperial_fiefdom_grateful_response
+		}
 		text = origin.5705.desc.grateful
 	}
 	desc = {
-		trigger = { has_country_flag = imperial_fiefdom_reconsider_response }
+		trigger = {
+			has_country_flag = imperial_fiefdom_reconsider_response
+		}
 		text = origin.5705.desc.reconsider
 	}
 	desc = {
@@ -2164,7 +2176,9 @@ country_event = {
 	}
 	option = {
 		name = origin.5745.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		origin_imperial_vassal_new_overlord_eventchain_2 = yes
 	}
 }
@@ -2194,7 +2208,9 @@ country_event = {
 	}
 	option = {
 		name = origin.5750.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		origin_imperial_vassal_new_overlord_eventchain_2 = yes
 	}
 }
@@ -2223,7 +2239,9 @@ country_event = {
 	}
 	option = {
 		name = origin.5755.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		origin_imperial_vassal_new_overlord_eventchain_2 = yes
 	}
 }
@@ -2252,7 +2270,9 @@ country_event = {
 	}
 	option = {
 		name = origin.5760.b
-		trigger = { is_ai = no }
+		trigger = {
+			is_ai = no
+		}
 		origin_imperial_vassal_new_overlord_eventchain_2 = yes
 	}
 }
@@ -2827,11 +2847,15 @@ country_event = {
 	title = origin.6025.name
 
 	desc = {
-		trigger = { has_country_flag = fotd_aided_seperatists }
+		trigger = {
+			has_country_flag = fotd_aided_seperatists
+		}
 		text = origin.6025.desc.helped
 	}
 	desc = {
-		trigger = { has_country_flag = fotd_exploited_seperatists }
+		trigger = {
+			has_country_flag = fotd_exploited_seperatists
+		}
 		text = origin.6025.desc.didnthelp
 	}
 
@@ -2899,11 +2923,15 @@ country_event = {
 
 	option = {
 		name = origin.6025.a
-		trigger = { has_country_flag = fotd_aided_seperatists }
+		trigger = {
+			has_country_flag = fotd_aided_seperatists
+		}
 		seperatist_help_player_deficit_effect = yes
 	}
 	option = {
-		trigger = { has_country_flag = fotd_exploited_seperatists }
+		trigger = {
+			has_country_flag = fotd_exploited_seperatists
+		}
 		name = origin.6025.b
 		seperatist_help_player_deficit_effect = yes
 		if = {
@@ -3055,7 +3083,9 @@ country_event = {
 	title = origin.6045.name
 
 	desc = {
-		trigger = { has_country_flag = fotd_secured_contact }
+		trigger = {
+			has_country_flag = fotd_secured_contact
+		}
 		text = origin.6045.desc.secured
 	}
 	desc = {
@@ -3107,7 +3137,9 @@ country_event = {
 	}
 
 	option = { # Stop them and Apologize
-		trigger = { has_country_flag = fotd_secured_contact }
+		trigger = {
+			has_country_flag = fotd_secured_contact
+		}
 		name = origin.6045.a
 		from = {
 			add_opinion_modifier = { who = root modifier = fotd_apoligized }
@@ -3116,7 +3148,9 @@ country_event = {
 	option = { # Explosion happens, reprimand Seperatists
 		name = {
 			text = origin.6045.b.secured
-			trigger = { has_country_flag = fotd_secured_contact }
+			trigger = {
+				has_country_flag = fotd_secured_contact
+			}
 		}
 		name = {
 			text = origin.6045.b.notsecured
@@ -3232,7 +3266,9 @@ country_event = {
 	title = origin.6055.name
 
 	desc = {
-		trigger = { has_modifier = fotd_refusal_to_work }
+		trigger = {
+			has_modifier = fotd_refusal_to_work
+		}
 		text = origin.6055.desc.protests
 	}
 	desc = {
@@ -3273,7 +3309,9 @@ country_event = {
 		add_modifier = { modifier = fotd_refusal_to_work years = 10 }
 	}
 	option = {
-		trigger = { has_country_flag = fotd_insulted_federation }
+		trigger = {
+			has_country_flag = fotd_insulted_federation
+		}
 		name = origin.6055.b
 		tooltip = {
 			if = {
@@ -5519,7 +5557,9 @@ country_event = {
 		}
 	}
 	option = { # Stay on your rock
-		trigger = { is_xenophobe = yes }
+		trigger = {
+			is_xenophobe = yes
+		}
 		name = origin.6275.c
 		custom_tooltip = origin.6275.c.tt
 		add_resource = { unity = 20000 }

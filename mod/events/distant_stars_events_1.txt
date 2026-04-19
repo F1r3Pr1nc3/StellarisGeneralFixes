@@ -16,11 +16,15 @@ ship_event = {
 	title = "distar.1.name"
 
 	desc = {
-		trigger = { exists = event_target:wreckage_owner }
+		trigger = {
+			exists = event_target:wreckage_owner
+		}
 		text = "distar.1.desc.contact"
 	}
 	desc = {
-		trigger = { exists = event_target:wreckage_owner }
+		trigger = {
+			exists = event_target:wreckage_owner
+		}
 		text = "distar.1.desc.nocontact"
 	}
 
@@ -98,11 +102,15 @@ country_event = {
 	title = "distar.2.name"
 
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = "distar.2.desc"
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "distar.2.desc.machi"
 	}
 
@@ -954,7 +962,9 @@ country_event = {
 	title = "distar.34.name"
 
 	desc = {
-		trigger = { has_country_flag = started_retrovirus_project }
+		trigger = {
+			has_country_flag = started_retrovirus_project
+		}
 		text = "distar.34.desc.a"
 	}
 	desc = {
@@ -1093,7 +1103,9 @@ country_event = {
 	title = "distar.34.name"
 
 	desc = {
-		trigger = { has_country_flag = started_retrovirus_project }
+		trigger = {
+			has_country_flag = started_retrovirus_project
+		}
 		text = "distar.34.desc.a"
 	}
 	desc = {
@@ -1337,7 +1349,9 @@ ship_event = {
 
 	option = { # Pacify/adopt it
 		name = distar.50.a
-		trigger = { owner = { is_homicidal = no } }
+		trigger = {
+			owner = { is_homicidal = no }
+		}
 		event_target:lost_amoeba_fleet = { set_owner = root.owner }
 		hidden_effect = {
 			leader = { save_global_event_target_as = amoeba_finding_scientist }
@@ -2011,7 +2025,9 @@ ship_event = {
 	title = "distar.57.name"
 
 	desc = {
-		trigger = { exists = event_target:amoeba_finding_scientist }
+		trigger = {
+			exists = event_target:amoeba_finding_scientist
+		}
 		text = "distar.340.desc.science"
 	}
 	desc = {
@@ -2068,7 +2084,9 @@ country_event = {
 	title = "distar.218.name"
 
 	desc = {
-		trigger = { exists = event_target:amoeba_finding_scientist }
+		trigger = {
+			exists = event_target:amoeba_finding_scientist
+		}
 		text = "distar.59.desc" # This is the loc that mentions the scientist
 	}
 	desc = {
@@ -3207,7 +3225,9 @@ country_event = {
 	}
 	option = {
 		name = "distar.82.d"
-		trigger = { has_policy_flag = purge_displacement_only }
+		trigger = {
+			has_policy_flag = purge_displacement_only
+		}
 	}
 }
 
@@ -3236,7 +3256,9 @@ ship_event = {
 
 	option = {
 		name = FASCINATING
-		trigger = { owner = { is_xenophobe = no } }
+		trigger = {
+			owner = { is_xenophobe = no }
+		}
 		from = {
 			add_deposit = d_society_3
 			hidden_effect = {
@@ -3247,7 +3269,9 @@ ship_event = {
 	}
 	option = {
 		name = "distar.234.phobe"
-		trigger = { owner = { is_xenophobe = yes } }
+		trigger = {
+			owner = { is_xenophobe = yes }
+		}
 		from = {
 			add_deposit = d_society_3
 			hidden_effect = {
@@ -3887,7 +3911,9 @@ country_event = {
 	}
 	option = {
 		name = distar.137.harv
-		trigger = { can_harvest_parts = yes }
+		trigger = {
+			can_harvest_parts = yes
+		}
 		set_country_flag = harvested_scavenger_parts
 		add_research_option = tech_leviathan_techgenesis
 	}
@@ -4247,14 +4273,18 @@ country_event = {
 	}
 	option = {
 		name = "distar.158.d"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.159 }
 		}
 	}
 	option = {
 		name = "distar.158.d.machi"
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		hidden_effect = {
 			country_event = { id = distar.159 }
 		}
@@ -4276,14 +4306,18 @@ country_event = {
 
 	option = {
 		name = "distar.159.a"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.160 }
 		}
 	}
 	option = {
 		name = "distar.159.a.machi"
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		hidden_effect = {
 			country_event = { id = distar.160 }
 		}
@@ -4305,14 +4339,18 @@ country_event = {
 
 	option = {
 		name = "distar.160.a"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.161 }
 		}
 	}
 	option = {
 		name = "distar.160.a.machi"
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		hidden_effect = {
 			country_event = { id = distar.161 }
 		}
@@ -4334,21 +4372,27 @@ country_event = {
 
 	option = {
 		name = "distar.161.a"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.162 }
 		}
 	}
 	option = {
 		name = "distar.161.a.machi"
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		hidden_effect = {
 			country_event = { id = distar.162 }
 		}
 	}
 	option = {
 		name = "distar.161.b"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.164 }
 		}
@@ -4370,14 +4414,18 @@ country_event = {
 
 	option = {
 		name = "distar.162.a"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.163 }
 		}
 	}
 	option = {
 		name = "distar.162.a.machi"
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		hidden_effect = {
 			country_event = { id = distar.163 }
 		}
@@ -4399,14 +4447,18 @@ country_event = {
 
 	option = {
 		name = "distar.163.a"
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		hidden_effect = {
 			country_event = { id = distar.164 }
 		}
 	}
 	option = {
 		name = "distar.163.a.machi"
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		hidden_effect = {
 			country_event = { id = distar.164 }
 		}
@@ -4468,7 +4520,9 @@ country_event = {
 			text = "distar.164.b"
 		}
 		name = {
-			trigger = { is_machine_empire = yes }
+			trigger = {
+				is_machine_empire = yes
+			}
 			text = "distar.164.machi"
 		}
 		if = {
@@ -5267,7 +5321,9 @@ ship_event = {
 		}
 	}
 	option = {
-		trigger = { owner = { is_gestalt = yes } }
+		trigger = {
+			owner = { is_gestalt = yes }
+		}
 		name = CURIOUS
 	}
 }
@@ -5278,7 +5334,9 @@ country_event = {
 	title = "distar.191.name"
 
 	desc = {
-		trigger = { exists = event_target:living_planet_scientist }
+		trigger = {
+			exists = event_target:living_planet_scientist
+		}
 		text = "distar.191.desc.alive"
 	}
 	desc = {
@@ -5902,7 +5960,9 @@ country_event = {
 	}
 	option = {
 		name = UNDERSTOOD
-		trigger = { has_valid_civic = civic_memorialist }
+		trigger = {
+			has_valid_civic = civic_memorialist
+		}
 		hidden_effect = {
 			if = {
 				limit = { is_country_type = default }
@@ -5913,7 +5973,9 @@ country_event = {
 	}
 	option = {
 		name = galactic_features.385.reanimated
-		trigger = { is_reanimator = yes }
+		trigger = {
+			is_reanimator = yes
+		}
 		event_target:dead_matriarch = {
 			enable_special_project = {
 				name = "REANIMATE_TIYANKI_MATRIARCH"
@@ -5928,7 +5990,9 @@ country_event = {
 	}
 	option = {
 		name = distar.212.b
-		trigger = { can_harvest_dna = yes }
+		trigger = {
+			can_harvest_dna = yes
+		}
 		set_country_flag = harvested_tiyanki_dna
 		custom_tooltip = distar.212.b.tooltip
 		hidden_effect = {
@@ -6138,11 +6202,15 @@ country_event = {
 		allow = { is_homicidal = no }
 		tag = hire_leader
 		name = {
-			trigger = { is_gestalt = no }
+			trigger = {
+				is_gestalt = no
+			}
 			text = distar.215.a
 		}
 		name = {
-			trigger = { is_gestalt = yes }
+			trigger = {
+				is_gestalt = yes
+			}
 			text = distar.215.a.gesta
 		}
 		event_target:ahab_fleet = {
@@ -6314,7 +6382,9 @@ country_event = {
 		text = "distar.218.desc.hive"
 	}
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "distar.218.desc.machine"
 	}
 
@@ -6322,11 +6392,15 @@ country_event = {
 	is_triggered_only = yes
 
 	picture = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		picture = GFX_evt_necromancy
 	}
 	picture = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		picture = GFX_evt_mechromancy
 	}
 
@@ -7994,11 +8068,15 @@ country_event = {
 	option = {	# Accept the leader
 		tag = hire_leader
 		name = {
-			trigger = { is_machine_empire = no }
+			trigger = {
+				is_machine_empire = no
+			}
 			text = "distar.246.a"
 		}
 		name = {
-			trigger = { is_machine_empire = yes }
+			trigger = {
+				is_machine_empire = yes
+			}
 			text = "distar.246.machi"
 		}
 		allow = {
@@ -8052,7 +8130,9 @@ country_event = {
 	option = { # Destroy the leader
 		name = distar.246.d.destroy
 		custom_tooltip = "distar.246.d"
-		trigger = { has_policy_flag = ai_outlawed }
+		trigger = {
+			has_policy_flag = ai_outlawed
+		}
 		tag = dismiss_leader
 		tooltip = {
 			add_monthly_resource_mult = {
@@ -8067,7 +8147,9 @@ country_event = {
 		}
 	}
 	option = {	# Repurpose the leader (MI)
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		tag = dismiss_leader
 		name = "distar.246.machi.b"
 		custom_tooltip = "distar.246.b.tooltip"
@@ -8128,11 +8210,15 @@ country_event = {
 	title = "distar.248.name"
 
 	desc = {
-		trigger = { is_machine_empire = yes }
+		trigger = {
+			is_machine_empire = yes
+		}
 		text = "distar.248.desc.machi"
 	}
 	desc = {
-		trigger = { is_machine_empire = no }
+		trigger = {
+			is_machine_empire = no
+		}
 		text = "distar.248.desc"
 	}
 
@@ -8488,7 +8574,9 @@ country_event = {
 	title = "distar.255.name"
 
 	desc = {
-		trigger = { has_country_flag = surveyed_phaseshift_planet }
+		trigger = {
+			has_country_flag = surveyed_phaseshift_planet
+		}
 		text = "distar.255.desc"
 	}
 	desc = {
