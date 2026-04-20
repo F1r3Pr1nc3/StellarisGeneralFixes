@@ -1575,7 +1575,12 @@ country_event = {
 			limit = { has_country_flag = ignore_space_age_requirement }
 			capital_scope.solar_system.owner = {
 				if = {
-					limit = { is_crisis_faction = no } # Vfix Dux: Crises should not cede to Pre-FTLs.
+					limit = {
+						NOR = { # Do not cede to Pre-FTLs.
+							is_crisis_faction = yes
+							has_ai_personality = fallen_empire_xenophobe
+						}
+					}
 					country_event = { id = preftl.180 days = 1 }
 				}
 			}
@@ -1612,7 +1617,12 @@ country_event = {
 			}
 			capital_scope.solar_system.owner = {
 				if = {
-					limit = { is_crisis_faction = no }
+					limit = {
+						NOR = { # Do not cede to Pre-FTLs.
+							is_crisis_faction = yes
+							has_ai_personality = fallen_empire_xenophobe
+						}
+					}
 					country_event = { id = preftl.180 days = 1 }
 				}
 			}
