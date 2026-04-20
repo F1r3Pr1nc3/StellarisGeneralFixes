@@ -181,11 +181,26 @@ fleet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		create_enclave_with_country = {
-			PREFIX = mercenary
-			EFFECT = create_mercenary_enclave_country
-			TRUST = 30
-		}
+		if = {
+            limit = {
+                leader = {
+                    is_gestalt = yes
+                    species = { has_trait = trait_machine_unit }
+                }
+            }
+            create_enclave_with_country = {
+                PREFIX = mercenary
+                EFFECT = create_mercenary_enclave_country_machine_intelligence
+                TRUST = 30
+            }
+        }
+        else = { # Gestalt Cyborgs get Individualist Enclaves for now.
+            create_enclave_with_country = {
+                PREFIX = mercenary
+                EFFECT = create_mercenary_enclave_country
+                TRUST = 30
+            }
+        }
 	}
 
 	after = {
@@ -195,6 +210,7 @@ fleet_event = {
 		event_target:mercenary_enclave_country = {
 			country_event = { id = enclave.22 days = 1 }
 		}
+		set_fleet_settings = { can_change_leader = no can_upgrade = yes can_change_composition = yes uses_naval_capacity = no }
 	}
 }
 
@@ -340,8 +356,14 @@ country_event = {
 	trigger = {
 		is_mercenary = yes
 		OR = {
-			fromfrom = { is_mercenary_station = yes }
-			fromfromfrom = { is_mercenary_station = yes }
+			fromfrom = {
+				is_mercenary_station = yes
+				is_owned_by = prev # Merc on Merc battle, retreat correct fleet.
+			}
+			fromfromfrom = {
+				is_mercenary_station = yes
+				is_owned_by = prev
+			}
 		}
 	}
 
@@ -349,9 +371,10 @@ country_event = {
 		save_event_target_as = mercenary_enclave_country
 		random_owned_fleet = {
 			limit = { is_mercenary_station = yes }
+			save_event_target_as = merc_home_base
 			solar_system = { save_event_target_as = mercenary_home_system }
 		}
-		random_owned_fleet = {
+		every_owned_fleet = { # Rare bug allows renting two fleets from same enclave, 
 			limit = {
 				is_ship_class = shipclass_military
 				is_leased = yes
@@ -366,6 +389,29 @@ country_event = {
 					country_event = { id = enclave.29 days = 1 }
 				}
 			}
+		}
+		every_owned_fleet = {
+			limit = {
+				is_mercenary_station = no
+				is_ship_class = shipclass_military
+			}
+			if = {
+				limit = { is_leased = yes }
+				set_controller = owner # Cannot set home base unless friendly, not neutral.
+			}
+			set_home_base = event_target:merc_home_base
+			if = {
+				limit = {
+					NOT = { exists = solar_system } # MIA / Hyperlane
+				}
+				if = {
+					limit = { can_go_mia = yes }
+					set_mia = mia_return_home
+					set_mia_return_delay = 0
+				}
+				else = { set_mia_return_delay = 0 } # Already MIA, end timer.
+			}
+			else = { set_location = event_target:merc_home_base }
 		}
 		set_country_flag = enclave_under_attack
 	}
@@ -856,6 +902,14 @@ country_event = {
 			event_target:mercenary_enclave_country = {
 				trust = { who = root value >= 20 }
 			}
+			custom_tooltip = {
+                fail_text = enclave.205.f.tankbound.tooltip
+                event_target:mercenary_enclave_country = {
+                    species = { 
+						NOT = { has_trait = trait_tankbound }
+					}
+                }
+            }
 		}
 		hidden_effect = {
 			country_event = { id = enclave.270 }
@@ -933,38 +987,16 @@ country_event = {
 
 	immediate = {
 		event_target:mercenary_enclave_country = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_leader = {
-							leader_class = commander
-							is_councilor = no
-							is_ruler = no
-						}
-					}
-				}
-				create_leader = { # Vfix
-					class = commander
-					species = owner_species # event_target:mercenary_enclave_species
-					name = random
-					skill = 3
-					background_ethic = "ethic_militarist"
-					skip_background_generation = yes
-					can_manually_change_location = no
-					hide_leader = yes
-					event_leader = yes
-					custom_description = "custom_mercenary_admiral_desc"
-					traits = {
-						trait = leader_trait_mercenary_warrior
-						trait = leader_trait_aggressive
-					}
-				}
-			}
+			create_merc_enclave_admiral = yes
 			ordered_owned_leader = { # Vfix patch
 				limit = {
 					leader_class = commander
 					is_councilor = no
 					is_ruler = no
+					NAND = { # Do not steal the leader of a leased fleet and assign it to a reinforcement fleet whenever the Hire Fleet option is checked by AI.
+						exists = fleet
+						fleet = { is_leased = yes }
+					}
 				}
 				position = 0
 				order_by = trigger:has_base_skill
@@ -985,7 +1017,12 @@ country_event = {
 					key = NAME_Mercenary_Fleet
 					variable_string = "[event_target:mercenary_enclave_country.GetName]"
 				}
-				set_fleet_settings = { can_change_leader = no }
+				set_fleet_settings = {
+					can_change_leader = no
+					can_upgrade = yes # Overwrite event-spawned-fleet settings.
+					can_change_composition = yes
+					uses_naval_capacity = no # Override renter's fleet cap so reinforcements can merge, fleet is not bound by fleet cap if returned to Merc Enclave.
+				}
 			}
 		}
 		# Without this, the 'immediate' will not be invoked when the event runs in the special mode that allows the AI to collect trade data.
@@ -1729,7 +1766,7 @@ country_event = {
 	option = {
 		name = enclave.270.a
 		trigger = {
-			NOT = { event_target:mercenary_enclave_country = { has_country_flag = small_merc_army_hired } }
+			event_target:mercenary_enclave_country = { check_variable = { which = mercenary_armies_for_hire value >= 5 } }
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 600 }
@@ -1741,17 +1778,14 @@ country_event = {
 			event_target:mercenary_enclave_country = {
 				set_timed_country_flag = { flag = small_merc_army_hired years = 1 }
 				add_trust = { who = root amount = 5 }
+				subtract_variable = { which = mercenary_armies_for_hire value = 5 }
 			}
 			create_fleet = {
 				effect = {
 					set_owner = root
 					while = {
 						count = 5
-						create_army_transport = {
-							army_type = "mercenary_army"
-							army_name = "NAME_military_contractors"
-							species = event_target:mercenary_enclave_species
-						}
+						DEI_create_merc_army = yes
 					}
 					set_location = { target = root.capital_scope.solar_system }
 				}
@@ -1763,7 +1797,7 @@ country_event = {
 	option = {
 		name = enclave.270.b
 		trigger = {
-			NOT = { event_target:mercenary_enclave_country = { has_country_flag = small_mecha_merc_army_hired } }
+			event_target:mercenary_enclave_country = { check_variable = { which = mercenary_mecha_armies_for_hire value >= 5 } }
 			event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
 		}
 		allow = {
@@ -1776,17 +1810,14 @@ country_event = {
 			event_target:mercenary_enclave_country = {
 				set_timed_country_flag = { flag = small_mecha_merc_army_hired years = 1 }
 				add_trust = { who = root amount = 10 }
+				subtract_variable = { which = mercenary_mecha_armies_for_hire value = 5 }
 			}
 			create_fleet = {
 				effect = {
 					set_owner = root
 					while = {
 						count = 5
-						create_army_transport = {
-							army_type = "mecha_army"
-							army_name = "NAME_mechawarrior_contractors"
-							species = event_target:mercenary_enclave_species
-						}
+						DEI_create_merc_mecha_army = yes
 					}
 					set_location = { target = root.capital_scope.solar_system }
 				}
@@ -1798,7 +1829,7 @@ country_event = {
 	option = {
 		name = enclave.270.c
 		trigger = {
-			NOT = { event_target:mercenary_enclave_country = { has_country_flag = medium_merc_army_hired } }
+			event_target:mercenary_enclave_country = { check_variable = { which = mercenary_armies_for_hire value >= 10 } }
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 1100 }
@@ -1810,17 +1841,14 @@ country_event = {
 			event_target:mercenary_enclave_country = {
 				set_timed_country_flag = { flag = medium_merc_army_hired months = 18 }
 				add_trust = { who = root amount = 10 }
+				subtract_variable = { which = mercenary_armies_for_hire value = 10 }
 			}
 			create_fleet = {
 				effect = {
 					set_owner = root
 					while = {
 						count = 10
-						create_army_transport = {
-							army_type = "mercenary_army"
-							army_name = "NAME_military_contractors"
-							species = event_target:mercenary_enclave_species
-						}
+						DEI_create_merc_army = yes
 					}
 					set_location = { target = root.capital_scope.solar_system }
 				}
@@ -1832,7 +1860,7 @@ country_event = {
 	option = {
 		name = enclave.270.d
 		trigger = {
-			NOT = { event_target:mercenary_enclave_country = { has_country_flag = medium_mecha_merc_army_hired } }
+			event_target:mercenary_enclave_country = { check_variable = { which = mercenary_mecha_armies_for_hire value >= 10 } }
 			event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
 		}
 		allow = {
@@ -1845,17 +1873,14 @@ country_event = {
 			event_target:mercenary_enclave_country = {
 				set_timed_country_flag = { flag = medium_mecha_merc_army_hired years = 2 }
 				add_trust = { who = root amount = 15 }
+				subtract_variable = { which = mercenary_mecha_armies_for_hire value = 10 }
 			}
 			create_fleet = {
 				effect = {
 					set_owner = root
 					while = {
 						count = 10
-						create_army_transport = {
-							army_type = "mecha_army"
-							army_name = "NAME_mechawarrior_contractors"
-							species = event_target:mercenary_enclave_species
-						}
+						DEI_create_merc_mecha_army = yes
 					}
 					set_location = { target = root.capital_scope.solar_system }
 				}
@@ -1867,7 +1892,7 @@ country_event = {
 	option = {
 		name = enclave.270.e
 		trigger = {
-			NOT = { event_target:mercenary_enclave_country = { has_country_flag = large_merc_army_hired } }
+			event_target:mercenary_enclave_country = { check_variable = { which = mercenary_armies_for_hire value >= 15 } }
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 2000 }
@@ -1879,17 +1904,14 @@ country_event = {
 			event_target:mercenary_enclave_country = {
 				set_timed_country_flag = { flag = large_merc_army_hired years = 3 }
 				add_trust = { who = root amount = 15 }
+				subtract_variable = { which = mercenary_armies_for_hire value = 15 }
 			}
 			create_fleet = {
 				effect = {
 					set_owner = root
 					while = {
 						count = 15
-						create_army_transport = {
-							army_type = "mercenary_army"
-							army_name = "NAME_military_contractors"
-							species = event_target:mercenary_enclave_species
-						}
+						DEI_create_merc_army = yes
 					}
 					set_location = { target = root.capital_scope.solar_system }
 				}
@@ -1897,6 +1919,70 @@ country_event = {
 			country_event = { id = enclave.205 }
 		}
 	}
+	# Everything
+    option = {
+        name = enclave.270.f
+        trigger = {
+            OR = {
+                event_target:mercenary_enclave_country = { check_variable = { which = mercenary_armies_for_hire value > 0 } }
+                AND = {
+                    event_target:mercenary_enclave_country = { check_variable = { which = mercenary_mecha_armies_for_hire value > 0 } }
+                    event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
+                }
+            }
+        }
+        allow = {
+            resource_stockpile_compare = { resource = energy value >= event_target:mercenary_enclave_country.value:every_merc_army_total_cost }
+        }
+        add_resource = {
+            energy = 1
+            mult = event_target:mercenary_enclave_country.value:every_merc_army_total_cost
+        }
+        custom_tooltip = all_merc_army_hire
+        custom_tooltip = opinion_all
+        hidden_effect = {
+            event_target:mercenary_enclave_country = {
+                add_trust = {
+                    who = root
+                    amount = value:every_merc_army_total_trust
+                }
+            }
+
+            create_fleet = {
+                effect = {
+                    set_owner = root
+                    while = {
+                        count = event_target:mercenary_enclave_country.mercenary_armies_for_hire
+                        DEI_create_merc_army = yes
+                    }
+                    if = {
+                        limit = {
+                            event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
+                        }
+                        while = {
+                            count = event_target:mercenary_enclave_country.mercenary_mecha_armies_for_hire
+                            DEI_create_merc_mecha_army = yes
+                        }
+                    }
+                    set_location = {
+                        target = root.capital_scope.solar_system
+                    }
+                }
+            }
+
+            event_target:mercenary_enclave_country = {
+                set_variable = { which = mercenary_armies_for_hire value = 0 }
+                if = {
+                    limit = {
+                        has_modifier = mercenary_fleet_size_upgrade_4
+                    }
+                    set_variable = { which = mercenary_mecha_armies_for_hire value = 0 }
+                }
+            }
+
+            country_event = { id = enclave.205 }
+        }
+    }
 }
 
 # Merc Pays Back Patron
@@ -2274,33 +2360,7 @@ country_event = {
 
 	immediate = {
 		from = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_leader = {
-							leader_class = commander
-							is_councilor = no
-							is_ruler = no
-						}
-					}
-				}
-				create_leader = { # Vfix
-					class = commander
-					species = owner_species # event_target:mercenary_enclave_species
-					name = random
-					skill = 3
-					background_ethic = "ethic_militarist"
-					skip_background_generation = yes
-					can_manually_change_location = no
-					hide_leader = yes
-					event_leader = yes
-					custom_description = "custom_mercenary_admiral_desc"
-					traits = {
-						trait = leader_trait_mercenary_warrior
-						trait = leader_trait_aggressive
-					}
-				}
-			}
+			create_merc_enclave_admiral = yes
 			ordered_owned_leader = { # Vfix patch
 				limit = {
 					leader_class = commander
@@ -2325,6 +2385,7 @@ country_event = {
 			event_target:mercenary_fleet = {
 				give_fleet = { controller = root days = 3600 }
 				set_timed_fleet_flag = { flag = fleet_on_loan@root years = 10 }
+				set_fleet_settings = { uses_naval_capacity = no can_change_composition = yes can_upgrade = yes }
 			}
 		}
 		set_country_flag = mercenary_enclave_rented_fleet
@@ -3958,24 +4019,7 @@ country_event = {
 			create_mindwarden_fleet_leader = yes
 		}
 		else = {
-			create_leader = { # Vfix
-				class = commander
-				species = owner_species # event_target:mercenary_enclave_species
-				name = random
-				skill = 3
-				background_ethic = "ethic_militarist"
-				skip_background_generation = yes
-				can_manually_change_location = no
-				hide_leader = yes
-				custom_description = "custom_mercenary_admiral_desc"
-				traits = {
-					trait = leader_trait_mercenary_warrior
-					trait = subclass_commander_admiral
-				}
-				effect = {
-					add_trait = { trait = random_common }
-				}
-			}
+			create_merc_enclave_admiral = yes
 		}
 		random_owned_fleet = {
 			limit = {

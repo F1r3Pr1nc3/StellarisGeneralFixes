@@ -1146,6 +1146,9 @@ enclave_mercenary = {
 	}
 	fleet_manager = {
 		on_contract_started = {
+			clear_orders = yes # No queueing up an attack to start a first-contact war between Mercs and and an unidentified empire.
+			clear_fleet_actions = yes
+			remove_auto_move_target = yes
 			if = {
 				limit = {
 					is_active_resolution = resolution_defenseprivatization_corporate_warlords
@@ -1193,12 +1196,21 @@ enclave_mercenary = {
 			}
 		}
 		on_contract_expired = {
+			clear_orders = yes
+			clear_fleet_actions = yes
+			remove_auto_move_target = yes
 			remove_fleet_contract_modifiers = yes
 		}
 		on_contract_cancelled = {
+			clear_orders = yes
+			clear_fleet_actions = yes
+			remove_auto_move_target = yes
 			remove_fleet_contract_modifiers = yes
 		}
 		on_contract_broken = {
+			clear_orders = yes
+			clear_fleet_actions = yes
+			remove_auto_move_target = yes
 			remove_fleet_contract_modifiers = yes
 		}
 	}
@@ -1226,6 +1238,7 @@ enclave_mercenary = {
 			food = 500
 			alloys = 250
 			consumer_goods = 100
+			trade = 100 # Give them trade.
 			rare_crystals = 1
 			exotic_gases = 1
 			volatile_motes = 1
@@ -1248,6 +1261,7 @@ enclave_mercenary = {
 			minerals = 500
 			food = 500
 			alloys = 250
+			trade = 100
 			rare_crystals = 10
 			exotic_gases = 10
 			volatile_motes = 10
@@ -1265,6 +1279,7 @@ enclave_mercenary = {
 			minerals = 500
 			food = 500
 			alloys = 250
+			trade = 100
 			sr_dark_matter = 5
 			sr_living_metal = 5
 			sr_zro = 5
