@@ -1437,9 +1437,19 @@ can_leader_get_subclass_trait = {
 
 # this = leader
 can_leader_get_destiny_trait = {
-	NAND = {
-		exists = owner
-		owner = { is_gestalt = yes }
+	
+	OR = {
+		NAND = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		AND = { # The ethos of the country that has currently hired individualist mercs should not determine if the Merc leader can get a Destiny Trait.
+			OR = {
+				has_leader_flag = hired_admiral_merc_leader
+				has_leader_flag = marauder_merc_leader
+			}
+			NOT = { has_ethic = ethic_gestalt_consciousness } # Gestalt Merc Leaders don't bypass it.
+		}		
 	}
 
 	exists = owner
