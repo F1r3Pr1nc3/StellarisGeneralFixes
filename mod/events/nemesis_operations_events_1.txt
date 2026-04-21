@@ -1605,13 +1605,13 @@ country_event = {
 				modifier = {
 					factor = 0
 					OR = {
+						has_country_flag = recently_received_espionage_asset
 						NOT = {
 							any_spynetwork = {
 								is_owned_by = root
 								target = { is_same_value = from }
 							}
 						}
-						has_country_flag = recently_received_espionage_asset
 					}
 				}
 				modifier = {

@@ -585,7 +585,7 @@ country_event = {
 				add_trait = { trait = leader_trait_psionic show_message = no }
 			}
 			every_pool_leader = {
-				limit = { can_receive_psionic_leader_trait = yes }
+				limit = { NOT = { has_trait = leader_trait_psionic } } # Vfix opt
 				add_trait = { trait = leader_trait_psionic show_message = no }
 			}
 			update_node_portraits_if_gestalt_effect = yes

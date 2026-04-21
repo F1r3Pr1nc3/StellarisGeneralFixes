@@ -3308,63 +3308,66 @@ country_event = {
 
 	option = {
 		name = "INTERESTING"
-		event_target:pre_ftl_country = {
-			add_awareness = 10
-			switch = {
-				trigger = has_country_flag
-				xenophobe = {
-					shift_ethic = "ethic_xenophobe"
-					every_owned_pop_group = {
-						limit = {
-							has_any_ethic = yes
-							NOT = { has_ethic = ethic_xenophobe }
-						}
-						pop_group_transfer_ethic = {
-							POP_GROUP = this
-							ETHOS = ethic_xenophobe
-							PERCENTAGE = 0.5
-						}
-					}
-				}
-				xenophile = {
-					shift_ethic = "ethic_xenophile"
-					every_owned_pop_group = {
-						limit = {
-							has_any_ethic = yes
-							NOT = { has_ethic = ethic_xenophile }
-						}
-						pop_group_transfer_ethic = {
-							POP_GROUP = this
-							ETHOS = ethic_xenophile
-							PERCENTAGE = 0.5
+		event_target:pre_ftl_country = { add_awareness = 10 }
+		# VFIX TODO FIXME: empty tooltip https://forum.paradoxplaza.com/forum/threads/stellaris-lyra-v4-1-7-6486-primitive-world-events-displays-pop-ethic-changes-as-0.1878469/
+		hidden_effect = {
+			event_target:pre_ftl_country = {
+				switch = {
+					trigger = has_country_flag
+					xenophobe = {
+						shift_ethic = "ethic_xenophobe"
+						every_owned_pop_group = {
+							limit = {
+								has_any_ethic = yes
+								NOT = { has_ethic = ethic_xenophobe }
+							}
+							pop_group_transfer_ethic = {
+								POP_GROUP = this
+								ETHOS = ethic_xenophobe
+								PERCENTAGE = 0.5
+							}
 						}
 					}
-				}
-				spiritualist = {
-					shift_ethic = "ethic_spiritualist"
-					every_owned_pop_group = {
-						limit = {
-							has_any_ethic = yes
-							NOT = { has_ethic = ethic_spiritualist }
-						}
-						pop_group_transfer_ethic = {
-							POP_GROUP = this
-							ETHOS = ethic_spiritualist
-							PERCENTAGE = 0.5
+					xenophile = {
+						shift_ethic = "ethic_xenophile"
+						every_owned_pop_group = {
+							limit = {
+								has_any_ethic = yes
+								NOT = { has_ethic = ethic_xenophile }
+							}
+							pop_group_transfer_ethic = {
+								POP_GROUP = this
+								ETHOS = ethic_xenophile
+								PERCENTAGE = 0.5
+							}
 						}
 					}
-				}
-				materialist = {
-					shift_ethic = "ethic_materialist"
-					every_owned_pop_group = {
-						limit = {
-							has_any_ethic = yes
-							NOT = { has_ethic = ethic_materialist }
+					spiritualist = {
+						shift_ethic = "ethic_spiritualist"
+						every_owned_pop_group = {
+							limit = {
+								has_any_ethic = yes
+								NOT = { has_ethic = ethic_spiritualist }
+							}
+							pop_group_transfer_ethic = {
+								POP_GROUP = this
+								ETHOS = ethic_spiritualist
+								PERCENTAGE = 0.5
+							}
 						}
-						pop_group_transfer_ethic = {
-							POP_GROUP = this
-							ETHOS = ethic_materialist
-							PERCENTAGE = 0.5
+					}
+					materialist = {
+						shift_ethic = "ethic_materialist"
+						every_owned_pop_group = {
+							limit = {
+								has_any_ethic = yes
+								NOT = { has_ethic = ethic_materialist }
+							}
+							pop_group_transfer_ethic = {
+								POP_GROUP = this
+								ETHOS = ethic_materialist
+								PERCENTAGE = 0.5
+							}
 						}
 					}
 				}
@@ -3373,8 +3376,10 @@ country_event = {
 	}
 
 	after = {
-		observation_breach_effect = {
-			RESOLUTION = resolution_pre_ftl_stances_non_interference
+		hidden_effect = {
+			observation_breach_effect = {
+				RESOLUTION = resolution_pre_ftl_stances_non_interference
+			}
 		}
 	}
 }

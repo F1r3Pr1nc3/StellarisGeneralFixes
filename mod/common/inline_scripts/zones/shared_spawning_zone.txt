@@ -1,0 +1,50 @@
+icon = GFX_district_specialization_spawning
+base_buildtime = @zone_buildtime
+potential = { # planet scope
+	is_planet_class = pc_hive
+	has_owner = yes # Vfix log
+	owner = {
+		is_hive_empire = yes
+		has_ascension_perk = ap_hive_worlds
+	}
+}
+
+unlock = { # planet scope
+	hidden_trigger = {
+		has_owner = yes
+		owner = {
+			is_hive_empire = yes
+		}
+	}
+	owner = {
+		has_ascension_perk = ap_hive_worlds
+	}
+}
+
+resources = {
+	category = planet_zones
+	cost = {
+		minerals = @zone_cost
+	}
+}
+
+included_building_sets = {
+	urban
+	urban_automation
+}
+
+triggered_district_planet_modifier = {
+	potential = {
+		has_owner = yes
+		owner = { is_hive_empire = yes }
+	}
+	job_spawning_drone_add = $AMOUNT$
+}
+
+max_buildings = 1
+
+planet_modifier = {
+	zone_building_slots_add = 1
+}
+
+ai_priority = 12

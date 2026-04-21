@@ -325,13 +325,11 @@ DLAF_make_full_synths = {
 		1 = { set_country_flag = synth_unscheduled_updates }
 		1 = { set_country_flag = synth_safe_updates }
 	}
-
 	set_country_flag = synth_assimilation # So they can assimilate.
 	random_situation = { # They are already Synths, skip this.
 		limit = { is_situation_type = situation_digitization }
 		destroy_situation = this
 	}
-
 	set_country_flag = identity_complex_available # so we can instantly grant the building.
 	random_list = {
 		10 = {
@@ -376,10 +374,8 @@ DLAF_make_full_synths = {
 			set_country_flag = synth_focus_upkeep
 		}
 	}
-
 	set_country_flag = edict_subsidized_identity_backups
 	give_technology = { tech = tech_identity_copy }
-
 	set_country_flag = edict_optimized_identity_creation
 	set_country_flag = advanced_identity_creation
 	add_research_option = tech_identity_fusion
@@ -653,7 +649,6 @@ DLAF_create_awoken_robot_country = {
 	set_owner = last_created_country
 	set_capital = yes
 	set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-
 	add_building = building_identity_complex # Speed them up.
 }
 
@@ -1059,7 +1054,6 @@ DNCF_spawn_nivlac_circle = {
 			}
 		}
 	}
-
 	create_nivlac_effect = yes
 	# DNCF_create_nivlac_country (just used once)
 	create_country = {
@@ -1318,33 +1312,31 @@ DPFF_roll_keep_unique_preftl_civics_hive = {
 }
 
 set_merc_army_variables = {
-    if = {
-        limit = {
-            is_scope_type = country
-            is_country_type = enclave_mercenary
-        }
-        if = {
-            limit = {
-                NOT = { is_variable_set = mercenary_armies_for_hire }
-            }
-            set_variable = { which = mercenary_armies_for_hire value = 5 } # They should not start with 30 armies instantly available for hire.
-        }
-        if = {
-            limit = {
-                NOT = { is_variable_set = mercenary_mecha_armies_for_hire }
-            }
-            set_variable = { which = mercenary_mecha_armies_for_hire value = 5 } # They get 5 Mecha Armies assigned so that when the enclave is upgraded 5 will be available.
-        }
-    }
+	if = {
+		limit = {
+			is_scope_type = country
+			is_country_type = enclave_mercenary
+		}
+		if = {
+			limit = {
+				NOT = { is_variable_set = mercenary_armies_for_hire }
+			}
+			set_variable = { which = mercenary_armies_for_hire value = 5 } # They should not start with 30 armies instantly available for hire.
+		}
+		if = {
+			limit = {
+				NOT = { is_variable_set = mercenary_mecha_armies_for_hire }
+			}
+			set_variable = { which = mercenary_mecha_armies_for_hire value = 5 } # They get 5 Mecha Armies assigned so that when the enclave is upgraded 5 will be available.
+		}
+	}
 }
 
 create_merc_enclave_admiral = {
 	every_owned_leader = {
-        limit = {
+		limit = {
 			NOR = {
-				is_councilor_type = councilor_gestalt_regulatory # Don't kill Gestalt Nodes regardless of class.
-				is_councilor_type = councilor_gestalt_growth
-				is_councilor_type = councilor_gestalt_cognitive
+				is_gestalt_node = yes # Don't kill Gestalt Nodes regardless of class.
 				AND = {
 					leader_class = commander # Don't kill commanders on the council.
 					OR = {
@@ -1354,12 +1346,12 @@ create_merc_enclave_admiral = {
 				}
 			}
 			OR = {
-                has_trait = subclass_commander_governor # No known way for a Merc to govern. This trait should not be available.
-                NOT = { has_trait = leader_trait_mercenary_warrior } # Leaders spawned as ruler on country-creation.
-            }
-        }
-        kill_leader = { show_notification = no }
-    }
+				has_trait = subclass_commander_governor # No known way for a Merc to govern. This trait should not be available.
+				NOT = { has_trait = leader_trait_mercenary_warrior } # Leaders spawned as ruler on country-creation.
+			}
+		}
+		kill_leader = { show_notification = no }
+	}
 	if = {
 		limit = {
 			NOR = {
@@ -1394,43 +1386,43 @@ create_merc_enclave_admiral = {
 }
 
 DEI_create_merc_army = {
-    if = {
-        limit = {
-            event_target:mercenary_enclave_country = { is_gestalt = yes }
+	if = {
+		limit = {
+			event_target:mercenary_enclave_country = { is_gestalt = yes }
 			event_target:mercenary_enclave_species = { has_trait = trait_machine_unit }
-        }
-        create_army_transport = {
-            army_type = "machine_assault_1" # Gestalt Machine Mercs should not suffer morale.
-            army_name = "NAME_military_contractors"
-            species = event_target:mercenary_enclave_species
-        }
-    }
-    else = { # Cyborgs get this for now.
-        create_army_transport = {
-            army_type = "mercenary_army"
-            army_name = "NAME_military_contractors"
-            species = event_target:mercenary_enclave_species
-        }
-    }
+		}
+		create_army_transport = {
+			army_type = "machine_assault_1" # Gestalt Machine Mercs should not suffer morale.
+			army_name = "NAME_military_contractors"
+			species = event_target:mercenary_enclave_species
+		}
+	}
+	else = { # Cyborgs get this for now.
+		create_army_transport = {
+			army_type = "mercenary_army"
+			army_name = "NAME_military_contractors"
+			species = event_target:mercenary_enclave_species
+		}
+	}
 }
 
 DEI_create_merc_mecha_army = {
-    if = {
-        limit = {
-            event_target:mercenary_enclave_country = { is_gestalt = yes }
+	if = {
+		limit = {
+			event_target:mercenary_enclave_country = { is_gestalt = yes }
 			event_target:mercenary_enclave_species = { has_trait = trait_machine_unit }
-        }
-        create_army_transport = {
-            army_type = "machine_assault_2"
-            army_name = "NAME_mechawarrior_contractors"
-            species = event_target:mercenary_enclave_species
-        }
-    }
-    else = { # Cyborgs get this for now.
-        create_army_transport = {
-            army_type = "mecha_army"
-            army_name = "NAME_mechawarrior_contractors"
-            species = event_target:mercenary_enclave_species
-        }
-    }
+		}
+		create_army_transport = {
+			army_type = "machine_assault_2"
+			army_name = "NAME_mechawarrior_contractors"
+			species = event_target:mercenary_enclave_species
+		}
+	}
+	else = { # Cyborgs get this for now.
+		create_army_transport = {
+			army_type = "mecha_army"
+			army_name = "NAME_mechawarrior_contractors"
+			species = event_target:mercenary_enclave_species
+		}
+	}
 }

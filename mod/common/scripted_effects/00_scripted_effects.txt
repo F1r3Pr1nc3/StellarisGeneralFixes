@@ -890,7 +890,6 @@ spawn_vultaum_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -927,7 +926,6 @@ spawn_yuht_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -964,7 +962,6 @@ spawn_league_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -1001,7 +998,6 @@ spawn_irassian_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -1038,7 +1034,6 @@ spawn_cybrex_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -1915,7 +1910,6 @@ nuke_pre_ftls_toxic_effect = {
 			add_modifier = { modifier = toxic_terraforming_candidate }
 		}
 	}
-
 	reset_planet = yes
 
 	add_modifier = {
@@ -2059,7 +2053,6 @@ country_cleanup_syndaw_situation = {
 		limit = { has_special_project = PROJECT_MACHINE_UPRISING_WIPE }
 		abort_special_project = { type = PROJECT_MACHINE_UPRISING_WIPE }
 	}
-
 	end_event_chain = "machine_uprising_chain"
 }
 
@@ -2503,7 +2496,7 @@ update_leader_after_modification = {
 				limit = { is_robotic = no }
 				switch = { trigger = has_trait
 					trait_psionic = {
-						prev = { # Compare utopia.2601/2651
+						prev = { # Compare utopia.2651
 							if = {
 								limit = { NOT = { has_trait = leader_trait_psionic } }
 								add_trait = { trait = leader_trait_psionic show_message = no }
@@ -2544,6 +2537,14 @@ update_leader_after_modification = {
 								limit = { NOT = { has_trait = leader_trait_limited_cyborg } }
 								remove_trait = leader_trait_cyborg # very unlikely
 								add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+							}
+						}
+					}
+					trait_latent_psionic = { # Vfix patch?
+						prev = { # Compare utopia.2601
+							if = {
+								limit = { NOT = { has_trait = leader_trait_psionic } }
+								add_trait = { trait = leader_trait_psionic show_message = no }
 							}
 						}
 					}
@@ -3936,7 +3937,6 @@ setup_baol_colony_1 = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
 	random_system_planet = {
 		limit = {
@@ -3955,7 +3955,6 @@ setup_baol_colony_2 = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
 	random_system_planet = {
 		limit = {
@@ -3974,7 +3973,6 @@ setup_baol_colony_3 = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
 	random_system_planet = {
 		limit = {
@@ -3999,7 +3997,6 @@ setup_baol_colony_3_fallback = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
 	random_system_planet = {
 		limit = {
@@ -4189,7 +4186,6 @@ destroy_star_system = {
 	else = {
 		fire_on_action = { on_action = on_destroy_star_system }
 	}
-
 	set_star_flag = star_cracked
 	set_star_class = sc_black_hole
 
@@ -6538,7 +6534,6 @@ remove_system_terraforming_candidates = {
 
 set_origin_effect = {
 	country_event = { id = game_start.8 }
-
 	give_starting_resources_effect = yes
 	# Necrophages
 	if = {
@@ -6729,7 +6724,6 @@ impose_ideology_effect = {
 		}
 		set_origin = origin_legendary_leader_death
 	}
-
 	copy_ethos_and_authority = root
 	if = {
 		limit = { has_civic = civic_galactic_sovereign }
@@ -7308,6 +7302,10 @@ remove_fleet_contract_modifiers = {
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_3
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_4
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_5
+	# Vfix by Dux
+	clear_orders = yes
+	# clear_fleet_actions = yes
+	remove_auto_move_target = yes
 }
 
 remove_fauna_yuht = {
@@ -7408,7 +7406,6 @@ remove_galactic_market_modifiers = {
 			remove_modifier = market_nominee_level_5
 		}
 	}
-
 	clear_variable = market_rating
 }
 
@@ -8245,7 +8242,6 @@ add_red_solution = {
 			}
 		}
 	}
-
 	set_country_flag = modification_red # actually socialer now, but keeping the flags
 }
 
@@ -8306,7 +8302,6 @@ add_green_solution = {
 			}
 		}
 	}
-
 	set_country_flag = modification_green
 }
 
@@ -8366,7 +8361,6 @@ add_blue_solution = {
 			}
 		}
 	}
-
 	set_country_flag = modification_blue
 }
 

@@ -7561,7 +7561,10 @@ country_event = {
 				is_gestalt = yes
 				any_owned_leader = { is_ruler = no is_gestalt_node = no }
 			}
-			num_owned_leaders > 0
+			NOR = {
+				is_gestalt = yes
+				num_owned_leaders < 1
+			}
 		}
 	}
 

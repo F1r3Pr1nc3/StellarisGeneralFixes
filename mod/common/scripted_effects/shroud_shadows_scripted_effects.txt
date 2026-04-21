@@ -99,6 +99,7 @@ turn_main_species_to_psionic = {
 			every_owned_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
 				change_species = event_target:psionic_species
+				update_leader_after_modification = yes # Vfix
 			}
 			every_pool_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
@@ -131,7 +132,7 @@ update_every_leader_from_psionic_countries = {
 		limit = { is_default_or_fallen = yes }
 		every_owned_leader = {
 			limit = {
-				species = { is_same_species = event_target:psionic_species }
+				is_same_species = event_target:psionic_species
 				can_receive_psionic_leader_trait = yes
 			}
 			add_trait = { trait = leader_trait_psionic show_message = no }
@@ -146,7 +147,7 @@ update_every_leader_from_psionic_countries = {
 		}
 		every_pool_leader = {
 			limit = {
-				species = { is_same_species = event_target:psionic_species }
+				is_same_species = event_target:psionic_species
 				NOT = { has_trait = leader_trait_psionic }
 			}
 			add_trait = { trait = leader_trait_psionic show_message = no }
@@ -3783,6 +3784,7 @@ mind_over_matter_immediate = {
 			every_owned_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
 				change_species = event_target:latent_psionic_species
+				update_leader_after_modification = yes # Vfix
 			}
 			every_pool_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
@@ -4345,6 +4347,7 @@ pay_proxy_war_additional_resources = {
 	from = {
 		random_spynetwork = {
 			limit = {
+				exists = target
 				target = { is_same_value = root }
 			}
 			save_event_target_as = victim_spynetwork

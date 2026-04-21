@@ -3319,6 +3319,7 @@ building_clear_thought_clinic = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = event_target:branch_office_owner
+					exists = target
 					target = { is_same_value = event_target:owner }
 				}
 				add_modifier = { modifier = clear_thought_clinic_modifier days = -1 }
@@ -3350,6 +3351,7 @@ building_clear_thought_clinic = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = event_target:branch_office_owner
+						exists = target
 						target = { is_same_value = event_target:owner }
 					}
 					remove_modifier = clear_thought_clinic_modifier

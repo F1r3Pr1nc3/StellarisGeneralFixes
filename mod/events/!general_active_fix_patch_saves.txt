@@ -285,7 +285,10 @@ event = {
 				}
 			}
 			else_if = { # Psychic trait
-				limit = { has_finished_psionic_tradition = yes }
+				limit = {
+					has_finished_psionic_tradition = yes
+					NOT = { has_country_flag = psionic_fix_worked }
+				}
 				# Leader
 				every_owned_leader = {
 					limit = {
@@ -311,6 +314,45 @@ event = {
 							prevprev = { change_species = prev }
 						}
 					}
+				}
+				set_country_flag = psionic_fix_worked
+				log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
+			}
+			else_if = { # Psychic trait (awakening)
+				limit = {
+					has_shroud_dlc = yes
+					has_country_flag = psionic_traditions_unlocked
+					has_tradition = tr_psionics_shroud_great_awakening
+					owner_species = { is_psionic_species = yes }
+					NOT = { has_country_flag = psionic_fix_worked }
+				}
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								is_gestalt = yes
+								ruler = { is_same_species = owner_species has_psionic_leader_trait = no }
+							}
+							any_owned_leader = { is_same_species = owner_species has_psionic_leader_trait = no }
+						}
+					}
+					if = {
+						limit = { is_gestalt = yes }
+						ruler = {
+							add_trait = { trait = leader_trait_psionic show_message = no }
+						}
+					}
+					else = {
+						every_owned_leader = {
+							limit = {
+								is_same_species = owner_species
+								has_psionic_leader_trait = no
+							}
+							add_trait = { trait = leader_trait_psionic show_message = no }
+						}
+					}
+					set_country_flag = psionic_fix_worked
+					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
 				}
 			}
 			else_if = { # Cyborg
