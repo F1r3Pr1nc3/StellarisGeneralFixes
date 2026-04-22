@@ -1,6 +1,7 @@
 # Shadows of the Shroud scripted effects #
 breach_shroud = {
 	set_country_flag = breached_shroud
+
 	fire_on_action = {
 		on_action = on_shroud_breached
 	}
@@ -99,7 +100,7 @@ turn_main_species_to_psionic = {
 			every_owned_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
 				change_species = event_target:psionic_species
-				update_leader_after_modification = yes # Vfix
+				update_leader_after_modification = yes # Vfix (usely just for safety)
 			}
 			every_pool_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
@@ -128,6 +129,35 @@ turn_main_species_to_psionic = {
 }
 
 update_every_leader_from_psionic_countries = {
+	# VFIX: Needs target from add_psionic_trait (usely from turn_main_species_to_psionic),
+	# which needs explicite latent_psionic_species (usely from mind_over_matter_immediate),
+	# but there is also only one kind of random last species saved (because of loop).
+	if = { # Vfix: So we need safety fallback
+		limit = {
+			NOT = { exists = event_target:psionic_species }
+		}
+		random_owned_species = {
+			limit = {
+				OR = {
+					is_same_species = prev
+					AND = {
+						prev = { has_origin = origin_shroud_forged }
+						has_species_flag = original_main_species
+					}
+				}
+				is_psionic_species = yes
+			}
+			save_event_target_as = psionic_species
+		}
+		if = { # Vfix: doublecheck, in case we have an hickup (possible very rare, safety is king)
+			limit = {
+				NOT = { exists = event_target:psionic_species }
+				exists = last_created_species
+				last_created_species = { is_psionic_species = yes }
+			}
+			last_created_species = { save_event_target_as = psionic_species }
+		}
+	}
 	every_country = {
 		limit = { is_default_or_fallen = yes }
 		every_owned_leader = {
@@ -632,6 +662,7 @@ roll_secret_factions = {
 
 bestow_modifier_and_flag = {
 	set_country_flag = bestow_$MODIFIER$
+
 	add_modifier = {
 		modifier = $MODIFIER$
 		days = 1800
@@ -1903,7 +1934,6 @@ force_remove_chosen_civic = {
 		limit = { has_civic = civic_corporate_chosen }
 		force_remove_civic = civic_corporate_chosen
 	}
-
 	set_government_cooldown = no
 	# Removing Blessing and flags
 	if = {
@@ -1960,6 +1990,7 @@ whisperers_in_the_void_replace_patron = {
 	remove_country_flag = contacting_great_patron
 	clear_covenant_flags = yes
 	set_country_flag = $PATRON$_betrayal
+
 	set_attunement = {
 		patron = whisperers_in_the_void
 		value = @attunement_first_accord
@@ -2021,7 +2052,6 @@ patron_revenge = {
 	save_event_target_as = selected_planet_for_revenge
 	change_pc = pc_shrouded
 	clear_deposits = yes
-
 	solar_system = {
 		create_ambient_object = {
 			type = "shroud_tunnel_object"
@@ -2035,7 +2065,6 @@ patron_revenge = {
 			}
 		}
 	}
-
 	root = {
 		switch = {
 			trigger = has_country_flag
@@ -2837,7 +2866,6 @@ create_enclave_with_country = {
 		exile_leader_as = $PREFIX$_enclave_leader
 		save_event_target_as = $PREFIX$_enclave_leader
 	}
-
 	# Set up the enclave starbase
 	solar_system = {
 		set_star_flag = enclave
@@ -2899,7 +2927,6 @@ create_enclave_with_country = {
 		set_country_flag = created_by@event_target:$PREFIX$_enclave_creator
 		add_trust = { who = event_target:$PREFIX$_enclave_creator amount = $TRUST$ }
 	}
-
 	owner = {
 		add_modifier = {
 			modifier = country_enclave_capacity_decrease_modifier
@@ -3784,7 +3811,7 @@ mind_over_matter_immediate = {
 			every_owned_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
 				change_species = event_target:latent_psionic_species
-				update_leader_after_modification = yes # Vfix
+				update_leader_after_modification = yes # Vfix (usely just for safety)
 			}
 			every_pool_leader = {
 				limit = { is_exact_same_species = event_target:changing_species }
@@ -4167,15 +4194,12 @@ initialize_psionic_war_chain_scope = {
 	event_target:exiled_country@root = {
 		save_event_target_as = exiled_country
 	}
-
 	event_target:exiled_center_system@root = {
 		save_event_target_as = exiled_center_system
 	}
-
 	event_target:exiled_planet_1@root = {
 		save_event_target_as = exiled_planet_1
 	}
-
 	event_target:exiled_planet_2@root = {
 		save_event_target_as = exiled_planet_2
 	}
@@ -4224,7 +4248,6 @@ shroud_leader_creator = {
 			save_event_target_as = leader_country
 		}
 	}
-
 	event_target:leader_country = {
 		create_species = {
 			name = UNKNOWN
@@ -4265,6 +4288,7 @@ shroud_leader_creator = {
 shroud_leader_hire_effect = {
 	lower_leader_chance = yes
 	set_country_flag = spawning_renowned_leader
+
 	clone_leader = {
 		target = event_target:shroud_leader
 		skip_background_generation = yes
@@ -4276,6 +4300,7 @@ shroud_leader_hire_effect = {
 	}
 
 	remove_country_flag = spawning_renowned_leader
+
 	create_message = {
 		type = MESSAGE_RECRUITED_LEADER
 		localization = MESSAGE_RECRUITED_LEADER_DESC

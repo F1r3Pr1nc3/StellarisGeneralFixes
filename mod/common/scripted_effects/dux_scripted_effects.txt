@@ -325,12 +325,16 @@ DLAF_make_full_synths = {
 		1 = { set_country_flag = synth_unscheduled_updates }
 		1 = { set_country_flag = synth_safe_updates }
 	}
+
 	set_country_flag = synth_assimilation # So they can assimilate.
+
 	random_situation = { # They are already Synths, skip this.
 		limit = { is_situation_type = situation_digitization }
 		destroy_situation = this
 	}
+
 	set_country_flag = identity_complex_available # so we can instantly grant the building.
+
 	random_list = {
 		10 = {
 			modifier = {
@@ -374,6 +378,7 @@ DLAF_make_full_synths = {
 			set_country_flag = synth_focus_upkeep
 		}
 	}
+
 	set_country_flag = edict_subsidized_identity_backups
 	give_technology = { tech = tech_identity_copy }
 	set_country_flag = edict_optimized_identity_creation
@@ -978,7 +983,6 @@ inherit_tech_effect = {
 		tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
 	}
 	## Add resources
-
 	add_resource = {
 		minerals = 10000
 		energy = 10000
@@ -1127,7 +1131,6 @@ DNCF_spawn_nivlac_circle = {
 			change_government = { civics = random }
 		}
 	}
-
 	# DNCF_setup_nivlac_planet (just used once)
 	event_target:nivlac_planet = {
 		solar_system = {

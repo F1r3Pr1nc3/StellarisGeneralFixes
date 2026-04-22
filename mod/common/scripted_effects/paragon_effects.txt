@@ -320,7 +320,6 @@ update_modifier_amount_if_needed = {
 	else = {
 		clear_variable = $PREV_MULT_VAR$ # No need to bloat variable list if it's 0
 	}
-
 	clear_variable = $MULT_VAR$
 }
 
@@ -343,7 +342,6 @@ ethic_leader_creator = {
 			save_event_target_as = leader_country
 		}
 	}
-
 	event_target:leader_country = {
 		create_species = {
 			name = UNKNOWN
@@ -383,7 +381,6 @@ ethic_leader_creator = {
 			}
 		}
 	}
-
 	event_target:ethic_leader = {
 		set_owner = root
 		# This is a hack to make the leader not be added to player country.
@@ -398,9 +395,9 @@ ethic_leader_hire_effect = {
 		limit = { is_variable_set = paragon_memory_vault }
 		change_variable = { which = paragon_memory_vault value = 1 }
 	}
-
 	lower_leader_chance = yes
 	set_country_flag = spawning_renowned_leader
+
 	clone_leader = {
 		target = event_target:ethic_leader
 		skip_background_generation = yes
@@ -412,6 +409,7 @@ ethic_leader_hire_effect = {
 	}
 
 	remove_country_flag = spawning_renowned_leader
+
 	create_message = {
 		type = MESSAGE_RECRUITED_LEADER
 		localization = MESSAGE_RECRUITED_LEADER_DESC
@@ -490,7 +488,6 @@ country_create_gestalt_councilor = {
 			save_event_target_as = gestalt_councilor
 		}
 	}
-
 	event_target:gestalt_councilor = {
 		set_owner = prev
 		change_leader_portrait = $COUNCIL_POS$_1
@@ -1843,7 +1840,6 @@ paragon_origin_launch_rebelion = {
 		target = event_target:rebel_empire_1
 		attacker_war_goal = wg_end_threat
 	}
-
 	event_target:rebel_empire_1 = {
 		create_leader = {
 			class = commander

@@ -906,9 +906,11 @@ country_event = {
 		every_owned_leader = {
 			limit = {
 				is_robotic_species = yes
-				NOT = { has_trait = leader_trait_virtual }
 				is_leader_tier = leader_tier_default
-				is_gestalt_node = no
+				NOR = {
+					has_trait = leader_trait_virtual
+					is_gestalt_node = yes
+				}
 			}
 			if = {
 				limit = { has_trait = trait_machine_unit }

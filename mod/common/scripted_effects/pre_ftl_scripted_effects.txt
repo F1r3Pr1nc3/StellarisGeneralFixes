@@ -901,7 +901,6 @@ setup_pre_ftl_broken_shackles_planet = {
 	set_owner = event_target:broken_shackles_parent
 	set_capital = yes
 	remove_building = building_colony_shelter
-
 	event_target:broken_shackles_parent = {
 		start_situation = { type = pre_ftl_tech_progress_situation }
 		# Early Space Age Pre-FTLs are capped at 50% progress.
@@ -1385,6 +1384,7 @@ set_pre_ftl_age_effect = {
 # increase_pre_ftl_pops_by_age_effect = { PRE_FTL_AGE = stone_age }
 increase_pre_ftl_pops_by_age_effect = {
 	set_country_flag = $PRE_FTL_AGE$_pops
+
 	hidden_effect = {
 		switch = {
 			trigger = has_country_flag
@@ -2258,7 +2258,6 @@ setup_pre_ftl_hive_planet = {
 
 achieve_ftl_effect = {
 	country_event = { id = game_start.8 }
-
 	remove_country_flag = early_space_age
 	set_country_flag = primitives_can_into_space
 	set_country_type = default
@@ -2294,7 +2293,6 @@ achieve_ftl_effect = {
 	else = {
 		change_government = { authority = random civics = random }
 	}
-
 	set_name = random
 	if = {
 		limit = {
@@ -2405,7 +2403,6 @@ achieve_ftl_effect = {
 			set_location = prev.capital_star
 		}
 	}
-
 	capital_scope = {
 		clear_blockers = yes
 		remove_all_buildings = yes

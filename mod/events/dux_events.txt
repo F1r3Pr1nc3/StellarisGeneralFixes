@@ -32,40 +32,37 @@ planet_event = {
 	}
 }
 
-
 namespace = DEI
-
 # Tried to keep Merc Army replenishment rates close to vanilla.
 country_event = {
-    id = DEI.10
-    hide_window = yes
-    #is_triggered_only = yes
-    
-    trigger = {
-        has_civic = civic_mercenary_enclave
-    }
-    
-    mean_time_to_happen = {
-        days = 72 # Average time for a Merc Army.
+	id = DEI.10
+	hide_window = yes
+	# is_triggered_only = yes
+	trigger = {
+		has_civic = civic_mercenary_enclave
+	}
+
+	mean_time_to_happen = {
+		days = 72 # Average time for a Merc Army.
 		modifier = {
 			factor = 0.5
 			mid_game_years_passed > 0 # They make more armies after midgame.
 		}
-    }
-    
-    immediate = {
-        if = {
-            limit = {
-                check_variable = { which = mercenary_armies_for_hire value < 30 }
-            }
-            change_variable = { which = mercenary_armies_for_hire value = 1 }
-        }
-        if = {
-            limit = {
-                has_modifier = mercenary_fleet_size_upgrade_4
-                check_variable = { which = mercenary_armies_for_hire value < 15 }
-            }
-            change_variable = { which = mercenary_mecha_armies_for_hire value = 1 }
-        }
-    }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { which = mercenary_armies_for_hire value < 30 }
+			}
+			change_variable = { which = mercenary_armies_for_hire value = 1 }
+		}
+		if = {
+			limit = {
+				has_modifier = mercenary_fleet_size_upgrade_4
+				check_variable = { which = mercenary_armies_for_hire value < 15 }
+			}
+			change_variable = { which = mercenary_mecha_armies_for_hire value = 1 }
+		}
+	}
 }

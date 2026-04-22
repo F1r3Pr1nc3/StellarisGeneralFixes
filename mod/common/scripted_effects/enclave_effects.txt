@@ -1,18 +1,14 @@
 ######################
 # "Overlord" Enclaves
 ######################
-
-#NB: Mercenary enclaves are created after galaxy start, and not as part of system initialisers.
-
-#Fleet scope | owner = original empire
+# NB: Mercenary enclaves are created after galaxy start, and not as part of system initialisers.
+# Fleet scope | owner = original empire
 create_mercenary_enclave_country = {
 	create_country = {
 		name = random
 		type = enclave_mercenary
 		authority = "auth_oligarchic"
-		civics = {
-			civic = civic_mercenary_enclave
-		}
+		civics = { civic = civic_mercenary_enclave }
 		origin = "origin_default"
 		species = event_target:mercenary_enclave_species
 		flag = random
@@ -26,7 +22,9 @@ create_mercenary_enclave_country = {
 			set_country_flag = mercenary_enclave_country
 			set_graphical_culture = root.owner
 			create_fleet = {
-				settings = { spawn_debris = no }
+				settings = {
+					spawn_debris = no
+				}
 				effect = {
 					set_owner = prev
 					create_ship = {
@@ -34,10 +32,7 @@ create_mercenary_enclave_country = {
 						design = "NAME_Mercenary_Enclave_Station"
 						graphical_culture = reptilian_01
 					}
-					set_location = {
-						target = event_target:mercenary_enclave_planet
-						distance = 90
-					}
+					set_location = { target = event_target:mercenary_enclave_planet distance = 90 }
 					save_event_target_as = mercenary_enclave_station
 				}
 			}
@@ -46,10 +41,7 @@ create_mercenary_enclave_country = {
 			set_leader = event_target:mercenary_enclave_leader
 			establish_communications_no_message = root.from
 			set_merc_army_variables = yes # Armies now variable, not flags.
-			start_situation = {
-				type = mercenary_dividends
-				target = root
-			}
+			start_situation = { type = mercenary_dividends target = root }
 			# Check for active resolutions and give associated modifiers to mercenary enclave
 			if = {
 				limit = {
@@ -92,10 +84,7 @@ create_mercenary_enclave_country = {
 				}
 			}
 			# Set a flag to prevent the AI from instantly hiring them
-			set_timed_country_flag = {
-				flag = merc_ai_delay
-				years = 1
-			}
+			set_timed_country_flag = { flag = merc_ai_delay years = 1 }
 		}
 	}
 }
@@ -105,22 +94,20 @@ create_mercenary_enclave_country_machine_intelligence = {
 		name = random
 		type = enclave_mercenary
 		authority = "auth_machine_intelligence"
-		civics = {
-			civic = civic_mercenary_enclave
-		}
+		civics = { civic = civic_mercenary_enclave }
 		origin = "origin_default"
 		species = event_target:mercenary_enclave_species
 		flag = random
-		ethos = {
-			ethic = ethic_gestalt_consciousness
-		}
+		ethos = { ethic = ethic_gestalt_consciousness }
 		ignore_initial_colony_error = yes
 		effect = {
 			save_event_target_as = mercenary_enclave_country
 			set_country_flag = mercenary_enclave_country
 			set_graphical_culture = root.owner
 			create_fleet = {
-				settings = { spawn_debris = no }
+				settings = {
+					spawn_debris = no
+				}
 				effect = {
 					set_owner = prev
 					create_ship = {
@@ -128,27 +115,24 @@ create_mercenary_enclave_country_machine_intelligence = {
 						design = "NAME_Mercenary_Enclave_Station"
 						graphical_culture = reptilian_01
 					}
-					set_location = {
-						target = event_target:mercenary_enclave_planet
-						distance = 90
-					}
+					set_location = { target = event_target:mercenary_enclave_planet distance = 90 }
 					save_event_target_as = mercenary_enclave_station
 				}
 			}
 			set_custom_capital_location = event_target:mercenary_enclave_planet
-			#Create ruler
+			# Create ruler
 			set_leader = event_target:mercenary_enclave_leader
 			every_owned_leader = {
 				limit = { has_trait = leader_trait_ruler_machine_intelligence }
 				kill_leader = { show_notification = no }
 			}
 			event_target:mercenary_enclave_leader = {
-    		    if = {
-    		        limit = {
-    		            has_ethic = ethic_gestalt_consciousness # All Gestalt Machines make the Enclave Gestalt.
-    		            event_target:mercenary_enclave_species = { has_trait = trait_machine_unit }
-    		            NOT = { has_trait = leader_trait_ruler_machine_intelligence }
-    		        }
+				if = {
+					limit = {
+						is_gestalt = yes # All Gestalt Machines make the Enclave Gestalt.
+						event_target:mercenary_enclave_species = { has_trait = trait_machine_unit }
+						NOT = { has_trait = leader_trait_ruler_machine_intelligence }
+					}
 					if = {
 						limit = {
 							NOT = { has_trait = subclass_commander_councilor } # Recruitable councilor event-leaders normally useless to gestalts.
@@ -157,81 +141,95 @@ create_mercenary_enclave_country_machine_intelligence = {
 						add_trait = { trait = subclass_commander_councilor show_message = no }
 						set_skill = 1
 					}
-    		        add_trait = leader_trait_ruler_machine_intelligence
-    		    }
-    		}
-			country_create_gestalt_councilor = {
-    		    CLASS = official
-    		    COUNCIL_POS = councilor_gestalt_growth
-    		    DESC = councilor_gestalt_growth_desc
-    		}
-    		country_create_gestalt_councilor = {
-    		    CLASS = scientist
-    		    COUNCIL_POS = councilor_gestalt_cognitive
-    		    DESC = councilor_gestalt_cognitive_desc
-    		}
-    		country_create_gestalt_councilor = { # Gestalt Merc Council starts filled, but will be weaker than late-game Individualist Merc Council.
-    		    CLASS = commander
-    		    COUNCIL_POS = councilor_gestalt_legion
-    		    DESC = councilor_gestalt_legion_desc
-    		}
-    		country_create_gestalt_councilor = {
-    		    CLASS = official
-    		    COUNCIL_POS = councilor_gestalt_regulatory
-    		    DESC = councilor_gestalt_regulatory_desc
-    		}
-			establish_communications_no_message = root.from
-            set_merc_army_variables = yes
-            start_situation = {
-				type = mercenary_dividends
-				target = root
+					add_trait = { trait = leader_trait_ruler_machine_intelligence }
+				}
 			}
+			country_create_gestalt_councilor = {
+				CLASS = official
+				COUNCIL_POS = councilor_gestalt_growth
+				DESC = councilor_gestalt_growth_desc
+			}
+			country_create_gestalt_councilor = {
+				CLASS = scientist
+				COUNCIL_POS = councilor_gestalt_cognitive
+				DESC = councilor_gestalt_cognitive_desc
+			}
+			country_create_gestalt_councilor = { # Gestalt Merc Council starts filled, but will be weaker than late-game Individualist Merc Council.
+				CLASS = commander
+				COUNCIL_POS = councilor_gestalt_legion
+				DESC = councilor_gestalt_legion_desc
+			}
+			country_create_gestalt_councilor = {
+				CLASS = official
+				COUNCIL_POS = councilor_gestalt_regulatory
+				DESC = councilor_gestalt_regulatory_desc
+			}
+			establish_communications_no_message = root.from
+			set_merc_army_variables = yes
+			start_situation = { type = mercenary_dividends target = root }
 			# Check for active resolutions and give associated modifiers to mercenary enclave
 			if = {
-				limit = { is_active_resolution = resolution_defenseprivatization_defense_contracts }
-				add_modifier = { modifier = resolution_defenseprivatization_defense_contracts_merc_naval_cap }
+				limit = {
+					is_active_resolution = resolution_defenseprivatization_defense_contracts
+				}
+				add_modifier = {
+					modifier = resolution_defenseprivatization_defense_contracts_merc_naval_cap
+				}
 			}
 			if = {
-				limit = { is_active_resolution = resolution_defenseprivatization_private_support_troops }
-				add_modifier = { modifier = resolution_defenseprivatization_private_support_troops_merc_naval_cap }
+				limit = {
+					is_active_resolution = resolution_defenseprivatization_private_support_troops
+				}
+				add_modifier = {
+					modifier = resolution_defenseprivatization_private_support_troops_merc_naval_cap
+				}
 			}
 			if = {
-				limit = { is_active_resolution = resolution_defenseprivatization_condottieri }
-				add_modifier = { modifier = resolution_defenseprivatization_condottieri_merc_naval_cap }
+				limit = {
+					is_active_resolution = resolution_defenseprivatization_condottieri
+				}
+				add_modifier = {
+					modifier = resolution_defenseprivatization_condottieri_merc_naval_cap
+				}
 			}
 			if = {
-				limit = { is_active_resolution = resolution_defenseprivatization_security_business }
-				add_modifier = { modifier = resolution_defenseprivatization_security_business_merc_naval_cap }
+				limit = {
+					is_active_resolution = resolution_defenseprivatization_security_business
+				}
+				add_modifier = {
+					modifier = resolution_defenseprivatization_security_business_merc_naval_cap
+				}
 			}
 			if = {
-				limit = { is_active_resolution = resolution_defenseprivatization_corporate_warlords }
-				add_modifier = { modifier = resolution_defenseprivatization_corporate_warlords_merc_naval_cap }
+				limit = {
+					is_active_resolution = resolution_defenseprivatization_corporate_warlords
+				}
+				add_modifier = {
+					modifier = resolution_defenseprivatization_corporate_warlords_merc_naval_cap
+				}
 			}
 			# Set a flag to prevent the AI from instantly hiring them
-			set_timed_country_flag = {
-				flag = merc_ai_delay
-				years = 1
-			}
+			set_timed_country_flag = { flag = merc_ai_delay years = 1 }
 		}
 	}
-    [[INHERITED_ETHIC]] # Do nothing.
+
+	[[INHERITED_ETHIC]
+	] # Do nothing.
 }
 
 upgrade_enclave_starbase = {
 	random_owned_fleet = {
-		limit = {
-			is_ship_size = enclave_$PREFIX$_station
-		}
+		limit = { is_ship_size = enclave_$PREFIX$_station }
 		solar_system = {
 			random_system_planet = {
-				limit = {
-					has_planet_flag = $PREFIX$_enclave_planet
-				}
+				limit = { has_planet_flag = $PREFIX$_enclave_planet }
 				save_event_target_as = $PREFIX$_enclave_planet
 			}
 		}
 		create_fleet = {
-			settings = { spawn_debris = no }
+			settings = {
+				spawn_debris = no
+			}
 			effect = {
 				save_event_target_as = $PREFIX$_mercenary_enclave
 				set_owner = prev
@@ -240,15 +238,12 @@ upgrade_enclave_starbase = {
 					design = $DESIGN$_$TIER$
 					graphical_culture = prev
 				}
-				set_location = {
-					target = event_target:$PREFIX$_enclave_planet
-					distance = 90
-				}
+				set_location = { target = event_target:$PREFIX$_enclave_planet distance = 90 }
 			}
 		}
 		delete_fleet = this
 	}
-	set_timed_country_flag = { flag = upgraded_station days = 360 }
+	set_timed_country_flag = { flag = upgraded_station years = 1 }
 	set_saved_date = {
 		key = upgraded_station_timer
 		days_from_present = 360
@@ -261,26 +256,13 @@ create_salvager_enclave_country = {
 		name = random
 		type = enclave
 		authority = "auth_oligarchic"
-		civics = {
-			civic = civic_salvager_enclave
-		}
+		civics = { civic = civic_salvager_enclave }
 		origin = "origin_default"
 		species = event_target:salvager_enclave_species
 		flag = {
-			icon = {
-				category = "special"
-				file = "salvagers.dds"
-			}
-			background = {
-				category = "backgrounds"
-				file = "double_triangles.dds"
-			}
-			colors = {
-				"brown"
-				"yellow"
-				"null"
-				"null"
-			}
+			icon = { category = "special" file = "salvagers.dds" }
+			background = { category = "backgrounds" file = "double_triangles.dds" }
+			colors = { "brown" "yellow" "null" "null" }
 		}
 		ethos = {
 			ethic = ethic_fanatic_materialist
@@ -291,10 +273,9 @@ create_salvager_enclave_country = {
 			save_global_event_target_as = salvager_enclave_country
 			set_country_flag = salvager_enclave_country
 			set_graphical_culture = mammalian_01
-			#Create capital starbase
+			# Create capital starbase
 			create_fleet = {
 				name = "NAME_Asters_Workshop"
-				settings = { spawn_debris = no }
 				effect = {
 					set_owner = prev
 					create_ship = {
@@ -308,6 +289,9 @@ create_salvager_enclave_country = {
 						angle = 70
 					}
 					save_global_event_target_as = salvager_enclave_starbase
+				}
+				settings = {
+					spawn_debris = no
 				}
 			}
 			create_ambient_object = {
@@ -323,7 +307,7 @@ create_salvager_enclave_country = {
 				set_ambient_object_flag = salvager_debris_field
 			}
 			set_custom_capital_location = event_target:salvager_enclave_planet
-			#Create ruler
+			# Create ruler
 			create_leader = {
 				name = random
 				class = scientist
@@ -344,26 +328,13 @@ create_shroudwalker_enclave_country = {
 		name = random
 		type = enclave
 		authority = "auth_oligarchic"
-		civics = {
-			civic = civic_shroudwalker_enclave
-		}
+		civics = { civic = civic_shroudwalker_enclave }
 		origin = "origin_default"
 		species = event_target:shroudwalker_enclave_species
 		flag = {
-			icon = {
-				category = "special"
-				file = "shroudwalkers.dds"
-			}
-			background = {
-				category = "backgrounds"
-				file = "sinus.dds"
-			}
-			colors = {
-				"black"
-				"purple"
-				"null"
-				"null"
-			}
+			icon = { category = "special" file = "shroudwalkers.dds" }
+			background = { category = "backgrounds" file = "sinus.dds" }
+			colors = { "black" "purple" "null" "null" }
 		}
 		ethos = {
 			ethic = ethic_fanatic_spiritualist
@@ -374,10 +345,9 @@ create_shroudwalker_enclave_country = {
 			save_global_event_target_as = shroudwalker_enclave_country
 			set_country_flag = shroudwalker_enclave_country
 			set_graphical_culture = mammalian_01
-			#Create capital starbase
+			# Create capital starbase
 			create_fleet = {
 				name = "NAME_Shroud_Teachers"
-				settings = { spawn_debris = no }
 				effect = {
 					set_owner = prev
 					create_ship = {
@@ -391,28 +361,28 @@ create_shroudwalker_enclave_country = {
 					}
 					save_event_target_as = CustomCapital
 				}
+				settings = {
+					spawn_debris = no
+				}
 			}
 			set_custom_capital_location = event_target:shroudwalker_enclave_planet
-			#Create ruler
+			# Create ruler
 			create_leader = {
 				name = random
 				class = scientist
 				species = event_target:shroudwalker_enclave_species
 				skill = 5
-				traits = {
-					1 = leader_trait_expertise_psionics
-				}
+				traits = { 1 = leader_trait_expertise_psionics }
 			}
 			set_leader = last_created_leader
 		}
 	}
 }
 
-#For use in overlord initializer; enclave country scope
+# For use in overlord initializer; enclave country scope
 create_shroudwalker_enclave_starbase = {
 	create_fleet = {
 		name = "NAME_Shroud_Teachers"
-		settings = { spawn_debris = no }
 		effect = {
 			set_owner = prev
 			create_ship = {
@@ -426,12 +396,15 @@ create_shroudwalker_enclave_starbase = {
 			}
 			save_global_event_target_as = shroudwalker_starbase
 		}
+		settings = {
+			spawn_debris = no
+		}
 	}
 }
 
-#Fleet scope | this = fleet; root = fleet owner; event_target:salvager_enclave_country = enclave
+# Fleet scope | this = fleet; root = fleet owner; event_target:salvager_enclave_country = enclave
 salvager_enclave_scrap_fleet_estimate = {
-	#One-off vessels
+	# One-off vessels
 	if = {
 		limit = {
 			OR = {
@@ -440,55 +413,37 @@ salvager_enclave_scrap_fleet_estimate = {
 				is_ship_class = shipclass_science_ship
 			}
 		}
-		set_variable = {
-			which = scrap_value
-			value = @ScrapTier1Alloys
-		}
+		set_variable = { which = scrap_value value = @ScrapTier1Alloys }
 	}
-	#Military vessels (shipclass_military)
+	# Military vessels (shipclass_military)
 	else = {
-		export_trigger_value_to_variable = {
-			trigger = fleet_power
-			variable = scrap_value
-		}
-		#If Fleet Power exceeds @ScrapFleetPowerCap, set a ceiling on the scrap value
+		export_trigger_value_to_variable = { trigger = fleet_power variable = scrap_value }
+		# If Fleet Power exceeds @ScrapFleetPowerCap, set a ceiling on the scrap value
 		if = {
 			limit = {
-				check_variable = {
-					which = scrap_value
-					value > @ScrapFleetPowerCap
-				}
+				check_variable = { which = scrap_value value > @ScrapFleetPowerCap }
 			}
-			set_variable = {
-				which = scrap_value
-				value = @ScrapFleetPowerCap
-			}
+			set_variable = { which = scrap_value value = @ScrapFleetPowerCap }
 		}
-		#If FLeet Power is so low it would round to 0, set a safe minimum instead
+		# If FLeet Power is so low it would round to 0, set a safe minimum instead
 		else_if = {
 			limit = {
 				check_variable_arithmetic = {
 					which = scrap_value
 					multiply = @ScrapValueMultiplier
-					value < 6 #See 'round_variable_to_closest', below. This should be just over half whatever we are rounding to.
+					value < 6 # See 'round_variable_to_closest', below. This should be just over half whatever we are rounding to.
 				}
 			}
 			set_variable = {
 				which = scrap_value
-				value = 125 #See 'round_variable_to_closest', below. One should be able to multiply this value by @ScrapValueMultiplier and receive a value which won't round to 0.
+				value = 125 # See 'round_variable_to_closest', below. One should be able to multiply this value by @ScrapValueMultiplier and receive a value which won't round to 0.
 			}
 		}
-		#Proceed as normal
-		multiply_variable = {
-			which = scrap_value
-			value = @ScrapValueMultiplier
-		}
-		round_variable_to_closest = {
-			which = scrap_value
-			value = 10
-		}
+		# Proceed as normal
+		multiply_variable = { which = scrap_value value = @ScrapValueMultiplier }
+		round_variable_to_closest = { which = scrap_value value = 10 }
 	}
-	#Organic vessels
+	# Organic vessels
 	if = {
 		limit = {
 			OR = {
@@ -496,18 +451,13 @@ salvager_enclave_scrap_fleet_estimate = {
 				is_organic_controllable_ship = yes
 			}
 		}
-		multiply_variable = {
-			which = scrap_value
-			value = @ScrapValueOrganicMult
-		}
+		multiply_variable = { which = scrap_value value = @ScrapValueOrganicMult }
 		set_fleet_flag = scrap_organic_fleet
-		root = {
-			set_country_flag = has_organic_scrappable_fleet
-		}
+		root = { set_country_flag = has_organic_scrappable_fleet }
 	}
 }
 
-#Country scope
+# Country scope
 salvager_enclave_find_reclaimed_corvette_design = {
 	random_playable_country = {
 		limit = {
@@ -531,6 +481,7 @@ salvager_enclave_find_reclaimed_corvette_design = {
 		}
 	}
 }
+
 salvager_enclave_find_reclaimed_frigate_design = {
 	random_playable_country = {
 		limit = {
@@ -554,6 +505,7 @@ salvager_enclave_find_reclaimed_frigate_design = {
 		}
 	}
 }
+
 salvager_enclave_find_reclaimed_destroyer_design = {
 	random_playable_country = {
 		limit = {
@@ -577,6 +529,7 @@ salvager_enclave_find_reclaimed_destroyer_design = {
 		}
 	}
 }
+
 salvager_enclave_find_reclaimed_cruiser_design = {
 	random_playable_country = {
 		limit = {
@@ -600,6 +553,7 @@ salvager_enclave_find_reclaimed_cruiser_design = {
 		}
 	}
 }
+
 salvager_enclave_find_reclaimed_battleship_design = {
 	random_playable_country = {
 		limit = {
@@ -624,7 +578,7 @@ salvager_enclave_find_reclaimed_battleship_design = {
 	}
 }
 
-#Starbase scope | this = starbase;
+# Starbase scope | this = starbase;
 shroudwalker_enclave_starbase_create_shroud_tunnel = {
 	solar_system = {
 		spawn_natural_wormhole = {
@@ -636,28 +590,23 @@ shroudwalker_enclave_starbase_create_shroud_tunnel = {
 		set_star_flag = spawned_shroud_tunnel
 		set_star_flag = shroud_tunnel_node
 	}
-
 	owner = {
 		if = {
 			limit = {
 				NAND = {
 					exists = event_target:shroud_tunnel_nexus
-					event_target:shroud_tunnel_nexus = {
-						has_star_flag = shroud_tunnel_nexus
-					}
+					event_target:shroud_tunnel_nexus = { has_star_flag = shroud_tunnel_nexus }
 				}
 			}
 			random_system = {
-				limit = {
-					has_star_flag = shroudwalker_enclave_system
-				}
+				limit = { has_star_flag = shroudwalker_enclave_system }
 				link_wormholes = event_target:shroud_tunnel_node
 			}
 		}
 	}
 }
 
-#Fleet scope | event_target:shattered_frontier_colony_ship
+# Fleet scope | event_target:shattered_frontier_colony_ship
 shattered_frontier_colony_depart = {
 	optimize_memory
 	queue_actions = {
@@ -672,10 +621,8 @@ shattered_frontier_colony_depart = {
 				wait = { duration = 25 }
 				effect = {
 					id = shattered_frontier_colony_effect@this
-					set_planet_flag = shattered_frontier_colonized_planet #FAO: Shroudwalkers
-					prevprev = {
-						destroy_fleet = this
-					}
+					set_planet_flag = shattered_frontier_colonized_planet # FAO: Shroudwalkers
+					prevprev = { destroy_fleet = this }
 				}
 			}
 		}

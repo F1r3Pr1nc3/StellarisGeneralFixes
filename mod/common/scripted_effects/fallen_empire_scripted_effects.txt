@@ -1637,11 +1637,9 @@ create_scion_wormhole_link = {
 	capital_scope = {
 		solar_system = { save_event_target_as = home_system }
 	}
-
 	event_target:scion_master = {
 		random_system_within_border = { save_event_target_as = fe_target_system }
 	}
-
 	event_target:home_system = {
 		event_target:fe_target_system = {
 			prev = { # done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
@@ -2041,7 +2039,6 @@ generate_new_species_and_pop = {
 	]
 
 	[[CITIZEN_COUNTRY]
-
 	event_target:new_pop_species = {
 		set_citizenship_type = { country = $CITIZEN_COUNTRY$ type = citizenship_full }
 	}
@@ -2371,7 +2368,6 @@ grant_random_fe_building = {
 grant_fe_building = {
 	change_variable = { which = $BUILDING$_build_count value = 1 }
 	change_variable = { which = $BUILDING$_upgrade_count value = 1 }
-
 	set_country_flag = $BUILDING$_can_build
 	set_timed_country_flag = { flag = recently_got_$BUILDING$ days = 30 }
 	create_message = {

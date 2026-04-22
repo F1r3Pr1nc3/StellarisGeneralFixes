@@ -1,36 +1,36 @@
 every_merc_army_total_cost = {
-    base = 0
-    modifier = {
-        add = value:mercenary_armies_for_hire_cost
-        always = yes
-    }
-    modifier = {
-        add = value:mercenary_mecha_armies_for_hire_cost
-        has_modifier = mercenary_fleet_size_upgrade_4
-    }
+	base = 0
+	modifier = {
+		add = value:mercenary_armies_for_hire_cost
+		always = yes
+	}
+	modifier = {
+		add = value:mercenary_mecha_armies_for_hire_cost
+		has_modifier = mercenary_fleet_size_upgrade_4
+	}
 }
 
 mercenary_armies_for_hire_cost = {
-    add = mercenary_armies_for_hire
-    mult = -120
+	add = mercenary_armies_for_hire
+	mult = -120
 }
 
 mercenary_mecha_armies_for_hire_cost = {
-    add = mercenary_mecha_armies_for_hire
-    mult = -240
+	add = mercenary_mecha_armies_for_hire
+	mult = -240
 }
 
 every_merc_army_total_trust = {
-    base = 0
-    modifier = {
-        add = owner.mercenary_armies_for_hire
-    }
-    modifier = {
-        add = owner.mercenary_mecha_armies_for_hire
-        has_modifier = mercenary_fleet_size_upgrade_4
-    }
-    modifier = {
-        add = owner.mercenary_mecha_armies_for_hire # Two trust per mecha army, so add this twice.
-        has_modifier = mercenary_fleet_size_upgrade_4
-    }
+	base = 0
+	modifier = {
+		add = owner.mercenary_armies_for_hire
+	}
+	modifier = {
+		add = owner.mercenary_mecha_armies_for_hire
+		has_modifier = mercenary_fleet_size_upgrade_4
+	}
+	modifier = {
+		add = owner.mercenary_mecha_armies_for_hire # Two trust per mecha army, so add this twice.
+		has_modifier = mercenary_fleet_size_upgrade_4
+	}
 }

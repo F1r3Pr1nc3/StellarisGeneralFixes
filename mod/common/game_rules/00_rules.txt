@@ -173,7 +173,6 @@ should_surrender_planets_to = {
 	is_homicidal = no
 	is_crisis_faction = no
 	is_primitive = no
-
 	root = {
 		is_homicidal = no
 		is_crisis_faction = no
@@ -1979,7 +1978,6 @@ is_criminal_syndicate_rule = {
 # This = planet
 can_crossbreed_species_on_planet = {
 	has_owner = yes
-
 	owner = {
 		has_ascension_perk = ap_xeno_compatibility
 	}
@@ -3392,6 +3390,7 @@ can_interact_with_astral_rift = {
 # FROM = Astral Rift checked
 can_explore_astral_rift = {
 	has_technology = tech_rift_sphere
+
 	hidden_trigger = {
 		OR = {
 			is_astral_rift_pool_empty = no
@@ -3686,6 +3685,7 @@ can_use_mutations = {
 	hidden_trigger = {
 		is_scope_valid = yes
 	}
+
 	has_technology = tech_controlled_mutations
 }
 
@@ -3693,6 +3693,7 @@ can_use_artificial_breeding = {
 	hidden_trigger = {
 		is_scope_valid = yes
 	}
+
 	has_technology = tech_alien_cloning
 }
 
@@ -3723,11 +3724,9 @@ force_create_default_ship_design = {
 	is_designable = yes
 	# OR = { AND = {
 	is_space_fauna = yes
-
 	from = {
 		uses_fauna_ship_sizes = yes
 	}
-
 	# Add other cases here if any
 }
 
@@ -3960,7 +3959,6 @@ should_hide_pop_group_size = {
 	species = {
 		has_trait = trait_wilderness
 	}
-
 	from = {
 		is_wilderness_empire = yes
 	}
@@ -4006,7 +4004,6 @@ is_mindwarden_exiled_first_contact = {
 		has_origin = origin_mindwardens
 		has_country_flag = exiled_partial_contact
 	}
-
 	from = {
 		is_country_type = exiled
 	}

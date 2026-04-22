@@ -358,11 +358,9 @@ hide_cutholoid_in_asteroid = {
 	clear_deposits = yes
 	clear_planet_modifiers = yes
 	prevent_anomaly = yes
-
 	solar_system = {
 		set_star_flag = hidden_cutholoid
 	}
-
 	event_target:cutholoids_country = {
 		change_variable = { which = alive_cutholoids value = 1 }
 	}
@@ -1112,7 +1110,6 @@ give_treasure_trove_reward = {
 			}
 		}
 	}
-
 	remove_$TREASURE_TROVE_SCOPE_TYPE$_flag = treasure_trove_active
 	solar_system = {
 		if = {
@@ -1795,7 +1792,6 @@ spawn_treasure_hidden_system = {
 	capital_scope.solar_system = {
 		random_neighbor_system = { save_event_target_as = suitable_spawn_system }
 	}
-
 	event_target:suitable_spawn_system = {
 		set_star_flag = treasure_hunters_spawn_pinpoint
 		spawn_system = {
@@ -2021,9 +2017,7 @@ spawn_black_needle_base_system = {
 			target = this
 		}
 	}
-
 	select_suitable_spawn_system = yes
-
 	event_target:suitable_spawn_system = {
 		spawn_system = {
 			min_distance = 20
@@ -2058,9 +2052,7 @@ spawn_smeegibb_shelter_system = {
 			target = this
 		}
 	}
-
 	select_suitable_spawn_system = yes
-
 	event_target:suitable_spawn_system = {
 		spawn_system = {
 			min_distance = 20
@@ -2267,9 +2259,7 @@ spawn_gateway_to_ness_treasure_system = {
 			target = this
 		}
 	}
-
 	select_suitable_spawn_system = yes
-
 	event_target:suitable_spawn_system = {
 		spawn_system = {
 			min_distance = 20
@@ -2520,7 +2510,6 @@ create_primal_leader = {
 			save_event_target_as = leader_country
 		}
 	}
-
 	event_target:leader_country = {
 		create_species = {
 			name = UNKNOWN
@@ -2635,6 +2624,7 @@ get_frenzied_voidworms_target = {
 cleanup_sabotage_flags = {
 	remove_country_flag = periodic_spawn_block
 	remove_country_flag = destroyed_fleet_spawn_cooldown
+
 	every_system_within_border = {
 		limit = { has_star_flag = available_for_sabotage }
 		remove_star_flag = available_for_sabotage
@@ -2644,6 +2634,7 @@ cleanup_sabotage_flags = {
 # Scope = Planet
 plant_fruitful_seeds = {
 	set_planet_flag = seeds_planted_by@$SEEDS_OWNER$
+
 	set_surveyed = {
 		surveyed = yes
 		surveyor = $SEEDS_OWNER$

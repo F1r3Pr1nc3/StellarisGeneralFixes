@@ -14,7 +14,6 @@ generate_home_system_resources = {
 		prevent_anomaly = yes
 		clear_deposits = yes
 	}
-
 	system_star = {
 		set_planet_flag = starting_mining_target
 		set_planet_flag = starting_deposit
@@ -1276,7 +1275,6 @@ generate_earth_deposits_and_blockers = {
 generate_start_buildings_and_districts = {
 	optimize_memory
 	set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-
 	inline_script = "game_start/rural_districts_initializer"
 	inline_script = "game_start/authority_regular"
 	inline_script = "game_start/authority_hive"
@@ -2024,7 +2022,6 @@ void_dweller_home_planet_setup = {
 			add_research_option = tech_subdermal_stimulation
 		}
 	}
-
 	solar_system = {
 		random_system_planet = {
 			limit = { has_planet_flag = habitat_1_planet }
@@ -2145,11 +2142,9 @@ void_dweller_home_planet_setup = {
 			}
 		}
 	}
-
 	event_target:habitat_1_planet = {
 		set_planet_flag = habitat@PREV
 	}
-
 	owner = {
 		if = {
 			limit = {
@@ -2768,7 +2763,6 @@ create_ocean_paradise_planet = {
 	else = {
 		add_modifier = { modifier = ocean_paradise }
 	}
-
 	clear_deposits = yes
 	clear_blockers = yes
 	# Food
@@ -2910,7 +2904,6 @@ low_tech_start_add_research_options_effect = {
 	else = {
 		add_research_option = tech_corvettes
 	}
-
 	add_research_option = tech_basic_science_lab_1
 	add_research_option = tech_planetary_government
 }
