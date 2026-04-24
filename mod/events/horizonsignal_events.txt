@@ -1797,31 +1797,32 @@ ship_event = {
 }
 
 # observation missions
-planet_event = {
+country_event = { # Vfix opt
 	id = akx.9399
 	hide_window = yes
 
-	pre_triggers = {
-		has_owner = yes
-	}
+	# pre_triggers = {
+	# 	has_owner = yes
+	# }
 
 	trigger = {
-		has_observation_outpost = yes
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = renaissance_age
-				has_country_flag = steam_age
-				has_country_flag = industrial_age
-				has_country_flag = machine_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
+		is_primitive = yes
+		exists = capital_scope
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost_owner = {
+				is_ai = no
+				has_country_flag = worm_events_available
+				NOT = { has_country_flag = coils_of_god }
 			}
 		}
-		observation_outpost_owner = {
-			is_ai = no
-			has_country_flag = worm_events_available
-			NOT = { has_country_flag = coils_of_god }
+		OR = {
+			has_country_flag = renaissance_age
+			has_country_flag = steam_age
+			has_country_flag = industrial_age
+			has_country_flag = machine_age
+			has_country_flag = atomic_age
+			has_country_flag = early_space_age
 		}
 	}
 
@@ -1830,10 +1831,12 @@ planet_event = {
 	}
 
 	immediate = {
-		save_global_event_target_as = coils_planet
-		observation_outpost_owner = {
-			set_country_flag = coils_of_god
-			country_event = { id = akx.9400 }
+		capital_scope = {
+			save_global_event_target_as = coils_planet
+			observation_outpost_owner = {
+				set_country_flag = coils_of_god
+				country_event = { id = akx.9400 }
+			}
 		}
 	}
 }
@@ -1845,7 +1848,7 @@ country_event = {
 	desc = akx.9400.desc
 	picture = GFX_evt_medieval_alien_civilization
 	show_sound = event_ship_bridge
-	location = from
+	location = event_target:coils_planet # Vfix patch (because MTTH opt)
 	is_triggered_only = yes
 
 	option = {

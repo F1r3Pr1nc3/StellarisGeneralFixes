@@ -536,7 +536,7 @@ souls_aura_max_intensity_effect = {
 }
 
 eater_aura_max_intensity_effect = {
-	root.aura_owner = {
+	aura_owner = { # Vfix scope
 		if = {
 			limit = {
 				NOT = { is_variable_set = eater_fleet_intensity }
@@ -552,7 +552,7 @@ eater_aura_max_intensity_effect = {
 		type = MESSAGE_PSIONIC_AURA_the_eater_of_worlds
 		localization = MESSAGE_PSIONIC_AURA_MAX_INTENSITY_the_eater_of_worlds_DESC
 		days = 30
-		target = root.aura_owner
+		target = aura_owner # Vfix scope
 		variable = {
 			type = name
 			localization = SYSTEM

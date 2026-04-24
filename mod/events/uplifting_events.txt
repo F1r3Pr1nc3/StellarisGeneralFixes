@@ -484,13 +484,10 @@ planet_event = {
 #######################################
 # Pre-Sapient Pop Interaction Events
 #######################################
-# Pre-Sapients damage currency stores
+# MTTH gate
 planet_event = {
-	id = uplift.7500
-	title = uplift.7500.name
-	desc = uplift.7500.desc
-	picture = GFX_evt_alien_cavemen
-	location = root
+	id = uplift.7499
+	hide_window = yes
 
 	pre_triggers = {
 		has_owner = yes
@@ -498,29 +495,67 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		NOR = {
-			owner = {
-				OR = {
-					is_ai = yes
-					is_guided_sapience_empire = yes
-					is_wilderness_empire = yes
-					resource_stockpile_compare = { resource = energy value < 300 }
-				}
+		owner = {
+			NOR = {
+				is_ai = yes
+				is_guided_sapience_empire = yes
+				is_wilderness_empire = yes
 			}
-			has_planet_flag = chainblocked
-			any_owned_species = {
-				OR = {
-					is_sapient = yes
-					has_trait = trait_nascent_stage
-				}
+		}
+		any_owned_species = {
+			NOR = {
+				is_sapient = yes
+				has_trait = trait_nascent_stage
 			}
 		}
 	}
 
-	mean_time_to_happen = {
+	mean_time_to_happen = { # TODO DEPRECATE
 		years = 100
 	}
 
+	immediate = {
+		random_list = {
+			90 = {
+				modifier = {
+					factor = 0
+					OR = {
+						has_planet_flag = chainblocked
+						owner = {
+							resource_stockpile_compare = { resource = energy value < 300 }
+						}
+					}
+				}
+				planet_event = { id = uplift.7500 }
+			}
+			90 = {
+				modifier = {
+					factor = 0
+					has_planet_flag = unethical_presapient_experiments
+				}
+				planet_event = { id = uplift.7510 }
+			}
+			19 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = fidgeting_natives }
+				}
+				planet_event = { id = uplift.7520 }
+			}
+			1 = {  }
+		}
+	}
+}
+
+# Pre-Sapients damage currency stores
+planet_event = {
+	id = uplift.7500
+	title = uplift.7500.name
+	desc = uplift.7500.desc
+	picture = GFX_evt_alien_cavemen
+	location = root
+	is_triggered_only = yes
+	# mean_time_to_happen = { years = 100 } # VFIX OPT DEPRECATED: see gate uplift.7499
 	immediate = {
 		set_planet_flag = chainblocked
 	}
@@ -556,35 +591,8 @@ planet_event = {
 	desc = uplift.7510.desc
 	picture = GFX_evt_alien_cavemen
 	location = root
-
-	pre_triggers = {
-		has_owner = yes
-	}
-
-	trigger = {
-		has_owner = yes
-		NOR = {
-			owner = {
-				OR = {
-					is_ai = yes
-					is_guided_sapience_empire = yes
-					is_wilderness_empire = yes
-				}
-			}
-			has_planet_flag = unethical_presapient_experiments
-			any_owned_species = {
-				OR = {
-					is_sapient = yes
-					has_trait = trait_nascent_stage
-				}
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 100
-	}
-
+	is_triggered_only = yes
+	# mean_time_to_happen = { years = 100 } # VFIX OPT DEPRECATED: see gate uplift.7499
 	immediate = {
 		set_planet_flag = unethical_presapient_experiments
 	}
@@ -644,33 +652,8 @@ planet_event = {
 	desc = uplift.7520.desc
 	picture = GFX_evt_colony_settlement
 	location = root
-
-	pre_triggers = {
-		has_owner = yes
-	}
-
-	trigger = {
-		has_owner = yes
-		owner = {
-			NOR = {
-				is_ai = yes
-				has_country_flag = fidgeting_natives
-				is_guided_sapience_empire = yes
-				is_wilderness_empire = yes
-			}
-		}
-		any_owned_species = {
-			NOR = {
-				is_sapient = yes
-				has_trait = trait_nascent_stage
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 5000
-	}
-
+	is_triggered_only = yes
+	# mean_time_to_happen = { years = 415 } # VFIX OPT DEPRECATED: see gate uplift.7499
 	immediate = {
 		owner = { set_country_flag = fidgeting_natives }
 	}

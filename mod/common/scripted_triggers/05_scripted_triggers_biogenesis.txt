@@ -474,11 +474,15 @@ has_nemesis_or_control_fragment = {
 }
 
 is_player_crisis = {
+	is_subject = no # Vfix opt
 	OR = {
 		has_ascension_perk = ap_become_the_crisis
-		has_ascension_perk = ap_cosmogenesis
 		has_ascension_perk = ap_behemoths
 		has_ascension_perk = ap_galactic_hyperthermia
+		AND = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_aborted } # Vfix
+		}
 		has_country_flag = is_player_crisis # For modded crisis paths
 	}
 }

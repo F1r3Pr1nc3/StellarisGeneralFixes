@@ -6831,6 +6831,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
+		has_global_flag = end_of_the_cycle # Vfix opt
 		owner = {
 			OR = {
 				has_modifier = covenant_end_of_the_cycle
@@ -7070,6 +7071,7 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
+		has_country_flag = has_delved_in_shroud # Vfix opt
 		NOT = { has_country_flag = covenant_side_effects }
 		OR = {
 			has_covenant_with_whisperers_in_the_void = yes

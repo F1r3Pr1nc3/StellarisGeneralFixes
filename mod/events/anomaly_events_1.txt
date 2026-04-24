@@ -810,6 +810,7 @@ ship_event = {
 			}
 		}
 	}
+
 	# option = {
 	#	name = anomaly.85.b
 	#	owner = { save_event_target_as = ship_owner }
@@ -5320,19 +5321,13 @@ country_event = {
 	trigger = {
 		has_country_flag = DLAF_to_synthesize
 		OR = {
-			NOT = { has_country_flag = DLAF_synthesization_timer }
-			has_global_flag = DLAF_debugging
-		}
-		NOT = { has_country_flag = DLAF_3_fired }
-		OR = {
 			has_utopia = yes
 			has_machine_age_dlc = yes
 		}
-	}
-
-	mean_time_to_happen = {
-		years = 5
-		modifier = { factor = 0.01 has_global_flag = DLAF_debugging }
+		NOR = {
+			has_country_flag = DLAF_synthesization_timer
+			has_country_flag = DLAF_3_fired
+		}
 	}
 
 	immediate = {

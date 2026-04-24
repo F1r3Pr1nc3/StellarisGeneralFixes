@@ -323,6 +323,16 @@ event = {
 					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
 				}
 				# Species
+				if = {
+					limit = {
+						any_owned_species = {
+							is_same_species = prev
+							is_latent_psionic_species = yes
+						}
+					}
+					turn_main_species_to_psionic = yes
+					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
+				}
 				every_owned_leader = {
 					limit = {
 						species = { is_psionic_species = no }
