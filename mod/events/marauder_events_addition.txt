@@ -319,6 +319,51 @@ fleet_event = {
 	}
 
 	immediate = {
+		# Friends get protective
+		if = { # (just once)
+			limit = {
+				NOT = { has_fleet_flag = got_targeted }
+			}
+			from = {
+				every_relation = {
+					limit = {
+						NOT = { is_hostile = root.owner }
+						has_communications = prev
+						is_friendly_to = prev
+						OR = {
+							is_loyal_to = prev
+							is_patronizing_to = prev
+							has_defensive_pact = prev
+							has_secret_fealty_with = prev
+							has_attitude_behavior = { target = prev behavior = alliance }
+						}
+						trust = { who = prev value > 30 }
+						NOT = { is_harming_relations_with = prev }
+					}
+					root.owner = {
+						set_faction_hostility = { target = prev set_hostile = yes }
+					}
+				}
+				if = {
+					limit = { has_federation = yes }
+					every_federation_ally = {
+						limit = {
+							NOT = { is_hostile = root.owner }
+							# OR = {
+							# 	is_loyal_to = prev
+							# 	is_patronizing_to = prev
+							# 	has_secret_fealty_with = prev
+							# }
+							trust = { who = prev value > 30 }
+						}
+						root.owner = {
+							set_faction_hostility = { target = prev set_hostile = yes }
+						}
+					}
+				}
+			}
+			set_fleet_flag = got_targeted
+		}
 		if = {
 			limit = {
 				NAND = {
@@ -326,7 +371,7 @@ fleet_event = {
 					is_fleet_idle = yes
 				}
 			}
-			fleet_event = { id = marauder.29 days = 25 scopes = { from = from } }
+			fleet_event = { id = marauder.29 days = 24 scopes = { from = from } }
 			break = yes
 		}
 		log = "Try raid fallback routing"
@@ -384,6 +429,7 @@ fleet_event = {
 			auto_move_to_planet = {
 				target = event_target:attacked_planet
 				clear_auto_move_on_arrival = no
+				arrival_effect = marauder_path_attack
 			}
 			log = "Vfix: Take new raid target [This.System.GetName]"
 			break = yes
@@ -504,23 +550,10 @@ fleet_event = {
 						}
 					}
 					root = {
-						if = {
-							limit = {
-								prev = {
-									has_owner = yes
-									is_owned_by = from
-									sapient_pop_amount > 100
-									is_planet_eligible_for_treasure_planet = yes
-								}
-							}
-							auto_move_to_planet = { target = prev clear_auto_move_on_arrival = no }
-						}
-						else = {
-							auto_move_to_planet = {
-								target = prev
-								clear_auto_move_on_arrival = no
-								arrival_effect = marauder_path_attack
-							}
+						auto_move_to_planet = {
+							target = prev
+							clear_auto_move_on_arrival = no
+							arrival_effect = marauder_path_attack
 						}
 						fleet_event = { id = marauder.29 days = 100 random = 25 scopes = { from = from } }
 						log = "Vfix: \\[This.Owner.GetName] take new raid target \\[Prev.GetName]"

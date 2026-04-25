@@ -65,7 +65,6 @@ add_cosmogenesis_level_4_perks = {
 	else = {
 		add_research_option = tech_cosmogenesis_stinger
 	}
-
 	add_research_option = tech_cosmogenesis_thesis
 }
 
@@ -85,7 +84,6 @@ remove_all_cybernetic_traits = {
 
 add_augmentation_bazaars_cyborg_traits = {
 	save_event_target_as = cyborg_pop
-
 	owner = {
 		switch = {
 			trigger = has_country_flag
@@ -864,7 +862,6 @@ synth_queen_spawn = {
 		set_star_flag = synth_queen_capital
 		save_global_event_target_as = synth_queen_capital_system
 	}
-
 	event_target:synth_queen_capital_system = {
 		save_event_target_as = synth_queen_system
 		random_system_planet = {
@@ -1782,7 +1779,6 @@ synth_queen_create_outpost = {
 			set_location = { target = event_target:sq_outpost }
 		}
 	}
-
 	event_target:synth_queen_outpost_country = {
 		set_country_type = synth_queen_outposts
 	}
@@ -1831,6 +1827,7 @@ synth_queen_fleet_patrol = {
 
 synth_queen_fleet_convoys_patrol = {
 	set_fleet_flag = mobile_convoy
+
 	queue_actions = {
 		repeat = {
 			wait = { duration = 80 random = 80 }
@@ -1943,7 +1940,6 @@ synth_queen_create_mini_outpost = {
 			set_location = { target = event_target:sq_outpost }
 		}
 	}
-
 	event_target:synth_queen_outpost_country = {
 		set_country_type = synth_queen_outposts
 	}
@@ -2189,7 +2185,6 @@ make_fallen_empire = {
 		add_global_ship_design = "NAME_HIVE_Citadel_3"
 		set_graphical_culture = "biogenesis_01_fallen_empire"
 	}
-
 	create_fallen_empire_cosmogenesis_navy = yes
 
 	add_modifier = {
@@ -2299,7 +2294,6 @@ create_fallen_empire_planet = {
 		}
 		change_pc = pc_machine
 	}
-
 	remove_all_buildings = yes
 	if = {
 		limit = {
@@ -2314,7 +2308,6 @@ create_fallen_empire_planet = {
 	else = {
 		add_building = building_ancient_palace
 	}
-
 	add_building = building_fe_stronghold
 	if = {
 		limit = {
@@ -2332,7 +2325,6 @@ create_fallen_empire_planet = {
 		add_building = building_class_4_singularity
 		add_building = building_fe_security_2
 	}
-
 	add_building = building_nourishment_center
 	add_building = building_class_4_singularity
 	add_building = building_dimensional_fabricator
@@ -3341,7 +3333,6 @@ synth_queen_progress_situation = {
 		limit = { is_situation_type = situation_synth_queen_player_facing }
 		save_event_target_as = queen_situation
 	}
-
 	# This looks ugly but will make the tooltip look tidy and clean
 	event_target:queen_situation = {
 		add_situation_progress = $SCORE$

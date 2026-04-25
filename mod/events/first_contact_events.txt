@@ -3318,6 +3318,7 @@ first_contact_event = {
 					hidden_effect = {
 						random_spynetwork = {
 							limit = {
+								exists = target
 								target = { is_same_value = root.contact_country }
 							}
 							create_espionage_asset = { type = asset_internal_organs }
@@ -4413,6 +4414,7 @@ first_contact_event = {
 			owner = {
 				random_spynetwork = {
 					limit = {
+						exists = target
 						target = { is_same_value = root.contact_country }
 					}
 					add_modifier = {
@@ -7199,6 +7201,7 @@ country_event = {
 				hidden_effect = {
 					random_spynetwork = {
 						limit = {
+							exists = target
 							target = { is_same_value = event_target:contact_country }
 						}
 						create_espionage_asset = { type = asset_internal_organs }

@@ -16,7 +16,6 @@ country_event = {
 	# trigger = {
 	# 	always = no
 	# }
-
 	immediate = {
 		set_global_flag = ai_invasion_happened
 		set_global_flag = ai_ghost_signal
@@ -3702,7 +3701,6 @@ country_event = {
 	desc = "crisis.2403.desc_03"
 	desc = "crisis.2403.desc_04"
 	desc = "crisis.2403.desc_05"
-
 	desc = {
 		trigger = {
 			has_relic = r_war_forge
@@ -3790,7 +3788,10 @@ country_event = {
 			# limit = { }
 			country_event = { id = crisis.2405 }
 		}
-		from = { save_event_target_as = killer }
+		if = {
+			limit = { exists = from } # Vfix
+			from = { save_event_target_as = killer }
+		}
 		set_global_flag = cybrex_destroyed
 	}
 }
@@ -3808,12 +3809,16 @@ country_event = {
 	option = {
 		name = DISCONCERTING
 		trigger = {
-			NOT = { is_same_value = event_target:killer }
+			NAND = {
+				exists = event_target:killer # Vfix
+				is_same_value = event_target:killer
+			}
 		}
 	}
 	option = {
 		name = crisis.2405.b
 		trigger = {
+			exists = event_target:killer # Vfix
 			is_same_value = event_target:killer
 		}
 	}

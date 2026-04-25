@@ -1144,7 +1144,6 @@ create_cybernetic_species_mod = {
 		}
 		save_event_target_as = changing_species
 	}
-
 	owner = {
 		every_owned_pop_group = {
 			limit = { is_exact_same_species = event_target:changing_species }
@@ -1200,7 +1199,6 @@ create_nuked_species_mod = {
 		}
 		save_event_target_as = changing_species
 	}
-
 	owner = {
 		every_owned_pop_group = {
 			limit = { is_exact_same_species = event_target:changing_species }
@@ -1262,7 +1260,6 @@ create_ai_planet_defense = {
 			}
 		}
 	}
-
 	owner = {
 		create_leader = {
 			class = commander
@@ -1915,7 +1912,6 @@ nuke_pre_ftls_toxic_effect = {
 			add_modifier = { modifier = toxic_terraforming_candidate }
 		}
 	}
-
 	reset_planet = yes
 
 	add_modifier = {
@@ -2059,7 +2055,6 @@ country_cleanup_syndaw_situation = {
 		limit = { has_special_project = PROJECT_MACHINE_UPRISING_WIPE }
 		abort_special_project = { type = PROJECT_MACHINE_UPRISING_WIPE }
 	}
-
 	end_event_chain = "machine_uprising_chain"
 }
 
@@ -2079,11 +2074,9 @@ spawn_habitat_cracker_effect = {
 	}
 
 	save_event_target_as = target_habitat
-
 	owner_or_space_owner = {
 		save_event_target_as = habitat_owner
 	}
-
 	solar_system = {
 		spawn_megastructure = {
 			type = habitat_central_complex_ruined
@@ -2120,7 +2113,6 @@ spawn_lathe_cracker_effect = {
 	}
 
 	save_event_target_as = target_lathe
-
 	solar_system = {
 		spawn_megastructure = {
 			type = cosmogenesis_world_ruined
@@ -2173,7 +2165,6 @@ spawn_habitat_pacifier_effect = {
 		entity_scale_to_size = yes
 		scale = 0.10
 	}
-
 	solar_system = {
 		every_fleet_in_system = {
 			limit = { is_ship_class = shipclass_habitat_station }
@@ -2197,7 +2188,6 @@ spawn_lathe_pacifier_effect = {
 	}
 
 	save_event_target_as = target_lathe
-
 	solar_system = {
 		spawn_megastructure = {
 			type = cosmogenesis_world_ruined
@@ -2503,7 +2493,7 @@ update_leader_after_modification = {
 				limit = { is_robotic = no }
 				switch = { trigger = has_trait
 					trait_psionic = {
-						prev = { # Compare utopia.2601/2651
+						prev = { # Compare utopia.2651
 							if = {
 								limit = { NOT = { has_trait = leader_trait_psionic } }
 								add_trait = { trait = leader_trait_psionic show_message = no }
@@ -2544,6 +2534,14 @@ update_leader_after_modification = {
 								limit = { NOT = { has_trait = leader_trait_limited_cyborg } }
 								remove_trait = leader_trait_cyborg # very unlikely
 								add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+							}
+						}
+					}
+					trait_latent_psionic = { # Vfix patch?
+						prev = { # Compare utopia.2601
+							if = {
+								limit = { NOT = { has_trait = leader_trait_psionic } }
+								add_trait = { trait = leader_trait_psionic show_message = no }
 							}
 						}
 					}
@@ -3401,7 +3399,6 @@ create_built_robot_species = {
 			save_event_target_as = robot_species
 		}
 	}
-
 	species = {
 		if = {
 			limit = { has_trait = trait_void_dweller_1 }
@@ -3938,6 +3935,7 @@ setup_baol_colony_1 = {
 	}
 
 	set_star_flag = grunur_site@root.owner
+
 	random_system_planet = {
 		limit = {
 			is_planet_class = pc_barren
@@ -3957,6 +3955,7 @@ setup_baol_colony_2 = {
 	}
 
 	set_star_flag = grunur_site@root.owner
+
 	random_system_planet = {
 		limit = {
 			is_planet_class = pc_asteroid
@@ -3976,6 +3975,7 @@ setup_baol_colony_3 = {
 	}
 
 	set_star_flag = grunur_site@root.owner
+
 	random_system_planet = {
 		limit = {
 			habitable_planet = yes
@@ -4001,6 +4001,7 @@ setup_baol_colony_3_fallback = {
 	}
 
 	set_star_flag = grunur_site@root.owner
+
 	random_system_planet = {
 		limit = {
 			habitable_planet = yes
@@ -4171,6 +4172,7 @@ add_imp_concession_ports = {
 
 can_build_crisis_star_eater = {
 	set_country_flag = can_build_crisis_star_eater
+
 	create_ship_design = {
 		design = "NAME_Crisis_Star_Eater"
 	}
@@ -4189,7 +4191,6 @@ destroy_star_system = {
 	else = {
 		fire_on_action = { on_action = on_destroy_star_system }
 	}
-
 	set_star_flag = star_cracked
 	set_star_class = sc_black_hole
 
@@ -4374,7 +4375,6 @@ destroy_star_system = {
 	every_system_megastructure = {
 		set_ruined_megastructure = yes
 	}
-
 	star = {
 		create_ambient_object = { type = "destroyed_system" location = this }
 		last_created_ambient_object = {
@@ -4698,7 +4698,6 @@ declare_crisis_war_effect = {
 			set_closed_borders = { who = prev status = no }
 		}
 	}
-
 	event_target:community_war_leader = {
 		declare_war = {
 			target = event_target:new_crisis
@@ -5095,7 +5094,6 @@ create_origin_dragon_deposit_effect = {
 	}
 
 	add_deposit = d_landed_dragon
-
 	owner = {
 		remove_country_flag = space_dragon_about_to_land
 	}
@@ -6149,7 +6147,6 @@ central_crystal_country_spawn_effect = {
 			}
 		}
 	}
-
 	solar_system = {
 		save_global_event_target_as = the_outer_gate
 	}
@@ -6538,7 +6535,6 @@ remove_system_terraforming_candidates = {
 
 set_origin_effect = {
 	country_event = { id = game_start.8 }
-
 	give_starting_resources_effect = yes
 	# Necrophages
 	if = {
@@ -6729,7 +6725,6 @@ impose_ideology_effect = {
 		}
 		set_origin = origin_legendary_leader_death
 	}
-
 	copy_ethos_and_authority = root
 	if = {
 		limit = { has_civic = civic_galactic_sovereign }
@@ -7308,6 +7303,10 @@ remove_fleet_contract_modifiers = {
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_3
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_4
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_5
+	# Vfix by Dux
+	clear_orders = yes
+	# clear_fleet_actions = yes
+	remove_auto_move_target = yes
 }
 
 remove_fauna_yuht = {
@@ -8245,7 +8244,6 @@ add_red_solution = {
 			}
 		}
 	}
-
 	set_country_flag = modification_red # actually socialer now, but keeping the flags
 }
 
@@ -8306,7 +8304,6 @@ add_green_solution = {
 			}
 		}
 	}
-
 	set_country_flag = modification_green
 }
 
@@ -8366,7 +8363,6 @@ add_blue_solution = {
 			}
 		}
 	}
-
 	set_country_flag = modification_blue
 }
 
@@ -8439,7 +8435,6 @@ declare_malevolent_aura_focus = {
 			set_closed_borders = { who = prev status = no }
 		}
 	}
-
 	event_target:community_war_leader = {
 		if = {
 			limit = { exists = event_target:malevolent_aura_empire }
@@ -8472,6 +8467,7 @@ declare_malevolent_aura_focus = {
 			side = event_target:community_war_leader
 		}
 	}
+
 	# Vfix forgot? https://forum.paradoxplaza.com/forum/threads/stellaris-galactic-community-repeatedly-declaring-war.1859716/#post-30911060
 	set_global_flag = galactic_focus_crisis_malevolent_aura
 }

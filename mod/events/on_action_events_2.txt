@@ -140,12 +140,10 @@ country_event = {
 		# If at least one planet was nominated, choose a host planet...
 		if = {
 			limit = {
-				any_galaxy_planet = {
-					is_market_nominee_planet = yes
-					exists = owner
-					owner = {
-						is_country_type = default
-						has_country_flag = market_nomination_eligible # i.e. they are or were a GalCom member
+				any_playable_country = { # Vfix opt
+					has_country_flag = market_nomination_eligible # i.e. they are or were a GalCom member
+					any_owned_planet = {
+						is_market_nominee_planet = yes
 					}
 				}
 			}

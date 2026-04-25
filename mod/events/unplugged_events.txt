@@ -1086,7 +1086,6 @@ ship_event = {
 	id = unplugged.2200
 	title = unplugged.2200.name
 	desc = unplugged.2200.desc.others # standard
-
 	desc = { # Unplugged, with the Monitor intact
 		text = unplugged.2200.desc
 		exclusive_trigger = {
@@ -1338,6 +1337,7 @@ fleet_event = {
 	}
 
 	trigger = {
+		exists = controller
 		controller = { has_origin = origin_unplugged }
 		from = {
 			has_star_flag = unplugged_machine_legacy_flag
@@ -1965,7 +1965,6 @@ country_event = {
 	}
 
 	desc = unplugged.2415.desc.combat
-
 	desc = {
 		text = unplugged.2415.desc.memory
 		exclusive_trigger = { has_country_flag = unplugged2410_a_picked }
@@ -2021,6 +2020,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = controller
 		controller = { has_country_flag = machine_legacy_makers_arc_site_complete }
 	}
 
@@ -2040,6 +2040,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = controller
 		controller = { has_country_flag = machine_legacy_taken_arc_site_complete }
 	}
 
@@ -2062,6 +2063,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = controller
 		controller = {
 			has_country_flag = machine_legacy_creators_arc_site_complete
 		}

@@ -778,7 +778,7 @@ planet_event = {
 }
 
 ## Marauder Infighting On Action (on_yearly_pulse)
-# Reenabled by FirePrince - Commented out in Vanilla: Works in game, but causes asserts when fleets from the same country attack each other.
+# VFIX: Reenabled by FirePrince - Commented out in Vanilla: Works in game, but causes asserts when fleets from the same country attack each other.
 # Almost the same event exists for feral_prethoryn_infighting crisis.123
 event = {
 	id = marauder.11
@@ -817,7 +817,7 @@ event = {
 	}
 }
 
-# Marauder Infighting
+# VFIX patch: Marauder Infighting
 country_event = {
 	id = marauder.12
 	hide_window = yes
@@ -5107,9 +5107,9 @@ planet_event = {
 	}
 
 	trigger = {
-		planet_devastation > 15
 		exists = from
 		from = { is_country_type = marauder_raiders }
+		planet_devastation > 20
 		exists = owner
 		owner = { is_default_or_fallen = yes }
 		NOT = { has_planet_flag = planet_raided }
@@ -5354,6 +5354,7 @@ planet_event = {
 								auto_move_to_planet = {
 									target = event_target:raid_planet
 									clear_auto_move_on_arrival = no
+									arrival_effect = marauder_path_attack
 								}
 							}
 							else = {
@@ -8727,6 +8728,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	is_test_event = yes
+
 	trigger = {
 		always = no
 	}
@@ -11046,7 +11048,6 @@ country_event = {
 		}
 		ai_chance = { factor = 2 }
 	}
-
 	# option = {
 	# 	name = marauder_fabricator_loyal
 	# 	trigger = { any_agreement = { agreement_preset = preset_fabricator_satrapy } }
@@ -11073,6 +11074,7 @@ country_event = {
 
 	trigger = {
 		has_global_flag = marauder_crisis_ongoing
+		is_ai = yes
 		is_country_type = default
 		exists = event_target:raider_khanate
 		NOR = {
@@ -11082,19 +11084,19 @@ country_event = {
 			has_been_declared_crisis = yes
 			has_country_flag = rebellion_cooldown
 			is_subject = yes
-		}
-		is_ai = yes
-		NOR = {
-			check_variable = { which = "planets_lost_to_marauder" value <= 2 }
+			check_variable = { which = "planets_lost_to_marauder" value < 3 }
 			AND = {
-				is_homicidal = yes
-				check_variable = { which = "planets_lost_to_marauder" value <= 50 }
+				OR = {
+					is_homicidal = yes
+					is_gestalt = yes # Vfix patch: # Khan does't like
+				}
+				check_variable = { which = "planets_lost_to_marauder" value < 51 }
 			}
-			relative_power = {
-				who = event_target:raider_khanate
-				category = fleet
-				value != pathetic
-			}
+		}
+		relative_power = {
+			who = event_target:raider_khanate
+			category = fleet
+			value = pathetic
 		}
 	}
 

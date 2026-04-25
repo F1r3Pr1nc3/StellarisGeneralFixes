@@ -8,7 +8,7 @@ event = {
 	is_triggered_only = yes
 	# fire_only_once = yes
 	immediate = {
-		log = "Stellaris v4.2 General Fixes loaded"
+		log = "SGF: Stellaris v4.3.4 General Fixes loaded"
 		if = {
 			limit = { years_passed > 20 }
 			if = {
@@ -285,16 +285,54 @@ event = {
 				}
 			}
 			else_if = { # Psychic trait
-				limit = { has_finished_psionic_tradition = yes }
-				# Leader
-				every_owned_leader = {
-					limit = {
-						species = { is_psionic_species = yes }
-						has_psionic_leader_trait = no
+				limit = {
+					OR = {
+						AND = {
+							has_shroud_dlc = yes
+							has_tradition = tr_psionics_shroud_great_awakening # shroud.2780
+						}
+						has_finished_psionic_tradition = yes
+						has_tradition = tr_psionics_psionic_assimilation # utopia.2650
 					}
-					add_trait = { trait = leader_trait_psionic show_message = no }
+					owner_species = { is_psionic_species = yes }
+					NOT = { has_country_flag = psionic_fix_worked }
+				}
+				if = {
+					limit = {
+						is_gestalt = yes
+						has_shroud_dlc = yes
+						ruler = { has_psionic_leader_trait = no }
+					}
+					ruler = {
+						add_trait = { trait = leader_trait_psionic show_message = no }
+					}
+				}
+				if = {
+					limit = {
+						any_owned_leader = { is_same_species = owner_species has_psionic_leader_trait = no }
+					}
+					# Leader
+					every_owned_leader = {
+						limit = {
+							is_same_species = owner_species
+							has_psionic_leader_trait = no
+						}
+						add_trait = { trait = leader_trait_psionic show_message = no }
+					}
+					set_country_flag = psionic_fix_worked
+					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
 				}
 				# Species
+				if = {
+					limit = {
+						any_owned_species = {
+							is_same_species = prev
+							is_latent_psionic_species = yes
+						}
+					}
+					turn_main_species_to_psionic = yes
+					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
+				}
 				every_owned_leader = {
 					limit = {
 						species = { is_psionic_species = no }

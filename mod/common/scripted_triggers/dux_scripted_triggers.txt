@@ -55,12 +55,14 @@ DLAF_is_valid_awoken_country_colony_system_trigger = {
 
 DNCF_is_valid_nivlac_planet = {
 	is_colonizable = yes
-	habitable_planet = yes
-	uses_district_set = standard # Standard districts, better mod compatibility.
-	NOR = {
+	NOR = { # fast triggers always first
 		has_owner = yes
 		is_colony = yes
 		has_anomaly = yes
+	}
+	habitable_planet = yes
+	uses_district_set = standard # Standard districts, better mod compatibility.
+	NOR = {
 		has_modifier = holy_planet
 		has_planet_flag = hatchling_egg # No Voidspawn
 		has_planet_flag = hive_planet_larion # No spawning on other Unique-Empire-Planets.

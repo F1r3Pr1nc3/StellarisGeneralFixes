@@ -80,7 +80,6 @@ disconnected_drone_can_be_worker = {
 			root.planet = { has_active_building = building_slave_processing }
 		}
 	}
-
 	is_livestock = no
 }
 
@@ -303,7 +302,6 @@ has_cloning_genomic_growth_tradition = {
 		has_country_flag = genetic_ascension_stage_1_cloning
 		has_country_flag = clone_army_full_potential
 	}
-
 	has_genetic_stage_1_tradition = yes
 }
 
@@ -312,7 +310,6 @@ has_cloning_artificial_population_tradition = {
 		has_country_flag = genetic_ascension_stage_3_cloning
 		has_country_flag = clone_army_full_potential
 	}
-
 	has_genetic_stage_3_tradition = yes
 }
 
@@ -321,7 +318,6 @@ has_cloning_biochemical_composure_tradition = {
 		has_country_flag = genetic_ascension_stage_2_cloning
 		has_country_flag = clone_army_full_potential
 	}
-
 	has_genetic_stage_2_tradition = yes
 }
 
@@ -330,7 +326,6 @@ has_mutation_environmental_integration_tradition = {
 		has_country_flag = genetic_ascension_stage_1_mutation
 		has_origin = origin_evolutionary_predators
 	}
-
 	has_genetic_stage_1_tradition = yes
 }
 
@@ -339,7 +334,6 @@ has_mutation_somatic_subversiveness_tradition = {
 		has_country_flag = genetic_ascension_stage_2_mutation
 		has_origin = origin_evolutionary_predators
 	}
-
 	has_genetic_stage_2_tradition = yes
 }
 
@@ -480,11 +474,15 @@ has_nemesis_or_control_fragment = {
 }
 
 is_player_crisis = {
+	is_subject = no # Vfix opt
 	OR = {
 		has_ascension_perk = ap_become_the_crisis
-		has_ascension_perk = ap_cosmogenesis
 		has_ascension_perk = ap_behemoths
 		has_ascension_perk = ap_galactic_hyperthermia
+		AND = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_aborted } # Vfix
+		}
 		has_country_flag = is_player_crisis # For modded crisis paths
 	}
 }

@@ -1576,7 +1576,7 @@ country_event = {
 			capital_scope.solar_system.owner = {
 				if = {
 					limit = {
-						NOR = { # Do not cede to Pre-FTLs.
+						NOR = { # Vfix Dux: Do not cede to Pre-FTLs.
 							is_crisis_faction = yes
 							has_ai_personality = fallen_empire_xenophobe
 						}
@@ -1618,7 +1618,7 @@ country_event = {
 			capital_scope.solar_system.owner = {
 				if = {
 					limit = {
-						NOR = { # Do not cede to Pre-FTLs.
+						NOR = { # Vfix Dux: Do not cede to Pre-FTLs.
 							is_crisis_faction = yes
 							has_ai_personality = fallen_empire_xenophobe
 						}
@@ -3874,20 +3874,6 @@ situation_event = {
 				max = @tier3researchmax
 			}
 		}
-		target.owner = {
-			shift_ethic = ethic_spiritualist
-			weighted_random_owned_pop_group = {
-				limit = {
-					has_any_ethic = yes
-					NOT = { has_ethic = ethic_spiritualist }
-				}
-				pop_group_transfer_ethic = {
-					POP_GROUP = this
-					ETHOS = ethic_spiritualist
-					AMOUNT = 100
-				}
-			}
-		}
 	}
 	option = {
 		name = preftl.2026.a
@@ -3901,25 +3887,27 @@ situation_event = {
 			}
 			add_modifier = { modifier = plague_03_spiritualist days = -1 }
 		}
-		target.owner = {
-			shift_ethic = ethic_spiritualist
-			weighted_random_owned_pop_group = {
-				limit = {
-					has_any_ethic = yes
-					NOT = { has_ethic = ethic_spiritualist }
-				}
-				pop_group_transfer_ethic = {
-					POP_GROUP = this
-					ETHOS = ethic_spiritualist
-					AMOUNT = 100
-				}
-			}
-		}
 	}
 
 	after = {
-		target = { remove_planet_flag = has_on_going_observation_situation }
-		destroy_situation = this
+		hidden_effect = {
+			target.owner = {
+				shift_ethic = ethic_spiritualist
+				weighted_random_owned_pop_group = {
+					limit = {
+						has_any_ethic = yes
+						NOT = { has_ethic = ethic_spiritualist }
+					}
+					pop_group_transfer_ethic = {
+						POP_GROUP = this
+						ETHOS = ethic_spiritualist
+						AMOUNT = 100
+					}
+				}
+			}
+			target = { remove_planet_flag = has_on_going_observation_situation }
+			destroy_situation = this
+		}
 	}
 }
 
@@ -3965,55 +3953,6 @@ situation_event = {
 				max = @tier3researchmax
 			}
 		}
-		target = { remove_modifier = plague_05 }
-		target.owner = {
-			if = {
-				limit = {
-					NOT = { has_ethic = ethic_militarist }
-				}
-				shift_ethic = ethic_militarist
-				weighted_random_owned_pop_group = {
-					limit = {
-						has_any_ethic = yes
-						NOT = { has_ethic = ethic_militarist }
-					}
-					pop_group_transfer_ethic = {
-						POP_GROUP = this
-						ETHOS = ethic_militarist
-						AMOUNT = 100
-					}
-				}
-			}
-			if = {
-				limit = { has_ethic = ethic_militarist }
-				shift_ethic = ethic_fanatic_militarist
-				weighted_random_owned_pop_group = {
-					limit = {
-						has_any_ethic = yes
-						NOT = { has_ethic = ethic_militarist }
-					}
-					pop_group_transfer_ethic = {
-						POP_GROUP = this
-						ETHOS = ethic_militarist
-						AMOUNT = 100
-					}
-				}
-			}
-			if = {
-				limit = { has_ethic = ethic_fanatic_militarist }
-				every_owned_pop_group = {
-					limit = {
-						has_any_ethic = yes
-						NOT = { has_ethic = ethic_militarist }
-					}
-					pop_group_transfer_ethic = {
-						POP_GROUP = this
-						ETHOS = ethic_militarist
-						PERCENTAGE = 0.1
-					}
-				}
-			}
-		}
 	}
 	option = {
 		trigger = {
@@ -4027,60 +3966,53 @@ situation_event = {
 			}
 			add_modifier = { modifier = plague_03_militarist days = -1 }
 		}
-		target = { remove_modifier = plague_05 }
-		target.owner = {
-			if = {
-				limit = {
-					NOT = { has_ethic = ethic_militarist }
-				}
-				shift_ethic = ethic_militarist
-				weighted_random_owned_pop_group = {
-					limit = {
-						has_any_ethic = yes
-						NOT = { has_ethic = ethic_militarist }
-					}
-					pop_group_transfer_ethic = {
-						POP_GROUP = this
-						ETHOS = ethic_militarist
-						AMOUNT = 100
-					}
-				}
-			}
-			if = {
-				limit = { has_ethic = ethic_militarist }
-				shift_ethic = ethic_fanatic_militarist
-				weighted_random_owned_pop_group = {
-					limit = {
-						has_any_ethic = yes
-						NOT = { has_ethic = ethic_militarist }
-					}
-					pop_group_transfer_ethic = {
-						POP_GROUP = this
-						ETHOS = ethic_militarist
-						AMOUNT = 100
-					}
-				}
-			}
-			if = {
-				limit = { has_ethic = ethic_fanatic_militarist }
-				every_owned_pop_group = {
-					limit = {
-						has_any_ethic = yes
-						NOT = { has_ethic = ethic_militarist }
-					}
-					pop_group_transfer_ethic = {
-						POP_GROUP = this
-						ETHOS = ethic_militarist
-						PERCENTAGE = 0.1
-					}
-				}
-			}
-		}
 	}
 
 	after = {
-		target = { remove_planet_flag = has_on_going_observation_situation }
-		destroy_situation = this
+		# Vfix: be careful, this kind of expensive tooltip can crash the game (and is empty anyway).
+		hidden_effect = {
+			target.owner = {
+				if = { # Vfix opt
+					limit = { has_ethic = ethic_fanatic_militarist }
+					every_owned_pop_group = {
+						limit = {
+							has_any_ethic = yes
+							NOT = { has_ethic = ethic_militarist }
+						}
+						pop_group_transfer_ethic = {
+							POP_GROUP = this
+							ETHOS = ethic_militarist
+							PERCENTAGE = 0.1
+						}
+					}
+				}
+				else = { # Vfix opt
+					if = {
+						limit = { has_ethic = ethic_militarist }
+						shift_ethic = ethic_fanatic_militarist
+					}
+					else = { # Vfix opt
+						shift_ethic = ethic_militarist
+					}
+					weighted_random_owned_pop_group = {
+						limit = {
+							has_any_ethic = yes
+							NOT = { has_ethic = ethic_militarist }
+						}
+						pop_group_transfer_ethic = {
+							POP_GROUP = this
+							ETHOS = ethic_militarist
+							AMOUNT = 100
+						}
+					}
+				}
+			}
+			target = {
+				remove_modifier = plague_05
+				remove_planet_flag = has_on_going_observation_situation
+			}
+			destroy_situation = this
+		}
 	}
 }
 

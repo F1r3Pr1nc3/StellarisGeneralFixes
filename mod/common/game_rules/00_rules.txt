@@ -173,7 +173,6 @@ should_surrender_planets_to = {
 	is_homicidal = no
 	is_crisis_faction = no
 	is_primitive = no
-
 	root = {
 		is_homicidal = no
 		is_crisis_faction = no
@@ -1437,24 +1436,22 @@ can_leader_get_subclass_trait = {
 
 # this = leader
 can_leader_get_destiny_trait = {
-	
+	NAND = {
+		exists = owner
+		owner = { is_crisis_faction = yes }
+	}
 	OR = {
 		NAND = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		AND = { # The ethos of the country that has currently hired individualist mercs should not determine if the Merc leader can get a Destiny Trait.
+		AND = { # Vfix by Dux: The ethos of the country that has currently hired individualist mercs should not determine if the Merc leader can get a Destiny Trait.
 			OR = {
 				has_leader_flag = hired_admiral_merc_leader
 				has_leader_flag = marauder_merc_leader
 			}
-			NOT = { has_ethic = ethic_gestalt_consciousness } # Gestalt Merc Leaders don't bypass it.
-		}		
-	}
-
-	exists = owner
-	owner = {
-		is_crisis_faction = no
+			is_gestalt = no # Gestalt Merc Leaders don't bypass it.
+		}
 	}
 }
 
@@ -1975,14 +1972,12 @@ is_criminal_syndicate_rule = {
 		is_megacorp = yes
 		has_valid_civic = civic_galactic_sovereign_megacorp
 	}
-
 	has_valid_civic = civic_criminal_heritage
 }
 
 # This = planet
 can_crossbreed_species_on_planet = {
 	has_owner = yes
-
 	owner = {
 		has_ascension_perk = ap_xeno_compatibility
 	}
@@ -2051,7 +2046,6 @@ can_be_sold_on_slave_market = {
 		limit = { has_global_flag = sentient_slave_trade_banned_flag }
 		is_sapient = no
 	}
-
 	has_infertile_clone_soldier_trait = no # Since they can't reproduce, they die out too fast for anyone to want to buy them.
 	has_virtual_species_trait = no
 }
@@ -2780,7 +2774,6 @@ should_ai_build_stronghold_on_vulnerable_planet = {
 			num_buildings = { type = building_stronghold value < 4 }
 		}
 	}
-
 	exists = sector
 	NOT = { sector = { has_sector_type = core_sector } }
 	if = {
@@ -2805,7 +2798,6 @@ will_leader_retire = {
 		has_leader_flag = use_unspecific_death_reason
 		owner = { is_gestalt = yes }
 	}
-
 	has_leader_flag = retirement_is_default # Randomized retirement instead of death in paragon.590
 }
 
@@ -3398,6 +3390,7 @@ can_interact_with_astral_rift = {
 # FROM = Astral Rift checked
 can_explore_astral_rift = {
 	has_technology = tech_rift_sphere
+
 	hidden_trigger = {
 		OR = {
 			is_astral_rift_pool_empty = no
@@ -3731,11 +3724,9 @@ force_create_default_ship_design = {
 	is_designable = yes
 	# OR = { AND = {
 	is_space_fauna = yes
-
 	from = {
 		uses_fauna_ship_sizes = yes
 	}
-
 	# Add other cases here if any
 }
 
@@ -3968,7 +3959,6 @@ should_hide_pop_group_size = {
 	species = {
 		has_trait = trait_wilderness
 	}
-
 	from = {
 		is_wilderness_empire = yes
 	}
@@ -4014,7 +4004,6 @@ is_mindwarden_exiled_first_contact = {
 		has_origin = origin_mindwardens
 		has_country_flag = exiled_partial_contact
 	}
-
 	from = {
 		is_country_type = exiled
 	}

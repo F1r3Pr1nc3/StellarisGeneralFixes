@@ -1,5 +1,5 @@
 name="~~Stellaris [v4.3] General Fixes"
-version="4.3.4.8"
+version="4.3.4.11"
 tags={
 	"Fixes"
 	"Fix"

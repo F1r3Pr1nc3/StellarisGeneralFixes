@@ -57,7 +57,6 @@ create_drone_pirate_country_2 = {
 		}
 		event_target:pirate_species = { save_event_target_as = owner_species }
 	}
-
 	create_normal_pirate_country = yes
 
 	last_created_country = {
@@ -75,7 +74,6 @@ create_machine_pirate_country = {
 		}
 		event_target:pirate_species = { save_event_target_as = owner_species }
 	}
-
 	create_normal_pirate_country = yes
 
 	last_created_country = {
@@ -93,7 +91,6 @@ create_machine_pirate_country_2 = {
 		}
 		event_target:pirate_species = { save_event_target_as = owner_species }
 	}
-
 	create_normal_pirate_country = yes
 
 	last_created_country = {
@@ -192,53 +189,79 @@ create_pirate_fleet = {
 			name = random
 			skill = 2
 		}
-		create_fleet = { # Vfix with else_if (pirates get too strong)
+		create_fleet = { # Vfix with else_if (otherwise pirates get too strong)
 			name = "NAME_Pirate_Fleet"
 			effect = {
 				set_owner = event_target:pirate_band
 				if = {
-					limit = { years_passed < 20 }
-					create_pirate_ships_0 = yes
+					limit = { years_passed > 159 }
+					create_dyn_pirate_fleet = {
+						Pirate_Galleon = 1
+						Skull = 6
+						Brigand = 6
+					}
 				}
-				if = {
-					limit = { years_passed > 40 }
-					create_pirate_ships_1 = yes
-				}
-				if = {
-					limit = { years_passed > 60 }
-					create_pirate_ships_2 = yes
-				}
-				if = {
-					limit = { years_passed > 80 }
-					create_pirate_ships_3 = yes
-				}
-				if = {
-					limit = { years_passed > 100 }
-					create_pirate_ships_4 = yes
-				}
-				if = {
-					limit = { years_passed > 110 }
-					create_pirate_ships_5 = yes
-				}
-				if = {
-					limit = { years_passed > 120 }
-					create_pirate_ships_6 = yes
-				}
-				if = {
-					limit = { years_passed > 130 }
-					create_pirate_ships_7 = yes
-				}
-				if = {
-					limit = { years_passed > 140 }
-					create_pirate_ships_8 = yes
-				}
-				if = {
+				else_if = {
 					limit = { years_passed > 150 }
-					create_pirate_ships_9 = yes
+					create_dyn_pirate_fleet = { Pirate_Galleon = 1 Black_Earl = 2 }
 				}
-				if = {
-					limit = { years_passed > 160 }
-					create_pirate_ships_10 = yes
+				else_if = {
+					limit = { years_passed > 140 }
+					create_dyn_pirate_fleet = {
+						Skull = 8
+						Brigand = 6
+						Marauder = 4
+						Corsair = 4
+						Black_Earl = 4
+					}
+				}
+				else_if = {
+					limit = { years_passed > 130 }
+					create_dyn_pirate_fleet = {
+						Skull = 7
+						Brigand = 6
+						Marauder = 4
+						Corsair = 4
+						Black_Earl = 3
+					}
+				}
+				else_if = {
+					limit = { years_passed > 120 }
+					create_dyn_pirate_fleet = {
+						Skull = 6
+						Brigand = 6
+						Marauder = 4
+						Corsair = 4
+						Black_Earl = 2
+					}
+				}
+				else_if = {
+					limit = { years_passed > 100 }
+					create_dyn_pirate_fleet = {
+						Skull = 6
+						Brigand = 6
+						Marauder = 4
+						Corsair = 2
+					}
+				}
+				else_if = {
+					limit = { years_passed > 80 }
+					create_dyn_pirate_fleet = { Skull = 8 Marauder = 4 }
+				}
+				else_if = {
+					limit = { years_passed > 60 }
+					create_dyn_pirate_fleet = { Skull = 6 Brigand = 6 }
+				}
+				else_if = {
+					limit = { years_passed > 40 }
+					create_dyn_pirate_fleet = { Reaver = 6 Brigand = 6 }
+				}
+				else_if = {
+					limit = { years_passed > 20 }
+					create_dyn_pirate_fleet = { Reaver = 10 Brigand = 4 }
+				}
+				else = {
+					create_dyn_pirate_fleet = { Reaver = 10 }
 				}
 				set_location = event_target:pirate_home
 				set_fleet_stance = aggressive

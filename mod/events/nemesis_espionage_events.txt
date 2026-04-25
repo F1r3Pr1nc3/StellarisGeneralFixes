@@ -523,6 +523,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
+				exists = target
 				target = { is_same_value = event_target:disavowed_agent_country }
 			}
 			add_spy_network_level = -10
@@ -570,6 +571,7 @@ country_event = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = root
+					exists = target
 					target = { is_same_value = event_target:disavowed_agent_country }
 				}
 				add_spy_network_level = -10
@@ -866,6 +868,7 @@ country_event = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = root
+					exists = target
 					target = { is_same_value = event_target:disavowed_agent_country }
 				}
 				leader = {
@@ -979,6 +982,7 @@ country_event = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = root
+						exists = target
 						target = { is_same_value = event_target:disavowed_agent_country }
 					}
 					create_espionage_asset = { type = asset_attache }
@@ -988,6 +992,7 @@ country_event = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = root
+						exists = target
 						target = { is_same_value = event_target:disavowed_agent_country }
 					}
 					create_espionage_asset = { type = asset_economist }
@@ -997,6 +1002,7 @@ country_event = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = root
+						exists = target
 						target = { is_same_value = event_target:disavowed_agent_country }
 					}
 					create_espionage_asset = { type = asset_junior_officer }
@@ -1006,6 +1012,7 @@ country_event = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = root
+						exists = target
 						target = { is_same_value = event_target:disavowed_agent_country }
 					}
 					create_espionage_asset = { type = asset_scientist }
@@ -1036,6 +1043,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
+				exists = target
 				target = { is_same_value = event_target:disavowed_agent_country }
 			}
 			add_spy_network_level = -15
@@ -1099,6 +1107,7 @@ country_event = {
 			limit = {
 				is_owned_by = root
 				is_spynetwork_level > 0
+				exists = target
 				target = { is_country_type = default is_gestalt = no }
 			}
 			target = { save_event_target_as = vividsight_country }
@@ -1117,6 +1126,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
+				exists = target
 				target = { is_same_value = event_target:vividsight_country }
 			}
 			if = {
@@ -1260,6 +1270,7 @@ country_event = {
 				limit = {
 					is_owned_by = root
 					is_spynetwork_level > 0
+					exists = target
 					target = { is_country_type = default }
 				}
 				target = { save_event_target_as = luckycatch_country }
@@ -1282,6 +1293,7 @@ country_event = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = root
+					exists = target
 					target = { is_same_value = event_target:luckycatch_country }
 				}
 				if = {
@@ -1318,6 +1330,7 @@ country_event = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = root
+					exists = target
 					target = { is_same_value = event_target:luckycatch_country }
 				}
 				if = {
@@ -1384,6 +1397,7 @@ country_event = {
 				limit = {
 					is_owned_by = root
 					is_spynetwork_level > 0
+					exists = target
 					target = {
 						is_country_type = default
 						is_regular_empire = yes
@@ -1684,6 +1698,7 @@ country_event = {
 			random_spynetwork = {
 				limit = {
 					is_owned_by = root
+					exists = target
 					target = { is_same_value = event_target:hostile_infiltration_country }
 				}
 				if = {
@@ -1805,6 +1820,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
+				exists = target
 				target = { is_same_value = event_target:hostile_infiltration_country }
 			}
 			destroy_espionage_asset_diplomacy = yes
@@ -2156,6 +2172,7 @@ country_event = {
 					limit = {
 						is_owned_by = root
 						is_spynetwork_level > 0
+						exists = target
 						target = {
 							is_country_type = default
 							NOT = { is_same_value = event_target:insidious_plot_country }
@@ -2531,6 +2548,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
+				exists = target
 				target = { is_same_value = event_target:insidious_plot_spynetwork }
 			}
 			leader = { save_event_target_as = insidious_plot_spymaster }

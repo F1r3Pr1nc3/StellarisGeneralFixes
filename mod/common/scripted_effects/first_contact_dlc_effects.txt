@@ -195,7 +195,6 @@ create_MSI_effect = {
 	generate_start_deposits_and_blockers = yes
 	generate_start_buildings_and_districts = yes
 	generate_start_pops = yes
-
 	event_target:MSI_country = {
 		create_starting_leaders = yes
 		country_event = { id = game_start.9 }
@@ -224,7 +223,6 @@ generate_slaver_bonus = {
 	add_district_and_planet_size_if_needed_effect = {
 		district = district_farming
 	}
-
 	owner = {
 		set_policy = {
 			policy = slavery
@@ -314,7 +312,6 @@ generate_slaver_bonus = {
 	add_building_if_not_present = {
 		BUILDING = building_medical_2
 	}
-
 	owner = {
 		add_resource = {
 			minerals = 2400
@@ -502,7 +499,6 @@ create_payback_warship_effect = {
 			}
 		}
 	}
-
 	last_created_fleet = {
 		if = {
 			limit = { exists = event_target:flagship_leader }
@@ -1235,7 +1231,6 @@ create_fear_of_the_dark_country = {
 			set_faction_hostility = { target = event_target:fotd_country set_friendly = yes }
 		}
 	}
-
 	event_target:fotd_country = {
 		add_intel = { amount = 100 who = event_target:fotd_seperatist_country }
 	}
@@ -1306,7 +1301,6 @@ setup_fear_of_the_dark_pre_ftl = {
 			district = district_farming
 		}
 	}
-
 	remove_building = building_colony_shelter
 	add_building = building_primitive_capital
 	add_building = building_research_lab_1
@@ -1315,7 +1309,6 @@ setup_fear_of_the_dark_pre_ftl = {
 		size = 1000
 		species = event_target:fotd_country.species
 	}
-
 	event_target:fotd_seperatist_country = {
 		start_situation = { type = situation_fotd_terraforming target = prev }
 		set_country_flag = early_space_age
@@ -1502,7 +1495,6 @@ set_predictive_observation_insight = {
 		clear_variable = observation_predictive_insight_change_comparator
 		change_variable = { which = observation_prediction_insight_variable value = observation_predictive_insight_change }
 	}
-
 	clear_variable = observation_predictive_insight_change
 }
 
@@ -1880,7 +1872,6 @@ add_observation_insight_effect = {
 	else = {
 		custom_tooltip = gained_insight_progress
 	}
-
 	remove_country_flag = physics_insights
 	remove_country_flag = society_insights
 	remove_country_flag = engineering_insights
@@ -2055,6 +2046,7 @@ pre_ftl_indoctrinate_operation_result = {
 # (Instigating) country scope | from = Espionage Operation
 shift_pre_ftl_pop_ethic = {
 	set_country_flag = shifting_pre_ftl_ethic_to_$ETHIC$
+
 	hidden_effect = {
 		from.target = {
 			set_timed_country_flag = {
@@ -2745,7 +2737,6 @@ infiltrate_government_annexation_effect = {
 populate_solarpunk_planet = {
 	clear_blockers = yes
 	set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-
 	set_owner = event_target:solarpunk_country
 	add_building = building_primitive_capital
 	add_building = building_solarpunk_organic_paradise
@@ -2814,7 +2805,6 @@ industrialize_solarpunk = {
 	remove_all_buildings = yes
 	remove_all_districts = yes
 	set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
-
 	add_building = building_capital
 	add_building = building_holo_theatres
 	if = {

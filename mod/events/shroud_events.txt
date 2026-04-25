@@ -857,6 +857,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	is_test_event = yes
+
 	trigger = {
 		is_superstitious_beliefs_empire = yes
 	}
@@ -8320,8 +8321,11 @@ country_event = {
 				add_trust = { who = root amount = @positive_opinion }
 				set_timed_country_flag = { flag = aura_intel_bought years = @mindwardens_dividends_modifier_years }
 			}
-			event_target:shroudwalker_enclave_country = {
-				add_trust = { who = root amount = @negative_opinion }
+			if = {
+				limit = { exists = event_target:shroudwalker_enclave_country } # Vfix log
+				event_target:shroudwalker_enclave_country = {
+					add_trust = { who = root amount = @negative_opinion }
+				}
 			}
 		}
 		add_tech_progress = { tech = tech_psionic_suppression progress = 0.25 }
@@ -11264,6 +11268,7 @@ country_event = {
 		random_spynetwork = {
 			limit = {
 				is_owned_by = root
+				exists = target
 				target = { is_same_value = root.from }
 			}
 			add_spy_network_level = @secret_society_infiltration_gain
@@ -15242,6 +15247,7 @@ ship_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = controller
 		controller = { can_access_shroud = yes }
 	}
 

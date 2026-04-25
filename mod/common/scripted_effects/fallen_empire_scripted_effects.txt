@@ -594,21 +594,16 @@ awaken_fallen_machine_empire = {
 	}
 }
 
-# Vfix patch: Revised by Dux
+# Vfix patched by Dux
+# Global (no specific scope)
 awaken_guardians_of_the_galaxy = {
 	random_list = {
 		60 = {
 			# Awaken one
-			modifier = {
-				factor = 0
-				exists = root
-				root = { last_increased_tech = tech_cosmogenesis_thesis }
-			}
-			# awaken_guardians_of_the_galaxy_one_random
 			random_country = {
 				limit = {
-					NOT = { has_country_flag = awakening_not_allowed }
 					is_country_type = fallen_empire
+					NOT = { has_country_flag = awakening_not_allowed }
 					OR = {
 						has_ethic = ethic_fanatic_materialist
 						has_ethic = ethic_fanatic_xenophile
@@ -621,38 +616,13 @@ awaken_guardians_of_the_galaxy = {
 				set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 years = 10 }
 			}
 		}
-		0 = {
-			modifier = {
-				# Materialists are supposed to have 1/100 chance of awakening every time you research Infinity Thesis. This chance should not be modified.
-				add = 99999
-				exists = root
-				root = { last_increased_tech = tech_cosmogenesis_thesis }
-			}
-			# awaken_guardians_of_the_galaxy_one_random_materialist
-			random_country = {
-				limit = {
-					NOT = { has_country_flag = awakening_not_allowed }
-					is_country_type = fallen_empire
-					has_ethic = ethic_fanatic_materialist
-					fleet_power > 60000
-				}
-				set_country_flag = guardians_of_the_galaxy
-				set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 5 }
-				set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 years = 10 }
-			}
-		}
 		15 = {
-			# Awaken all three! NOTE: in vanilla this doesn't target three — it targets War, all Xenophiles, and all Materialists! Originally there were only one Xenophile and one Materialist. Cosmogenesis can change this.
-			modifier = {
-				factor = 0
-				exists = root
-				root = { last_increased_tech = tech_cosmogenesis_thesis }
-			}
-			# awaken_guardians_of_the_galaxy_all
+			# Awaken all three!
+			# NOTE by Dux: in vanilla this doesn't target three — it targets War, all Xenophiles, and all Materialists! Originally there were only one Xenophile and one Materialist. Cosmogenesis can change this.
 			every_country = {
 				limit = {
-					NOT = { has_country_flag = awakening_not_allowed }
 					is_country_type = fallen_empire
+					NOT = { has_country_flag = awakening_not_allowed }
 					OR = {
 						has_ethic = ethic_fanatic_materialist
 						has_ethic = ethic_fanatic_xenophile
@@ -667,14 +637,19 @@ awaken_guardians_of_the_galaxy = {
 			}
 		}
 		25 = {
-			# No awakening, modified to not happen if Cetana, does not affect Infinity Thesis.
+			# No awakening
+			# modified to not happen if Cetana, does not affect Infinity Thesis. (Dux)
 			modifier = {
 				factor = 0
 				OR = {
 					any_country = { is_synth_queen_country_type = yes }
 					AND = {
-						exists = root
-						root = { last_increased_tech = tech_cosmogenesis_thesis }
+						is_scope_valid = yes
+						can_generate_trade_value = yes
+						owner = {
+							is_player_crisis = yes
+							# last_increased_tech = tech_cosmogenesis_crisis_4 # Vfix Dux: just in case (1/100)
+						}
 					}
 				}
 			}
@@ -1637,11 +1612,9 @@ create_scion_wormhole_link = {
 	capital_scope = {
 		solar_system = { save_event_target_as = home_system }
 	}
-
 	event_target:scion_master = {
 		random_system_within_border = { save_event_target_as = fe_target_system }
 	}
-
 	event_target:home_system = {
 		event_target:fe_target_system = {
 			prev = { # done this way to ensure we don't spawn "orphan wormholes (wormholes that aren't linked to anything)
@@ -2041,7 +2014,6 @@ generate_new_species_and_pop = {
 	]
 
 	[[CITIZEN_COUNTRY]
-
 	event_target:new_pop_species = {
 		set_citizenship_type = { country = $CITIZEN_COUNTRY$ type = citizenship_full }
 	}
@@ -2371,7 +2343,6 @@ grant_random_fe_building = {
 grant_fe_building = {
 	change_variable = { which = $BUILDING$_build_count value = 1 }
 	change_variable = { which = $BUILDING$_upgrade_count value = 1 }
-
 	set_country_flag = $BUILDING$_can_build
 	set_timed_country_flag = { flag = recently_got_$BUILDING$ days = 30 }
 	create_message = {

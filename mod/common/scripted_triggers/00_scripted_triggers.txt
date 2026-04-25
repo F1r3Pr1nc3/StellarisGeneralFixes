@@ -992,7 +992,6 @@ is_lonely_hive_mind_pop = {
 is_disconnected_drone_pop = {
 	has_biogenesis_dlc = yes # New Species Rights unlocked for disconnected drones if BioGenesis is enabled
 	has_trait = trait_hive_mind
-
 	from = {
 		is_gestalt = no
 		is_fallen_empire = no
@@ -1002,7 +1001,6 @@ is_disconnected_drone_pop = {
 # Works in species scope, with a country in from
 is_disconnected_machine_pop = {
 	has_trait = trait_machine_unit
-
 	from = {
 		NOR = {
 			is_fallen_empire_machine = yes
@@ -1382,7 +1380,6 @@ is_valid_target_fe_stop_ai = {
 		has_ethic = ethic_gestalt_consciousness
 		is_mechanical_empire = yes
 	}
-
 	has_technology = tech_synthetic_workers
 }
 
@@ -1690,7 +1687,6 @@ is_oligarchy = {
 		is_oligarchic_authority = yes
 		is_megacorp = yes
 	}
-
 	is_egalitarian = no
 }
 
@@ -3237,7 +3233,6 @@ species_can_be_necrophaged = {
 		}
 		has_citizenship_type = { type = citizenship_purge country = prev.owner }
 	}
-
 	species_has_happiness_with_owner = prev.owner
 }
 
@@ -3672,7 +3667,6 @@ overlord_subject_event_trigger = {
 
 subject_pacifist_overlord_opposing = {
 	is_pacifist = yes
-
 	overlord = {
 		is_militarist = yes
 	}
@@ -3680,7 +3674,6 @@ subject_pacifist_overlord_opposing = {
 
 subject_militarist_overlord_opposing = {
 	is_militarist = yes
-
 	overlord = {
 		is_pacifist = yes
 	}
@@ -3688,7 +3681,6 @@ subject_militarist_overlord_opposing = {
 
 subject_authoritarian_overlord_opposing = {
 	is_authoritarian = yes
-
 	overlord = {
 		is_egalitarian = yes
 	}
@@ -3696,7 +3688,6 @@ subject_authoritarian_overlord_opposing = {
 
 subject_egalitarian_overlord_opposing = {
 	is_egalitarian = yes
-
 	overlord = {
 		is_authoritarian = yes
 	}
@@ -3704,7 +3695,6 @@ subject_egalitarian_overlord_opposing = {
 
 subject_materialist_overlord_opposing = {
 	is_materialist = yes
-
 	overlord = {
 		is_spiritualist = yes
 	}
@@ -3712,7 +3702,6 @@ subject_materialist_overlord_opposing = {
 
 subject_spiritualist_overlord_opposing = {
 	is_spiritualist = yes
-
 	overlord = {
 		is_materialist = yes
 	}
@@ -3720,7 +3709,6 @@ subject_spiritualist_overlord_opposing = {
 
 subject_xenophile_overlord_opposing = {
 	is_xenophile = yes
-
 	overlord = {
 		is_xenophobe = yes
 	}
@@ -3728,7 +3716,6 @@ subject_xenophile_overlord_opposing = {
 
 subject_xenophobe_overlord_opposing = {
 	is_xenophobe = yes
-
 	overlord = {
 		is_xenophile = yes
 	}
@@ -3813,6 +3800,7 @@ has_non_hostile_origin_dragon_trigger = {
 
 is_dragon_breeder_country = {
 	has_country_flag = dragon_breeders
+
 	any_owned_ship = {
 		is_ship_size = space_dragon_origin
 	}
@@ -3973,7 +3961,6 @@ uses_standard_ship_sizes = {
 		is_country_type = exiled
 		has_country_flag = use_default_ships # for modders: apply this in on_country_created for new country types that you want to use corvettes etc
 	}
-
 	is_beastmasters_empire = no
 	country_uses_bio_ships = no
 }
@@ -4053,7 +4040,6 @@ ai_should_build_habitats = {
 		is_at_war = yes
 		mid_game_years_passed < 1
 	}
-
 	has_technology = tech_habitat_1
 	OR = {
 		is_void_dweller_empire = yes # VDs should build habitats even if there are other planets available
@@ -4103,7 +4089,6 @@ has_any_capped_planet_farming_district = {
 		has_district = district_rw_farming
 		has_district = district_orchard_forests
 	}
-
 	is_farming_district_uncapped = no
 }
 
@@ -4129,7 +4114,6 @@ has_any_capped_planet_mining_district = {
 		has_district = district_melting
 		has_district = district_hollow_mountains
 	}
-
 	is_mining_district_uncapped = no
 }
 
@@ -4154,7 +4138,6 @@ has_any_capped_planet_generator_district = {
 		has_district = district_geothermal
 		has_district = district_rw_generator
 	}
-
 	is_generator_district_uncapped = no
 }
 
@@ -4852,7 +4835,6 @@ can_dismantle_megastructure = {
 	solar_system = {
 		is_owned_by = from
 	}
-
 	from = {
 		has_technology = $TECH$
 		is_at_war = no
@@ -4900,7 +4882,6 @@ influence_building_destruction_trigger = {
 			has_origin = origin_storm_chasers
 		}
 	}
-
 	solar_system = {
 		system_has_storm_repelling_tech = yes
 	}

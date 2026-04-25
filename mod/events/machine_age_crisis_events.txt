@@ -358,7 +358,23 @@ country_event = {
 					any_country = { is_fallen_empire = yes }
 					NOT = { any_country = { has_country_flag = guardians_of_the_galaxy } }
 				}
-				random = { chance = 1 awaken_guardians_of_the_galaxy = yes }
+				# Awaken one Materialist (awaken_guardians_of_the_galaxy_one_random_materialist)
+				# Vfix by Dux: Materialists are supposed to have 1/100 chance of awakening every time you research Infinity Thesis. This chance should not be modified.
+				random = {
+					chance = 2 # Vfix: 1 too low
+					if = {
+						limit = {
+							NOT = { has_country_flag = awakening_not_allowed }
+							fleet_power > 60000
+						}
+						set_country_flag = guardians_of_the_galaxy
+						set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 5 }
+						set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 years = 10 }
+					}
+					else = {
+						awaken_guardians_of_the_galaxy = yes
+					}
+				}
 			}
 			save_event_target_as = materialist_fe
 		}
@@ -4529,9 +4545,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -5331,9 +5352,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -5398,9 +5424,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -5514,9 +5545,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		remove_country_flag = synth_queen_shes_too_strong
 	}
@@ -5927,9 +5963,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = -15 who = root.owner }
@@ -6025,9 +6066,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -6279,9 +6325,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -6363,9 +6414,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -7688,9 +7744,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -7821,9 +7882,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -8003,9 +8069,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		set_country_flag = synth_queen_demand_pops
 		set_country_flag = synth_queen_conversation_ongoing
@@ -8186,9 +8257,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		set_country_flag = synth_queen_demand_resources
 		set_country_flag = synth_queen_conversation_ongoing
@@ -8368,9 +8444,14 @@ country_event = {
 
 	immediate = {
 		get_cetana_face = yes
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		set_country_flag = synth_queen_demand_research
 		set_country_flag = synth_queen_conversation_ongoing
@@ -8807,9 +8888,14 @@ country_event = {
 		}
 		set_country_flag = synth_queen_demand_habitable_system
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -9028,9 +9114,14 @@ country_event = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_demand_zarqlan_head
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -9229,9 +9320,14 @@ situation_event = {
 	}
 
 	immediate = {
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		every_country = {
 			if = {
@@ -10090,9 +10186,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -10134,6 +10235,7 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = crisis.9115.2.flag
 		}
+		ai_chance = { factor = 2 } # Vfix
 	}
 	# Teach us - Special option for nanothech empires
 	option = {
@@ -10158,6 +10260,7 @@ country_event = {
 				add_trust = { amount = 10 who = root.owner }
 			}
 		}
+		ai_chance = { factor = 2 } # Vfix
 	}
 	# You stole them?
 	option = {
@@ -10534,9 +10637,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -10594,9 +10702,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = 10 who = root.owner }
@@ -10688,9 +10801,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -10796,9 +10914,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = 10 who = root.owner }
@@ -10844,9 +10967,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 	}
 
@@ -10980,9 +11108,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = 15 who = root.owner }
@@ -11034,9 +11167,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = 20 who = root.owner }
@@ -11090,9 +11228,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = 20 who = root.owner }
@@ -11187,9 +11330,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = -10 who = root.owner }
@@ -11239,9 +11387,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = -10 who = root.owner }
@@ -11292,9 +11445,14 @@ country_event = {
 	immediate = {
 		get_cetana_face = yes
 		set_country_flag = synth_queen_conversation_ongoing
-		random_country = {
-			limit = { is_country_type = synth_queen }
-			save_event_target_as = synth_queen_country
+		if = { # Vfix opt minor
+			limit = {
+				NOT = { exists = event_target:synth_queen_country }
+			}
+			random_country = {
+				limit = { is_synth_queen_country_type = yes } # Vfix
+				save_event_target_as = synth_queen_country
+			}
 		}
 		event_target:synth_queen_country = {
 			add_trust = { amount = -10 who = root.owner }

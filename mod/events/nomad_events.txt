@@ -1172,6 +1172,7 @@ country_event = {
 				event_target:contact_empire = {
 					random_spynetwork = {
 						limit = {
+							exists = target
 							target = { is_same_value = root }
 						}
 						add_modifier = { modifier = first_comms_defensive years = 15 }
@@ -1325,6 +1326,7 @@ country_event = {
 				random_spynetwork = {
 					limit = {
 						is_owned_by = root
+						exists = target
 						target = { is_same_value = event_target:contact_empire }
 					}
 					add_modifier = { modifier = first_comms_hostility_preparations years = 15 }
