@@ -1147,7 +1147,7 @@ enclave_mercenary = {
 	fleet_manager = {
 		on_contract_started = {
 			clear_orders = yes # Vfix by Dux: No queueing up an attack to start a first-contact war between Mercs and and an unidentified empire.
-			# clear_fleet_actions = yes
+			clear_fleet_actions = this
 			remove_auto_move_target = yes
 			if = {
 				limit = {
@@ -1196,20 +1196,23 @@ enclave_mercenary = {
 			}
 		}
 		on_contract_expired = {
+			# Vfix by Dux
 			clear_orders = yes
-			clear_fleet_actions = yes
+			clear_fleet_actions = this
 			remove_auto_move_target = yes
 			remove_fleet_contract_modifiers = yes
 		}
 		on_contract_cancelled = {
+			# Vfix by Dux
 			clear_orders = yes
-			clear_fleet_actions = yes
+			clear_fleet_actions = this
 			remove_auto_move_target = yes
 			remove_fleet_contract_modifiers = yes
 		}
 		on_contract_broken = {
+			# Vfix by Dux
 			clear_orders = yes
-			clear_fleet_actions = yes
+			clear_fleet_actions = this
 			remove_auto_move_target = yes
 			remove_fleet_contract_modifiers = yes
 		}

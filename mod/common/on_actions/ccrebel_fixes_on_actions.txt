@@ -1,4 +1,14 @@
+# Does not run when loading MP saves due to OOS concerns
+on_single_player_save_game_load = {
+	events = {
+		rebellionfix.34		# VFix zero ethics
+	}
+}
+
 # Initial rebels manage to take control of the planet, happens after the new owner is set, after the war is created.
+# This = Rebel Country
+# From = Planet
+# FromFrom = War
 on_rebels_take_planet_owner_switched = {
 	events = {
 		rebellionfix.35		# VFix zero ethics
@@ -10,6 +20,15 @@ on_rebels_take_planet_owner_switched = {
 on_country_type_changed = {
 	events = {
 		rebellionfix.36		# VFix to the possible no ethics problem?
+	}
+}
+
+# fires when a country releases a sector as a vassal
+# This = released vassal
+# From = overlord
+on_released_as_vassal = {
+	events = {
+		rebellionfix.35		# VFix to the possible no ethics problem?
 	}
 }
 

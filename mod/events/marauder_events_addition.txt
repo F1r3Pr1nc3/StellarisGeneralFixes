@@ -337,8 +337,10 @@ fleet_event = {
 							has_secret_fealty_with = prev
 							has_attitude_behavior = { target = prev behavior = alliance }
 						}
-						trust = { who = prev value > 30 }
-						NOT = { is_harming_relations_with = prev }
+						NOR = {
+							trust = { who = prev value < 30 }
+							is_harming_relations_with = prev
+						}
 					}
 					root.owner = {
 						set_faction_hostility = { target = prev set_hostile = yes }
@@ -348,13 +350,10 @@ fleet_event = {
 					limit = { has_federation = yes }
 					every_federation_ally = {
 						limit = {
-							NOT = { is_hostile = root.owner }
-							# OR = {
-							# 	is_loyal_to = prev
-							# 	is_patronizing_to = prev
-							# 	has_secret_fealty_with = prev
-							# }
-							trust = { who = prev value > 30 }
+							NOR = {
+								is_hostile = root.owner
+								trust = { who = prev value < 30 }
+							}
 						}
 						root.owner = {
 							set_faction_hostility = { target = prev set_hostile = yes }

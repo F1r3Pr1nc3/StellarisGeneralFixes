@@ -11,6 +11,14 @@
 namespace = crisis
 
 ### EXTRADIMENSIONALS
+## Merged by FirePrince ##
+# on_ship_destroyed_victim
+# crisis.1012
+# crisis.1115
+# crisis.1215
+# crisis.1281
+# crisis.1311
+####
 # country_event = {
 # 	id = crisis.10001
 # 	hide_window = yes
@@ -120,14 +128,14 @@ country_event = {
 					namelist = Extradimensional
 					portrait = exd1_leader
 					traits = random
-					effect = {
+					effect = { # Deprecated
 						save_event_target_as = extradimensional_species
 					}
 				}
 				create_country = {
 					name = "NAME_Unbidden"
 					type = "extradimensional"
-					species = event_target:extradimensional_species
+					species = last_created_species
 					name_list = "Extradimensional"
 					flag = {
 						icon = { category = "special" file = "extradimensional_01.dds" }
@@ -149,7 +157,7 @@ country_event = {
 						set_graphical_culture = extra_dimensional_01
 					}
 				}
-				event_target:extradimensionals = {
+				last_created_country = {
 					create_fleet = {
 						name = "NAME_Dimensional_Portal"
 						effect = {
@@ -182,12 +190,11 @@ country_event = {
 							fleet_event = { id = crisis.1006 days = 160 } # Third Constructor Arrives
 							fleet_event = { id = crisis.1006 days = 310 } # Fourth Constructor Arrives
 							prev = { country_event = { id = crisis.1260 days = 350 } } # Spawn Cycle starts
-							# set_owner = event_target:portal_holder_1 #when first anchor built
 						}
 					}
 					create_leader = {
 						class = commander
-						species = event_target:extradimensional_species
+						species = owner_species
 						name = random
 						skill = 3
 						traits = { trait = leader_trait_ethereal }
@@ -251,12 +258,11 @@ country_event = {
 			}
 		}
 		observer_event = { id = observer.34 }
-		# make portal invincible
+		event_target:dimensional_portal = { set_event_locked = yes set_owner = event_target:portal_holder_1 } # Vfix patch
 		event_target:extradimensionals = {
-			country_event = { id = crisis.1280 }
+			country_event = { id = crisis.1280 } # make portal invincible
+			save_event_target_as = crisis_country # Custodian/Emperor Announcements
 		}
-		# Custodian/Emperor Announcements
-		event_target:extradimensionals = { save_event_target_as = crisis_country }
 		if = {
 			limit = { has_galactic_custodian = yes }
 			random_playable_country = {
@@ -343,196 +349,7 @@ country_event = {
 	id = crisis.1007
 	title = "crisis.1007.name"
 	desc = "crisis.1007.desc"
-	picture = GFX_evt_wormhole
-	show_sound = event_ex_started
-	location = event_target:extradimensional_system
-	is_triggered_only = yes
-
-	after = {
-		begin_event_chain = { event_chain = "extradimensional_invasion_chain" target = root }
-		if = { # Vfix patch
-			limit = {
-				NOT = { exists = event_target:dimensional_portal }
-			}
-			event_target:extradimensional_system = {
-				random_fleet_in_system = {
-					limit = { is_ship_size = dimensional_portal_ed }
-					save_event_target_as = dimensional_portal
-				}
-			}
-		}
-		create_point_of_interest = {
-			id = extradimensional_invasion_poi.1
-			name = "extradimensional_invasion_1_poi"
-			desc = "extradimensional_invasion_1_poi_desc"
-			event_chain = "extradimensional_invasion_chain"
-			location = event_target:extradimensional_system
-		}
-		create_point_of_interest = {
-			id = extradimensional_invasion_poi.4
-			name = "extradimensional_invasion_4_poi"
-			desc = "extradimensional_invasion_4_poi_desc"
-			event_chain = "extradimensional_invasion_chain"
-			location = event_target:dimensional_portal # Vfix minor
-		}
-		hidden_effect = {
-			add_event_chain_counter = {
-				event_chain = "extradimensional_invasion_chain"
-				counter = "dimensional_anchors_1"
-				amount = 1
-			}
-			country_event = { id = crisis.1010 }
-		}
-		if = {
-			limit = {
-				any_planet_within_border = {
-					has_planet_flag = fotd_seperatist_planet@root
-					owner = { has_country_flag = fotd_seperatist_country@root }
-				}
-			}
-			country_event = { id = origin.6130 days = 5 random = 2 }
-		}
-	}
-
-	option = {
-		name = crisis.18.a
-		trigger = {
-			has_spiritualist_government = yes
-			NOR = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-		}
-	}
-	option = {
-		name = crisis.18.b
-		trigger = {
-			has_militarist_government = yes
-			NOR = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-		}
-	}
-	option = {
-		name = crisis.18.c
-		trigger = {
-			has_materialist_government = yes
-			NOR = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-		}
-	}
-	option = {
-		name = crisis.18.d
-		trigger = {
-			has_pacifist_government = yes
-			NOR = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-		}
-	}
-	option = {
-		name = crisis.18.e
-		trigger = {
-			OR = {
-				has_government = gov_megacorporation
-				has_government = gov_trade_league
-				is_megacorp = yes
-			}
-			NOR = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-		}
-	}
-	option = {
-		name = crisis.18.f
-		trigger = {
-			OR = {
-				has_generic_government = yes
-				has_government = gov_enlightened_monarchy
-				has_government = gov_elective_monarchy
-				has_government = gov_hive_mind
-				has_government = gov_wilderness
-				has_government = gov_parasitic_overmind
-				has_government = gov_successor_khanate
-				has_government = gov_diadochi
-			}
-			NOR = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
-				has_ethic = "ethic_fanatic_xenophile"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-		}
-	}
-	option = {
-		name = crisis.18.g
-		trigger = {
-			has_ethic = "ethic_fanatic_xenophobe"
-		}
-	}
-	option = {
-		name = crisis.1007.a
-		trigger = {
-			has_ethic = "ethic_fanatic_xenophile"
-		}
-	}
-	option = {
-		name = crisis.1007.b
-		trigger = {
-			has_ethic = "ethic_fanatic_authoritarian"
-		}
-	}
-	option = {
-		name = crisis.18.j
-		trigger = {
-			has_ethic = "ethic_fanatic_egalitarian"
-		}
-	}
-	option = {
-		name = crisis.18.h
-		trigger = {
-			is_gestalt = yes
-		}
-	}
-}
-
-# Notification
-country_event = {
-	id = crisis.1008
-	title = "crisis.1008.name"
-	desc = "crisis.1008.desc"
-	picture = GFX_evt_physics_research
-	show_sound = event_alien_signal
-	is_triggered_only = yes
-
-	option = {
-		name = crisis.1008.a
-		hidden_effect = {
-			country_event = { id = crisis.1009 days = 30 }
-		}
-	}
-}
-
-# Threat Identified
-country_event = {
-	id = crisis.1009
-	title = "crisis.1007.name"
-	desc = "crisis.1009.desc"
+	desc = "crisis.1009.desc" # Threat Identified
 	picture = GFX_evt_wormhole
 	show_sound = event_ex_started
 	location = event_target:extradimensional_system
@@ -672,7 +489,6 @@ country_event = {
 				has_government = gov_parasitic_overmind
 				has_government = gov_successor_khanate
 				has_government = gov_diadochi
-				is_fallen_empire = yes
 			}
 			NOR = {
 				has_ethic = "ethic_fanatic_egalitarian"
@@ -712,6 +528,38 @@ country_event = {
 			is_gestalt = yes
 		}
 	}
+	option = { # Vfix log: fallback
+		name = crisis.18.f
+		trigger = {
+			is_ai = yes
+		}
+		ai_chance = { base = 0.1 }
+	}
+}
+
+# Notification
+country_event = {
+	id = crisis.1008
+	title = "crisis.1008.name"
+	desc = "crisis.1008.desc"
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_signal
+	is_triggered_only = yes
+
+	option = {
+		name = crisis.1008.a
+		hidden_effect = {
+			country_event = { id = crisis.1009 days = 30 }
+		}
+	}
+}
+
+# Threat Identified (Vfix opt: full copy)
+country_event = {
+	id = crisis.1009
+	base = crisis.1007
+	desc_clear = yes
+	desc = "crisis.1009.desc"
 }
 
 # Intercepted Transmission
@@ -837,10 +685,12 @@ planet_event = {
 	}
 }
 
-# Portal Destroyed (HIDDEN)
+# Portal Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
+# Vfix opt: just take crisis.1015
 country_event = {
 	id = crisis.1012
 	hide_window = yes
+	is_test_event = yes
 	fire_only_once = yes
 	is_triggered_only = yes
 
@@ -850,28 +700,37 @@ country_event = {
 	}
 
 	immediate = {
-		random_system = {
-			limit = { has_star_flag = extradimensional_origin_system }
+		# random_system = { limit = { has_star_flag = extradimensional_origin_system }
+		fromfrom.solar_system = { # Vfix opt
 			random_system_ambient_object = {
 				limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
 				destroy_ambient_object = this
 			}
 		}
+		log = "SGF: [This.GetName] Portal Destroyed"
 		if = {
 			limit = {
 				OR = {
 					NOT = { has_global_flag = extradimensional_second_portal }
 					AND = {
 						has_global_flag = extradimensional_second_portal_destroyed
-						has_global_flag = extradimensional_third_portal_destroyed
+						OR = { # Vfix
+							NOT = { has_global_flag = extradimensional_third_portal }
+							has_global_flag = extradimensional_third_portal_destroyed
+						}
 					}
 				}
 			}
 			stop_crisis_sound = yes
 			from = {
 				save_event_target_as = portal_killer
-				if = {
-					limit = { is_ai = no }
+				if = { # Vfix sync
+					limit = {
+						NAND = {
+							is_ai = yes
+							has_relic = r_unbidden_warlock
+						}
+					}
 					country_event = { id = crisis.1250 days = 10 random = 10 }
 					set_country_flag = with_great_power_achievement
 				}
@@ -886,14 +745,8 @@ country_event = {
 				country_event = { id = crisis.1013 }
 			}
 		}
-		else_if = {
-			limit = {
-				has_global_flag = extradimensional_second_portal
-				NOR = {
-					has_global_flag = extradimensional_second_portal_destroyed
-					has_global_flag = extradimensional_third_portal_destroyed
-				}
-			}
+		# Still other portal exists
+		else = { # Vfix opt
 			every_playable_country = {
 				country_event = { id = crisis.1016 }
 			}
@@ -1223,14 +1076,14 @@ country_event = {
 					namelist = Extradimensional
 					portrait = exd2_leader
 					traits = random
-					effect = {
+					effect = { # Deprecated
 						save_event_target_as = extradimensional_hunters_species
 					}
 				}
 				create_country = {
 					name = "NAME_Aberrant"
 					type = "extradimensional_2"
-					species = event_target:extradimensional_hunters_species
+					species = last_created_species
 					name_list = "Extradimensional"
 					flag = {
 						icon = { category = "special" file = "extradimensional_02.dds" }
@@ -1252,7 +1105,7 @@ country_event = {
 						set_graphical_culture = extra_dimensional_02
 					}
 				}
-				event_target:extradimensional_hunters = {
+				last_created_country = {
 					create_fleet = {
 						name = "NAME_Dimensional_Portal"
 						effect = {
@@ -1270,7 +1123,7 @@ country_event = {
 								distance = 40
 								angle = random
 							}
-							save_event_target_as = second_portal
+							save_event_target_as = dimensional_portal # Vfix
 							fleet_event = { id = crisis.1103 days = 1 } # Fleet Arrives
 							fleet_event = { id = crisis.1103 days = 5 } # Fleet Arrives
 							fleet_event = { id = crisis.1103 days = 15 } # Fleet Arrives
@@ -1288,15 +1141,12 @@ country_event = {
 					}
 					create_leader = {
 						class = commander
-						species = event_target:extradimensional_hunters_species
+						species = owner_species
 						name = random
 						skill = 3
 						effect = {
-							random_list = {
-								25 = { add_trait = { trait = leader_trait_ethereal } }
-								25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-								50 = {  }
-							}
+							add_trait = { trait = leader_trait_ethereal }
+							add_trait = { trait = leader_trait_dimensional_stutter }
 						}
 					}
 					create_fleet = {
@@ -1327,7 +1177,7 @@ country_event = {
 								}
 							}
 							set_location = {
-								target = event_target:second_portal
+								target = event_target:dimensional_portal
 								distance = 5
 								angle = random
 							}
@@ -1338,6 +1188,7 @@ country_event = {
 							assign_leader = last_created_leader
 						}
 					}
+					establish_communications_no_message = root # Vfix opt
 				}
 			}
 			if = {
@@ -1358,10 +1209,9 @@ country_event = {
 			}
 		}
 		observer_event = { id = observer.36 }
-		# make portal invincible
-		event_target:extradimensional_hunters = {
-			country_event = { id = crisis.1280 }
-			establish_communications_no_message = root # Vfix opt
+		event_target:dimensional_portal = { set_event_locked = yes set_owner = event_target:portal_holder_1 } # Vfix patch
+		event_target:extradimensionals2 = {
+			country_event = { id = crisis.1280 } # make portal invincible
 		}
 		every_country = {
 			limit = { is_default_or_fallen = yes }
@@ -1464,11 +1314,11 @@ country_event = {
 
 	trigger = {
 		exists = from
-		NOT = { has_global_flag = extradimensionals_fight }
 		OR = {
 			is_country_type = extradimensional
 			is_country_type = extradimensional_2
 		}
+		NOT = { has_global_flag = extradimensionals_fight }
 		from = {
 			OR = {
 				is_country_type = extradimensional
@@ -1522,10 +1372,12 @@ country_event = {
 	}
 }
 
-# Second Portal Destroyed (HIDDEN)
+# Second Portal Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
+# Vfix opt: just take crisis.1015
 country_event = {
 	id = crisis.1115
 	hide_window = yes
+	is_test_event = yes
 	fire_only_once = yes
 	is_triggered_only = yes
 
@@ -1535,37 +1387,48 @@ country_event = {
 	}
 
 	immediate = {
-		observer_event = { id = observer.37 }
-		random_system = {
-			limit = { has_star_flag = extradimensional_second_portal_system }
+		# random_system = { limit = { has_star_flag = extradimensional_second_portal_system }
+		fromfrom.solar_system = { # Vfix opt
 			random_system_ambient_object = {
 				limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
 				destroy_ambient_object = this
 			}
 		}
+		log = "SGF: [This.GetName] Portal Destroyed"
 		if = {
 			limit = {
 				has_global_flag = extradimensional_first_portal_destroyed
-				has_global_flag = extradimensional_third_portal_destroyed
+				OR = { # Vfix
+					NOT = { has_global_flag = extradimensional_third_portal }
+					has_global_flag = extradimensional_third_portal_destroyed
+				}
 			}
 			stop_crisis_sound = yes
+			from = {
+				save_event_target_as = portal_killer
+				if = { # Vfix sync
+					limit = {
+						NAND = {
+							is_ai = yes
+							has_relic = r_unbidden_warlock
+						}
+					}
+					country_event = { id = crisis.1250 days = 10 random = 10 }
+					set_country_flag = with_great_power_achievement
+				}
+			}
+			# Vfix sync
+			observer_event = { id = observer.37 }
 			every_playable_country = {
+				if = {
+					limit = { has_communications = from }
+					add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+				}
+				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
 				country_event = { id = crisis.1116 }
 			}
-			from = { save_event_target_as = portal_killer }
-			if = {
-				limit = { from = { is_ai = no } }
-				country_event = { id = crisis.1250 days = 10 random = 10 }
-				set_country_flag = with_great_power_achievement
-			}
-			every_playable_country = {
-				limit = { has_communications = from }
-				add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
-			}
-			every_playable_country = {	# limit = { }
-				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
-			}
 		}
+		# Still other portal exists
 		else = {
 			every_playable_country = {
 				country_event = { id = crisis.1117 }
@@ -1654,176 +1517,171 @@ country_event = {
 	# }
 	immediate = {
 		set_global_flag = extradimensional_third_portal
-		event_target:extradimensional_2 = {
-			random_system_within_border = {
-				limit = {
-					NOR = {
-						is_system_home_to_crystalline_entity = yes
-						is_binary_star = yes
-						has_star_flag = crisis_spawn_exclude # Vfix
-						has_star_flag = extradimensional_origin_system
-						has_star_flag = extradimensional_second_portal_system
-						AND = { # Vfix
-							num_cosmic_storms > 0
-							any_cosmic_storm = { is_storm_type = electric_storm }
-							is_inside_storm = yes
-							is_inside_storm = electric_storm
-						}
-					}
-				}
-				set_star_flag = extradimensional_third_portal_system
-				save_event_target_as = third_portal_system
-				random_system_planet = {
-					create_species = {
-						name = "NAME_Vehement"
-						class = EXD
-						namelist = Extradimensional
-						portrait = exd3_leader
-						traits = random
-						effect = {
-							save_event_target_as = extradimensional_trespassers_species
-						}
-					}
-					create_country = {
-						name = "NAME_Vehement"
-						type = "extradimensional_3"
-						species = event_target:extradimensional_trespassers_species
-						name_list = "Extradimensional"
-						flag = {
-							icon = { category = "special" file = "extradimensional_03.dds" }
-							background = { category = "backgrounds" file = "stripe.dds" }
-							colors = { "green" "teal" "null" "null" }
-						}
-						effect = {
-							set_country_flag = vehement # Vfix: not used?
-							create_ship_design = { design = "NAME_Void_Weaver" }
-							add_ship_design = last_created_design
-							create_ship_design = { design = "NAME_Vehement_Anchor" }
-							add_ship_design = last_created_design
-							create_ship_design = { design = "NAME_Unbidden_Starbase" }
-							add_ship_design = last_created_design
-							establish_communications_no_message = event_target:portal_holder_1
-							set_faction_hostility = { target = event_target:portal_holder_1 set_hostile = no }
-							save_global_event_target_as = extradimensionals3
-							save_event_target_as = extradimensional_trespassers
-							set_graphical_culture = extra_dimensional_03
-						}
-					}
-					event_target:extradimensional_trespassers = {
-						create_fleet = {
-							name = "NAME_Dimensional_Portal"
-							effect = {
-								set_owner = prev
-								create_ship = {
-									name = random
-									design = "NAME_Vehement_Portal"
-									graphical_culture = "extra_dimensional_03"
-									effect = {
-										set_ship_flag = vehement_portal
-									}
-								}
-								set_location = {
-									target = prevprev
-									distance = 40
-									angle = random
-								}
-								save_event_target_as = third_portal
-								fleet_event = { id = crisis.1203 days = 1 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 5 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 15 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 30 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 45 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 60 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 150 } # Fleet Arrives
-								fleet_event = { id = crisis.1203 days = 350 } # Fleet Arrives
-								fleet_event = { id = crisis.1206 days = 20 } # Constructor Arrives
-								fleet_event = { id = crisis.1206 days = 25 } # Constructor Arrives
-								fleet_event = { id = crisis.1206 days = 90 } # Constructor Arrives
-								fleet_event = { id = crisis.1206 days = 210 } # Constructor Arrives
-								prev = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
-							}
-						}
-						create_leader = {
-							class = commander
-							species = event_target:extradimensional_trespassers_species
-							name = random
-							skill = 3
-							effect = {
-								random_list = {
-									25 = { add_trait = { trait = leader_trait_ethereal } }
-									25 = { add_trait = { trait = leader_trait_dimensional_stutter } }
-									50 = {  }
-								}
-							}
-						}
-						create_fleet = {
-							effect = {
-								set_owner = prev
-								while = {
-									count = 21
-									create_ship = {
-										name = random
-										design = "NAME_Eradicator"
-										graphical_culture = "extra_dimensional_03"
-									}
-								}
-								while = {
-									count = 30
-									create_ship = {
-										name = random
-										design = "NAME_Annihilator"
-										graphical_culture = "extra_dimensional_03"
-									}
-								}
-								while = {
-									count = 45
-									create_ship = {
-										name = random
-										design = "NAME_Obliterator"
-										graphical_culture = "extra_dimensional_03"
-									}
-								}
-								set_location = {
-									target = event_target:third_portal
-									distance = 5
-									angle = random
-								}
-								set_fleet_stance = aggressive
-								set_aggro_range = 500
-								set_aggro_range_measure_from = self
-								set_fleet_bombardment_stance = armageddon
-								assign_leader = last_created_leader
-							}
-						}
-					}
-				}
-				if = {
-					limit = { exists = starbase }
-					starbase = { destroy_fleet = fleet }
-				}
-				create_starbase = {
-					owner = event_target:extradimensional_trespassers
-					size = starbase_exd
-				}
-				star = {
-					create_ambient_object = { type = "extradimensional_2" location = this }
-					last_created_ambient_object = {
-						set_ambient_object_flag = extradimensional_system_effect_2
-						set_location = {
-							target = prev
-							distance = 0
-							angle = random
-						}
+		random_system_within_border = {
+			limit = {
+				NOR = {
+					is_system_home_to_crystalline_entity = yes
+					is_binary_star = yes
+					has_star_flag = crisis_spawn_exclude # Vfix
+					has_star_flag = extradimensional_origin_system
+					has_star_flag = extradimensional_second_portal_system
+					AND = { # Vfix
+						num_cosmic_storms > 0
+						any_cosmic_storm = { is_storm_type = electric_storm }
+						is_inside_storm = yes
+						is_inside_storm = electric_storm
 					}
 				}
 			}
-			establish_communications_no_message = event_target:extradimensional_trespassers
+			set_star_flag = extradimensional_third_portal_system
+			save_event_target_as = third_portal_system
+			random_system_planet = {
+				create_species = {
+					name = "NAME_Vehement"
+					class = EXD
+					namelist = Extradimensional
+					portrait = exd3_leader
+					traits = random
+					effect = { # Deprecated
+						save_event_target_as = extradimensional_trespassers_species
+					}
+				}
+				create_country = {
+					name = "NAME_Vehement"
+					type = "extradimensional_3"
+					species = last_created_species
+					name_list = "Extradimensional"
+					flag = {
+						icon = { category = "special" file = "extradimensional_03.dds" }
+						background = { category = "backgrounds" file = "stripe.dds" }
+						colors = { "green" "teal" "null" "null" }
+					}
+					effect = {
+						set_country_flag = vehement # Vfix: not used?
+						create_ship_design = { design = "NAME_Void_Weaver" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "NAME_Vehement_Anchor" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "NAME_Unbidden_Starbase" }
+						add_ship_design = last_created_design
+						establish_communications_no_message = event_target:portal_holder_1
+						set_faction_hostility = { target = event_target:portal_holder_1 set_hostile = no }
+						save_global_event_target_as = extradimensionals3
+						save_event_target_as = extradimensional_trespassers
+						set_graphical_culture = extra_dimensional_03
+					}
+				}
+				last_created_country = {
+					create_fleet = {
+						name = "NAME_Dimensional_Portal"
+						effect = {
+							set_owner = prev
+							create_ship = {
+								name = random
+								design = "NAME_Vehement_Portal"
+								graphical_culture = "extra_dimensional_03"
+								effect = {
+									set_ship_flag = vehement_portal
+								}
+							}
+							set_location = {
+								target = prevprev
+								distance = 40
+								angle = random
+							}
+							save_event_target_as = dimensional_portal # Vfix
+							fleet_event = { id = crisis.1203 days = 1 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 5 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 15 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 30 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 45 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 60 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 150 } # Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 350 } # Fleet Arrives
+							fleet_event = { id = crisis.1206 days = 20 } # Constructor Arrives
+							fleet_event = { id = crisis.1206 days = 25 } # Constructor Arrives
+							fleet_event = { id = crisis.1206 days = 90 } # Constructor Arrives
+							fleet_event = { id = crisis.1206 days = 210 } # Constructor Arrives
+							prev = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
+						}
+					}
+					create_leader = {
+						class = commander
+						species = owner_species
+						name = random
+						skill = 3
+						effect = {
+							add_trait = { trait = leader_trait_ethereal }
+							add_trait = { trait = leader_trait_dimensional_stutter }
+						}
+					}
+					create_fleet = {
+						effect = {
+							set_owner = prev
+							while = {
+								count = 21
+								create_ship = {
+									name = random
+									design = "NAME_Eradicator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+							while = {
+								count = 30
+								create_ship = {
+									name = random
+									design = "NAME_Annihilator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+							while = {
+								count = 45
+								create_ship = {
+									name = random
+									design = "NAME_Obliterator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+							set_location = {
+								target = event_target:dimensional_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
+							set_fleet_bombardment_stance = armageddon
+							assign_leader = last_created_leader
+						}
+					}
+					establish_communications_no_message = root
+				}
+			}
+			if = {
+				limit = { exists = starbase }
+				starbase = { destroy_fleet = fleet }
+			}
+			create_starbase = {
+				owner = event_target:extradimensional_trespassers
+				size = starbase_exd
+			}
+			star = {
+				create_ambient_object = { type = "extradimensional_2" location = this }
+				last_created_ambient_object = {
+					set_ambient_object_flag = extradimensional_system_effect_2
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
 		}
+		establish_communications_no_message = event_target:extradimensional_trespassers
 		observer_event = { id = observer.38 }
-		# make portal invincible
-		event_target:extradimensional_trespassers = {
-			country_event = { id = crisis.1280 }
-			establish_communications_no_message = root
+		event_target:dimensional_portal = { set_event_locked = yes set_owner = event_target:portal_holder_1 } # Vfix patch
+		event_target:extradimensionals3 = {
+			country_event = { id = crisis.1280 } # make portal invincible
 		}
 		every_country = {
 			limit = { is_default_or_fallen = yes }
@@ -1938,10 +1796,12 @@ country_event = {
 	}
 }
 
-# Third Portal Destroyed (HIDDEN)
+# Third Portal Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
+# Vfix opt: just take crisis.1015
 country_event = {
 	id = crisis.1215
 	hide_window = yes
+	is_test_event = yes
 	fire_only_once = yes
 	is_triggered_only = yes
 
@@ -1951,37 +1811,45 @@ country_event = {
 	}
 
 	immediate = {
-		observer_event = { id = observer.39 }
-		random_system = {
-			limit = { has_star_flag = extradimensional_third_portal_system }
+		# random_system = { limit = { has_star_flag = extradimensional_third_portal_system }
+		fromfrom.solar_system = { # Vfix opt
 			random_system_ambient_object = {
 				limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
 				destroy_ambient_object = this
 			}
 		}
+		log = "SGF: [This.GetName] Portal Destroyed"
 		if = {
 			limit = {
 				has_global_flag = extradimensional_first_portal_destroyed
 				has_global_flag = extradimensional_second_portal_destroyed
 			}
 			stop_crisis_sound = yes
+			from = {
+				save_event_target_as = portal_killer
+				if = { # Vfix sync
+					limit = {
+						NAND = {
+							is_ai = yes
+							has_relic = r_unbidden_warlock
+						}
+					}
+					country_event = { id = crisis.1250 days = 10 random = 10 }
+					set_country_flag = with_great_power_achievement
+				}
+			}
+			# Vfix sync
+			observer_event = { id = observer.39 }
 			every_playable_country = {
+				if = {
+					limit = { has_communications = from }
+					add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+				}
+				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
 				country_event = { id = crisis.1216 }
 			}
-			from = { save_event_target_as = portal_killer }
-			if = {
-				limit = { from = { is_ai = no } }
-				country_event = { id = crisis.1250 days = 10 random = 10 }
-				set_country_flag = with_great_power_achievement
-			}
-			every_playable_country = {
-				limit = { has_communications = from }
-				add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
-			}
-			every_playable_country = {	# limit = { }
-				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
-			}
 		}
+		# Still other portal exists
 		else = {
 			every_playable_country = {
 				country_event = { id = crisis.1217 }
@@ -2091,8 +1959,8 @@ event = {
 					NOR = {
 						num_ships >= 20
 						# any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
-						event_target:portal_holder_1 = {
-							any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
+						event_target:portal_holder_1 = { # Vfix opt
+							any_owned_fleet = { is_ship_size = dimensional_portal_ed }
 						}
 						num_owned_planets > 0
 						any_controlled_planet = { has_owner = yes }
@@ -2163,15 +2031,21 @@ country_event = {
 		# 	is_country_type = extradimensional_3
 		# }
 		# Must only trigger if portal is still alive
-		# OR = { any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 		exists = event_target:portal_holder_1
-		event_target:portal_holder_1 = {
-			any_controlled_fleet = { is_ship_size = dimensional_portal_ed is_within_borders_of = root }
+		event_target:portal_holder_1 = { # Vfix opt
+			any_owned_fleet = { is_ship_size = dimensional_portal_ed }
 		}
-		# }
 	}
 
 	immediate = {
+		if = {
+			limit = { # Vfix: don't breake the loop!?!
+				event_target:portal_holder_1 = {
+					NOT = { any_owned_fleet = { is_ship_size = dimensional_portal_ed is_within_borders_of = root } }
+				}
+			}
+			country_event = { id = crisis.1260 days = 600 random = 200 } # Check again later
+		}
 		country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
 		export_trigger_value_to_variable = {
 			trigger = count_controlled_fleet
@@ -2260,12 +2134,10 @@ country_event = {
 
 	trigger = {
 		# Must only trigger if portal is still alive
-		# OR = { any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 		exists = event_target:portal_holder_1
-		event_target:portal_holder_1 = {
-			any_controlled_fleet = { is_ship_size = dimensional_portal_ed is_within_borders_of = root }
+		event_target:portal_holder_1 = { # Vfix opt
+			any_owned_fleet = { is_ship_size = dimensional_portal_ed is_within_borders_of = root }
 		}
-		# }
 	}
 
 	immediate = {
@@ -2324,13 +2196,11 @@ country_event = {
 
 	trigger = {
 		# Must only trigger if portal is still alive
-		# OR = { any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 		# has_global_flag = extradimensional_invasion_happened
 		exists = event_target:portal_holder_1
-		event_target:portal_holder_1 = {
-			any_controlled_fleet = { is_ship_size = dimensional_portal_ed is_within_borders_of = root }
+		event_target:portal_holder_1 = { # Vfix opt
+			any_owned_fleet = { is_ship_size = dimensional_portal_ed is_within_borders_of = root }
 		}
-		# }
 		count_controlled_fleet = {
 			count < 5 # Vfix balance
 			limit = { is_ship_size = construction_ship_ed }
@@ -2484,8 +2354,7 @@ ship_event = {
 			# Must only trigger if portal is still alive
 			OR = {
 				exists = event_target:dimensional_portal
-				# any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
-				event_target:portal_holder_1 = {
+				event_target:portal_holder_1 = { # Vfix opt
 					any_controlled_fleet = {
 						is_ship_size = dimensional_portal_ed
 						is_within_borders_of = prevprev
@@ -2598,6 +2467,7 @@ country_event = {
 			remove_global_flag = galactic_crisis_early_defeat_tracker_2
 			multiply_crisis_strength = 1.25
 		}
+		event_target:portal_holder_1 = { destroy_country = yes } # Vfix
 		end_crisis = yes
 	}
 }
@@ -2726,8 +2596,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	# trigger # Vfix now implicit
-	immediate = {	# log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
-		if = {  # Vfix sync
+	immediate = {
+		if = { # Vfix sync
 			limit = {
 				NOT = { exists = event_target:portal_holder_1 }
 			}
@@ -2738,11 +2608,27 @@ country_event = {
 		}
 		if = {  # Vfix sync
 			limit = { exists = event_target:portal_holder_1 }
-			random_controlled_fleet = {
-				limit = { is_ship_size = dimensional_portal_ed }
-				set_event_locked = yes
-				set_owner = event_target:portal_holder_1
-				# log = "anchor built and crisis.1280 executed, reaching fleet owner switch"
+			if = {  # VFIX OPT
+				limit = {
+					event_target:portal_holder_1 = {
+						any_owned_fleet = {
+							is_ship_size = dimensional_portal_ed
+							is_controlled_by = root # vulnerable
+						}
+					}
+				}
+				random_controlled_fleet = {
+					limit = {
+						is_ship_size = dimensional_portal_ed
+						is_within_borders_of = root
+					}
+					set_event_locked = yes
+					set_controller = event_target:portal_holder_1 # Vfix: to put this here makes the whole shebang for a seperate country for the portal pointless!
+					log = "anchor built and crisis.1280 executed, reaching fleet owner switch"
+				}
+			}
+			else = {
+				log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
 			}
 			switch = { # Vfix opt
 				trigger = is_country_type
@@ -2769,13 +2655,13 @@ country_event = {
 	}
 }
 
-# DEPRECATED: Anchor Destroyed (HIDDEN)
-# Vfix opt: on_ship_destroyed_victim is too expensive,
+# DEPRECATED: Anchor Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
+# Vfix opt: just take crisis.1284
 country_event = {
 	id = crisis.1281
 	hide_window = yes
-	is_triggered_only = yes
 	is_test_event = yes
+	is_triggered_only = yes
 
 	trigger = {
 		always = no
@@ -2789,8 +2675,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {	# Vfix TODO another flag?
-		has_global_flag = extradimensional_invasion_happened
+	trigger = {
+		has_global_flag = extradimensional_invasion_happened # Vfix TODO another flag?
 		OR = {
 			is_country_type = extradimensional
 			is_country_type = extradimensional_2
@@ -2855,13 +2741,13 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {	# Vfix TODO another flag?
-		has_global_flag = extradimensional_invasion_happened
+	trigger = {
 		OR = {
 			is_country_type = extradimensional
 			is_country_type = extradimensional_2
 			is_country_type = extradimensional_3
 		}
+		has_global_flag = extradimensional_invasion_happened # Vfix opt
 		from = {
 			NOR = {
 				is_country_type = extradimensional
@@ -2927,9 +2813,9 @@ event = {
 						}
 						set_variable = { which = exd_galaxy_percentage value = tmp_exd_gal_pct }
 					}
+					clear_variable = tmp_exd_gal_pct
 				}
 			}
-			clear_variable = tmp_exd_gal_pct
 			switch = { trigger = has_global_flag
 				crisis_stage_4 = {
 					if = {
@@ -3209,14 +3095,13 @@ ship_event = {
 	}
 }
 
-# DEPRECATED: Remove System Effect
-# Vfix opt: on_ship_destroyed_victim is too expensive,
-#  just take a starbase_event as crisis.1320
+# DEPRECATED: Remove System Effect (on_ship_destroyed_victim too expensive)
+# Vfix double: , just take crisis.1284
 country_event = {
 	id = crisis.1311
 	hide_window = yes
-	is_triggered_only = yes
 	is_test_event = yes
+	is_triggered_only = yes
 
 	trigger = {
 		always = no
@@ -3250,8 +3135,7 @@ starbase_event = {
 	immediate = {
 		solar_system = { save_event_target_as = starbase_system }
 		from.owner = {
-			country_event = { id = crisis.1321 days = 5 }
-			# Delay so that destroyed starbase is properly cleared out
+			country_event = { id = crisis.1321 days = 5 } # Delay so that destroyed starbase is properly cleared out
 		}
 	}
 }
