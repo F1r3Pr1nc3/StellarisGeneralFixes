@@ -7713,12 +7713,25 @@ fleet_event = {
 	after = {
 		from = { set_site_progress_locked = no }
 		large_artifact_reward = yes
+		hidden_effect = {
+			if = {
+				limit = { has_global_flag = DSBF_shutdown }
+				random_country = { # Archivism + Cloaking let you excavate without destroying them first.
+					limit = { has_country_flag = surveillance_bots }
+					every_controlled_fleet = { delete_fleet = this }
+					destroy_country = yes
+				}
+			}
+		}
 	}
 
 	option = {
 		name = ancrel.12090.A
 		trigger = {
 			owner = { is_machine_empire = yes }
+		}
+		allow = {
+			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
 		}
 		from.planet = {
 			change_pc = pc_machine
@@ -7736,12 +7749,39 @@ fleet_event = {
 					add_district = district_nexus_1
 					add_district = district_nexus_2
 				}
+				while = {
+					count = 3
+					add_district = district_nexus_3
+				}
+				add_zone = { zone = zone_urban zone_slot = 1 replace = yes } # No Scaling Job-zones to keep economy stable.
+				add_zone = { zone = zone_urban zone_slot = 2 replace = yes }
 				add_zone = { district = district_nexus_1 zone = zone_energy_nexus }
 				add_zone = { district = district_nexus_2 zone = zone_minerals_nexus }
+				add_zone = { district = district_nexus_3 zone = zone_foundry_nexus }
+				if = {
+					limit = { has_ancrel = yes }
+					event_target:DSBF_country = {
+						if = {
+							limit = {
+								NOT = { has_technology = tech_archaeo_refinery }
+							}
+							give_technology = { tech = tech_archaeo_refinery message = no }
+						}
+					}
+					add_building = { building = building_archaeo_refinery zone = zone_foundry_nexus }
+				}
+				else = {
+					add_building = { building = building_crystal_plant zone = zone_foundry_nexus }
+					add_building = { building = building_chemical_plant zone = zone_foundry_nexus }
+					add_building = { building = building_refinery zone = zone_foundry_nexus }
+				}
+				add_building = { building = building_energy_grid zone = zone_energy_nexus }
+				add_building = { building = building_mineral_purification_plant zone = zone_minerals_nexus }
 				create_pop_group = { species = event_target:new_machines size = 8000 }
 			}
 		}
 		hidden_effect = {
+			set_global_flag = DSBF_shutdown
 			owner = {
 				random = {
 					chance = 50
@@ -7752,16 +7792,24 @@ fleet_event = {
 	}
 	option = {
 		name = ancrel.12090.B
+		allow = {
+			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
+		}
 		solar_system = {
 			spawn_megastructure = {
 				type = spy_orb_restored
+				owner = root.owner # If Cloaking + Archivism this needs to be set since outpost may not exist.
 				planet = from.planet
-				graphical_culture = root.owner
+				graphical_culture = "synthetics_01" # Should look Machine.
 			}
 		}
+		# Archivism + Cloaking let you excavate without destroying the guardian fleets first, but doesn't disable them.
 	}
 	option = { # Machine Intelligence or Individualist Machine
 		name = ancrel.12090.C
+		allow = {
+			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
+		}
 		trigger = {
 			owner = {
 				OR = {
@@ -7790,6 +7838,7 @@ fleet_event = {
 			}
 		}
 		hidden_effect = {
+			set_global_flag = DSBF_shutdown
 			owner = {
 				random = {
 					chance = 50
@@ -7804,6 +7853,7 @@ fleet_event = {
 			owner = { is_machine_empire = no is_individual_machine = no }
 		}
 		allow = {
+			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
 			owner = { has_policy_flag = robots_allowed }
 		}
 		custom_tooltip = ancrel.12090.C.mechanical.tooltip
@@ -7826,6 +7876,7 @@ fleet_event = {
 			}
 		}
 		hidden_effect = {
+			set_global_flag = DSBF_shutdown
 			owner = {
 				random = {
 					chance = 50
@@ -7836,11 +7887,33 @@ fleet_event = {
 	}
 	option = {
 		name = ancrel.12090.D
+		allow = {
+			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
+		}
 		trigger = {
-			owner = { is_spiritualist = yes }
+			owner = {
+				OR = {
+                    AND = {
+						is_spiritualist = yes
+						NOR = {
+							is_individual_machine = yes
+							is_mechanical_empire = yes
+							has_origin = origin_cybernetic_creed
+							has_origin = origin_mechanists # Ethics Shift.
+							has_origin = origin_synthetic_fertility
+						}
+					}
+                    is_xenophobe = yes
+                    is_hive_empire = yes
+					is_homicidal = yes
+					has_valid_civic = civic_barbaric_despoilers
+                    has_policy_flag = robots_outlawed
+                }
+			}
 		}
 		from.planet = { add_deposit = d_alloys_25 }
 		hidden_effect = {
+			set_global_flag = DSBF_shutdown
 			owner = {
 				random = {
 					chance = 50
@@ -7853,7 +7926,24 @@ fleet_event = {
 		name = ancrel.12090.E
 		custom_tooltip = ancrel.12090.E.tooltip
 		allow = {
-			owner = { is_spiritualist = no }
+			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
+			owner = {
+				OR = {
+    			    is_spiritualist = no
+					has_ascension_perk = ap_synthetic_evolution # Haven't flag synthetic_empire yet.
+					is_robot_empire = yes
+    			    has_origin = origin_cybernetic_creed
+    			    has_origin = origin_unplugged
+    			    has_origin = origin_mechanists
+    			    has_origin = origin_synthetic_fertility
+    			}
+				NOR = {
+					has_policy_flag = robots_outlawed
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_hive_devouring_swarm
+					is_genocidal_infernal = yes
+				}
+			}
 		}
 		hidden_effect = {
 			from.planet = {
@@ -7861,18 +7951,123 @@ fleet_event = {
 					type = default
 					name = "NAME_Repurposed_Surveillance_Network"
 					species = event_target:new_machines
+					graphical_culture = "synthetics_01" # to prevent issues with bioships.
 					ethos = { ethic = ethic_gestalt_consciousness }
 					authority = auth_machine_intelligence
 					civics = {
 						civic = civic_machine_built_to_last
 						civic = civic_machine_builder
 					}
+					day_zero_contact = no # Fixes instant First Contacts with Spacefauna, Enclaves, and FEs.
+                    exclude_day_zero_contact = root # Probably not necessary.
 					effect = {
-						prev.starbase = { set_owner = prev }
+						save_event_target_as = DSBF_country
+						establish_communications_no_message = root.owner # Fixes them contacting you as if they had established contact.
+                        root.owner = {
+                            every_federation_ally = { establish_communications = prevprev }
+                        }
+						if = { # Guarantee shipyards.
+							limit = { exists = prev.starbase }
+							prev.starbase = {
+								set_owner = prev
+								if = {
+                				    limit = { has_starbase_size = starbase_outpost }
+                				    set_starbase_size = starbase_starport
+                				}
+                				if = {
+                				    limit = { NOT = { has_starbase_module = shipyard } }
+                				    set_starbase_module = { slot = 1 module = shipyard }
+                				    set_starbase_module = { slot = 2 module = shipyard }
+                				}
+							}
+						}
+						else = {
+							prev.solar_system = {
+								create_starbase = {
+            					    size = starbase_starport
+            					    module = shipyard
+            					    module = shipyard
+            					    building = crew_quarters
+            					    owner = event_target:DSBF_country
+            					}
+							}
+						}
 						give_starting_resources_effect = yes
-						add_resource = { unity = 1000000 }
-						copy_techs_from = { target = root.owner }
-						set_subject_of = { who = root.owner }
+						add_resource = { unity = 10000 } # Was one million, let them max out traditions before Synthetic Age situation completes, preventing ascension.
+						copy_techs_from = {
+    					    target = root.owner
+    					    except = {
+    					        tech_akx_worm_1
+    					        tech_akx_worm_2
+    					        tech_akx_worm_3
+    					    }
+    					}
+						if = { # Bioship Tech-swap.
+							limit = {
+								root.owner = { has_technology = tech_maulers }
+							}
+							give_technology = { tech = tech_corvettes }
+							give_technology = { tech = tech_torpedoes_1 }
+						}
+						if = {
+							limit = {
+								root.owner = { has_technology = tech_weavers }
+							}
+							give_technology = { tech = tech_destroyers }
+						}
+						if = {
+							limit = {
+								root.owner = { has_technology = tech_stingers }
+							}
+							give_technology = { tech = tech_battleships }
+						}
+						if = {
+							limit = {
+								root.owner = { has_technology = tech_harbingers }
+							}
+							give_technology = { tech = tech_cruisers }
+						}
+						if = {
+    					    limit = {
+    					        root.owner = { has_modifier = pacified_amoebas }
+    					    }
+    					    add_modifier = { modifier = pacified_amoebas days = -1 }
+    					    every_country = {
+    					        limit = { is_amoeba_country_type = yes }
+    					        set_faction_hostility = {
+    					            set_hostile = no
+    					            set_neutral = yes
+    					            target = event_target:DSBF_country
+    					        }
+    					    }
+    					}
+    					if = {
+    					    limit = {
+    					        root.owner = { has_modifier = pacified_crystals }
+    					    }
+    					    add_modifier = { modifier = pacified_crystals days = -1 }
+    					    every_country = {
+    					        limit = { is_crystal_country_type = yes }
+    					        set_faction_hostility = {
+    					            set_hostile = no
+    					            set_neutral = yes
+    					            target = event_target:DSBF_country
+    					        }
+    					    }
+    					}
+						set_subject_of = { who = root.owner preset = preset_vassal_benevolent } # Loyalty starts at 0
+						random_agreement = {
+    					    limit = {
+    					        owner = { is_same_value = root.owner }
+    					        target = { is_same_value = event_target:DSBF_country }
+    					    }
+    					    set_agreement_terms = {
+    					        subject_diplomacy = subject_can_not_do_diplomacy
+    					        joins_subject_wars = joins_subject_wars_none # Isolated, AI cannot invade
+    					        joins_overlord_wars = joins_overlord_wars_none
+    					    }
+    					}
+						add_opinion_modifier = { modifier = opinion_liberated_us who = root.owner }
 					}
 				}
 				change_pc = pc_machine
@@ -7883,14 +8078,38 @@ fleet_event = {
 					add_district = district_nexus
 				}
 				while = {
-					count = 2
+					count = 5
 					add_district = district_nexus_1
 					add_district = district_nexus_2
 				}
+				while = {
+					count = 3
+					add_district = district_nexus_3
+				}
+				add_zone = { zone = zone_urban zone_slot = 1 replace = yes } # No Scaling Job-zones to keep economy stable.
+				add_zone = { zone = zone_urban zone_slot = 2 replace = yes }
 				add_zone = { district = district_nexus_1 zone = zone_energy_nexus }
 				add_zone = { district = district_nexus_2 zone = zone_minerals_nexus }
-				add_building = building_machine_major_capital
-				add_building = building_machine_assembly_complex
+				add_zone = { district = district_nexus_3 zone = zone_foundry_nexus }
+				if = {
+					limit = { has_ancrel = yes }
+					event_target:DSBF_country = {
+						if = {
+							limit = {
+								NOT = { has_technology = tech_archaeo_refinery }
+							}
+							give_technology = { tech = tech_archaeo_refinery message = no }
+						}
+					}
+					add_building = { building = building_archaeo_refinery zone = zone_foundry_nexus }
+				}
+				else = {
+					add_building = { building = building_crystal_plant zone = zone_foundry_nexus }
+					add_building = { building = building_chemical_plant zone = zone_foundry_nexus }
+					add_building = { building = building_refinery zone = zone_foundry_nexus }
+				}
+				add_building = { building = building_energy_grid zone = zone_energy_nexus }
+				add_building = { building = building_mineral_purification_plant zone = zone_minerals_nexus }
 				solar_system = {
 					if = {
 						limit = {
@@ -7907,11 +8126,20 @@ fleet_event = {
 					}
 				}
 			}
+			set_global_flag = DSBF_shutdown
 			owner = {
 				random = {
 					chance = 50
 					country_event = { id = ancrel.12095 days = 30 }
 				}
+			}
+		}
+	}
+	option = {
+		name = CURIOUS
+		exclusive_trigger = {
+			from.planet = {
+				NOT = { is_planet_class = pc_machine_broken } # Ultima Vigilis was blown up.
 			}
 		}
 	}
