@@ -7,6 +7,30 @@
 #################################
 
 namespace = rebellionfix
+# (on_single_player_save_game_load)
+event = {
+	id = rebellionfix.34
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_playable_country = { num_ethics = 0 }
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = { num_ethics = 0 }
+			# log = "SGF: fix attempt empire with no ethic [This.GetName]"
+			if = {
+				limit = { is_subject = yes }
+				country_event = { id = rebellionfix.35 scopes = { from = overlord } days = 1 }
+			}
+			else = {
+				country_event = { id = rebellionfix.36 days = 1 }
+			}
+		}
+	}
+}
 
 ## Add ethic (on_rebels_take_planet_owner_switched)
 # Initial rebels manage to take control of the planet, happens after the new owner is set, after the war is created.
@@ -21,10 +45,38 @@ country_event = {
 	trigger = {
 		num_ethics = 0
 		is_multiplayer = no # Bug: not sure
+		exists = from
 	}
 
 	immediate = {
-		from = {
+		if = {
+			limit = {
+				from = { is_scope_type = country }
+			}
+			owner_species = { save_event_target_as = new_ethic_target }
+			change_dominant_species = { species = from.owner_species }
+			copy_flags_and_variables_from = from
+			copy_ethos_and_authority = from
+			clear_ethos = yes
+			if = {
+				limit = {
+					NOR = {
+						has_origin = origin_default
+						has_origin = origin_separatists
+						has_origin = origin_liberated
+					}
+				}
+				set_origin = origin_separatists
+			}
+			log = "SGF: Fix empire with no ethic [This.GetName]"
+			country_event = { id = action.229 scopes = { from = from } days = 1 }
+			change_dominant_species = { species = event_target:new_ethic_target }
+			save_event_target_as = new_ethic_target
+		}
+		else = {
+			from = { save_event_target_as = new_ethic_target }
+		}
+		event_target:new_ethic_target = {
 			if = {
 				limit = {
 					pop_amount_percentage = {
@@ -199,8 +251,8 @@ country_event = {
 				}
 			}
 		}
-		country_event = { id = rebellionfix.36 days = 1 }
-		country_event = { id = rebellionfix.364 days = 4 }
+		country_event = { id = rebellionfix.36 days = 1 scopes = { from = from } }
+		country_event = { id = rebellionfix.364 days = 4 scopes = { from = from } }
 	}
 }
 
@@ -215,6 +267,8 @@ country_event = {
 	}
 
 	immediate = {
+		remove_country_flag = cc_rebel_ethic_sorted
+		remove_country_flag = cc_rebel_civic_sorted
 		if = { # Vanilla Bug Fix (v3.11) for syncretic species by FirePrince https://forum.paradoxplaza.com/forum/threads/stellaris-massive-overlooked-issue-with-syncretic-evolution-origin.1622715/
 			limit = {
 				any_owned_species = {
@@ -1222,7 +1276,13 @@ country_event = {
 				}
 			}
 		}
-		country_event = { id = rebellionfix.361 days = 1 }
+		if = {
+			limit = { exists = from }
+			country_event = { id = rebellionfix.361 scopes = { from = from } days = 1 }
+		}
+		else = {
+			country_event = { id = rebellionfix.361 days = 1 }
+		}
 	}
 }
 
@@ -1553,7 +1613,7 @@ country_event = {
 				limit = { has_ethic = ethic_xenophobe }
 				country_remove_ethic = ethic_xenophobe
 			}
-			country_event = { id = rebellionfix.362 }
+			country_event = { id = rebellionfix.362 scopes = { from = from } }
 		}
 		if = {
 			limit = {
@@ -1569,10 +1629,10 @@ country_event = {
 					}
 				}
 			}
-			country_event = { id = rebellionfix.363 days = 1 }
+			country_event = { id = rebellionfix.363 scopes = { from = from } days = 1 }
 		}
 		else = {
-			country_event = { id = rebellionfix.364 days = 1 }
+			country_event = { id = rebellionfix.364 scopes = { from = from } days = 2 }
 		}
 	}
 }
@@ -1706,10 +1766,10 @@ country_event = {
 					}
 				}
 			}
-			country_event = { id = rebellionfix.363 days = 1 }
+			country_event = { id = rebellionfix.363 scopes = { from = from } days = 1 }
 		}
 		else = {
-			country_event = { id = rebellionfix.364 days = 1 }
+			country_event = { id = rebellionfix.364 scopes = { from = from } days = 2 }
 		}
 	}
 }
@@ -1912,7 +1972,7 @@ country_event = {
 				country_add_ethic = ethic_materialist
 			}
 		}
-		country_event = { id = rebellionfix.364 days = 1 }
+		country_event = { id = rebellionfix.364 scopes = { from = from } days = 2 }
 	}
 }
 
@@ -1934,19 +1994,36 @@ country_event = {
 
 	immediate = {
 		set_timed_country_flag = { flag = cc_rebel_civic_sorted days = 7 }
+		if = {
+			limit = {
+				exists = from
+				from = {
+					is_scope_type = country
+					NOT = { is_same_empire = root }
+				}
+			}
+			country_event = { id = action.229 scopes = { from = from } days = 1 } # set_origin_effect
+		}
 		# set_government_cooldown = no
 		if = {
 			limit = { is_gestalt = no }
 			change_government = {
+				cooldown = no
 				authority = random
-				civics = random
+				# civics = random
+				civics = { civic = random }
 				remove_invalid_civics = yes
 			}
 		}
 		else = {
 			# Vanilla Bug!? Ethics result invalid: [ethic_gestalt_consciousness] cannot be added
 			# change_government = random
-			change_government = { civics = random remove_invalid_civics = yes }
+			change_government = {
+				cooldown = no
+				# civics = random
+				civics = { civic = random }
+				remove_invalid_civics = yes
+			}
 		}
 		fire_on_action = { on_action = empire_init_create_ships }
 		set_name = random # Because sometimes native didn't work?

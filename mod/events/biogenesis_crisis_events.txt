@@ -574,7 +574,6 @@ fleet_event = {
 }
 
 # 99 - Behemoth is disabled in battle from on_ship_disabled
-# This = Ship
 # From = Disabler Ship
 ship_event = {
 	id = biocrisis.99
@@ -2291,6 +2290,10 @@ planet_event = {
 	is_triggered_only = yes
 	hide_window = yes
 
+	pre_triggers = {
+		has_owner = yes
+	}
+
 	trigger = {
 		has_owner = yes
 		owner = { has_menace_perk = menp_behemoth_mind_meld }
@@ -2542,6 +2545,10 @@ planet_event = {
 	id = biocrisis.290
 	is_triggered_only = yes
 	hide_window = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
 
 	trigger = {
 		has_owner = yes

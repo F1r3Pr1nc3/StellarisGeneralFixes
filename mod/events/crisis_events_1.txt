@@ -3175,6 +3175,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		destroy_colony = yes # Vfix
 		every_playable_country = {
 			limit = { has_event_chain = "prethoryn_scourge_chain" }
 			add_event_chain_counter = {
@@ -3285,19 +3286,7 @@ system_event = {
 	immediate = {
 		every_system_planet = {
 			limit = { is_planet_class = pc_infested }
-			every_playable_country = {
-				limit = { has_event_chain = "prethoryn_scourge_chain" }
-				add_event_chain_counter = {
-					event_chain = "prethoryn_scourge_chain"
-					counter = "infested_worlds"
-					amount = -1
-				}
-				add_event_chain_counter = {
-					event_chain = "prethoryn_scourge_chain"
-					counter = "infested_worlds_cleansed"
-					amount = 1
-				}
-			}
+			planet_event = { id = crisis.216 } # Vfix opt
 		}
 	}
 }

@@ -31,15 +31,59 @@ event = {
 }
 
 ### Crisis Events II (extradimensionals)
-# NEW Vfix patch opt by FirePrince
-# Anchor Destroyed (HIDDEN)
+# Portal Destroyed (HIDDEN on_fleet_destroyed_victim)
+# Vfix:  (action gate for crisis.1012, crisis.1115, crisis.1215)
+country_event = {
+	id = crisis.1015
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = extradimensional_invasion_happened # Vfix opt
+		OR = {
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+			is_country_type = portal_holder # Vfix for safety
+		}
+		fromfrom = { is_ship_size = dimensional_portal_ed }
+	}
+
+	immediate = {
+		log = "SGF: [This.GetName] Portal Destroyed"
+		switch = {
+			trigger = is_country_type
+			extradimensional	= { country_event = { id = crisis.1012 } }
+			extradimensional_2	= { country_event = { id = crisis.1115 } }
+			extradimensional_3	= { country_event = { id = crisis.1215 } }
+			portal_holder = {
+				fromfrom = {
+					log = "SGF: unorthodox Portal Destroyed triggered!?"
+					switch = {
+						trigger = has_ship_flag
+						unbidden_portal = { event_target:extradimensionals	= { country_event = { id = crisis.1012 } } }
+						aberrant_portal = { event_target:extradimensionals2	= { country_event = { id = crisis.1115 } } }
+						vehement_portal = { event_target:extradimensionals3	= { country_event = { id = crisis.1215 } } }
+					}
+				}
+			}
+		}
+		# crisis.1254 gets yearly triggered
+	}
+}
+
+# NEW Vfix patch opt by FirePrince: make portal vincible
+# Anchor Destroyed (HIDDEN on_starbase_destroyed)
 starbase_event = {
 	id = crisis.1284
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		has_starbase_size = starbase_exd
+		OR = {
+			has_starbase_size = starbase_exd_0
+			has_starbase_size = starbase_exd
+		}
 		has_global_flag = extradimensional_invasion_happened
 		exists = owner
 		owner = {
@@ -52,7 +96,6 @@ starbase_event = {
 	}
 
 	immediate = {
-		log = "anchor destroyed event crisis.1284 triggered"
 		owner = {
 			save_event_target_as = starbase_exd_owner
 			switch = { # Vfix opt
@@ -76,7 +119,7 @@ starbase_event = {
 									is_ship_size = dimensional_portal_ed
 									has_ship_flag = unbidden_portal
 								}
-								fleet = { set_owner = root set_event_locked = no }
+								fleet = { set_controller = root set_event_locked = no }
 							}
 						}
 					}
@@ -100,7 +143,7 @@ starbase_event = {
 									is_ship_size = dimensional_portal_ed
 									has_ship_flag = aberrant_portal
 								}
-								fleet = { set_owner = root set_event_locked = no }
+								fleet = { set_controller = root set_event_locked = no }
 							}
 						}
 					}
@@ -124,11 +167,19 @@ starbase_event = {
 									is_ship_size = dimensional_portal_ed
 									has_ship_flag = vehement_portal
 								}
-								fleet = { set_owner = root set_event_locked = no }
+								fleet = { set_controller = root set_event_locked = no }
 							}
 						}
 					}
 				}
+			}
+		}
+		# Remove System Effect
+		solar_system = {
+			log = "\\[event_target:starbase_exd_owner.GetName] anchor destroyed on \\[This.GetName] event crisis.1281 triggered"
+			random_system_ambient_object = {
+				limit = { has_ambient_object_flag = extradimensional_system_effect }
+				destroy_ambient_object = this
 			}
 		}
 	}
@@ -138,11 +189,19 @@ starbase_event = {
 		event_target:starbase_exd_owner = {
 			if = {
 				limit = {
-					NOT = { any_controlled_fleet = { is_ship_size = starbase_exd } }
+					NOT = {
+						any_controlled_fleet = {
+							OR = {
+								is_ship_size = starbase_exd
+								is_ship_size = starbase_exd_0
+								is_ship_size = dimensional_portal_ed
+							}
+						}
+					}
 				}
 				# Vfix opt
 				event_target:portal_holder_1 = {
-					random_controlled_ship = {
+					random_owned_ship = {
 						limit = {
 							is_ship_size = dimensional_portal_ed
 							OR = {
@@ -160,41 +219,9 @@ starbase_event = {
 								}
 							}
 						}
-						fleet = { set_owner = root set_event_locked = no }
+						fleet = { set_controller = prevprev set_event_locked = no }
 					}
 				}
-			}
-		}
-	}
-}
-
-# New Vfix opt by FirePrince
-# Extradimensionals Starbase Destroyed: Remove System Effect
-starbase_event = {
-	id = crisis.1312
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		OR = {
-			has_starbase_size = starbase_exd_0
-			has_starbase_size = starbase_exd
-		}
-		# exists = owner
-		# owner = {
-		# 	OR = {
-		# 		is_country_type = extradimensional
-		# 		is_country_type = extradimensional_2
-		# 		is_country_type = extradimensional_3
-		# 	}
-		# }
-	}
-
-	immediate = {
-		solar_system = {
-			random_system_ambient_object = {
-				limit = { has_ambient_object_flag = extradimensional_system_effect }
-				destroy_ambient_object = this
 			}
 		}
 	}

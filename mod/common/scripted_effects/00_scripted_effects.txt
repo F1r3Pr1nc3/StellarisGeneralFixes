@@ -1471,7 +1471,7 @@ create_exd_admiral = {
 	else = {
 		create_leader = {
 			class = commander
-			species = event_target:extradimensional_species
+			species = owner_species
 			name = random
 			skill = 3
 			effect = {
@@ -1619,7 +1619,7 @@ create_aberrant_fleet = {
 			create_exd_admiral = yes
 			create_fleet = {
 				effect = {
-					set_owner = root
+					set_owner = prev
 					while = {
 						count = 4
 						create_ship = {
@@ -1706,7 +1706,7 @@ create_vehement_fleet = {
 			create_exd_admiral = yes
 			create_fleet = {
 				effect = {
-					set_owner = root
+					set_owner = prev
 					while = {
 						count = 4
 						create_ship = {
@@ -7305,7 +7305,7 @@ remove_fleet_contract_modifiers = {
 	remove_modifier = hired_mercenary_fleet_naval_cap_usage_galcom_5
 	# Vfix by Dux
 	clear_orders = yes
-	# clear_fleet_actions = yes
+	clear_fleet_actions = this
 	remove_auto_move_target = yes
 }
 

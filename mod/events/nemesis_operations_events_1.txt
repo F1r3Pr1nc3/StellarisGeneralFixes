@@ -5226,6 +5226,9 @@ espionage_operation_event = {
 	# Vfix: collect all 18 options into one (without triggering "has no valid options")
 	option = {
 		name = operation.7000.a
+		trigger = {
+			exists = event_target:target_country
+		} # Sometimes missing for unknown reason
 		switch = {
 			trigger = has_espionage_operation_flag
 			intel_report_gov_3 = {
@@ -5524,8 +5527,8 @@ espionage_operation_event = {
 	option = { # Vfix fallback
 		exclusive_trigger = {
 			OR = {
-				NOT = {
-					# exists = target
+				NAND = {
+					exists = event_target:target_country
 					exists = spynetwork
 				}
 				has_espionage_operation_flag = operation_failed
@@ -5533,7 +5536,6 @@ espionage_operation_event = {
 		}
 		name = shroud.6120.name
 		default_hide_option = yes
-		ai_chance = { factor = 0.1 }
 	}
 
 	after = {

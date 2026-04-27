@@ -126,7 +126,7 @@ country_event = {
 }
 
 # Scorched Earth Civic - A planet is bombed with the Firestorm stance, generates Unity.
-# This = Planet, From = Bombarder, on_planet_bombarded (daily)
+# From = Bombarder, on_planet_bombarded (daily)
 planet_event = {
 	id = infernals.20
 	hide_window = yes
@@ -153,7 +153,7 @@ planet_event = {
 }
 
 # Scorched Earth Civic - A planet is bombed with the Seismic Bombing stance, generates blockers.
-# This = Planet, From = Bombarder, on_planet_bombarded (daily)
+# From = Bombarder, on_planet_bombarded (daily)
 planet_event = {
 	id = infernals.25
 	hide_window = yes
@@ -442,12 +442,8 @@ planet_event = {
 		}
 		# Contingency
 		if = {
-			limit = {
-				is_planet_class = pc_ai
-				NOT = { has_planet_flag = machine_lair }
-			}
+			limit = { is_planet_class = pc_ai } # Vfix opt
 			set_planet_flag = planet_burned
-			planet_event = { id = crisis.2040 }
 			create_ambient_object = {
 				location = this
 				type = habitat_cracker_object
@@ -460,53 +456,29 @@ planet_event = {
 				entity_scale_to_size = yes
 				scale = 0.5
 			}
-		}
-		# Final Machine World
-		if = {
-			limit = {
-				is_planet_class = pc_ai
-				has_planet_flag = machine_lair
+			if = { # Final Machine World
+				limit = {
+					is_planet_class = pc_ai
+					has_planet_flag = machine_lair
+				}
+				from.owner = { save_event_target_as = final_machine_world_destroyer }
+				stop_crisis_sound = yes
+				planet_event = { id = crisis.2046 }
 			}
-			set_planet_flag = planet_burned
-			from.owner = { save_event_target_as = final_machine_world_destroyer }
-			stop_crisis_sound = yes
-			planet_event = { id = crisis.2046 }
-			create_ambient_object = {
-				location = this
-				type = habitat_cracker_object
-				play_animation_once = yes
-				duration = 5
-				use_3d_location = yes
-				base_angle_towards = star
-				entity_face_object = star
-				entity_offset = { min = 0 max = 0 }
-				entity_scale_to_size = yes
-				scale = 0.5
+			else = {
+				planet_event = { id = crisis.2040 }
 			}
 		}
 		# Swarm
-		if = {
+		else_if = { # Vfix opt
 			limit = {
 				exists = owner
 				owner = { is_country_type = swarm }
 			}
-			every_playable_country = {
-				limit = { has_event_chain = "prethoryn_scourge_chain" }
-				add_event_chain_counter = {
-					event_chain = "prethoryn_scourge_chain"
-					counter = "infested_worlds"
-					amount = -1
-				}
-				add_event_chain_counter = {
-					event_chain = "prethoryn_scourge_chain"
-					counter = "infested_worlds_cleansed"
-					amount = 1
-				}
-			}
-			destroy_colony = yes
+			planet_event = { id = crisis.216 } # Vfix opt
 		}
 		# GalCom resolutions
-		if = {
+		else_if = { # Vfix opt
 			limit = {
 				exists = owner
 				owner = {
@@ -583,7 +555,7 @@ planet_event = {
 			}
 		}
 		# Diplo Penalties + Threat (Vfix mod by Dux)
-		if = {
+		else_if = { # Vfix opt
 			limit = {
 				NOT = { is_planet_class = pc_ai }
 				exists = owner
@@ -5657,7 +5629,6 @@ fleet_event = {
 }
 
 # "Molten Core" Grand Archives Specimen. Triggers as random Volcanic Colony event
-# This = Planet
 planet_event = {
 	id = infernals.3200
 	title = infernals.3200.name
@@ -5708,6 +5679,10 @@ planet_event = {
 	id = infernals.3215
 	hide_window = yes
 	is_triggered_only = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
 
 	trigger = {
 		is_planet_class = pc_volcanic
