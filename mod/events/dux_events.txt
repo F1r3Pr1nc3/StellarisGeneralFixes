@@ -67,3 +67,25 @@ country_event = {
 		}
 	}
 }
+
+namespace = DSBF_guardians
+
+planet_event = {
+	id = DSBF_guardians.99
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		solar_system = { has_star_flag = surveillance_supercomputer_system }
+	}
+
+	immediate = {
+		random = {
+			chance = 50
+			from.owner = {
+				country_event = { id = ancrel.12095 days = 30 }
+			}
+		}
+	}
+}

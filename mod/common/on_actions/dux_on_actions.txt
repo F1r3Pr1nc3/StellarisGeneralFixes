@@ -12,3 +12,10 @@ on_building_ruined = {
 		DPFF.2 # Repair ruined primitive buildings.
 	}
 }
+
+# If you blow up Ultima Vigilis it disables the final reward of the digsite and may alert the Watchers.
+on_destroy_planet_with_PLANET_KILLER_STAR_CRACKER = {
+	events = {
+		DSBF_guardians.99
+	}
+}
