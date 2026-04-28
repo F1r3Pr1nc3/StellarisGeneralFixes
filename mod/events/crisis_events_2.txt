@@ -2045,83 +2045,87 @@ country_event = {
 				}
 			}
 			country_event = { id = crisis.1260 days = 600 random = 200 } # Check again later
+			break = yes
 		}
-		country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
-		export_trigger_value_to_variable = {
-			trigger = count_controlled_fleet
-			parameters = {
-				limit = { is_ship_size = starbase_exd }
+		else = {
+			country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
+			export_trigger_value_to_variable = {
+				trigger = count_controlled_fleet
+				parameters = {
+					limit = { is_ship_size = starbase_exd }
+				}
+				variable = num_anchors_exd
 			}
-			variable = num_anchors_exd
-		}
-		# If at fleet cap
-		if = {
-			limit = { num_ships > 2000 } # roughly 30-60 fleets (+ 100 starbase fleets)
-			country_event = { id = crisis.1260 days = 600 random = 200 } # Check again later
-		}
-		# If no Anchors
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 0 }
+			# If at fleet cap
+			if = {
+				limit = { num_ships > 2000 } # roughly 30-60 fleets (+ 100 starbase fleets)
+				country_event = { id = crisis.1260 days = 600 random = 200 } # Check again later
+				break = yes
 			}
-			country_event = { id = crisis.1265 days = 1500 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 1 }
+			# If no Anchors
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 0 }
+				}
+				country_event = { id = crisis.1265 days = 1500 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 1300 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 2 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 1 }
+				}
+				country_event = { id = crisis.1265 days = 1300 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 1100 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 3 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 2 }
+				}
+				country_event = { id = crisis.1265 days = 1100 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 900 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 4 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 3 }
+				}
+				country_event = { id = crisis.1265 days = 900 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 600 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 5 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 4 }
+				}
+				country_event = { id = crisis.1265 days = 600 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 400 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 6 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 5 }
+				}
+				country_event = { id = crisis.1265 days = 400 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 400 random = 200 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 7 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 6 }
+				}
+				country_event = { id = crisis.1265 days = 400 random = 200 }
 			}
-			country_event = { id = crisis.1265 days = 300 random = 100 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 8 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 7 }
+				}
+				country_event = { id = crisis.1265 days = 300 random = 100 }
 			}
-			country_event = { id = crisis.1265 days = 250 random = 50 }
-		}
-		else_if = {
-			limit = {
-				check_variable = { which = num_anchors_exd value = 9 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 8 }
+				}
+				country_event = { id = crisis.1265 days = 250 random = 50 }
 			}
-			country_event = { id = crisis.1265 days = 200 random = 50 }
-		}
-		else = { # Vfix opt minor
-			country_event = { id = crisis.1265 days = 150 random = 50 }
+			else_if = {
+				limit = {
+					check_variable = { which = num_anchors_exd value = 9 }
+				}
+				country_event = { id = crisis.1265 days = 200 random = 50 }
+			}
+			else = { # Vfix opt minor
+				country_event = { id = crisis.1265 days = 150 random = 50 }
+			}
 		}
 	}
 }
@@ -2613,15 +2617,12 @@ country_event = {
 					event_target:portal_holder_1 = {
 						any_owned_fleet = {
 							is_ship_size = dimensional_portal_ed
-							is_controlled_by = root # vulnerable
+							is_controlled_by = root # vincible
 						}
 					}
 				}
 				random_controlled_fleet = {
-					limit = {
-						is_ship_size = dimensional_portal_ed
-						is_within_borders_of = root
-					}
+					limit = { is_ship_size = dimensional_portal_ed }
 					set_event_locked = yes
 					set_controller = event_target:portal_holder_1 # Vfix: to put this here makes the whole shebang for a seperate country for the portal pointless!
 					log = "anchor built and crisis.1280 executed, reaching fleet owner switch"
@@ -2668,7 +2669,6 @@ country_event = {
 	}
 }
 
-# id = crisis.1281 moved for compatibility
 # Extradimensional Kill Count (HIDDEN)
 country_event = {
 	id = crisis.1282

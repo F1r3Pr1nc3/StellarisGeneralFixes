@@ -2074,15 +2074,27 @@ spawn_habitat_cracker_effect = {
 	}
 
 	save_event_target_as = target_habitat
-	owner_or_space_owner = {
-		save_event_target_as = habitat_owner
+	if = {
+		limit = { exists = owner_or_space_owner }
+		owner_or_space_owner = {
+			save_event_target_as = habitat_owner
+		}
 	}
 	solar_system = {
-		spawn_megastructure = {
-			type = habitat_central_complex_ruined
-			owner = event_target:habitat_owner # Vfix
-			coords_from = prev
+		if = {
+			limit = { exists = event_target:habitat_owner } # Vfix
+			spawn_megastructure = {
+				type = habitat_central_complex_ruined
+				owner = event_target:habitat_owner
+				coords_from = prev
+			}
 		}
+		# else = { VFIX TODO: no owner?
+		# 	spawn_megastructure = {
+		# 		type = habitat_central_complex_ruined
+		# 		coords_from = prev
+		# 	}
+		# }
 		random_system_planet = {
 			limit = { has_planet_flag = habitat@event_target:target_habitat }
 			remove_planet_flag = habitat@event_target:target_habitat

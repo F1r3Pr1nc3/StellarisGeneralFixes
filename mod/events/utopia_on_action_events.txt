@@ -706,16 +706,50 @@ country_event = {
 				has_policy_flag = cyberization_standards_limited
 				from = {
 					species = { has_trait = trait_limited_cybernetic }
-					is_spiritualist = yes # fanatic technically possible
+					is_spiritualist = yes
 				}
 			}
 			from = {
-				add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+				if = { # Vfix just for unknwon case
+					limit = {
+						NOT = { has_trait = leader_trait_limited_cyborg }
+					}
+					if = {
+						limit = { has_trait = leader_trait_cyborg }
+						remove_trait = leader_trait_cyborg
+					}
+					add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+				}
 			}
 		}
 		else = {
 			from = {
-				add_trait = { trait = leader_trait_cyborg show_message = no }
+				if = { # Vfix just for unknwon case
+					limit = {
+						NOT = { has_trait = leader_trait_cyborg }
+					}
+					if = {
+						limit = { has_trait = leader_trait_limited_cyborg }
+						remove_trait = leader_trait_limited_cyborg
+					}
+					add_trait = { trait = leader_trait_cyborg show_message = no }
+				}
+				if = { # Vfix just for unknwon case
+					limit = {
+						species = {
+							NOT = { has_trait = trait_cybernetic }
+						}
+					}
+					prev = {
+						random_owned_species = {
+							limit = {
+								has_trait = trait_cybernetic
+								is_same_species = prev.species
+							}
+							prev = { change_species = prev }
+						}
+					}
+				}
 			}
 			if = {
 				limit = { has_country_flag = firewall_built }

@@ -314,16 +314,16 @@ habitat_central_complex_restored = {
 			}
 		}
 		fromfrom.solar_system = { set_star_flag = has_habitat }
+		from = {
+			save_event_target_as = habitat_owner
+			country_event = { id = megastructures.10 }
+		}
 		solar_system = {
 			spawn_orbital_effect = {
 				TYPE = major
 				HABITAT_OWNER = event_target:habitat_owner
 				TARGET_PLANET = event_target:target_planet
 			}
-		}
-		from = {
-			save_event_target_as = habitat_owner
-			country_event = { id = megastructures.10 }
 		}
 		remove_megastructure = fromfrom
 	}

@@ -59,12 +59,9 @@ country_event = {
 			portal_holder = {
 				fromfrom = {
 					log = "SGF: unorthodox Portal Destroyed triggered!?"
-					switch = {
-						trigger = has_ship_flag
-						unbidden_portal = { event_target:extradimensionals	= { country_event = { id = crisis.1012 } } }
-						aberrant_portal = { event_target:extradimensionals2	= { country_event = { id = crisis.1115 } } }
-						vehement_portal = { event_target:extradimensionals3	= { country_event = { id = crisis.1215 } } }
-					}
+					if = { limit = { any_owned_ship = { has_ship_flag = unbidden_portal } } event_target:extradimensionals = { country_event = { id = crisis.1012 } } }
+					else_if = { limit = { any_owned_ship = { has_ship_flag = aberrant_portal } } event_target:extradimensionals2 = { country_event = { id = crisis.1115 } } }
+					else_if = { limit = { any_owned_ship = { has_ship_flag = vehement_portal } } event_target:extradimensionals3 = { country_event = { id = crisis.1215 } } }
 				}
 			}
 		}
@@ -96,6 +93,15 @@ starbase_event = {
 	}
 
 	immediate = {
+		if = {
+			limit = {
+				NOT = { exists = event_target:portal_holder_1 }
+			}
+			random_country = {
+				limit = { is_country_type = portal_holder }
+				save_global_event_target_as = portal_holder_1
+			}
+		}
 		owner = {
 			save_event_target_as = starbase_exd_owner
 			switch = { # Vfix opt
@@ -173,6 +179,36 @@ starbase_event = {
 					}
 				}
 			}
+			if = {
+				limit = {
+					event_target:portal_holder_1 = {
+						any_owned_ship = {
+							is_ship_size = dimensional_portal_ed
+							OR = {
+								is_controlled_by = prevprev # vincible
+								AND = { # Not protected: TODO: just one fleet?
+									NOT = { is_within_borders_of = prevprev }
+									OR = {
+										AND = {
+											prevprev = { has_country_flag = unbidden }
+											has_ship_flag = unbidden_portal
+										}
+										AND = {
+											prevprev = { has_country_flag = aberrant }
+											has_ship_flag = aberrant_portal
+										}
+										AND = {
+											prevprev = { has_country_flag = vehement }
+											has_ship_flag = vehement_portal
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				country_event = { id = crisis.1611 } # Fallback to the Portal
+			}
 		}
 		# Remove System Effect
 		solar_system = {
@@ -220,6 +256,99 @@ starbase_event = {
 							}
 						}
 						fleet = { set_controller = prevprev set_event_locked = no }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Fallback to the Portal
+country_event = {
+	id = crisis.1611
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		if = { # Vfix opt
+			limit = {
+				NOT = { exists = event_target:dimensional_portal_system }
+			}
+			random_controlled_fleet = {
+				limit = { is_ship_size = dimensional_portal_ed }
+				solar_system = { save_event_target_as = dimensional_portal_system }
+			}
+		}
+		every_owned_fleet = {
+			limit = {
+				is_mobile = yes
+				exists = solar_system
+				NOR = {
+					is_civilian = yes
+					is_garrison = yes
+					solar_system = {
+						OR = {
+							has_star_flag = extradimensional_origin_system
+							has_star_flag = extradimensional_second_portal_system
+							has_star_flag = extradimensional_third_portal_system
+						}
+					}
+				}
+			}
+			solar_system = {
+				prev = {
+					if = {
+						limit = { is_in_combat = yes }
+						auto_move_to_planet = {
+							target = event_target:dimensional_portal_system.star
+							clear_auto_move_on_arrival = yes
+						}
+						log = "SGF: move back to portal system [This.GetName]"
+					}
+					else_if = {
+						limit = { can_go_mia = yes }
+						remove_auto_move_target = yes
+						clear_fleet_actions = this
+						set_mia = mia_return_home
+						log = "SGF: go mia to portal system [This.GetName]"
+					}
+					else = {
+						order_forced_return = yes
+						log = "SGF: order forced return to portal system [This.GetName]"
+					}
+				}
+			}
+			# Assign leader to fleet (if missing)
+			if = {
+				limit = {
+					NOT = { exists = leader }
+					root = {
+						any_owned_leader = {
+							leader_class = commander
+							is_idle = yes
+							NOR = {
+								exists = fleet
+								is_councilor = yes
+								is_ruler = yes
+							}
+						}
+					}
+				}
+				root = {
+					random_owned_leader = {
+						limit = {
+							leader_class = commander
+							is_idle = yes
+							NOR = {
+								is_councilor = yes
+								is_ruler = yes
+								exists = fleet
+							}
+						}
+						prevprev = { assign_leader = prev }
 					}
 				}
 			}
