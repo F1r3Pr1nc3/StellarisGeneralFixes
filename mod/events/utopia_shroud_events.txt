@@ -4677,41 +4677,44 @@ country_event = {
 				}
 			}
 		}
-		random_owned_leader = {
-			limit = {
-				suitable_for_chosen = yes
-				NOR = {
-					AND = {
-						root = { is_gestalt = yes }
-						is_ruler = yes
+		if = { # Vfix log
+			limit = { exists = event_target:leader_1 }
+			random_owned_leader = {
+				limit = {
+					suitable_for_chosen = yes
+					NOR = {
+						AND = {
+							root = { is_gestalt = yes }
+							is_ruler = yes
+						}
+						is_same_value = event_target:leader_1
 					}
-					is_same_value = event_target:leader_1
+				}
+				save_event_target_as = leader_2
+				random_list = {
+					33 = { set_leader_flag = high_psi }
+					33 = { set_leader_flag = medium_psi }
+					33 = { set_leader_flag = low_psi }
 				}
 			}
-			save_event_target_as = leader_2
-			random_list = {
-				33 = { set_leader_flag = high_psi }
-				33 = { set_leader_flag = medium_psi }
-				33 = { set_leader_flag = low_psi }
-			}
-		}
-		random_owned_leader = {
-			limit = {
-				NOR = {
-					is_same_value = event_target:leader_1
-					is_same_value = event_target:leader_2
-					is_exploring_astral_rift = yes
-					is_gestalt_node = yes
+			random_owned_leader = {
+				limit = {
+					NOR = {
+						is_same_value = event_target:leader_1
+						is_same_value = event_target:leader_2
+						is_exploring_astral_rift = yes
+						is_gestalt_node = yes
+					}
+					OR = {
+						has_trait = leader_trait_composer_chosen
+						has_trait = leader_trait_eater_chosen
+						has_trait = leader_trait_instrument_chosen
+						has_trait = leader_trait_whisperers_chosen
+					}
 				}
-				OR = {
-					has_trait = leader_trait_composer_chosen
-					has_trait = leader_trait_eater_chosen
-					has_trait = leader_trait_instrument_chosen
-					has_trait = leader_trait_whisperers_chosen
-				}
+				save_event_target_as = leader_3
+				set_leader_flag = high_psi
 			}
-			save_event_target_as = leader_3
-			set_leader_flag = high_psi
 		}
 		if = {
 			limit = {
@@ -4737,24 +4740,27 @@ country_event = {
 				}
 			}
 		}
-		random_owned_leader = {
-			limit = {
-				suitable_for_chosen = yes
-				NOR = {
-					AND = {
-						prev = { is_gestalt = yes }
-						is_ruler = yes
+		if = { # Vfix log
+			limit = { exists = event_target:leader_3 }
+			random_owned_leader = {
+				limit = {
+					suitable_for_chosen = yes
+					NOR = {
+						AND = {
+							prev = { is_gestalt = yes }
+							is_ruler = yes
+						}
+						is_same_value = event_target:leader_1
+						is_same_value = event_target:leader_2
+						is_same_value = event_target:leader_3
 					}
-					is_same_value = event_target:leader_1
-					is_same_value = event_target:leader_2
-					is_same_value = event_target:leader_3
 				}
-			}
-			save_event_target_as = leader_4
-			random_list = {
-				33 = { set_leader_flag = high_psi }
-				33 = { set_leader_flag = medium_psi }
-				33 = { set_leader_flag = low_psi }
+				save_event_target_as = leader_4
+				random_list = {
+					33 = { set_leader_flag = high_psi }
+					33 = { set_leader_flag = medium_psi }
+					33 = { set_leader_flag = low_psi }
+				}
 			}
 		}
 	}
@@ -4767,20 +4773,29 @@ country_event = {
 				remove_leader_flag = medium_psi
 				remove_leader_flag = low_psi
 			}
-			event_target:leader_2 = {
-				remove_leader_flag = high_psi
-				remove_leader_flag = medium_psi
-				remove_leader_flag = low_psi
-			}
-			event_target:leader_3 = {
-				remove_leader_flag = high_psi
-				remove_leader_flag = medium_psi
-				remove_leader_flag = low_psi
-			}
-			event_target:leader_4 = {
-				remove_leader_flag = high_psi
-				remove_leader_flag = medium_psi
-				remove_leader_flag = low_psi
+			if = { # Vfix log
+				limit = { exists = event_target:leader_2 }
+				event_target:leader_2 = {
+					remove_leader_flag = high_psi
+					remove_leader_flag = medium_psi
+					remove_leader_flag = low_psi
+				}
+				if = { # Vfix log
+					limit = { exists = event_target:leader_3 }
+					event_target:leader_3 = {
+						remove_leader_flag = high_psi
+						remove_leader_flag = medium_psi
+						remove_leader_flag = low_psi
+					}
+					if = { # Vfix log
+						limit = { exists = event_target:leader_4 }
+						event_target:leader_4 = {
+							remove_leader_flag = high_psi
+							remove_leader_flag = medium_psi
+							remove_leader_flag = low_psi
+						}
+					}
+				}
 			}
 		}
 	}

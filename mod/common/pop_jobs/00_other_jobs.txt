@@ -747,15 +747,6 @@ bio_trophy_processing = {
 	}
 
 	demotion = {
-		# Should always fire, regardless of pop group's current statum/category.
-		# Ignores `can_change_category = no` rules of the pop group's current stratum.
-		time = 0
-		effect = {
-			pop_amount_change_category = {
-				CATEGORY = bio_trophy
-				AMOUNT = local_pop_amount
-			}
-		}
 	}
 
 	possible_pre_triggers = {
@@ -837,6 +828,8 @@ purge = {
 		}
 	}
 
+	ignores_sapience = yes
+
 	promotion = {
 		time = 0
 		effect = {
@@ -847,7 +840,6 @@ purge = {
 		}
 	}
 
-	# ignores_sapience = yes TEST ignored?
 	possible_pre_triggers = {
 		has_owner = yes
 		is_robotic = no

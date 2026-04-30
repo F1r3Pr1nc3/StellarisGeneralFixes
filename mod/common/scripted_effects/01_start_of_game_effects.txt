@@ -2180,7 +2180,15 @@ void_dweller_home_planet_setup = {
 				}
 			}
 		}
-		create_pop_group = { size = 2800 species = owner_species }
+		if = {
+			limit = {
+				owner = { is_tankbound_empire = yes }
+			}
+			create_pop_group = { size = 800 species = owner_species }
+		}
+		else = {
+			create_pop_group = { size = 2800 species = owner_species }
+		}
 	}
 	else_if = { # Then we generate pops for eager explorer empires
 		limit = {
@@ -2316,6 +2324,8 @@ void_dweller_home_planet_setup = {
 	inline_script = "game_start/ethic_xenophobe"
 	##Civics
 	inline_script = "game_start/civics"
+	# Tankbound civic (removes every farming districts so we want to do that at the end)
+	inline_script = "game_start/civic_tankbound"
 	# Apply rural districts depending on variable count
 	inline_script = "game_start/rural_districts_placement"
 	set_planet_size = 6

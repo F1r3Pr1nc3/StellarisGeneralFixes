@@ -890,7 +890,6 @@ spawn_vultaum_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -927,7 +926,6 @@ spawn_yuht_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -964,7 +962,6 @@ spawn_league_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -1001,7 +998,6 @@ spawn_irassian_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -1038,7 +1034,6 @@ spawn_cybrex_anomaly = {
 			}
 		}
 	}
-
 	set_country_flag = ongoing_precursor_artifact
 }
 
@@ -1144,6 +1139,7 @@ create_cybernetic_species_mod = {
 		}
 		save_event_target_as = changing_species
 	}
+
 	owner = {
 		every_owned_pop_group = {
 			limit = { is_exact_same_species = event_target:changing_species }
@@ -1199,6 +1195,7 @@ create_nuked_species_mod = {
 		}
 		save_event_target_as = changing_species
 	}
+
 	owner = {
 		every_owned_pop_group = {
 			limit = { is_exact_same_species = event_target:changing_species }
@@ -1260,6 +1257,7 @@ create_ai_planet_defense = {
 			}
 		}
 	}
+
 	owner = {
 		create_leader = {
 			class = commander
@@ -2076,20 +2074,18 @@ spawn_habitat_cracker_effect = {
 	save_event_target_as = target_habitat
 	if = {
 		limit = { exists = owner_or_space_owner }
-		owner_or_space_owner = {
-			save_event_target_as = habitat_owner
-		}
+		owner_or_space_owner = { save_event_target_as = habitat_owner }
 	}
 	solar_system = {
-		if = {
-			limit = { exists = event_target:habitat_owner } # Vfix
+		if = { # Vfix
+			limit = { exists = event_target:habitat_owner }
 			spawn_megastructure = {
 				type = habitat_central_complex_ruined
 				owner = event_target:habitat_owner
 				coords_from = prev
 			}
 		}
-		# else = { VFIX TODO: no owner?
+		# else = { # Vfix: no owner?
 		# 	spawn_megastructure = {
 		# 		type = habitat_central_complex_ruined
 		# 		coords_from = prev
@@ -2125,6 +2121,7 @@ spawn_lathe_cracker_effect = {
 	}
 
 	save_event_target_as = target_lathe
+
 	solar_system = {
 		spawn_megastructure = {
 			type = cosmogenesis_world_ruined
@@ -2177,6 +2174,7 @@ spawn_habitat_pacifier_effect = {
 		entity_scale_to_size = yes
 		scale = 0.10
 	}
+
 	solar_system = {
 		every_fleet_in_system = {
 			limit = { is_ship_class = shipclass_habitat_station }
@@ -2200,6 +2198,7 @@ spawn_lathe_pacifier_effect = {
 	}
 
 	save_event_target_as = target_lathe
+
 	solar_system = {
 		spawn_megastructure = {
 			type = cosmogenesis_world_ruined
@@ -2602,6 +2601,12 @@ update_leader_after_modification = {
 					prev = { # Compare machine_synthetic_leader_effect / cybernetics.5080
 						if = {
 							limit = {
+								owner = { has_country_flag = driven_cybernetics }
+							}
+							add_trait = { trait = leader_trait_cyborg show_message = no }
+						}
+						else_if = {
+							limit = {
 								NOT = { has_trait = leader_trait_synthetic }
 								owner = {
 									OR = {
@@ -2613,19 +2618,6 @@ update_leader_after_modification = {
 							}
 							add_trait = { trait = leader_trait_synthetic show_message = no }
 						}
-						# else_if = {
-						# 	limit = {
-						# 		has_trait = leader_trait_synthetic
-						# 		owner = {
-						# 			NOR = {
-						# 				is_synthetic_empire = yes
-						# 				has_tradition = tr_synthetics_finish
-						# 				has_tradition = tr_modularity_finish
-						# 			}
-						# 		}
-						# 	}
-						# 	remove_trait = leader_trait_synthetic
-						# }
 					}
 				}
 			}
@@ -3411,6 +3403,7 @@ create_built_robot_species = {
 			save_event_target_as = robot_species
 		}
 	}
+
 	species = {
 		if = {
 			limit = { has_trait = trait_void_dweller_1 }
@@ -3945,9 +3938,7 @@ setup_baol_colony_1 = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			is_planet_class = pc_barren
@@ -3965,9 +3956,7 @@ setup_baol_colony_2 = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			is_planet_class = pc_asteroid
@@ -3985,9 +3974,7 @@ setup_baol_colony_3 = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			habitable_planet = yes
@@ -4011,9 +3998,7 @@ setup_baol_colony_3_fallback = {
 	root.owner = {
 		set_visited = prev
 	}
-
 	set_star_flag = grunur_site@root.owner
-
 	random_system_planet = {
 		limit = {
 			habitable_planet = yes
@@ -4184,7 +4169,6 @@ add_imp_concession_ports = {
 
 can_build_crisis_star_eater = {
 	set_country_flag = can_build_crisis_star_eater
-
 	create_ship_design = {
 		design = "NAME_Crisis_Star_Eater"
 	}
@@ -4387,6 +4371,7 @@ destroy_star_system = {
 	every_system_megastructure = {
 		set_ruined_megastructure = yes
 	}
+
 	star = {
 		create_ambient_object = { type = "destroyed_system" location = this }
 		last_created_ambient_object = {
@@ -4710,6 +4695,7 @@ declare_crisis_war_effect = {
 			set_closed_borders = { who = prev status = no }
 		}
 	}
+
 	event_target:community_war_leader = {
 		declare_war = {
 			target = event_target:new_crisis
@@ -5106,6 +5092,7 @@ create_origin_dragon_deposit_effect = {
 	}
 
 	add_deposit = d_landed_dragon
+
 	owner = {
 		remove_country_flag = space_dragon_about_to_land
 	}
@@ -6159,6 +6146,7 @@ central_crystal_country_spawn_effect = {
 			}
 		}
 	}
+
 	solar_system = {
 		save_global_event_target_as = the_outer_gate
 	}
@@ -7419,7 +7407,6 @@ remove_galactic_market_modifiers = {
 			remove_modifier = market_nominee_level_5
 		}
 	}
-
 	clear_variable = market_rating
 }
 
@@ -8447,6 +8434,7 @@ declare_malevolent_aura_focus = {
 			set_closed_borders = { who = prev status = no }
 		}
 	}
+
 	event_target:community_war_leader = {
 		if = {
 			limit = { exists = event_target:malevolent_aura_empire }
@@ -8479,7 +8467,6 @@ declare_malevolent_aura_focus = {
 			side = event_target:community_war_leader
 		}
 	}
-
 	# Vfix forgot? https://forum.paradoxplaza.com/forum/threads/stellaris-galactic-community-repeatedly-declaring-war.1859716/#post-30911060
 	set_global_flag = galactic_focus_crisis_malevolent_aura
 }

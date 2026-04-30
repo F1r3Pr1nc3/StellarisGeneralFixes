@@ -2480,7 +2480,22 @@ decision_open_shroud_rift = {
 				}
 			}
 		}
-		else = {
+		else_if = {
+			limit = {
+				NOR = {
+					is_artificial = yes
+					is_planet_class = pc_machine
+					is_planet_class = pc_hive
+				}
+				any_deposit = {
+					NOR = {
+						is_blocker = yes
+						has_deposit_category = deposit_cat_rare
+						has_deposit_category = deposit_cat_rare_resource
+						has_deposit_category = deposit_cat_rare_blocker
+					}
+				}
+			}
 			decision_shroud_region_effect = yes
 		}
 	}

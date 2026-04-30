@@ -10664,8 +10664,7 @@ country_event = {
 }
 
 ### Initial Reinforcement for Encouraging Satrap.
-### Marauder Establishes Base in Capital System.
-
+## Marauder Establishes Base in Capital System.
 country_event = {
 	id = marauder.553
 	title = "marauder.553.name"
@@ -10736,6 +10735,7 @@ country_event = {
 			create_fleet = {
 				effect = {
 					set_owner = prev
+					set_event_locked = yes
 					create_ship = {
 						name = "NAME_Garrison_Base"
 						design = "NAME_Void_Dwelling"
@@ -10777,6 +10777,7 @@ country_event = {
 					}
 				}
 			}
+			add_trust = { who = event_target:raider_khanate amount = 30 }
 			event_target:garrison_base = {
 				if = {
 					limit = { exists = event_target:marauders_garrison_1 }
@@ -10789,6 +10790,7 @@ country_event = {
 						# set_aggro_range_measure_from = self
 						effect = {
 							set_owner = prev
+							set_event_locked = yes
 							set_fleet_flag = satrapy_garrison_fleet
 							create_dyn_marauder_fleet = {
 								OUTRIDER = 22
@@ -10810,7 +10812,7 @@ country_event = {
 						}
 					}
 					create_marauder_merc_admiral = yes
-					last_created_fleet = { assign_leader = last_created_leader }
+					add_trust = { who = root amount = 90 }
 				}
 				if = {
 					limit = { exists = event_target:marauders_garrison_1 }
@@ -10827,11 +10829,12 @@ country_event = {
 						}
 					}
 				}
+				last_created_fleet = {
+					set_event_locked = no # Vfix: sometimes there is an hiccup
+					assign_leader = last_created_leader
+				}
+				set_event_locked = no # Vfix: sometimes there is an hiccup
 			}
-			event_target:raider_khanate = {
-				add_trust = { who = root amount = 90 }
-			}
-			add_trust = { who = event_target:raider_khanate amount = 30 }
 		}
 	}
 

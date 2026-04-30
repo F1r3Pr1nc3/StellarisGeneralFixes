@@ -642,6 +642,34 @@ col_bureau_machine = {
 	}
 }
 
+# Machine World Trade
+col_trade_machine = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		uses_district_set = machine_world
+		exists = owner_or_space_owner
+		owner_or_space_owner = { is_country_type = default is_machine_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	weight_modifier = {
+		modifier = { add = @stickiness has_designation = col_trade_machine }
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = { type = district_nexus }
+			mode = add
+			mult = 2
+		}
+	}
+}
+
 # Research Planet
 col_research = {
 	icon = GFX_colony_type_research

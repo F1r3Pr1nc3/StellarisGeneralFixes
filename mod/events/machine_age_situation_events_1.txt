@@ -6021,6 +6021,18 @@ country_event = {
 
 	immediate = {
 		set_country_flag = driven_cybernetics
+		# If the tradition tree was completed before this event fired, queue the
+		# Advanced Assimilators choice now since finish couldn't do it without the flag.
+		if = {
+			limit = {
+				has_tradition = tr_cybernetics_assimilator_finish
+				NOR = {
+					has_country_flag = driven_memory_aggregator
+					has_country_flag = driven_neural_chorus
+				}
+			}
+			country_event = { id = cyber.2015 days = 2 }
+		}
 	}
 
 	option = {

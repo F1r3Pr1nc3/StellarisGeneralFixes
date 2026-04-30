@@ -325,16 +325,12 @@ DLAF_make_full_synths = {
 		1 = { set_country_flag = synth_unscheduled_updates }
 		1 = { set_country_flag = synth_safe_updates }
 	}
-
 	set_country_flag = synth_assimilation # So they can assimilate.
-
 	random_situation = { # They are already Synths, skip this.
 		limit = { is_situation_type = situation_digitization }
 		destroy_situation = this
 	}
-
 	set_country_flag = identity_complex_available # so we can instantly grant the building.
-
 	random_list = {
 		10 = {
 			modifier = {
@@ -378,7 +374,6 @@ DLAF_make_full_synths = {
 			set_country_flag = synth_focus_upkeep
 		}
 	}
-
 	set_country_flag = edict_subsidized_identity_backups
 	give_technology = { tech = tech_identity_copy }
 	set_country_flag = edict_optimized_identity_creation
@@ -990,6 +985,7 @@ inherit_tech_effect = {
 		tech_power_hub_1 = { give_technology = { tech = tech_power_hub_1 } }
 	}
 	## Add resources
+
 	add_resource = {
 		minerals = 10000
 		energy = 10000
@@ -1138,6 +1134,7 @@ DNCF_spawn_nivlac_circle = {
 			change_government = { civics = random }
 		}
 	}
+
 	# DNCF_setup_nivlac_planet (just used once)
 	event_target:nivlac_planet = {
 		solar_system = {
@@ -1364,15 +1361,14 @@ create_merc_enclave_admiral = {
 	}
 	if = {
 		limit = {
-			NOR = {
+			NOT = {
 				any_owned_leader = {
 					leader_class = commander
-					is_councilor = no
-					is_ruler = no
-				}
-				any_owned_fleet = { # Backup check, leaders don't always show as owned.
-					exists = leader
-					is_leased = yes
+					NOR = {
+						is_councilor = yes
+						is_ruler = yes
+						exists = fleet # Otherwise there could be just one admiral at all (don't release fleets without admiral)
+					}
 				}
 			}
 		}
@@ -1390,6 +1386,10 @@ create_merc_enclave_admiral = {
 			traits = {
 				trait = leader_trait_mercenary_warrior
 				trait = leader_trait_aggressive
+			}
+			effect = {
+				add_trait = { trait = random_common show_message = no }
+				save_event_target_as = mercenary_admiral
 			}
 		}
 	}

@@ -352,72 +352,115 @@ country_event = {
 	}
 }
 
-# Mercs under attack recall their fleet
+# Mercs under attack recall their fleet (on_entering_battle)
+# this = owner of aggressor fleet | from = owner of attacked fleet | fromfrom = aggressor fleet | fromfromfrom = attacked fleet
 country_event = {
 	id = enclave.27
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		is_mercenary = yes
+		OR = {
+			is_mercenary = yes
+			from = { is_mercenary = yes } # Vfix missing!?
+		}
 		OR = {
 			fromfrom = {
 				is_mercenary_station = yes
-				is_owned_by = prev # Merc on Merc battle, retreat correct fleet.
+				is_owned_by = prev # Vfix: retreat correct fleet
 			}
-			fromfromfrom = { is_mercenary_station = yes is_owned_by = prev }
+			fromfromfrom = {
+				is_mercenary_station = yes
+				is_owned_by = root.from # Vfix: retreat correct fleet
+			}
 		}
 	}
 
 	immediate = {
-		save_event_target_as = mercenary_enclave_country
-		random_owned_fleet = {
-			limit = { is_mercenary_station = yes }
-			save_event_target_as = merc_home_base
-			solar_system = { save_event_target_as = mercenary_home_system }
-		}
-		every_owned_fleet = { # Rare bug allows renting two fleets from same enclave,
+		if = {
 			limit = {
-				is_ship_class = shipclass_military
-				is_leased = yes
+				is_mercenary = yes
+				fromfromfrom = { fleet_power > 4500 } # Vfix: false alarm!
 			}
-			save_event_target_as = mercenary_fleet
-			controller = {
-				save_event_target_as = mercenary_client
-				if = { # No Refund if the client is the attacker
+			save_event_target_as = mercenary_enclave_country
+		}
+		else_if = {
+			limit = {
+				fromfrom = { fleet_power > 4500 }
+			}
+			from = { save_event_target_as = mercenary_enclave_country }
+		}
+		if = {
+			limit = { exists = event_target:mercenary_enclave_country }
+			event_target:mercenary_enclave_country = { # Vfix
+				random_owned_fleet = {
+					limit = { is_mercenary_station = yes }
+					solar_system = { save_event_target_as = mercenary_home_system }
+				}
+				every_owned_fleet = { # Vfix: Possible renting more fleets
 					limit = {
-						NOT = { event_target:mercenary_client = { is_hostile = event_target:mercenary_enclave_country } }
+						is_ship_class = shipclass_military
+						is_leased = yes
+						NAND = { # Vfix
+							exists = solar_system
+							solar_system = { is_same_value = event_target:mercenary_home_system }
+						}
 					}
-					country_event = { id = enclave.29 days = 1 }
+					save_event_target_as = mercenary_fleet
+					controller = {
+						save_event_target_as = mercenary_client
+						if = { # No Refund if the client is the attacker
+							limit = {
+								NOT = { event_target:mercenary_client = { is_hostile = event_target:mercenary_enclave_country } }
+							}
+							country_event = { id = enclave.29 days = 1 }
+						}
+					}
 				}
+				# TODO: little bit off (instand return, no matter what)!?
+				every_owned_fleet = {
+					limit = {
+						is_ship_class = shipclass_military
+						NAND = { # Vfix
+							exists = solar_system
+							solar_system = { is_same_value = event_target:mercenary_home_system }
+						}
+					}
+					if = {
+						limit = { has_auto_move_target = yes }
+						remove_auto_move_target = yes
+						clear_orders = yes
+						clear_fleet_actions = this
+					}
+					# Vfix (idea by Dux)TODO TEST
+					if = { # Mia just works for real starbase
+						limit = {
+							exists = event_target:mercenary_home_system.starbase
+							event_target:mercenary_home_system.starbase = {
+								is_owned_by = prevprev # Cannot set home base otherwise
+							}
+						}
+						set_controller = owner
+						set_home_base = event_target:mercenary_home_system.starbase
+						if = {
+							limit = {
+								can_go_mia = yes
+							}
+							set_mia = mia_return_home
+							set_mia_return_delay = 0
+						}
+						else = { # MIA / Hyperlane
+							set_mia_return_delay = 0 # Already MIA, end timer.
+							order_forced_return = yes
+						}
+					}
+					else = {
+						set_location = event_target:mercenary_home_system
+					}
+				}
+				set_timed_country_flag = { flag = enclave_under_attack years = 1 } # Vfix: no where used
 			}
 		}
-		every_owned_fleet = {
-			limit = {
-				is_mercenary_station = no
-				is_ship_class = shipclass_military
-			}
-			if = {
-				limit = { is_leased = yes }
-				set_controller = owner # Cannot set home base unless friendly, not neutral.
-			}
-			set_home_base = event_target:merc_home_base
-			if = {
-				limit = { NOT = { exists = solar_system } } # MIA / Hyperlane
-				if = {
-					limit = { can_go_mia = yes }
-					set_mia = mia_return_home
-					set_mia_return_delay = 0
-				}
-				else = {
-					set_mia_return_delay = 0
-				} # Already MIA, end timer.
-			}
-			else = {
-				set_location = event_target:merc_home_base
-			}
-		}
-		set_country_flag = enclave_under_attack
 	}
 }
 
@@ -506,7 +549,7 @@ country_event = {
 				reason = broken
 			}
 			remove_fleet_flag = fleet_on_loan@root
-			set_location = { target = event_target:mercenary_home_system }
+			set_location = { target = event_target:mercenary_home_system } # TODO: little bit off (instand return, no matter what)!?
 		}
 	}
 
@@ -1014,7 +1057,6 @@ country_event = {
 				limit = {
 					is_ship_class = shipclass_military
 					is_leased = no
-					is_designable = yes # Vfix
 				}
 				position = 0
 				order_by = trigger:fleet_power
@@ -2358,7 +2400,7 @@ country_event = {
 				reason = cancelled
 			}
 			remove_fleet_flag = fleet_on_loan@root
-			set_location = { target = event_target:mercenary_home_system }
+			set_location = { target = event_target:mercenary_home_system } # TODO: little bit off (instand return, no matter what)!?
 		}
 	}
 }
