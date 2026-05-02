@@ -214,13 +214,13 @@ should_abduct_pop_group = {
 species_can_live_on_planet = {
 	hidden_trigger = {
 		exists = root # somehow this appeared in the error log. No idea how!
-		NAND = {
-			root = { is_planet_class = pc_machine }
-			NOR = {
-				is_robotic_species = yes
-				has_trait = trait_cybernetic
-				has_unplugged_positive_trait = yes
+		OR = { # Vfix opt: double negation
+			root = {
+				NOT = { is_planet_class = pc_machine }
 			}
+			is_robotic = yes
+			has_trait = trait_cybernetic
+			has_unplugged_positive_trait = yes
 		}
 		if = {
 			limit = {
@@ -947,7 +947,7 @@ species_has_happiness = {
 can_species_procreate = {
 	is_sapient = yes
 	NOR = {
-		is_robotic_species = yes
+		is_robotic = yes
 		has_trait = trait_limited_cybernetic
 		has_citizenship_type = { type = citizenship_protected_drone country = root.owner }
 		has_citizenship_type = { type = citizenship_symbiotic_drone country = root.owner }
@@ -997,7 +997,7 @@ can_species_be_assembled = {
 # Root = Planet
 species_uses_bonus_growth = {
 	is_sapient = yes
-	is_robotic_species = no
+	is_robotic = no
 
 	has_population_control = {
 		type = no
@@ -1026,7 +1026,7 @@ species_uses_bonus_growth = {
 founder_species_uses_logistic_growth_mult = {
 	exists = from
 	from = {
-		is_robotic_species = no
+		is_robotic = no
 		is_infertile = no
 	}
 }
@@ -1034,14 +1034,14 @@ founder_species_uses_logistic_growth_mult = {
 founder_species_uses_assembly = {
 	exists = from
 	from = {
-		is_robotic_species = yes
+		is_robotic = yes
 	}
 }
 
 founder_species_uses_bonus_growth_mult = {
 	exists = from
 	from = {
-		is_robotic_species = no
+		is_robotic = no
 		is_infertile = yes
 	}
 }
@@ -3687,7 +3687,6 @@ can_use_mutations = {
 	hidden_trigger = {
 		is_scope_valid = yes
 	}
-
 	has_technology = tech_controlled_mutations
 }
 
@@ -3695,7 +3694,6 @@ can_use_artificial_breeding = {
 	hidden_trigger = {
 		is_scope_valid = yes
 	}
-
 	has_technology = tech_alien_cloning
 }
 
