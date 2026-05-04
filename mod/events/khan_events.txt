@@ -136,29 +136,14 @@ system_event = {
 							has_technology = tech_starbase_5
 						}
 					}
-					inverted_switch = {
-						trigger = has_technology
-						tech_starbase_2 = {
-							give_technology = { tech = tech_starbase_2 }
-						}
-						tech_starbase_3 = {
-							give_technology = { tech = tech_starbase_3 }
-						}
-						tech_starbase_4 = {
-							give_technology = { tech = tech_starbase_4 }
-						}
-						tech_starbase_5 = {
-							give_technology = { tech = tech_starbase_5 }
-						}
-						tech_power_plant_4 = {
-							give_technology = { tech = tech_power_plant_4 }
-						}
-						tech_mining_3 = {
-							give_technology = { tech = tech_mining_3 }
-						}
-						tech_power_hub_1 = {
-							give_technology = { tech = tech_power_hub_1 }
-						}
+					inverted_switch = { trigger = has_technology
+						tech_starbase_2		= { give_technology = { tech = tech_starbase_2 } }
+						tech_starbase_3		= { give_technology = { tech = tech_starbase_3 } }
+						tech_starbase_4		= { give_technology = { tech = tech_starbase_4 } }
+						tech_starbase_5		= { give_technology = { tech = tech_starbase_5 } }
+						tech_power_plant_4	= { give_technology = { tech = tech_power_plant_4 } }
+						tech_mining_3		= { give_technology = { tech = tech_mining_3 } }
+						tech_power_hub_1	= { give_technology = { tech = tech_power_hub_1 } }
 					}
 				}
 			}
@@ -993,8 +978,7 @@ country_event = {
 }
 
 ## Workaround fix ongoing hostility
-## This = Khan
-
+# This = Khan
 country_event = {
 	id = khan.309
 	hide_window = yes
@@ -1123,7 +1107,7 @@ country_event = {
 			if = {
 				limit = { exists = event_target:marauders_garrison_1 }
 				event_target:marauders_garrison_1 = { # Performance: Just use custom event target once in favor of native engine scopes.
-					root = { # # Set_neutral
+					root = { ## Set_neutral
 						every_country = {
 							limit = {
 								has_communications = root

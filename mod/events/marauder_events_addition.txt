@@ -360,6 +360,22 @@ fleet_event = {
 						}
 					}
 				}
+				if = {
+					limit = { is_at_war = yes }
+					every_war = {
+						limit = {
+							is_war_participant = { who = prev side = attackers }
+						}
+						every_attacker = {
+							limit = {
+								NOT = { is_same_value = prevprev }
+							}
+							root.owner = {
+								set_faction_hostility = { target = prev set_hostile = yes }
+							}
+						}
+					}
+				}
 			}
 			set_fleet_flag = got_targeted
 		}
@@ -428,7 +444,6 @@ fleet_event = {
 			auto_move_to_planet = {
 				target = event_target:attacked_planet
 				clear_auto_move_on_arrival = no
-				arrival_effect = marauder_path_attack
 			}
 			log = "Vfix: Take new raid target [This.System.GetName]"
 			break = yes
@@ -549,10 +564,23 @@ fleet_event = {
 						}
 					}
 					root = {
-						auto_move_to_planet = {
-							target = prev
-							clear_auto_move_on_arrival = no
-							arrival_effect = marauder_path_attack
+						if = {
+							limit = {
+								prev = {
+									has_owner = yes
+									is_owned_by = from
+									sapient_pop_amount > 100
+									is_planet_eligible_for_treasure_planet = yes
+								}
+							}
+							auto_move_to_planet = { target = prev clear_auto_move_on_arrival = no }
+						}
+						else = {
+							auto_move_to_planet = {
+								target = prev
+								clear_auto_move_on_arrival = no
+								arrival_effect = marauder_path_attack
+							}
 						}
 						fleet_event = { id = marauder.29 days = 100 random = 25 scopes = { from = from } }
 						log = "Vfix: \\[This.Owner.GetName] take new raid target \\[Prev.GetName]"

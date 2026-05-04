@@ -964,6 +964,9 @@ country_event = {
 				}
 				event_target:new_khanate = { set_player = event_target:raider_khanate }
 			}
+			else = {
+				event_target:raider_khanate = { destroy_country = yes }
+			}
 		}
 		else_if = {
 			limit = { is_country_type = default }
@@ -1141,6 +1144,10 @@ country_event = {
 				add_opinion_modifier = { modifier = opinion_flavors_down who = prev }
 				set_variable = { which = var_sapient_pop_amount value = trigger:pop_amount }
 				save_event_target_as = planet_owner_2
+				if = {# FIXME: Hack for unknown neutrality
+					limit = { is_neutral_to = prev }
+					set_faction_hostility = { target = prev set_hostile = yes }
+				}
 				## Prevent extreme balcanization
 				# Potential system
 				# if = { # First simple level

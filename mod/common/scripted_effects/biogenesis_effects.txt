@@ -65,7 +65,6 @@ add_random_trait_evopred = {
 			}
 		}
 	}
-
 	remove_country_flag = consumed_$TAG$_dna
 	if = {
 		limit = {
@@ -1247,7 +1246,7 @@ set_species_traits_evopred_count_variable = {
 make_nascent_starting_pops = {
 	if = { # Setting 200 pops to be presapient if you have the trait
 		limit = {
-			last_created_species = { has_trait = trait_nascent_stage }
+			last_created_species = { has_trait = trait_nascent_stage is_sapient = yes }
 			NOT = { owner = { has_country_flag = generated_starting_nascent_stage_pops } }
 		}
 		weighted_random_owned_pop_group = {
@@ -1255,8 +1254,26 @@ make_nascent_starting_pops = {
 				is_sapient = yes
 				has_trait = trait_nascent_stage
 			}
-			species = { save_event_target_as = nascent_stage_source_species }
 			save_event_target_as = nascent_stage_source_pop_group
+		}
+		if = {
+			limit = {
+				NOT = { exists = event_target:nascent_stage_source_pop_group }
+			}
+			last_created_species = {
+				random_species_pop_group = {
+					limit = {
+						is_sapient = yes
+						has_trait = trait_nascent_stage
+						is_owned_by = prevprev.owner
+					}
+					save_event_target_as = nascent_stage_source_pop_group
+					log = "SGF: take fallback pop_group target"
+				}
+			}
+		}
+		event_target:nascent_stage_source_pop_group = {
+			species = { save_event_target_as = nascent_stage_source_species }
 			modify_species = {
 				species = species
 				add_trait = trait_presapient_stage

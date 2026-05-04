@@ -714,7 +714,10 @@ first_contact_event = {
 				save_event_target_as = known_planet
 				solar_system = { set_star_flag = first_contact_known_system@root.owner }
 				if = {
-					limit = { is_moon = yes }
+					limit = {
+						is_moon = yes
+						exists = orbit # Vfix log
+					}
 					orbit = { generate_number_planet_in_system_flags = yes }
 				}
 				else = {

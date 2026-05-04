@@ -17,16 +17,12 @@ civilian = {
 
 	possible = {
 		hidden_trigger = { exists = owner }
-		owner = {
-			is_gestalt = no
-		}
-		NAND = {
-			owner = {
-				has_active_tradition = tr_virtuality_finish
+		NOR = {
+			owner = { is_gestalt = yes }
+			AND = {
+				owner = { has_active_tradition = tr_virtuality_finish }
+				has_virtual_species_trait = yes
 			}
-			has_virtual_species_trait = yes
-		}
-		NOT = {
 			planet = { is_planet_class = pc_cosmogenesis_world }
 		}
 	}
@@ -51,9 +47,7 @@ civilian = {
 		swap_type = {
 			trigger = {
 				exists = owner
-				owner = {
-					is_pleasure_seeker_empire = yes
-				}
+				owner = { is_pleasure_seeker_empire = yes }
 			}
 			name = fe_hedonist
 			desc = fe_hedonist
@@ -83,8 +77,8 @@ civilian = {
 		potential = {
 			exists = owner
 			owner = {
-				is_pleasure_seeker_empire = no
-				NOT = {
+				NOR = {
+					is_pleasure_seeker_empire = yes
 					has_valid_civic = civic_dystopian_society
 				}
 			}
@@ -107,6 +101,7 @@ civilian = {
 		weight = 0
 	}
 }
+
 # VFix (by fs_nanamedou)
 # Orderly slavery citizenship pop can change to slave class.
 # Don't create slave_unemployment class pops, becouse slave_unemployment couse slave_processing -> worker -> slave_processing loop.
@@ -269,9 +264,7 @@ servant = {
 			building_icon = building_luxury_residence
 		}
 	}
-
 	tags = { amenities }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
@@ -287,9 +280,7 @@ servant = {
 		potential = {
 			exists = owner
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 		}
 		planet_amenities_add = 400
@@ -304,15 +295,14 @@ servant = {
 slave_overseer = {
 	category = worker
 	is_capped_by_modifier = yes
+
 	swappable_data = {
 		default = {
 			building_icon = building_crude_huts
 			icon = enforcer
 		}
 	}
-
 	tags = { crime enforcer }
-
 	possible_pre_triggers = {
 		has_planet = yes
 		is_sapient = yes
@@ -351,9 +341,7 @@ slave_toiler = {
 			icon = primitive_laborer
 		}
 	}
-
 	tags = { amenities }
-
 	possible_pre_triggers = {
 		has_planet = yes
 		is_sapient = yes
@@ -368,9 +356,7 @@ slave_toiler = {
 		potential = {
 			exists = owner
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 		}
 		planet_amenities_add = 200
@@ -385,9 +371,7 @@ slave_toiler = {
 organic_battery = {
 	category = worker
 	is_capped_by_modifier = no
-
 	tags = { energy }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_robotic = no
@@ -415,14 +399,13 @@ livestock = {
 	category = worker
 	first_come_first_served = no
 	is_capped_by_modifier = no
+
 	swappable_data = {
 		default = {
 			building_icon = building_food_processing_facility
 		}
 	}
-
 	tags = { food }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_robotic = no
@@ -431,14 +414,8 @@ livestock = {
 
 	possible = {
 		OR = {
-			has_citizenship_type = {
-				type = citizenship_slavery
-				country = owner
-			}
-			has_citizenship_type = {
-				type = citizenship_exploited_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_slavery country = owner }
+			has_citizenship_type = { type = citizenship_exploited_drone country = owner }
 		}
 		has_slavery_type = { type = slavery_livestock }
 		is_lithoid = no
@@ -468,9 +445,7 @@ livestock = {
 livestock_infernal = {
 	category = worker
 	is_capped_by_modifier = no
-
 	tags = { alloys }
-
 	swappable_data = {
 		default = {
 			icon = livestock
@@ -486,14 +461,8 @@ livestock_infernal = {
 
 	possible = {
 		OR = {
-			has_citizenship_type = {
-				type = citizenship_slavery
-				country = owner
-			}
-			has_citizenship_type = {
-				type = citizenship_exploited_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_slavery country = owner }
+			has_citizenship_type = { type = citizenship_exploited_drone country = owner }
 		}
 		has_slavery_type = { type = slavery_livestock }
 		has_trait = trait_infernal
@@ -522,14 +491,13 @@ livestock_infernal = {
 livestock_zoo_animal = {
 	category = pre_sapients
 	is_capped_by_modifier = yes
+
 	swappable_data = {
 		default = {
 			building_icon = building_xeno_zoo
 		}
 	}
-
 	tags = { amenities }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_robotic = no
@@ -542,10 +510,7 @@ livestock_zoo_animal = {
 				has_citizenship_type = { type = citizenship_slavery country = owner }
 				has_slavery_type = { type = slavery_livestock }
 			}
-			has_citizenship_type = {
-				type = citizenship_protected_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_protected_drone country = owner }
 		}
 		planet = {
 			has_owner = yes
@@ -565,9 +530,7 @@ livestock_zoo_animal = {
 		potential = {
 			exists = owner
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 		}
 		planet_amenities_add = 100
@@ -577,16 +540,12 @@ livestock_zoo_animal = {
 	weight = {
 		weight = @special_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
-
 		modifier = {
 			factor = 1.5
 			exists = planet
 			planet = {
 				free_amenities < 500
-				num_assigned_jobs = {
-					job = livestock_zoo_animal
-					value = 0
-				}
+				num_assigned_jobs = { job = livestock_zoo_animal value = 0 }
 			}
 		}
 	}
@@ -595,14 +554,13 @@ livestock_zoo_animal = {
 livestock_zoo_beast = {
 	category = pre_sapients
 	is_capped_by_modifier = yes
+
 	swappable_data = {
 		default = {
 			building_icon = building_xeno_zoo
 		}
 	}
-
 	tags = { amenities }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_robotic = no
@@ -615,16 +573,11 @@ livestock_zoo_beast = {
 				has_citizenship_type = { type = citizenship_slavery country = owner }
 				has_slavery_type = { type = slavery_livestock }
 			}
-			has_citizenship_type = {
-				type = citizenship_protected_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_protected_drone country = owner }
 		}
 		planet = {
 			has_owner = yes
-			owner = {
-				has_valid_civic = civic_warrior_culture
-			}
+			owner = { has_valid_civic = civic_warrior_culture }
 			has_active_building = building_xeno_zoo
 		}
 	}
@@ -640,9 +593,7 @@ livestock_zoo_beast = {
 		potential = {
 			exists = owner
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 		}
 		planet_amenities_add = 100
@@ -652,16 +603,12 @@ livestock_zoo_beast = {
 	weight = {
 		weight = @special_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
-
 		modifier = {
 			factor = 1.5
 			exists = planet
 			planet = {
 				free_amenities < 500
-				num_assigned_jobs = {
-					job = livestock_zoo_beast
-					value = 0
-				}
+				num_assigned_jobs = { job = livestock_zoo_beast value = 0 }
 			}
 		}
 	}
@@ -677,7 +624,6 @@ bio_trophy = {
 		}
 	}
 	tags = { unity }
-
 	possible_pre_triggers = {
 		has_owner = yes # Vfix
 		is_robotic = no
@@ -689,9 +635,7 @@ bio_trophy = {
 			is_pop_category = bio_trophy
 			is_pop_category = bio_trophy_unemployment
 		}
-		NOT = {
-			planet = { is_planet_class = pc_cosmogenesis_world }
-		}
+		NOT = { planet = { is_planet_class = pc_cosmogenesis_world } }
 	}
 
 	promotion = {
@@ -747,6 +691,15 @@ bio_trophy_processing = {
 	}
 
 	demotion = {
+		# Should always fire, regardless of pop group's current statum/category.
+		# Ignores `can_change_category = no` rules of the pop group's current stratum.
+		time = 0
+		effect = {
+			pop_amount_change_category = {
+				CATEGORY = bio_trophy
+				AMOUNT = local_pop_amount
+			}
+		}
 	}
 
 	possible_pre_triggers = {
@@ -757,9 +710,7 @@ bio_trophy_processing = {
 	}
 
 	possible = {
-		owner = {
-			has_valid_civic = civic_machine_servitor
-		}
+		owner = { has_valid_civic = civic_machine_servitor }
 		NOR = {
 			is_pop_category = bio_trophy
 			is_pop_category = bio_trophy_unemployment
@@ -803,9 +754,7 @@ bio_trophy_unprocessing = {
 			is_pop_category = bio_trophy_unemployment
 		}
 		NOR = {
-			owner = {
-				has_valid_civic = civic_machine_servitor
-			}
+			owner = { has_valid_civic = civic_machine_servitor }
 			planet = { is_planet_class = pc_cosmogenesis_world }
 		}
 	}
@@ -815,9 +764,7 @@ purge = {
 	category = purge
 	first_come_first_served = yes
 	is_capped_by_modifier = no
-
-	tags = { }
-
+	tags = {  }
 	demotion = {
 		time = 0
 		effect = {
@@ -865,7 +812,8 @@ purge = {
 		}
 	}
 
-	resources = {}
+	resources = {
+	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -877,7 +825,6 @@ purge = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -897,7 +844,6 @@ purge = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -960,15 +906,14 @@ crisis_purge = {
 	purge = purge_normal
 	first_come_first_served = yes
 	is_capped_by_modifier = no
+	ignores_sapience = yes # TEST ignored?
 
 	swappable_data = {
 		default = {
 			icon = purge
 		}
 	}
-
-	tags = { }
-
+	tags = {  }
 	demotion = {
 		time = 0
 		effect = {
@@ -983,8 +928,6 @@ crisis_purge = {
 		is_sapient = yes # Bug: somehow ignores_sapience is ignored
 	}
 
-	ignores_sapience = yes # TEST ignored?
-
 	possible = { # controlled by crisis
 		has_global_flag = galactic_crisis_happened
 		exists = planet
@@ -995,12 +938,9 @@ crisis_purge = {
 				is_country_type = ai_empire
 			}
 		}
-		OR = { # contingency won't purge itself
-			NOT = { exists = event_target:custodian_bot }
-			AND = {
-				exists = event_target:custodian_bot
-				NOT = { species = { is_same_value = event_target:custodian_bot } }
-			}
+		NAND = { # contingency won't purge itself
+			exists = event_target:custodian_bot
+			species = { is_same_value = event_target:custodian_bot }
 		}
 	}
 
@@ -1036,9 +976,7 @@ crisis_purge = {
 assimilation = {
 	category = assimilation
 	is_capped_by_modifier = no
-
 	tags = { assimilation }
-
 	possible_pre_triggers = {
 		has_owner = yes # Vfix opt
 		is_sapient = yes
@@ -1049,10 +987,7 @@ assimilation = {
 
 	possible = {
 		exists = owner
-		has_citizenship_type = {
-			type = citizenship_assimilation
-			country = owner
-		}
+		has_citizenship_type = { type = citizenship_assimilation country = owner }
 	}
 
 	resources = {
@@ -1061,7 +996,6 @@ assimilation = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 200 # brings @special_job_weight up to 2
 			is_being_assimilated = yes
@@ -1081,9 +1015,7 @@ criminal = {
 	}
 
 	contributes_to_diplo_weight = no
-
 	tags = { crime }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
@@ -1092,13 +1024,8 @@ criminal = {
 	possible = {
 		# check that this is not a robot in servitude
 		NOR = {
-			has_citizenship_type = {
-				country = owner
-				type = citizenship_robot_servitude
-			}
-			owner = {
-				is_gestalt = yes
-			}
+			has_citizenship_type = { country = owner type = citizenship_robot_servitude }
+			owner = { is_gestalt = yes }
 		}
 	}
 
@@ -1117,7 +1044,6 @@ criminal = {
 				has_councilor = { COUNCILOR = "councilor_criminal_heritage" }
 			}
 		}
-
 		branch_office_criminal_syndicate_value_add = 0.25
 		mult = value:pop_branch_office_councilor_level|TYPE|councilor_criminal_heritage|
 	}
@@ -1139,9 +1065,7 @@ deviant_drone = {
 	}
 
 	contributes_to_diplo_weight = no
-
 	tags = { crime }
-
 	possible_pre_triggers = {
 		has_planet = yes
 		is_sapient = yes
@@ -1175,13 +1099,12 @@ corrupt_drone = {
 	}
 
 	contributes_to_diplo_weight = no
-
 	tags = { crime }
-
 	possible_pre_triggers = {
 		has_planet = yes
 		is_sapient = yes
 	}
+
 	possible = {
 		planet = { has_modifier = drone_corruption }
 	}
@@ -1208,19 +1131,14 @@ fotd_protectors = {
 			icon = enforcer
 		}
 	}
-
 	tags = { crime enforcer }
-
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			has_origin = origin_fear_of_the_dark
-		}
+		owner = { is_primitive = yes has_origin = origin_fear_of_the_dark }
 	}
 
 	planet_modifier = {
@@ -1231,7 +1149,6 @@ fotd_protectors = {
 
 	weight = {
 		weight = 0.1
-
 		# crisis purge
 		modifier = {
 			factor = 0.01
@@ -1246,13 +1163,13 @@ fotd_protectors = {
 		}
 	}
 }
+
 ## Machine Guided Sapience
+
 organic_exhibit = {
 	category = bio_trophy
 	is_capped_by_modifier = no
-
 	tags = { unity }
-
 	possible_pre_triggers = {
 		has_owner = yes # Vfix
 		is_sapient = yes
@@ -1301,14 +1218,8 @@ livestock_lithoid = {
 	possible = {
 		is_lithoid = yes
 		OR = {
-			has_citizenship_type = {
-				type = citizenship_slavery
-				country = owner
-			}
-			has_citizenship_type = {
-				type = citizenship_exploited_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_slavery country = owner }
+			has_citizenship_type = { type = citizenship_exploited_drone country = owner }
 		}
 		has_slavery_type = { type = slavery_livestock }
 	}
@@ -1339,14 +1250,8 @@ livestock_zoo_animal_lithoid = {
 	possible = {
 		is_lithoid = yes
 		OR = {
-			has_citizenship_type = {
-				type = citizenship_slavery
-				country = owner
-			}
-			has_citizenship_type = {
-				type = citizenship_exploited_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_slavery country = owner }
+			has_citizenship_type = { type = citizenship_exploited_drone country = owner }
 		}
 		has_slavery_type = { type = slavery_livestock }
 		planet = {
@@ -1367,9 +1272,7 @@ livestock_zoo_animal_lithoid = {
 		potential = {
 			exists = owner
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 		}
 		planet_amenities_add = 100
@@ -1379,16 +1282,12 @@ livestock_zoo_animal_lithoid = {
 	weight = {
 		weight = @special_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
-
 		modifier = {
 			factor = 1.5
 			exists = planet
 			planet = {
 				free_amenities < 500
-				num_assigned_jobs = {
-					job = livestock_zoo_animal
-					value = 0
-				}
+				num_assigned_jobs = { job = livestock_zoo_animal value = 0 }
 			}
 		}
 	}
@@ -1408,21 +1307,13 @@ livestock_zoo_beast_lithoid = {
 	possible = {
 		is_lithoid = yes
 		OR = {
-			has_citizenship_type = {
-				type = citizenship_slavery
-				country = owner
-			}
-			has_citizenship_type = {
-				type = citizenship_exploited_drone
-				country = owner
-			}
+			has_citizenship_type = { type = citizenship_slavery country = owner }
+			has_citizenship_type = { type = citizenship_exploited_drone country = owner }
 		}
 		has_slavery_type = { type = slavery_livestock }
 		planet = {
 			has_owner = yes
-			owner = {
-				has_valid_civic = civic_warrior_culture
-			}
+			owner = { has_valid_civic = civic_warrior_culture }
 			has_active_building = building_xeno_zoo
 		}
 	}
@@ -1438,9 +1329,7 @@ livestock_zoo_beast_lithoid = {
 		potential = {
 			exists = owner
 			owner = {
-				NOT = {
-					has_valid_civic = civic_dystopian_society
-				}
+				NOT = { has_valid_civic = civic_dystopian_society }
 			}
 		}
 		planet_amenities_add = 100
@@ -1450,16 +1339,12 @@ livestock_zoo_beast_lithoid = {
 	weight = {
 		weight = @special_job_weight
 		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
-
 		modifier = {
 			factor = 1.05
 			exists = planet
 			planet = {
 				free_amenities < 500
-				num_assigned_jobs = {
-					job = livestock_zoo_beast
-					value = 0
-				}
+				num_assigned_jobs = { job = livestock_zoo_beast value = 0 }
 			}
 		}
 	}
@@ -1542,7 +1427,6 @@ purge_lithoid = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -1620,7 +1504,6 @@ purge_robot = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 brings @special_job_weight up to 2
 			exists = planet
@@ -1640,7 +1523,6 @@ purge_robot = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -1655,7 +1537,7 @@ purge_robot = {
 
 purge_processing = {
 	category = purge
-#	purge = purge_processing
+	#	purge = purge_processing
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -1668,9 +1550,7 @@ purge_processing = {
 			}
 		}
 	}
-
-	tags = { }
-
+	tags = {  }
 	ignores_sapience = yes
 
 	possible_pre_triggers = {
@@ -1731,7 +1611,6 @@ purge_processing = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -1746,12 +1625,10 @@ purge_processing = {
 				}
 			}
 		}
-
 		modifier = {
 			factor = 9999 # u die when flagged
 			has_pop_group_flag = event_purge
 		}
-
 		modifier = {
 			factor = 9999 # u die when crisis'd
 			exists = planet
@@ -1766,9 +1643,10 @@ purge_processing = {
 		}
 	}
 }
+
 purge_processing_lithoid = {
 	category = purge
-#	purge = purge_processing
+	#	purge = purge_processing
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -1791,9 +1669,7 @@ purge_processing_lithoid = {
 			}
 		}
 	}
-
-	tags = { }
-
+	tags = {  }
 	# ignores_sapience = yes TEST ignored?
 	possible_pre_triggers = {
 		has_owner = yes
@@ -1853,7 +1729,6 @@ purge_processing_lithoid = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -1873,7 +1748,6 @@ purge_processing_lithoid = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -1888,7 +1762,7 @@ purge_processing_lithoid = {
 
 purge_processing_infernal = {
 	category = purge
-#	purge = purge_processing
+	#	purge = purge_processing
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -1907,9 +1781,7 @@ purge_processing_infernal = {
 			}
 		}
 	}
-
-	tags = { }
-
+	tags = {  }
 	ignores_sapience = yes
 
 	possible_pre_triggers = {
@@ -1975,7 +1847,6 @@ purge_processing_infernal = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -1995,7 +1866,6 @@ purge_processing_infernal = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -2010,7 +1880,7 @@ purge_processing_infernal = {
 
 purge_processing_robot = {
 	category = purge
-#	purge = purge_processing
+	#	purge = purge_processing
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -2023,9 +1893,7 @@ purge_processing_robot = {
 			}
 		}
 	}
-
-	tags = { }
-
+	tags = {  }
 	ignores_sapience = yes
 
 	possible_pre_triggers = {
@@ -2081,7 +1949,6 @@ purge_processing_robot = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -2101,7 +1968,6 @@ purge_processing_robot = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -2116,7 +1982,7 @@ purge_processing_robot = {
 
 purge_labor_camps = {
 	category = purge
-#	purge = purge_labor_camps
+	#	purge = purge_labor_camps
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -2129,8 +1995,7 @@ purge_labor_camps = {
 			}
 		}
 	}
-	tags = { }
-
+	tags = {  }
 	ignores_sapience = yes
 
 	possible_pre_triggers = {
@@ -2174,7 +2039,6 @@ purge_labor_camps = {
 			}
 			food = 2
 		}
-
 		produces = {
 			trigger = {
 				planet = { has_active_building = building_mineral_purification_plant }
@@ -2199,7 +2063,6 @@ purge_labor_camps = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -2219,7 +2082,6 @@ purge_labor_camps = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -2231,9 +2093,10 @@ purge_labor_camps = {
 		# 			# extradimensionals just bombard you
 	}
 }
+
 purge_matrix = {
 	category = purge
-#	purge = purge_matrix
+	#	purge = purge_matrix
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -2246,9 +2109,7 @@ purge_matrix = {
 			}
 		}
 	}
-
-	tags = { }
-
+	tags = {  }
 	ignores_sapience = yes
 
 	possible_pre_triggers = {
@@ -2304,7 +2165,6 @@ purge_matrix = {
 
 	weight = {
 		weight = @special_job_weight
-
 		modifier = {
 			factor = 9999 # 200 # brings @special_job_weight up to 2
 			exists = planet
@@ -2324,7 +2184,6 @@ purge_matrix = {
 		# 	factor = 9999 # u die when flagged
 		# 	has_pop_group_flag = event_purge
 		# }
-
 		# modifier = {
 		# 	factor = 9999 # u die when crisis'd
 		# 	exists = planet
@@ -2339,7 +2198,7 @@ purge_matrix = {
 
 purge_sacrifice = {
 	category = purge
-#	purge = purge_sacrifice
+	#	purge = purge_sacrifice
 	first_come_first_served = yes
 	is_capped_by_modifier = no
 
@@ -2352,7 +2211,7 @@ purge_sacrifice = {
 			}
 		}
 	}
-	tags = { }
+	tags = {  }
 	ignores_sapience = yes
 
 	possible_pre_triggers = {
@@ -2384,6 +2243,7 @@ purge_sacrifice = {
 		weight = 9999 # Always picked
 	}
 }
+
 # Added with v4.1.7 (by fs_nanamedou)
 # When pops that became presapient by the events, this change to presapient class.
 presapient_processing = {
@@ -2416,6 +2276,7 @@ presapient_processing = {
 		is_being_assimilated = no
 		is_being_purged = no
 	}
+
 	possible = {
 		NOR = {
 			is_sapient = yes
@@ -2461,9 +2322,7 @@ robot_servant_processing = {
 	}
 
 	possible = {
-		NOT = {
-			is_pop_category = robot_servant
-		}
+		NOT = { is_pop_category = robot_servant }
 		hidden_trigger = { exists = owner }
 		has_citizenship_type = { type = citizenship_robot_servitude country = owner }
 	}

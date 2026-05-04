@@ -97,6 +97,7 @@ CmtTriggerHasPotentialKhanAwaking = {
 }
 
 CmtTriggerMarauderCapitalSystem = {
+	optimize_memory
 	OR = {
 		has_star_flag = marauder_capital_1
 		has_star_flag = marauder_capital_2
@@ -107,6 +108,7 @@ CmtTriggerMarauderCapitalSystem = {
 ### Mercenaries
 
 CmtTriggerHiredMarauderFleet1 = {
+	optimize_memory
 	OR = {
 		has_fleet_flag = armada_of_the_voidborn
 		has_fleet_flag = star_rider_flotilla
@@ -115,6 +117,7 @@ CmtTriggerHiredMarauderFleet1 = {
 }
 
 CmtTriggerHiredMarauderFleet2 = {
+	optimize_memory
 	OR = {
 		has_fleet_flag = dwamak_bashers
 		has_fleet_flag = unhinged_screamer_flotilla
@@ -123,6 +126,7 @@ CmtTriggerHiredMarauderFleet2 = {
 }
 
 CmtTriggerHiredMarauderFleet3 = {
+	optimize_memory
 	OR = {
 		has_fleet_flag = her_chosen_champions
 		has_fleet_flag = order_of_eternal_night
@@ -159,11 +163,13 @@ CmtTriggerCountryHiringMarauder3 = {
 #######################
 
 CmtTriggerIsClosedLgate = {
+	optimize_memory
 	is_megastructure_type = lgate_base
 	NOT = { has_megastructure_flag = lgate_activated }
 }
 
 CmtTriggerIsOpenedLgate = {
+	optimize_memory
 	is_megastructure_type = lgate_base
 	has_megastructure_flag = lgate_activated
 }
