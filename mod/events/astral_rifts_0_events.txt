@@ -3142,6 +3142,10 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	trigger = {
+		exists = event_target:advisor_rift_lost_explorer@root # Vfix
+	}
+
 	immediate = {
 		if = {
 			limit = {
@@ -3163,9 +3167,8 @@ country_event = {
 				}
 			}
 		}
-		# Vfix FIXME: log says exiled leader does not exists
 		event_target:returning_ship = {
-			set_leader = advisor_rift_lost_explorer@prev
+			set_leader = event_target:advisor_rift_lost_explorer@root # Vfix
 			fleet_event = { id = astral_rift.840 }
 		}
 	}

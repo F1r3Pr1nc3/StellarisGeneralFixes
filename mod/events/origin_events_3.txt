@@ -2288,8 +2288,10 @@ country_event = {
 
 	trigger = {
 		has_origin = origin_fear_of_the_dark
+		exists = event_target:fotd_seperatist_planet@root # Vfix log
 		event_target:fotd_seperatist_planet@root = {
-			exists = owner
+			is_scope_type = planet
+			has_owner = yes
 			owner = { has_country_flag = fotd_seperatist_country@root }
 		}
 		NOT = { has_country_flag = angered_seperatists }
@@ -5314,7 +5316,7 @@ fleet_event = {
 		}
 	}
 }
-
+# on_war_ended
 country_event = {
 	id = origin.6256
 	hide_window = yes
@@ -5332,6 +5334,7 @@ country_event = {
 		if = {
 			limit = {
 				has_origin = origin_fear_of_the_dark
+				exists = event_target:fotd_seperatist_planet@root # Vfix log
 				event_target:fotd_seperatist_planet@root = { exists = owner }
 			}
 			event_target:fotd_seperatist_planet@root = {
@@ -5340,7 +5343,11 @@ country_event = {
 				}
 			}
 		}
-		else = {
+		else_if = {
+			limit = { # Vfix log
+				exists = event_target:fotd_seperatist_planet@from
+				event_target:fotd_seperatist_planet@from = { exists = owner }
+			}
 			event_target:fotd_seperatist_planet@from = {
 				owner = {
 					set_faction_hostility = { target = root set_neutral = yes }

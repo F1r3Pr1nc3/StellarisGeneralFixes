@@ -929,7 +929,7 @@ DISTAR_MEDGAS_CAT = {
 			add = 5
 			is_planet_class = pc_gas_giant
 			has_any_strategic_resource = no
-			from.owner = { has_event_chain = "l_cluster_chain" }
+			from.owner = { has_event_chain = l_cluster_chain }
 		}
 		modifier = { # Will not spawn if the player has neither completed nor currently has the ongoing chain
 			factor = 0
@@ -938,7 +938,7 @@ DISTAR_MEDGAS_CAT = {
 				has_global_flag = l_cluster_opened
 				from.owner = {
 					OR = {
-						has_event_chain = "l_cluster_chain"
+						has_event_chain = l_cluster_chain
 						has_completed_event_chain_counter = { event_chain = l_cluster_chain counter = clues }
 					}
 				}

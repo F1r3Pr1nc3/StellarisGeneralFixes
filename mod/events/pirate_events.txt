@@ -754,13 +754,13 @@ country_event = {
 
 	desc = {
 		trigger = {
-			NOT = { has_event_chain = "l_cluster_chain" }
+			NOT = { has_event_chain = l_cluster_chain }
 		}
 		text = pirate.15.desc
 	}
 	desc = {
 		trigger = {
-			has_event_chain = "l_cluster_chain"
+			has_event_chain = l_cluster_chain
 		}
 		text = pirate.15.desc2
 	}
@@ -874,7 +874,7 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { has_event_chain = "l_cluster_chain" }
+			limit = { has_event_chain = l_cluster_chain }
 			random_list = {
 				85 = { country_event = { id = pirate.25 } }
 				15 = { country_event = { id = pirate.26 } }

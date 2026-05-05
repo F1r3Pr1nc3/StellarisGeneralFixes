@@ -2954,10 +2954,13 @@ astral_rift_event = {
 	option = {
 		name = UNFORTUNATE
 		trigger = {
-			leader.species = {
-				NOR = {
-					has_trait = trait_aquatic
-					has_trait = trait_robot_aquatic
+			NAND = {
+				exists = leader.species # Vfix log
+				leader.species = {
+					OR = {
+						has_trait = trait_aquatic
+						has_trait = trait_robot_aquatic
+					}
 				}
 			}
 		}
@@ -2977,6 +2980,7 @@ astral_rift_event = {
 	option = {
 		name = astral_rift.1560.b
 		trigger = {
+			exists = leader.species # Vfix log
 			leader.species = {
 				OR = {
 					has_trait = trait_aquatic
