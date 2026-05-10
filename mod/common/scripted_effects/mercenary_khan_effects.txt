@@ -533,6 +533,11 @@ create_very_large_marauder_auxiliaries = {
 
 create_marauder_successor_fleet = {
 	random_owned_planet = {
+		limit = { # Vfix
+			is_colony = yes
+			exists = starbase
+			starbase = { is_owned_by = prev.owner }
+		}
 		save_event_target_as = fleet_position
 	}
 

@@ -661,7 +661,7 @@ country_event = {
 					has_owner = yes
 					is_colony = yes
 					NOR = {
-						pop_amount < 1
+						pop_amount < 100
 						has_ground_combat = yes
 						is_occupied_flag = yes
 					}
@@ -854,6 +854,18 @@ country_event = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				is_scope_valid = yes
+				is_scope_type = country
+				is_ai = yes
+			}
+			every_orbital_station = { dismantle = yes }
+			every_owned_pop_group = { kill_all_pop = yes }
+			every_owned_fleet = { delete_fleet = this }
+			every_owned_army = { remove_army = yes }
+			destroy_country = yes
+		}
 	}
 }
 
@@ -963,9 +975,6 @@ country_event = {
 					is_same_value = event_target:raider_khanate
 				}
 				event_target:new_khanate = { set_player = event_target:raider_khanate }
-			}
-			else = {
-				event_target:raider_khanate = { destroy_country = yes }
 			}
 		}
 		else_if = {

@@ -378,25 +378,31 @@ country_event = {
 
 	immediate = {
 		if = {
-			limit = {
-				is_mercenary = yes
-				fromfromfrom = { fleet_power > 4500 } # Vfix: false alarm!
+			limit = { is_mercenary = yes }
+			if = {
+				limit = {
+					fromfromfrom = { fleet_power > 4500 } # Vfix: false alarm!
+				}
+				save_event_target_as = mercenary_enclave_country
+				fromfrom = { save_event_target_as = mercenary_enclave_station }
 			}
-			save_event_target_as = mercenary_enclave_country
 		}
 		else_if = {
 			limit = {
+				from = { is_mercenary = yes }
 				fromfrom = { fleet_power > 4500 }
 			}
 			from = { save_event_target_as = mercenary_enclave_country }
+			fromfromfrom = { save_event_target_as = mercenary_enclave_station }
 		}
 		if = {
-			limit = { exists = event_target:mercenary_enclave_country }
+			limit = {
+				exists = event_target:mercenary_enclave_country
+				exists = event_target:mercenary_enclave_station
+				exists = event_target:mercenary_enclave_station.solar_system # Vfix: already too late
+			}
 			event_target:mercenary_enclave_country = { # Vfix
-				random_owned_fleet = {
-					limit = { is_mercenary_station = yes }
-					solar_system = { save_event_target_as = mercenary_home_system }
-				}
+				event_target:mercenary_enclave_station.solar_system = { save_event_target_as = mercenary_home_system }
 				every_owned_fleet = { # Vfix: Possible renting more fleets
 					limit = {
 						is_ship_class = shipclass_military
@@ -443,9 +449,7 @@ country_event = {
 						set_controller = owner
 						set_home_base = event_target:mercenary_home_system.starbase
 						if = {
-							limit = {
-								can_go_mia = yes
-							}
+							limit = { can_go_mia = yes }
 							set_mia = mia_return_home
 							set_mia_return_delay = 0
 						}
@@ -1982,15 +1986,13 @@ country_event = {
 	option = {
 		name = enclave.270.f
 		trigger = {
-			OR = {
-				event_target:mercenary_enclave_country = {
+			event_target:mercenary_enclave_country = {
+				OR = {
 					check_variable = { which = mercenary_armies_for_hire value > 0 }
-				}
-				AND = {
-					event_target:mercenary_enclave_country = {
+					AND = {
 						check_variable = { which = mercenary_mecha_armies_for_hire value > 0 }
+						has_modifier = mercenary_fleet_size_upgrade_4
 					}
-					event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
 				}
 			}
 		}

@@ -5650,13 +5650,14 @@ tech_slave_colonies = {
 	}
 
 	weight_modifier = {
-		factor = 1
+		# factor = 1
 		modifier = {
 			factor = 0
 			NAND = {
 				allows_slavery = yes
-				# num_owned_planets > 1
-				any_enslaved_species = {  } # Vfix opt
+				num_owned_planets > 1
+				any_owned_pop_group = { is_enslaved = yes }
+				# any_enslaved_species = { is_sapient = yes } # Vfix opt: FIXME not working!?
 			}
 		}
 		modifier = {
@@ -5669,6 +5670,35 @@ tech_slave_colonies = {
 	}
 
 	ai_weight = {
+		# Vfix patch (suggestion by leteo39)
+		modifier = {
+			factor = 2
+			count_owned_pop_amount = {
+				count >= 8000
+				limit = {
+					is_enslaved = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_colony = yes
+				is_sector_capital = yes
+				OR = {
+					has_building = building_slave_processing
+					AND = {
+						exists = orbital_defence
+						orbital_defence = {
+							exists = starbase
+							starbase = {
+								has_starbase_building = ring_slave_processing_facility
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -5852,7 +5882,7 @@ tech_capital_productivity_1 = {
 	}
 
 	weight_modifier = {
-		factor = 1
+		# factor = 1
 		modifier = {
 			factor = 0.25
 			NOT = { has_tradition = tr_prosperity_finish }
@@ -5884,7 +5914,7 @@ tech_capital_productivity_2 = {
 	}
 
 	weight_modifier = {
-		factor = 1
+		# factor = 1
 		modifier = {
 			factor = 0.25
 			NOT = { has_tradition = tr_prosperity_finish }
@@ -5916,7 +5946,7 @@ tech_capital_productivity_3 = {
 	}
 
 	weight_modifier = {
-		factor = 1
+		# factor = 1
 		modifier = {
 			factor = 0.25
 			NOT = { has_tradition = tr_prosperity_finish }

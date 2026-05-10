@@ -2756,6 +2756,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		is_scope_valid = yes # Vfix log save
 		from = { num_owned_relics > 0 }
 	}
 
@@ -2771,7 +2772,7 @@ country_event = {
 			type = MESSAGE_TYPE_RELICS_GAINED_INTEGRATION
 			localization = MESSAGE_RELICS_GAINED_INTEGRATION
 			days = 30
-			target = root
+			# target = root Vfix log: scope is invalid??
 		}
 	}
 }

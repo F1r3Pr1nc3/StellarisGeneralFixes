@@ -2881,11 +2881,9 @@ first_contact_event = {
 					limit = {
 						NOT = { is_same_value = event_target:fleet_to_seize }
 						is_within_borders_of = root.owner
-						if = {
-							limit = {
-								prev = { is_hostile = root.owner }
-							}
-							is_civilian = yes
+						OR = { # Vfix opt
+							is_civilian = no
+							prev = { is_hostile = root.owner }
 						}
 					}
 					set_mia = mia_return_home
@@ -3016,11 +3014,9 @@ first_contact_event = {
 					limit = {
 						NOT = { is_same_value = event_target:fleet_to_seize }
 						is_within_borders_of = root.owner
-						if = {
-							limit = {
-								prev = { is_hostile = root.owner }
-							}
-							is_civilian = yes
+						OR = { # Vfix opt
+							is_civilian = no
+							prev = { is_hostile = root.owner }
 						}
 					}
 					set_mia = mia_return_home
@@ -3650,11 +3646,9 @@ first_contact_event = {
 				every_controlled_fleet = {
 					limit = {
 						is_within_borders_of = root.contact_country
-						if = {
-							limit = {
-								prev = { is_hostile = root.contact_country }
-							}
-							is_civilian = yes
+						OR = { # Vfix opt
+							is_civilian = no
+							prev = { is_hostile = root.contact_country }
 						}
 					}
 					set_mia = mia_return_home
@@ -3942,11 +3936,9 @@ first_contact_event = {
 				every_controlled_fleet = {
 					limit = {
 						is_within_borders_of = root.contact_country
-						if = {
-							limit = {
-								prev = { is_hostile = root.contact_country }
-							}
-							is_civilian = yes
+						OR = { # Vfix opt
+							is_civilian = no
+							prev = { is_hostile = root.contact_country }
 						}
 					}
 					set_mia = mia_return_home
@@ -4082,11 +4074,9 @@ first_contact_event = {
 				every_controlled_fleet = {
 					limit = {
 						is_within_borders_of = root.contact_country
-						if = {
-							limit = {
-								prev = { is_hostile = root.contact_country }
-							}
-							is_civilian = yes
+						OR = { # Vfix opt
+							is_civilian = no
+							prev = { is_hostile = root.contact_country }
 						}
 					}
 					set_mia = mia_return_home

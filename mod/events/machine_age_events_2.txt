@@ -109,9 +109,10 @@ country_event = {
 				every_system_planet = {
 					limit = {
 						NOR = {
-							has_deposit_for = shipclass_research_station
 							is_star = yes
 							is_astral_scar = yes
+							has_deposit_for = shipclass_research_station # Vfix note: TODO for whatever reason it gets ignored sometimes.
+							has_zro_deposit = yes # Vfix save
 							colonizable_planet = yes
 						}
 					}
