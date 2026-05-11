@@ -494,12 +494,6 @@ humanoids = {
 	}
 
 	conditional_portraits = {
-		randomizable = {
-			host_has_dlc = "Humanoids Species Pack"
-		}
-		playable = {
-			local_has_dlc = "Humanoids Species Pack"
-		}
 		portraits = {
 			"humanoid_hp_01"
 			"humanoid_hp_02"
@@ -1543,6 +1537,22 @@ mindwarden = {
 		}
 		portraits = {
 			"mindwarden_01"
+		}
+	}
+}
+
+pdx_signup_reptilian = {
+	species_class = REP
+
+	conditional_portraits = {
+		randomizable = {
+			always = no
+		}
+		playable = {
+			logged_in_to_pdx_account = yes
+		}
+		portraits = {
+			"pdx_signup_portrait_01"
 		}
 	}
 }
