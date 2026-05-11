@@ -2276,7 +2276,7 @@ planet_event = {
 	}
 }
 
-# on_colony_2_years_old/on_colony_3_years_old
+# (on_colony_2/3_years_old)
 planet_event = {
 	id = colony.2015
 	title = colony.2015.name
@@ -2365,12 +2365,14 @@ planet_event = {
 			kill_assigned_pop_amount = { percentage = 1 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_planet_flag = colony_factory_kidnap
 			owner = { remove_country_flag = odd_factory_pause }
 		}
 	}
+
 	option = {
 		name = colony.2016.b
 		custom_tooltip = colony.2016.a.tooltip
@@ -2419,6 +2421,7 @@ planet_event = {
 			kill_assigned_pop_amount = { percentage = 1 }
 		}
 	}
+
 	after = {
 		hidden_effect = {
 			remove_planet_flag = colony_factory_kidnap
@@ -2426,6 +2429,7 @@ planet_event = {
 			owner = { remove_country_flag = odd_factory_pause }
 		}
 	}
+
 	option = {
 		name = colony.2017.a
 		custom_tooltip = colony.2017.a.tooltip
@@ -2435,7 +2439,6 @@ planet_event = {
 		name = colony.2017.b
 		custom_tooltip = colony.2017.b.tooltip
 		add_modifier = { modifier = secured_factory years = 5 }
-
 	}
 }
 

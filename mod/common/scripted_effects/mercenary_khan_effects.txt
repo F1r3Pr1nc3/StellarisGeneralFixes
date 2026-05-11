@@ -1,4 +1,4 @@
-# Replaced graphical_culture = prev.owner # "pirate_01"
+# Replaced graphical_culture = prev.owner
 # Not really necessary, as vanilla graphical_culture gets ignored if invalid.
 ## Vanilla fixed
 # [effect_on_blob] Invalid center target at file: scripted effect assign_first_diadochi_planets
@@ -17,7 +17,7 @@ create_dyn_marauder_fleet = {
 			design = NAME_Outrider$VARIANT$
 			prefix = no
 			# upgradable = yes
-			graphical_culture = prev.owner # "pirate_01" # prev.owner
+			graphical_culture = prev.owner
 		}
 	}
 	while = {
@@ -27,7 +27,7 @@ create_dyn_marauder_fleet = {
 			design = NAME_Lancer$VARIANT$
 			prefix = no
 			# upgradable = yes
-			graphical_culture = prev.owner # "pirate_01"
+			graphical_culture = prev.owner
 		}
 	}
 	while = {
@@ -37,7 +37,7 @@ create_dyn_marauder_fleet = {
 			design = NAME_Void_Champion$VARIANT$
 			prefix = no
 			# upgradable = yes
-			graphical_culture = prev.owner # "pirate_01"
+			graphical_culture = prev.owner
 		}
 	}
 	while = {
@@ -47,12 +47,13 @@ create_dyn_marauder_fleet = {
 			design = NAME_Ancestral_Glory$VARIANT$
 			prefix = no
 			# upgradable = yes
-			graphical_culture = prev.owner # "pirate_01"
+			graphical_culture = prev.owner
 		}
 	}
 }
 
 create_1st_khan_fleet = {
+	optimize_memory
 	create_fleet = {
 		name = "NAME_Chosen_of_the_Great_Khan"
 		effect = {
@@ -106,6 +107,7 @@ create_1st_khan_fleet = {
 }
 
 create_2nd_khan_fleet = {
+	optimize_memory
 	create_fleet = {
 		name = "NAME_Chosen_of_the_Great_Khan"
 		effect = {
@@ -537,10 +539,21 @@ create_marauder_successor_fleet = {
 			is_colony = yes
 			exists = starbase
 			starbase = { is_owned_by = prev.owner }
+			NOT = { is_same_value = prevprev }
 		}
 		save_event_target_as = fleet_position
 	}
-
+	if = {  # Vfix save
+		limit = {
+			NOT = { exists = event_target:fleet_position }
+			prev = {
+				is_scope_valid = yes
+				exists = starbase
+				starbase = { is_owned_by = prevprev }
+			}
+		}
+		prev = { save_event_target_as = fleet_position }
+	}
 	create_fleet = {
 		effect = {
 			set_owner = prev
@@ -762,7 +775,9 @@ get_marauder_raid_source = {
 			}
 		}
 		else_if = {
-			limit = { any_orbital_station = {  } }
+			limit = {
+				count_orbital_station = { count > 0 }
+			}
 			random_orbital_station = { save_event_target_as = raid_source }
 		}
 	}
@@ -982,6 +997,7 @@ assign_diadochi_systems = {
 # }
 # Override needless wasting vanilla effect
 set_diadochi_claims = {
+	optimize_memory
 }
 
 # NOTE: Don't use with every_*_system..., as this could lead to strange behavior
@@ -1539,7 +1555,7 @@ create_marauder_rally_points = {
 							save_global_event_target_as = CmtTargetMarauderRallyPoint1
 						}
 					}
-					else = { # # Backup Code: raid_source NOT Found in Capital System
+					else = { # Backup Code: raid_source NOT Found in Capital System
 						random_system_planet = {
 							limit = { is_star = no }
 							weights = {
@@ -1554,7 +1570,7 @@ create_marauder_rally_points = {
 					}
 				}
 			}
-			else = { # # Backup Code: Capital System NOT Found
+			else = { # Backup Code: Capital System NOT Found
 				random_planet_within_border = {
 					limit = { is_star = no }
 					weights = {
@@ -1612,7 +1628,7 @@ create_marauder_rally_points = {
 							save_global_event_target_as = CmtTargetMarauderRallyPoint2
 						}
 					}
-					else = { # # Backup Code: raid_source NOT found in Capital System
+					else = { # Backup Code: raid_source NOT found in Capital System
 						random_system_planet = {
 							limit = { is_star = no }
 							weights = {
@@ -1627,7 +1643,7 @@ create_marauder_rally_points = {
 					}
 				}
 			}
-			else = { # # Backup Code: Capital System NOT Found
+			else = { # Backup Code: Capital System NOT Found
 				random_planet_within_border = {
 					limit = { is_star = no }
 					weights = {
@@ -1685,7 +1701,7 @@ create_marauder_rally_points = {
 							save_global_event_target_as = CmtTargetMarauderRallyPoint3
 						}
 					}
-					else = { # # Backup Code: raid_source NOT Found in Capital System
+					else = { # Backup Code: raid_source NOT Found in Capital System
 						random_system_planet = {
 							limit = { is_star = no }
 							weights = {
@@ -1700,7 +1716,7 @@ create_marauder_rally_points = {
 					}
 				}
 			}
-			else = { # # Backup Code: Capital System NOT Found
+			else = { # Backup Code: Capital System NOT Found
 				random_planet_within_border = {
 					limit = { is_star = no }
 					weights = {
