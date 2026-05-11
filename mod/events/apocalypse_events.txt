@@ -463,23 +463,11 @@ country_event = {
 		trigger = {
 			NOR = {
 				is_pacifist = yes
+				has_origin = origin_teachers_of_the_shroud
 				# Available to spiritualists if Divine Enforcer is locked out
 				AND = {
 					is_spiritualist = yes
-					OR = {
-						AND = {
-							has_utopia = no
-							has_shroud_dlc = no
-							has_technology = tech_telepathy
-						}
-						AND = {
-							OR = {
-								has_utopia = yes
-								has_shroud_dlc = yes
-							}
-							has_psionic_ascension = yes
-						}
-					}
+					has_psionic_ascension = yes
 				}
 			}
 		}
@@ -493,20 +481,8 @@ country_event = {
 		trigger = {
 			is_spiritualist = yes
 			OR = {
-				AND = {
-					NOR = {
-						has_utopia = yes
-						has_shroud_dlc = yes
-					}
-					has_technology = tech_telepathy
-				}
-				AND = {
-					OR = {
-						has_utopia = yes
-						has_shroud_dlc = yes
-					}
-					has_psionic_ascension = yes
-				}
+				has_psionic_ascension = yes
+				has_origin = origin_teachers_of_the_shroud
 			}
 		}
 	}

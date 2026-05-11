@@ -124,10 +124,6 @@ citizenship_full_machine = {
 	is_full_citizenship = yes
 
 	potential = {
-		OR = {
-			has_synthetic_dawn = yes
-			has_machine_age_dlc = yes
-		}
 		exists = from
 		from = { is_machine_empire = yes }
 		NAND = {
@@ -174,13 +170,6 @@ citizenship_assimilation = {
 	is_assimilation = yes
 
 	potential = {
-		OR = {
-			has_synthetic_dawn = yes
-			has_utopia = yes
-			has_machine_age_dlc = yes
-			has_biogenesis_dlc = yes
-			has_shroud_dlc = yes
-		}
 		exists = from
 		from = {
 			OR = {
@@ -469,7 +458,6 @@ citizenship_shroud_touched = {
 
 citizenship_organic_trophy = {
 	potential = {
-		has_synthetic_dawn = yes
 		exists = from
 		from = { is_machine_empire = yes has_civic = civic_machine_servitor }
 		is_disconnected_drone_pop = no

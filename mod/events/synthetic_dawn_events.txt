@@ -328,7 +328,6 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		mid_game_years_passed >= -10
 	}
 
@@ -363,7 +362,6 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			is_gestalt = yes
 			has_country_flag = synthetic_empire
@@ -425,10 +423,6 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = {
-		has_synthetic_dawn = yes
-	}
-
 	immediate = {
 		set_country_flag = triggered_syndaw_500
 	}
@@ -466,10 +460,6 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = {
-		has_synthetic_dawn = yes
-	}
-
 	option = {
 		name = syndaw.501.a
 		custom_tooltip = syndaw.501.a.tooltip
@@ -497,10 +487,6 @@ country_event = {
 	show_sound = event_administrative_work
 	location = capital_scope
 	is_triggered_only = yes
-
-	trigger = {
-		has_synthetic_dawn = yes
-	}
 
 	option = {
 		name = syndaw.502.a
@@ -532,7 +518,6 @@ situation_event = {
 			has_situation_flag = triggered_syndaw_505
 			has_situation_flag = flag_recent_event
 		}
-		has_synthetic_dawn = yes
 		owner = {
 			has_built_species = yes
 			any_owned_planet = {
@@ -598,7 +583,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_510
 			has_situation_flag = flag_recent_event
@@ -650,7 +634,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		exists = event_target:target_station
 	}
 
@@ -680,7 +663,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_515
 			has_situation_flag = flag_recent_event
@@ -810,7 +792,6 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_520
 			has_situation_flag = flag_recent_event
@@ -872,7 +853,6 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		event_target:target_planetoid = { is_owned_by = root.owner is_occupied_flag = no }
 	}
 
@@ -903,7 +883,6 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		event_target:target_planetoid = { is_owned_by = root.owner is_occupied_flag = no }
 	}
 
@@ -927,7 +906,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_525
 			has_situation_flag = flag_recent_event
@@ -987,7 +965,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		event_target:target_planet = {
 			is_owned_by = root.owner
 			is_occupied_flag = no
@@ -1026,7 +1003,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_530
 			has_situation_flag = flag_recent_event
@@ -1103,7 +1079,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_535
 			has_situation_flag = flag_recent_event
@@ -1139,7 +1114,6 @@ situation_event = {
 	situation = this
 
 	trigger = {
-		has_synthetic_dawn = yes
 		NOR = {
 			has_situation_flag = triggered_syndaw_540
 			has_situation_flag = flag_recent_event
@@ -1260,7 +1234,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		pop_amount > 0
 		is_occupied_flag = no
 		any_owned_species = { has_trait = trait_mechanical }
@@ -1341,10 +1314,6 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = {
-		has_synthetic_dawn = yes
-	}
-
 	option = { # patch
 		name = syndaw.550.a
 		custom_tooltip = syndaw.550.a.tooltip
@@ -1390,10 +1359,6 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = {
-		has_synthetic_dawn = yes
-	}
-
 	option = { # Wipe
 		name = syndaw.555.a
 		custom_tooltip = syndaw.555.a.tooltip
@@ -1424,10 +1389,6 @@ situation_event = {
 	id = syndaw.1000
 	hide_window = yes
 	is_triggered_only = yes
-
-	trigger = {
-		has_synthetic_dawn = yes
-	}
 
 	immediate = {
 		owner = {
@@ -1553,7 +1514,6 @@ planet_event = {
 	}
 
 	trigger = {
-		has_synthetic_dawn = yes
 		has_owner = yes
 	}
 
@@ -1731,10 +1691,6 @@ country_event = {
 	id = syndaw.1022
 	hide_window = yes
 	is_triggered_only = yes
-
-	trigger = {
-		has_synthetic_dawn = yes
-	}
 
 	immediate = {
 		# saving uprising and host as event targets
@@ -2196,7 +2152,6 @@ country_event = {
 	show_sound = event_robo
 
 	trigger = {
-		has_synthetic_dawn = yes
 		exists = event_target:current_uprising_originator
 		exists = event_target:current_uprising
 		NOR = {
@@ -2232,10 +2187,6 @@ country_event = {
 	location = fromfrom.capital_scope
 	is_triggered_only = yes
 
-	trigger = {
-		has_synthetic_dawn = yes
-	}
-
 	option = {
 		name = OK
 	}
@@ -2262,10 +2213,6 @@ country_event = {
 	picture = GFX_evt_interior_battle
 	location = fromfrom
 	is_triggered_only = yes
-
-	trigger = {
-		has_synthetic_dawn = yes
-	}
 
 	option = {
 		name = OK
@@ -2316,7 +2263,6 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		is_country_type = default
 		OR = {
 			is_machine_empire = yes
@@ -2444,7 +2390,6 @@ country_event = {
 	show_sound = event_mystic_reveal
 
 	trigger = {
-		has_synthetic_dawn = yes
 		is_country_type = default
 		has_relation_flag = { who = from flag = host_to_uprising_flag }
 	}
@@ -2519,7 +2464,6 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		is_country_type = default
 	}
 
@@ -2588,7 +2532,6 @@ country_event = {
 	show_sound = event_mystic_reveal
 
 	trigger = {
-		has_synthetic_dawn = yes
 		is_country_type = default
 	}
 
@@ -2650,7 +2593,6 @@ country_event = {
 		is_machine_empire = yes
 		has_civic = civic_machine_terminator
 		from = { is_synthetic_empire = no }
-		has_synthetic_dawn = yes
 	}
 
 	immediate = {
@@ -2682,7 +2624,6 @@ country_event = {
 	trigger = {
 		last_changed_policy = artificial_intelligence_policy
 		country_has_situation = { SITUATION = situation_machine_uprising }
-		has_synthetic_dawn = yes
 	}
 
 	immediate = {
@@ -2710,7 +2651,6 @@ country_event = {
 		last_changed_policy = robot_pop_policy
 		has_policy_flag = robots_outlawed
 		country_has_situation = { SITUATION = situation_machine_uprising }
-		has_synthetic_dawn = yes
 	}
 
 	immediate = {
@@ -2734,7 +2674,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		fromfrom = { has_trait = trait_mechanical }
 		owner = {
 			is_country_type = default
@@ -2764,7 +2703,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		fromfrom = { has_trait = trait_mechanical }
 		owner = {
 			is_country_type = default
@@ -2792,7 +2730,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_synthetic_dawn = yes
 		is_planet_class = pc_machine
 		from = { is_country_type = default }
 	}

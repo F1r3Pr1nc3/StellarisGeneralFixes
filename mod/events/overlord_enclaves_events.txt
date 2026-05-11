@@ -9818,10 +9818,7 @@ country_event = {
 		}
 		# Create a leader to talk to
 		if = {
-			limit = {
-				has_utopia = yes
-				is_synthetic_empire = no
-			}
+			limit = { is_synthetic_empire = no }
 			event_target:shattered_frontier_country = {
 				create_leader = {
 					class = official
@@ -9841,10 +9838,7 @@ country_event = {
 			}
 		}
 		else_if = {
-			limit = {
-				has_utopia = yes
-				is_synthetic_empire = yes
-			}
+			limit = { is_synthetic_empire = yes }
 			event_target:shattered_frontier_country = {
 				create_leader = {
 					class = official

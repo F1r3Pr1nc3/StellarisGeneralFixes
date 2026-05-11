@@ -2970,8 +2970,7 @@ country_event = {
 				modifier = {
 					factor = 0
 					event_target:pre_ftl_country = {
-						NAND = {
-							has_utopia = yes
+						NOT = {
 							has_pre_ftl_age = early_space_age
 						}
 					}
@@ -3002,7 +3001,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		event_target:pre_ftl_country = { has_pre_ftl_age = early_space_age has_utopia = yes }
+		event_target:pre_ftl_country = { has_pre_ftl_age = early_space_age }
 	}
 
 	immediate = {

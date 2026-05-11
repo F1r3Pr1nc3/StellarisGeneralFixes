@@ -494,12 +494,6 @@ humanoids = {
 	}
 
 	conditional_portraits = {
-		randomizable = {
-			host_has_dlc = "Humanoids Species Pack"
-		}
-		playable = {
-			local_has_dlc = "Humanoids Species Pack"
-		}
 		portraits = {
 			"humanoid_hp_01"
 			"humanoid_hp_02"
@@ -790,40 +784,15 @@ extradimensionals = {
 robots = {
 	species_class = ROBOT
 
-	conditional_portraits = {
-		randomizable = {
-			has_synthetic_dawn = yes
-		}
-		playable = {
-			has_synthetic_dawn = yes
-		}
-		portraits = {
-			"sd_hum_robot"
-			"sd_mam_robot"
-			"sd_rep_robot"
-			"sd_avi_robot"
-			"sd_art_robot"
-			"sd_mol_robot"
-			"sd_fun_robot"
-		}
-	}
-
-	conditional_portraits = {
-		randomizable = {
-			OR = {
-				has_synthetic_dawn = yes
-				has_plantoids = yes
-			}
-		}
-		playable = {
-			OR = {
-				has_synthetic_dawn = yes
-				has_plantoids = yes
-			}
-		}
-		portraits = {
-			"sd_pla_robot"
-		}
+	portraits = {
+		"sd_hum_robot"
+		"sd_mam_robot"
+		"sd_rep_robot"
+		"sd_avi_robot"
+		"sd_art_robot"
+		"sd_mol_robot"
+		"sd_fun_robot"
+		"sd_pla_robot"
 	}
 
 	conditional_portraits = {
@@ -915,15 +884,11 @@ machines = {
 
 	conditional_portraits = {
 		randomizable = {
-			has_synthetic_dawn = yes
 			# The create_species effect can't properly take the possible trigger below into account.
 			# Work around this by disabling this class for species randomization after game start.
 			NOT = {
 				has_global_flag = game_started
 			}
-		}
-		playable = {
-			has_synthetic_dawn = yes
 		}
 		portraits = {
 			"sd_hum_robot"
@@ -933,56 +898,16 @@ machines = {
 			"sd_art_robot"
 			"sd_mol_robot"
 			"sd_fun_robot"
-		}
-	}
-
-	conditional_portraits = {
-		randomizable = {
-			OR = {
-				has_synthetic_dawn = yes
-				AND = {
-					has_machine_age_dlc = yes
-					has_plantoids = yes
-				}
-			}
-			# The create_species effect can't properly take the possible trigger below into account.
-			# Work around this by disabling this class for species randomization after game start.
-			NOT = {
-				has_global_flag = game_started
-			}
-		}
-		playable = {
-			OR = {
-				has_synthetic_dawn = yes
-				AND = {
-					has_machine_age_dlc = yes
-					has_plantoids = yes
-				}
-			}
-		}
-		portraits = {
 			"sd_pla_robot"
 		}
 	}
 
 	conditional_portraits = {
 		randomizable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_lithoids = yes
-			}
+			has_lithoids = yes
 		}
 		playable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_lithoids = yes
-			}
+			has_lithoids = yes
 		}
 		portraits = {
 			"lith_machine"
@@ -991,22 +916,10 @@ machines = {
 
 	conditional_portraits = {
 		randomizable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_necroids = yes
-			}
+			has_necroids = yes
 		}
 		playable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_necroids = yes
-			}
+			has_necroids = yes
 		}
 		portraits = {
 			"nec_machine"
@@ -1015,22 +928,10 @@ machines = {
 
 	conditional_portraits = {
 		randomizable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_aquatics = yes
-			}
+			has_aquatics = yes
 		}
 		playable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_aquatics = yes
-			}
+			has_aquatics = yes
 		}
 		portraits = {
 			"aqu_machine"
@@ -1039,22 +940,10 @@ machines = {
 
 	conditional_portraits = {
 		randomizable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_toxoids = yes
-			}
+			has_toxoids = yes
 		}
 		playable = {
-			AND = {
-				OR = {
-					has_synthetic_dawn = yes
-					has_machine_age_dlc = yes
-				}
-				has_toxoids = yes
-			}
+			has_toxoids = yes
 		}
 		portraits = {
 			"tox_machine"
@@ -1084,17 +973,9 @@ machines = {
 	conditional_portraits = {
 		randomizable = {
 			has_rick_the_cube_dlc = yes
-			OR = {
-				has_synthetic_dawn = yes
-				has_machine_age_dlc = yes
-			}
 		}
 		playable = {
 			has_rick_the_cube_dlc = yes
-			OR = {
-				has_synthetic_dawn = yes
-				has_machine_age_dlc = yes
-			}
 		}
 		portraits = {
 			"cyb_machine"
@@ -1656,6 +1537,22 @@ mindwarden = {
 		}
 		portraits = {
 			"mindwarden_01"
+		}
+	}
+}
+
+pdx_signup_reptilian = {
+	species_class = REP
+
+	conditional_portraits = {
+		randomizable = {
+			always = no
+		}
+		playable = {
+			logged_in_to_pdx_account = yes
+		}
+		portraits = {
+			"pdx_signup_portrait_01"
 		}
 	}
 }
