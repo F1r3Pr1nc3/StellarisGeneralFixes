@@ -44,10 +44,7 @@ DLAF_create_awoken_robot_species = {
 				}
 				set_species_homeworld = event_target:DLAF_awoken_homeworld # This overwrites their homeworld but does not change species traits.
 			}
-			if = {
-				limit = { has_synthetic_dawn = yes }
-				change_species_characteristics = { portrait = "sd_fun_robot" }
-			}
+			change_species_characteristics = { portrait = "sd_fun_robot" }
 			if = {
 				limit = {
 					NOR = {
@@ -252,7 +249,6 @@ DLAF_build_awoken_government = {
 						force_add_civic = civic_mining_guilds # Only the ones who dug the bunker.
 					}
 					1 = {
-						modifier = { factor = 0 has_humanoids = no }
 						if = {
 							limit = { is_megacorp = yes }
 							force_add_civic = civic_corporate_crafters

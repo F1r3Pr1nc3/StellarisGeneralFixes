@@ -1138,17 +1138,7 @@ fanatic_purifiers = {
 
 	allow = {
 		is_country_type = default
-		OR = {
-			AND = {
-				NOT = { has_utopia = yes }
-				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
-			AND = {
-				has_utopia = yes
-				has_valid_civic = "civic_fanatic_purifiers"
-			}
-		}
+		has_valid_civic = "civic_fanatic_purifiers"
 	}
 
 	weight_modifier = {
@@ -1532,10 +1522,7 @@ assimilators = {
 
 	allow = {
 		is_country_type = default
-		AND = {
-			has_synthetic_dawn = yes
-			has_valid_civic = "civic_machine_assimilator"
-		}
+		has_valid_civic = "civic_machine_assimilator"
 	}
 
 	weight_modifier = {
@@ -1587,10 +1574,7 @@ exterminators = {
 
 	allow = {
 		is_country_type = default
-		AND = {
-			has_synthetic_dawn = yes
-			has_valid_civic = "civic_machine_terminator"
-		}
+		has_valid_civic = "civic_machine_terminator"
 	}
 
 	weight_modifier = {
@@ -1646,10 +1630,7 @@ servitors = {
 
 	allow = {
 		is_country_type = default
-		AND = {
-			has_synthetic_dawn = yes
-			has_valid_civic = "civic_machine_servitor"
-		}
+		has_valid_civic = "civic_machine_servitor"
 	}
 
 	weight_modifier = {

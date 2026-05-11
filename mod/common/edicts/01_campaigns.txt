@@ -958,7 +958,6 @@ zro_catalysis_utopia = {
 		federation = {
 			has_federation_perk = zro_catalysis_1
 		}
-		has_utopia = yes
 		OR = {
 			has_resource = { type = sr_zro amount > 0 }
 			has_edict = zro_catalysis_utopia
@@ -976,43 +975,6 @@ zro_catalysis_utopia = {
 			weight = @EdictMedPrio
 			species = { is_psionic_species = yes }
 		}
-	}
-}
-
-zro_catalysis_non_utopia = {
-	length = @EdictDuration
-	icon = "GFX_edict_type_time"
-	resources = {
-		category = rare_edicts
-		cost = {
-			sr_zro = 0.5
-			multiplier = value:edict_size_effect
-		}
-		upkeep = {
-			sr_zro = 0.5
-			multiplier = value:edict_size_effect
-		}
-	}
-
-	potential = {
-		exists = federation
-		federation = {
-			has_federation_perk = zro_catalysis_1
-		}
-		has_utopia = no
-		OR = {
-			has_resource = { type = sr_zro amount > 0 }
-			has_edict = zro_catalysis_non_utopia
-		}
-		is_wilderness_empire = no
-	}
-
-	modifier = {
-		pop_bonus_workforce_mult = 0.10
-	}
-
-	ai_weight = {
-		weight = @EdictMedPrio
 	}
 }
 
