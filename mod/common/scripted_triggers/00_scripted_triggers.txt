@@ -330,7 +330,7 @@ empire_design_never = {
 
 has_leviathans = {
 	optimize_memory
-	host_has_dlc = "Leviathans Story Pack"
+	host_has_dlc = "Leviathans Story Pack" # Vfix note: why disabled??
 }
 
 has_plantoids = {
@@ -345,7 +345,7 @@ has_lithoids = {
 
 has_mammalians_micro_dlc = {
 	optimize_memory
-	host_has_dlc = "Mammalian Species Pack"
+	host_has_dlc = "Mammalian Species Pack"  # Vfix note: Not used anymore!
 }
 
 has_federations_dlc = {
@@ -426,6 +426,17 @@ has_cosmic_storms_dlc = {
 
 has_machine_age_dlc = {
 	optimize_memory
+	host_has_dlc = "The Machine Age"
+}
+
+has_not_machine_age_dlc = {
+	optimize_memory
+	NOT = { host_has_dlc = "The Machine Age" }
+}
+
+has_synthetic_dawn_and_machine_age = {
+	optimize_memory
+	host_has_dlc = "Synthetic Dawn Story Pack"
 	host_has_dlc = "The Machine Age"
 }
 

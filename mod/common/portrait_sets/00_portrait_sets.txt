@@ -453,8 +453,23 @@ humans = {
 	# These should not be used for randomly generated species
 	non_randomized_portraits = {
 		# "human" Vfix
-		"human_legacy"
+		# "human_legacy" Vfix
 	}
+
+	conditional_portraits = {
+		randomizable = {
+			# The create_species effect can't properly take the possible trigger below into account.
+			# Work around this by disabling this class for species randomization after game start.
+			NOT = {
+				has_global_flag = game_started
+			}
+		}
+		portraits = {
+			"human"
+			"human_legacy"
+		}
+	}
+
 }
 
 humanoids = {
@@ -856,24 +871,15 @@ robots = {
 machines = {
 	species_class = MACHINE
 
-	conditional_portraits = {
-		randomizable = {
-			# The create_species effect can't properly take the possible trigger below into account.
-			# Work around this by disabling this class for species randomization after game start.
-			NOT = {
-				has_global_flag = game_started
-			}
-		}
-		portraits = {
-			sd_hum_robot
-			sd_mam_robot
-			sd_rep_robot
-			sd_avi_robot
-			sd_art_robot
-			sd_mol_robot
-			sd_fun_robot
-			sd_pla_robot
-		}
+	portraits = {
+		"sd_hum_robot"
+		"sd_mam_robot"
+		"sd_rep_robot"
+		"sd_avi_robot"
+		"sd_art_robot"
+		"sd_mol_robot"
+		"sd_fun_robot"
+		"sd_pla_robot"
 	}
 
 	conditional_portraits = {

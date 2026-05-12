@@ -978,6 +978,26 @@ zro_catalysis_utopia = {
 	}
 }
 
+# Kept as a stub (potential = always = no) for backward compatibility with savegames
+# and mods referencing this edict key. Remaining fields are preserved so an active
+# instance of this edict in an existing savegame can time out normally.
+zro_catalysis_non_utopia = {
+	length = @EdictDuration
+	icon = "GFX_edict_type_time"
+
+	potential = {
+		always = no
+	}
+
+	modifier = {
+		pop_bonus_workforce_mult = 0.10
+	}
+
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
 living_metal_construction = {
 	length = @EdictDuration
 	icon = "GFX_edict_type_time"
