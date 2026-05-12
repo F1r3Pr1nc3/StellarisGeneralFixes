@@ -2451,8 +2451,12 @@ country_event = {
 		event_target:pre_ftl_country = {
 			switch = {
 				trigger = current_awareness_level
-				medium = { add_awareness = 20 }
-				high = { add_awareness = 10 }
+				medium = {
+					add_awareness = 20
+				}
+				high = {
+					add_awareness = 10
+				}
 			}
 		}
 		hidden_effect = {
@@ -2970,9 +2974,7 @@ country_event = {
 				modifier = {
 					factor = 0
 					event_target:pre_ftl_country = {
-						NOT = {
-							has_pre_ftl_age = early_space_age
-						}
+						NOT = { has_pre_ftl_age = early_space_age }
 					}
 				}
 				country_event = {

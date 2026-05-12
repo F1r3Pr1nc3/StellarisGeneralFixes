@@ -349,6 +349,7 @@ event = {
 			}
 			random = {
 				chance = 30
+				# Nothing happens this decade.
 				country_event = { id = syndaw.401 random = 500 }
 			}
 		}
@@ -432,7 +433,8 @@ country_event = {
 		custom_tooltip = syndaw.500.a.tooltip
 		hidden_effect = {
 			random = {
-				chance = 67
+				chance = 66.7
+				# False alarm. Maybe next decade?
 				country_syndaw545_in_days = { DAYS = 180 }
 			}
 		}
@@ -465,7 +467,8 @@ country_event = {
 		custom_tooltip = syndaw.501.a.tooltip
 		hidden_effect = {
 			random = {
-				chance = 67
+				chance = 66.7
+				# False alarm. Maybe next decade?
 				country_syndaw545_in_days = { DAYS = 135 }
 			}
 		}
@@ -494,7 +497,8 @@ country_event = {
 		hidden_effect = {
 			change_variable = { which = var_syndaw_promote_ai value = 3 }
 			random = {
-				chance = 67
+				chance = 66.7
+				# False alarm. Maybe next decade?
 				country_syndaw545_in_days = { DAYS = 90 }
 			}
 		}
@@ -2111,9 +2115,7 @@ country_event = {
 				set_location = root.capital_scope
 			}
 		}
-		every_controlled_fleet = {
-			set_event_locked = no
-		}
+		every_controlled_fleet = { set_event_locked = no }
 		every_playable_country = {
 			limit = {
 				has_communications = event_target:current_uprising_originator

@@ -2291,18 +2291,14 @@ can_add_negative_traits_organic = {
 # This, root = country
 can_remove_positive_traits_organic = {
 	OR = {
-		AND = {
-			OR = {
-				has_tradition = tr_genetics_resequencing
-				has_active_tradition = tr_cybernetics_integrated_anatomy
-				has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
-				has_active_tradition = tr_purity_genotype_regeneration
-				has_active_tradition = tr_purity_genotype_regeneration_wilderness
-				has_active_tradition = tr_cloning_somatic_synthesization
-				has_active_tradition = tr_cloning_somatic_synthesization_clone_army
-				has_active_tradition = tr_mutation_unnatural_selection
-			}
-		}
+		has_tradition = tr_genetics_resequencing
+		has_active_tradition = tr_cybernetics_integrated_anatomy
+		has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
+		has_active_tradition = tr_purity_genotype_regeneration
+		has_active_tradition = tr_purity_genotype_regeneration_wilderness
+		has_active_tradition = tr_cloning_somatic_synthesization
+		has_active_tradition = tr_cloning_somatic_synthesization_clone_army
+		has_active_tradition = tr_mutation_unnatural_selection
 		AND = {
 			has_toxoids = yes
 			has_origin = origin_overtuned
@@ -3679,6 +3675,7 @@ can_use_mutations = {
 	hidden_trigger = {
 		is_scope_valid = yes
 	}
+
 	has_technology = tech_controlled_mutations
 }
 
@@ -3686,6 +3683,7 @@ can_use_artificial_breeding = {
 	hidden_trigger = {
 		is_scope_valid = yes
 	}
+
 	has_technology = tech_alien_cloning
 }
 

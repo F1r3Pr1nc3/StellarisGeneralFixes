@@ -1305,8 +1305,8 @@ tech_mountain_range = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_mountain_range" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_mountain_range" }
 			}
 		}
 		modifier = { factor = 2 }
@@ -1318,12 +1318,11 @@ tech_mountain_range = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_mountain_range" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_mountain_range" }
 			}
 		}
 		modifier = { factor = 3 }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1353,10 +1352,12 @@ tech_volcano = {
 	weight_modifier = {
 		modifier = {
 			factor = 0
-			NOR = { # Vfix Dux
-				any_owned_planet = { has_deposit = "d_active_volcano" }
-				any_planet_within_border = { is_planet_class = pc_volcanic }
-				# num_owned_planets < 2
+			NAND = {
+				num_owned_planets >= 2
+				OR = {
+					any_owned_planet = { has_deposit = "d_active_volcano" }
+					any_planet_within_border = { is_planet_class = pc_volcanic }
+				}
 			}
 		}
 		modifier = { factor = 2 }
@@ -1375,11 +1376,10 @@ tech_volcano = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_active_volcano" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_active_volcano" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1410,25 +1410,23 @@ tech_dangerous_wildlife = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = d_dangerous_wildlife_blocker }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = d_dangerous_wildlife_blocker }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = d_dangerous_wildlife_blocker }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = d_dangerous_wildlife_blocker }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1459,25 +1457,23 @@ tech_dense_jungle = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_dense_jungle" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_dense_jungle" }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_dense_jungle" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_dense_jungle" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1508,25 +1504,23 @@ tech_quicksand_basin = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_quicksand_basin" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_quicksand_basin" }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_quicksand_basin" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_quicksand_basin" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1557,25 +1551,23 @@ tech_noxious_swamp = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_noxious_swamp" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_noxious_swamp" }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_noxious_swamp" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_noxious_swamp" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1606,25 +1598,23 @@ tech_massive_glacier = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_massive_glacier" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_massive_glacier" }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_massive_glacier" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_massive_glacier" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1655,25 +1645,23 @@ tech_toxic_kelp = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_toxic_kelp" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_toxic_kelp" }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_toxic_kelp" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_toxic_kelp" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -1704,25 +1692,23 @@ tech_deep_sinkhole = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_deep_sinkhole" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_deep_sinkhole" }
 			}
 		}
 		modifier = { factor = 2 }
 		modifier = { factor = 1.25 has_tradition = tr_expansion_adopt }
 		modifier = { factor = 4 has_ascension_perk = ap_mastery_of_nature }
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 
 	ai_weight = {
 		modifier = {
 			factor = 0
 			NOT = {
-				any_owned_planet = { has_deposit = "d_deep_sinkhole" }
 				# num_owned_planets > 1
+				any_owned_planet = { has_deposit = "d_deep_sinkhole" }
 			}
 		}
-		# modifier = { factor = 0 num_owned_planets < 2 }
 	}
 }
 
@@ -2007,7 +1993,7 @@ tech_genome_mapping = {
 	gateway = biological
 
 	modifier = {
-		founder_species_growth_mult = 0.1
+		logistic_growth_mult = 0.1
 	}
 
 	potential = {
@@ -2293,10 +2279,7 @@ tech_gene_seed_purification = {
 	}
 
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			has_genetic_ascension = no
-		}
+		modifier = { factor = 0 has_genetic_ascension = no }
 		modifier = { factor = 1.25 is_hive_empire = yes }
 		modifier = { factor = 1.25 has_ethic = ethic_militarist }
 		modifier = { factor = 1.5 has_ethic = ethic_fanatic_militarist }
@@ -3609,10 +3592,7 @@ tech_telepathy = {
 
 	weight_modifier = {
 		factor = 0.5
-		modifier = {
-			factor = 0
-			has_psionic_ascension = no
-		}
+		modifier = { factor = 0 has_psionic_ascension = no }
 		modifier = {
 			factor = 0.50
 			NOT = { has_trait_in_council = { TRAIT = leader_trait_expertise_psionics } }
@@ -3677,7 +3657,30 @@ tech_precognition_interface = {
 	}
 
 	weight_modifier = {
-		factor = 0
+		factor = 0.5
+		modifier = {
+			factor = 0.50
+			NOT = { has_trait_in_council = { TRAIT = leader_trait_expertise_psionics } }
+		}
+		inline_script = {
+			script = technologies/rare_technologies_weight_modifiers
+			TECHNOLOGY = tech_precognition_interface
+		}
+		modifier = { factor = 2 has_ethic = "ethic_spiritualist" }
+		modifier = { factor = 3 has_ethic = "ethic_fanatic_spiritualist" }
+		modifier = {
+			factor = 3
+			has_paragon_dlc = no
+			any_owned_leader = { has_trait = leader_trait_shroudwalker }
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
 	}
 
 	ai_weight = {
@@ -3787,6 +3790,7 @@ tech_psi_jump_drive_1 = {
 	}
 
 	weight = @tier5weight2
+	is_dangerous = yes
 	is_reverse_engineerable = no
 	feature_flags = { jump_method }
 	prereqfor_desc = {
@@ -3822,7 +3826,32 @@ tech_psi_jump_drive_1 = {
 	}
 
 	weight_modifier = {
-		factor = 0
+		factor = 0.1
+		modifier = {
+			factor = 0.1
+			NOR = {
+				has_trait_in_council = { TRAIT = leader_trait_expertise_psionics }
+				has_trait_in_council = { TRAIT = leader_trait_curator }
+				has_trait_in_council = { TRAIT = leader_trait_spark_of_genius }
+				has_trait_in_council = { TRAIT = leader_trait_spark_of_genius_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
+				has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
+			}
+		}
+		inline_script = {
+			script = technologies/rare_technologies_weight_modifiers
+			TECHNOLOGY = tech_psi_jump_drive_1
+		}
+		modifier = {
+			factor = @ap_grasp_the_void_travel_tech
+			has_ascension_perk = ap_grasp_the_void
+		}
+		modifier = { factor = @eager_explorer_effect is_eager_explorer_empire = yes }
+		modifier = {
+			factor = @ap_grasp_the_void_travel_tech
+			has_country_flag = jaunted_traveler_secret_revealed
+		}
 	}
 }
 
@@ -4176,7 +4205,7 @@ tech_planetary_infrastructure_1 = {
 	gateway = infrastructure
 
 	modifier = {
-		planet_buildings_cost_mult = -0.10
+		planet_structures_cost_mult = -0.10
 		planet_building_build_speed_mult = 0.15
 		planet_colony_development_speed_mult = 0.25
 		habitat_max_districts_add = 1
@@ -4198,7 +4227,7 @@ tech_planetary_infrastructure_1 = {
 			is_wilderness_empire = yes
 		}
 		modifier = {
-			planet_buildings_cost_mult = -0.10
+			planet_structures_cost_mult = -0.10
 			planet_building_build_speed_mult = 0.15
 			terraform_speed_mult = 0.25
 		}
@@ -4223,7 +4252,7 @@ tech_planetary_infrastructure_2 = {
 	weight = @tier4weight3
 
 	modifier = {
-		planet_buildings_cost_mult = -0.10
+		planet_structures_cost_mult = -0.10
 		planet_building_build_speed_mult = 0.15
 		planet_colony_development_speed_mult = 0.25
 		habitat_max_districts_add = 1
@@ -4245,7 +4274,7 @@ tech_planetary_infrastructure_2 = {
 			is_wilderness_empire = yes
 		}
 		modifier = {
-			planet_buildings_cost_mult = -0.10
+			planet_structures_cost_mult = -0.10
 			planet_building_build_speed_mult = 0.15
 			terraform_speed_mult = 0.25
 		}
@@ -4461,7 +4490,7 @@ tech_colonial_bureaucracy = {
 	}
 
 	weight_modifier = {
-		modifier = { factor = 0 sapient_pop_amount < 2500 }
+		modifier = { factor = 0 num_owned_planets < 2 }
 		modifier = { factor = 1.5 num_owned_planets > 2 }
 		modifier = { factor = 1.5 num_owned_planets > 3 }
 		modifier = { factor = 1.5 num_owned_planets > 4 }
@@ -4492,7 +4521,7 @@ tech_galactic_bureaucracy = {
 	}
 
 	weight_modifier = {
-		modifier = { factor = 0 sapient_pop_amount < 5000 }
+		modifier = { factor = 0 num_owned_planets < 2 }
 		modifier = { factor = 1.5 num_owned_planets > 2 }
 		modifier = { factor = 1.5 num_owned_planets > 3 }
 		modifier = { factor = 1.5 num_owned_planets > 4 }
@@ -4672,8 +4701,8 @@ tech_neural_implants = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.5
-			count_owned_pop_group = {
-				count >= 10
+			count_owned_pop_amount = {
+				count >= 1000
 				limit = {
 					OR = {
 						is_enslaved = yes
@@ -4684,8 +4713,8 @@ tech_neural_implants = {
 		}
 		modifier = {
 			factor = 2
-			count_owned_pop_group = {
-				count >= 20
+			count_owned_pop_amount = {
+				count >= 2000
 				limit = {
 					OR = {
 						is_enslaved = yes
@@ -4696,8 +4725,8 @@ tech_neural_implants = {
 		}
 		modifier = {
 			factor = 2
-			count_owned_pop_group = {
-				count >= 30
+			count_owned_pop_amount = {
+				count >= 3000
 				limit = {
 					OR = {
 						is_enslaved = yes
@@ -5595,7 +5624,7 @@ tech_slave_colonies = {
 			NAND = {
 				allows_slavery = yes
 				num_owned_planets > 1
-				any_owned_pop_group = { is_enslaved = yes }
+				any_owned_species = { is_enslaved = yes }
 				# any_enslaved_species = { is_sapient = yes } # Vfix opt: FIXME not working!?
 			}
 		}
@@ -5614,9 +5643,7 @@ tech_slave_colonies = {
 			factor = 2
 			count_owned_pop_amount = {
 				count >= 8000
-				limit = {
-					is_enslaved = yes
-				}
+				limit = { is_enslaved = yes }
 			}
 		}
 		modifier = {
@@ -5630,9 +5657,7 @@ tech_slave_colonies = {
 						exists = orbital_defence
 						orbital_defence = {
 							exists = starbase
-							starbase = {
-								has_starbase_building = ring_slave_processing_facility
-							}
+							starbase = { has_starbase_building = ring_slave_processing_facility }
 						}
 					}
 				}

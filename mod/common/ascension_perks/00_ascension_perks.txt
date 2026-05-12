@@ -1419,6 +1419,63 @@ ap_master_builders = {
 	}
 }
 
+ap_galactic_wonders = {
+	on_enabled = {
+		if = {
+			limit = { has_megacorp = yes }
+			custom_tooltip = "add_research_options_galactic_wonders_utopia_megacorp"
+		}
+		else = {
+			custom_tooltip = "add_research_options_galactic_wonders_utopia"
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_technology = tech_ring_world }
+				}
+				add_research_option = tech_ring_world
+			}
+			if = {
+				limit = {
+					NOT = { has_technology = tech_dyson_sphere }
+				}
+				add_research_option = tech_dyson_sphere
+			}
+			if = {
+				limit = {
+					has_megacorp = yes
+					NOT = { has_technology = tech_matter_decompressor }
+				}
+				add_research_option = tech_matter_decompressor
+			}
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_mega_engineering"
+			has_technology = tech_mega_engineering
+		}
+		custom_tooltip = {
+			fail_text = "requires_built_or_repaired_megastructure"
+			has_country_flag = has_built_or_repaired_megastructure
+		}
+	}
+
+	potential = {
+		NOT = { has_ascension_perk = ap_galactic_wonders }
+	}
+
+	ai_weight = {
+		factor = 20
+		modifier = { factor = 2 has_ethic = ethic_pacifist }
+		modifier = { factor = 3 has_ethic = ethic_fanatic_pacifist }
+		modifier = { factor = 2 has_ethic = ethic_materialist }
+		modifier = { factor = 3 has_ethic = ethic_fanatic_materialist }
+	}
+}
+
+# Save game compatibility stubs - these perks were merged into ap_galactic_wonders
 ap_galactic_wonders_utopia = {
 	on_enabled = {
 		custom_tooltip = "add_research_options_galactic_wonders_utopia"
@@ -1439,30 +1496,8 @@ ap_galactic_wonders_utopia = {
 		}
 	}
 
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_mega_engineering"
-			has_technology = tech_mega_engineering
-		}
-		custom_tooltip = {
-			fail_text = "requires_built_or_repaired_megastructure"
-			has_country_flag = has_built_or_repaired_megastructure
-		}
-	}
-
 	potential = {
-		NOR = {
-			has_megacorp = yes
-			has_ascension_perk = ap_galactic_wonders_utopia
-		}
-	}
-
-	ai_weight = {
-		factor = 20
-		modifier = { factor = 2 has_ethic = ethic_pacifist }
-		modifier = { factor = 3 has_ethic = ethic_fanatic_pacifist }
-		modifier = { factor = 2 has_ethic = ethic_materialist }
-		modifier = { factor = 3 has_ethic = ethic_fanatic_materialist }
+		always = no
 	}
 }
 
@@ -1476,22 +1511,9 @@ ap_galactic_wonders_megacorp = {
 		}
 	}
 
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_mega_engineering"
-			has_technology = tech_mega_engineering
-		}
-		custom_tooltip = {
-			fail_text = "requires_built_or_repaired_megastructure"
-			has_country_flag = has_built_or_repaired_megastructure
-		}
-	}
-
 	potential = {
 		has_megacorp = yes
-		NOT = {
-			has_ascension_perk = ap_galactic_wonders_megacorp
-		}
+		NOT = { has_ascension_perk = ap_galactic_wonders_megacorp }
 	}
 
 	ai_weight = {
@@ -1525,17 +1547,6 @@ ap_galactic_wonders_utopia_and_megacorp = {
 				}
 				add_research_option = tech_matter_decompressor
 			}
-		}
-	}
-
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_mega_engineering"
-			has_technology = tech_mega_engineering
-		}
-		custom_tooltip = {
-			fail_text = "requires_built_or_repaired_megastructure"
-			has_country_flag = has_built_or_repaired_megastructure
 		}
 	}
 

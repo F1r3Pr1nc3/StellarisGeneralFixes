@@ -95,12 +95,16 @@ origin_unplugged_starting_system_init = {
 	}
 
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 2 }
+		trigger = {
+			num_guaranteed_colonies >= 2
+		}
 		hyperlane_jumps = { min = 1 max = 3 }
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
 		hyperlane_jumps = { min = 1 max = 3 }
 		initializer = "neighbor_t1_first_colony"
 	}
@@ -402,12 +406,16 @@ sol_system_unplugged_initializer = {
 		initializer = "sol_neighbor_t1"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies >= 1 }
+		trigger = {
+			num_guaranteed_colonies >= 1
+		}
 		hyperlane_jumps = { min = 1 max = @jumps }
 		initializer = "sol_neighbor_t1_first_colony"
 	}
 	neighbor_system = {
-		trigger = { num_guaranteed_colonies = 0 }
+		trigger = {
+			num_guaranteed_colonies = 0
+		}
 		hyperlane_jumps = { min = 1 max = @jumps }
 		initializer = "sol_neighbor_t1_no_guaranteed_colony"
 	}
@@ -418,7 +426,6 @@ sol_system_unplugged_initializer = {
 origin_unplugged_machine_legacy_core_system_init = {
 	class = sc_b
 	flags = { unplugged_machine_legacy_unique_flag unplugged_machine_legacy_core_flag unplugged_machine_legacy_flag }
-
 	usage = misc_system_init
 
 	usage_odds = {
@@ -628,7 +635,6 @@ origin_unplugged_machine_legacy_core_system_init = {
 origin_unplugged_machine_legacy_periphery_system_init = {
 	class = "rl_standard_stars"
 	flags = { unplugged_machine_legacy_unique_flag unplugged_machine_legacy_core_flag unplugged_machine_legacy_flag }
-
 	usage_odds = 0
 
 	init_effect = {
@@ -788,7 +794,6 @@ unplugged_machine_legacy_tomb_1_system_init = {
 		unplugged_machine_legacy_flag
 		unplugged_machine_legacy_tomb_system_flag
 	}
-
 	usage_odds = 0
 
 	planet = {
@@ -866,7 +871,6 @@ unplugged_machine_legacy_tomb_2_system_init = {
 		unplugged_machine_legacy_flag
 		unplugged_machine_legacy_tomb_system_flag
 	}
-
 	usage_odds = 0
 
 	planet = {
@@ -945,7 +949,6 @@ unplugged_machine_legacy_tomb_3_system_init = {
 		unplugged_machine_legacy_flag
 		unplugged_machine_legacy_tomb_system_flag
 	}
-
 	usage_odds = 0
 
 	planet = {
@@ -1014,7 +1017,6 @@ unplugged_machine_legacy_tomb_4_system_init = {
 		unplugged_machine_legacy_flag
 		unplugged_machine_legacy_tomb_system_flag
 	}
-
 	usage_odds = 0
 
 	planet = {

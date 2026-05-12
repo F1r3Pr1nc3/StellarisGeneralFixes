@@ -7753,8 +7753,16 @@ fleet_event = {
 					count = 3
 					add_district = district_nexus_3
 				}
-				add_zone = { zone = zone_urban zone_slot = 1 replace = yes } # No Scaling Job-zones to keep economy stable.
-				add_zone = { zone = zone_urban zone_slot = 2 replace = yes }
+				add_zone = {
+					zone = zone_urban
+					zone_slot = 1
+					replace = yes
+				} # No Scaling Job-zones to keep economy stable.
+				add_zone = {
+					zone = zone_urban
+					zone_slot = 2
+					replace = yes
+				}
 				add_zone = { district = district_nexus_1 zone = zone_energy_nexus }
 				add_zone = { district = district_nexus_2 zone = zone_minerals_nexus }
 				add_zone = { district = district_nexus_3 zone = zone_foundry_nexus }
@@ -7776,7 +7784,10 @@ fleet_event = {
 					add_building = { building = building_refinery zone = zone_foundry_nexus }
 				}
 				add_building = { building = building_energy_grid zone = zone_energy_nexus }
-				add_building = { building = building_mineral_purification_plant zone = zone_minerals_nexus }
+				add_building = {
+					building = building_mineral_purification_plant
+					zone = zone_minerals_nexus
+				}
 				create_pop_group = { species = event_target:new_machines size = 8000 }
 			}
 		}
@@ -7893,7 +7904,7 @@ fleet_event = {
 		trigger = {
 			owner = {
 				OR = {
-                    AND = {
+					AND = {
 						is_spiritualist = yes
 						NOR = {
 							is_individual_machine = yes
@@ -7903,12 +7914,12 @@ fleet_event = {
 							has_origin = origin_synthetic_fertility
 						}
 					}
-                    is_xenophobe = yes
-                    is_hive_empire = yes
+					is_xenophobe = yes
+					is_hive_empire = yes
 					is_homicidal = yes
 					has_valid_civic = civic_barbaric_despoilers
-                    has_policy_flag = robots_outlawed
-                }
+					has_policy_flag = robots_outlawed
+				}
 			}
 		}
 		from.planet = { add_deposit = d_alloys_25 }
@@ -7929,14 +7940,14 @@ fleet_event = {
 			from.planet = { is_planet_class = pc_machine_broken } # Star-Killer
 			owner = {
 				OR = {
-    			    is_spiritualist = no
+					is_spiritualist = no
 					has_ascension_perk = ap_synthetic_evolution # Haven't flag synthetic_empire yet.
 					is_robot_empire = yes
-    			    has_origin = origin_cybernetic_creed
-    			    has_origin = origin_unplugged
-    			    has_origin = origin_mechanists
-    			    has_origin = origin_synthetic_fertility
-    			}
+					has_origin = origin_cybernetic_creed
+					has_origin = origin_unplugged
+					has_origin = origin_mechanists
+					has_origin = origin_synthetic_fertility
+				}
 				NOR = {
 					has_policy_flag = robots_outlawed
 					has_valid_civic = civic_fanatic_purifiers
@@ -7959,49 +7970,51 @@ fleet_event = {
 						civic = civic_machine_builder
 					}
 					day_zero_contact = no # Fixes instant First Contacts with Spacefauna, Enclaves, and FEs.
-                    exclude_day_zero_contact = root # Probably not necessary.
+					exclude_day_zero_contact = root # Probably not necessary.
 					effect = {
 						save_event_target_as = DSBF_country
 						establish_communications_no_message = root.owner # Fixes them contacting you as if they had established contact.
-                        root.owner = {
-                            every_federation_ally = { establish_communications = prevprev }
-                        }
+						root.owner = {
+							every_federation_ally = { establish_communications = prevprev }
+						}
 						if = { # Guarantee shipyards.
 							limit = { exists = prev.starbase }
 							prev.starbase = {
 								set_owner = prev
 								if = {
-                				    limit = { has_starbase_size = starbase_outpost }
-                				    set_starbase_size = starbase_starport
-                				}
-                				if = {
-                				    limit = { NOT = { has_starbase_module = shipyard } }
-                				    set_starbase_module = { slot = 1 module = shipyard }
-                				    set_starbase_module = { slot = 2 module = shipyard }
-                				}
+									limit = { has_starbase_size = starbase_outpost }
+									set_starbase_size = starbase_starport
+								}
+								if = {
+									limit = {
+										NOT = { has_starbase_module = shipyard }
+									}
+									set_starbase_module = { slot = 1 module = shipyard }
+									set_starbase_module = { slot = 2 module = shipyard }
+								}
 							}
 						}
 						else = {
 							prev.solar_system = {
 								create_starbase = {
-            					    size = starbase_starport
-            					    module = shipyard
-            					    module = shipyard
-            					    building = crew_quarters
-            					    owner = event_target:DSBF_country
-            					}
+									size = starbase_starport
+									module = shipyard
+									module = shipyard
+									building = crew_quarters
+									owner = event_target:DSBF_country
+								}
 							}
 						}
 						give_starting_resources_effect = yes
 						add_resource = { unity = 10000 } # Was one million, let them max out traditions before Synthetic Age situation completes, preventing ascension.
 						copy_techs_from = {
-    					    target = root.owner
-    					    except = {
-    					        tech_akx_worm_1
-    					        tech_akx_worm_2
-    					        tech_akx_worm_3
-    					    }
-    					}
+							target = root.owner
+							except = {
+								tech_akx_worm_1
+								tech_akx_worm_2
+								tech_akx_worm_3
+							}
+						}
 						if = { # Bioship Tech-swap.
 							limit = {
 								root.owner = { has_technology = tech_maulers }
@@ -8028,45 +8041,37 @@ fleet_event = {
 							give_technology = { tech = tech_cruisers }
 						}
 						if = {
-    					    limit = {
-    					        root.owner = { has_modifier = pacified_amoebas }
-    					    }
-    					    add_modifier = { modifier = pacified_amoebas days = -1 }
-    					    every_country = {
-    					        limit = { is_amoeba_country_type = yes }
-    					        set_faction_hostility = {
-    					            set_hostile = no
-    					            set_neutral = yes
-    					            target = event_target:DSBF_country
-    					        }
-    					    }
-    					}
-    					if = {
-    					    limit = {
-    					        root.owner = { has_modifier = pacified_crystals }
-    					    }
-    					    add_modifier = { modifier = pacified_crystals days = -1 }
-    					    every_country = {
-    					        limit = { is_crystal_country_type = yes }
-    					        set_faction_hostility = {
-    					            set_hostile = no
-    					            set_neutral = yes
-    					            target = event_target:DSBF_country
-    					        }
-    					    }
-    					}
+							limit = {
+								root.owner = { has_modifier = pacified_amoebas }
+							}
+							add_modifier = { modifier = pacified_amoebas days = -1 }
+							every_country = {
+								limit = { is_amoeba_country_type = yes }
+								set_faction_hostility = { set_neutral = yes target = event_target:DSBF_country }
+							}
+						}
+						if = {
+							limit = {
+								root.owner = { has_modifier = pacified_crystals }
+							}
+							add_modifier = { modifier = pacified_crystals days = -1 }
+							every_country = {
+								limit = { is_crystal_country_type = yes }
+								set_faction_hostility = { set_neutral = yes target = event_target:DSBF_country }
+							}
+						}
 						set_subject_of = { who = root.owner preset = preset_vassal_benevolent } # Loyalty starts at 0
 						random_agreement = {
-    					    limit = {
-    					        owner = { is_same_value = root.owner }
-    					        target = { is_same_value = event_target:DSBF_country }
-    					    }
-    					    set_agreement_terms = {
-    					        subject_diplomacy = subject_can_not_do_diplomacy
-    					        joins_subject_wars = joins_subject_wars_none # Isolated, AI cannot invade
-    					        joins_overlord_wars = joins_overlord_wars_none
-    					    }
-    					}
+							limit = {
+								is_owned_by = root.owner
+								target = { is_same_value = event_target:DSBF_country }
+							}
+							set_agreement_terms = {
+								subject_diplomacy = subject_can_not_do_diplomacy
+								joins_subject_wars = joins_subject_wars_none # Isolated, AI cannot invade
+								joins_overlord_wars = joins_overlord_wars_none
+							}
+						}
 						add_opinion_modifier = { modifier = opinion_liberated_us who = root.owner }
 					}
 				}
@@ -8086,8 +8091,16 @@ fleet_event = {
 					count = 3
 					add_district = district_nexus_3
 				}
-				add_zone = { zone = zone_urban zone_slot = 1 replace = yes } # No Scaling Job-zones to keep economy stable.
-				add_zone = { zone = zone_urban zone_slot = 2 replace = yes }
+				add_zone = {
+					zone = zone_urban
+					zone_slot = 1
+					replace = yes
+				} # No Scaling Job-zones to keep economy stable.
+				add_zone = {
+					zone = zone_urban
+					zone_slot = 2
+					replace = yes
+				}
 				add_zone = { district = district_nexus_1 zone = zone_energy_nexus }
 				add_zone = { district = district_nexus_2 zone = zone_minerals_nexus }
 				add_zone = { district = district_nexus_3 zone = zone_foundry_nexus }
@@ -8109,7 +8122,10 @@ fleet_event = {
 					add_building = { building = building_refinery zone = zone_foundry_nexus }
 				}
 				add_building = { building = building_energy_grid zone = zone_energy_nexus }
-				add_building = { building = building_mineral_purification_plant zone = zone_minerals_nexus }
+				add_building = {
+					building = building_mineral_purification_plant
+					zone = zone_minerals_nexus
+				}
 				solar_system = {
 					if = {
 						limit = {

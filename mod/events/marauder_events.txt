@@ -7908,7 +7908,7 @@ country_event = {
 							NOT = { exists = starbase }
 							event_target:raider_khanate = { is_country_type = awakened_marauders }
 						}
-						event_target:raider_khanate = { # save_event_target_as = marauder_starbase_owner # TODO Error log drops: invalid starbase design Void Home??
+						event_target:raider_khanate = {
 							if = {
 								limit = {
 									NOT = { has_existing_ship_design = starbase_marauder }
@@ -7918,7 +7918,6 @@ country_event = {
 							}
 						}
 						create_starbase = { owner = event_target:raider_khanate size = "starbase_marauder" }
-						# create_marauder_starbase = yes # TODO Error log drops: Failed to create a starbase
 					}
 				}
 				### Create Defense Armies (for some job reasons common armies get deleted)

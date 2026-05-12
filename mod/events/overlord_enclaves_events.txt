@@ -7748,14 +7748,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = divination_occurring
-			owner = {
-				OR = {
-					NOT = { any_owned_ship = { is_ship_class = shipclass_science_ship } }
-					has_country_flag = shrouded_ship
-				}
-			}
+		NOT = { has_situation_flag = divination_occurring }
+		owner = {
+			any_owned_ship = { is_ship_class = shipclass_science_ship }
+			NOT = { has_country_flag = shrouded_ship }
 		}
 	}
 
@@ -11039,20 +11035,60 @@ fleet_event = {
 					trigger = leader_class
 					commander = {
 						random_list = {
-							2 = { add_trait = { trait = leader_trait_admiral_mind_wipe_01 } }
-							2 = { add_trait = { trait = leader_trait_admiral_mind_wipe_02 } }
-							2 = { add_trait = { trait = leader_trait_general_mind_wipe_01 } }
-							2 = { add_trait = { trait = leader_trait_general_mind_wipe_02 } }
-							1 = { add_trait = { trait = leader_trait_ruler_mind_wipe_01 } }
-							1 = { add_trait = { trait = leader_trait_ruler_mind_wipe_02 } }
+							2 = {
+								add_trait = {
+									trait = leader_trait_admiral_mind_wipe_01
+								}
+							}
+							2 = {
+								add_trait = {
+									trait = leader_trait_admiral_mind_wipe_02
+								}
+							}
+							2 = {
+								add_trait = {
+									trait = leader_trait_general_mind_wipe_01
+								}
+							}
+							2 = {
+								add_trait = {
+									trait = leader_trait_general_mind_wipe_02
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = leader_trait_ruler_mind_wipe_01
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = leader_trait_ruler_mind_wipe_02
+								}
+							}
 						}
 					}
 					scientist = {
 						random_list = {
-							4 = { add_trait = { trait = leader_trait_scientist_mind_wipe_01 } }
-							4 = { add_trait = { trait = leader_trait_scientist_mind_wipe_02 } }
-							1 = { add_trait = { trait = leader_trait_ruler_mind_wipe_01 } }
-							1 = { add_trait = { trait = leader_trait_ruler_mind_wipe_02 } }
+							4 = {
+								add_trait = {
+									trait = leader_trait_scientist_mind_wipe_01
+								}
+							}
+							4 = {
+								add_trait = {
+									trait = leader_trait_scientist_mind_wipe_02
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = leader_trait_ruler_mind_wipe_01
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = leader_trait_ruler_mind_wipe_02
+								}
+							}
 						}
 					}
 				}
@@ -11065,14 +11101,32 @@ fleet_event = {
 					trigger = leader_class
 					commander = {
 						random_list = {
-							1 = { add_trait = { trait = gestalt_trait_commander_mind_wipe_01 } }
-							1 = { add_trait = { trait = gestalt_trait_commander_mind_wipe_02 } }
-							1 = { add_trait = { trait = gestalt_trait_general_mind_wipe_01 } }
-							1 = { add_trait = { trait = gestalt_trait_general_mind_wipe_02 } }
+							1 = {
+								add_trait = {
+									trait = gestalt_trait_commander_mind_wipe_01
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = gestalt_trait_commander_mind_wipe_02
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = gestalt_trait_general_mind_wipe_01
+								}
+							}
+							1 = {
+								add_trait = {
+									trait = gestalt_trait_general_mind_wipe_02
+								}
+							}
 						}
 					}
 					scientist = {
-						add_trait = { trait = gestalt_trait_scientist_mind_wipe_02 }
+						add_trait = {
+							trait = gestalt_trait_scientist_mind_wipe_02
+						}
 					}
 				}
 			}
@@ -11816,22 +11870,34 @@ leader_event = {
 		switch = {
 			trigger = has_trait
 			leader_trait_shroudwalker = {
-				owner = { remove_country_flag = attacked_shroudwalkers }
+				owner = {
+					remove_country_flag = attacked_shroudwalkers
+				}
 			}
 			leader_trait_master_salvager = {
-				owner = { remove_country_flag = attacked_salvagers }
+				owner = {
+					remove_country_flag = attacked_salvagers
+				}
 			}
 			leader_trait_curator = {
-				owner = { remove_country_flag = remove_curator_archivist }
+				owner = {
+					remove_country_flag = remove_curator_archivist
+				}
 			}
 			leader_trait_xuracorp_liaison = {
-				owner = { remove_country_flag = attacked_trader_enclave_country_1 }
+				owner = {
+					remove_country_flag = attacked_trader_enclave_country_1
+				}
 			}
 			leader_trait_riggan_liaison = {
-				owner = { remove_country_flag = attacked_trader_enclave_country_2 }
+				owner = {
+					remove_country_flag = attacked_trader_enclave_country_2
+				}
 			}
 			leader_trait_muutagan_liaison = {
-				owner = { remove_country_flag = attacked_trader_enclave_country_3 }
+				owner = {
+					remove_country_flag = attacked_trader_enclave_country_3
+				}
 			}
 		}
 	}
