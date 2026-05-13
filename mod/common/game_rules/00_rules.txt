@@ -692,7 +692,7 @@ can_declare_war = {
 	}
 	if = {
 		limit = {
-			# exists = root
+			exists = root
 			root = {
 				has_policy_flag = no_wars
 				OR = {
@@ -740,7 +740,7 @@ can_colonize_planet = {
 	}
 	custom_tooltip = {
 		fail_text = "COLONIZATION_IMPOSSIBLE_COSMOGENESIS_EXODUS"
-		# exists = root
+		exists = root
 		NOT = {
 			root = {
 				owner = { has_event_chain = cosmogenesis_planet_pickup_chain }
@@ -758,7 +758,7 @@ can_colonize_planet = {
 		fail_text = "BLANK_STRING"
 		if = {
 			limit = {
-				# exists = root
+				exists = root
 				root = { is_country_type = swarm }
 			}
 			is_artificial = no

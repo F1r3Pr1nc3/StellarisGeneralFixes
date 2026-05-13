@@ -3220,9 +3220,7 @@ country_event = {
 
 	trigger = {
 		has_country_flag = skrand_recruited
-		from = {
-			event_target:admiral_sharpbeak = { has_leader_flag = skrand }
-		}
+		from = { has_leader_flag = skrand } # Vfix: was firing for every leader of this country!?
 	}
 
 	immediate = {
@@ -3245,7 +3243,7 @@ country_event = {
 
 	immediate = {
 		remove_country_flag = skrand_recruited
-		clear_global_event_target = admiral_sharpbeak
+		# clear_global_event_target = admiral_sharpbeak Vfix double?
 		clear_global_event_target = last_talon_ship
 	}
 }

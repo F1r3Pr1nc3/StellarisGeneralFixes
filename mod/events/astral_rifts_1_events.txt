@@ -2392,12 +2392,18 @@ astral_rift_event = {
 	astral_rift = yes
 	is_triggered_only = yes
 
+	immediate = {
+		if = {
+			limit = { exists = leader } # Vfix log (for whatever reason)
+			leader = {
+				kill_leader = { show_notification = yes }
+			}
+		}
+	}
+
 	option = {
 		name = astral_rift.1505.a
 		explorer = { astral_thread_large_reward = yes }
-		leader = {
-			kill_leader = { show_notification = yes }
-		}
 		finish_astral_rift = yes
 	}
 }
@@ -4374,6 +4380,12 @@ astral_rift_event = {
 		exists = leader # Vfix
 	}
 
+	immediate = {
+		leader = { # Vfix
+			save_event_target_as = rockworms_astral_rift_dead_scientist
+		}
+	}
+
 	option = {
 		name = UNFORTUNATE
 		hidden_effect = {
@@ -4383,7 +4395,7 @@ astral_rift_event = {
 					scopes = { from = prev fromfrom = prev.fleet }
 				}
 				clone_leader = {
-					target = prev.leader
+					target = event_target:rockworms_astral_rift_dead_scientist # Vfix
 					effect = {
 						save_event_target_as = rockworms_astral_rift_dead_scientist@owner
 						exile_leader_as = rockworms_astral_rift_dead_scientist@owner
@@ -4391,7 +4403,7 @@ astral_rift_event = {
 				}
 			}
 		}
-		leader = {
+		event_target:rockworms_astral_rift_dead_scientist = { # Vfix
 			kill_leader = { class = scientist show_notification = yes }
 		}
 		explorer = {
@@ -4488,6 +4500,16 @@ country_event = {
 	picture = GFX_evt_astral_rift_rockworms_2
 	is_triggered_only = yes
 
+	trigger = {
+		exists = from # Vfix
+	}
+
+	immediate = {
+		from = { # Vfix
+			save_event_target_as = toxoid_digested_leader
+		}
+	}
+
 	option = {
 		name = astral_rift.1890.a
 		create_species = {
@@ -4499,7 +4521,7 @@ country_event = {
 			}
 		}
 		clone_leader = {
-			target = from
+			target = event_target:toxoid_digested_leader
 			species = event_target:toxoid_digested_leader_species
 			effect = {
 				add_trait = { trait = leader_trait_partially_digested }
@@ -4515,7 +4537,7 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			from = {
+			event_target:toxoid_digested_leader = { # Vfix
 				kill_leader = { show_notification = no }
 			}
 		}

@@ -1231,14 +1231,20 @@ create_fear_of_the_dark_country = {
 			set_faction_hostility = { target = event_target:fotd_country set_friendly = yes }
 		}
 	}
+	# Vfix: do it immediately
+	set_owner = last_created_country
+	set_capital = yes
 	event_target:fotd_country = {
 		add_intel = { amount = 100 who = event_target:fotd_seperatist_country }
 	}
 }
 
+# Why extra effect here?? (both are only used ONCE together)
 setup_fear_of_the_dark_pre_ftl = {
-	set_owner = event_target:fotd_seperatist_country
-	set_capital = yes
+	if = {
+		limit = { has_owner = no }
+		set_owner = event_target:fotd_seperatist_country # Vfix: somehow hiccup (report by Red Skull)
+	}
 	set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 	owner_species = {
 		switch = {

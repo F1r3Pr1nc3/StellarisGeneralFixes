@@ -451,12 +451,12 @@ humans = {
 	}
 
 	# These should not be used for randomly generated species
-	non_randomized_portraits = {
-		# "human" Vfix
-		# "human_legacy" Vfix
-	}
+	# non_randomized_portraits = { # Vfix: engine bug omits generation of this species also for prescripted empires
+	# 	"human"
+	# 	"human_legacy"
+	# }
 
-	conditional_portraits = {
+	conditional_portraits = { # Vfix
 		randomizable = {
 			# The create_species effect can't properly take the possible trigger below into account.
 			# Work around this by disabling this class for species randomization after game start.
@@ -469,7 +469,6 @@ humans = {
 			"human_legacy"
 		}
 	}
-
 }
 
 humanoids = {
@@ -1103,9 +1102,19 @@ cybernetic_humans = {
 		}
 	}
 
-	# These should not be used for randomly generated species
-	non_randomized_portraits = {
-		"cyb12"
+	# # These should not be used for randomly generated species
+	# non_randomized_portraits = {
+	# 	"cyb12"
+	# }
+	conditional_portraits = { # Vfix
+		randomizable = {
+			NOT = {
+				has_global_flag = game_started
+			}
+		}
+		portraits = {
+			"cyb12"
+		}
 	}
 }
 

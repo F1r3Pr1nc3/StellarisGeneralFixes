@@ -1617,15 +1617,15 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOR = {
-					AND = {
-						num_ethics = 2
-						is_fanatic = yes
-						has_any_ethic = yes
-					}
+				has_any_ethic = yes
+				OR = {
 					AND = {
 						num_ethics = 3
 						is_fanatic = no
+					}
+					AND = {
+						num_ethics = 2
+						is_fanatic = yes
 					}
 				}
 			}
@@ -1754,15 +1754,15 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOR = {
-					AND = {
-						num_ethics = 2
-						is_fanatic = yes
-						has_any_ethic = yes
-					}
+				has_any_ethic = yes
+				OR = {
 					AND = {
 						num_ethics = 3
 						is_fanatic = no
+					}
+					AND = {
+						num_ethics = 2
+						is_fanatic = yes
 					}
 				}
 			}
@@ -1781,16 +1781,16 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_country_flag = cc_rebel_ethic_sorted
-			AND = {
-				num_ethics = 2
-				is_fanatic = yes
-				has_any_ethic = yes
-			}
+		NOT = { has_country_flag = cc_rebel_ethic_sorted }
+		has_any_ethic = yes
+		OR = {
 			AND = {
 				num_ethics = 3
 				is_fanatic = no
+			}
+			AND = {
+				num_ethics = 2
+				is_fanatic = yes
 			}
 		}
 	}
@@ -2003,7 +2003,7 @@ country_event = {
 				}
 			}
 			country_event = { id = action.229 scopes = { from = from } days = 1 } # set_origin_effect
-			country_event = { id = action.231 scopes = { from = from } days = 1 } # advanced_authority_refresh
+			country_event = { id = action.231 scopes = { from = from } days = 2 } # advanced_authority_refresh
 		}
 		# set_government_cooldown = no
 		if = {
