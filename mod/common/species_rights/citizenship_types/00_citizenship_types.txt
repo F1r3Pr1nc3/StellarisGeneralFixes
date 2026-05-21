@@ -651,12 +651,12 @@ citizenship_slavery = {
 		is_scope_valid = yes
 		exists = from
 		NOR = { # Vfix opt
-			is_robotic = yes
 			from = {
-				OR = {
-					is_wilderness_empire = yes
-					is_individual_machine = yes
-				}
+				is_wilderness_empire = yes
+			}
+			AND = {
+				from = { is_individual_machine = yes }
+				is_robotic = yes
 			}
 			is_disconnected_drone_pop = yes
 		}
