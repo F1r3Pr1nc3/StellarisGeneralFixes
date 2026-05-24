@@ -2069,19 +2069,13 @@ the_chosen_home_initializer = {
 			create_species = {
 				name = NAME_Charynoi
 				class = random_non_machine
+				homeworld = This.Planet
 				traits = {
 					ideal_planet_class = pc_gaia
 					trait = random_traits
 				}
 				effect = {
-					modify_species = {
-						base = this
-						remove_trait = trait_pc_gaia_preference
-						add_trait = trait_pc_gaia_preference_terraforming
-						effect = {
-							save_event_target_as = chosen_species
-						}
-					}
+					save_event_target_as = chosen_species
 				}
 			}
 			create_country = {
@@ -2098,6 +2092,7 @@ the_chosen_home_initializer = {
 					civic = civic_fanatic_purifiers
 					civic = civic_exalted_priesthood
 				}
+				set_capital_from_species = yes
 				authority = random
 				effect = {
 					save_global_event_target_as = chosen_empire
@@ -2125,12 +2120,11 @@ the_chosen_home_initializer = {
 			create_life_seeded_planet = yes
 			clear_blockers = yes
 			generate_start_buildings_and_districts = yes
+			remove_building = building_colony_shelter
+			generate_starting_rural_districts = yes
 			generate_start_pops = yes
-			while = { # To make up for the disadvantage of being stuck behind the wormhole
-				count = 5
-				weighted_random_owned_pop_group = {
-					add_pop_amount = { amount = 1200 }
-				}
+			weighted_random_owned_pop_group = {
+				add_pop_amount = { amount = 2400 }
 			}
 		}
 	}
