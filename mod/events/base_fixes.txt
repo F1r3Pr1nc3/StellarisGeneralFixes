@@ -15,8 +15,8 @@ event = {
 					has_country_flag = breached_shroud
 					has_country_flag = shroud_fallen_empire
 				}
+				resource_stockpile_compare = { resource = energy value >= 5000 }
 				NOR = {
-					resource_stockpile_compare = { resource = energy value < 5000 }
 					has_country_flag = shroud_diplomacy_engaged
 					has_modifier = shroud_cooldown
 					has_modifier = shroud_precog_cooldown
@@ -78,10 +78,8 @@ event = {
 		any_playable_country = {
 			is_at_war = yes
 			is_war_leader = yes
-			NOR = {
-				fleet_power >= 500
-				any_controlled_planet = {  }
-			}
+			fleet_power < 500
+			NOT = { any_controlled_planet = {  } }
 		}
 	}
 
@@ -90,10 +88,8 @@ event = {
 			limit = {
 				is_at_war = yes
 				is_war_leader = yes
-				NOR = {
-					fleet_power >= 500
-					any_controlled_planet = {  }
-				}
+				fleet_power < 500
+				NOT = { any_controlled_planet = {  } }
 			}
 			country_event = { id = base_fix.6 days = 1 }
 		}
@@ -108,10 +104,8 @@ country_event = {
 	trigger = { # double check
 		is_at_war = yes
 		is_war_leader = yes
-		NOR = {
-			fleet_power >= 500
-			any_controlled_planet = {  }
-		}
+		fleet_power < 500
+		NOT = { any_controlled_planet = {  } }
 	}
 
 	immediate = {
@@ -150,10 +144,8 @@ planet_event = {
 		from = {
 			is_at_war = yes
 			is_war_leader = yes
-			NOR = {
-				fleet_power >= 500
-				any_controlled_planet = {  }
-			}
+			fleet_power < 500
+			NOT = { any_controlled_planet = {  } }
 		}
 	}
 
@@ -183,10 +175,8 @@ country_event = {
 			exists = leader
 			leader = {
 				leader_class = commander
-				NOR = {
-					num_traits >= 3
-					has_trait = leader_trait_engineer
-				}
+				num_traits < 3
+				NOT = { has_trait = leader_trait_engineer }
 			}
 		}
 	}
@@ -200,10 +190,8 @@ country_event = {
 				is_fleet_idle = no
 				leader = {
 					leader_class = commander
-					NOR = {
-						num_traits >= 3
-						has_trait = leader_trait_engineer
-					}
+					num_traits < 3
+					NOT = { has_trait = leader_trait_engineer }
 				}
 			}
 			fleet_event = { id = leader.15 days = 7 }

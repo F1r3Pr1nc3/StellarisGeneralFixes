@@ -1956,13 +1956,13 @@ event = {
 						is_country_type = extradimensional_2
 						is_country_type = extradimensional_3
 					}
+					num_ships < 20
+					num_owned_planets = 0
 					NOR = {
-						num_ships >= 20
 						# any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
 						event_target:portal_holder_1 = { # Vfix opt
 							any_owned_fleet = { is_ship_size = dimensional_portal_ed }
 						}
-						num_owned_planets > 0
 						any_controlled_planet = { has_owner = yes }
 					}
 				}
@@ -2237,11 +2237,11 @@ country_event = {
 			limit = {
 				any_owned_fleet = {
 					is_mobile = yes
+					fleet_power >= 10000
+					num_ships >= 3
 					NOR = {
 						is_civilian = yes
 						exists = leader
-						fleet_power < 10000
-						num_ships < 3
 					}
 				}
 				any_owned_leader = {
@@ -2259,11 +2259,11 @@ country_event = {
 			random_owned_fleet = {
 				limit = {
 					is_mobile = yes
+					fleet_power >= 10000
+					num_ships >= 3
 					NOR = {
 						is_civilian = yes
 						exists = leader
-						fleet_power < 10000
-						num_ships < 3
 					}
 				}
 				root = {

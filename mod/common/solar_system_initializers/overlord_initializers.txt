@@ -1457,28 +1457,22 @@ overlord_system_init = {
 	}
 	neighbor_system = {
 		trigger = {
-			NOR = {
-				check_galaxy_setup_value = { setting = num_stars value <= 200 }
-				any_neighbor_system = { has_star_flag = empire_home_system }
-			}
+			check_galaxy_setup_value = { setting = num_stars value > 200 }
+			NOT = { any_neighbor_system = { has_star_flag = empire_home_system } }
 		}
 		initializer = "overlord_system_5_init"
 	}
 	neighbor_system = {
 		trigger = {
-			NOR = {
-				check_galaxy_setup_value = { setting = num_stars value <= 400 }
-				any_neighbor_system = { has_star_flag = empire_home_system }
-			}
+			check_galaxy_setup_value = { setting = num_stars value > 400 }
+			NOT = { any_neighbor_system = { has_star_flag = empire_home_system } }
 		}
 		initializer = "overlord_system_6_init"
 	}
 	neighbor_system = {
 		trigger = {
-			NOR = {
-				check_galaxy_setup_value = { setting = num_stars value <= 600 }
-				any_neighbor_system = { has_star_flag = empire_home_system }
-			}
+			check_galaxy_setup_value = { setting = num_stars value > 600 }
+			NOT = { any_neighbor_system = { has_star_flag = empire_home_system } }
 		}
 		initializer = "overlord_system_7_init"
 	}

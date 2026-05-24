@@ -59,9 +59,9 @@ event = {
 			limit = {
 				any_playable_country = { has_country_flag = human_lithoid species_portrait = lith_human }
 				NOR = {
+					num_ai_empires_setting = 0
 					any_playable_country = { has_country_flag = human_1 }
 					any_system = { has_star_flag = sol }
-					num_ai_empires_setting < 1
 				}
 			}
 			random = {
@@ -352,10 +352,8 @@ event = {
 		# give them default origin instead.
 		if = {
 			limit = {
-				NOR = { # Vfix opt
-					any_playable_country = { is_ai = no has_slave_origin = yes }
-					check_galaxy_setup_value = { setting = num_advanced_empires value > 0 }
-				}
+				check_galaxy_setup_value = { setting = num_advanced_empires value <= 0 }
+				NOT = { any_playable_country = { is_ai = no has_slave_origin = yes } }
 			}
 			every_playable_country = {
 				limit = { has_slave_origin = yes }
@@ -628,12 +626,12 @@ event = {
 						is_planet_class = pc_barren
 						is_planet_class = pc_barren_cold
 					}
+					planet_size > 9
+					planet_size < 31
 					NOR = {
 						has_deposit = d_nanites_deposit
 						has_anomaly = yes
 						has_modifier = terraforming_candidate
-						planet_size <= 9
-						planet_size >= 31
 					}
 				}
 				random_list = {
@@ -653,12 +651,12 @@ event = {
 				every_system_planet = {
 					limit = {
 						is_planet_class = pc_frozen
+						planet_size > 9
+						planet_size < 31
 						NOR = {
 							has_deposit = d_nanites_deposit
 							has_anomaly = yes
 							has_modifier = frozen_terraforming_candidate
-							planet_size <= 9
-							planet_size >= 31
 						}
 					}
 					random_list = {
@@ -679,12 +677,12 @@ event = {
 				every_system_planet = {
 					limit = {
 						is_planet_class = pc_toxic
+						planet_size > 9
+						planet_size < 31
 						NOR = {
 							has_deposit = d_nanites_deposit
 							has_anomaly = yes
 							has_modifier = toxic_terraforming_candidate
-							planet_size <= 9
-							planet_size >= 31
 						}
 					}
 					random_list = {
@@ -1069,7 +1067,7 @@ country_event = {
 			limit = { is_low_tech_start = no }
 			create_fleet = {
 				effect = {
-					set_owner = prev
+					set_owner = root
 					if = {
 						limit = {
 							root = {
@@ -1077,13 +1075,30 @@ country_event = {
 								NOT = { has_valid_civic = civic_hive_cordyceptic_drones }
 							}
 						}
-						while = {
-							count = 2
-							create_ship = { name = random random_existing_design = mauler_stage_1 }
+						if = { # Vfix safety (unknown reason)
+							limit = {
+								root = {
+									any_owned_design = { is_ship_size = mauler_stage_1 }
+								}
+							}
+							while = {
+								count = 2
+								create_ship = { name = random random_existing_design = mauler_stage_1 }
+							}
+						}
+						else = {
+							create_ship_design = { design = "NAME_CHARGER_1" }
+							while = {
+								count = 2
+								create_ship = { name = random design = last_created_design }
+							}
 						}
 						if = {
 							limit = {
-								root = { has_origin = origin_progenitor_hive }
+								root = {
+									has_origin = origin_progenitor_hive
+									any_owned_design = { is_ship_size = offspring_weaver_stage_1 } # Vfix safety (unknown reason)
+								}
 							}
 							create_ship = {
 								name = random
@@ -1091,7 +1106,18 @@ country_event = {
 							}
 						}
 						else = {
-							create_ship = { name = random random_existing_design = weaver_stage_1 }
+							if = { # Vfix safety (unknown reason)
+								limit = {
+									root = {
+										any_owned_design = { is_ship_size = weaver_stage_1 }
+									}
+								}
+								create_ship = { name = random random_existing_design = weaver_stage_1 }
+							}
+							else = {
+								create_ship_design = { design = "NAME_MOTH_1" }
+								create_ship = { name = random design = last_created_design }
+							}
 						}
 					}
 					else_if = {

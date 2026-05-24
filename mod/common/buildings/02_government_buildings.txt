@@ -73,7 +73,7 @@ building_slave_processing = {
 	potential = {
 		has_owner = yes
 		owner = {
-			is_regular_empire = yes
+			is_gestalt = no
 			OR = {
 				has_policy_flag = slavery_allowed
 				has_exploited_disconnected_drones = yes
@@ -148,11 +148,15 @@ building_precinct_house = {
 
 	potential = {
 		has_owner = yes
-		owner = {
-			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_civil_education }
+		NOR = {
+			owner = {
+				OR = {
+					is_gestalt = yes
+					has_valid_civic = civic_civil_education
+				}
+			}
+			has_modifier = slave_colony
 		}
-		NOT = { has_modifier = slave_colony }
 	}
 
 	destroy_trigger = {
@@ -227,11 +231,15 @@ building_hall_judgment = {
 
 	potential = {
 		has_owner = yes
-		owner = {
-			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_civil_education }
+		NOR = {
+			owner = {
+				OR = {
+					is_gestalt = yes
+					has_valid_civic = civic_civil_education
+				}
+			}
+			has_modifier = slave_colony
 		}
-		NOT = { has_modifier = slave_colony }
 		if = {
 			limit = { owner = { is_ai = yes } }
 			NOR = {
@@ -721,7 +729,7 @@ building_embassy = {
 
 	potential = {
 		has_owner = yes
-		owner = { is_regular_empire = yes }
+		owner = { is_gestalt = no }
 		exists = planet
 		is_capital = yes
 		NOR = {
@@ -800,7 +808,7 @@ building_grand_embassy = {
 
 	potential = {
 		has_owner = yes
-		owner = { is_regular_empire = yes }
+		owner = { is_gestalt = no }
 		is_capital = yes
 		NOR = {
 			has_modifier = resort_colony
@@ -915,7 +923,6 @@ building_gaiaseeders_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = 200
@@ -959,7 +966,6 @@ building_gaiaseeders_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = 400
@@ -1020,7 +1026,6 @@ building_gaiaseeders_3 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = 600
@@ -1089,7 +1094,6 @@ building_gaiaseeders_4 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = 800
@@ -1154,7 +1158,6 @@ building_gaiaseeders_pc_gaia = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = 800

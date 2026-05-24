@@ -75,12 +75,12 @@ planet_event = {
 	trigger = {
 		is_under_colonization = no
 		is_colony = yes
+		pop_amount > 500
+		num_unemployed > 500
 		NOR = {
 			owner = {
 				is_ai = yes	# PATCH|OPT
 			}
-			pop_amount <= 500
-			num_unemployed <= 500
 			has_planet_flag = criminal_underworld_disappeared # Cooldown
 			has_planet_flag = criminal_underworld_event_up
 			has_planet_flag = shattered_frontier_planet
@@ -809,12 +809,12 @@ planet_event = {
 	}
 
 	trigger = {
+		pop_amount >= 1
+		planet_crime >= 30
 		NOR = {
-			pop_amount < 1
 			owner = {
 				is_ai = yes	# PATCH|OPT
 			}
-			planet_crime < 30
 			has_planet_flag = criminal_underworld_event_up
 			has_modifier = unemployment_benefits
 			has_modifier = activity_program
@@ -1029,11 +1029,9 @@ planet_event = {
 			has_center_of_drug_trade_modifier = yes
 			has_mob_rule_modifier = yes
 		}
-		NOR = {
-			has_planet_flag = criminal_underworld_appeared
-			pop_amount < 1
-			planet_crime > 10
-		}
+		pop_amount >= 1
+		planet_crime <= 10
+		NOT = { has_planet_flag = criminal_underworld_appeared }
 	}
 
 	weight_multiplier = {

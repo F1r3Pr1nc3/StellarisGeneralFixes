@@ -80,10 +80,9 @@ buildings_stop_pop = {
 	owner = {
 		is_ai = yes
 	}
-	NOR = {
-		has_planet_flag = ignore_ai_building_limitations
-		free_housing >= -400
-	}
+
+	free_housing < -400
+	NOT = { has_planet_flag = ignore_ai_building_limitations }
 	free_district_slots = 0
 }
 

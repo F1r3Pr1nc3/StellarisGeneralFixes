@@ -129,10 +129,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_homeworld_@root.owner
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 				owner = { is_primitive = yes }
 			}
 		}
@@ -162,8 +160,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_homeworld_@root.owner
+				pop_amount >= 1
 				NOR = {
-					pop_amount < 1
 					is_planet_class = pc_nuked
 					owner = { is_primitive = yes }
 				}
@@ -176,8 +174,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_homeworld_@root.owner
+				pop_amount >= 1
 				NOR = {
-					pop_amount < 1
 					owner = { is_primitive = yes }
 					is_same_value = owner.home_planet
 				}
@@ -200,10 +198,8 @@ ship_event = {
 	picture = {
 		trigger = {
 			from = {
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 			}
 		}
 		picture = GFX_evt_happy_reunion
@@ -240,10 +236,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_homeworld_@root.owner
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 				owner = { is_primitive = yes }
 			}
 		}
@@ -311,10 +305,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 				owner = { is_primitive = yes }
 			}
 		}
@@ -344,8 +336,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
+				pop_amount >= 1
 				NOR = {
-					pop_amount < 1
 					is_planet_class = pc_nuked
 					owner = { is_primitive = yes }
 				}
@@ -358,8 +350,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
+				pop_amount >= 1
 				NOR = {
-					pop_amount < 1
 					owner = { is_primitive = yes }
 					is_same_value = owner.home_planet
 				}
@@ -382,10 +374,8 @@ ship_event = {
 	picture = {
 		trigger = {
 			from = {
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 			}
 		}
 		picture = GFX_evt_happy_reunion
@@ -429,10 +419,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 				owner = { is_primitive = yes }
 			}
 		}
@@ -690,7 +678,7 @@ country_event = {
 			limit = { # Vfix
 				leader_class = scientist
 				OR = {
-					is_same_species = root.species
+					is_same_species = root
 					AND = {
 						exists = home_planet
 						home_planet = { is_same_value = event_target:broken_shackles_homeworld }
@@ -723,7 +711,7 @@ country_event = {
 		random_owned_leader = {
 			limit = { # Vfix
 				OR = {
-					is_same_species = root.species
+					is_same_species = root
 					AND = {
 						exists = home_planet
 						home_planet = { is_same_value = event_target:broken_shackles_homeworld }
@@ -856,10 +844,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 				owner = { is_primitive = yes }
 			}
 		}
@@ -889,8 +875,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
+				pop_amount >= 1
 				NOR = {
-					pop_amount < 1
 					is_planet_class = pc_nuked
 					owner = { is_primitive = yes }
 				}
@@ -903,8 +889,8 @@ ship_event = {
 		trigger = {
 			from = {
 				has_planet_flag = broken_shackles_abductees_world@root.owner
+				pop_amount >= 1
 				NOR = {
-					pop_amount < 1
 					owner = { is_primitive = yes }
 					is_same_value = owner.home_planet
 				}
@@ -927,10 +913,8 @@ ship_event = {
 	picture = {
 		trigger = {
 			from = {
-				NOR = {
-					pop_amount < 1
-					is_planet_class = pc_nuked
-				}
+				pop_amount >= 1
+				NOT = { is_planet_class = pc_nuked }
 			}
 		}
 		picture = GFX_evt_happy_reunion
@@ -1030,8 +1014,8 @@ country_event = {
 
 	trigger = {
 		has_origin = origin_broken_shackles
+		mid_game_years_passed >= value:halfway_to_mid_game_year
 		NOR = {
-			mid_game_years_passed < value:halfway_to_mid_game_year
 			has_country_flag = met_broken_shackles_homeworld
 			has_country_flag = homesick_alternate
 		}
@@ -3508,10 +3492,8 @@ planet_event = {
 			is_planet_class = pc_nuked
 		}
 		owner = {
-			NOR = {
-				has_country_flag = first_colony
-				num_owned_planets >= 3
-			}
+			num_owned_planets < 3
+			NOT = { has_country_flag = first_colony }
 			has_origin = origin_broken_shackles
 		}
 	}

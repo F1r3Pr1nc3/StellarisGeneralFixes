@@ -704,14 +704,16 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				has_policy_flag = cyberization_standards_limited
-				from = {
-					species = { has_trait = trait_limited_cybernetic }
-					is_spiritualist = yes
+				OR = {
+					has_policy_flag = cyberization_standards_limited
+					from = {
+						species = { has_trait = trait_limited_cybernetic }
+						is_spiritualist = yes
+					}
 				}
 			}
 			from = {
-				if = { # Vfix just for unknwon case
+				if = { # Vfix just for unknown case
 					limit = {
 						NOT = { has_trait = leader_trait_limited_cyborg }
 					}
@@ -720,42 +722,70 @@ country_event = {
 						remove_trait = leader_trait_cyborg
 					}
 					add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+					if = { # Vfix just for unknown case
+						limit = {
+							species = {
+								NOT = { has_trait = trait_limited_cybernetic }
+							}
+						}
+						root = {
+							random_owned_species = {
+								limit = {
+									has_trait = trait_limited_cybernetic
+									is_same_species = prevprev
+								}
+								prevprev = { change_species = prev }
+							}
+						}
+					}
 				}
 			}
 		}
 		else = {
 			from = {
-				if = { # Vfix just for unknwon case
+				if = { # Vfix just for unknown case
 					limit = {
-						NOT = { has_trait = leader_trait_cyborg }
+						NOR = {
+							has_trait = leader_trait_cyborg
+							has_trait = leader_trait_erudite
+							has_trait = leader_trait_synthetic
+							has_chosen_covenant_trait_non_ruler = yes
+							has_psionic_leader_trait = yes
+						}
+						OR = {
+							species = { has_trait = trait_cybernetic }
+							root = {
+								any_owned_species = { has_trait = trait_cybernetic is_same_species = prevprev }
+							}
+						}
 					}
 					if = {
 						limit = { has_trait = leader_trait_limited_cyborg }
 						remove_trait = leader_trait_limited_cyborg
 					}
 					add_trait = { trait = leader_trait_cyborg show_message = no }
-				}
-				if = { # Vfix just for unknwon case
-					limit = {
-						species = {
-							NOT = { has_trait = trait_cybernetic }
+					if = {
+						limit = {
+							root = { has_country_flag = firewall_built }
 						}
+						add_trait = { trait = leader_trait_firewalled show_message = no }
 					}
-					prev = {
-						random_owned_species = {
-							limit = {
-								has_trait = trait_cybernetic
-								is_same_species = prev.species
+					if = { # Vfix just for unknown case
+						limit = {
+							species = {
+								NOT = { has_trait = trait_cybernetic }
 							}
-							prev = { change_species = prev }
+						}
+						root = {
+							random_owned_species = {
+								limit = {
+									has_trait = trait_cybernetic
+									is_same_species = prevprev
+								}
+								prevprev = { change_species = prev }
+							}
 						}
 					}
-				}
-			}
-			if = {
-				limit = { has_country_flag = firewall_built }
-				from = {
-					add_trait = { trait = leader_trait_firewalled show_message = no }
 				}
 			}
 		}

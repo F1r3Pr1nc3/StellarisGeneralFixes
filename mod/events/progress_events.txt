@@ -1446,10 +1446,8 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		owner = {
-			NOR = {
-				has_country_flag = first_colony
-				num_owned_planets <= 2
-			}
+			num_owned_planets > 2
+			NOT = { has_country_flag = first_colony }
 		}
 	}
 

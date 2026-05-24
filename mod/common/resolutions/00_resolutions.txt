@@ -5546,9 +5546,9 @@ resolution_mutualdefense_military_readiness_act = {
 	}
 
 	breach = {
+		used_naval_capacity_percent < 0.5
 		NOR = {
 			has_country_flag = constitutional_immunity
-			used_naval_capacity_percent >= 0.5
 			is_at_war = yes
 			is_subject = yes
 		}
@@ -5637,9 +5637,9 @@ resolution_mutualdefense_enemy_of_my_enemy = {
 	}
 
 	breach = {
+		used_naval_capacity_percent < 0.5
 		NOR = {
 			has_country_flag = constitutional_immunity
-			used_naval_capacity_percent >= 0.5
 			is_at_war = yes
 			is_subject = yes
 		}
@@ -5727,9 +5727,9 @@ resolution_mutualdefense_castigation_proclamation = {
 	}
 
 	breach = {
+		used_naval_capacity_percent < 0.5
 		NOR = {
 			has_country_flag = constitutional_immunity
-			used_naval_capacity_percent >= 0.5
 			is_at_war = yes
 			is_subject = yes
 		}
@@ -5825,9 +5825,9 @@ resolution_mutualdefense_renegade_containment = {
 	}
 
 	breach = {
+		used_naval_capacity_percent < 0.5
 		NOR = {
 			has_country_flag = constitutional_immunity
-			used_naval_capacity_percent >= 0.5
 			is_at_war = yes
 			is_subject = yes
 		}
@@ -8146,8 +8146,8 @@ resolution_galacticreforms_form_council = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
+			galactic_community_rank > 5
+			NOT = {
 				AND = {
 					is_subject = yes
 					overlord = {
@@ -8959,8 +8959,8 @@ resolution_galacticreforms_enable_council_veto = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
+			galactic_community_rank > 5
+			NOT = {
 				AND = {
 					is_subject = yes
 					overlord = {
@@ -13087,18 +13087,18 @@ resolution_galactic_market_form = {
 	}
 
 	potential = {
+		count_relation = {
+			count >= 3
+			limit = {
+				is_country_type = default
+				is_homicidal = no
+			}
+		}
 		NOR = {
 			has_global_flag = galactic_market_founded
 			has_global_flag = ongoing_market_nomination
 			is_gestalt = yes
 			is_homicidal = yes
-			count_relation = {
-				count < 3
-				limit = {
-					is_country_type = default
-					is_homicidal = no
-				}
-			}
 		}
 	}
 
@@ -13707,8 +13707,8 @@ resolution_community_champions = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
+			galactic_community_rank > 5
+			NOT = {
 				AND = {
 					is_subject = yes
 					overlord = {
@@ -13849,8 +13849,8 @@ resolution_development_aides = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
+			galactic_community_rank > 5
+			NOT = {
 				AND = {
 					is_subject = yes
 					overlord = {
@@ -14098,8 +14098,8 @@ resolution_development_aides_repeal = {
 		}
 		modifier = {
 			factor = 2
-			NOR = {
-				galactic_community_rank <= 5
+			galactic_community_rank > 5
+			NOT = {
 				AND = {
 					is_subject = yes
 					overlord = {

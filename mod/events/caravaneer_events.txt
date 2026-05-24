@@ -177,10 +177,8 @@ country_event = {
 			factor = 5
 			modifier = {
 				factor = 0
-				NOR = {
-					has_resource = { type = energy amount >= @ai_min_energy }
-					check_variable = { which = owned_cc_var value < @ai_max_coinz }
-				}
+				check_variable = { which = owned_cc_var value >= @ai_max_coinz }
+				NOT = { has_resource = { type = energy amount >= @ai_min_energy } }
 			}
 		}
 	}
@@ -3834,8 +3832,8 @@ country_event = {
 	trigger = {
 		caravaneers_enabled = yes
 		is_country_type = caravaneer_fleet
+		num_ships = 0
 		NOR = {
-			num_ships > 0
 			has_global_flag = caravaneers_destroyed
 			any_country = { is_country_type = caravaneer_fleet num_ships > 0 }
 		}
@@ -4085,10 +4083,10 @@ country_event = {
 				count_owned_pop_amount = {
 					count >= 600
 					limit = {
+						happiness < 0.60
 						NOR = {
 							is_enslaved = yes
 							is_being_purged = yes
-							happiness >= 0.60
 						}
 					}
 				}
@@ -4121,10 +4119,10 @@ country_event = {
 			save_event_target_as = pops_join_caravan_planet
 			random_owned_pop_group = {
 				limit = {
+					happiness < 0.60
 					NOR = {
 						is_enslaved = yes
 						is_being_purged = yes
-						happiness >= 0.60
 					}
 				}
 				kill_single_pop = yes

@@ -333,13 +333,13 @@ decision_resort_colony = {
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_resort_colony_no_districts
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
+			num_districts = { type = district_farming value = 0 }
+			num_districts = { type = district_mining value = 0 }
+			num_districts = { type = district_generator value = 0 }
 			# Volcanic Worlds
-			num_districts = { type = district_geothermal value < 1 }
-			num_districts = { type = district_melting value < 1 }
-			num_districts = { type = district_polytechnic value < 1 }
+			num_districts = { type = district_geothermal value = 0 }
+			num_districts = { type = district_melting value = 0 }
+			num_districts = { type = district_polytechnic value = 0 }
 		}
 		custom_tooltip = {
 			fail_text = decision_resort_colony_only_one
@@ -935,20 +935,20 @@ decision_arcology_project = {
 			custom_tooltip = {
 				fail_text = decision_arcology_project_requirements
 				free_district_slots < 1
-				num_districts = { type = district_farming value < 1 }
-				num_districts = { type = district_mining value < 1 }
-				num_districts = { type = district_generator value < 1 }
+				num_districts = { type = district_farming value = 0 }
+				num_districts = { type = district_mining value = 0 }
+				num_districts = { type = district_generator value = 0 }
 				# Volcanic Worlds
-				num_districts = { type = district_geothermal value < 1 }
-				num_districts = { type = district_melting value < 1 }
-				num_districts = { type = district_polytechnic value < 1 }
+				num_districts = { type = district_geothermal value = 0 }
+				num_districts = { type = district_melting value = 0 }
+				num_districts = { type = district_polytechnic value = 0 }
 			}
 			custom_tooltip = {
 				fail_text = legendary_leader_decision_arcology_project
 				NOT = { has_planet_flag = legendary_leader_planet }
 			}
 		}
-		num_uncleared_blockers < 1
+		num_uncleared_blockers = 0
 	}
 
 	on_queued = {
@@ -1055,7 +1055,7 @@ decision_arcology_project_relic = {
 	}
 
 	allow = {
-		num_uncleared_blockers < 1
+		num_uncleared_blockers = 0
 		owner = { has_technology = tech_housing_2 }
 	}
 
@@ -1831,7 +1831,7 @@ decision_shattered_ring_project = {
 	}
 
 	allow = {
-		num_uncleared_blockers < 1
+		num_uncleared_blockers = 0
 		owner = { has_technology = tech_mega_engineering }
 	}
 

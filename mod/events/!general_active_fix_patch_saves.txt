@@ -8,7 +8,7 @@ event = {
 	is_triggered_only = yes
 	# fire_only_once = yes
 	immediate = {
-		log = "SGF: Stellaris v4.3.4 General Fixes loaded"
+		log = "SGF: Stellaris v4.3.7 General Fixes loaded"
 		if = {
 			limit = { years_passed > 20 }
 			if = {
@@ -252,15 +252,7 @@ event = {
 							has_country_flag = synth_virtual
 						}
 					}
-					# Leader
-					every_owned_leader = {
-						limit = {
-							species = { is_robotic = yes has_virtual_species_trait = yes }
-							NOT = { has_trait = leader_trait_virtual }
-						}
-						add_trait = { trait = leader_trait_virtual show_message = no }
-					}
-					# Species
+					# Species (before leader)
 					every_owned_leader = {
 						limit = {
 							species = { has_virtual_species_trait = no is_robotic = yes }
@@ -278,6 +270,14 @@ event = {
 								prevprev = { change_species = prev }
 							}
 						}
+					}
+					# Leader
+					every_owned_leader = {
+						limit = {
+							species = { is_robotic = yes has_virtual_species_trait = yes }
+							NOT = { has_trait = leader_trait_virtual }
+						}
+						add_trait = { trait = leader_trait_virtual show_message = no }
 					}
 				}
 				else = {
@@ -297,32 +297,7 @@ event = {
 					owner_species = { is_psionic_species = yes }
 					NOT = { has_country_flag = psionic_fix_worked }
 				}
-				if = {
-					limit = {
-						is_gestalt = yes
-						has_shroud_dlc = yes
-						ruler = { has_psionic_leader_trait = no }
-					}
-					ruler = {
-						add_trait = { trait = leader_trait_psionic show_message = no }
-					}
-				}
-				if = {
-					limit = {
-						any_owned_leader = { is_same_species = owner_species has_psionic_leader_trait = no }
-					}
-					# Leader
-					every_owned_leader = {
-						limit = {
-							is_same_species = owner_species
-							has_psionic_leader_trait = no
-						}
-						add_trait = { trait = leader_trait_psionic show_message = no }
-					}
-					set_country_flag = psionic_fix_worked
-					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
-				}
-				# Species
+				# Species (before leader)
 				if = {
 					limit = {
 						any_owned_species = { is_same_species = prev is_latent_psionic_species = yes }
@@ -347,6 +322,31 @@ event = {
 						}
 					}
 				}
+				# Leader
+				if = {
+					limit = {
+						is_gestalt = yes
+						has_shroud_dlc = yes
+						ruler = { has_psionic_leader_trait = no }
+					}
+					ruler = {
+						add_trait = { trait = leader_trait_psionic show_message = no }
+					}
+				}
+				if = {
+					limit = {
+						any_owned_leader = { is_same_species = owner_species has_psionic_leader_trait = no }
+					}
+					every_owned_leader = {
+						limit = {
+							is_same_species = owner_species
+							has_psionic_leader_trait = no
+						}
+						add_trait = { trait = leader_trait_psionic show_message = no }
+					}
+					set_country_flag = psionic_fix_worked
+					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
+				}
 			}
 			else_if = { # Cyborg
 				limit = {
@@ -356,23 +356,7 @@ event = {
 						has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
 					}
 				}
-				# Leader
-				every_owned_leader = {
-					limit = {
-						species = { has_trait = trait_cybernetic }
-						NOT = { has_trait = leader_trait_cyborg }
-					}
-					add_trait = { trait = leader_trait_cyborg show_message = no }
-				}
-				# Limited Cyborg trait
-				every_owned_leader = {
-					limit = {
-						species = { has_trait = trait_limited_cybernetic }
-						NOT = { has_trait = leader_trait_limited_cyborg }
-					}
-					add_trait = { trait = leader_trait_limited_cyborg show_message = no }
-				}
-				# Species
+				# Species (before leader)
 				every_owned_leader = {
 					limit = {
 						NOT = { species = { has_trait = trait_cybernetic } }
@@ -414,6 +398,23 @@ event = {
 							}
 						}
 					}
+				}
+				# Leader
+				every_owned_leader = {
+					limit = {
+						species = { has_trait = trait_cybernetic }
+						NOT = { has_trait = leader_trait_cyborg }
+					}
+					add_trait = { trait = leader_trait_cyborg show_message = no }
+				}
+				# Limited Cyborg trait
+				every_owned_leader = {
+					limit = {
+						species = { has_trait = trait_limited_cybernetic }
+						NOT = { has_trait = leader_trait_limited_cyborg }
+						is_leader_tier = leader_tier_default
+					}
+					add_trait = { trait = leader_trait_limited_cyborg show_message = no }
 				}
 			}
 			else = { # Erudite trait

@@ -187,20 +187,18 @@ imperialist = {
 			exists = owner
 			owner = {
 				NOR = {
-					num_communications <= 0
+					num_communications = 0
 					has_valid_civic = civic_fanatic_purifiers
 				}
 				any_relation = {
 					has_communications = root.owner
 					is_default_or_fallen = yes
-					NOR = {
-						relative_power = {
-							who = root
-							category = all # fleet/economy/technology/all
-							value <= pathetic # pathetic/inferior/equivalent/superior/overwhelming
-						}
-						is_in_federation_with = prev
+					relative_power = {
+						who = root
+						category = all # fleet/economy/technology/all
+						value > pathetic # pathetic/inferior/equivalent/superior/overwhelming
 					}
+					NOT = { is_in_federation_with = prev }
 				}
 				num_rivals < 2
 			}
@@ -218,11 +216,9 @@ imperialist = {
 		potential = {
 			exists = owner
 			owner = {
-				NOR = {
-					num_communications <= 2
-					has_valid_civic = civic_fanatic_purifiers
-					num_rivals != 2
-				}
+				num_communications > 2
+				num_rivals = 2
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 			}
 		}
 		trigger = {
@@ -238,11 +234,9 @@ imperialist = {
 		potential = {
 			exists = owner
 			owner = {
-				NOR = {
-					num_communications <= 2
-					has_valid_civic = civic_fanatic_purifiers
-					num_rivals <= 2
-				}
+				num_communications > 2
+				num_rivals > 2
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 			}
 		}
 		trigger = {
@@ -258,10 +252,8 @@ imperialist = {
 		potential = {
 			exists = owner
 			owner = {
-				NOR = {
-					num_communications <= 2
-					has_valid_civic = civic_fanatic_purifiers
-				}
+				num_communications > 2
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 			}
 		}
 		trigger = {

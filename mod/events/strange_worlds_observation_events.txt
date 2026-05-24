@@ -125,6 +125,15 @@ country_event = {
 		exists = event_target:pre_ftl_country
 	}
 
+	immediate = {
+		if = { # Vfix
+			limit = {
+				NOT = { exists = event_target:observation_post_owner }
+			}
+			save_event_target_as = observation_post_owner
+		}
+	}
+
 	option = {
 		name = strange_worlds.3010.a
 		observation_breach_effect = {

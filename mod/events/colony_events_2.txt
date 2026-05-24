@@ -32,6 +32,7 @@ planet_event = {
 		has_owner = yes
 		has_moon = yes
 		any_moon = { habitable_planet = no }
+		pop_amount >= 100
 		NOR = {
 			owner = {
 				OR = {
@@ -40,7 +41,6 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount < 100
 			is_planet_class = pc_habitat
 			has_planet_flag = colony_event
 			has_planet_flag = FLDrone_event
@@ -572,6 +572,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
+		pop_amount >= 100
 		NOR = {
 			owner = {
 				OR = {
@@ -595,7 +596,6 @@ planet_event = {
 			# is_planet_class = pc_savannah
 			# is_planet_class = pc_volcanic
 			is_urban_planet = yes
-			pop_amount < 100
 		}
 	}
 
@@ -1456,8 +1456,8 @@ planet_event = {
 				is_wilderness_empire = yes
 			}
 		}
+		pop_amount >= 100
 		NOR = {
-			pop_amount < 100
 			has_planet_flag = colony_event
 			is_planet_class = pc_volcanic
 		}
@@ -1932,11 +1932,11 @@ planet_event = {
 			}
 			NOT = { has_country_flag = colony_event_ethic_diverge }
 		}
+		count_owned_pop_amount = {
+			count >= 400
+			limit = { is_non_sapient_robot = no }
+		}
 		NOR = {
-			count_owned_pop_amount = {
-				count < 400
-				limit = { is_non_sapient_robot = no }
-			}
 			has_planet_flag = colony_event
 			is_planet_class = pc_habitat
 		}
@@ -2297,6 +2297,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
+		pop_amount >= 100
 		NOR = {
 			owner = {
 				OR = {
@@ -2306,7 +2307,6 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount < 100
 			has_planet_flag = colony_event
 			is_artificial = yes # Vfix opt
 			# is_planet_class = pc_ringworld_habitable
@@ -2576,8 +2576,8 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		owner = { is_ai = no is_gestalt = no }
+		pop_amount >= 100
 		NOR = {
-			pop_amount < 100
 			has_planet_flag = colony_event
 			is_planet_class = pc_habitat
 		}

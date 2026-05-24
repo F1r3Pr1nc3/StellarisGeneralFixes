@@ -4249,10 +4249,8 @@ country_event = {
 			}
 			random_owned_planet = {
 				limit = {
-					NOR = {
-						has_planet_flag = rampant_desertlings
-						pop_amount <= 100
-					}
+					pop_amount > 100
+					NOT = { has_planet_flag = rampant_desertlings }
 				}
 				save_event_target_as = rampant_desertlings
 			}

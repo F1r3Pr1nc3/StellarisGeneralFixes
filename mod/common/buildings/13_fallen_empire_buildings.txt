@@ -576,7 +576,6 @@ building_affluence_emporium = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -721,7 +720,6 @@ building_affluence_center = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -900,7 +898,6 @@ building_nourishment_complex = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1050,7 +1047,6 @@ building_nourishment_center = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1196,7 +1192,6 @@ building_dimensional_replicator = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1331,7 +1326,6 @@ building_dimensional_fabricator = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1493,7 +1487,6 @@ building_class_3_singularity = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1638,7 +1631,6 @@ building_class_4_singularity = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1790,7 +1782,6 @@ building_micro_forge = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -1936,7 +1927,6 @@ building_nano_forge = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -2084,7 +2074,6 @@ building_fe_sky_dome = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -2219,7 +2208,6 @@ building_fe_dome = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -2368,7 +2356,6 @@ building_fe_fortress = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -2513,7 +2500,6 @@ building_fe_stronghold = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -2665,7 +2651,6 @@ building_fe_administration_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -2827,7 +2812,6 @@ building_fe_administration_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3003,7 +2987,6 @@ building_fe_administration_hive_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3151,7 +3134,6 @@ building_fe_administration_hive_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3326,7 +3308,6 @@ building_fe_administration_machine_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3481,7 +3462,6 @@ building_fe_administration_machine_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3660,7 +3640,6 @@ building_fe_temple_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3814,7 +3793,6 @@ building_fe_temple_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -3945,8 +3923,10 @@ building_fe_assembly_1 = {
 					assembling_species = { is_robotic = yes }
 				}
 				owner = {
-					is_regular_empire = yes
-					NOT = { has_policy_flag = robots_outlawed }
+					NOR = {
+						is_gestalt = yes
+						has_policy_flag = robots_outlawed
+					}
 					OR = {
 						has_genetic_ascension = no
 						is_materialist = yes
@@ -4008,7 +3988,6 @@ building_fe_assembly_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -4132,8 +4111,8 @@ building_fe_assembly_2 = {
 			OR = {
 				is_machine_empire = yes
 				AND = {
-					is_regular_empire = yes
 					NOR = {
+						is_gestalt = yes
 						AND = {
 							is_ai = yes
 							exists = prev.assembling_species
@@ -4209,7 +4188,6 @@ building_fe_assembly_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -4353,7 +4331,7 @@ building_fe_clinic_1 = {
 		has_owner = yes
 		owner = {
 			OR = {
-				is_regular_empire = yes
+				is_gestalt = no
 				is_hive_empire = yes
 			}
 			OR = {
@@ -4400,7 +4378,6 @@ building_fe_clinic_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -4530,7 +4507,7 @@ building_fe_clinic_2 = {
 		has_owner = yes
 		owner = {
 			OR = {
-				is_regular_empire = yes
+				is_gestalt = no
 				is_hive_empire = yes
 			}
 			OR = {
@@ -4587,7 +4564,6 @@ building_fe_clinic_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -4778,7 +4754,6 @@ building_fe_security_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -4927,7 +4902,6 @@ building_fe_security_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5117,7 +5091,6 @@ building_fe_market_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5258,7 +5231,6 @@ building_fe_market_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5424,7 +5396,6 @@ building_fe_silo_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5559,7 +5530,6 @@ building_fe_silo_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5693,7 +5663,6 @@ building_fe_entertainment_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5829,7 +5798,6 @@ building_fe_entertainment_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -5987,7 +5955,6 @@ building_fe_lab_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -6138,7 +6105,6 @@ building_fe_lab_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -6327,7 +6293,6 @@ building_fe_mine_1 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass
@@ -6475,7 +6440,6 @@ building_fe_mine_2 = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass

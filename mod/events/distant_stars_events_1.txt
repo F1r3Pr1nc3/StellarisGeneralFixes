@@ -140,10 +140,8 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			NOR = {
-				resource_stockpile_compare = { resource = minerals value < 300 }
-				is_at_war_with = event_target:wreckage_owner
-			}
+			resource_stockpile_compare = { resource = minerals value >= 300 }
+			NOT = { is_at_war_with = event_target:wreckage_owner }
 		}
 		name = distar.2.b
 		add_resource = { minerals = -300 }
@@ -4995,13 +4993,13 @@ ship_event = {
 			owner = {
 				add_trait_to_evopred = { TRAIT = trait_brainslug }
 				every_owned_leader = {
-					limit = { is_same_species = prev.species }
+					limit = { is_same_species = prev }
 					add_trait = { trait = leader_trait_brainslug }
 				}
 				every_pool_leader = {
 					if = {
 						limit = {
-							is_same_species = root.species
+							is_same_species = root
 							NOT = { has_trait = leader_trait_brainslug }
 						}
 						add_trait = { trait = leader_trait_brainslug }
@@ -5076,7 +5074,7 @@ country_event = {
 			from = {
 				if = {
 					limit = {
-						is_same_species = root.species
+						is_same_species = root
 						NOT = { has_trait = leader_trait_brainslug }
 					}
 					add_trait = { trait = leader_trait_brainslug }
@@ -9087,7 +9085,7 @@ ship_event = {
 	}
 	desc = {
 		trigger = {
-			owner = { num_communications < 1 }
+			owner = { num_communications = 0 }
 		}
 		text = "distar.275.desc.nocomms"
 	}

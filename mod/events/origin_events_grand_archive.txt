@@ -83,20 +83,16 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOR = {
-					check_variable = { which = space_fauna_contacted value != 1 }
-					has_country_flag = origin_primal_calling_alignment_chosen
-				}
+				check_variable = { which = space_fauna_contacted value = 1 }
+				NOT = { has_country_flag = origin_primal_calling_alignment_chosen }
 			}
 			set_country_flag = origin_primal_calling_alignment_chosen
 			country_event = { id = grand_archive.1002 days = 30 scopes = { from = from } }
 		}
 		else_if = {
 			limit = {
-				NOR = {
-					check_variable = { which = space_fauna_contacted value != 3 }
-					has_country_flag = origin_primal_calling_debris_spawned
-				}
+				check_variable = { which = space_fauna_contacted value = 3 }
+				NOT = { has_country_flag = origin_primal_calling_debris_spawned }
 			}
 			set_country_flag = origin_primal_calling_debris_spawned
 			country_event = {
@@ -443,10 +439,8 @@ planet_event = {
 	trigger = {
 		has_modifier = "titanic_life"
 		owner = { has_origin = origin_primal_calling }
-		NOR = {
-			has_planet_flag = titanic_life_colony_flag
-			pop_amount < 1
-		}
+		pop_amount >= 1
+		NOT = { has_planet_flag = titanic_life_colony_flag }
 	}
 
 	immediate = {

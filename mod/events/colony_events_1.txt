@@ -3,6 +3,7 @@
 # Colony Events
 #
 # Written by Henrik Thyrwall
+# Reviewed by FirePrince (VFIX OPT v4.3.7 - MTTH: new colony.98-99)
 #
 ############################
 
@@ -54,7 +55,7 @@ planet_event = {
 		set_global_flag = migrating_forests_global
 		set_planet_flag = colony_event
 		add_deposit = d_migrating_forests
-		add_modifier = { modifier = "migrating_forests" days = -1 }
+		add_modifier = { modifier = "migrating_forests" }
 		begin_event_chain = { event_chain = "migrating_forests_chain" target = root }
 	}
 
@@ -117,7 +118,7 @@ planet_event = {
 		}
 		hidden_effect = {
 			set_planet_flag = forest_pheremones
-			add_modifier = { modifier = "migrating_forests_2" days = -1 }
+			add_modifier = { modifier = "migrating_forests_2" }
 		}
 	}
 
@@ -271,10 +272,10 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = burned_forests
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = burned_forest_precious
 			has_planet_flag = burned_forest_minerals
-			pop_amount < 100
 		}
 	}
 
@@ -315,11 +316,11 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = burned_forests
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = burned_forest_precious
 			has_planet_flag = burned_forest_minerals
 			has_any_strategic_resource = yes
-			pop_amount < 100
 		}
 	}
 
@@ -360,10 +361,8 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = burned_forests
-		NOR = {
-			has_planet_flag = burned_forest_damage
-			pop_amount < 100
-		}
+		pop_amount >= 100
+		NOT = { has_planet_flag = burned_forest_damage }
 	}
 
 	immediate = {
@@ -396,10 +395,8 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = forest_pheremones
-		NOR = {
-			has_planet_flag = forest_pheremones_adaptation
-			pop_amount < 100
-		}
+		pop_amount >= 100
+		NOT = { has_planet_flag = forest_pheremones_adaptation }
 	}
 
 	immediate = {
@@ -432,10 +429,8 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = forest_pheremones
-		NOR = {
-			has_planet_flag = forest_pheremones_studies
-			pop_amount < 100
-		}
+		pop_amount >= 100
+		NOT = { has_planet_flag = forest_pheremones_studies }
 	}
 
 	immediate = {
@@ -475,10 +470,8 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = forest_pheremones
-		NOR = {
-			has_planet_flag = forest_pheremones_fire
-			pop_amount < 100
-		}
+		pop_amount >= 100
+		NOT = { has_planet_flag = forest_pheremones_fire }
 	}
 
 	immediate = {
@@ -560,6 +553,7 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
+		pop_amount >= 100
 		NOR = {
 			owner = {
 				OR = {
@@ -567,7 +561,6 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount < 100
 			is_artificial = yes # Vfix
 			has_global_flag = seismic_disturbance_global
 			has_planet_flag = colony_event
@@ -592,6 +585,7 @@ planet_event = {
 		add_deposit = d_underground_generator_blocked
 		create_subterranean_nation = { FLAG = subterranean_nation }
 		begin_event_chain = { event_chain = "subterranean_civilization_chain" target = root }
+		planet_event = { id = colony.98 days = 5400 random = 3600 } # Gatekeeper event
 	}
 
 	option = {
@@ -726,7 +720,7 @@ country_event = {
 			}
 		}
 		from = {
-			add_modifier = { modifier = "subterranean_civilization" days = -1 }
+			add_modifier = { modifier = "subterranean_civilization" }
 			add_deposit = d_underground_contact_zone
 			# set_planet_flag = trade_size_increase
 		}
@@ -745,7 +739,7 @@ country_event = {
 			}
 		}
 		from = {
-			add_modifier = { modifier = "subterranean_civilization" days = -1 }
+			add_modifier = { modifier = "subterranean_civilization" }
 			add_deposit = d_underground_contact_zone
 			# set_planet_flag = trade_size_increase
 		}
@@ -1079,23 +1073,12 @@ planet_event = {
 	show_sound = event_ground_battle
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_war
-		pop_amount > 100
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_war
+	# 	pop_amount > 100
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		owner = { set_country_flag = subterranean_invasion_country }
 		set_planet_flag = subterranean_invasion_planet
@@ -1129,10 +1112,7 @@ planet_event = {
 			}
 			break = yes
 		}
-		if = {
-			limit = {
-				event_target:subterranean_nation = { has_country_flag = tech_request_approved }
-			}
+		else = { # Vfix opt minor
 			while = { # Vfix opt
 				count = 8
 				create_army = {
@@ -1143,7 +1123,6 @@ planet_event = {
 					leader = last_created_leader
 				}
 			}
-			break = yes
 		}
 	}
 
@@ -1162,27 +1141,14 @@ planet_event = {
 	show_sound = event_structural_collapse
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_war
-		has_army = yes
-		NOR = {
-			has_planet_flag = seismic_disturbance_collapse
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_war
+	# 	has_army = yes
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_collapse }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_collapse
 	}
@@ -1206,26 +1172,13 @@ planet_event = {
 	show_sound = event_ground_battle
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_war
-		NOR = {
-			has_planet_flag = seismic_disturbance_raid
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_war
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_raid }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_raid
 		add_planet_devastation = 10
@@ -1246,26 +1199,13 @@ planet_event = {
 	show_sound = event_ground_battle
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_war
-		NOR = {
-			has_planet_flag = seismic_disturbance_attack
-			pop_amount <= 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_war
+	# 	pop_amount > 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_attack }
+	# }
+	# mean_time_to_happen = { # 	years = 20 # }
 	immediate = {
 		set_planet_flag = seismic_disturbance_attack
 	}
@@ -1287,27 +1227,13 @@ planet_event = {
 	show_sound = event_scanner
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_destroyed
-		NOR = {
-			has_planet_flag = seismic_disturbance_pocket
-			has_ground_combat = yes
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_destroyed
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_pocket }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_pocket
 		create_species = {
@@ -1374,35 +1300,24 @@ planet_event = {
 	show_sound = event_construction
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_destroyed
-		NOR = {
-			has_planet_flag = seismic_disturbance_expansion
-			# has_any_strategic_resource = no
-			pop_amount < 100
-		}
-		# planet_size < 25
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_destroyed
+	# 	pop_amount >= 100
+	# 	NOT = {
+	# 		has_planet_flag = seismic_disturbance_expansion
+	# 		# has_any_strategic_resource = no
+	# 	}
+	# 	# planet_size < 25
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_expansion
 	}
 
 	option = {
 		name = EXCELLENT
-		add_modifier = { modifier = "subterranean_expansion" days = -1 }
+		add_modifier = { modifier = "subterranean_expansion" }
 		# change_planet_size = +1
 	}
 }
@@ -1429,26 +1344,13 @@ planet_event = {
 	show_sound = event_mystic_reveal
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_destroyed
-		NOR = {
-			has_planet_flag = seismic_disturbance_gold
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_destroyed
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_gold }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		hidden_effect = {
 			set_planet_flag = seismic_disturbance_gold
@@ -1477,26 +1379,13 @@ planet_event = {
 	show_sound = event_radio_chatter
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_destroyed
-		NOR = {
-			has_planet_flag = seismic_disturbance_treasury
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_destroyed
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_treasury }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_treasury
 	}
@@ -1523,26 +1412,13 @@ planet_event = {
 	show_sound = event_burning_city
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_destroyed
-		NOR = {
-			has_planet_flag = seismic_disturbance_quake
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_destroyed
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_quake }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_quake
 		add_planet_devastation = 10
@@ -1563,26 +1439,13 @@ planet_event = {
 	show_sound = event_pre_ftl_civilization
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		NOR = {
-			has_planet_flag = seismic_disturbance_famine
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_famine }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_famine
 	}
@@ -1631,27 +1494,14 @@ planet_event = {
 	show_sound = event_pre_ftl_civilization
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		NOR = {
-			has_planet_flag = seismic_disturbance_gift
-			pop_amount < 100
-			check_variable = { which = "angry_subterraneans" value >= 1 }
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	pop_amount >= 100
+	# 	check_variable = { which = "angry_subterraneans" value < 1 }
+	# 	NOT = { has_planet_flag = seismic_disturbance_gift }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_gift
 	}
@@ -1691,27 +1541,14 @@ planet_event = {
 	show_sound = event_pre_ftl_civilization
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		NOR = {
-			has_planet_flag = seismic_disturbance_refugees
-			pop_amount < 100
-		}
-		# free_housing > 0
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_refugees }
+	# 	# free_housing > 0
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_refugees
 		random_country = {
@@ -1755,27 +1592,14 @@ planet_event = {
 	show_sound = event_pre_ftl_civilization
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		NOR = {
-			has_planet_flag = seismic_disturbance_anthropologists
-			pop_amount < 100
-			check_variable = { which = "angry_subterraneans" value >= 1 }
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	pop_amount >= 100
+	# 	check_variable = { which = "angry_subterraneans" value < 1 }
+	# 	NOT = { has_planet_flag = seismic_disturbance_anthropologists }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_anthropologists
 	}
@@ -1802,26 +1626,13 @@ planet_event = {
 	show_sound = event_air_raid_siren
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		NOR = {
-			has_planet_flag = seismic_disturbance_quake2
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_quake2 }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_quake2
 		add_planet_devastation = 10
@@ -1854,26 +1665,13 @@ planet_event = {
 	show_sound = event_pre_ftl_civilization
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		NOR = {
-			has_planet_flag = seismic_disturbance_tech
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = seismic_disturbance_tech }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_tech
 	}
@@ -1914,26 +1712,14 @@ planet_event = {
 	show_sound = event_pre_ftl_civilization
 	location = root
 	event_chain = subterranean_civilization_chain
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = seismic_disturbance_friendly
-		check_variable = { which = "angry_subterraneans" value > 2 }
-	}
-
-	mean_time_to_happen = {
-		days = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = seismic_disturbance_friendly
+	# 	check_variable = { which = "angry_subterraneans" value > 2 }
+	# }
+	# mean_time_to_happen = { days = 20 }
 	immediate = {
-		hidden_effect = {
-			remove_planet_flag = seismic_disturbance_friendly
-		}
+		remove_planet_flag = seismic_disturbance_friendly
 	}
 
 	option = {
@@ -1990,7 +1776,200 @@ country_event = {
 	}
 }
 
+# VFIX OPT NEW: Seismic Disturbances Gatekeeper event
+planet_event = {
+	id = colony.98
+	hide_window = yes
+	is_triggered_only = yes
+	# pre_triggers = {
+	# 	has_owner = yes
+	# 	is_ai = no
+	# 	has_ground_combat = no
+	# 	original_owner = yes
+	# }
+	# mean_time_to_happen = { years = 20 }
+	immediate = {
+		if = {
+			limit = {
+				has_owner = yes
+				has_ground_combat = no
+				original_owner = yes
+				owner = { is_ai = no }
+				# has_planet_flag = seismic_disturbance
+				has_planet_flag = colony_event
+				pop_amount > 100
+				OR = {
+					has_planet_flag = seismic_disturbance_war
+					has_planet_flag = seismic_disturbance_destroyed
+					has_planet_flag = seismic_disturbance_friendly
+				}
+			}
+			if = {
+				limit = { has_planet_flag = seismic_disturbance_war }
+				random_list = {
+					50 = {
+						modifier = { factor = 0 has_planet_flag = subterranean_invasion_planet }
+						planet_event = { id = colony.60 }
+					}
+					50 = {
+						modifier = {
+							factor = 0
+							OR = {
+								has_army = no
+								has_planet_flag = seismic_disturbance_collapse
+							}
+						}
+						planet_event = { id = colony.61 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_raid }
+						planet_event = { id = colony.62 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_attack }
+						planet_event = { id = colony.63 }
+					}
+					1 = { remove_planet_flag = colony_event }
+				}
+			}
+			else_if = {
+				limit = { has_planet_flag = seismic_disturbance_destroyed }
+				random_list = {
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_pocket }
+						planet_event = { id = colony.64 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_expansion }
+						planet_event = { id = colony.65 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_gold }
+						planet_event = { id = colony.66 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_treasury }
+						planet_event = { id = colony.67 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_quake }
+						planet_event = { id = colony.68 }
+					}
+					1 = { remove_planet_flag = colony_event }
+				}
+			}
+			else_if = {
+				limit = { has_planet_flag = seismic_disturbance_friendly }
+				random_list = {
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_famine }
+						planet_event = { id = colony.69 }
+					}
+					50 = {
+						modifier = {
+							factor = 0
+							OR = {
+								check_variable = { which = "angry_subterraneans" value >= 1 }
+								has_planet_flag = seismic_disturbance_gift
+							}
+						}
+						planet_event = { id = colony.70 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_refugees }
+						planet_event = { id = colony.71 }
+					}
+					50 = {
+						modifier = {
+							factor = 0
+							OR = {
+								check_variable = { which = "angry_subterraneans" value >= 1 }
+								has_planet_flag = seismic_disturbance_anthropologists
+							}
+						}
+						planet_event = { id = colony.72 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_quake2 }
+						planet_event = { id = colony.73 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = seismic_disturbance_tech }
+						planet_event = { id = colony.74 }
+					}
+					50 = {
+						modifier = {
+							factor = 0
+							check_variable = { which = "angry_subterraneans" value <= 2 }
+						}
+						planet_event = { id = colony.75 }
+					}
+					1 = { remove_planet_flag = colony_event }
+				}
+			}
+			planet_event = { id = colony.98 days = 5400 random = 3600 } # Gatekeeper event
+		}
+		else_if = {
+			limit = { has_planet_flag = colony_event }
+			planet_event = { id = colony.98 days = 3600 random = 1800 } # Gatekeeper event
+		}
+	}
+}
+
 ### Abandoned Terraforming Equipment
+# VFIX OPT NEW: Abandoned Terraforming Gatekeeper event
+planet_event = {
+	id = colony.99
+	hide_window = yes
+	is_triggered_only = yes
+	# pre_triggers = {
+	# 	has_owner = yes
+	# 	is_ai = no
+	# 	has_ground_combat = no
+	# 	original_owner = yes
+	# }
+	# mean_time_to_happen = { years = 20 }
+	immediate = {
+		if = {
+			limit = {
+				has_owner = yes
+				has_ground_combat = no
+				original_owner = yes
+				owner = { is_ai = no }
+				# has_planet_flag = abandoned_terraforming_planet
+				has_planet_flag = colony_event
+				pop_amount > 100
+				NOT = { has_modifier = "abandoned_terraforming" }
+			}
+			if = {
+				limit = { has_planet_flag = did_not_terraform }
+				random_list = {
+					50 = {
+						modifier = { factor = 0 has_planet_flag = terraforming_unstable_weather }
+						planet_event = { id = colony.102 }
+					}
+					50 = {
+						modifier = { factor = 0 has_planet_flag = terraforming_drought }
+						planet_event = { id = colony.103 }
+					}
+					1 = { remove_planet_flag = colony_event }
+				}
+			}
+			else_if = {
+				limit = {
+					has_planet_flag = terraforming_mutants_defeated
+					NOT = { has_planet_flag = terraforming_mutant_stalker }
+				}
+				planet_event = { id = colony.109 }
+			}
+			planet_event = { id = colony.99 days = 5400 random = 3600 } # Gatekeeper event
+		}
+		else_if = {
+			limit = { has_planet_flag = colony_event }
+			planet_event = { id = colony.99 days = 3600 random = 1800 } # Gatekeeper event
+		}
+	}
+}
 
 planet_event = {
 	id = colony.100
@@ -2079,12 +2058,13 @@ planet_event = {
 		set_planet_flag = abandoned_terraforming_planet
 		set_planet_flag = colony_event
 		owner = { set_country_flag = abandoned_terraforming_country }
+		planet_event = { id = colony.99 days = 5400 random = 3600 } # Gatekeeper event
 	}
 
 	option = {
 		name = colony.100.a
 		hidden_effect = {
-			add_modifier = { modifier = "abandoned_terraforming" days = -1 }
+			add_modifier = { modifier = "abandoned_terraforming" }
 		}
 		begin_event_chain = { event_chain = "abandoned_terraforming_chain" target = root }
 		enable_special_project = {
@@ -2115,22 +2095,17 @@ planet_event = {
 		set_planet_flag = did_not_terraform
 	}
 
+	after = {
+		hidden_effect = {
+			remove_planet_flag = colony_event
+		}
+	}
+
 	option = {
 		name = EXCELLENT
-		if = {
-			limit = {
-				NOT = { owner = { has_technology = tech_terrestrial_sculpting } }
-			}
-			owner = {
-				give_technology = { tech = tech_terrestrial_sculpting }
-			}
-			break = yes
-		}
-		if = {
-			limit = {
-				owner = { has_technology = tech_terrestrial_sculpting }
-			}
-			owner = {
+		owner = { # Vfix opt (update)
+			if = {
+				limit = { has_technology = tech_terrestrial_sculpting }
 				add_monthly_resource_mult = {
 					resource = society_research
 					value = @tier4researchreward
@@ -2138,7 +2113,9 @@ planet_event = {
 					max = @tier4researchmax
 				}
 			}
-			break = yes
+			else = {
+				give_technology = { tech = tech_terrestrial_sculpting }
+			}
 		}
 	}
 }
@@ -2151,26 +2128,13 @@ planet_event = {
 	picture = GFX_evt_burning_city
 	show_sound = event_burning_city
 	location = root
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = did_not_terraform
-		NOR = {
-			has_planet_flag = terraforming_unstable_weather
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = did_not_terraform
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = terraforming_unstable_weather }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = terraforming_unstable_weather
 		add_planet_devastation = 10
@@ -2190,26 +2154,13 @@ planet_event = {
 	picture = GFX_evt_colony_settlement
 	show_sound = event_planetary_riot
 	location = root
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = did_not_terraform
-		NOR = {
-			has_planet_flag = terraforming_drought
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = did_not_terraform
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = terraforming_drought }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = terraforming_drought
 	}
@@ -2601,7 +2552,7 @@ planet_event = {
 	option = {
 		name = MARVELOUS
 		change_pc = pc_gaia
-		add_modifier = { modifier = "gaia_world" days = -1 }
+		add_modifier = { modifier = "gaia_world" }
 		hidden_effect = {
 			remove_modifier = "abandoned_terraforming"
 		}
@@ -2745,35 +2696,22 @@ planet_event = {
 	show_sound = event_alien_nature
 	location = root
 	trackable = yes
-
-	pre_triggers = {
-		has_owner = yes
-		is_homeworld = no
-		has_ground_combat = no
-		original_owner = yes
-	}
-
-	trigger = {
-		has_planet_flag = terraforming_mutants_defeated
-		NOR = {
-			has_planet_flag = terraforming_mutant_stalker
-			pop_amount < 100
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 20
-	}
-
+	is_triggered_only = yes
+	# trigger = {
+	# 	has_planet_flag = terraforming_mutants_defeated
+	# 	pop_amount >= 100
+	# 	NOT = { has_planet_flag = terraforming_mutant_stalker }
+	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = terraforming_mutant_stalker
-		add_modifier = { modifier = "mutant_stalker" days = -1 }
+		add_modifier = { modifier = "mutant_stalker" }
 	}
 
 	option = {
 		name = colony.109.a
 		tooltip = {
-			add_modifier = { modifier = "mutant_stalker" days = -1 }
+			add_modifier = { modifier = "mutant_stalker" }
 		}
 		enable_special_project = {
 			name = "MUTANT_STALKER_PROJECT"
@@ -2799,6 +2737,9 @@ planet_event = {
 		# Armies on planet should gain experience
 		owner = {
 			give_specimen = { key = head_of_the_beast origin = MUTANT_STALKER_PROJECT }
+		}
+		hidden_effect = {
+			remove_planet_flag = colony_event
 		}
 	}
 }
@@ -2988,12 +2929,12 @@ planet_event = {
 			has_planet_flag = colony_event
 		}
 		is_planet_class = pc_nuked
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = nuked_planet_anomalies_disabled
 			has_planet_flag = pre_ftls_nuked_themselves
 			solar_system = { is_capital_system = yes }
 			owner = { is_gestalt = yes }
-			pop_amount < 100
 		}
 	}
 
@@ -3297,10 +3238,10 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = wasteland_nuclear_bomb
 			solar_system = { is_capital_system = yes }
-			pop_amount < 100
 			owner = { has_country_flag = had_colony_155 }
 		}
 	}
@@ -3390,10 +3331,10 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = wasteland_particle_accelerator
 			solar_system = { is_capital_system = yes }
-			pop_amount < 100
 			owner = { has_country_flag = had_colony_160 }
 		}
 	}
@@ -3442,10 +3383,10 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = wasteland_infrastructure
 			solar_system = { is_capital_system = yes }
-			pop_amount < 100
 			owner = { has_country_flag = had_colony_161 }
 		}
 	}
@@ -3461,7 +3402,7 @@ planet_event = {
 
 	option = {
 		name = EXCELLENT
-		add_modifier = { modifier = "wasteland_infrastructure" days = -1 }
+		add_modifier = { modifier = "wasteland_infrastructure" }
 	}
 }
 
@@ -3492,12 +3433,12 @@ planet_event = {
 			has_planet_flag = colony_event
 		}
 		is_planet_class = pc_nuked
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = wasteland_space_station
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = nuked_planet_anomalies_disabled
 			solar_system = { is_capital_system = yes }
-			pop_amount < 100
 			owner = { has_country_flag = had_colony_162 }
 		}
 	}
@@ -3565,18 +3506,18 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = armageddon_nuked
 		}
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = colony_event
 			has_planet_flag = wasteland_radiation
 			solar_system = { is_capital_system = yes }
-		}
-		owner = {
-			empire_has_good_habitability_on_tomb_worlds = no
-			is_gestalt = no
-		}
-		NOR = {
-			pop_amount < 100
-			owner = { has_country_flag = had_colony_163 }
+			owner = {
+				OR = {
+					empire_has_good_habitability_on_tomb_worlds = yes
+					is_gestalt = yes
+					has_country_flag = had_colony_163
+				}
+			}
 		}
 	}
 
@@ -3622,12 +3563,17 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = armageddon_nuked
 		}
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = colony_event
 			has_planet_flag = wasteland_pacifist_movement
 			solar_system = { is_capital_system = yes }
-			owner = { is_gestalt = yes }
-			pop_amount < 100
+			owner = {
+				OR = {
+					is_gestalt = yes
+					has_country_flag = had_colony_164
+				}
+			}
 		}
 		any_owned_pop_group = {
 			NOR = {
@@ -3638,13 +3584,10 @@ planet_event = {
 			}
 			can_think = yes
 		}
-		NOT = { owner = { has_country_flag = had_colony_164 } }
 	}
 
 	is_triggered_only = yes
-	# mean_time_to_happen = {
-	#	months = 240
-	# }
+	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		hidden_effect = {
 			set_planet_flag = wasteland_pacifist_movement
@@ -3710,12 +3653,12 @@ planet_event = {
 			has_planet_flag = colony_event
 		}
 		is_planet_class = pc_nuked
+		pop_amount >= 100
 		NOR = {
 			has_planet_flag = wasteland_orbital_debris
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = nuked_planet_anomalies_disabled
 			solar_system = { is_capital_system = yes }
-			pop_amount < 100
 			owner = { has_country_flag = had_colony_170 }
 		}
 	}
@@ -3731,7 +3674,7 @@ planet_event = {
 
 	option = {
 		name = colony.170.a
-		add_modifier = { modifier = "wasteland_orbital_debris" days = -1 }
+		add_modifier = { modifier = "wasteland_orbital_debris" }
 		enable_special_project = {
 			name = "ORBITAL_DEBRIS_PROJECT"
 			location = this
@@ -3909,6 +3852,8 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
+		pop_amount >= 100
+		years_passed < 50
 		NOR = {
 			owner = {
 				OR = {
@@ -3917,8 +3862,6 @@ planet_event = {
 					is_wilderness_empire = yes
 				}
 			}
-			pop_amount < 100
-			years_passed >= 50
 			is_artificial = yes # Vfix
 			# is_planet_class = pc_habitat
 			# is_planet_class = pc_ringworld_habitable

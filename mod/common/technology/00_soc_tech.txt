@@ -3872,7 +3872,7 @@ tech_galactic_ambitions = {
 	}
 
 	weight_modifier = {
-		modifier = { factor = 0 num_communications < 1 }
+		modifier = { factor = 0 num_communications = 0 }
 		modifier = { factor = 2 num_communications > 2 }
 		modifier = { factor = 2 num_communications > 3 }
 		modifier = { factor = 2 num_communications > 4 }
@@ -3905,7 +3905,7 @@ tech_manifest_destiny = {
 	}
 
 	weight_modifier = {
-		modifier = { factor = 0 num_communications < 1 }
+		modifier = { factor = 0 num_communications = 0 }
 		modifier = { factor = 2 num_communications > 2 }
 		modifier = { factor = 2 num_communications > 3 }
 		modifier = { factor = 2 num_communications > 4 }
@@ -3942,7 +3942,7 @@ tech_interstellar_campaigns = {
 			factor = 0
 			OR = {
 				is_homicidal = yes
-				num_communications < 1
+				num_communications = 0
 			}
 		}
 		modifier = { factor = 2 num_communications > 2 }
@@ -3980,7 +3980,7 @@ tech_galactic_campaigns = {
 			factor = 0
 			OR = {
 				is_homicidal = yes
-				num_communications < 1
+				num_communications = 0
 			}
 		}
 		modifier = { factor = 2 num_communications > 2 }
@@ -4021,7 +4021,7 @@ tech_existential_campaigns = {
 			factor = 0
 			OR = {
 				is_homicidal = yes
-				num_communications < 1
+				num_communications = 0
 				has_ethic = ethic_fanatic_pacifist
 			}
 		}

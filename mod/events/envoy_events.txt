@@ -269,27 +269,27 @@ country_event = {
 		is_galactic_community_member = yes
 		any_galcom_member = {
 			is_part_of_galactic_council = yes
+			root = {
+				intel = { who = prev value < 80 }
+			}
 			NOR = {
 				is_same_species = root
 				is_in_federation_with = root
 				has_defensive_pact = root
 				is_overlord_to = root
-				root = {
-					intel = { who = prev value >= 80 }
-				}
 			}
 		}
 		any_galcom_member = {
+			relative_power = { who = root value < equivalent }
+			root = {
+				intel = { who = prev value < 80 }
+			}
 			NOR = {
 				is_part_of_galactic_council = yes
-				relative_power = { who = root value >= equivalent }
 				is_same_species = root
 				is_in_federation_with = root
 				has_defensive_pact = root
 				has_overlord = root
-				root = {
-					intel = { who = prev value >= 80 }
-				}
 			}
 		}
 		any_owned_leader = {
@@ -306,30 +306,30 @@ country_event = {
 		random_galcom_member = {
 			limit = {
 				is_part_of_galactic_council = yes
+				root = {
+					intel = { who = prev value < 80 }
+				}
 				NOR = {
 					is_same_species = root
 					is_in_federation_with = root
 					has_defensive_pact = root
 					is_overlord_to = root
-					root = {
-						intel = { who = prev value >= 80 }
-					}
 				}
 			}
 			save_event_target_as = council_country
 		}
 		random_galcom_member = {
 			limit = {
+				relative_power = { who = root value < equivalent }
+				root = {
+					intel = { who = prev value < 80 }
+				}
 				NOR = {
 					is_part_of_galactic_council = yes
-					relative_power = { who = root value >= equivalent }
 					is_same_species = root
 					is_in_federation_with = root
 					has_defensive_pact = root
 					has_overlord = root
-					root = {
-						intel = { who = prev value >= 80 }
-					}
 				}
 			}
 			save_event_target_as = pathetic_country
