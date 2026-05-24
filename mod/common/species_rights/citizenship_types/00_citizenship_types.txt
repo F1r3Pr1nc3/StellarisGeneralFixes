@@ -174,9 +174,7 @@ citizenship_assimilation = {
 		from = {
 			OR = {
 				is_homicidal = no
-				root = { # Vfix opt
-					is_same_species = prev
-				}
+				root = { is_same_species = prev }
 				AND = {
 					has_civic = civic_machine_terminator
 					root = { is_robotic = yes }
@@ -625,6 +623,7 @@ citizenship_limited = {
 
 citizenship_slavery = {
 	is_slavery = yes
+
 	in_breach_of = {
 		{
 			key = resolution_greatergood_balance_in_the_middle
@@ -633,7 +632,8 @@ citizenship_slavery = {
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
 	}
-	# This is a hack so the civic tooltip works.
+
+	# Vfix: This is a hack so the civic tooltip works.
 	triggered_pop_group_modifier = {
 		potential = {
 			exists = owner
@@ -648,7 +648,6 @@ citizenship_slavery = {
 	}
 
 	potential = {
-		is_scope_valid = yes
 		exists = from
 		NOR = { # Vfix opt
 			from = {

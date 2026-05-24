@@ -1662,16 +1662,12 @@ country_event = {
 	trigger = {
 		has_global_flag = sentinels_founded
 		is_country_type = default
-		NOR = {
-			has_country_flag = sentinel_donation
-			check_variable = { which = "swarm_fleet_kills" value <= 6 }
-		}
+		check_variable = { which = "swarm_fleet_kills" value > 6 }
+		NOT = { has_country_flag = sentinel_donation }
 		any_country = {
 			is_country_type = sentinels
-			NOR = {
-				root = { is_at_war_with = prev }
-				count_controlled_ship = { count <= 30 }
-			}
+			count_controlled_ship = { count > 30 }
+			NOT = { root = { is_at_war_with = prev } }
 		}
 	}
 
@@ -2548,7 +2544,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		pop_amount <= 100
+		pop_amount < 100
 		exists = controller
 		controller = { is_country_type = swarm }
 	}
@@ -2693,12 +2689,13 @@ event = {
 			}
 		}
 		event_target:prethoryn = {
-			random_controlled_ship = {
+			random_owned_fleet = { # Vfix opt
 				limit = { exists = solar_system }
 				save_event_target_as = infestor_respawn_system
 			}
 			while = {
 				count = 5
+				limit = { exists = event_target:infestor_respawn_system }
 				create_fleet = {
 					name = "NAME_Prethoryn_Infestor"
 					effect = {
@@ -2748,7 +2745,10 @@ event = {
 			}
 		}
 		event_target:prethoryn = {
-			random_controlled_ship = { save_event_target_as = constructor_respawn_system }
+			random_owned_fleet = {
+				limit = { exists = solar_system } # Vfix
+				solar_system = { save_event_target_as = constructor_respawn_system }
+			}
 			while = {
 				count = 2
 				create_fleet = {
@@ -2953,8 +2953,8 @@ event = {
 		event_target:prethoryn = {
 			if = {
 				limit = { # Vfix opt
-					NOR = {
-						num_ships >= 20
+					num_ships < 20
+					NOT = {
 						any_system = { # Vfix opt
 							any_system_colony = {
 								has_owner = yes
@@ -3727,6 +3727,7 @@ starbase_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		exists = from
 		from.owner = { is_country_type = swarm }
 		NOT = {
 			solar_system = {
@@ -3736,37 +3737,39 @@ starbase_event = {
 	}
 
 	immediate = {
-		solar_system = { save_event_target_as = starbase_system }
-		from.owner = {
-			country_event = { id = crisis.266 days = 5 } # Delay so that destroyed starbase is properly cleared out
+		solar_system = {
+			# save_event_target_as = starbase_system
+			system_event = { id = crisis.266 days = 7 } # Delay so that destroyed starbase is properly cleared out
 		}
+		# from.owner = {
+		# }
 	}
 }
 
 # Swarm Builds New Starbase
-country_event = {
+system_event = {
 	id = crisis.266
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
-		event_target:starbase_system = {
-			solar_system = {
-				create_starbase = { size = starbase_swarm owner = root }
-				star = {
-					create_ambient_object = { type = "swarm_1" location = this }
-					last_created_ambient_object = {
-						set_ambient_object_flag = swarm_system_effect
-						set_location = {
-							target = prev
-							distance = 0
-							angle = random
-						}
-					}
-				}
-				every_system_planet = {
-					limit = { has_orbital_station = yes }
-					orbital_station = { dismantle = yes }
+		if = { # Vfix
+			limit = { exists = starbase }
+			starbase = { delete_fleet = fleet }
+		}
+		every_system_planet = {
+			limit = { has_orbital_station = yes }
+			orbital_station = { dismantle = yes }
+		}
+		create_starbase = { owner = event_target:prethoryn size = starbase_swarm } # Vfix
+		star = {
+			create_ambient_object = { type = "swarm_1" location = this }
+			last_created_ambient_object = {
+				set_ambient_object_flag = swarm_system_effect
+				set_location = {
+					target = prev
+					distance = 0
+					angle = random
 				}
 			}
 		}

@@ -1131,10 +1131,8 @@ situation_event = {
 	location = target
 
 	trigger = {
-		NOR = {
-			situation_progress < 70
-			has_situation_flag = penrose_process
-		}
+		situation_progress >= 70
+		NOT = { has_situation_flag = penrose_process }
 	}
 
 	# More chances of happening if you're close to the black hole
@@ -3131,10 +3129,8 @@ situation_event = {
 		current_situation_approach = approach_no_food
 		owner = {
 			any_owned_planet = {
-				NOR = {
-					num_districts = { type = district_generator value < 1 }
-					has_modifier = phantom_load
-				}
+				num_districts = { type = district_generator value > 0 }
+				NOT = { has_modifier = phantom_load }
 			}
 		}
 	}
@@ -3150,10 +3146,8 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					NOR = {
-						num_districts = { type = district_generator value < 1 }
-						has_modifier = phantom_load
-					}
+					num_districts = { type = district_generator value > 0 }
+					NOT = { has_modifier = phantom_load }
 				}
 				save_event_target_as = infested_planet
 			}

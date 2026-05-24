@@ -115,7 +115,7 @@ num_evolutionary_predators_species = { #Count all species in your empire, minus 
 					is_archetype = MACHINE
 					is_archetype = ROBOT
 					is_archetype = OTHER
-					is_same_species = prev.species
+					is_same_species = prev
 					has_citizenship_type = { country = prev type = citizenship_purge }
 				}
 				root.owner = {
@@ -155,7 +155,7 @@ num_evolutionary_predators_council = { #Count all species on your council, minus
 						is_archetype = MACHINE
 						is_archetype = ROBOT
 						is_archetype = OTHER
-						is_same_species = prevprev.species #You can't get DNA from your own species
+						is_same_species = prevprev #You can't get DNA from your own species
 					}
 				}
 			}
@@ -185,7 +185,7 @@ num_evolutionary_predators_subjects = { #Count all species among your subjects
 						is_archetype = MACHINE
 						is_archetype = ROBOT
 						is_archetype = OTHER
-						is_same_species = prevprev.species #You can't get DNA from your own species
+						is_same_species = prevprev #You can't get DNA from your own species
 					}
 				}
 			}
@@ -210,7 +210,7 @@ num_evolutionary_predators_megacorp = { #Count all empires that you have commerc
 						is_archetype = MACHINE
 						is_archetype = ROBOT
 						is_archetype = OTHER
-						is_same_species = prevprev.species #You can't get DNA from your own species
+						is_same_species = prevprev #You can't get DNA from your own species
 					}
 				}
 			}
@@ -677,7 +677,7 @@ available_pops_for_bodysnatcher = {
 			limit = {
 				from.target = {
 					any_owned_species = {
-						is_same_species = prevprev.species
+						is_same_species = prevprev
 						is_organic_species = yes
 					}
 				}

@@ -1611,13 +1611,13 @@ country_event = {
 
 	trigger = {
 		is_country_type = default
+		end_game_years_passed < 0
 		NOR = {
 			is_ai = yes
 			is_subject = yes
 			# is_machine_empire = yes Vfix # Risa fix?
 			has_country_flag = fe_task_given
 			has_global_flag = fe_task_no_colonies_active
-			end_game_years_passed >= 0
 			has_country_flag = fe_task_no_wars
 			has_country_flag = fe_task_no_colonies
 			any_owned_planet = { is_under_colonization = yes }

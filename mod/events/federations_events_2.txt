@@ -809,37 +809,37 @@ country_event = {
 		NOT = { has_country_flag = hegemony_joint_operation_monument }
 		federation = {
 			has_federation_type = hegemony_federation
-			NOR = {
-				federation_level < 2
-				has_federation_flag = had_successful_hegemony_joint_operation
-				count_member = {
-					count < 2
-					limit = {
-						NOT = { is_same_value = root }
-						exists = capital_scope.solar_system # just in case...
-						if = {
-							limit = {
-								any_controlled_fleet = { is_ship_class = shipclass_constructor }
-							}
-							any_controlled_fleet = {
-								is_ship_class = shipclass_constructor
-								can_access_system = root.capital_scope.solar_system # never overuse this trigger
-							}
+			federation_level >= 2
+			count_member = {
+				count >= 2
+				limit = {
+					NOT = { is_same_value = root }
+					exists = capital_scope.solar_system # just in case...
+					if = {
+						limit = {
+							any_controlled_fleet = { is_ship_class = shipclass_constructor }
 						}
-						else = {
-							any_controlled_fleet = {
-								NOR = {
-									is_ship_class = shipclass_military_station
-									is_ship_class = shipclass_mining_station
-									is_ship_class = shipclass_research_station
-									is_ship_class = shipclass_observation_station
-								}
-								is_inside_border = owner
-								can_access_system = root.capital_scope.solar_system
+						any_controlled_fleet = {
+							is_ship_class = shipclass_constructor
+							can_access_system = root.capital_scope.solar_system # never overuse this trigger
+						}
+					}
+					else = {
+						any_controlled_fleet = {
+							NOR = {
+								is_ship_class = shipclass_military_station
+								is_ship_class = shipclass_mining_station
+								is_ship_class = shipclass_research_station
+								is_ship_class = shipclass_observation_station
 							}
+							is_inside_border = owner
+							can_access_system = root.capital_scope.solar_system
 						}
 					}
 				}
+			}
+			NOR = {
+				has_federation_flag = had_successful_hegemony_joint_operation
 				has_federation_flag = federation_recent_hegemony_joint_operation
 			}
 		}
@@ -976,13 +976,8 @@ country_event = {
 			factor = 1
 			modifier = {
 				factor = 0
-				NOR = {
-					federation = { federation_cohesion < 0 }
-					AND = {
-						has_country_flag = hegemony_ethos_authoritarian
-						is_authoritarian = no
-					}
-				}
+				federation = { federation_cohesion >= 0 }
+				NOT = { AND = { has_country_flag = hegemony_ethos_authoritarian is_authoritarian = no } }
 			}
 		}
 	}
@@ -2180,20 +2175,20 @@ country_event = {
 		years_passed > 60
 		has_federation = yes
 		is_federation_leader = yes
+		num_ships > 30
 		NOR = {
 			is_at_war = yes
 			any_country = { is_crisis_faction = yes }
-			num_ships <= 30
 		}
 		federation = {
 			has_federation_type = military_federation
-			NOR = {
-				federation_level < 2
+			federation_level >= 2
+			count_member = {
+				count >= 3
+				limit = { num_ships > 30 }
+			}
+			NOT = {
 				has_federation_flag = federation_recent_militarist_joint_operation
-				count_member = {
-					count < 3
-					limit = { num_ships > 30 }
-				}
 			}
 		}
 	}

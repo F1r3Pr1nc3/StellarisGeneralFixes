@@ -546,12 +546,12 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_cyborg
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -560,12 +560,12 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_cyborg
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -574,13 +574,13 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_cyborg
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -589,12 +589,12 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_cyborg
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -746,11 +746,11 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					event_target:winning_leader = { has_any_chosen_one_leader_trait = yes }
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -759,11 +759,11 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					event_target:winning_leader = { has_any_chosen_one_leader_trait = yes }
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -772,12 +772,12 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					event_target:winning_leader = { has_any_chosen_one_leader_trait = yes }
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -786,11 +786,11 @@ country_event = {
 	desc = {
 		trigger = {
 			leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_trait = leader_trait_psionic
 					has_trait = leader_trait_synthetic
 					event_target:winning_leader = { has_any_chosen_one_leader_trait = yes }
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -907,10 +907,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -919,10 +919,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -931,10 +931,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -943,10 +943,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -955,10 +955,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -967,10 +967,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -979,10 +979,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -991,10 +991,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value < 1 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value >= 1 }
 				}
 			}
 		}
@@ -1003,11 +1003,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1016,11 +1016,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1029,11 +1029,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1042,11 +1042,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1055,11 +1055,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1068,11 +1068,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1081,11 +1081,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1094,11 +1094,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1115,11 +1115,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1128,11 +1128,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1141,11 +1141,11 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 0 }
+				check_variable = { which = leader_ability value < 20 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 0 }
-					check_variable = { which = leader_ability value >= 20 }
 				}
 			}
 		}
@@ -1154,10 +1154,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1166,10 +1166,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1178,10 +1178,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1190,10 +1190,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1202,10 +1202,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1214,10 +1214,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1226,10 +1226,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1238,10 +1238,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1250,10 +1250,10 @@ country_event = {
 	desc = {
 		trigger = {
 			event_target:winning_leader = {
+				check_variable = { which = leader_ability value > 19 }
 				NOR = {
 					has_any_chosen_one_leader_trait = yes
 					has_trait = leader_trait_synthetic
-					check_variable = { which = leader_ability value <= 19 }
 				}
 			}
 		}
@@ -1411,10 +1411,8 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_country_flag = no_psi_battle
-				resource_stockpile_compare = { resource = sr_zro value >= 100 }
-			}
+			resource_stockpile_compare = { resource = sr_zro value < 100 }
+			NOT = { has_country_flag = no_psi_battle }
 		}
 		text = "fedel.501.3.desc"
 	}
@@ -1456,10 +1454,8 @@ country_event = {
 	option = {
 		name = fedel.501.a
 		trigger = {
-			NOR = {
-				has_country_flag = no_psi_battle
-				resource_stockpile_compare = { resource = sr_zro value < 100 }
-			}
+			resource_stockpile_compare = { resource = sr_zro value >= 100 }
+			NOT = { has_country_flag = no_psi_battle }
 		}
 		add_resource = { sr_zro = -100 }
 		hidden_effect = {
@@ -1470,10 +1466,8 @@ country_event = {
 	option = {
 		name = fedel.501.b
 		trigger = {
-			NOR = {
-				has_country_flag = no_psi_battle
-				resource_stockpile_compare = { resource = sr_zro value < 500 }
-			}
+			resource_stockpile_compare = { resource = sr_zro value >= 500 }
+			NOT = { has_country_flag = no_psi_battle }
 		}
 		add_resource = { sr_zro = -500 }
 		hidden_effect = {
@@ -1484,10 +1478,8 @@ country_event = {
 	option = {
 		name = fedel.501.c
 		trigger = {
-			NOR = {
-				has_country_flag = no_psi_battle
-				resource_stockpile_compare = { resource = sr_zro value < 1000 }
-			}
+			resource_stockpile_compare = { resource = sr_zro value >= 1000 }
+			NOT = { has_country_flag = no_psi_battle }
 		}
 		add_resource = { sr_zro = -1000 }
 		hidden_effect = {
@@ -2131,13 +2123,11 @@ country_event = {
 						federation = {
 							NOT = {
 								any_member = {
-									NOR = {
-										is_same_value = prevprev
-										relative_power = {
-											who = prevprev
-											category = technology
-											value <= equivalent
-										}
+									NOT = { is_same_value = prevprev }
+									relative_power = {
+										who = prevprev
+										category = technology
+										value > equivalent
 									}
 								}
 							}
@@ -2148,13 +2138,11 @@ country_event = {
 						federation = {
 							NOT = {
 								any_member = {
-									NOR = {
-										is_same_value = prevprev
-										relative_power = {
-											who = prevprev
-											category = technology
-											value <= inferior
-										}
+									NOT = { is_same_value = prevprev }
+									relative_power = {
+										who = prevprev
+										category = technology
+										value > inferior
 									}
 								}
 							}
@@ -2190,13 +2178,11 @@ country_event = {
 						factor = 0.1
 						federation = {
 							any_member = {
-								NOR = {
-									is_same_value = prevprev
-									relative_power = {
-										who = prevprev
-										category = technology
-										value != overwhelming
-									}
+								NOT = { is_same_value = prevprev }
+								relative_power = {
+									who = prevprev
+									category = technology
+									value = overwhelming
 								}
 							}
 						}
@@ -2328,10 +2314,8 @@ country_event = {
 
 	desc = { # For those empires with insufficient researchers
 		trigger = {
-			NOR = {
-				event_target:winning_thesis = { is_same_value = root }
-				check_variable = { which = thesis_assemble value >= 3 }
-			}
+			NOT = { event_target:winning_thesis = { is_same_value = root } }
+			check_variable = { which = thesis_assemble value < 3 }
 		}
 		text = "fedel.1506.insufficient.desc"
 	}
@@ -2364,8 +2348,8 @@ country_event = {
 			NOR = {
 				event_target:winning_thesis = { is_same_value = root }
 				is_gestalt = yes
-				check_variable = { which = thesis_assemble value <= 2 }
 			}
+			check_variable = { which = thesis_assemble value > 2 }
 		}
 		text = "fedel.1506.fail.desc"
 	}

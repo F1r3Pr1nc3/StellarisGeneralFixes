@@ -614,12 +614,20 @@ sdetection_array = {
 			owner = { is_ai = no } # These rules shouldn't apply to players
 			AND = {
 				exists = sector
-				sector = {
-					any_system_within_border = {
-						NOT = { starbase = { is_starbase_type = sdetection_array } }
+				NOR = { # Vfix
+					solar_system = {
+						OR = {
+							is_capital_system = yes
+							is_inside_nebula = yes
+						}
+					}
+					sector = {
+						any_system_within_border = {
+							exists = starbase # Vfix
+							starbase = { is_starbase_type = sdetection_array }
+						}
 					}
 				}
-				solar_system = { is_capital_system = no is_inside_nebula = no }
 			}
 		}
 		OR = {

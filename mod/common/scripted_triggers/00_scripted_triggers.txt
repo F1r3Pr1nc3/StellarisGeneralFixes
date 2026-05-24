@@ -344,8 +344,7 @@ has_lithoids = {
 }
 
 has_mammalians_micro_dlc = {
-	optimize_memory
-	always = yes # host_has_dlc = "Mammalian Species Pack"  # Vfix note: Not used anymore!
+	always = yes # host_has_dlc = "Mammalian Species Pack"  # Vfix note: Not used anymore!?
 }
 
 has_federations_dlc = {
@@ -1324,12 +1323,12 @@ is_lithoid_devouring_swarm_consumption_world = {
 			planet_size > 13
 			owner = {
 				any_owned_species = {
+					prevprev = {
+						habitability = { who = prev value >= 0.9 }
+					}
 					NOR = {
 						has_citizenship_type = { country = prev type = citizenship_purge }
 						has_citizenship_type = { country = prev type = citizenship_purge_machine }
-						prevprev = {
-							habitability = { who = prev value < 0.9 }
-						}
 					}
 				}
 			}
@@ -3215,7 +3214,7 @@ species_can_be_necrophaged = {
 		is_archetype = MACHINE
 		is_archetype = ROBOT
 		is_archetype = PRESAPIENT
-		is_same_species = prev.owner_species
+		is_same_species = prev
 		AND = {
 			has_slavery_type = { type = slavery_livestock country = prev.owner }
 			prev.owner = { is_hive_empire = no }
@@ -4911,11 +4910,11 @@ can_obtain_rare_crystals = {
 }
 
 very_first_contact_paragon = {
+	years_passed < 15
 	NOR = {
 		has_country_flag = first_contact_protocol_event_happened
 		has_origin = origin_common_ground
 		has_origin = origin_hegemon
-		years_passed >= 15
 	}
 }
 

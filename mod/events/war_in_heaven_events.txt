@@ -247,9 +247,9 @@ country_event = {
 		any_country = {
 			is_country_type = awakened_fallen_empire
 			has_country_flag = sleepers_awake_first_sleeper
+			fleet_power > 60000
 			NOR = {
 				is_same_value = root
-				fleet_power <= 60000
 				is_at_war = yes
 			}
 		}
@@ -444,7 +444,7 @@ country_event = {
 				set_subject_of = { who = event_target:FirstSleeper preset = preset_thrall }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile }
 			}
@@ -453,7 +453,7 @@ country_event = {
 				set_subject_of = { who = event_target:FirstSleeper preset = preset_signatory }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				event_target:FirstSleeper = { has_ethic = ethic_fanatic_spiritualist }
 			}
@@ -466,7 +466,7 @@ country_event = {
 				}
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				event_target:FirstSleeper = { has_ethic = ethic_fanatic_materialist }
 			}
@@ -475,7 +475,7 @@ country_event = {
 				set_subject_of = { who = event_target:FirstSleeper preset = preset_satellite }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				event_target:FirstSleeper = { has_country_flag = fallen_empire_hive_control }
 			}
@@ -484,7 +484,7 @@ country_event = {
 				set_subject_of = { who = event_target:FirstSleeper preset = preset_political_client }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				event_target:FirstSleeper = { has_country_flag = fallen_empire_hive_war }
 			}
@@ -626,7 +626,7 @@ country_event = {
 				set_subject_of = { who = from preset = preset_thrall }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				from = { has_ethic = ethic_fanatic_xenophile }
 			}
@@ -635,7 +635,7 @@ country_event = {
 				set_subject_of = { who = from preset = preset_signatory }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				from = { has_ethic = ethic_fanatic_spiritualist }
 			}
@@ -648,7 +648,7 @@ country_event = {
 				}
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				from = { has_ethic = ethic_fanatic_materialist }
 			}
@@ -657,7 +657,7 @@ country_event = {
 				set_subject_of = { who = from preset = preset_satellite }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				from = { has_country_flag = fallen_empire_hive_control }
 			}
@@ -666,7 +666,7 @@ country_event = {
 				set_subject_of = { who = from preset = preset_political_client }
 			}
 		}
-		if = {
+		else_if = { # Vfix minor
 			limit = {
 				from = { has_country_flag = fallen_empire_hive_war }
 			}
@@ -1103,14 +1103,12 @@ country_event = {
 					}
 					NOT = {
 						any_federation = {
-							NOR = {
-								is_same_value = prev
-								relative_power = {
-									who = prev
-									value <= equivalent
-									category = fleet
-								}
+							relative_power = {
+								who = prev
+								value > equivalent
+								category = fleet
 							}
+							NOT = { is_same_value = prev }
 							any_member = {
 								is_federation_leader = yes
 								NOR = {
@@ -1144,14 +1142,12 @@ country_event = {
 					}
 					NOT = {
 						any_federation = {
-							NOR = {
-								is_same_value = prev
-								relative_power = {
-									who = prev
-									value <= equivalent
-									category = fleet
-								}
+							relative_power = {
+								who = prev
+								value > equivalent
+								category = fleet
 							}
+							NOT = { is_same_value = prev }
 							any_member = {
 								is_federation_leader = yes
 								NOR = {
@@ -1199,9 +1195,9 @@ country_event = {
 						# is_level_5_player_crisis = yes
 						any_country = { is_country_type = awakened_fallen_empire is_at_war_with = prev }
 						any_playable_country = {
+							relative_power = { who = prev value > equivalent }
 							NOR = {
 								is_subject = yes
-								relative_power = { who = prev value <= equivalent }
 								has_country_flag = war_in_heaven_league_leader_declined
 								is_homicidal = yes
 								is_player_crisis = yes # Vfix
@@ -1278,29 +1274,30 @@ country_event = {
 		if = {
 			limit = { # existing federation will become the Non-Aligned League
 				has_federation = yes
-				is_federation_leader = yes
 			}
-			federation = {
-				set_name = NAME_League_of_Non-Aligned_Powers
-				set_federation_flag = non_aligned_league
+			if = { # Vfix minor
+				limit = { is_federation_leader = no }
+				leave_alliance = { override_requirements = yes }
 			}
-			hidden_effect = {
-				set_country_flag = formed_nonaligned_league
-				every_country = {
-					limit = {
-						is_ai = yes
-						NOT = { is_same_value = root }
-						is_in_federation_with = root
+			else = {
+				federation = {
+					set_name = NAME_League_of_Non-Aligned_Powers
+					set_federation_flag = non_aligned_league
+				}
+				hidden_effect = {
+					set_country_flag = formed_nonaligned_league
+					every_country = {
+						limit = {
+							is_ai = yes
+							NOT = { is_same_value = root }
+							is_in_federation_with = root
+						}
+						set_country_flag = war_in_heaven_nonaligned_league_check
+						add_non_aligned_league_opinions = yes
+						set_timed_country_flag = { flag = ai_no_leave_fed years = 20 }
 					}
-					set_country_flag = war_in_heaven_nonaligned_league_check
-					add_non_aligned_league_opinions = yes
-					set_timed_country_flag = { flag = ai_no_leave_fed years = 20 }
 				}
 			}
-		}
-		else_if = {
-			limit = { has_federation = yes }
-			leave_alliance = { override_requirements = yes }
 		}
 		hidden_effect = {
 			set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer months = 6 }

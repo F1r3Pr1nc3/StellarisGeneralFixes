@@ -193,11 +193,8 @@ system_event = {
 				has_star_flag = marauder_system
 				exists = starbase
 				starbase = {
-					NOR = {
-						has_starbase_size >= starbase_starfortress
-						has_starbase_size = starbase_citadel
-						has_starbase_size = starbase_marauder
-					}
+					has_starbase_size < starbase_starfortress
+					NOT = { has_starbase_size = starbase_marauder }
 				}
 			}
 			max_steps = 4
@@ -216,8 +213,8 @@ starbase_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		has_starbase_size > starbase_outpost
 		NOR = {
-			has_starbase_size = starbase_outpost
 			has_starbase_size = starbase_fe_outpost
 			has_starbase_size = starbase_marauder
 		}
@@ -234,8 +231,8 @@ starbase_event = {
 		# TODO needs free slot check somehow: "Building slot is invalid."
 		if = {
 			limit = {
+				count_starbase_modules = { count < 2 include_being_constructed = yes }
 				NOR = {
-					count_starbase_modules = { count >= 2 include_being_constructed = yes }
 					has_starbase_module = "shipyard"
 					is_starbase_building_module = "shipyard"
 				}
@@ -245,23 +242,21 @@ starbase_event = {
 		}
 		if = {
 			limit = {
-				NOR = {
-					count_starbase_modules = {
-						type = "shipyard"
-						count >= 2
-						include_being_constructed = yes
-					}
-					is_starbase_building_module = "shipyard"
+				count_starbase_modules = {
+					type = "shipyard"
+					count < 2
+					include_being_constructed = yes
 				}
+				NOT = { is_starbase_building_module = "shipyard" }
 			}
 			remove_starbase_module = { slot = 2 }
 			set_starbase_module = { slot = 2 module = "shipyard" }
 		}
 		if = {
 			limit = {
+				has_starbase_size > starbase_starport
+				count_starbase_modules = { count < 3 include_being_constructed = yes }
 				NOR = {
-					has_starbase_size <= starbase_starport
-					count_starbase_modules = { count >= 3 include_being_constructed = yes }
 					has_starbase_module = "gun_battery"
 					is_starbase_building_module = "gun_battery"
 				}
@@ -271,24 +266,22 @@ starbase_event = {
 		}
 		if = {
 			limit = {
-				NOR = {
-					has_starbase_size <= starbase_starhold
-					count_starbase_modules = { count >= 4 include_being_constructed = yes }
-					count_starbase_modules = {
-						type = "gun_battery"
-						count >= 2
-						include_being_constructed = yes
-					}
-					is_starbase_building_module = "gun_battery"
+				has_starbase_size > starbase_starhold
+				count_starbase_modules = { count < 4 include_being_constructed = yes }
+				count_starbase_modules = {
+					type = "gun_battery"
+					count < 2
+					include_being_constructed = yes
 				}
+				NOT = { is_starbase_building_module = "gun_battery" }
 			}
 			remove_starbase_module = { slot = 4 }
 			set_starbase_module = { slot = 4 module = "gun_battery" }
 		}
 		if = {
 			limit = {
+				count_starbase_buildings = { count < 2 include_being_constructed = yes }
 				NOR = {
-					count_starbase_buildings = { count >= 2 include_being_constructed = yes }
 					has_starbase_building = "fleet_academy"
 					is_starbase_building_building = "fleet_academy"
 				}
@@ -298,9 +291,9 @@ starbase_event = {
 		}
 		if = {
 			limit = {
+				has_starbase_size > starbase_starport
+				count_starbase_buildings = { count < 3 include_being_constructed = yes }
 				NOR = {
-					has_starbase_size <= starbase_starport
-					count_starbase_buildings = { count >= 3 include_being_constructed = yes }
 					has_starbase_building = "resource_silo"
 					is_starbase_building_building = "resource_silo"
 				}
@@ -315,15 +308,13 @@ starbase_event = {
 			}
 			if = {
 				limit = {
-					NOR = {
-						count_starbase_modules = { count >= 4 include_being_constructed = yes }
-						count_starbase_modules = {
-							type = "shipyard"
-							count >= 3
-							include_being_constructed = yes
-						}
-						is_starbase_building_module = "shipyard"
+					count_starbase_modules = { count < 4 include_being_constructed = yes }
+					count_starbase_modules = {
+						type = "shipyard"
+						count < 3
+						include_being_constructed = yes
 					}
+					NOT = { is_starbase_building_module = "shipyard" }
 				}
 				remove_starbase_module = { slot = 6 }
 				set_starbase_module = { slot = 6 module = "shipyard" }
@@ -647,11 +638,11 @@ country_event = {
 							has_owner = no
 							is_owned_by = root
 						}
+						count_neighbor_system = {
+							count > 1
+							limit = { has_access_fleet = root }
+						}
 						NOR = {
-							count_neighbor_system = {
-								count <= 1
-								limit = { has_access_fleet = root }
-							}
 							AND = {
 								exists = starbase
 								starbase = { has_starbase_size = starbase_citadel }
@@ -2131,13 +2122,11 @@ country_event = {
 		from = {
 			if = {
 				limit = {
-					NOR = {
-						has_global_flag = marauder_crisis_ongoing
-						count_owned_fleet = {
-							count <= 1
-							limit = { is_mobile = yes }
-						}
+					count_owned_fleet = {
+						count > 1
+						limit = { is_mobile = yes }
 					}
+					NOT = { has_global_flag = marauder_crisis_ongoing }
 				}
 				ordered_owned_fleet = {
 					limit = {
@@ -2328,10 +2317,10 @@ country_event = {
 			# Store each fleet_power to var.
 			every_playable_country = {
 				limit = {
+					fleet_power > 40000
 					NOR = {
 						is_variable_set = "successor_fleet_power"
 						has_origin = origin_khan_successor
-						fleet_power <= 40000
 					}
 				}
 				if = {
@@ -2833,12 +2822,10 @@ system_event = {
 
 	trigger = {
 		exists = from # space_owner
-		NOR = {
-			from = {
-				check_variable = { which = marauder_habitat_count value <= 0 }
-			}
-			has_star_flag = ring_world_built
+		from = {
+			check_variable = { which = marauder_habitat_count value > 0 }
 		}
+		NOT = { has_star_flag = ring_world_built }
 	}
 
 	immediate = { # log = "---Attempting habitat construction in [This.GetName]"

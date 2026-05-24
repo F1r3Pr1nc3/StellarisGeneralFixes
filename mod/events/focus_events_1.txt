@@ -438,10 +438,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_country_flag = research_option_added
-			days_passed <= 1
-		}
+		days_passed > 1
+		NOT = { has_country_flag = research_option_added }
 	}
 
 	immediate = {
@@ -550,46 +548,36 @@ country_event = {
 	immediate = {
 		if = { # Energy Credits
 			limit = {
-				NOR = {
-					has_country_flag = energy_storage_1000
-					resource_stockpile_compare = { resource = energy value < 1000 }
-				}
+				resource_stockpile_compare = { resource = energy value >= 1000 }
+				NOT = { has_country_flag = energy_storage_1000 }
 			}
 			set_country_flag = energy_storage_1000
 		}
 		if = { # Minerals
 			limit = {
-				NOR = {
-					has_country_flag = mineral_storage_1000
-					resource_stockpile_compare = { resource = minerals value < 1000 }
-				}
+				resource_stockpile_compare = { resource = minerals value >= 1000 }
+				NOT = { has_country_flag = mineral_storage_1000 }
 			}
 			set_country_flag = mineral_storage_1000
 		}
 		if = { # Food
 			limit = {
-				NOR = {
-					has_country_flag = food_storage_1000
-					resource_stockpile_compare = { resource = food value < 1000 }
-				}
+				resource_stockpile_compare = { resource = food value >= 1000 }
+				NOT = { has_country_flag = food_storage_1000 }
 			}
 			set_country_flag = food_storage_1000
 		}
 		if = { # Consumer Goods
 			limit = {
-				NOR = {
-					has_country_flag = consumer_goods_storage_1000
-					resource_stockpile_compare = { resource = consumer_goods value < 1000 }
-				}
+				resource_stockpile_compare = { resource = consumer_goods value >= 1000 }
+				NOT = { has_country_flag = consumer_goods_storage_1000 }
 			}
 			set_country_flag = consumer_goods_storage_1000
 		}
 		if = { # Alloys
 			limit = {
-				NOR = {
-					has_country_flag = alloys_storage_1000
-					resource_stockpile_compare = { resource = alloys value < 1000 }
-				}
+				resource_stockpile_compare = { resource = alloys value >= 1000 }
+				NOT = { has_country_flag = alloys_storage_1000 }
 			}
 			set_country_flag = alloys_storage_1000
 		}
@@ -953,10 +941,8 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			from = { has_country_flag = has_forced_planet_surrender }
-			num_armies >= 1
-		}
+		num_armies = 0
+		NOT = { from = { has_country_flag = has_forced_planet_surrender } }
 	}
 
 	immediate = {
@@ -1278,15 +1264,13 @@ country_event = {
 
 	trigger = {
 		has_active_focus = development_focus_510
-		NOR = {
-			has_country_flag = has_excellent_relations
-			count_relation = {
-				count < 10
-				limit = {
-					opinion = { who = root value >= 200 }
-				}
+		count_relation = {
+			count >= 10
+			limit = {
+				opinion = { who = root value >= 200 }
 			}
 		}
+		NOT = { has_country_flag = has_excellent_relations }
 	}
 
 	immediate = {
@@ -1571,10 +1555,8 @@ country_event = {
 		check_variable = { which = level_5_scientist value < @focus_goal_scientists_level_5 }
 		from = {
 			leader_class = scientist
-			NOR = {
-				has_base_skill < 5
-				has_leader_flag = scientists_level_5
-			}
+			has_base_skill >= 5
+			NOT = { has_leader_flag = scientists_level_5 }
 		}
 	}
 
@@ -1598,10 +1580,8 @@ country_event = {
 		check_variable = { which = level_5_commander value < @focus_goal_commanders_level_5 }
 		from = {
 			leader_class = commander
-			NOR = {
-				has_base_skill < 5
-				has_leader_flag = commander_level_5
-			}
+			has_base_skill >= 5
+			NOT = { has_leader_flag = commander_level_5 }
 		}
 	}
 
@@ -1625,10 +1605,8 @@ country_event = {
 		check_variable = { which = level_5_official value < @focus_goal_officials_level_5 }
 		from = {
 			leader_class = official
-			NOR = {
-				has_base_skill < 5
-				has_leader_flag = official_level_5
-			}
+			has_base_skill >= 5
+			NOT = { has_leader_flag = official_level_5 }
 		}
 	}
 

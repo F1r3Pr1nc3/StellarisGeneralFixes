@@ -204,11 +204,11 @@ planet_event = {
 		}
 		OR = {
 			AND = {
-				any_owned_species = { is_same_species = root.owner_species }
+				any_owned_species = { is_same_species = root }
 				NOT = { any_owned_species = { species_can_be_necrophaged = yes } }
 			}
 			AND = {
-				NOT = { any_owned_species = { is_same_species = root.owner_species } }
+				NOT = { any_owned_species = { is_same_species = root } }
 				any_owned_species = { species_can_be_necrophaged = yes }
 			}
 		}
@@ -217,7 +217,7 @@ planet_event = {
 	immediate = {
 		if = {
 			limit = {
-				any_owned_species = { is_same_species = root.owner_species }
+				any_owned_species = { is_same_species = root }
 				NOT = { any_owned_species = { species_can_be_necrophaged = yes } }
 			}
 			owner = {
@@ -257,17 +257,17 @@ planet_event = {
 			owner = {
 				random_owned_planet = {
 					limit = {
-						any_owned_species = { is_same_species = root.owner_species }
+						any_owned_species = { is_same_species = root }
 						count_owned_pop_amount = {
 							count >= 200
 							limit = {
-								species = { is_same_species = root.owner_species }
+								species = { is_same_species = root }
 							}
 						}
 					}
 					random_owned_pop_group = {
 						limit = {
-							species = { is_same_species = root.owner_species }
+							species = { is_same_species = root }
 						}
 						resettle_pop_group = {
 							POP_GROUP = this

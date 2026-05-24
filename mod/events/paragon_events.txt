@@ -829,7 +829,7 @@ planet_event = {
 		if = {
 			limit = {
 				count_owned_pop_amount = {
-					count < 1
+					count = 0
 					limit = {
 						is_organic_species = yes
 						NOR = {
@@ -2666,10 +2666,10 @@ country_event = {
 		is_country_type = default
 		exists = from
 		from = {
+			leader_years_of_service >= 2
 			NOR = {
 				is_pool_leader = yes
 				leader_class = envoy
-				leader_years_of_service < 2
 				has_leader_flag = leader_death_events_blocked
 				has_trait = leader_trait_mercenary_warrior # Vfix Ariphaos
 			}
@@ -3756,8 +3756,8 @@ country_event = {
 			is_country_type = default
 			is_country_type = fallen_empire
 		}
+		has_unlocked_council_positions >= 4 # Vfix
 		NOR = {
-			has_unlocked_council_positions < 4 # Vfix
 			has_councilor = { COUNCILOR = councilor_gestalt_growth }
 			has_councilor = { COUNCILOR = councilor_gestalt_cognitive }
 			has_councilor = { COUNCILOR = councilor_gestalt_legion }
@@ -3842,22 +3842,18 @@ country_event = {
 
 	trigger = {
 		any_owned_leader = {
-			NOR = {
-				has_leader_flag = beholder
-				has_base_skill < 3
-				leader_years_of_service < 10
-			}
+			has_base_skill >= 3
+			leader_years_of_service >= 10
+			NOT = { has_leader_flag = beholder }
 		}
 	}
 
 	immediate = {
 		random_owned_leader = {
 			limit = {
-				NOR = {
-					has_leader_flag = beholder
-					has_base_skill < 3
-					leader_years_of_service < 10
-				}
+				has_base_skill >= 3
+				leader_years_of_service >= 10
+				NOT = { has_leader_flag = beholder }
 			}
 			if = {
 				limit = { owner = { is_gestalt = yes } }
@@ -4009,10 +4005,8 @@ leader_event = {
 		}
 		exists = planet
 		planet = {
-			NOR = {
-				planet_crime < 20
-				has_modifier = crime_lord_deal
-			}
+			planet_crime >= 20
+			NOT = { has_modifier = crime_lord_deal }
 		}
 	}
 
@@ -4163,16 +4157,16 @@ leader_event = {
 	fire_only_once = yes
 
 	trigger = {
+		num_leader_traits = {
+			value > 0
+			negative = yes
+			count_tiers = no
+		}
 		NOR = {
 			is_ruler = yes
 			has_ethic = ethic_pacifist
 			has_ethic = ethic_xenophile
 			has_leader_flag = leader_death_events_blocked
-			num_leader_traits = {
-				value < 1
-				negative = yes
-				count_tiers = no
-			}
 		}
 	}
 

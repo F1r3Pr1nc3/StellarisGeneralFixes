@@ -75,7 +75,7 @@ country_event = {
 		exists = event_target:leviathan_destroyed_system
 		exists = event_target:leviathan_destroyer_country
 		exists = event_target:leviathan_destroyed_country
-		event_target:leviathan_destroyed_country = { num_fleets < 1 }
+		event_target:leviathan_destroyed_country = { num_fleets = 0 }
 	}
 
 	immediate = {
@@ -2784,12 +2784,10 @@ country_event = {
 		allow = {
 			custom_tooltip = {
 				text = leviathans.300.c.allow
-				NOR = {
-					has_country_flag = artist_festival_purchased
-					event_target:artist_enclave_country = {
-						trust = { who = root value < 50 }
-					}
+				event_target:artist_enclave_country = {
+					trust = { who = root value >= 50 }
 				}
+				NOT = { has_country_flag = artist_festival_purchased }
 			}
 			custom_tooltip = {
 				text = leviathans.300.c.outofstock
@@ -3087,14 +3085,12 @@ country_event = {
 	option = {
 		name = DEAL
 		allow = {
-			NOR = {
-				resource_stockpile_compare = {
-					resource = energy
-					value < -1 # flip to a positive value to make this comparison
-					mult = artisan_patronage_cost
-				}
-				has_modifier = enclave_artist_patron
+			resource_stockpile_compare = {
+				resource = energy
+				value >= -1 # flip to a positive value to make this comparison
+				mult = artisan_patronage_cost
 			}
+			NOT = { has_modifier = enclave_artist_patron }
 		}
 		add_resource = {
 			energy = 1
@@ -4505,13 +4501,11 @@ country_event = {
 	option = {
 		name = leviathans.507.a
 		allow = {
-			NOR = {
-				has_modifier = curator_insight
-				resource_stockpile_compare = {
-					resource = energy
-					value < value:curator_purchase_cost|COST|curator_insight_cost|
-				}
+			resource_stockpile_compare = {
+				resource = energy
+				value >= value:curator_purchase_cost|COST|curator_insight_cost|
 			}
+			NOT = { has_modifier = curator_insight }
 		}
 		add_resource = {
 			energy = -1
@@ -4576,8 +4570,8 @@ country_event = {
 			any_country = {
 				is_guardian_country = yes
 				NOR = {
+					num_fleets = 0
 					has_communications = root
-					num_fleets <= 0
 				}
 				any_controlled_fleet = {
 					exists = solar_system
@@ -6770,10 +6764,8 @@ country_event = {
 		is_country_type = guardian_dragon
 		has_country_flag = dragon_country
 		fromfrom = {
-			NOR = {
-				has_hp_percentage <= 0.15
-				solar_system = { has_star_flag = guardians_dragon_system }
-			}
+			has_hp_percentage > 0.15
+			NOT = { solar_system = { has_star_flag = guardians_dragon_system } }
 		}
 	}
 

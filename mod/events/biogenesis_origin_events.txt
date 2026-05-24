@@ -860,12 +860,12 @@ situation_event = {
 					every_controlled_ship = {
 						limit = {
 							is_ship_class = shipclass_colonizer
-							species = { is_same_species = prev.species }
+							species = { is_same_species = prev }
 						}
 						change_species = event_target:target_species
 					}
 					every_pool_leader = {
-						limit = { is_same_species = prev.species }
+						limit = { is_same_species = prev }
 						change_species = event_target:target_species
 					}
 					update_node_portraits_if_gestalt_effect = yes
@@ -1101,74 +1101,46 @@ country_event = {
 			switch = {
 				trigger = is_species_class
 				HUM = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = humanoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = humanoid } }
 				}
 				MAM = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = mammalian }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = mammalian } }
 				}
 				REP = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = reptilian }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = reptilian } }
 				}
 				AVI = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = avian }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = avian } }
 				}
 				ART = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = arthropoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = arthropoid } }
 				}
 				MOL = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = molluscoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = molluscoid } }
 				}
 				FUN = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = fungoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = fungoid } }
 				}
 				PLANT = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = plantoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = plantoid } }
 				}
 				LITHOID = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = lithoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = lithoid } }
 				}
 				NECROID = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = necroid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = necroid } }
 				}
 				AQUATIC = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = aquatic }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = aquatic } }
 				}
 				TOX = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = toxoid }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = toxoid } }
 				}
 				MINDWARDEN = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = reptilian }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = reptilian } }
 				}
 				INF = {
-					root = {
-						give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = infernal }
-					}
+					root = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small TYPE = infernal } }
 				}
 			}
 		}
@@ -1219,129 +1191,79 @@ planet_event = {
 				switch = {
 					trigger = is_species_class
 					HUM = {
-						prev = {
-							set_evopred_flag = { TYPE = humanoid }
-						}
+						prev = { set_evopred_flag = { TYPE = humanoid } }
 					}
 					MAM = {
-						prev = {
-							set_evopred_flag = { TYPE = mammalian }
-						}
+						prev = { set_evopred_flag = { TYPE = mammalian } }
 					}
 					REP = {
-						prev = {
-							set_evopred_flag = { TYPE = reptilian }
-						}
+						prev = { set_evopred_flag = { TYPE = reptilian } }
 					}
 					AVI = {
-						prev = {
-							set_evopred_flag = { TYPE = avian }
-						}
+						prev = { set_evopred_flag = { TYPE = avian } }
 					}
 					ART = {
-						prev = {
-							set_evopred_flag = { TYPE = arthropoid }
-						}
+						prev = { set_evopred_flag = { TYPE = arthropoid } }
 					}
 					MOL = {
-						prev = {
-							set_evopred_flag = { TYPE = molluscoid }
-						}
+						prev = { set_evopred_flag = { TYPE = molluscoid } }
 					}
 					FUN = {
-						prev = {
-							set_evopred_flag = { TYPE = fungoid }
-						}
+						prev = { set_evopred_flag = { TYPE = fungoid } }
 					}
 					PLANT = {
-						prev = {
-							set_evopred_flag = { TYPE = plantoid }
-						}
+						prev = { set_evopred_flag = { TYPE = plantoid } }
 					}
 					LITHOID = {
-						prev = {
-							set_evopred_flag = { TYPE = lithoid }
-						}
+						prev = { set_evopred_flag = { TYPE = lithoid } }
 					}
 					NECROID = {
-						prev = {
-							set_evopred_flag = { TYPE = necroid }
-						}
+						prev = { set_evopred_flag = { TYPE = necroid } }
 					}
 					AQUATIC = {
-						prev = {
-							set_evopred_flag = { TYPE = aquatic }
-						}
+						prev = { set_evopred_flag = { TYPE = aquatic } }
 					}
 					TOX = {
-						prev = {
-							set_evopred_flag = { TYPE = toxoid }
-						}
+						prev = { set_evopred_flag = { TYPE = toxoid } }
 					}
 					INF = {
-						prev = {
-							set_evopred_flag = { TYPE = infernal }
-						}
+						prev = { set_evopred_flag = { TYPE = infernal } }
 					}
 					PRE_MAM = {
-						prev = {
-							set_evopred_flag = { TYPE = mammalian }
-						}
+						prev = { set_evopred_flag = { TYPE = mammalian } }
 					}
 					PRE_REP = {
-						prev = {
-							set_evopred_flag = { TYPE = reptilian }
-						}
+						prev = { set_evopred_flag = { TYPE = reptilian } }
 					}
 					PRE_AVI = {
-						prev = {
-							set_evopred_flag = { TYPE = avian }
-						}
+						prev = { set_evopred_flag = { TYPE = avian } }
 					}
 					PRE_ART = {
-						prev = {
-							set_evopred_flag = { TYPE = arthropoid }
-						}
+						prev = { set_evopred_flag = { TYPE = arthropoid } }
 					}
 					PRE_MOL = {
-						prev = {
-							set_evopred_flag = { TYPE = molluscoid }
-						}
+						prev = { set_evopred_flag = { TYPE = molluscoid } }
 					}
 					PRE_FUN = {
-						prev = {
-							set_evopred_flag = { TYPE = fungoid }
-						}
+						prev = { set_evopred_flag = { TYPE = fungoid } }
 					}
 					PRE_PLANT = {
-						prev = {
-							set_evopred_flag = { TYPE = plantoid }
-						}
+						prev = { set_evopred_flag = { TYPE = plantoid } }
 					}
 					PRE_LITHOID = {
-						prev = {
-							set_evopred_flag = { TYPE = lithoid }
-						}
+						prev = { set_evopred_flag = { TYPE = lithoid } }
 					}
 					PRE_AQUATIC = {
-						prev = {
-							set_evopred_flag = { TYPE = aquatic }
-						}
+						prev = { set_evopred_flag = { TYPE = aquatic } }
 					}
 					PRE_TOX = {
-						prev = {
-							set_evopred_flag = { TYPE = toxoid }
-						}
+						prev = { set_evopred_flag = { TYPE = toxoid } }
 					}
 					PSIONIC = {
-						prev = {
-							set_evopred_flag = { TYPE = psionic }
-						}
+						prev = { set_evopred_flag = { TYPE = psionic } }
 					}
 					PRE_INF = {
-						prev = {
-							set_evopred_flag = { TYPE = infernal }
-						}
+						prev = { set_evopred_flag = { TYPE = infernal } }
 					}
 				}
 			}
@@ -1758,8 +1680,7 @@ country_event = {
 	is_triggered_only = yes
 	hide_window = yes
 
-	immediate = {
-		# Create New Bioship Fleet in the Sealed System
+	immediate = {	# Create New Bioship Fleet in the Sealed System
 		random_system = {
 			limit = { has_star_flag = starlit_sealed_system_flag }
 			save_global_event_target_as = starlit_sealed_system

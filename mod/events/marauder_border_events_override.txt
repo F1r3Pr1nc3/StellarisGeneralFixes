@@ -427,10 +427,8 @@ country_event = {
 					# Store each fleet_power to var.
 					every_playable_country = {
 						limit = {
-							NOR = {
-								is_variable_set = "successor_fleet_power"
-								fleet_power <= 40000
-							}
+							fleet_power > 40000
+							NOT = { is_variable_set = "successor_fleet_power" }
 						}
 						if = {
 							limit = {
@@ -481,7 +479,7 @@ country_event = {
 							limit = {
 								count_owned_pop_amount = {
 									count < 1700
-									limit = { is_same_species = prev.owner_species }
+									limit = { is_same_species = prev }
 								}
 							}
 							while = {
@@ -489,7 +487,7 @@ country_event = {
 								limit = {
 									count_owned_pop_amount = {
 										count < 1700
-										limit = { is_same_species = prev.owner_species }
+										limit = { is_same_species = prev }
 									}
 								}
 								create_pop_group = {
@@ -660,8 +658,8 @@ country_event = {
 				limit = {
 					has_owner = yes
 					is_colony = yes
+					pop_amount >= 100
 					NOR = {
-						pop_amount < 100
 						has_ground_combat = yes
 						is_occupied_flag = yes
 					}
@@ -751,7 +749,7 @@ country_event = {
 				}
 				if = {
 					limit = {
-						num_owned_planets < 1
+						num_owned_planets = 0
 						count_owned_starbase = { count = 0 }
 					}
 					set_country_type = dormant_marauders
@@ -799,7 +797,7 @@ country_event = {
 				}
 				if = {
 					limit = {
-						num_owned_planets < 1
+						num_owned_planets = 0
 						count_owned_starbase = { count = 0 }
 					}
 					set_country_type = dormant_marauders
@@ -829,7 +827,7 @@ country_event = {
 				event_target:integrated_empire = {
 					if = {
 						limit = {
-							num_owned_planets < 1
+							num_owned_planets = 0
 							count_owned_starbase = { count = 0 }
 						}
 						set_country_type = dormant_marauders
@@ -1432,18 +1430,18 @@ country_event = {
 												limit = {
 													has_owner = yes
 													is_owned_by = prevprevprevprev.owner
+													count_neighbor_system = {
+														count < 2
+														limit = {
+															has_owner = yes
+															is_owned_by = prevprevprev
+														}
+													}
 													NOR = {
 														is_capital_system = yes
 														has_star_flag = switched_system
 														is_owned_by = prev.owner
 														is_owned_by = prevprev.owner
-														count_neighbor_system = {
-															count >= 2
-															limit = {
-																has_owner = yes
-																is_owned_by = prevprevprev
-															}
-														}
 													}
 												}
 											}

@@ -179,7 +179,7 @@ event = {
 			limit = {
 				num_unique_species > 1
 				any_owned_species = {
-					NOT = { is_same_species = prev.owner_species }
+					NOT = { is_same_species = prev }
 					has_citizenship_type = { type = citizenship_assimilation country = prev }
 				}
 			}
@@ -187,7 +187,7 @@ event = {
 			if = {
 				limit = {
 					any_owned_species = {
-						NOT = { is_same_species = prev.owner_species }
+						NOT = { is_same_species = prev }
 						has_cyborg_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}
@@ -215,7 +215,7 @@ event = {
 			if = {
 				limit = {
 					any_owned_species = {
-						NOT = { is_same_species = prev.owner_species }
+						NOT = { is_same_species = prev }
 						has_psionic_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}
@@ -253,7 +253,7 @@ event = {
 			if = {
 				limit = {
 					any_owned_species = {
-						NOT = { is_same_species = prev.owner_species }
+						NOT = { is_same_species = prev }
 						has_synthetic_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}
@@ -272,7 +272,7 @@ event = {
 					is_robotic_species = yes
 					has_tradition = tr_synthetics_transubstatiation_synthesis
 					any_owned_species = {
-						NOT = { is_same_species = prev.owner_species }
+						NOT = { is_same_species = prev }
 						# has_robot_assimilation_living_standard = { COUNTRY = prev }
 						is_robotic = yes
 						has_citizenship_type = { type = citizenship_assimilation country = prev }
@@ -290,7 +290,7 @@ event = {
 			if = {
 				limit = {
 					any_owned_species = {
-						NOT = { is_same_species = prev.owner_species }
+						NOT = { is_same_species = prev }
 						has_dissociation_living_standard = { COUNTRY = prev }
 					}
 				}
@@ -305,7 +305,7 @@ event = {
 			if = {
 				limit = {
 					any_owned_species = {
-						NOT = { is_same_species = prev.owner_species }
+						NOT = { is_same_species = prev }
 						has_ego_assimilation_living_standard = { COUNTRY = prev }
 					}
 				}

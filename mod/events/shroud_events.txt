@@ -144,13 +144,13 @@ country_event = {
 
 	trigger = {
 		has_country_flag = synth_queen_can_contact_the_animator_of_clay
+		resource_stockpile_compare = { resource = energy value >= 2000 }
+		resource_stockpile_compare = { resource = sr_zro value >= 500 }
 		NOR = {
 			has_origin = origin_shroud_forged
 			has_country_flag = synth_queen_contacted_the_animator_already
 			has_country_flag = synth_queen_refused_the_animator_contact
 			has_covenant_with_end_of_the_cycle = yes
-			resource_stockpile_compare = { resource = energy value < 2000 }
-			resource_stockpile_compare = { resource = sr_zro value < 500 }
 		}
 	}
 
@@ -1242,10 +1242,8 @@ country_event = {
 		is_superstitious_beliefs_empire = yes
 		any_planet_within_border = {
 			has_research_station = yes
-			NOR = {
-				has_deposit_for = shipclass_mining_station
-				count_owned_pop_amount = { count > 0 limit = {  } }
-			}
+			count_owned_pop_amount = { count = 0 limit = {  } }
+			NOT = { has_deposit_for = shipclass_mining_station }
 		}
 	}
 
@@ -1255,10 +1253,8 @@ country_event = {
 			limit = {
 				any_system_planet = {
 					has_research_station = yes
-					NOR = {
-						has_deposit_for = shipclass_mining_station
-						count_owned_pop_amount = { count > 0 limit = {  } }
-					}
+					count_owned_pop_amount = { count = 0 limit = {  } }
+					NOT = { has_deposit_for = shipclass_mining_station }
 				}
 			}
 			system_event = { id = shroud.522 }
@@ -1280,10 +1276,8 @@ system_event = {
 		random_system_planet = {
 			limit = {
 				has_research_station = yes
-				NOR = {
-					has_deposit_for = shipclass_mining_station
-					count_owned_pop_amount = { count > 0 limit = {  } }
-				}
+				count_owned_pop_amount = { count = 0 limit = {  } }
+				NOT = { has_deposit_for = shipclass_mining_station }
 			}
 			add_deposit = d_physics_7
 		}
@@ -1300,10 +1294,8 @@ country_event = {
 		NOT = { has_country_flag = shroud_525_triggered }
 		is_superstitious_beliefs_empire = yes
 		any_planet_within_border = {
-			NOR = {
-				has_deposit_for = shipclass_mining_station
-				count_owned_pop_amount = { count > 0 limit = {  } }
-			}
+			count_owned_pop_amount = { count = 0 limit = {  } }
+			NOT = { has_deposit_for = shipclass_mining_station }
 		}
 	}
 
@@ -1312,10 +1304,8 @@ country_event = {
 		random_system_within_border = {
 			limit = {
 				any_system_planet = {
-					NOR = {
-						has_deposit_for = shipclass_mining_station
-						count_owned_pop_amount = { count > 0 limit = {  } }
-					}
+					count_owned_pop_amount = { count = 0 limit = {  } }
+					NOT = { has_deposit_for = shipclass_mining_station }
 				}
 			}
 			system_event = { id = shroud.527 }
@@ -1336,10 +1326,8 @@ system_event = {
 		name = HOW_FORTUITOUS
 		random_system_planet = {
 			limit = {
-				NOR = {
-					has_deposit_for = shipclass_mining_station
-					count_owned_pop_amount = { count > 0 limit = {  } }
-				}
+				count_owned_pop_amount = { count = 0 limit = {  } }
+				NOT = { has_deposit_for = shipclass_mining_station }
 			}
 			add_deposit = d_society_7
 		}
@@ -1786,13 +1774,13 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		count_owned_leader = {
+			count >= 2
+			limit = { sb_councilor_harmony_leader_trigger = yes }
+		}
 		NOR = {
 			is_gestalt = yes
 			has_country_flag = shroud_570_triggered
-			count_owned_leader = {
-				count < 2
-				limit = { sb_councilor_harmony_leader_trigger = yes }
-			}
 		}
 	}
 
@@ -2177,7 +2165,7 @@ country_event = {
 				base = 3
 				modifier = {
 					factor = 3
-					is_same_species = root.species
+					is_same_species = root
 					has_total_skill > 3
 				}
 				modifier = {
@@ -2695,13 +2683,13 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		count_owned_leader = {
+			count >= 2
+			limit = { sb_discordant_council_leader_trigger = yes }
+		}
 		NOR = {
 			is_gestalt = yes
 			has_country_flag = shroud_765_triggered
-			count_owned_leader = {
-				count < 2
-				limit = { sb_discordant_council_leader_trigger = yes }
-			}
 		}
 	}
 
@@ -3015,10 +3003,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			attunement < 0.5
-			has_country_flag = power_of_will
-		}
+		attunement >= 0.5
+		NOT = { has_country_flag = power_of_will }
 		has_country_flag = breached_shroud
 	}
 
@@ -3365,11 +3351,11 @@ country_event = {
 	}
 
 	trigger = {
+		pop_amount >= 1000
 		NOR = {
 			has_country_flag = shroud_3010_happened
 			has_covenant = the_eater_of_worlds
 			has_country_flag = the_eater_of_worlds_betrayal
-			pop_amount < 1000
 		}
 		is_in_domain = the_eater_of_worlds
 	}
@@ -8939,12 +8925,10 @@ country_event = {
 	option_clear = yes
 
 	trigger = {
-		NOR = {
-			from = {
-				trust = { who = root value < 80 }
-			}
-			has_country_flag = in_diplomacy_with@from
+		from = {
+			trust = { who = root value >= 80 }
 		}
+		NOT = { has_country_flag = in_diplomacy_with@from }
 	}
 
 	option = {
@@ -10192,12 +10176,10 @@ country_event = {
 			limit = {
 				aura_owner = { is_same_value = root }
 				has_owner = yes
-				NOR = {
-					is_owned_by = root
-					root = {
-						num_favors = { target = prev.owner value <= 0 }
-					}
+				root = {
+					num_favors = { target = prev.owner value > 0 }
 				}
+				NOT = { is_owned_by = root }
 			}
 			root = {
 				add_monthly_resource_mult = {
@@ -10896,10 +10878,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			situation_progress < 590
-			has_situation_flag = impending_reckoning_sent
-		}
+		situation_progress >= 590
+		NOT = { has_situation_flag = impending_reckoning_sent }
 	}
 
 	immediate = {
@@ -12967,10 +12947,8 @@ country_event = {
 				event_target:mindwarden_enclave_country = {
 					any_owned_fleet = {
 						is_ship_class = shipclass_military
-						NOR = {
-							any_controlled_ship = { is_damaged = yes }
-							fleet_power < 500
-						}
+						fleet_power >= 500
+						NOT = { any_controlled_ship = { is_damaged = yes } }
 					}
 				}
 			}
@@ -15201,7 +15179,7 @@ country_event = {
 		can_access_shroud = yes
 		exists = from
 		count_species = {
-			count < 1
+			count = 0
 			limit = {
 				NOT = { is_exact_same_species = from }
 				is_same_species = from
@@ -15356,10 +15334,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_country_flag = greater_patron_chosen
-			mid_game_years_passed < 0
-		}
+		mid_game_years_passed >= 0
+		NOT = { has_country_flag = greater_patron_chosen }
 		has_patron_relation = { patron = the_eater_of_worlds contact = completed }
 		has_patron_relation = { patron = the_cradle_of_souls contact = completed }
 		has_patron_relation = { patron = the_instrument_of_desire contact = completed }

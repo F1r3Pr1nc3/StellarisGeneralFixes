@@ -47,6 +47,8 @@ has_non_council_subclass = {
 }
 
 has_any_ethic = {
+	# num_ethics > 0
+	# NOT = { has_ethic = ethic_gestalt_consciousness }
 	OR = {
 		has_ethic = ethic_authoritarian
 		has_ethic = ethic_egalitarian
@@ -301,10 +303,8 @@ is_azaryn_terraformable_pc = {
 		habitable_planet_not_urban = yes
 		is_azaryn_preferred_terraform_pc = yes
 	}
-	NOR = {
-		planet_size < 10
-		has_planet_flag = terraform_nucleus_transfixed
-	}
+	planet_size >= 10
+	NOT = { has_planet_flag = terraform_nucleus_transfixed }
 }
 
 is_azaryn_preferred_terraform_pc = {
@@ -312,10 +312,8 @@ is_azaryn_preferred_terraform_pc = {
 		is_planet_class = pc_barren
 		is_planet_class = pc_barren_cold
 	}
-	NOR = {
-		planet_size < 10
-		has_planet_flag = terraform_nucleus_transfixed
-	}
+	planet_size >= 10
+	NOT = { has_planet_flag = terraform_nucleus_transfixed }
 }
 
 has_miltary_background_job = {

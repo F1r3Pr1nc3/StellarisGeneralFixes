@@ -595,12 +595,12 @@ country_event = {
 		is_fallen_empire = no
 		has_active_tradition = tr_virtuality_finish
 		any_owned_planet = {
+			free_jobs > 0
+			free_jobs_of_type = { job = mortal_initiate value < 100 }
+			free_jobs_of_type = { category = bio_trophy value < 100 }
 			NOR = {
 				is_under_colonization = yes
 				is_planet_class = pc_cosmogenesis_world
-				free_jobs <= 0
-				free_jobs_of_type = { job = mortal_initiate value >= 100 }
-				free_jobs_of_type = { category = bio_trophy value >= 100 }
 			}
 		}
 	}
@@ -608,12 +608,12 @@ country_event = {
 	immediate = {
 		random_owned_planet = {
 			limit = {
+				free_jobs > 0
+				free_jobs_of_type = { job = mortal_initiate value < 100 }
+				free_jobs_of_type = { category = bio_trophy value < 100 }
 				NOR = {
 					is_under_colonization = yes
 					is_planet_class = pc_cosmogenesis_world
-					free_jobs <= 0
-					free_jobs_of_type = { job = mortal_initiate value >= 100 }
-					free_jobs_of_type = { category = bio_trophy value >= 100 }
 				}
 			}
 			planet_event = { id = cybernetics.2027 days = 1 }

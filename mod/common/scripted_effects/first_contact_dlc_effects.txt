@@ -1231,6 +1231,7 @@ create_fear_of_the_dark_country = {
 			set_faction_hostility = { target = event_target:fotd_country set_friendly = yes }
 		}
 	}
+
 	# Vfix: do it immediately
 	set_owner = last_created_country
 	set_capital = yes
@@ -3041,6 +3042,17 @@ observation_breach_effect = {
 			is_galactic_community_formed = yes
 			is_galactic_community_member = yes
 			is_active_resolution = $RESOLUTION$
+		}
+		hidden_effect = {
+			if = { # Vfix savety
+				limit = {
+					NOT = { exists = event_target:observation_post_owner }
+					is_scope_valid = yes
+					is_scope_type = country
+					NOT = { is_same_value = event_target:pre_ftl_country }
+				}
+				save_event_target_as = observation_post_owner
+			}
 		}
 		if = {
 			limit = {

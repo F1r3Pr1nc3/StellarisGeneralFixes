@@ -496,15 +496,13 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		owner = { has_origin = origin_progenitor_hive }
-		NOR = {
-			is_planet_class = pc_cosmogenesis_world
-			num_assigned_jobs = {
-				job = spawning_drone
-				value >= 100
-				automated_workforce = yes
-			}
-			days_passed <= 5
+		num_assigned_jobs = {
+			job = spawning_drone
+			value < 100
+			automated_workforce = yes
 		}
+		days_passed > 5
+		NOT = { is_planet_class = pc_cosmogenesis_world }
 	}
 
 	immediate = {
@@ -531,14 +529,14 @@ country_event = {
 	immediate = {
 		every_owned_planet = {
 			limit = {
+				num_assigned_jobs = {
+					job = spawning_drone
+					value < 100
+					automated_workforce = yes
+				}
 				NOR = {
 					has_modifier = missing_offspring_modifier
 					is_planet_class = pc_cosmogenesis_world
-					num_assigned_jobs = {
-						job = spawning_drone
-						value >= 100
-						automated_workforce = yes
-					}
 				}
 			}
 			add_modifier = { modifier = missing_offspring_modifier days = -1 }
@@ -571,9 +569,9 @@ country_event = {
 		owner = { has_origin = origin_progenitor_hive }
 		any_owned_planet = {
 			has_modifier = missing_offspring_modifier
+			pop_amount >= 300
 			NOR = {
 				has_planet_flag = offspring_missing_warned
-				pop_amount < 300
 				is_capital = yes
 			}
 		}
@@ -583,10 +581,8 @@ country_event = {
 		every_owned_planet = {
 			limit = {
 				has_modifier = missing_offspring_modifier
-				NOR = {
-					pop_amount < 300
-					has_planet_flag = offspring_missing_warned
-				}
+				pop_amount >= 300
+				NOT = { has_planet_flag = offspring_missing_warned }
 			}
 			set_timed_planet_flag = { flag = offspring_missing_warned years = 2 }
 			create_message = {
@@ -2687,11 +2683,11 @@ country_event = {
 				set_country_flag = slowed_first_contact
 			}
 			2 = {
-				modifier = { factor = 0 num_defensive_pacts < 1 }
+				modifier = { factor = 0 num_defensive_pacts = 0 }
 				set_country_flag = break_defensive_pact
 			}
 			2 = {
-				modifier = { factor = 0 num_migration_pacts < 1 }
+				modifier = { factor = 0 num_migration_pacts = 0 }
 				set_country_flag = break_migration_pact
 			}
 			2 = { set_country_flag = support_speratists }
@@ -2893,11 +2889,11 @@ country_event = {
 					set_country_flag = slowed_first_contact
 				}
 				2 = {
-					modifier = { factor = 0 num_defensive_pacts < 1 }
+					modifier = { factor = 0 num_defensive_pacts = 0 }
 					set_country_flag = break_defensive_pact
 				}
 				2 = {
-					modifier = { factor = 0 num_migration_pacts < 1 }
+					modifier = { factor = 0 num_migration_pacts = 0 }
 					set_country_flag = break_migration_pact
 				}
 				2 = { set_country_flag = support_speratists }
@@ -3365,13 +3361,13 @@ country_event = {
 			home_planet = {
 				random_owned_pop_group = {
 					limit = {
-						species = { is_same_species = root.species }
+						species = { is_same_species = root }
 					}
 					kill_single_pop = yes
 				}
 				random_owned_pop_group = {
 					limit = {
-						species = { is_same_species = root.species }
+						species = { is_same_species = root }
 					}
 					kill_single_pop = yes
 				}
@@ -4265,21 +4261,21 @@ country_event = {
 				limit = {
 					exists = overlord
 					overlord = { is_same_value = root }
-					NOT = { species = { is_same_species = root.species } }
+					NOT = { species = { is_same_species = root } }
 				}
 				release_subject = yes
 			}
 			every_playable_country = {
 				limit = {
 					has_secret_fealty_with = root
-					NOT = { species = { is_same_species = root.species } }
+					NOT = { species = { is_same_species = root } }
 				}
 				remove_secret_fealty = root
 			}
 			if = {
 				limit = {
 					exists = overlord
-					NOT = { is_same_species = root.species }
+					NOT = { is_same_species = root }
 				}
 				release_subject = yes
 			}
@@ -4291,7 +4287,7 @@ country_event = {
 			}
 			every_playable_country = {
 				limit = {
-					NOT = { species = { is_same_species = root.species } }
+					NOT = { species = { is_same_species = root } }
 				}
 				end_all_treaties_with = root
 			}
@@ -5386,7 +5382,7 @@ country_event = {
 		has_modifier = fotd_settled_differences
 		from = {
 			NOT = { leader_class = envoy }
-			species = { is_same_species = root.species }
+			species = { is_same_species = root }
 		}
 	}
 

@@ -1765,6 +1765,11 @@ country_event = {
 	location = event_target:planet
 	is_triggered_only = yes
 
+	trigger = { # Vfix log (doublecheck for unknown reason)
+		exists = event_target:victim
+		event_target:victim = { num_owned_relics > 0 }
+	}
+
 	immediate = {
 		steal_relic = { target = event_target:victim relic = random }
 		if = {
@@ -7035,7 +7040,7 @@ country_event = {
 			if = {
 				limit = {
 					NOR = {
-						num_owned_planets <= 0
+						num_owned_planets = 0
 						has_country_flag = horrific_celebration
 					}
 				}

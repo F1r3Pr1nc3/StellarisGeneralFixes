@@ -804,12 +804,10 @@ paragon_origin_reformists_negotiations_effect = {
 		}
 		if = {
 			limit = {
-				NOR = { # Was player a bad ruler?
-					has_country_flag = took_reformists_side
-					ruler = {
-						check_variable = { which = paragon_origin_delusion_tier value < 4 }
-					}
+				ruler = {
+					check_variable = { which = paragon_origin_delusion_tier value >= 4 }
 				}
+				NOT = { has_country_flag = took_reformists_side }
 			}
 			hidden_effect = { # Ruler was bad - force them to revert Imperial
 				set_origin = origin_legendary_leader_dictatorial

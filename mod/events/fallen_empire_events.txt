@@ -16,9 +16,9 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_country_type = fallen_empire
+			fleet_power <= 100000
 			NOR = {
 				is_at_war = yes
-				fleet_power > 100000
 				has_country_flag = fallen_empire_fleet_spawn
 			}
 		}
@@ -93,18 +93,18 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_country_type = fallen_empire
+			fleet_power > 100000
 			NOR = {
 				is_at_war = yes
 				has_country_flag = fallen_empire_lost_war
 				has_country_flag = fallen_empire_sent_warning
-				fleet_power <= 100000
 			}
 			any_playable_country = {
 				has_communications = root.owner
+				root.owner = {
+					opinion = { who = prev value < -99 }
+				}
 				NOR = {
-					root.owner = {
-						opinion = { who = prev value >= -99 }
-					}
 					root.owner = {
 						has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_demand }
 					}
@@ -121,10 +121,10 @@ situation_event = {
 		random_playable_country = {
 			limit = {
 				has_communications = root.owner
+				root.owner = {
+					opinion = { who = prev value < -99 }
+				}
 				NOR = {
-					root.owner = {
-						opinion = { who = prev value >= -99 }
-					}
 					root.owner = {
 						has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_demand }
 					}

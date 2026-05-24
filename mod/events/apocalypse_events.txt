@@ -139,19 +139,15 @@ country_event = {
 	desc = {
 		text = apoc.10.desc.1
 		trigger = {
-			NOR = {
-				num_active_gateways != 2
-				has_country_flag = did_not_repair_gateway
-			}
+			num_active_gateways = 2
+			NOT = { has_country_flag = did_not_repair_gateway }
 		}
 	}
 	desc = {
 		text = apoc.10.desc.2
 		trigger = {
-			NOR = {
-				num_active_gateways <= 2
-				has_country_flag = did_not_repair_gateway
-			}
+			num_active_gateways > 2
+			NOT = { has_country_flag = did_not_repair_gateway }
 		}
 	}
 	desc = {

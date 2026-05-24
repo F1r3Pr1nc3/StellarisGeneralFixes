@@ -107,8 +107,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress > 99
 		NOR = {
-			situation_progress < 100
 			has_situation_flag = technological_breakthrough
 			has_situation_flag = technological_setback
 		}
@@ -1065,10 +1065,8 @@ situation_event = {
 
 	trigger = {
 		has_first_contact_dlc = yes # Vfix Dux: preftl.1015 cannot fire without this.
-		NOR = {
-			situation_progress < 960
-			has_situation_flag = has_ongoing_observation_event_chain
-		}
+		situation_progress >= 960
+		NOT = { has_situation_flag = has_ongoing_observation_event_chain }
 		owner = {
 			has_country_flag = early_space_age
 			NOR = {
@@ -4257,9 +4255,9 @@ situation_event = {
 	trigger = {
 		has_first_contact_dlc = yes
 		owner = {
+			current_awareness_level < full
 			NOR = {
 				is_gestalt = yes
-				current_awareness_level >= full
 				has_blocked_random_devastating_pre_ftl_events = yes
 				has_country_flag = preftl_2100_fired
 			}
@@ -4398,8 +4396,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 20
 		NOR = {
-			situation_progress < 20
 			current_situation_approach = approach_prevent_singularity
 			has_situation_flag = situation_event_progress_20_happened
 		}
@@ -4425,10 +4423,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			situation_progress < 40
-			has_situation_flag = situation_event_progress_40_happened
-		}
+		situation_progress >= 40
+		NOT = { has_situation_flag = situation_event_progress_40_happened }
 		current_situation_approach = approach_watch_singularity
 	}
 
@@ -4445,8 +4441,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 50
 		NOR = {
-			situation_progress < 50
 			current_situation_approach = approach_watch_singularity
 			has_situation_flag = situation_event_progress_50_happened
 		}
@@ -4472,8 +4468,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 80
 		NOR = {
-			situation_progress < 80
 			current_situation_approach = approach_prevent_singularity
 			has_situation_flag = situation_event_progress_80_happened
 		}

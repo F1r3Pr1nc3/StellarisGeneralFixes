@@ -916,10 +916,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = biogenesis_50_fire
-			situation_progress < 20
-		}
+		situation_progress >= 20
+		NOT = { has_situation_flag = biogenesis_50_fire }
 		has_situation_flag = purity_approach_selected
 	}
 
@@ -1237,6 +1235,7 @@ situation_event = {
 
 	trigger = {
 		exists = owner
+		situation_progress >= 20
 		NOR = {
 			owner = {
 				OR = {
@@ -1245,7 +1244,6 @@ situation_event = {
 				}
 			}
 			has_situation_flag = biogenesis_70_fire
-			situation_progress < 20
 		}
 		has_situation_flag = cloning_approach_selected
 	}
@@ -1940,10 +1938,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = biogenesis_110_fire
-			situation_progress < 20
-		}
+		situation_progress >= 20
+		NOT = { has_situation_flag = biogenesis_110_fire }
 		has_situation_flag = purity_approach_selected
 	}
 
@@ -2166,10 +2162,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = biogenesis_130_fire
-			situation_progress < 20
-		}
+		situation_progress >= 20
+		NOT = { has_situation_flag = biogenesis_130_fire }
 		has_situation_flag = cloning_approach_selected
 	}
 
@@ -2407,10 +2401,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = biogenesis_150_fire
-			situation_progress < 20
-		}
+		situation_progress >= 20
+		NOT = { has_situation_flag = biogenesis_150_fire }
 		has_situation_flag = mutation_approach_selected
 	}
 
@@ -3444,7 +3436,7 @@ situation_event = {
 		hidden_effect = {
 			owner = {
 				every_owned_leader = {
-					limit = { is_same_species = prev.species }
+					limit = { is_same_species = prev }
 					add_experience = 200
 				}
 			}
@@ -3752,10 +3744,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = biogenesis_295_fire
-			situation_progress < 5
-		}
+		situation_progress >= 5
+		NOT = { has_situation_flag = biogenesis_295_fire }
 	}
 
 	immediate = {
@@ -3803,10 +3793,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = biogenesis_300_fire
-			situation_progress < 5
-		}
+		situation_progress >= 5
+		NOT = { has_situation_flag = biogenesis_300_fire }
 		owner = {
 			any_owned_leader = {
 				NOR = {
@@ -3897,7 +3885,7 @@ situation_event = {
 		NOT = { has_situation_flag = biogenesis_310_fire }
 		has_situation_flag = purity_approach_selected
 		owner = {
-			any_owned_pop_group = { is_same_species = prev.species pop_group_size > 100 }
+			any_owned_pop_group = { is_same_species = prev pop_group_size > 100 }
 		}
 	}
 
@@ -3913,7 +3901,7 @@ situation_event = {
 				count = 1
 				weighted_random_owned_pop_group = {
 					limit = {
-						is_same_species = prev.species
+						is_same_species = prev
 						pop_group_size > 100
 					}
 					kill_single_pop = yes
@@ -4482,7 +4470,7 @@ situation_event = {
 		owner = {
 			add_modifier = { modifier = decisive_termination years = 5 }
 			weighted_random_owned_pop_group = {
-				limit = { is_same_species = prev.species }
+				limit = { is_same_species = prev }
 				kill_single_pop = yes
 			}
 		}
@@ -5506,19 +5494,15 @@ country_event = {
 
 	desc = {
 		trigger = {
-			NOR = {
-				check_variable = { which = smuggle_pops_amount value > 4 }
-				any_owned_planet = { is_planet_class = pc_cosmogenesis_world }
-			}
+			check_variable = { which = smuggle_pops_amount value <= 4 }
+			NOT = { any_owned_planet = { is_planet_class = pc_cosmogenesis_world } }
 		}
 		text = bio.915.desc
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				check_variable = { which = smuggle_pops_amount value <= 4 }
-				any_owned_planet = { is_planet_class = pc_cosmogenesis_world }
-			}
+			check_variable = { which = smuggle_pops_amount value > 4 }
+			NOT = { any_owned_planet = { is_planet_class = pc_cosmogenesis_world } }
 		}
 		text = bio.915.desc.detected
 	}
@@ -5685,7 +5669,7 @@ country_event = {
 								factor = 100
 							}
 							modifier = { # Get our people out of there
-								is_same_species = root.species
+								is_same_species = root
 								factor = 1000
 							}
 							modifier = { is_elite_category = yes factor = 0.1 }
@@ -5840,7 +5824,7 @@ country_event = {
 								factor = 100
 							}
 							modifier = { # Get our people out of there
-								is_same_species = root.species
+								is_same_species = root
 								factor = 1000
 							}
 							modifier = { is_elite_category = yes factor = 0.1 }
@@ -6632,10 +6616,8 @@ country_event = {
 			count > 2
 			limit = {
 				habitable_planet_not_urban = yes
-				NOR = {
-					pop_amount <= 1000
-					has_planet_flag = had_growth_fe_modifier
-				}
+				pop_amount > 1000
+				NOT = { has_planet_flag = had_growth_fe_modifier }
 			}
 		}
 		exists = event_target:fallen_empire_hive_growth
@@ -6693,18 +6675,16 @@ country_event = {
 		random_owned_planet = {
 			limit = {
 				habitable_planet_not_urban = yes
-				NOR = {
-					pop_amount <= 1000
-					has_planet_flag = had_growth_fe_modifier
-				}
+				pop_amount > 1000
+				NOT = { has_planet_flag = had_growth_fe_modifier }
 			}
 			save_event_target_as = target_planet
 		}
 		random_owned_planet = {
 			limit = {
 				habitable_planet_not_urban = yes
+				pop_amount > 1000
 				NOR = {
-					pop_amount <= 1000
 					has_planet_flag = had_growth_fe_modifier
 					is_same_value = event_target:target_planet
 				}
@@ -7377,7 +7357,7 @@ country_event = {
 	option = { # EvoPred get situation progress if they get the event
 		exclusive_trigger = {
 			has_origin = origin_evolutionary_predators
-			event_target:boring_species = { is_same_species = root.species }
+			event_target:boring_species = { is_same_species = root }
 		}
 		name = bio.3220.evopred
 		ai_chance = { factor = 100 }
@@ -7895,7 +7875,7 @@ country_event = {
 				1 = {
 					modifier = {
 						factor = 0
-						NOT = { event_target:target_pop = { is_same_species = root.species } }
+						NOT = { event_target:target_pop = { is_same_species = root } }
 					}
 					country_event = { id = bio.3310 days = 360 random = 360 }
 				}
@@ -8154,9 +8134,9 @@ country_event = {
 
 	trigger = {
 		is_country_type = default
-		NOR = { # Vfix opt
+		years_passed > 20
+		NOR = {
 			is_ai = yes
-			years_passed <= 20
 			is_at_war = yes
 			has_country_flag = recently_cleaned_borders
 			has_country_flag = hive_fallen_empire_event_cooldown
@@ -8179,21 +8159,21 @@ country_event = {
 					}
 				}
 				any_system_colony = { has_owner = yes is_owned_by = root }
-				count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
-					count < 3
-					limit = {
-						NAND = {
-							exists = starbase.owner
-							starbase.owner = { is_same_value = root }
-						}
-					}
-				}
-				count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
-					count >= 2
-					limit = {
+			}
+			count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
+				count >= 3
+				limit = {
+					NAND = {
 						exists = starbase.owner
 						starbase.owner = { is_same_value = root }
 					}
+				}
+			}
+			count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
+				count < 2
+				limit = {
+					exists = starbase.owner
+					starbase.owner = { is_same_value = root }
 				}
 			}
 		}
@@ -8234,21 +8214,21 @@ country_event = {
 						}
 					}
 					any_system_colony = { has_owner = yes is_owned_by = root }
-					count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
-						count < 3
-						limit = {
-							NAND = {
-								exists = starbase.owner
-								starbase.owner = { is_same_value = root }
-							}
-						}
-					}
-					count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
-						count >= 2
-						limit = {
+				}
+				count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
+					count >= 3
+					limit = {
+						NAND = {
 							exists = starbase.owner
 							starbase.owner = { is_same_value = root }
 						}
+					}
+				}
+				count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
+					count < 2
+					limit = {
+						exists = starbase.owner
+						starbase.owner = { is_same_value = root }
 					}
 				}
 			}

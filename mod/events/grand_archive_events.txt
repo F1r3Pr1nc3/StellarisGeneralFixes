@@ -1296,11 +1296,9 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_global_flag = voidworms_plague_crisis_started
-			mid_game_years_passed < @voidworm_crisis_min_year
-			end_game_years_passed >= 0
-		}
+		mid_game_years_passed >= @voidworm_crisis_min_year
+		end_game_years_passed < 0
+		NOT = { has_global_flag = voidworms_plague_crisis_started }
 		is_country_type = voidworms
 		check_variable_arithmetic = { which = value:voidworm_nest_owned value > 0 }
 		check_variable = { which = voidworm_crisis_start_roll value < value:voidworm_crisis_start_chance }
@@ -1355,10 +1353,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_global_flag = voidworms_plague_crisis_ended
-			check_variable_arithmetic = { which = value:voidworm_nest_owned value <= 0 }
-		}
+		check_variable_arithmetic = { which = value:voidworm_nest_owned value > 0 }
+		NOT = { has_global_flag = voidworms_plague_crisis_ended }
 		is_voidworm_crisis_eligible_for_respawn = yes
 	}
 
@@ -2293,10 +2289,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_global_flag = voidworms_plague_crisis_started
-			check_variable_arithmetic = { which = value:voidworm_nest_owned value <= 0 }
-		}
+		check_variable_arithmetic = { which = value:voidworm_nest_owned value > 0 }
+		NOT = { has_global_flag = voidworms_plague_crisis_started }
 		is_voidworm_eligible_for_respawn = yes
 	}
 
@@ -5647,10 +5641,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			mid_game_years_passed <= 0
-			has_origin = origin_treasure_hunters
-		}
+		mid_game_years_passed > 0
+		NOT = { has_origin = origin_treasure_hunters }
 	}
 
 	immediate = {
@@ -7021,10 +7013,8 @@ country_event = {
 				random_controlled_ship = {
 					limit = {
 						is_space_fauna = yes
-						NOR = {
-							is_same_value = fromfrom
-							has_hp_percentage >= 1.0
-						}
+						has_hp_percentage < 1.0
+						NOT = { is_same_value = fromfrom }
 					}
 					repair_percentage = root.local_heal_value
 					repair_armor_percentage = root.local_heal_value
@@ -7149,10 +7139,8 @@ country_event = {
 
 	trigger = {
 		fromfrom = {
-			NOR = {
-				check_modifier_value = { modifier = split_into_smaller_size_on_death value <= 0 }
-				has_ship_flag = spawned_from_split_modifier
-			}
+			check_modifier_value = { modifier = split_into_smaller_size_on_death value > 0 }
+			NOT = { has_ship_flag = spawned_from_split_modifier }
 		}
 	}
 

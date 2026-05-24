@@ -34,7 +34,7 @@ building_hydroponics_farm = {
 				owner = {
 					has_monthly_income = { resource = food value < 30 }
 				}
-				num_free_districts = { type = district_farming value < 1 }
+				num_free_districts = { type = district_farming value = 0 }
 			}
 		}
 	}
@@ -546,7 +546,6 @@ building_baol_organic_plant = {
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_wilderness_empire = yes }
 			}
 			biomass = @b3_biomass

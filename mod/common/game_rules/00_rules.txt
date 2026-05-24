@@ -1660,11 +1660,11 @@ can_get_colony_events = {
 # This = Planet
 is_new_colony = {
 	is_colony = yes # Vfix log
+	colony_age < 180
+	pop_amount < 1000
 	NOR = {
 		is_under_colonization = yes # Vfix log
 		has_planet_flag = synth_queen_bastille
-		colony_age >= 180
-		pop_amount >= 1000
 	}
 }
 
@@ -2015,11 +2015,7 @@ can_win_timed_victory = {
 # This = country
 can_use_galactic_market = {
 	is_country_type = default
-	NOR = {
-		is_homicidal = yes
-		has_civic = civic_scorched_earth
-		has_civic = civic_hive_scorched_earth
-	}
+	is_homicidal = no
 }
 
 # ROOT = country
@@ -2066,12 +2062,7 @@ can_be_part_of_galactic_community = {
 	}
 	custom_tooltip = {
 		fail_text = "community_homicidal_failtext"
-		NOR = {
-			is_homicidal = yes
-			has_menace_perk = menp_behemoth_ever_hungry
-			has_civic = civic_scorched_earth
-			has_civic = civic_hive_scorched_earth
-		}
+		is_homicidal = no
 	}
 	custom_tooltip = {
 		fail_text = "community_declared_crisis_failtext"
@@ -2109,12 +2100,7 @@ can_be_part_of_galactic_empire = {
 	}
 	custom_tooltip = {
 		fail_text = "community_homicidal_failtext"
-		NOR = {
-			is_homicidal = yes
-			has_menace_perk = menp_behemoth_ever_hungry
-			has_civic = civic_scorched_earth
-			has_civic = civic_hive_scorched_earth
-		}
+		is_homicidal = no
 	}
 	custom_tooltip = {
 		fail_text = "community_declared_crisis_failtext"
@@ -2145,12 +2131,7 @@ can_be_part_of_galactic_council = {
 		is_country_type = default
 		has_country_flag = fallen_empire_hive_control
 	}
-	NOR = {
-		is_homicidal = yes
-		has_menace_perk = menp_behemoth_ever_hungry
-		has_civic = civic_scorched_earth
-		has_civic = civic_hive_scorched_earth
-	}
+	is_homicidal = no
 }
 
 # If, 'yes', forces an empire to be advanced at game start (overrides game settings)
@@ -2251,8 +2232,8 @@ can_planet_auto_migrate = {
 }
 
 can_planet_receive_auto_migration = {
+	planet_devastation < 10
 	NOR = {
-		planet_devastation >= 10
 		has_modifier = planet_culture_shock
 		is_doomsday_planet = yes
 		is_planet_class = pc_cosmogenesis_world
@@ -2749,7 +2730,7 @@ should_ai_build_stronghold_on_vulnerable_planet = {
 	OR = {
 		AND = {
 			pop_amount <= 500
-			num_buildings = { type = building_stronghold value < 1 }
+			num_buildings = { type = building_stronghold value = 0 }
 		}
 		AND = {
 			pop_amount <= 1000
@@ -3414,10 +3395,8 @@ can_ai_assign_governor = {
 		is_sector_capital = yes
 		is_capital = yes
 	}
-	NOR = {
-		pop_amount < 100 # replaces the MINIMUM_POPS_TO_CONSIDER_GOVERNOR define
-		exists = leader
-	}
+	pop_amount >= 100 # replaces the MINIMUM_POPS_TO_CONSIDER_GOVERNOR define
+	NOT = { exists = leader }
 }
 
 # if the galactic community exists, is a galactic empire, and the country is part of it
@@ -3658,15 +3637,13 @@ can_voidworms_bombard_country = {
 		always = yes
 	}
 	else = {
-		NOR = {
-			has_technology = tech_voidworm_immunity
-			event_target:voidworms_country = {
-				check_variable_arithmetic = {
-					which = value:voidworm_ships_owned
-					value >= value:voidworm_maximum_population
-				}
+		event_target:voidworms_country = {
+			check_variable_arithmetic = {
+				which = value:voidworm_ships_owned
+				value < value:voidworm_maximum_population
 			}
 		}
+		NOT = { has_technology = tech_voidworm_immunity }
 	}
 }
 
@@ -3695,15 +3672,13 @@ can_trade_specimens = {
 	any_exhibit = {
 		contains_specimen = yes
 	}
-	NOR = {
-		has_country_flag = has_already_traded_specimens
-		from = {
-			count_exhibit = {
-				count >= @archive_max_exhibit_count
-				limit = { contains_specimen = yes }
-			}
+	from = {
+		count_exhibit = {
+			count < @archive_max_exhibit_count
+			limit = { contains_specimen = yes }
 		}
 	}
+	NOT = { has_country_flag = has_already_traded_specimens }
 }
 
 # this = ship design

@@ -22,8 +22,8 @@ building_robot_assembly_plant = {
 			assembling_species = { is_robotic = yes }
 		}
 		owner = {
-			is_regular_empire = yes
 			NOR = {
+				is_gestalt = yes
 				is_individual_machine = yes
 				has_policy_flag = robots_outlawed
 			}
@@ -182,8 +182,8 @@ building_robot_assembly_complex = {
 			assembling_species = { is_robotic = yes }
 		}
 		owner = {
-			is_regular_empire = yes
 			NOR = {
+				is_gestalt = yes
 				is_individual_machine = yes
 				has_policy_flag = robots_outlawed
 			}
@@ -1042,14 +1042,12 @@ building_clone_vats = {
 		# Organic/Lithoid/infernal cost
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_or_infernal_empire = no }
 			}
 			food = 500
 		}
 		cost = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_or_infernal_empire = yes }
 			}
 			energy = 500
@@ -1061,42 +1059,36 @@ building_clone_vats = {
 		# Organic/Lithoid/infernal upkeep
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_or_infernal_empire = no }
 			}
 			food = 15
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_or_infernal_empire = no has_cloning_tradition = yes }
 			}
 			food = 15
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_empire = yes }
 			}
 			minerals = 15
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_empire = yes has_cloning_tradition = yes }
 			}
 			minerals = 15
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_infernal_empire = yes }
 			}
 			alloys = @b2_alloy_upkeep
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_infernal_empire = yes has_cloning_tradition = yes }
 			}
 			alloys = @b2_alloy_upkeep
@@ -1257,21 +1249,18 @@ building_clone_army_clone_vat = {
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_or_infernal_empire = no }
 			}
 			food = @b2_upkeep
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_lithoid_empire = yes }
 			}
 			minerals = @b2_upkeep
 		}
 		upkeep = {
 			trigger = {
-				has_owner = yes
 				owner = { is_infernal_empire = yes }
 			}
 			alloys = @b2_alloy_upkeep
@@ -1322,7 +1311,7 @@ building_posthumous_employment_center = {
 			free_housing <= 0
 			free_jobs <= 0
 		}
-		owner = { is_regular_empire = yes has_valid_civic = civic_permanent_employment }
+		owner = { is_gestalt = no has_valid_civic = civic_permanent_employment }
 	}
 
 	allow = {

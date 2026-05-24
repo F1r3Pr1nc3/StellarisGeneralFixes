@@ -4386,8 +4386,8 @@ country_event = {
 	option = { # Kill the operatives
 		name = operation.5040.b
 		trigger = {
+			from.spynetwork = { has_available_spy_power >= 10 }
 			NOR = {
-				from.spynetwork = { has_available_spy_power < 10 }
 				is_pacifist = yes
 				has_ethic = ethic_fanatic_xenophile
 			}

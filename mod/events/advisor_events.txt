@@ -515,11 +515,11 @@ ship_event = {
 	trigger = {
 		exists = owner
 		owner = {
+			num_owned_planets = 1
 			NOR = {
 				is_ai = yes
 				is_tutorial_level = 0
 				has_country_flag = advisor_potential_colony
-				num_owned_planets != 1
 			}
 		}
 		from = {
@@ -581,9 +581,9 @@ country_event = {
 	is_advisor_event = yes
 
 	trigger = {
+		running_balance < -1
 		NOR = {
 			is_ai = yes
-			running_balance >= -1
 			has_country_flag = advisor_losing_energy
 			is_tutorial_level = 0
 		}

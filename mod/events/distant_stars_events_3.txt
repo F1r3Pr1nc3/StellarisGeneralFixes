@@ -1190,23 +1190,89 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	trigger = {
+		# Vfix safety: do not spawn twice as it is also called via .10951 (also by L-Cluster Plus).
+		NOT = { has_global_flag = l_cluster_opened }
+	}
+
 	immediate = {
 		set_country_flag = lcluster_opener
 		set_global_flag = l_cluster_opened
-		# spawn L-Cluster
-		country_event = { id = distar.11000 }
-		# enable L-Gate
-		from.solar_system = {
+		# Spawn L-Cluster
+		country_event = { id = distar.11000}
+		### Vfix safety: Set 1st L-Gate as Target
+		if = {
+			limit = {
+				NOT = { exists = event_target:candidate_gateway_system }
+			}
+			# from = ship
 			if = {
-				# flag prevents the Tempest from using this gate,
-				# do not set the flag if there's only one l-gate system
 				limit = {
+					exists = from
+					from = { is_scope_type = ship }
+					exists = from.solar_system
+				}
+				from.solar_system = {
+					save_event_target_as = candidate_gateway_system
+				}
+			}
+			else_if = {
+				limit = { exists = event_target:candidate_gateway }
+				event_target:candidate_gateway = {
+					solar_system = {
+						save_event_target_as = candidate_gateway_system
+					}
+				}
+			}
+			else = {
+				# If no valid scope search generally.
+				every_system_within_border = {
+					limit = { has_star_flag = lgate }
+					every_fleet_in_system = {
+						limit = {
+							exists = owner
+							exists = leader
+							exists = solar_system
+							is_owned_by = root
+						}
+						every_owned_ship = {
+							limit = { is_ship_class = shipclass_science_ship }
+							solar_system = {
+								save_event_target_as = candidate_gateway_system
+							}
+						}
+					}
+				}
+			}
+			if = {
+				# Only last fallback
+				limit = {
+					NOT = { exists = event_target:candidate_gateway_system }
+				}
+				random_megastructure = {
+					limit = {
+						is_megastructure_type = lgate_base
+						NOT = { has_megastructure_flag = lgate_activated }
+					}
+					solar_system = {
+						save_event_target_as = candidate_gateway_system
+					}
+				}
+			}
+		}
+		### Activate L-Gate
+		event_target:candidate_gateway_system = {
+			if = {
+				# Flag prevents the Tempest from using this gate,
+				# Do not set the flag if there's only one l-gate system
+				limit = {		## 2 or more L-Gates exist in Galaxy
 					any_system = {
 						has_star_flag = lgate
 						NOT = { is_same_value = prev }
+						any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 					}
 				}
-				set_star_flag = lgate_originating_system
+				set_star_flag = lgate_originating_system		## For Graygoo (Non-spawn from Here)
 			}
 			else = {
 				root = { set_country_flag = only_one_lgate }
@@ -1220,6 +1286,9 @@ country_event = {
 				set_megastructure_flag = lgate_activated
 			}
 		}
+
+
+
 		# outcome, to be determined at game start
 		if = {
 			limit = { has_global_flag = gray_goo_crisis_set }
@@ -1240,9 +1309,14 @@ country_event = {
 				country_event = { id = distar.10960 days = 200 random = 500 }
 			}
 		}
+
 		# activate terminal egress l-gate
 		event_target:lcluster1 = {
-			random_system_megastructure = {
+			every_system_megastructure = {
+				limit = {
+					is_megastructure_type = lgate_base
+					NOT = { has_megastructure_flag = lgate_activated }
+				}
 				activate_gateway = this
 				set_megastructure_flag = lgate_activated
 			}
@@ -1277,6 +1351,18 @@ country_event = {
 			country_event = { id = distar.10953 days = 1 }
 		}
 		observer_event = { id = observer.62 }
+
+		### Vfix: Technology Control (AFTER graygoo.100)
+		every_playable_country = {
+			limit = {
+				OR = {
+					is_researching_technology = tech_lgate_activation
+					has_technology = tech_lgate_activation
+					has_special_project = LCLUSTER_PROJECT
+				}
+			}
+			give_technology = { tech = tech_lgate_activation message = no }
+		}
 	}
 }
 
@@ -1364,10 +1450,8 @@ event = {
 				is_country_type = default
 				has_communications = prev
 				has_event_chain = l_cluster_chain
-				NOR = {
-					has_country_flag = lgate_warned@prev
-					check_variable = { which = num_lcluster_clues value <= 5 }
-				}
+				check_variable = { which = num_lcluster_clues value > 5 }
+				NOT = { has_country_flag = lgate_warned@prev }
 				any_owned_megastructure = { is_megastructure_type = lgate_base }
 			}
 		}
@@ -1385,10 +1469,8 @@ event = {
 					is_country_type = default
 					has_communications = prev
 					has_event_chain = l_cluster_chain
-					NOR = {
-						has_country_flag = lgate_warned@prev
-						check_variable = { which = num_lcluster_clues value <= 5 }
-					}
+					check_variable = { which = num_lcluster_clues value > 5 }
+					NOT = { has_country_flag = lgate_warned@prev }
 					any_owned_megastructure = { is_megastructure_type = lgate_base }
 				}
 			}
@@ -1397,10 +1479,8 @@ event = {
 					is_country_type = default
 					has_communications = prev
 					has_event_chain = l_cluster_chain
-					NOR = {
-						has_country_flag = lgate_warned@prev
-						check_variable = { which = num_lcluster_clues value <= 5 }
-					}
+					check_variable = { which = num_lcluster_clues value > 5 }
+					NOT = { has_country_flag = lgate_warned@prev }
 					any_owned_megastructure = { is_megastructure_type = lgate_base }
 				}
 				save_event_target_as = lgate_warning_country
@@ -1981,9 +2061,8 @@ country_event = {
 	}
 }
 
-# Root = Planet
-# From = Country
-# FromFrom = Fleet of the science ship that surveyed it, if any
+# Vfix Note: surveyed without science ship (through changes in intel levels or effect)
+# From = Country that surveyed it
 planet_event = {
 	id = distar.13050
 	hide_window = yes
@@ -1992,56 +2071,52 @@ planet_event = {
 	trigger = {
 		exists = space_owner
 		NOR = {
+			num_deposits = 0
 			exists = fromfrom
-			num_deposits <= 0
 		}
-		OR = {
-			AND = {
-				NOT = { from = { has_country_flag = exotic_gases_found } }
-				has_resource = { amount > 0 type = exotic_gases }
-			}
-			AND = {
-				NOT = { from = { has_country_flag = rare_crystals_found } }
-				has_resource = { amount > 0 type = rare_crystals }
-			}
-			AND = {
-				NOT = { from = { has_country_flag = volatile_motes_found } }
-				has_resource = { amount > 0 type = volatile_motes }
-			}
-			AND = {
-				NOT = { from = { has_country_flag = living_metal_found } }
-				has_resource = { amount > 0 type = sr_living_metal }
-			}
-			AND = {
-				NOT = { from = { has_country_flag = zro_found } }
-				has_resource = { amount > 0 type = sr_zro }
-			}
-			AND = {
-				NOT = { from = { has_country_flag = dark_matter_found } }
-				has_resource = { amount > 0 type = sr_dark_matter }
+		# OR = {
+		# 	AND = {
+		# 		NOT = { from = { has_country_flag = exotic_gases_found } }
+		# 		has_resource = { amount > 0 type = exotic_gases }
+		# 	}
+		# 	AND = {
+		# 		NOT = { from = { has_country_flag = rare_crystals_found } }
+		# 		has_resource = { amount > 0 type = rare_crystals }
+		# 	}
+		# 	AND = {
+		# 		NOT = { from = { has_country_flag = volatile_motes_found } }
+		# 		has_resource = { amount > 0 type = volatile_motes }
+		# 	}
+		# 	AND = {
+		# 		NOT = { from = { has_country_flag = living_metal_found } }
+		# 		has_resource = { amount > 0 type = sr_living_metal }
+		# 	}
+		# 	AND = {
+		# 		NOT = { from = { has_country_flag = zro_found } }
+		# 		has_resource = { amount > 0 type = sr_zro }
+		# 	}
+		# 	AND = {
+		# 		NOT = { from = { has_country_flag = dark_matter_found } }
+		# 		has_resource = { amount > 0 type = sr_dark_matter }
+		# 	}
+		# }
+		from = { # Vfix opt
+			inverted_switch = {
+				trigger = has_country_flag
+				exotic_gases	= { root = { has_resource = { amount > 0 type = exotic_gases } } }
+				rare_crystals	= { root = { has_resource = { amount > 0 type = rare_crystals } } }
+				volatile_motes	= { root = { has_resource = { amount > 0 type = volatile_motes } } }
+				living_metal	= { root = { has_resource = { amount > 0 type = sr_living_metal } } }
+				zro				= { root = { has_resource = { amount > 0 type = sr_zro } } }
+				dark_matter		= { root = { has_resource = { amount > 0 type = sr_dark_matter } } }
 			}
 		}
 	}
 
 	immediate = {
-		from = {
-			save_event_target_as = finder
-			create_message = {
-				type = MESSAGE_TYPE_SR_INFORMED
-				localization = MESSAGE_SR_INFORMED
-				days = 30
-				target = root.solar_system # the Go To
-				variable = {
-					type = name
-					localization = PLANET
-					scope = root
-				}
-				variable = {
-					type = name
-					localization = COUNTRY
-					scope = root.space_owner
-				}
-			}
+		if = { # Vfix log: safety
+			limit = { exists = owner_or_space_owner }
+			owner_or_space_owner = { save_event_target_as = empire }
 		}
 		if = {
 			limit = {
@@ -2078,6 +2153,34 @@ planet_event = {
 				has_resource = { type = sr_living_metal amount > 0 }
 			}
 			from = { set_country_flag = living_metal_found }
+		}
+		if = { # Vfix log: safety
+			limit = {
+				NAND = {
+					exists = event_target:empire
+					event_target:empire = { is_scope_valid = yes }
+				}
+			}
+			event_target:global_event_country = { save_event_target_as = empire }
+		}
+		from = {
+			# save_event_target_as = finder
+			create_message = {
+				type = MESSAGE_TYPE_SR_INFORMED
+				localization = MESSAGE_SR_INFORMED
+				days = 30
+				target = root.solar_system # the Go To
+				variable = {
+					type = name
+					localization = PLANET
+					scope = root
+				}
+				variable = {
+					type = name
+					localization = COUNTRY
+					scope = event_target:empire # Vfix log: safety
+				}
+			}
 		}
 	}
 }

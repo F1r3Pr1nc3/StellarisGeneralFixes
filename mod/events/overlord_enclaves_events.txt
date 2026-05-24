@@ -845,10 +845,8 @@ country_event = {
 				event_target:mercenary_enclave_country = {
 					any_owned_fleet = {
 						is_ship_class = shipclass_military
-						NOR = {
-							any_controlled_ship = { is_damaged = yes }
-							fleet_power < 500
-						}
+						fleet_power >= 500
+						NOT = { any_controlled_ship = { is_damaged = yes } }
 					}
 				}
 			}
@@ -887,12 +885,12 @@ country_event = {
 		name = enclave.205.c
 		custom_tooltip = mercenary_tt_garrison
 		trigger = {
+			event_target:mercenary_enclave_country = {
+				trust = { who = root value >= 30 }
+			}
 			NOR = {
 				is_hostile = event_target:mercenary_enclave_country
 				has_country_flag = mercenary_enclave_bought_mercenary_garrison
-				event_target:mercenary_enclave_country = {
-					trust = { who = root value < 30 }
-				}
 			}
 		}
 		allow = {
@@ -972,12 +970,12 @@ country_event = {
 		name = enclave.205.g
 		custom_tooltip = mercenary_tt_logistic
 		trigger = {
-			NOR = {
+			event_target:mercenary_enclave_country = {
+				trust = { who = root value >= 20 }
+			}
+			NOT = {
 				is_hostile = event_target:mercenary_enclave_country
 				# is_homicidal = yes
-				event_target:mercenary_enclave_country = {
-					trust = { who = root value < 20 }
-				}
 			}
 		}
 		allow = {
@@ -1038,7 +1036,7 @@ country_event = {
 
 	immediate = {
 		event_target:mercenary_enclave_country = {
-			create_merc_enclave_admiral = yes
+			create_merc_enclave_admiral = yes # Vfix patch
 			ordered_owned_leader = { # Vfix patch
 				limit = {
 					leader_class = commander
@@ -2418,7 +2416,7 @@ country_event = {
 
 	immediate = {
 		from = {
-			create_merc_enclave_admiral = yes
+			create_merc_enclave_admiral = yes # Vfix patch
 			ordered_owned_leader = { # Vfix patch
 				limit = {
 					leader_class = commander
@@ -2443,7 +2441,7 @@ country_event = {
 			event_target:mercenary_fleet = {
 				give_fleet = { controller = root days = 3600 }
 				set_timed_fleet_flag = { flag = fleet_on_loan@root years = 10 }
-				set_fleet_settings = {
+				set_fleet_settings = { # Vfix patch
 					uses_naval_capacity = no
 					can_change_composition = yes
 					can_upgrade = yes
@@ -3718,63 +3716,95 @@ event = {
 		if = {
 			limit = { exists = event_target:mercenary_enclave_country }
 			event_target:mercenary_enclave_country = {
-				# Khan hires only the main fleet
-				ordered_owned_fleet = {
-					limit = {
-						is_ship_class = shipclass_military
-						is_leased = no
-					}
-					position = 0
-					order_by = trigger:fleet_power
-					save_event_target_as = mercenary_fleet
-				}
+				# Check if the patron is a player to give them a chance at a counteroffer
 				if = {
 					limit = {
-						NOT = { exists = event_target:marauder_rally_point }
-					}
-					event_target:raider_khanate = {
-						random_planet_within_border = {
-							limit = { is_star = no }
-							weights = {
-								base = 1
-								modifier = { add = 2 is_a_planet = yes }
+						event_target:mercenary_enclave_country = {
+							any_owned_fleet = {
+								is_ship_size = enclave_mercenary_station
+								solar_system = {
+									exists = space_owner
+									space_owner = { is_ai = yes }
+								}
 							}
-							# Possible inconsistent due other mods
-							save_global_event_target_as = marauder_rally_point
-							set_planet_flag = marauder_rally_point
 						}
-						set_faction_hostility = { target = prev set_friendly = yes }
 					}
-				}
-				event_target:mercenary_fleet = {
-					give_fleet = { controller = event_target:raider_khanate days = 1510 }
-					set_name = {
-						key = NAME_Mercenary_Fleet
-						variable_string = "[event_target:mercenary_enclave_country.GetName]"
+					# Khan hires only the main fleet
+					ordered_owned_fleet = {
+						limit = {
+							is_ship_class = shipclass_military
+							is_leased = no
+						}
+						position = 0
+						order_by = trigger:fleet_power
+						save_event_target_as = mercenary_fleet
 					}
 					if = {
 						limit = {
-							exists = solar_system
-							exists = event_target:khan_fleet.solar_system
-							NOT = { can_access_system = event_target:khan_fleet.solar_system }
+							NOT = { exists = event_target:marauder_rally_point }
+						}
+						event_target:raider_khanate = {
+							random_planet_within_border = {
+								limit = { is_star = no }
+								weights = {
+									base = 1
+									modifier = { add = 2 is_a_planet = yes }
+								}
+								# Possible inconsistent due other mods
+								save_global_event_target_as = marauder_rally_point
+								set_planet_flag = marauder_rally_point
+							}
+							set_faction_hostility = { target = prev set_friendly = yes }
+						}
+					}
+					event_target:mercenary_fleet = {
+						give_fleet = { controller = event_target:raider_khanate days = 1510 }
+						set_name = {
+							key = NAME_Mercenary_Fleet
+							variable_string = "[event_target:mercenary_enclave_country.GetName]"
 						}
 						if = {
-							limit = { exists = event_target:marauder_rally_point.starbase }
-							set_home_base = event_target:marauder_rally_point.starbase
-							set_mia = mia_return_home
+							limit = {
+								exists = solar_system
+								exists = event_target:khan_fleet.solar_system
+								NOT = { can_access_system = event_target:khan_fleet.solar_system }
+							}
+							if = {
+								limit = { exists = event_target:marauder_rally_point.starbase }
+								set_home_base = event_target:marauder_rally_point.starbase
+								set_mia = mia_return_home
+							}
+							if = {
+								limit = { exists = event_target:khan_fleet }
+								queue_actions = { wait = 5 move_to = event_target:khan_fleet }
+							}
 						}
+						order_forced_return = yes
 						if = {
 							limit = { exists = event_target:khan_fleet }
-							queue_actions = { wait = 5 move_to = event_target:khan_fleet }
+							auto_follow_fleet = { target = event_target:khan_fleet attack_fleet = no }
 						}
 					}
-					order_forced_return = yes
-					if = {
-						limit = { exists = event_target:khan_fleet }
-						auto_follow_fleet = { target = event_target:khan_fleet attack_fleet = no }
+					set_country_flag = mercenary_enclave_rented_fleet
+				}
+			}
+			else = {
+				event_target:mercenary_enclave_country = {
+					random_owned_fleet = {
+						limit = {
+							is_ship_size = enclave_mercenary_station
+							exists = solar_system
+						}
+						solar_system = {
+							if = {
+								limit = { exists = space_owner }
+								space_owner = {
+									country_event = { id = enclave.2050 }
+								}
+							}
+						}
 					}
 				}
-				set_country_flag = mercenary_enclave_rented_fleet
 			}
 		}
 	}
@@ -4081,7 +4111,7 @@ country_event = {
 			create_mindwarden_fleet_leader = yes
 		}
 		else = {
-			create_merc_enclave_admiral = yes
+			create_merc_enclave_admiral = yes # Vfix patch
 		}
 		random_owned_fleet = {
 			limit = {
@@ -4341,13 +4371,13 @@ country_event = {
 		name = enclave.305.c
 		custom_tooltip = salvager_tt_salvageworks
 		trigger = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value >= 30 }
+			}
 			NOR = {
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
 				has_country_flag = salvager_enclave_bought_salvage_works
-				event_target:salvager_enclave_country = {
-					trust = { who = root value < 30 }
-				}
 			}
 		}
 		hidden_effect = {
@@ -4358,12 +4388,12 @@ country_event = {
 	option = {
 		name = enclave.305.d
 		trigger = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value >= 40 }
+			}
 			NOR = {
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
-				event_target:salvager_enclave_country = {
-					trust = { who = root value < 40 }
-				}
 			}
 		}
 		allow = {
@@ -4381,12 +4411,12 @@ country_event = {
 		name = enclave.305.e
 		custom_tooltip = salvager_tt_commissionsalvage
 		trigger = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value >= 10 }
+			}
 			NOR = {
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
-				event_target:salvager_enclave_country = {
-					trust = { who = root value < 10 }
-				}
 			}
 		}
 		hidden_effect = {
@@ -4397,12 +4427,12 @@ country_event = {
 	option = {
 		name = enclave.305.f
 		trigger = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value >= 10 }
+			}
 			NOR = {
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
-				event_target:salvager_enclave_country = {
-					trust = { who = root value < 10 }
-				}
 			}
 		}
 		allow = {
@@ -4419,12 +4449,12 @@ country_event = {
 	option = {
 		name = enclave.305.g
 		trigger = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value >= 20 }
+			}
 			NOR = {
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
-				event_target:salvager_enclave_country = {
-					trust = { who = root value < 20 }
-				}
 			}
 		}
 		allow = {
@@ -5134,10 +5164,8 @@ country_event = {
 		name = enclave.320.bb
 		trigger = {
 			exists = event_target:salvager_reclaimed_corvette
-			NOR = {
-				has_country_flag = salvager_enclave_recently_reclaimed_all
-				check_variable = { which = reclaimed_ships_bought value > 0 }
-			}
+			check_variable = { which = reclaimed_ships_bought value <= 0 }
+			NOT = { has_country_flag = salvager_enclave_recently_reclaimed_all }
 		}
 		allow = {
 			resource_stockpile_compare = {
@@ -5218,10 +5246,8 @@ country_event = {
 		name = enclave.320.frigate_bulk
 		trigger = {
 			exists = event_target:salvager_reclaimed_frigate
-			NOR = {
-				has_country_flag = salvager_enclave_recently_reclaimed_all
-				check_variable = { which = reclaimed_ships_bought value > 0 }
-			}
+			check_variable = { which = reclaimed_ships_bought value <= 0 }
+			NOT = { has_country_flag = salvager_enclave_recently_reclaimed_all }
 		}
 		allow = {
 			resource_stockpile_compare = {
@@ -5618,12 +5644,10 @@ country_event = {
 
 	trigger = {
 		exists = event_target:salvager_enclave_country
-		NOR = {
-			is_hostile = event_target:salvager_enclave_country
-			event_target:salvager_enclave_country = {
-				trust = { who = root value < 40 }
-			}
+		event_target:salvager_enclave_country = {
+			trust = { who = root value >= 40 }
 		}
+		NOT = { is_hostile = event_target:salvager_enclave_country }
 		any_owned_starbase = { has_starbase_building = salvager_workshop }
 	}
 }
@@ -5661,12 +5685,12 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOR = {
+				event_target:salvager_enclave_country = {
+					trust = { who = root value >= 20 }
+				}
+				count_available_debris = { count > 0 }
+				NOT = {
 					has_country_flag = salvager_enclave_salvage_commission_active
-					event_target:salvager_enclave_country = {
-						trust = { who = root value < 20 }
-					}
-					count_available_debris = { count = 0 }
 				}
 			}
 			set_country_flag = salvage_commission_available
@@ -5704,7 +5728,7 @@ country_event = {
 			# First, check the debris hasn't timed out already
 			if = {
 				limit = {
-					count_available_debris = { count < 1 }
+					count_available_debris = { count = 0 }
 				}
 				country_event = { id = enclave.342 }
 			}
@@ -5933,12 +5957,12 @@ country_event = {
 
 	trigger = {
 		exists = event_target:salvager_enclave_country
+		event_target:salvager_enclave_country = {
+			trust = { who = root value >= 20 }
+		}
 		NOR = {
 			is_hostile = event_target:salvager_enclave_country
 			is_homicidal = yes
-			event_target:salvager_enclave_country = {
-				trust = { who = root value < 20 }
-			}
 		}
 	}
 }
@@ -6483,10 +6507,10 @@ country_event = {
 	desc = {
 		trigger = {
 			exists = event_target:mindwarden_enclave_country
+			event_target:mindwarden_enclave_country = {
+				trust = { who = prev value >= 100 }
+			}
 			NOR = {
-				event_target:mindwarden_enclave_country = {
-					trust = { who = prev value < 100 }
-				}
 				is_homicidal = yes
 				is_hostile = event_target:shroudwalker_enclave_country
 				has_origin = origin_mindwardens
@@ -6648,13 +6672,13 @@ country_event = {
 	option = {
 		name = enclave.405.e
 		trigger = {
+			event_target:shroudwalker_enclave_country = {
+				trust = { who = root value >= 30 }
+			}
 			NOR = {
 				shroudwalker_no_dialog = yes
 				has_technology = tech_mine_zro
 				has_country_flag = purchased_zro_tech
-				event_target:shroudwalker_enclave_country = {
-					trust = { who = root value < 30 }
-				}
 			}
 		}
 		allow = {
@@ -8462,9 +8486,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 10
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 10
 			owner = { has_country_flag = floating_parts_flag }
 		}
 	}
@@ -8664,9 +8688,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 15
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 15
 			owner = {
 				OR = {
 					has_country_flag = lightshow_divination_flag
@@ -8717,9 +8741,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 15
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 15
 			owner = { has_country_flag = grimacing_divination_flag }
 		}
 	}
@@ -8765,9 +8789,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 10
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 10
 			owner = { has_country_flag = teapot_divination_flag }
 		}
 	}
@@ -8805,10 +8829,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = divination_occurring
-			situation_progress < 15
-		}
+		situation_progress >= 15
+		NOT = { has_situation_flag = divination_occurring }
 		owner = {
 			NOT = { has_country_flag = brainslug_divination_flag }
 			any_planet_within_border = {
@@ -8859,9 +8881,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 10
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 10
 			owner = {
 				OR = {
 					has_country_flag = dportal_country
@@ -8901,9 +8923,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 15
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 15
 			owner = { has_country_flag = atmoseco_divination_flag }
 		}
 	}
@@ -8941,9 +8963,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 15
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 15
 			owner = { has_country_flag = colorscience_divination_flag }
 		}
 	}
@@ -8981,9 +9003,9 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		situation_progress >= 15
 		NOR = {
 			has_situation_flag = divination_occurring
-			situation_progress < 15
 			owner = { has_country_flag = terminal_divination_flag }
 		}
 	}
@@ -9127,10 +9149,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			has_situation_flag = divination_occurring
-			situation_progress < 50
-		}
+		situation_progress >= 50
+		NOT = { has_situation_flag = divination_occurring }
 		owner = {
 			NOR = {
 				is_ai = yes
@@ -9144,6 +9164,7 @@ situation_event = {
 				is_capital = no
 				is_colony = yes
 				original_owner = yes
+				count_owned_pop_amount = { count >= 500 }
 				NOR = {
 					has_ground_combat = yes
 					is_occupied_flag = yes
@@ -9152,7 +9173,6 @@ situation_event = {
 					has_planet_flag = shattered_frontier_planet
 					has_modifier = penal_colony
 					has_modifier = resort_colony
-					count_owned_pop_amount = { count < 500 }
 				}
 			}
 		}
@@ -9168,6 +9188,7 @@ situation_event = {
 					is_capital = no
 					is_colony = yes
 					original_owner = yes
+					count_owned_pop_amount = { count >= 500 }
 					NOR = {
 						has_ground_combat = yes
 						is_occupied_flag = yes
@@ -9175,7 +9196,6 @@ situation_event = {
 						has_planet_flag = shattered_frontier_planet
 						has_modifier = penal_colony
 						has_modifier = resort_colony
-						count_owned_pop_amount = { count < 500 }
 					}
 				}
 				set_planet_flag = colony_event
@@ -10456,10 +10476,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			situation_progress < 90
-			has_situation_flag = divination_occurring
-		}
+		situation_progress >= 90
+		NOT = { has_situation_flag = divination_occurring }
 	}
 
 	immediate = {
@@ -10474,10 +10492,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOR = {
-			situation_progress < 90
-			has_situation_flag = divination_occurring
-		}
+		situation_progress >= 90
+		NOT = { has_situation_flag = divination_occurring }
 	}
 
 	immediate = {
