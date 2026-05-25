@@ -207,6 +207,14 @@ country_event = {
 	event_chain = behemoth_crisis_chain
 	is_triggered_only = yes
 
+	immediate = {
+		set_variable = { which = pops_transferred value = 0 }
+		capital_scope = {
+			save_event_target_as = behemoth_capital
+			validate_planet_buildings_and_districts = yes
+		}
+	}
+
 	option = {
 		name = biocrisis.70.a
 		# Start situation
@@ -216,20 +224,15 @@ country_event = {
 		add_modifier = { modifier = behemoth_transference days = -1 }
 	}
 
-	immediate = {
-		set_variable = { which = pops_transferred value = 0 }
-		capital_scope = {
-			save_event_target_as = behemoth_capital
-			validate_planet_buildings_and_districts = yes
-		}
-	}
-
 	after = {
 		hidden_effect = {
 			set_variable = { which = growth_factor_variable value = 0 }
 			# Kill a few pops across country
 			every_owned_planet = {
-				limit = { pop_amount > 500 }
+				limit = {
+					has_owner = yes
+					pop_amount > 500
+				}
 				random_list = {
 					20 = {  }
 					20 = {
@@ -272,7 +275,14 @@ country_event = {
 			random_owned_fleet = { # Delete the Behemoth that just researched the project
 				limit = {
 					is_ship_size = behemoth_03
-					solar_system = { is_same_value = root.capital_scope.solar_system }
+					any_owned_ship = { has_ship_flag = behemoth_hatchling_ship } # Vfix
+				}
+				weights = {
+					base = 1
+					modifier = {
+						add = 99
+						solar_system = { is_same_value = event_target:behemoth_capital.solar_system } # Vfix: there is no guarantee!
+					}
 				}
 				delete_fleet = this
 			}
@@ -310,26 +320,18 @@ country_event = {
 				limit = { NOT = { is_same_value = root } }
 				establish_communications_no_message = root
 				add_opinion_modifier = { who = root modifier = opinion_destroying_galaxy }
+				# Vfix opt (merge 3 loops to 1)
+				if = { # Notify other level 5 Behemoths
+					limit = { has_menace_perk = menp_behemoth_ever_hungry }
+					country_event = { id = biocrisis.185 days = 1 }
+				}
+				else = { # Notify the rest of the galacy
+					country_event = { id = biocrisis.187 days = 1 }
+				}
 			}
 			every_country = {
 				limit = { is_fallen_empire = yes }
 				add_opinion_modifier = { who = root modifier = opinion_destroying_galaxy }
-			}
-			every_playable_country = { # Notify other level 5 Behemoths
-				limit = {
-					NOT = { is_same_value = root }
-					has_menace_perk = menp_behemoth_ever_hungry
-				}
-				country_event = { id = biocrisis.185 days = 1 }
-			}
-			every_playable_country = { # Notify the rest of the galacy
-				limit = {
-					NOR = {
-						is_same_value = root
-						has_menace_perk = menp_behemoth_ever_hungry
-					}
-				}
-				country_event = { id = biocrisis.187 days = 1 }
 			}
 		}
 	}
@@ -546,12 +548,7 @@ fleet_event = {
 		from = {
 			any_fleet_in_system = {
 				NOT = { is_same_value = root }
-				OR = {
-					is_ship_size = behemoth_01
-					is_ship_size = behemoth_02
-					is_ship_size = behemoth_03
-					is_ship_size = behemoth_04
-				}
+				is_behemoth = yes
 			}
 		}
 	}
@@ -769,11 +766,11 @@ country_event = {
 				any_owned_ship = {
 					has_ship_flag = behemoth_hatchling_ship
 					NOR = {
+						is_ship_size = behemoth_04
 						has_ship_flag = raging
 						has_ship_flag = recently_raged
 						has_ship_flag = recently_fed
 						has_ship_flag = rage_checked
-						is_ship_size = behemoth_04
 					}
 				}
 			}
@@ -945,13 +942,55 @@ situation_event = {
 			}
 			set_global_flag = voidspawn_boss_spawned
 			owner = {
-				random_owned_fleet = {
+				random_system_within_border = { # Vfix safety
+					limit = {
+						closest_system = {
+							limit = {
+								is_rim_system = yes
+								has_special_star_flag_trigger = no # Vfix
+							}
+							use_bypasses = no
+							min_steps = 15
+							max_steps = 30
+						}
+					}
 					closest_system = {
-						limit = { is_rim_system = yes }
+						limit = {
+							is_rim_system = yes
+							has_special_star_flag_trigger = no # Vfix
+						}
 						use_bypasses = no
 						min_steps = 15
 						max_steps = 30
 						save_event_target_as = voidspawn_spawn_location
+					}
+				}
+				if = { # Vfix safety
+					limit = {
+						NOT = { exists = event_target:voidspawn_spawn_location }
+					}
+					random_controlled_fleet = {
+						limit = {
+							closest_system = {
+								limit = {
+									is_rim_system = yes
+									has_special_star_flag_trigger = no
+								}
+								use_bypasses = no
+								min_steps = 30
+								max_steps = 50
+							}
+						}
+						closest_system = {
+							limit = {
+								is_rim_system = yes
+								has_special_star_flag_trigger = no
+							}
+							use_bypasses = no
+							min_steps = 30
+							max_steps = 50
+							save_event_target_as = voidspawn_spawn_location
+						}
 					}
 				}
 			}
@@ -972,7 +1011,7 @@ situation_event = {
 			create_fleet = {
 				name = "NAME_Voidspawn_Boss_Fleet"
 				effect = {
-					set_owner = event_target:voidspawn_boss_country
+					set_owner = last_created_country
 					create_ship = {
 						name = "NAME_Boss_Voidspawn"
 						design = "NAME_Boss_Voidspawn"
@@ -989,17 +1028,7 @@ situation_event = {
 					set_aggro_range_measure_from = self
 					set_aggro_range = 30000
 					# Give it its target
-					queue_actions = {
-						repeat = {
-							find_random_fleet = {
-								trigger = {
-									id = "biocrisis_150"
-									any_owned_ship = { is_ship_size = behemoth_04 }
-								}
-								found_fleet = { move_to = this }
-							}
-						}
-					}
+					fleet_event = { id = biocrisis.151 days = 3 }
 				}
 				settings = {
 					spawn_debris = no
@@ -1007,6 +1036,7 @@ situation_event = {
 				}
 			}
 			# Make it basically invincible
+			# Vfix note: WTH
 			every_country = {
 				limit = {
 					NOT = { is_country_type = voidspawn_boss }
@@ -1022,6 +1052,7 @@ situation_event = {
 
 	after = {
 		hidden_effect = {
+			owner = { save_event_target_as = behemoth_empire } # Vfix
 			if = { # Curators notify everyone if they exist
 				limit = { exists = event_target:curator_enclave_country }
 				every_playable_country = {
@@ -1034,8 +1065,11 @@ situation_event = {
 					country_event = { id = biocrisis.155 }
 					set_country_flag = voidspawn_boss_met
 				}
+				if = { # Vfix: for path tracking
+					limit = { exists = event_target:voidspawn_spawn_location }
+					event_target:voidspawn_spawn_location = { set_star_flag = voidspawn_spawn_location }
+				}
 			}
-			owner = { save_event_target_as = behemoth_empire } # Vfix
 		}
 	}
 }
@@ -1053,8 +1087,40 @@ fleet_event = {
 	}
 
 	immediate = {
+		# Vfix: disabled because no worky
+		# auto_follow_fleet = { target = event_target:target_behemoth attack_fleet = yes }
+		# queue_actions = { # Make sure the Voidspawn doesn't lose its target
+		# 	move_to = star
+		# 	wait = 10
+		# 	# repeat = {
+		# 	find_closest_fleet = {
+		# 		trigger = {
+		# 			id = "biocrisis_151"
+		# 			owner = { has_ascension_perk = ap_behemoths }
+		# 			# is_ship_size = behemoth_04
+		# 			any_owned_ship = { is_ship_size = behemoth_04 }
+		# 		}
+		# 		found_fleet = { move_to = this }
+		# 		failed = {
+		# 			wait = { duration = 60 }
+		# 			find_closest_system = {
+		# 				trigger = {
+		# 					id = "biocrisis_151.failed"
+		# 					is_rim_system = yes
+		# 				}
+		# 				found_system = { move_to = this }
+		# 				failed = {
+		# 					effect = {
+		# 						id = "biocrisis_150.failed"
+		# 						log = "Voidspawn path track failed \\[solar_system.GetName]"
+		# 					}
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# }
 		solar_system = {
-			add_modifier = { modifier = voidspawn_system_mod days = 666 }
+			add_modifier = { modifier = voidspawn_system_mod days = 630 }
 			every_fleet_in_system = {
 				limit = { is_cloaked = yes }
 				set_cloaking_active = no
@@ -1074,25 +1140,99 @@ fleet_event = {
 				}
 			}
 		}
-		queue_actions = { # Make sure the Voidspawn doesn't lose its target
-			repeat = {
-				find_closest_fleet = {
-					trigger = {
-						id = "biocrisis_151"
-						owner = { has_ascension_perk = ap_behemoths }
-						any_owned_ship = { is_ship_size = behemoth_04 }
+		# Vfix (whole block) by FirePrince: path tracking
+		clear_orders = yes
+		clear_fleet_actions = this
+		if = {
+			limit = {
+				NOT = { exists = event_target:target_behemoth }
+				any_country = {
+					has_ascension_perk = ap_behemoths
+					any_controlled_fleet = { is_ship_size = behemoth_04 }
+				}
+			}
+			random_country = {
+				limit = {
+					has_ascension_perk = ap_behemoths
+					any_controlled_fleet = { is_ship_size = behemoth_04 }
+				}
+				random_controlled_fleet = {
+					limit = { is_ship_size = behemoth_04 }
+					save_global_event_target_as = target_behemoth
+				}
+			}
+		}
+		solar_system = {
+			if = {
+				limit = { exists = event_target:target_behemoth }
+				if = {
+					limit = {
+						exists = event_target:target_behemoth.solar_system
+						# has_hyperlane_to = event_target:target_behemoth.solar_system
 					}
-					found_fleet = { move_to = this }
+					# log = "Voidspawn path \\[event_target:target_behemoth.solar_system.GetName]"
+					ordered_neighbor_system = {
+						limit = {
+							NOR = {
+								has_star_flag = voidspawn_spawn_location
+								is_same_value = prev
+								has_modifier = voidspawn_system_mod
+							}
+						}
+						position = 0
+						order_by = value:distance_to_target|TARGET|event_target:target_behemoth.solar_system|
+						inverse = yes
+						save_event_target_as = voidspawn_next_location
+					}
+					if = { # Only Fallback (just get out of here)
+						limit = {
+							NOT = { exists = event_target:voidspawn_next_location }
+						}
+						ordered_neighbor_system = {
+							limit = { NOT = { is_same_value = prev } }
+							position = 0
+							order_by = value:distance_to_target|TARGET|event_target:target_behemoth.solar_system|
+							inverse = yes
+							save_event_target_as = voidspawn_next_location
+						}
+						log = "Voidspawn cheap path to \\[event_target:voidspawn_next_location.GetName]"
+					}
+				}
+				if = { # Vfix: for path tracking
+					limit = { exists = event_target:voidspawn_next_location }
+					every_neighbor_system = {
+						limit = { has_star_flag = voidspawn_spawn_location }
+						remove_star_flag = voidspawn_spawn_location
+					}
+					set_star_flag = voidspawn_spawn_location
+					root = {
+						auto_move_to_planet = {
+							target = event_target:voidspawn_next_location.star
+							clear_auto_move_on_arrival = yes
+						}
+					}
+				}
+				else = { # Vfix
+					log = "Voidspawn path track failed \\[solar_system.GetName] rerun in 66"
+					root = {
+						fleet_event = { id = biocrisis.151 days = 66 } # If the Voidspawn is still in the system after 66 days, the event fires again.
+					}
+				}
+			}
+			else = { # Vfix
+				log = "Voidspawn path track failed \\[solar_system.GetName] rerun in 666"
+				root = {
+					fleet_event = { id = biocrisis.151 days = 666 } # If the Voidspawn is still in the system after 666 days, the event fires again.
 				}
 			}
 		}
 	}
-
-	after = {
-		hidden_effect = {
-			fleet_event = { id = biocrisis.151 days = 666 } # If the Voidspawn is still in the system after 666 days, the event fires again.
-		}
-	}
+	# after = {
+	# 	hidden_effect = {
+	# 		# Vfix Note: WTH – this can generate hundreds of these events simultaneously; subsequently, they multiply, creating an exponential dead loop!
+	# 		fleet_event = { id = biocrisis.151 days = 666 } # If the Voidspawn is still in the system after 666 days, the event fires again.
+	# 	}
+	# }
 }
 
 # 155 Curators notify the rest of the Galaxy that a Voidspawn has arrived
@@ -2250,7 +2390,7 @@ country_event = {
 						type = MESSAGE_POPS_TRANSFERRED
 						localization = MESSAGE_POPS_TRANSFERRED_DESC
 						days = @toast_message_days
-						target = root
+						target = root # Vfixy TODO target scope is invalid
 						variable = {
 							type = variable
 							varname = num_transference_jobs_var
@@ -2301,7 +2441,10 @@ planet_event = {
 
 	immediate = {
 		validate_and_repair_planet_buildings_and_districts = yes
-		from = { validate_and_repair_planet_buildings_and_districts = yes }
+		if = {
+			limit = { exists = from } # Vfix (log) TODO: sometimes from does not exists!
+			from = { validate_and_repair_planet_buildings_and_districts = yes }
+		}
 	}
 }
 
@@ -2329,7 +2472,7 @@ country_event = {
 			random_playable_country = {
 				limit = {
 					has_menace_perk = menp_behemoth_ever_hungry
-					NOT = { any_controlled_ship = { is_ship_size = behemoth_04 } }
+					NOT = { any_controlled_fleet = { is_ship_size = behemoth_04 } }
 				}
 				set_country_flag = about_to_die_behemoth
 				country_event = { id = biocrisis.265 }
@@ -2556,8 +2699,24 @@ planet_event = {
 	}
 
 	immediate = {
+		if = { # Vfix safety
+			limit = {
+				exists = from
+				from = { is_scope_valid = yes }
+			}
+			from = { save_event_target_as = old_capital }
+		}
 		owner = {
-			abort_special_project = { type = BEHEMOTH_CRISIS_SPECIAL_PROJECT_4 location = from }
+			if = { # Vfix safety
+				limit = { exists = event_target:old_capital }
+				abort_special_project = {
+					type = BEHEMOTH_CRISIS_SPECIAL_PROJECT_4
+					location = event_target:old_capital
+				}
+			}
+			else = {
+				abort_special_project = { type = BEHEMOTH_CRISIS_SPECIAL_PROJECT_4 }
+			}
 		}
 		enable_special_project = {
 			name = BEHEMOTH_CRISIS_SPECIAL_PROJECT_4

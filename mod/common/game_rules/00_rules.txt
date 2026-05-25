@@ -1660,12 +1660,11 @@ can_get_colony_events = {
 # This = Planet
 is_new_colony = {
 	is_colony = yes # Vfix log
+	is_under_colonization = no # Vfix log
+	# is_colonizable = no # Vfix log
 	colony_age < 180
 	pop_amount < 1000
-	NOR = {
-		is_under_colonization = yes # Vfix log
-		has_planet_flag = synth_queen_bastille
-	}
+	NOT = { has_planet_flag = synth_queen_bastille }
 }
 
 # This = pop_group

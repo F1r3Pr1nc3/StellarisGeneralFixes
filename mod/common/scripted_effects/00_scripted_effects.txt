@@ -5815,7 +5815,10 @@ give_society_tech_tier_1_effect = {
 	give_technology = { tech = tech_planetary_unification }
 	give_technology = { tech = tech_adaptive_bureaucracy }
 	if = {
-		limit = { is_regular_empire = yes }
+		limit = {
+			is_regular_empire = yes
+			allows_slavery = yes # Vfix log
+		}
 		give_technology = { tech = tech_neural_implants }
 	}
 	if = {
@@ -5956,7 +5959,10 @@ give_society_tech_tier_2_effect = {
 		give_technology = { tech = tech_wilderness_cluster }
 	}
 	if = {
-		limit = { is_gestalt = no }
+		limit = {
+			is_gestalt = no
+			has_technology = tech_neural_implants # Vfix log
+		}
 		give_technology = { tech = tech_slave_colonies }
 	}
 	if = {

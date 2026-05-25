@@ -1199,7 +1199,7 @@ country_event = {
 		set_country_flag = lcluster_opener
 		set_global_flag = l_cluster_opened
 		# Spawn L-Cluster
-		country_event = { id = distar.11000}
+		country_event = { id = distar.11000 }
 		### Vfix safety: Set 1st L-Gate as Target
 		if = {
 			limit = {
@@ -1212,16 +1212,12 @@ country_event = {
 					from = { is_scope_type = ship }
 					exists = from.solar_system
 				}
-				from.solar_system = {
-					save_event_target_as = candidate_gateway_system
-				}
+				from.solar_system = { save_event_target_as = candidate_gateway_system }
 			}
 			else_if = {
 				limit = { exists = event_target:candidate_gateway }
 				event_target:candidate_gateway = {
-					solar_system = {
-						save_event_target_as = candidate_gateway_system
-					}
+					solar_system = { save_event_target_as = candidate_gateway_system }
 				}
 			}
 			else = {
@@ -1237,9 +1233,7 @@ country_event = {
 						}
 						every_owned_ship = {
 							limit = { is_ship_class = shipclass_science_ship }
-							solar_system = {
-								save_event_target_as = candidate_gateway_system
-							}
+							solar_system = { save_event_target_as = candidate_gateway_system }
 						}
 					}
 				}
@@ -1254,9 +1248,7 @@ country_event = {
 						is_megastructure_type = lgate_base
 						NOT = { has_megastructure_flag = lgate_activated }
 					}
-					solar_system = {
-						save_event_target_as = candidate_gateway_system
-					}
+					solar_system = { save_event_target_as = candidate_gateway_system }
 				}
 			}
 		}
@@ -1286,9 +1278,6 @@ country_event = {
 				set_megastructure_flag = lgate_activated
 			}
 		}
-
-
-
 		# outcome, to be determined at game start
 		if = {
 			limit = { has_global_flag = gray_goo_crisis_set }
@@ -1309,7 +1298,6 @@ country_event = {
 				country_event = { id = distar.10960 days = 200 random = 500 }
 			}
 		}
-
 		# activate terminal egress l-gate
 		event_target:lcluster1 = {
 			every_system_megastructure = {
@@ -1351,7 +1339,6 @@ country_event = {
 			country_event = { id = distar.10953 days = 1 }
 		}
 		observer_event = { id = observer.62 }
-
 		### Vfix: Technology Control (AFTER graygoo.100)
 		every_playable_country = {
 			limit = {

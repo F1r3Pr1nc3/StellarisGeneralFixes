@@ -649,16 +649,12 @@ citizenship_slavery = {
 
 	potential = {
 		exists = from
-		NOR = { # Vfix opt
-			from = {
-				is_wilderness_empire = yes
-			}
-			AND = {
-				from = { is_individual_machine = yes }
-				is_robotic = yes
-			}
-			is_disconnected_drone_pop = yes
+		from = { is_wilderness_empire = no }
+		OR = { # Vfix
+			is_robotic = no
+			from = { is_individual_machine = yes }
 		}
+		is_disconnected_drone_pop = no
 	}
 
 	allow = {

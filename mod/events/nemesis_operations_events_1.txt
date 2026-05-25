@@ -4494,7 +4494,7 @@ country_event = {
 	picture = GFX_evt_operative_chase
 	show_sound = event_default
 	is_triggered_only = yes
-	location = from.target.capital_scope
+	location = event_target:operative_target.capital_scope
 
 	trigger = {
 		exists = from
@@ -4504,6 +4504,7 @@ country_event = {
 
 	immediate = {
 		from = {
+			target = { save_event_target_as = operative_target } # Vfix safety
 			set_espionage_operation_progress_locked = yes
 			operation_choose_operative_role = yes # for scripted loc.
 		}
@@ -4512,18 +4513,18 @@ country_event = {
 			1 = {
 				modifier = {
 					factor = 0
-					from.target = { is_gestalt = yes }
+					event_target:operative_target = { is_gestalt = yes }
 				}
 				modifier = {
 					factor = 2
 					OR = {
-						has_opposing_ethics = { COUNTRY1 = root COUNTRY2 = from.target }
+						has_opposing_ethics = { COUNTRY1 = root COUNTRY2 = event_target:operative_target }
 						AND = {
 							OR = {
 								is_autocracy = yes
 								is_oligarchy = yes
 							}
-							from.target = { has_valid_civic = civic_shared_burden }
+							event_target:operative_target = { has_valid_civic = civic_shared_burden }
 						}
 					}
 				}
@@ -4533,7 +4534,7 @@ country_event = {
 				modifier = {
 					factor = 2
 					root = {
-						relative_encryption_decryption = { target = from.target value < 0.7 }
+						relative_encryption_decryption = { target = event_target:operative_target value < 0.7 }
 					}
 				}
 				set_country_flag = operative_defects_turned
@@ -4559,13 +4560,13 @@ country_event = {
 						}
 						no_scope = {
 							any_spynetwork = {
-								is_owned_by = from.target
+								is_owned_by = event_target:operative_target # Vfix
 								target = { is_same_value = root }
 							}
 						}
 					}
 					owner = { save_event_target_as = insidious_plot_country }
-					target = {
+					event_target:operative_target = {
 						country_event = { id = espionage.1070 days = 10 } # Hostile Infiltration Detected
 					}
 				}
@@ -4573,13 +4574,13 @@ country_event = {
 					limit = {
 						no_scope = {
 							any_spynetwork = {
-								is_owned_by = root.from.target # Vfix
+								is_owned_by = event_target:operative_target # Vfix
 								target = { is_same_value = root }
 							}
 						}
 					}
 					owner = { save_event_target_as = insidious_plot_country }
-					target = {
+					event_target:operative_target = {
 						country_event = { id = espionage.1080 days = 10 } # Insidious Plot Uncovered
 					}
 				}
@@ -4609,13 +4610,13 @@ country_event = {
 							}
 							no_scope = { # makes any_spynetwork check any in the game
 								any_spynetwork = {
-									is_owned_by = from.target
+									is_owned_by = event_target:operative_target # Vfix
 									target = { is_same_value = root }
 								}
 							}
 						}
 						owner = { save_event_target_as = insidious_plot_country }
-						target = {
+						event_target:operative_target = {
 							country_event = { id = espionage.1070 days = 10 } # Hostile Infiltration Detected
 						}
 					}
@@ -4623,13 +4624,13 @@ country_event = {
 						limit = {
 							no_scope = { # makes any_spynetwork check any in the game
 								any_spynetwork = {
-									is_owned_by = from.target
+									is_owned_by = event_target:operative_target # Vfix
 									target = { is_same_value = root }
 								}
 							}
 						}
 						owner = { save_event_target_as = insidious_plot_country }
-						target = {
+						event_target:operative_target = {
 							country_event = { id = espionage.1080 days = 10 } # Insidious Plot Uncovered
 						}
 					}
@@ -4657,7 +4658,7 @@ country_event = {
 			factor = 5
 			modifier = {
 				factor = 4
-				relative_encryption_decryption = { target = from.target value < 0.85 }
+				relative_encryption_decryption = { target = event_target:operative_target value < 0.85 }
 			}
 		}
 	}
