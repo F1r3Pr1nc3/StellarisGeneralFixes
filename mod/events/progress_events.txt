@@ -1446,8 +1446,10 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		owner = {
-			num_owned_planets > 2
-			NOT = { has_country_flag = first_colony }
+			NOR = {
+				num_owned_planets <= 2
+				has_country_flag = first_colony
+			}
 		}
 	}
 
@@ -1576,7 +1578,7 @@ country_event = {
 			hidden_effect = {
 				while = {
 					count = 5
-					weighted_random_owned_pop_group = {
+					random_owned_pop_group = {
 						limit = {
 							is_same_species = owner_species
 							has_any_ethic = yes

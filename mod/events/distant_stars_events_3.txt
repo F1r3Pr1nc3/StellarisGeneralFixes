@@ -1437,8 +1437,10 @@ event = {
 				is_country_type = default
 				has_communications = prev
 				has_event_chain = l_cluster_chain
-				check_variable = { which = num_lcluster_clues value > 5 }
-				NOT = { has_country_flag = lgate_warned@prev }
+				NOR = {
+					check_variable = { which = num_lcluster_clues value <= 5 }
+					has_country_flag = lgate_warned@prev
+				}
 				any_owned_megastructure = { is_megastructure_type = lgate_base }
 			}
 		}
@@ -1456,8 +1458,10 @@ event = {
 					is_country_type = default
 					has_communications = prev
 					has_event_chain = l_cluster_chain
-					check_variable = { which = num_lcluster_clues value > 5 }
-					NOT = { has_country_flag = lgate_warned@prev }
+					NOR = {
+						check_variable = { which = num_lcluster_clues value <= 5 }
+						has_country_flag = lgate_warned@prev
+					}
 					any_owned_megastructure = { is_megastructure_type = lgate_base }
 				}
 			}
@@ -1466,8 +1470,10 @@ event = {
 					is_country_type = default
 					has_communications = prev
 					has_event_chain = l_cluster_chain
-					check_variable = { which = num_lcluster_clues value > 5 }
-					NOT = { has_country_flag = lgate_warned@prev }
+					NOR = {
+						check_variable = { which = num_lcluster_clues value <= 5 }
+						has_country_flag = lgate_warned@prev
+					}
 					any_owned_megastructure = { is_megastructure_type = lgate_base }
 				}
 				save_event_target_as = lgate_warning_country

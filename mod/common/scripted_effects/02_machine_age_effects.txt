@@ -258,7 +258,7 @@ cyberize_pops_effect = {
 			if = {
 				limit = {
 					event_target:cyberspecies_current = {
-						NOT = { is_same_species = prev }
+						NOT = { is_same_species = prev.owner_species }
 						# NAND = {
 						# 	is_same_species = prev.owner_species
 						# 	is_subspecies = prev.owner_species
@@ -402,8 +402,10 @@ cyberize_creed_pops_effect = {
 			exists = event_target:cyberspecies_current
 			any_owned_pop_group = {
 				is_same_species = owner_species
-				pop_group_size > 0
-				NOT = { has_trait = trait_cybernetic }
+				NOR = {
+					pop_group_size <= 0
+					has_trait = trait_cybernetic
+				}
 			}
 		}
 		[[SINGLE_LOOP]
@@ -691,7 +693,7 @@ synthesize_pops_effect = {
 		while = {
 			limit = {
 				any_owned_species = {
-					is_same_species = prev
+					is_same_species = prev.owner_species
 					NOT = { has_trait = trait_mechanical }
 				}
 			}

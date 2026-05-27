@@ -2772,8 +2772,10 @@ country_event = {
 			count = 3
 			random_owned_planet = {
 				limit = {
-					num_districts = { type = district_generator value > 3 }
-					NOT = { has_modifier = contingency_sabotage }
+					NOR = {
+						num_districts = { type = district_generator value <= 3 }
+						has_modifier = contingency_sabotage
+					}
 				}
 				add_modifier = { modifier = "contingency_sabotage" years = 5 }
 			}
@@ -4049,15 +4051,17 @@ country_event = {
 	trigger = {
 		is_ai = no
 		has_global_flag = cybrex_resurface
-		check_variable = { which = "contingency_fleet_kills" value > 100 }
 		NOR = {
+			check_variable = { which = "contingency_fleet_kills" value <= 100 }
 			has_global_flag = cybrex_destroyed
 			has_country_flag = cybrex_donation
 		}
 		exists = event_target:cybrex
 		event_target:cybrex = { # Vfix opt
-			count_controlled_ship = { count > 30 }
-			NOT = { root = { is_at_war_with = prev } }
+			NOR = {
+				count_controlled_ship = { count <= 30 }
+				root = { is_at_war_with = prev }
+			}
 		}
 	}
 
@@ -4188,8 +4192,10 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		owner = { is_country_type = ai_empire }
-		planet_devastation > 99
-		NOT = { is_planet_class = pc_ai }
+		NOR = {
+			planet_devastation <= 99
+			is_planet_class = pc_ai
+		}
 		from = { is_country_type = cybrex_empire }
 	}
 

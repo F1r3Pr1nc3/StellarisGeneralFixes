@@ -4425,8 +4425,8 @@ resolution_emperor_restore_council = {
 		}
 		modifier = {
 			factor = 0.8
-			galactic_community_rank > 5
-			NOT = {
+			NOR = {
+				galactic_community_rank <= 5
 				AND = {
 					is_subject = yes
 					overlord = {

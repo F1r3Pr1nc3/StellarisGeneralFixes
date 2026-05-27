@@ -272,8 +272,8 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = burned_forests
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = burned_forest_precious
 			has_planet_flag = burned_forest_minerals
 		}
@@ -316,8 +316,8 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = burned_forests
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = burned_forest_precious
 			has_planet_flag = burned_forest_minerals
 			has_any_strategic_resource = yes
@@ -361,8 +361,10 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = burned_forests
-		pop_amount >= 100
-		NOT = { has_planet_flag = burned_forest_damage }
+		NOR = {
+			pop_amount < 100
+			has_planet_flag = burned_forest_damage
+		}
 	}
 
 	immediate = {
@@ -395,8 +397,10 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = forest_pheremones
-		pop_amount >= 100
-		NOT = { has_planet_flag = forest_pheremones_adaptation }
+		NOR = {
+			pop_amount < 100
+			has_planet_flag = forest_pheremones_adaptation
+		}
 	}
 
 	immediate = {
@@ -429,8 +433,10 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = forest_pheremones
-		pop_amount >= 100
-		NOT = { has_planet_flag = forest_pheremones_studies }
+		NOR = {
+			pop_amount < 100
+			has_planet_flag = forest_pheremones_studies
+		}
 	}
 
 	immediate = {
@@ -470,8 +476,10 @@ planet_event = {
 
 	trigger = {
 		has_planet_flag = forest_pheremones
-		pop_amount >= 100
-		NOT = { has_planet_flag = forest_pheremones_fire }
+		NOR = {
+			pop_amount < 100
+			has_planet_flag = forest_pheremones_fire
+		}
 	}
 
 	immediate = {
@@ -553,8 +561,8 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			owner = {
 				OR = {
 					is_ai = yes
@@ -1938,8 +1946,10 @@ planet_event = {
 				owner = { is_ai = no }
 				# has_planet_flag = abandoned_terraforming_planet
 				has_planet_flag = colony_event
-				pop_amount > 100
-				NOT = { has_modifier = "abandoned_terraforming" }
+				NOR = {
+					pop_amount <= 100
+					has_modifier = "abandoned_terraforming"
+				}
 			}
 			if = {
 				limit = { has_planet_flag = did_not_terraform }
@@ -2929,8 +2939,8 @@ planet_event = {
 			has_planet_flag = colony_event
 		}
 		is_planet_class = pc_nuked
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = nuked_planet_anomalies_disabled
 			has_planet_flag = pre_ftls_nuked_themselves
 			solar_system = { is_capital_system = yes }
@@ -3238,8 +3248,8 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = wasteland_nuclear_bomb
 			solar_system = { is_capital_system = yes }
 			owner = { has_country_flag = had_colony_155 }
@@ -3331,8 +3341,8 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = wasteland_particle_accelerator
 			solar_system = { is_capital_system = yes }
 			owner = { has_country_flag = had_colony_160 }
@@ -3383,8 +3393,8 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			NOT = { has_planet_flag = nuked_planet_anomalies_disabled }
 		}
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = wasteland_infrastructure
 			solar_system = { is_capital_system = yes }
 			owner = { has_country_flag = had_colony_161 }
@@ -3433,8 +3443,8 @@ planet_event = {
 			has_planet_flag = colony_event
 		}
 		is_planet_class = pc_nuked
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = wasteland_space_station
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = nuked_planet_anomalies_disabled
@@ -3506,8 +3516,8 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = armageddon_nuked
 		}
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = colony_event
 			has_planet_flag = wasteland_radiation
 			solar_system = { is_capital_system = yes }
@@ -3563,8 +3573,8 @@ planet_event = {
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = armageddon_nuked
 		}
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = colony_event
 			has_planet_flag = wasteland_pacifist_movement
 			solar_system = { is_capital_system = yes }
@@ -3653,8 +3663,8 @@ planet_event = {
 			has_planet_flag = colony_event
 		}
 		is_planet_class = pc_nuked
-		pop_amount >= 100
 		NOR = {
+			pop_amount < 100
 			has_planet_flag = wasteland_orbital_debris
 			has_planet_flag = pre_ftls_nuked_themselves
 			has_planet_flag = nuked_planet_anomalies_disabled
@@ -3852,9 +3862,9 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		pop_amount >= 100
-		years_passed < 50
 		NOR = {
+			pop_amount < 100
+			years_passed >= 50
 			owner = {
 				OR = {
 					is_ai = yes

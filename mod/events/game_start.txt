@@ -352,8 +352,10 @@ event = {
 		# give them default origin instead.
 		if = {
 			limit = {
-				check_galaxy_setup_value = { setting = num_advanced_empires value <= 0 }
-				NOT = { any_playable_country = { is_ai = no has_slave_origin = yes } }
+				NOR = {
+					check_galaxy_setup_value = { setting = num_advanced_empires value > 0 }
+					any_playable_country = { is_ai = no has_slave_origin = yes }
+				}
 			}
 			every_playable_country = {
 				limit = { has_slave_origin = yes }
@@ -626,9 +628,9 @@ event = {
 						is_planet_class = pc_barren
 						is_planet_class = pc_barren_cold
 					}
-					planet_size > 9
-					planet_size < 31
 					NOR = {
+						planet_size <= 9
+						planet_size >= 31
 						has_deposit = d_nanites_deposit
 						has_anomaly = yes
 						has_modifier = terraforming_candidate
@@ -651,9 +653,9 @@ event = {
 				every_system_planet = {
 					limit = {
 						is_planet_class = pc_frozen
-						planet_size > 9
-						planet_size < 31
 						NOR = {
+							planet_size <= 9
+							planet_size >= 31
 							has_deposit = d_nanites_deposit
 							has_anomaly = yes
 							has_modifier = frozen_terraforming_candidate
@@ -677,9 +679,9 @@ event = {
 				every_system_planet = {
 					limit = {
 						is_planet_class = pc_toxic
-						planet_size > 9
-						planet_size < 31
 						NOR = {
+							planet_size <= 9
+							planet_size >= 31
 							has_deposit = d_nanites_deposit
 							has_anomaly = yes
 							has_modifier = toxic_terraforming_candidate

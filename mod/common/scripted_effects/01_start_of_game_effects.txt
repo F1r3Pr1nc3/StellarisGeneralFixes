@@ -1545,7 +1545,7 @@ generate_start_pops = {
 		while = {
 			count = 10
 			random_owned_pop_group = {
-				limit = { is_same_species = root }
+				limit = { is_same_species = root.owner_species }
 				kill_single_pop = yes
 			}
 		}
@@ -2235,7 +2235,7 @@ void_dweller_home_planet_setup = {
 		}
 		while = {
 			count = 4
-			weighted_random_owned_pop_group = {
+			random_owned_pop_group = {
 				limit = {
 					is_pop_category = worker
 					is_robotic_species = no

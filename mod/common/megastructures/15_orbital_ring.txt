@@ -150,8 +150,10 @@ orbital_ring = {
 		modifier = {
 			factor = 3
 			any_system_colony = {
-				pop_amount >= 5000
-				NOT = { exists = orbital_defence }
+				NOR = {
+					pop_amount < 5000
+					exists = orbital_defence
+				}
 			}
 		}
 	}

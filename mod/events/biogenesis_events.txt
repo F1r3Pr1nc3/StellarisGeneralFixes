@@ -916,8 +916,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 20
-		NOT = { has_situation_flag = biogenesis_50_fire }
+		NOR = {
+			situation_progress < 20
+			has_situation_flag = biogenesis_50_fire
+		}
 		has_situation_flag = purity_approach_selected
 	}
 
@@ -1235,8 +1237,8 @@ situation_event = {
 
 	trigger = {
 		exists = owner
-		situation_progress >= 20
 		NOR = {
+			situation_progress < 20
 			owner = {
 				OR = {
 					has_origin = origin_legendary_leader
@@ -1938,8 +1940,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 20
-		NOT = { has_situation_flag = biogenesis_110_fire }
+		NOR = {
+			situation_progress < 20
+			has_situation_flag = biogenesis_110_fire
+		}
 		has_situation_flag = purity_approach_selected
 	}
 
@@ -2162,8 +2166,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 20
-		NOT = { has_situation_flag = biogenesis_130_fire }
+		NOR = {
+			situation_progress < 20
+			has_situation_flag = biogenesis_130_fire
+		}
 		has_situation_flag = cloning_approach_selected
 	}
 
@@ -2401,8 +2407,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 20
-		NOT = { has_situation_flag = biogenesis_150_fire }
+		NOR = {
+			situation_progress < 20
+			has_situation_flag = biogenesis_150_fire
+		}
 		has_situation_flag = mutation_approach_selected
 	}
 
@@ -3744,8 +3752,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 5
-		NOT = { has_situation_flag = biogenesis_295_fire }
+		NOR = {
+			situation_progress < 5
+			has_situation_flag = biogenesis_295_fire
+		}
 	}
 
 	immediate = {
@@ -3793,8 +3803,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 5
-		NOT = { has_situation_flag = biogenesis_300_fire }
+		NOR = {
+			situation_progress < 5
+			has_situation_flag = biogenesis_300_fire
+		}
 		owner = {
 			any_owned_leader = {
 				NOR = {
@@ -3897,15 +3909,12 @@ situation_event = {
 	option = {
 		name = bio.310.a
 		owner = {
-			while = {
-				count = 1
-				weighted_random_owned_pop_group = {
-					limit = {
-						is_same_species = prev
-						pop_group_size > 100
-					}
-					kill_single_pop = yes
+			weighted_random_owned_pop_group = {
+				limit = {
+					is_same_species = prev
+					# pop_group_size > 100 double
 				}
+				kill_single_pop = yes
 			}
 			add_modifier = { modifier = biological_corrections years = 5 }
 		}
@@ -5494,15 +5503,19 @@ country_event = {
 
 	desc = {
 		trigger = {
-			check_variable = { which = smuggle_pops_amount value <= 4 }
-			NOT = { any_owned_planet = { is_planet_class = pc_cosmogenesis_world } }
+			NOR = {
+				check_variable = { which = smuggle_pops_amount value > 4 }
+				any_owned_planet = { is_planet_class = pc_cosmogenesis_world }
+			}
 		}
 		text = bio.915.desc
 	}
 	desc = {
 		trigger = {
-			check_variable = { which = smuggle_pops_amount value > 4 }
-			NOT = { any_owned_planet = { is_planet_class = pc_cosmogenesis_world } }
+			NOR = {
+				check_variable = { which = smuggle_pops_amount value <= 4 }
+				any_owned_planet = { is_planet_class = pc_cosmogenesis_world }
+			}
 		}
 		text = bio.915.desc.detected
 	}
@@ -5811,8 +5824,8 @@ country_event = {
 				from.target = {
 					random_owned_pop_group = {
 						limit = {
-							can_be_smuggled = yes
 							is_same_species = root
+							can_be_smuggled = yes
 						}
 						weights = {
 							base = 5
@@ -6001,10 +6014,14 @@ fleet_event = {
 	trigger = {
 		from = { has_star_flag = last_thought_system }
 		is_cloaked = no
-		exists = owner
+		can_generate_trade_value = yes # Vfix compt
+		# exists = owner
 		owner = {
-			is_country_type = default
+			# is_country_type = default
 			has_country_flag = warned_about_last_thought
+			exists = event_target:fallen_empire_hive_war # Vfix
+			exists = event_target:fallen_empire_hive_growth # Vfix
+			exists = event_target:fallen_empire_hive_control # Vfix
 			NOR = {
 				has_country_flag = pending_hive_fe_demand
 				has_country_flag = recent_entered_last_thought
@@ -6013,11 +6030,10 @@ fleet_event = {
 				is_at_war_with = event_target:fallen_empire_hive_control
 			}
 		}
-		any_country = {
-			has_country_flag = fallen_empire_hive_war # checking for all the fallen empires to make sure that they can make good on their threats
-		}
-		any_country = { has_country_flag = fallen_empire_hive_growth }
-		any_country = { has_country_flag = fallen_empire_hive_control }
+		# checking for all the fallen empires to make sure that they can make good on their threats
+		# any_country = { has_country_flag = fallen_empire_hive_war }
+		# any_country = { has_country_flag = fallen_empire_hive_growth }
+		# any_country = { has_country_flag = fallen_empire_hive_control }
 	}
 
 	immediate = {
@@ -6044,10 +6060,13 @@ fleet_event = {
 				add_opinion_modifier = { who = root.owner modifier = opinion_refused_fallen_empire_demand }
 			}
 			owner = { remove_country_flag = pending_hive_fe_demand }
-		}
-		event_target:fallen_empire_hive_forgotten = {
-			set_hostile = root.owner
-			establish_communications_no_message = root.owner
+			if = { # Vfix?
+				limit = { exists = event_target:fallen_empire_hive_forgotten }
+				event_target:fallen_empire_hive_forgotten = {
+					set_hostile = root.owner
+					establish_communications_no_message = root.owner
+				}
+			}
 		}
 		ai_chance = { factor = 0 }
 	}
@@ -6078,7 +6097,7 @@ country_event = {
 
 	trigger = {
 		is_ai = no
-		is_country_type = default
+		# is_country_type = default
 		is_at_war = no
 		exists = event_target:fallen_empire_hive_war
 		event_target:fallen_empire_hive_war = {
@@ -6322,9 +6341,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_ai = no
-		is_country_type = default
 		NOR = {
+			is_ai = yes
 			is_at_war = yes
 			has_country_flag = tasked_with_war
 			has_country_flag = beat_unfortuante_country
@@ -6502,9 +6520,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_ai = no
-		is_country_type = default
 		NOR = {
+			is_ai = yes
 			has_country_flag = tasked_with_peace
 			has_country_flag = recently_tasked_with_peace
 			has_country_flag = tasked_with_war
@@ -6610,14 +6627,16 @@ country_event = {
 
 	trigger = {
 		is_ai = no
-		is_country_type = default
+		# is_country_type = default
 		is_at_war = no
 		count_planet_within_border = {
 			count > 2
 			limit = {
 				habitable_planet_not_urban = yes
-				pop_amount > 1000
-				NOT = { has_planet_flag = had_growth_fe_modifier }
+				NOR = {
+					pop_amount <= 1000
+					has_planet_flag = had_growth_fe_modifier
+				}
 			}
 		}
 		exists = event_target:fallen_empire_hive_growth
@@ -6675,16 +6694,18 @@ country_event = {
 		random_owned_planet = {
 			limit = {
 				habitable_planet_not_urban = yes
-				pop_amount > 1000
-				NOT = { has_planet_flag = had_growth_fe_modifier }
+				NOR = {
+					pop_amount <= 1000
+					has_planet_flag = had_growth_fe_modifier
+				}
 			}
 			save_event_target_as = target_planet
 		}
 		random_owned_planet = {
 			limit = {
 				habitable_planet_not_urban = yes
-				pop_amount > 1000
 				NOR = {
+					pop_amount <= 1000
 					has_planet_flag = had_growth_fe_modifier
 					is_same_value = event_target:target_planet
 				}
@@ -7006,7 +7027,7 @@ country_event = {
 
 	trigger = {
 		is_ai = no
-		is_country_type = default
+		# is_country_type = default
 		is_at_war = no
 		has_organic_pops = yes
 		is_wilderness_empire = no
@@ -7417,7 +7438,7 @@ country_event = {
 
 	trigger = {
 		is_ai = no
-		is_country_type = default
+		# is_country_type = default
 		is_at_war = no
 		has_organic_pops = yes
 		any_owned_species = { has_interesting_species_trait = yes }
@@ -7783,7 +7804,7 @@ country_event = {
 
 	trigger = {
 		is_ai = no
-		is_country_type = default
+		# is_country_type = default
 		is_at_war = no
 		exists = event_target:fallen_empire_hive_control
 		event_target:fallen_empire_hive_control = {
@@ -7970,7 +7991,7 @@ country_event = {
 
 	trigger = {
 		is_ai = no
-		is_country_type = default
+		# is_country_type = default
 		is_at_war = no
 		is_galactic_community_member = yes
 		galactic_community_rank <= 5 # If you are in the top 5 then you can get this event
@@ -8134,8 +8155,8 @@ country_event = {
 
 	trigger = {
 		is_country_type = default
-		years_passed > 20
 		NOR = {
+			years_passed <= 20
 			is_ai = yes
 			is_at_war = yes
 			has_country_flag = recently_cleaned_borders
@@ -8159,21 +8180,21 @@ country_event = {
 					}
 				}
 				any_system_colony = { has_owner = yes is_owned_by = root }
-			}
-			count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
-				count >= 3
-				limit = {
-					NAND = {
+				count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
+					count < 3
+					limit = {
+						NAND = {
+							exists = starbase.owner
+							starbase.owner = { is_same_value = root }
+						}
+					}
+				}
+				count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
+					count >= 2
+					limit = {
 						exists = starbase.owner
 						starbase.owner = { is_same_value = root }
 					}
-				}
-			}
-			count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
-				count < 2
-				limit = {
-					exists = starbase.owner
-					starbase.owner = { is_same_value = root }
 				}
 			}
 		}
@@ -8214,21 +8235,21 @@ country_event = {
 						}
 					}
 					any_system_colony = { has_owner = yes is_owned_by = root }
-				}
-				count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
-					count >= 3
-					limit = {
-						NAND = {
+					count_neighbor_system = { # Then we look for systems that border 2 or more systems that you don't own # Then we look for systems that border 2 or more systems that you don't own
+						count < 3
+						limit = {
+							NAND = {
+								exists = starbase.owner
+								starbase.owner = { is_same_value = root }
+							}
+						}
+					}
+					count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
+						count >= 2
+						limit = {
 							exists = starbase.owner
 							starbase.owner = { is_same_value = root }
 						}
-					}
-				}
-				count_neighbor_system = { # But we will not flag it if the system is connected to 2 or more of your own systems
-					count < 2
-					limit = {
-						exists = starbase.owner
-						starbase.owner = { is_same_value = root }
 					}
 				}
 			}
@@ -8578,9 +8599,12 @@ fleet_event = {
 				add_resource = { feral_insight = 3000 }
 			}
 		}
-		event_target:fallen_empire_hive_forgotten = {
-			set_hostile = root.owner
-			establish_communications_no_message = root.owner
+		if = { # Vfix?
+			limit = { exists = event_target:fallen_empire_hive_forgotten }
+			event_target:fallen_empire_hive_forgotten = {
+				set_hostile = root.owner
+				establish_communications_no_message = root.owner
+			}
 		}
 	}
 

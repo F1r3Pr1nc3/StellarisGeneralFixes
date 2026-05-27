@@ -1944,8 +1944,8 @@ event = {
 				limit = {
 					has_modifier = pacified_amoebas
 					any_system_within_border = {
-						num_planets_in_system > 1
 						NOR = {
+							num_planets_in_system <= 1
 							any_system_colony = { has_owner = yes }
 							any_fleet_in_system = {
 								owner = { is_amoeba_country_type = yes }
@@ -1976,8 +1976,8 @@ event = {
 				}
 				random_system_within_border = {
 					limit = {
-						num_planets_in_system > 1
 						NOR = {
+							num_planets_in_system <= 1
 							any_system_colony = { has_owner = yes }
 							any_fleet_in_system = {
 								owner = { is_amoeba_country_type = yes }
@@ -2037,8 +2037,8 @@ event = {
 		}
 		if = {
 			limit = {
-				years_passed > 48
 				NOR = {
+					years_passed <= 48
 					has_global_flag = amoeba_garrison_spawn_cooldown
 					has_global_flag = no_more_amoeba_garrison_spawns
 				}

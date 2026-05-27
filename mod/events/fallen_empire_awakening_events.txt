@@ -106,6 +106,7 @@ country_event = {
 		modifier = {
 			factor = 0.1
 			has_origin = origin_fallen_empire_hive
+			exists = event_target:fallen_empire_hive_forgotten # Vfix
 			event_target:fallen_empire_hive_forgotten = { num_fleets = 0 }
 		}
 	}
@@ -613,8 +614,8 @@ country_event = {
 		random_system = {
 			limit = { has_star_flag = last_thought_system }
 			create_starbase = {
-				size = "starbase_outpost"
 				owner = root
+				size = starbase_fe_outpost # Vfix
 				effect = {
 					while = {
 						count = 2
@@ -623,8 +624,11 @@ country_event = {
 				}
 			}
 		}
-		event_target:fallen_empire_hive_forgotten = {
-			every_owned_fleet = { set_owner = root }
+		if = {  # Vfix
+			limit = { exists = event_target:fallen_empire_hive_forgotten }
+			event_target:fallen_empire_hive_forgotten = {
+				every_owned_fleet = { set_owner = root }
+			}
 		}
 		add_awakened_fallen_empire_resources = yes
 		add_awakened_fallen_empire_fleet = yes

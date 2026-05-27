@@ -439,8 +439,10 @@ planet_event = {
 	trigger = {
 		has_modifier = "titanic_life"
 		owner = { has_origin = origin_primal_calling }
-		pop_amount >= 1
-		NOT = { has_planet_flag = titanic_life_colony_flag }
+		NOR = {
+			pop_amount < 1
+			has_planet_flag = titanic_life_colony_flag
+		}
 	}
 
 	immediate = {

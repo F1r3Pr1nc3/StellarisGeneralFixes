@@ -271,38 +271,35 @@ planet_event = {
 # 2 years penalty cooldown should be fine
 # By on_fleet_disbanded
 # from = fleet
-country_event = {
-	id = limited_army_counter_fix.6
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		exists = from
-		from = { is_ship_class = shipclass_transport }
-		is_limited_army_country = yes
-		any_owned_army = {
-			exists = fleet
-			is_limited_army = yes
-			fleet = { is_same_value = from }
-		}
-	}
-
-	immediate = {
-		every_owned_army = {
-			limit = {
-				exists = fleet
-				fleet = { is_same_value = from }
-				is_limited_army = yes
-				root = {
-					NOT = { has_country_flag = army_counter_decremented@prev }
-				}
-			}
-			# log="\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
-			decrement_army_count = yes
-		}
-	}
-}
-
+# country_event = {
+# 	id = limited_army_counter_fix.6
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = {
+# 		exists = from
+# 		from = { is_ship_class = shipclass_transport }
+# 		is_limited_army_country = yes
+# 		any_owned_army = {
+# 			exists = fleet
+# 			is_limited_army = yes
+# 			fleet = { is_same_value = from }
+# 		}
+# 	}
+# 	immediate = {
+# 		every_owned_army = {
+# 			limit = {
+# 				exists = fleet
+# 				fleet = { is_same_value = from }
+# 				is_limited_army = yes
+# 				root = {
+# 					NOT = { has_country_flag = army_counter_decremented@prev }
+# 				}
+# 			}
+# 			# log="\\[Root.GetName] has a limited army disbanded \\[This.GetName]"
+# 			decrement_army_count = yes
+# 		}
+# 	}
+# }
 # By on_colony_destroyed
 planet_event = {
 	id = limited_army_counter_fix.7

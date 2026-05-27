@@ -1065,10 +1065,6 @@ situation_event = {
 					country_event = { id = biocrisis.155 }
 					set_country_flag = voidspawn_boss_met
 				}
-				if = { # Vfix: for path tracking
-					limit = { exists = event_target:voidspawn_spawn_location }
-					event_target:voidspawn_spawn_location = { set_star_flag = voidspawn_spawn_location }
-				}
 			}
 		}
 	}
@@ -1088,7 +1084,6 @@ fleet_event = {
 
 	immediate = {
 		# Vfix: disabled because no worky
-		# auto_follow_fleet = { target = event_target:target_behemoth attack_fleet = yes }
 		# queue_actions = { # Make sure the Voidspawn doesn't lose its target
 		# 	move_to = star
 		# 	wait = 10
@@ -1097,30 +1092,13 @@ fleet_event = {
 		# 		trigger = {
 		# 			id = "biocrisis_151"
 		# 			owner = { has_ascension_perk = ap_behemoths }
-		# 			# is_ship_size = behemoth_04
 		# 			any_owned_ship = { is_ship_size = behemoth_04 }
 		# 		}
 		# 		found_fleet = { move_to = this }
-		# 		failed = {
-		# 			wait = { duration = 60 }
-		# 			find_closest_system = {
-		# 				trigger = {
-		# 					id = "biocrisis_151.failed"
-		# 					is_rim_system = yes
-		# 				}
-		# 				found_system = { move_to = this }
-		# 				failed = {
-		# 					effect = {
-		# 						id = "biocrisis_150.failed"
-		# 						log = "Voidspawn path track failed \\[solar_system.GetName]"
-		# 					}
-		# 				}
-		# 			}
-		# 		}
 		# 	}
 		# }
 		solar_system = {
-			add_modifier = { modifier = voidspawn_system_mod days = 630 }
+			add_modifier = { modifier = voidspawn_system_mod months = 22 }
 			every_fleet_in_system = {
 				limit = { is_cloaked = yes }
 				set_cloaking_active = no
@@ -1170,41 +1148,52 @@ fleet_event = {
 						exists = event_target:target_behemoth.solar_system
 						# has_hyperlane_to = event_target:target_behemoth.solar_system
 					}
-					# log = "Voidspawn path \\[event_target:target_behemoth.solar_system.GetName]"
-					ordered_neighbor_system = {
+					if = {
 						limit = {
-							NOR = {
-								has_star_flag = voidspawn_spawn_location
-								is_same_value = prev
-								has_modifier = voidspawn_system_mod
+							has_hyperlane_to = event_target:target_behemoth.solar_system
+							root = {
+								can_access_system = event_target:target_behemoth.solar_system
 							}
 						}
-						position = 0
-						order_by = value:distance_to_target|TARGET|event_target:target_behemoth.solar_system|
-						inverse = yes
-						save_event_target_as = voidspawn_next_location
-					}
-					if = { # Only Fallback (just get out of here)
-						limit = {
-							NOT = { exists = event_target:voidspawn_next_location }
+						root = {
+							auto_follow_fleet = { target = event_target:target_behemoth attack_fleet = yes }
 						}
+					}
+					else = {
+						# log = "Voidspawn path \\[event_target:target_behemoth.solar_system.GetName]"
 						ordered_neighbor_system = {
-							limit = { NOT = { is_same_value = prev } }
+							limit = {
+								NOR = {
+									is_same_value = prev
+									has_modifier = voidspawn_system_mod
+								}
+								root = { can_access_system = prev }
+							}
 							position = 0
 							order_by = value:distance_to_target|TARGET|event_target:target_behemoth.solar_system|
 							inverse = yes
 							save_event_target_as = voidspawn_next_location
 						}
-						log = "Voidspawn cheap path to \\[event_target:voidspawn_next_location.GetName]"
+						if = { # Only Fallback (just get out of here)
+							limit = {
+								NOT = { exists = event_target:voidspawn_next_location }
+							}
+							ordered_neighbor_system = {
+								limit = {
+									NOT = { is_same_value = prev }
+									root = { can_access_system = prev }
+								}
+								position = 0
+								order_by = value:distance_to_target|TARGET|event_target:target_behemoth.solar_system|
+								inverse = yes
+								save_event_target_as = voidspawn_next_location
+							}
+							log = "Voidspawn cheap path to \\[event_target:voidspawn_next_location.GetName]"
+						}
 					}
 				}
 				if = { # Vfix: for path tracking
 					limit = { exists = event_target:voidspawn_next_location }
-					every_neighbor_system = {
-						limit = { has_star_flag = voidspawn_spawn_location }
-						remove_star_flag = voidspawn_spawn_location
-					}
-					set_star_flag = voidspawn_spawn_location
 					root = {
 						auto_move_to_planet = {
 							target = event_target:voidspawn_next_location.star
@@ -1213,14 +1202,14 @@ fleet_event = {
 					}
 				}
 				else = { # Vfix
-					log = "Voidspawn path track failed \\[solar_system.GetName] rerun in 66"
+					log = "Voidspawn path track failed \\[This.GetName] rerun in 66"
 					root = {
 						fleet_event = { id = biocrisis.151 days = 66 } # If the Voidspawn is still in the system after 66 days, the event fires again.
 					}
 				}
 			}
 			else = { # Vfix
-				log = "Voidspawn path track failed \\[solar_system.GetName] rerun in 666"
+				log = "Voidspawn path track failed \\[This.GetName] rerun in 666"
 				root = {
 					fleet_event = { id = biocrisis.151 days = 666 } # If the Voidspawn is still in the system after 666 days, the event fires again.
 				}

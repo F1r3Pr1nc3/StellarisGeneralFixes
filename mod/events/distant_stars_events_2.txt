@@ -222,9 +222,9 @@ country_event = {
 					add = 1
 					fromfrom.solar_system = {
 						any_system_planet = {
-							planet_size > 8
-							planet_size < 25
 							NOR = {
+								planet_size <= 8
+								planet_size >= 25
 								habitable_planet = yes
 								has_anomaly = yes
 								is_planet_class = "pc_broken"
@@ -303,9 +303,9 @@ country_event = {
 		fromfromfrom.solar_system = {
 			random_system_planet = {
 				limit = {
-					planet_size > 8
-					planet_size < 25
 					NOR = {
+						planet_size <= 8
+						planet_size >= 25
 						habitable_planet = yes
 						has_anomaly = yes
 						is_planet_class = "pc_broken"
@@ -4035,8 +4035,7 @@ planet_event = {
 					any_system = {
 						has_owner = yes
 						owner = {
-							is_ai = no
-							is_country_type = default
+							is_ai = no # is_country_type = default
 							is_at_war = no
 						}
 						any_system_colony = {
@@ -4301,16 +4300,15 @@ country_event = {
 						use_bypasses = yes
 						limit = {
 							exists = owner
-							owner = {
-								is_ai = no
-								is_country_type = default
-								NOR = {
-									is_at_war = yes
-									is_hostile = root
-									root = { is_hostile = prev }
+							NOR = {
+								owner = {
+									OR = {
+										is_ai = yes
+										is_at_war = yes
+										is_hostile = root
+										root = { is_hostile = prev }
+									}
 								}
-							}
-							NOT = {
 								any_fleet_in_system = {
 									exists = owner
 									owner = { is_hostile = root }
@@ -4849,11 +4847,10 @@ event = {
 		}
 		### There is a player empire that has already been scanned
 		any_playable_country = {
-			any_owned_pop_group = {
+			any_owned_species = { # Vfix opt?
 				is_same_species = owner_species
-				is_robot_pop_group = no
 				is_sapient = yes
-				NOT = { has_trait = trait_machine_unit }
+				is_robotic = no
 			}
 			any_owned_planet = { is_colony = yes has_planet_flag = has_been_scanned }
 			NOR = {
@@ -5226,9 +5223,9 @@ country_event = {
 			limit = {
 				any_owned_pop_group = {
 					is_same_species = owner_species
-					is_robot_pop_group = no
 					is_sapient = yes
 					NOR = {
+						is_robot_pop_group = yes
 						has_modifier = enigmatic_slumber
 						has_trait = trait_machine_unit
 					}
@@ -5238,14 +5235,14 @@ country_event = {
 			weighted_random_owned_pop_group = {
 				limit = {
 					is_same_species = owner_species
-					is_robot_pop_group = no
 					is_sapient = yes
 					NOR = {
+						is_robot_pop_group = yes
 						has_modifier = enigmatic_slumber
 						has_trait = trait_machine_unit
 					}
 				}
-				if = {
+				if = { # Vfix double?
 					limit = { has_modifier = enigmatic_fatigue }
 					remove_modifier = enigmatic_fatigue
 				}
@@ -5413,10 +5410,9 @@ country_event = {
 	immediate = {
 		every_owned_pop_group = {
 			limit = {
-				is_same_species = owner_species
-				is_robot_pop_group = no
 				is_sapient = yes
-				NOT = { has_trait = trait_machine_unit }
+				is_robot_pop_group = no # Vfix opt (double)
+				is_same_species = owner_species
 			}
 			if = {
 				limit = {
@@ -5469,10 +5465,9 @@ country_event = {
 	immediate = {
 		every_owned_pop_group = {
 			limit = {
-				is_same_species = owner_species
-				is_robot_pop_group = no
 				is_sapient = yes
-				NOT = { has_trait = trait_machine_unit }
+				is_robot_pop_group = no # Vfix opt (double)
+				is_same_species = owner_species
 			}
 			if = {
 				limit = {
@@ -5537,10 +5532,9 @@ country_event = {
 	immediate = {
 		every_owned_pop_group = {
 			limit = {
-				is_same_species = owner_species
-				is_robot_pop_group = no
 				is_sapient = yes
-				NOT = { has_trait = trait_machine_unit }
+				is_robot_pop_group = no # Vfix opt (double)
+				is_same_species = owner_species
 			}
 			if = {
 				limit = {
@@ -5657,8 +5651,8 @@ country_event = {
 				limit = {
 					any_owned_pop_group = {
 						is_same_species = owner_species
-						is_robot_pop_group = no
 						is_sapient = yes
+						is_robot_pop_group = yes
 						NOR = {
 							has_modifier = enigmatic_fatigue
 							has_trait = trait_machine_unit
@@ -5669,8 +5663,8 @@ country_event = {
 				weighted_random_owned_pop_group = {
 					limit = {
 						is_same_species = owner_species
-						is_robot_pop_group = no
 						is_sapient = yes
+						is_robot_pop_group = yes
 						NOR = {
 							has_modifier = enigmatic_fatigue
 							has_trait = trait_machine_unit
@@ -5688,8 +5682,8 @@ country_event = {
 				limit = {
 					any_owned_pop_group = {
 						is_same_species = owner_species
-						is_robot_pop_group = no
 						is_sapient = yes
+						is_robot_pop_group = yes
 						NOR = {
 							has_modifier = enigmatic_slumber
 							has_trait = trait_machine_unit
@@ -5700,14 +5694,14 @@ country_event = {
 				weighted_random_owned_pop_group = {
 					limit = {
 						is_same_species = owner_species
-						is_robot_pop_group = no
 						is_sapient = yes
+						is_robot_pop_group = yes
 						NOR = {
 							has_modifier = enigmatic_slumber
 							has_trait = trait_machine_unit
 						}
 					}
-					if = {
+					if = { # Vfix double?
 						limit = { has_modifier = enigmatic_fatigue }
 						remove_modifier = enigmatic_fatigue
 					}

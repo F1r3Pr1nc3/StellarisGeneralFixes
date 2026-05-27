@@ -572,8 +572,10 @@ event = {
 
 	trigger = {
 		has_astral_planes_dlc = yes
-		mid_game_years_passed > 0
-		NOT = { has_global_flag = crystal_sphere_sent }
+		NOR = {
+			mid_game_years_passed <= 0
+			has_global_flag = crystal_sphere_sent
+		}
 		any_playable_country = {
 			astral_rifts_completed >= @crystal_sphere_trigger_minimum_rift_requirement
 		}

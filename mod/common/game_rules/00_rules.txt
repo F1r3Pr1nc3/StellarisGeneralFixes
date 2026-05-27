@@ -1660,18 +1660,20 @@ can_get_colony_events = {
 # This = Planet
 is_new_colony = {
 	is_colony = yes # Vfix log
-	is_under_colonization = no # Vfix log
-	# is_colonizable = no # Vfix log
-	colony_age < 180
-	pop_amount < 1000
-	NOT = { has_planet_flag = synth_queen_bastille }
+	NOR = {
+		is_under_colonization = yes # Vfix log
+		# is_colonizable = no # Vfix log
+		colony_age >= 180
+		pop_amount >= 1000
+		has_planet_flag = synth_queen_bastille
+	}
 }
 
 # This = pop_group
 pop_group_generates_crime = {
 	is_sapient = yes
-	is_non_sapient_robot = no
 	is_being_assimilated = no
+	is_non_sapient_robot = no
 }
 
 # This = planet
@@ -2231,8 +2233,8 @@ can_planet_auto_migrate = {
 }
 
 can_planet_receive_auto_migration = {
-	planet_devastation < 10
 	NOR = {
+		planet_devastation >= 10
 		has_modifier = planet_culture_shock
 		is_doomsday_planet = yes
 		is_planet_class = pc_cosmogenesis_world
@@ -3394,8 +3396,10 @@ can_ai_assign_governor = {
 		is_sector_capital = yes
 		is_capital = yes
 	}
-	pop_amount >= 100 # replaces the MINIMUM_POPS_TO_CONSIDER_GOVERNOR define
-	NOT = { exists = leader }
+	NOR = {
+		pop_amount < 100 # replaces the MINIMUM_POPS_TO_CONSIDER_GOVERNOR define
+		exists = leader
+	}
 }
 
 # if the galactic community exists, is a galactic empire, and the country is part of it
@@ -3636,13 +3640,15 @@ can_voidworms_bombard_country = {
 		always = yes
 	}
 	else = {
-		event_target:voidworms_country = {
-			check_variable_arithmetic = {
-				which = value:voidworm_ships_owned
-				value < value:voidworm_maximum_population
+		NOR = {
+			event_target:voidworms_country = {
+				check_variable_arithmetic = {
+					which = value:voidworm_ships_owned
+					value >= value:voidworm_maximum_population
+				}
 			}
+			has_technology = tech_voidworm_immunity
 		}
-		NOT = { has_technology = tech_voidworm_immunity }
 	}
 }
 
@@ -3671,13 +3677,15 @@ can_trade_specimens = {
 	any_exhibit = {
 		contains_specimen = yes
 	}
-	from = {
-		count_exhibit = {
-			count < @archive_max_exhibit_count
-			limit = { contains_specimen = yes }
+	NOR = {
+		from = {
+			count_exhibit = {
+				count >= @archive_max_exhibit_count
+				limit = { contains_specimen = yes }
+			}
 		}
+		has_country_flag = has_already_traded_specimens
 	}
-	NOT = { has_country_flag = has_already_traded_specimens }
 }
 
 # this = ship design

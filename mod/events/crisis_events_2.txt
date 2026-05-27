@@ -2237,9 +2237,9 @@ country_event = {
 			limit = {
 				any_owned_fleet = {
 					is_mobile = yes
-					fleet_power >= 10000
-					num_ships >= 3
 					NOR = {
+						fleet_power < 10000
+						num_ships < 3
 						is_civilian = yes
 						exists = leader
 					}
@@ -2259,9 +2259,9 @@ country_event = {
 			random_owned_fleet = {
 				limit = {
 					is_mobile = yes
-					fleet_power >= 10000
-					num_ships >= 3
 					NOR = {
+						fleet_power < 10000
+						num_ships < 3
 						is_civilian = yes
 						exists = leader
 					}

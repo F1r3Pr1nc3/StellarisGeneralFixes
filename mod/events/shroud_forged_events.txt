@@ -1718,8 +1718,10 @@ country_event = {
 		custom_tooltip = shroud_forged.400.tt
 		if = {
 			limit = {
-				resource_stockpile_compare = { resource = sr_zro value < 450 }
-				NOT = { has_zroni_equilibrators = yes }
+				NOR = {
+					resource_stockpile_compare = { resource = sr_zro value >= 450 }
+					has_zroni_equilibrators = yes
+				}
 			}
 			custom_tooltip = shroud_forged.400.unavailable.tt
 		}
@@ -1774,8 +1776,10 @@ country_event = {
 		custom_tooltip = shroud_forged.400.tt
 		if = {
 			limit = {
-				resource_stockpile_compare = { resource = sr_zro value < 300 }
-				NOT = { has_zroni_equilibrators = yes }
+				NOR = {
+					resource_stockpile_compare = { resource = sr_zro value >= 300 }
+					has_zroni_equilibrators = yes
+				}
 			}
 			custom_tooltip = shroud_forged.400.unavailable.tt
 		}
@@ -1830,8 +1834,10 @@ country_event = {
 		custom_tooltip = shroud_forged.400.tt
 		if = {
 			limit = {
-				resource_stockpile_compare = { resource = sr_zro value < 300 }
-				NOT = { has_zroni_equilibrators = yes }
+				NOR = {
+					resource_stockpile_compare = { resource = sr_zro value >= 300 }
+					has_zroni_equilibrators = yes
+				}
 			}
 			custom_tooltip = shroud_forged.400.unavailable.tt
 		}
@@ -2485,11 +2491,11 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					count_owned_pop_group = {
-						count > 1
-						limit = { pop_group_has_trait = trait_shroud_forged }
-					}
 					NOR = {
+						count_owned_pop_group = {
+							count <= 1
+							limit = { pop_group_has_trait = trait_shroud_forged }
+						}
 						has_modifier = pm_shroud_forged_denied_ceremony
 						has_modifier = pm_shroud_forged_ceremony
 					}
@@ -2619,11 +2625,11 @@ situation_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					count_owned_pop_group = {
-						count > 1
-						limit = { pop_group_has_trait = trait_shroud_forged }
-					}
 					NOR = {
+						count_owned_pop_group = {
+							count <= 1
+							limit = { pop_group_has_trait = trait_shroud_forged }
+						}
 						has_modifier = pm_shroud_forged_troubling_elements_example
 						has_modifier = pm_shroud_forged_troubling_elements_regulations
 						has_modifier = pm_shroud_forged_troubling_elements_cooperation

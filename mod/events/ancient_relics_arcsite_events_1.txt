@@ -3052,8 +3052,8 @@ country_event = {
 		}
 		last_increased_tech = tech_mining_3
 		any_owned_planet = {
-			num_districts = { type = district_mining value > 1 }
 			NOR = {
+				num_districts = { type = district_mining value <= 1 }
 				exists = archaeological_site
 				has_planet_flag = suppress_archaeological_sites
 			}
@@ -3066,8 +3066,8 @@ country_event = {
 			chance = 5
 			random_owned_planet = {
 				limit = {
-					num_districts = { type = district_mining value > 1 }
 					NOR = {
+						num_districts = { type = district_mining value <= 1 }
 						exists = archaeological_site
 						has_planet_flag = suppress_archaeological_sites
 					}

@@ -591,11 +591,11 @@ create_marauder_successor_fleet = {
 	# Fix unlimited leader creation
 	if = {
 		limit = {
-			count_owned_leader = {
-				count <= 12
-				limit = { leader_class = commander }
-			}
-			NOT = {
+			NOR = {
+				count_owned_leader = {
+					count > 12
+					limit = { leader_class = commander }
+				}
 				any_owned_leader = {
 					leader_class = commander
 					is_idle = yes

@@ -49,13 +49,24 @@ first_contact_event = {
 	option = {
 		name = SCUM
 		trigger = {
-			owner = { has_valid_civic = civic_fanatic_purifiers }
+			owner = {
+				OR = {
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_scorched_earth # Vfix patch
+					has_valid_civic = civic_hive_scorched_earth # Vfix patch
+				}
+			}
 		}
 	}
 	option = {
 		name = TASTY
 		trigger = {
-			owner = { has_valid_civic = civic_hive_devouring_swarm }
+			owner = {
+				OR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_menace_perk = menp_behemoth_ever_hungry # Vfix patch
+				}
+			}
 		}
 	}
 	option = {

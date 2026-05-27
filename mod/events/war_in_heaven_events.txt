@@ -247,8 +247,8 @@ country_event = {
 		any_country = {
 			is_country_type = awakened_fallen_empire
 			has_country_flag = sleepers_awake_first_sleeper
-			fleet_power > 60000
 			NOR = {
+				fleet_power <= 60000
 				is_same_value = root
 				is_at_war = yes
 			}
@@ -1103,12 +1103,14 @@ country_event = {
 					}
 					NOT = {
 						any_federation = {
-							relative_power = {
-								who = prev
-								value > equivalent
-								category = fleet
+							NOR = {
+								relative_power = {
+									who = prev
+									value <= equivalent
+									category = fleet
+								}
+								is_same_value = prev
 							}
-							NOT = { is_same_value = prev }
 							any_member = {
 								is_federation_leader = yes
 								NOR = {
@@ -1142,12 +1144,14 @@ country_event = {
 					}
 					NOT = {
 						any_federation = {
-							relative_power = {
-								who = prev
-								value > equivalent
-								category = fleet
+							NOR = {
+								relative_power = {
+									who = prev
+									value <= equivalent
+									category = fleet
+								}
+								is_same_value = prev
 							}
-							NOT = { is_same_value = prev }
 							any_member = {
 								is_federation_leader = yes
 								NOR = {
@@ -1195,8 +1199,8 @@ country_event = {
 						# is_level_5_player_crisis = yes
 						any_country = { is_country_type = awakened_fallen_empire is_at_war_with = prev }
 						any_playable_country = {
-							relative_power = { who = prev value > equivalent }
 							NOR = {
+								relative_power = { who = prev value <= equivalent }
 								is_subject = yes
 								has_country_flag = war_in_heaven_league_leader_declined
 								is_homicidal = yes

@@ -178,8 +178,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 100
-		NOT = { has_situation_flag = cyber_105_happened }
+		NOR = {
+			situation_progress < 100
+			has_situation_flag = cyber_105_happened
+		}
 	}
 
 	immediate = {
@@ -603,8 +605,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 300
-		NOT = { has_situation_flag = cyber_205_happened }
+		NOR = {
+			situation_progress < 300
+			has_situation_flag = cyber_205_happened
+		}
 	}
 
 	immediate = {
@@ -670,8 +674,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 450
-		NOT = { has_situation_flag = cyber_210_happened }
+		NOR = {
+			situation_progress < 450
+			has_situation_flag = cyber_210_happened
+		}
 	}
 
 	immediate = {
@@ -1348,8 +1354,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 850
-		NOT = { has_situation_flag = cyber_410_happened }
+		NOR = {
+			situation_progress < 850
+			has_situation_flag = cyber_410_happened
+		}
 		owner = { has_country_flag = cyber_rival_government }
 	}
 
@@ -1453,8 +1461,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 850
-		NOT = { has_situation_flag = cyber_420_happened }
+		NOR = {
+			situation_progress < 850
+			has_situation_flag = cyber_420_happened
+		}
 		owner = { has_country_flag = cyber_rival_corporate }
 	}
 
@@ -1583,8 +1593,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 850
-		NOT = { has_situation_flag = cyber_430_happened }
+		NOR = {
+			situation_progress < 850
+			has_situation_flag = cyber_430_happened
+		}
 		owner = { has_country_flag = cyber_rival_independent }
 	}
 
@@ -5402,8 +5414,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 300
-		NOT = { has_situation_flag = cyber_2205_happened }
+		NOR = {
+			situation_progress < 300
+			has_situation_flag = cyber_2205_happened
+		}
 	}
 
 	immediate = {

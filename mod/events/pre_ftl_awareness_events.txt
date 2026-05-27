@@ -41,8 +41,10 @@ fleet_event = {
 				has_owner = yes
 				owner = {
 					is_primitive = yes
-					has_awareness < 100
-					NOT = { has_country_flag = recent_awareness_gain }
+					NOR = {
+						has_awareness >= 100
+						has_country_flag = recent_awareness_gain
+					}
 				}
 			}
 		}
@@ -55,8 +57,10 @@ fleet_event = {
 					has_owner = yes
 					owner = {
 						is_primitive = yes
-						has_awareness < 100
-						NOT = { has_country_flag = recent_awareness_gain }
+						NOR = {
+							has_awareness >= 100
+							has_country_flag = recent_awareness_gain
+						}
 					}
 				}
 				owner = {
@@ -525,9 +529,9 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_primitive = yes
-			has_awareness > 10
-			has_awareness < 100
 			NOR = {
+				has_awareness <= 10
+				has_awareness >= 100
 				has_country_flag = recent_awareness_decay
 				has_country_flag = freeze_awareness_decay
 			}

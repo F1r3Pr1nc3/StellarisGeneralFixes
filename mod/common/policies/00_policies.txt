@@ -508,8 +508,10 @@ diplomatic_stance = {
 		icon = "GFX_diplomatic_stance_isolationist"
 		potential = {
 			is_primitive = yes
-			current_awareness_level < medium
-			NOT = { capital_scope = { has_modifier = culture_shock_diplomacy } }
+			NOR = {
+				current_awareness_level >= medium
+				capital_scope = { has_modifier = culture_shock_diplomacy }
+			}
 		}
 		policy_flags = { diplo_stance_ignorant }
 		modifier = {  }
@@ -558,8 +560,8 @@ diplomatic_stance = {
 		icon = "GFX_diplomatic_stance_isolationist"
 		potential = {
 			is_primitive = yes
-			current_awareness_level >= high
 			NOR = {
+				current_awareness_level < high
 				is_xenophile = yes
 				is_xenophobe = yes
 				capital_scope = { has_modifier = culture_shock_diplomacy }

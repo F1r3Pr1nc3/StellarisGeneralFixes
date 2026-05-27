@@ -140,8 +140,10 @@ country_event = {
 	}
 	option = {
 		trigger = {
-			resource_stockpile_compare = { resource = minerals value >= 300 }
-			NOT = { is_at_war_with = event_target:wreckage_owner }
+			NOR = {
+				resource_stockpile_compare = { resource = minerals value < 300 }
+				is_at_war_with = event_target:wreckage_owner
+			}
 		}
 		name = distar.2.b
 		add_resource = { minerals = -300 }

@@ -1296,9 +1296,11 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		mid_game_years_passed >= @voidworm_crisis_min_year
-		end_game_years_passed < 0
-		NOT = { has_global_flag = voidworms_plague_crisis_started }
+		NOR = {
+			mid_game_years_passed < @voidworm_crisis_min_year
+			end_game_years_passed >= 0
+			has_global_flag = voidworms_plague_crisis_started
+		}
 		is_country_type = voidworms
 		check_variable_arithmetic = { which = value:voidworm_nest_owned value > 0 }
 		check_variable = { which = voidworm_crisis_start_roll value < value:voidworm_crisis_start_chance }
@@ -1353,8 +1355,10 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		check_variable_arithmetic = { which = value:voidworm_nest_owned value > 0 }
-		NOT = { has_global_flag = voidworms_plague_crisis_ended }
+		NOR = {
+			check_variable_arithmetic = { which = value:voidworm_nest_owned value <= 0 }
+			has_global_flag = voidworms_plague_crisis_ended
+		}
 		is_voidworm_crisis_eligible_for_respawn = yes
 	}
 
@@ -2289,8 +2293,10 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		check_variable_arithmetic = { which = value:voidworm_nest_owned value > 0 }
-		NOT = { has_global_flag = voidworms_plague_crisis_started }
+		NOR = {
+			check_variable_arithmetic = { which = value:voidworm_nest_owned value <= 0 }
+			has_global_flag = voidworms_plague_crisis_started
+		}
 		is_voidworm_eligible_for_respawn = yes
 	}
 
@@ -5641,8 +5647,10 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		mid_game_years_passed > 0
-		NOT = { has_origin = origin_treasure_hunters }
+		NOR = {
+			mid_game_years_passed <= 0
+			has_origin = origin_treasure_hunters
+		}
 	}
 
 	immediate = {
@@ -6985,7 +6993,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { # PATCH|OPT
+	trigger = { # Vfix patch|opt
 		exists = from
 		NAND = {
 			is_ai = yes
@@ -7013,8 +7021,10 @@ country_event = {
 				random_controlled_ship = {
 					limit = {
 						is_space_fauna = yes
-						has_hp_percentage < 1.0
-						NOT = { is_same_value = fromfrom }
+						NOR = {
+							has_hp_percentage >= 1.0
+							is_same_value = fromfrom
+						}
 					}
 					repair_percentage = root.local_heal_value
 					repair_armor_percentage = root.local_heal_value
@@ -7065,7 +7075,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { # PATCH|OPT
+	trigger = { # Vfix patch|opt
 		exists = from
 		NAND = {
 			is_ai = yes
@@ -7139,8 +7149,10 @@ country_event = {
 
 	trigger = {
 		fromfrom = {
-			check_modifier_value = { modifier = split_into_smaller_size_on_death value > 0 }
-			NOT = { has_ship_flag = spawned_from_split_modifier }
+			NOR = {
+				check_modifier_value = { modifier = split_into_smaller_size_on_death value <= 0 }
+				has_ship_flag = spawned_from_split_modifier
+			}
 		}
 	}
 

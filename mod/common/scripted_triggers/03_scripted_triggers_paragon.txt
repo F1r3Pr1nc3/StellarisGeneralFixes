@@ -303,8 +303,10 @@ is_azaryn_terraformable_pc = {
 		habitable_planet_not_urban = yes
 		is_azaryn_preferred_terraform_pc = yes
 	}
-	planet_size >= 10
-	NOT = { has_planet_flag = terraform_nucleus_transfixed }
+	NOR = {
+		planet_size < 10
+		has_planet_flag = terraform_nucleus_transfixed
+	}
 }
 
 is_azaryn_preferred_terraform_pc = {
@@ -312,8 +314,10 @@ is_azaryn_preferred_terraform_pc = {
 		is_planet_class = pc_barren
 		is_planet_class = pc_barren_cold
 	}
-	planet_size >= 10
-	NOT = { has_planet_flag = terraform_nucleus_transfixed }
+	NOR = {
+		planet_size < 10
+		has_planet_flag = terraform_nucleus_transfixed
+	}
 }
 
 has_miltary_background_job = {

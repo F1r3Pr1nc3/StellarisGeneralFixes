@@ -337,8 +337,10 @@ fleet_event = {
 							has_secret_fealty_with = prev
 							has_attitude_behavior = { target = prev behavior = alliance }
 						}
-						trust = { who = prev value >= 30 }
-						NOT = { is_harming_relations_with = prev }
+						NOR = {
+							trust = { who = prev value < 30 }
+							is_harming_relations_with = prev
+						}
 					}
 					root.owner = {
 						set_faction_hostility = { target = prev set_hostile = yes }
@@ -348,8 +350,10 @@ fleet_event = {
 					limit = { has_federation = yes }
 					every_federation_ally = {
 						limit = {
-							trust = { who = prev value >= 30 }
-							NOT = { is_hostile = root.owner }
+							NOR = {
+								trust = { who = prev value < 30 }
+								is_hostile = root.owner
+							}
 						}
 						root.owner = {
 							set_faction_hostility = { target = prev set_hostile = yes }
@@ -643,8 +647,10 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				planet_devastation >= 16
-				NOT = { has_planet_flag = planet_raided }
+				NOR = {
+					planet_devastation < 16
+					has_planet_flag = planet_raided
+				}
 				from = { is_default_or_fallen = yes }
 			}
 			planet_event = { id = marauder.103 days = 7 scopes = { from = event_target:marauder_country } }
@@ -825,8 +831,8 @@ planet_event = {
 							any_system_colony = {
 								has_owner = yes
 								is_owned_by = event_target:raid_victim
-								sapient_pop_amount >= 300
 								NOR = {
+									sapient_pop_amount < 300
 									is_occupied_flag = yes
 									has_planet_flag = planet_raided
 								}
@@ -838,8 +844,8 @@ planet_event = {
 							limit = {
 								has_owner = yes
 								is_owned_by = event_target:raid_victim
-								sapient_pop_amount >= 300
 								NOR = {
+									sapient_pop_amount < 300
 									is_occupied_flag = yes
 									has_planet_flag = planet_raided
 								}

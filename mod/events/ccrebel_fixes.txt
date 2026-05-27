@@ -1171,8 +1171,10 @@ country_event = {
 			}
 			else_if = {
 				limit = {
-					count_owned_planet = { count > 0 }
-					NOT = { exists = from }
+					NOR = {
+						exists = from
+						count_owned_planet = { count = 0 }
+					}
 				}
 				if = {
 					limit = { exists = capital_scope }

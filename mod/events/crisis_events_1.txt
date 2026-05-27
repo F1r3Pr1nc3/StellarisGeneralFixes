@@ -1662,12 +1662,16 @@ country_event = {
 	trigger = {
 		has_global_flag = sentinels_founded
 		is_country_type = default
-		check_variable = { which = "swarm_fleet_kills" value > 6 }
-		NOT = { has_country_flag = sentinel_donation }
+		NOR = {
+			check_variable = { which = "swarm_fleet_kills" value <= 6 }
+			has_country_flag = sentinel_donation
+		}
 		any_country = {
 			is_country_type = sentinels
-			count_controlled_ship = { count > 30 }
-			NOT = { root = { is_at_war_with = prev } }
+			NOR = {
+				count_controlled_ship = { count <= 30 }
+				root = { is_at_war_with = prev }
+			}
 		}
 	}
 
@@ -2953,8 +2957,8 @@ event = {
 		event_target:prethoryn = {
 			if = {
 				limit = { # Vfix opt
-					num_ships < 20
-					NOT = {
+					NOR = {
+						num_ships >= 20
 						any_system = { # Vfix opt
 							any_system_colony = {
 								has_owner = yes

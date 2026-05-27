@@ -845,8 +845,10 @@ country_event = {
 				event_target:mercenary_enclave_country = {
 					any_owned_fleet = {
 						is_ship_class = shipclass_military
-						fleet_power >= 500
-						NOT = { any_controlled_ship = { is_damaged = yes } }
+						NOR = {
+							fleet_power < 500
+							any_controlled_ship = { is_damaged = yes }
+						}
 					}
 				}
 			}
@@ -885,10 +887,10 @@ country_event = {
 		name = enclave.205.c
 		custom_tooltip = mercenary_tt_garrison
 		trigger = {
-			event_target:mercenary_enclave_country = {
-				trust = { who = root value >= 30 }
-			}
 			NOR = {
+				event_target:mercenary_enclave_country = {
+					trust = { who = root value < 30 }
+				}
 				is_hostile = event_target:mercenary_enclave_country
 				has_country_flag = mercenary_enclave_bought_mercenary_garrison
 			}
@@ -970,10 +972,10 @@ country_event = {
 		name = enclave.205.g
 		custom_tooltip = mercenary_tt_logistic
 		trigger = {
-			event_target:mercenary_enclave_country = {
-				trust = { who = root value >= 20 }
-			}
-			NOT = {
+			NOR = {
+				event_target:mercenary_enclave_country = {
+					trust = { who = root value < 20 }
+				}
 				is_hostile = event_target:mercenary_enclave_country
 				# is_homicidal = yes
 			}
@@ -4371,10 +4373,10 @@ country_event = {
 		name = enclave.305.c
 		custom_tooltip = salvager_tt_salvageworks
 		trigger = {
-			event_target:salvager_enclave_country = {
-				trust = { who = root value >= 30 }
-			}
 			NOR = {
+				event_target:salvager_enclave_country = {
+					trust = { who = root value < 30 }
+				}
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
 				has_country_flag = salvager_enclave_bought_salvage_works
@@ -4388,10 +4390,10 @@ country_event = {
 	option = {
 		name = enclave.305.d
 		trigger = {
-			event_target:salvager_enclave_country = {
-				trust = { who = root value >= 40 }
-			}
 			NOR = {
+				event_target:salvager_enclave_country = {
+					trust = { who = root value < 40 }
+				}
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
 			}
@@ -4411,10 +4413,10 @@ country_event = {
 		name = enclave.305.e
 		custom_tooltip = salvager_tt_commissionsalvage
 		trigger = {
-			event_target:salvager_enclave_country = {
-				trust = { who = root value >= 10 }
-			}
 			NOR = {
+				event_target:salvager_enclave_country = {
+					trust = { who = root value < 10 }
+				}
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
 			}
@@ -4427,10 +4429,10 @@ country_event = {
 	option = {
 		name = enclave.305.f
 		trigger = {
-			event_target:salvager_enclave_country = {
-				trust = { who = root value >= 10 }
-			}
 			NOR = {
+				event_target:salvager_enclave_country = {
+					trust = { who = root value < 10 }
+				}
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
 			}
@@ -4449,10 +4451,10 @@ country_event = {
 	option = {
 		name = enclave.305.g
 		trigger = {
-			event_target:salvager_enclave_country = {
-				trust = { who = root value >= 20 }
-			}
 			NOR = {
+				event_target:salvager_enclave_country = {
+					trust = { who = root value < 20 }
+				}
 				is_hostile = event_target:salvager_enclave_country
 				is_homicidal = yes
 			}
@@ -5164,8 +5166,10 @@ country_event = {
 		name = enclave.320.bb
 		trigger = {
 			exists = event_target:salvager_reclaimed_corvette
-			check_variable = { which = reclaimed_ships_bought value <= 0 }
-			NOT = { has_country_flag = salvager_enclave_recently_reclaimed_all }
+			NOR = {
+				check_variable = { which = reclaimed_ships_bought value > 0 }
+				has_country_flag = salvager_enclave_recently_reclaimed_all
+			}
 		}
 		allow = {
 			resource_stockpile_compare = {
@@ -5246,8 +5250,10 @@ country_event = {
 		name = enclave.320.frigate_bulk
 		trigger = {
 			exists = event_target:salvager_reclaimed_frigate
-			check_variable = { which = reclaimed_ships_bought value <= 0 }
-			NOT = { has_country_flag = salvager_enclave_recently_reclaimed_all }
+			NOR = {
+				check_variable = { which = reclaimed_ships_bought value > 0 }
+				has_country_flag = salvager_enclave_recently_reclaimed_all
+			}
 		}
 		allow = {
 			resource_stockpile_compare = {
@@ -5644,10 +5650,12 @@ country_event = {
 
 	trigger = {
 		exists = event_target:salvager_enclave_country
-		event_target:salvager_enclave_country = {
-			trust = { who = root value >= 40 }
+		NOR = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value < 40 }
+			}
+			is_hostile = event_target:salvager_enclave_country
 		}
-		NOT = { is_hostile = event_target:salvager_enclave_country }
 		any_owned_starbase = { has_starbase_building = salvager_workshop }
 	}
 }
@@ -5685,11 +5693,11 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				event_target:salvager_enclave_country = {
-					trust = { who = root value >= 20 }
-				}
-				count_available_debris = { count > 0 }
-				NOT = {
+				NOR = {
+					event_target:salvager_enclave_country = {
+						trust = { who = root value < 20 }
+					}
+					count_available_debris = { count = 0 }
 					has_country_flag = salvager_enclave_salvage_commission_active
 				}
 			}
@@ -5957,10 +5965,10 @@ country_event = {
 
 	trigger = {
 		exists = event_target:salvager_enclave_country
-		event_target:salvager_enclave_country = {
-			trust = { who = root value >= 20 }
-		}
 		NOR = {
+			event_target:salvager_enclave_country = {
+				trust = { who = root value < 20 }
+			}
 			is_hostile = event_target:salvager_enclave_country
 			is_homicidal = yes
 		}
@@ -6507,10 +6515,10 @@ country_event = {
 	desc = {
 		trigger = {
 			exists = event_target:mindwarden_enclave_country
-			event_target:mindwarden_enclave_country = {
-				trust = { who = prev value >= 100 }
-			}
 			NOR = {
+				event_target:mindwarden_enclave_country = {
+					trust = { who = prev value < 100 }
+				}
 				is_homicidal = yes
 				is_hostile = event_target:shroudwalker_enclave_country
 				has_origin = origin_mindwardens
@@ -6672,10 +6680,10 @@ country_event = {
 	option = {
 		name = enclave.405.e
 		trigger = {
-			event_target:shroudwalker_enclave_country = {
-				trust = { who = root value >= 30 }
-			}
 			NOR = {
+				event_target:shroudwalker_enclave_country = {
+					trust = { who = root value < 30 }
+				}
 				shroudwalker_no_dialog = yes
 				has_technology = tech_mine_zro
 				has_country_flag = purchased_zro_tech
@@ -8486,8 +8494,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 10
 		NOR = {
+			situation_progress < 10
 			has_situation_flag = divination_occurring
 			owner = { has_country_flag = floating_parts_flag }
 		}
@@ -8688,8 +8696,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 15
 		NOR = {
+			situation_progress < 15
 			has_situation_flag = divination_occurring
 			owner = {
 				OR = {
@@ -8741,8 +8749,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 15
 		NOR = {
+			situation_progress < 15
 			has_situation_flag = divination_occurring
 			owner = { has_country_flag = grimacing_divination_flag }
 		}
@@ -8789,8 +8797,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 10
 		NOR = {
+			situation_progress < 10
 			has_situation_flag = divination_occurring
 			owner = { has_country_flag = teapot_divination_flag }
 		}
@@ -8829,8 +8837,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 15
-		NOT = { has_situation_flag = divination_occurring }
+		NOR = {
+			situation_progress < 15
+			has_situation_flag = divination_occurring
+		}
 		owner = {
 			NOT = { has_country_flag = brainslug_divination_flag }
 			any_planet_within_border = {
@@ -8881,8 +8891,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 10
 		NOR = {
+			situation_progress < 10
 			has_situation_flag = divination_occurring
 			owner = {
 				OR = {
@@ -8923,8 +8933,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 15
 		NOR = {
+			situation_progress < 15
 			has_situation_flag = divination_occurring
 			owner = { has_country_flag = atmoseco_divination_flag }
 		}
@@ -8963,8 +8973,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 15
 		NOR = {
+			situation_progress < 15
 			has_situation_flag = divination_occurring
 			owner = { has_country_flag = colorscience_divination_flag }
 		}
@@ -9003,8 +9013,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 15
 		NOR = {
+			situation_progress < 15
 			has_situation_flag = divination_occurring
 			owner = { has_country_flag = terminal_divination_flag }
 		}
@@ -9149,8 +9159,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 50
-		NOT = { has_situation_flag = divination_occurring }
+		NOR = {
+			situation_progress < 50
+			has_situation_flag = divination_occurring
+		}
 		owner = {
 			NOR = {
 				is_ai = yes
@@ -9164,8 +9176,8 @@ situation_event = {
 				is_capital = no
 				is_colony = yes
 				original_owner = yes
-				count_owned_pop_amount = { count >= 500 }
 				NOR = {
+					count_owned_pop_amount = { count < 500 }
 					has_ground_combat = yes
 					is_occupied_flag = yes
 					is_under_colonization = yes
@@ -9188,8 +9200,8 @@ situation_event = {
 					is_capital = no
 					is_colony = yes
 					original_owner = yes
-					count_owned_pop_amount = { count >= 500 }
 					NOR = {
+						count_owned_pop_amount = { count < 500 }
 						has_ground_combat = yes
 						is_occupied_flag = yes
 						is_planet_class = pc_habitat
@@ -10476,8 +10488,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 90
-		NOT = { has_situation_flag = divination_occurring }
+		NOR = {
+			situation_progress < 90
+			has_situation_flag = divination_occurring
+		}
 	}
 
 	immediate = {
@@ -10492,8 +10506,10 @@ situation_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		situation_progress >= 90
-		NOT = { has_situation_flag = divination_occurring }
+		NOR = {
+			situation_progress < 90
+			has_situation_flag = divination_occurring
+		}
 	}
 
 	immediate = {

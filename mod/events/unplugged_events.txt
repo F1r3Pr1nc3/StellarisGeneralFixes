@@ -3585,19 +3585,13 @@ country_event = {
 	option = { # Force must be met by force
 		name = unplugged.5002.b
 		owner.home_planet = { add_planet_devastation = 25 }
-		while = {
-			count = 1
-			random_owned_pop_job = {
-				limit = { has_job_type = enforcer }
-				kill_assigned_pop_amount = { amount = 1 }
-			}
+		random_owned_pop_job = {
+			limit = { has_job_type = enforcer }
+			kill_assigned_pop_amount = { amount = 1 }
 		}
-		while = {
-			count = 1
-			weighted_random_owned_pop_group = {
-				limit = { has_unplugged_positive_trait = yes }
-				kill_single_pop = yes
-			}
+		weighted_random_owned_pop_group = {
+			limit = { has_unplugged_positive_trait = yes }
+			kill_single_pop = yes
 		}
 		custom_tooltip = "unplugged.5002.b.tt"
 	}

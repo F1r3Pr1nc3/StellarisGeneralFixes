@@ -16,8 +16,8 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_country_type = fallen_empire
-			fleet_power <= 100000
 			NOR = {
+				fleet_power > 100000
 				is_at_war = yes
 				has_country_flag = fallen_empire_fleet_spawn
 			}
@@ -27,7 +27,8 @@ situation_event = {
 	immediate = {
 		owner = {
 			set_timed_country_flag = { flag = fallen_empire_fleet_spawn years = 10 }
-			capital_scope = { create_fallen_empire_reinforcements = yes }
+			get_capital_planet = yes # Vfix safety patch
+			event_target:capital_planet = { create_fallen_empire_reinforcements = yes }
 		}
 	}
 }
@@ -93,18 +94,18 @@ situation_event = {
 		exists = owner
 		owner = {
 			is_country_type = fallen_empire
-			fleet_power > 100000
 			NOR = {
+				fleet_power <= 100000
 				is_at_war = yes
 				has_country_flag = fallen_empire_lost_war
 				has_country_flag = fallen_empire_sent_warning
 			}
 			any_playable_country = {
 				has_communications = root.owner
-				root.owner = {
-					opinion = { who = prev value < -99 }
-				}
 				NOR = {
+					root.owner = {
+						opinion = { who = prev value >= -99 }
+					}
 					root.owner = {
 						has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_demand }
 					}
@@ -121,10 +122,10 @@ situation_event = {
 		random_playable_country = {
 			limit = {
 				has_communications = root.owner
-				root.owner = {
-					opinion = { who = prev value < -99 }
-				}
 				NOR = {
+					root.owner = {
+						opinion = { who = prev value >= -99 }
+					}
 					root.owner = {
 						has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_demand }
 					}
@@ -533,8 +534,9 @@ situation_event = {
 
 	immediate = {
 		owner = {
+			get_capital_planet = yes # Vfix safety patch
 			set_timed_country_flag = { flag = fallen_empire_constructor_spawn years = 5 }
-			capital_scope = {
+			event_target:capital_planet = { # Vfix log
 				create_fleet = {
 					effect = {
 						set_owner = root.owner
@@ -618,7 +620,8 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		capital_scope = { create_fallen_empire_fleet = yes }
+		get_capital_planet = yes # Vfix safety patch
+		event_target:capital_planet = { create_fallen_empire_fleet = yes }
 	}
 }
 

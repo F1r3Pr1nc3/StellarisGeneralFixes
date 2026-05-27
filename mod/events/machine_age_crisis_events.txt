@@ -364,8 +364,10 @@ country_event = {
 					chance = 2 # Vfix: 1 too low
 					if = {
 						limit = {
-							fleet_power > 60000
-							NOT = { has_country_flag = awakening_not_allowed }
+							NOR = {
+								fleet_power <= 60000
+								has_country_flag = awakening_not_allowed
+							}
 						}
 						set_country_flag = guardians_of_the_galaxy
 						set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 5 }

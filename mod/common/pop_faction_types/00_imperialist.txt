@@ -193,12 +193,14 @@ imperialist = {
 				any_relation = {
 					has_communications = root.owner
 					is_default_or_fallen = yes
-					relative_power = {
-						who = root
-						category = all # fleet/economy/technology/all
-						value > pathetic # pathetic/inferior/equivalent/superior/overwhelming
+					NOR = {
+						relative_power = {
+							who = root
+							category = all # fleet/economy/technology/all
+							value <= pathetic # pathetic/inferior/equivalent/superior/overwhelming
+						}
+						is_in_federation_with = prev
 					}
-					NOT = { is_in_federation_with = prev }
 				}
 				num_rivals < 2
 			}
@@ -234,9 +236,11 @@ imperialist = {
 		potential = {
 			exists = owner
 			owner = {
-				num_communications > 2
-				num_rivals > 2
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				NOR = {
+					num_communications <= 2
+					num_rivals <= 2
+					has_valid_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 		trigger = {
@@ -252,8 +256,10 @@ imperialist = {
 		potential = {
 			exists = owner
 			owner = {
-				num_communications > 2
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				NOR = {
+					num_communications <= 2
+					has_valid_civic = civic_fanatic_purifiers
+				}
 			}
 		}
 		trigger = {
@@ -603,8 +609,7 @@ imperialist = {
 					parameter:empire = {
 						every_relation = {
 							limit = {
-								is_ai = no
-								is_country_type = default
+								is_ai = no # is_country_type = default
 								has_communications = prev
 								has_intel_level = {
 									who = prev

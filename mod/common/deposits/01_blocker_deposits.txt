@@ -135,8 +135,10 @@ d_dangerous_wildlife_blocker = {
 	}
 
 	potential = {
-		planet_size >= 10
-		NOT = { is_planet_class = pc_volcanic }
+		NOR = {
+			planet_size < 10
+			is_planet_class = pc_volcanic
+		}
 	}
 
 	planet_modifier = {

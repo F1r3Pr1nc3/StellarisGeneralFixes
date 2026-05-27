@@ -177,8 +177,10 @@ country_event = {
 			factor = 5
 			modifier = {
 				factor = 0
-				check_variable = { which = owned_cc_var value >= @ai_max_coinz }
-				NOT = { has_resource = { type = energy amount >= @ai_min_energy } }
+				NOR = {
+					check_variable = { which = owned_cc_var value < @ai_max_coinz }
+					has_resource = { type = energy amount >= @ai_min_energy }
+				}
 			}
 		}
 	}
@@ -4083,8 +4085,8 @@ country_event = {
 				count_owned_pop_amount = {
 					count >= 600
 					limit = {
-						happiness < 0.60
 						NOR = {
+							happiness >= 0.60
 							is_enslaved = yes
 							is_being_purged = yes
 						}
@@ -4119,8 +4121,8 @@ country_event = {
 			save_event_target_as = pops_join_caravan_planet
 			random_owned_pop_group = {
 				limit = {
-					happiness < 0.60
 					NOR = {
+						happiness >= 0.60
 						is_enslaved = yes
 						is_being_purged = yes
 					}

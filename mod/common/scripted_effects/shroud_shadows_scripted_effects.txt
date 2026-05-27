@@ -269,11 +269,13 @@ reckoning_consume_world = {
 		# Reckoning intensification
 		if = {
 			limit = {
-				check_variable = {
-					which = end_power
-					value >= @reckoning_intensification_devoured_pops_1
+				NOR = {
+					check_variable = {
+						which = end_power
+						value < @reckoning_intensification_devoured_pops_1
+					}
+					has_modifier = absorbed_consciousness_intensification_1
 				}
-				NOT = { has_modifier = absorbed_consciousness_intensification_1 }
 			}
 			add_modifier = { modifier = absorbed_consciousness_intensification_1 }
 			set_variable = {
@@ -283,11 +285,13 @@ reckoning_consume_world = {
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = end_power
-					value >= @reckoning_intensification_devoured_pops_2
+				NOR = {
+					check_variable = {
+						which = end_power
+						value < @reckoning_intensification_devoured_pops_2
+					}
+					has_modifier = absorbed_consciousness_intensification_2
 				}
-				NOT = { has_modifier = absorbed_consciousness_intensification_2 }
 			}
 			add_modifier = { modifier = absorbed_consciousness_intensification_2 }
 			set_variable = {
@@ -297,11 +301,13 @@ reckoning_consume_world = {
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = end_power
-					value >= @reckoning_intensification_devoured_pops_3
+				NOR = {
+					check_variable = {
+						which = end_power
+						value < @reckoning_intensification_devoured_pops_3
+					}
+					has_modifier = absorbed_consciousness_intensification_3
 				}
-				NOT = { has_modifier = absorbed_consciousness_intensification_3 }
 			}
 			add_modifier = { modifier = absorbed_consciousness_intensification_3 }
 			set_variable = {
@@ -311,11 +317,13 @@ reckoning_consume_world = {
 		}
 		if = {
 			limit = {
-				check_variable = {
-					which = end_power
-					value >= @reckoning_intensification_devoured_pops_4
+				NOR = {
+					check_variable = {
+						which = end_power
+						value < @reckoning_intensification_devoured_pops_4
+					}
+					has_modifier = absorbed_consciousness_intensification_4
 				}
-				NOT = { has_modifier = absorbed_consciousness_intensification_4 }
 			}
 			add_modifier = { modifier = absorbed_consciousness_intensification_4 }
 			clear_variable = next_intensification_cap
@@ -2187,8 +2195,10 @@ update_eotc_accords = {
 		}
 		if = {
 			limit = {
-				situation_progress >= @\[ ( end_of_the_cycle_stage_1_end - end_of_the_cycle_start_value ) * 0.5 + end_of_the_cycle_start_value ]
-				NOT = { owner = { has_country_flag = unlock_accord_annihilation } }
+				NOR = {
+					situation_progress < @\[ ( end_of_the_cycle_stage_1_end - end_of_the_cycle_start_value ) * 0.5 + end_of_the_cycle_start_value ]
+					owner = { has_country_flag = unlock_accord_annihilation }
+				}
 			}
 			owner = { set_country_flag = unlock_accord_annihilation }
 		}
@@ -2203,8 +2213,10 @@ update_eotc_accords = {
 	# Fractalization accord
 	if = {
 		limit = {
-			situation_progress >= @end_of_the_cycle_stage_1_end
-			NOT = { owner = { has_country_flag = unlock_accord_fractalization } }
+			NOR = {
+				situation_progress < @end_of_the_cycle_stage_1_end
+				owner = { has_country_flag = unlock_accord_fractalization }
+			}
 		}
 		owner = { set_country_flag = unlock_accord_fractalization }
 	}
@@ -2222,8 +2234,10 @@ update_eotc_accords = {
 		}
 		if = {
 			limit = {
-				situation_progress >= @\[ ( end_of_the_cycle_stage_2_end - end_of_the_cycle_stage_1_end ) * 0.5 + end_of_the_cycle_stage_1_end ]
-				NOT = { owner = { has_country_flag = unlock_accord_extermination } }
+				NOR = {
+					situation_progress < @\[ ( end_of_the_cycle_stage_2_end - end_of_the_cycle_stage_1_end ) * 0.5 + end_of_the_cycle_stage_1_end ]
+					owner = { has_country_flag = unlock_accord_extermination }
+				}
 			}
 			owner = { set_country_flag = unlock_accord_extermination }
 		}
@@ -2238,8 +2252,10 @@ update_eotc_accords = {
 	# Distortion accord
 	if = {
 		limit = {
-			situation_progress >= @end_of_the_cycle_stage_2_end
-			NOT = { owner = { has_country_flag = unlock_accord_distortion } }
+			NOR = {
+				situation_progress < @end_of_the_cycle_stage_2_end
+				owner = { has_country_flag = unlock_accord_distortion }
+			}
 		}
 		owner = { set_country_flag = unlock_accord_distortion }
 	}
@@ -2257,8 +2273,10 @@ update_eotc_accords = {
 		}
 		if = {
 			limit = {
-				situation_progress >= @\[ ( end_of_the_cycle_stage_3_end - end_of_the_cycle_stage_2_end ) * 0.5 + end_of_the_cycle_stage_2_end ]
-				NOT = { owner = { has_country_flag = unlock_accord_destruction } }
+				NOR = {
+					situation_progress < @\[ ( end_of_the_cycle_stage_3_end - end_of_the_cycle_stage_2_end ) * 0.5 + end_of_the_cycle_stage_2_end ]
+					owner = { has_country_flag = unlock_accord_destruction }
+				}
 			}
 			owner = { set_country_flag = unlock_accord_destruction }
 		}
@@ -2273,8 +2291,10 @@ update_eotc_accords = {
 	# Intensification accord
 	if = {
 		limit = {
-			situation_progress >= @end_of_the_cycle_stage_3_end
-			NOT = { owner = { has_country_flag = unlock_accord_intensification } }
+			NOR = {
+				situation_progress < @end_of_the_cycle_stage_3_end
+				owner = { has_country_flag = unlock_accord_intensification }
+			}
 		}
 		owner = { set_country_flag = unlock_accord_intensification }
 	}
@@ -2292,8 +2312,10 @@ update_eotc_accords = {
 		}
 		if = {
 			limit = {
-				situation_progress >= @\[ ( end_of_the_cycle_end_value - end_of_the_cycle_stage_3_end ) * 0.5 + end_of_the_cycle_stage_3_end ]
-				NOT = { owner = { has_country_flag = unlock_accord_eradication } }
+				NOR = {
+					situation_progress < @\[ ( end_of_the_cycle_end_value - end_of_the_cycle_stage_3_end ) * 0.5 + end_of_the_cycle_stage_3_end ]
+					owner = { has_country_flag = unlock_accord_eradication }
+				}
 			}
 			owner = { set_country_flag = unlock_accord_eradication }
 		}

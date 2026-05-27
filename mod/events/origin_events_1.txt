@@ -557,8 +557,8 @@ event = {
 							has_country_flag = scion_requested_leader
 							NOT = {
 								any_owned_leader = {
-									has_base_skill >= 5
 									NOR = {
+										has_base_skill < 5
 										is_ruler = yes
 										has_leader_flag = fe_gifted_leader
 									}
@@ -656,8 +656,8 @@ country_event = {
 		overlord = { save_event_target_as = scion_master }
 		ordered_owned_leader = {
 			limit = {
-				has_base_skill >= 5
 				NOR = {
+					has_base_skill < 5
 					is_ruler = yes
 					has_leader_flag = fe_gifted_leader
 				}

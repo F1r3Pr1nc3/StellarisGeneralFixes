@@ -496,13 +496,15 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		owner = { has_origin = origin_progenitor_hive }
-		num_assigned_jobs = {
-			job = spawning_drone
-			value < 100
-			automated_workforce = yes
+		NOR = {
+			num_assigned_jobs = {
+				job = spawning_drone
+				value >= 100
+				automated_workforce = yes
+			}
+			days_passed <= 5
+			is_planet_class = pc_cosmogenesis_world
 		}
-		days_passed > 5
-		NOT = { is_planet_class = pc_cosmogenesis_world }
 	}
 
 	immediate = {
@@ -529,12 +531,12 @@ country_event = {
 	immediate = {
 		every_owned_planet = {
 			limit = {
-				num_assigned_jobs = {
-					job = spawning_drone
-					value < 100
-					automated_workforce = yes
-				}
 				NOR = {
+					num_assigned_jobs = {
+						job = spawning_drone
+						value >= 100
+						automated_workforce = yes
+					}
 					has_modifier = missing_offspring_modifier
 					is_planet_class = pc_cosmogenesis_world
 				}
@@ -569,8 +571,8 @@ country_event = {
 		owner = { has_origin = origin_progenitor_hive }
 		any_owned_planet = {
 			has_modifier = missing_offspring_modifier
-			pop_amount >= 300
 			NOR = {
+				pop_amount < 300
 				has_planet_flag = offspring_missing_warned
 				is_capital = yes
 			}
@@ -581,8 +583,10 @@ country_event = {
 		every_owned_planet = {
 			limit = {
 				has_modifier = missing_offspring_modifier
-				pop_amount >= 300
-				NOT = { has_planet_flag = offspring_missing_warned }
+				NOR = {
+					pop_amount < 300
+					has_planet_flag = offspring_missing_warned
+				}
 			}
 			set_timed_planet_flag = { flag = offspring_missing_warned years = 2 }
 			create_message = {

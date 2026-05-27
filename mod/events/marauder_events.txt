@@ -786,8 +786,8 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		years_passed > 80
 		NOR = {
+			years_passed <= 80
 			num_marauder_empires_to_spawn = 0
 			has_global_flag = marauder_infighting_ongoing
 			has_global_flag = marauder_crisis_ongoing
@@ -930,8 +930,8 @@ country_event = {
 						closest_system = {
 							limit = {
 								has_owner = yes
-								num_planets_in_system > 1
 								NOR = {
+									num_planets_in_system <= 1
 									is_pirate_system = yes
 									has_star_flag = hostile_system
 									has_star_flag = guardian
@@ -2164,8 +2164,8 @@ country_event = {
 				# Ranking member of galactic community
 				random_galcom_member = {
 					limit = {
-						galactic_community_rank <= 3
 						NOR = {
+							galactic_community_rank > 3
 							AND = {
 								exists = event_target:raid_target_1
 								is_same_value = event_target:raid_target_1
@@ -2195,8 +2195,8 @@ country_event = {
 					save_event_target_as = raid_target_7
 					random_galcom_member = {
 						limit = {
-							galactic_community_rank <= 3
 							NOR = {
+								galactic_community_rank > 3
 								AND = {
 									exists = event_target:raid_target_1
 									is_same_value = event_target:raid_target_1
@@ -5255,8 +5255,8 @@ planet_event = {
 							any_system_colony = {
 								has_owner = yes
 								is_owned_by = event_target:raid_victim
-								sapient_pop_amount >= 300
 								NOR = {
+									sapient_pop_amount < 300
 									is_occupied_flag = yes
 									has_planet_flag = planet_raided
 								}
@@ -5268,8 +5268,8 @@ planet_event = {
 							limit = {
 								has_owner = yes
 								is_owned_by = event_target:raid_victim
-								sapient_pop_amount >= 300
 								NOR = {
+									sapient_pop_amount < 300
 									is_occupied_flag = yes
 									has_planet_flag = planet_raided
 								}
@@ -5460,8 +5460,10 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				num_species > 1
-				NOT = { exists = event_target:marauder_species }
+				NOR = {
+					num_species <= 1
+					exists = event_target:marauder_species
+				}
 			}
 			if = {
 				limit = { exists = event_target:marauder_country }
@@ -5509,8 +5511,8 @@ planet_event = {
 			limit = { sapient_pop_amount > 100 }
 			random_owned_pop_group = {
 				limit = {
-					is_robot_pop_group = no
 					is_sapient = yes
+					is_robot_pop_group = no
 				}
 				weights = {
 					base = 3
@@ -5648,8 +5650,8 @@ planet_event = {
 			limit = { sapient_pop_amount > 100 }
 			random_owned_pop_group = {
 				limit = {
-					is_robot_pop_group = no
 					is_sapient = yes
+					is_robot_pop_group = no
 				}
 				weights = {
 					base = 3
@@ -6318,8 +6320,8 @@ event = {
 					has_country_flag = raid_cooldown
 				}
 			}
-			resource_stockpile_compare = { resource = energy value >= 5000 }
 			NOR = {
+				resource_stockpile_compare = { resource = energy value < 5000 }
 				is_homicidal = yes
 				is_genocidal_infernal = yes
 			}
@@ -6346,8 +6348,8 @@ event = {
 						has_country_flag = raid_cooldown
 					}
 				}
-				resource_stockpile_compare = { resource = energy value >= 5000 }
 				NOR = {
+					resource_stockpile_compare = { resource = energy value < 5000 }
 					is_homicidal = yes
 					is_genocidal_infernal = yes
 					has_ai_personality = honorbound_warriors
@@ -6904,8 +6906,10 @@ country_event = {
 		}
 		if = {
 			limit = {
-				num_marauder_empires_to_spawn > 1
-				NOT = { exists = event_target:marauder_country_2 }
+				NOR = {
+					num_marauder_empires_to_spawn <= 1
+					exists = event_target:marauder_country_2
+				}
 			}
 			random_country = {
 				limit = {
@@ -6917,8 +6921,10 @@ country_event = {
 		}
 		if = {
 			limit = {
-				num_marauder_empires_to_spawn > 2
-				NOT = { exists = event_target:marauder_country_3 }
+				NOR = {
+					num_marauder_empires_to_spawn <= 2
+					exists = event_target:marauder_country_3
+				}
 			}
 			random_country = {
 				limit = {
@@ -7704,9 +7710,11 @@ country_event = {
 					limit = { sapient_pop_amount > 400 }
 					random_owned_pop_group = {
 						limit = {
-							is_robot_pop_group = no
 							is_sapient = yes
-							NOT = { is_same_species = root }
+							NOR = {
+								is_robot_pop_group = yes
+								is_same_species = root
+							}
 						}
 						weights = {
 							base = 5
@@ -8122,8 +8130,8 @@ country_event = {
 		}
 		if = { # .505 BUT NOT DIE.
 			limit = {
-				check_variable = { which = "CmtVarKhanRemainingLive" value > -1.5 }
-				NOT = {
+				NOR = {
+					check_variable = { which = "CmtVarKhanRemainingLive" value <= -1.5 }
 					AND = {
 						has_country_flag = great_khan_defeated_once
 						check_variable = { which = "CmtVarKhanRemainingLive" value < 0 }
@@ -8358,8 +8366,10 @@ country_event = {
 		remove_country_flag = great_khan_defeated_temp
 		if = { # To be sure (as we use this event as active fix)
 			limit = {
-				check_variable = { which = "CmtVarKhanRemainingLive" value < 0 }
-				NOT = { has_country_flag = khan_dead_event_fine }
+				NOR = {
+					check_variable = { which = "CmtVarKhanRemainingLive" value >= 0 }
+					has_country_flag = khan_dead_event_fine
+				}
 			}
 			country_event = { id = marauder.712 } # Dead
 		}
@@ -8409,8 +8419,8 @@ country_event = {
 					limit = {
 						exists = solar_system
 						is_mobile = yes
-						fleet_power >= 16000
 						NOR = {
+							fleet_power < 16000
 							is_civilian = yes
 							is_in_combat = yes
 							exists = leader
@@ -8659,8 +8669,8 @@ event = {
 						any_owned_fleet = {
 							exists = solar_system
 							is_mobile = yes
-							fleet_power >= 20000
 							NOR = {
+								fleet_power < 20000
 								is_civilian = yes
 								is_in_combat = yes
 								exists = leader
@@ -8675,8 +8685,8 @@ event = {
 						limit = {
 							exists = solar_system
 							is_mobile = yes
-							fleet_power >= 20000
 							NOR = {
+								fleet_power < 20000
 								is_civilian = yes
 								is_in_combat = yes
 								exists = leader
@@ -9344,9 +9354,9 @@ country_event = {
 				limit = {
 					any_owned_fleet = {
 						is_mobile = yes
-						fleet_power >= 6000
-						num_ships >= 4
 						NOR = {
+							fleet_power < 6000
+							num_ships < 4
 							is_civilian = yes
 							exists = leader
 						}
@@ -9367,9 +9377,9 @@ country_event = {
 					limit = {
 						exists = solar_system
 						is_mobile = yes
-						fleet_power >= 6000
-						num_ships >= 4
 						NOR = {
+							fleet_power < 6000
+							num_ships < 4
 							is_civilian = yes
 							exists = leader
 						}
@@ -9468,8 +9478,8 @@ country_event = {
 					limit = {
 						any_controlled_planet = {
 							has_army = yes
-							planet_garrison_strength >= 620
 							NOR = {
+								planet_garrison_strength < 620
 								has_ground_combat = yes
 								any_planet_army = { exists = leader }
 							}
@@ -9478,8 +9488,8 @@ country_event = {
 					random_controlled_planet = {
 						limit = {
 							has_army = yes
-							planet_garrison_strength >= 620
 							NOR = {
+								planet_garrison_strength < 620
 								has_ground_combat = yes
 								any_planet_army = { exists = leader }
 							}
@@ -13194,10 +13204,10 @@ country_event = {
 						if = {
 							limit = {
 								any_owned_pop_group = {
-									prev = {
-										habitability = { who = prev value >= 0.5 }
-									}
 									NOR = {
+										prev = {
+											habitability = { who = prev value < 0.5 }
+										}
 										is_robot_pop_group = yes
 										has_trait = trait_hive_mind
 									}
@@ -13205,10 +13215,10 @@ country_event = {
 							}
 							random_owned_pop_group = {
 								limit = {
-									prev = {
-										habitability = { who = prev value >= 0.5 }
-									}
 									NOR = {
+										prev = {
+											habitability = { who = prev value < 0.5 }
+										}
 										is_robot_pop_group = yes
 										has_trait = trait_hive_mind
 									}
@@ -13236,10 +13246,10 @@ country_event = {
 						else_if = {
 							limit = {
 								any_owned_pop_group = {
-									prev = {
-										habitability = { who = prev value >= 0.3 }
-									}
 									NOR = {
+										prev = {
+											habitability = { who = prev value < 0.3 }
+										}
 										is_robot_pop_group = yes
 										has_trait = trait_hive_mind
 									}
@@ -13247,10 +13257,10 @@ country_event = {
 							}
 							random_owned_pop_group = {
 								limit = {
-									prev = {
-										habitability = { who = prev value >= 0.3 }
-									}
 									NOR = {
+										prev = {
+											habitability = { who = prev value < 0.3 }
+										}
 										is_robot_pop_group = yes
 										has_trait = trait_hive_mind
 									}
@@ -14125,8 +14135,10 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		years_passed > 30
-		NOT = { has_country_flag = marauder_neighbor_event_4 }
+		NOR = {
+			years_passed <= 30
+			has_country_flag = marauder_neighbor_event_4
+		}
 	}
 
 	immediate = {

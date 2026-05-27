@@ -453,25 +453,6 @@ titan_yards = {
 	ai_weight = {
 		weight = 100 # use same weight here - ai weighting is done in starbase_types.txt
 		modifier = {
-			factor = 0
-			count_starbase_modules = { type = shipyard count < 2 }
-		}
-		modifier = {
-			factor = 0
-			# Break these buildings up.
-			has_starbase_building = colossus_yards
-		}
-		modifier = {
-			factor = 0
-			owner = {
-				controlled_systems < 60
-				any_owned_starbase = {
-					NOT = { is_same_value = root }
-					has_starbase_building = titan_yards
-				}
-			}
-		}
-		modifier = {
 			factor = 0.2
 			owner = {
 				any_owned_starbase = {
@@ -482,10 +463,23 @@ titan_yards = {
 		}
 		modifier = {
 			factor = 0
-			owner = {
-				count_owned_starbase = {
-					count > 1
-					limit = { has_starbase_building = titan_yards }
+			OR = {
+				count_starbase_modules = { type = shipyard count < 2 }
+				has_starbase_building = colossus_yards # Break these buildings up.
+				owner = {
+					OR = {
+						AND = {
+							controlled_systems < 60
+							any_owned_starbase = {
+								NOT = { is_same_value = root }
+								has_starbase_building = titan_yards
+							}
+						}
+						count_owned_starbase = {
+							count > 1
+							limit = { has_starbase_building = titan_yards }
+						}
+					}
 				}
 			}
 		}
@@ -538,30 +532,21 @@ colossus_yards = {
 		weight = 100 # use same weight here - ai weighting is done in starbase_types.txt
 		modifier = {
 			factor = 0
-			count_starbase_modules = { type = shipyard count < 2 }
-		}
-		modifier = {
-			factor = 0
-			# Break these buildings up.
-			has_starbase_building = titan_yards
-		}
-		modifier = {
-			factor = 0
-			owner = {
-				any_owned_starbase = {
-					NOT = { is_same_value = root }
-					has_starbase_building = colossus_yards
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			# Make sure they've built titan yards first.
-			NOT = {
+			OR = {
+				count_starbase_modules = { type = shipyard count < 2 }
+				has_starbase_building = titan_yards # Break these buildings up.
 				owner = {
 					any_owned_starbase = {
 						NOT = { is_same_value = root }
-						has_starbase_building = titan_yards
+						has_starbase_building = colossus_yards
+					}
+				}
+				NOT = { # Make sure they've built titan yards first.
+					owner = {
+						any_owned_starbase = {
+							NOT = { is_same_value = root }
+							has_starbase_building = titan_yards
+						}
 					}
 				}
 			}
@@ -2692,19 +2677,18 @@ gravitational_centrifuge = {
 		weight = 100 # use same weight here - ai weighting is done in starbase_types.txt
 		modifier = {
 			factor = 0
-			solar_system = {
-				any_neighbor_system = {
-					has_owner = yes
-					NOT = { is_owned_by = root.owner }
+			OR = {
+				solar_system = {
+					any_neighbor_system = {
+						has_owner = yes
+						NOT = { is_owned_by = root.owner }
+					}
 				}
-			}
-		}
-		modifier = {
-			factor = 0
-			owner = {
-				count_owned_starbase = {
-					count >= 5
-					limit = { has_starbase_building = gravitational_centrifuge }
+				owner = {
+					count_owned_starbase = {
+						count >= 5
+						limit = { has_starbase_building = gravitational_centrifuge }
+					}
 				}
 			}
 		}

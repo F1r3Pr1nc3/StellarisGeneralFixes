@@ -37,8 +37,10 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "irradiated_planet"
-		pop_amount >= 1
-		NOT = { has_planet_flag = irradiated_colony_flag }
+		NOR = {
+			pop_amount < 1
+			has_planet_flag = irradiated_colony_flag
+		}
 	}
 
 	immediate = {
@@ -165,8 +167,8 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "titanic_life"
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			has_planet_flag = titanic_life_colony_flag
 			is_planet_class = pc_volcanic
 		}
@@ -375,8 +377,10 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "unstable_tectonics"
-		pop_amount >= 1
-		NOT = { has_modifier = "recent_quake" }
+		NOR = {
+			pop_amount < 1
+			has_modifier = "recent_quake"
+		}
 	}
 
 	is_triggered_only = yes
@@ -465,8 +469,10 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "asteroid_belt"
-		pop_amount >= 1
-		NOT = { has_modifier = "recent_comet" }
+		NOR = {
+			pop_amount < 1
+			has_modifier = "recent_comet"
+		}
 	}
 
 	is_triggered_only = yes
@@ -499,8 +505,10 @@ planet_event = {
 		has_owner = yes
 		owner = { is_gestalt = no }
 		has_modifier = "atmospheric_hallucinogen"
-		pop_amount >= 1
-		NOT = { has_planet_flag = atmospheric_hallucinogen_colony_flag }
+		NOR = {
+			pop_amount < 1
+			has_planet_flag = atmospheric_hallucinogen_colony_flag
+		}
 	}
 
 	immediate = {
@@ -712,8 +720,8 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "strong_magnetic_field"
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			has_modifier = "magnetic_research_boost"
 			has_modifier = "magnetic_disruption"
 			has_planet_flag = magnetic_mystery_solved
@@ -770,8 +778,8 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "strong_magnetic_field"
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			has_modifier = "magnetic_research_boost"
 			has_modifier = "magnetic_disruption"
 			has_planet_flag = magnetic_mystery_solved
@@ -867,8 +875,8 @@ planet_event = {
 			limit = {
 				has_modifier = strong_magnetic_field
 				has_modifier = "strong_magnetic_field"
-				pop_amount >= 1
 				NOR = {
+					pop_amount < 1
 					has_modifier = "magnetic_research_boost"
 					has_modifier = "magnetic_disruption"
 					has_ground_combat = yes
@@ -973,8 +981,8 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			owner = {
 				OR = {
 					is_ai = yes
@@ -1094,8 +1102,8 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			owner = {
 				OR = {
 					is_ai = yes
@@ -3010,8 +3018,8 @@ planet_event = {
 	}
 
 	trigger = {
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			owner = {
 				OR = {
 					is_ai = yes
@@ -6004,8 +6012,8 @@ planet_event = {
 
 	trigger = {
 		has_owner = yes
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			owner = {
 				OR = {
 					has_country_flag = colony_junkyard_orbit
@@ -8455,8 +8463,8 @@ planet_event = {
 
 	trigger = {
 		has_modifier = "stratovents"
-		pop_amount >= 1
 		NOR = {
+			pop_amount < 1
 			has_planet_flag = colony_event
 			has_planet_flag = stratovent_world_colony
 			owner = {
@@ -9047,8 +9055,10 @@ planet_event = {
 		owner = {
 			random_owned_planet = {
 				limit = {
-					pop_amount > 100
-					NOT = { has_planet_flag = rampant_desertlings }
+					NOR = {
+						pop_amount <= 100
+						has_planet_flag = rampant_desertlings
+					}
 					OR = {
 						has_planet_flag = desertling_fauna
 						any_owned_species = { has_trait = trait_presapient_unintelligent }
