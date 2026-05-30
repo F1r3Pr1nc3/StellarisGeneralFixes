@@ -686,7 +686,7 @@ planet_event = {
 }
 
 # Portal Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
-# Vfix opt: just take crisis.1015
+# Vfix opt DEPRECATED: just take crisis.1015
 country_event = {
 	id = crisis.1012
 	hide_window = yes
@@ -694,61 +694,67 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	trigger = {
-		is_country_type = extradimensional
-		fromfrom = { is_ship_size = dimensional_portal_ed }
-	}
+	# trigger = {
+	# 	is_country_type = extradimensional
+	# 	fromfrom = { is_ship_size = dimensional_portal_ed }
+	# }
 
 	immediate = {
-		# random_system = { limit = { has_star_flag = extradimensional_origin_system }
-		fromfrom.solar_system = { # Vfix opt
-			random_system_ambient_object = {
-				limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
-				destroy_ambient_object = this
-			}
-		}
-		log = "SGF: [This.GetName] Portal Destroyed"
-		if = {
+		if = { # DEPRECATION DUMMY
 			limit = {
-				OR = {
-					NOT = { has_global_flag = extradimensional_second_portal }
-					AND = {
-						has_global_flag = extradimensional_second_portal_destroyed
-						OR = { # Vfix
-							NOT = { has_global_flag = extradimensional_third_portal }
-							has_global_flag = extradimensional_third_portal_destroyed
+				is_country_type = extradimensional
+				fromfrom = { is_scope_type = ship is_ship_size = dimensional_portal_ed }
+			}
+			# random_system = { limit = { has_star_flag = extradimensional_origin_system }
+			fromfrom.solar_system = { # Vfix opt
+				random_system_ambient_object = {
+					limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
+					destroy_ambient_object = this
+				}
+			}
+			log = "SGF: [This.GetName] Portal Destroyed"
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_global_flag = extradimensional_second_portal }
+						AND = {
+							has_global_flag = extradimensional_second_portal_destroyed
+							OR = { # Vfix
+								NOT = { has_global_flag = extradimensional_third_portal }
+								has_global_flag = extradimensional_third_portal_destroyed
+							}
 						}
 					}
 				}
-			}
-			stop_crisis_sound = yes
-			from = {
-				save_event_target_as = portal_killer
-				if = { # Vfix sync
-					limit = {
-						NAND = {
-							is_ai = yes
-							has_relic = r_unbidden_warlock
+				stop_crisis_sound = yes
+				from = {
+					save_event_target_as = portal_killer
+					if = { # Vfix sync
+						limit = {
+							NAND = {
+								is_ai = yes
+								has_relic = r_unbidden_warlock
+							}
 						}
+						country_event = { id = crisis.1250 days = 10 random = 10 }
+						set_country_flag = with_great_power_achievement
 					}
-					country_event = { id = crisis.1250 days = 10 random = 10 }
-					set_country_flag = with_great_power_achievement
+				}
+				observer_event = { id = observer.35 }
+				every_playable_country = {
+					if = {
+						limit = { has_communications = from }
+						add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+					}
+					add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
+					country_event = { id = crisis.1013 }
 				}
 			}
-			observer_event = { id = observer.35 }
-			every_playable_country = {
-				if = {
-					limit = { has_communications = from }
-					add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+			# Still other portal exists
+			else = { # Vfix opt
+				every_playable_country = {
+					country_event = { id = crisis.1016 }
 				}
-				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
-				country_event = { id = crisis.1013 }
-			}
-		}
-		# Still other portal exists
-		else = { # Vfix opt
-			every_playable_country = {
-				country_event = { id = crisis.1016 }
 			}
 		}
 	}
@@ -1373,65 +1379,69 @@ country_event = {
 }
 
 # Second Portal Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
-# Vfix opt: just take crisis.1015
+# Vfix opt DEPRECATED: just take crisis.1015
 country_event = {
 	id = crisis.1115
 	hide_window = yes
 	is_test_event = yes
 	fire_only_once = yes
 	is_triggered_only = yes
-
-	trigger = {
-		is_country_type = extradimensional_2
-		fromfrom = { is_ship_size = dimensional_portal_ed }
-	}
-
+	# trigger = {
+	# 	is_country_type = extradimensional_2
+	# 	fromfrom = { is_ship_size = dimensional_portal_ed }
+	# }
 	immediate = {
-		# random_system = { limit = { has_star_flag = extradimensional_second_portal_system }
-		fromfrom.solar_system = { # Vfix opt
-			random_system_ambient_object = {
-				limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
-				destroy_ambient_object = this
-			}
-		}
-		log = "SGF: [This.GetName] Portal Destroyed"
-		if = {
+		if = { # DEPRECATION DUMMY
 			limit = {
-				has_global_flag = extradimensional_first_portal_destroyed
-				OR = { # Vfix
-					NOT = { has_global_flag = extradimensional_third_portal }
-					has_global_flag = extradimensional_third_portal_destroyed
+				is_country_type = extradimensional_2
+				fromfrom = { is_scope_type = ship is_ship_size = dimensional_portal_ed }
+			}
+			# random_system = { limit = { has_star_flag = extradimensional_second_portal_system }
+			fromfrom.solar_system = { # Vfix opt
+				random_system_ambient_object = {
+					limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
+					destroy_ambient_object = this
 				}
 			}
-			stop_crisis_sound = yes
-			from = {
-				save_event_target_as = portal_killer
-				if = { # Vfix sync
-					limit = {
-						NAND = {
-							is_ai = yes
-							has_relic = r_unbidden_warlock
-						}
+			log = "SGF: \\[This.GetName] Portal Destroyed from \\[From.GetName]"
+			if = {
+				limit = {
+					has_global_flag = extradimensional_first_portal_destroyed
+					OR = { # Vfix
+						NOT = { has_global_flag = extradimensional_third_portal }
+						has_global_flag = extradimensional_third_portal_destroyed
 					}
-					country_event = { id = crisis.1250 days = 10 random = 10 }
-					set_country_flag = with_great_power_achievement
+				}
+				stop_crisis_sound = yes
+				from = {
+					save_event_target_as = portal_killer
+					if = { # Vfix sync
+						limit = {
+							NAND = {
+								is_ai = yes
+								has_relic = r_unbidden_warlock
+							}
+						}
+						country_event = { id = crisis.1250 days = 10 random = 10 }
+						set_country_flag = with_great_power_achievement
+					}
+				}
+				# Vfix sync
+				observer_event = { id = observer.37 }
+				every_playable_country = {
+					if = {
+						limit = { has_communications = from }
+						add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+					}
+					add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
+					country_event = { id = crisis.1116 }
 				}
 			}
-			# Vfix sync
-			observer_event = { id = observer.37 }
-			every_playable_country = {
-				if = {
-					limit = { has_communications = from }
-					add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+			# Still other portal exists
+			else = {
+				every_playable_country = {
+					country_event = { id = crisis.1117 }
 				}
-				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
-				country_event = { id = crisis.1116 }
-			}
-		}
-		# Still other portal exists
-		else = {
-			every_playable_country = {
-				country_event = { id = crisis.1117 }
 			}
 		}
 	}
@@ -1797,7 +1807,7 @@ country_event = {
 }
 
 # Third Portal Destroyed (HIDDEN on_ship_destroyed_victim too expensive)
-# Vfix opt: just take crisis.1015
+# Vfix opt DEPRECATED: just take crisis.1015
 country_event = {
 	id = crisis.1215
 	hide_window = yes
@@ -1805,54 +1815,60 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	trigger = {
-		is_country_type = extradimensional_3
-		fromfrom = { is_ship_size = dimensional_portal_ed }
-	}
+	# trigger = {
+	# 	is_country_type = extradimensional_3
+	# 	fromfrom = { is_ship_size = dimensional_portal_ed }
+	# }
 
 	immediate = {
-		# random_system = { limit = { has_star_flag = extradimensional_third_portal_system }
-		fromfrom.solar_system = { # Vfix opt
-			random_system_ambient_object = {
-				limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
-				destroy_ambient_object = this
-			}
-		}
-		log = "SGF: [This.GetName] Portal Destroyed"
-		if = {
+		if = { # DEPRECATION DUMMY
 			limit = {
-				has_global_flag = extradimensional_first_portal_destroyed
-				has_global_flag = extradimensional_second_portal_destroyed
+				is_country_type = extradimensional_3
+				fromfrom = { is_scope_type = ship is_ship_size = dimensional_portal_ed }
 			}
-			stop_crisis_sound = yes
-			from = {
-				save_event_target_as = portal_killer
-				if = { # Vfix sync
-					limit = {
-						NAND = {
-							is_ai = yes
-							has_relic = r_unbidden_warlock
+			# random_system = { limit = { has_star_flag = extradimensional_third_portal_system }
+			fromfrom.solar_system = { # Vfix opt
+				random_system_ambient_object = {
+					limit = { has_ambient_object_flag = extradimensional_system_effect_2 }
+					destroy_ambient_object = this
+				}
+			}
+			log = "SGF: [This.GetName] Portal Destroyed"
+			if = {
+				limit = {
+					has_global_flag = extradimensional_first_portal_destroyed
+					has_global_flag = extradimensional_second_portal_destroyed
+				}
+				stop_crisis_sound = yes
+				from = {
+					save_event_target_as = portal_killer
+					if = { # Vfix sync
+						limit = {
+							NAND = {
+								is_ai = yes
+								has_relic = r_unbidden_warlock
+							}
 						}
+						country_event = { id = crisis.1250 days = 10 random = 10 }
+						set_country_flag = with_great_power_achievement
 					}
-					country_event = { id = crisis.1250 days = 10 random = 10 }
-					set_country_flag = with_great_power_achievement
+				}
+				# Vfix sync
+				observer_event = { id = observer.39 }
+				every_playable_country = {
+					if = {
+						limit = { has_communications = from }
+						add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+					}
+					add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
+					country_event = { id = crisis.1216 }
 				}
 			}
-			# Vfix sync
-			observer_event = { id = observer.39 }
-			every_playable_country = {
-				if = {
-					limit = { has_communications = from }
-					add_opinion_modifier = { who = from modifier = opinion_destroyed_portal }
+			# Still other portal exists
+			else = {
+				every_playable_country = {
+					country_event = { id = crisis.1217 }
 				}
-				add_modifier = { modifier = "extradimensionals_defeated" years = 1 }
-				country_event = { id = crisis.1216 }
-			}
-		}
-		# Still other portal exists
-		else = {
-			every_playable_country = {
-				country_event = { id = crisis.1217 }
 			}
 		}
 	}

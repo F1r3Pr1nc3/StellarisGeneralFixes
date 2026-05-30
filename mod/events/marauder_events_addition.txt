@@ -351,8 +351,8 @@ fleet_event = {
 					every_federation_ally = {
 						limit = {
 							NOR = {
-								trust = { who = prev value < 30 }
 								is_hostile = root.owner
+								trust = { who = prev value < 30 }
 							}
 						}
 						root.owner = {
@@ -648,8 +648,8 @@ planet_event = {
 		if = {
 			limit = {
 				NOR = {
-					planet_devastation < 16
 					has_planet_flag = planet_raided
+					planet_devastation < 16
 				}
 				from = { is_default_or_fallen = yes }
 			}

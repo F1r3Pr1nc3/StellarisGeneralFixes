@@ -48,13 +48,7 @@ get_capital_planet = {
 			}
 			else = {
 				ordered_owned_planet = {
-					limit = {
-						is_colony = yes
-						is_colonizable = no
-						is_under_colonization = no
-						exists = space_owner
-						solar_system = { exists = starbase }
-					}
+					limit = { is_planet_eligible_for_treasure_planet = yes }
 					position = 0
 					order_by = trigger:pop_amount
 					save_event_target_as = capital_planet
@@ -68,7 +62,10 @@ get_capital_planet = {
 					limit = {
 						has_owner = yes
 						is_colony = yes
+						is_colonizable = no
 						is_under_colonization = no
+						exists = space_owner
+						solar_system = { exists = starbase }
 						OR = {
 							AND = {
 								exists = owner
@@ -76,7 +73,7 @@ get_capital_planet = {
 							}
 							AND = {
 								exists = controller
-								controller = { is_same_empire = prev }
+								controller = { is_same_empire = prevprev }
 							}
 						}
 					}
@@ -85,7 +82,11 @@ get_capital_planet = {
 					save_event_target_as = capital_planet
 				}
 			}
-			else = {
+			# Last fallback
+			if = {
+				limit = {
+					NOT = { exists = event_target:capital_planet }
+				}
 				random_owned_planet = {
 					limit = {
 						has_owner = yes
@@ -112,29 +113,7 @@ get_capital_planet = {
 			}
 		}
 		else = {
-			random_owned_planet = {
-				limit = {
-					has_owner = yes
-					is_under_colonization = no
-					pop_amount > 0
-				}
-				weights = {
-					base = 1
-					modifier = {
-						add = 4
-						solar_system = { is_capital_system = yes }
-					}
-					modifier = { add = 1 pop_amount > 500 }
-					modifier = { add = 3 pop_amount > 3000 }
-				}
-				save_event_target_as = capital_planet
-			}
-			if = {
-				limit = {
-					NOT = { exists = event_target:capital_planet }
-				}
-				log = "FAIL: No planet found for [This.GetName]?!"
-			}
+			log = "FAIL: No planet found for [This.GetName]?!"
 		}
 	}
 }

@@ -428,8 +428,8 @@ country_event = {
 					every_playable_country = {
 						limit = {
 							NOR = {
-								fleet_power <= 40000
 								is_variable_set = "successor_fleet_power"
+								fleet_power <= 40000
 							}
 						}
 						if = {
@@ -1169,6 +1169,7 @@ country_event = {
 							exists = space_owner
 							exists = starbase
 							starbase = { is_owned_by = prevprev }
+							is_on_border = yes
 							# any_neighbor_system = { is_owned_by = prevprevprev }
 							# any_country_neighbor_to_system = { is_same_value = prevprevprev }
 							NOR = {
@@ -1186,6 +1187,7 @@ country_event = {
 									exists = space_owner
 									exists = starbase
 									starbase = { is_owned_by = prevprev }
+									is_on_border = yes
 									NOR = {
 										is_capital_system = yes
 										space_owner = { is_same_value = prevprevprev }
@@ -1218,6 +1220,7 @@ country_event = {
 							exists = space_owner
 							exists = starbase
 							starbase = { is_owned_by = prevprev }
+							is_on_border = yes # Vfix opt
 							# any_neighbor_system = { is_owned_by = prevprevprev }
 							# any_country_neighbor_to_system = { is_same_value = prevprevprev }
 							NOR = {
@@ -1235,6 +1238,7 @@ country_event = {
 									exists = space_owner
 									exists = starbase
 									starbase = { is_owned_by = prevprev }
+									is_on_border = yes # Vfix opt
 									NOR = {
 										is_capital_system = yes
 										space_owner = { is_same_value = prevprevprev }
@@ -1267,6 +1271,7 @@ country_event = {
 									exists = space_owner
 									exists = starbase
 									starbase = { is_owned_by = prevprev }
+									is_on_border = yes # Vfix opt
 									NOR = {
 										is_capital_system = yes
 										space_owner = { is_same_value = prevprevprev }
@@ -1295,6 +1300,7 @@ country_event = {
 									exists = space_owner
 									exists = starbase
 									starbase = { is_owned_by = prevprev }
+									is_on_border = yes # Vfix opt
 									NOR = {
 										is_capital_system = yes
 										space_owner = { is_same_value = prevprevprev }
@@ -1433,6 +1439,10 @@ country_event = {
 													has_owner = yes
 													is_owned_by = prevprevprevprev.owner
 													NOR = {
+														is_capital_system = yes
+														has_star_flag = switched_system
+														is_owned_by = prev.owner
+														is_owned_by = prevprev.owner
 														count_neighbor_system = {
 															count >= 2
 															limit = {
@@ -1440,10 +1450,6 @@ country_event = {
 																is_owned_by = prevprevprev
 															}
 														}
-														is_capital_system = yes
-														has_star_flag = switched_system
-														is_owned_by = prev.owner
-														is_owned_by = prevprev.owner
 													}
 												}
 											}
