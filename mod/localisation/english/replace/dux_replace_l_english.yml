@@ -2,6 +2,38 @@
 # This fixes indentation, corrects "Galactic Community" to "Galactic Community Emissary". Part of this fix was achieved in the trait itself by making it treat this tooltip as a modifier which skips localising part of it.
  leader_trait_supporting_voter_tt: "$t$- Support for a passed Resolution grants 1 §YFavor§! and 5 §YTrust§! with the proposing empire"
 
+# These fix indentation:
+ leader_trait_interrogator_effect:1 "$ARMY_EFFECTS_TXT$:\n$t$- On Winning Ground Combat as Attacker:\n$tt$ $INTEL$ on enemy Empire: §G+15§!"
+# and re-adds the +15% Morale Damage which is hidden by the custom tooltip. ALTERNATIVELY change custom_tooltip to custom_tooltip_with_modifiers.
+ leader_trait_interrogator_2_effect:1 "$ARMY_EFFECTS_TXT$:\n$t$- On Winning Ground Combat as Attacker:\n$tt$ $INTEL$ on enemy Empire: §G+30§!\n$t$- $MOD_ARMY_MORALE_DAMAGE_MULT$: §G+15%§!"
+ leader_trait_tactical_algorithms_tt: "The effects of this trait scale with §YLeader Skill Level§!"
+ blorg_insight_effect: "§R-25§! opinion with §YHuman§! empires."
+ leader_trait_curator_effect: "Increases the chance to draw Rare Technologies."
+ mod_trait_storm_rider: "$t$Trait effects are increased while this Leader resides inside a cosmic storm."
+ leader_trait_mediator_effect:1 "$PLANET_EFFECTS_TXT$:\n$t$- $BONUS_WORKFORCE_FOR$ ['concept_planet_influential'] per Species on the Planet: §G+2%§!\n$t$- §Y$MOD_POP_HAPPINESS$§! per Species on the Planet: §G+2%§!\n\n$SECTOR_EFFECTS_TXT$:\n$t$- $BONUS_WORKFORCE_FOR$ ['concept_planet_influential'] per Species on each Planet: §G+1%§!\n$t$- §Y$MOD_POP_HAPPINESS$§! per Species on each Planet: §G+1%§!"
+ leader_trait_shroud_preacher_effect:1 "Every §Y10 Years§! grants §Y100§! £pop£ §HPops§! the §Y$trait_latent_psionic$§! trait."
+ leader_trait_chainbreaker_effect:0 "70% chance to spawn §G1§! Army per §Y$pop_cat_slave$§! on attacked planet"
+ leader_trait_kidnapper_3_effect:0 "$ARMY_EFFECTS_TXT$:\n$t$- On Winning Ground Combat as Attacker:\n$tt$Abduct §YPops§! as §YSlaves§! to Random Colonies: §G30%§!"
+ hells_heart_effect:0 "Gain §G50%§! more resources from §H$leader_trait_corsair$§! and §H$leader_trait_shipbreaker$§!."
+ leader_trait_spacebender_effect: "$THIS_LEADER_TXT$:\n$tt$- Has no upkeep"
+ leader_trait_judicial_execution_effect: "$PLANET_EFFECTS_TXT$:\n$t$- Resources gained from £pops£ §HBiological Purged Pops§!: §G+100%§!\n\n$SECTOR_EFFECTS_TXT$:\n$t$- Resources gained from £pops£ §HBiological Purged Pops§!: §G+50%§!"
+### Have to change the trait to change leader_trait_prospector_3 custom_tooltip_with_modifiers to custom_tooltip to change "- Science Ship Effects" to "Science Ship Effects".
+ leader_trait_prospector_base_effect: "$SCIENCE_SHIP_EFFECTS_TXT$:\n$t$- On Completing Survey:\n$tt$ Chance to increase Resource Deposit Size:"
+ only_one_scientist_focus:0 "§YOnly one Scientist focus can be selected.§!"
+ leader_trait_corsair_effect:2 "$FLEET_EFFECTS_TXT$:\n$t$- $EVERY_ENEMY_SHIP_DESTROYED_TXT$:\n$tt$$r_energy$: §G+$@trait_corsair_amt$§!"
+# also makes text match with above.
+ leader_trait_shipbreaker_effect:2 "$FLEET_EFFECTS_TXT$:\n$t$- $EVERY_ENEMY_SHIP_DESTROYED_TXT$:\n$tt$$r_alloys$: §G+$@trait_shipbreaker_amt$§!"
+ leader_trait_juryrigger_effect:2 "Every Enemy Empire Ship Destroyed:\n$tt$Random Ship in £military_ship£ §YFleet§!: §G$@trait_juryrigger_amt|%0$§! £ship_stats_hitpoints£ Hull Points Restored"
+ leader_trait_crusader_effect: "$FLEET_EFFECTS_TXT$:\n$t$- $EVERY_ENEMY_SHIP_DESTROYED_TXT$:\n$tt$$r_unity$: §G+$@trait_crusader_fleet_amt|0$§!\n\n$ARMY_EFFECTS_TXT$:\n$t$$EVERY_ARMY_KILLED_TXT$:\n$tt$$r_unity$: §G+25§!"
+# leader_trait_reinforcer_2 cannot be fixed by localisation, must be fixed in trait.
+# Cannot remove the "-" before SYSTEM_EFFECTS_TXT without modifying trait.
+ leader_trait_master_salvager_effect: "$SYSTEM_EFFECTS_TXT$:\n$t$- Friendly Ships in System:\n$tt$Monthly Hull Points Repaired: §G+2%§!\n$t$- When Debris is Scavenged/Researched in System:\n$tt$Chance to Salvage Ships: §Y15%§!\n$tt$$salvage_ship_restrictions$"
+ leader_trait_academic_minor_artifacts_expert_tt_intro: "$THIS_LEADER_TXT$:\n$tt$- Chance to discover $r_minor_artifacts$ Deposit upon excavating an Archaeology Site:"
+ leader_trait_opportunity_custom_effect:0 "Does not use Leader Capacity while under Level 4."
+ leader_trait_shroud_warped_invasion_effect: "$t$- Intel on enemy empire per invasion win: §G+$@shroud_warped_intel|0$§!"
+ leader_trait_bellicose_effect: "$EMPIRE_EFFECTS_TXT$:\n$t$- Every 100 [Leader.GetLeaderSoldierJobType]:\n$tt$$MOD_COUNTRY_NAVAL_CAP_ADD$: §G+$@bellicose_naval_cap_add|1$§!\n$tt$$MOD_DEFENSE_ARMIES_ADD$: §G+$@bellicose_defense_armies_add|1$§!"
+# Cannot fix leader_trait_salvager/2/3 without modifying trait.
+
 
  observation.4.a.tt:0 "$regress_to_age_tt$"
 
