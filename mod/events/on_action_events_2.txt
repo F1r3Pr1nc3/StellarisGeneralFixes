@@ -953,23 +953,23 @@ pop_group_event = {
 			}
 		}
 		from.solar_system = {
-				if = {
-					limit = { exists = space_owner }
-					space_owner = {
-						if = {
-							limit = {
-								NOR = {
-									is_same_value = event_target:abductor
-									AND = {
-										exists = event_target:obsv_post_owner
-										is_same_value = event_target:obsv_post_owner
-									}
+			if = {
+				limit = { exists = space_owner }
+				space_owner = {
+					if = {
+						limit = {
+							NOR = {
+								is_same_value = event_target:abductor
+								AND = {
+									exists = event_target:obsv_post_owner
+									is_same_value = event_target:obsv_post_owner
 								}
 							}
-							country_event = { id = action.123 }
 						}
+						country_event = { id = action.123 }
 					}
 				}
+			}
 		}
 	}
 }
@@ -1700,7 +1700,7 @@ starbase_event = {
 		}
 		solar_system = {
 			set_surveyed = { surveyed = yes surveyor = from.owner }
-		# remove leftovers
+			# remove leftovers
 			every_fleet_in_system = {
 				limit = {
 					is_owned_by = root.owner
@@ -2243,7 +2243,7 @@ country_event = {
 					add_age = value:skill_scaled_age_increase|SKILL|2|
 				}
 			}
-		# Additional effects from modifier
+			# Additional effects from modifier
 			add_age = value:leader_recruitment_age|OWNER|root|
 		}
 	}

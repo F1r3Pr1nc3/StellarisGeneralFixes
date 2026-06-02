@@ -1608,11 +1608,8 @@ add_observation_insight_effect = {
 						1 = {
 							modifier = {
 								factor = 0
-								NOT = { has_technology = tech_detection_array }
-							}
-							modifier = {
-								factor = 0
 								OR = {
+									NOT = { has_technology = tech_detection_array }
 									has_technology = tech_unusual_senses
 									has_tech_option = tech_unusual_senses
 								}
@@ -1678,11 +1675,8 @@ add_observation_insight_effect = {
 								OR = {
 									has_technology = tech_predatory_tactics
 									has_tech_option = tech_predatory_tactics
+									NOT = { has_technology = tech_cloaking_1 }
 								}
-							}
-							modifier = {
-								factor = 0
-								NOT = { has_technology = tech_cloaking_1 }
 							}
 							add_research_option = tech_predatory_tactics
 						}
@@ -1785,11 +1779,8 @@ add_observation_insight_effect = {
 								OR = {
 									has_technology = tech_temple_of_transportation
 									has_tech_option = tech_temple_of_transportation
+									NOT = { has_technology = tech_hyper_relays }
 								}
-							}
-							modifier = {
-								factor = 0
-								NOT = { has_technology = tech_hyper_relays }
 							}
 							add_research_option = tech_temple_of_transportation
 						}

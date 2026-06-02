@@ -1522,6 +1522,7 @@ planet_event = {
 	}
 
 	immediate = {
+		set_planet_flag = machup_capital@root.owner
 		owner = {
 			save_event_target_as = organic_empire
 			save_event_target_as = current_uprising_originator # the old script accidentally saved the owner as two event targets, keeping it that way for safety, sorry!
@@ -1565,7 +1566,6 @@ planet_event = {
 			}
 			clear_variable = var_country_robot_pops_percent
 		}
-		set_planet_flag = machup_capital@root.owner
 		# create machine species
 		create_species = {
 			name = random

@@ -206,7 +206,25 @@ pre_ftl_clean_up_effect = {
 					background = { category = "backgrounds" file = "new_dawn.dds" }
 					colors = { "beige" "yellow" "null" "null" }
 				}
-				capital_scope = { remove_all_buildings = yes }
+				capital_scope = {
+					remove_all_buildings = yes
+					if = {
+						limit = { pop_amount > @industrial_age_pops }
+						while = {
+							count = 20 # Vfix
+							limit = { pop_amount > @industrial_age_pops }
+							random_owned_pop_group = { kill_single_pop = yes }
+						}
+					}
+					else_if = {
+						limit = { pop_amount < @industrial_age_pops }
+						while = {
+							count = 20 # Vfix
+							limit = { pop_amount < @industrial_age_pops }
+							create_pop_group = { species = owner_species }
+						}
+					}
+				}
 				if = {
 					limit = { is_hive_empire = no }
 					change_government = {
@@ -240,24 +258,6 @@ pre_ftl_clean_up_effect = {
 						add_building = building_hive_urban_dwellings
 					}
 				}
-				capital_scope = {
-					if = {
-						limit = { pop_amount > @industrial_age_pops }
-						while = {
-							count = 20 # Vfix
-							limit = { pop_amount > @industrial_age_pops }
-							random_owned_pop_group = { kill_single_pop = yes }
-						}
-					}
-					else_if = {
-						limit = { pop_amount < @industrial_age_pops }
-						while = {
-							count = 20 # Vfix
-							limit = { pop_amount < @industrial_age_pops }
-							create_pop_group = { species = owner_species }
-						}
-					}
-				}
 			}
 		}
 		else_if = { # Vfix minor opt
@@ -273,7 +273,6 @@ pre_ftl_clean_up_effect = {
 					background = { category = "backgrounds" file = "new_dawn.dds" }
 					colors = { "beige" "yellow" "null" "null" }
 				}
-				capital_scope = { }
 				change_government = {
 					civics = {
 						civic = civic_increasing_urbanization
@@ -281,7 +280,7 @@ pre_ftl_clean_up_effect = {
 					}
 				}
 				capital_scope = {
-					remove_all_buildings = yes 
+					remove_all_buildings = yes
 					add_primitive_farm_or_mine = yes
 					add_building = building_primitive_factory
 					add_building = building_primitive_mine

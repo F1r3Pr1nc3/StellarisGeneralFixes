@@ -126,14 +126,18 @@ traditionalist = {
 
 	leader = {
 		base = 100
-		modifier = {
-			factor = 0
-			species = { has_trait = "trait_mechanical" }
-			owner = { is_individual_machine = no }
-		}
 		modifier = { factor = 0.5 leader_class = scientist }
 		modifier = { factor = 2 leader_class = official }
-		modifier = { factor = 0.0 is_event_leader = yes }
+		modifier = {
+			factor = 0
+			OR = {
+				AND = {
+					species = { has_trait = "trait_mechanical" }
+					owner = { is_individual_machine = no }
+				}
+				is_event_leader = yes
+			}
+		}
 	}
 
 	# DEMAND: Faction Outraged (by a GalCom Resolution)
@@ -619,23 +623,23 @@ traditionalist = {
 				base = 1
 				modifier = {
 					factor = 0
-					support < 0.50
-					owner = { has_ethic = ethic_spiritualist }
-				}
-				modifier = {
-					factor = 0
-					owner = {
-						has_civic = civic_fanatic_purifiers
-						OR = {
-							has_ethic = ethic_militarist
-							has_ethic = ethic_spiritualist
+					OR = {
+						AND = {
+							support < 0.50
+							owner = { has_ethic = ethic_spiritualist }
 						}
-					}
-				}
-				modifier = {
-					factor = 0
-					owner = {
-						count_pop_faction = { count < 4 }
+						owner = {
+							OR = {
+								AND = {
+									has_civic = civic_fanatic_purifiers
+									OR = {
+										has_ethic = ethic_militarist
+										has_ethic = ethic_spiritualist
+									}
+								}
+								count_pop_faction = { count < 4 }
+							}
+						}
 					}
 				}
 			}

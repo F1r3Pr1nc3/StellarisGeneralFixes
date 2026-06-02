@@ -437,12 +437,13 @@ all_random_events = {
 		20 = { # Whispers in the Stone
 			modifier = {
 				factor = 0
-				NOT = { from = { is_site_type = lithoids_digsite } }
-				owner = { has_country_flag = triggered_lithoids_special_event }
-			}
-			modifier = {
-				factor = 0
-				NOT = { exists = leader }
+				OR = {
+					AND = {
+						NOT = { from = { is_site_type = lithoids_digsite } }
+						owner = { has_country_flag = triggered_lithoids_special_event }
+					}
+					NOT = { exists = leader }
+				}
 			}
 			fleet_event = { id = ancrel.4006 }
 		}

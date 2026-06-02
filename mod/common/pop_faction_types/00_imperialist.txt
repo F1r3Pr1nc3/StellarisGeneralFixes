@@ -631,33 +631,30 @@ imperialist = {
 			ai_weight = {
 				base = 1
 				modifier = {
-					factor = 0
-					support < 0.50
-					owner = { has_ethic = ethic_militarist }
-				}
-				modifier = {
-					factor = 0
-					owner = {
-						has_civic = civic_fanatic_purifiers
-						OR = {
-							has_ethic = ethic_militarist
-							has_ethic = ethic_spiritualist
-						}
-					}
-				}
-				modifier = {
-					factor = 0
-					owner = { has_civic = civic_inwards_perfection }
-				}
-				modifier = {
 					factor = 1000
 					owner = { has_invalid_civic = civic_barbaric_despoilers }
 					NOT = { owner = { has_ethic = ethic_militarist } }
 				}
 				modifier = {
 					factor = 0
-					owner = {
-						count_pop_faction = { count < 4 }
+					OR = {
+						AND = {
+							support < 0.50
+							owner = { has_ethic = ethic_militarist }
+						}
+						owner = {
+							OR = {
+								AND = {
+									has_civic = civic_fanatic_purifiers
+									OR = {
+										has_ethic = ethic_militarist
+										has_ethic = ethic_spiritualist
+									}
+								}
+								has_civic = civic_inwards_perfection
+								count_pop_faction = { count < 4 }
+							}
+						}
 					}
 				}
 			}
