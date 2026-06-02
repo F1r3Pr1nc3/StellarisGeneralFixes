@@ -144,11 +144,26 @@ first_contact_event = {
 		}
 	}
 
+	trigger = {
+		exists = owner # Vfix log
+	}
+
 	immediate = {
 		set_site_progress_locked = yes
 	}
 
 	after = {
+		hidden_effect = {
+			if = { # Vfix log
+				limit = { exists = owner }
+				owner = {
+					country_event = {
+						id = grand_archive.200
+						scopes = { from = event_target:tiyanki_country fromfrom = root.solar_system }
+					}
+				}
+			}
+		}
 		finish_first_contact_effect = yes
 		set_site_progress_locked = no
 		# if = {
@@ -159,19 +174,12 @@ first_contact_event = {
 		# 	}
 		# 	owner = { country_event = galactic_features.387 } #Tiyanki graveyard follow-up
 		# }
-		hidden_effect = {
-			owner = {
-				country_event = {
-					id = grand_archive.200
-					scopes = { from = event_target:tiyanki_country fromfrom = root.solar_system }
-				}
-			}
-		}
 	}
 
 	option = {
 		name = story.501.a.spiri
 		trigger = {
+			exists = owner # Vfix log
 			owner = { is_spiritualist = yes }
 		}
 		owner = {
@@ -188,6 +196,7 @@ first_contact_event = {
 	option = {
 		name = story.501.a.mater
 		trigger = {
+			exists = owner # Vfix log
 			owner = {
 				OR = {
 					is_materialist = yes
@@ -210,6 +219,7 @@ first_contact_event = {
 	option = {
 		name = story.501.a.exploratobot
 		trigger = {
+			exists = owner # Vfix log
 			owner = { has_civic = civic_machine_exploration_protocol }
 		}
 		owner = {
@@ -237,6 +247,7 @@ first_contact_event = {
 			}
 		}
 		trigger = {
+			exists = owner # Vfix log
 			owner = {
 				NOR = {
 					is_materialist = yes
@@ -265,6 +276,10 @@ first_contact_event = {
 				increase_hunted_fauna_count = yes
 			}
 		}
+	}
+	option = { # Vfix log fallback
+		name = OK
+		exclusive_trigger = { NOT = { exists = owner } }
 	}
 }
 

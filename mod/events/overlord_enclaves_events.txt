@@ -1854,8 +1854,8 @@ country_event = {
 		trigger = {
 			event_target:mercenary_enclave_country = {
 				check_variable = { which = mercenary_mecha_armies_for_hire value >= 5 }
+				has_modifier = mercenary_fleet_size_upgrade_4
 			}
-			event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 1200 }
@@ -1921,8 +1921,8 @@ country_event = {
 		trigger = {
 			event_target:mercenary_enclave_country = {
 				check_variable = { which = mercenary_mecha_armies_for_hire value >= 10 }
+				has_modifier = mercenary_fleet_size_upgrade_4
 			}
-			event_target:mercenary_enclave_country = { has_modifier = mercenary_fleet_size_upgrade_4 }
 		}
 		allow = {
 			resource_stockpile_compare = { resource = energy value >= 2300 }
@@ -2009,9 +2009,6 @@ country_event = {
 		custom_tooltip = all_merc_army_hire
 		custom_tooltip = opinion_all
 		hidden_effect = {
-			event_target:mercenary_enclave_country = {
-				add_trust = { who = root amount = value:every_merc_army_total_trust }
-			}
 			create_fleet = {
 				effect = {
 					set_owner = root
@@ -2032,6 +2029,7 @@ country_event = {
 				}
 			}
 			event_target:mercenary_enclave_country = {
+				add_trust = { who = root amount = value:every_merc_army_total_trust }
 				set_variable = { which = mercenary_armies_for_hire value = 0 }
 				if = {
 					limit = { has_modifier = mercenary_fleet_size_upgrade_4 }

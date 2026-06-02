@@ -1097,27 +1097,6 @@ fleet_event = {
 		# 		found_fleet = { move_to = this }
 		# 	}
 		# }
-		solar_system = {
-			add_modifier = { modifier = voidspawn_system_mod months = 22 }
-			every_fleet_in_system = {
-				limit = { is_cloaked = yes }
-				set_cloaking_active = no
-			}
-			star = {
-				create_ambient_object = { # The storm affects the star closest to the Voidspawn
-					type = "voidspawn_storm_1"
-					location = this
-					duration = 666
-				}
-			}
-			every_system_colony = {
-				limit = { has_owner = yes }
-				add_modifier = {
-					modifier = voidspawn_colony_mod # Colonies in this system get a Voidspawn modifier
-					days = 666
-				}
-			}
-		}
 		# Vfix (whole block) by FirePrince: path tracking
 		clear_orders = yes
 		clear_fleet_actions = this
@@ -1141,6 +1120,25 @@ fleet_event = {
 			}
 		}
 		solar_system = {
+			add_modifier = { modifier = voidspawn_system_mod months = 22 }
+			every_fleet_in_system = {
+				limit = { is_cloaked = yes }
+				set_cloaking_active = no
+			}
+			star = {
+				create_ambient_object = { # The storm affects the star closest to the Voidspawn
+					type = "voidspawn_storm_1"
+					location = this
+					duration = 666
+				}
+			}
+			every_system_colony = {
+				limit = { has_owner = yes }
+				add_modifier = {
+					modifier = voidspawn_colony_mod # Colonies in this system get a Voidspawn modifier
+					days = 666
+				}
+			}
 			if = {
 				limit = { exists = event_target:target_behemoth }
 				if = {

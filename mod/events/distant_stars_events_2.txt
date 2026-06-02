@@ -881,6 +881,7 @@ country_event = {
 			set_timed_planet_flag = { flag = ignore_ai_building_limitations days = 1 }
 			add_building = building_crude_huts
 			add_building = building_crude_huts
+			planet_event = { id = distar.1010 days = 20 } # Triggers Vol's return
 		}
 		establish_communications_no_message = event_target:mardak_vol_country
 		if = {
@@ -899,9 +900,6 @@ country_event = {
 					}
 				}
 			}
-		}
-		event_target:utopian_planet = {
-			planet_event = { id = distar.1010 days = 20 } # Triggers Vol's return
 		}
 	}
 
@@ -1448,6 +1446,9 @@ planet_event = {
 				auto_move_to_planet = { target = event_target:new_target clear_auto_move_on_arrival = no }
 				set_fleet_flag = mardak_vol_purgers_die # Flags the ship for destruction now that their mission is done
 			}
+			owner = {
+				country_event = { id = distar.1016 days = 1 }
+			}
 		}
 		if = {
 			limit = { has_observation_outpost = yes }
@@ -1468,11 +1469,6 @@ planet_event = {
 					}
 					add_deposit = d_fungoid_extermination
 				}
-			}
-		}
-		solar_system = {
-			owner = {
-				country_event = { id = distar.1016 days = 1 }
 			}
 		}
 	}

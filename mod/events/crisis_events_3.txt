@@ -1702,19 +1702,27 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	pre_triggers = { # Vfix opt
+		has_owner = yes
+	}
+
 	trigger = {
-		exists = event_target:custodian_bot # Vfix
+		has_global_flag = ai_invasion_ongoing # Vfix opt
 		fromfrom = {
-			pop_group_size > 1 # Last Pop is still alive when this event is fired
-		}
-		count_owned_pop_amount = {
-			count <= 100
-			limit = {
-				NOT = { is_same_species = event_target:custodian_bot }
-			}
+			pop_group_size > 0 # Last Pop is still alive when this event is fired
+			pop_group_size < 400 # Vfix opt
 		}
 		exists = controller
 		controller = { is_country_type = ai_empire }
+		NOR = {
+			is_owned_by = event_target:AI_crisis
+			count_owned_pop_amount = {
+				count >= 100
+				limit = {
+					NOT = { is_same_species = event_target:custodian_bot }
+				}
+			}
+		}
 	}
 
 	immediate = {
@@ -1750,7 +1758,7 @@ planet_event = {
 						}
 					}
 				}
-				create_starbase = { size = starbase_ai owner = event_target:AI_crisis }
+				create_contingency_starbase = yes # Vfix sync
 				if = {
 					limit = {
 						NOT = { any_system_ambient_object = { has_ambient_object_flag = contingency_system_effect } }
@@ -1769,6 +1777,7 @@ planet_event = {
 				}
 			}
 		}
+		clear_planet_purge_type = yes # Vfix
 	}
 }
 
@@ -1834,6 +1843,7 @@ planet_event = {
 					save_event_target_as = final_machine_world_player_destroyer
 				}
 			}
+			set_country_flag = final_machine_world_destroyed
 		}
 		if = {
 			limit = { exists = event_target:final_machine_world_player_destroyer }
@@ -1931,18 +1941,18 @@ planet_event = {
 			multiply_crisis_strength = 1.25
 		}
 		end_crisis = yes
-		event_target:final_machine_world_destroyer = { set_country_flag = final_machine_world_destroyed }
 		# Cybrex
 		if = {
 			limit = {
 				has_global_flag = cybrex_resurface
 				NOT = { has_global_flag = cybrex_destroyed }
+				exists = event_target:cybrex # Vfix safety
 			}
 			event_target:cybrex = { # Vfix opt
 				# Cybrex recall expeditionary fleets
 				every_country = {
 					limit = { has_country_flag = cybrex_donation }
-					country_event = { id = crisis.2474 days = 20 random = 30 }
+					country_event = { id = crisis.2474 days = 20 random = 30 scopes = { from = prev } }
 				}
 				# Cybrex Depart Galaxy
 				country_event = { id = crisis.2406 days = 360 random = 800 }
@@ -3838,14 +3848,17 @@ country_event = {
 		set_global_flag = cybrex_departed
 		observer_event = { id = observer.54 }
 		every_playable_country = {
-			# limit = { }
+			limit = { is_ai = no } # Vfix opt minor
 			country_event = { id = crisis.2407 }
 		}
 		event_target:cybrex = { # Triggered this way to avoid game over when testing
-			# limit = { is_country_type = cybrex_empire }
 			every_owned_pop_group = { kill_all_pop = yes }
 			every_controlled_fleet = { delete_fleet = this }
-			every_controlled_planet = { remove_all_buildings = yes }
+			every_controlled_planet = {
+				remove_all_buildings = yes
+				remove_all_armies = yes # Vfix
+				clear_planet_purge_type = yes # Vfix
+			}
 			every_controlled_planet = {
 				limit = { is_planet_class = pc_cybrex }
 				change_pc = pc_ringworld_habitable
@@ -4316,23 +4329,47 @@ country_event = {
 
 	immediate = {
 		event_target:starbase_system = {
-			solar_system = {
-				create_starbase = { size = starbase_ai owner = root }
-				star = {
-					create_ambient_object = { type = "contingency_1" location = this }
-					last_created_ambient_object = {
-						set_ambient_object_flag = contingency_system_effect
-						set_location = {
-							target = prev
-							distance = 0
-							angle = random
+			# solar_system = { Vfix double
+			if = {
+				limit = { exists = starbase }
+				starbase = { destroy_fleet = fleet }
+			}
+			create_contingency_starbase = yes # Vfix sync
+			star = {
+				create_ambient_object = { type = "contingency_1" location = this }
+				last_created_ambient_object = {
+					set_ambient_object_flag = contingency_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
+			every_system_planet = {
+				limit = { has_orbital_station = yes }
+				orbital_station = { dismantle = yes }
+			}
+			# Vfix
+			every_system_colony = {
+				limit = {
+					has_owner = yes
+					is_owned_by = event_target:AI_crisis
+					OR = {
+						NOT = { exists = controller }
+						is_controlled_by = event_target:AI_crisis
+					}
+					NAND = {
+						exists = event_target:custodian_bot
+						count_owned_pop_amount = {
+							count > 50
+							limit = {
+								NOT = { is_same_species = event_target:custodian_bot }
+							}
 						}
 					}
 				}
-				every_system_planet = {
-					limit = { has_orbital_station = yes }
-					orbital_station = { dismantle = yes }
-				}
+				clear_planet_purge_type = yes
 			}
 		}
 	}

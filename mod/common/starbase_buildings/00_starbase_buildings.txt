@@ -453,15 +453,6 @@ titan_yards = {
 	ai_weight = {
 		weight = 100 # use same weight here - ai weighting is done in starbase_types.txt
 		modifier = {
-			factor = 0.2
-			owner = {
-				any_owned_starbase = {
-					NOT = { is_same_value = root }
-					has_starbase_building = titan_yards
-				}
-			}
-		}
-		modifier = {
 			factor = 0
 			OR = {
 				count_starbase_modules = { type = shipyard count < 2 }
@@ -480,6 +471,15 @@ titan_yards = {
 							limit = { has_starbase_building = titan_yards }
 						}
 					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			owner = {
+				any_owned_starbase = {
+					NOT = { is_same_value = root }
+					has_starbase_building = titan_yards
 				}
 			}
 		}

@@ -952,23 +952,21 @@ pop_group_event = {
 				country_event = { id = action.123 }
 			}
 		}
-		from = {
-			solar_system = {
-				if = {
-					limit = { exists = space_owner }
-					space_owner = {
-						if = {
-							limit = {
-								NOR = {
-									is_same_value = event_target:abductor
-									AND = {
-										exists = event_target:obsv_post_owner
-										is_same_value = event_target:obsv_post_owner
-									}
+		from.solar_system = {
+			if = {
+				limit = { exists = space_owner }
+				space_owner = {
+					if = {
+						limit = {
+							NOR = {
+								is_same_value = event_target:abductor
+								AND = {
+									exists = event_target:obsv_post_owner
+									is_same_value = event_target:obsv_post_owner
 								}
 							}
-							country_event = { id = action.123 }
 						}
+						country_event = { id = action.123 }
 					}
 				}
 			}
@@ -1702,9 +1700,7 @@ starbase_event = {
 		}
 		solar_system = {
 			set_surveyed = { surveyed = yes surveyor = from.owner }
-		}
-		# remove leftovers
-		solar_system = {
+			# remove leftovers
 			every_fleet_in_system = {
 				limit = {
 					is_owned_by = root.owner
@@ -2247,9 +2243,9 @@ country_event = {
 					add_age = value:skill_scaled_age_increase|SKILL|2|
 				}
 			}
+			# Additional effects from modifier
+			add_age = value:leader_recruitment_age|OWNER|root|
 		}
-		# Additional effects from modifier
-		from = { add_age = value:leader_recruitment_age|OWNER|root| }
 	}
 }
 
@@ -2812,8 +2808,8 @@ planet_event = {
 	}
 
 	immediate = {
-		from = { set_country_flag = picked_orbital_bombardment_policy_flag }
 		from = {
+			set_country_flag = picked_orbital_bombardment_policy_flag
 			country_event = { id = action.600 }
 		}
 	}

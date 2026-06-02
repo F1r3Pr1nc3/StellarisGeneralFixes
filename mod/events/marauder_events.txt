@@ -561,7 +561,6 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		from = { set_country_flag = marauder_vengeance_begun }
 		random_owned_planet = {
 			limit = { is_planet_eligible_for_treasure_planet = yes }
 			solar_system = {
@@ -580,6 +579,7 @@ country_event = {
 			country_event = { id = marauder.8 days = 10 }
 		}
 		from = {
+			set_country_flag = marauder_vengeance_begun
 			owner_species = { save_event_target_as = marauder_species }
 			# Marauder 1
 			if = {
@@ -8654,8 +8654,9 @@ event = {
 		if = {
 			limit = {
 				exists = event_target:great_khan
-				event_target:great_khan = { is_scope_valid = yes exists = owner }
 				event_target:great_khan = {
+					is_scope_valid = yes
+					exists = owner
 					NAND = {
 						exists = fleet
 						fleet = { num_ships > 0 }
@@ -10463,7 +10464,7 @@ country_event = {
 					}
 				}
 				any_system_within_border = {
-					is_on_border = yes # Vfix opt
+					is_on_border = yes
 					any_neighbor_system = { has_owner = yes is_owned_by = root }
 					any_neighbor_system = {
 						has_owner = yes
@@ -10479,6 +10480,7 @@ country_event = {
 			random_system_within_border = {
 				limit = {
 					exists = starbase
+					is_on_border = yes
 					any_neighbor_system = { has_owner = yes is_owned_by = root }
 					any_neighbor_system = {
 						has_owner = yes
@@ -11825,8 +11827,6 @@ country_event = {
 			limit = { is_ai = no }
 			country_event = { id = marauder.620 }
 		}
-		# Vfix system survey, omit race condition, establish communications
-		country_event = { id = marauder_borders.2000 days = 5 }
 	}
 
 	after = {
@@ -11840,10 +11840,14 @@ country_event = {
 				}
 				event_target:third_diadochi = { set_player = event_target:raider_khanate }
 			}
+			# Vfix system survey, omit race condition, establish communications
+			country_event = { id = marauder_borders.2000 days = 5 scopes = { from = event_target:raider_khanate } }
 		}
 		else_if = {
 			limit = { is_country_type = default }
 			country_event = { id = khan.605 days = 2 scopes = { from = event_target:third_diadochi } }
+			# Vfix system survey, omit race condition, establish communications
+			country_event = { id = marauder_borders.2000 days = 5 }
 		}
 	}
 }
@@ -13049,6 +13053,15 @@ country_event = {
 					}
 				}
 			}
+			copy_techs_from = { target = root }
+			if = {
+				limit = { root = { num_owned_relics > 0 } }
+				steal_relic = { target = root relic = all }
+			}
+			owner_species = { save_event_target_as = marauder_species }
+			# create_marauder_successor_fleet = yes
+			save_event_target_as = new_khanate
+			country_event = { id = khan.306 }
 		}
 		every_owned_fleet = {
 			limit = { is_mobile = yes }
@@ -13141,17 +13154,6 @@ country_event = {
 					}
 				}
 			}
-		}
-		event_target:restored_marauders = {
-			copy_techs_from = { target = root }
-			if = {
-				limit = { root = { num_owned_relics > 0 } }
-				steal_relic = { target = root relic = all }
-			}
-			owner_species = { save_event_target_as = marauder_species }
-			country_event = { id = khan.306 }
-			# create_marauder_successor_fleet = yes
-			save_event_target_as = new_khanate
 		}
 		# If Horde owns only planets on not owned system.
 		if = {

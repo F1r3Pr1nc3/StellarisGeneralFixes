@@ -234,218 +234,6 @@ event = {
 				}
 			}
 		}
-		# Ascension Trait Fix
-		# This is just a workaround fix once, the real cause is somewhere else
-		every_playable_country = {
-			limit = { has_ascension_path = yes }
-			if = { # Synth trait
-				limit = {
-					is_synthetic_empire = yes
-					has_synthetic_ascension = yes
-				}
-				# Add Virtual Leader Trait: compare cybernetics.5046
-				if = {
-					limit = {
-						OR = {
-							has_tradition = tr_virtuality_1
-							has_tradition = tr_virtuality_adopt
-							has_country_flag = synth_virtual
-						}
-					}
-					# Species (before leader)
-					every_owned_leader = {
-						limit = {
-							species = { has_virtual_species_trait = no is_robotic = yes }
-							has_trait = leader_trait_virtual
-							is_leader_tier = leader_tier_default
-							is_gestalt_node = no
-						}
-						prev = {
-							random_owned_species = {
-								limit = {
-									is_same_species = prevprev
-									is_robotic = yes
-									has_virtual_species_trait = yes
-								}
-								prevprev = { change_species = prev }
-							}
-						}
-					}
-					# Leader
-					every_owned_leader = {
-						limit = {
-							species = { is_robotic = yes has_virtual_species_trait = yes }
-							NOT = { has_trait = leader_trait_virtual }
-						}
-						add_trait = { trait = leader_trait_virtual show_message = no }
-					}
-				}
-				else = {
-					machine_synthetic_leader_effect = yes
-				}
-			}
-			else_if = { # Psychic trait
-				limit = {
-					OR = {
-						AND = {
-							has_shroud_dlc = yes
-							has_tradition = tr_psionics_shroud_great_awakening # shroud.2780
-						}
-						has_finished_psionic_tradition = yes
-						has_tradition = tr_psionics_psionic_assimilation # utopia.2650
-					}
-					owner_species = { is_psionic_species = yes }
-					NOT = { has_country_flag = psionic_fix_worked }
-				}
-				# Species (before leader)
-				if = {
-					limit = {
-						any_owned_species = { is_same_species = prev is_latent_psionic_species = yes }
-					}
-					turn_main_species_to_psionic = yes
-					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
-				}
-				every_owned_leader = {
-					limit = {
-						species = { is_psionic_species = no }
-						has_trait = leader_trait_psionic
-						is_leader_tier = leader_tier_default
-						is_gestalt_node = no
-					}
-					prev = {
-						random_owned_species = {
-							limit = {
-								is_same_species = prevprev
-								is_psionic_species = yes
-							}
-							prevprev = { change_species = prev }
-						}
-					}
-				}
-				# Leader
-				if = {
-					limit = {
-						is_gestalt = yes
-						has_shroud_dlc = yes
-						ruler = { has_psionic_leader_trait = no }
-					}
-					ruler = {
-						add_trait = { trait = leader_trait_psionic show_message = no }
-					}
-				}
-				if = {
-					limit = {
-						any_owned_leader = { is_same_species = owner_species has_psionic_leader_trait = no }
-					}
-					every_owned_leader = {
-						limit = {
-							is_same_species = owner_species
-							has_psionic_leader_trait = no
-						}
-						add_trait = { trait = leader_trait_psionic show_message = no }
-					}
-					set_country_flag = psionic_fix_worked
-					log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
-				}
-			}
-			else_if = { # Cyborg
-				limit = {
-					OR = {
-						has_cybernetic_ascension = yes
-						has_active_tradition = tr_cybernetics_integrated_anatomy
-						has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
-					}
-				}
-				# Species (before leader)
-				every_owned_leader = {
-					limit = {
-						NOT = { species = { has_trait = trait_cybernetic } }
-						has_trait = leader_trait_cyborg
-						is_leader_tier = leader_tier_default
-					}
-					prev = {
-						random_owned_species = {
-							limit = {
-								is_same_species = prevprev
-								has_trait = trait_cybernetic
-							}
-							prevprev = { change_species = prev }
-						}
-					}
-				}
-				# Species limited
-				every_owned_leader = {
-					limit = {
-						NOT = { species = { has_trait = trait_limited_cybernetic } }
-						has_trait = leader_trait_limited_cyborg
-						is_leader_tier = leader_tier_default
-					}
-					if = {
-						limit = {
-							species = { has_trait = trait_cybernetic }
-						}
-						remove_trait = leader_trait_limited_cyborg
-						add_trait = { trait = leader_trait_cyborg show_message = no }
-					}
-					else = {
-						prev = {
-							random_owned_species = {
-								limit = {
-									is_same_species = prevprev
-									has_trait = trait_limited_cybernetic
-								}
-								prevprev = { change_species = prev }
-							}
-						}
-					}
-				}
-				# Leader
-				every_owned_leader = {
-					limit = {
-						species = { has_trait = trait_cybernetic }
-						NOT = { has_trait = leader_trait_cyborg }
-					}
-					add_trait = { trait = leader_trait_cyborg show_message = no }
-				}
-				# Limited Cyborg trait
-				every_owned_leader = {
-					limit = {
-						species = { has_trait = trait_limited_cybernetic }
-						NOT = { has_trait = leader_trait_limited_cyborg }
-						is_leader_tier = leader_tier_default
-					}
-					add_trait = { trait = leader_trait_limited_cyborg show_message = no }
-				}
-			}
-			else = { # Erudite trait
-				# Leader
-				every_owned_leader = {
-					limit = {
-						species = { has_trait = trait_erudite }
-						NOT = { has_trait = leader_trait_erudite }
-					}
-					add_trait = { trait = leader_trait_erudite show_message = no }
-				}
-				# Species
-				every_owned_leader = {
-					limit = {
-						NOT = { species = { has_trait = trait_erudite } }
-						has_trait = leader_trait_erudite
-						is_leader_tier = leader_tier_default
-						is_gestalt_node = no
-					}
-					prev = {
-						random_owned_species = {
-							limit = {
-								is_same_species = prevprev
-								has_trait = trait_erudite
-							}
-							prevprev = { change_species = prev }
-						}
-					}
-				}
-			}
-		}
 		# Voidworms and Tiyanki and Cutholoids
 		# Compare Ariphaos
 		# TODO move to country scope event_target:cutholoids_country
@@ -457,6 +245,243 @@ event = {
 				medium = { set_variable = { which = alive_cutholoids value = 3 } set_variable = { which = general_patch_systems_critters value = 4 } } # 600 stars
 				large = { set_variable = { which = alive_cutholoids value = 4 } set_variable = { which = general_patch_systems_critters value = 6 } } # 800 stars
 				huge = { set_variable = { which = alive_cutholoids value = 5 } set_variable = { which = general_patch_systems_critters value = 8 } } # 1000 stars
+				default = { set_variable = { which = alive_cutholoids value = 3 } set_variable = { which = general_patch_systems_critters value = 4 } } # 600 stars
+			}
+		}
+		# Vfix FIXME: this is the only direct inbuilt mod compatibility, this should be omited
+		if = {
+			limit = {
+				any_playable_country = {
+					is_ai = no
+					aap_ai_has_any_ascension_path_or_origin = yes # Compatibility with mod "All Ascension Paths" 2909582424
+				}
+			}
+			## REMOVEME at v4.4
+			random_playable_country = {
+				limit = {
+					is_ai = no
+					aap_ai_has_any_ascension_path_or_origin = yes
+				}
+				inline_script = {
+					script = merger_of_rules/toggled_code
+					code = " country_event = { id = aap.01 days = 1 } "
+					toggle = @aap_mod
+				}
+			}
+			break = yes
+		}
+		else = {
+			# Ascension Trait Fix
+			# This is just a workaround fix once, the real cause is somewhere else
+			every_playable_country = {
+				limit = { has_ascension_path = yes }
+				if = { # Synth trait
+					limit = {
+						is_synthetic_empire = yes
+						has_synthetic_ascension = yes
+					}
+					# Add Virtual Leader Trait: compare cybernetics.5046
+					if = {
+						limit = {
+							OR = {
+								has_tradition = tr_virtuality_1
+								has_tradition = tr_virtuality_adopt
+								has_country_flag = synth_virtual
+							}
+						}
+						# Species (before leader)
+						every_owned_leader = {
+							limit = {
+								species = { has_virtual_species_trait = no is_robotic = yes }
+								has_trait = leader_trait_virtual
+								is_leader_tier = leader_tier_default
+								is_gestalt_node = no
+							}
+							prev = {
+								random_owned_species = {
+									limit = {
+										is_same_species = prevprev
+										is_robotic = yes
+										has_virtual_species_trait = yes
+									}
+									prevprev = { change_species = prev }
+								}
+							}
+						}
+						# Leader
+						every_owned_leader = {
+							limit = {
+								species = { is_robotic = yes has_virtual_species_trait = yes }
+								NOT = { has_trait = leader_trait_virtual }
+							}
+							add_trait = { trait = leader_trait_virtual show_message = no }
+						}
+					}
+					else = {
+						machine_synthetic_leader_effect = yes
+					}
+				}
+				else_if = { # Psychic trait
+					limit = {
+						OR = {
+							AND = {
+								has_shroud_dlc = yes
+								has_tradition = tr_psionics_shroud_great_awakening # shroud.2780
+							}
+							has_finished_psionic_tradition = yes
+							has_tradition = tr_psionics_psionic_assimilation # utopia.2650
+						}
+						owner_species = { is_psionic_species = yes }
+						NOT = { has_country_flag = psionic_fix_worked }
+					}
+					# Species (before leader)
+					if = {
+						limit = {
+							any_owned_species = { is_same_species = prev is_latent_psionic_species = yes }
+						}
+						turn_main_species_to_psionic = yes
+						log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
+					}
+					every_owned_leader = {
+						limit = {
+							species = { is_psionic_species = no }
+							has_trait = leader_trait_psionic
+							is_leader_tier = leader_tier_default
+							is_gestalt_node = no
+						}
+						prev = {
+							random_owned_species = {
+								limit = {
+									is_same_species = prevprev
+									is_psionic_species = yes
+								}
+								prevprev = { change_species = prev }
+							}
+						}
+					}
+					# Leader
+					if = {
+						limit = {
+							is_gestalt = yes
+							has_shroud_dlc = yes
+							ruler = { has_psionic_leader_trait = no }
+						}
+						ruler = {
+							add_trait = { trait = leader_trait_psionic show_message = no }
+						}
+					}
+					if = {
+						limit = {
+							any_owned_leader = { is_same_species = owner_species has_psionic_leader_trait = no }
+						}
+						every_owned_leader = {
+							limit = {
+								is_same_species = owner_species
+								has_psionic_leader_trait = no
+							}
+							add_trait = { trait = leader_trait_psionic show_message = no }
+						}
+						set_country_flag = psionic_fix_worked
+						log = "SGF: Set PSIONIC TRADITION Vfix for [This.GetName]"
+					}
+				}
+				else_if = { # Cyborg
+					limit = {
+						OR = {
+							has_cybernetic_ascension = yes
+							has_active_tradition = tr_cybernetics_integrated_anatomy
+							has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
+						}
+					}
+					# Species (before leader)
+					every_owned_leader = {
+						limit = {
+							NOT = { species = { has_trait = trait_cybernetic } }
+							has_trait = leader_trait_cyborg
+							is_leader_tier = leader_tier_default
+						}
+						prev = {
+							random_owned_species = {
+								limit = {
+									is_same_species = prevprev
+									has_trait = trait_cybernetic
+								}
+								prevprev = { change_species = prev }
+							}
+						}
+					}
+					# Species limited
+					every_owned_leader = {
+						limit = {
+							NOT = { species = { has_trait = trait_limited_cybernetic } }
+							has_trait = leader_trait_limited_cyborg
+							is_leader_tier = leader_tier_default
+						}
+						if = {
+							limit = {
+								species = { has_trait = trait_cybernetic }
+							}
+							remove_trait = leader_trait_limited_cyborg
+							add_trait = { trait = leader_trait_cyborg show_message = no }
+						}
+						else = {
+							prev = {
+								random_owned_species = {
+									limit = {
+										is_same_species = prevprev
+										has_trait = trait_limited_cybernetic
+									}
+									prevprev = { change_species = prev }
+								}
+							}
+						}
+					}
+					# Leader
+					every_owned_leader = {
+						limit = {
+							species = { has_trait = trait_cybernetic }
+							NOT = { has_trait = leader_trait_cyborg }
+						}
+						add_trait = { trait = leader_trait_cyborg show_message = no }
+					}
+					# Limited Cyborg trait
+					every_owned_leader = {
+						limit = {
+							species = { has_trait = trait_limited_cybernetic }
+							NOT = { has_trait = leader_trait_limited_cyborg }
+							is_leader_tier = leader_tier_default
+						}
+						add_trait = { trait = leader_trait_limited_cyborg show_message = no }
+					}
+				}
+				else = { # Erudite trait
+					# Leader
+					every_owned_leader = {
+						limit = {
+							species = { has_trait = trait_erudite }
+							NOT = { has_trait = leader_trait_erudite }
+						}
+						add_trait = { trait = leader_trait_erudite show_message = no }
+					}
+					# Species
+					every_owned_leader = {
+						limit = {
+							NOT = { species = { has_trait = trait_erudite } }
+							has_trait = leader_trait_erudite
+							is_leader_tier = leader_tier_default
+							is_gestalt_node = no
+						}
+						prev = {
+							random_owned_species = {
+								limit = {
+									is_same_species = prevprev
+									has_trait = trait_erudite
+								}
+								prevprev = { change_species = prev }
+							}
+						}
+					}
+				}
 			}
 		}
 	}

@@ -118,9 +118,6 @@ ship_event = {
 				min = @tier2researchmin
 				max = @tier2researchmax
 			}
-		}
-		fromfrom = { set_deposit = d_living_metal_deposit }
-		owner = {
 			if = {
 				limit = { has_tech_option = tech_mine_living_metal }
 				add_tech_progress = { tech = tech_mine_living_metal progress = 0.25 }
@@ -129,6 +126,7 @@ ship_event = {
 				add_research_option = tech_mine_living_metal
 			}
 		}
+		fromfrom = { set_deposit = d_living_metal_deposit }
 	}
 }
 
@@ -2932,15 +2930,6 @@ fleet_event = {
 				counter = battlefield_located
 				amount = 1
 			}
-		}
-		from = {
-			remove_star_flag = wrecked_fleet_system
-			random_system_planet = {
-				limit = { is_asteroid = yes }
-				save_event_target_as = wrecker_asteroid
-			}
-		}
-		owner = {
 			create_country = {
 				name = "NAME_Wreckers"
 				type = faction
@@ -2951,6 +2940,13 @@ fleet_event = {
 					background = { category = "backgrounds" file = "00_solid.dds" }
 					colors = { "red" "red" "null" "null" }
 				}
+			}
+		}
+		from = {
+			remove_star_flag = wrecked_fleet_system
+			random_system_planet = {
+				limit = { is_asteroid = yes }
+				save_event_target_as = wrecker_asteroid
 			}
 		}
 		last_created_country = {
