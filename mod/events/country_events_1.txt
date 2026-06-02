@@ -410,8 +410,8 @@ ship_event = {
 				counter = "probes_recovered"
 				amount = 1
 			}
+			save_event_target_as = ship_owner
 		}
-		owner = { save_event_target_as = ship_owner }
 		fromfrom = { destroy_ambient_object = this }
 		solar_system = {
 			every_system_planet = {
@@ -2461,10 +2461,6 @@ fleet_event = {
 	}
 
 	immediate = {
-		owner = {
-			save_event_target_as = owner_country
-			set_country_flag = cultists_sighted_1
-		}
 		from = {
 			random_system_planet = {
 				limit = {
@@ -2478,6 +2474,8 @@ fleet_event = {
 			}
 		}
 		owner = {
+			save_event_target_as = owner_country
+			set_country_flag = cultists_sighted_1
 			random_country = {
 				limit = { has_country_flag = cultist_rebels_of@root.owner }
 				save_event_target_as = radical_cult
@@ -2627,10 +2625,6 @@ fleet_event = {
 	}
 
 	immediate = {
-		owner = {
-			save_event_target_as = owner_country
-			set_country_flag = cultists_sighted_2
-		}
 		from = {
 			random_system_planet = {
 				limit = {
@@ -2642,6 +2636,8 @@ fleet_event = {
 			}
 		}
 		owner = {
+			save_event_target_as = owner_country
+			set_country_flag = cultists_sighted_2
 			random_country = {
 				limit = { has_country_flag = cultist_rebels_of@root.owner }
 				save_event_target_as = radical_cult
@@ -3768,8 +3764,10 @@ fleet_event = {
 	}
 
 	immediate = {
-		owner = { set_country_flag = hyacinth_system_entered }
-		owner = { remove_point_of_interest = hunting_hyacinth_poi.4 }
+		owner = {
+			set_country_flag = hyacinth_system_entered
+			remove_point_of_interest = hunting_hyacinth_poi.4
+		}
 		solar_system = {
 			remove_star_flag = hyacinth_system
 			random_system_planet = {

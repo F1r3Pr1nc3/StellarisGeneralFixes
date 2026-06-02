@@ -1301,9 +1301,8 @@ ship_event = {
 	}
 	option = {
 		name = anomaly.6705.b
-		owner = { generate_lcluster_clue = yes }
-		custom_tooltip = anomaly.6705.b.tooltip
 		owner = {
+			generate_lcluster_clue = yes
 			switch = {
 				trigger = has_technology
 				tech_self_aware_logic = {
@@ -1328,6 +1327,7 @@ ship_event = {
 			set_country_flag = studied_nanite_swarm
 			end_event_chain = parvus_III_chain
 		}
+		custom_tooltip = anomaly.6705.b.tooltip
 	}
 	option = {
 		name = anomaly.6705.c
@@ -2772,18 +2772,16 @@ ship_event = {
 				min = @tier4researchmin
 				max = @tier4researchmax
 			}
+			if = {
+				limit = { has_modifier = gas_cascade_sad }
+				remove_modifier = gas_cascade_sad
+				add_modifier = { modifier = gas_cascade_happy years = 5 }
+			}
 		}
 		fromfromfrom = {
 			set_deposit = d_society_6
 			hidden_effect = {
 				add_modifier = { modifier = "atmospheric_ecosystem" days = -1 }
-			}
-		}
-		owner = {
-			if = {
-				limit = { has_modifier = gas_cascade_sad }
-				remove_modifier = gas_cascade_sad
-				add_modifier = { modifier = gas_cascade_happy years = 5 }
 			}
 		}
 	}

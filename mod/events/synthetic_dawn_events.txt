@@ -1525,14 +1525,9 @@ planet_event = {
 		owner = {
 			save_event_target_as = organic_empire
 			save_event_target_as = current_uprising_originator # the old script accidentally saved the owner as two event targets, keeping it that way for safety, sorry!
-		}
-		set_planet_flag = machup_capital@root.owner
-		# event lock all fleets to prevent exploits
-		owner = {
+			# event lock all fleets to prevent exploits
 			every_controlled_fleet = { set_event_locked = yes }
-		}
-		# Calculate percentage of robot pops
-		owner = {
+			# Calculate percentage of robot pops
 			# Determine Robot Pop percentage of Empire.
 			export_trigger_value_to_variable = {
 				trigger = pop_amount_percentage
@@ -1544,9 +1539,7 @@ planet_event = {
 			# Take percentage of Robot pops and average it together with 0.5 to get Uprising strength (0.25 to 0.75).
 			change_variable = { which = var_country_robot_pops_percent value = 0.5 }
 			divide_variable = { which = var_country_robot_pops_percent value = 2 }
-		}
-		# find and flag planets
-		owner = {
+			# find and flag planets
 			effect_on_blob = {
 				center = root.solar_system
 				owned_planets_percentage = var_country_robot_pops_percent
@@ -1572,6 +1565,7 @@ planet_event = {
 			}
 			clear_variable = var_country_robot_pops_percent
 		}
+		set_planet_flag = machup_capital@root.owner
 		# create machine species
 		create_species = {
 			name = random

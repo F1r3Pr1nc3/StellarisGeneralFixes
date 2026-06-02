@@ -45,9 +45,9 @@ gateway = {
 	winddown_time = 0
 	ftl_multiplier = 0			# 0 means instant
 	icon_frame = 25
-	remember_instances = no	# whether countries remember meeting a specific instance of that type, or if they just remember seeing the type in general
-	galactic_map_tooltip_header=GATEWAY_GALACTIC
-	galactic_map_tooltip_desc=GATEWAY_GALACTIC_DESC
+	remember_instances = no	# Whether countries remember meeting a specific instance of that type, or if they just remember seeing the type in general.
+	galactic_map_tooltip_header = GATEWAY_GALACTIC
+	galactic_map_tooltip_desc = GATEWAY_GALACTIC_DESC
 	connection_type = any_other
 	animation_time = 1
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
@@ -293,6 +293,7 @@ shroud_tunnel = {
 
 	scripted_connection = {
 		node = { #system scope
+			exists = starbase # Vfix log
 			starbase = {
 				has_starbase_building = shroud_beacon
 			}

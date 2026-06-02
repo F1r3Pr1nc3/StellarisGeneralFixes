@@ -2755,6 +2755,8 @@ situation_event = {
 		# Check economy (used for AI_weights in the situation approach)
 		owner = {
 			export_trigger_value_to_variable = { trigger = expenses variable = kaleidoscope_owner_expenses rounded = yes }
+			# Update Kaleidoscope visuals
+			update_kaleidoscope_effect = yes
 		}
 		# Update mood based on situation approach (aka how much it's eating)
 		switch = {
@@ -2793,8 +2795,6 @@ situation_event = {
 				}
 			}
 		}
-		# Update Kaleidoscope visuals
-		owner = { update_kaleidoscope_effect = yes }
 	}
 }
 

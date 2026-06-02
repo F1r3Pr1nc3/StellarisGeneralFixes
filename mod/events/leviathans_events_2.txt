@@ -3253,22 +3253,22 @@ country_event = {
 
 	immediate = {
 		set_country_flag = fortress_solved
-		event_target:disabled_enigmatic_fortress = { save_event_target_as = slain_guardian_system }
-		every_playable_country = {
-			limit = {
-				has_event_chain = curator_poi_chain
-				event_target:slain_guardian_system = {
-					is_point_of_interest = {
-						id = curator_poi_fortress
-						event_chain = curator_poi_chain
-						owner = prev
+		event_target:disabled_enigmatic_fortress = {
+			save_event_target_as = slain_guardian_system
+			every_playable_country = {
+				limit = {
+					has_event_chain = curator_poi_chain
+					prev = { # Vfix opt
+						is_point_of_interest = {
+							id = curator_poi_fortress
+							event_chain = curator_poi_chain
+							owner = prev
+						}
 					}
 				}
+				remove_point_of_interest = curator_poi_fortress
+				end_curator_chain = yes
 			}
-			remove_point_of_interest = curator_poi_fortress
-			end_curator_chain = yes
-		}
-		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
 				star = {
 					create_ambient_object = { type = "dead_enigmatic_fortress_object" location = solar_system }
@@ -3389,22 +3389,22 @@ country_event = {
 
 	immediate = {
 		set_country_flag = fortress_solved
-		event_target:disabled_enigmatic_fortress = { save_event_target_as = slain_guardian_system }
-		every_playable_country = {
-			limit = {
-				has_event_chain = curator_poi_chain
-				event_target:slain_guardian_system = {
-					is_point_of_interest = {
-						id = curator_poi_fortress
-						event_chain = curator_poi_chain
-						owner = prev
+		event_target:disabled_enigmatic_fortress = {
+			save_event_target_as = slain_guardian_system
+			every_playable_country = {
+				limit = {
+					has_event_chain = curator_poi_chain
+					prev = { # Vfix opt
+						is_point_of_interest = {
+							id = curator_poi_fortress
+							event_chain = curator_poi_chain
+							owner = prev
+						}
 					}
 				}
+				remove_point_of_interest = curator_poi_fortress
+				end_curator_chain = yes
 			}
-			remove_point_of_interest = curator_poi_fortress
-			end_curator_chain = yes
-		}
-		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
 				star = {
 					create_ambient_object = { type = "dead_enigmatic_fortress_object" location = solar_system }
@@ -3498,22 +3498,22 @@ country_event = {
 
 	immediate = {
 		set_country_flag = fortress_solved
-		event_target:disabled_enigmatic_fortress = { save_event_target_as = slain_guardian_system }
-		every_playable_country = {
-			limit = {
-				has_event_chain = curator_poi_chain
-				event_target:slain_guardian_system = {
-					is_point_of_interest = {
-						id = curator_poi_fortress
-						event_chain = curator_poi_chain
-						owner = prev
+		event_target:disabled_enigmatic_fortress = {
+			save_event_target_as = slain_guardian_system
+			every_playable_country = {
+				limit = {
+					has_event_chain = curator_poi_chain
+					prev = { # Vfix opt
+						is_point_of_interest = {
+							id = curator_poi_fortress
+							event_chain = curator_poi_chain
+							owner = prev
+						}
 					}
 				}
+				remove_point_of_interest = curator_poi_fortress
+				end_curator_chain = yes
 			}
-			remove_point_of_interest = curator_poi_fortress
-			end_curator_chain = yes
-		}
-		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
 				star = {
 					create_ambient_object = { type = "dead_enigmatic_fortress_object" location = solar_system }
@@ -3572,22 +3572,22 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		event_target:disabled_enigmatic_fortress = { save_event_target_as = slain_guardian_system }
-		every_playable_country = {
-			limit = {
-				has_event_chain = curator_poi_chain
-				event_target:slain_guardian_system = {
-					is_point_of_interest = {
-						id = curator_poi_fortress
-						event_chain = curator_poi_chain
-						owner = prev
+		event_target:disabled_enigmatic_fortress = {
+			save_event_target_as = slain_guardian_system
+			every_playable_country = {
+				limit = {
+					has_event_chain = curator_poi_chain
+					prev = { # Vfix opt
+						is_point_of_interest = {
+							id = curator_poi_fortress
+							event_chain = curator_poi_chain
+							owner = prev
+						}
 					}
 				}
+				remove_point_of_interest = curator_poi_fortress
+				end_curator_chain = yes
 			}
-			remove_point_of_interest = curator_poi_fortress
-			end_curator_chain = yes
-		}
-		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
 				star = {
 					create_ambient_object = {

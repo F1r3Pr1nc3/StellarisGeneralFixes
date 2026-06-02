@@ -6500,6 +6500,7 @@ planet_event = {
 				min = @tier2materialmin
 				max = @tier2materialmax
 			}
+			end_event_chain = myrmeku_chain
 		}
 		hidden_effect = {
 			# Only one of the following modifiers will be present depending on player choices
@@ -6509,7 +6510,6 @@ planet_event = {
 			add_modifier = { modifier = "planet_myrmeku_lured" days = -1 }
 			owner = { remove_country_flag = myrmeku_flag@root }
 		}
-		owner = { end_event_chain = myrmeku_chain }
 	}
 	option = { # Special Research Project
 		name = colony.9375.b
@@ -9095,8 +9095,6 @@ planet_event = {
 		}
 		owner = {
 			add_resource = { energy = 1000 }
-		}
-		owner = {
 			random_owned_planet = {
 				limit = { has_planet_flag = desertling_target }
 				add_deposit = d_alien_sanctuary
@@ -9166,8 +9164,8 @@ planet_event = {
 
 	option = {
 		name = colony.7170.a
-		owner = { add_resource = { food = 1000 } }
 		owner = {
+			add_resource = { food = 1000 }
 			random_owned_planet = {
 				limit = { has_planet_flag = desertling_target }
 				remove_planet_flag = desertling_target
@@ -9880,8 +9878,6 @@ planet_event = {
 				min = @tier2materialmin
 				max = @tier2materialmax
 			}
-		}
-		owner = {
 			add_monthly_resource_mult = {
 				resource = consumer_goods
 				value = @tier2materialreward
@@ -9917,8 +9913,6 @@ planet_event = {
 				min = @tier2materialmin
 				max = @tier2materialmax
 			}
-		}
-		owner = {
 			add_monthly_resource_mult = {
 				resource = consumer_goods
 				value = @tier2materialreward
@@ -10123,8 +10117,6 @@ planet_event = {
 				min = @tier3unitymin
 				max = @tier3unitymax
 			}
-		}
-		owner = {
 			add_monthly_resource_mult = {
 				resource = physics_research
 				value = @tier1materialreward
@@ -10363,8 +10355,6 @@ planet_event = {
 				min = @tier2unitymin
 				max = @tier2unitymax
 			}
-		}
-		owner = {
 			add_monthly_resource_mult = {
 				resource = society_research
 				value = @tier2researchreward

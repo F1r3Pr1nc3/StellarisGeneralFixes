@@ -521,7 +521,14 @@ planet_event = {
 				}
 			}
 		}
-		solar_system = { save_event_target_as = destroyed_system }
+		solar_system = {
+			save_event_target_as = destroyed_system
+			random_system_planet = {
+				limit = { has_modifier = holy_planet }
+				planet_event = { id = planet_destruction.605 }
+			}
+			destroy_star_system = yes
+		}
 		every_playable_country = {
 			limit = {
 				is_ai = no
@@ -566,13 +573,6 @@ planet_event = {
 				NOT = { has_opinion_modifier = { who = event_target:crisis_country modifier = opinion_destroying_systems } }
 			}
 			add_opinion_modifier = { who = event_target:crisis_country modifier = opinion_destroying_systems }
-		}
-		solar_system = {
-			random_system_planet = {
-				limit = { has_modifier = holy_planet }
-				planet_event = { id = planet_destruction.605 }
-			}
-			destroy_star_system = yes
 		}
 	}
 }

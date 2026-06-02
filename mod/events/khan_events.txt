@@ -914,6 +914,8 @@ country_event = {
 				limit = { has_country_flag = attacking_fleets_stopped }
 				country_event = { id = khan.307 days = 3 scopes = { from = root } } # Just reenable
 			}
+			add_trust = { amount = 90 who = root }
+			# set_faction_hostility = { target = root set_friendly = yes }
 		}
 		set_faction_hostility = { target = from set_friendly = yes }
 		add_trust = { amount = 90 who = from }
@@ -965,10 +967,6 @@ country_event = {
 					add_loyalty = 90
 				}
 			}
-		}
-		from = { # Superfluous?
-			add_trust = { amount = 90 who = root }
-			set_faction_hostility = { target = root set_friendly = yes }
 		}
 		if = {
 			limit = { has_country_flag = attacking_fleets_stopped }
@@ -1082,13 +1080,6 @@ country_event = {
 			}
 			if = {
 				limit = { has_federation = yes }
-				# if = {
-				# 	limit = {
-				# 		has_global_flag = great_khan_wins
-				# 		merg_is_default_empire = no
-				# 	}
-				# 	set_country_type = default
-				# }
 				federation = {
 					every_member = {
 						limit = {
@@ -1718,7 +1709,7 @@ country_event = {
 
 	immediate = {
 		# If has_federation give Horde malus partial back.
-		get_capital_planet = yes # Vfix safety patch
+		get_capital_planet = yes
 		event_target:capital_planet = {
 			set_variable = { which = "planets_lost_to_marauder" value = 1 } # temp. only
 			if = {
@@ -2048,7 +2039,6 @@ country_event = {
 			}
 			owner_species = { save_event_target_as = marauder_species }
 		}
-		log = "Handover raider_khanate \\[From.GetName] to Diadochi \\[This.GetName]."
 		if = {
 			limit = {
 				OR = {
@@ -2058,10 +2048,13 @@ country_event = {
 			}
 			break = yes
 		}
-		from = {
-			save_event_target_as = raider_khanate
-			set_faction_hostility = { target = root set_friendly = yes }
+		if = {
+			limit = {
+				NOT = { exists = event_target:raider_khanate }
+			}
+			from = { save_event_target_as = raider_khanate }
 		}
+		log = "Handover raider_khanate \\[event_target:raider_khanate.GetName] to Diadochi \\[This.GetName]."
 		# Return colonies that have only the starbase conquered.
 		every_system_within_border = {
 			limit = {
@@ -2115,7 +2108,7 @@ country_event = {
 				}
 			}
 		}
-		from = {
+		event_target:raider_khanate = {
 			if = {
 				limit = {
 					NOR = {
@@ -2124,7 +2117,6 @@ country_event = {
 							count <= 1
 							limit = { is_mobile = yes }
 						}
-
 					}
 				}
 				ordered_owned_fleet = {
@@ -2406,10 +2398,8 @@ country_event = {
 			}
 			force_add_civic = civic_shared_burden
 		}
-		if = {
-			limit = { exists = capital_scope }
-			capital_scope = { save_event_target_as = new_diadochi_capital }
-		}
+		get_capital_planet = yes
+		event_target:capital_planet = { save_event_target_as = new_diadochi_capital }
 		# Find better capital
 		ordered_owned_planet = {
 			limit = {

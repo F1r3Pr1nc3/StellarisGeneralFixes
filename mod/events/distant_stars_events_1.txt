@@ -1121,8 +1121,8 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		fromfrom = { has_planet_flag = retrovirus_armies }
 		fromfrom = {
+			has_planet_flag = retrovirus_armies
 			controller = { is_same_value = event_target:enraged_colonists_country }
 		}
 	}
@@ -1830,8 +1830,8 @@ country_event = {
 	immediate = {
 		event_target:lost_amoeba_fleet = {
 			solar_system = { save_event_target_as = solar_system_tar }
+			delete_fleet = this
 		}
-		event_target:lost_amoeba_fleet = { delete_fleet = this }
 		if = {
 			limit = { exists = event_target:lost_amoeba_country }
 			event_target:lost_amoeba_country = { destroy_country = yes }
@@ -1952,8 +1952,8 @@ country_event = {
 	immediate = {
 		fromfrom = {
 			solar_system = { save_event_target_as = solar_system_tar }
+			delete_fleet = this
 		}
-		fromfrom = { delete_fleet = this }
 		if = {
 			limit = { exists = event_target:lost_amoeba_country }
 			event_target:lost_amoeba_country = { destroy_country = yes }

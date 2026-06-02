@@ -244,7 +244,24 @@ planet_event = {
 					}
 				}
 			}
-			space_owner = { save_event_target_as = DCWF_victim_space_owner }
+			space_owner = {
+				save_event_target_as = DCWF_victim_space_owner
+				# modifiers for victim
+				add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+				if = {
+					limit = {
+						count_as_split_fallen_empire = yes # Vfix opt
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = prev }
+							count_as_split_fallen_empire = yes # Vfix opt
+						}
+						add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+						add_modifier = { modifier = colossus_victim years = 30 }
+					}
+				}
+			}
 			add_threat = { who = from.owner amount = 1 }
 			# Add Threat
 			every_country = {
@@ -285,23 +302,6 @@ planet_event = {
 					}
 				}
 				add_opinion_modifier = { modifier = opinion_cracked_an_uninhabited_world who = from.owner }
-			}
-			# modifiers for victim
-			space_owner = {
-				add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
-				if = {
-					limit = {
-						count_as_split_fallen_empire = yes # Vfix opt
-					}
-					every_country = {
-						limit = {
-							NOT = { is_same_value = prev }
-							count_as_split_fallen_empire = yes # Vfix opt
-						}
-						add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
-						add_modifier = { modifier = colossus_victim years = 30 }
-					}
-				}
 			}
 		}
 		# Add war exhaustion to planet owner
@@ -2407,7 +2407,29 @@ planet_event = {
 					}
 				}
 			}
-			space_owner = { save_event_target_as = DCWF_victim_space_owner }
+			space_owner = {
+				save_event_target_as = DCWF_victim_space_owner
+				# modifiers for victim
+				add_opinion_modifier = {
+					modifier = opinion_toxified_my_uninhabited_world
+					who = from.owner
+				}
+				if = {
+					limit = {
+						count_as_split_fallen_empire = yes # Vfix opt
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = prev }
+							count_as_split_fallen_empire = yes # Vfix opt
+						}
+						add_opinion_modifier = {
+							modifier = opinion_toxified_my_uninhabited_world
+							who = from.owner
+						}
+					}
+				}
+			}
 			add_threat = { who = from.owner amount = 1 }
 			# Add Threat
 			every_country = {
@@ -2450,28 +2472,6 @@ planet_event = {
 				add_opinion_modifier = {
 					modifier = opinion_toxified_an_uninhabited_world
 					who = from.owner
-				}
-			}
-			# modifiers for victim
-			space_owner = {
-				add_opinion_modifier = {
-					modifier = opinion_toxified_my_uninhabited_world
-					who = from.owner
-				}
-				if = {
-					limit = {
-						count_as_split_fallen_empire = yes # Vfix opt
-					}
-					every_country = {
-						limit = {
-							NOT = { is_same_value = prev }
-							count_as_split_fallen_empire = yes # Vfix opt
-						}
-						add_opinion_modifier = {
-							modifier = opinion_toxified_my_uninhabited_world
-							who = from.owner
-						}
-					}
 				}
 			}
 		}
@@ -3293,7 +3293,23 @@ planet_event = {
 					}
 				}
 			}
-			space_owner = { save_event_target_as = DCWF_victim_space_owner }
+			space_owner = {
+				save_event_target_as = DCWF_victim_space_owner
+				# modifiers for victim
+				add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+				if = {
+					limit = {
+						count_as_split_fallen_empire = yes # Vfix opt
+					}
+					every_country = {
+						limit = {
+							NOT = { is_same_value = prev }
+							count_as_split_fallen_empire = yes # Vfix opt
+						}
+						add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
+					}
+				}
+			}
 			add_threat = { who = from.owner amount = 1 }
 			# Add Threat
 			every_country = {
@@ -3334,22 +3350,6 @@ planet_event = {
 					}
 				}
 				add_opinion_modifier = { modifier = opinion_cracked_an_uninhabited_world who = from.owner }
-			}
-			# modifiers for victim
-			space_owner = {
-				add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
-				if = {
-					limit = {
-						count_as_split_fallen_empire = yes # Vfix opt
-					}
-					every_country = {
-						limit = {
-							NOT = { is_same_value = prev }
-							count_as_split_fallen_empire = yes # Vfix opt
-						}
-						add_opinion_modifier = { modifier = opinion_cracked_my_uninhabited_world who = from.owner }
-					}
-				}
 			}
 		}
 		# Add war exhaustion to planet owner
