@@ -2620,173 +2620,175 @@ fleet_event = {
 
 	immediate = {
 		# Reset any missed flags
-		if = {
+		# if = {
+		# 	limit = {
+		# 		any_galaxy_planet = { has_planet_flag = fleet3_capital_destination }
+		# 	}
+		# 	random_galaxy_planet = {
+		# 		limit = { has_planet_flag = fleet3_capital_destination }
+		# 		remove_planet_flag = fleet3_capital_destination
+		# 	}
+		# }
+		# Vfix by Nehauz: MP desync (since 4.3.7): disable Fleet 3's randomized capital route.
+		# # Roughly determine number of empires
+		# # Decide number of capitals to visit
+		# if = { # >=30 countries exist
+		# 	limit = {
+		# 		owner = {
+		# 			count_playable_country = { count > 29 }
+		# 		}
+		# 	}
+		# 	log = "fleet 3 >= 30 countries found, tag 10"
+		# 	# flag 10 capitals to visit
+		# 	while = {
+		# 		count = 10
+		# 		random_playable_country = {
+		# 			limit = {
+		# 				NOR = {
+		# 					is_homicidal = yes
+		# 					capital_scope = { has_planet_flag = fleet3_capital_destination }
+		# 				}
+		# 			}
+		# 			capital_scope = {
+		# 				set_planet_flag = fleet3_capital_destination
+		# 				log = "1 fleet3_capital_destination set"
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# else_if = { # >=15 countries exist
+		# 	limit = {
+		# 		owner = {
+		# 			count_playable_country = { count > 14 }
+		# 		}
+		# 	}
+		# 	log = "fleet 3 >= 15 countries found, tag 5"
+		# 	# flag 10 capitals to visit
+		# 	while = {
+		# 		count = 5
+		# 		random_playable_country = {
+		# 			limit = {
+		# 				NOR = {
+		# 					is_homicidal = yes
+		# 					capital_scope = { has_planet_flag = fleet3_capital_destination }
+		# 				}
+		# 			}
+		# 			capital_scope = {
+		# 				set_planet_flag = fleet3_capital_destination
+		# 				log = "1 fleet3_capital_destination set"
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# else_if = { # >12 countries exist
+		# 	limit = {
+		# 		owner = {
+		# 			count_playable_country = { count > 11 }
+		# 		}
+		# 	}
+		# 	# flag 4 capitals to visit
+		# 	log = "fleet 3 >= 12 countries found, tag 4"
+		# 	while = {
+		# 		count = 4
+		# 		random_playable_country = {
+		# 			limit = {
+		# 				NOR = {
+		# 					is_homicidal = yes
+		# 					capital_scope = { has_planet_flag = fleet3_capital_destination }
+		# 				}
+		# 			}
+		# 			capital_scope = {
+		# 				set_planet_flag = fleet3_capital_destination
+		# 				log = "1 fleet3_capital_destination set"
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# else_if = { # >=9 countries exist
+		# 	limit = {
+		# 		owner = {
+		# 			count_playable_country = { count > 8 }
+		# 		}
+		# 	}
+		# 	# flag 3 capitals to visit
+		# 	log = "fleet 3 >= 9 countries found, tag 3"
+		# 	while = {
+		# 		count = 6
+		# 		random_playable_country = {
+		# 			limit = {
+		# 				NOR = {
+		# 					is_homicidal = yes
+		# 					capital_scope = { has_planet_flag = fleet3_capital_destination }
+		# 				}
+		# 			}
+		# 			capital_scope = {
+		# 				set_planet_flag = fleet3_capital_destination
+		# 				log = "1 fleet3_capital_destination set"
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# else_if = { # >=6 countries exist
+		# 	limit = {
+		# 		owner = {
+		# 			count_playable_country = { count > 5 }
+		# 		}
+		# 	}
+		# 	# flag 2 capitals to visit
+		# 	log = "fleet 3 >= 6 countries found, tag 2"
+		# 	while = {
+		# 		count = 2
+		# 		random_playable_country = {
+		# 			limit = {
+		# 				NOR = {
+		# 					is_homicidal = yes
+		# 					capital_scope = { has_planet_flag = fleet3_capital_destination }
+		# 				}
+		# 			}
+		# 			capital_scope = {
+		# 				set_planet_flag = fleet3_capital_destination
+		# 				log = "1 fleet3_capital_destination set"
+		# 			}
+		# 		}
+		# 	}
+		# }
+		# else = {
+		# 	# flag 1 capital to visit
+		# 	log = "fleet 3 < 3 countries found, tag 1"
+		# Vfix opt
+		every_playable_country = {
 			limit = {
-				any_galaxy_planet = { has_planet_flag = fleet3_capital_destination }
+				exists = capital_scope
+				is_homicidal = no
+				# NOT = { capital_scope = { has_planet_flag = fleet3_capital_destination } }
 			}
-			every_galaxy_planet = {
-				limit = { has_planet_flag = fleet3_capital_destination }
-				remove_planet_flag = fleet3_capital_destination
-			}
-		}
-		# Roughly determine number of empires
-		# Decide number of capitals to visit
-		if = { # >=30 countries exist
-			limit = {
-				owner = {
-					count_playable_country = { count > 29 }
-				}
-			}
-			log = "fleet 3 >= 30 countries found, tag 10"
-			# flag 10 capitals to visit
-			while = {
-				count = 10
-				random_playable_country = {
-					limit = {
-						NOR = {
-							is_homicidal = yes
-							capital_scope = { has_planet_flag = fleet3_capital_destination }
-						}
-					}
-					capital_scope = {
-						set_planet_flag = fleet3_capital_destination
-						log = "1 fleet3_capital_destination set"
-					}
-				}
+			capital_scope = {
+				set_planet_flag = fleet3_capital_destination
+				# log = "1 fleet3_capital_destination set"
+				save_event_target_as = fleet3_next_capital_destination
 			}
 		}
-		else_if = { # >=15 countries exist
-			limit = {
-				owner = {
-					count_playable_country = { count > 14 }
-				}
-			}
-			log = "fleet 3 >= 15 countries found, tag 5"
-			# flag 10 capitals to visit
-			while = {
-				count = 5
-				random_playable_country = {
-					limit = {
-						NOR = {
-							is_homicidal = yes
-							capital_scope = { has_planet_flag = fleet3_capital_destination }
-						}
-					}
-					capital_scope = {
-						set_planet_flag = fleet3_capital_destination
-						log = "1 fleet3_capital_destination set"
-					}
-				}
-			}
+		# }
+		# solar_system = {
+		# 	closest_system = {
+		# 		use_bypasses = yes
+		# 		limit = {
+		# 			is_capital_system = yes
+		# 			any_system_planet = { has_planet_flag = fleet3_capital_destination }
+		# 		}
+		# 		random_system_planet = {
+		# 			limit = { has_planet_flag = fleet3_capital_destination }
+		# 			save_event_target_as = fleet3_next_capital_destination
+		# 		}
+		# 		root = {
+		auto_move_to_planet = {
+			target = event_target:fleet3_next_capital_destination
+			clear_auto_move_on_arrival = no
+			arrival_effect = fleet3_continue_journey
 		}
-		else_if = { # >12 countries exist
-			limit = {
-				owner = {
-					count_playable_country = { count > 11 }
-				}
-			}
-			# flag 4 capitals to visit
-			log = "fleet 3 >= 12 countries found, tag 4"
-			while = {
-				count = 4
-				random_playable_country = {
-					limit = {
-						NOR = {
-							is_homicidal = yes
-							capital_scope = { has_planet_flag = fleet3_capital_destination }
-						}
-					}
-					capital_scope = {
-						set_planet_flag = fleet3_capital_destination
-						log = "1 fleet3_capital_destination set"
-					}
-				}
-			}
-		}
-		else_if = { # >=9 countries exist
-			limit = {
-				owner = {
-					count_playable_country = { count > 8 }
-				}
-			}
-			# flag 3 capitals to visit
-			log = "fleet 3 >= 9 countries found, tag 3"
-			while = {
-				count = 6
-				random_playable_country = {
-					limit = {
-						NOR = {
-							is_homicidal = yes
-							capital_scope = { has_planet_flag = fleet3_capital_destination }
-						}
-					}
-					capital_scope = {
-						set_planet_flag = fleet3_capital_destination
-						log = "1 fleet3_capital_destination set"
-					}
-				}
-			}
-		}
-		else_if = { # >=6 countries exist
-			limit = {
-				owner = {
-					count_playable_country = { count > 5 }
-				}
-			}
-			# flag 2 capitals to visit
-			log = "fleet 3 >= 6 countries found, tag 2"
-			while = {
-				count = 2
-				random_playable_country = {
-					limit = {
-						NOR = {
-							is_homicidal = yes
-							capital_scope = { has_planet_flag = fleet3_capital_destination }
-						}
-					}
-					capital_scope = {
-						set_planet_flag = fleet3_capital_destination
-						log = "1 fleet3_capital_destination set"
-					}
-				}
-			}
-		}
-		else = {
-			# flag 1 capital to visit
-			log = "fleet 3 < 3 countries found, tag 1"
-			random_playable_country = {
-				limit = {
-					NOR = {
-						is_homicidal = yes
-						capital_scope = { has_planet_flag = fleet3_capital_destination }
-					}
-				}
-				capital_scope = {
-					set_planet_flag = fleet3_capital_destination
-					log = "1 fleet3_capital_destination set"
-				}
-			}
-		}
-		solar_system = {
-			closest_system = {
-				use_bypasses = yes
-				limit = {
-					is_capital_system = yes
-					any_system_planet = { has_planet_flag = fleet3_capital_destination }
-				}
-				random_system_planet = {
-					limit = { has_planet_flag = fleet3_capital_destination }
-					save_event_target_as = fleet3_next_capital_destination
-				}
-				root = {
-					auto_move_to_planet = {
-						target = event_target:fleet3_next_capital_destination
-						clear_auto_move_on_arrival = no
-						arrival_effect = fleet3_continue_journey
-					}
-				}
-			}
-		}
+		# 		}
+		# 	}
+		# }
 	}
 }
 
@@ -3477,11 +3479,11 @@ fleet_event = {
 			clear_auto_move_on_arrival = no
 			arrival_effect = fleet3_continue_journey
 		}
-		log = "fleet 3 engaged auto_move"
-		if = { # Make error log shut up thanks
-			limit = { always = no }
-			fleet_event = { id = cara.3257 days = 1 }
-		}
+		# log = "fleet 3 engaged auto_move"
+		# if = { # Make error log shut up thanks
+		# 	limit = { always = no }
+		# 	fleet_event = { id = cara.3257 days = 1 }
+		# }
 	}
 }
 

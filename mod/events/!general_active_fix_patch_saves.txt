@@ -256,18 +256,6 @@ event = {
 					aap_ai_has_any_ascension_path_or_origin = yes # Compatibility with mod "All Ascension Paths" 2909582424
 				}
 			}
-			## REMOVEME at v4.4
-			random_playable_country = {
-				limit = {
-					is_ai = no
-					aap_ai_has_any_ascension_path_or_origin = yes
-				}
-				inline_script = {
-					script = merger_of_rules/toggled_code
-					code = " country_event = { id = aap.01 days = 1 } "
-					toggle = @aap_mod
-				}
-			}
 			break = yes
 		}
 		else = {

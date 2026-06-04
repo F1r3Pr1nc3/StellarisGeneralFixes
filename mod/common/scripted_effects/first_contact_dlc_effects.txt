@@ -188,6 +188,7 @@ create_MSI_effect = {
 		}
 	}
 
+	# create_colony = { owner = event_target:MSI_country } # Vfix by Alex: double
 	generate_start_deposits_and_blockers = yes
 	generate_start_buildings_and_districts = yes
 	generate_start_pops = yes
@@ -1605,9 +1606,9 @@ add_observation_insight_effect = {
 							modifier = {
 								factor = 0
 								OR = {
-									NOT = { has_technology = tech_detection_array }
 									has_technology = tech_unusual_senses
 									has_tech_option = tech_unusual_senses
+									NOT = { has_technology = tech_detection_array }
 								}
 							}
 							add_research_option = tech_unusual_senses

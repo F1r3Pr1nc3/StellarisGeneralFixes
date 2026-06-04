@@ -1027,23 +1027,24 @@ planet_event = {
 		owner = { has_event_chain = cs_collided_planet_chain }
 	}
 
+	after = {
+		owner = { end_event_chain = cs_collided_planet_chain } # Vfix by Alex
+	}
+
 	# Stay continental
 	option = {
 		name = cstorms.1220.a
 		remove_modifier = collided_planet_collapsing
-		end_event_chain = cs_collided_planet_chain
 	}
 	option = {
 		name = cstorms.1220.b
 		remove_modifier = collided_planet_collapsing
 		change_pc = pc_savannah
-		end_event_chain = cs_collided_planet_chain
 	}
 	option = {
 		name = cstorms.1220.c
 		remove_modifier = collided_planet_collapsing
 		change_pc = pc_alpine
-		end_event_chain = cs_collided_planet_chain
 	}
 }
 
@@ -1083,7 +1084,7 @@ planet_event = {
 		name = EXCELLENT
 		remove_modifier = collided_planet_collapsing
 		change_pc = { class = pc_gaia inherit_entity = no }
-		end_event_chain = cs_collided_planet_chain
+		owner = { end_event_chain = cs_collided_planet_chain } # Vfix by Alex
 	}
 }
 
@@ -1117,7 +1118,7 @@ planet_event = {
 		add_blocker = { type = d_active_volcano }
 		add_blocker = { type = d_active_volcano }
 		add_blocker = { type = d_active_volcano }
-		end_event_chain = cs_collided_planet_chain
+		owner = { end_event_chain = cs_collided_planet_chain } # Vfix by Alex
 	}
 }
 
@@ -1151,7 +1152,7 @@ planet_event = {
 				max = @tier5researchmax
 			}
 		}
-		end_event_chain = cs_collided_planet_chain
+		owner = { end_event_chain = cs_collided_planet_chain } # Vfix by Alex
 	}
 }
 
@@ -1183,8 +1184,8 @@ planet_event = {
 				min = @tier5researchmin
 				max = @tier5researchmax
 			}
+			end_event_chain = cs_collided_planet_chain # Vfix by Alex
 		}
-		end_event_chain = cs_collided_planet_chain
 	}
 }
 
