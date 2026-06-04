@@ -2618,13 +2618,17 @@ fleet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	trigger = {
+		is_multiplayer = no # Vfix
+	}
+
 	immediate = {
 		# Reset any missed flags
 		# if = {
 		# 	limit = {
 		# 		any_galaxy_planet = { has_planet_flag = fleet3_capital_destination }
 		# 	}
-		# 	random_galaxy_planet = {
+		# 	every_galaxy_planet = {
 		# 		limit = { has_planet_flag = fleet3_capital_destination }
 		# 		remove_planet_flag = fleet3_capital_destination
 		# 	}
@@ -2755,18 +2759,33 @@ fleet_event = {
 		# else = {
 		# 	# flag 1 capital to visit
 		# 	log = "fleet 3 < 3 countries found, tag 1"
-		# Vfix opt
-		every_playable_country = {
+		# Vfix opt reduced: too much performance
+		random_playable_country = {
+			limit = {
+				exists = capital_scope
+				capital_scope = { has_planet_flag = fleet3_capital_destination }
+				is_homicidal = yes
+			}
+			capital_scope = {
+				remove_planet_flag = fleet3_capital_destination
+			}
+		}
+		random_playable_country = {
 			limit = {
 				exists = capital_scope
 				is_homicidal = no
-				# NOT = { capital_scope = { has_planet_flag = fleet3_capital_destination } }
+				NOT = { capital_scope = { has_planet_flag = fleet3_capital_destination } }
 			}
 			capital_scope = {
 				set_planet_flag = fleet3_capital_destination
-				# log = "1 fleet3_capital_destination set"
+				log = "1 fleet3_capital_destination set"
 				save_event_target_as = fleet3_next_capital_destination
 			}
+		}
+		auto_move_to_planet = {
+			target = event_target:fleet3_next_capital_destination
+			clear_auto_move_on_arrival = no
+			arrival_effect = fleet3_continue_journey
 		}
 		# }
 		# solar_system = {
@@ -2781,11 +2800,11 @@ fleet_event = {
 		# 			save_event_target_as = fleet3_next_capital_destination
 		# 		}
 		# 		root = {
-		auto_move_to_planet = {
-			target = event_target:fleet3_next_capital_destination
-			clear_auto_move_on_arrival = no
-			arrival_effect = fleet3_continue_journey
-		}
+		#			auto_move_to_planet = {
+		#				target = event_target:fleet3_next_capital_destination
+		#				clear_auto_move_on_arrival = no
+		#				arrival_effect = fleet3_continue_journey
+		#			}
 		# 		}
 		# 	}
 		# }

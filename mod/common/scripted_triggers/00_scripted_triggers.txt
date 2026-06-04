@@ -1975,19 +1975,21 @@ is_potential_diadochi_system = {
 }
 
 has_no_non_gate_megastructure = {
-	NOT = { has_star_flag = ring_world_built }
-	OR = {
-		has_any_megastructure = no
-		any_system_megastructure = { # Vfix opt: positive
-			OR = {
-				is_megastructure_type = gateway_0
-				is_megastructure_type = gateway_derelict
-				is_megastructure_type = gateway_final
-				is_megastructure_type = gateway_ness_restored
-				is_megastructure_type = gateway_ness_ruined
-				is_megastructure_type = gateway_restored
-				is_megastructure_type = gateway_ruined
-				is_megastructure_type = lgate_base
+	NOR = {
+		has_star_flag = ring_world_built
+		AND = {
+			has_any_megastructure = yes
+			any_system_megastructure = { # Vfix opt
+				NOR = {
+					is_megastructure_type = gateway_0
+					is_megastructure_type = gateway_derelict
+					is_megastructure_type = gateway_final
+					is_megastructure_type = gateway_ness_restored
+					is_megastructure_type = gateway_ness_ruined
+					is_megastructure_type = gateway_restored
+					is_megastructure_type = gateway_ruined
+					is_megastructure_type = lgate_base
+				}
 			}
 		}
 	}

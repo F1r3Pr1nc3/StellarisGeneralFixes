@@ -164,6 +164,40 @@ planet_event = {
 	}
 }
 
+# Vfix new by FirePrince: https://forum.paradoxplaza.com/forum/threads/if-a-construction-ship-attacked-dyson-swarm-limit.1925924/
+system_event = {
+	id = base_fix.10
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_star_flag = dyson_swarm_construction
+		star = { has_any_megastructure = no }
+	}
+
+	immediate = {
+		remove_star_flag = dyson_swarm_construction
+		if = {
+			limit = {
+				exists = from
+				NOR = {
+					from = {
+						check_variable = { which = dyson_swarm_counter value < 1 }
+					}
+					any_fleet_in_system = {
+						is_ship_class = shipclass_constructor
+						has_fleet_order = build_megastructure_fleet_order
+						is_constructing = dyson_swarm_1
+					}
+				}
+			}
+			from = {
+				change_variable = { which = dyson_swarm_counter value = -1 }
+			}
+		}
+	}
+}
+
 # By FirePrince
 namespace = leader
 # Engineer gained from Repairing
