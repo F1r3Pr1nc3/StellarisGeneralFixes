@@ -477,24 +477,27 @@ country_event = {
 				}
 			}
 		}
-		every_controlled_ship = {
-			limit = {
-				is_ship_class = shipclass_colonizer
-				species = {
-					NOR = {
-						has_trait = trait_cybernetic
-						is_robotic = yes
+		every_controlled_fleet = { # Vfix opt
+			limit = { is_ship_class = shipclass_colonizer }
+			random_owned_ship = {
+				limit = {
+					exists = species
+					species = {
+						NOR = {
+							has_trait = trait_cybernetic
+							is_robotic = yes
+						}
 					}
 				}
-			}
-			root.capital_scope = { # workaround to prevent main species from accidentally flipping
-				create_pop_group = {
-					species = prev
-					effect = {
-						save_event_target_as = last_created_pop_group
+				root.capital_scope = { # workaround to prevent main species from accidentally flipping
+					create_pop_group = {
+						species = prev
+						effect = {
+							save_event_target_as = last_created_pop_group
+						}
 					}
+					event_target:last_created_pop_group = { create_cybernetic_species_mod = yes kill_all_pop = yes }
 				}
-				event_target:last_created_pop_group = { create_cybernetic_species_mod = yes kill_all_pop = yes }
 			}
 		}
 		every_owned_leader = {
@@ -884,12 +887,15 @@ country_event = {
 			}
 			change_species = event_target:current_synthspecies # Vfix opt
 		}
-		every_controlled_ship = {
-			limit = {
-				is_ship_class = shipclass_colonizer
-				species = { is_robotic = no is_livestock = no }
+		every_controlled_fleet = { # Vfix opt
+			limit = { is_ship_class = shipclass_colonizer }
+			random_owned_ship = {
+				limit = {
+					exists = species
+					species = { is_robotic = no is_livestock = no }
+				}
+				change_species = event_target:current_synthspecies # Vfix opt
 			}
-			change_species = event_target:current_synthspecies # Vfix opt
 		}
 		# Vfix merge
 		every_owned_army = {

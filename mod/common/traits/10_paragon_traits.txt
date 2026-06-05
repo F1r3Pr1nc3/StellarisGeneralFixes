@@ -11,14 +11,17 @@ leader_trait_gorky = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	self_modifier = {
 		species_leader_exp_gain = 0.1
 	}
+
 	planet_modifier = {
 		planet_jobs_physics_research_produces_mult = 0.10
 		planet_jobs_society_research_produces_mult = 0.10
 		planet_jobs_engineering_research_produces_mult = 0.10
 	}
+
 	sector_modifier = {
 		planet_jobs_physics_research_produces_mult = 0.05
 		planet_jobs_society_research_produces_mult = 0.05
@@ -32,8 +35,8 @@ leader_trait_gorky = {
 ######################
 # LEGENDARY/ORIGIN   #
 ######################
-
-leader_trait_legendary_leader = { #Origin trait
+# Origin trait
+leader_trait_legendary_leader = {
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_leader"
@@ -51,6 +54,7 @@ leader_trait_legendary_leader = { #Origin trait
 		planet_jobs_unity_produces_mult = 0.015
 		mult = this.paragon_origin_story_ruling
 	}
+
 	triggered_self_modifier = {
 		potential = {
 			NOT = { has_leader_flag = legendary_leader_coma }
@@ -58,21 +62,19 @@ leader_trait_legendary_leader = { #Origin trait
 		leader_lifespan_add = 60
 	}
 	triggered_self_modifier = {
-		potential = {
-			has_leader_flag = legendary_leader_coma
-		}
+		potential = { has_leader_flag = legendary_leader_coma }
 		species_leader_exp_gain = -2.0
 		leader_lifespan_add = 300
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_offspring = { #Origin trait - offspring
+# Origin trait - offspring
+leader_trait_legendary_offspring = {
 	force_councilor_trait = yes
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -86,15 +88,14 @@ leader_trait_legendary_offspring = { #Origin trait - offspring
 		leader_lifespan_add = 20
 		species_leader_exp_gain = 0.25
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
 leader_trait_governor_psionic_communion = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon_psionic
 		CLASS = leader
@@ -103,20 +104,27 @@ leader_trait_governor_psionic_communion = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	planet_modifier = {
 		planet_stability_add = 5
 	}
+
 	sector_modifier = {
 		planet_stability_add = 2
 	}
 	leader_class = { official }
-	opposites = { "leader_trait_cyborg" "leader_trait_synthetic" }
+	opposites = {
+		"leader_trait_cyborg"
+		"leader_trait_synthetic"
+	}
+
 	initial = no
 	randomized = no
 }
 
 leader_trait_legendary_terraformation_nucleus_3_buds = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -130,13 +138,14 @@ leader_trait_legendary_terraformation_nucleus_3_buds = {
 		RESOURCE = food
 		AMOUNT = 30
 	}
-
 	leader_class = { scientist }
 	initial = no
 	randomized = no
 }
+
 leader_trait_legendary_terraformation_nucleus_2_buds = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -150,13 +159,14 @@ leader_trait_legendary_terraformation_nucleus_2_buds = {
 		RESOURCE = food
 		AMOUNT = 20
 	}
-
 	leader_class = { scientist }
 	initial = no
 	randomized = no
 }
+
 leader_trait_legendary_terraformation_nucleus_1_bud = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -170,7 +180,6 @@ leader_trait_legendary_terraformation_nucleus_1_bud = {
 		RESOURCE = food
 		AMOUNT = 10 # Vfix: value should decrease, not increase.
 	}
-
 	leader_class = { scientist }
 	initial = no
 	randomized = no
@@ -178,6 +187,7 @@ leader_trait_legendary_terraformation_nucleus_1_bud = {
 
 leader_trait_legendary_far_from_home = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -186,15 +196,16 @@ leader_trait_legendary_far_from_home = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	modifier = {
 		ship_speed_mult = 0.25
 		fleet_mia_time_mult = -0.5
 		ship_archaeological_site_excavation_speed_mult = 0.25
 	}
+
 	self_modifier = {
 		leader_lifespan_add = 10
 	}
-
 	leader_class = { scientist }
 	initial = no
 	randomized = no
@@ -202,6 +213,7 @@ leader_trait_legendary_far_from_home = {
 
 leader_trait_legendary_ancestors_knowledge = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -210,36 +222,42 @@ leader_trait_legendary_ancestors_knowledge = {
 		COUNCIL = no
 		TIER = none
 	}
+
 	triggered_modifier = {
 		potential = { leader_class = scientist }
 		ship_speed_mult = 0.25
 		fleet_mia_time_mult = -0.5
 		ship_archaeological_site_excavation_speed_mult = 0.75
 	}
+
 	triggered_planet_modifier = {
 		potential = { leader_class = official }
 		planet_jobs_specialist_produces_mult = 0.2
 		planet_jobs_upkeep_mult = -0.1
 		job_archivist_add = 400
 	}
+
 	triggered_sector_modifier = {
 		potential = { leader_class = official }
 		planet_jobs_specialist_produces_mult = 0.1
 		planet_jobs_upkeep_mult = -0.05
 		job_archivist_add = 200
 	}
+
 	triggered_fleet_modifier = {
 		potential = { leader_class = commander }
 		fleet_mia_time_mult = -0.5
 		ship_armor_hardening_add = 0.3
 		ship_shield_hardening_add = 0.3
 	}
+
 	triggered_army_modifier = {
 		potential = { leader_class = commander }
 		army_morale = 1.5
 		army_health = 0.75
 		army_collateral_damage_mult = -0.85
 	}
+
 	triggered_self_modifier = {
 		potential = { leader_class = commander }
 		planet_combat_width_add = 10
@@ -259,10 +277,10 @@ leader_trait_legendary_ancestors_knowledge = {
 		leader_scientists_society_research_produces_add = 40
 		leader_scientists_engineering_research_produces_add = 40
 	}
+
 	self_modifier = {
 		leader_lifespan_add = 25
 	}
-
 	leader_class = { official commander scientist }
 	initial = no
 	randomized = no
@@ -271,13 +289,22 @@ leader_trait_legendary_ancestors_knowledge = {
 ######################
 # MILITARIST         #
 ######################
-
-leader_trait_legendary_military_knowledge = { #Origin trait - militarist
+# Origin trait - militarist
+leader_trait_legendary_military_knowledge = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_militarist ethic_fanatic_militarist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_militarist
+		ethic_fanatic_militarist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_militarist_one"
@@ -285,6 +312,7 @@ leader_trait_legendary_military_knowledge = { #Origin trait - militarist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -292,16 +320,19 @@ leader_trait_legendary_military_knowledge = { #Origin trait - militarist
 		country_naval_cap_mult = 0.05
 		ship_starting_experience_add = 75
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_military_knowledge_2 = { #Origin trait - militarist
+# Origin trait - militarist
+leader_trait_legendary_military_knowledge_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_military_knowledge" }
+
+	replace_traits = {
+		"leader_trait_legendary_military_knowledge"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_militarist_one"
@@ -309,6 +340,7 @@ leader_trait_legendary_military_knowledge_2 = { #Origin trait - militarist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -316,15 +348,18 @@ leader_trait_legendary_military_knowledge_2 = { #Origin trait - militarist
 		country_naval_cap_mult = 0.1
 		ship_starting_experience_add = 150
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_military_knowledge_3 = { #Origin trait - militarist
+# Origin trait - militarist
+leader_trait_legendary_military_knowledge_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_military_knowledge_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_military_knowledge_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_militarist_one"
@@ -332,6 +367,7 @@ leader_trait_legendary_military_knowledge_3 = { #Origin trait - militarist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -339,18 +375,26 @@ leader_trait_legendary_military_knowledge_3 = { #Origin trait - militarist
 		country_naval_cap_mult = 0.15
 		ship_starting_experience_add = 300
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_foe_hammer = { #Origin trait - militarist
+# Origin trait - militarist
+leader_trait_legendary_foe_hammer = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_militarist ethic_fanatic_militarist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_militarist
+		ethic_fanatic_militarist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_militarist_two"
@@ -358,6 +402,7 @@ leader_trait_legendary_foe_hammer = { #Origin trait - militarist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -365,16 +410,19 @@ leader_trait_legendary_foe_hammer = { #Origin trait - militarist
 		ship_tracking_add = 5
 		ship_accuracy_add = 5
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_foe_hammer_2 = { #Origin trait - militarist
+# Origin trait - militarist
+leader_trait_legendary_foe_hammer_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_foe_hammer" }
+
+	replace_traits = {
+		"leader_trait_legendary_foe_hammer"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_militarist_two"
@@ -382,6 +430,7 @@ leader_trait_legendary_foe_hammer_2 = { #Origin trait - militarist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -389,15 +438,18 @@ leader_trait_legendary_foe_hammer_2 = { #Origin trait - militarist
 		ship_tracking_add = 7
 		ship_accuracy_add = 7
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_foe_hammer_3 = { #Origin trait - militarist
+# Origin trait - militarist
+leader_trait_legendary_foe_hammer_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_foe_hammer_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_foe_hammer_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_militarist_two"
@@ -405,6 +457,7 @@ leader_trait_legendary_foe_hammer_3 = { #Origin trait - militarist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -412,22 +465,29 @@ leader_trait_legendary_foe_hammer_3 = { #Origin trait - militarist
 		ship_tracking_add = 10
 		ship_accuracy_add = 10
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # SPIRITUALIST       #
 ######################
-
-leader_trait_legendary_great_teacher = { #Origin trait - spiritualist
+# Origin trait - spiritualist
+leader_trait_legendary_great_teacher = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_spiritualist ethic_fanatic_spiritualist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_spiritualist
+		ethic_fanatic_spiritualist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_spiritualist_one"
@@ -435,6 +495,7 @@ leader_trait_legendary_great_teacher = { #Origin trait - spiritualist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -444,16 +505,19 @@ leader_trait_legendary_great_teacher = { #Origin trait - spiritualist
 		country_commander_cap_add = 1
 		country_scientist_cap_add = 1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_great_teacher_2 = { #Origin trait - spiritualist
+# Origin trait - spiritualist
+leader_trait_legendary_great_teacher_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_great_teacher" }
+
+	replace_traits = {
+		"leader_trait_legendary_great_teacher"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_spiritualist_one"
@@ -461,6 +525,7 @@ leader_trait_legendary_great_teacher_2 = { #Origin trait - spiritualist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -470,15 +535,18 @@ leader_trait_legendary_great_teacher_2 = { #Origin trait - spiritualist
 		country_commander_cap_add = 1
 		country_scientist_cap_add = 1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_great_teacher_3 = { #Origin trait - spiritualist
+# Origin trait - spiritualist
+leader_trait_legendary_great_teacher_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_great_teacher_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_great_teacher_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_spiritualist_one"
@@ -486,6 +554,7 @@ leader_trait_legendary_great_teacher_3 = { #Origin trait - spiritualist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -495,18 +564,26 @@ leader_trait_legendary_great_teacher_3 = { #Origin trait - spiritualist
 		country_commander_cap_add = 1
 		country_scientist_cap_add = 1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_pious_ascet = { #Origin trait - spiritualist
+# Origin trait - spiritualist
+leader_trait_legendary_pious_ascet = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_spiritualist ethic_fanatic_spiritualist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_spiritualist
+		ethic_fanatic_spiritualist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_spiritualist_two"
@@ -514,6 +591,7 @@ leader_trait_legendary_pious_ascet = { #Origin trait - spiritualist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -521,16 +599,19 @@ leader_trait_legendary_pious_ascet = { #Origin trait - spiritualist
 		pop_housing_usage_mult = -0.1
 		planet_bureaucrats_society_research_produces_add = 0.25
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_pious_ascet_2 = { #Origin trait - spiritualist
+# Origin trait - spiritualist
+leader_trait_legendary_pious_ascet_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_pious_ascet" }
+
+	replace_traits = {
+		"leader_trait_legendary_pious_ascet"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_spiritualist_two"
@@ -538,6 +619,7 @@ leader_trait_legendary_pious_ascet_2 = { #Origin trait - spiritualist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -545,15 +627,18 @@ leader_trait_legendary_pious_ascet_2 = { #Origin trait - spiritualist
 		pop_housing_usage_mult = -0.15
 		planet_bureaucrats_society_research_produces_add = 0.5
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_pious_ascet_3 = { #Origin trait - spiritualist
+# Origin trait - spiritualist
+leader_trait_legendary_pious_ascet_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_pious_ascet_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_pious_ascet_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_spiritualist_two"
@@ -561,6 +646,7 @@ leader_trait_legendary_pious_ascet_3 = { #Origin trait - spiritualist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -568,22 +654,29 @@ leader_trait_legendary_pious_ascet_3 = { #Origin trait - spiritualist
 		pop_housing_usage_mult = -0.20
 		planet_bureaucrats_society_research_produces_add = 1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # AUTHORITARIAN      #
 ######################
-
-leader_trait_legendary_commanding_presence = { #Origin trait - authoritarian
+# Origin trait - authoritarian
+leader_trait_legendary_commanding_presence = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_authoritarian ethic_fanatic_authoritarian }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_authoritarian
+		ethic_fanatic_authoritarian
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_authoritarian_one"
@@ -591,22 +684,26 @@ leader_trait_legendary_commanding_presence = { #Origin trait - authoritarian
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		monthly_loyalty_from_subjects = 0.4
 		diplo_action_acceptance_add = 5
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_commanding_presence_2 = { #Origin trait - authoritarian
+# Origin trait - authoritarian
+leader_trait_legendary_commanding_presence_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_commanding_presence" }
+
+	replace_traits = {
+		"leader_trait_legendary_commanding_presence"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_authoritarian_one"
@@ -614,21 +711,25 @@ leader_trait_legendary_commanding_presence_2 = { #Origin trait - authoritarian
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		monthly_loyalty_from_subjects = 0.6
 		diplo_action_acceptance_add = 10
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_commanding_presence_3 = { #Origin trait - authoritarian
+# Origin trait - authoritarian
+leader_trait_legendary_commanding_presence_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_commanding_presence_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_commanding_presence_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_authoritarian_one"
@@ -636,24 +737,33 @@ leader_trait_legendary_commanding_presence_3 = { #Origin trait - authoritarian
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		monthly_loyalty_from_subjects = 1
 		diplo_action_acceptance_add = 15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_high_king = { #Origin trait - authoritarian
+# Origin trait - authoritarian
+leader_trait_legendary_high_king = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_authoritarian ethic_fanatic_authoritarian }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_authoritarian
+		ethic_fanatic_authoritarian
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_authoritarian_two"
@@ -661,6 +771,7 @@ leader_trait_legendary_high_king = { #Origin trait - authoritarian
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -668,16 +779,19 @@ leader_trait_legendary_high_king = { #Origin trait - authoritarian
 		pop_cat_ruler_happiness = 0.05
 		pop_cat_ruler_bonus_workforce_mult = 0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_high_king_2 = { #Origin trait - authoritarian
+# Origin trait - authoritarian
+leader_trait_legendary_high_king_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_high_king" }
+
+	replace_traits = {
+		"leader_trait_legendary_high_king"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_authoritarian_two"
@@ -685,6 +799,7 @@ leader_trait_legendary_high_king_2 = { #Origin trait - authoritarian
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -692,15 +807,18 @@ leader_trait_legendary_high_king_2 = { #Origin trait - authoritarian
 		pop_cat_ruler_happiness = 0.1
 		pop_cat_ruler_bonus_workforce_mult = 0.2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_high_king_3 = { #Origin trait - authoritarian
+# Origin trait - authoritarian
+leader_trait_legendary_high_king_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_high_king_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_high_king_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_authoritarian_two"
@@ -708,6 +826,7 @@ leader_trait_legendary_high_king_3 = { #Origin trait - authoritarian
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -715,22 +834,29 @@ leader_trait_legendary_high_king_3 = { #Origin trait - authoritarian
 		pop_cat_ruler_happiness = 0.2
 		pop_cat_ruler_bonus_workforce_mult = 0.3
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # XENOPHILE          #
 ######################
-
-leader_trait_legendary_gunboat_diplomacy = { #Origin trait - xenophile
+# Origin trait - xenophile
+leader_trait_legendary_gunboat_diplomacy = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_xenophile ethic_fanatic_xenophile }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_xenophile
+		ethic_fanatic_xenophile
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophile_one"
@@ -738,6 +864,7 @@ leader_trait_legendary_gunboat_diplomacy = { #Origin trait - xenophile
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -745,16 +872,19 @@ leader_trait_legendary_gunboat_diplomacy = { #Origin trait - xenophile
 		country_power_projection_influence_produces_add = 0.25
 		ship_orbit_upkeep_mult = -0.05
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_gunboat_diplomacy_2 = { #Origin trait - xenophile
+# Origin trait - xenophile
+leader_trait_legendary_gunboat_diplomacy_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_gunboat_diplomacy" }
+
+	replace_traits = {
+		"leader_trait_legendary_gunboat_diplomacy"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophile_one"
@@ -762,6 +892,7 @@ leader_trait_legendary_gunboat_diplomacy_2 = { #Origin trait - xenophile
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -769,15 +900,18 @@ leader_trait_legendary_gunboat_diplomacy_2 = { #Origin trait - xenophile
 		country_power_projection_influence_produces_add = 0.5
 		ship_orbit_upkeep_mult = -0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_gunboat_diplomacy_3 = { #Origin trait - xenophile
+# Origin trait - xenophile
+leader_trait_legendary_gunboat_diplomacy_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_gunboat_diplomacy_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_gunboat_diplomacy_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophile_one"
@@ -785,6 +919,7 @@ leader_trait_legendary_gunboat_diplomacy_3 = { #Origin trait - xenophile
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -792,18 +927,26 @@ leader_trait_legendary_gunboat_diplomacy_3 = { #Origin trait - xenophile
 		country_power_projection_influence_produces_add = 1
 		ship_orbit_upkeep_mult = -0.2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_scientific_diplomacy = { #Origin trait - xenophile
+# Origin trait - xenophile
+leader_trait_legendary_scientific_diplomacy = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_xenophile ethic_fanatic_xenophile }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_xenophile
+		ethic_fanatic_xenophile
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophile_two"
@@ -811,22 +954,26 @@ leader_trait_legendary_scientific_diplomacy = { #Origin trait - xenophile
 		COUNCIL = yes
 		TIER = 1
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_scientific_diplomacy_tt" #migration pacts produce 3 of each science
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_scientific_diplomacy_tt" # migration pacts produce 3 of each science
 
 	councilor_modifier = {
 		diplo_weight_technology_mult = 0.1
 		all_technology_research_speed = 0.05
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_scientific_diplomacy_2 = { #Origin trait - xenophile
+# Origin trait - xenophile
+leader_trait_legendary_scientific_diplomacy_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_scientific_diplomacy" }
+
+	replace_traits = {
+		"leader_trait_legendary_scientific_diplomacy"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophile_two"
@@ -834,21 +981,25 @@ leader_trait_legendary_scientific_diplomacy_2 = { #Origin trait - xenophile
 		COUNCIL = yes
 		TIER = 2
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_scientific_diplomacy_2_tt" #migration pacts produce 9 of each science
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_scientific_diplomacy_2_tt" # migration pacts produce 9 of each science
 
 	councilor_modifier = {
 		diplo_weight_technology_mult = 0.15
 		all_technology_research_speed = 0.075
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_scientific_diplomacy_3 = { #Origin trait - xenophile
+# Origin trait - xenophile
+leader_trait_legendary_scientific_diplomacy_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_scientific_diplomacy_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_scientific_diplomacy_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophile_two"
@@ -856,28 +1007,36 @@ leader_trait_legendary_scientific_diplomacy_3 = { #Origin trait - xenophile
 		COUNCIL = yes
 		TIER = 3
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_scientific_diplomacy_3_tt" #migration pacts produce 18 of each science
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_scientific_diplomacy_3_tt" # migration pacts produce 18 of each science
 
 	councilor_modifier = {
 		diplo_weight_technology_mult = 0.2
 		all_technology_research_speed = 0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # PACIFIST           #
 ######################
-
-leader_trait_legendary_autarky = { #Origin trait - pacifist
+# Origin trait - pacifist
+leader_trait_legendary_autarky = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_pacifist ethic_fanatic_pacifist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_pacifist
+		ethic_fanatic_pacifist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_pacifist_one"
@@ -885,22 +1044,26 @@ leader_trait_legendary_autarky = { #Origin trait - pacifist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		planet_amenities_mult = 0.05
 		planet_jobs_food_produces_mult = 0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_autarky_2 = { #Origin trait - pacifist
+# Origin trait - pacifist
+leader_trait_legendary_autarky_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_autarky" }
+
+	replace_traits = {
+		"leader_trait_legendary_autarky"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_pacifist_one"
@@ -908,21 +1071,25 @@ leader_trait_legendary_autarky_2 = { #Origin trait - pacifist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		planet_amenities_mult = 0.1
 		planet_jobs_food_produces_mult = 0.15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_autarky_3 = { #Origin trait - pacifist
+# Origin trait - pacifist
+leader_trait_legendary_autarky_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_autarky_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_autarky_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_pacifist_one"
@@ -930,24 +1097,33 @@ leader_trait_legendary_autarky_3 = { #Origin trait - pacifist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		planet_amenities_mult = 0.2
 		planet_jobs_food_produces_mult = 0.3
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_natural_ruler = { #Origin trait - pacifist
+# Origin trait - pacifist
+leader_trait_legendary_natural_ruler = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_pacifist ethic_fanatic_pacifist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_pacifist
+		ethic_fanatic_pacifist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_pacifist_two"
@@ -955,23 +1131,27 @@ leader_trait_legendary_natural_ruler = { #Origin trait - pacifist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		planet_stability_add = 2.5
 		planet_jobs_upkeep_mult = -0.025
-		pop_government_ethic_attraction	= 0.1
+		pop_government_ethic_attraction = 0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_natural_ruler_2 = { #Origin trait - pacifist
+# Origin trait - pacifist
+leader_trait_legendary_natural_ruler_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_natural_ruler" }
+
+	replace_traits = {
+		"leader_trait_legendary_natural_ruler"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_pacifist_two"
@@ -979,22 +1159,26 @@ leader_trait_legendary_natural_ruler_2 = { #Origin trait - pacifist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		planet_stability_add = 3.5
 		planet_jobs_upkeep_mult = -0.05
-		pop_government_ethic_attraction	= 0.2
+		pop_government_ethic_attraction = 0.2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_natural_ruler_3 = { #Origin trait - pacifist
+# Origin trait - pacifist
+leader_trait_legendary_natural_ruler_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_natural_ruler_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_natural_ruler_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_pacifist_two"
@@ -1002,29 +1186,37 @@ leader_trait_legendary_natural_ruler_3 = { #Origin trait - pacifist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		planet_stability_add = 5
 		planet_jobs_upkeep_mult = -0.1
-		pop_government_ethic_attraction	= 0.4
+		pop_government_ethic_attraction = 0.4
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # MATERIALIST        #
 ######################
-
-leader_trait_legendary_industry_titan = { #Origin trait - materialist
+# Origin trait - materialist
+leader_trait_legendary_industry_titan = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_materialist ethic_fanatic_materialist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_materialist
+		ethic_fanatic_materialist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_materialist_one"
@@ -1032,6 +1224,7 @@ leader_trait_legendary_industry_titan = { #Origin trait - materialist
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -1039,16 +1232,19 @@ leader_trait_legendary_industry_titan = { #Origin trait - materialist
 		planet_jobs_alloys_produces_mult = 0.05
 		planet_jobs_consumer_goods_produces_mult = 0.05
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_industry_titan_2 = { #Origin trait - materialist
+# Origin trait - materialist
+leader_trait_legendary_industry_titan_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_industry_titan" }
+
+	replace_traits = {
+		"leader_trait_legendary_industry_titan"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_materialist_one"
@@ -1056,6 +1252,7 @@ leader_trait_legendary_industry_titan_2 = { #Origin trait - materialist
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -1063,15 +1260,18 @@ leader_trait_legendary_industry_titan_2 = { #Origin trait - materialist
 		planet_jobs_alloys_produces_mult = 0.1
 		planet_jobs_consumer_goods_produces_mult = 0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_industry_titan_3 = { #Origin trait - materialist
+# Origin trait - materialist
+leader_trait_legendary_industry_titan_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_industry_titan_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_industry_titan_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_materialist_one"
@@ -1079,6 +1279,7 @@ leader_trait_legendary_industry_titan_3 = { #Origin trait - materialist
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -1086,18 +1287,26 @@ leader_trait_legendary_industry_titan_3 = { #Origin trait - materialist
 		planet_jobs_alloys_produces_mult = 0.15
 		planet_jobs_consumer_goods_produces_mult = 0.15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_great_inventor = { #Origin trait - materialist
+# Origin trait - materialist
+leader_trait_legendary_great_inventor = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_materialist ethic_fanatic_materialist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_materialist
+		ethic_fanatic_materialist
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_materialist_two"
@@ -1105,22 +1314,26 @@ leader_trait_legendary_great_inventor = { #Origin trait - materialist
 		COUNCIL = yes
 		TIER = 1
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_great_inventor_tt" #all roboticsts produce 1 amenities
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_great_inventor_tt" # all roboticsts produce 1 amenities
 
 	councilor_modifier = {
 		planet_pop_assembly_mult = 0.05
 		planet_pop_assemblers_engineering_research_produces_add = 0.5
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_great_inventor_2 = { #Origin trait - materialist
+# Origin trait - materialist
+leader_trait_legendary_great_inventor_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_great_inventor" }
+
+	replace_traits = {
+		"leader_trait_legendary_great_inventor"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_materialist_two"
@@ -1128,21 +1341,25 @@ leader_trait_legendary_great_inventor_2 = { #Origin trait - materialist
 		COUNCIL = yes
 		TIER = 2
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_great_inventor_2_tt" #all roboticsts produce 2 amenities
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_great_inventor_2_tt" # all roboticsts produce 2 amenities
 
 	councilor_modifier = {
 		planet_pop_assembly_mult = 0.1
 		planet_pop_assemblers_engineering_research_produces_add = 1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_great_inventor_3 = { #Origin trait - materialist
+# Origin trait - materialist
+leader_trait_legendary_great_inventor_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_great_inventor_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_great_inventor_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_materialist_two"
@@ -1150,28 +1367,36 @@ leader_trait_legendary_great_inventor_3 = { #Origin trait - materialist
 		COUNCIL = yes
 		TIER = 3
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_great_inventor_3_tt" #all roboticsts produce 3 amenities
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_great_inventor_3_tt" # all roboticsts produce 3 amenities
 
 	councilor_modifier = {
 		planet_pop_assembly_mult = 0.15
 		planet_pop_assemblers_engineering_research_produces_add = 2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # XENOPHOBE          #
 ######################
-
-leader_trait_legendary_genetic_purist = { #Origin trait - xenophobe
+# Origin trait - xenophobe
+leader_trait_legendary_genetic_purist = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_xenophobe ethic_fanatic_xenophobe }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_xenophobe
+		ethic_fanatic_xenophobe
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophobe_one"
@@ -1179,22 +1404,26 @@ leader_trait_legendary_genetic_purist = { #Origin trait - xenophobe
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		BIOLOGICAL_species_trait_points_add = 1
 		planet_pops_upkeep_mult = -0.10
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_genetic_purist_2 = { #Origin trait - xenophobe
+# Origin trait - xenophobe
+leader_trait_legendary_genetic_purist_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_genetic_purist" }
+
+	replace_traits = {
+		"leader_trait_legendary_genetic_purist"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophobe_one"
@@ -1202,21 +1431,25 @@ leader_trait_legendary_genetic_purist_2 = { #Origin trait - xenophobe
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		BIOLOGICAL_species_trait_points_add = 2
 		planet_pops_upkeep_mult = -0.15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_genetic_purist_3 = { #Origin trait - xenophobe
+# Origin trait - xenophobe
+leader_trait_legendary_genetic_purist_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_genetic_purist_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_genetic_purist_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophobe_one"
@@ -1224,6 +1457,7 @@ leader_trait_legendary_genetic_purist_3 = { #Origin trait - xenophobe
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
@@ -1231,18 +1465,26 @@ leader_trait_legendary_genetic_purist_3 = { #Origin trait - xenophobe
 		BIOLOGICAL_species_trait_picks_add = 1
 		planet_pops_upkeep_mult = -0.25
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_evervigilant = { #Origin trait - xenophobe
+# Origin trait - xenophobe
+leader_trait_legendary_evervigilant = {
 	starting_ruler_trait = yes
 	leader_trait_type = veteran
-	allowed_origins = { origin_legendary_leader }
-	allowed_ethics = { ethic_xenophobe ethic_fanatic_xenophobe }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	allowed_ethics = {
+		ethic_xenophobe
+		ethic_fanatic_xenophobe
+	}
+
 	cost = 1
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophobe_two"
@@ -1250,22 +1492,26 @@ leader_trait_legendary_evervigilant = { #Origin trait - xenophobe
 		COUNCIL = yes
 		TIER = 1
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		intel_decryption_add = 1
 		intel_encryption_add = 1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_evervigilant_2 = { #Origin trait - xenophobe
+# Origin trait - xenophobe
+leader_trait_legendary_evervigilant_2 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_evervigilant" }
+
+	replace_traits = {
+		"leader_trait_legendary_evervigilant"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophobe_two"
@@ -1273,21 +1519,25 @@ leader_trait_legendary_evervigilant_2 = { #Origin trait - xenophobe
 		COUNCIL = yes
 		TIER = 2
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		intel_decryption_add = 2
 		intel_encryption_add = 2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
-leader_trait_legendary_evervigilant_3 = { #Origin trait - xenophobe
+# Origin trait - xenophobe
+leader_trait_legendary_evervigilant_3 = {
 	leader_trait_type = veteran
-	replace_traits = { "leader_trait_legendary_evervigilant_2" }
+
+	replace_traits = {
+		"leader_trait_legendary_evervigilant_2"
+	}
+
 	inline_script = {
 		script = trait/icon
 		ICON = "GFX_leader_trait_legendary_xenophobe_two"
@@ -1295,28 +1545,44 @@ leader_trait_legendary_evervigilant_3 = { #Origin trait - xenophobe
 		COUNCIL = yes
 		TIER = 3
 	}
+
 	custom_tooltip_with_modifiers = "leader_trait_legendary_origin_desc"
 
 	councilor_modifier = {
 		intel_decryption_add = 2
 		intel_encryption_add = 4
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 }
 
 ######################
 # Legendary Bad      #
 ######################
-
-leader_trait_legendary_unfriendly = { #Origin trait - bad xenophobe
+# Origin trait - bad xenophobe
+leader_trait_legendary_unfriendly = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_warmonger leader_trait_legendary_dreamlike leader_trait_legendary_harsh_ruler leader_trait_legendary_too_open leader_trait_legendary_hoplofobia leader_trait_legendary_bad_meritocracy }
-	allowed_ethics = { ethic_xenophobe ethic_fanatic_xenophobe }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_warmonger
+		leader_trait_legendary_dreamlike
+		leader_trait_legendary_harsh_ruler
+		leader_trait_legendary_too_open
+		leader_trait_legendary_hoplofobia
+		leader_trait_legendary_bad_meritocracy
+	}
+
+	allowed_ethics = {
+		ethic_xenophobe
+		ethic_fanatic_xenophobe
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_xenophobe_bad"
@@ -1327,19 +1593,35 @@ leader_trait_legendary_unfriendly = { #Origin trait - bad xenophobe
 		diplo_weight_mult = -0.25
 		envoys_add = -1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_warmonger = { #Origin trait - bad militarist
+# Origin trait - bad militarist
+leader_trait_legendary_warmonger = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_unfriendly leader_trait_legendary_dreamlike leader_trait_legendary_harsh_ruler leader_trait_legendary_too_open leader_trait_legendary_hoplofobia leader_trait_legendary_bad_meritocracy }
-	allowed_ethics = { ethic_militarist ethic_fanatic_militarist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_unfriendly
+		leader_trait_legendary_dreamlike
+		leader_trait_legendary_harsh_ruler
+		leader_trait_legendary_too_open
+		leader_trait_legendary_hoplofobia
+		leader_trait_legendary_bad_meritocracy
+	}
+
+	allowed_ethics = {
+		ethic_militarist
+		ethic_fanatic_militarist
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_militarist_bad"
@@ -1349,19 +1631,35 @@ leader_trait_legendary_warmonger = { #Origin trait - bad militarist
 	councilor_modifier = {
 		pop_citizen_happiness = -0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_dreamlike = { #Origin trait - bad spiritualist
+# Origin trait - bad spiritualist
+leader_trait_legendary_dreamlike = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_unfriendly leader_trait_legendary_warmonger leader_trait_legendary_harsh_ruler leader_trait_legendary_too_open leader_trait_legendary_hoplofobia leader_trait_legendary_bad_meritocracy }
-	allowed_ethics = { ethic_spiritualist ethic_fanatic_spiritualist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_unfriendly
+		leader_trait_legendary_warmonger
+		leader_trait_legendary_harsh_ruler
+		leader_trait_legendary_too_open
+		leader_trait_legendary_hoplofobia
+		leader_trait_legendary_bad_meritocracy
+	}
+
+	allowed_ethics = {
+		ethic_spiritualist
+		ethic_fanatic_spiritualist
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_spiritualist_bad"
@@ -1372,42 +1670,75 @@ leader_trait_legendary_dreamlike = { #Origin trait - bad spiritualist
 		planet_jobs_worker_produces_mult = -0.1
 		planet_researchers_upkeep_mult = 0.2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_harsh_ruler = { #Origin trait - bad authoritarian
+# Origin trait - bad authoritarian
+leader_trait_legendary_harsh_ruler = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_unfriendly leader_trait_legendary_warmonger leader_trait_legendary_dreamlike leader_trait_legendary_too_open leader_trait_legendary_hoplofobia leader_trait_legendary_bad_meritocracy }
-	allowed_ethics = { ethic_authoritarian ethic_fanatic_authoritarian }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_unfriendly
+		leader_trait_legendary_warmonger
+		leader_trait_legendary_dreamlike
+		leader_trait_legendary_too_open
+		leader_trait_legendary_hoplofobia
+		leader_trait_legendary_bad_meritocracy
+	}
+
+	allowed_ethics = {
+		ethic_authoritarian
+		ethic_fanatic_authoritarian
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_authoritarian_bad"
 		COUNCIL = yes
 	}
-	custom_tooltip_with_modifiers = "leader_trait_legendary_harsh_ruler_tt" #enforcers reduce happiness by 2.5%
+
+	custom_tooltip_with_modifiers = "leader_trait_legendary_harsh_ruler_tt" # enforcers reduce happiness by 2.5%
 
 	councilor_modifier = {
 		planet_crime_add = 20
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_too_open = { #Origin trait - bad xenophile
+# Origin trait - bad xenophile
+leader_trait_legendary_too_open = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_unfriendly leader_trait_legendary_warmonger leader_trait_legendary_dreamlike leader_trait_legendary_harsh_ruler leader_trait_legendary_hoplofobia leader_trait_legendary_bad_meritocracy }
-	allowed_ethics = { ethic_xenophile ethic_fanatic_xenophile }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_unfriendly
+		leader_trait_legendary_warmonger
+		leader_trait_legendary_dreamlike
+		leader_trait_legendary_harsh_ruler
+		leader_trait_legendary_hoplofobia
+		leader_trait_legendary_bad_meritocracy
+	}
+
+	allowed_ethics = {
+		ethic_xenophile
+		ethic_fanatic_xenophile
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_xenophile_bad"
@@ -1418,19 +1749,35 @@ leader_trait_legendary_too_open = { #Origin trait - bad xenophile
 		intel_encryption_add = -2
 		planet_pops_upkeep_mult = 0.15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_hoplofobia = { #Origin trait - bad pacifist
+# Origin trait - bad pacifist
+leader_trait_legendary_hoplofobia = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_unfriendly leader_trait_legendary_warmonger leader_trait_legendary_dreamlike leader_trait_legendary_harsh_ruler leader_trait_legendary_too_open leader_trait_legendary_bad_meritocracy }
-	allowed_ethics = { ethic_pacifist ethic_fanatic_pacifist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_unfriendly
+		leader_trait_legendary_warmonger
+		leader_trait_legendary_dreamlike
+		leader_trait_legendary_harsh_ruler
+		leader_trait_legendary_too_open
+		leader_trait_legendary_bad_meritocracy
+	}
+
+	allowed_ethics = {
+		ethic_pacifist
+		ethic_fanatic_pacifist
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_pacifist_bad"
@@ -1441,19 +1788,35 @@ leader_trait_legendary_hoplofobia = { #Origin trait - bad pacifist
 		ships_upkeep_mult = 0.15
 		country_naval_cap_mult = -0.1
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_bad_meritocracy = { #Origin trait - bad materialist
+# Origin trait - bad materialist
+leader_trait_legendary_bad_meritocracy = {
 	starting_ruler_trait = yes
-	allowed_origins = { origin_legendary_leader }
-	opposites = { leader_trait_legendary_unfriendly leader_trait_legendary_warmonger leader_trait_legendary_dreamlike leader_trait_legendary_harsh_ruler leader_trait_legendary_too_open leader_trait_legendary_hoplofobia }
-	allowed_ethics = { ethic_materialist ethic_fanatic_materialist }
+
+	allowed_origins = {
+		origin_legendary_leader
+	}
+
+	opposites = {
+		leader_trait_legendary_unfriendly
+		leader_trait_legendary_warmonger
+		leader_trait_legendary_dreamlike
+		leader_trait_legendary_harsh_ruler
+		leader_trait_legendary_too_open
+		leader_trait_legendary_hoplofobia
+	}
+
+	allowed_ethics = {
+		ethic_materialist
+		ethic_fanatic_materialist
+	}
+
 	cost = -1
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_materialist_bad"
@@ -1464,15 +1827,15 @@ leader_trait_legendary_bad_meritocracy = { #Origin trait - bad materialist
 		leaders_upkeep_mult = 0.3
 		pop_amenities_usage_mult = 0.2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
 
-leader_trait_legendary_delusional = { #Origin trait - negative delusion trait
+# Origin trait - negative delusion trait
+leader_trait_legendary_delusional = {
 	cost = 0
+
 	inline_script = {
 		script = trait/icon_negative_no_tiers
 		ICON = "GFX_leader_trait_legendary_bloody"
@@ -1481,10 +1844,7 @@ leader_trait_legendary_delusional = { #Origin trait - negative delusion trait
 
 	triggered_councilor_modifier = {
 		potential = {
-			check_variable = {
-				which = paragon_origin_delusion_tier
-				value > 0
-			}
+			check_variable = { which = paragon_origin_delusion_tier value > 0 }
 		}
 		planet_stability_add = 0.5
 		planet_crime_add = -1.5
@@ -1492,9 +1852,7 @@ leader_trait_legendary_delusional = { #Origin trait - negative delusion trait
 		pop_happiness = -0.01
 		mult = this.paragon_origin_delusion_tier
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 }
@@ -1502,10 +1860,10 @@ leader_trait_legendary_delusional = { #Origin trait - negative delusion trait
 ######################
 # Ascended Leader Traits
 ######################
-
-#The Apparatus
+# The Apparatus
 leader_trait_the_apparatus_luminary = {
 	force_councilor_trait = yes
+
 	inline_script = {
 		script = trait/icon
 		CLASS = leader
@@ -1514,15 +1872,12 @@ leader_trait_the_apparatus_luminary = {
 		COUNCIL = yes
 		TIER = none
 	}
-
 	inline_script = {
 		script = paragon/leader_resource_upkeep
 		RESOURCE = energy
 		AMOUNT = 50
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 	immortal_leaders = yes
@@ -1537,7 +1892,6 @@ leader_trait_the_cybernetic_luminary = {
 		COUNCIL = yes
 		TIER = none
 	}
-
 	inline_script = {
 		script = paragon/leader_resource_upkeep
 		RESOURCE = energy
@@ -1553,9 +1907,7 @@ leader_trait_the_cybernetic_luminary = {
 		leaders_cost_mult = 0.10
 		species_leader_exp_gain = -0.25
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 	immortal_leaders = yes
@@ -1570,7 +1922,6 @@ leader_trait_the_psionic_luminary = {
 		COUNCIL = yes
 		TIER = none
 	}
-
 	inline_script = {
 		script = paragon/leader_resource_upkeep
 		RESOURCE = sr_zro
@@ -1584,9 +1935,7 @@ leader_trait_the_psionic_luminary = {
 		intel_decryption_add = 2
 		intel_encryption_add = 2
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 	immortal_leaders = yes
@@ -1601,7 +1950,6 @@ leader_trait_the_synth_luminary = {
 		COUNCIL = yes
 		TIER = none
 	}
-
 	inline_script = {
 		script = paragon/leader_resource_upkeep
 		RESOURCE = alloys
@@ -1614,9 +1962,7 @@ leader_trait_the_synth_luminary = {
 		planet_pop_assembly_add = 1
 		pop_happiness = -0.15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 	immortal_leaders = yes
@@ -1631,7 +1977,6 @@ leader_trait_the_genetic_luminary = {
 		COUNCIL = yes
 		TIER = none
 	}
-
 	inline_script = {
 		script = paragon/leader_resource_upkeep
 		RESOURCE = food
@@ -1644,9 +1989,7 @@ leader_trait_the_genetic_luminary = {
 		modify_species_cost_mult = -0.10
 		logistic_growth_mult = -0.15
 	}
-
 	leader_class = { official commander scientist }
-
 	initial = no
 	randomized = no
 	immortal_leaders = yes
@@ -1655,30 +1998,30 @@ leader_trait_the_genetic_luminary = {
 ######################
 # Machine Age Paragon Traits
 ######################
-
 # Nameless Apostate
 leader_trait_unholy = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = commander
-		ICON =  "GFX_leader_trait_unification_hero"
+		ICON = "GFX_leader_trait_unification_hero"
 		RARITY = paragon
 		COUNCIL = yes
 		TIER = none
 	}
+
 	councilor_modifier = {
 		damage_vs_country_type_synth_queen_mult = 0.15
 		damage_vs_country_type_awakened_synth_queen_mult = 0.15
 		damage_vs_country_type_synth_queen_convoys_mult = 0.15
 		damage_vs_country_type_synth_queen_outposts_mult = 0.15
 	}
+
 	initial = no
 	randomized = no
 	immortal_leaders = yes
-
 	leader_class = { commander }
-
 	ai_weight = {
 		weight = 0
 	}
@@ -1686,25 +2029,26 @@ leader_trait_unholy = {
 
 leader_trait_unholy_node = {
 	leader_trait_type = destiny
+
 	inline_script = {
 		script = trait/icon
 		CLASS = commander
-		ICON =  "GFX_leader_trait_unification_hero"
+		ICON = "GFX_leader_trait_unification_hero"
 		RARITY = paragon
 		COUNCIL = yes
 		TIER = none
 	}
+
 	councilor_modifier = {
 		damage_vs_country_type_synth_queen_mult = 0.15
 		damage_vs_country_type_awakened_synth_queen_mult = 0.15
 		damage_vs_country_type_synth_queen_convoys_mult = 0.15
 		damage_vs_country_type_synth_queen_outposts_mult = 0.15
 	}
+
 	initial = no
 	randomized = no
-
 	leader_class = { commander }
-
 	ai_weight = {
 		weight = 0
 	}

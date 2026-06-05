@@ -117,12 +117,15 @@ turn_main_species_to_psionic = {
 				}
 				change_species = event_target:psionic_species
 			}
-			every_controlled_ship = {
-				limit = {
-					is_ship_class = shipclass_colonizer
-					is_exact_same_species = event_target:changing_species
+			every_controlled_fleet = { # Vfix opt
+				limit = { is_ship_class = shipclass_colonizer }
+				random_owned_ship = {
+					limit = {
+						exists = species
+						is_exact_same_species = event_target:changing_species
+					}
+					change_species = event_target:psionic_species
 				}
-				change_species = event_target:psionic_species
 			}
 		}
 	}
@@ -3828,12 +3831,15 @@ mind_over_matter_immediate = {
 				}
 				change_species = event_target:latent_psionic_species
 			}
-			every_controlled_ship = {
-				limit = {
-					is_ship_class = shipclass_colonizer
-					is_exact_same_species = event_target:changing_species
+			every_controlled_fleet = { # Vfix opt
+				limit = { is_ship_class = shipclass_colonizer }
+				random_owned_ship = {
+					limit = {
+						exists = species
+						is_exact_same_species = event_target:changing_species
+					}
+					change_species = event_target:latent_psionic_species
 				}
-				change_species = event_target:latent_psionic_species
 			}
 		}
 	}

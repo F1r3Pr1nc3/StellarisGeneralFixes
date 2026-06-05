@@ -7150,16 +7150,18 @@ situation_event = {
 				any_member = { is_at_war = no has_technology = tech_sensors_2 }
 				NOT = { any_member = { has_event_chain = dismembered_cloud_chain } }
 			}
-			any_owned_ship = { is_ship_class = shipclass_science_ship }
+			any_owned_fleet = { is_ship_class = shipclass_science_ship }
 		}
 	}
 
 	immediate = {
 		set_situation_flag = divination_occurring
 		owner = {
-			random_owned_ship = {
+			random_controlled_fleet = { # Vfix opt
 				limit = { is_ship_class = shipclass_science_ship }
-				ship_event = { id = federations3.2000 }
+				random_owned_ship = {
+					ship_event = { id = federations3.2000 }
+				}
 			}
 		}
 	}
@@ -7538,9 +7540,13 @@ situation_event = {
 		set_situation_flag = divination_occurring
 		owner = {
 			random_owned_planet = {
-				limit = {
-					is_capital = no
+				limit = { # Vfix sync: https://forum.paradoxplaza.com/forum/threads/all-too-lucid-never-progresses.1925842/
+					has_owner = yes
+					is_homeworld = no
 					is_under_colonization = no
+					is_capital = no
+					has_ground_combat = no
+					original_owner = yes
 				}
 				planet_event = { id = enclave.5005 }
 			}
@@ -7780,7 +7786,7 @@ situation_event = {
 	trigger = {
 		NOT = { has_situation_flag = divination_occurring }
 		owner = {
-			any_owned_ship = { is_ship_class = shipclass_science_ship }
+			any_owned_fleet = { is_ship_class = shipclass_science_ship }
 			NOT = { has_country_flag = shrouded_ship }
 		}
 	}
@@ -7788,9 +7794,11 @@ situation_event = {
 	immediate = {
 		set_situation_flag = divination_occurring
 		owner = {
-			random_owned_ship = {
+			random_controlled_fleet = { # Vfix opt
 				limit = { is_ship_class = shipclass_science_ship }
-				ship_event = { id = enclave.5055 }
+				random_owned_ship = {
+					ship_event = { id = enclave.5055 }
+				}
 			}
 		}
 	}

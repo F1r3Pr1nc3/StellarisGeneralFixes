@@ -1179,9 +1179,9 @@ country_event = {
 				fromfrom = { save_event_target_as = survey_ship }
 			}
 			else = {
-				random_owned_ship = {
+				random_controlled_fleet = { # Vfix opt
 					limit = { is_ship_class = shipclass_science_ship }
-					save_event_target_as = survey_ship
+					random_owned_ship = { save_event_target_as = survey_ship }
 				}
 			}
 		}

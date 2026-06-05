@@ -855,19 +855,22 @@ situation_event = {
 					NOT = { has_situation_flag = no_choice_evopred }
 				}
 				owner = {
-					change_dominant_species = { species = event_target:target_species change_all = yes }
 					unify_evopred_species = yes
-					every_controlled_ship = {
-						limit = {
-							is_ship_class = shipclass_colonizer
-							species = { is_same_species = prev }
-						}
-						change_species = event_target:target_species
-					}
 					every_pool_leader = {
 						limit = { is_same_species = prev }
 						change_species = event_target:target_species
 					}
+					every_controlled_fleet = { # Vfix opt
+						limit = { is_ship_class = shipclass_colonizer }
+						random_owned_ship = {
+							limit = {
+								exists = species
+								is_same_species = prevprev # Vfix
+							}
+							change_species = event_target:target_species
+						}
+					}
+					change_dominant_species = { species = event_target:target_species change_all = yes } # Vfix order
 					update_node_portraits_if_gestalt_effect = yes
 				}
 			}

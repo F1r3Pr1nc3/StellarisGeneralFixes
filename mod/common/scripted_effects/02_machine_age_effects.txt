@@ -631,19 +631,21 @@ cyberize_colony_ships_effect = {
 			exists = event_target:changing_species
 			exists = event_target:cyberspecies_current
 		}
-		every_controlled_ship = {
-			limit = {
-				is_ship_class = shipclass_colonizer
-				exists = species
-				species = {
-					is_exact_same_species = event_target:changing_species
-					NOR = {
-						has_trait = trait_cybernetic
-						has_trait = trait_limited_cybernetic
+		every_controlled_fleet = { # Vfix opt
+			limit = { is_ship_class = shipclass_colonizer }
+			random_owned_ship = {
+				limit = {
+					exists = species
+					species = {
+						is_exact_same_species = event_target:changing_species
+						NOR = {
+							has_trait = trait_cybernetic
+							has_trait = trait_limited_cybernetic
+						}
 					}
 				}
+				change_species = event_target:cyberspecies_current
 			}
-			change_species = event_target:cyberspecies_current
 		}
 	}
 }
@@ -728,34 +730,45 @@ synthesize_pops_effect = {
 
 # Requires: SOURCE and TARGET
 assimilate_armies = {
-	every_owned_army = {
+	if = { # Vfix opt
 		limit = {
-			exists = species
 			exists = $SOURCE$
-			species = { is_exact_same_species = $SOURCE$ }
-			OR = {
-				army_type = assault_army
-				army_type = defense_army
-			}
-			NAND = {
-				exists = planet
-				planet = { has_ground_combat = yes }
-			}
+			exists = $TARGET$
 		}
-		modify_army = { name = random species = $TARGET$ }
+		every_owned_army = {
+			limit = {
+				exists = species
+				species = { is_exact_same_species = $SOURCE$ }
+				OR = {
+					army_type = assault_army
+					army_type = defense_army
+				}
+				NAND = {
+					exists = planet
+					planet = { has_ground_combat = yes }
+				}
+			}
+			modify_army = { name = random species = $TARGET$ }
+		}
 	}
 }
 
 assimilate_colony_ships = {
-	every_controlled_ship = {
+	if = { # Vfix opt
 		limit = {
-			is_ship_class = shipclass_colonizer
 			exists = $SOURCE$
 			exists = $TARGET$
-			exists = species
-			species = { is_exact_same_species = $SOURCE$ }
 		}
-		change_species = $TARGET$
+		every_controlled_fleet = { # Vfix opt
+			limit = { is_ship_class = shipclass_colonizer }
+			random_owned_ship = {
+				limit = {
+					exists = species
+					species = { is_exact_same_species = $SOURCE$ }
+				}
+				change_species = $TARGET$
+			}
+		}
 	}
 }
 

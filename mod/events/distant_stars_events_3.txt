@@ -1222,19 +1222,26 @@ country_event = {
 			}
 			else = {
 				# If no valid scope search generally.
-				every_system_within_border = {
-					limit = { has_star_flag = lgate }
-					every_fleet_in_system = {
+				random_system_within_border = { # Vfix opt
+					limit = {
+						has_star_flag = lgate
+						any_fleet_in_system = { # Vfix
+							exists = owner
+							exists = leader
+							is_owned_by = root
+							exists = solar_system
+							is_ship_class = shipclass_science_ship
+						}
+					}
+					random_fleet_in_system = {
 						limit = {
 							exists = owner
 							exists = leader
 							exists = solar_system
 							is_owned_by = root
+							is_ship_class = shipclass_science_ship
 						}
-						every_owned_ship = {
-							limit = { is_ship_class = shipclass_science_ship }
-							solar_system = { save_event_target_as = candidate_gateway_system }
-						}
+						solar_system = { save_event_target_as = candidate_gateway_system }
 					}
 				}
 			}

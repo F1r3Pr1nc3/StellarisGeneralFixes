@@ -631,11 +631,6 @@ imperialist = {
 			ai_weight = {
 				base = 1
 				modifier = {
-					factor = 1000
-					owner = { has_invalid_civic = civic_barbaric_despoilers }
-					NOT = { owner = { has_ethic = ethic_militarist } }
-				}
-				modifier = {
 					factor = 0
 					OR = {
 						AND = {
@@ -656,6 +651,11 @@ imperialist = {
 							}
 						}
 					}
+				}
+				modifier = {
+					factor = 1000
+					owner = { has_invalid_civic = civic_barbaric_despoilers }
+					NOT = { owner = { has_ethic = ethic_militarist } }
 				}
 			}
 		}
@@ -789,7 +789,9 @@ imperialist = {
 				custom_tooltip = alloys_extortion_tt
 				custom_tooltip = ONLY_ONE_EXTORTED_FACTION_TT
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 		extort_faction_crowdsourcing = { # Crowdsourcing version
 			title = "EXTORT_FACTION"
@@ -811,7 +813,9 @@ imperialist = {
 				custom_tooltip = crowdsourced_extortion_tt
 				custom_tooltip = ONLY_ONE_EXTORTED_FACTION_TT
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 		cancel_extort_faction = {
 			title = "CANCEL_EXTORT_FACTION"
@@ -824,7 +828,9 @@ imperialist = {
 			effect = {
 				set_faction_extorted = no
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 	}
 }

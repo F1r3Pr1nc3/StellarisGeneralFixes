@@ -3362,15 +3362,11 @@ country_event = {
 		hidden_effect = {
 			home_planet = {
 				random_owned_pop_group = {
-					limit = {
-						species = { is_same_species = root }
-					}
+					limit = { is_same_species = root }
 					kill_single_pop = yes
 				}
 				random_owned_pop_group = {
-					limit = {
-						species = { is_same_species = root }
-					}
+					limit = { is_same_species = root }
 					kill_single_pop = yes
 				}
 			}
@@ -4263,14 +4259,14 @@ country_event = {
 				limit = {
 					exists = overlord
 					overlord = { is_same_value = root }
-					NOT = { species = { is_same_species = root } }
+					NOT = { is_same_species = root }
 				}
 				release_subject = yes
 			}
 			every_playable_country = {
 				limit = {
 					has_secret_fealty_with = root
-					NOT = { species = { is_same_species = root } }
+					NOT = { is_same_species = root }
 				}
 				remove_secret_fealty = root
 			}
@@ -4289,7 +4285,7 @@ country_event = {
 			}
 			every_playable_country = {
 				limit = {
-					NOT = { species = { is_same_species = root } }
+					NOT = { is_same_species = root }
 				}
 				end_all_treaties_with = root
 			}
@@ -5384,7 +5380,7 @@ country_event = {
 		has_modifier = fotd_settled_differences
 		from = {
 			NOT = { leader_class = envoy }
-			species = { is_same_species = root }
+			is_same_species = root
 		}
 	}
 

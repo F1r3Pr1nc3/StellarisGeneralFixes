@@ -624,6 +624,7 @@ DLAF_create_awoken_robot_country = {
 		while = {
 			limit = {
 				OR = {
+					NOT = { any_owned_fleet = { is_ship_class = shipclass_constructor } }
 					AND = {
 						mid_game_years_passed > 0
 						count_owned_ship = {
@@ -631,7 +632,6 @@ DLAF_create_awoken_robot_country = {
 							limit = { is_ship_class = shipclass_constructor }
 						}
 					}
-					NOT = { any_owned_ship = { is_ship_class = shipclass_constructor } }
 				}
 			}
 			create_fleet = {

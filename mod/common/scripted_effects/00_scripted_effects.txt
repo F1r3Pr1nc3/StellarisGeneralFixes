@@ -1168,12 +1168,15 @@ create_cybernetic_species_mod = {
 			}
 			change_species = last_created_species
 		}
-		every_controlled_ship = {
-			limit = {
-				is_ship_class = shipclass_colonizer
-				is_exact_same_species = event_target:changing_species
+		every_controlled_fleet = { # Vfix opt
+			limit = { is_ship_class = shipclass_colonizer }
+			random_owned_ship = {
+				limit = {
+					exists = species
+					is_exact_same_species = event_target:changing_species
+				}
+				change_species = last_created_species
 			}
-			change_species = last_created_species
 		}
 	}
 }
@@ -1223,12 +1226,15 @@ create_nuked_species_mod = {
 			}
 			change_species = last_created_species
 		}
-		every_controlled_ship = {
-			limit = {
-				is_ship_class = shipclass_colonizer
-				is_exact_same_species = event_target:changing_species
+		every_controlled_fleet = { # Vfix opt
+			limit = { is_ship_class = shipclass_colonizer }
+			random_owned_ship = {
+				limit = {
+					exists = species
+					is_exact_same_species = event_target:changing_species
+				}
+				change_species = last_created_species
 			}
-			change_species = last_created_species
 		}
 	}
 }

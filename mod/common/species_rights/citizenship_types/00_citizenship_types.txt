@@ -447,9 +447,6 @@ citizenship_shroud_touched = {
 		has_trait = trait_shroud_forged
 	}
 
-	allow = {
-	}
-
 	ai_will_do = {
 		factor = 100
 	}
@@ -632,20 +629,6 @@ citizenship_slavery = {
 		{
 			key = resolution_greatergood_universal_prosperity_mandate
 		}
-	}
-
-	# Vfix: This is a hack so the civic tooltip works.
-	triggered_pop_group_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					has_valid_civic = civic_slaver_guilds
-					has_valid_civic = civic_indentured_assets
-				}
-			}
-		}
-		pop_bonus_workforce_mult = 0.15
 	}
 
 	potential = {

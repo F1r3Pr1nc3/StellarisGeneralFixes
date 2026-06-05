@@ -126,8 +126,6 @@ traditionalist = {
 
 	leader = {
 		base = 100
-		modifier = { factor = 0.5 leader_class = scientist }
-		modifier = { factor = 2 leader_class = official }
 		modifier = {
 			factor = 0
 			OR = {
@@ -138,6 +136,8 @@ traditionalist = {
 				is_event_leader = yes
 			}
 		}
+		modifier = { factor = 0.5 leader_class = scientist }
+		modifier = { factor = 2 leader_class = official }
 	}
 
 	# DEMAND: Faction Outraged (by a GalCom Resolution)
@@ -716,7 +716,9 @@ traditionalist = {
 					add_modifier = { modifier = suppressed_spiritualist days = -1 }
 				}
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 		cancel_suppress_faction = {
 			title = "CANCEL_SUPPRESS_FACTION"
@@ -761,7 +763,9 @@ traditionalist = {
 				custom_tooltip = food_extortion_tt
 				custom_tooltip = ONLY_ONE_EXTORTED_FACTION_TT
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 		extort_faction_crowdsourcing = { # Crowdsourcing version
 			title = "EXTORT_FACTION"
@@ -783,7 +787,9 @@ traditionalist = {
 				custom_tooltip = crowdsourced_extortion_tt
 				custom_tooltip = ONLY_ONE_EXTORTED_FACTION_TT
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 		cancel_extort_faction = {
 			title = "CANCEL_EXTORT_FACTION"
@@ -796,7 +802,9 @@ traditionalist = {
 			effect = {
 				set_faction_extorted = no
 			}
-			ai_weight = { base = 0 }
+			ai_weight = {
+				base = 0
+			}
 		}
 	}
 }

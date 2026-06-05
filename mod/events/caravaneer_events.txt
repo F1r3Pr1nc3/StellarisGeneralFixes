@@ -2766,15 +2766,15 @@ fleet_event = {
 				capital_scope = { has_planet_flag = fleet3_capital_destination }
 				is_homicidal = yes
 			}
-			capital_scope = {
-				remove_planet_flag = fleet3_capital_destination
-			}
+			capital_scope = { remove_planet_flag = fleet3_capital_destination }
 		}
 		random_playable_country = {
 			limit = {
 				exists = capital_scope
-				is_homicidal = no
-				NOT = { capital_scope = { has_planet_flag = fleet3_capital_destination } }
+				NOR = {
+					is_homicidal = yes
+					capital_scope = { has_planet_flag = fleet3_capital_destination }
+				}
 			}
 			capital_scope = {
 				set_planet_flag = fleet3_capital_destination
