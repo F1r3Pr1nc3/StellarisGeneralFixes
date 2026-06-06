@@ -1,5 +1,4 @@
 # All capital buildings... except the Synaptic Lathe
-
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
@@ -14,12 +13,11 @@ triggered_planet_modifier = {
 				is_transcendent_authority = yes
 				is_corporeal_authority = yes
 			}
-			capital_scope.solar_system = {
-				is_same_value = ROOT.solar_system
-			}
+			capital_scope.solar_system = { is_same_value = ROOT.solar_system }
 		}
 	}
-	pop_bonus_workforce_mult = 0.1
+
+	planet_jobs_produces_mult = 0.1
 }
 
 triggered_planet_modifier = {
@@ -30,6 +28,7 @@ triggered_planet_modifier = {
 			has_modifier = slave_colony
 		}
 	}
+
 	job_soldier_add = 1
 	mult = modifier:job_soldier_or_warrior_add
 }
@@ -40,6 +39,7 @@ triggered_planet_modifier = {
 		owner = { is_gestalt = no }
 		has_modifier = slave_colony
 	}
+
 	job_battle_thrall_add = 1
 	mult = modifier:job_soldier_or_warrior_add
 }
@@ -52,6 +52,7 @@ triggered_planet_modifier = {
 			is_wilderness_empire = no # no effect for Wilderness
 		}
 	}
+
 	job_warrior_drone_add = 1
 	mult = modifier:job_soldier_or_warrior_add
 }
@@ -69,6 +70,7 @@ triggered_planet_modifier = {
 			}
 		}
 	}
+
 	pop_bonus_workforce_mult = 0.05
 }
 
@@ -84,6 +86,7 @@ triggered_planet_modifier = {
 			}
 		}
 	}
+
 	pop_bonus_workforce_mult = 0.1
 }
 
@@ -91,10 +94,9 @@ triggered_planet_modifier = {
 	potential = {
 		capital_tier >= 4
 		exists = owner
-		owner = {
-			has_technology = tech_capital_productivity_3
-		}
+		owner = { has_technology = tech_capital_productivity_3 }
 	}
+
 	pop_bonus_workforce_mult = 0.15
 }
 
@@ -112,6 +114,7 @@ triggered_planet_modifier = {
 			}
 		}
 	}
+
 	logistic_growth_mult = 0.1
 }
 
@@ -125,6 +128,7 @@ triggered_planet_modifier = {
 			species = { has_trait = trait_cybernetic }
 		}
 	}
+
 	planet_augmentors_upkeep_mult = 0.10
 }
 
@@ -132,11 +136,9 @@ triggered_planet_modifier = {
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
-		owner = {
-			is_oligarchic_authority = yes
-			has_country_flag = cyber_individualist
-		}
+		owner = { is_oligarchic_authority = yes has_country_flag = cyber_individualist }
 	}
+
 	key = auth_cyber_oligarchic_individualist
 	planet_jobs_ruler_produces_mult = 0.01
 	mult = planet.value:count_specialists
@@ -146,10 +148,9 @@ triggered_planet_modifier = {
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
-		owner = {
-			is_cyber_imperial = yes
-		}
+		owner = { is_cyber_imperial = yes }
 	}
+
 	job_politician_add = @building_static_jobs
 }
 
@@ -166,6 +167,7 @@ triggered_planet_modifier = {
 			sector = { has_sector_type = core_sector }
 		}
 	}
+
 	pop_happiness = -0.1
 }
 
@@ -179,6 +181,7 @@ triggered_planet_modifier = {
 			NOT = { capital_scope = { is_same_value = root } }
 		}
 	}
+
 	pop_happiness = 0.1
 }
 
@@ -190,6 +193,7 @@ triggered_planet_modifier = {
 		exists = assembling_species # Vfix
 		assembling_species = { is_robotic = yes }
 	}
+
 	planet_pop_assemblers_upkeep_mult = 0.10
 }
 
@@ -201,17 +205,17 @@ triggered_planet_modifier = {
 		exists = assembling_species # Vfix
 		assembling_species = { is_robotic = yes }
 	}
+
 	planet_pop_assemblers_upkeep_mult = 0.20
 }
+
 # Synthetic Physical District Upkeep
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
-		owner = {
-			is_democratic_authority = yes
-			has_country_flag = synth_physical
-		}
+		owner = { is_democratic_authority = yes has_country_flag = synth_physical }
 	}
+
 	key = auth_synth_democratic_physical
 	planet_districts_energy_upkeep_mult = 0.01
 	mult = value:count_any_districts
@@ -221,11 +225,9 @@ triggered_planet_modifier = {
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
-		owner = {
-			is_democratic_authority = yes
-			has_country_flag = synth_physical
-		}
+		owner = { is_democratic_authority = yes has_country_flag = synth_physical }
 	}
+
 	key = auth_synth_democratic_physical
 	pop_cat_specialist_bonus_workforce_mult = 0.01
 	mult = value:count_any_districts
@@ -237,6 +239,7 @@ triggered_planet_modifier = {
 		owner = { has_active_tradition = tr_virtuality_5 }
 		has_planetary_ascension_tier >= 1
 	}
+
 	planet_max_districts_add = 1
 }
 
@@ -246,6 +249,7 @@ triggered_planet_modifier = {
 		owner = { has_active_tradition = tr_virtuality_5 }
 		has_planetary_ascension_tier >= 5
 	}
+
 	planet_max_districts_add = 1
 }
 
@@ -255,6 +259,7 @@ triggered_planet_modifier = {
 		owner = { has_active_tradition = tr_virtuality_5 }
 		has_planetary_ascension_tier >= 10
 	}
+
 	planet_max_districts_add = 1
 }
 
@@ -268,16 +273,18 @@ triggered_planet_modifier = {
 			has_active_tradition = tr_synthetics_prefabricated_components_machine
 		}
 	}
+
 	job_replicator_add = 100
 }
 
-#Traders from Branch Offices
+# Traders from Branch Offices
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = { is_megacorp = yes }
 		is_capital = yes
 	}
+
 	job_trader_add = 1
 	mult = modifier:job_capital_trader_add
 }
@@ -293,24 +300,23 @@ triggered_country_modifier = {
 			is_mutation_authority = yes
 		}
 	}
+
 	commercial_pact_mult = 0.01
 	mult = owner_species.species_traits_evopred_count
 }
 
-#Storm Chasers get Storm Shelter effects for free
-triggered_planet_modifier = { #basic shelter
+# Storm Chasers get Storm Shelter effects for free
+# basic shelter
+triggered_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = {
-			AND = {
-				has_origin = origin_storm_chasers
-				has_technology = tech_industrial_storm_protection
-			}
+			has_origin = origin_storm_chasers
+			has_technology = tech_industrial_storm_protection
 		}
-		solar_system = {
-			has_star_flag = storm_system
-		}
+		solar_system = { has_star_flag = storm_system }
 	}
+
 	modifier = {
 		planet_miners_minerals_produces_add = 1
 		planet_farmers_food_produces_add = 1
@@ -318,19 +324,17 @@ triggered_planet_modifier = { #basic shelter
 	}
 }
 
-triggered_planet_modifier = { #add advanced shelter effect
+# add advanced shelter effect
+triggered_planet_modifier = {
 	potential = {
 		exists = owner
 		owner = {
-			AND = {
-				has_origin = origin_storm_chasers
-				has_technology = tech_advanced_industrial_storm_protection
-			}
+			has_origin = origin_storm_chasers
+			has_technology = tech_advanced_industrial_storm_protection
 		}
-		solar_system = {
-			has_star_flag = storm_system
-		}
+		solar_system = { has_star_flag = storm_system }
 	}
+
 	modifier = {
 		planet_miners_minerals_produces_add = 1
 		planet_farmers_food_produces_add = 1
@@ -343,20 +347,20 @@ triggered_planet_modifier = {
 		exists = owner
 		owner = {
 			is_galactic_community_member = yes
-			AND = {
-				has_origin = origin_storm_chasers
-				has_technology = tech_industrial_storm_protection
-			}
+			has_origin = origin_storm_chasers
+			has_technology = tech_industrial_storm_protection
 		}
 		solar_system = { # Vfix
 			has_star_flag = storm_system
 		}
 	}
+
 	modifier = {
 		planet_miners_produces_mult = 1
 		planet_farmers_produces_mult = 1
 		planet_technician_produces_mult = 1
 	}
+
 	mult = value:storm_building_production_multiplier
 }
 
@@ -364,9 +368,7 @@ triggered_planet_modifier = {
 	potential = {
 		has_cosmic_storms_dlc = yes
 		exists = owner
-		owner = {
-			has_origin = origin_storm_chasers
-		}
+		owner = { has_origin = origin_storm_chasers }
 	}
 
 	planet_jobs_unity_produces_mult = @storm_chasers_storm_building_unity_produces_mult
@@ -382,6 +384,7 @@ triggered_planet_modifier = {
 			has_active_tradition = tr_domination_imperious_architecture
 		}
 	}
+
 	planet_housing_add = 100
 	job_politician_add = 100
 	mult = value:imperious_architecture_scaling_value
@@ -396,6 +399,7 @@ triggered_planet_modifier = {
 			has_active_tradition = tr_domination_imperious_architecture
 		}
 	}
+
 	planet_housing_add = 100
 	job_bureaucrat_add = 150
 	mult = value:imperious_architecture_scaling_value
@@ -410,6 +414,7 @@ triggered_planet_modifier = {
 			has_active_tradition = tr_domination_synaptic_extensions
 		}
 	}
+
 	planet_housing_add = 150
 	job_coordinator_add = 150
 	mult = value:imperious_architecture_scaling_value
@@ -424,6 +429,7 @@ triggered_planet_modifier = {
 			has_active_tradition = tr_aptitude_specialist_training
 		}
 	}
+
 	pop_cat_specialist_bonus_workforce_mult = 0.02
 	mult = leader.trigger:has_total_skill
 }
@@ -440,6 +446,7 @@ triggered_planet_modifier = {
 			}
 		}
 	}
+
 	pop_cat_complex_drone_bonus_workforce_mult = 0.02
 	mult = leader.trigger:has_total_skill
 }

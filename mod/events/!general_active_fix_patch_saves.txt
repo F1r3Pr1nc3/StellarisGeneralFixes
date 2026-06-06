@@ -63,7 +63,8 @@ event = {
 				}
 				if = {
 					limit = {
-						should_use_increased_treasure_trove_drops = yes
+						has_origin = origin_treasure_hunters
+						# should_use_increased_treasure_trove_drops = yes
 						has_event_chain = "treasure_hunters_origin_story_chain"
 						OR = {
 							has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
@@ -72,7 +73,7 @@ event = {
 						}
 					}
 					# weights = { base = 1 modifier = { add = 99 is_ai = no } }
-					if = {	# Fix Vanilla Survey Treasure Hunter Shattered world grand_archive.8051
+					if = {	# VFIX Survey Treasure Hunter Shattered world grand_archive.8051
 						limit = {
 							has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
 							any_system = {
@@ -113,7 +114,7 @@ event = {
 							}
 						}
 					}
-					else_if = {	# Fix Vanilla Survey Treasure Hunter Black Needle Base grand_archive.8101
+					else_if = {	# VFIX Survey Treasure Hunter Black Needle Base grand_archive.8101
 						limit = {
 							has_point_of_interest = { poi = treasure_hunters_explore_system_poi.1 }
 							any_system = {
@@ -154,7 +155,7 @@ event = {
 							}
 						}
 					}
-					else_if = {	# Fix Vanilla Survey Treasure Hunter Smeegibb shelter grand_archive.8201
+					else_if = {	# VFIX Survey Treasure Hunter Smeegibb shelter grand_archive.8201
 						limit = {
 							has_point_of_interest = { poi = smeegibb_shelter_system_poi.1 }
 							any_system = {
@@ -196,7 +197,7 @@ event = {
 						}
 					}
 				}
-				else_if = {	# Fix vanilla treasure hunter __STR_1__
+				else_if = {
 					limit = {
 						should_use_increased_treasure_trove_drops = yes
 						OR = {
@@ -205,30 +206,62 @@ event = {
 							# has_country_flag = smeegibb_arc_site_spawned
 						}
 						NOT = { has_point_of_interest = { poi = black_needle_base_system_poi } }
-						any_system_within_border = {
-							has_star_flag = hidden_treasure_system
-							any_system_planet = {
-								OR = {
-									has_planet_flag = planet_defended_forbid_colonization
-									has_planet_flag = can_have_scripted_bombardment
+					}
+					# VFIX treasure hunter __STR_1__
+					if = {
+						limit = {
+							any_system_within_border = {
+								has_star_flag = hidden_treasure_system
+								any_system_planet = {
+									OR = {
+										has_planet_flag = planet_defended_forbid_colonization
+										has_planet_flag = can_have_scripted_bombardment
+									}
+									has_deposit = d_black_needle_base
 								}
+							}
+						}
+						random_planet_within_border = {
+							limit = {
 								has_deposit = d_black_needle_base
+								has_planet_flag = planet_defended_forbid_colonization
+							}
+							remove_deposit = d_black_needle_base
+							remove_planet_flag = planet_defended_forbid_colonization
+							set_planet_flag = black_needle_base_destroyed
+							if = {
+								limit = {
+									NOT = { has_deposit = d_abandoned_black_needle_base }
+								}
+								add_deposit = d_abandoned_black_needle_base
 							}
 						}
 					}
-					random_planet_within_border = {
+					# Active Vfix: https://forum.paradoxplaza.com/forum/threads/the-treasure-hunters-final-battle-with-the-black-needle-bugged-out-after-beating-them.1926185/
+					if = {
 						limit = {
-							has_deposit = d_black_needle_base
-							has_planet_flag = planet_defended_forbid_colonization
+							has_country_flag = met_captain_hoo
+							exists = event_target:black_needle_country
+							exists = event_target:captain_hoo
+							NOR = {
+								has_country_flag = has_defeated_black_needle
+								event_target:black_needle_country = {
+									any_owned_fleet = { has_fleet_flag = black_needle_fleet }
+								}
+							}
 						}
-						remove_deposit = d_black_needle_base
-						remove_planet_flag = planet_defended_forbid_colonization
-						set_planet_flag = black_needle_base_destroyed
 						if = {
 							limit = {
-								NOT = { has_deposit = d_abandoned_black_needle_base }
+								any_situation = { is_situation_type = situation_sabotage }
 							}
-							add_deposit = d_abandoned_black_needle_base
+							country_event = { id = grand_archive.8555 }
+						}
+						else_if = {
+							limit = { has_special_project = TREASURE_HUNTERS_BLACK_NEEDLE_PROJECT }
+							complete_special_project = { type = "TREASURE_HUNTERS_BLACK_NEEDLE_PROJECT" }
+						}
+						else = {
+							country_event = { id = grand_archive.8560 }
 						}
 					}
 				}

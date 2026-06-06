@@ -1938,18 +1938,19 @@ ship_event = {
 	show_sound = ga_event_black_needle
 	location = from
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		exists = controller
 		controller = {
 			has_origin = origin_treasure_hunters
 			has_event_chain = "treasure_hunters_origin_story_chain"
-			from = {
-				is_point_of_interest = {
-					id = treasure_hunters_hidden_system_poi.1
-					event_chain = treasure_hunters_origin_story_chain
-					owner = root.controller
-				}
+		}
+		from = {
+			is_point_of_interest = {
+				id = treasure_hunters_hidden_system_poi.1
+				event_chain = treasure_hunters_origin_story_chain
+				owner = root.controller
 			}
 		}
 	}
@@ -1957,9 +1958,9 @@ ship_event = {
 	immediate = {
 		controller = {
 			remove_point_of_interest = treasure_hunters_hidden_system_poi.1
-			create_black_needle_country = yes
-			establish_communications_no_message = event_target:black_needle_country
+			# create_black_needle_country = yes Vfix double
 			create_captain_hoo_leader = yes
+			establish_communications_no_message = event_target:black_needle_country
 			create_black_needle_fleet_01 = { LOCATION = from }
 			event_target:black_needle_fleet = { set_fleet_flag = is_in_combat_with@prev }
 		}
@@ -2041,12 +2042,7 @@ country_event = {
 		}
 		response_text = grand_archive.8025.b.reply
 		is_dialog_only = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = grand_archive_8025_next_dialog_step }
-			}
-			set_country_flag = grand_archive_8025_next_dialog_step
-		}
+		set_country_flag = grand_archive_8025_next_dialog_step
 	}
 	option = {
 		name = grand_archive.8025.c
@@ -2055,12 +2051,7 @@ country_event = {
 		}
 		response_text = grand_archive.8025.c.reply
 		is_dialog_only = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = grand_archive_8025_next_dialog_step }
-			}
-			set_country_flag = grand_archive_8025_next_dialog_step
-		}
+		set_country_flag = grand_archive_8025_next_dialog_step
 	}
 	option = {
 		name = grand_archive.8025.d
@@ -2078,12 +2069,7 @@ country_event = {
 		}
 		response_text = grand_archive.8025.e.reply
 		is_dialog_only = yes
-		if = {
-			limit = {
-				NOT = { has_country_flag = grand_archive_8025_end_dialog }
-			}
-			set_country_flag = grand_archive_8025_end_dialog
-		}
+		set_country_flag = grand_archive_8025_end_dialog
 	}
 	option = {
 		trigger = {
@@ -2141,6 +2127,7 @@ ship_event = {
 	id = grand_archive.8040
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		has_ship_flag = captain_hoo_ship
@@ -2182,7 +2169,7 @@ ship_event = {
 
 	immediate = {
 		fleet = {
-			remove_fleet_flag = is_in_combat_with@root.from
+			remove_fleet_flag = is_in_combat_with@root.from # Vfix note: superflous!?
 			delete_fleet = { target = this }
 		}
 		from = {
@@ -2319,6 +2306,7 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	location = from
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		exists = controller
@@ -2341,9 +2329,14 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	location = from
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		has_origin = origin_treasure_hunters
+		from = { # Vfix opt
+			has_star_flag = hidden_treasure_system
+			any_system_planet = { has_planet_flag = shattered_ytterite_world }
+		}
 	}
 
 	immediate = {
@@ -2469,6 +2462,15 @@ country_event = {
 	id = grand_archive.8065
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
+
+	trigger = { # Vfix
+		exists = from
+		from = {
+			has_origin = origin_treasure_hunters
+			exists = event_target:black_needle_base_system_for@this
+		}
+	}
 
 	immediate = {
 		from = {
@@ -2630,6 +2632,7 @@ country_event = {
 	id = grand_archive.8085
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		has_grand_archive_dlc = yes
@@ -2757,6 +2760,7 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	location = from
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		exists = controller
@@ -2779,9 +2783,14 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	location = from
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		has_origin = origin_treasure_hunters
+		from = { # Vfix opt
+			has_star_flag = hidden_treasure_system
+			any_system_planet = { has_deposit = d_black_needle_base }
+		}
 	}
 
 	immediate = {
@@ -2848,6 +2857,7 @@ country_event = {
 	id = grand_archive.8104
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		fromfromfrom = { has_fleet_flag = black_needle_reinforcement_fleet@root }
@@ -3399,6 +3409,7 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	location = from
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		exists = controller
@@ -3421,9 +3432,14 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	location = from
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		has_origin = origin_treasure_hunters
+		from = { # Vfix opt
+			has_star_flag = hidden_treasure_system
+			any_system_planet = { has_planet_flag = smeegibb_shelter }
+		}
 	}
 
 	immediate = {
@@ -3769,6 +3785,7 @@ fleet_event = {
 	id = grand_archive.8240
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		exists = controller
@@ -3982,6 +3999,7 @@ ship_event = {
 	id = grand_archive.8260
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		has_ship_flag = captain_inax_ship
@@ -4359,6 +4377,7 @@ ship_event = {
 	show_sound = ga_voidworms_troika_attack
 	location = event_target:voidworms_fleet
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		fromfrom = { has_origin = origin_treasure_hunters }
@@ -4436,6 +4455,7 @@ country_event = {
 	id = grand_archive.8305
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		from = { is_country_type = voidworms_treasure_hunters }
@@ -4643,9 +4663,12 @@ country_event = {
 	id = grand_archive.8320
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
+		has_origin = origin_treasure_hunters # Vfix
 		last_increased_tech = tech_gateway_activation
+		exists = event_target:gateway_to_ness_treasure_system_for@this # Vfix
 		has_special_project = RESEARCH_GATEWAY_ACTIVATION_PROJECT
 	}
 
@@ -4791,6 +4814,8 @@ country_event = {
 }
 
 # Treasure Hunters - Ness system POI entered
+# From = System
+# FromFrom = Country
 ship_event = {
 	id = grand_archive.8405
 	title = grand_archive.8405.name
@@ -4799,6 +4824,7 @@ ship_event = {
 	show_sound = ga_event_black_needle
 	location = from
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt
 
 	trigger = {
 		exists = controller
@@ -4816,7 +4842,7 @@ ship_event = {
 		controller = { remove_point_of_interest = ness_treasure_system_poi }
 		create_cobalt_quill_leader = yes
 		create_final_black_needle_fleet = { LOCATION = from }
-		event_target:black_needle_fleet = { set_fleet_flag = is_spawned_for@root.controller }
+		event_target:black_needle_fleet = { set_fleet_flag = is_spawned_for@root.controller } # fromfrom?
 	}
 
 	option = {
@@ -4955,10 +4981,30 @@ country_event = {
 	}
 
 	immediate = {
-		event_target:ness_treasure_system_for@root = {
-			every_fleet_in_system = {
-				limit = { has_fleet_flag = black_needle_fleet }
-				save_event_target_as = black_needle_fleet
+		if = { # Vfix opt
+			limit = {
+				NOT = { exists = event_target:ness_treasure_system }
+			}
+			event_target:ness_treasure_system_for@root = { save_event_target_as = ness_treasure_system }
+		}
+		if = { # Vfix opt
+			limit = {
+				NOT = { exists = event_target:black_needle_fleet }
+			}
+			fromfrom = { save_event_target_as = black_needle_fleet }
+		}
+		if = { # Vfix safety
+			limit = {
+				NAND = {
+					exists = event_target:black_needle_fleet
+					event_target:black_needle_fleet = { is_scope_type = fleet has_fleet_flag = black_needle_fleet }
+				}
+			}
+			event_target:ness_treasure_system = {
+				random_fleet_in_system = {
+					limit = { has_fleet_flag = black_needle_fleet }
+					save_event_target_as = black_needle_fleet
+				}
 			}
 		}
 	}
@@ -4971,12 +5017,12 @@ country_event = {
 			set_aggro_range = 300
 		}
 		set_black_needle_hostile = yes
-		country_event = { id = grand_archive.8505 days = 1 scopes = { from = fromfrom } }
+		country_event = { id = grand_archive.8505 days = 1 scopes = { from = event_target:black_needle_fleet } }
 	}
 	option = {
 		name = grand_archive.8415.b
 		custom_tooltip = grand_archive.8415.b.effect_tt
-		country_event = { id = grand_archive.8500 days = 1 scopes = { from = fromfrom } }
+		country_event = { id = grand_archive.8500 days = 1 scopes = { from = event_target:black_needle_fleet } }
 	}
 }
 
@@ -5767,18 +5813,26 @@ country_event = {
 	id = grand_archive.8540
 	hide_window = yes
 	is_triggered_only = yes
+	fire_only_once = yes # Vfix opt: there should be just one ever
 
 	trigger = {
+		fromfromfrom = { has_fleet_flag = black_needle_fleet } # Vfix order
 		exists = event_target:black_needle_country
 		from = { is_same_value = event_target:black_needle_country }
-		fromfromfrom = { has_fleet_flag = black_needle_fleet }
 	}
 
 	immediate = {
 		random_playable_country = {
 			limit = {
 				has_origin = origin_treasure_hunters
-				root.fromfromfrom = { has_fleet_flag = is_spawned_for@prev }
+				# root.fromfromfrom = { has_fleet_flag = is_spawned_for@prev }
+			}
+			weights = { # Vfix safety fallback (unknown reason - hiccup)
+				base = 1
+				modifier = {
+					add = 99
+					root.fromfromfrom = { has_fleet_flag = is_spawned_for@prev }
+				}
 			}
 			if = {
 				limit = {
@@ -5788,9 +5842,19 @@ country_event = {
 			}
 			else_if = {
 				limit = { has_special_project = TREASURE_HUNTERS_BLACK_NEEDLE_PROJECT }
-				complete_special_project = {
-					type = "TREASURE_HUNTERS_BLACK_NEEDLE_PROJECT"
-					location = root.fromfromfrom
+				if = {
+					limit = { # Vfix safety
+						root.fromfromfrom = { has_fleet_flag = is_spawned_for@prev }
+					}
+					complete_special_project = {
+						type = "TREASURE_HUNTERS_BLACK_NEEDLE_PROJECT"
+						location = root.fromfromfrom
+					}
+				}
+				else = { # Vfix fallback
+					complete_special_project = {
+						type = "TREASURE_HUNTERS_BLACK_NEEDLE_PROJECT"
+					}
 				}
 			}
 			else = {

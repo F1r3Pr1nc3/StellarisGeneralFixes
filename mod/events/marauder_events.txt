@@ -10301,6 +10301,7 @@ country_event = {
 				fail_text = "03_EMBASSY_HOSTILE" # marauder.550.a_fail
 				hidden_trigger = {
 					OR = {
+						has_country_flag = fought_khan # Vfix patch
 						is_variable_set = "planets_lost_to_marauder"
 						NAND = {
 							from = { has_country_flag = raid_cooldown }

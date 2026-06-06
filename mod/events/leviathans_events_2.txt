@@ -4260,7 +4260,20 @@ ship_event = {
 	}
 
 	immediate = {
-		from.solar_system = { save_event_target_as = hiver_system }
+		if = {
+			limit = {
+				exists = solar_system
+				solar_system = { is_scope_valid = yes is_scope_type = galactic_object }
+			}
+			solar_system = { save_event_target_as = hiver_system }
+		}
+		else_if = { # Vfix safety
+			limit = {
+				exists = from.solar_system
+				from.solar_system = { is_scope_valid = yes is_scope_type = galactic_object }
+			}
+			from.solar_system = { save_event_target_as = hiver_system }
+		}
 		owner = {
 			set_country_flag = built_hiver_mine
 			country_event = { id = leviathans.3208 days = 15 random = 15 scopes = { from = event_target:hiver_system } }
@@ -4268,7 +4281,7 @@ ship_event = {
 	}
 }
 
-# Gatekeeping Hivers Event
+# VFIX NEW: Gatekeeping Hivers Event
 # From = system
 country_event = {
 	id = leviathans.3208
@@ -4285,6 +4298,7 @@ country_event = {
 		}
 		OR = {
 			from = {
+				is_scope_type = galactic_object
 				has_owner = yes
 				has_star_flag = guardians_hive_system
 				any_system_planet = { has_mining_station = yes }
@@ -4309,7 +4323,10 @@ country_event = {
 	immediate = {
 		if = {
 			limit = {
-				NOT = { exists = event_target:hiver_system }
+				NAND = {
+					exists = event_target:hiver_system
+					event_target:hiver_system = { is_scope_type = galactic_object }
+				}
 			}
 			if = {
 				limit = {
