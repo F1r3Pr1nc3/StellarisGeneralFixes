@@ -8146,14 +8146,12 @@ resolution_galacticreforms_form_council = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
-				AND = {
-					is_subject = yes
-					overlord = {
-						opinion_level = { who = prev level >= neutral }
-						galactic_community_rank <= 3
-					}
+			galactic_community_rank > 5
+			NAND = {
+				is_subject = yes
+				overlord = {
+					opinion_level = { who = prev level >= neutral }
+					galactic_community_rank <= 3
 				}
 			}
 			desc = gal_com_empire_or_overlord_unlikely_council_candidate
@@ -8959,14 +8957,12 @@ resolution_galacticreforms_enable_council_veto = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
-				AND = {
-					is_subject = yes
-					overlord = {
-						opinion_level = { who = prev level >= neutral }
-						is_part_of_galactic_council = yes
-					}
+			galactic_community_rank > 5
+			NAND = {
+				is_subject = yes
+				overlord = {
+					opinion_level = { who = prev level >= neutral }
+					is_part_of_galactic_council = yes
 				}
 			}
 			desc = gal_com_they_nor_overlord_not_on_galatic_council
@@ -13707,14 +13703,12 @@ resolution_community_champions = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
-				AND = {
-					is_subject = yes
-					overlord = {
-						opinion_level = { who = prev level >= neutral }
-						is_part_of_galactic_council = yes
-					}
+			galactic_community_rank > 5
+			NAND = {
+				is_subject = yes
+				overlord = {
+					opinion_level = { who = prev level >= neutral }
+					is_part_of_galactic_council = yes
 				}
 			}
 			desc = gal_com_they_nor_overlord_not_on_galatic_council
@@ -13849,14 +13843,12 @@ resolution_development_aides = {
 		}
 		modifier = {
 			factor = 0.8
-			NOR = {
-				galactic_community_rank <= 5
-				AND = {
-					is_subject = yes
-					overlord = {
-						opinion_level = { who = prev level >= neutral }
-						is_part_of_galactic_council = yes
-					}
+			galactic_community_rank > 5
+			NAND = {
+				is_subject = yes
+				overlord = {
+					opinion_level = { who = prev level >= neutral }
+					is_part_of_galactic_council = yes
 				}
 			}
 			desc = gal_com_they_nor_overlord_not_on_galatic_council
@@ -14098,14 +14090,12 @@ resolution_development_aides_repeal = {
 		}
 		modifier = {
 			factor = 2
-			NOR = {
-				galactic_community_rank <= 5
-				AND = {
-					is_subject = yes
-					overlord = {
-						opinion_level = { who = prev level >= neutral }
-						is_part_of_galactic_council = yes
-					}
+			galactic_community_rank > 5
+			NAND = {
+				is_subject = yes
+				overlord = {
+					opinion_level = { who = prev level >= neutral }
+					is_part_of_galactic_council = yes
 				}
 			}
 			desc = gal_com_they_nor_overlord_not_on_galatic_council

@@ -43,7 +43,7 @@ building_military_academy = {
 
 	triggered_country_modifier = {
 		potential = {
-			has_owner = yes
+			exists = owner
 			owner = { has_valid_civic = civic_machine_tactical_algorithms }
 		}
 		ship_evasion_mult = 0.02
@@ -54,7 +54,7 @@ building_military_academy = {
 	}
 	triggered_country_modifier = {
 		potential = {
-			has_owner = yes
+			exists = owner
 			owner = { has_valid_civic = civic_machine_tactical_algorithms }
 		}
 		ship_shield_hardening_add = 0.1
@@ -75,12 +75,11 @@ building_military_academy = {
 		}
 		pop_warrior_drone_bonus_workforce_mult = 0.15
 	}
+
 	triggered_country_modifier = {
 		potential = {
 			exists = owner
-			owner = {
-				has_origin = origin_toxic_knights
-			}
+			owner = { has_origin = origin_toxic_knights }
 		}
 		pop_knight_bonus_workforce_mult = 0.05
 		pop_knight_commander_bonus_workforce_mult = 0.025
@@ -135,7 +134,7 @@ building_dread_encampment = {
 
 	potential = {
 		has_owner = yes
-		owner = { is_reanimator = yes }
+		owner = { has_valid_civic = civic_reanimated_armies }
 	}
 
 	allow = {
@@ -206,7 +205,7 @@ building_stronghold = {
 	}
 
 	allow = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
 			owner = { is_ai = no }
@@ -371,9 +370,9 @@ building_planetary_shield_generator = {
 		weight = 5
 		modifier = {
 			factor = 5
-			has_owner = yes
+			exists = owner
 			solar_system = {
-				has_owner = yes
+				exists = owner
 				owner = { num_cosmic_storms_encountered >= 2 }
 			}
 		}

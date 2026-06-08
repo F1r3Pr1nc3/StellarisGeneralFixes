@@ -183,6 +183,22 @@ country_event = {
 				limit = { has_planet_flag = mining_drone_expansion_base }
 				save_event_target_as = mining_drone_expansion_base
 			}
+			if = { # Vfix safety
+				limit = {
+					NOT = { exists = event_target:mining_drone_expansion_base }
+				}
+				random_system_planet = {
+					limit = {
+						NOR = {
+							is_star = yes
+							is_astral_scar = yes
+							is_colonizable = yes
+							is_colony = yes
+						}
+					}
+					save_event_target_as = mining_drone_expansion_base
+				}
+			}
 		}
 		create_fleet = {
 			name = "NAME_Mining_Corps"
@@ -400,6 +416,21 @@ country_event = {
 			random_system_planet = {
 				limit = { has_planet_flag = aggressive_drone_expansion_base }
 				save_event_target_as = mining_drone_expansion_base
+			}
+			if = { # Vfix safety
+				limit = {
+					NOT = { exists = event_target:mining_drone_expansion_base }
+				}
+				random_system_planet = {
+					limit = {
+						NOR = {
+							is_star = yes
+							is_colonizable = yes
+						}
+						has_deposit_for = shipclass_mining_station
+					}
+					save_event_target_as = mining_drone_expansion_base
+				}
 			}
 		}
 		create_fleet = {

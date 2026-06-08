@@ -18,9 +18,6 @@ building_mote_harvesters = {
 		has_volatile_motes_deposit = yes
 	}
 
-	allow = {
-	}
-
 	prerequisites = {
 		"tech_mine_volatile_motes"
 	}
@@ -54,9 +51,6 @@ building_gas_extractors = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no }
 		has_exotic_gases_deposit = yes
-	}
-
-	allow = {
 	}
 
 	prerequisites = {
@@ -93,9 +87,6 @@ building_crystal_mines = {
 		has_rare_crystals_deposit = yes
 	}
 
-	allow = {
-	}
-
 	prerequisites = {
 		"tech_mine_rare_crystals"
 	}
@@ -126,9 +117,6 @@ building_betharian_power_plant = {
 
 	potential = {
 		NOT = { has_modifier = resort_colony }
-	}
-
-	allow = {
 	}
 
 	resources = {
@@ -201,9 +189,6 @@ building_xeno_zoo = {
 				any_owned_species = { has_trait = trait_nascent_stage }
 			}
 		}
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -314,7 +299,7 @@ building_xeno_zoo = {
 	}
 	triggered_desc = {
 		trigger = {
-			has_owner = yes
+			exists = owner
 			owner = { has_valid_civic = civic_warrior_culture }
 		}
 		text = pre_sapient_job_xeno_zoo_beast_tt
@@ -334,7 +319,7 @@ building_xeno_zoo = {
 	}
 	triggered_desc = {
 		trigger = {
-			has_owner = yes
+			exists = owner
 			owner = { has_valid_civic = civic_warrior_culture }
 		}
 		text = job_xeno_zoo_beast_effect_desc

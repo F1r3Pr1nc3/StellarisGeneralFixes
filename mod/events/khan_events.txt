@@ -2947,12 +2947,20 @@ system_event = {
 						# set_owner = space_owner
 						set_controller = from # space_owner
 						# set_name = random # TODO more variations? # create_colony effect creates already a random name, we want to maintain names
-						add_building = building_hab_major_capital # 3 jobs
+						add_district = district_hab_housing
+						if = { # 6 jobs
+							limit = {
+								NOR = {
+									has_building = building_hab_major_capital
+									has_building = building_hab_capital
+								}
+							}
+							add_building = building_hab_major_capital # 3 jobs
+						}
 						# add_building = building_foundry_1			# 2
 						# add_building = building_foundry_1			# 2
 						# add_building = building_factory_1			# 2
 						# add_building = building_hydroponics_farm	# 3
-						add_district = district_hab_housing
 						# add_district = district_hab_cultural		# 3
 						if = { # 6 jobs
 							limit = { has_planet_flag = mining_habitat }

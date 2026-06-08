@@ -479,8 +479,11 @@ leader_event = {
 		# TRAITS #
 		##########
 		# Initial Traits, set after determining class.
-		add_trait = { trait = trait_imperial_heir show_message = no }
-		add_trait = { trait = random_common show_message = no }
+		if = { # Vfix log
+			limit = { is_ruler = no }
+			add_trait = { trait = trait_imperial_heir show_message = no }
+		}
+		add_trait = { trait = random_common show_message = no } # Vfix TODO log note: Unable to add trait for [reason] no_possible_random_trait
 		# Chance for a negative trait.
 		# Variable "leader_pending_negative_traits_unmodified" doesn't exist yet, can't reduce it yet. Checked now made in paragon_2.2200.
 		if = {

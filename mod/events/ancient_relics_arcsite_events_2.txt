@@ -8941,13 +8941,15 @@ fleet_event = {
 
 	desc = {
 		trigger = {
-			owner = { is_reanimator = no }
+			owner = {
+				NOT = { has_civic = civic_reanimated_armies }
+			}
 		}
 		text = "ancrel.14100.desc"
 	}
 	desc = {
 		trigger = {
-			owner = { is_reanimator = yes }
+			owner = { has_civic = civic_reanimated_armies }
 		}
 		text = "ancrel.14100.necro.desc"
 	}

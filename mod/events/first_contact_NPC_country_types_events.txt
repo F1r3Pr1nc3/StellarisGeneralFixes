@@ -44,6 +44,7 @@ first_contact_event = {
 
 	immediate = {
 		set_site_progress_locked = yes
+		exists = owner
 	}
 
 	option = {
@@ -57,6 +58,7 @@ first_contact_event = {
 				}
 			}
 		}
+		finish_first_contact_effect = yes # Vfix no owner possible
 	}
 	option = {
 		name = TASTY
@@ -68,23 +70,25 @@ first_contact_event = {
 				}
 			}
 		}
+		finish_first_contact_effect = yes # Vfix no owner possible
 	}
 	option = {
 		name = EXTERMINATE
 		trigger = {
 			owner = { has_valid_civic = civic_machine_terminator }
 		}
+		finish_first_contact_effect = yes # Vfix no owner possible
 	}
 	option = {
 		name = first_contact_critters.5.A
 		trigger = {
 			owner = { is_homicidal = no }
 		}
+		finish_first_contact_effect = yes # Vfix no owner possible
 	}
 
 	after = {
 		set_site_progress_locked = no
-		finish_first_contact_effect = yes
 	}
 }
 

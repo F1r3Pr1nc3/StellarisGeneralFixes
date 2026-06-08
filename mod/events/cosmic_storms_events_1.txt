@@ -1522,7 +1522,7 @@ system_event = {
 
 	trigger = {
 		exists = owner
-		owner = { is_country_type = default is_ai = no }
+		owner = { is_ai = no }
 		has_cosmic_storms_dlc = yes
 	}
 
@@ -3965,7 +3965,7 @@ planet_event = {
 					NOR = {
 						is_colony = yes
 						is_star = yes
-						any_fleet_in_orbit = { ##Lets not mess with Habitat deposits
+						any_fleet_in_orbit = { # Lets not mess with Habitat deposits
 							is_ship_class = shipclass_habitat_station
 						}
 					}

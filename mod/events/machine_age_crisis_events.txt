@@ -3767,7 +3767,6 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		is_country_type = default
 		NOR = {
 			is_ai = yes
 			has_country_flag = speech_2
@@ -6755,34 +6754,19 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = { # Make sure belligerants were a convoy v playable country
-		OR = {
-			is_country_type = synth_queen_convoys
-			from = { is_country_type = synth_queen_convoys }
-		}
-		OR = {
-			is_country_type = default
-			from = { is_country_type = default }
+		OR = { # Vfix opt minor
+			AND = {
+				is_country_type = synth_queen_convoys
+				from = { is_country_type = default }
+			}
+			AND = {
+				is_country_type = default
+				from = { is_country_type = synth_queen_convoys }
+			}
 		}
 	}
 
 	immediate = {
-		if = { # Convoy lost
-			limit = { is_country_type = default }
-			save_event_target_as = playable_country
-			add_event_chain_counter = {
-				event_chain = "the_synth_queen_raids_chain"
-				counter = "synth_queen_raids_convoy"
-				amount = 1
-			}
-			country_event = { id = crisis.8175 days = 3 }
-			if = {
-				limit = {
-					NOT = { has_country_flag = synth_queen_comm_scrambler }
-				}
-				country_event = { id = crisis.8195 days = 7 }
-			}
-			set_faction_hostility = { target = from set_neutral = yes }
-		}
 		if = { # Convoy won
 			limit = { is_country_type = synth_queen_convoys }
 			fromfrom = {
@@ -6801,8 +6785,24 @@ country_event = {
 					location = event_target:convoy_ship
 				}
 			}
-			set_faction_hostility = { target = from set_neutral = yes }
 		}
+		# Outpost lost
+		# if = { limit = { is_country_type = default }
+		else = { # Vfix opt/flexible
+			add_event_chain_counter = {
+				event_chain = "the_synth_queen_raids_chain"
+				counter = "synth_queen_raids_convoy"
+				amount = 1
+			}
+			country_event = { id = crisis.8175 days = 3 }
+			if = {
+				limit = {
+					NOT = { has_country_flag = synth_queen_comm_scrambler }
+				}
+				country_event = { id = crisis.8195 days = 7 }
+			}
+		}
+		set_faction_hostility = { target = from set_neutral = yes } # Vfix opt minor
 		fromfrom = {
 			solar_system = {
 				every_fleet_in_system = {
@@ -7270,6 +7270,10 @@ country_event = {
 }
 
 # Fight with Outpost ends - Handle pacification and fire queen's warning if battle was lost OR don't have comms scrambler Maybe special case for nebulas? Via on_space_battle_won
+# This = owner of fleet 1 (winner)
+# From = owner of fleet 2 (loser)
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 country_event = {
 	id = crisis.8170
 	hide_window = yes
@@ -7287,8 +7291,10 @@ country_event = {
 			}
 		}
 		fromfrom.solar_system = {
-			NOT = {
+			NAND = {
+				exists = root.fromfromfrom
 				any_fleet_in_system = {
+					NOT = { is_same_value = root.fromfromfrom } # Vfix https://forum.paradoxplaza.com/forum/threads/1927177/
 					is_mobile = yes
 					owner = { is_hostile = root }
 				}
@@ -7297,8 +7303,36 @@ country_event = {
 	}
 
 	immediate = {
-		if = { # Outpost lost
-			limit = { is_country_type = default }
+		if = { # Outpost won
+			limit = { is_country_type = synth_queen_outposts }
+			fromfrom = {
+				random_controlled_ship = {
+					limit = { is_ship_size = big_starbase_synth_queen }
+					save_event_target_as = outpost_ship
+				}
+			}
+			from = {
+				save_event_target_as = playable_country
+				country_event = { id = crisis.8194 days = 7 }
+				if = { # Vfix safety
+					limit = { exists = event_target:outpost_ship }
+					event_target:outpost_ship = { # Vfix opt minor
+						enable_special_project = {
+							name = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
+							owner = prev
+							location = this.solar_system
+						}
+					}
+					abort_special_project = {
+						type = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
+						location = event_target:outpost_ship.solar_system
+					}
+				}
+			}
+		}
+		# Outpost lost
+		# if = { limit = { is_country_type = default }
+		else = { # Vfix opt/flexible
 			save_event_target_as = playable_country
 			set_country_flag = defeated_outpost
 			add_event_chain_counter = {
@@ -7313,33 +7347,8 @@ country_event = {
 				}
 				country_event = { id = crisis.8195 days = 7 }
 			}
-			set_faction_hostility = { target = from set_neutral = yes }
 		}
-		else_if = { # Outpost won
-			limit = { is_country_type = synth_queen_outposts }
-			fromfrom = {
-				random_controlled_ship = {
-					limit = { is_ship_size = big_starbase_synth_queen }
-					save_event_target_as = outpost_ship
-				}
-			}
-			from = {
-				save_event_target_as = playable_country
-				country_event = { id = crisis.8194 days = 7 }
-				event_target:outpost_ship = { # Vfix opt minor
-					enable_special_project = {
-						name = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
-						owner = prev
-						location = this.solar_system
-					}
-				}
-				abort_special_project = {
-					type = THE_SYNTH_QUEENS_OUTPOST_AMBUSH
-					location = event_target:outpost_ship.solar_system
-				}
-			}
-			set_faction_hostility = { target = from set_neutral = yes }
-		}
+		set_faction_hostility = { target = from set_neutral = yes } # Vfix opt minor
 		fromfrom = {
 			solar_system = {
 				every_fleet_in_system = {
