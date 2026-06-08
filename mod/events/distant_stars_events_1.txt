@@ -400,6 +400,10 @@ ship_event = {
 			if = {
 				limit = { has_deposit_for = shipclass_research_station }
 				clear_deposits = yes
+				if = { # Vfix
+					limit = { has_research_station = yes }
+					research_station = { dismantle = yes }
+				}
 			}
 		}
 	}

@@ -1,0 +1,41 @@
+#############
+# Anomalies #
+#############
+
+namespace = extreme_frontiers
+
+# PURIFY_CORE_PROJECT
+ship_event = {
+	id = extreme_frontiers.155
+	title = extreme_frontiers.155.title
+	desc = extreme_frontiers.155.desc
+	picture = GFX_evt_gray_gooed_planet
+	show_sound = event_inhabited_solar_system
+	is_triggered_only = yes
+
+	option = {
+		name = extreme_frontiers.155.a
+		controller = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
+		fromfrom = {
+			hidden_effect = {
+				set_planet_size = 12
+				reset_planet = yes
+				clear_blockers = yes
+				add_modifier = { modifier = mineral_rich }
+			}
+			# Vfix order (display): https://forum.paradoxplaza.com/forum/threads/1918842/
+			random_list = {
+				1 = { change_pc = pc_desert }
+				1 = { change_pc = pc_savannah }
+				1 = { change_pc = pc_arid }
+			}
+		}
+	}
+}

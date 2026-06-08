@@ -263,9 +263,6 @@ building_hall_judgment = {
 		building_center_of_guidance
 	}
 
-	allow = {
-	}
-
 	inline_script = {
 		script = jobs/enforcers_add
 		AMOUNT = 500
@@ -313,14 +310,14 @@ building_state_academy = {
 
 	destroy_trigger = {
 		has_owner = yes
-		NOT = { owner = { has_valid_civic = civic_civil_education } }
+		OR = {
+			has_modifier = slave_colony
+			NOT = { owner = { has_valid_civic = civic_civil_education } }
+		}
 	}
 
 	convert_to = {
 		building_precinct_house
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -382,9 +379,6 @@ building_center_of_guidance = {
 
 	convert_to = {
 		building_hall_judgment
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -498,9 +492,6 @@ building_order_keep = {
 		NOT = { owner = { has_country_flag = quest_abandoned } }
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
 		NAND = {
 			has_owner = yes
@@ -591,9 +582,6 @@ building_order_castle = {
 
 	building_sets = {
 		knights
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -1073,9 +1061,6 @@ building_gaiaseeders_4 = {
 	building_sets = {
 		government
 		urban
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {

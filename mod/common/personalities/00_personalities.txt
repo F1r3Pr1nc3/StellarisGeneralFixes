@@ -174,9 +174,7 @@ evangelising_zealots = {
 			is_country_type = default
 			is_country_type = exiled
 		}
-		NOT = {
-			is_pacifist = yes
-		}
+		is_pacifist = no
 		OR = {
 			is_authoritarian = yes
 			is_xenophobe = yes
@@ -468,14 +466,10 @@ ruthless_capitalists = {
 
 	allow = {
 		is_country_type = default
-		NOR = {
-			is_pacifist = yes
-		}
+		is_pacifist = no
 		OR = {
 			is_militarist = yes
-			NOR = {
-				is_xenophile = yes
-			}
+			is_xenophile = no
 		}
 		OR = {
 			is_megacorp = yes
@@ -609,9 +603,7 @@ hegemonic_imperialists = {
 
 	allow = {
 		is_country_type = default
-		NOT = {
-			is_pacifist = yes
-		}
+		is_pacifist = no
 		OR = {
 			is_militarist = yes
 			is_authoritarian = yes
@@ -1059,9 +1051,7 @@ xenophobic_isolationists = {
 		weight = 10
 		modifier = {
 			add = -2
-			NOT = {
-				is_pacifist = yes
-			}
+			is_pacifist = no
 		}
 		modifier = {
 			add = 2

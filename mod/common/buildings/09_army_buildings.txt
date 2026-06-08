@@ -75,11 +75,11 @@ building_military_academy = {
 		}
 		pop_warrior_drone_bonus_workforce_mult = 0.15
 	}
-	triggered_planet_modifier = {
+	triggered_country_modifier = {
 		potential = {
-			OR = {
-				has_active_building = building_order_keep
-				has_active_building = building_order_castle
+			exists = owner
+			owner = {
+				has_origin = origin_toxic_knights
 			}
 		}
 		pop_knight_bonus_workforce_mult = 0.05

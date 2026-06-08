@@ -2966,7 +2966,7 @@ trait_lithoid_budding = {
 
 	triggered_planet_pop_group_modifier_for_species = {
 		potential = {
-			# has_budding_trait = yes Vfix triggers itself???
+			# has_budding_trait = yes Vfix opt: triggers itself??
 			exists = planet
 			NOT = { planet = { has_deposit = d_lithoid_crater } }
 		}
@@ -2976,10 +2976,11 @@ trait_lithoid_budding = {
 	}
 	triggered_planet_pop_group_modifier_for_species = {
 		potential = {
-			# has_budding_trait = yes Vfix triggers itself???
+			# has_budding_trait = yes Vfix opt: triggers itself??
 			exists = planet
 			planet = { has_deposit = d_lithoid_crater }
 		}
+		divide_over_pop_groups = no # Vfix https://forum.paradoxplaza.com/forum/threads/1903826/
 		bonus_pop_growth = @lithoid_crater_budding_rate
 		mult = value:budding_multiplier # Vfix
 	}

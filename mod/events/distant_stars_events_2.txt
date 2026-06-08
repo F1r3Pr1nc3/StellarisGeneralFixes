@@ -2511,6 +2511,10 @@ country_event = {
 						NOT = { has_deposit_for = shipclass_mining_station }
 					}
 					clear_deposits = yes
+					if = { # Vfix
+						limit = { has_research_station = yes }
+						research_station = { dismantle = yes }
+					}
 				}
 			}
 			add_deposit = d_energy_8
