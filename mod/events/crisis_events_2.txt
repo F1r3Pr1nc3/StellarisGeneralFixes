@@ -84,19 +84,6 @@ country_event = {
 	immediate = {
 		set_crisis_sound = extradimensional_crisis_ambient_stage_1
 		set_crisis_stage_1 = yes
-		create_country = {
-			name = "NAME_Portal_Holder_1"
-			type = portal_holder
-			flag = {
-				icon = { category = "special" file = "extradimensional_01.dds" }
-				background = { category = "backgrounds" file = "circle.dds" }
-				colors = { "black" "black" "null" "null" }
-			}
-			effect = {
-				save_global_event_target_as = portal_holder_1
-				every_playable_country = { establish_communications_no_message = prev }
-			}
-		}
 		awaken_guardians_of_the_galaxy = yes
 		endgame_telemetry = extradimensional
 		set_global_flag = extradimensional_invasion_happened
@@ -130,6 +117,20 @@ country_event = {
 					traits = random
 					effect = { # Deprecated
 						save_event_target_as = extradimensional_species
+					}
+				}
+				create_country = {
+					name = "NAME_Portal_Holder_1"
+					type = portal_holder
+					species = last_created_species # Vfix minor: better than random
+					flag = {
+						icon = { category = "special" file = "extradimensional_01.dds" }
+						background = { category = "backgrounds" file = "circle.dds" }
+						colors = { "black" "black" "null" "null" }
+					}
+					effect = {
+						save_global_event_target_as = portal_holder_1
+						every_playable_country = { establish_communications_no_message = prev }
 					}
 				}
 				create_country = {
@@ -1970,12 +1971,12 @@ event = {
 					}
 					num_ships < 20
 					num_owned_planets = 0
-					NOR = {
-						# any_controlled_fleet = { is_ship_size = dimensional_portal_ed }
+					NOT = { any_controlled_planet = { has_owner = yes } }
+					OR = {
+						num_fleets < 2
 						event_target:portal_holder_1 = { # Vfix opt
 							any_owned_fleet = { is_ship_size = dimensional_portal_ed }
 						}
-						any_controlled_planet = { has_owner = yes }
 					}
 				}
 			}
@@ -1985,6 +1986,33 @@ event = {
 						is_country_type = extradimensional
 						is_country_type = extradimensional_2
 						is_country_type = extradimensional_3
+					}
+					OR = {
+						num_fleets < 2
+						num_ships < 21
+					}
+					num_owned_planets = 0
+					NOR = {
+						any_controlled_planet = { has_owner = yes }
+						event_target:portal_holder_1 = {  # Vfix opt
+							any_controlled_ship = {
+								is_ship_size = dimensional_portal_ed
+								OR = {
+									AND = {
+										prevprev = { has_country_flag = unbidden }
+										has_ship_flag = unbidden_portal
+									}
+									AND = {
+										prevprev = { has_country_flag = aberrant }
+										has_ship_flag = aberrant_portal
+									}
+									AND = {
+										prevprev = { has_country_flag = vehement }
+										has_ship_flag = vehement_portal
+									}
+								}
+							}
+						}
 					}
 				}
 				destroy_country = yes # triggers crisis.1270

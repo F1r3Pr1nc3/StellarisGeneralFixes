@@ -4252,50 +4252,47 @@ country_event = {
 				orbit.owner = { is_researching_special_project = ENIGMATIC_CACHE_PROJECT }
 			}
 		}
+		# exists = event_target:enigmatic_cache_ship
 	}
 
 	immediate = {
-		# Runs check to remove enigmatic_cache_in_orbit modifier
-		random_controlled_ship = {
-			limit = {
-				has_ship_flag = enigmatic_cache_ship
-				exists = orbit
-			}
-			orbit = {
-				planet_event = { id = distar.5056 days = 2 }
-				save_event_target_as = cache_present_location
-				if = {
-					limit = { exists = owner }
-					owner = { save_event_target_as = enigmatic_cache_present_host }
-				}
-				# sets 'scanned' planet flag on present location
-				if = {
-					limit = {
-						NOT = { has_planet_flag = has_been_scanned }
+		event_target:enigmatic_cache_ship = { # Vfix opt
+			# Runs check to remove enigmatic_cache_in_orbit modifier
+			if = {
+				limit = { exists = orbit }
+				orbit = {
+					planet_event = { id = distar.5056 days = 2 }
+					save_event_target_as = cache_present_location
+					if = {
+						limit = { exists = owner }
+						owner = { save_event_target_as = enigmatic_cache_present_host }
 					}
-					set_planet_flag = has_been_scanned
-				}
-			}
-		}
-		# Cache searches for new location:
-		# Tries to find a player controlled country
-		if = {
-			limit = {
-				any_playable_country = {
-					NOR = {
-						is_ai = yes
-						is_at_war = yes
-						is_hostile = root
-						root = { is_hostile = prev }
-					}
-					any_owned_planet = {
-						is_colony = yes
-						NOT = { has_planet_flag = has_been_scanned }
+					# sets 'scanned' planet flag on present location
+					if = {
+						limit = {
+							NOT = { has_planet_flag = has_been_scanned }
+						}
+						set_planet_flag = has_been_scanned
 					}
 				}
 			}
-			random_controlled_ship = {
-				limit = { has_ship_flag = enigmatic_cache_ship }
+			# Cache searches for new location:
+			# Tries to find a player controlled country
+			if = {
+				limit = {
+					any_playable_country = {
+						NOR = {
+							is_ai = yes
+							is_at_war = yes
+							is_hostile = root
+							root = { is_hostile = prev }
+						}
+						any_owned_planet = {
+							is_colony = yes
+							NOT = { has_planet_flag = has_been_scanned }
+						}
+					}
+				}
 				solar_system = {
 					closest_system = {
 						use_bypasses = yes
@@ -4329,28 +4326,21 @@ country_event = {
 						}
 					}
 				}
-				auto_move_to_planet = {
-					target = event_target:new_location
-					clear_auto_move_on_arrival = no # distar. sets a new auto move target
-				}
 			}
-		}
-		else_if = {
-			limit = {
-				any_playable_country = {
-					NOR = {
-						is_at_war = yes
-						is_hostile = root
-						root = { is_hostile = prev }
-					}
-					any_owned_planet = {
-						is_colony = yes
-						NOT = { has_planet_flag = has_been_scanned }
+			else_if = {
+				limit = {
+					any_playable_country = {
+						NOR = {
+							is_at_war = yes
+							is_hostile = root
+							root = { is_hostile = prev }
+						}
+						any_owned_planet = {
+							is_colony = yes
+							NOT = { has_planet_flag = has_been_scanned }
+						}
 					}
 				}
-			}
-			random_controlled_ship = {
-				limit = { has_ship_flag = enigmatic_cache_ship }
 				solar_system = {
 					closest_system = {
 						use_bypasses = yes
@@ -4379,15 +4369,20 @@ country_event = {
 						}
 					}
 				}
+			}
+			if = {
+				limit = { exists = event_target:new_location }
 				auto_move_to_planet = {
 					target = event_target:new_location
-					clear_auto_move_on_arrival = no # istar. sets a new auto move target
+					clear_auto_move_on_arrival = no # distar. sets a new auto move target
 				}
 			}
-		}
-		# Attempts to move again later if no suitable location
-		else = {
-			country_event = { id = distar.5052 days = 100 }
+			# Attempts to move again later if no suitable location
+			else = {
+				root = {
+					country_event = { id = distar.5052 days = 100 }
+				}
+			}
 		}
 		# Set flag if cache is moving to planet within same country
 		if = {
