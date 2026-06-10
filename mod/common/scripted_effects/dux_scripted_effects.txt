@@ -1317,24 +1317,19 @@ DPFF_roll_keep_unique_preftl_civics_hive = {
 	}
 }
 
+# is_scope_type = country is_mercenary = yes
 set_merc_army_variables = {
 	if = {
 		limit = {
-			is_scope_type = country
-			is_mercenary = yes
+			NOT = { is_variable_set = mercenary_armies_for_hire }
 		}
-		if = {
-			limit = {
-				NOT = { is_variable_set = mercenary_armies_for_hire }
-			}
-			set_variable = { which = mercenary_armies_for_hire value = 5 } # They should not start with 30 armies instantly available for hire.
+		set_variable = { which = mercenary_armies_for_hire value = 5 } # They should not start with 30 armies instantly available for hire.
+	}
+	if = {
+		limit = {
+			NOT = { is_variable_set = mercenary_mecha_armies_for_hire }
 		}
-		if = {
-			limit = {
-				NOT = { is_variable_set = mercenary_mecha_armies_for_hire }
-			}
-			set_variable = { which = mercenary_mecha_armies_for_hire value = 5 } # They get 5 Mecha Armies assigned so that when the enclave is upgraded 5 will be available.
-		}
+		set_variable = { which = mercenary_mecha_armies_for_hire value = 5 } # They get 5 Mecha Armies assigned so that when the enclave is upgraded 5 will be available.
 	}
 }
 

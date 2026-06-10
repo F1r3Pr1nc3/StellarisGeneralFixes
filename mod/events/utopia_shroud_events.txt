@@ -6836,27 +6836,24 @@ country_event = {
 	}
 }
 
-planet_event = {
+# Vfix opt scope
+country_event = {
 	id = utopia.3322
 	hide_window = yes
 
-	pre_triggers = {
-		has_owner = yes
-	}
-
 	trigger = {
-		has_owner = yes
 		has_global_flag = end_of_the_cycle # Vfix opt
-		owner = {
-			OR = {
-				has_modifier = covenant_end_of_the_cycle
-				AND = {
-					is_subject = yes
-					overlord = { has_modifier = covenant_end_of_the_cycle }
-				}
+		OR = {
+			has_modifier = covenant_end_of_the_cycle
+			AND = {
+				is_subject = yes
+				overlord = { has_modifier = covenant_end_of_the_cycle }
 			}
 		}
-		NOT = { has_modifier = covenant_shroud_marked }
+		any_owned_planet = {
+			is_colony = yes
+			NOT = { has_modifier = covenant_shroud_marked }
+		}
 	}
 
 	mean_time_to_happen = {
@@ -6864,7 +6861,13 @@ planet_event = {
 	}
 
 	immediate = {
-		add_modifier = { modifier = covenant_shroud_marked days = -1 }
+		random_owned_planet = {
+			limit = {
+				is_colony = yes
+				NOT = { has_modifier = covenant_shroud_marked }
+			}
+			add_modifier = { modifier = covenant_shroud_marked days = -1 }
+		}
 	}
 }
 

@@ -57,13 +57,13 @@ country_event = {
 				check_variable = { which = mercenary_armies_for_hire value < 30 }
 			}
 			change_variable = { which = mercenary_armies_for_hire value = 1 }
-		}
-		if = {
-			limit = {
-				has_modifier = mercenary_fleet_size_upgrade_4
-				check_variable = { which = mercenary_armies_for_hire value < 15 }
+			if = {
+				limit = {
+					has_modifier = mercenary_fleet_size_upgrade_4
+					check_variable = { which = mercenary_armies_for_hire value < 15 }
+				}
+				change_variable = { which = mercenary_mecha_armies_for_hire value = 1 }
 			}
-			change_variable = { which = mercenary_mecha_armies_for_hire value = 1 }
 		}
 	}
 }

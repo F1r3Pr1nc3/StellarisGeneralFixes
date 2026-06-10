@@ -3311,13 +3311,6 @@ country_event = {
 		event_target:worm_enemy = { destroy_country = yes }
 	}
 
-	after = {
-		hidden_effect = {
-			remove_country_flag = worm_events_available
-			set_country_flag = worm_awaited
-		}
-	}
-
 	option = {
 		name = akx.10021.a
 		end_event_chain = WORM_CHAIN_2
@@ -3342,7 +3335,11 @@ country_event = {
 		}
 	}
 
-	after = {
+	after = { # Vfix double
+		hidden_effect = {
+			remove_country_flag = worm_events_available
+			set_country_flag = worm_awaited
+		}
 		if = {
 			limit = {
 				NOT = { has_country_flag = horrific_celebration }

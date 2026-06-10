@@ -485,64 +485,73 @@ planet_event = {
 # Pre-Sapient Pop Interaction Events
 #######################################
 # MTTH gate
-planet_event = {
+# VFIX NEW OPT
+country_event = {
 	id = uplift.7499
 	hide_window = yes
 
-	pre_triggers = {
-		has_owner = yes
-	}
-
 	trigger = {
-		has_owner = yes
-		owner = {
-			NOR = {
-				is_ai = yes
-				is_guided_sapience_empire = yes
-				is_wilderness_empire = yes
-			}
+		NOR = {
+			is_ai = yes
+			is_guided_sapience_empire = yes
+			is_wilderness_empire = yes
 		}
-		any_owned_species = {
-			NOR = {
-				is_sapient = yes
-				has_trait = trait_nascent_stage
+		any_owned_planet = {
+			is_colony = yes
+			is_capital = no
+			any_owned_species = {
+				NOR = {
+					is_sapient = yes
+					has_trait = trait_nascent_stage
+				}
 			}
 		}
 	}
 
 	mean_time_to_happen = {
-		years = 100
+		years = 50 # 100
 	}
 
 	immediate = {
-		random_list = {
-			90 = {
-				modifier = {
-					factor = 0
-					OR = {
-						has_planet_flag = chainblocked
-						owner = {
-							resource_stockpile_compare = { resource = energy value < 300 }
-						}
+		random_owned_planet = {
+			limit = {
+				is_colony = yes
+				any_owned_species = {
+					NOR = {
+						is_sapient = yes
+						has_trait = trait_nascent_stage
 					}
 				}
-				planet_event = { id = uplift.7500 }
 			}
-			90 = {
-				modifier = {
-					factor = 0
-					has_planet_flag = unethical_presapient_experiments
+			random_list = {
+				90 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_planet_flag = chainblocked
+							owner = {
+								resource_stockpile_compare = { resource = energy value < 300 }
+							}
+						}
+					}
+					planet_event = { id = uplift.7500 }
 				}
-				planet_event = { id = uplift.7510 }
-			}
-			19 = {
-				modifier = {
-					factor = 0
-					owner = { has_country_flag = fidgeting_natives }
+				90 = {
+					modifier = {
+						factor = 0
+						has_planet_flag = unethical_presapient_experiments
+					}
+					planet_event = { id = uplift.7510 }
 				}
-				planet_event = { id = uplift.7520 }
+				19 = {
+					modifier = {
+						factor = 0
+						owner = { has_country_flag = fidgeting_natives }
+					}
+					planet_event = { id = uplift.7520 }
+				}
+				1 = {  }
 			}
-			1 = {  }
 		}
 	}
 }

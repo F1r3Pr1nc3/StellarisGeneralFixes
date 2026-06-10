@@ -955,27 +955,22 @@ country_event = {
 			remove_planet_flag = subterranean_invasion_planet
 			save_event_target_as = conquered_planet
 			set_owner = event_target:subterranean_empire
-			if = {
-				limit = { pop_amount > 200 }
-				random_owned_pop_group = { kill_single_pop = yes }
-			}
-			if = {
-				limit = { pop_amount > 100 }
-				random_owned_pop_group = { kill_single_pop = yes }
-			}
-			create_pop_group = { species = event_target:subterranean_species }
-			create_pop_group = { species = event_target:subterranean_species }
-			create_army = {
-				name = "NAME_Loot_Equipped_Army"
-				owner = event_target:subterranean_empire
-				species = event_target:subterranean_species
-				type = "defense_army"
-			}
-			create_army = {
-				name = "NAME_Loot_Equipped_Army"
-				owner = event_target:subterranean_empire
-				species = event_target:subterranean_species
-				type = "defense_army"
+			while = { # Vfix opt
+				count = 2
+				if = {
+					limit = { pop_amount > 200 }
+					random_owned_pop_group = {
+						limit = { NOT = { is_same_species = event_target:subterranean_species } }
+						kill_single_pop = yes
+					}
+				}
+				create_pop_group = { species = event_target:subterranean_species }
+				create_army = {
+					name = "NAME_Loot_Equipped_Army"
+					owner = event_target:subterranean_empire
+					species = event_target:subterranean_species
+					type = "occupation_army"  # Vfix: pop bound army types can't be created
+				}
 			}
 			# flip starbase
 			solar_system = {

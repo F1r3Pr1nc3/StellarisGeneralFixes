@@ -1238,6 +1238,7 @@ ship_event = {
 			add_modifier = { modifier = nanite_swarm_modifier days = -1 }
 			set_planet_flag = colony_event
 			save_global_event_target_as = nanite_swarm_planet
+			planet_event = { id = anomaly.6724 days = 120 random = 120 }
 		}
 		owner = {
 			begin_event_chain = { event_chain = parvus_III_chain target = this }
@@ -1326,6 +1327,9 @@ ship_event = {
 			}
 			set_country_flag = studied_nanite_swarm
 			end_event_chain = parvus_III_chain
+			hidden_effect = { # Vfix opt
+				clear_global_event_target = nanite_swarm_planet
+			}
 		}
 		custom_tooltip = anomaly.6705.b.tooltip
 	}
@@ -1405,6 +1409,9 @@ country_event = {
 			add_resource = { influence = 200 }
 			end_event_chain = parvus_III_chain
 		}
+		hidden_effect = { # Vfix opt
+			clear_global_event_target = nanite_swarm_planet
+		}
 	}
 }
 
@@ -1452,6 +1459,9 @@ ship_event = {
 			}
 		}
 		owner = { end_event_chain = parvus_III_chain }
+		hidden_effect = { # Vfix opt
+			clear_global_event_target = nanite_swarm_planet
+		}
 	}
 }
 
@@ -1471,6 +1481,34 @@ ship_event = {
 			add_deposit = d_nano_corpses
 		}
 		owner = { end_event_chain = parvus_III_chain }
+		hidden_effect = { # Vfix opt
+			clear_global_event_target = nanite_swarm_planet
+		}
+	}
+}
+
+# VFIX NEW OPT
+# nanite_swarm_planet
+planet_event = {
+	id = anomaly.6724
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_modifier = nanite_swarm_modifier
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				is_colony = yes
+				pop_amount > 0
+			}
+			planet_event = { id = anomaly.6725 }
+		}
+		else = { # Contimue cyclus
+			planet_event = { id = anomaly.6724 days = 120 random = 120 }
+		}
 	}
 }
 
@@ -1481,20 +1519,8 @@ planet_event = {
 	picture = GFX_evt_dead_city
 	show_sound = event_ghost_town
 	event_chain = parvus_III_chain
-
-	pre_triggers = {
-		has_owner = yes
-	}
-
-	trigger = {
-		has_modifier = nanite_swarm_modifier
-		pop_amount > 0
-	}
-
-	mean_time_to_happen = {
-		months = 6
-	}
-
+	is_triggered_only = yes
+	# mean_time_to_happen = { months = 6 } # VFIX OPT DEPRECATED: see gate anomaly.6700
 	immediate = {
 		destroy_colony = yes
 	}

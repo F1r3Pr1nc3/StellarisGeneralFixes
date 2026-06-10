@@ -4201,14 +4201,7 @@ situation_event = {
 	}
 
 	immediate = {
-		set_situation_locked = yes
-	}
-
-	after = {
-		set_situation_locked = no
-	}
-
-	immediate = {
+		set_situation_locked = yes # Vfix double
 		create_country = {
 			name = "NAME_Clutch_of_Whelps"
 			type = clutch_of_whelps
@@ -4246,6 +4239,10 @@ situation_event = {
 		}
 	}
 
+	after = {
+		set_situation_locked = no
+	}
+	
 	option = { # Kill the whelps
 		trigger = {
 			owner = { values_others = no }

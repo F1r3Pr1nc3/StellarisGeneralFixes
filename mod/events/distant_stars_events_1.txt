@@ -8058,9 +8058,8 @@ country_event = {
 	id = distar.246
 	title = "distar.246.name"
 	desc = "distar.246.desc"
-	location = event_target:droppod_tar
+	location = event_target:droppod_tar # Vfix double
 	show_sound = event_administrative_work
-	location = fromfrom
 	picture = GFX_leader_recruitment_bg_renowned
 	event_window_type = leader_recruit
 	is_triggered_only = yes # Vfix double
@@ -8068,6 +8067,13 @@ country_event = {
 	picture_event_data = {
 		portrait = event_target:caretaker_leader_tar
 		room = ethic_spaceship_room
+	}
+
+	immediate = {
+		if = {
+			NOT = { exists = event_target:droppod_tar }
+			fromfrom = { save_event_target_as = droppod_tar }
+		}
 	}
 
 	option = {	# Accept the leader

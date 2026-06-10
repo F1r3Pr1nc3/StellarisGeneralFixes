@@ -1910,10 +1910,14 @@ country_event = {
 	trigger = {
 		has_global_flag = prethoryn_main_invasion
 		is_country_type = swarm
-		NOT = { has_country_flag = injured_swarm_queen }
-		any_system = {
+		NOR = {
+			has_country_flag = injured_swarm_queen
+			has_global_flag = prethoryn_invasion_defeated # Vfix opt
+			exists = event_target:pet_queen # Vfix opt
+		}
+		any_system_within_border = { # Vfix opt
 			has_owner = yes
-			owner = { is_country_type = swarm }
+			is_owned_by = root
 		}
 	}
 
@@ -1996,9 +2000,9 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-		}
-		every_playable_country = {
-			country_event = { id = crisis.101 }
+			every_playable_country = {
+				country_event = { id = crisis.101 }
+			}
 		}
 	}
 }
@@ -2010,8 +2014,13 @@ country_event = {
 	desc = "crisis.101.desc"
 	picture = GFX_evt_small_space_battle
 	show_sound = event_radio_chatter
+	location = event_target:injured_queen # Vfix
 	trackable = yes
 	is_triggered_only = yes
+
+	trigger = { # Vfix log
+		exists = event_target:injured_queen
+	}
 
 	option = {
 		name = crisis.101.a
@@ -3799,6 +3808,32 @@ planet_event = {
 
 	immediate = {
 		set_planet_purge_type = purge_normal
+		# Vfix patch
+		if = {
+			limit = {
+				fromfrom = { is_country_type = swarm }
+			}
+			while = {
+				count = 2
+				create_army = {
+					name = "NAME_Prethoryn_Invaders"
+					owner = fromfrom
+					type = "fruitful_army"
+					species = fromfrom.owner_species
+				}
+			}
+		}
+		else = {
+			while = {
+				count = 3
+				create_army = {
+					# name = "NAME_Custodian_Bot"
+					owner = fromfrom
+					type = "robotic_occupation_army"
+					species = fromfrom.owner_species
+				}
+			}
+		}
 	}
 }
 

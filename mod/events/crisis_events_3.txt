@@ -1707,15 +1707,15 @@ planet_event = {
 	}
 
 	trigger = {
-		has_global_flag = ai_invasion_ongoing # Vfix opt
+		exists = event_target:custodian_bot
 		fromfrom = {
 			pop_group_size > 0 # Last Pop is still alive when this event is fired
-			pop_group_size < 400 # Vfix opt
+			pop_group_size < 300 # Vfix opt
 		}
 		exists = controller
 		controller = { is_country_type = ai_empire }
 		NOR = {
-			is_owned_by = event_target:AI_crisis
+			is_owned_by = event_target:AI_crisis # Vfix https://forum.paradoxplaza.com/forum/threads/1916567/
 			count_owned_pop_amount = {
 				count >= 100
 				limit = {
@@ -1736,9 +1736,10 @@ planet_event = {
 			kill_all_pop = yes
 		}
 		while = { # Vfix opt minor
-			count = 6
-			create_army = { owner = event_target:AI_crisis type = "robotic_defense_army" }
+			count = 3
+			create_army = { owner = event_target:AI_crisis type = "robot_uprising_army" } # Vfix: pop bound army types can't be created
 		}
+		create_army = { owner = event_target:AI_crisis type = "care_defensive_protocols" } # Vfix patch
 		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
@@ -4308,7 +4309,10 @@ starbase_event = {
 		from.owner = { is_country_type = ai_empire }
 		NOT = {
 			solar_system = {
-				any_system_colony = { has_owner = yes } # For populated systems, they need to invade first
+				any_system_colony = {
+					has_owner = yes # For populated systems, they need to invade first
+					NOT = { is_owned_by = from.owner } # Vfix: as said
+				}
 			}
 		}
 	}
