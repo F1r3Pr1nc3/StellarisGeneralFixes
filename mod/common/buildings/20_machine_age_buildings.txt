@@ -22,11 +22,8 @@ building_augmentation_bazaars = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_gestalt = yes }
 			has_modifier = slave_colony
@@ -101,11 +98,8 @@ building_transcendental_retreat = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				NOT = { has_valid_civic = civic_natural_design }
@@ -170,11 +164,8 @@ building_hive_transcendental_retreat = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				NOT = { has_valid_civic = civic_hive_natural_design }
@@ -273,7 +264,6 @@ building_amphitheater_of_the_mind = {
 	convert_to = {
 		building_temple
 	}
-
 	allow = {
 		has_owner = yes
 		has_upgraded_capital = yes
@@ -287,7 +277,7 @@ building_amphitheater_of_the_mind = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -367,9 +357,8 @@ building_grand_concert_hall_of_the_mind = {
 			owner = { has_country_flag = cybernetic_creed_research }
 		}
 	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -465,7 +454,6 @@ building_battlement_of_steel = {
 	convert_to = {
 		building_temple
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		hidden_trigger = {
@@ -479,7 +467,7 @@ building_battlement_of_steel = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -548,9 +536,8 @@ building_grand_battlements_of_steel = {
 			owner = { has_country_flag = cybernetic_creed_war }
 		}
 	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -638,7 +625,6 @@ building_sanctuary_of_toil = {
 	convert_to = {
 		building_temple
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		hidden_trigger = {
@@ -719,7 +705,6 @@ building_grand_cathedral_of_toil = {
 			owner = { has_country_flag = cybernetic_creed_labor }
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -807,7 +792,6 @@ building_forge_of_the_fellowship = {
 	convert_to = {
 		building_temple
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		hidden_trigger = {
@@ -820,7 +804,7 @@ building_forge_of_the_fellowship = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -895,7 +879,6 @@ building_grand_forge_of_the_fellowship = {
 			owner = { has_country_flag = cybernetic_creed_construction }
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -982,7 +965,6 @@ building_the_sanctum_of_augmentation = {
 	convert_to = {
 		building_temple
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		hidden_trigger = {
@@ -996,7 +978,7 @@ building_the_sanctum_of_augmentation = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1059,7 +1041,6 @@ building_the_united_sanctum_of_augmentation = {
 			owner = { has_country_flag = cybernetic_creed_general }
 		}
 	}
-
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -1127,14 +1108,13 @@ building_identity_repository = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		NOT = { owner = { has_origin = origin_synthetic_fertility } }
 	}
 
 	convert_to = {
 		building_research_lab_1
 	}
-
 	allow = {
 		owner = { has_origin = origin_synthetic_fertility }
 	}
@@ -1231,13 +1211,12 @@ building_abandoned_gene_clinic = {
 		exists = owner
 		owner = { has_origin = origin_synthetic_fertility }
 	}
-
 	allow = {
 		owner = { has_origin = origin_synthetic_fertility }
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		NOT = { owner = { has_origin = origin_synthetic_fertility } }
 	}
 
@@ -1268,9 +1247,6 @@ building_lathe_capital = {
 	potential = {
 		uses_district_set = cosmogenesis_world
 		has_owner = yes
-	}
-
-	allow = {
 	}
 
 	resources = {
@@ -1321,9 +1297,6 @@ building_lathe_major_capital = {
 		uses_district_set = cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
-	}
-
-	allow = {
 	}
 
 	resources = {
@@ -1394,9 +1367,6 @@ building_lathe_super_capital = {
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
 
-	allow = {
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -1464,9 +1434,6 @@ building_lathe_resonator = {
 		is_planet_class = pc_cosmogenesis_world
 	}
 
-	allow = {
-	}
-
 	category = resource
 
 	resources = {
@@ -1518,9 +1485,6 @@ building_lathe_stabilisator = {
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
 
-	allow = {
-	}
-
 	category = government
 
 	resources = {
@@ -1557,9 +1521,6 @@ building_lathe_overclocker = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
-	}
-
-	allow = {
 	}
 
 	category = resource
@@ -1614,9 +1575,6 @@ building_lathe_preserver = {
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
 
-	allow = {
-	}
-
 	category = amenity
 
 	resources = {
@@ -1659,9 +1617,6 @@ building_lathe_reactor = {
 		owner = { has_ascension_perk = ap_cosmogenesis }
 	}
 
-	allow = {
-	}
-
 	category = resource
 
 	resources = {
@@ -1699,9 +1654,6 @@ building_lathe_life_support = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
-	}
-
-	allow = {
 	}
 
 	category = amenity
@@ -1745,9 +1697,6 @@ building_lathe_cogitator = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
-	}
-
-	allow = {
 	}
 
 	category = army
@@ -1802,9 +1751,6 @@ building_lathe_validator = {
 		is_planet_class = pc_cosmogenesis_world
 		has_owner = yes
 		owner = { has_ascension_perk = ap_cosmogenesis }
-	}
-
-	allow = {
 	}
 
 	category = research
@@ -1944,11 +1890,8 @@ building_augmentation_center = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			NOR = {
 				has_country_flag = augmentation_center_available
@@ -2086,9 +2029,6 @@ building_cyberdome = {
 		is_capital = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
 		OR = {
 			AND = {
@@ -2161,11 +2101,8 @@ building_identity_complex = {
 		owner = { has_country_flag = identity_complex_available }
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		NOT = { owner = { has_country_flag = identity_complex_available } }
 	}
 
@@ -2206,14 +2143,13 @@ building_nanolab_1 = {
 		exists = owner
 		owner = { has_tradition = tr_nanotech_adopt }
 	}
-
 	allow = {
 		has_owner = yes
 		owner = { has_tradition = tr_nanotech_adopt }
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NOT = { owner = { has_tradition = tr_nanotech_adopt } }
 			has_modifier = slave_colony
@@ -2274,13 +2210,12 @@ building_nanolab_2 = {
 		exists = owner
 		owner = { has_tradition = tr_nanotech_1 }
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NOT = { owner = { has_tradition = tr_nanotech_1 } }
 			has_modifier = slave_colony
@@ -2344,11 +2279,8 @@ building_nanotech_cauldron = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NOT = { owner = { has_tradition = tr_nanotech_2 } }
 			has_modifier = slave_colony

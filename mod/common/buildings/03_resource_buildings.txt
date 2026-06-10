@@ -11,7 +11,7 @@ building_hydroponics_farm = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_ai = no
@@ -24,8 +24,6 @@ building_hydroponics_farm = {
 			has_modifier = resort_colony
 		}
 	}
-
-	# Vfix Ariphaos
 	allow = {
 		has_owner = yes
 		OR = {
@@ -39,8 +37,10 @@ building_hydroponics_farm = {
 		}
 	}
 
+	# Vfix Ariphaos
+
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -95,7 +95,7 @@ building_food_processing_facility = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes } # see 'building_massive_growth_3'
 			is_planet_class = pc_machine
@@ -107,11 +107,8 @@ building_food_processing_facility = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -175,17 +172,16 @@ building_food_processing_center = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no } # see 'building_massive_growth_4'
 	}
-
 	allow = {
 		has_owner = yes
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -272,16 +268,13 @@ building_farming_districts_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_farming_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_farming_district = no
@@ -321,16 +314,13 @@ building_farming_districts_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_farming_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_farming_district = no
@@ -372,16 +362,13 @@ building_farming_districts_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_farming_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_farming_district = no
@@ -423,16 +410,13 @@ building_farming_districts_4 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_farming_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_farming_district = no
@@ -477,11 +461,8 @@ building_baol_organic_plant = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_ai = yes country_uses_food = no }
 			is_planet_class = pc_machine
@@ -580,7 +561,7 @@ building_mine_generic = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes }
@@ -589,11 +570,8 @@ building_mine_generic = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			AND = {
@@ -652,7 +630,7 @@ building_mineral_purification_plant = {
 	}
 
 	potential = {
-		has_owner = yes # Vfix
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes } # see 'building_churning_tunnels_3'
 			has_modifier = resort_colony
@@ -668,9 +646,6 @@ building_mineral_purification_plant = {
 			owner = { is_ai = no }
 			has_any_mining_district_or_building = yes
 		}
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -752,14 +727,13 @@ building_mineral_purification_hub = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no } # see 'building_churning_tunnels_4'
 		OR = {
 			owner = { is_ai = no }
 			has_any_mining_district_or_building = yes
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		NOT = { has_modifier = resort_colony }
@@ -857,16 +831,13 @@ building_mining_districts_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_mining_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_mining_district = no
@@ -906,16 +877,13 @@ building_mining_districts_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_mining_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_mining_district = no
@@ -957,16 +925,13 @@ building_mining_districts_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_mining_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_mining_district = no
@@ -1008,16 +973,13 @@ building_mining_districts_4 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_mining_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_mining_district = no
@@ -1054,18 +1016,15 @@ building_generator_generic = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes }
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			AND = {
@@ -1127,11 +1086,8 @@ building_energy_grid = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes # Vfix opt
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes }
@@ -1194,13 +1150,12 @@ building_energy_nexus = {
 			has_any_generator_district_or_building = yes
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes # Vfix opt
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			AND = {
@@ -1278,16 +1233,13 @@ building_generator_districts_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_generator_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_generator_district = no
@@ -1327,16 +1279,13 @@ building_generator_districts_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_generator_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_generator_district = no
@@ -1378,16 +1327,13 @@ building_generator_districts_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_generator_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_generator_district = no
@@ -1429,16 +1375,13 @@ building_generator_districts_4 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no }
 		has_any_capped_planet_generator_district = yes
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_wilderness_empire = yes }
 			has_any_capped_planet_generator_district = no
@@ -1485,7 +1428,6 @@ building_resource_silo = {
 		has_owner = yes
 		owner = { is_wilderness_empire = no } # see 'building_subterranean_cache'
 	}
-
 	allow = {
 		has_owner = yes
 		hidden_trigger = {
@@ -1562,7 +1504,7 @@ building_bio_reactor = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes }
 			is_planet_class = pc_machine
@@ -1574,11 +1516,8 @@ building_bio_reactor = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_ai = yes country_uses_food = no }
 			is_planet_class = pc_machine
@@ -1624,7 +1563,7 @@ building_bio_reactor_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes }
 			is_planet_class = pc_machine
@@ -1635,13 +1574,12 @@ building_bio_reactor_2 = {
 			has_any_farming_district_or_building = yes
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_ai = yes country_uses_food = no }
 			is_planet_class = pc_machine

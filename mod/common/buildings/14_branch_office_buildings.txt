@@ -101,7 +101,7 @@ building_private_mining_consortium = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -216,7 +216,7 @@ building_food_conglomerate = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -320,7 +320,7 @@ building_virtual_entertainment_studios = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -425,7 +425,7 @@ building_private_shipyards = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -549,7 +549,7 @@ building_military_contractors = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -751,7 +751,7 @@ building_public_relations_office = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -864,7 +864,7 @@ building_private_research_initiative = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -968,7 +968,7 @@ building_amusement_megaplex = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -1072,7 +1072,7 @@ building_commercial_forum = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
@@ -1195,14 +1195,13 @@ building_corporate_embassy = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_illegal_criminal = yes }
 	}
 
 	convert_to = {
 		building_disinformation_center
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
@@ -1442,7 +1441,7 @@ building_wildcat_miners = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -1536,7 +1535,7 @@ building_bio_reprocessing_facilities = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -1641,7 +1640,7 @@ building_underground_chemists = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -1745,7 +1744,7 @@ building_wrecking_yards = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -1870,7 +1869,7 @@ building_pirate_haven = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -1956,7 +1955,7 @@ building_underground_clubs = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -2061,7 +2060,7 @@ building_syndicate_outreach_office = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -2161,7 +2160,7 @@ building_illicit_research_labs = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -2243,7 +2242,7 @@ building_smuggling_rings = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
@@ -2356,14 +2355,13 @@ building_disinformation_center = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
 
 	convert_to = {
 		building_corporate_embassy
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
@@ -2511,7 +2509,6 @@ building_executive_retreat = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
-
 	allow = {
 		pop_amount >= 2500
 	}
@@ -2626,7 +2623,6 @@ building_xeno_tourism_agency = {
 		has_branch_office = yes
 		branch_office_owner = { is_legit_or_legal_criminal = yes }
 	}
-
 	allow = {
 		pop_amount >= 2500
 	}
@@ -2782,7 +2778,6 @@ building_knightly_theme_park = {
 			NOT = { has_country_flag = quest_abandoned }
 		}
 	}
-
 	allow = {
 		pop_amount >= 5000
 	}
@@ -3009,9 +3004,8 @@ building_augmentation_bazaars_branch = {
 		branch_office_owner = { has_valid_civic = civic_augmentation_bazaars }
 	}
 
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_gestalt = yes }
 			has_modifier = slave_colony
@@ -3121,7 +3115,6 @@ building_ai_emporium = {
 		has_branch_office = yes
 		branch_office_owner = { is_synth_corporate = yes has_country_flag = synth_physical }
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = building_ai_emporium_fail_tt
@@ -3452,11 +3445,10 @@ building_living_metal_clinic = {
 	category = resource
 
 	potential = {
-		has_owner = yes # Vfix log
+		exists = owner
 		has_branch_office = yes
 		branch_office_owner = { is_galvanic_empire = yes is_legit_or_legal_criminal = yes }
 	}
-
 	allow = {
 		owner = { is_gestalt = no }
 	}

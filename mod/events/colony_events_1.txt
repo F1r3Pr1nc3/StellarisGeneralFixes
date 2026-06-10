@@ -818,14 +818,10 @@ planet_event = {
 					owner = event_target:subterranean_nation
 					species = event_target:subterranean_species
 					type = "subterranean_industrial_army"
-					leader = last_created_leader
 				}
 			}
 		}
-		if = {
-			limit = {
-				event_target:subterranean_nation = { has_country_flag = tech_request_approved }
-			}
+		else = { # Vfix opt minor
 			while = {
 				count = 6
 				create_army = {
@@ -833,9 +829,11 @@ planet_event = {
 					owner = event_target:subterranean_nation
 					species = event_target:subterranean_species
 					type = "subterranean_postatomic_army"
-					leader = last_created_leader
 				}
 			}
+		}
+		last_created_army = { # Vfix opt
+			assign_leader = last_created_leader
 		}
 	}
 
@@ -941,22 +939,22 @@ country_event = {
 					background = { category = "backgrounds" file = "new_dawn.dds" }
 					colors = { "red" "black" "null" "null" }
 				}
-			}
-			last_created_country = {
-				set_relation_flag = {
-					who = event_target:subterranean_former_planet_owner
-					flag = subwar
+				effect = {
+					set_relation_flag = {
+						who = event_target:subterranean_former_planet_owner
+						flag = subwar
+					}
+					set_country_flag = subterranean_empire
+					establish_communications_no_message = event_target:subterranean_former_planet_owner
+					save_event_target_as = subterranean_empire
+					# owner_species = { save_event_target_as = subterranean_species } Vfix double!?
 				}
-				set_country_flag = subterranean_empire
-				establish_communications_no_message = event_target:subterranean_former_planet_owner
-				save_event_target_as = subterranean_empire
-				owner_species = { save_event_target_as = subterranean_species }
 			}
 			remove_planet_flag = subterranean_invasion_planet
 			save_event_target_as = conquered_planet
 			set_owner = event_target:subterranean_empire
 			while = { # Vfix opt
-				count = 2
+				count = 3
 				if = {
 					limit = { pop_amount > 200 }
 					random_owned_pop_group = {
@@ -969,7 +967,7 @@ country_event = {
 					name = "NAME_Loot_Equipped_Army"
 					owner = event_target:subterranean_empire
 					species = event_target:subterranean_species
-					type = "occupation_army"  # Vfix: pop bound army types can't be created
+					type = "subterranean_defense_army"  # Vfix: pop bound army types can't be created
 				}
 			}
 			# flip starbase
@@ -1068,6 +1066,7 @@ planet_event = {
 }
 
 # Another Invasion
+# Vfix: https://forum.paradoxplaza.com/forum/threads/stellaris-2-6-0-6a97-subterranean-invasion-armies-not-spawning.1358298/
 planet_event = {
 	id = colony.60
 	title = "colony.54.name"
@@ -1085,13 +1084,8 @@ planet_event = {
 	immediate = {
 		owner = { set_country_flag = subterranean_invasion_country }
 		set_planet_flag = subterranean_invasion_planet
-		random_country = {
-			limit = {
-				is_country_type = adversary
-				has_country_flag = subterranean_nation
-			}
-			save_event_target_as = subterranean_nation
-			owner_species = { save_event_target_as = subterranean_species }
+		create_subterranean_nation = { FLAG = subterranean_nation } # Vfix
+		event_target:subterranean_nation = {
 			create_leader = {
 				class = commander
 				species = event_target:subterranean_species
@@ -1109,11 +1103,9 @@ planet_event = {
 					name = "NAME_Invading_Horde"
 					owner = event_target:subterranean_nation
 					species = event_target:subterranean_species
-					type = "industrial_army"
-					leader = last_created_leader
+					type = "subterranean_industrial_army" # Vfix!
 				}
 			}
-			break = yes
 		}
 		else = { # Vfix opt minor
 			while = { # Vfix opt
@@ -1122,10 +1114,12 @@ planet_event = {
 					name = "NAME_Invading_Horde"
 					owner = event_target:subterranean_nation
 					species = event_target:subterranean_species
-					type = "postatomic_army"
-					leader = last_created_leader
+					type = "subterranean_postatomic_army" # Vfix!
 				}
 			}
+		}
+		last_created_army = { # Vfix opt
+			assign_leader = last_created_leader
 		}
 	}
 
@@ -1239,14 +1233,7 @@ planet_event = {
 	# mean_time_to_happen = { years = 20 }
 	immediate = {
 		set_planet_flag = seismic_disturbance_pocket
-		create_species = {
-			name = random
-			class = random_non_machine
-			portrait = random
-			traits = random
-			homeworld = planet
-		}
-		last_created_species = { save_event_target_as = subterranean_species }
+		create_subterranean_nation = { FLAG = subterranean_nation } # Vfix: https://forum.paradoxplaza.com/forum/threads/1369691/
 	}
 
 	option = {
@@ -1277,11 +1264,8 @@ planet_event = {
 		hidden_effect = {
 			create_pop_group = {
 				species = event_target:subterranean_species
-				ethos = { ethic = "ethic_spiritualist" }
-			}
-			create_pop_group = {
-				species = event_target:subterranean_species
-				ethos = { ethic = "ethic_spiritualist" }
+				ethos = { ethic = ethic_spiritualist }
+				size = 200 # Vfix opt
 				effect = {
 					save_event_target_as = subterranean_species_pop_group
 				}
@@ -3038,9 +3022,10 @@ planet_event = {
 	option = {
 		name = colony.152.a
 		add_deposit = d_underground_vault_2
-		create_pop_group = { species = event_target:vault_survivor_species }
-		create_pop_group = { species = event_target:vault_survivor_species }
-		create_pop_group = { species = event_target:vault_survivor_species }
+		create_pop_group = {
+			species = event_target:vault_survivor_species
+			size = 300 # Vfix opt
+		}
 	}
 	option = {
 		name = colony.152.b
@@ -3053,10 +3038,9 @@ planet_event = {
 			}
 		}
 		add_deposit = d_underground_vault_2
-		create_pop_group = { species = event_target:vault_survivor_species }
-		create_pop_group = { species = event_target:vault_survivor_species }
 		create_pop_group = {
 			species = event_target:vault_survivor_species
+			size = 300 # Vfix opt
 			effect = {
 				save_event_target_as = vault_survivor_species_pop_group
 			}

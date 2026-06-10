@@ -36,9 +36,6 @@ building_research_lab_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	ai_weight_coefficient = 0
 
 	destroy_trigger = {
@@ -83,14 +80,11 @@ building_research_lab_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_wilderness_empire = no # see 'building_brain_node_3'
 		}
 		is_special_colony_type = no
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -141,14 +135,11 @@ building_research_lab_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_wilderness_empire = no # see 'building_brain_node_4'
 		}
 		is_special_colony_type = no
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -205,7 +196,7 @@ building_institute = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -216,9 +207,6 @@ building_institute = {
 
 	convert_to = {
 		building_supercomputer
-	}
-
-	allow = {
 	}
 
 	resources = {
@@ -294,7 +282,7 @@ building_supercomputer = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = yes is_wilderness_empire = no }
 		NOR = {
 			has_modifier = resort_colony
@@ -304,7 +292,7 @@ building_supercomputer = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -321,7 +309,6 @@ building_supercomputer = {
 	convert_to = {
 		building_institute
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
@@ -394,10 +381,9 @@ building_shroud_observatory_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_origin = origin_shroud_forged }
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = SHROUD_RIFT_MISSING_TT
@@ -448,10 +434,9 @@ building_shroud_observatory_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_origin = origin_shroud_forged }
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -513,10 +498,9 @@ building_shroud_observatory_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_origin = origin_shroud_forged }
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
@@ -577,7 +561,7 @@ building_archaeostudies_faculty = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -586,11 +570,8 @@ building_archaeostudies_faculty = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -720,7 +701,7 @@ building_vultaum_reality_computer = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -728,11 +709,8 @@ building_vultaum_reality_computer = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -809,7 +787,7 @@ building_physics_lab_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -824,11 +802,8 @@ building_physics_lab_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -896,11 +871,8 @@ building_physics_lab_2 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -969,11 +941,8 @@ building_physics_lab_3 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1034,7 +1003,7 @@ building_biolab_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1049,11 +1018,8 @@ building_biolab_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1115,7 +1081,7 @@ building_biolab_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1124,11 +1090,8 @@ building_biolab_2 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1191,7 +1154,7 @@ building_biolab_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1200,11 +1163,8 @@ building_biolab_3 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1263,7 +1223,7 @@ building_engineering_facility_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1278,11 +1238,8 @@ building_engineering_facility_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1349,11 +1306,8 @@ building_engineering_facility_2 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1421,11 +1375,8 @@ building_engineering_facility_3 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1485,7 +1436,7 @@ building_ranger_lodge = {
 	}
 
 	potential = {
-		has_owner = yes # Vfix
+		exists = owner
 		owner = { is_gestalt = no has_valid_civic = civic_environmentalist }
 		NOR = {
 			has_modifier = slave_colony
@@ -1496,7 +1447,6 @@ building_ranger_lodge = {
 			is_artificial = yes
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = no_free_district_for_ranger_lodge
@@ -1505,7 +1455,7 @@ building_ranger_lodge = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -1622,18 +1572,15 @@ building_research_upkeep_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes }
 			has_modifier = resort_colony
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes }
@@ -1700,18 +1647,15 @@ building_research_efficiency_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes }
 			has_modifier = resort_colony
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes }

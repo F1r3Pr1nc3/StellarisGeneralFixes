@@ -13,7 +13,7 @@ building_robot_assembly_plant = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NAND = {
 				owner = { is_ai = yes }
@@ -41,7 +41,6 @@ building_robot_assembly_plant = {
 	convert_to = {
 		building_machine_assembly_plant
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -59,7 +58,7 @@ building_robot_assembly_plant = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -173,7 +172,7 @@ building_robot_assembly_complex = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NAND = {
 				owner = { is_ai = yes }
@@ -201,11 +200,8 @@ building_robot_assembly_complex = {
 		building_machine_assembly_complex
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -325,7 +321,7 @@ building_machine_assembly_plant = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -338,7 +334,6 @@ building_machine_assembly_plant = {
 	convert_to = {
 		building_robot_assembly_plant
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -352,7 +347,7 @@ building_machine_assembly_plant = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_robot_empire = no }
 			AND = {
@@ -413,7 +408,7 @@ building_machine_assembly_complex = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -427,11 +422,8 @@ building_machine_assembly_complex = {
 		building_robot_assembly_complex
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_robot_empire = no }
 			AND = {
@@ -495,7 +487,7 @@ building_spawning_pool = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_hive_empire = yes
 			NOR = {
@@ -506,7 +498,7 @@ building_spawning_pool = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_hive_empire = no
@@ -560,9 +552,6 @@ building_spawning_pool = {
 		building_offspring_nest
 	}
 
-	allow = {
-	}
-
 	triggered_desc = {
 		text = spawning_pool_tooltip
 	}
@@ -579,12 +568,12 @@ building_offspring_nest = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_origin = origin_progenitor_hive }
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			NOT = { has_origin = origin_progenitor_hive }
 		}
@@ -600,9 +589,6 @@ building_offspring_nest = {
 
 	convert_to = {
 		building_spawning_pool
-	}
-
-	allow = {
 	}
 
 	triggered_planet_modifier = {
@@ -665,7 +651,7 @@ building_necrophage_elevation_chamber = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			has_origin = origin_necrophage
 			has_trait = trait_necrophage
@@ -675,7 +661,6 @@ building_necrophage_elevation_chamber = {
 			}
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = NO_CULTURE_SHOCK
@@ -696,7 +681,7 @@ building_necrophage_elevation_chamber = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				NAND = {
@@ -788,7 +773,7 @@ building_necrophage_house_of_apotheosis = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			has_origin = origin_necrophage
 			has_trait = trait_necrophage
@@ -799,7 +784,6 @@ building_necrophage_house_of_apotheosis = {
 			}
 		}
 	}
-
 	allow = {
 		hidden_trigger = {
 			if = {
@@ -810,7 +794,7 @@ building_necrophage_house_of_apotheosis = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				NAND = {
@@ -906,7 +890,7 @@ building_clone_vats = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOT = { has_modifier = resort_colony }
 		OR = {
 			NAND = {
@@ -924,11 +908,8 @@ building_clone_vats = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_ai = yes }
 		free_district_slots = 0
 		free_building_slots = 0
@@ -1125,18 +1106,15 @@ building_clone_army_clone_vat = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			has_origin = origin_clone_army
 			NOT = { has_country_flag = clone_army_fertility_unlocked }
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				NOT = { has_origin = origin_clone_army }
@@ -1296,7 +1274,7 @@ building_posthumous_employment_center = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NAND = {
 				owner = { is_ai = yes }
@@ -1313,13 +1291,12 @@ building_posthumous_employment_center = {
 		}
 		owner = { is_gestalt = no has_valid_civic = civic_permanent_employment }
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				NOT = { has_valid_civic = civic_permanent_employment }
@@ -1360,10 +1337,9 @@ building_automation_technician_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no is_tankbound_empire = no }
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -1381,7 +1357,7 @@ building_automation_technician_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_wilderness_empire = yes
@@ -1426,10 +1402,9 @@ building_automation_technician_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no is_tankbound_empire = no }
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -1443,7 +1418,7 @@ building_automation_technician_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_wilderness_empire = yes
@@ -1487,10 +1462,9 @@ building_automation_miner_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no is_tankbound_empire = no }
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -1508,7 +1482,7 @@ building_automation_miner_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_wilderness_empire = yes
@@ -1553,10 +1527,9 @@ building_automation_miner_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no is_tankbound_empire = no }
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -1570,7 +1543,7 @@ building_automation_miner_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_wilderness_empire = yes
@@ -1614,10 +1587,9 @@ building_automation_farmer_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no is_tankbound_empire = no }
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -1635,7 +1607,7 @@ building_automation_farmer_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_wilderness_empire = yes
@@ -1680,10 +1652,9 @@ building_automation_farmer_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no is_tankbound_empire = no }
 	}
-
 	allow = {
 		hidden_trigger = {
 			NAND = {
@@ -1697,7 +1668,7 @@ building_automation_farmer_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_wilderness_empire = yes
@@ -1763,7 +1734,6 @@ building_automation_1 = {
 	potential = {
 		always = no
 	}
-
 	allow = {
 		always = no
 	}
@@ -1817,7 +1787,6 @@ building_automation_2 = {
 	potential = {
 		always = no
 	}
-
 	allow = {
 		always = no
 	}

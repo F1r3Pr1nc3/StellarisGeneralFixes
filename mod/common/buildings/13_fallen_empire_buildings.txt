@@ -35,9 +35,6 @@ building_ancient_control_center = {
 		building_ancient_palace
 	}
 
-	allow = {
-	}
-
 	planet_modifier = {
 		planet_housing_add = 1200
 		planet_amenities_add = 15000
@@ -88,9 +85,6 @@ building_ancient_hive_capital = {
 		building_major_capital
 		building_ancient_palace
 		building_ancient_control_center
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -144,9 +138,6 @@ building_ancient_palace = {
 		building_major_capital
 		building_ancient_control_center
 		building_major_capital_wilderness
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -213,9 +204,6 @@ building_fe_xeno_zoo = {
 		building_capital
 	}
 
-	allow = {
-	}
-
 	planet_modifier = {
 		planet_amenities_add = 1500
 		job_fe_xeno_keeper_add = 200
@@ -259,9 +247,6 @@ building_hab_fe_capital = {
 
 	convert_to = {
 		building_hab_major_capital
-	}
-
-	allow = {
 	}
 
 	resources = {
@@ -326,9 +311,6 @@ building_master_archive = {
 
 	potential = {
 		exists = owner
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -406,9 +388,6 @@ building_empyrean_shrine = {
 		exists = owner
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
 		always = no
 	} # Vfix needed?
@@ -482,9 +461,6 @@ building_ancient_cryo_chamber = {
 		exists = owner
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
 		always = no
 	} # Vfix needed?
@@ -545,7 +521,6 @@ building_affluence_emporium = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -673,7 +648,6 @@ building_affluence_center = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -843,7 +817,6 @@ building_nourishment_complex = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -979,7 +952,6 @@ building_nourishment_center = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -1154,7 +1126,6 @@ building_dimensional_replicator = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -1275,7 +1246,6 @@ building_dimensional_fabricator = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -1433,7 +1403,6 @@ building_class_3_singularity = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -1568,7 +1537,6 @@ building_class_4_singularity = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -1737,7 +1705,6 @@ building_micro_forge = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -1864,7 +1831,6 @@ building_nano_forge = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2030,7 +1996,6 @@ building_fe_sky_dome = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2156,7 +2121,6 @@ building_fe_dome = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2311,7 +2275,6 @@ building_fe_fortress = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2438,7 +2401,6 @@ building_fe_stronghold = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2608,7 +2570,7 @@ building_fe_administration_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_fallen_empire = no
 			OR = {
@@ -2624,7 +2586,6 @@ building_fe_administration_1 = {
 		building_fe_temple_1
 		building_fe_administration_machine_1
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2756,7 +2717,7 @@ building_fe_administration_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_fallen_empire = no
 			OR = {
@@ -2772,7 +2733,6 @@ building_fe_administration_2 = {
 		building_fe_temple_2
 		building_fe_administration_machine_2
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -2950,7 +2910,7 @@ building_fe_administration_hive_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_hive_empire = no }
 	}
 
@@ -2959,7 +2919,6 @@ building_fe_administration_hive_1 = {
 		building_fe_temple_1
 		building_fe_administration_machine_1
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3089,7 +3048,7 @@ building_fe_administration_hive_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_hive_empire = no }
 	}
 
@@ -3098,7 +3057,6 @@ building_fe_administration_hive_2 = {
 		building_fe_temple_2
 		building_fe_administration_machine_2
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3267,7 +3225,7 @@ building_fe_administration_machine_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = no }
 	}
 
@@ -3276,7 +3234,6 @@ building_fe_administration_machine_1 = {
 		building_fe_temple_1
 		building_fe_administration_hive_1
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3410,7 +3367,7 @@ building_fe_administration_machine_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = no }
 	}
 
@@ -3419,7 +3376,6 @@ building_fe_administration_machine_2 = {
 		building_fe_temple_2
 		building_fe_administration_hive_2
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3603,7 +3559,7 @@ building_fe_temple_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_spiritualist = no }
 	}
 
@@ -3612,7 +3568,6 @@ building_fe_temple_1 = {
 		building_fe_administration_machine_1
 		building_fe_administration_hive_1
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3744,7 +3699,7 @@ building_fe_temple_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_spiritualist = no }
 	}
 
@@ -3753,7 +3708,6 @@ building_fe_temple_2 = {
 		building_fe_administration_machine_2
 		building_fe_administration_hive_2
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3948,7 +3902,6 @@ building_fe_assembly_1 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -3964,7 +3917,7 @@ building_fe_assembly_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_fallen_empire = no
 			is_machine_empire = no
@@ -4138,7 +4091,6 @@ building_fe_assembly_2 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -4164,7 +4116,7 @@ building_fe_assembly_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_fallen_empire = no
 			is_machine_empire = no
@@ -4345,7 +4297,6 @@ building_fe_clinic_1 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -4361,7 +4312,7 @@ building_fe_clinic_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = yes is_fallen_empire = no }
 	}
 
@@ -4521,7 +4472,6 @@ building_fe_clinic_2 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -4547,7 +4497,7 @@ building_fe_clinic_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = yes is_fallen_empire = no }
 	}
 
@@ -4722,7 +4672,6 @@ building_fe_security_1 = {
 		}
 		NOT = { has_modifier = resort_colony }
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -4864,7 +4813,6 @@ building_fe_security_2 = {
 		}
 		NOT = { has_modifier = resort_colony }
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5056,7 +5004,6 @@ building_fe_market_1 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5186,7 +5133,6 @@ building_fe_market_2 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5365,7 +5311,6 @@ building_fe_silo_1 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5484,7 +5429,6 @@ building_fe_silo_2 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5631,7 +5575,6 @@ building_fe_entertainment_1 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5647,7 +5590,7 @@ building_fe_entertainment_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = yes is_fallen_empire = no }
 	}
 
@@ -5759,7 +5702,6 @@ building_fe_entertainment_2 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -5783,7 +5725,7 @@ building_fe_entertainment_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = yes is_fallen_empire = no }
 	}
 
@@ -5925,7 +5867,6 @@ building_fe_lab_1 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -6065,7 +6006,6 @@ building_fe_lab_2 = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -6239,7 +6179,6 @@ building_fe_mine_1 = {
 			is_planet_class = pc_ringworld_habitable
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext
@@ -6380,7 +6319,6 @@ building_fe_mine_2 = {
 			is_planet_class = pc_ringworld_habitable
 		}
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = ancrel.10004.failtext

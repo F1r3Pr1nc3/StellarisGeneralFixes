@@ -854,12 +854,14 @@ paragon_origin_reformists_negotiations_effect = {
 				limit = {
 					NOT = { has_civic = civic_efficient_bureaucracy }
 				}
-				if = { # Down with the aristocracy and their oppression
+				# Down with the aristocracy and their oppression
+				if = {
 					limit = { has_civic = civic_aristocratic_elite }
 					force_remove_civic = civic_aristocratic_elite
 					force_add_civic = civic_efficient_bureaucracy
 				}
-				if = { # Eat the rich
+				# Eat the rich
+				else_if = { # Vfix double: https://forum.paradoxplaza.com/forum/threads/1927670/
 					limit = { has_civic = civic_merchant_guilds }
 					force_remove_civic = civic_merchant_guilds
 					force_add_civic = civic_efficient_bureaucracy

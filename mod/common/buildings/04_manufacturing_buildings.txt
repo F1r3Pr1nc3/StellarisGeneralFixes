@@ -13,7 +13,7 @@ building_foundry_1 = {
 	}
 
 	potential = {
-		has_owner = yes # Vfix opt
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -32,9 +32,6 @@ building_foundry_1 = {
 				}
 			}
 		}
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -88,16 +85,13 @@ building_foundry_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no } # see 'building_natural_furnace_2'
 		is_special_colony_type = no
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -146,16 +140,13 @@ building_foundry_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no } # see 'building_natural_furnace_3'
 		is_special_colony_type = no
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -196,7 +187,7 @@ building_factory_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				country_uses_consumer_goods = yes
@@ -226,9 +217,6 @@ building_factory_1 = {
 				}
 			}
 		}
-	}
-
-	allow = {
 	}
 
 	destroy_trigger = {
@@ -283,7 +271,7 @@ building_factory_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { country_uses_consumer_goods = yes }
 		NOR = {
 			has_modifier = resort_colony
@@ -291,11 +279,8 @@ building_factory_2 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -340,7 +325,7 @@ building_factory_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { country_uses_consumer_goods = yes }
 		NOR = {
 			has_modifier = resort_colony
@@ -348,11 +333,8 @@ building_factory_3 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -401,9 +383,6 @@ building_refinery = {
 		}
 		has_owner = yes
 		owner = { is_wilderness_empire = no } # see 'building_churning_stomach'
-	}
-
-	allow = {
 	}
 
 	resources = {
@@ -461,9 +440,6 @@ building_chemical_plant = {
 		owner = { is_wilderness_empire = no } # see 'building_mote_aggravator'
 	}
 
-	allow = {
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -519,9 +495,6 @@ building_crystal_plant = {
 		owner = { is_wilderness_empire = no }
 	}
 
-	allow = {
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -571,7 +544,7 @@ building_nanite_transmuter = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				has_monthly_income = { resource = nanites value > 0 }
@@ -586,7 +559,6 @@ building_nanite_transmuter = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -637,20 +609,19 @@ building_ministry_production = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_gestalt = yes }
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -710,15 +681,12 @@ building_production_center = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = yes is_wilderness_empire = no }
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = no }
 	}
 
@@ -775,20 +743,19 @@ building_coordinated_fulfillment_center_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_relentless_industrialist_empire = yes }
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -919,9 +886,8 @@ building_coordinated_fulfillment_center_2 = {
 	allow = {
 		has_major_upgraded_capital = yes
 	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1048,15 +1014,12 @@ building_archaeo_refinery = {
 	}
 
 	potential = {
-		has_owner = yes # Vfix
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
 		owner = { has_technology = tech_archaeo_refinery }
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -1115,18 +1078,15 @@ building_foundry_upkeep_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = { is_wilderness_empire = yes } # see 'building_natural_furnace_2'
 			has_modifier = resort_colony
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1187,7 +1147,7 @@ building_foundry_efficiency_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = {
 				is_wilderness_empire = yes # see 'building_natural_furnace_3'
@@ -1197,11 +1157,8 @@ building_foundry_efficiency_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1272,7 +1229,7 @@ building_factory_upkeep_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { country_uses_consumer_goods = yes }
 		NOR = {
 			has_modifier = resort_colony
@@ -1280,11 +1237,8 @@ building_factory_upkeep_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1341,7 +1295,7 @@ building_factory_efficiency_1 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { country_uses_consumer_goods = yes }
 		NOR = {
 			has_modifier = resort_colony
@@ -1349,11 +1303,8 @@ building_factory_efficiency_1 = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes # Vfix sync
+		exists = owner
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -1421,10 +1372,9 @@ building_offworld_expedition_hub = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_galvanic_empire = yes }
 	}
-
 	allow = {
 		custom_tooltip = {
 			fail_text = offworld_molten_world_req
@@ -1435,7 +1385,7 @@ building_offworld_expedition_hub = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_galvanic_empire = no }
 	}
 

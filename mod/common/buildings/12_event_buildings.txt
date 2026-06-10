@@ -18,7 +18,7 @@ building_junkheap = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_country_type = ratlings }
 		NOT = { has_modifier = slave_colony }
 	}
@@ -193,13 +193,13 @@ building_waste_reprocessing_center = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_country_flag = bought_waste_reprocessing_center }
 		NOT = { has_modifier = slave_colony }
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = no }
 	}
 
@@ -243,13 +243,13 @@ building_nuumismatic_shrine = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_country_flag = nuumismatic_shrine }
 		NOT = { has_modifier = slave_colony }
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = yes }
 	}
 
@@ -286,14 +286,13 @@ building_crystal_plant_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_country_flag = lithoid_crystal_plant }
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -358,7 +357,7 @@ building_zroni_equilibrator = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_country_flag = zroni_legacy }
 		has_planet_flag = zroni_legacy_flag
 	}
@@ -456,7 +455,7 @@ building_composer_sanctum = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			AND = {
 				has_shroud_dlc = no
@@ -472,13 +471,12 @@ building_composer_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				NOR = {
@@ -538,7 +536,7 @@ building_eater_sanctum = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			AND = {
 				has_shroud_dlc = no
@@ -554,13 +552,12 @@ building_eater_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				NOR = {
@@ -612,7 +609,7 @@ building_instrument_sanctum = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			AND = {
 				has_shroud_dlc = no
@@ -628,13 +625,12 @@ building_instrument_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				NOR = {
@@ -709,7 +705,6 @@ building_whisperers_sanctum = {
 			has_modifier = slave_colony
 		}
 	}
-
 	allow = {
 		has_major_upgraded_capital = yes
 	}

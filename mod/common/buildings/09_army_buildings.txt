@@ -13,7 +13,7 @@ building_military_academy = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			owner = {
 				OR = {
@@ -25,7 +25,6 @@ building_military_academy = {
 			has_modifier = penal_colony
 		}
 	}
-
 	allow = {
 		has_owner = yes
 		OR = {
@@ -133,10 +132,9 @@ building_dread_encampment = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { has_valid_civic = civic_reanimated_armies }
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -197,13 +195,12 @@ building_stronghold = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			owner = { is_wilderness_empire = yes } # see 'building_planetary_carapace'
 		}
 	}
-
 	allow = {
 		exists = owner
 		OR = {
@@ -265,10 +262,9 @@ building_fortress = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no } # see 'building_planetary_carapace_2'
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -312,10 +308,9 @@ building_planetary_shield_generator = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_wilderness_empire = no } # see 'building_ozone_thickener'
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 		if = {

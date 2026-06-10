@@ -24,7 +24,7 @@ building_colony_shelter = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
@@ -48,9 +48,6 @@ building_colony_shelter = {
 		building_ancient_control_center
 		building_ancient_palace
 		building_colony_shelter_wilderness
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -134,7 +131,7 @@ building_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = { # Vfix opt
 			owner = {
 				OR = {
@@ -159,7 +156,6 @@ building_capital = {
 		building_ancient_palace
 		building_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 1000
 	}
@@ -225,7 +221,7 @@ building_major_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = { # Vfix opt
 			owner = {
 				OR = {
@@ -248,7 +244,6 @@ building_major_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 2500
 	}
@@ -313,7 +308,7 @@ building_system_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOR = { # Vfix opt
 			owner = {
 				OR = {
@@ -337,7 +332,6 @@ building_system_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 5000
 	}
@@ -405,7 +399,7 @@ building_deployment_post = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -425,9 +419,6 @@ building_deployment_post = {
 		building_ancient_control_center
 		building_ancient_palace
 		building_colony_shelter_wilderness
-	}
-
-	allow = {
 	}
 
 	planet_modifier = {
@@ -486,7 +477,7 @@ building_machine_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -505,7 +496,7 @@ building_machine_capital = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = no }
 	}
 
@@ -516,7 +507,6 @@ building_machine_capital = {
 		building_ancient_palace
 		building_colony_shelter_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 1000
 	}
@@ -593,7 +583,7 @@ building_machine_major_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -610,7 +600,6 @@ building_machine_major_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 2500
 	}
@@ -687,7 +676,7 @@ building_machine_system_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -705,7 +694,6 @@ building_machine_system_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 5000
 	}
@@ -792,7 +780,7 @@ building_hive_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_hive_empire = yes
@@ -808,7 +796,7 @@ building_hive_capital = {
 	}
 
 	destroy_trigger = { # destroys and/or triggers conversion if true
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_hive_empire = no
@@ -823,9 +811,6 @@ building_hive_capital = {
 		building_ancient_control_center
 		building_ancient_palace
 		building_capital_wilderness
-	}
-
-	allow = {
 	}
 
 	upgrades = {
@@ -882,7 +867,7 @@ building_hive_major_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_hive_empire = yes
@@ -900,7 +885,6 @@ building_hive_major_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 2500
 	}
@@ -971,9 +955,6 @@ building_hab_capital = {
 
 	convert_to = {
 		building_hab_fe_capital
-	}
-
-	allow = {
 	}
 
 	prerequisites = {
@@ -1101,7 +1082,6 @@ building_hab_major_capital = {
 	convert_to = {
 		building_hab_fe_capital
 	}
-
 	allow = {
 		sapient_pop_amount >= 1000
 	}
@@ -1244,7 +1224,6 @@ building_hab_system_capital = {
 	convert_to = {
 		building_hab_fe_capital
 	}
-
 	allow = {
 		sapient_pop_amount >= 2500
 	}
@@ -1393,9 +1372,6 @@ building_resort_capital = {
 		building_capital_wilderness
 	}
 
-	allow = {
-	}
-
 	resources = {
 		category = planet_buildings
 		upkeep = {
@@ -1470,7 +1446,6 @@ building_resort_major_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 2000
 	}
@@ -1550,9 +1525,6 @@ building_slave_capital = {
 		building_capital_wilderness
 	}
 
-	allow = {
-	}
-
 	resources = {
 		category = planet_buildings
 		upkeep = {
@@ -1610,7 +1582,6 @@ building_slave_major_capital = {
 		building_ancient_palace
 		building_major_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 2000
 	}
@@ -1661,7 +1632,7 @@ building_imperial_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_gestalt = no is_galactic_emperor = yes } # Vfix opt
 		is_capital = yes
 	}
@@ -1675,7 +1646,6 @@ building_imperial_capital = {
 		building_ancient_palace
 		building_system_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 5000
 	}
@@ -1740,7 +1710,7 @@ building_imperial_machine_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_machine_empire = yes
@@ -1760,7 +1730,6 @@ building_imperial_machine_capital = {
 		building_ancient_palace
 		building_system_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 5000
 	}
@@ -1840,7 +1809,7 @@ building_imperial_hive_capital = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_hive_empire = yes
@@ -1861,7 +1830,6 @@ building_imperial_hive_capital = {
 		building_ancient_palace
 		building_system_capital_wilderness
 	}
-
 	allow = {
 		sapient_pop_amount >= 5000
 	}

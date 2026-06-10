@@ -14,7 +14,7 @@ building_luxury_residence = {
 	}
 
 	potential = {
-		has_owner = yes # Vfix
+		exists = owner
 		OR = {
 			NOT = { is_planet_class = pc_habitat }
 			owner = { is_void_dweller_empire = yes }
@@ -39,7 +39,7 @@ building_luxury_residence = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -107,7 +107,7 @@ building_paradise_dome = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -125,7 +125,6 @@ building_paradise_dome = {
 		building_expanded_warren
 		building_communal_housing_large
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -174,7 +173,7 @@ building_communal_housing = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			NOT = { is_planet_class = pc_habitat }
 			owner = { is_void_dweller_empire = yes }
@@ -193,7 +192,7 @@ building_communal_housing = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = slave_colony
 			NOT = { owner = { is_gestalt = no has_valid_civic = civic_shared_burden } }
@@ -242,7 +241,7 @@ building_communal_housing_large = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		has_building = building_communal_housing
 		owner = { is_gestalt = no has_valid_civic = civic_shared_burden }
 		OR = {
@@ -256,7 +255,7 @@ building_communal_housing_large = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = slave_colony
 			NOT = { owner = { is_gestalt = no has_valid_civic = civic_shared_burden } }
@@ -273,7 +272,6 @@ building_communal_housing_large = {
 		building_expanded_warren
 		building_paradise_dome
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -313,7 +311,7 @@ building_drone_storage = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = yes }
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
@@ -324,7 +322,7 @@ building_drone_storage = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = no }
 	}
 
@@ -371,7 +369,7 @@ building_drone_megastorage = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_machine_empire = no }
 	}
 
@@ -380,7 +378,6 @@ building_drone_megastorage = {
 		building_expanded_warren
 		building_communal_housing_large
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -420,7 +417,7 @@ building_hive_warren = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = { is_hive_empire = yes is_wilderness_empire = no }
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
@@ -431,7 +428,7 @@ building_hive_warren = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_hive_empire = no }
 	}
 
@@ -474,13 +471,13 @@ building_expanded_warren = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		has_building = building_hive_warren
 		owner = { is_wilderness_empire = no }
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { is_hive_empire = no }
 	}
 
@@ -493,7 +490,6 @@ building_expanded_warren = {
 		building_drone_megastorage
 		building_communal_housing_large
 	}
-
 	allow = {
 		has_upgraded_capital = yes
 	}
@@ -533,7 +529,7 @@ building_holo_theatres = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_gestalt = no
@@ -553,11 +549,8 @@ building_holo_theatres = {
 		}
 	}
 
-	allow = {
-	}
-
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = {
 				OR = {
@@ -606,9 +599,8 @@ building_hyper_entertainment_forum = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 	}
-
 	allow = {
 		NOR = {
 			owner = {
@@ -622,7 +614,7 @@ building_hyper_entertainment_forum = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = { has_valid_civic = civic_dystopian_society }
 		OR = {
 			has_modifier = slave_colony
@@ -669,14 +661,13 @@ building_medical_1 = {
 	}
 
 	potential = { # Vfix opt
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_planet_flag = ignore_ai_building_limitations
 			owner = { is_ai = no }
 			free_amenities < @amenity_ai_limit
 		}
 	}
-
 	allow = { # Vfix opt
 		NOR = {
 			has_modifier = slave_colony
@@ -693,7 +684,7 @@ building_medical_1 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = { # Vfix Conflicting of Possible/Allowed
 			has_modifier = slave_colony
 			has_modifier = penal_colony
@@ -763,7 +754,7 @@ building_medical_2 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		# check the empire is valid
 		owner = {
 			# rule out gestalts and pre-FTL societies
@@ -796,7 +787,7 @@ building_medical_2 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes # Vfix opt
+		exists = owner
 		OR = {
 			# if the planet is owned by a gestalt or pre-FTL society
 			owner = {
@@ -958,7 +949,7 @@ building_medical_3 = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		has_upgraded_capital = yes
 		OR = {
 			owner = {
@@ -981,7 +972,7 @@ building_medical_3 = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_gestalt = yes }
 			AND = {
@@ -1076,7 +1067,7 @@ building_overseer_homes = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			owner = { is_gestalt = yes } # Vfix opt
 			NOT = { has_modifier = slave_colony }
@@ -1117,7 +1108,7 @@ building_toxic_bath = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		NOT = { has_modifier = slave_colony }
 		owner = {
 			is_toxic_baths_empire = yes
@@ -1132,7 +1123,7 @@ building_toxic_bath = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		OR = {
 			has_modifier = slave_colony
 			owner = {
@@ -1197,7 +1188,7 @@ building_toxic_bath_hive = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_hive_empire = yes
 			is_wilderness_empire = no
@@ -1206,7 +1197,7 @@ building_toxic_bath_hive = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			NAND = {
 				is_hive_empire = yes
@@ -1259,7 +1250,7 @@ building_toxic_bath_machine = {
 	}
 
 	potential = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			is_toxic_baths_empire = yes
 			is_synthetic_empire = yes
@@ -1268,7 +1259,7 @@ building_toxic_bath_machine = {
 	}
 
 	destroy_trigger = {
-		has_owner = yes
+		exists = owner
 		owner = {
 			OR = {
 				is_synthetic_empire = no
