@@ -1503,32 +1503,32 @@ get_marauder_species = {
 		}
 		founder_species = { save_event_target_as = marauder_species }
 	}
-	else_if = {
-		limit = {
-			pop_amount_percentage = {
-				percentage > 0.65
-				limit = { is_same_species = event_target:marauder_species }
-			}
-			OR = {
-				AND = {
-					exists = event_target:great_khan
-					pop_amount_percentage = {
-						percentage < 0.2
-						limit = { is_same_species = event_target:great_khan.species }
-					}
-				}
-				AND = {
-					NOT = { exists = event_target:great_khan.species }
-					pop_amount_percentage = {
-						percentage < 0.25
-						limit = { is_same_species = owner_species }
-					}
-				}
-			}
-		}
-		change_dominant_species = { species = event_target:marauder_species }
-		set_built_species = event_target:marauder_species
-	}
+	# else_if = {
+	# 	limit = {
+	# 		pop_amount_percentage = {
+	# 			percentage > 0.75
+	# 			limit = { is_same_species = event_target:marauder_species }
+	# 		}
+	# 		OR = {
+	# 			AND = {
+	# 				exists = event_target:great_khan
+	# 				pop_amount_percentage = {
+	# 					percentage < 0.15
+	# 					limit = { is_same_species = event_target:great_khan.species }
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				NOT = { exists = event_target:great_khan.species }
+	# 				pop_amount_percentage = {
+	# 					percentage < 0.2
+	# 					limit = { is_same_species = owner_species }
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	change_dominant_species = { species = event_target:marauder_species }
+	# 	set_built_species = event_target:marauder_species
+	# }
 }
 
 # (The Great Khan Expanded)

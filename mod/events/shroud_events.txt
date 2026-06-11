@@ -2533,8 +2533,11 @@ planet_event = {
 	show_sound = event_bad_luck
 	is_triggered_only = yes
 
-	trigger = { # Vfix
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = { # Vfix
 		owner = { is_superstitious_beliefs_empire = yes }
 	}
 
@@ -2891,7 +2894,6 @@ planet_event = {
 	}
 
 	trigger = {
-		has_owner = yes
 		solar_system = { is_psionic_aura_suppressed = no }
 	}
 
@@ -3227,14 +3229,16 @@ country_event = {
 			has_covenant = the_eater_of_worlds
 			has_country_flag = the_eater_of_worlds_betrayal
 		}
-		# the player has claims on territories owned by other empires that are weaker than them
+		# the player has claims on territories owned by other empires that are weaker or equal
 		any_country = {
+			is_default_or_fallen = yes # Vfix opt
+			NOT = { is_same_value = root } # Vfix
 			root = {
 				has_claim = prev
 				relative_power = {
 					who = prev
 					category = fleet
-					value > equivalent
+					value >= equivalent # Vfix balance: more sincere
 				}
 			}
 		}
@@ -3290,16 +3294,49 @@ country_event = {
 		custom_tooltip = shroud.3005.a.boons.tt
 		random_country = {
 			limit = {
+				is_default_or_fallen = yes # Vfix opt
+				NOT = { is_same_value = root } # Vfix
 				root = {
 					has_claim = prev
 					relative_power = {
 						who = prev
 						category = fleet
-						value > equivalent
+						value >= equivalent # Vfix balance: more sincere
+					}
+				}
+			}
+			weights = { # Vfix
+				base = 100
+				modifier = { add = 50 is_hostile_to = root }
+				modifier = { add = -50 is_in_federation_with = root }
+				modifier = {
+					add = -25
+					OR = {
+						has_defensive_pact = root
+						has_association_status = root
+					}
+				}
+				modifier = {
+					add = -15
+					OR = {
+						has_non_aggression_pact = root
+						is_friendly_to = root
 					}
 				}
 			}
 			root = {
+				# Vfix: https://forum.paradoxplaza.com/forum/threads/eater-of-worlds-made-me-declare-war-on-my-own-federation.1927517/
+				if = {
+					limit = { is_in_federation_with = prev }
+					leave_alliance = { override_requirements = yes }
+				}
+				else_if = {
+					limit = { has_defensive_pact = prev }
+					clear_relations = {
+						target = prev
+						relations = { defensive_pact }
+					}
+				}
 				declare_war = { target = prev attacker_war_goal = "wg_conquest" }
 			}
 		}
@@ -14050,8 +14087,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -14067,8 +14107,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -14115,8 +14158,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -14132,8 +14178,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -14353,8 +14402,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -14633,8 +14685,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -14809,8 +14864,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes has_patron_counter = po_uplift_species }
 	}
 
@@ -15142,8 +15200,11 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	pre_triggers = {
 		has_owner = yes
+	}
+
+	trigger = {
 		owner = { can_access_shroud = yes }
 	}
 
@@ -15384,7 +15445,7 @@ country_event = {
 					OR = {
 						has_global_flag = no_end_of_cycle
 						has_global_flag = end_of_the_cycle_rolled
-						any_country = {
+						any_playable_country = { # Vfix opt
 							has_origin = origin_endbringers # If there are endbringers they should be the only country that can roll the EotC
 							NOT = { is_same_value = root }
 						}
@@ -15392,7 +15453,7 @@ country_event = {
 				}
 				modifier = {
 					factor = 2
-					any_country = {
+					any_playable_country = { # Vfix opt
 						NOT = { is_same_value = root }
 						has_been_declared_crisis = yes # Someone wants to destroy the galaxy? Let's give them a challenge.
 					}
