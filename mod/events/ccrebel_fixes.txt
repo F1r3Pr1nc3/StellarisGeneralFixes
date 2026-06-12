@@ -8,6 +8,60 @@
 
 namespace = rebellionfix
 # (on_single_player_save_game_load)
+## Vfix empty rebel war goal (for unknown reason) by FirePrince
+
+event = {
+	id = rebellionfix.33
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		# years_passed > 20
+		any_playable_country = {
+			is_subject = yes
+			is_at_war = yes
+			any_war = {
+				is_war_participant = { who = prev side = attackers }
+				any_defender = { is_same_value = prevprev.overlord }
+				using_war_goal = { owner = prev }
+			}
+		}
+	}
+
+	immediate = {
+		# TODO: can be extended for other war_goals
+		random_playable_country = {
+			limit = {
+				is_subject = yes
+				is_at_war = yes
+				any_war = {
+					is_war_participant = { who = prev side = attackers }
+					any_defender = { is_same_value = prevprev.overlord }
+					using_war_goal = { owner = prev }
+				}
+				is_war_leader = yes
+			}
+			weights = {
+				base = 1
+				modifier = { add = 99 is_ai = no }
+			}
+			random_war = {
+				limit = {
+					is_war_participant = { who = prev side = attackers }
+					any_defender = { is_same_value = prevprev.overlord }
+					using_war_goal = { owner = prev }
+				}
+				set_war_goal = {
+					type = wg_independence
+					target = prev
+					enemy = prev.overlord
+				}
+			}
+		}
+	}
+}
+
+# (on_single_player_save_game_load)
 event = {
 	id = rebellionfix.34
 	hide_window = yes

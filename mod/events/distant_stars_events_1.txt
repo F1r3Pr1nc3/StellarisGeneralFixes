@@ -8071,7 +8071,9 @@ country_event = {
 
 	immediate = {
 		if = {
-			NOT = { exists = event_target:droppod_tar }
+			limit = {
+				NOT = { exists = event_target:droppod_tar }
+			}
 			fromfrom = { save_event_target_as = droppod_tar }
 		}
 	}
